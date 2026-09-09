@@ -7,7 +7,7 @@ when they have reproducible evidence in research/ledger.csv.
 from __future__ import annotations
 
 import flopscope.numpy as fnp
-from whestbench import BaseEstimator, MLP
+from whestbench import MLP, BaseEstimator
 
 
 class Estimator(BaseEstimator):
