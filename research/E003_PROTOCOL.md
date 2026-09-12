@@ -1,6 +1,6 @@
 # E003 Radial Marginalisation Development Protocol
 
-Status: in progress.
+Status: completed — DROP.
 
 ## Objective
 
@@ -22,6 +22,10 @@ no E003 issue, PR, or branch existed before the claim.
 - Per-MLP FLOP budget: `2**41`
 - Seed policy: use the grader-provided `mlp.seed`; no seed sweep
 - Holdout: not accessed during this development screen
+- Python: 3.11.16
+- NumPy: 2.4.6
+- whestbench: 0.16.1
+- flopscope: 0.12.1
 
 ## Baseline
 
@@ -34,7 +38,7 @@ Frozen `methods/whitened_antithetic.py` at `target_utilization=0.099`:
 - mean utilization: `0.09897964`
 - failures: `0/100`
 
-The E003 promotion threshold is therefore final-layer MSE <= `6.651e-06`.
+The E003 promotion threshold was therefore final-layer MSE <= `6.651e-06`.
 
 ## Frozen candidate
 
@@ -50,7 +54,7 @@ Whitened norms are recovered from the positive half using
 `x_half @ (U * lambda**-0.5)`; the right orthogonal factor is unnecessary for
 norms.
 
-No coefficient or radial-rule grid is allowed inside E003. Any materially
+No coefficient or radial-rule grid was allowed inside E003. Any materially
 different radial/kurtosis correction requires a new experiment ID.
 
 ## Cost model
@@ -65,7 +69,7 @@ sample:
 At the competition shape and `target_utilization=0.099`, the frozen candidate
 uses 5542 trajectories versus the baseline's 5708.
 
-## Decision rule
+## Preregistered decision rule
 
 KEEP only if all conditions hold on the development run:
 
@@ -76,9 +80,42 @@ KEEP only if all conditions hold on the development run:
 Otherwise DROP. A failed development gate means no holdout run and no
 replication-budget spend.
 
-## Prior evidence
+## Development run
 
-Public Phase-1 work reported exact radial marginalisation as positive but small
-(~1.013x against whitened-antithetic sampling) and left it disabled because the
-gain did not pay for its extra norm pass. E003 tests whether Phase 2's width
-1024 / depth 16 regime changes that conclusion.
+The frozen candidate was evaluated exactly once by GitHub Actions run
+`34706304538` from commit
+`58111872eddf9c510310f8f623a21f973587887d` with command:
+
+`whest run --estimator methods/radial_marginalized_antithetic.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --runner local`
+
+Artifact: `e003-radial-log`, artifact ID `10300934998`.
+
+| estimator | samples | final-layer MSE | adjusted score | all-layers MSE | mean utilization | failures |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| frozen whitened-antithetic baseline | 5708 | `7.39e-06` | `7.39e-07` | `1.03e-05` | `0.09897964` | `0/100` |
+| E003 radial marginalisation | 5542 | `7.63e-06` | `7.63e-07` | `1.06e-05` | `0.09897092` | `0/100` |
+
+The radial candidate is approximately `3.25%` worse in final-layer MSE than the
+frozen baseline. The preregistered 10% gate required `<=6.651e-06`; the measured
+`7.63e-06` is about `14.72%` above that threshold. Compute utilization is
+essentially unchanged (absolute difference `-8.72e-06`) and failures remain
+zero, so the negative result is attributable to estimator accuracy rather than
+a compute-floor or reliability mismatch.
+
+The scorer reported total estimator FLOPs `2.18e13`, effective compute
+`2.18e13`, scorer duration `126.506847s`, and the timed command wall clock was
+`13:32.27` including dataset preparation/generation. The run exited successfully.
+Repository verification also passed: Ruff clean, `8 passed` in pytest, and the
+estimator contract validated.
+
+## Decision
+
+`DROP` E003.
+
+- Development gate failed.
+- Holdout was not accessed.
+- No post-score retuning or second development measurement was performed.
+- Replication budget was not consumed.
+- External experiment cost recorded in the ledger is `$0`.
+
+Any different radial/kurtosis construction must receive a new experiment ID.
