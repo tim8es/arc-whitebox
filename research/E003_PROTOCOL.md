@@ -54,3 +54,21 @@ If the development gate fails, E003 is `DROP` and the holdout is not accessed. I
 ## Budget
 
 External experiment budget gate: `$6` maximum. GitHub-hosted/local project evaluation is recorded as `$0` external experiment cost unless an external paid service is explicitly used.
+
+## Measured development result
+
+The preregistered grid was run once in GitHub Actions run `34706339487` from experiment commit `a1a8cd593ca02090fb08a02a3a4e3d1f3f413f4e` on `hf://aicrowd/arc-whestbench-public-2026@v2-phase2`, split `mini`, `runner=local`, 100 MLPs, width 1024, depth 16, FLOP budget `2.20e12` per MLP. Python was 3.11.16, NumPy 2.4.6, whestbench 0.16.1, and flopscope 0.12.1.
+
+| lambda | final-layer MSE | adjusted score | all-layers MSE | mean utilization | total estimator FLOPs | failures | artifact |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0.25 | `7.36e-06` | `7.36e-07` | `1.03e-05` | `0.09899029` | `2.18e13` | `0/100` | `10301906850` |
+| 0.50 | `7.45e-06` | `7.45e-07` | `1.04e-05` | `0.09899029` | `2.18e13` | `0/100` | `10302006731` |
+| 0.75 | `7.53e-06` | `7.53e-07` | `1.04e-05` | `0.09899029` | `2.18e13` | `0/100` | `10302251505` |
+
+The best candidate was `lambda=0.25`: `7.36e-06` versus the frozen `7.39e-06` baseline, approximately `0.41%` lower MSE. This is far below the preregistered 10% development gate (`<=6.651e-06`). Compute stayed comparable and all candidates had zero failures, so the negative result is attributable to lack of MSE effect rather than budget or reliability regression.
+
+## Decision
+
+`DROP`.
+
+The development gate failed. The holdout was not accessed, no replication or post-result tuning was performed, and external experiment cost was `$0`. The one-shot scoring workflow was removed after the completed run to prevent accidental reruns of the frozen grid.
