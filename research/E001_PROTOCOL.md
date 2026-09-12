@@ -25,9 +25,13 @@ baseline available before candidate scoring:
 1. E000 official covariance propagation: final-layer MSE `4.05e-06`, mean
    utilization `0.02351464`, failures `0/100`.
 2. Frozen whitened-antithetic sampler: `target_utilization=0.099`, exactly
-   5708 trajectories at the competition shape. Its Phase-2 mini score is being
-   produced by the already-started baseline run `34693987776`; no sampler
-   parameter will be changed after seeing that score.
+   5708 trajectories at the competition shape. Phase-2 mini run `34693987776`
+   measured final-layer MSE `7.39e-06`, adjusted final-layer score `7.39e-07`,
+   all-layers MSE `1.03e-05`, mean utilization `0.09897964`, failures `0/100`.
+
+The sampler is therefore weaker than E000 on this development split. The E001
+promotion comparison remains E000, and the preregistered >=15% improvement gate
+corresponds to final-layer MSE <= `3.4425e-06`.
 
 ## Candidate definition
 
@@ -64,6 +68,9 @@ Run every setting exactly once on the development split and record all results:
 
 No additional coefficient may be added after observing these scores under E001.
 A new search requires a new experiment ID.
+
+The grid was started as GitHub Actions run `34699262095` from commit
+`8b641586afc9418870fb12071de0dd0e9de42b06` after the sampler baseline completed.
 
 ## Decision rule
 
