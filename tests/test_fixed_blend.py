@@ -1,8 +1,8 @@
 import numpy as np
-from methods.fixed_blend import FixedBlendEstimator
 from numpy.testing import assert_allclose
 
 from baselines.covariance_propagation import CovarianceEstimator
+from methods.fixed_blend import FixedBlendEstimator
 from methods.whitened_antithetic import WhitenedAntitheticEstimator
 
 
