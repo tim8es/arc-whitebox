@@ -1,0 +1,36 @@
+name: e002-diagnostic
+
+on:
+  push:
+    branches: [research/e002-adaptive-blend]
+    paths:
+      - '.github/workflows/e002-diagnostic.yml'
+      - 'scripts/e002_diagnostic.py'
+      - 'tests/test_e002_diagnostic.py'
+      - 'methods/whitened_antithetic.py'
+      - 'research/E002_PROTOCOL.md'
+  workflow_dispatch:
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project and tools
+        run: python -m pip install -e . ruff pytest
+      - name: Verify preregistered diagnostic math
+        run: |
+          ruff check scripts/e002_diagnostic.py tests/test_e002_diagnostic.py
+          pytest -q tests/test_e002_diagnostic.py
+      - name: Fit diagnostic rule on first 20 Phase-2 mini MLPs
+        run: python scripts/e002_diagnostic.py --output e002-diagnostic.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e002-diagnostic
+          path: e002-diagnostic.json
+          if-no-files-found: warn
