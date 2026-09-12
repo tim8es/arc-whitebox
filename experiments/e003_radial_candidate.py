@@ -2,4 +2,8 @@
 
 from methods.fourth_moment_antithetic import FourthMomentAntitheticEstimator
 
-Estimator = FourthMomentAntitheticEstimator
+
+class Estimator(FourthMomentAntitheticEstimator):
+    """Validator-visible E003 estimator class; no parameter changes."""
+
+    pass
