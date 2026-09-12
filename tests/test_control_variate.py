@@ -1,8 +1,8 @@
 import numpy as np
-from methods.residual_control_variate import ResidualControlVariateEstimator
 from numpy.testing import assert_allclose
 
 from baselines.covariance_propagation import CovarianceEstimator
+from methods.residual_control_variate import ResidualControlVariateEstimator
 
 
 class TinyMLP:
