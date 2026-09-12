@@ -1,0 +1,74 @@
+name: e008-product-probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/e008-polynomial-sketch
+    paths:
+      - .github/workflows/e008-product-probe.yml
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned project stack
+        run: python -m pip install -e .
+
+      - name: Fetch exact upstream V25
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL \
+            https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v25.py \
+            -o /tmp/estimator_v25.py
+          actual="$(git hash-object /tmp/estimator_v25.py)"
+          test "$actual" = "195373a110215256b759d7c172ba8c923c62e5cc"
+          echo "UPSTREAM_V25_GIT_BLOB=$actual"
+
+      - name: Patch diagnostic-only product probe
+        run: |
+          python scripts/e008_patch_product_probe.py \
+            /tmp/estimator_v25.py /tmp/e008_v25_probe.py
+          python -m py_compile /tmp/e008_v25_probe.py
+
+      - name: Run mini index 0 layer-14 probe
+        shell: bash
+        run: |
+          set -o pipefail
+          python - <<'PY' 2>&1 | tee e008-product-probe.log
+          import importlib.util
+          import sys
+          import whestbench
+
+          path = "/tmp/e008_v25_probe.py"
+          spec = importlib.util.spec_from_file_location("e008_v25_probe", path)
+          assert spec is not None and spec.loader is not None
+          module = importlib.util.module_from_spec(spec)
+          sys.modules[spec.name] = module
+          spec.loader.exec_module(module)
+
+          ds = whestbench.load_dataset(
+              "aicrowd/arc-whestbench-public-2026",
+              revision="v2-phase2",
+              split="mini",
+          )
+          mlp = whestbench.mlp_at(ds, 0)
+          prediction = module.Estimator().predict(mlp, 2**41)
+          print("E008_PREDICTION_SHAPE=", prediction.shape)
+          PY
+
+      - name: Upload diagnostic log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e008-product-probe-log
+          path: e008-product-probe.log
+          if-no-files-found: warn
