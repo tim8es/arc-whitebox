@@ -42,7 +42,7 @@ No coefficient, clipping threshold, seed search, feature selection, or post-resu
 ## Compute accounting
 
 The candidate keeps target utilization at `0.099` but includes the second eigendecomposition/whitening and radial operations in its sample-count estimate.
-At competition shape the preregistered sample count is `4796` trajectories.
+At competition shape the frozen implementation computes `4810` trajectories. The earlier `4796` written before the first CI run was an arithmetic transcription error in the protocol/test expectation; CI run `34706298260` exposed the mismatch before any scorer step, and only this bookkeeping value was corrected. The estimator implementation and scientific candidate were unchanged.
 Promotion decisions use the scorer's measured utilization, not this estimate.
 
 ## Development gate
