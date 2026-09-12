@@ -1,0 +1,73 @@
+name: e007-k3-v25
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/e007-k3-k4-frontier-repro
+    paths:
+      - .github/workflows/e007-k3-v25.yml
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned project stack
+        run: python -m pip install -e .
+
+      - name: Fetch and verify exact upstream V25
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL \
+            https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v25.py \
+            -o /tmp/estimator_v25.py
+          actual="$(git hash-object /tmp/estimator_v25.py)"
+          expected="195373a110215256b759d7c172ba8c923c62e5cc"
+          echo "UPSTREAM_COMMIT=18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45"
+          echo "EXPECTED_GIT_BLOB=$expected"
+          echo "ACTUAL_GIT_BLOB=$actual"
+          test "$actual" = "$expected"
+          sha256sum /tmp/estimator_v25.py
+
+      - name: Runtime versions
+        run: |
+          python - <<'PY'
+          import platform
+          import numpy
+          import flopscope
+          import whestbench
+          print("python=" + platform.python_version())
+          print("numpy=" + numpy.__version__)
+          print("flopscope=" + flopscope.__version__)
+          print("whestbench=" + whestbench.__version__)
+          PY
+
+      - name: Validate pinned V25
+        run: whest validate --estimator /tmp/estimator_v25.py
+
+      - name: Run Phase 2 mini V25 reproduction
+        shell: bash
+        run: |
+          set -o pipefail
+          echo 'COMMAND=whest run --estimator /tmp/estimator_v25.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --runner local'
+          /usr/bin/time -v whest run \
+            --estimator /tmp/estimator_v25.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --runner local 2>&1 | tee e007-v25.log
+
+      - name: Upload benchmark log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e007-k3-v25-log
+          path: e007-v25.log
+          if-no-files-found: warn
