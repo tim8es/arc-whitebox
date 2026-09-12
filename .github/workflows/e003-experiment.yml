@@ -1,0 +1,57 @@
+name: e003-fourth-moment
+
+on:
+  push:
+    branches: [research/e003-fourth-moment]
+  workflow_dispatch:
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Phase 2 dependencies
+        run: python -m pip install -e . ruff pytest
+      - name: Verify frozen implementation
+        run: |
+          ruff check .
+          pytest -q
+          whest validate --estimator methods/whitened_antithetic.py
+          whest validate --estimator experiments/e003_radial_candidate.py
+          python - <<'PY'
+          from methods.fourth_moment_antithetic import FourthMomentAntitheticEstimator
+          from methods.whitened_antithetic import WhitenedAntitheticEstimator
+          budget = 2**41
+          print('BASELINE_SAMPLE_COUNT=', WhitenedAntitheticEstimator().sample_count(budget, 1024, 16))
+          print('E003_SAMPLE_COUNT=', FourthMomentAntitheticEstimator().sample_count(budget, 1024, 16))
+          PY
+      - name: Score frozen whitened-antithetic baseline
+        run: |
+          set -o pipefail
+          echo 'COMMAND=whest run --estimator methods/whitened_antithetic.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --runner local'
+          /usr/bin/time -v whest run \
+            --estimator methods/whitened_antithetic.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --runner local 2>&1 | tee e003-baseline.log
+      - name: Score preregistered E003 candidate
+        run: |
+          set -o pipefail
+          echo 'COMMAND=whest run --estimator experiments/e003_radial_candidate.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --runner local'
+          /usr/bin/time -v whest run \
+            --estimator experiments/e003_radial_candidate.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --runner local 2>&1 | tee e003-candidate.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e003-fourth-moment-logs
+          path: |
+            e003-baseline.log
+            e003-candidate.log
+          if-no-files-found: warn
