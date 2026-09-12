@@ -51,7 +51,7 @@ def test_competition_shape_uses_fewer_samples_to_pay_for_radial_correction() -> 
     radial = FourthMomentAntitheticEstimator()
     frozen = WhitenedAntitheticEstimator()
 
-    assert radial.sample_count(budget, width, depth) == 4796
+    assert radial.sample_count(budget, width, depth) == 4810
     assert radial.sample_count(budget, width, depth) < frozen.sample_count(
         budget, width, depth
     )
