@@ -1,0 +1,42 @@
+name: e003-radial
+
+# E003 completed its preregistered development measurement. Keep the workflow
+# manual-only so documentation/ledger updates cannot accidentally consume a
+# second development run.
+on:
+  workflow_dispatch:
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Phase 2 dependencies
+        run: python -m pip install -e . ruff pytest
+      - name: Validate candidate
+        run: whest validate --estimator methods/radial_marginalized_antithetic.py
+      - name: Run E003 Phase 2 mini
+        run: |
+          set -o pipefail
+          echo 'COMMAND=whest run --estimator methods/radial_marginalized_antithetic.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --runner local'
+          /usr/bin/time -v whest run \
+            --estimator methods/radial_marginalized_antithetic.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --runner local 2>&1 | tee e003-radial.log
+      - name: Verify repo
+        if: always()
+        run: |
+          ruff check .
+          pytest -q
+          whest validate --estimator estimator.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e003-radial-log
+          path: e003-radial.log
+          if-no-files-found: warn
