@@ -41,13 +41,13 @@ jobs:
         run: |
           python - <<'PY'
           import platform
+          from importlib.metadata import version
           import numpy
           import flopscope
-          import whestbench
           print("python=" + platform.python_version())
           print("numpy=" + numpy.__version__)
           print("flopscope=" + flopscope.__version__)
-          print("whestbench=" + whestbench.__version__)
+          print("whestbench=" + version("whestbench"))
           PY
 
       - name: Validate pinned V25
