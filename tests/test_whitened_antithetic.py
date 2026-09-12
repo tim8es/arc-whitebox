@@ -1,5 +1,4 @@
 import numpy as np
-
 from methods.whitened_antithetic import WhitenedAntitheticEstimator
 
 
