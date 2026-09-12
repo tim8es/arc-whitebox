@@ -1,13 +1,9 @@
 name: e003-radial
 
+# E003 completed its preregistered development measurement. Keep the workflow
+# manual-only so documentation/ledger updates cannot accidentally consume a
+# second development run.
 on:
-  push:
-    branches: [research/e003-radial-marginalisation]
-    paths:
-      - methods/radial_marginalized_antithetic.py
-      - research/E003_PROTOCOL.md
-      - tests/test_radial_marginalized_antithetic.py
-      - .github/workflows/e003-radial.yml
   workflow_dispatch:
 
 jobs:
