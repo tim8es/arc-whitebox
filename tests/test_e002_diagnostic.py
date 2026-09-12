@@ -1,7 +1,18 @@
+import importlib.util
+import sys
+from pathlib import Path
+
 import numpy as np
 from numpy.testing import assert_allclose
 
-from scripts.e002_diagnostic import fit_ridge_rule, oracle_covariance_weight
+_MODULE_PATH = Path(__file__).resolve().parents[1] / "scripts" / "e002_diagnostic.py"
+_SPEC = importlib.util.spec_from_file_location("e002_diagnostic", _MODULE_PATH)
+assert _SPEC is not None and _SPEC.loader is not None
+_MODULE = importlib.util.module_from_spec(_SPEC)
+sys.modules[_SPEC.name] = _MODULE
+_SPEC.loader.exec_module(_MODULE)
+fit_ridge_rule = _MODULE.fit_ridge_rule
+oracle_covariance_weight = _MODULE.oracle_covariance_weight
 
 
 def test_oracle_covariance_weight_recovers_known_scalar() -> None:
