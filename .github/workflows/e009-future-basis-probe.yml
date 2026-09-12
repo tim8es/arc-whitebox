@@ -1,0 +1,127 @@
+name: e009-future-basis-probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/e009-future-aware-basis
+    paths:
+      - .github/workflows/e009-future-basis-probe.yml
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned project stack
+        run: python -m pip install -e .
+
+      - name: Fetch and patch exact upstream V25
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL \
+            https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v25.py \
+            -o /tmp/estimator_v25.py
+          actual="$(git hash-object /tmp/estimator_v25.py)"
+          test "$actual" = "195373a110215256b759d7c172ba8c923c62e5cc"
+          echo "UPSTREAM_V25_GIT_BLOB=$actual"
+          python scripts/e009_patch_future_basis.py \
+            /tmp/estimator_v25.py /tmp/e009_v25.py
+          python -m py_compile /tmp/e009_v25.py
+
+      - name: Run index-0 current-vs-pulled-next rank grid
+        shell: bash
+        run: |
+          set -o pipefail
+          python - <<'PY' 2>&1 | tee e009-future-basis.log
+          import gc
+          import importlib.util
+          import json
+          import os
+          import sys
+
+          import numpy as np
+          import whestbench
+
+          ds = whestbench.load_dataset(
+              "aicrowd/arc-whestbench-public-2026",
+              revision="v2-phase2",
+              split="mini",
+          )
+          mlp = whestbench.mlp_at(ds, 0)
+          target = np.asarray(ds[0]["final_means"], dtype=np.float64)
+          path = "/tmp/e009_v25.py"
+
+          def run(policy: str, rank: int):
+              os.environ["E009_SKETCH_POLICY"] = policy
+              os.environ["V21_R_OLD"] = str(rank)
+              os.environ["V24_R_OLD2"] = str(min(224, rank))
+              name = f"e009_v25_{policy}_{rank}"
+              spec = importlib.util.spec_from_file_location(name, path)
+              assert spec is not None and spec.loader is not None
+              module = importlib.util.module_from_spec(spec)
+              sys.modules[name] = module
+              spec.loader.exec_module(module)
+              prediction = np.asarray(module.Estimator().predict(mlp, 2**41), dtype=np.float64)
+              final = prediction[-1].copy()
+              mse = float(np.mean((final - target) ** 2))
+              del prediction, module
+              sys.modules.pop(name, None)
+              gc.collect()
+              return final, mse
+
+          ranks = (128, 192, 256, 384)
+          results = {}
+          reference_final = None
+          reference_mse = None
+          for policy in ("current", "pulled_next"):
+              for rank in ranks:
+                  final, mse = run(policy, rank)
+                  key = f"{policy}:{rank}"
+                  results[key] = {"mse": mse}
+                  print(f"E009_RESULT policy={policy} rank={rank} mse={mse:.12e}")
+                  if policy == "current" and rank == 384:
+                      reference_final = final
+                      reference_mse = mse
+                  results[key]["final"] = final
+
+          assert reference_final is not None and reference_mse is not None
+          summary = {"reference_mse": reference_mse, "ranks": {}}
+          for rank in ranks:
+              current = results[f"current:{rank}"]
+              future = results[f"pulled_next:{rank}"]
+              current_delta = float(np.mean((current["final"] - reference_final) ** 2))
+              future_delta = float(np.mean((future["final"] - reference_final) ** 2))
+              degradation_current = current["mse"] - reference_mse
+              degradation_future = future["mse"] - reference_mse
+              if degradation_current > 0:
+                  recovery = 1.0 - degradation_future / degradation_current
+              else:
+                  recovery = None
+              summary["ranks"][str(rank)] = {
+                  "current_mse": current["mse"],
+                  "pulled_next_mse": future["mse"],
+                  "current_prediction_delta_mse": current_delta,
+                  "pulled_next_prediction_delta_mse": future_delta,
+                  "degradation_recovery_fraction": recovery,
+              }
+
+          for item in results.values():
+              item.pop("final", None)
+          print("E009_SUMMARY_JSON=" + json.dumps(summary, sort_keys=True))
+          PY
+
+      - name: Upload diagnostic log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e009-future-basis-log
+          path: e009-future-basis.log
+          if-no-files-found: warn
