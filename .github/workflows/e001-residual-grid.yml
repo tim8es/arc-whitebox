@@ -1,0 +1,40 @@
+name: e001-residual-grid
+
+on:
+  pull_request:
+    branches:
+      - research/bootstrap
+    paths:
+      - .github/workflows/e001-residual-grid.yml
+      - research/e001-residual-grid-trigger.txt
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        weight: ["0.5", "1.0", "1.5"]
+    env:
+      E001_RESIDUAL_WEIGHT: ${{ matrix.weight }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install project
+        run: python -m pip install -e .
+
+      - name: Validate E001 candidate
+        run: whest validate --estimator experiments/e001_residual_candidate.py
+
+      - name: Score E001 candidate on Phase 2 mini
+        run: |
+          echo "E001_RESIDUAL_WEIGHT=${E001_RESIDUAL_WEIGHT}"
+          whest run --estimator experiments/e001_residual_candidate.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --runner local
