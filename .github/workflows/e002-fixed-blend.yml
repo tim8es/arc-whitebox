@@ -1,15 +1,6 @@
 name: e002-fixed-blend
 
 on:
-  push:
-    branches: [research/e002-adaptive-blend]
-    paths:
-      - '.github/workflows/e002-fixed-blend.yml'
-      - 'methods/fixed_blend.py'
-      - 'methods/whitened_antithetic.py'
-      - 'baselines/covariance_propagation.py'
-      - 'research/E002_PROTOCOL.md'
-      - 'research/ledger.csv'
   workflow_dispatch:
 
 jobs:
