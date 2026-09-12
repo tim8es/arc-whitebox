@@ -1,6 +1,8 @@
 # E002 Network-Conditioned Adaptive Blend Protocol
 
-Status: fixed baseline measured; adaptive diagnostic phase preregistered before any adaptive score.
+Status: DONE / DROP. Fixed blend retained as a stronger measured baseline; the
+network-conditioned adaptive extension failed its development feasibility gate
+before internal validation or holdout access.
 
 ## Objective
 
@@ -141,35 +143,52 @@ After this fit, freeze:
 No coefficient or feature changes are permitted after observing the 80-record
 internal validation result under E002.
 
-## Development promotion gate
+## Diagnostic result
 
-Evaluate the frozen adaptive rule on the 80-record internal validation subset.
-Promote to holdout consideration only if all are true:
+GitHub Actions run `34707605404`, job `103590387429`, commit
+`692b261479c72d4c226590fb7c37ad93954051d8` completed successfully after a
+pure test-loader fix. The diagnostic used exactly the preregistered first 20
+`mini` records.
 
-- median per-network final-layer MSE improves by at least 5% vs the same fixed
-  0.75/0.25 estimator;
-- aggregate final-layer MSE does not regress;
-- worst-decile per-network MSE does not regress by more than 10%;
-- measured mean compute utilization remains below 10%;
-- no failure regression.
+Per-network oracle covariance weights varied from `0.59351436` to `0.81176923`
+(mean `0.72630691`, std `0.05255466`), so heterogeneity exists. However that
+heterogeneity has very little exploitable value within the scalar blend family:
 
-The 5% internal gate is intentionally below the final 8% holdout acceptance
-criterion so a potentially useful rule can reach one-shot holdout without
-post-validation tuning.
+- fixed 0.75 aggregate MSE on the 20 records: `3.139994410056683e-06`
+- per-network oracle aggregate MSE: `3.094269192767133e-06`
+- oracle upper-bound aggregate gain: about `1.456%`
 
-## Holdout protocol
+Thus even an impossible estimator that knew the ground-truth-optimal scalar
+blend weight for every network would remain far below the E002 8% target.
+This is a structural negative result, not merely a weak feature-model result.
 
-Only after the internal gate passes:
+The preregistered cheap features also showed weak linear association with the
+oracle weight:
 
-1. record the frozen rule commit SHA, exact coefficients/features and validation
-   result in the ledger;
-2. treat `full` as the one-shot untouched holdout for E002;
-3. run exactly once with the frozen rule;
-4. record the result regardless of sign;
-5. do not retune and call a second `full` run the same holdout.
+- late ReLU uncertainty: `r=0.0383`
+- late off-diagonal ratio: `r=0.1265`
+- final ReLU uncertainty: `r=-0.1157`
+- final off-diagonal ratio: `r=0.0596`
 
-## Final acceptance criterion
+The selected ridge model used `lambda=10.0`; leave-one-out weight MSE was
+`0.00329592`, while the oracle-weight variance is only about `0.002762`, so the
+feature rule does not beat a constant-weight predictor reliably enough to
+justify scoring the untouched 80-record subset.
 
-Promote E002 only with at least 8% median gain versus the fixed blend on the
-preregistered holdout and no >10% tail regression, at comparable adjusted
-compute and without material failure regression.
+## Decision
+
+`DROP` the network-conditioned scalar blend hypothesis under E002. Do not run
+the 80-record internal validation and do not access the `full` holdout for this
+experiment. The fixed 0.75/0.25 blend remains useful as a stronger measured
+baseline (`3.02e-06` raw MSE), but the remaining error cannot be removed at the
+required scale by choosing a better scalar covariance-vs-sampling weight per
+network.
+
+## Mechanistic implication
+
+The negative oracle bound is the main scientific result: the two estimator
+vectors are already too geometrically aligned for scalar mixing to expose a
+large unused degree of freedom. Future work should change the estimator's error
+direction or resolution — e.g. layer/neuron/subspace-conditional corrections,
+higher-order closure, or structured residual estimation — rather than spend
+compute predicting a single network-level mixing coefficient.
