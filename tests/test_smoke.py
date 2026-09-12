@@ -1,5 +1,6 @@
-from estimator import Estimator
 from whestbench import BaseEstimator
+
+from estimator import Estimator
 
 
 def test_estimator_entrypoint_is_valid_base_estimator() -> None:
