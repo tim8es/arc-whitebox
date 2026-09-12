@@ -1,0 +1,48 @@
+name: e002-fixed-blend
+
+on:
+  push:
+    branches: [research/e002-adaptive-blend]
+    paths:
+      - '.github/workflows/e002-fixed-blend.yml'
+      - 'methods/fixed_blend.py'
+      - 'methods/whitened_antithetic.py'
+      - 'baselines/covariance_propagation.py'
+      - 'research/E002_PROTOCOL.md'
+      - 'research/ledger.csv'
+  workflow_dispatch:
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project and CI tools
+        run: python -m pip install -e . ruff pytest
+      - name: Validate fixed blend
+        run: whest validate --estimator methods/fixed_blend.py
+      - name: Run Phase 2 mini fixed blend baseline
+        run: |
+          set -o pipefail
+          echo 'COMMAND=whest run --estimator methods/fixed_blend.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --runner local'
+          /usr/bin/time -v whest run \
+            --estimator methods/fixed_blend.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --runner local 2>&1 | tee e002-fixed-blend.log
+      - name: Verify branch
+        if: always()
+        run: |
+          ruff check .
+          pytest -q
+          whest validate --estimator estimator.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e002-fixed-blend-log
+          path: e002-fixed-blend.log
+          if-no-files-found: warn
