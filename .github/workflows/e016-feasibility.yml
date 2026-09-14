@@ -1,0 +1,22 @@
+name: e016-feasibility
+
+on:
+  push:
+    branches: [research/e016-rank1-k4-response-20260915]
+  workflow_dispatch:
+
+jobs:
+  feasibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project and test tools
+        run: python -m pip install -e . pytest
+      - name: E016 focused tests
+        run: pytest -q tests/test_e016_rank1_k4.py
+      - name: Frozen E016 diagnostic
+        if: ${{ hashFiles('scripts/e016_rank1_k4_diagnostic.py') != '' }}
+        run: python scripts/e016_rank1_k4_diagnostic.py
