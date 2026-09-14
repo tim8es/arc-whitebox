@@ -17,3 +17,5 @@ jobs:
         run: python -m pip install -e . pytest
       - name: E015 focused tests
         run: pytest -q tests/test_e015_mz_prony.py tests/test_e015_instrumentation.py
+      - name: Frozen E015 diagnostic
+        run: python scripts/e015_mz_diagnostic.py
