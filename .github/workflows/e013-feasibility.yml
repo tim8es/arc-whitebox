@@ -1,0 +1,21 @@
+name: e013-feasibility
+
+on:
+  push:
+    branches: [research/e013-lambda-sufficient-stat-20260914]
+  workflow_dispatch:
+
+jobs:
+  feasibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project and test tools
+        run: python -m pip install -e . pytest
+      - name: E013 tests
+        run: pytest -q tests/test_e013_lambda_sufficient_stat.py
+      - name: Frozen E013 diagnostic
+        run: python scripts/e013_lambda_feasibility.py
