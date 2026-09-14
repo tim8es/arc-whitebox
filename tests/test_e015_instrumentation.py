@@ -19,11 +19,12 @@ class Estimator:
             D3, D21 = self._dslices(w)
 
     def _dslices(self, x):
-        if ka < k and STRASSEN_HUB > 0:
-            D21 = self._hub2(bufs, apb4, ka, k, n)
-            fnp.add(D21, fnp.matmul(inner, Qc.T, out=bufs["t1"]), out=D21)
-        else:
-            D21 = fnp.matmul(inner, Qc.T, out=bufs["d21"])
+        if old_group:
+            if ka < k and STRASSEN_HUB > 0:
+                D21 = self._hub2(bufs, apb4, ka, k, n)
+                fnp.add(D21, fnp.matmul(inner, Qc.T, out=bufs["t1"]), out=D21)
+            else:
+                D21 = fnp.matmul(inner, Qc.T, out=bufs["d21"])
 '''
 
 
@@ -34,6 +35,9 @@ def test_instrumentation_records_layer_old_and_young_without_replacing_output_pa
     assert "E015_LAYER[0] = li" in patched
     assert '"old": _e015_np.array(bufs["t1"], copy=True)' in patched
     assert '"young": _e015_np.array(D21, copy=True)' in patched
+    assert '"ka": int(ka)' in patched
+    assert '"kb": int(kb)' in patched
+    assert '"k": int(k)' in patched
     assert "fnp.add(D21, bufs[\"t1\"], out=D21)" in patched
 
 
