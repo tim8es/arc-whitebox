@@ -1,6 +1,14 @@
 from __future__ import annotations
 
-from scripts.e014_patch_v29 import patch_joiner_block
+import importlib.util
+from pathlib import Path
+
+PATCHER_PATH = Path(__file__).resolve().parents[1] / "scripts" / "e014_patch_v29.py"
+SPEC = importlib.util.spec_from_file_location("e014_patch_v29", PATCHER_PATH)
+assert SPEC is not None and SPEC.loader is not None
+PATCHER = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(PATCHER)
+patch_joiner_block = PATCHER.patch_joiner_block
 
 
 ORIGINAL = '''                    Yq = pool.get("yq", (n, r_old))
