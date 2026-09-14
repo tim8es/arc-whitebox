@@ -1,15 +1,20 @@
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import pytest
 
-from scripts.e015_mz_diagnostic import instrument_v29_source
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+from e015_mz_diagnostic import instrument_v29_source  # noqa: E402
 
 
 MINIMAL_V29 = '''import math
 
 class Estimator:
     def predict(self):
-        D3, D21 = self._dslices(x)
+        for li in range(2):
+            D3, D21 = self._dslices(x)
 
     def _dslices(self):
         if ka < k and STRASSEN_HUB > 0:
