@@ -60,10 +60,10 @@ def instrument_v29_source(source: str) -> str:
     )
     if import_marker not in source:
         raise ValueError("import marker not found")
-    if layer_marker not in source:
-        raise ValueError("layer marker not found")
     if old_marker not in source:
         raise ValueError("old-tier D21 marker not found")
+    if layer_marker not in source:
+        raise ValueError("layer marker not found")
 
     source = source.replace(
         import_marker,
@@ -193,7 +193,6 @@ def _measure_proxy_once(kind: str, rng: np.random.Generator):
 
 
 def _proxy_measurements():
-    # One warm-up of each exact frozen shape, then seven measured repetitions.
     _measure_proxy_once("baseline", np.random.default_rng(1500))
     _measure_proxy_once("candidate", np.random.default_rng(1501))
     baseline = [_measure_proxy_once("baseline", np.random.default_rng(1510 + i)) for i in range(PROXY_REPS)]
@@ -265,8 +264,6 @@ def main() -> int:
         + ACTIVE_OLD_LAYERS * recurrence_flops_per_layer / FLOP_BUDGET
     )
     persistent_state_bytes = 3 * N * N * 4
-    # At layer 8, the first scored layer, AGE_OLD=4 implies at least four tier-1 old sources.
-    # Two factor families FA/FP of shape (4, 384, 1024) already occupy 12 MiB, excluding Qc/U.
     minimum_replaced_history_bytes = 2 * 4 * R_OLD * N * 4
 
     if validation_errors:
