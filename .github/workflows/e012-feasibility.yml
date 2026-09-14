@@ -16,7 +16,12 @@ jobs:
           python-version: '3.11'
       - name: Install project and focused tools
         run: python -m pip install -e . ruff pytest
-      - name: Lint E012 test
-        run: ruff check tests/test_e012_batched_joiner.py
+      - name: Lint E012 files
+        run: >-
+          ruff check methods/e012_batched_joiner.py
+          scripts/e012_joiner_feasibility.py
+          tests/test_e012_batched_joiner.py
       - name: Focused E012 tests
         run: pytest -q tests/test_e012_batched_joiner.py
+      - name: Frozen E012 cost and accuracy diagnostic
+        run: python scripts/e012_joiner_feasibility.py
