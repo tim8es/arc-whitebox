@@ -11,6 +11,25 @@ Phase 2 target architecture:
 - depth: 16
 - per-MLP budget: `2**41` FLOPs
 - CPU-only grading
+- public dataset revision: `v2-phase2`
+
+## Quick start
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e . ruff pytest
+
+ruff check .
+whest validate --estimator estimator.py
+bash scripts/eval_phase2.sh mini local
+```
+
+For grader-like process isolation:
+
+```bash
+bash scripts/eval_phase2.sh mini subprocess
+```
 
 ## Research budget
 
@@ -34,21 +53,28 @@ No method is promoted on theoretical plausibility alone.
 
 ## Current priority tracks
 
-1. Adaptive/network-dependent sampling
-2. Control variates and residual estimation
-3. Hybrid covariance/moment propagation + sampling correction
-4. Antithetic / quasi-Monte-Carlo sampling
-5. Adaptive allocation of compute by layer/network difficulty
-6. Higher-order or mixture moment closure only when justified by measured residual structure
+1. Residual/control-variate estimation
+2. Adaptive/network-dependent analytic/sampling blending
+3. Whitened antithetic sampling with higher-moment correction
+4. Network-dependent low-rank QMC/cubature
+5. Stronger deterministic predictors as control variates
 
-## Repository plan
+## Repository map
 
 - `estimator.py` — submission-compatible estimator entry point
-- `examples/` — selected official baselines for local comparison
 - `research/HYPOTHESES.md` — ranked research hypotheses
-- `research/ledger.csv` — experiment ledger
-- `research/FRONTIER.md` — public-state-of-the-art notes and known dead ends
-- `scripts/` — repeatable evaluation helpers
+- `research/ledger.csv` — experiment ledger and cost gates
+- `research/FRONTIER.md` — public state of the art and known dead ends
+- `scripts/eval_phase2.sh` — repeatable official Phase 2 evaluation path
+- `docs/superpowers/specs/` — project design
+- `docs/superpowers/plans/` — executable research plan
+
+## Current gate
+
+1. Reproduce official Phase 2 covariance baseline.
+2. Reproduce whitened-antithetic sampling.
+3. Test residual control variates.
+4. Spend replication budget only after a measured positive signal.
 
 ## Rule
 
