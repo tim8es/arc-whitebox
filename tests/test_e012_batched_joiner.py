@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import numpy as np
-
 from methods.e012_batched_joiner import (
     candidate_scratch_bytes,
     joiner_batched,
@@ -26,5 +25,6 @@ def test_pair_batched_matches_separate_path() -> None:
 
 
 def test_candidate_scratch_is_only_two_batched_nr_buffers() -> None:
-    assert candidate_scratch_bytes(n=1024, rank=384, dtype_bytes=4) == 2 * 2 * 1024 * 384 * 4
+    expected = 2 * 2 * 1024 * 384 * 4
+    assert candidate_scratch_bytes(n=1024, rank=384, dtype_bytes=4) == expected
     assert candidate_scratch_bytes(n=1024, rank=384, dtype_bytes=4) <= 8 * 1024**2
