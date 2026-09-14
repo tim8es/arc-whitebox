@@ -12,11 +12,13 @@ from e015_mz_diagnostic import instrument_v29_source  # noqa: E402
 MINIMAL_V29 = '''import math
 
 class Estimator:
-    def predict(self):
-        for li in range(2):
-            D3, D21 = self._dslices(x)
+    def predict(self, mlp):
+        L = len(mlp.weights)
+        for li, w in enumerate(mlp.weights):
+            last = li == L - 1
+            D3, D21 = self._dslices(w)
 
-    def _dslices(self):
+    def _dslices(self, x):
         if ka < k and STRASSEN_HUB > 0:
             D21 = self._hub2(bufs, apb4, ka, k, n)
             fnp.add(D21, fnp.matmul(inner, Qc.T, out=bufs["t1"]), out=D21)
