@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import numpy as np
+
 from methods.e012_batched_joiner import (
     candidate_scratch_bytes,
     joiner_batched,
