@@ -1,0 +1,72 @@
+name: e010-k3-v29
+
+on:
+  push:
+    branches:
+      - research/e010-v29-frontier-repro
+    paths:
+      - .github/workflows/e010-k3-v29.yml
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned project stack
+        run: python -m pip install -e .
+
+      - name: Fetch and verify exact upstream V29
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL \
+            https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v29.py \
+            -o /tmp/estimator_v29.py
+          actual="$(git hash-object /tmp/estimator_v29.py)"
+          expected="17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+          echo "UPSTREAM_COMMIT=18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45"
+          echo "EXPECTED_GIT_BLOB=$expected"
+          echo "ACTUAL_GIT_BLOB=$actual"
+          test "$actual" = "$expected"
+          sha256sum /tmp/estimator_v29.py
+
+      - name: Runtime versions
+        run: |
+          python - <<'PY'
+          import platform
+          from importlib.metadata import version
+          import numpy
+          import flopscope
+          print("python=" + platform.python_version())
+          print("numpy=" + numpy.__version__)
+          print("flopscope=" + flopscope.__version__)
+          print("whestbench=" + version("whestbench"))
+          PY
+
+      - name: Validate pinned V29
+        run: whest validate --estimator /tmp/estimator_v29.py
+
+      - name: Run Phase 2 mini V29 reproduction
+        shell: bash
+        run: |
+          set -o pipefail
+          echo 'COMMAND=whest run --estimator /tmp/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --runner local'
+          /usr/bin/time -v whest run \
+            --estimator /tmp/estimator_v29.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --runner local 2>&1 | tee e010-v29.log
+
+      - name: Upload benchmark log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e010-k3-v29-log
+          path: e010-v29.log
+          if-no-files-found: warn
