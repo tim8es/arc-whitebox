@@ -3,6 +3,11 @@ name: e016-feasibility
 on:
   push:
     branches: [research/e016-rank1-k4-response-20260915]
+    paths:
+      - 'methods/e016_rank1_k4.py'
+      - 'tests/test_e016_rank1_k4.py'
+      - 'scripts/e016_rank1_k4_diagnostic.py'
+      - '.github/workflows/e016-feasibility.yml'
   workflow_dispatch:
 
 jobs:
@@ -12,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - name: Install project and test tools
         run: python -m pip install -e . pytest
       - name: E016 focused tests
