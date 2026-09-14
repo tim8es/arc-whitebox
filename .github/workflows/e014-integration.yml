@@ -22,7 +22,17 @@ jobs:
           python-version: "3.11"
       - name: Install pinned project stack and focused tools
         run: python -m pip install -e . pytest ruff
-      - name: Lint E014 patcher and test
-        run: ruff check scripts/e014_patch_v29.py tests/test_e014_patch.py
+      - name: Lint E014 files
+        run: ruff check scripts/e014_patch_v29.py scripts/e014_local_diagnostic.py tests/test_e014_patch.py
       - name: Focused E014 tests
         run: pytest -q tests/test_e014_patch.py
+      - name: Verify frozen V29 patch applies
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL \
+            https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v29.py \
+            -o /tmp/estimator_v29.py
+          test "$(git hash-object /tmp/estimator_v29.py)" = "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+          python scripts/e014_patch_v29.py /tmp/estimator_v29.py /tmp/e014_v29.py
+          python -m py_compile /tmp/e014_v29.py
