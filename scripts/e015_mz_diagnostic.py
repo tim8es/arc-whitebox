@@ -41,13 +41,14 @@ V29_OLD_UNITS = 106.79
 V29_RETAINED_UNITS = V29_TOTAL_UNITS - V29_OLD_UNITS
 N = 1024
 R_OLD = 384
+R_OLD2 = 224
 ACTIVE_OLD_LAYERS = 10  # layers 5..14
 PROXY_REPS = 7
 
 
 def _git_blob_sha(data: bytes) -> str:
     header = f"blob {len(data)}\0".encode()
-    return hashlib.sha1(header + data).hexdigest()
+    return hashlib.sha1(header + data).hexdigest()  # noqa: S324 - Git object identity
 
 
 def instrument_v29_source(source: str) -> str:
@@ -84,6 +85,9 @@ def instrument_v29_source(source: str) -> str:
         "                if 5 <= E015_LAYER[0] <= 14:\n"
         "                    E015_TRACE.append({\n"
         "                        \"layer\": int(E015_LAYER[0]),\n"
+        "                        \"ka\": int(ka),\n"
+        "                        \"kb\": int(kb),\n"
+        "                        \"k\": int(k),\n"
         "                        \"young\": _e015_np.array(D21, copy=True),\n"
         "                        \"old\": _e015_np.array(bufs[\"t1\"], copy=True),\n"
         "                    })\n"
@@ -117,6 +121,17 @@ def _load_instrumented_module():
             pass
 
 
+def _old_history_bytes(ka: int, kb: int) -> int:
+    """Conservative persistent bytes for the V29 old dense-history representation."""
+    tier1 = max(ka - kb, 0)
+    values = N * R_OLD  # Qc
+    values += 2 * tier1 * R_OLD * N  # FAo / FPo
+    if kb > 0:
+        values += 2 * kb * R_OLD2 * N  # FA2 / FP2
+        values += R_OLD * R_OLD2  # nested sub-basis U
+    return int(values * 4)
+
+
 def _extract_record(module, ds, index: int):
     module.E015_TRACE.clear()
     estimator = module.Estimator()
@@ -146,6 +161,16 @@ def _extract_record(module, ds, index: int):
 
     young = np.stack([np.asarray(item["young"], dtype=np.float32) for item in trace])
     old = np.stack([np.asarray(item["old"], dtype=np.float32) for item in trace])
+    geometry = [
+        {
+            "layer": int(item["layer"]),
+            "ka": int(item["ka"]),
+            "kb": int(item["kb"]),
+            "k": int(item["k"]),
+            "old_history_bytes": _old_history_bytes(int(item["ka"]), int(item["kb"])),
+        }
+        for item in trace
+    ]
     return young, old, {
         "index": index,
         "error": None,
@@ -153,6 +178,7 @@ def _extract_record(module, ds, index: int):
         "flops_used": int(ctx.flops_used),
         "billed_utilization": float(ctx.flops_used / FLOP_BUDGET),
         "residual_wall_time_s": float(ctx.residual_wall_time_s),
+        "geometry": geometry,
     }
 
 
@@ -195,11 +221,19 @@ def _measure_proxy_once(kind: str, rng: np.random.Generator):
 def _proxy_measurements():
     _measure_proxy_once("baseline", np.random.default_rng(1500))
     _measure_proxy_once("candidate", np.random.default_rng(1501))
-    baseline = [_measure_proxy_once("baseline", np.random.default_rng(1510 + i)) for i in range(PROXY_REPS)]
-    candidate = [_measure_proxy_once("candidate", np.random.default_rng(1520 + i)) for i in range(PROXY_REPS)]
+    baseline = [
+        _measure_proxy_once("baseline", np.random.default_rng(1510 + i))
+        for i in range(PROXY_REPS)
+    ]
+    candidate = [
+        _measure_proxy_once("candidate", np.random.default_rng(1520 + i))
+        for i in range(PROXY_REPS)
+    ]
     return {
         "baseline_flops": baseline[0][0],
         "candidate_flops": candidate[0][0],
+        "baseline_residual_s_all": [x[1] for x in baseline],
+        "candidate_residual_s_all": [x[1] for x in candidate],
         "baseline_residual_s_median": statistics.median(x[1] for x in baseline),
         "candidate_residual_s_median": statistics.median(x[1] for x in candidate),
     }
@@ -213,6 +247,7 @@ def main() -> int:
     train_y = []
     extraction = []
     baseline_utils = []
+    baseline_storage = []
     hard_error = None
 
     for index in FIT_INDICES:
@@ -224,9 +259,19 @@ def main() -> int:
         train_u.append(u)
         train_y.append(y)
         baseline_utils.append(meta["billed_utilization"])
+        baseline_storage.extend(
+            item["old_history_bytes"]
+            for item in meta["geometry"]
+            if FIT_LAYER_START <= item["layer"] <= FIT_LAYER_END
+        )
 
     if hard_error is not None:
-        result = {"experiment": "E015", "decision": "NO-GO", "blocker": hard_error, "extraction": extraction}
+        result = {
+            "experiment": "E015",
+            "decision": "NO-GO",
+            "blocker": hard_error,
+            "extraction": extraction,
+        }
         print(json.dumps(result, indent=2, sort_keys=True))
         print("DECISION=NO-GO")
         return 0
@@ -247,13 +292,22 @@ def main() -> int:
             hard_error = meta["error"]
             break
         baseline_utils.append(meta["billed_utilization"])
+        baseline_storage.extend(
+            item["old_history_bytes"]
+            for item in meta["geometry"]
+            if FIT_LAYER_START <= item["layer"] <= FIT_LAYER_END
+        )
         pred = rollout_order3(u, coefficients)
         pred_repeat = rollout_order3(u.copy(), coefficients.copy())
         rollout_deterministic &= bool(np.array_equal(pred, pred_repeat))
         for offset, layer in enumerate(range(5, 15)):
             if FIT_LAYER_START <= layer <= FIT_LAYER_END:
                 validation_errors.append(
-                    {"index": index, "layer": layer, "relative_rms": _relative_rms(pred[offset], y[offset])}
+                    {
+                        "index": index,
+                        "layer": layer,
+                        "relative_rms": _relative_rms(pred[offset], y[offset]),
+                    }
                 )
 
     proxy = _proxy_measurements()
@@ -264,7 +318,8 @@ def main() -> int:
         + ACTIVE_OLD_LAYERS * recurrence_flops_per_layer / FLOP_BUDGET
     )
     persistent_state_bytes = 3 * N * N * 4
-    minimum_replaced_history_bytes = 2 * 4 * R_OLD * N * 4
+    minimum_replaced_history_bytes = int(min(baseline_storage)) if baseline_storage else 0
+    maximum_replaced_history_bytes = int(max(baseline_storage)) if baseline_storage else 0
 
     if validation_errors:
         values = [item["relative_rms"] for item in validation_errors]
@@ -306,7 +361,8 @@ def main() -> int:
         "projected_total_utilization": projected_util,
         "recurrence_flops_per_active_layer": recurrence_flops_per_layer,
         "persistent_state_bytes": persistent_state_bytes,
-        "minimum_replaced_history_bytes_at_layer8": minimum_replaced_history_bytes,
+        "minimum_replaced_history_bytes_scored_layers": minimum_replaced_history_bytes,
+        "maximum_replaced_history_bytes_scored_layers": maximum_replaced_history_bytes,
         "proxy": proxy,
         "extraction": extraction,
         "gates": gates,
