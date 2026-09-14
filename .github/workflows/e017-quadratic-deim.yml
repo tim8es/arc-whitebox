@@ -1,0 +1,27 @@
+name: e017-quadratic-deim
+
+on:
+  push:
+    branches: [research/e017-quadratic-deim-old-tier-20260915]
+    paths:
+      - 'methods/e017_quadratic_deim.py'
+      - 'tests/test_e017_quadratic_deim.py'
+      - 'scripts/e017_quadratic_deim_diagnostic.py'
+      - '.github/workflows/e017-quadratic-deim.yml'
+  workflow_dispatch:
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project and tests
+        run: python -m pip install -e . pytest
+      - name: E017 focused tests
+        run: pytest -q tests/test_e017_quadratic_deim.py
+      - name: Frozen E017 validation
+        if: ${{ hashFiles('scripts/e017_quadratic_deim_diagnostic.py') != '' }}
+        run: python scripts/e017_quadratic_deim_diagnostic.py
