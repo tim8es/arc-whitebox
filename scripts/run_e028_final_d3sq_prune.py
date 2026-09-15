@@ -3,16 +3,16 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
-from pathlib import Path
 import tempfile
 import time
 import urllib.request
+from pathlib import Path
 
 import flopscope as flops
 import flopscope.numpy as fnp
-from huggingface_hub import hf_hub_download
 import numpy as np
 import pyarrow.parquet as pq
+from huggingface_hub import hf_hub_download
 from whestbench.domain import MLP
 
 from methods.e028_final_d3sq_prune import patch_v25_source
