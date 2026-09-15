@@ -71,7 +71,9 @@ def test_linear_transport_preserves_selected_column_identity_across_two_layers()
 def test_real_pinned_v25_patch_targets_are_exact_and_compiles():
     patched, provenance = fetch_and_patch_pinned_source()
     assert provenance["blob_sha"] == PINNED_BLOB_SHA
-    assert all(v == 1 for v in provenance["patch_counts"].values())
+    counts = provenance["patch_counts"]
+    assert counts["carrier_pools"] == 2
+    assert all(v == 1 for k, v in counts.items() if k != "carrier_pools")
     assert "E042_Q_SUITE = 320" in patched
     assert "E042_SOURCE_COLUMN_CUBATURE = True" in patched
     assert "NO_CONFINE = True" in patched
