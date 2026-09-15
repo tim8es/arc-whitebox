@@ -1,3 +1,4 @@
+# RED contract: production module must not exist before this suite is observed failing.
 import numpy as np
 
 from methods.e045_layerwise_signed_k3_sigma import (
