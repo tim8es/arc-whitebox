@@ -35,6 +35,15 @@ def test_leverage_birth_is_fixed_argmax():
     assert sign == np.sign(k3[idx])
 
 
+def test_zero_birth_keeps_sign_in_frozen_plus_minus_one_state():
+    w = np.eye(3)
+    k3 = np.zeros(3)
+    atom, sign, idx = leverage_birth(np, w, k3)
+    assert idx == 0
+    assert np.allclose(atom, 0.0)
+    assert sign == 1.0
+
+
 def test_fifo_keeps_four_slots():
     a = np.zeros((3, 4))
     s = np.ones(4)
