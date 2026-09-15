@@ -29,7 +29,7 @@ RED:
 
 GREEN before measurement:
 
-- final run `34977477445`
+- frozen run `34977477445`
 - job `104408800575`
 - `3 passed in 0.16s`.
 
@@ -80,4 +80,6 @@ Although the real-arithmetic terms removed are structural zeros, changing the co
 
 **NO-GO / DROP E023.**
 
-The frozen kill rule forbids rescue by changing contraction association/fusion, source subset, ranks, implementation variant, using another mini index, combining with E021, or treating the observed floating-point drift as a new approximation. No second scientific diagnostic, official scorer, holdout, tuning, sweep, or canonical mutation was performed.
+The frozen kill rule forbids rescue by changing contraction association/fusion, source subset, ranks, implementation variant, using another mini index, combining with E021, or treating the observed floating-point drift as a new approximation.
+
+After this decision was recorded, the result-record push automatically triggered workflow run `34977914908` from the already-frozen code. That retrigger is **not an authorized E023 measurement**, is excluded from all evidence and decisions above, and must not be used as a replication or rescue run. The branch push workflow was then removed in cleanup commit `39278dbe4dff63a6e01510fdb97ad16ab28d3485` to prevent further automatic reruns. No official scorer, holdout, tuning, sweep, or canonical mutation was performed.
