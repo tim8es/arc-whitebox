@@ -1,0 +1,42 @@
+name: e020-feasibility
+
+on:
+  push:
+    branches:
+      - research/e020-quadratic-residual-rider-20260915
+    paths:
+      - 'methods/e020_quadratic_rider.py'
+      - 'tests/test_e020_quadratic_rider.py'
+      - 'scripts/e020_quadratic_rider_diagnostic.py'
+      - '.github/workflows/e020-feasibility.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  feasibility:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install project and tests
+        run: python -m pip install -e . pytest
+      - name: E020 focused tests
+        run: pytest -q tests/test_e020_quadratic_rider.py
+      - name: Fetch pinned V25 source
+        if: ${{ hashFiles('scripts/e020_quadratic_rider_diagnostic.py') != '' }}
+        run: |
+          git clone --filter=blob:none --no-checkout https://github.com/504aldo/whest-p2-cumulant-k3.git /tmp/whest-p2-cumulant-k3
+          git -C /tmp/whest-p2-cumulant-k3 fetch --depth=1 origin 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+          git -C /tmp/whest-p2-cumulant-k3 checkout --detach 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+      - name: Frozen E020 diagnostic
+        if: ${{ hashFiles('scripts/e020_quadratic_rider_diagnostic.py') != '' }}
+        run: python scripts/e020_quadratic_rider_diagnostic.py
