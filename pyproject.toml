@@ -23,7 +23,7 @@ dev = [
 py-modules = ["estimator"]
 
 [tool.setuptools.packages.find]
-include = ["methods*", "baselines*"]
+include = ["methods*", "baselines*", "experiments*"]
 
 [tool.ruff]
 line-length = 100
