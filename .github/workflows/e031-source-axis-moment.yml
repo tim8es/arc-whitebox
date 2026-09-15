@@ -20,3 +20,12 @@ jobs:
         run: python -m pip install -e . pytest numpy scipy pyarrow huggingface_hub
       - name: Focused E031 tests
         run: pytest -q tests/test_e031_source_axis_moment.py
+      - name: Frozen E031 source-axis preflight
+        run: python scripts/e031_source_axis_preflight.py
+      - name: Upload frozen E031 result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e031-source-axis-result
+          path: e031_result.json
+          if-no-files-found: ignore
