@@ -13,12 +13,12 @@ on:
 jobs:
   focused:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       PYTHONHASHSEED: '0'
-      OPENBLAS_NUM_THREADS: '1'
-      OMP_NUM_THREADS: '1'
-      MKL_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '4'
+      OMP_NUM_THREADS: '4'
+      MKL_NUM_THREADS: '4'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,3 +28,11 @@ jobs:
         run: python -m pip install -e . pytest
       - name: Focused E031 tests
         run: pytest -q tests/test_e031_k22_memory.py
+      - name: Run frozen E031 K22 diagnostic
+        run: python scripts/run_e031_k22_memory.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e031-k22-memory-result
+          path: e031_result.json
+          if-no-files-found: ignore
