@@ -1,0 +1,30 @@
+name: E042 source-column cubature
+
+on:
+  push:
+    branches:
+      - research/e042-source-column-cubature-20260915
+    paths:
+      - 'tests/test_e042_source_column_cubature.py'
+      - 'methods/e042_source_column_cubature.py'
+      - '.github/workflows/e042-source-column-cubature.yml'
+      - 'research/E042_PROTOCOL.md'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest
+      - name: Focused E042 tests
+        run: pytest -q tests/test_e042_source_column_cubature.py
