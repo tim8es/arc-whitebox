@@ -42,9 +42,9 @@ With all 15 births, source-layer lifetimes form `1+...+15 = 120` source-layer pa
 
 Using the upstream F86 finding that approximately 95% of V29/V25-family cost is source machinery, the preregistered first-order utilization projection from V25's `0.36666448` is
 
-`0.36666448 * (0.05 + 0.95 * 36/120) = 0.1223153204`,
+`0.36666448 * (0.05 + 0.95 * 36/120) = 0.1228326008`,
 
-which is below the hard `0.14` gate without choosing the cutoff from measured accuracy.
+which is below the hard `0.14` gate without choosing the cutoff from measured accuracy. This line corrects a pre-science arithmetic typo in the initial protocol; the formula, cutoff, source set and scientific mechanism are unchanged.
 
 The accuracy target is intentionally stronger than V25: raw final MSE must be `<=1.89e-08`. At utilization below 0.14 this also provides a direct route to adjusted `<2.5e-09`.
 
@@ -57,10 +57,10 @@ Tests must establish before any mini-data access:
 3. `V21_NO_CONFINE=1` is set before executing the pinned estimator source;
 4. a synthetic insertion schedule produces exactly insertion layers 8..15 / birth layers 7..14;
 5. exactly 8 births are retained and exactly 36 retained source-layer pairs result;
-6. projected utilization arithmetic equals `0.1223153204` within `1e-12` and is `<0.14`;
+6. projected utilization arithmetic equals `0.1228326008` within `1e-12` and is `<0.14`;
 7. patched source remains deterministic and no coefficient/window search logic exists.
 
-RED must be committed before the E040 wrapper module exists and fail only because that module is absent. Public mini data must not be accessed during RED/GREEN iteration.
+RED must be committed before the E040 wrapper module exists and must fail only because the E040 module is absent. Public-mini data must not be accessed during RED/GREEN iteration.
 
 ## Single frozen public diagnostic
 
