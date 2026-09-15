@@ -1,0 +1,29 @@
+name: E034 signed K3 response
+
+on:
+  push:
+    branches:
+      - research/e034-signed-k3-response-20260915
+    paths:
+      - 'tests/test_e034_signed_k3_response.py'
+      - 'methods/e034_signed_k3_response.py'
+      - '.github/workflows/e034-signed-k3-response.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Focused E034 tests
+        run: pytest -q tests/test_e034_signed_k3_response.py
