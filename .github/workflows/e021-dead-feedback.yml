@@ -1,0 +1,40 @@
+name: e021-dead-feedback
+
+on:
+  push:
+    branches:
+      - research/e021-dead-feedback-lane-20250915
+    paths:
+      - research/E021_DEAD_FEEDBACK_LANE_MEMO.md
+      - methods/e021_dead_feedback.py
+      - tests/test_e021_dead_feedback.py
+      - scripts/e021_dead_feedback_diagnostic.py
+      - .github/workflows/e021-dead-feedback.yml
+
+jobs:
+  feasibility:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install project and tests
+        run: python -m pip install -e . pytest
+      - name: E021 focused tests
+        run: pytest -q tests/test_e021_dead_feedback.py
+      - name: Frozen E021 diagnostic
+        if: ${{ hashFiles('scripts/e021_dead_feedback_diagnostic.py') != '' }}
+        run: python scripts/e021_dead_feedback_diagnostic.py | tee e021_dead_feedback_result.jsonl
+      - name: Upload E021 diagnostic log
+        if: ${{ hashFiles('e021_dead_feedback_result.jsonl') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: e021-dead-feedback-diagnostic
+          path: e021_dead_feedback_result.jsonl
