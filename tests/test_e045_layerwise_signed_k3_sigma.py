@@ -61,20 +61,18 @@ def test_2049_point_antithetic_geometry_normalizes_and_has_zero_centered_mean():
 
 def test_response_antisymmetry_matches_32_third_moments_without_norm_or_mean_drift():
     # Synthetic full-rank response problem with 1024 pair directions.  The
-    # production solve is minimum-norm with no ridge; this fixture makes the
-    # requested response moments exactly feasible and independently checks the
-    # normalization / zero-first-moment constraints.
-    h = walsh_response_matrix(1024, RESPONSE_COUNT)
-    pair_response = h.copy()
+    # frozen Walsh basis selects the 32 response coordinates in production;
+    # here the resulting pair responses are represented directly.  Varying
+    # magnitudes ensure first- and third-moment constraint spaces are distinct.
+    rng = np.random.default_rng(4516)
+    pair_response = rng.normal(size=(PAIR_COUNT, RESPONSE_COUNT))
     target = np.linspace(-0.04, 0.04, RESPONSE_COUNT)
     delta = solve_response_antisymmetry(pair_response, target)
     assert delta.shape == (PAIR_COUNT,)
 
-    # Antisymmetric pair perturbations (+delta_i, -delta_i) have zero total
-    # mass by construction.  The solver must additionally lie in the nullspace
-    # of the 32 first-moment response rows while matching the preregistered 32
-    # cubic-response constraints.
-    np.testing.assert_allclose(delta.sum() * 0.0, 0.0, atol=0.0, rtol=0.0)
+    # Pair perturbations (+delta_i, -delta_i) preserve total normalization.
+    # The constrained minimum-norm solve must also enforce zero first-moment
+    # drift in all 32 response coordinates and match all 32 cubic responses.
     first = pair_response.T @ delta
     cubic_design = (pair_response ** 3).T
     third = cubic_design @ delta
