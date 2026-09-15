@@ -1,6 +1,10 @@
 from __future__ import annotations
 
+import types
+
+import flopscope as flops
 import numpy as np
+from whestbench.domain import MLP
 
 from methods.e042_source_column_cubature import (
     PINNED_BLOB_SHA,
@@ -80,3 +84,23 @@ def test_real_pinned_v25_patch_targets_are_exact_and_compiles():
     assert "final_means" not in patched
     assert "load_dataset(" not in patched
     compile(patched, "<e042_patched_v25>", "exec")
+
+
+def test_patched_estimator_runs_rectangular_source_carrier_without_public_data():
+    patched, _ = fetch_and_patch_pinned_source()
+    module = types.ModuleType("e042_patched_v25_smoke")
+    exec(compile(patched, "<e042_patched_v25_smoke>", "exec"), module.__dict__)
+
+    n = 321  # q=320: exercises the actual rectangular carrier path.
+    depth = 4
+    weights = [np.eye(n, dtype=np.float32) * np.float32(0.20) for _ in range(depth)]
+    mlp = MLP(width=n, depth=depth, weights=weights, seed=1234, name="e042-smoke")
+    mlp.validate()
+
+    with flops.BudgetContext(flop_budget=20_000_000_000, quiet=True) as budget:
+        prediction = module.Estimator().predict(mlp, 20_000_000_000)
+
+    prediction_np = np.asarray(prediction)
+    assert prediction_np.shape == (depth, n)
+    assert np.isfinite(prediction_np).all()
+    assert budget.flops_used > 0
