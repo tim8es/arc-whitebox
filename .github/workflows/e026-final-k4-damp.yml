@@ -7,18 +7,26 @@ on:
     paths:
       - 'tests/test_e026_final_k4_damp.py'
       - 'methods/e026_final_k4_damp.py'
+      - 'scripts/run_e026_final_k4_damp.py'
       - '.github/workflows/e026-final-k4-damp.yml'
 
 jobs:
   focused:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install focused dependencies
-        run: python -m pip install -e . pytest
+        run: python -m pip install -e . pytest numpy scipy pyarrow huggingface_hub
       - name: Focused E026 tests
         run: pytest -q tests/test_e026_final_k4_damp.py
+      - name: Frozen E026 diagnostic
+        run: python scripts/run_e026_final_k4_damp.py
