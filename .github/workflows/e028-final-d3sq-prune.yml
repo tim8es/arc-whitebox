@@ -1,0 +1,24 @@
+name: E028 final D3-squared prune
+
+on:
+  push:
+    branches:
+      - research/e028-final-d3sq-prune-20250915
+    paths:
+      - 'tests/test_e028_final_d3sq_prune.py'
+      - 'methods/e028_final_d3sq_prune.py'
+      - '.github/workflows/e028-final-d3sq-prune.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest
+      - name: Focused E028 tests
+        run: pytest -q tests/test_e028_final_d3sq_prune.py
