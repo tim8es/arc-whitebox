@@ -1,0 +1,29 @@
+name: E035 covariance signed K3
+
+on:
+  push:
+    branches:
+      - research/e035-covariance-signed-k3-20260915
+    paths:
+      - 'tests/test_e035_covariance_signed_k3.py'
+      - 'methods/e035_covariance_signed_k3.py'
+      - '.github/workflows/e035-covariance-signed-k3.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Focused E035 tests
+        run: pytest -q tests/test_e035_covariance_signed_k3.py
