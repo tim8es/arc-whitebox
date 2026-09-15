@@ -7,6 +7,7 @@ on:
     paths:
       - 'tests/test_e034_signed_k3_response.py'
       - 'methods/e034_signed_k3_response.py'
+      - 'scripts/run_e034_signed_k3_response.py'
       - '.github/workflows/e034-signed-k3-response.yml'
 
 jobs:
@@ -24,6 +25,15 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install focused dependencies
-        run: python -m pip install -e . pytest numpy
+        run: python -m pip install -e . pytest numpy pyarrow huggingface_hub
       - name: Focused E034 tests
         run: pytest -q tests/test_e034_signed_k3_response.py
+      - name: Frozen E034 diagnostic
+        run: python scripts/run_e034_signed_k3_response.py
+      - name: Upload E034 diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e034-signed-k3-response-diagnostic
+          path: e034_result.json
+          if-no-files-found: ignore
