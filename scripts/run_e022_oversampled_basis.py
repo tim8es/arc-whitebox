@@ -9,10 +9,10 @@ import tempfile
 import time
 import urllib.request
 
-import numpy as np
-import pyarrow.parquet as pq
 import flopscope as flops
 import flopscope.numpy as fnp
+import numpy as np
+import pyarrow.parquet as pq
 from huggingface_hub import hf_hub_download
 from whestbench.domain import MLP
 
@@ -32,6 +32,7 @@ RANK = 384
 ELL = 400
 E007_RAW = 2.23e-8
 E007_ADJ = 8.17e-9
+E007_UTIL = 0.36666448
 
 
 class _Ctx:
@@ -112,7 +113,14 @@ def _run(module, row: dict, *, metered: bool) -> dict:
     wall = time.perf_counter() - t0
     p = np.asarray(pred, dtype=np.float64)
     mse = float(np.mean((p[-1] - gt) ** 2))
-    return {"mse": mse, "flops": used, "util": used / BUDGET, "residual_s": residual, "wall_s": wall, "pred": p[-1]}
+    return {
+        "mse": mse,
+        "flops": used,
+        "util": used / BUDGET,
+        "residual_s": residual,
+        "wall_s": wall,
+        "pred": p[-1],
+    }
 
 
 def main() -> None:
@@ -122,8 +130,8 @@ def main() -> None:
         raise RuntimeError(f"pinned V25 blob mismatch: {blob}")
     source = raw.decode("utf-8")
 
-    with tempfile.TemporaryDirectory(prefix="e022_") as td:
-        td = Path(td)
+    with tempfile.TemporaryDirectory(prefix="e022_") as td_name:
+        td = Path(td_name)
         q1_path = td / "v25_q1.py"
         exact_path = td / "v25_exact.py"
         cand_path = td / "v25_e022.py"
@@ -152,61 +160,71 @@ def main() -> None:
             y1 = g @ omega_q1
             q1_np, _ = np.linalg.qr(y1, mode="reduced")
             qc = np.asarray(qn, dtype=np.float64)
-            subspace_records.append({
-                "layer": int(li),
-                "q1_error": principal_subspace_error(q1_np[:, :RANK], teacher),
-                "e022_error": principal_subspace_error(qc, teacher),
-            })
+            subspace_records.append(
+                {
+                    "layer": int(li),
+                    "q1_error": principal_subspace_error(q1_np[:, :RANK], teacher),
+                    "e022_error": principal_subspace_error(qc, teacher),
+                }
+            )
 
         rows = _load_rows()
         metrics = []
         for i, row in enumerate(rows):
-            # Observer run is separate and unmetered; teacher algebra never enters scored path.
             before = len(subspace_records)
             cand.E022_OBSERVER = observer
-            obs = _run(cand, row, metered=False)
+            _run(cand, row, metered=False)
             cand.E022_OBSERVER = None
             after = len(subspace_records)
+            for record in subspace_records[before:after]:
+                record["index"] = i
 
             q = _run(q1, row, metered=True)
             c = _run(cand, row, metered=True)
             e = _run(exact, row, metered=False)
-            # Determinism: one extra unmetered identical candidate run, no alternate data/params.
             c2 = _run(cand, row, metered=False)
             det = float(np.max(np.abs(c["pred"] - c2["pred"])))
-            metrics.append({
-                "index": i,
-                "mlp_id": int(row["mlp_id"]),
-                "q1_mse": q["mse"],
-                "e022_mse": c["mse"],
-                "exact_mse": e["mse"],
-                "ratio": c["mse"] / q["mse"],
-                "q1_util": q["util"],
-                "e022_util": c["util"],
-                "q1_residual_s": q["residual_s"],
-                "e022_residual_s": c["residual_s"],
-                "det_max_abs": det,
-                "rebuilds_observed": after - before,
-            })
+            metrics.append(
+                {
+                    "index": i,
+                    "mlp_id": int(row["mlp_id"]),
+                    "q1_mse": q["mse"],
+                    "e022_mse": c["mse"],
+                    "exact_mse": e["mse"],
+                    "ratio": c["mse"] / q["mse"],
+                    "q1_util": q["util"],
+                    "e022_util": c["util"],
+                    "flop_delta": c["flops"] - q["flops"],
+                    "q1_residual_s": q["residual_s"],
+                    "e022_residual_s": c["residual_s"],
+                    "det_max_abs": det,
+                    "rebuilds_observed": after - before,
+                }
+            )
             print("E022_ROW " + json.dumps(metrics[-1], sort_keys=True), flush=True)
 
         val = metrics[4:8]
         val_ratio = sum(m["e022_mse"] for m in val) / sum(m["q1_mse"] for m in val)
-        val_sub = [r for r in subspace_records if r["layer"] >= 0]
+        val_sub = [r for r in subspace_records if 4 <= r["index"] <= 7]
+        if not val_sub:
+            raise RuntimeError("no validation subspace records")
         mean_q1_err = float(np.mean([r["q1_error"] for r in val_sub]))
         mean_e022_err = float(np.mean([r["e022_error"] for r in val_sub]))
         sub_improvement = 1.0 - mean_e022_err / mean_q1_err
-        util = float(np.mean([m["e022_util"] for m in val]))
-        projected_adjusted = E007_RAW * val_ratio * util
+        mean_flop_delta = float(np.mean([m["flop_delta"] for m in val]))
+        projected_util = E007_UTIL + mean_flop_delta / BUDGET
+        projected_adjusted = E007_RAW * val_ratio * projected_util
         max_regression = max(m["ratio"] for m in val)
         max_det = max(m["det_max_abs"] for m in metrics)
-        residual_delta = float(np.mean([m["e022_residual_s"] - m["q1_residual_s"] for m in val]))
+        residual_delta = float(
+            np.mean([m["e022_residual_s"] - m["q1_residual_s"] for m in val])
+        )
 
         gates = {
             "validation_ratio_le_0.990": val_ratio <= 0.990,
             "no_dump_regression_gt_2pct": max_regression <= 1.02,
             "subspace_improvement_ge_20pct": sub_improvement >= 0.20,
-            "projected_util_le_0.3697": util <= 0.3697,
+            "projected_util_le_0.3697": projected_util <= 0.3697,
             "projected_adjusted_le_8.16e-09": projected_adjusted <= 8.16e-9,
             "projected_adjusted_lt_8.17e-09": projected_adjusted < E007_ADJ,
             "deterministic": max_det == 0.0,
@@ -220,17 +238,25 @@ def main() -> None:
             "mean_q1_subspace_error": mean_q1_err,
             "mean_e022_subspace_error": mean_e022_err,
             "subspace_error_improvement": sub_improvement,
-            "projected_utilization": util,
+            "mean_validation_flop_delta": mean_flop_delta,
+            "projected_utilization": projected_util,
             "projected_adjusted": projected_adjusted,
             "mean_validation_residual_delta_s": residual_delta,
             "det_max_abs": max_det,
             "persistent_extra_bytes": 0,
             "temporary_shapes": [[1024, 400], [400, 400]],
+            "validation_subspace_records": len(val_sub),
             "gates": gates,
             "decision": "GO" if all(gates.values()) else "NO-GO",
         }
         print("E022_SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
-        Path("e022_result.json").write_text(json.dumps({"rows": metrics, "subspace": subspace_records, "summary": summary}, indent=2), encoding="utf-8")
+        Path("e022_result.json").write_text(
+            json.dumps(
+                {"rows": metrics, "subspace": subspace_records, "summary": summary},
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
 
         if not all(gates.values()):
             raise SystemExit(2)
