@@ -1,6 +1,7 @@
 # RED contract: production module must not exist before this suite is observed failing.
 from __future__ import annotations
 
+import math
 import numpy as np
 
 from methods.e047_connected_diagram_dp import (
@@ -82,7 +83,7 @@ def test_width3_depth3_final_correction_matches_explicit_to_1e9():
     weights, mean, cov, probes = _case_width3_depth3()
     explicit = propagate_explicit_network(weights, mean, cov, probes, kmax=KMAX)
     contracted = propagate_contracted_network(weights, mean, cov, probes, kmax=KMAX)
-    coeff = np.array([1.0 / np.math.factorial(k) for k in range(3, KMAX + 1)], dtype=np.float64)
+    coeff = np.array([1.0 / math.factorial(k) for k in range(3, KMAX + 1)], dtype=np.float64)
     explicit_corr = sum(coeff[k - 3] * explicit[k] for k in range(3, KMAX + 1))
     contracted_corr = sum(coeff[k - 3] * contracted[k] for k in range(3, KMAX + 1))
     np.testing.assert_allclose(contracted_corr, explicit_corr, atol=1e-9, rtol=0.0)
