@@ -25,6 +25,15 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install focused dependencies
-        run: python -m pip install -e . pytest numpy scipy
+        run: python -m pip install -e . pytest numpy scipy pyarrow huggingface_hub
       - name: Focused E038 tests
         run: pytest -q tests/test_e038_sobol_trajectory_qmc.py
+      - name: Frozen E038 diagnostic
+        run: python scripts/run_e038_sobol_trajectory_qmc.py
+      - name: Upload frozen E038 result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e038-frozen-result
+          path: e038_result.json
+          if-no-files-found: ignore
