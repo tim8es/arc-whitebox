@@ -25,6 +25,15 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install focused dependencies
-        run: python -m pip install -e . pytest numpy
+        run: python -m pip install -e . pytest numpy pyarrow huggingface_hub
       - name: Focused E037 tests
         run: pytest -q tests/test_e037_signed_k3_k4_response.py
+      - name: Frozen E037 diagnostic
+        run: python scripts/run_e037_signed_k3_k4_response.py
+      - name: Upload frozen E037 result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e037-frozen-result
+          path: e037_result.json
+          if-no-files-found: ignore
