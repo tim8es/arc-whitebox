@@ -28,3 +28,12 @@ jobs:
         run: python -m pip install -e . pytest numpy pyarrow huggingface_hub
       - name: Focused E039 tests
         run: pytest -q tests/test_e039_halfspace_gaussian_mixture.py
+      - name: Frozen E039 diagnostic
+        run: python scripts/run_e039_halfspace_gaussian_mixture.py
+      - name: Upload frozen E039 result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e039-frozen-result
+          path: e039_result.json
+          if-no-files-found: ignore
