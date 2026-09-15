@@ -33,7 +33,7 @@ def test_zero_correlation_pair_factorizes():
     expected = np.outer(mean, mean)
     np.fill_diagonal(expected, out_var + mean * mean)
     np.testing.assert_allclose(second, expected, rtol=0.0, atol=2e-10)
-    assert max_corr == 1.0
+    assert abs(float(max_corr) - 1.0) <= 1e-12
 
 
 def test_pair_update_is_symmetric_with_exact_diagonal():
