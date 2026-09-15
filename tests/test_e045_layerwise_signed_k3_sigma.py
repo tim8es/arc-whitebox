@@ -57,7 +57,9 @@ def test_2049_point_antithetic_geometry_normalizes_and_has_zero_centered_mean():
     centered_mean = weights @ (points - mean[None, :])
     np.testing.assert_allclose(centered_mean, np.zeros(n), atol=1e-12, rtol=0.0)
     np.testing.assert_allclose(points[0], mean, atol=0.0, rtol=0.0)
-    np.testing.assert_allclose(points[1 : 1 + n] + points[1 + n :], 2.0 * mean[None, :], atol=1e-12, rtol=0.0)
+    pair_sum = points[1 : 1 + n] + points[1 + n :]
+    expected_pair_sum = np.broadcast_to(2.0 * mean[None, :], pair_sum.shape)
+    np.testing.assert_allclose(pair_sum, expected_pair_sum, atol=1e-12, rtol=0.0)
 
 
 def test_response_antisymmetry_matches_32_third_moments_without_norm_or_mean_drift():
