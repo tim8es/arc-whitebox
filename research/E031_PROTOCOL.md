@@ -2,7 +2,7 @@
 
 Idempotency key: `ARC-E031-K22-MEMORY-20260915`
 
-Status: preregistered; protocol-only first commit.
+Status: preregistered; protocol amended before tests or scientific data.
 
 ## Provenance
 
@@ -48,7 +48,7 @@ Record per layer:
 - rank-8 retained Frobenius energy of `R22`;
 - relative transported error `||T-T8||F / max(||T||F, eps)`.
 
-The diagnostic must verify the patched V25 prediction is bit-identical to uninstrumented V25. Instrumentation may only append debug snapshots after `K22` and `g_prev` are computed.
+Instrumentation may only append debug snapshots after `K22` and `g_prev` are computed.
 
 ## Focused tests
 
@@ -61,7 +61,7 @@ Before scientific data:
 
 ## Exactly one bounded scientific diagnostic
 
-Run public mini index `0` exactly once. A deterministic algebra repeat may operate on already-captured matrices without re-running the estimator; no second prediction is allowed.
+On public mini index `0`, run exactly one uninstrumented pinned-V25 prediction and exactly one instrumented pinned-V25 prediction. These two predictions constitute the single parity/representation diagnostic. No repeat, second MLP, alternate rank, or alternate normalization is allowed. Algebraic checks may reuse the already-captured matrices without re-running either estimator.
 
 ## Frozen GO gates
 
