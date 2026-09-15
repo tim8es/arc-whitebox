@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import math
 
+import flopscope as flops
+import flopscope.numpy as fnp
 import numpy as np
 
 from methods.e038_conditional_gaussian_cov import (
@@ -69,3 +71,17 @@ def test_frozen_nodes_and_synthetic_network_are_deterministic_and_finite():
     assert corr1 == corr2
     assert np.isfinite(out1).all()
     assert diag1 <= 1e-12
+
+
+def test_flopscope_backend_executes_frozen_kernel_on_tiny_synthetic_case():
+    weights = [
+        fnp.asarray(np.array([[0.5, -0.2, 0.1], [0.3, 0.4, -0.1], [-0.2, 0.2, 0.6]])),
+        fnp.asarray(np.array([[0.4, 0.1, -0.3], [-0.1, 0.5, 0.2], [0.2, -0.2, 0.3]])),
+    ]
+    with flops.BudgetContext(flop_budget=10**9, wall_time_limit_s=30.0, quiet=True):
+        out, diag_error, max_corr = run_carrier(fnp, weights)
+    arr = np.asarray(out, dtype=float)
+    assert arr.shape == (2, 3)
+    assert np.isfinite(arr).all()
+    assert float(diag_error) <= 1e-12
+    assert float(max_corr) >= 1.0
