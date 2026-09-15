@@ -7,12 +7,13 @@ on:
     paths:
       - 'tests/test_e036_price4_covariance.py'
       - 'methods/e036_price4_covariance.py'
+      - 'scripts/run_e036_price4_covariance.py'
       - '.github/workflows/e036-price4-covariance.yml'
 
 jobs:
   focused:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       PYTHONHASHSEED: '0'
       OPENBLAS_NUM_THREADS: '1'
@@ -24,6 +25,15 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install focused dependencies
-        run: python -m pip install -e . pytest numpy
+        run: python -m pip install -e . pytest numpy pyarrow huggingface_hub
       - name: Focused E036 tests
         run: pytest -q tests/test_e036_price4_covariance.py
+      - name: Frozen E036 diagnostic
+        run: python scripts/run_e036_price4_covariance.py
+      - name: Upload frozen E036 result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e036-frozen-result
+          path: e036_result.json
+          if-no-files-found: ignore
