@@ -1,0 +1,92 @@
+name: e021-official-scorer
+
+on:
+  push:
+    branches:
+      - research/e021-dead-feedback-lane-20250915
+    paths:
+      - .github/workflows/e021-official-scorer.yml
+
+jobs:
+  score:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned project stack
+        run: python -m pip install -e .
+
+      - name: Build exact frozen E021 candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL \
+            https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v25.py \
+            -o /tmp/estimator_v25.py
+          actual="$(git hash-object /tmp/estimator_v25.py)"
+          expected="195373a110215256b759d7c172ba8c923c62e5cc"
+          echo "UPSTREAM_COMMIT=18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45"
+          echo "EXPECTED_GIT_BLOB=$expected"
+          echo "ACTUAL_GIT_BLOB=$actual"
+          test "$actual" = "$expected"
+          python - <<'PY'
+          from pathlib import Path
+
+          src = Path('/tmp/estimator_v25.py').read_text()
+          needle = '''                if Zf_st is not None:\n                    Zf_st = fnp.matmul(WDb, Zf_st)'''
+          repl = '''                if Zf_st is not None:\n                    # E021: source-0 feedback factors are exact zero at birth; keep its slot zero\n                    # and transport only subsequent source rows with unchanged arithmetic.\n                    zf0 = fnp.zeros_like(Zf_st[:1])\n                    zf_rest = fnp.matmul(WDb, Zf_st[1:])\n                    Zf_st = fnp.concatenate([zf0, zf_rest], axis=0)'''
+          count = src.count(needle)
+          print(f'E021_REPLACEMENT_COUNT={count}')
+          if count != 1:
+              raise SystemExit(f'expected exactly one transport site, found {count}')
+          candidate = src.replace(needle, repl)
+          Path('/tmp/estimator_e021.py').write_text(candidate)
+          PY
+          git hash-object /tmp/estimator_e021.py | sed 's/^/E021_CANDIDATE_GIT_BLOB=/'
+          sha256sum /tmp/estimator_e021.py
+
+      - name: Runtime versions
+        run: |
+          python - <<'PY'
+          import platform
+          from importlib.metadata import version
+          import numpy
+          import flopscope
+          print('python=' + platform.python_version())
+          print('numpy=' + numpy.__version__)
+          print('flopscope=' + flopscope.__version__)
+          print('whestbench=' + version('whestbench'))
+          PY
+
+      - name: Validate frozen E021
+        run: whest validate --estimator /tmp/estimator_e021.py
+
+      - name: Run official Phase 2 mini E021
+        shell: bash
+        run: |
+          set -o pipefail
+          echo 'IDEMPOTENCY_KEY=ARC-E021-PROMOTE-20250915'
+          echo 'COMMAND=whest run --estimator /tmp/estimator_e021.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --runner local'
+          /usr/bin/time -v whest run \
+            --estimator /tmp/estimator_e021.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --runner local 2>&1 | tee e021-official.log
+
+      - name: Upload official scorer log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e021-official-scorer-log
+          path: e021-official.log
+          if-no-files-found: warn
