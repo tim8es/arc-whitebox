@@ -1,0 +1,43 @@
+name: e019-final-saddlepoint
+
+on:
+  push:
+    branches:
+      - research/e019-final-saddlepoint-20250915
+    paths:
+      - 'research/E019_FINAL_SADDLEPOINT_MEMO.md'
+      - 'methods/e019_final_saddlepoint.py'
+      - 'tests/test_e019_final_saddlepoint.py'
+      - 'scripts/e019_final_saddlepoint_diagnostic.py'
+      - '.github/workflows/e019-final-saddlepoint.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  feasibility:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install project and tests
+        run: python -m pip install -e . pytest
+      - name: E019 focused tests
+        run: pytest -q tests/test_e019_final_saddlepoint.py
+      - name: Frozen E019 diagnostic
+        if: ${{ hashFiles('scripts/e019_final_saddlepoint_diagnostic.py') != '' }}
+        run: python scripts/e019_final_saddlepoint_diagnostic.py | tee e019_final_saddlepoint_result.jsonl
+      - name: Upload E019 diagnostic log
+        if: ${{ always() && hashFiles('e019_final_saddlepoint_result.jsonl') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: e019-final-saddlepoint-diagnostic
+          path: e019_final_saddlepoint_result.jsonl
