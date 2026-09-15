@@ -1,0 +1,30 @@
+name: E047 connected diagram DP
+
+on:
+  push:
+    branches:
+      - research/e047-connected-diagram-dp-20260916
+    paths:
+      - 'tests/test_e047_connected_diagram_dp.py'
+      - 'methods/e047_connected_diagram_dp.py'
+      - '.github/workflows/e047-connected-diagram-dp.yml'
+      - 'research/E047_PROTOCOL.md'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest
+      - name: Focused E047 falsifier
+        run: pytest -q tests/test_e047_connected_diagram_dp.py
