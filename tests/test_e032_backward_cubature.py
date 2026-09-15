@@ -36,7 +36,7 @@ def test_reflections_preserve_norms_and_second_moment():
 def test_backward_probes_use_all_layers_and_are_deterministic():
     n = 8
     w0 = np.eye(n, dtype=np.float64) * 2.0
-    w1 = np.eye(n, dtype=np.float64) * 3.0
+    w1 = np.diag(np.linspace(0.75, 1.75, n)).astype(np.float64)
     a = backward_probes(np, [w0, w1], n_probes=4)
     b = backward_probes(np, [w0, w1], n_probes=4)
     c = backward_probes(np, [w0, np.eye(n)], n_probes=4)
