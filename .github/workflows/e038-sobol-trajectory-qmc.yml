@@ -1,0 +1,30 @@
+name: E038 Sobol trajectory QMC
+
+on:
+  push:
+    branches:
+      - research/e038-sobol-trajectory-qmc-20260915
+    paths:
+      - 'tests/test_e038_sobol_trajectory_qmc.py'
+      - 'methods/e038_sobol_trajectory_qmc.py'
+      - 'scripts/run_e038_sobol_trajectory_qmc.py'
+      - '.github/workflows/e038-sobol-trajectory-qmc.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest numpy scipy
+      - name: Focused E038 tests
+        run: pytest -q tests/test_e038_sobol_trajectory_qmc.py
