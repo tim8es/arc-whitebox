@@ -97,7 +97,7 @@ def reconstruct_checkpoint(
         raise ValueError("E044 checkpoint replay requires at least one birth")
 
     n = int(birth_records[0][0].shape[0])
-    dtype = birth_records[0][0].dtype
+    dtype = xp.float32
     rz = int(birth_records[0][1].shape[1])
     A = xp.empty((k, n, n), dtype=dtype)
     P = xp.empty((k, n, n), dtype=dtype)
