@@ -22,7 +22,8 @@ _SKIP_SRC_LINE = "            skip_src = trim and NO_SRC_LAST\n"
 _SOURCE_START = "            # Source stacks evolve by W @ diag(w1_prev); the newborn (added after\n"
 _SOURCE_END = "            # ---- WK slices ----\n"
 _MODE_LINE = "            mode = 0 if A_st is None else 1\n"
-_SKIP_DSLICE_LINE = "                D3, D21 = fnp.zeros(n, dtype=f32), None\n"
+_SKIP_MODE_START = "            if mode == 1 and skip_src:\n"
+_SKIP_MODE_END = "            elif mode == 1:\n"
 _BIRTH_FB_LINE = "            if rfb > 0 and mode == 1:\n"
 _W1_PREV_LINE = "            w1_prev = w1  # stacks pick up this wick via WD at the next linear\n"
 _NEWBORN_LINE = "            newborn = (a_b, Rr_full, Lr_full, S3c, e_b, Ff_b)\n"
@@ -84,12 +85,7 @@ def reconstruct_checkpoint(
     previous_checkpoint: int,
     previous_state,
 ):
-    """Reconstruct all K3 source legs at one frozen checkpoint.
-
-    Birth records are V25 tuples `(a_b, Rr, Lr, s_b, e_b, Ff)`.  Existing
-    checkpoint-state sources share one exact composed WD segment operator.  Births
-    since the previous checkpoint are replayed with raw-W first and WD thereafter.
-    """
+    """Reconstruct all K3 source legs at one frozen checkpoint."""
     k = len(birth_records)
     if k != checkpoint:
         raise ValueError(f"E044 checkpoint {checkpoint} expected {checkpoint} births, got {k}")
@@ -132,9 +128,6 @@ def reconstruct_checkpoint(
                 raise ValueError("E044 previous state lost Zf")
             xp.copyto(Zf[:old_k], xp.matmul(segb, previous_state["Zf"]))
 
-    # Build all newborn replay operators in one backward recursion.  The newest
-    # pending birth uses raw W_checkpoint.  Each older birth prepends exactly one
-    # additional D(w1) and raw W, so this costs one dense matrix product per step.
     op = _weight_t(weights, checkpoint)
     for birth in range(checkpoint - 1, old_k - 1, -1):
         if birth < checkpoint - 1:
@@ -175,7 +168,8 @@ def patch_source(source: str) -> tuple[str, dict[str, int]]:
         ("state_anchor", _STATE_ANCHOR),
         ("skip_src", _SKIP_SRC_LINE),
         ("mode", _MODE_LINE),
-        ("skip_dslice", _SKIP_DSLICE_LINE),
+        ("skip_mode_start", _SKIP_MODE_START),
+        ("skip_mode_end", _SKIP_MODE_END),
         ("birth_fb", _BIRTH_FB_LINE),
         ("w1_prev", _W1_PREV_LINE),
         ("newborn", _NEWBORN_LINE),
@@ -238,12 +232,43 @@ def patch_source(source: str) -> tuple[str, dict[str, int]]:
         "            mode = 0 if not e044_birth_records else 1\n",
         1,
     )
-    source = source.replace(
-        _SKIP_DSLICE_LINE,
+
+    skip_start = source.index(_SKIP_MODE_START)
+    skip_end = source.index(_SKIP_MODE_END, skip_start)
+    local_k4 = (
+        "            if mode == 1 and skip_src:\n"
         "                D3 = fnp.zeros(n, dtype=f32)\n"
-        "                D21 = None if trim else fnp.zeros((n, n), dtype=f32)\n",
-        1,
+        "                D21 = None if trim else fnp.zeros((n, n), dtype=f32)\n"
+        "                if regen:\n"
+        "                    WW = W * W\n"
+        "                    if BETA != 0.0:\n"
+        "                        t_g = WW @ g_prev\n"
+        "                        t_v = var - WW @ var_prev\n"
+        "                        dG0 = t_g + t_v * lam_prev\n"
+        "                        rr = fnp.mean(dG0) / fnp.mean(var)\n"
+        "                        ref = float(REF_R[min(li - 1, len(REF_R) - 1)])\n"
+        "                        lam_prev = lam_prev * fnp.power(fnp.clip(rr / ref, 0.5, 2.0), BETA)\n"
+        "                        dG = t_g + t_v * lam_prev\n"
+        "                    else:\n"
+        "                        dG = WW @ (g_prev - var_prev * lam_prev) + var * lam_prev\n"
+        "                    g4row = dG * METRIC_C\n"
+        "                    g22c = fnp.reshape(dG * (METRIC_C / 6.0), (-1, 1))\n"
+        "                    wk4m = _zero_diag(g22c + g22c.T)\n"
+        "                    wk431 = None if trim else C_off * (0.5 * METRIC_C * lam_prev)\n"
+        "                elif riders:\n"
+        "                    gv = ((W * W) @ K4_vec) * 0.5\n"
+        "                    g4row = gv * float(st['wk4_c4'] * metric2)\n"
+        "                    g22 = gv * float(0.5 * st['wk4_c22'] * metric2)\n"
+        "                    g22c = fnp.reshape(g22, (-1, 1))\n"
+        "                    wk4m = _zero_diag(g22c + g22c.T)\n"
+        "                else:\n"
+        "                    g4v = K4_sigma * float(st['wk4_c4'] * metric2)\n"
+        "                    g22v = K4_sigma * float(st['wk4_c22'] * metric2)\n"
+        "                    g4row = ones_n * g4v\n"
+        "                    wk4m = _zero_diag(ones2 * g22v)\n"
     )
+    source = source[:skip_start] + local_k4 + source[skip_end:]
+
     source = source.replace(
         _BIRTH_FB_LINE,
         "            if rfb > 0 and mode == 1 and not skip_src:\n",
