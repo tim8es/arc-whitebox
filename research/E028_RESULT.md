@@ -1,4 +1,4 @@
-# E028 terminal result — GO / scorer-ready handoff
+# E028 terminal result — local GO evidence / promotion blocked
 
 Idempotency key: `ARC-E028-TERMINAL-20250915`
 
@@ -9,11 +9,11 @@ Idempotency key: `ARC-E028-TERMINAL-20250915`
 - Frozen diagnostic commit: `8f4e380e83109a85f840561b54f0bfe3b4907046`
 - Pinned upstream: `504aldo/whest-p2-cumulant-k3@18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45`
 - Pinned `estimator_v25.py` blob: `195373a110215256b759d7c172ba8c923c62e5cc`
-- Frozen diagnostic run: `34984554189`
-- Frozen diagnostic job: `104433192579`
+- Authoritative frozen diagnostic run: `34984554189`
+- Authoritative frozen diagnostic job: `104433192579`
 - Public Phase-2 mini index: `0` only
 
-The workflow and scientific diagnostic both completed successfully. No rerun was performed.
+The authoritative frozen diagnostic completed successfully and produced the measurements below.
 
 ## Frozen mechanism
 
@@ -49,7 +49,7 @@ Derived frozen metrics:
 
 ## Frozen gate decision
 
-All preregistered E028 gates passed:
+All preregistered E028 scientific gates passed on the authoritative frozen run:
 
 1. MSE ratio `0.9980881437446972 <= 0.99919` — PASS.
 2. projected adjusted `8.160985427370592e-09 < 8.17e-09` — PASS.
@@ -60,19 +60,20 @@ All preregistered E028 gates passed:
 7. deterministic repeat diff `0.0` — PASS.
 8. patch scope/provenance checks — PASS.
 
-**Terminal local decision: GO.**
+**Scientific local decision on the frozen run: GO.**
 
-This is a bounded one-index local promotion only. It is not official-scorer evidence and does not supersede the E007 canonical result.
+This is a bounded one-index local result only. It is not official-scorer evidence and does not supersede the E007 canonical result.
 
-## Scorer-ready handoff
+## Independent-review protocol finding
 
-When and only when an official-scorer run is explicitly authorized:
+During PR #30 review, Codex identified that the branch-specific workflow remained armed after the frozen result. A later lint-only push (`d9830c75da4d6b76044db2f46f81852fe4ee821b`) therefore triggered E028 workflow run `35001635266` after the authoritative frozen run. That is an unintended post-result diagnostic rerun and violates the preregistered exactly-once/no-rerun rule.
 
-1. start from the exact pinned V25 source/blob above;
-2. apply `methods/e028_final_d3sq_prune.patch_v25_source` exactly once;
-3. verify the resulting source contains only the frozen final-layer D3-squared subtraction above relative to pinned V25;
-4. run the unchanged official Phase-2 scorer configuration used for the canonical comparison;
-5. report raw final-layer MSE, adjusted score, all-layer MSE if emitted, billed FLOPs/utilization, residual failures, and failures/100;
-6. promotion requires at minimum raw final MSE `<= 2.23e-08`, adjusted `< 8.17e-09`, and failures `0/100`; otherwise DROP without rescue under E028.
+This review finding does **not** change the numerical measurements of authoritative run `34984554189`, but it invalidates the previous claim that no rerun occurred and blocks promotion under the frozen E028 protocol. The unintended run is not used to select, tune, validate, or replace any metric above.
 
-No official scorer, holdout, rerun, tuning, coefficient sweep, alternate diagram-term selection, or E026/E027 rescue is authorized by this handoff.
+The workflow was subsequently sealed at commit `26c964bb26d70e5e8dca833d392fed5256a67cc0`. Verification run `35006895057`, job `104508806452`, contains only `Focused E028 tests only` and `Frozen E028 diagnostic is sealed`; both completed successfully. Generic PR CI run `35006899868` also completed successfully.
+
+**Promotion status: BLOCKED by protocol violation. No official scorer is authorized for E028.**
+
+Do not rerun, tune, rescue, or reinterpret E028. Any further scientific mechanism requires a new experiment lane and protocol.
+
+No official scorer, holdout, coefficient sweep, alternate diagram-term selection, E026/E027 rescue, or canonical mutation was performed.
