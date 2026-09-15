@@ -48,5 +48,5 @@ def test_frozen_birth_schedule_and_pair_count():
 def test_projected_utilization_is_frozen_and_under_gate():
     expected = 0.36666448 * (0.05 + 0.95 * (36.0 / 120.0))
     assert abs(PROJECTED_UTILIZATION - expected) <= 1e-15
-    assert abs(PROJECTED_UTILIZATION - 0.1223153204) <= 1e-12
+    assert abs(PROJECTED_UTILIZATION - 0.1228326008) <= 1e-12
     assert PROJECTED_UTILIZATION < 0.14
