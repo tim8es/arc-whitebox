@@ -1,0 +1,35 @@
+name: E046 frozen public mini0
+
+on:
+  push:
+    branches:
+      - research/e046-harmonic-defect-control-20260916
+    paths:
+      - '.github/workflows/e046-public-mini0.yml'
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e .
+      - name: Run exactly one frozen E046 mini0 diagnostic
+        run: /usr/bin/time -v python scripts/e046_public_mini0_diagnostic.py 2>&1 | tee e046-public-mini0.log
+      - name: Upload immutable diagnostic log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e046-public-mini0-log
+          path: e046-public-mini0.log
+          if-no-files-found: error
+          retention-days: 30
