@@ -29,4 +29,4 @@ jobs:
       - name: Focused E028 tests only
         run: pytest -q tests/test_e028_final_d3sq_prune.py
       - name: Frozen E028 diagnostic is sealed
-        run: echo 'Scientific diagnostic sealed at run 34984554189 / job 104433192579; no post-result rerun.'
+        run: echo 'Scientific diagnostic sealed after unintended post-result rerun 35001635266; authoritative frozen evidence remains run 34984554189 / job 104433192579; no further diagnostic runs are authorized.'
