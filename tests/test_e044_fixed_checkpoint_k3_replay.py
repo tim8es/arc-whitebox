@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import flopscope as flops
+import flopscope.numpy as fnp
 import numpy as np
+from whestbench.domain import MLP
 
 from methods.e044_fixed_checkpoint_k3_replay import (
     CHECKPOINTS,
@@ -12,6 +15,7 @@ from methods.e044_fixed_checkpoint_k3_replay import (
     compose_newborn_operator,
     compose_segment_operator,
     fetch_and_patch_pinned_source,
+    load_patched_module,
     reconstruct_checkpoint,
 )
 
@@ -117,3 +121,34 @@ def test_real_pinned_patch_targets_unique_and_no_selector_logic():
     assert "V21_NO_CONFINE" in patched
     for forbidden in ("knapsack", "KEEP_BIRTHS", "capacity", "selector"):
         assert forbidden not in patched
+
+
+def test_patched_module_compiles_and_freezes_no_confine():
+    module, provenance = load_patched_module(module_name="_e044_preflight")
+    assert provenance["blob_sha"] == PINNED_BLOB_SHA
+    assert provenance["no_confine_frozen"] is True
+    assert provenance["checkpoints_frozen"] == CHECKPOINTS
+    assert module.NO_CONFINE is True
+    assert module.E044_CHECKPOINTS == CHECKPOINTS
+
+
+def test_synthetic_phase_depth_executes_under_flopscope():
+    module, _ = load_patched_module(module_name="_e044_synthetic")
+
+    class Ctx:
+        seed = 0
+
+    n = 8
+    weights = []
+    for layer in range(16):
+        w = np.eye(n, dtype=np.float32)
+        w += np.float32(0.005 * (layer + 1)) * np.ones((n, n), dtype=np.float32) / n
+        weights.append(fnp.asarray(w))
+    mlp = MLP(width=n, depth=16, weights=weights, seed=0)
+    est = module.Estimator()
+    est.setup(Ctx())
+    with flops.BudgetContext(flop_budget=10**10, wall_time_limit_s=30.0, quiet=True):
+        pred = est.predict(mlp, 2**41)
+    arr = np.asarray(pred, dtype=float)
+    assert arr.shape == (16, n)
+    assert np.isfinite(arr).all()
