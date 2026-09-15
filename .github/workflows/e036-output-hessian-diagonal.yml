@@ -1,0 +1,29 @@
+name: E036 output Hessian diagonal
+
+on:
+  push:
+    branches:
+      - research/e036-output-hessian-diagonal-20260915
+    paths:
+      - 'tests/test_e036_output_hessian_diagonal.py'
+      - 'methods/e036_output_hessian_diagonal.py'
+      - '.github/workflows/e036-output-hessian-diagonal.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Focused E036 tests
+        run: pytest -q tests/test_e036_output_hessian_diagonal.py
