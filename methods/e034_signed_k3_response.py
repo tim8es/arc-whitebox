@@ -51,7 +51,7 @@ def leverage_birth(xp, w, k3_diag):
     scores = xp.abs(k3_diag) * xp.sum(xp.abs(w) ** 3, axis=0)
     idx = int(xp.argmax(scores))
     kval = k3_diag[idx]
-    sign = xp.sign(kval)
+    sign = xp.where(kval < 0.0, -1.0, 1.0)
     scale = xp.abs(kval) ** (1.0 / 3.0)
     atom = w[:, idx] * scale
     return atom, sign, idx
