@@ -1,0 +1,45 @@
+name: e018-frozen-diagnostic
+
+on:
+  push:
+    branches: [research/e018-importance-old-d21-20250915]
+    paths: [.github/workflows/e018-diagnostic.yml]
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen diagnostic dependencies
+        run: python -m pip install -e . pytest
+      - name: Focused tests and syntax precheck
+        run: |
+          pytest -q tests/test_e018_importance_d21.py
+          python -m py_compile methods/e018_importance_d21.py scripts/e018_diagnostic.py
+      - name: Verify pinned V25 provenance
+        run: |
+          git clone --quiet https://github.com/504aldo/whest-p2-cumulant-k3.git /tmp/whest-p2-cumulant-k3
+          git -C /tmp/whest-p2-cumulant-k3 checkout --quiet 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+          test "$(git -C /tmp/whest-p2-cumulant-k3 rev-parse HEAD)" = "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45"
+          test "$(git -C /tmp/whest-p2-cumulant-k3 rev-parse HEAD:estimators/estimator_v25.py)" = "195373a110215256b759d7c172ba8c923c62e5cc"
+      - name: Run exactly one frozen E018 local diagnostic
+        run: |
+          python scripts/e018_diagnostic.py \
+            --upstream /tmp/whest-p2-cumulant-k3/estimators/estimator_v25.py \
+            --output e018-diagnostic.json
+      - name: Upload frozen diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e018-frozen-diagnostic-20250915
+          path: e018-diagnostic.json
+          if-no-files-found: warn
