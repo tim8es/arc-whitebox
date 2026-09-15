@@ -1,14 +1,16 @@
 from __future__ import annotations
 
+import flopscope as flops
+import flopscope.numpy as fnp
 import numpy as np
 
 from methods.e036_output_hessian_diagonal import (
     H,
     N_PROBES,
-    static_dense_flop_envelope,
-    sylvester_hadamard,
     centered_prediction,
     run_centered_hessian,
+    static_dense_flop_envelope,
+    sylvester_hadamard,
 )
 
 
@@ -67,6 +69,18 @@ def test_batched_network_prefix_matches_explicit_reference_and_is_deterministic(
     np.testing.assert_allclose(got, ref, rtol=0.0, atol=1e-12)
     np.testing.assert_array_equal(got, run_centered_hessian(np, weights))
     assert np.isfinite(got).all()
+
+
+def test_flopscope_runtime_path_is_supported_on_synthetic_input():
+    rng = np.random.default_rng(36037)
+    weights_np = [rng.normal(scale=0.25, size=(8, 8)).astype(np.float32) for _ in range(2)]
+    weights = [fnp.asarray(w) for w in weights_np]
+    with flops.BudgetContext(flop_budget=int(1e9), wall_time_limit_s=30.0, quiet=True) as ctx:
+        got = run_centered_hessian(fnp, weights)
+    arr = np.asarray(got, dtype=np.float64)
+    assert arr.shape == (2, 8)
+    assert np.isfinite(arr).all()
+    assert ctx.flops_used > 0
 
 
 def test_static_cost_preflight_is_exact_and_below_gate():
