@@ -7,12 +7,13 @@ on:
     paths:
       - 'tests/test_e040_late_source_exact_window.py'
       - 'methods/e040_late_source_exact_window.py'
+      - 'scripts/run_e040_late_source_exact_window.py'
       - '.github/workflows/e040-late-source-exact-window.yml'
 
 jobs:
   focused:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 45
     env:
       PYTHONHASHSEED: '0'
       OPENBLAS_NUM_THREADS: '1'
@@ -24,6 +25,15 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install focused dependencies
-        run: python -m pip install -e . pytest
+        run: python -m pip install -e . pytest pyarrow huggingface_hub
       - name: Focused E040 tests
         run: pytest -q tests/test_e040_late_source_exact_window.py
+      - name: Frozen E040 diagnostic
+        run: python scripts/run_e040_late_source_exact_window.py
+      - name: Upload frozen E040 result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e040-frozen-result
+          path: e040_result.json
+          if-no-files-found: ignore
