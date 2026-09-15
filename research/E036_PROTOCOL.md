@@ -58,11 +58,11 @@ A dense forward envelope counts at most
 
 multiply/add FLOPs for the layer matrix products, i.e.
 
-`2 * 16 * 1024^2 * 2049 = 68,753,784,832` FLOPs.
+`2 * 16 * 1024^2 * 2049 = 68,753,031,168` FLOPs.
 
-Relative to `B=2^41=2,199,023,255,552`, this is
+Relative to `B=2^41=2,199,023,255,552`, this is exactly
 
-`0.031265... * B`.
+`0.0312652587890625 * B`.
 
 Elementwise ReLU, centering, and reductions are small relative to this envelope. The preregistered structural cost gate is therefore estimated utilization `<=0.105`. If the implemented path cannot satisfy that estimate before mini access, E036 is terminal NO-GO without a scientific diagnostic.
 
