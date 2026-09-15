@@ -26,21 +26,17 @@ def build_support(xp, w0):
     return xp.concatenate([eye, rows, cols], axis=0)
 
 
-def fit_first_layer_weights(xp, w0, support, radius_mean: float):
+def fit_first_layer_weights_from_preactivation(xp, w0, preactivation, radius_mean: float):
     n = int(w0.shape[0])
     if w0.shape != (n, n):
         raise ValueError("w0 must be square")
-    if support.shape != (3 * n, n):
-        raise ValueError("support must contain exactly three n-row blocks")
+    if preactivation.shape != (3 * n, n):
+        raise ValueError("preactivation must correspond to exactly three n-row blocks")
 
-    m = int(support.shape[0])
-    z = support @ w0.T
-    response = (0.5 * float(radius_mean)) * xp.abs(z).T
+    m = int(preactivation.shape[0])
+    response = (0.5 * float(radius_mean)) * xp.abs(preactivation).T
     target = xp.sqrt(xp.sum(w0 * w0, axis=1)) * (1.0 / math.sqrt(2.0 * math.pi))
 
-    # The solve is deliberately float64 for numerical fidelity.  Only this
-    # O(n^2 m + n^3) projection is promoted; the angular carrier itself stays
-    # in the input dtype in the scientific diagnostic.
     response64 = response.astype(xp.float64)
     target64 = target.astype(xp.float64)
     ones = xp.ones((1, m), dtype=xp.float64)
@@ -53,3 +49,11 @@ def fit_first_layer_weights(xp, w0, support, radius_mean: float):
     weights = w_uniform + correction
     achieved = response64 @ weights
     return weights, target64, achieved
+
+
+def fit_first_layer_weights(xp, w0, support, radius_mean: float):
+    n = int(w0.shape[0])
+    if support.shape != (3 * n, n):
+        raise ValueError("support must contain exactly three n-row blocks")
+    preactivation = support @ w0.T
+    return fit_first_layer_weights_from_preactivation(xp, w0, preactivation, radius_mean)
