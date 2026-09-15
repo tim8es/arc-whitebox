@@ -7,18 +7,26 @@ on:
     paths:
       - 'tests/test_e028_final_d3sq_prune.py'
       - 'methods/e028_final_d3sq_prune.py'
+      - 'scripts/run_e028_final_d3sq_prune.py'
       - '.github/workflows/e028-final-d3sq-prune.yml'
 
 jobs:
   focused:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install focused dependencies
-        run: python -m pip install -e . pytest
+        run: python -m pip install -e . pytest numpy scipy pyarrow huggingface_hub
       - name: Focused E028 tests
         run: pytest -q tests/test_e028_final_d3sq_prune.py
+      - name: Frozen E028 diagnostic
+        run: python scripts/run_e028_final_d3sq_prune.py
