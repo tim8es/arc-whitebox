@@ -1,0 +1,24 @@
+name: E024 final feedback rank-8
+
+on:
+  push:
+    branches:
+      - research/e024-final-feedback-r8-20250915
+    paths:
+      - 'tests/test_e024_final_feedback_r8.py'
+      - 'methods/e024_final_feedback_r8.py'
+      - '.github/workflows/e024-final-feedback-r8.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Focused E024 tests
+        run: pytest -q tests/test_e024_final_feedback_r8.py
