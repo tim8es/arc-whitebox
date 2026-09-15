@@ -39,7 +39,8 @@ def _load_row0() -> dict:
 def _prepare(row: dict):
     weights_np = np.asarray(row["weights"], dtype=np.float32).reshape(L, N, N)
     gt = np.asarray(row["final_means"], dtype=np.float64).reshape(N)
-    return [fnp.asarray(w) for w in weights_np], gt
+    # Dataset stores h @ w; the column-vector linear operator used below is W = w.T.
+    return [fnp.asarray(w.T) for w in weights_np], gt
 
 
 def _relu_marginals(mean, variance):
