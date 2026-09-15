@@ -9,6 +9,7 @@ from methods.e035_covariance_signed_k3 import (
     linear_covariance,
     push_fifo,
     relu_k3_moments,
+    run_carrier,
 )
 
 
@@ -76,3 +77,14 @@ def test_covariance_update_overwrites_diagonal_exactly():
     assert np.allclose(np.diag(got), var_post)
     assert np.allclose(got[0, 1], gain[0] * gain[1] * cov_pre[0, 1])
     assert np.allclose(got, got.T)
+
+
+def test_synthetic_repeat_is_deterministic():
+    rng = np.random.default_rng(11)
+    weights = [rng.normal(size=(5, 5)).astype(np.float64) / np.sqrt(5.0) for _ in range(3)]
+    out1, skew1, idx1, diag1 = run_carrier(np, weights)
+    out2, skew2, idx2, diag2 = run_carrier(np, weights)
+    assert np.array_equal(out1, out2)
+    assert float(skew1) == float(skew2)
+    assert idx1 == idx2
+    assert float(diag1) == float(diag2)
