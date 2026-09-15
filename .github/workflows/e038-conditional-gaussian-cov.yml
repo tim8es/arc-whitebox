@@ -1,0 +1,29 @@
+name: E038 conditional Gaussian covariance
+
+on:
+  push:
+    branches:
+      - research/e038-conditional-gaussian-cov-20260915
+    paths:
+      - 'tests/test_e038_conditional_gaussian_cov.py'
+      - 'methods/e038_conditional_gaussian_cov.py'
+      - '.github/workflows/e038-conditional-gaussian-cov.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Focused E038 tests
+        run: pytest -q tests/test_e038_conditional_gaussian_cov.py
