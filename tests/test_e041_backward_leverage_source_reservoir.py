@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import flopscope as flops
+import flopscope.numpy as fnp
 import numpy as np
 
 from methods.e041_backward_leverage_source_reservoir import (
@@ -9,6 +11,8 @@ from methods.e041_backward_leverage_source_reservoir import (
     PINNED_PATH,
     PROJECTED_UTILIZATION,
     backward_leverage_scores,
+    fetch_and_patch_pinned_source,
+    load_patched_module,
     patch_source,
     select_births_knapsack,
     source_pair_cost,
@@ -37,14 +41,12 @@ def test_four_walsh_probes_are_deterministic_signs_and_orthogonal():
 
 
 def test_backward_leverage_matches_explicit_scalar_reference():
-    # Stored weight w means forward operator is w.T; frozen adjoint update is 0.5*w@g.
     w0 = np.eye(4)
     w1 = np.diag([1.0, 2.0, 3.0, 4.0])
     w2 = np.diag([2.0, 1.0, 0.5, 0.25])
     weights = [w0, w1, w2]
     probes = walsh_probes(np, 4)
     got = backward_leverage_scores(np, weights, probes)
-
     g = probes.copy()
     ref = [None, None]
     g = 0.5 * (w2 @ g)
@@ -58,7 +60,6 @@ def test_knapsack_capacity_and_lexicographic_tie_break():
     scores = [1.0] * 15
     chosen = select_births_knapsack(scores, capacity=41)
     assert source_pair_cost(chosen) <= 41
-    # Exact exhaustive reference with the same frozen value/cost definition.
     best_value = -1.0
     best_tuple = None
     for mask in range(1 << 15):
@@ -94,3 +95,29 @@ def test_atomic_patch_guards_complete_source_record():
     assert 'if rfb > 0 and li in E041_KEEP_BIRTHS:' in patched
     for name in ('w2b_list', 'dA_list', 'dP_list', 'c1_list', 'c2_list', 'y_list'):
         assert f'if li in E041_KEEP_BIRTHS: {name}.append' in patched
+
+
+def test_real_pinned_v25_patch_targets_are_unique_and_module_freezes_selection():
+    _, provenance = fetch_and_patch_pinned_source()
+    assert provenance["blob_sha"] == PINNED_BLOB_SHA
+    assert all(v == 1 for v in provenance["patch_counts"].values())
+    keep = (6, 9, 11, 12, 13, 14)
+    module, loaded = load_patched_module(keep, module_name="_e041_preflight")
+    assert loaded["no_confine_frozen"] is True
+    assert loaded["keep_births_frozen"] == keep
+    assert module.E041_KEEP_BIRTHS == keep
+
+
+def test_flopscope_backend_executes_backward_selector():
+    probes = fnp.asarray(walsh_probes(np, 4), dtype=fnp.float32)
+    weights = [
+        fnp.asarray(np.eye(4, dtype=np.float32)),
+        fnp.asarray(np.diag([1.0, 2.0, 3.0, 4.0]).astype(np.float32)),
+        fnp.asarray(np.diag([2.0, 1.0, 0.5, 0.25]).astype(np.float32)),
+    ]
+    with flops.BudgetContext(flop_budget=10**8, wall_time_limit_s=30.0, quiet=True):
+        scores = backward_leverage_scores(fnp, weights, probes)
+    arr = np.asarray(scores, dtype=float)
+    assert arr.shape == (2,)
+    assert np.isfinite(arr).all()
+    assert (arr >= 0).all()
