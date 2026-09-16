@@ -1,0 +1,24 @@
+name: E092 focused RED-GREEN
+
+on:
+  push:
+    branches:
+      - research/e092-frozen-loo-residual-calibrator-20260917
+    paths:
+      - "tests/test_e092_frozen_residual_calibrator.py"
+      - "methods/e092_frozen_residual_calibrator.py"
+      - ".github/workflows/e092-red-green.yml"
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install package and test dependencies
+        run: python -m pip install -e . pytest
+      - name: Run E092 focused tests
+        run: python -m pytest -q tests/test_e092_frozen_residual_calibrator.py
