@@ -1,0 +1,31 @@
+name: E049 V29 reproduction checks
+
+on:
+  push:
+    branches:
+      - research/e049-v29-reproduction-gap-20260916
+    paths:
+      - tests/test_e049_v29_reproduction.py
+      - .github/workflows/e049-v29-reproduction.yml
+      - methods/e049_v29_upstream.py
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest
+      - name: Frozen E049 small deterministic replay
+        run: pytest -q tests/test_e049_v29_reproduction.py
