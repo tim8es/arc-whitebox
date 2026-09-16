@@ -1,0 +1,55 @@
+name: E062 local Phase-2 GT
+
+on:
+  push:
+    branches:
+      - research/e062-structure-aware-fwht-20260916
+    paths:
+      - .github/workflows/e062-local-gt.yml
+
+jobs:
+  local-gt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install
+        run: python -m pip install -e . pytest
+
+      - name: Package-safe root import
+        run: |
+          python - <<'PY'
+          from methods.e062_structure_fwht import Estimator, OFFICIAL_WIDTH, OFFICIAL_DEPTH
+          assert OFFICIAL_WIDTH == 1024
+          assert OFFICIAL_DEPTH == 16
+          assert Estimator is not None
+          print("E062_ROOT_IMPORT_GREEN")
+          PY
+
+      - name: Frozen synthetic preflight
+        run: python -m pytest -q tests/test_e062_structure_fwht.py
+
+      - name: Sole bounded local Phase-2 GT diagnostic
+        run: |
+          set -o pipefail
+          python scripts/e062_local_gt.py 2>&1 | tee e062-local.log
+
+      - name: Upload E062 receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e062-local-gt
+          path: |
+            e062-local.log
+            e062-local.json
+          if-no-files-found: warn
