@@ -9,12 +9,7 @@ import flopscope as flops
 import flopscope.numpy as fnp
 import whestbench
 
-from methods.e062_chassis_falsifier import (
-    N_LINES,
-    carrier_predict,
-    full_safety_audit,
-    run_metered,
-)
+from methods.e062_chassis_falsifier import full_safety_audit, run_metered
 from methods.e062_structure_fwht import antithetic_next_preact, signed_walsh_products
 
 BUDGET = 2**41
@@ -41,7 +36,10 @@ def _walsh_matrix(width: int):
 
 
 def _parity_signs(width: int):
-    return fnp.asarray([1.0 if (i.bit_count() & 1) == 0 else -1.0 for i in range(width)], dtype=fnp.float32)
+    return fnp.asarray(
+        [1.0 if (i.bit_count() & 1) == 0 else -1.0 for i in range(width)],
+        dtype=fnp.float32,
+    )
 
 
 def gate_a_audit(mlp):
@@ -70,7 +68,9 @@ def gate_a_audit(mlp):
 
         ss_err = fnp.sum(d0 * d0) + fnp.sum(d1 * d1)
         ss_ref = fnp.sum(ref * ref) + fnp.sum(neg_ref * neg_ref)
-        rel = fnp.sqrt(ss_err / fnp.maximum(ss_ref, fnp.asarray(1e-30, dtype=fnp.float32)))
+        rel = fnp.sqrt(
+            ss_err / fnp.maximum(ss_ref, fnp.asarray(1e-30, dtype=fnp.float32))
+        )
         maxabs = fnp.maximum(fnp.max(fnp.abs(d0)), fnp.max(fnp.abs(d1)))
     return {
         "rel_rms": float(rel),
@@ -101,7 +101,12 @@ def safety_audit(mlp):
     started = time.perf_counter()
     with flops.BudgetContext(flop_budget=BUDGET, quiet=True) as ctx:
         items = full_safety_audit(mlp)
-    return items, int(ctx.flops_used), float(ctx.residual_wall_time_s), time.perf_counter() - started
+    return (
+        items,
+        int(ctx.flops_used),
+        float(ctx.residual_wall_time_s),
+        time.perf_counter() - started,
+    )
 
 
 def main():
@@ -126,7 +131,10 @@ def main():
             raise RuntimeError("unexpected Phase-2 shape in frozen indices")
 
         gate_a = gate_a_audit(mlps[0])
-        gate_a_ok = gate_a["rel_rms"] <= GATE_A_RELRMS and gate_a["max_abs"] <= GATE_A_MAXABS
+        gate_a_ok = (
+            gate_a["rel_rms"] <= GATE_A_RELRMS
+            and gate_a["max_abs"] <= GATE_A_MAXABS
+        )
 
         per_mlp = []
         full_raws = []
@@ -141,13 +149,23 @@ def main():
         safety_flops = 0
         safety_residual = 0.0
         safety_wall = 0.0
+        first_full_pred = None
+        first_chassis_pred = None
 
         for idx, mlp, row in zip(INDICES, mlps, rows):
             full = run_metered(mlp, chassis=False, budget=BUDGET)
             chassis = run_metered(mlp, chassis=True, budget=BUDGET)
+            if idx == INDICES[0]:
+                first_full_pred = full.prediction
+                first_chassis_pred = chassis.prediction
+
             target = row["final_means"]
-            full_raw, full_finite, full_metric_flops = prediction_metric(full.prediction, target)
-            chassis_raw, chassis_finite, chassis_metric_flops = prediction_metric(chassis.prediction, target)
+            full_raw, full_finite, full_metric_flops = prediction_metric(
+                full.prediction, target
+            )
+            chassis_raw, chassis_finite, chassis_metric_flops = prediction_metric(
+                chassis.prediction, target
+            )
             full_item_allin = full.flops + full_metric_flops
             chassis_item_allin = chassis.flops + chassis_metric_flops
             full_allin += full_item_allin
@@ -167,80 +185,109 @@ def main():
                 total_violations += int(item["violation_count"])
 
             ratio = chassis_raw / full_raw if full_raw > 0 else math.inf
-            per_mlp.append({
-                "index": idx,
-                "full_raw": full_raw,
-                "chassis_raw": chassis_raw,
-                "raw_ratio": ratio,
-                "full_finite": full_finite,
-                "chassis_finite": chassis_finite,
-                "full_predict_flops": full.flops,
-                "chassis_predict_flops": chassis.flops,
-                "full_all_in_flops": full_item_allin,
-                "chassis_all_in_flops": chassis_item_allin,
-                "full_residual_s": full.residual_s,
-                "chassis_residual_s": chassis.residual_s,
-                "full_wall_s": full.wall_s,
-                "chassis_wall_s": chassis.wall_s,
-                "removed_gemm_flops": int(chassis.stats["removed_gemm_flops"]),
-                "pilot_dead_removed": list(chassis.stats["pilot_dead_removed"]),
-                "exact_zero_removed_full": list(full.stats["exact_zero_removed"]),
-                "exact_zero_removed_chassis": list(chassis.stats["exact_zero_removed"]),
-                "suffix_counts": [list(x) for x in chassis.stats["suffix_counts"]],
-                "safety": audits,
-            })
+            per_mlp.append(
+                {
+                    "index": idx,
+                    "full_raw": full_raw,
+                    "chassis_raw": chassis_raw,
+                    "raw_ratio": ratio,
+                    "full_finite": full_finite,
+                    "chassis_finite": chassis_finite,
+                    "full_predict_flops": full.flops,
+                    "chassis_predict_flops": chassis.flops,
+                    "full_all_in_flops": full_item_allin,
+                    "chassis_all_in_flops": chassis_item_allin,
+                    "full_residual_s": full.residual_s,
+                    "chassis_residual_s": chassis.residual_s,
+                    "full_wall_s": full.wall_s,
+                    "chassis_wall_s": chassis.wall_s,
+                    "removed_gemm_flops": int(chassis.stats["removed_gemm_flops"]),
+                    "pilot_dead_removed": list(chassis.stats["pilot_dead_removed"]),
+                    "exact_zero_removed_full": list(
+                        full.stats["exact_zero_removed"]
+                    ),
+                    "exact_zero_removed_chassis": list(
+                        chassis.stats["exact_zero_removed"]
+                    ),
+                    "suffix_counts": [
+                        list(x) for x in chassis.stats["suffix_counts"]
+                    ],
+                    "safety": audits,
+                }
+            )
 
         pooled_full = sum(full_raws) / len(full_raws)
         pooled_chassis = sum(chassis_raws) / len(chassis_raws)
         pooled_ratio = pooled_chassis / pooled_full if pooled_full > 0 else math.inf
         weighted_violation = safety_num / safety_den if safety_den > 0 else 0.0
         gate_b_ok = weighted_violation <= GATE_B_WEIGHTED and high_violations == 0
-        gate_c_ok = pooled_ratio <= GATE_C_POOLED and all(x["raw_ratio"] <= GATE_C_PER_MLP for x in per_mlp)
+        gate_c_ok = pooled_ratio <= GATE_C_POOLED and all(
+            x["raw_ratio"] <= GATE_C_PER_MLP for x in per_mlp
+        )
         flop_ratio = chassis_allin / full_allin
         measured_saving = full_allin - chassis_allin
         removed_share = removed_gemm / measured_saving if measured_saving > 0 else 0.0
-        gate_d_ok = flop_ratio <= GATE_D_FLOP_RATIO and removed_share >= GATE_D_REMOVED_SHARE
+        gate_d_ok = (
+            flop_ratio <= GATE_D_FLOP_RATIO
+            and removed_share >= GATE_D_REMOVED_SHARE
+        )
 
-        # Frozen deterministic repeat only on index 0; diagnostic and not credited to Gate D.
         repeat_full = run_metered(mlps[0], chassis=False, budget=BUDGET)
         repeat_chassis = run_metered(mlps[0], chassis=True, budget=BUDGET)
-        det_full, det_full_flops = determinism_metric(per_mlp[0] and run_metered(mlps[0], chassis=False, budget=BUDGET).prediction, repeat_full.prediction)
-        det_chassis, det_chassis_flops = determinism_metric(run_metered(mlps[0], chassis=True, budget=BUDGET).prediction, repeat_chassis.prediction)
+        det_full, det_full_flops = determinism_metric(
+            first_full_pred, repeat_full.prediction
+        )
+        det_chassis, det_chassis_flops = determinism_metric(
+            first_chassis_pred, repeat_chassis.prediction
+        )
 
-        result.update({
-            "failures": 0,
-            "gate_a": gate_a,
-            "gate_a_pass": gate_a_ok,
-            "weighted_sign_violation_mass": weighted_violation,
-            "sign_violation_count": total_violations,
-            "high_downstream_mass_violation_count": high_violations,
-            "gate_b_pass": gate_b_ok,
-            "pooled_full_raw_mse": pooled_full,
-            "pooled_chassis_raw_mse": pooled_chassis,
-            "pooled_raw_ratio": pooled_ratio,
-            "gate_c_pass": gate_c_ok,
-            "full_all_in_flops_4": full_allin,
-            "chassis_all_in_flops_4": chassis_allin,
-            "flops_ratio": flop_ratio,
-            "measured_flops_saving": measured_saving,
-            "removed_gemm_flops": removed_gemm,
-            "removed_gemm_share_of_saving": removed_share,
-            "gate_d_pass": gate_d_ok,
-            "safety_audit_flops": safety_flops,
-            "safety_audit_residual_s": safety_residual,
-            "safety_audit_wall_s": safety_wall,
-            "determinism_full_max_abs": det_full,
-            "determinism_chassis_max_abs": det_chassis,
-            "determinism_metric_flops": det_full_flops + det_chassis_flops,
-            "per_mlp": per_mlp,
-        })
-        result["falsifier_go"] = bool(gate_a_ok and gate_b_ok and gate_c_ok and gate_d_ok and det_full == 0.0 and det_chassis == 0.0)
+        result.update(
+            {
+                "failures": 0,
+                "gate_a": gate_a,
+                "gate_a_pass": gate_a_ok,
+                "weighted_sign_violation_mass": weighted_violation,
+                "sign_violation_count": total_violations,
+                "high_downstream_mass_violation_count": high_violations,
+                "gate_b_pass": gate_b_ok,
+                "pooled_full_raw_mse": pooled_full,
+                "pooled_chassis_raw_mse": pooled_chassis,
+                "pooled_raw_ratio": pooled_ratio,
+                "gate_c_pass": gate_c_ok,
+                "full_all_in_flops_4": full_allin,
+                "chassis_all_in_flops_4": chassis_allin,
+                "flops_ratio": flop_ratio,
+                "measured_flops_saving": measured_saving,
+                "removed_gemm_flops": removed_gemm,
+                "removed_gemm_share_of_saving": removed_share,
+                "gate_d_pass": gate_d_ok,
+                "safety_audit_flops": safety_flops,
+                "safety_audit_residual_s": safety_residual,
+                "safety_audit_wall_s": safety_wall,
+                "determinism_full_max_abs": det_full,
+                "determinism_chassis_max_abs": det_chassis,
+                "determinism_metric_flops": det_full_flops + det_chassis_flops,
+                "repeat_full_predict_flops": repeat_full.flops,
+                "repeat_chassis_predict_flops": repeat_chassis.flops,
+                "per_mlp": per_mlp,
+            }
+        )
+        result["falsifier_go"] = bool(
+            gate_a_ok
+            and gate_b_ok
+            and gate_c_ok
+            and gate_d_ok
+            and det_full == 0.0
+            and det_chassis == 0.0
+        )
     except Exception as exc:
         result["error_type"] = type(exc).__name__
         result["error"] = str(exc)
 
     print("E062_CHASSIS_JSON=" + json.dumps(result, sort_keys=True), flush=True)
-    Path("e062-chassis.json").write_text(json.dumps(result, indent=2, sort_keys=True), encoding="utf-8")
+    Path("e062-chassis.json").write_text(
+        json.dumps(result, indent=2, sort_keys=True), encoding="utf-8"
+    )
     if not result.get("falsifier_go", False):
         raise SystemExit(2)
 
