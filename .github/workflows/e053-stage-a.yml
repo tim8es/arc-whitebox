@@ -1,0 +1,48 @@
+name: E053 age6-r256 Stage-A
+
+on:
+  push:
+    branches:
+      - research/e053-oldtier-age6-r256-20260916
+    paths:
+      - .github/workflows/e053-stage-a.yml
+
+jobs:
+  stage-a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Gate 0 package-safe root import
+        run: |
+          python - <<'PY'
+          from methods.e053_v29_adapter import AGE_OLD2, R_OLD2
+          assert (AGE_OLD2, R_OLD2) == (6, 256)
+          print("E053_ROOT_IMPORT_GREEN")
+          PY
+      - name: Gate 0 frozen preflight
+        run: pytest -q tests/test_e053_preflight.py
+      - name: Run sole synthetic Stage-A
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e053_stage_a.py 2>&1 | tee e053-stage-a.log
+      - name: Upload immutable E053 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e053-stage-a
+          path: |
+            e053-stage-a.log
+            e053-stage-a.json
+          if-no-files-found: warn
+          retention-days: 90
