@@ -1,0 +1,30 @@
+name: E091 LOO readiness
+
+on:
+  push:
+    branches:
+      - research/e091-loo-ridge-readiness-20260916
+    paths:
+      - 'tests/test_e091_loo_readiness.py'
+      - 'methods/e091_loo_readiness.py'
+      - 'scripts/run_e091_readiness_falsifier.py'
+      - '.github/workflows/e091-loo-readiness.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install numpy pytest
+      - name: Focused E091 tests
+        run: pytest -q tests/test_e091_loo_readiness.py
