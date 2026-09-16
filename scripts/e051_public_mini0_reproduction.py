@@ -49,8 +49,8 @@ def run_predict(mod, mlp):
 
 def metric_flops_and_mse(prediction, target):
     with flops.BudgetContext(flop_budget=10**9, quiet=True) as ctx:
-        p = fnp.asarray(prediction, dtype=fnp.float64)
-        t = fnp.asarray(target, dtype=fnp.float64)
+        p = fnp.asarray(prediction)
+        t = fnp.asarray(target)
         delta = p[-1] - t
         raw = fnp.mean(delta * delta)
     return float(raw), int(ctx.flops_used)
@@ -58,8 +58,8 @@ def metric_flops_and_mse(prediction, target):
 
 def determinism_metric(a, b):
     with flops.BudgetContext(flop_budget=10**9, quiet=True) as ctx:
-        aa = fnp.asarray(a, dtype=fnp.float64)
-        bb = fnp.asarray(b, dtype=fnp.float64)
+        aa = fnp.asarray(a)
+        bb = fnp.asarray(b)
         diff = fnp.max(fnp.abs(aa - bb))
     return float(diff), int(ctx.flops_used)
 
@@ -85,7 +85,7 @@ def main() -> None:
         dataset = whestbench.load_dataset(DATASET, revision=REVISION, split=SPLIT)
         row = dataset[INDEX]
         mlp = whestbench.mlp_at(dataset, INDEX)
-        target = np.asarray(row["final_means"], dtype=np.float64)
+        target = np.asarray(row["final_means"])
 
         width = int(mlp.width)
         depth = int(mlp.depth)
