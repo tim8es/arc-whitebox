@@ -1,0 +1,41 @@
+name: E052 old-tier r256 Stage-A
+
+on:
+  push:
+    branches:
+      - research/e052-oldtier-r256-20260916
+    paths:
+      - '.github/workflows/e052-stage-a.yml'
+
+jobs:
+  stage-a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Frozen E052 preflight
+        run: pytest -q tests/test_e052_oldtier_r256.py
+      - name: Run sole synthetic Stage-A
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e052_stage_a.py 2>&1 | tee e052-stage-a.log
+      - name: Upload immutable E052 Stage-A evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e052-stage-a
+          path: |
+            e052-stage-a.log
+            e052-stage-a.json
+          if-no-files-found: warn
+          retention-days: 90
