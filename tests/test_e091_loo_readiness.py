@@ -1,3 +1,7 @@
+import hashlib
+import json
+from pathlib import Path
+
 import numpy as np
 
 from methods.e091_loo_readiness import (
@@ -9,6 +13,15 @@ from methods.e091_loo_readiness import (
     loo_press_predictions,
     signed_influence_metrics,
 )
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def _payload_hash(payload):
+    raw = json.dumps(
+        payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    ).encode("utf-8")
+    return hashlib.sha256(raw).hexdigest()
 
 
 def test_exact_rowwise_loo_identity_and_leverage():
@@ -57,3 +70,48 @@ def test_phase2_dense_correction_cost_gate():
     assert cost["ceiling_fraction"] == 524_288 / PHASE2_BUDGET
     assert cost["ceiling_fraction"] <= 2.5e-7
     assert cost["coefficient_bytes"] == 1_048_576
+
+
+def test_committed_freeze_and_disjoint_corpus_hashes():
+    freeze = json.loads(
+        (ROOT / "research" / "E091_FREEZE.json").read_text(encoding="utf-8")
+    )
+    corpus = json.loads(
+        (ROOT / "research" / "E091_SYNTHETIC_CORPUS.json").read_text(encoding="utf-8")
+    )
+
+    assert _payload_hash(freeze["payload"]) == freeze["payload_sha256"]
+    assert freeze["payload_sha256"] == (
+        "80861326ea3258b67792801c529dacd1cf40fbc1cae9236f63bbea71afce80a1"
+    )
+    assert freeze["payload"]["feature_builder"]["target_arguments"] == []
+    assert freeze["payload"]["preprocessing"] == {
+        "dtype": "float64",
+        "centering": "none",
+        "scaling": "none",
+        "imputation": "none",
+        "row_weighting": "uniform",
+        "feature_selection": "none",
+    }
+    assert freeze["payload"]["ridge"]["lambda"] == 1.0
+
+    assert _payload_hash(corpus["payload"]) == corpus["payload_sha256"]
+    assert corpus["payload_sha256"] == (
+        "28c037d525a3e4e9b9d4c1955a05f9ccae1ff91b2a62696e742129ce95776ae7"
+    )
+    assert corpus["payload"]["source_kind"] == "synthetic_reference_only"
+    disjoint = corpus["payload"]["disjointness"]
+    assert disjoint["public_dataset_ids"] == []
+    assert disjoint["scorer_dataset_ids"] == []
+    assert disjoint["holdout_dataset_ids"] == []
+    assert disjoint["full_suite_dataset_ids"] == []
+    assert disjoint["generated_from_benchmark_targets"] is False
+
+    X, Z, meta = build_tiny_problem()
+    manifest_inputs = np.asarray(corpus["payload"]["inputs"], dtype=np.float64)
+    manifest_targets = np.asarray(
+        corpus["payload"]["residual_targets"], dtype=np.float64
+    )
+    assert np.max(np.abs(manifest_inputs - meta["inputs"])) == 0.0
+    assert np.max(np.abs(manifest_targets - Z)) <= 1e-15
+    assert X.shape == (7, 4)
