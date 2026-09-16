@@ -1,6 +1,7 @@
 name: E092 focused RED-GREEN
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - research/e092-frozen-loo-residual-calibrator-20260917
