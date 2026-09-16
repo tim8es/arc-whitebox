@@ -1,0 +1,49 @@
+{
+  "payload_sha256": "80861326ea3258b67792801c529dacd1cf40fbc1cae9236f63bbea71afce80a1",
+  "payload": {
+    "schema": "arc.whitebox.e091.freeze.v1",
+    "experiment": "E091",
+    "protocol_commit": "ceb7d53fbed3a0c5366fed0da878a8d6b11b8055",
+    "readiness_receipt_commit": "203e154cbb75d9e7d071df48b507a0def18408ac",
+    "feature_builder": {
+      "name": "target_free_features_v1",
+      "columns": ["1", "u0", "u1", "u0^2+u1^2"],
+      "p": 4,
+      "input_domain": "synthetic_2d_input_only",
+      "target_arguments": []
+    },
+    "preprocessing": {
+      "dtype": "float64",
+      "centering": "none",
+      "scaling": "none",
+      "imputation": "none",
+      "row_weighting": "uniform",
+      "feature_selection": "none"
+    },
+    "ridge": {
+      "lambda": 1.0,
+      "solver": "numpy.linalg.solve",
+      "jitter": "forbidden",
+      "pseudoinverse": "forbidden"
+    },
+    "counterexample": {
+      "row_zero_based": 3,
+      "delta": [7.0, -5.0]
+    },
+    "determinism": {
+      "PYTHONHASHSEED": "0",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "forbidden_target_dependencies": [
+      "feature_selection",
+      "feature_normalization",
+      "lambda_choice",
+      "row_weighting",
+      "corpus_membership",
+      "early_stopping",
+      "rank_choice"
+    ]
+  }
+}
