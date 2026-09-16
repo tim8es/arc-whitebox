@@ -1,0 +1,41 @@
+name: E051 exact V29 Phase2 mini0 reproduction
+
+on:
+  push:
+    branches:
+      - research/e051-v29-phase2-shape-reproduction-20260916
+    paths:
+      - '.github/workflows/e051-v29-phase2-mini0.yml'
+
+jobs:
+  reproduction:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Frozen E051 preflight
+        run: pytest -q tests/test_e051_v29_phase2_reproduction.py
+      - name: Run exactly one bounded Phase2 mini0 reproduction
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e051_public_mini0_reproduction.py 2>&1 | tee e051-mini0.log
+      - name: Upload immutable E051 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e051-v29-phase2-mini0
+          path: |
+            e051-mini0.log
+            e051-mini0.json
+          if-no-files-found: warn
+          retention-days: 90
