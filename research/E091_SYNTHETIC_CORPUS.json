@@ -1,0 +1,45 @@
+{
+  "payload_sha256": "28c037d525a3e4e9b9d4c1955a05f9ccae1ff91b2a62696e742129ce95776ae7",
+  "payload": {
+    "schema": "arc.whitebox.e091.synthetic_corpus.v1",
+    "experiment": "E091",
+    "corpus_id": "e091-tiny-reference-v1",
+    "source_kind": "synthetic_reference_only",
+    "disjointness": {
+      "public_dataset_ids": [],
+      "scorer_dataset_ids": [],
+      "holdout_dataset_ids": [],
+      "full_suite_dataset_ids": [],
+      "generated_from_benchmark_targets": false
+    },
+    "base_network": {
+      "bias_free": true,
+      "activation": "relu",
+      "W1": [[1.0, -0.5], [-0.25, 0.75], [0.6, 0.4]],
+      "W2": [[0.8, -0.3, 0.5], [-0.4, 0.7, 0.2]]
+    },
+    "inputs": [
+      [-1.0, -0.5],
+      [-0.75, 0.25],
+      [-0.25, 1.0],
+      [0.25, -1.0],
+      [0.5, 0.75],
+      [1.0, -0.25],
+      [1.25, 0.5]
+    ],
+    "residual_targets": [
+      [0.025, -0.315],
+      [-0.034375, -0.16],
+      [-0.0125, 0.0225],
+      [0.2875, -0.2275],
+      [0.19375, 0.0525],
+      [0.3625, -0.0775],
+      [0.38125, 0.0375]
+    ],
+    "residual_teacher": {
+      "z1": "0.15 + 0.20*u0 - 0.10*u1 + 0.05*u0*u1",
+      "z2": "-0.10 + 0.10*u0 + 0.15*u1 - 0.04*u0^2"
+    },
+    "row_ids": ["syn-000", "syn-001", "syn-002", "syn-003", "syn-004", "syn-005", "syn-006"]
+  }
+}
