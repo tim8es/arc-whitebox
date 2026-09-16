@@ -1,0 +1,88 @@
+{
+  "B_true_distribution": {
+    "kind": "normal",
+    "mean": 0.0,
+    "shape": "p x q",
+    "std": 0.0002
+  },
+  "N": 16,
+  "base_prediction_distribution": {
+    "kind": "normal",
+    "mean": 0.0,
+    "shape": "depth x width",
+    "std": 0.2
+  },
+  "depth": 4,
+  "eps_distribution": {
+    "kind": "normal",
+    "mean": 0.0,
+    "shape": "q",
+    "std": 2e-05
+  },
+  "experiment": "E091",
+  "feature_spec": "E091_FEATURE_FREEZE_v1",
+  "freeze_policy": "manifest and feature spec committed before any target generation or local check",
+  "generator": "numpy.random.Generator(PCG64)",
+  "p": 12,
+  "public_or_benchmark_data": false,
+  "purpose": "local_reproducibility_only",
+  "q": 32,
+  "residual_target_rule": "z_i = x_i @ B_true + eps_i",
+  "ridge_lambda": 1.0,
+  "row_seeds": [
+    91000,
+    91001,
+    91002,
+    91003,
+    91004,
+    91005,
+    91006,
+    91007,
+    91008,
+    91009,
+    91010,
+    91011,
+    91012,
+    91013,
+    91014,
+    91015
+  ],
+  "schema": "arc.whitebox.e091.synthetic_corpus.v1",
+  "state_d3_distribution": {
+    "kind": "normal",
+    "mean": 0.0,
+    "shape": "depth x width",
+    "std": 0.05
+  },
+  "state_var_distribution": {
+    "kind": "exp(normal)",
+    "normal_mean": -0.1,
+    "normal_std": 0.2,
+    "shape": "depth x width"
+  },
+  "target_coefficient_seed": 91991,
+  "target_noise_seeds": [
+    92000,
+    92001,
+    92002,
+    92003,
+    92004,
+    92005,
+    92006,
+    92007,
+    92008,
+    92009,
+    92010,
+    92011,
+    92012,
+    92013,
+    92014,
+    92015
+  ],
+  "weight_distribution": {
+    "kind": "normal",
+    "mean": 0.0,
+    "std": "1/sqrt(width)"
+  },
+  "width": 16
+}
