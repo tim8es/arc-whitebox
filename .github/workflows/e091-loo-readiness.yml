@@ -6,7 +6,10 @@ on:
       - research/e091-loo-ridge-readiness-20260916
     paths:
       - 'tests/test_e091_loo_readiness.py'
+      - 'tests/test_e091_production_bridge.py'
       - 'methods/e091_loo_readiness.py'
+      - 'methods/e091_production_bridge.py'
+      - 'research/E091_PRODUCTION_BRIDGE_FREEZE.json'
       - 'scripts/run_e091_readiness_falsifier.py'
       - '.github/workflows/e091-loo-readiness.yml'
 
@@ -27,7 +30,7 @@ jobs:
       - name: Install focused dependencies
         run: python -m pip install -e . numpy pytest
       - name: Focused E091 tests
-        run: pytest -q tests/test_e091_loo_readiness.py
+        run: pytest -q tests/test_e091_loo_readiness.py tests/test_e091_production_bridge.py
       - name: Exactly one bounded synthetic E091 diagnostic
         run: python scripts/run_e091_readiness_falsifier.py --output e091-readiness-diagnostic.json
       - name: Upload E091 synthetic diagnostic receipt artifact
