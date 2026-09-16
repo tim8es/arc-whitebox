@@ -1,8 +1,9 @@
-"""Exactly one synthetic-only E091 implementation-bridge falsifier.
+"""Synthetic-only E091 implementation-bridge falsifier.
 
 This script never loads whestbench datasets, public data, scorer outputs, holdouts, or full-suite
 artifacts. It verifies the committed freeze/corpus hashes and executes only the protocol-defined
-tiny deterministic counterexample.
+tiny deterministic counterexample plus a flopscope-measured deploy path over that same synthetic
+corpus.
 """
 
 from __future__ import annotations
@@ -21,6 +22,7 @@ from methods.e091_loo_readiness import (
     direct_loo_predictions,
     full_ridge_fit,
     loo_press_predictions,
+    measure_tiny_deploy,
     signed_influence_metrics,
 )
 
@@ -147,6 +149,22 @@ def run_falsifier() -> dict[str, object]:
         )
     )
 
+    expected_deploy = np.asarray(meta["base"] + full0, dtype=np.float64)
+    measured_deploy, measured_cost = measure_tiny_deploy(meta["inputs"], B)
+    measured_repeat, measured_cost_repeat = measure_tiny_deploy(meta["inputs"], B)
+    measured_output_max_abs = float(np.max(np.abs(measured_deploy - expected_deploy)))
+    measured_output_rel_frob = _relative_frobenius(
+        measured_deploy - expected_deploy, expected_deploy
+    )
+    measured_repeat_max_abs = float(np.max(np.abs(measured_repeat - measured_deploy)))
+    measured_component_sum = int(sum(measured_cost["component_flops"].values()))
+    measured_all_in_flops = int(measured_cost["all_in_flops"])
+    measured_additive = measured_component_sum == measured_all_in_flops
+    measured_repeat_cost_equal = bool(
+        measured_cost_repeat["all_in_flops"] == measured_cost["all_in_flops"]
+        and measured_cost_repeat["component_flops"] == measured_cost["component_flops"]
+    )
+
     synthetic_cost = dense_dot_cost(p=int(X.shape[1]), q=int(Z.shape[1]), dtype_bytes=4)
     phase2_correction = dense_dot_cost(p=int(X.shape[1]), q=16384, dtype_bytes=4)
     phase2_cap = dense_dot_cost(p=16, q=16384, dtype_bytes=4)
@@ -178,6 +196,13 @@ def run_falsifier() -> dict[str, object]:
             and np.all(np.isfinite(B))
         ),
         "deterministic": deterministic_max_abs == 0.0,
+        "measured_deploy_output_max_abs": measured_output_max_abs <= 1e-12,
+        "measured_deploy_output_rel_frob": measured_output_rel_frob <= 1e-12,
+        "measured_deploy_component_additivity": measured_additive,
+        "measured_deploy_deterministic": measured_repeat_max_abs == 0.0
+        and measured_repeat_cost_equal,
+        "measured_deploy_finite": bool(np.all(np.isfinite(measured_deploy))),
+        "measured_deploy_nonzero_bill": measured_all_in_flops > 0,
         "phase2_correction_cost": bool(
             phase2_cap["exact_flops"] == 507_904
             and phase2_cap["ceiling_flops"] == 524_288
@@ -188,7 +213,7 @@ def run_falsifier() -> dict[str, object]:
     passed = bool(all(gates.values()))
 
     return {
-        "schema": "arc.whitebox.e091.synthetic_falsifier.v1",
+        "schema": "arc.whitebox.e091.synthetic_falsifier.v2",
         "experiment": "E091",
         "decision": "READINESS_IMPLEMENTATION_GO" if passed else "READINESS_NO_GO",
         "scientific_go": False,
@@ -237,6 +262,23 @@ def run_falsifier() -> dict[str, object]:
             "finite": influence["finite"],
         },
         "determinism": {"max_abs_repeat_difference": deterministic_max_abs},
+        "measured_deploy": {
+            "output_max_abs_vs_numpy_reference": measured_output_max_abs,
+            "output_rel_frob_vs_numpy_reference": measured_output_rel_frob,
+            "repeat_output_max_abs": measured_repeat_max_abs,
+            "repeat_cost_equal": measured_repeat_cost_equal,
+            "component_flops": measured_cost["component_flops"],
+            "component_flops_sum": measured_component_sum,
+            "component_residual_wall_s": measured_cost["component_residual_wall_s"],
+            "component_wall_s": measured_cost["component_wall_s"],
+            "all_in_flops": measured_all_in_flops,
+            "actual_all_in_utilization_vs_phase2_budget": measured_cost[
+                "actual_all_in_utilization"
+            ],
+            "all_in_residual_wall_s": measured_cost["all_in_residual_wall_s"],
+            "all_in_wall_s": measured_cost["all_in_wall_s"],
+            "component_additivity": measured_additive,
+        },
         "component_cost": {
             "synthetic_base_linear_scalar_flops": base_linear_flops,
             "synthetic_feature_scalar_flops": feature_flops,
@@ -247,9 +289,9 @@ def run_falsifier() -> dict[str, object]:
             "phase2_readiness_cap_p16_q16384": phase2_cap,
             "production_whole_candidate_all_in_utilization": None,
             "production_whole_candidate_blocker": (
-                "E091 readiness protocol does not freeze a concrete Phase-2 base estimator "
-                "or production feature-extraction bill; only bridge correction utilization "
-                "is measurable without crossing into an unpreregistered candidate."
+                "No concrete Phase-2 base estimator is frozen by E091; the measured all-in "
+                "value in this artifact is the complete frozen synthetic deploy path only, "
+                "not a production scientific-candidate utilization claim."
             ),
         },
         "coefficient_matrix": {
