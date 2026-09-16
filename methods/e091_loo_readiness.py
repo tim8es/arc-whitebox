@@ -5,6 +5,8 @@ No benchmark/public/scorer data access exists in this module.
 
 from __future__ import annotations
 
+import flopscope as flops
+import flopscope.numpy as fnp
 import numpy as np
 
 PHASE2_BUDGET = 2**41
@@ -154,3 +156,99 @@ def dense_dot_cost(p: int, q: int, dtype_bytes: int = 4) -> dict:
         "ceiling_fraction": ceiling / PHASE2_BUDGET,
         "coefficient_bytes": int(p) * int(q) * int(dtype_bytes),
     }
+
+
+def _fnp_tiny_base(inputs):
+    w1 = fnp.asarray(_W1, dtype=fnp.float64)
+    w2 = fnp.asarray(_W2, dtype=fnp.float64)
+    hidden = fnp.maximum(inputs @ w1.T, 0.0)
+    return hidden @ w2.T
+
+
+def _fnp_target_free_features(inputs):
+    u0 = inputs[:, 0]
+    u1 = inputs[:, 1]
+    radius2 = u0 * u0 + u1 * u1
+    ones = fnp.ones(len(inputs), dtype=fnp.float64)
+    return fnp.stack([ones, u0, u1, radius2], axis=1)
+
+
+def _budget_metrics(budget) -> dict:
+    return {
+        "flops": int(budget.flops_used),
+        "residual_wall_s": float(budget.residual_wall_time_s),
+        "wall_s": float(budget.wall_time_s),
+    }
+
+
+def measure_tiny_deploy(
+    inputs: np.ndarray, B: np.ndarray
+) -> tuple[np.ndarray, dict[str, object]]:
+    """Measure the complete frozen tiny deploy path with flopscope.
+
+    Ridge calibration/LOO work is deliberately outside this function because the E091
+    protocol defines it as offline-only. The measured deploy path is exactly base prediction,
+    target-free feature extraction, one dense correction dot, and the final output add.
+    """
+    inputs_f = fnp.asarray(np.asarray(inputs, dtype=np.float64), dtype=fnp.float64)
+    coef_f = fnp.asarray(np.asarray(B, dtype=np.float64), dtype=fnp.float64)
+
+    with flops.BudgetContext(
+        flop_budget=PHASE2_BUDGET, wall_time_limit_s=1.0
+    ) as base_budget:
+        base = _fnp_tiny_base(inputs_f)
+    base_metrics = _budget_metrics(base_budget)
+
+    with flops.BudgetContext(
+        flop_budget=PHASE2_BUDGET, wall_time_limit_s=1.0
+    ) as feature_budget:
+        features = _fnp_target_free_features(inputs_f)
+    feature_metrics = _budget_metrics(feature_budget)
+
+    with flops.BudgetContext(
+        flop_budget=PHASE2_BUDGET, wall_time_limit_s=1.0
+    ) as correction_budget:
+        correction = features @ coef_f
+    correction_metrics = _budget_metrics(correction_budget)
+
+    with flops.BudgetContext(
+        flop_budget=PHASE2_BUDGET, wall_time_limit_s=1.0
+    ) as add_budget:
+        output = base + correction
+    add_metrics = _budget_metrics(add_budget)
+
+    with flops.BudgetContext(
+        flop_budget=PHASE2_BUDGET, wall_time_limit_s=1.0
+    ) as all_in_budget:
+        all_base = _fnp_tiny_base(inputs_f)
+        all_features = _fnp_target_free_features(inputs_f)
+        all_correction = all_features @ coef_f
+        all_output = all_base + all_correction
+    all_in_metrics = _budget_metrics(all_in_budget)
+
+    components = {
+        "base": base_metrics["flops"],
+        "features": feature_metrics["flops"],
+        "correction_dot": correction_metrics["flops"],
+        "output_add": add_metrics["flops"],
+    }
+    metrics: dict[str, object] = {
+        "component_flops": components,
+        "component_residual_wall_s": {
+            "base": base_metrics["residual_wall_s"],
+            "features": feature_metrics["residual_wall_s"],
+            "correction_dot": correction_metrics["residual_wall_s"],
+            "output_add": add_metrics["residual_wall_s"],
+        },
+        "component_wall_s": {
+            "base": base_metrics["wall_s"],
+            "features": feature_metrics["wall_s"],
+            "correction_dot": correction_metrics["wall_s"],
+            "output_add": add_metrics["wall_s"],
+        },
+        "all_in_flops": all_in_metrics["flops"],
+        "actual_all_in_utilization": all_in_metrics["flops"] / PHASE2_BUDGET,
+        "all_in_residual_wall_s": all_in_metrics["residual_wall_s"],
+        "all_in_wall_s": all_in_metrics["wall_s"],
+    }
+    return np.asarray(all_output, dtype=np.float64), metrics
