@@ -1,0 +1,61 @@
+{
+  "schema": "arc.whitebox.e091.synthetic_accuracy_receipt.v1",
+  "experiment": "E091",
+  "event": "SYNTHETIC_BASELINE_VS_LOO_CORRECTION",
+  "scope": {
+    "synthetic_only": true,
+    "public": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "code_commit": "4981ca2c594bdb35d9b0d823dd4f771d50fbbc53",
+  "workflow_commit": "337b308786d65f6b149c0a49beb28afe89320260",
+  "run": 35158813183,
+  "job": 105004512183,
+  "artifact": {
+    "name": "e091-synthetic-accuracy-compare",
+    "id": 10471839713,
+    "zip_sha256_from_action_log": "4f02fbf6ca2a618458e8240c887fc3b5acaae257362176624c93cfbd0747a345"
+  },
+  "frozen_problem": {
+    "N": 7,
+    "p": 4,
+    "q": 2,
+    "lambda": 1.0,
+    "truth": "frozen tiny ReLU base plus analytic synthetic residual from E091 execution protocol"
+  },
+  "metrics": {
+    "baseline_raw_mse_synthetic": 0.04186944754464288,
+    "corrected_raw_mse_synthetic": 0.0036689965468038404,
+    "mse_ratio": 0.08762944729308429,
+    "relative_mse_improvement": 0.9123705527069157,
+    "press_vs_direct_max_abs": 1.6653345369377348e-16,
+    "min_one_minus_h": 0.46723914541267264,
+    "deterministic_repeat_max_abs": 0.0,
+    "finite": true
+  },
+  "cost": {
+    "per_row_dense_dot_flops": 14,
+    "per_row_output_add_flops": 2,
+    "total_correction_flops_for_7_rows": 112,
+    "phase2_budget_flops": 2199023255552,
+    "correction_utilization_vs_phase2_budget": 5.093170329928398e-11
+  },
+  "gates": {
+    "press_parity_le_1e-12": true,
+    "leverage_margin_ge_1e-6": true,
+    "correction_improves_synthetic_mse": true,
+    "deterministic_repeat_eq_0": true,
+    "finite": true
+  },
+  "decision": "LOCAL_GO_ONLY",
+  "phase2_scientific_metric": {
+    "raw_mse": null,
+    "all_in_flops": null,
+    "utilization": null,
+    "reason_unavailable": "No Phase-2 raw metric is scientifically computable from this run: E091 is restricted here to synthetic/local evidence, no admissible complete production base below the 0.135 utilization ceiling is frozen, and public/scorer/holdout access is prohibited. The 112-FLOP figure is correction-only on the tiny synthetic problem and must not be reported as whole-candidate Phase-2 utilization."
+  }
+}
