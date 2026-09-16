@@ -1,0 +1,43 @@
+name: E096 V29 matmul callsite attribution
+
+on:
+  push:
+    branches:
+      - research/e096-v29-matmul-callsite-attribution-20260917
+    paths:
+      - .github/workflows/e096-stage-a.yml
+
+jobs:
+  stage-a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen dependencies
+        run: python -m pip install -e .
+      - name: Protocol preflight
+        run: |
+          test -f research/E096_PROTOCOL.md
+          grep -q '17df1a073a24f96c4705b04bcf61ef60fa06dd0c' research/E096_PROTOCOL.md
+      - name: Run sole frozen attribution
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e096_matmul_attribution.py 2>&1 | tee e096-attribution.log
+      - name: Upload immutable E096 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e096-attribution
+          path: |
+            e096-attribution.log
+            e096-attribution.json
+          if-no-files-found: warn
+          retention-days: 90
