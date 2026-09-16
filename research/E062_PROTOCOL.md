@@ -1,7 +1,7 @@
 # E062 Protocol — Phase-2 structure-aware FWHT / antithetic carrier
 
 ## Status
-Protocol-first. This commit must contain only this file. No public/scorer/holdout/full evaluation is authorized by this protocol.
+Protocol-first. The first E062 commit (`51a84b7f66dfb3ac60bc04fd8bdba2c646ccab50`) contained only this file. No public/scorer/holdout/full evaluation is authorized by this protocol.
 
 ## Parent / isolation
 - Canonical parent: `research/bootstrap@29bee3f8d23fc620b77aaed414b1b7a928af4b83`.
@@ -14,9 +14,6 @@ E062 is a new structure-aware forward estimator family, not a V29 closure modifi
 
 The Phase-1 public result is used only as structural provenance; its width-256/depth-32 raw MSE is not treated as transferable evidence for Phase-2 accuracy.
 
-## Frozen hypothesis
-At width 1024/depth 16, a deterministic two-block signed-Walsh angular carrier with exact Gaussian radial factor and support-exact structural compaction can achieve substantially lower integration error than ordinary MC at the same metered cost. Shorter depth and larger width may make the Phase-1 dead/on/kink execution chassis materially more accurate at a bounded 0.135 budget.
-
 ## Frozen carrier / sample schedule
 No post-hoc tuning is allowed.
 
@@ -28,69 +25,70 @@ No post-hoc tuning is allowed.
 - Block 0 diagonal sign vector: all `+1`.
 - Block 1 diagonal sign vector: `(-1)**popcount(i)` for coordinate `i` (fixed, target-independent).
 - Each line is paired with its antipode.
-- Spherical radius: every direction has Euclidean norm `sqrt(1024)`; convert spherical mean to Gaussian mean using the exact scalar `E[||Z||]/sqrt(1024)` computed from log-gamma constants in billed flopscope-compatible arithmetic or a frozen precomputed float64 constant documented in code.
-- Pilot: first `PILOT_LINES=256` line representatives and both antipodes (`512` rows), reused from the production carrier; no additional random/pilot samples.
-- Common deterministic seed field: estimator does not draw stochastic production samples. Any test-only synthetic MLP generation uses frozen `PCG64` seed `62062` and is outside prediction work.
+- Spherical radius: every direction has Euclidean norm `sqrt(1024)`; Gaussian radial ratio is frozen as `0.9997558892134077`.
+- Pilot: first `PILOT_LINES=256` positive line representatives and their 256 antipodes, reused from the production carrier.
+- Evaluation rows for safety diagnostics: all remaining 1792 positive representatives and their antipodes. Pilot and evaluation rows are disjoint.
+- No stochastic production samples and no Phase-1 thresholds.
 
-## Exact algebraic operations to test
-1. **FWHT layer 0** — for each signed Walsh block, compute all 1024 first-layer line products by a 10-stage FWHT rather than an explicit 1024x1024-by-1024x1024 product. Every add/subtract is billed.
-2. **Antithetic layer-1 fold** — use `ReLU(-z)=ReLU(z)-z` to obtain the antipodal layer-0 activations and the documented one-step identity for the next preactivation. All helper products are billed.
-3. **Support-exact zero-skipping** — if a coordinate is exactly zero for every active carrier row at a layer, omit its column in the next multiplication. Boolean tests, gathers/scatters, and assembly are inside flopscope accounting.
-4. **Dead/on/kink suffix** — only the final three layers may use pilot-frozen classification. For a neuron at a suffix layer:
-   - `dead`: pilot maximum preactivation `<= 0`;
-   - `on`: pilot minimum preactivation `>= 0`;
-   - `kink`: otherwise.
-   Dead outputs are set to zero on the carrier; on outputs bypass ReLU but still propagate exact carrier values; kink outputs evaluate ReLU row-wise. Classification itself and gathers are billed. This is an approximation only because the pilot classification is applied to production rows; the approximation error must be measured locally.
-5. No unmetered NumPy/PyTorch/JAX work is allowed inside `predict`; all numerical prediction-time work must use `flopscope` / `flopscope.numpy`.
+## Exact algebraic operations
+1. **FWHT layer 0** — both 1024-row signed Walsh blocks use a 10-stage FWHT; every add/subtract is billed.
+2. **Antithetic layer-1 fold** — use `ReLU(-z)=ReLU(z)-z`; helper products are billed.
+3. **Support-exact zero-skipping** — columns exactly zero for every carrier row may be omitted in the next multiplication; detection/gathers are billed.
+4. **Pilot dead/on/kink chassis** — only final three layers may use pilot-frozen classification. Dead output is zero, on output is the preactivation, kink output uses row-wise ReLU. Only pilot-dead columns may be physically removed from the next dense GEMM. `on` is not allowed to justify a GEMM removal.
+5. FULL and CHASSIS use identical carrier points, radial scale, FWHT, antithetic identity and exact zero-skip machinery. Their only approximation difference is pilot dead/on/kink routing and consequent pilot-dead width compaction.
+6. All MLP-dependent numerical work is through `flopscope` / `flopscope.numpy`.
 
-## Pre-code cost bound
-A naive dense 4096-row forward through 16 width-1024 matrices is approximately `4096 * 16 * 2 * 1024^2 = 1.374e11` multiply/add FLOPs before ReLU/helper overhead, or about `0.0625 B`. Layer-0 FWHT replaces, rather than adds to, the first dense carrier product. Even charging a conservative second full-forward equivalent for pilot/helper/antithetic/compaction overhead gives < `0.125 B`, below the frozen `0.135` gate. Therefore implementation is authorized; measured all-in accounting controls promotion.
-
-## Package-safe preflight gate
-Before any real MLP diagnostic:
-1. estimator imports from repository root after `pip install -e .`;
+## Package-safe preflight
+Before a real MLP diagnostic:
+1. root import after `pip install -e .`;
 2. no module-path hacks;
-3. all numerical `predict` work uses flopscope primitives;
-4. synthetic width-1024/depth-16 object construction succeeds;
-5. FWHT identity against explicit matrix multiplication on a small power-of-two test has relative RMS <= `1e-6`;
-6. antithetic identity has max-abs error <= `1e-6` on a small synthetic case;
-7. zero-skip route exactly matches dense support evaluation when the skipped columns are identically zero;
-8. finite deterministic repeat on a small synthetic case has max-abs diff `0.0`.
+3. synthetic official-shape construction;
+4. FWHT identity relRMS <= `1e-6`;
+5. antithetic identity maxabs <= `1e-6` on synthetic tests;
+6. support-exact zero skip identity;
+7. deterministic finite repeat.
 
-Any preflight failure is terminal NO-GO for E062; no repair/rerun unless explicitly authorized by the user.
+The first E062 preflight passed on run `35111319158` (`4 passed`). The earlier single-item carrier-accuracy diagnostic is not the scout chassis falsifier and is not reused as evidence for the gates below.
 
-## Local ground-truth diagnostic
-Run exactly one local bounded diagnostic on the smallest available Phase-2 mini/ground-truth item that is also suitable for comparison to E051, preferring `aicrowd/arc-whestbench-public-2026@v2-phase2`, split `mini`, index `0` if ground truth is locally exposed by the harness.
+## Frozen four-MLP FULL-vs-CHASSIS falsifier addendum
+This addendum is authorized by the user clarification and precedes any public test.
 
-Measure:
-- raw final-layer MSE;
-- all-layer MSE when available;
-- all-in prediction FLOPs including FWHT, pilot reuse, classification, gathers, zero-skipping, antithetic helpers, radial scaling, output reductions, and metric work separately;
-- utilization `all_in_flops / 2**41`;
-- residual wall time and backend wall time when exposed;
-- failures;
-- finite status;
-- deterministic repeat max-abs difference;
-- counts of dead/on/kink coordinates and zero-skipped columns by layer.
+Dataset is fixed to `aicrowd/arc-whestbench-public-2026@v2-phase2`, split `mini`, indices exactly `[0,1,2,3]`. No other local MLP is inspected before verdict.
 
-Comparator receipt: E051 verified baseline `raw_final_mse=2.29004485946887e-08`, `utilization=0.2670561845802695`, `failures=0` on Phase-2 mini[0]. E051 is not rerun.
+### Gate A — exact implementation aids
+On index 0, full-width real weights:
+- signed FWHT layer-0 products are checked against explicit Walsh matrix products;
+- antithetic layer-1 folded preactivation is checked against explicit negative-carrier propagation.
+Across the audit tensors require relRMS <= `1e-6` and maxabs <= `5e-6`.
+Audit FLOPs are metered separately and reported; they are not credited as operational savings.
 
-## Frozen local promotion gates
-All must pass:
-- `raw_final_mse <= 1.89e-8` (leader target noted separately: `1.68e-8`);
-- measured all-in utilization `<= 0.135`;
-- failures `== 0`;
-- finite output and repeat;
-- deterministic max-abs diff `== 0.0`;
-- no hidden/unmetered prediction-time ndarray work;
-- structural counters demonstrate the intended route is active.
+### Gate B — pilot sign safety
+For each of the final-three-layer classifications, classification uses only the 512 frozen pilot rows. Violations are evaluated only on the disjoint 3584 evaluation rows.
 
-Failure of any gate => terminal E062 NO-GO; **no public mini**.
+For classified `dead`, a violation is `pre > 0`; for classified `on`, a violation is `pre < 0`. `kink` has no sign assertion.
 
-## Bounded public mini authorization
-Only after all local promotion gates pass, exactly one bounded Phase-2 public mini diagnostic is authorized, same frozen estimator and constants, with no tuning between local and public. No scorer, holdout, full split, sweep, or rerun.
+Downstream mass for neuron j is frozen as `m_j = sum_k W_next[j,k]^2` when a next layer exists, otherwise `m_j = 1`. Weighted sign-violation mass is
+`sum(|pre_ij| * m_j * violation_ij) / sum(|pre_ij| * m_j * classified_ij)`
+over dead/on evaluation entries, pooled over all four MLPs and suffix layers. Gate: <= `1e-4`.
 
-## Stop conditions
-- Local NO-GO: stop immediately, report receipts, no public.
-- Local GO but public bounded diagnostic fails: terminal NO-GO, no rescue/rerun.
-- Public bounded GO: stop for independent review; no scorer/holdout/full/canonical/ledger mutation.
+A neuron is `high-downstream-mass` iff `m_j >= 2 * mean(m)`. Gate: zero sign violations on any such classified neuron. This threshold is frozen before the diagnostic and is not tuned.
+
+### Gate C — ground-truth parity
+For each of the four MLPs compute final-layer raw MSE for FULL and CHASSIS against exposed `final_means` ground truth. Require:
+- pooled CHASSIS raw MSE / pooled FULL raw MSE <= `1.01`;
+- each per-MLP CHASSIS/FULL raw ratio <= `1.03`.
+
+### Gate D — measured structural saving
+Run FULL and CHASSIS separately under fresh `flops.BudgetContext` so all FWHT, antithetic, pilot, comparisons, gathers, compaction and GEMMs are billed.
+Require pooled all-in prediction FLOPs ratio `CHASSIS/FULL <= 0.90`.
+
+For each physically removed pilot-dead GEMM input column, report the exact dense-matmul FLOP saving implied by the actual matrix shapes. The sum of these removed-GEMM FLOPs must account for >=70% of measured `FULL_FLOPs - CHASSIS_FLOPs`. No savings are credited to FWHT or antithetic identities because they are common to both branches. Report residual wall time and ordinary wall time for both branches.
+
+### Stop rule
+Any failure of Gate A/B/C/D => terminal E062 NO-GO, no repair/tuning/rerun/public. If all four pass, stop for review before one bounded official-shape Stage-A. Public remains unauthorized until that later review.
+
+## No hidden work
+Prediction and structural diagnostic arithmetic that depends on MLP values or carrier values uses flopscope primitives. Python is used only for control flow, frozen constants/indices, serialization and shape-based FLOP bookkeeping. No NumPy/PyTorch/JAX prediction path is permitted.
+
+## Forbidden
+No scorer, holdout, full split, tuning, sweep, post-hoc pruning thresholds, V29 closure edits, canonical mutation or ledger mutation.
