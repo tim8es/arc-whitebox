@@ -1,0 +1,48 @@
+name: E062 four-MLP chassis falsifier
+
+on:
+  push:
+    branches:
+      - research/e062-structure-aware-fwht-20260916
+    paths:
+      - .github/workflows/e062-chassis-falsifier.yml
+
+jobs:
+  chassis-falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: python -m pip install -e . pytest
+      - name: Package-safe root import
+        run: |
+          python - <<'PY'
+          from methods.e062_chassis_falsifier import carrier_predict, full_safety_audit
+          assert carrier_predict is not None
+          assert full_safety_audit is not None
+          print("E062_CHASSIS_ROOT_IMPORT_GREEN")
+          PY
+      - name: Frozen synthetic preflight
+        run: python -m pytest -q tests/test_e062_structure_fwht.py tests/test_e062_chassis_falsifier.py
+      - name: Sole four-MLP FULL-vs-CHASSIS falsifier
+        run: |
+          set -o pipefail
+          python scripts/e062_chassis_falsifier.py 2>&1 | tee e062-chassis.log
+      - name: Upload E062 chassis receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e062-chassis-falsifier
+          path: |
+            e062-chassis.log
+            e062-chassis.json
+          if-no-files-found: warn
