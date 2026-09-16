@@ -1,0 +1,30 @@
+name: E091 frozen local reproducibility
+
+on:
+  push:
+    branches:
+      - research/e091-loo-ridge-readiness-20260916
+    paths:
+      - .github/workflows/e091-local-repro.yml
+
+jobs:
+  local-repro:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen local dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Run focused E091 test
+        run: pytest -q tests/test_e091_local_repro.py
+      - name: Emit E091 local receipt payload
+        run: python scripts/e091_local_check.py | tee e091-local-check.json
+      - name: Upload immutable local evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: e091-local-repro
+          path: e091-local-check.json
