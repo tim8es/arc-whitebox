@@ -11,7 +11,10 @@ from methods.e091_loo_readiness import (
     direct_loo_predictions,
     full_ridge_fit,
     loo_press_predictions,
+    measure_tiny_deploy,
     signed_influence_metrics,
+    target_free_features,
+    tiny_relu_base,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,6 +73,26 @@ def test_phase2_dense_correction_cost_gate():
     assert cost["ceiling_fraction"] == 524_288 / PHASE2_BUDGET
     assert cost["ceiling_fraction"] <= 2.5e-7
     assert cost["coefficient_bytes"] == 1_048_576
+
+
+def test_measured_tiny_deploy_has_actual_component_and_all_in_bill():
+    X, Z, meta = build_tiny_problem()
+    _, B = full_ridge_fit(X, Z, 1.0)
+    expected = tiny_relu_base(meta["inputs"]) + target_free_features(meta["inputs"]) @ B
+
+    measured, metrics = measure_tiny_deploy(meta["inputs"], B)
+    repeat, repeat_metrics = measure_tiny_deploy(meta["inputs"], B)
+
+    assert np.max(np.abs(measured - expected)) <= 1e-12
+    assert np.array_equal(measured, repeat)
+    assert metrics["component_flops"]["base"] > 0
+    assert metrics["component_flops"]["features"] > 0
+    assert metrics["component_flops"]["correction_dot"] > 0
+    assert metrics["component_flops"]["output_add"] > 0
+    assert metrics["all_in_flops"] == sum(metrics["component_flops"].values())
+    assert metrics["actual_all_in_utilization"] == metrics["all_in_flops"] / PHASE2_BUDGET
+    assert repeat_metrics["all_in_flops"] == metrics["all_in_flops"]
+    assert repeat_metrics["component_flops"] == metrics["component_flops"]
 
 
 def test_committed_freeze_and_disjoint_corpus_hashes():
