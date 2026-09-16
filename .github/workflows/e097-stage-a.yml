@@ -1,0 +1,44 @@
+name: E097 rank-8 K22 synthetic feasibility
+
+on:
+  push:
+    branches:
+      - research/e097-rank8-k22-memory-feasibility-20260917
+    paths:
+      - .github/workflows/e097-stage-a.yml
+
+jobs:
+  stage-a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "4"
+      OMP_NUM_THREADS: "4"
+      MKL_NUM_THREADS: "4"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen dependencies
+        run: python -m pip install -e .
+      - name: Protocol preflight
+        run: |
+          test -f research/E097_PROTOCOL.md
+          grep -q 'N=32768' research/E097_PROTOCOL.md || grep -q 'N=32768' research/E097_PROTOCOL.md
+          grep -q 'rank `r=8`' research/E097_PROTOCOL.md
+      - name: Run sole frozen synthetic K22 falsifier
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e097_rank8_k22_feasibility.py 2>&1 | tee e097-stage-a.log
+      - name: Upload immutable E097 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e097-stage-a
+          path: |
+            e097-stage-a.log
+            e097-stage-a.json
+          if-no-files-found: warn
+          retention-days: 90
