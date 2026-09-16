@@ -47,9 +47,10 @@ def load_e053() -> tuple[types.ModuleType, bytes]:
     base, data = load_v29()
 
     class Estimator(base.Estimator):
-        AGE_OLD2 = AGE_OLD2
-        R_OLD2 = R_OLD2
+        pass
 
+    Estimator.AGE_OLD2 = AGE_OLD2
+    Estimator.R_OLD2 = R_OLD2
     mod = types.ModuleType("e053_age6_r256")
     mod.Estimator = Estimator
     return mod, data
