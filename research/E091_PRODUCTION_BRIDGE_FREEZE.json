@@ -1,0 +1,83 @@
+{
+  "payload_sha256": "4df3155d926e1074bf8e333fd622877056aa99f8f7d09fd3707e50f9156ea331",
+  "payload": {
+    "schema": "arc.whitebox.e091.production_bridge_freeze.v1",
+    "experiment": "E091",
+    "status": "PRE_TARGET_FREEZE",
+    "selection_policy": {
+      "candidate_family": "physical pre-E045 production-shaped branches E042-E044",
+      "selection_rule": "select the sole candidate with measured utilization <= 0.135; target/error metrics are forbidden inputs to selection",
+      "candidates": [
+        {"experiment": "E042", "commit": "2590e05467bf6e2ab18c8c9c79f1d6c06093c8ad", "utilization": 0.17632888961497883, "eligible": false},
+        {"experiment": "E043", "commit": "d0108f7faccaa656d3908f5afeaa90e056881c71", "utilization": 0.05844036387543383, "eligible": true},
+        {"experiment": "E044", "commit": "5d5ae3dd1c260d34bb7cbd1060341ef86a823f0a", "utilization": 0.1354164792105621, "eligible": false}
+      ],
+      "selected_experiment": "E043",
+      "selected_commit": "d0108f7faccaa656d3908f5afeaa90e056881c71",
+      "selected_estimator_blob": "8777dde2b848dd8ae855f9040ca27b4c6f235989",
+      "selected_base_flops": 128511719225,
+      "selected_base_utilization": 0.05844036387543383
+    },
+    "feature_map": {
+      "name": "final_layer_coordinate_features_v1",
+      "scope": "final layer only; one feature row per output neuron; one shared ridge beta across all final-layer neurons",
+      "p": 16,
+      "columns": [
+        "1",
+        "base_final",
+        "base_final^2",
+        "base_final_layer_mean",
+        "base_final_layer_rms",
+        "base_final_centered",
+        "abs(base_final_centered)",
+        "incoming_last_weight_col_l2",
+        "incoming_last_weight_col_l2_centered",
+        "incoming_last_weight_col_mean",
+        "incoming_last_weight_col_abs_mean",
+        "linear_mean_proxy=base_prev@W_last_col",
+        "abs(linear_mean_proxy)",
+        "base_prev_layer_mean",
+        "base_prev_layer_rms",
+        "relu(linear_mean_proxy)"
+      ],
+      "target_arguments": [],
+      "permutation_equivariance": [
+        "equivariant to final-layer output-neuron permutation",
+        "invariant to jointly permuting previous-layer coordinates and rows of W_last"
+      ],
+      "preprocessing": {
+        "dtype": "float64",
+        "centering": "none",
+        "scaling": "none",
+        "imputation": "none",
+        "row_weighting": "uniform",
+        "feature_selection": "none"
+      },
+      "ridge": {
+        "lambda": 1.0,
+        "solver": "numpy.linalg.solve",
+        "jitter": "forbidden",
+        "pseudoinverse": "forbidden"
+      }
+    },
+    "cost_gate": {
+      "phase2_budget": 2199023255552,
+      "width": 1024,
+      "depth": 16,
+      "base_flops": 128511719225,
+      "feature_scalar_flops_ceiling": 16777216,
+      "correction_scalar_flops_ceiling": 32768,
+      "whole_candidate_flops_ceiling": 128528529209,
+      "whole_candidate_utilization_ceiling": 0.058448008171126276,
+      "utilization_limit": 0.135,
+      "slack_flops_after_ceiling": 168339610290
+    },
+    "corpus_policy": {
+      "new_calibration_targets_materialized_before_this_freeze": false,
+      "allowed": "new disjoint synthetic/reference networks generated only after this freeze commit",
+      "forbidden": ["public", "public-mini", "scorer", "holdout", "full-suite", "benchmark evaluation labels"],
+      "evaluation_split_unit": "whole synthetic network",
+      "no_feature_or_lambda_changes_after_target_materialization": true
+    }
+  }
+}
