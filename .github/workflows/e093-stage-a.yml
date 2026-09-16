@@ -1,0 +1,48 @@
+name: E093 deep-Strassen leaf feasibility
+
+on:
+  push:
+    branches:
+      - research/e093-deep-strassen-leaf-feasibility-20260917
+    paths:
+      - .github/workflows/e093-stage-a.yml
+
+jobs:
+  stage-a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen dependencies
+        run: python -m pip install -e .
+      - name: Verify protocol and source adapter import
+        run: |
+          test -f research/E093_PROTOCOL.md
+          python - <<'PY'
+          from methods.e093_v29_adapter import EXPECTED_BLOB, WIDTH, DEPTH
+          assert EXPECTED_BLOB == "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+          assert (WIDTH, DEPTH) == (1024, 16)
+          print("E093_PREFLIGHT_GREEN")
+          PY
+      - name: Run sole frozen Stage-A attribution
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e093_stage_a.py 2>&1 | tee e093-stage-a.log
+      - name: Upload immutable E093 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e093-stage-a
+          path: |
+            e093-stage-a.log
+            e093-stage-a.json
+          if-no-files-found: warn
+          retention-days: 90
