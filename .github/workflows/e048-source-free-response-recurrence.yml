@@ -1,0 +1,28 @@
+name: E048 source-free response recurrence
+
+on:
+  push:
+    branches:
+      - research/e048-source-free-response-recurrence-20260916
+    paths:
+      - tests/test_e048_source_free_response_recurrence.py
+      - methods/e048_source_free_response_recurrence.py
+      - .github/workflows/e048-source-free-response-recurrence.yml
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest
+      - name: Focused E048 synthetic falsifier
+        run: pytest -q tests/test_e048_source_free_response_recurrence.py
