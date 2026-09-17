@@ -1,0 +1,50 @@
+name: E100 frozen synthetic Stage-A
+
+on:
+  push:
+    branches:
+      - research/e100-crossfit-two-subspace-shrinkage-20260918
+    paths:
+      - "scripts/e100_stage_a.py"
+      - ".github/workflows/e100-stage-a.yml"
+
+jobs:
+  stage_a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen project dependencies
+        run: python -m pip install -e .
+      - name: Run sole frozen E100 Stage-A
+        shell: bash
+        run: |
+          set +e
+          python scripts/e100_stage_a.py 2>&1 | tee e100-stage-a.log
+          status=${PIPESTATUS[0]}
+          echo "${status}" > e100-stage-a-exit.txt
+          exit 0
+      - name: Upload immutable E100 Stage-A evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e100-stage-a
+          path: |
+            e100-stage-a.json
+            e100-stage-a.log
+            e100-stage-a-exit.txt
+          if-no-files-found: error
+      - name: Enforce frozen scientific gate terminal
+        if: always()
+        shell: bash
+        run: |
+          status=$(cat e100-stage-a-exit.txt)
+          exit "${status}"
