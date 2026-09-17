@@ -1,0 +1,57 @@
+{
+  "schema": "arc.whitebox.e100.independent_review_freeze.v1",
+  "experiment": "E100",
+  "authoritative_branch": "research/e100-orthogonal-gaussian-antithetic-20260918",
+  "protocol_commit": "e94a485b80a3e89bcb564dd43106727bea77450f",
+  "stage_a": {
+    "run": 35286592051,
+    "job": 105420177508,
+    "artifact_id": 10525165155,
+    "aggregate_orthogonal_over_iid": 0.1883275202813626,
+    "orthogonal_wins": 8,
+    "worst_ratio": 0.4780911047150302,
+    "production_utilization_ceiling": 0.06380971272801617
+  },
+  "review": {
+    "kind": "law_and_accounting_only_no_network_scientific_rerun",
+    "width": 32,
+    "blocks": 512,
+    "total_samples": 32768,
+    "candidate_seed": 100100,
+    "iid_float32_seed": 100101,
+    "iid_cast64_seed": 100102,
+    "gates": {
+      "antithetic_pair_max_abs": 0,
+      "direction_orthogonality_max_abs": 0.000005,
+      "variance_abs_from_one_max": 0.05,
+      "fourth_moment_abs_from_three_max": 0.3,
+      "marginal_variance_gap_vs_iid_max": 0.05,
+      "marginal_fourth_gap_vs_iid_max": 0.3,
+      "radius_sq_mean_relative_error_max": 0.02,
+      "radius_sq_variance_relative_error_max": 0.1,
+      "cost_recompute_exact_match": true,
+      "seed_sets_pairwise_disjoint": true
+    }
+  },
+  "theorem": {
+    "statement": "If Q is Haar orthogonal, each row q_i is uniform on S^(n-1); if R_i is independent with R_i^2~chi2_n, then R_i q_i~N(0,I) marginally. Adding -R_i q_i is antithetic and preserves unbiased sample means. QR of iid Gaussian with column signs chosen so diag(R)>=0 yields Haar Q.",
+    "finite_precision_caveat": "candidate rounds a float64 Haar-radius construction to float32, whereas the Stage-A iid comparator draws NumPy float32 normals directly; the review must quantify low-order marginal agreement but cannot make the two discrete RNG laws bit-identical."
+  },
+  "cost_model": {
+    "width": 1024,
+    "depth": 16,
+    "total_trajectories": 4096,
+    "qr_blocks_expected": 2,
+    "qr_square_flops_each": "(4/3)n^3",
+    "radial_and_reduction": "4*N*n",
+    "budget": "2^41"
+  },
+  "scope": {
+    "public": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
