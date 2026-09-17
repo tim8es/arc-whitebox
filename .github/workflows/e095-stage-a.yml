@@ -1,0 +1,51 @@
+name: E095 frozen synthetic Stage-A
+
+on:
+  push:
+    branches:
+      - research/e095-output-subspace-residual-sampling-20260917
+    paths:
+      - "scripts/e095_stage_a.py"
+      - ".github/workflows/e095-stage-a.yml"
+
+jobs:
+  stage_a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen project dependencies
+        run: python -m pip install -e .
+      - name: Run sole frozen E095 Stage-A
+        id: scientific
+        shell: bash
+        run: |
+          set +e
+          python scripts/e095_stage_a.py 2>&1 | tee e095-stage-a.log
+          status=${PIPESTATUS[0]}
+          echo "${status}" > e095-stage-a-exit.txt
+          exit 0
+      - name: Upload immutable E095 Stage-A evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e095-stage-a
+          path: |
+            e095-stage-a.json
+            e095-stage-a.log
+            e095-stage-a-exit.txt
+          if-no-files-found: error
+      - name: Enforce frozen scientific gate terminal
+        if: always()
+        shell: bash
+        run: |
+          status=$(cat e095-stage-a-exit.txt)
+          exit "${status}"
