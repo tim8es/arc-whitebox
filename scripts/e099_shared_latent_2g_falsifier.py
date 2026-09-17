@@ -61,7 +61,9 @@ def run_once() -> dict:
 
     # Exact eigenstructure for Sigma0 = v I - d d^T:
     # eigenvalue v with multiplicity n-1 and v - ||d||^2 once.
-    d_norm_sq = float(d @ d)
+    # Use the analytic constant-vector norm rather than a BLAS reduction so this
+    # structural identity is not contaminated by width-dependent summation error.
+    d_norm_sq = WIDTH * d_scalar * d_scalar
     lambda_min_closed = v - d_norm_sq
 
     sigma0 = np.eye(WIDTH, dtype=np.float64) * v - np.outer(d, d)
@@ -77,9 +79,10 @@ def run_once() -> dict:
         np.max(np.abs(reconstructed_k3 - target_k3))
     )
 
-    # A cheap numerical sanity check of the closed-form bad direction.
-    u = np.ones(WIDTH, dtype=np.float64) / math.sqrt(WIDTH)
-    rayleigh_bad_direction = float(u @ sigma0 @ u)
+    # Numerically stable scalar evaluation of the same all-ones bad direction:
+    # u^T Sigma0 u = v - (u^T d)^2 with u=1/sqrt(n).
+    u_dot_d = math.sqrt(WIDTH) * d_scalar
+    rayleigh_bad_direction = v - u_dot_d * u_dot_d
     rayleigh_vs_closed_abs = abs(rayleigh_bad_direction - lambda_min_closed)
 
     dense_flops_ceiling = DENSE_CEILING_MULTIPLIER * DEPTH * WIDTH**3
