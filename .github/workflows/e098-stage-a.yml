@@ -1,0 +1,37 @@
+name: E098 frozen Stage-A
+
+on:
+  push:
+    branches:
+      - research/e098-late-k22-edgeworth-response-20260918
+    paths:
+      - 'scripts/e098_late_k22_edgeworth.py'
+      - 'research/E098_PROTOCOL.md'
+      - '.github/workflows/e098-stage-a.yml'
+
+jobs:
+  frozen:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen NumPy
+        run: python -m pip install numpy==2.4.6
+      - name: Exactly one frozen E098 Stage-A falsifier
+        run: python scripts/e098_late_k22_edgeworth.py
+      - name: Upload immutable E098 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e098-stage-a
+          path: e098-stage-a.json
+          if-no-files-found: error
+          retention-days: 90
