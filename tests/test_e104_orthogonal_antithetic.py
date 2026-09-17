@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import inspect
 from types import SimpleNamespace
 
@@ -71,7 +72,16 @@ def test_billed_sampler_matches_reference_and_bills_exact_rng_delta() -> None:
 
 def test_billed_sampler_has_no_plain_numpy_rng_draw() -> None:
     source = inspect.getsource(orthogonal_antithetic_billed)
-    assert "np.random" not in source
+    tree = ast.parse(source)
+    plain_numpy_random = [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Attribute)
+        and node.attr == "random"
+        and isinstance(node.value, ast.Name)
+        and node.value.id == "np"
+    ]
+    assert plain_numpy_random == []
     assert "fnp.random.default_rng" in source
 
 
