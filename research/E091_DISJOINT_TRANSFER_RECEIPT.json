@@ -1,0 +1,67 @@
+{
+  "schema": "arc.whitebox.e091.disjoint_transfer_falsifier_receipt.v1",
+  "experiment": "E091",
+  "event": "DISJOINT_TRANSFER_GATE_FALSIFIER",
+  "branch": "research/e091-loo-ridge-readiness-20260916",
+  "base_head_before_receipt": "cf517ff79574f297da19218cbf752a873ea788cd",
+  "gate": "q_B > v_B/2",
+  "formulae": {
+    "q_B": "mean(r_B * s_B)",
+    "v_B": "mean(s_B * s_B)",
+    "delta_B": "2*q_B-v_B",
+    "identity": "MSE(r_B)-MSE(r_B-s_B)=delta_B"
+  },
+  "frozen_state": {
+    "production_freeze_commit": "c8c214b5f41d25516ad71118fa787bb4aa704f7e",
+    "selected_base": "E043",
+    "selected_base_commit": "d0108f7faccaa656d3908f5afeaa90e056881c71",
+    "feature_map": "final_layer_coordinate_features_v1",
+    "p": 16,
+    "ridge_lambda": 1.0,
+    "production_freeze_blob_sha": "d33a472f0848318e4b19c00afa008bd031119caa",
+    "production_receipt_blob_sha": "17edc6f2749dee0da27cf6e1b1157019725030d8",
+    "legacy_corpus_manifest_blob_sha": "24b5810db440f1e58c009403327dd0db244edea5",
+    "archive_reconciliation_commit": "cf517ff79574f297da19218cbf752a873ea788cd"
+  },
+  "observed_repository_evidence": {
+    "production_receipt_accuracy": {
+      "new_disjoint_production_corpus": "UNEXECUTED",
+      "ridge_fit": "UNEXECUTED",
+      "synthetic_network_holdout": "UNEXECUTED",
+      "raw_target_le_1.89e-8": "UNEXECUTED"
+    },
+    "archive_reconciliation_repeats_unexecuted_gaps": true,
+    "legacy_corpus_manifest_purpose": "local_reproducibility_only",
+    "admissible_disjoint_transfer_evidence_path": "research/E091_DISJOINT_TRANSFER_EVIDENCE.json",
+    "admissible_disjoint_transfer_evidence_present": false,
+    "can_reuse_legacy_local_corpus_as_B": false,
+    "reason": "No A/B production transfer split or frozen A-side beta was committed before target materialization. Re-splitting the already-materialized local/LOO corpus now would make corpus membership post-target and violate the frozen E091 corpus policy."
+  },
+  "result": {
+    "verdict": "DATA_ABSENT_NO_GATE_EVALUATION",
+    "scientific_go": false,
+    "q_B": null,
+    "v_B": null,
+    "v_B_over_2": null,
+    "delta_B": null,
+    "disjoint_transfer_established": false
+  },
+  "runnable_check": {
+    "path": "scripts/e091_disjoint_transfer_gate.py",
+    "expected_current_exit_code": 2,
+    "exit_codes": {
+      "0": "PASS",
+      "1": "FAIL_OR_INVALID_EVIDENCE",
+      "2": "DATA_ABSENT"
+    }
+  },
+  "scope": {
+    "public": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "single_next_admissible_candidate": "Freeze one E091/E043 whole-network synthetic transfer corpus with deterministic disjoint A/B network seeds, teacher/reference procedure and root IDs before any residual target is generated; then fit beta once on A and evaluate q_B>v_B/2 once on B with no resplit, refit, lambda/feature change, rerun or rescue."
+}
