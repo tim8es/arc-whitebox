@@ -1,0 +1,39 @@
+name: E101 multi-latent skew-rank falsifier
+
+on:
+  push:
+    branches:
+      - research/e101-multilatent-skew-rank-bound-20260918
+    paths:
+      - 'research/E101_PROTOCOL.md'
+      - 'scripts/e101_multilatent_skew_rank_falsifier.py'
+      - '.github/workflows/e101-multilatent-skew-rank.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exactly one frozen E101 analytic falsifier
+        run: python scripts/e101_multilatent_skew_rank_falsifier.py
+      - name: Upload immutable E101 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e101-multilatent-skew-rank-result
+          path: e101_multilatent_skew_rank_result.json
+          if-no-files-found: error
+          retention-days: 90
