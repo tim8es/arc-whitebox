@@ -1,0 +1,36 @@
+name: E103 sole production-shape run
+
+on:
+  push:
+    branches:
+      - research/e103-orthogonal-antithetic-production-shape-20260918
+    paths:
+      - 'scripts/e103_production_shape.py'
+      - '.github/workflows/e103-production-shape.yml'
+
+jobs:
+  production-shape:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen project dependencies
+        run: python -m pip install -e .
+      - name: Run sole E103 production-shape falsifier
+        run: python scripts/e103_production_shape.py
+      - name: Upload immutable E103 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e103-production-shape
+          path: e103-production-shape.json
+          if-no-files-found: error
+          retention-days: 90
