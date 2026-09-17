@@ -1,0 +1,74 @@
+{
+  "schema": "arc.whitebox.e094.spectrum_probe_freeze.v1",
+  "experiment": "E094",
+  "status": "PRE_EXECUTION_FREEZE",
+  "branch": "research/e094-source-axis-joint-compression-20260917",
+  "stage_a": {
+    "commit": "9d4233c552ff6666967da2af4cbf74df186c04f1",
+    "run": 35159208262,
+    "job": 105005774984,
+    "artifact_id": 10472306249,
+    "artifact_sha256": "7850bd96bee03fee0ebfa96913da5f6713401c67fcbdca298726ddee2edd4bde",
+    "decision": "STAGE_A_GO",
+    "symmetric_remaining_fraction_required": 0.452481568063298
+  },
+  "upstream": {
+    "repo": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "path": "estimators/estimator_v29.py",
+    "blob": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+  },
+  "synthetic_network": {
+    "width": 1024,
+    "depth": 16,
+    "seed": 94194,
+    "weight_distribution": "iid N(0,1/width), float32",
+    "biases": "none",
+    "targets": "none",
+    "public_data": false
+  },
+  "instrumentation": {
+    "mechanism": "read-only wrapper around exact V29 Estimator._dslices",
+    "capture_condition": "need_d21=true and source_count=14",
+    "right_stack": "[A_s,P_s] flattened per source",
+    "left_stack": "[LA_s,LP_s] from bufs['lap'] flattened per source after exact _dslices",
+    "groups": {
+      "old": "sources [0:ka]",
+      "young": "sources [ka:k]"
+    },
+    "prediction_identity_check": "exact np.array_equal between uninstrumented and instrumented V29 on same synthetic network"
+  },
+  "rank_rule": {
+    "relative_frobenius_tail_max": 0.001,
+    "group_rank": "max(rank_needed(right), rank_needed(left))",
+    "young_remaining_fraction": "rank_young / young_source_count",
+    "old_remaining_fraction": "rank_old / old_source_count"
+  },
+  "cost_gate": {
+    "non_source_units": 37.59,
+    "young_source_units": 115.61,
+    "old_source_units": 106.83,
+    "target_units": 138.24,
+    "projected_units": "37.59 + 115.61*fy + 106.83*fo"
+  },
+  "decision_rule": {
+    "go_if": [
+      "exact upstream blob verified",
+      "all predictions and spectra finite",
+      "instrumented prediction bitwise identical to uninstrumented",
+      "capture exactly once",
+      "k=14 and ka=10 and young_source_count=4 and old_source_count=10",
+      "projected_units <= 138.24"
+    ],
+    "on_fail": "TERMINAL_E094_NO_GO",
+    "on_pass": "SPECTRUM_FEASIBILITY_GO_ONLY; no scientific/raw GO"
+  },
+  "scope": {
+    "public": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
