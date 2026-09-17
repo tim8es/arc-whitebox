@@ -1,0 +1,51 @@
+{
+  "schema": "arc.whitebox.e091.phase2_disjoint_transfer_terminal.v1",
+  "experiment": "E091",
+  "event": "PHASE2_DISJOINT_TRANSFER_EXECUTION",
+  "branch": "research/e091-loo-ridge-readiness-20260916",
+  "freeze_commit": "2bb093ba00916a1dc86c30d578b0fb984f471025",
+  "freeze_payload_sha256": "fc639435da2cb108e46669dfe15a0b2114f635c543e686cf6267f464b667903d",
+  "implementation_commit": "7b3ae5e0994e63e4e427673346d70fd18dffccfd",
+  "workflow_commit": "fd6030ab0b97fb1bd163908472b4e8209b87a1e0",
+  "run": 35286329744,
+  "job": 105419375386,
+  "workflow_conclusion": "failure",
+  "artifact": {
+    "id": 10524995087,
+    "name": "e091-phase2-disjoint-transfer",
+    "sha256": "5f10fbe1ecabed097d6de9573bb69874c0ed45e214d16dfaa28f0394bcc66e46",
+    "size_bytes": 650
+  },
+  "materialization": {
+    "A_networks_materialized": 0,
+    "B_networks_materialized": 0,
+    "residual_targets_materialized": false,
+    "beta_fit": false,
+    "q_B": null,
+    "v_B": null,
+    "delta_B": null
+  },
+  "failure": {
+    "stage": "pre-target provenance check",
+    "exception": "RuntimeError",
+    "message": "blob mismatch for frozen E043 adapter",
+    "observed_by_buggy_checker": "78867ac1f8ccc9bef1bb90c48e11d850b6677667",
+    "expected_git_blob": "8777dde2b848dd8ae855f9040ca27b4c6f235989",
+    "physical_git_readback_blob": "8777dde2b848dd8ae855f9040ca27b4c6f235989",
+    "root_cause": "scripts/e091_phase2_transfer.py encoded the Git blob header as f\"blob {len(data)}\\\\0\", which hashes a literal backslash-plus-zero instead of the required NUL terminator f\"blob {len(data)}\\0\". The provenance source itself was not drifting.",
+    "scientific_gate_observed": false
+  },
+  "terminal_rule_applied": "The frozen corpus protocol declared any execution failure terminal and prohibited rerun/rescue. Although no target was materialized, this lane is closed rather than silently repairing and repeating the frozen run.",
+  "decision": "TERMINAL_EXECUTION_NO_GO",
+  "scientific_interpretation": "No conclusion about q_B > v_B/2 is available. E091 is closed by execution protocol, not by evidence that ridge transfer fails.",
+  "scope": {
+    "public": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_labels": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "no_rerun": true
+}
