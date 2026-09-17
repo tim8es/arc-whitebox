@@ -1,0 +1,36 @@
+name: E102 full-K3 tensor rank falsifier
+
+on:
+  push:
+    branches:
+      - research/e102-k3-tensor-rank-bound-20260918
+    paths:
+      - 'research/E102_PROTOCOL.md'
+      - 'scripts/e102_k3_tensor_rank_falsifier.py'
+      - '.github/workflows/e102-k3-tensor-rank.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exactly one frozen E102 analytic falsifier
+        run: python scripts/e102_k3_tensor_rank_falsifier.py
+      - name: Upload immutable E102 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e102-k3-tensor-rank-result
+          path: e102_k3_tensor_rank_result.json
+          if-no-files-found: error
+          retention-days: 90
