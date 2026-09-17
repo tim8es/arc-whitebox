@@ -1,0 +1,60 @@
+{
+  "schema": "arc.whitebox.e100.independent_review.receipt.v1",
+  "experiment": "E100",
+  "authoritative_lane": "research/e100-orthogonal-gaussian-antithetic-20260918",
+  "status": "INDEPENDENT_REVIEW_PASS",
+  "scientific_go": false,
+  "chronology": {
+    "authoritative_protocol_commit": "e94a485b80a3e89bcb564dd43106727bea77450f",
+    "conflicting_later_e100_protocol_commit": "d113433552638818688516f9c8d0526ecbd51341",
+    "occupancy_rule": "earliest protocol-first commit from same canonical base"
+  },
+  "stage_a": {
+    "run": 35286592051,
+    "job": 105420177508,
+    "artifact_id": 10525165155,
+    "aggregate_orthogonal_over_iid": 0.1883275202813626,
+    "wins": "8/8",
+    "worst_ratio": 0.4780911047150302,
+    "production_utilization_ceiling": 0.06380971272801617
+  },
+  "review": {
+    "freeze_commit": "c62392ebd8f7ed67befbb51455aff4149656c101",
+    "implementation_commit": "95819c0a58bfb91a560bb89892cc4f3d9bc8abd2",
+    "workflow_wiring_failure": {
+      "commit": "997edd42d48830b139a1e3fdb9a5286f07eee822",
+      "run": 35286888395,
+      "reason": "literal escaped newlines; no jobs created; no scientific execution"
+    },
+    "workflow_fix_commit": "bc1e60fc534ddf1dc3b49a1eaa9dc7dc83d28a1d",
+    "run": 35286924532,
+    "job": 105421199103,
+    "artifact_id": 10524278137,
+    "artifact_sha256": "3ae24f5c7264db5ecbb8c10f9e2402bc80b887129b876e1d806edbaed4fe8c0e",
+    "metrics": {
+      "antithetic_pair_max_abs": 0,
+      "direction_orthogonality_max_abs": 3.067622109301893e-8,
+      "candidate_variance": 1.0000208790856684,
+      "candidate_fourth_moment": 3.003915102895566,
+      "max_variance_gap_vs_two_iid_paths": 0.0029860256072760105,
+      "max_fourth_gap_vs_two_iid_paths": 0.028977190007176468,
+      "radius_sq_mean_relative_error": 0.000020879085668390474,
+      "radius_sq_variance_relative_error": 0.004504104330357861,
+      "total_flops": 140319042219,
+      "utilization": 0.06380971272801617,
+      "qr_blocks": 2
+    },
+    "theorem": "Gaussian QR with positive-diagonal sign correction yields Haar Q; each Haar row is uniform on the sphere; independent chi_n radial scaling gives N(0,I) marginal; antithetic negation preserves unbiasedness.",
+    "finite_precision_caveat": "candidate is float32 rounding of float64 Haar-radius Gaussian, while Stage-A iid comparator uses NumPy direct float32 standard_normal; discrete RNG laws are not bit-identical, although both target the same continuous N(0,I) marginal and low-order marginal checks passed."
+  },
+  "scope": {
+    "network_scientific_rerun": false,
+    "public": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "next_gate": "production-shape local package-safe implementation with flopscope accounting and target-free distribution/marginal checks; no public"
+}
