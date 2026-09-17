@@ -1,0 +1,64 @@
+{
+  "payload_sha256": "ec5cbbc1ccc61e5e20eab0c36238010c61efa8f1dac999184b2014df11cbb4a9",
+  "payload": {
+    "schema": "arc.whitebox.e091.production_shape_exact_family_freeze.v1",
+    "experiment": "E091",
+    "status": "PRE_TARGET_FREEZE",
+    "purpose": "single production-shape synthetic exact-ground-truth falsifier; no public/scorer/holdout/full",
+    "production_bridge_freeze_payload_sha256": "4df3155d926e1074bf8e333fd622877056aa99f8f7d09fd3707e50f9156ea331",
+    "base": {
+      "experiment": "E043",
+      "commit": "d0108f7faccaa656d3908f5afeaa90e056881c71",
+      "adapter_blob_sha": "8777dde2b848dd8ae855f9040ca27b4c6f235989",
+      "upstream_pinned_blob_sha": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "historical_measured_flops": 128511719225,
+      "historical_measured_utilization": 0.05844036387543383
+    },
+    "shape": {
+      "width": 1024,
+      "depth": 16,
+      "input_law": "N(0,I_1024)"
+    },
+    "exact_family": {
+      "name": "dense-first-positive-dense-suffix-v1",
+      "construction": "W1 iid N(0,1/width); W_l>=0 for l>=2 via lognormal/n scaling",
+      "first_layer_std": "1/sqrt(width)",
+      "suffix_lognormal_sigma": 0.35,
+      "suffix_column_sum_expected_gain": 0.97,
+      "dtype": "float32",
+      "exact_mean_rule": "mu1_j=||W1[:,j]||_2/sqrt(2*pi); for l>=2, mu_l=mu_(l-1)@W_l because W_l>=0 and h_(l-1)>=0",
+      "biases": "none"
+    },
+    "split": {
+      "unit": "whole synthetic network",
+      "calibration_seeds": [9109101, 9109102, 9109103],
+      "evaluation_seeds": [9109201, 9109202],
+      "no_overlap": true
+    },
+    "ridge": {
+      "feature_map": "final_layer_coordinate_features_v1",
+      "p": 16,
+      "lambda": 1.0,
+      "coefficient_sharing": "one beta in R^16 shared across all final-layer neurons and calibration networks",
+      "preprocessing": "none",
+      "no_tuning": true
+    },
+    "gates": {
+      "finite": true,
+      "base_patch_identity_exact": true,
+      "evaluation_networks_disjoint": true,
+      "bridge_measurement_matches_numpy_atol": 1e-12,
+      "whole_candidate_utilization_max": 0.135,
+      "heldout_corrected_raw_final_mse_max": 1.89e-08
+    },
+    "scope": {
+      "public": false,
+      "official_scorer": false,
+      "benchmark_holdout": false,
+      "full_suite": false,
+      "canonical_mutation": false,
+      "ledger_mutation": false
+    },
+    "terminal_rule": "If held-out raw MSE > 1.89e-8 or whole-candidate utilization > 0.135, E091 scientific NO-GO. No rescue, seed change, feature/lambda change, or rerun tuning."
+  }
+}
