@@ -28,5 +28,14 @@ jobs:
           python-version: '3.11'
       - name: Install focused dependencies
         run: python -m pip install -e . pytest
-      - name: RED production-shape exact-family tests
+      - name: Focused production-shape exact-family tests
         run: pytest -q tests/test_e091_production_shape_exact.py
+      - name: Exactly one frozen production-shape E091 falsifier
+        run: python scripts/e091_production_shape_exact_falsifier.py
+      - name: Upload immutable production-shape evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e091-production-shape-exact-result
+          path: e091-production-shape-exact-result.json
+          if-no-files-found: error
