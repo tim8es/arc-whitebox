@@ -1,0 +1,29 @@
+name: E100 focused RED-GREEN
+
+on:
+  push:
+    branches:
+      - research/e100-crossfit-two-subspace-shrinkage-20260918
+    paths:
+      - "tests/test_e100_crossfit_shrinkage.py"
+      - "methods/e100_crossfit_shrinkage.py"
+      - ".github/workflows/e100-red-green.yml"
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest
+      - name: Run E100 focused tests
+        run: python -m pytest -q tests/test_e100_crossfit_shrinkage.py
