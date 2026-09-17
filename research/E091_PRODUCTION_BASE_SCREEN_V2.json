@@ -1,0 +1,74 @@
+{
+  "schema": "arc.whitebox.e091.production_base_screen.v2",
+  "experiment": "E091",
+  "event": "CURRENT_HEAD_PRODUCTION_BASE_AUDIT",
+  "status": "E043_BUDGET_ADMISSIBLE_ACCURACY_UNRESOLVED",
+  "scientific_go": false,
+  "supersedes": {
+    "path": "research/E091_PRODUCTION_BASE_SCREEN.json",
+    "reason": "The v1 screen predates the pre-target E043 production-base freeze and therefore its NO_CURRENT_MEASURED_BASE_ADMISSIBLE status is stale on the current branch head."
+  },
+  "primary_evidence": {
+    "production_freeze_commit": "c8c214b5f41d25516ad71118fa787bb4aa704f7e",
+    "production_bridge_implementation_commit": "ac2c00e6a8c9cccd429944279d343d0fef438ddb",
+    "production_bridge_receipt_commit": "f3df0c0facd2306e93dfe93b31322ca884aa90e3",
+    "selected_base_experiment": "E043",
+    "selected_base_branch": "research/e043-terminal-adjoint-k3-20260915",
+    "selected_base_commit": "d0108f7faccaa656d3908f5afeaa90e056881c71",
+    "selected_estimator_blob": "8777dde2b848dd8ae855f9040ca27b4c6f235989",
+    "selected_base_run": 35017111251,
+    "selected_base_job": 104543203284,
+    "selected_base_artifact": 10415719340,
+    "selected_base_artifact_sha256": "e88d53876a42b48465163114fc647bf984bc291acc26d4e11437cf15d3ecf5d7"
+  },
+  "hard_targets": {
+    "budget_flops": 2199023255552,
+    "utilization_max": 0.135,
+    "raw_final_mse_max": 1.89e-08,
+    "official_width": 1024,
+    "official_depth": 16
+  },
+  "verified_base_measurement": {
+    "flops_used": 128511719225,
+    "utilization": 0.05844036387543383,
+    "raw_final_mse": 3.642770734802907e-06,
+    "finite": true,
+    "failures": 0,
+    "local_go_in_E043": false
+  },
+  "current_bridge_code": {
+    "feature_p": 16,
+    "width": 1024,
+    "base_flops_constant": 128511719225,
+    "feature_flops_ceiling_formula": "16*n*n",
+    "feature_flops_ceiling": 16777216,
+    "correction_flops_ceiling_formula": "2*p*n",
+    "correction_flops_ceiling": 32768,
+    "whole_candidate_flops_ceiling": 128528529209,
+    "whole_candidate_utilization_ceiling": 0.058448008171126276,
+    "utilization_limit": 0.135,
+    "budget_gate": true,
+    "slack_flops_after_ceiling": 168339610290.52,
+    "maximum_base_utilization_after_current_bridge_ceiling": 0.13499235570430757
+  },
+  "accuracy_burden": {
+    "base_raw_over_target_multiple": 192.73919231761414,
+    "required_fractional_mse_reduction_to_target": 0.9948116416387587,
+    "interpretation": "The budget gate is open, but the frozen p=16 shared final-layer correction must explain essentially all of the E043 final-layer residual energy to reach the hard raw target. This has not been demonstrated on a disjoint production-shaped corpus."
+  },
+  "frozen_decision": {
+    "cost": "PASS",
+    "accuracy": "UNRESOLVED_HIGH_RISK",
+    "old_v1_reject_gate": "SUPERSEDED_FOR_CURRENT_HEAD",
+    "e091_terminal_no_go": false,
+    "next_kill_gate": "Run a target-free-feature span falsifier and then a preregistered disjoint synthetic-network residual-span test. If the held-out signed residual outside col(X) alone implies MSE > 1.89e-8, terminate E091 without public/scorer/holdout/full."
+  },
+  "scope": {
+    "new_public": false,
+    "new_scorer": false,
+    "new_holdout": false,
+    "new_full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
