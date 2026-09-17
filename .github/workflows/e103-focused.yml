@@ -1,0 +1,29 @@
+name: E103 focused package preflight
+
+on:
+  push:
+    branches:
+      - research/e103-orthogonal-antithetic-production-shape-20260918
+    paths:
+      - 'methods/e103_orthogonal_antithetic.py'
+      - 'tests/test_e103_orthogonal_antithetic.py'
+      - '.github/workflows/e103-focused.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run E103 focused tests
+        run: python -m pytest -q tests/test_e103_orthogonal_antithetic.py
