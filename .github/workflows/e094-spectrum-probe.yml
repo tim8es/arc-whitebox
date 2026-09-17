@@ -1,0 +1,37 @@
+name: E094 official-shape source spectrum probe
+
+on:
+  push:
+    branches:
+      - research/e094-source-axis-joint-compression-20260917
+    paths:
+      - 'research/E094_SPECTRUM_PROBE_FREEZE.json'
+      - 'scripts/e094_spectrum_probe.py'
+      - '.github/workflows/e094-spectrum-probe.yml'
+
+jobs:
+  spectrum:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e .
+      - name: Run frozen source-spectrum probe
+        run: python scripts/e094_spectrum_probe.py
+      - name: Upload immutable spectrum receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e094-spectrum-probe
+          path: e094-spectrum-probe.json
+          if-no-files-found: error
+          retention-days: 90
