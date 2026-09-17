@@ -1,0 +1,70 @@
+{
+  "payload_sha256": "fc639435da2cb108e46669dfe15a0b2114f635c543e686cf6267f464b667903d",
+  "payload": {
+    "schema": "arc.whitebox.e091.phase2_disjoint_transfer_freeze.v1",
+    "experiment": "E091",
+    "status": "PRE_TARGET_FREEZE",
+    "parent_transfer_falsifier_commit": "d9c5d08dbdc858047776f5801cfa0f95b7e60193",
+    "base": {
+      "experiment": "E043",
+      "commit": "d0108f7faccaa656d3908f5afeaa90e056881c71",
+      "adapter_blob": "8777dde2b848dd8ae855f9040ca27b4c6f235989",
+      "upstream_v25_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "upstream_v25_blob": "195373a110215256b759d7c172ba8c923c62e5cc"
+    },
+    "teacher": {
+      "experiment": "E051",
+      "commit": "642b6b0f5ec549a3c0f9e3fdb54fbae09a000133",
+      "adapter_blob": "513677e2257c22951a6fa96c603a6d66707d3700",
+      "upstream_v29_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "upstream_v29_blob": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+      "role": "deterministic high-accuracy reference only; teacher FLOPs are offline evidence cost and never counted as deployable E091 inference"
+    },
+    "network_generator": {
+      "source": "AIcrowd/whest-starterkit local_engine.build_mlp",
+      "source_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "rule": "PCG/default_rng(seed); each of depth weight matrices is float32 N(0,2/width)",
+      "width": 1024,
+      "depth": 16,
+      "input_distribution": "standard normal implicit task distribution; no sampled targets or benchmark labels are read"
+    },
+    "split": {
+      "unit": "whole synthetic network seed",
+      "A_fit_seeds": [915100, 915101],
+      "B_transfer_seeds": [915200, 915201],
+      "root_ids_A": ["e091-A-915100", "e091-A-915101"],
+      "root_ids_B": ["e091-B-915200", "e091-B-915201"],
+      "disjoint": true
+    },
+    "feature_and_fit": {
+      "feature_map": "final_layer_coordinate_features_v1",
+      "feature_freeze_commit": "c8c214b5f41d25516ad71118fa787bb4aa704f7e",
+      "p": 16,
+      "ridge_lambda": 1.0,
+      "preprocessing": "none",
+      "fit_rule": "pool all final-layer neuron rows from A; beta=solve(X_A.T@X_A + I, X_A.T@r_A)",
+      "residual_target": "teacher_V29_final - base_E043_final",
+      "no_refit_on_B": true
+    },
+    "transfer_gate": {
+      "s_B": "X_B @ beta_A",
+      "q_B": "mean(r_B * s_B)",
+      "v_B": "mean(s_B * s_B)",
+      "delta_B": "2*q_B-v_B",
+      "pass": "q_B > v_B/2 AND corrected_B_mse < baseline_B_mse",
+      "identity_tolerance": 1e-12,
+      "finite_required": true,
+      "per_network_direction_required": true
+    },
+    "scope": {
+      "public": false,
+      "official_scorer": false,
+      "holdout": false,
+      "full_suite": false,
+      "benchmark_labels": false,
+      "canonical_mutation": false,
+      "ledger_mutation": false
+    },
+    "terminal_rule": "Exactly one materialization/evaluation of this frozen A/B corpus. Any execution failure, nonfinite value, identity mismatch, aggregate gate failure, or either B-network delta<=0 => terminal E091 transfer NO-GO. No seed change, resplit, refit, lambda/feature change, rerun, rescue or tuning."
+  }
+}
