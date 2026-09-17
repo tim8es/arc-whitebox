@@ -1,0 +1,27 @@
+name: E091 E051-base feasibility
+
+on:
+  push:
+    branches:
+      - research/e091-loo-ridge-readiness-20260916
+    paths:
+      - 'scripts/e091_e051_base_feasibility.py'
+      - '.github/workflows/e091-e051-base-feasibility.yml'
+
+jobs:
+  feasibility:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run strict E051-base lower-bound benchmark
+        run: python scripts/e091_e051_base_feasibility.py
+      - name: Upload immutable feasibility receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: e091-e051-base-feasibility
+          path: e091-e051-base-feasibility.json
+          if-no-files-found: error
