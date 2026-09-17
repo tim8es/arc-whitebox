@@ -1,0 +1,29 @@
+name: E104 focused complete-billing preflight
+
+on:
+  push:
+    branches:
+      - research/e104-orthogonal-antithetic-complete-billing-20260918
+    paths:
+      - 'methods/e104_orthogonal_antithetic.py'
+      - 'tests/test_e104_orthogonal_antithetic.py'
+      - '.github/workflows/e104-focused.yml'
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run frozen E104 focused accounting tests
+        run: python -m pytest -q tests/test_e104_orthogonal_antithetic.py
