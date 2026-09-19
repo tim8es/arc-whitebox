@@ -1,0 +1,171 @@
+{
+  "schema": "arc.whitebox.e119.skeptical_scaling_terminal_receipt.v1",
+  "experiment": "E119",
+  "review_id": "ARC-E119-SKEPTICAL-SCALING-COMPRESSION-20260919",
+  "status": "TERMINAL_NO_GO_E119_GENERIC_ABSOLUTE_L1_BOUNDARY_COMPRESSION",
+  "branch": "review/e119-adversarial-scaling-compression-20260919",
+  "reviewed_parent": {
+    "branch": "research/e119-generic-boundary-flux-certificate-20260919",
+    "commit": "de346277894ccb89ceef39e76ca6d8f12853b2ee"
+  },
+  "mechanism_under_review": "generic weight-driven exact boundary construction plus frozen independent-atom absolute-L1 omitted-flux certificate",
+  "mathematical_adversary": {
+    "transform": "multiply every layer weight by the same positive scalar s",
+    "s": 8,
+    "identity": "for depth L zero-bias ReLU networks, h_L_scaled(x)=s^L h_L_base(x)",
+    "consequences": [
+      "activation signs unchanged",
+      "boundary angles unchanged",
+      "region partition unchanged",
+      "final scalar derivative jumps multiply by s^L"
+    ],
+    "fixed_omitted_flux_l1_budget": 0.000689208828456787,
+    "implication": "for any finite small network with minimum nonzero jump m>0, choosing s with s^L*m>L_flux forces the frozen E119 certificate to retain every nonzero atom"
+  },
+  "frozen_cases": [
+    {
+      "name": "A",
+      "width": 4,
+      "depth": 3,
+      "seed": 119401,
+      "scale_total": 512,
+      "layer_region_counts": [
+        9,
+        17,
+        21
+      ],
+      "final_boundary_atoms": 21,
+      "nonzero_atoms": 20,
+      "zero_atoms": 1,
+      "omitted_total_atoms": 1,
+      "omitted_nonzero_atoms": 0,
+      "retained_nonzero_fraction": 1,
+      "min_nonzero_abs_jump": 13.102208826836046,
+      "min_nonzero_over_budget": 19010.50637464019,
+      "reference_boundary_angle_max_error": 0,
+      "reference_jump_max_abs_error": 0,
+      "generic_mean_reference_abs_error": 2.842170943040401e-14,
+      "base_scaled_boundary_angle_max_error": 0,
+      "jump_scaling_relative_error": 0,
+      "abs_remainder_certificate": 0,
+      "compressed_bias_abs": 0,
+      "all_in_accounted_flops": 11076
+    },
+    {
+      "name": "B",
+      "width": 6,
+      "depth": 4,
+      "seed": 119601,
+      "scale_total": 4096,
+      "layer_region_counts": [
+        13,
+        23,
+        33,
+        51
+      ],
+      "final_boundary_atoms": 51,
+      "nonzero_atoms": 50,
+      "zero_atoms": 1,
+      "omitted_total_atoms": 1,
+      "omitted_nonzero_atoms": 0,
+      "retained_nonzero_fraction": 1,
+      "min_nonzero_abs_jump": 60.611593203615925,
+      "min_nonzero_over_budget": 87943.72721448132,
+      "reference_boundary_angle_max_error": 0,
+      "reference_jump_max_abs_error": 2.2737367544323206e-13,
+      "generic_mean_reference_abs_error": 0,
+      "base_scaled_boundary_angle_max_error": 0,
+      "jump_scaling_relative_error": 0,
+      "abs_remainder_certificate": 0,
+      "compressed_bias_abs": 0,
+      "all_in_accounted_flops": 45714
+    },
+    {
+      "name": "C",
+      "width": 8,
+      "depth": 4,
+      "seed": 119801,
+      "scale_total": 4096,
+      "layer_region_counts": [
+        17,
+        33,
+        53,
+        61
+      ],
+      "final_boundary_atoms": 61,
+      "nonzero_atoms": 60,
+      "zero_atoms": 1,
+      "omitted_total_atoms": 1,
+      "omitted_nonzero_atoms": 0,
+      "retained_nonzero_fraction": 1,
+      "min_nonzero_abs_jump": 20.978571176929307,
+      "min_nonzero_over_budget": 30438.62804819636,
+      "reference_boundary_angle_max_error": 0,
+      "reference_jump_max_abs_error": 9.094947017729282e-13,
+      "generic_mean_reference_abs_error": 4.547473508864641e-13,
+      "base_scaled_boundary_angle_max_error": 0,
+      "jump_scaling_relative_error": 0,
+      "abs_remainder_certificate": 0,
+      "compressed_bias_abs": 0,
+      "all_in_accounted_flops": 96856
+    }
+  ],
+  "gates": {
+    "all_weights_dense_and_finite": true,
+    "generic_exact_reference_all_pass": true,
+    "boundary_geometry_scaling_invariant_all": true,
+    "jump_scaling_law_all_pass": true,
+    "deterministic_replay_exact": true,
+    "rigorous_remainder_certificate_all_pass": true,
+    "at_least_one_nonzero_atom_omitted_each_case": false,
+    "adversary_success_all_cases": true
+  },
+  "execution": {
+    "protocol_commit": "e4d5a451566d4f955cccb3b27aa0146d4d899cc1",
+    "implementation_commit": "aa5d9663b36811e9ae1481f942eddd2686d25bfe",
+    "workflow_commit": "484402448fbd8a25d4bfa748ecaa09b3872dc8b8",
+    "run_id": 35458306325,
+    "job_id": 105937434015,
+    "conclusion": "success",
+    "artifact_id": 10589765209,
+    "artifact_name": "e119-skeptical-scaling-adversary",
+    "artifact_zip_sha256": "d3667fa2215e0c748269d103329f56ade74733427a226c80fa191d5182cf0240",
+    "artifact_size_bytes": 4140
+  },
+  "verdict": {
+    "exact_boundary_construction": "SURVIVES",
+    "e114_boundary_flux_exactness": "NOT_FALSIFIED",
+    "e119_frozen_absolute_l1_compression": "TERMINAL_NO_GO_AS_GENERIC_MATERIAL_COMPRESSION",
+    "reason": "positive layer scaling preserves the exact boundary geometry while amplifying every nonzero final scalar flux jump; on all three dense frozen networks the smallest nonzero jump exceeds the fixed omission budget by 1.90e4x to 8.79e4x, so the rigorous certificate retains 100% of nonzero atoms",
+    "scope_limit": "does not rule out cancellation-aware, grouped, relative-error, symbolic, scale-normalized, or otherwise new compression mechanisms"
+  },
+  "evidence_status": {
+    "VERIFIED": [
+      "dense width-4/depth-3, width-6/depth-4, width-8/depth-4 adversarial constructions",
+      "exact agreement with independent E114 angular reference",
+      "positive-scaling invariance of region geometry",
+      "s^depth scaling of all scalar jumps",
+      "100% retention of nonzero boundary atoms under frozen E119 certificate",
+      "certificate remains rigorous",
+      "deterministic replay",
+      "Actions artifact digest"
+    ],
+    "UNEXECUTED": [
+      "production width-1024/depth-16",
+      "alternative cancellation-aware/grouped/symbolic compression",
+      "public/benchmark/scorer/holdout/full"
+    ]
+  },
+  "scope": {
+    "target_free": true,
+    "targets_read": false,
+    "public": false,
+    "benchmark": false,
+    "scorer": false,
+    "holdout_full": false,
+    "tuning": false,
+    "seed_or_scale_sweep": false,
+    "canonical_mutation": false,
+    "ledger_mutation": false
+  }
+}
