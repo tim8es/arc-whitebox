@@ -1,0 +1,143 @@
+{
+  "schema": "arc.whitebox.e112.terminal_receipt.v1",
+  "experiment": "E112",
+  "idempotency_key": "ARC-E112-EXACT-MASK-MESSAGE-TREEWIDTH-20260919",
+  "status": "TERMINAL_STRUCTURAL_NO_GO_DROP",
+  "branch": "research/e112-exact-mask-message-treewidth-20260919",
+  "parent_branch": "research/e111-late4-gaussian-relu-plugin-cost-20260919",
+  "parent_head": "9d0dcc429fc4b62a6607ea28c97fbb44327dbaf2",
+  "candidate": {
+    "family": "exact finite-state activation-mask junction-tree message passing",
+    "purpose": "model post-ReLU non-Gaussian dependence exactly via activation-cone mask state",
+    "control_variate": false,
+    "gaussian_plugin": false,
+    "cumulant_closure": false,
+    "target_fit": false
+  },
+  "provenance": {
+    "protocol_commit": "20cbcc3c80c1ec25f9263a7d343a09e80346103b",
+    "method_commit": "eeddcc1084654dee87bad9afdf7e8a91f035d73d",
+    "tests_commit": "017ff6e9bc26f7c8b8a55f2cf34ac8883ad30e0b",
+    "falsifier_commit": "17d40e381d28831d29332d0f55b44c95b9bf9f79",
+    "workflow_head": "b7b606aa9846d609e7c84ce67a8264d2bfb904f1"
+  },
+  "exact_small_falsifier": {
+    "widths": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "depth": 4,
+    "seeds": [
+      112002,
+      112003,
+      112004,
+      112005,
+      112006,
+      112007,
+      112008
+    ],
+    "all_weight_matrices_fully_dense": true,
+    "all_weight_matrices_full_rank": true,
+    "all_primal_graphs_complete": true,
+    "all_exact_treewidth_equal_n_minus_1": true,
+    "all_first_layer_masks_feasible_by_onto_certificate": true,
+    "treewidth_by_width": {
+      "2": 1,
+      "3": 2,
+      "4": 3,
+      "5": 4,
+      "6": 5,
+      "7": 6,
+      "8": 7
+    },
+    "bag_bits_by_width": {
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8
+    },
+    "explicit_states_by_width": {
+      "2": 4,
+      "3": 8,
+      "4": 16,
+      "5": 32,
+      "6": 64,
+      "7": 128,
+      "8": 256
+    },
+    "deterministic_replay_bitwise_json_equal": true,
+    "deterministic_sha256": "28b4ef994001dda695defea0652d03894dd76f1de46d439129486d0817192a6b",
+    "finite": true,
+    "failures": 0
+  },
+  "structural_proof": {
+    "factor_scope": "for dense W_(l+1), every next-layer sign/moment factor touches every prior mask bit",
+    "primal_graph": "K_n",
+    "treewidth": "n-1",
+    "bag_bits": "n",
+    "explicit_table_states": "2^n",
+    "reachability": "if square W1 is full rank, x->W1 x is onto and every preactivation orthant/sign mask is feasible",
+    "scope_of_claim": "lower bound applies to the frozen explicit finite-state mask-message estimator family, not all possible symbolic cone algorithms"
+  },
+  "production_admission": {
+    "width": 1024,
+    "budget_flops": 2199023255552,
+    "utilization_cap": 0.13,
+    "budget_cap_flops": 285873023221.76,
+    "max_bag_bits_even_at_one_flop_per_state": 38,
+    "required_bag_bits": 1024,
+    "dense_primal_treewidth": 1023,
+    "explicit_table_log10_states": 308.25471555991675,
+    "one_flop_per_state_log2_utilization_lower_bound": 983,
+    "one_flop_per_state_log10_utilization_lower_bound": 295.91248573769354,
+    "representation_fits_budget": false,
+    "production_shape_authorized": false,
+    "production_shape_run": false
+  },
+  "execution": {
+    "run": 35455011080,
+    "job": 105928633045,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "5 passed in 3.53s",
+    "rerun": false,
+    "artifact": {
+      "name": "e112-mask-message-treewidth",
+      "id": 10588420977,
+      "size_bytes": 3123,
+      "zip_sha256": "f6f1173527c3d659e9a3faea78e42b531d94c5423ec4b5ebb539b3f87e8bcfff",
+      "expires_at": "2026-12-18T16:27:26Z"
+    }
+  },
+  "blocker": "Dense full-rank post-ReLU dependence destroys the separator compression needed by explicit finite-state mask message passing: the exact junction-tree bag is width 1024 and requires 2^1024 states, while the entire competition budget could support at most 38 binary bag bits even under the impossible optimistic cost of one FLOP per state.",
+  "interpretation": {
+    "e111_connection": "E111 showed moment-Gaussianization bias; E112 attempted to preserve the non-Gaussian mask dependence exactly instead of approximating it.",
+    "result": "Exact dependence representation is structurally correct but computationally inadmissible for dense width-1024 layers.",
+    "next_search_constraint": "A successor must compress non-Gaussian dependence without explicit full activation-mask state; viable mechanisms need a certified low-dimensional sufficient statistic, sparse conditional structure, or a controlled approximation/remainder bound."
+  },
+  "scope": {
+    "cheap_structural_only": true,
+    "trajectory_forward_pass": false,
+    "production_shape_run": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
