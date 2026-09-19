@@ -1,0 +1,31 @@
+name: E114 skeptical boundary-retention review
+
+on:
+  push:
+    branches:
+      - review/e114-skeptical-output-boundaries-20260919
+    paths:
+      - research/E114_SKEPTICAL_REVIEW_PROTOCOL.md
+      - scripts/e114_skeptical_boundary_retention.py
+      - .github/workflows/e114-skeptical-boundary-retention.yml
+  workflow_dispatch:
+
+jobs:
+  skeptical-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run frozen skeptical reviewer
+        run: |
+          python scripts/e114_skeptical_boundary_retention.py --output e114_skeptical_boundary_retention.json
+      - name: Upload review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e114-skeptical-boundary-retention
+          path: e114_skeptical_boundary_retention.json
+          if-no-files-found: error
