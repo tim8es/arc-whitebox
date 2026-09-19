@@ -177,6 +177,7 @@ def build_generic_boundary_flux(
         "root_solve_candidates": 0,
         "midpoint_trig": 0,
         "midpoint_signs": 0,
+        "coefficient_mask_apply": 0,
         "boundary_tangent_trig": 0,
         "scalar_jump_eval": 0,
         "sort": 0,
@@ -221,6 +222,7 @@ def build_generic_boundary_flux(
                     )
                     manual["midpoint_signs"] += 4 * int(pre.shape[0])
                     active = (pre @ q) > 0.0
+                    manual["coefficient_mask_apply"] += 2 * int(pre.shape[0])
                     coeff = pre.copy()
                     coeff[~active, :] = 0.0
                     next_sectors.append(GenericSector(left, right, coeff))
