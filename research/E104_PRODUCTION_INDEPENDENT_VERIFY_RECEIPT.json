@@ -1,0 +1,105 @@
+{
+  "schema": "arc.whitebox.e104.production_independent_verify.receipt.v1",
+  "experiment": "E104",
+  "status": "PRODUCTION_SHAPE_INDEPENDENT_VERIFY_PASS",
+  "mechanism_changed": false,
+  "source_review": {
+    "branch": "research/e104-haar-radial-raoblackwell-20260918",
+    "protocol_commit": "f85ce2487ae953f20b611b327d2269f1c54548fc",
+    "stage_a_implementation_commit": "12f355b8d905007ceb2abc139440468ffb47ac8f",
+    "stage_a_implementation_blob": "31f93faeb7fa562aaf7d47553eb0ab3b66c98aac",
+    "stage_a_workflow_commit": "d21ee2567124fe73f124218c3033ff0a2a6123b5",
+    "result_commit": "785be77d27eb6770b251a87182184281fb571949",
+    "stage_a_run": 35287541033,
+    "stage_a_job": 105423103388,
+    "stage_a_artifact_id": 10524219347,
+    "stage_a_artifact_sha256": "37fc50e20a084aa1e59a59443da9ce7022a2dbee13a88e7d643970d291af4301",
+    "stage_a_result_crosscheck": "physical Actions job and artifact digest agree with E104_RESULT.md"
+  },
+  "independent_verifier": {
+    "freeze_commit": "31ba85f3f55e5b860671c0fbfc73ebc05e75f426",
+    "implementation_commit": "68ee13214342056c216ed500abd9a5ea6a77f5c6",
+    "implementation_blob": "3237142f266530e57873ce94172b14eb2d7c1b11",
+    "workflow_commit": "95c353cc9cc6ca15837fc3da5d2cdd22d2ee2323",
+    "workflow_blob": "da13796a7239ba567739e4f68a7387ff67a206cd",
+    "run": 35446062235,
+    "job": 105905067035,
+    "artifact_id": 10584569066,
+    "artifact_sha256": "3a22b369883b141be19528acec69df9165be627976152ad845e35c5f90320237",
+    "artifact_size_bytes": 1017
+  },
+  "frozen_shape": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories": 4096,
+    "weight_seed": 104104,
+    "direction_seed": 104105,
+    "budget": 2199023255552,
+    "radius_rule": "analytic E[chi_1024], no random radius",
+    "mean_chi_radius": 31.992188454829048
+  },
+  "execution": {
+    "executions": 2,
+    "first": {
+      "finite": true,
+      "prediction_shape": [
+        16,
+        1024
+      ],
+      "prediction_max_abs": 4.141964613460004,
+      "prediction_sha256": "ae0bfae00c7379673320a3a098c716272c7d9164588bcc73bd59bc7516c017e0",
+      "antithetic_pair_max_abs": 0,
+      "radius_max_abs_vs_mean_chi": 1.5591637847478523e-7,
+      "wall_s": 1.906530011000001
+    },
+    "second": {
+      "finite": true,
+      "prediction_shape": [
+        16,
+        1024
+      ],
+      "prediction_max_abs": 4.141964613460004,
+      "prediction_sha256": "ae0bfae00c7379673320a3a098c716272c7d9164588bcc73bd59bc7516c017e0",
+      "antithetic_pair_max_abs": 0,
+      "radius_max_abs_vs_mean_chi": 1.5591637847478523e-7,
+      "wall_s": 1.8941947160000012
+    },
+    "deterministic": {
+      "prediction_bitwise_equal": true,
+      "prediction_repeat_max_abs": 0,
+      "flop_ledger_exactly_equal": true
+    },
+    "homogeneity_relative_error": 6.874805456226369e-7
+  },
+  "measured_flops": {
+    "input_construction": 11474238128,
+    "each_layer": 8598323200,
+    "layer_count": 16,
+    "layer_total": 137573171200,
+    "finalization": 32768,
+    "reconciled_sum": 149047442096,
+    "flopscope_total": 149047442096,
+    "exact_reconciliation": true,
+    "utilization": 0.06777892944955966,
+    "gate_0_12": true,
+    "gate_0_135": true
+  },
+  "accounting_crosscheck": {
+    "e103_measured_flops": 149047446192,
+    "e104_minus_e103": -4096,
+    "note": "The independent E104 verifier is 4096 billed FLOPs below E103; the production network cost is otherwise identical in scale. This is a corroborating cross-check, not a gate."
+  },
+  "verdict": "PASS",
+  "scientific_go": false,
+  "raw_mse_evaluated": false,
+  "scope": {
+    "public": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
