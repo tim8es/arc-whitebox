@@ -1,0 +1,73 @@
+{
+  "schema": "arc.whitebox.e113.terminal_receipt.v1",
+  "experiment": "E113",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "competition_go": false,
+  "branch": "research/e113-top4-gate-conditioned-plugin-20260919",
+  "protocol_commit": "f7a38cdbcbefc48af880a51f24aefb90fc5b9e0d",
+  "implementation_commit": "eb7a82bb9006a41d92e7ef2a047e386600758cd0",
+  "verifier_commit": "277a71ce349879ad1ff024b4f8dd25d4f6c207f8",
+  "arm_commit": "0570a76b07362c9d3df52c4190850391c2a4389a",
+  "result_commit": "abd999898d9976739393e31157508cddd389050b",
+  "execution": {
+    "run": 35455222505,
+    "job": 105929188669,
+    "conclusion": "success",
+    "artifact_id": 10587877752,
+    "artifact_name": "e113-exact-gate",
+    "artifact_zip_sha256": "67b1f603eb680825aef96ff4e031ad04be9302e2fd11ed974250685f5a3b7a32",
+    "artifact_json_sha256": "c576acd35e02c16c2e2856681327c13c617a77a69fa349ae0430efeb3ce5182d",
+    "rerun": false
+  },
+  "exact_gate": {
+    "latent_dim": 2,
+    "width": 8,
+    "depth": 4,
+    "seed": 113113,
+    "topk_parent_gates": 4,
+    "state_count": 16,
+    "monte_carlo": false,
+    "numerical_quadrature": false,
+    "state_probability_max_abs_error": 2.220446049250313e-16,
+    "deterministic_repeat_max_abs": 0
+  },
+  "measured": {
+    "layer_bias_mse": [
+      3.490748024201865e-33,
+      0.0003732303736648083,
+      0.0022719924228266947,
+      0.0025704565401863883
+    ],
+    "pooled_all_layer_bias_mse": 0.0013039198341694728,
+    "final_bias_mse": 0.0025704565401863883,
+    "final_gaussian_bias_mse": 0.03250972934646355,
+    "final_over_gaussian": 0.07906730052386626,
+    "final_over_target": 136002.99154425334
+  },
+  "cost": {
+    "all_in_upper_flops": 151720512434,
+    "utilization": 0.06899450110449834,
+    "cap": 0.13,
+    "pass": true
+  },
+  "gates": {
+    "integrity": true,
+    "final_bias_le_target": false,
+    "pooled_bias_le_target": false,
+    "strictly_better_than_gaussian": true
+  },
+  "scope": {
+    "public": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
