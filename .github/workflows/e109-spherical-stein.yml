@@ -1,0 +1,40 @@
+name: E109 spherical-Stein Jacobian control variate
+
+on:
+  push:
+    branches:
+      - research/e109-spherical-stein-jacobian-cv-20260919
+    paths:
+      - 'methods/e109_spherical_stein.py'
+      - 'tests/test_e109_spherical_stein.py'
+      - 'scripts/e109_spherical_stein.py'
+      - '.github/workflows/e109-spherical-stein.yml'
+
+jobs:
+  e109:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E109 tests
+        run: python -m pytest -q tests/test_e109_spherical_stein.py
+      - name: Run sole frozen E109 production falsifier
+        run: python scripts/e109_spherical_stein.py
+      - name: Upload immutable E109 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e109-spherical-stein-jacobian
+          path: e109-spherical-stein-jacobian.json
+          if-no-files-found: error
+          retention-days: 90
