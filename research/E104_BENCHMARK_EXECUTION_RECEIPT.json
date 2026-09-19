@@ -1,0 +1,134 @@
+{
+  "schema": "arc.whitebox.e104.benchmark_owner.execution_receipt.v1",
+  "experiment": "E104",
+  "idempotency_key": "ARC-E104-BENCHMARK-OWNER-MINI0-20260919",
+  "status": "TERMINAL_NO_GO",
+  "final_verdict": "E104_MINI0_RAW_MSE_NO_GO",
+  "branch": "research/e104-benchmark-owner-successor-20260919",
+  "authorization": {
+    "successor_protocol_commit": "7ab984ab5de5e877243348611ad55d7f7964498d",
+    "authorization_receipt_commit": "514ce0041ae4e1f9020d1b90c7641bd048a54ab5",
+    "arm_commit": "a37debc444373ed286165ecf71ff4ca85b81f265",
+    "exactly_one_run_verified": true,
+    "rerun": false,
+    "tuning": false
+  },
+  "target": {
+    "dataset": "aicrowd/arc-whestbench-public-2026",
+    "revision": "v2-phase2",
+    "split": "mini",
+    "index": 0,
+    "target_field": "final_means",
+    "target_shape": [
+      1024
+    ]
+  },
+  "workflow_evidence": {
+    "run": 35449587126,
+    "workflow_id": 362116718,
+    "run_number": 1,
+    "run_attempt": 1,
+    "job": 105914307484,
+    "status": "completed",
+    "conclusion": "failure",
+    "failure_reason": "Frozen raw-MSE scientific gate failed; harness exits 2 on benchmark_go=false.",
+    "artifact": {
+      "name": "e104-benchmark-owner-mini0",
+      "id": 10585484845,
+      "size_bytes": 2757,
+      "sha256": "160f4d7f8479226cb00fbf13c47951444ca014cba9896bf5ccf76036e3dc6c25",
+      "expires_at": "2026-12-18T14:43:05Z"
+    }
+  },
+  "frozen_estimator": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories": 4096,
+    "positive_directions": 2048,
+    "haar_blocks": 2,
+    "direction_seed": 104105,
+    "radius_rule": "analytic E[chi_1024]",
+    "propagation_dtype": "float32",
+    "reduction_dtype": "float64",
+    "weight_orientation": "h @ w",
+    "budget": 2199023255552
+  },
+  "measured": {
+    "raw_final_mse": 0.000009730479418246265,
+    "raw_target": 1.89e-8,
+    "raw_over_target": 514.8401808595908,
+    "e051_reference_raw_final_mse": 2.29004485946887e-8,
+    "raw_over_e051_reference": 424.90344143315406,
+    "predict_flops": 149114550960,
+    "metric_flops": 6144,
+    "all_in_flops": 149114557104,
+    "predict_utilization": 0.06780944702768466,
+    "all_in_utilization": 0.06780944982165238,
+    "residual_wall_time_s": 0.006019258999955923,
+    "predict_wall_s": 1.8649681379999947,
+    "failures": 0,
+    "finite": true,
+    "prediction_shape": [
+      16,
+      1024
+    ],
+    "prediction_sha256": "4389d0cc87f7ac7acfc569dd774c68f3b7526f498ae0824082eeb3979ce098f8",
+    "antithetic_input_pair_max_abs": 0
+  },
+  "adjusted_score_inputs": {
+    "note": "Inputs/derived arithmetic only; official scorer was not invoked.",
+    "whestbench_version": "0.16.1",
+    "phase2_effective_compute_rule": "C = F because lambda_flops_per_second = 0 under gated Phase 2 compute",
+    "mse_final": 0.000009730479418246265,
+    "estimator_flops_F": 149114550960,
+    "residual_wall_time_R_s": 0.006019258999955923,
+    "lambda_flops_per_second": 0,
+    "effective_compute_C": 149114550960,
+    "flop_budget_B": 2199023255552,
+    "resource_failure_flag": false,
+    "compute_ratio_C_over_B": 0.06780944702768466,
+    "score_multiplier_rule": "failure ? 1.0 : max(0.1, C/B)",
+    "derived_score_multiplier": 0.1,
+    "derived_single_record_adjusted_final_layer_score": 9.730479418246266e-7,
+    "official_scorer_invoked": false
+  },
+  "determinism": {
+    "benchmark_repeat_executed": false,
+    "benchmark_determinism_reverified": false,
+    "benchmark_repeat_status": "UNEXECUTED_BY_FROZEN_NO_RERUN_RULE",
+    "frozen_direction_seed": 104105,
+    "prediction_sha256_recorded": true,
+    "prior_target_free_production_bitwise_repeat_verified": true,
+    "prior_target_free_prediction_repeat_max_abs": 0,
+    "prior_target_free_receipt": "research/E104_PRODUCTION_INDEPENDENT_VERIFY_RECEIPT.json",
+    "interpretation": "The target-bearing run is single-shot by protocol, so benchmark-level repeat determinism is not claimed."
+  },
+  "gates": {
+    "shape_16x1024": true,
+    "finite": true,
+    "antithetic_pair_exact": true,
+    "failures_eq_0": true,
+    "utilization_le_0_135": true,
+    "raw_final_mse_le_1_89e_8": false
+  },
+  "decision": {
+    "benchmark_go": false,
+    "cost_gate": "PASS",
+    "integrity_gates": "PASS",
+    "raw_accuracy_gate": "FAIL",
+    "terminal_rule": "NO_RERUN_NO_RESCUE_NO_TUNING",
+    "verdict": "TERMINAL E104 MINI0 NO-GO: raw final-layer MSE exceeds 1.89e-8."
+  },
+  "scope": {
+    "direct_public_mini0_target_read": true,
+    "public_records_read": 1,
+    "official_scorer": false,
+    "public_sweep": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
