@@ -1,0 +1,52 @@
+name: E118 physical boundary-flux falsifier
+
+on:
+  push:
+    branches:
+      - research/e118-boundary-flux-physical-compression-20260919
+    paths:
+      - ".github/workflows/e118-boundary-flux.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run exact physical-state tests
+        run: python -m pytest -q tests/test_e118_boundary_flux_physical.py
+      - name: Run sole frozen E118 physical falsifier
+        shell: bash
+        run: |
+          set +e
+          python scripts/e118_boundary_flux_physical.py 2>&1 | tee e118-boundary-flux.log
+          status=${PIPESTATUS[0]}
+          if [ ! -f e118-exit.txt ]; then echo "${status}" > e118-exit.txt; fi
+          exit 0
+      - name: Upload immutable E118 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e118-boundary-flux-physical
+          path: |
+            e118-boundary-flux-physical.json
+            e118-boundary-flux.log
+            e118-exit.txt
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce frozen terminal
+        if: always()
+        shell: bash
+        run: |
+          status=$(cat e118-exit.txt)
+          exit "${status}"
