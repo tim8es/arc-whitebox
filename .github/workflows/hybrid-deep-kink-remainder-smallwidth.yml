@@ -1,0 +1,42 @@
+name: Hybrid deep kink remainder small-width falsifier
+
+on:
+  push:
+    branches:
+      - research/hybrid-deep-kink-remainder-scout-20260919
+    paths:
+      - 'research/HYBRID_DEEP_KINK_REMAINDER_PROTOCOL.md'
+      - 'methods/hybrid_deep_kink_remainder.py'
+      - 'scripts/hybrid_deep_kink_remainder_smallwidth.py'
+      - '.github/workflows/hybrid-deep-kink-remainder-smallwidth.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project dependencies
+        run: python -m pip install -e .
+      - name: Run exactly one frozen small-width identity falsifier
+        run: python scripts/hybrid_deep_kink_remainder_smallwidth.py
+      - name: Upload immutable small-width evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hybrid-deep-kink-remainder-smallwidth
+          path: hybrid-deep-kink-remainder-smallwidth.json
+          if-no-files-found: error
+          retention-days: 90
