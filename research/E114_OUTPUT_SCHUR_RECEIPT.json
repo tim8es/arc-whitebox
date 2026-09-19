@@ -1,0 +1,144 @@
+{
+  "schema": "arc.whitebox.e114.output_schur_terminal_receipt.v1",
+  "experiment": "E114",
+  "identity": "ARC-E114-OUTPUT-SCHUR-FINALMEAN-20260919",
+  "status": "TERMINAL_NO_GO_DROP_OUTPUT_SCHUR_VARIANT",
+  "branch": "research/e114-output-schur-finalmean-20260919",
+  "identity_firewall": {
+    "parent_e114_activation_flux_head": "b9f64030f65da9b32fc7718d04fb108ee1a73dab",
+    "parent_positive_closure_preserved": true,
+    "not_e112_factorized_cumulants": true,
+    "not_e112_mask_treewidth": true,
+    "not_e113_topk_gates": true,
+    "not_e110_line_rb": true,
+    "not_e111_gaussian_plugin": true
+  },
+  "provenance": {
+    "protocol_commit": "3926781c8109d6329aac064e453ecbc4a2d7986b",
+    "implementation_commit": "557afab80a82a564fc1528c418c45e061c78e491",
+    "tests_commit": "19f4a2b79fd512526bb4e4893fb1f1237a94c786",
+    "falsifier_commit": "1a84f597dd9a583ee6dc8ec3662522ebedc96fb6",
+    "scientific_arm_commit": "08d5a5e2a6d5f8f03d3881e0c6c4f002734ad4de",
+    "result_commit": "c167f2e0c6ee59334dccce3feeb5bc6d92073cf4"
+  },
+  "mechanism": {
+    "observable": "final mean vector only",
+    "compression_point": "penultimate preactivation z before layer-3 ReLU in depth-4 fixture",
+    "second_moment": "M=E[zz^T]",
+    "reconstruction": "M U (U^T M U)^+ U^T z",
+    "schur_residual": "M_res=M-MU(U^TMU)^+U^TM",
+    "pooled_bound": "tr(D_pool M_res)",
+    "optimal_rank_rule": "top-r eigenspace of M^(1/2) D_pool M^(1/2)",
+    "frozen_rank_smallwidth": 2
+  },
+  "smallwidth": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "seeds": [
+      114201,
+      114202,
+      114203,
+      114204
+    ],
+    "exact_angular_reference": true,
+    "numerical_quadrature": false,
+    "monte_carlo_truth": false,
+    "zero_bias": true
+  },
+  "execution": {
+    "run": 35456264281,
+    "job": 105931961172,
+    "run_attempt": 1,
+    "scientific_step": "success",
+    "terminal_workflow_conclusion": "failure",
+    "terminal_exit_code": 2,
+    "rerun": false,
+    "artifact": {
+      "id": 10587988095,
+      "name": "e114-output-schur",
+      "size_bytes": 7819,
+      "zip_sha256": "bfe043ca060c73698dd370c8b3b17c346630f75e953f5d3ff629402ed847fd65",
+      "independently_verified_zip_sha256": "bfe043ca060c73698dd370c8b3b17c346630f75e953f5d3ff629402ed847fd65",
+      "json_sha256": "de0b0684192913c0da7dd382a7c6c72c0603c3b34da5e497086c8f0d6bab833e"
+    }
+  },
+  "measured": {
+    "target_mse_scale": 1.89e-8,
+    "pooled_schur_remainder_bound_mse": 0.7674294368086603,
+    "pooled_bound_over_target": 40604732.10627832,
+    "max_seed_schur_remainder_bound_mse": 1.071166459149392,
+    "max_bound_over_target": 56675474.02906835,
+    "pooled_actual_proxy_bias_mse": 0.0027233238128475485,
+    "pooled_actual_over_target": 144091.20702897082,
+    "max_seed_actual_proxy_bias_mse": 0.005552944247388847,
+    "deterministic_replay_max_abs": 0,
+    "per_seed": [
+      {
+        "seed": 114201,
+        "bound": 0.8985395646910943,
+        "actual_bias_mse": 0.0005896295050116321
+      },
+      {
+        "seed": 114202,
+        "bound": 1.071166459149392,
+        "actual_bias_mse": 0.005552944247388847
+      },
+      {
+        "seed": 114203,
+        "bound": 0.9031161443928742,
+        "actual_bias_mse": 0.0036427976667961093
+      },
+      {
+        "seed": 114204,
+        "bound": 0.19689557900128055,
+        "actual_bias_mse": 0.001107923832193606
+      }
+    ]
+  },
+  "gates": {
+    "finite_all": true,
+    "schur_psd_all": true,
+    "bound_valid_all": true,
+    "bound_matches_omitted_spectrum_all": true,
+    "deterministic": true,
+    "every_seed_remainder_le_target": false,
+    "pooled_remainder_le_target": false,
+    "scientific_go": false
+  },
+  "production_cost_admission": {
+    "base_flops": 149114620592,
+    "all_in_upper_flops": 184614620592,
+    "budget": 2199023255552,
+    "utilization_upper": 0.08395300964912167,
+    "utilization_cap": 0.13,
+    "pass": true,
+    "production_execution": false
+  },
+  "blocker": "Optimal frozen rank-2 output-specific Schur compression leaves an exact pooled remainder certificate 4.06e7 times the target; even the exact compressed proxy bias is 1.44e5 times target.",
+  "no_rescue": [
+    "rank",
+    "seeds",
+    "compression point",
+    "weighting",
+    "pseudoinverse tolerance",
+    "production prototype",
+    "rerun",
+    "sweep"
+  ],
+  "scope": {
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
