@@ -1,0 +1,41 @@
+name: E114 observability-flux residual support falsifier
+
+on:
+  push:
+    branches:
+      - research/e114-observability-flux-residual-support-20260919
+    paths:
+      - 'research/E114_SUPPORT_PROTOCOL.md'
+      - 'scripts/e114_observability_flux_residual.py'
+      - 'tests/test_e114_observability_flux_residual.py'
+      - '.github/workflows/e114-support-falsifier.yml'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen local dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Focused exact E114 support tests
+        run: pytest -q tests/test_e114_observability_flux_residual.py
+      - name: Sole frozen E114 support falsifier
+        run: python scripts/e114_observability_flux_residual.py
+      - name: Upload E114 support artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e114-observability-flux-support
+          path: e114-support-falsifier.json
+          if-no-files-found: error
