@@ -1,0 +1,175 @@
+{
+  "schema": "arc.whitebox.e119.target_free_crosscheck_receipt.v1",
+  "experiment": "E119",
+  "idempotency_key": "ARC-E119-TARGET-FREE-CROSSCHECK-20260919",
+  "status": "E119_TARGET_FREE_ESTIMATOR_HYGIENE_VERIFIED",
+  "scientific_candidate_changed": false,
+  "branch": "review/e119-target-free-crosscheck-20260919",
+  "parent_sealed_e119_head": "de346277894ccb89ceef39e76ca6d8f12853b2ee",
+  "original_executed_arm": "d731e845c96d401ac001da82c8998c06a03ec484",
+  "provenance": {
+    "protocol_commit": "b0218e825a62aa7642976133b6d8f31162a091a3",
+    "manifest_commit": "257d1178500881f17d66a11472113f0f1a6241b7",
+    "crosscheck_implementation_commit": "c601d85cf692b63f71a15045e094f41141e5454c",
+    "crosscheck_tests_commit": "c5aa8b090e23a17984914504c4c1d3699222d8b3",
+    "executed_crosscheck_head": "7f996115f3a273ef38c29f2b542901da0500ce6d",
+    "executed_blobs": {
+      "protocol": "f560a182f3e9cc7670334a6ecbc179cd0b7eaf45",
+      "manifest": "afc224a5b259aa6e39f20a5d77db4d31339a2b88",
+      "script": "7e57cd8e4d8b3e9715d01293b6481991072a24ec",
+      "tests": "415a80badad5681daa482b8e3dbe04eff763275b",
+      "workflow": "eb7ca2b30e2d2af4ed232621cd6f8d2f43f47950"
+    }
+  },
+  "execution": {
+    "run": 35458304957,
+    "job": 105937430441,
+    "run_attempt": 1,
+    "head": "7f996115f3a273ef38c29f2b542901da0500ce6d",
+    "conclusion": "success",
+    "focused_tests": "4 passed in 0.23s",
+    "rerun": false,
+    "artifact": {
+      "name": "e119-target-free-crosscheck",
+      "id": 10588916206,
+      "size_bytes": 9161,
+      "zip_sha256": "d58ebb0c5f75615bfe2f8f9f86e20989fa32ca3599cb2e833eadc24649564795",
+      "expires_at": "2026-12-18T17:30:36Z"
+    }
+  },
+  "frozen_fixture": {
+    "input_dimension": 2,
+    "width": 4,
+    "depth": 3,
+    "weight_seed": 119904,
+    "budget": 2199023255552,
+    "weight_sha256": [
+      "d8e9eb8fdef0f7622f7334dcb4d9198371fb8c6b73f68e2f6536b63dbef0935f",
+      "c65469e20b9fdaa218f711996fe3133fa0b46b64ac262f8cea89f3e29d53d00b",
+      "24d9c19e6ff6a5a00ca4d3886b1d37aa20bd1175db8bb2fddc0115511c8d9ad9"
+    ]
+  },
+  "runtime_guard": {
+    "pass": true,
+    "guarded_api_count": 14,
+    "forbidden_reference_and_fit_apis": [
+      "methods.e114_exact_angular_reference.build_exact_reference",
+      "numpy.linalg.lstsq",
+      "numpy.linalg.solve",
+      "numpy.linalg.pinv",
+      "numpy.polyfit",
+      "numpy.cov",
+      "numpy.var"
+    ],
+    "forbidden_file_io_apis": [
+      "builtins.open",
+      "pathlib.Path.open",
+      "pathlib.Path.read_text",
+      "pathlib.Path.read_bytes",
+      "numpy.load",
+      "numpy.loadtxt",
+      "numpy.genfromtxt"
+    ],
+    "guard_triggered": false,
+    "candidate_finite_under_all_guards": true
+  },
+  "source_scan": {
+    "pass": true,
+    "files": {
+      "methods/e119_generic_boundary_flux.py": {
+        "sha256": "4f065236427ffe4ea0e6c1d1cdc2110851f23a6348f679b08ca65a5d38ba25f8",
+        "forbidden_findings": []
+      },
+      "methods/e118_output_flux_sketch.py": {
+        "sha256": "e1a6a6e1a9439e49077adb84fd8a4b04392cbff8a85afd48fdd2741fd305ac70",
+        "forbidden_findings": []
+      }
+    },
+    "forbidden_dependency_classes": [
+      "whestbench/datasets imports",
+      "exact-reference/oracle calls",
+      "lstsq/solve/pinv/polyfit",
+      "cov/var/least_squares",
+      "target/data load calls"
+    ]
+  },
+  "post_result_immutability": {
+    "pass": true,
+    "statement": "Every scientific blob executed at the E119 arm is byte-identical at the sealed E119 head and at the cross-check checkout.",
+    "blob_pairs": {
+      "methods/e119_generic_boundary_flux.py": "d21eb7ded086242fd1f3a87f3ab00ecd62205878",
+      "methods/e118_output_flux_sketch.py": "1b1f4e9c7f992161b57e6f645413262c5db4caeb",
+      "scripts/e119_generic_boundary_flux_certificate.py": "62700316f7bf92d023e725afad5cc744f1fb0fd5",
+      "tests/test_e119_generic_boundary_flux.py": "e28a3b5c2154778d81b6b17b9cc44ae1724d6a3e",
+      ".github/workflows/e119-generic-boundary-flux-certificate.yml": "262c3313d2e89687ba41cdc295eabe1d5c2e69aa",
+      "research/E119_PROTOCOL.md": "5f0f9c9a4521fd94ebc0f60fff758a5c58cf107b",
+      "research/E119_RUN_ARM.json": "cd61ce49b125eb77957ac2a29eb875b7fe88fb97"
+    }
+  },
+  "independent_selection_crosscheck": {
+    "pass": true,
+    "rule": "ascending deterministic key (abs(jump), angle, original_index), omit longest prefix within frozen L1 budget",
+    "raw_mse_gate": 1.89e-8,
+    "gaussian_factor": 0.19947114020071632,
+    "omitted_flux_l1_budget": 0.000689208828456787,
+    "candidate_omitted_indices": [18, 14, 15],
+    "independent_omitted_indices": [18, 14, 15],
+    "candidate_kept_indices": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,16,17],
+    "independent_kept_indices": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,16,17],
+    "omitted_abs_flux_sum_abs_error": 0.0,
+    "compressed_mean_abs_error": 0.0,
+    "certificate_abs_error": 0.0,
+    "candidate_full_mean": 0.6490641294988897,
+    "candidate_compressed_mean": 0.6490641294988896,
+    "candidate_abs_remainder_certificate": 0.0
+  },
+  "deterministic_replay": {
+    "pass": true,
+    "boundary_angles_sha256": "ed3205dfae8194edb575d3c48d34df06cd887913548075c154198c0a41298da4",
+    "scalar_jumps_sha256": "df31e6b7f7a7cab786f3643637dc38c26e9fabc5c192abf3f7e44df3d41e8fe3",
+    "kept_indices_sha256": "838bd7cfd22a636c8cdafa86e831c6c621986acac76c603e5ea774c655c0badc",
+    "omitted_indices_sha256": "02860285ecdac3bef2be71707c63df82d7f213f21cb51778ccd36afc564d1104",
+    "layer_region_counts": [9,17,19],
+    "flops_exact_replay": true,
+    "all_in_accounted_flops": 10784,
+    "utilization_vs_2pow41": 4.903995431959629e-9
+  },
+  "gates": {
+    "frozen_fixture_weights_deterministic": true,
+    "poisoned_reference_and_fit_apis_not_called": true,
+    "forbidden_file_io_not_called": true,
+    "candidate_finite_under_guards": true,
+    "independent_selection_matches_candidate": true,
+    "frozen_constants_unchanged": true,
+    "candidate_helper_static_scan_clean": true,
+    "arm_to_sealed_scientific_blobs_identical": true,
+    "deterministic_replay_exact": true,
+    "no_benchmark_public_scorer_holdout_full_execution": true,
+    "no_tuning_sweep_rescue_rerun": true
+  },
+  "interpretation": {
+    "verified": "The generic E119 constructor is operationally target-free on the frozen cross-check: it accepts only in-memory weights and budget, survives poisoned exact-reference/fitting/file-I/O APIs, and independently reproduces its atom selection from weight-derived jumps plus preregistered constants.",
+    "post_result_fitting": "No scientific candidate/helper/protocol/workflow blob changed between the original executed one-shot arm and sealed E119 head.",
+    "reference_usage_boundary": "The original E119 harness may use the E114 exact reference after candidate construction for independent verification, but the constructor and omission selection do not consume it.",
+    "compression_claim": "No new material-compression or competition-accuracy claim is made; the original E119 receipt remains authoritative on those questions."
+  },
+  "scope": {
+    "target_free_crosscheck_only": true,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "production_scientific_run": false,
+    "tuning": false,
+    "sweep": false,
+    "post_result_fitting": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable append-only target-free hygiene receipt; no rerun or post-result modification of the original E119 scientific candidate"
+}
