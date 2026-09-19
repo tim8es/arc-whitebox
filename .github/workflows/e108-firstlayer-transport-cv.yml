@@ -1,0 +1,39 @@
+name: E108 first-layer exact-mean transport CV
+
+on:
+  push:
+    branches:
+      - research/e108-firstlayer-exactmean-transport-cv-20260919
+    paths:
+      - 'methods/e108_firstlayer_transport_cv.py'
+      - 'tests/test_e108_firstlayer_transport_cv.py'
+      - 'scripts/e108_firstlayer_transport_cv.py'
+      - '.github/workflows/e108-firstlayer-transport-cv.yml'
+
+jobs:
+  e108:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E108 tests
+        run: python -m pytest -q tests/test_e108_firstlayer_transport_cv.py
+      - name: Run sole frozen E108 diagnostic
+        run: python scripts/e108_firstlayer_transport_cv.py
+      - name: Upload immutable E108 payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: e108-firstlayer-transport-cv
+          path: e108-firstlayer-transport-cv.json
+          if-no-files-found: error
+          retention-days: 90
