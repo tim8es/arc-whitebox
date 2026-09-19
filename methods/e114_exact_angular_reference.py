@@ -109,17 +109,16 @@ def _second_basis_integral(lo: float, hi: float) -> np.ndarray:
 def _validate_weights(weights: Sequence[np.ndarray]) -> None:
     if not weights:
         raise ValueError("weights must be non-empty")
-    first = np.asarray(weights[0])
-    if first.ndim != 2 or first.shape[0] != 2:
-        raise ValueError("first weight must have shape (2,width)")
-    width = first.shape[1]
+    previous_width = 2
     for idx, raw in enumerate(weights):
         w = np.asarray(raw)
-        expected = (2, width) if idx == 0 else (width, width)
-        if w.shape != expected:
-            raise ValueError(f"weight {idx} has shape {w.shape}, expected {expected}")
+        if w.ndim != 2 or w.shape[0] != previous_width or w.shape[1] <= 0:
+            raise ValueError(
+                f"weight {idx} has shape {w.shape}; expected ({previous_width}, next_width)"
+            )
         if not np.isfinite(w).all():
             raise ValueError(f"weight {idx} is non-finite")
+        previous_width = int(w.shape[1])
 
 
 def enumerate_final_sectors(weights: Sequence[np.ndarray]) -> tuple[AngularSector, ...]:
