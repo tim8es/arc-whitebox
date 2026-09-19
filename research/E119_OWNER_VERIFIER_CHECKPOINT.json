@@ -1,0 +1,131 @@
+{
+  "schema": "arc.whitebox.e119.owner_verifier_checkpoint.v1",
+  "experiment": "E119",
+  "idempotency_key": "ARC-E119-OWNER-VERIFIER-CHECKPOINT-20260919",
+  "selected_path": {
+    "name": "generic exact weight-driven boundary materialization + scalar jump materialization + L1-certified omission",
+    "branch": "research/e119-generic-boundary-flux-certificate-20260919",
+    "reason": "This is the only E119 path that simultaneously has generic weight-driven state construction, independent exact-reference agreement, a computable target-free omission certificate, flopscope/manual accounting, one frozen run, artifact, and independent verifier reconstruction. The TV-remainder alternative is already terminal because its rigorous RMS bound misses the required limit by 13.4037x."
+  },
+  "identity_sync": {
+    "owner_head_before_checkpoint": "ca608bb348cba4670737ae85131a66882f5b2e35",
+    "verifier_branch": "review/e119-generic-boundary-flux-independent-verifier-20260919",
+    "verifier_head": "630edb7d4c7808b97d6076fd7ffcff200fab2929",
+    "owner_identity": "ARC-E119-GENERIC-BOUNDARY-FLUX-CERT-20260919",
+    "verifier_status": "VERIFIED_SMALL_WIDTH_GENERIC_BRIDGE_GO",
+    "owner_verifier_disagreement": false
+  },
+  "frozen_execution": {
+    "run": 35458020001,
+    "job": 105936659806,
+    "run_attempt": 1,
+    "run_head": "d731e845c96d401ac001da82c8998c06a03ec484",
+    "conclusion": "success",
+    "rerun": false,
+    "artifact": {
+      "id": 10589345345,
+      "name": "e119-generic-boundary-flux-certificate",
+      "size_bytes": 6954,
+      "server_zip_sha256": "7485a4380bca0175197afeb327aed9abeb2f5d14ca335cdff6571ad0c7ed78e3",
+      "independently_downloaded_zip_sha256": "7485a4380bca0175197afeb327aed9abeb2f5d14ca335cdff6571ad0c7ed78e3",
+      "payload_json_sha256": "a4e2893c3bb3bb5af97f9145a83378f2c0a21c3620fc22ae62a1583e28cae384",
+      "payload_log_sha256": "fb60b5cb1d921a44a8d37381bbdd786b52961901f6012cbfce250ded0e7cda75",
+      "payload_arm_sha256": "17db3f8385bd392621d29384e6d80e129f3ece30490bb36f0a9f415fac9972e8"
+    }
+  },
+  "smallwidth_metrics": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "seeds": [
+      114200,
+      114201,
+      114202,
+      114203
+    ],
+    "final_region_counts": [
+      55,
+      61,
+      83,
+      55
+    ],
+    "retained_atom_counts": [
+      54,
+      60,
+      82,
+      54
+    ],
+    "retained_fractions": [
+      0.9818181818181818,
+      0.9836065573770492,
+      0.9879518072289156,
+      0.9818181818181818
+    ],
+    "max_boundary_angle_wrapped_error": 0,
+    "max_scalar_jump_abs_error": 4.440892098500626e-16,
+    "max_full_mean_abs_error": 2.220446049250313e-16,
+    "deterministic_replay_max_abs": 0,
+    "max_flopscope_dense_flops": 51456,
+    "max_manual_geometry_flop_equivalent": 53816,
+    "max_all_in_accounted_flops": 105272,
+    "max_all_in_utilization_vs_2pow41": 4.787216312251985e-8,
+    "rms_target": 0.0001374772708486752,
+    "max_abs_remainder_certificate": 0,
+    "max_compressed_exact_bias_mse": 4.930380657631324e-32,
+    "interpretation": "Generic construction and certificate are exact, but the certificate omits only the exactly-zero periodic atom; 98.18%-98.80% of boundary atoms remain."
+  },
+  "independent_verifier": {
+    "candidate_constructor_reads_exact_reference": false,
+    "generic_call_before_reference_call": true,
+    "target_independent": true,
+    "independent_reconstruction_uses_owner_constructor": false,
+    "hashes_match_owner_artifact_all_four": true,
+    "max_full_mean_abs_error": 2.220446049250313e-16,
+    "max_scalar_jump_abs_error": 4.440892098500626e-16,
+    "max_boundary_angle_wrapped_error": 0,
+    "flops_reconciled": true,
+    "omission_certificate_verified": true
+  },
+  "production_deployability_blocker": {
+    "user_incremental_cap_flops": 136758472261,
+    "production_input_dimension": 1024,
+    "production_width": 1024,
+    "production_depth": 16,
+    "direct_live_affine_coefficients_per_cell": 1048576,
+    "direct_live_affine_state_bytes_per_cell": 8388608,
+    "dense_coeff_propagation_flops_per_cell_transition": 2147483648,
+    "maximum_dense_cell_transitions_under_incremental_cap": 63,
+    "remaining_flops_after_63_transitions": 1467002437,
+    "first_layer_rank_assumption": "iid Gaussian square W1 has full rank with probability 1",
+    "first_layer_exact_nonempty_sign_cones": "2^1024",
+    "proof": "For invertible W1, z=W1^T x is bijective. Every open orthant in z-space has a nonempty inverse image cone in x-space, hence all 2^1024 first-layer sign cones are nonempty up to measure-zero boundaries.",
+    "consequence": "The selected exact-materialization path cannot even materialize the full first-layer cell state within the incremental cap, before deeper splitting, sorting, scalar jump construction, certificate work, or output materialization.",
+    "remainder_compression_cannot_save_state_construction": true,
+    "reason": "The L1 omission rule acts only after scalar boundary atoms have been materialized, while the production blocker occurs during exact full-dimensional region-state construction.",
+    "verdict": "TERMINAL_PRODUCTION_DEPLOYABILITY_NO_GO_FOR_THIS_E119_PATH"
+  },
+  "final_decision": {
+    "smallwidth_generic_bridge": "VERIFIED_GO",
+    "production_deployability": "TERMINAL_NO_GO",
+    "production_run": "UNEXECUTED_AND_UNAUTHORIZED",
+    "competition_go": false,
+    "exact_blocker": "2^1024 first-layer exact cells versus at most 63 dense cell transitions under the frozen incremental FLOP cap",
+    "successor_constraint": "Any successor reusing boundary flux must aggregate output-relevant flux without explicit full-dimensional activation-cell materialization and must expose a pre-materialization target-free remainder certificate. This would be a new mechanism, not an E119 rescue."
+  },
+  "scope": {
+    "new_scientific_run": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "target_fitting": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
