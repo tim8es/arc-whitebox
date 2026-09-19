@@ -1,0 +1,78 @@
+name: E118 output-specific boundary-flux sketch
+
+on:
+  push:
+    branches:
+      - research/e118-output-specific-flux-sketch-20260919
+    paths:
+      - 'research/E118_RUN_ARM.json'
+
+jobs:
+  e118:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen one-shot arm
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-E118-OUTPUT-SPECIFIC-FLUX-SKETCH-20260919",
+              "execute_once": True,
+          }
+          arm = json.loads(Path("research/E118_RUN_ARM.json").read_text())
+          if arm != expected:
+              raise SystemExit(f"invalid E118 arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E118_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen project and test runner
+        run: |
+          python -m pip install -e .
+          python -m pip install pytest==8.3.5
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e118_output_flux_sketch.py
+          python -m py_compile scripts/e118_output_specific_flux_sketch.py
+
+      - name: Focused tests
+        run: python -m pytest -q tests/test_e118_output_flux_sketch.py
+
+      - name: Run sole frozen E118 implementation/reference measurement
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e118_output_specific_flux_sketch.py 2>&1 | tee e118-output-specific-flux-sketch.log
+
+      - name: Upload immutable E118 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e118-output-specific-flux-sketch
+          path: |
+            e118-output-specific-flux-sketch.log
+            e118-output-specific-flux-sketch.json
+            research/E118_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
