@@ -1,0 +1,102 @@
+{
+  "schema": "arc.whitebox.e104.target_free_blockvar.receipt.v1",
+  "experiment": "E104",
+  "idempotency_key": "ARC-E104-TARGET-FREE-BLOCKVAR-20260919",
+  "status": "TARGET_FREE_VARIANCE_ESTIMATOR_GO",
+  "scientific_competition_go": false,
+  "branch": "research/e104-error-estimator-probe-20260919",
+  "provenance": {
+    "parent_branch": "research/e104-haar-radial-raoblackwell-20260918",
+    "fork_snapshot": "ec3ed98484b25746fbeb536a3cae5678b3ae1b70",
+    "parent_current_head_observed_after_run": "d8e06c806d18b1ccd1405648cf990e0b32d5762f",
+    "parent_advanced_after_fork_by_one_commit": true,
+    "parent_postfork_change_only": "research/E104_INDEPENDENT_REPRO_PROBE_RECEIPT.jsonl",
+    "parent_mechanism_changed_after_fork": false,
+    "protocol_commit": "5691b27ca41c94610f52e65ce55d67e3b639e4b8",
+    "implementation_commit": "ebfe46a7ee6d396828b0cfa753c1ca058271dea1",
+    "workflow_commit": "bdb8b0975c61d8e68c3da89a84caf6c627a0ff16",
+    "source_blobs": {
+      "protocol": "6d906d88619cfc28820b2d5b2a50db8d7fac0108",
+      "script": "e3b48060d82369353e3b90ea1dd26eec54e3d824",
+      "workflow": "f1bc6cec50877d1a849bdfb1daf34b006f43a4cd"
+    }
+  },
+  "estimator": {
+    "coordinate_variance": "(Y1-Y2)^2/4",
+    "scalar_variance": "mean_j((Y1_j-Y2_j)^2/4)",
+    "rms_standard_error": "sqrt(scalar_variance)",
+    "theorem": "For iid block estimates Y1,Y2 with coordinate variance sigma^2, E[(Y1-Y2)^2/4]=sigma^2/2=Var((Y1+Y2)/2).",
+    "target_free": true,
+    "absolute_error_bound": false
+  },
+  "execution": {
+    "run": 35448703497,
+    "job": 105912002044,
+    "head": "bdb8b0975c61d8e68c3da89a84caf6c627a0ff16",
+    "conclusion": "success",
+    "artifact_id": 10586041632,
+    "artifact_name": "e104-target-free-blockvar-probe",
+    "artifact_size_bytes": 1332,
+    "artifact_zip_sha256": "b7d1cb12440ccfee1882e46b091b243626682936eb5e60dce0556fa536658d22"
+  },
+  "calibration": {
+    "synthetic_only": true,
+    "width": 64,
+    "depth": 8,
+    "network_seed": 104960,
+    "replicates": 32,
+    "seed_base": 804960,
+    "mean_predicted_variance": 0.00037068361572873884,
+    "empirical_repeat_variance": 0.00034527541323173434,
+    "calibration_ratio": 1.0735882183419518,
+    "rms_standard_error": 0.019253145606075356,
+    "haar_orthogonality_max_abs": 1.5543122344752192e-15,
+    "antithetic_pair_max_abs": 0,
+    "deterministic_replay_max_abs": 0,
+    "all_finite": true
+  },
+  "production_overlay": {
+    "inherited_e104_base_flops": 149047442096,
+    "inherited_e104_base_utilization": 0.06777892944955966,
+    "measured_overlay_flops": 8404994,
+    "measured_overlay_utilization": 0.000003822148755716626,
+    "layered_flops_upper": 149055847090,
+    "layered_utilization_upper": 0.06778275159831537,
+    "utilization_limit": 0.135,
+    "utilization_gate": true,
+    "deterministic_repeat": true,
+    "finite": true
+  },
+  "gates": {
+    "calibration_all_finite": true,
+    "antithetic_pair_exact": true,
+    "haar_orthogonality_le_1e_12": true,
+    "deterministic_replay_max_abs_eq_0": true,
+    "empirical_variance_positive": true,
+    "predicted_variance_positive": true,
+    "calibration_ratio_0_70_to_1_30": true,
+    "overlay_flops_positive": true,
+    "overlay_repeat_flops_equal": true,
+    "overlay_deterministic": true,
+    "layered_utilization_le_0_135": true,
+    "overlay_utilization_le_0_001": true,
+    "overlay_finite": true
+  },
+  "interpretation": {
+    "result": "The two-block estimator is admissible as a target-free sampling-variance / RMS standard-error estimator layered on frozen production-shape E104.",
+    "limitation": "It is not a deterministic absolute-error certificate and does not establish competition raw MSE <= 1.89e-8.",
+    "next_scientific_use": "Use only as a target-free uncertainty diagnostic on an otherwise frozen E104 execution; no target-dependent calibration is authorized."
+  },
+  "scope": {
+    "public": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets_read": false,
+    "tuning": false,
+    "sweep": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "receipt_policy": "immutable single file for this one-shot probe; no rescue/rerun"
+}
