@@ -1,0 +1,108 @@
+{
+  "schema": "arc.whitebox.e110.terminal_receipt.v1",
+  "experiment": "E110",
+  "idempotency_key": "ARC-E110-DEEP-JACOBIAN-H4-20260919",
+  "status": "TERMINAL_NO_GO_DROP",
+  "classification": "EXACT_SMALL_ADMISSION_BLOCKER_DEGENERATE_INSTANCE",
+  "scientific_go": false,
+  "production_shape_authorized": false,
+  "branch": "research/e110-deep-jacobian-fourth-harmonic-20260919",
+  "provenance": {
+    "parent_branch": "research/e108-firstlayer-exactmean-transport-cv-20260919",
+    "protocol_commit": "d986b0b349f779ad13402faf5f4c28b0bf922972",
+    "method_commit": "50b830f89ab0fbfd56fd5e1340f78504f1a9369f",
+    "tests_commit": "a993aba0e19aa458bc6384c88c7eea786d216121",
+    "exact_falsifier_commit": "09d4d04fdae669398a5b25e39dba0c089eaaf62e",
+    "executed_workflow_head": "ca5a6b7fe6692316a865c404efd70477aa7f04d8"
+  },
+  "hypothesis": {
+    "name": "deep-Jacobian output-specific fourth-harmonic control",
+    "deep_direction": "column-normalized full mean-field Jacobian J=(0.5W1.T)...(0.5WL.T)",
+    "control": "z_j(q)=(q^T u_j)^4-3/(n(n+2))",
+    "width2_haar_block_control": "Z_j(theta)=cos(4(theta-phi_j))/8",
+    "distinct_from_e106": "E106 used 256 first-layer weight directions; E110 uses one full-depth output-specific sensitivity direction per final coordinate"
+  },
+  "stage_s": {
+    "width": 2,
+    "depth": 4,
+    "weight_seed": 110004,
+    "weight_sha256": "45d80a8b29e832cdc1711eb7ce7b449c663db72ad24ce7937937e660ce7a00aa",
+    "exact_sector_count": 6,
+    "exact_block_piece_count": 4,
+    "sector_partition_validation_max_abs": 0,
+    "block_partition_validation_max_abs": 0,
+    "control_formula_validation_max_abs": 3.400058012914542e-16,
+    "final_output_means": [
+      0,
+      0
+    ],
+    "final_block_variances": [
+      0,
+      0
+    ],
+    "nondegenerate_outputs": 0,
+    "pooled_variance": 0,
+    "pooled_residual_variance": 0,
+    "pooled_ratio": null,
+    "pooled_ratio_defined": false,
+    "exact_blocker": "Frozen width-2/depth-4 network is identically dead at the final layer over the full circle, so the exact Haar-block variance is zero for both outputs and the variance-explanation gate is not evaluable."
+  },
+  "execution": {
+    "run": 35453241091,
+    "job": 105923933691,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "5 passed in 0.15s",
+    "rerun": false,
+    "artifact": {
+      "name": "e110-exact-falsifier",
+      "id": 10587576340,
+      "size_bytes": 1153,
+      "zip_sha256": "5ce947492ca3e01f82342b92b329e252e2c63a773afe7ec67a6d1364480fe9a1",
+      "expires_at": "2026-12-18T15:54:01Z"
+    }
+  },
+  "frozen_gates": {
+    "width_le_8": true,
+    "depth_le_4": true,
+    "sector_partition_valid": true,
+    "block_partition_valid": true,
+    "control_formula_valid": true,
+    "analytic_control_mean_zero": true,
+    "all_outputs_nondegenerate": false,
+    "pooled_ratio_le_0_50": false,
+    "each_output_ratio_le_0_80": "vacuous because there are no nondegenerate outputs",
+    "no_external_target_access": true
+  },
+  "conditional_budget_admission": {
+    "only_relevant_if_stage_s_passed": false,
+    "production_flops_upper": 189621772976,
+    "production_utilization_upper": 0.08622999893123051,
+    "utilization_cap": 0.13,
+    "budget_would_fit": true,
+    "production_not_run_reason": "Stage-S scientific admission failed before budget authorization."
+  },
+  "interpretation": {
+    "mechanistic_rejection": false,
+    "blocker_kind": "frozen falsifier instance degeneracy",
+    "statement": "The exact angular machinery succeeded, but the preregistered network produced zero final response for every direction. Therefore E110 cannot measure whether the deep fourth harmonic explains the residual angular error.",
+    "process_consequence": "Protocol required terminal DROP on any failed or unevaluable Stage-S gate. Seed changes, network replacement, alternate harmonics, rescue, rerun, and production execution are forbidden under E110.",
+    "future_safe_direction": "A future distinct experiment would need a pre-certified nondegenerate exact small network before freezing its deep-harmonic mechanism; E110 itself is closed."
+  },
+  "scope": {
+    "synthetic_small_exact_only": true,
+    "production_shape_run": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
