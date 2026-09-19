@@ -1,0 +1,121 @@
+{
+  "schema": "arc.whitebox.e104.independent_error_verify.receipt.v1",
+  "experiment": "E104",
+  "status": "INDEPENDENT_ERROR_VERIFY_COMPLETE",
+  "branch": "research/e104-haar-radial-raoblackwell-20260918",
+  "freeze_commit": "58e884fe0fe8446c6c9e47cb6800d00db9b66626",
+  "implementation_commit": "6c5cdefe8706ba65e35d0fb181f16269e2d1764f",
+  "workflow_commit": "3bfd6b54dccaaf762b357108e23d9e8f344dae35",
+  "execution": {
+    "run": 35446855010,
+    "job": 105907162158,
+    "conclusion": "success",
+    "artifact_id": 10585820003,
+    "artifact_sha256": "6c458b7311dc2b1a9adac00a335aa237bb6da33932042a7d3b57892896fd1891",
+    "artifact_size_bytes": 2125
+  },
+  "corpus": {
+    "synthetic_only": true,
+    "width": 64,
+    "depth": 16,
+    "network_seeds": [
+      104200,
+      104201,
+      104202,
+      104203
+    ],
+    "reference_samples": 65536,
+    "candidate_samples": 4096,
+    "reference": "independent iid-antithetic Gaussian mean",
+    "fixed_baseline": "ordinary iid-antithetic Gaussian N=4096"
+  },
+  "integrity": {
+    "all_finite": true,
+    "deterministic_repeat_exact": true,
+    "direction_hashes_unchanged": true,
+    "antithetic_pairs_exact": true,
+    "fixed_iid_flop_accounting_exact": true
+  },
+  "same_corpus_error": {
+    "E104": {
+      "final_raw_mse": 0.000020355615975974204,
+      "all_layers_mse": 0.00001828096697641964
+    },
+    "E100": {
+      "final_raw_mse": 0.00003250712380227057,
+      "all_layers_mse": 0.000025987325140561725
+    },
+    "fixed_iid": {
+      "final_raw_mse": 0.000009429579177061517,
+      "all_layers_mse": 0.000035612242141445746
+    },
+    "ratios": {
+      "E104_over_E100_final": 0.6261893885103547,
+      "E104_over_fixed_iid_final": 2.1586982402662747,
+      "E100_over_fixed_iid_final": 3.4473567899347732
+    },
+    "wins": {
+      "E104_vs_E100": "3/4",
+      "E104_vs_fixed_iid": "3/4"
+    },
+    "tail_observation": {
+      "network_seed": 104202,
+      "E104_final_mse": 0.00006889730616483295,
+      "E100_final_mse": 0.00011562995207592069,
+      "fixed_iid_final_mse": 0.000009159715710885656,
+      "E104_over_E100": 0.5958430746351614,
+      "E104_over_fixed_iid": 7.521773419556407
+    }
+  },
+  "production_cost": {
+    "E104": {
+      "source_run": 35446062235,
+      "flops": 149047442096,
+      "utilization": 0.06777892944955966
+    },
+    "E100": {
+      "source_run": 35287256818,
+      "flops": 149047446192,
+      "utilization": 0.0677789313122048
+    },
+    "fixed_iid": {
+      "source_run": 35446855010,
+      "flops": 137579495424,
+      "utilization": 0.06256391108036041,
+      "exact_reconciliation": true,
+      "input_flops": 6291456,
+      "each_layer_flops": 8598323200,
+      "layer_count": 16,
+      "finalization_flops": 32768
+    }
+  },
+  "historical_competition_reference": {
+    "E051_raw_final_layer_mse": 2.29004485946887e-8,
+    "E051_utilization": 0.267056,
+    "target_raw": 1.89e-8,
+    "same_corpus_comparable": false
+  },
+  "scientific_interpretation": {
+    "e104_vs_e100": "CONFIRMED on this disjoint depth-16 synthetic corpus; E104 materially reduces E100 error.",
+    "e104_vs_fixed_iid": "NOT ESTABLISHED; pooled final-layer error is worse than fixed iid despite 3/4 per-network wins, due a severe tail network.",
+    "competition_raw_target": "UNEXECUTED. Synthetic MSE cannot be substituted for benchmark raw final-layer MSE.",
+    "scientific_go_for_target": false
+  },
+  "next_executable_step": {
+    "prerequisite": "Explicit successor protocol plus authorization for one benchmark-target evaluation; current E104 protocol forbids public/scorer.",
+    "exact_action": "Run one frozen width=1024 depth=16 N=4096 E104 evaluation on the exact same benchmark record/split previously used for the E051 comparison, with no tuning or rerun. Record final-layer raw MSE, all-layer MSE, all-in flopscope utilization, failures, and compare directly against E051 raw=2.29004485946887e-08 and target raw<=1.89e-08. In the same frozen job include ordinary iid-antithetic N=4096 as a comparator only if protocol/budget allows; otherwise keep it synthetic-only and do not alter E104.",
+    "current_authorization": "NOT GRANTED under E104; do not execute public/scorer from this receipt."
+  },
+  "verdict": "E104_RAOBLACKWELL_EFFECT_REPRODUCED_BUT_ABSOLUTE_FINAL_LAYER_ADVANTAGE_UNPROVEN",
+  "scope": {
+    "public": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
