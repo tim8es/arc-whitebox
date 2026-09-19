@@ -1,0 +1,46 @@
+name: E124 Walsh-coset source interactions
+
+on:
+  push:
+    branches:
+      - research/e124-walsh-coset-source-interactions-20260920
+    paths:
+      - '.github/workflows/e124-walsh-coset.yml'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install numpy==2.4.6 pytest==8.3.5
+      - name: Syntax check
+        run: python -m py_compile scripts/e124_walsh_coset_source_interactions.py
+      - name: Focused E124 tests
+        run: python -m pytest -q tests/test_e124_walsh_coset_source_interactions.py
+      - name: Sole frozen E124 exact falsifier
+        run: |
+          set -o pipefail
+          python scripts/e124_walsh_coset_source_interactions.py 2>&1 | tee e124-walsh-coset.log
+      - name: Upload immutable E124 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e124-walsh-coset-falsifier
+          path: |
+            e124-walsh-coset.log
+            e124-walsh-coset-falsifier.json
+            research/E124_PROTOCOL.md
+          if-no-files-found: error
+          retention-days: 90
