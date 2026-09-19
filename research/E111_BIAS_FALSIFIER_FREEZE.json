@@ -1,0 +1,62 @@
+{
+  "schema": "arc.whitebox.e111.bias_falsifier_freeze.v1",
+  "experiment": "E111",
+  "event": "FREEZE_TARGET_FREE_GAUSSIAN_RELU_PLUGIN_BIAS_FALSIFIER",
+  "branch": "research/e111-late4-gaussian-relu-plugin-cost-20260919",
+  "parent_cost_receipt_commit": "96aada531736b45061af47f35ed34f0c5d2a8e6c",
+  "idempotency_key": "ARC-E111-BIAS-FALSIFIER-20260919",
+  "scientific_shape": {
+    "latent_gaussian_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "weight_seed": 111111,
+    "biases": "all_zero",
+    "weights": {
+      "first_layer": "PCG64 standard_normal(2,8) * sqrt(2/2), float64",
+      "later_layers": "PCG64 standard_normal(8,8) * sqrt(2/8), float64"
+    }
+  },
+  "reference": {
+    "type": "exact_piecewise_angular_radial_integration",
+    "input": "X~N(0,I_2)",
+    "homogeneity": "zero-bias ReLU network is positively homogeneous",
+    "radial_moments": {
+      "E_R": "sqrt(pi/2)",
+      "E_R2": 2
+    },
+    "angular_rule": "recursively split [0,2pi) at every exact preactivation zero; integrate a*cos(theta)+b*sin(theta) and its square analytically on each fixed-mask interval",
+    "numerical_quadrature": false,
+    "benchmark_targets": false
+  },
+  "plugin": {
+    "per_layer": "from exact reference pre-ReLU mu and variance",
+    "mean_formula": "sigma*phi(alpha)+mu*Phi(alpha), alpha=mu/sigma",
+    "variance_formula": "((mu^2+sigma^2)*Phi(alpha)+mu*sigma*phi(alpha))-plugin_mean^2",
+    "degenerate_variance_rule": "if variance<=1e-15, use deterministic ReLU(mu)"
+  },
+  "decisive_gate": {
+    "raw_target_mse": 1.89e-8,
+    "require_every_layer_mean_bias_mse_le_target": true,
+    "require_final_layer_mean_bias_mse_le_target": true,
+    "variance_bias": "record_only_not_decisive",
+    "finite": true,
+    "deterministic_repeat_max_abs": 0
+  },
+  "cost": {
+    "inherit_production_all_in_flops": 149220512434,
+    "inherit_production_utilization": 0.06785763272728218,
+    "inherit_limit": 0.13,
+    "small_falsifier_plugin_formula": "measure with flopscope; exact angular reference work is research/reference cost, not candidate production cost"
+  },
+  "kill_rule": "Any decisive bias/finite/determinism failure => TERMINAL E111 NO-GO. No alternate seed, width, depth, threshold, layer subset, mixture, correction, tuning, rescue or rerun under E111.",
+  "pass_rule": "If all decisive gates pass, append PASS receipt and freeze one production-shaped scientific protocol; do not execute it in the same step.",
+  "scope": {
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
