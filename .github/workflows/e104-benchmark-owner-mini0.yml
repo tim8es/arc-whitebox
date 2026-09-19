@@ -1,0 +1,115 @@
+name: E104 benchmark-owner one-shot mini0
+
+on:
+  push:
+    branches:
+      - research/e104-benchmark-owner-successor-20260919
+    paths:
+      - 'research/E104_BENCHMARK_RUN_ARM.json'
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify one-shot authorization before target access
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          key = "ARC-E104-BENCHMARK-OWNER-MINI0-20260919"
+          arm_path = Path("research/E104_BENCHMARK_RUN_ARM.json")
+          arm = json.loads(arm_path.read_text(encoding="utf-8"))
+          if arm.get("idempotency_key") != key or arm.get("execute_once") is not True:
+              raise SystemExit("invalid E104 benchmark arm marker")
+
+          auth_commit = str(arm.get("authorization_commit", ""))
+          if len(auth_commit) != 40:
+              raise SystemExit("invalid authorization commit SHA")
+
+          parent = subprocess.check_output(
+              ["git", "rev-parse", "HEAD^"], text=True
+          ).strip()
+          if parent != auth_commit:
+              raise SystemExit(
+                  f"arm commit parent {parent} != authorization commit {auth_commit}"
+              )
+
+          prior = subprocess.run(
+              ["git", "cat-file", "-e", "HEAD^:research/E104_BENCHMARK_RUN_ARM.json"],
+              stdout=subprocess.DEVNULL,
+              stderr=subprocess.DEVNULL,
+          )
+          if prior.returncode == 0:
+              raise SystemExit("arm marker already existed before this commit")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E104_BENCHMARK_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+
+          raw = subprocess.check_output(
+              [
+                  "git",
+                  "show",
+                  auth_commit + ":research/E104_BENCHMARK_AUTHORIZATION_RECEIPT.json",
+              ],
+              text=True,
+          )
+          receipt = json.loads(raw)
+          if receipt.get("idempotency_key") != key:
+              raise SystemExit("authorization receipt idempotency mismatch")
+          if receipt.get("status") != "AUTHORIZED_NOT_EXECUTED":
+              raise SystemExit("authorization receipt is not in AUTHORIZED_NOT_EXECUTED state")
+          action = receipt.get("authorized_action", {})
+          expected = {
+              "dataset": "aicrowd/arc-whestbench-public-2026",
+              "revision": "v2-phase2",
+              "split": "mini",
+              "index": 0,
+              "target_field": "final_means",
+          }
+          for k, v in expected.items():
+              if action.get(k) != v:
+                  raise SystemExit(f"authorization mismatch for {k}: {action.get(k)!r}")
+          print("E104_AUTHORIZATION_VERIFIED=1")
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen project dependencies
+        run: python -m pip install -e .
+
+      - name: Syntax-check frozen benchmark harness
+        run: python -m py_compile scripts/e104_benchmark_owner_mini0.py
+
+      - name: Run sole authorized E104 target-bearing mini0 benchmark
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e104_benchmark_owner_mini0.py 2>&1 | tee e104-benchmark-owner-mini0.log
+
+      - name: Upload immutable E104 benchmark evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e104-benchmark-owner-mini0
+          path: |
+            e104-benchmark-owner-mini0.log
+            e104-benchmark-owner-mini0.json
+            research/E104_BENCHMARK_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
