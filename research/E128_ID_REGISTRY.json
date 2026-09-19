@@ -1,0 +1,35 @@
+{
+  "schema": "arc.whitebox.e128.id_registry.v1",
+  "experiment": "E128",
+  "canonical_base": {"branch":"research/bootstrap","head":"15a887e890bc6eb78763bf016802f4ec097de1de","ledger":"research/ledger.csv"},
+  "ids": {
+    "E121": {
+      "status":"TERMINAL_NO_GO",
+      "observed_claiming_branches":["research/e121-haar-plane-orbit-source-memory-20260919"],
+      "authoritative_branch":"research/e121-haar-plane-orbit-source-memory-20260919",
+      "authoritative_head":"e2c7473a2919b4444daa581b14d1ed706960f7d8",
+      "executed_head":"92b1a4a3a4414f643799c2a2b5d82e04926db96a",
+      "protocol":"research/E121_PROTOCOL.md@baa802af0b11152389c7f6229648f9212d8257ff",
+      "receipt":"research/E121_TERMINAL_RECEIPT.json@e2c7473a2919b4444daa581b14d1ed706960f7d8",
+      "run":35460988924,"job":105944694427,"artifact":10588818925,
+      "artifact_sha256":"fb49a9be2945d0ffb3c8aaad3ae59600fd7cdc7493fd8959666319284632d836",
+      "decision":"TERMINAL NO-GO",
+      "mechanism_fingerprint":"Haar two-plane cyclic orbit; P=128; M=64; 8192 correlated directions; exact chi_d radial factor; same 2-D source phase propagated through every ReLU layer",
+      "measured_blocker":"2-D source-orbit correlation collapses effective high-dimensional source coverage: exact 8-D block stress candidate/iid pooled MSE ratio=11.435172907952149 > frozen <=0.90 gate",
+      "reusable_lesson":"Marginally correct unbiased low-dimensional orbit stratification can excel in 2-D yet catastrophically lose variance reduction when independent source components must coexist; preserving only a 2-D latent source is insufficient multi-source memory.",
+      "canonical_ledger_integrated":true,
+      "next_action":"Do not rescue E121. E122 is reserved for a non-overlapping multi-source state mechanism with source-state dimension >2 or adaptive algebraic compression; freeze protocol before code and use synthetic exact references only."
+    },
+    "E122":{"status":"RESERVED_SUCCESSOR_PROTOCOL_REQUIRED","observed_claiming_branches":[],"authoritative_branch":null,"protocol":null,"receipt":null,"run":null,"decision":null,"canonical_ledger_integrated":false,"next_action":"Freeze a genuinely non-overlapping multi-source dependence mechanism before code; explicitly forbid P/M rebalance, plane-dimension tuning, seed changes, phase randomization, fitted correction, or any E121 rescue."},
+    "E123":{"status":"RESERVED_UNCLAIMED","observed_claiming_branches":[],"authoritative_branch":null,"protocol":null,"receipt":null,"run":null,"decision":null,"canonical_ledger_integrated":false},
+    "E124":{"status":"RESERVED_UNCLAIMED","observed_claiming_branches":[],"authoritative_branch":null,"protocol":null,"receipt":null,"run":null,"decision":null,"canonical_ledger_integrated":false},
+    "E125":{"status":"RESERVED_UNCLAIMED","observed_claiming_branches":[],"authoritative_branch":null,"protocol":null,"receipt":null,"run":null,"decision":null,"canonical_ledger_integrated":false},
+    "E126":{"status":"RESERVED_UNCLAIMED","observed_claiming_branches":[],"authoritative_branch":null,"protocol":null,"receipt":null,"run":null,"decision":null,"canonical_ledger_integrated":false},
+    "E127":{"status":"RESERVED_UNCLAIMED","observed_claiming_branches":[],"authoritative_branch":null,"protocol":null,"receipt":null,"run":null,"decision":null,"canonical_ledger_integrated":false}
+  },
+  "collision_count":0,
+  "runless_claims_integrated":0,
+  "target_leakage_claims_integrated":0,
+  "canonical_rows_added_for_e121_e127":1,
+  "last_integration":"E121 terminal NO-GO verified from run/job/artifact and frozen protocol; no benchmark/public/scorer/holdout/full access."
+}

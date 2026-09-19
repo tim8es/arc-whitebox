@@ -1,0 +1,24 @@
+name: E128 integrate E121 ledger
+on:
+  push:
+    branches: [research/e128-integrate-e121-20260919]
+    paths: ['.github/workflows/e128-integrate-e121-ledger.yml']
+permissions:
+  contents: write
+jobs:
+  integrate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python scripts/e128_append_e121_ledger.py
+      - name: Commit canonical ledger candidate
+        run: |
+          if git diff --quiet -- research/ledger.csv; then exit 0; fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/ledger.csv
+          git commit -m 'research(E128): append verified E121 terminal NO-GO to ledger'
+          git push origin HEAD:research/e128-integrate-e121-20260919

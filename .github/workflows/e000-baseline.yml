@@ -1,0 +1,45 @@
+name: e000-baseline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Phase 2 dependencies
+        run: python -m pip install -e . ruff pytest
+      - name: Fetch pinned official covariance baseline
+        run: |
+          curl -fsSL \
+            https://raw.githubusercontent.com/AIcrowd/whest-starterkit/3e1e3b5f3da3e03a128ff292d0b14251727aeb5e/examples/03_covariance_propagation.py \
+            -o /tmp/03_covariance_propagation.py
+          sha256sum /tmp/03_covariance_propagation.py
+      - name: Validate official covariance baseline
+        run: whest validate --estimator /tmp/03_covariance_propagation.py
+      - name: Reproduce Phase 2 mini baseline
+        run: |
+          set -o pipefail
+          echo 'COMMAND=whest run --estimator /tmp/03_covariance_propagation.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --runner local'
+          /usr/bin/time -v whest run \
+            --estimator /tmp/03_covariance_propagation.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --runner local 2>&1 | tee e000-baseline.log
+      - name: Verify repo
+        if: always()
+        run: |
+          ruff check .
+          pytest -q
+          whest validate --estimator estimator.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e000-baseline-log
+          path: e000-baseline.log
+          if-no-files-found: warn
