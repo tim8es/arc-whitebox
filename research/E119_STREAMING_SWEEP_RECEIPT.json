@@ -1,0 +1,138 @@
+{
+  "schema": "arc.whitebox.e119.streaming_boundary_sweep.support.receipt.v1",
+  "experiment": "E119 theory support",
+  "idempotency_key": "ARC-E119-SUPPORT-STREAMING-BOUNDARY-SWEEP-20260919",
+  "status": "GO_EXACT_STREAMING_BOUNDARY_SWEEP",
+  "scientific_go": true,
+  "production_authorized": false,
+  "branch": "support/e119-streaming-boundary-sweep-20260919",
+  "owner_e119_identity_unchanged": true,
+  "provenance": {
+    "owner_e119_parent": "d731e845c96d401ac001da82c8998c06a03ec484",
+    "protocol_commit": "8157f63d33eeb52c6d8f1da38150b701d6d028fc",
+    "implementation_commit": "437e22bdbcf9e0be8d552b1438f5a1ae775ea6e9",
+    "tests_commit": "bed925cf899a6d0614a652d5d0f4003422f6e709",
+    "falsifier_commit": "36801e3f8d2bd7be4449c770bbc755da0d70d899",
+    "executed_workflow_head": "4481b70da8563e6641144c7c433bc267be9863bc"
+  },
+  "mechanism": {
+    "class": "event-driven streaming activation-boundary sweep",
+    "full_region_tree_materialized": false,
+    "activation_mask_table_materialized": false,
+    "state": "current per-layer affine preactivation coefficients + current masks + running scalar flux sum",
+    "exact_remainder": 0,
+    "verification_trace_only": true
+  },
+  "proof": {
+    "statement": "Inside the current affine ReLU region each preactivation is a*cos(theta)+b*sin(theta). Its sign cannot change before its first zero. Therefore the minimum positive zero over all current layer/neuron preactivations is exactly the next activation boundary. Recompute the right-hand affine state and induct over events.",
+    "consequence": "The sweep emits every E114 scalar derivative jump exactly once in cyclic order; the running jump sum gives the exact scalar Gaussian boundary-flux mean.",
+    "memory": "O(sum_l width_l) current coefficient/mask state, independent of number of angular regions.",
+    "runtime": "O(number of encountered boundary events times one state/root refresh); boundary-count growth is not removed."
+  },
+  "frozen_corpus": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "seeds": [
+      114200,
+      114201,
+      114202,
+      114203
+    ],
+    "probe": 2.3283064365386963e-10,
+    "observable": "c_j=(j+1)/sqrt(sum_{r=1}^8 r^2)"
+  },
+  "measurements": {
+    "region_counts": [
+      55,
+      61,
+      83,
+      55
+    ],
+    "reference_region_counts": [
+      55,
+      61,
+      83,
+      55
+    ],
+    "max_wrapped_angle_error": 0,
+    "max_abs_jump_error": 0,
+    "max_mean_abs_error": 0,
+    "deterministic_replay_exact": true,
+    "minimum_region_width_over_probe": 7198.7575607299805,
+    "peak_coefficient_scalars": 64,
+    "peak_mask_bits": 32,
+    "reference_materialized_final_coeff_scalars": [
+      880,
+      976,
+      1328,
+      880
+    ],
+    "peak_coeff_vs_reference_materialized_ratios": [
+      0.07272727272727272,
+      0.06557377049180328,
+      0.04819277108433735,
+      0.07272727272727272
+    ],
+    "candidate_flop_equivalent_per_network": [
+      118635,
+      131577,
+      179031,
+      118635
+    ],
+    "max_candidate_flop_equivalent": 179031,
+    "max_candidate_utilization_vs_2pow41": 8.141387297655456e-8,
+    "owner_e119_max_all_in_accounted_flops_for_materializing_constructor": 105272,
+    "note": "support sweep trades somewhat more small-corpus arithmetic for boundary-count-independent working state"
+  },
+  "execution": {
+    "run": 35458357993,
+    "job": 105937575876,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "3 passed in 0.17s",
+    "rerun": false,
+    "artifact": {
+      "name": "e119-streaming-boundary-sweep",
+      "id": 10588941191,
+      "size_bytes": 2550,
+      "zip_sha256": "6d3248ded9df768f7375101726f3e3918ceca54841b2b8487ed9c9647f9ce6cb",
+      "expires_at": "2026-12-18T17:31:35Z"
+    }
+  },
+  "gates": {
+    "finite_all": true,
+    "region_count_matches_reference_all": true,
+    "angle_error_le_1e_10": true,
+    "jump_error_le_1e_10": true,
+    "mean_error_le_1e_10": true,
+    "min_region_width_ge_64_probe": true,
+    "deterministic_replay_exact_all": true,
+    "peak_state_independent_of_region_count": true,
+    "no_targets_public_scorer_holdout_full": true
+  },
+  "verdict": {
+    "result": "E119 THEORY SUPPORT GO — EXACT STREAMING BOUNDARY SWEEP",
+    "what_is_closed": "For 2-D nondegenerate zero-bias networks in the frozen width<=8/depth<=4 corpus, full region-tree materialization is unnecessary for exact scalar activation-boundary flux.",
+    "remaining_blocker": "The sweep still visits every boundary event. It does not prove boundary-count control or a width-1024/depth-16 production path, and it does not omit nonzero flux atoms."
+  },
+  "scope": {
+    "support_only": true,
+    "target_free": true,
+    "production_run": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rerun": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable support receipt; no probe/seed/observable rescue or second scientific run"
+}
