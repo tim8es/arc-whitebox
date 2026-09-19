@@ -1,0 +1,132 @@
+{
+  "schema": "arc.whitebox.e116.terminal_receipt.v1",
+  "experiment": "E116",
+  "idempotency_key": "ARC-E116-OUTPUT-SPECIFIC-GRADIENT-SPAN-20260919",
+  "status": "TERMINAL_STRUCTURAL_NO_GO_FIXED_LINEAR_OUTPUT_TRANSPORT",
+  "scientific_go": false,
+  "production_shape_authorized": false,
+  "branch": "research/e116-output-specific-gradient-span-20260919",
+  "identity_note": "E114 was already sealed by activation-boundary-flux and E115 identities were occupied; this requested non-duplicative math lane was recorded as E116.",
+  "chosen_class": "output-specific transport",
+  "provenance": {
+    "parent_e113_terminal_receipt": "de83981a8264748c5a6e57070c6897c1b457f77c",
+    "protocol_commit": "fc4e8e279937a3183279e545b2c5637c3dea42bd",
+    "implementation_commit": "b91fc0f17f95184e2b4f810075ea8dafb115d4e8",
+    "tests_commit": "8e6a90f57aeb068198cce2ecda33fcde41cbb0e2",
+    "falsifier_commit": "9f0f7e17c0208e27b54096efa8fba1bbbee25bf6",
+    "executed_workflow_head": "bfa267f9d48ee1e8b48002686027ddc0bd04cb1c"
+  },
+  "theorem": {
+    "statement": "If scalar F(x)=g(U^T x) for a fixed linear U and arbitrary g, then at every differentiability point grad F(x) is orthogonal to ker(U^T), hence lies in col(U). Therefore rank of any collection of region gradients is <=rank(U).",
+    "exact_consequence": "A nonzero d-by-d determinant of d region gradients forces rank(U)>=d, so no exact dimension-reducing fixed linear output-specific transport exists for that observable.",
+    "scope": [
+      "fixed linear projection transport",
+      "single frozen scalar final observable",
+      "exact representation"
+    ],
+    "not_ruled_out": [
+      "nonlinear or discontinuous sufficient statistics",
+      "adaptive region-dependent transports",
+      "approximate projection",
+      "boundary-flux or signed-diagram methods"
+    ]
+  },
+  "frozen_instance": {
+    "input_width": 8,
+    "layer_width": 8,
+    "relu_layers": 4,
+    "zero_bias": true,
+    "weight_seed": 116116,
+    "weight_law": "iid Gaussian PCG64; He scale sqrt(2/8)=1/2",
+    "observable": "F(x)=sum_{j=1}^8 j*h_4,j(x)",
+    "candidate_points": "(+e1,-e1,...,+e8,-e8)",
+    "exact_certificate_point_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+    ]
+  },
+  "exact_certificate": {
+    "weight_ranks": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "all_256_weights_nonzero": true,
+    "exact_min_abs_selected_preactivation": 0.00375278128260044,
+    "float_masks_match_exact": true,
+    "gradient_determinant_nonzero": true,
+    "gradient_determinant_sign": 1,
+    "gradient_determinant_float_value": 47.69367061581294,
+    "gradient_determinant_fraction_sha256": "c57c67a941fe40f3c50ff085a2fe3039a8184bdeb1abc7b2b9e6839796bbbe44",
+    "gradient_determinant_numerator_bits": 1791,
+    "gradient_determinant_denominator_bits": 1786,
+    "float_gradient_singular_values": [
+      12.987888684426771,
+      10.719674400721077,
+      6.91456711248034,
+      2.20084665980479,
+      1.3415378751545477,
+      0.7635265637611063,
+      0.24482510720431816,
+      0.08976411881510134
+    ],
+    "exact_gradient_span_rank": 8,
+    "deterministic_replay_exact": true
+  },
+  "execution": {
+    "run": 35456110489,
+    "job": 105931549115,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "4 passed in 0.21s",
+    "rerun": false,
+    "artifact": {
+      "name": "e116-output-specific-gradient-span",
+      "id": 10587953054,
+      "size_bytes": 2070,
+      "zip_sha256": "059ee89d5d944ef3695aa282288dd82f6b4b794d4f5887800b7ab57937608010",
+      "expires_at": "2026-12-18T16:48:19Z"
+    }
+  },
+  "decision": {
+    "verdict": "TERMINAL STRUCTURAL NO-GO",
+    "reason": "The exact scalar observable already exhibits eight linearly independent differentiable-region gradients in input dimension eight. Any exact fixed linear transport U^T x must therefore have k>=8=d and provides no dimensional compression.",
+    "production_implication": "No production-shaped prototype is authorized for this class because the intended k<d compression is structurally impossible on the frozen exact instance.",
+    "cost": "UNEXECUTED; structural gate failed before production cost work."
+  },
+  "gates": {
+    "all_weight_matrices_rank8": true,
+    "all_256_weights_nonzero": true,
+    "all_selected_exact_preactivations_nonzero": true,
+    "float_masks_match_exact": true,
+    "exact_gradient_determinant_nonzero": true,
+    "exact_gradient_span_rank8": true,
+    "deterministic_replay_exact": true,
+    "no_external_targets": true
+  },
+  "scope": {
+    "small_exact_synthetic_only": true,
+    "production_shape_run": false,
+    "public": false,
+    "public_mini": false,
+    "benchmark_targets": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rerun": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt; no E116 rerun, alternate observable, seed, point set, or projection rescue"
+}
