@@ -1,0 +1,133 @@
+{
+  "schema": "arc.whitebox.e109.terminal_receipt.v1",
+  "experiment": "E109",
+  "idempotency_key": "ARC-E109-LATE-GATEPAIR-SIGN-CV-20260919",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "competition_go": false,
+  "branch": "research/e109-late-gatepair-sign-cv-20260919",
+  "canonical_parent": "29bee3f8d23fc620b77aaed414b1b7a928af4b83",
+  "provenance": {
+    "protocol_commit": "2b1533fbba2234d773f8d3d73dcb1c0cbce6506f",
+    "red_tests_commit": "158b3a99057ca55467cd2b83690c001b26c82566",
+    "red_workflow_commit": "d91dbaced692d63eba366740cdbc917fc07b8270",
+    "implementation_commit": "03b01f12eb4208b52fa4f317a76f87fba184030e",
+    "verifier_commit": "154c115a859e415fa8ad7c03c8fed2942054d23c",
+    "scientific_arm_commit": "cf6322f4fb4dce677b3d0167d0337b759a5a36e0",
+    "result_commit": "08735e0d36358f141440b5b362eb04cb0cba6cdb"
+  },
+  "tdd": {
+    "red": {
+      "run": 35453090155,
+      "job": 105923542438,
+      "conclusion": "failure",
+      "expected_error": "ModuleNotFoundError: No module named 'methods.e109_late_gatepair_sign_cv'"
+    },
+    "green": {
+      "run": 35453170740,
+      "job": 105923754523,
+      "conclusion": "success",
+      "tests": "5 passed in 0.23s"
+    }
+  },
+  "mechanism": {
+    "name": "late-prefix gate-pair sign control variate",
+    "late_prefix_layer": 12,
+    "deep_direction_rows": 128,
+    "controls": 64,
+    "exact_control_mean": "E[sign(u^T q)sign(v^T q)] = (2/pi) asin(u^T v)",
+    "target_free": true,
+    "crossfit": "coefficients learned on opposite independent Haar block",
+    "disjoint_from": [
+      "E106 first-layer quartic controls",
+      "E107 exact spherical fourth-moment cubature",
+      "E108 first-layer exact-mean transported CV"
+    ]
+  },
+  "execution": {
+    "run": 35453256948,
+    "job": 105923980639,
+    "run_attempt": 1,
+    "run_head": "cf6322f4fb4dce677b3d0167d0337b759a5a36e0",
+    "verifier_step": "success",
+    "terminal_workflow_conclusion": "failure",
+    "terminal_exit_code": 2,
+    "rerun": false,
+    "artifact": {
+      "name": "e109-late-gatepair-sign-cv",
+      "id": 10587218508,
+      "size_bytes": 3581,
+      "zip_sha256": "3b3e88ffe457e084f78d620bb08092ec8479fdd7c2d22d42a5f9f11286a9a328",
+      "independently_verified_zip_sha256": "3b3e88ffe457e084f78d620bb08092ec8479fdd7c2d22d42a5f9f11286a9a328",
+      "extracted_json_sha256": "93891361e5ceec1220f0d9c36b1ba65db2381852d85a3db6c7a5f7640144f0b7"
+    }
+  },
+  "frozen_instance": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories_per_estimator": 4096,
+    "weight_seed": 109104,
+    "direction_seeds": [
+      109105,
+      109106
+    ],
+    "utilization_cap": 0.13,
+    "raw_target_scale": 1.89e-8
+  },
+  "measured": {
+    "baseline_target_free_raw_mse_risk": 0.000009279444815115177,
+    "candidate_target_free_raw_mse_risk": 0.000009508501368316554,
+    "candidate_over_baseline": 1.0246842949944883,
+    "relative_risk_change_fraction": 0.02468429499448832,
+    "candidate_over_raw_target_scale": 503.09531049293935,
+    "total_flops_per_estimator": 173829793328,
+    "utilization": 0.07904863802104956,
+    "precode_upper_flops": 175236871088,
+    "precode_upper_utilization": 0.07968850290490082,
+    "input_construction_flops": 11541346992,
+    "control_setup_flops": 24163124480,
+    "layer_total_flops": 137573171200,
+    "finalization_flops": 552150656,
+    "exact_flop_reconciliation": true,
+    "direction_norm_max_abs_error": 9.244663878860138e-8,
+    "analytic_control_mean_min": -0.18979866802692413,
+    "analytic_control_mean_max": 0.1410783976316452,
+    "beta_abs_max_seed_a": 0.037384603716228225,
+    "beta_abs_max_seed_b": 0.035316795582932034,
+    "antithetic_pair_max_abs": 0,
+    "candidate_risk_repeat_abs": 0,
+    "baseline_risk_repeat_abs": 0,
+    "deterministic_predictions": true,
+    "deterministic_flop_ledgers": true,
+    "finite": true
+  },
+  "gates": {
+    "admission_util_le_0_13": true,
+    "measured_util_le_0_13": true,
+    "material_candidate_over_baseline_le_0_90": false,
+    "candidate_risk_lt_baseline": false,
+    "candidate_risk_le_1_89e_8": false,
+    "integrity_all": true,
+    "no_targets_read": true
+  },
+  "interpretation": {
+    "blocker": "Pairwise sign correlations of a fixed layer-12 mean-field pullback are active but anti-helpful: cross-fitted correction increases E104-style angular stochastic risk by 2.468%.",
+    "frontier_constraint": "Do not reopen E106/E107/E108/E109. A successor must address deeper nonlinear/angular structure beyond first-layer moments, low-order polynomial controls, and pairwise mean-field gate correlations while retaining target-free unbiasedness and <=0.13 utilization."
+  },
+  "scope": {
+    "synthetic_production_shape_only": true,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
