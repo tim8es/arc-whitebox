@@ -1,0 +1,230 @@
+{
+  "schema": "arc.whitebox.e123.verifier_receipt.v1",
+  "experiment": "E123",
+  "verifies": "E122",
+  "idempotency_key": "ARC-E123-E122-C733AF8-ADVERSARIAL-12D-20260920",
+  "status": "TERMINAL_NO_GO_FOR_FROZEN_E122_CANDIDATE",
+  "scientific_go": false,
+  "branch": "research/e123-independent-multisource-verifier-20260920",
+  "frozen_e122": {
+    "branch": "research/e122-haar8-antipodal-simplex-source-code-20260920",
+    "protocol_commit": "fd2f2d93ed7be6124cd70485b561177c3b2787ad",
+    "implementation_commit": "3853efd5177f6931c7dcf884dd97f7342751ca03",
+    "tested_head": "c733af8f3b179c9c9ef8314abc136b2ff6a7940b",
+    "protocol_blob": "fca1c0a0beb88f3bf2573cd4620a886b9dfaa0e7",
+    "candidate_blob": "bf03692f9c205805fbea4113ec9e17e9d1ce2811",
+    "tests_blob": "7b6f1e80def4b76a00526c04c90b20bb008cfa6f",
+    "candidate_source_sha256": "8ad7cc902c756ad2582ad70ffb87dbc6d6aade6d2e8577f5dff445ef67be8ef6",
+    "e122_modified_by_verifier": false
+  },
+  "verifier_provenance": {
+    "readiness_protocol_commit": "40f3fc9bdd4279b4a0476f90382d73db5dbce6c9",
+    "fixture_initial_commit": "0f4a39975da8940af1eb6152c44fa10258ae137e",
+    "fixture_tests_commit": "397e0bbf70677043eddb4b78dda19372ae6cd13d",
+    "readiness_script_commit": "00ceaf3511abc6c402f4ec9e5d11b6de165894bb",
+    "readiness_state_commit": "258ca0232c991b1ed634abcc0aad69ddb044955d",
+    "preflight_workflow_commit": "951229ba5fa20a3360ccb51a49a1ee409f9908e8",
+    "preflight_arm_commit": "0934327a57dff75d098d568b73b0369a1cf7bab7",
+    "e122_e123_merge_commit": "5200681c8dada3a840fe37cdd79da35d04de3a0d",
+    "candidate_visible_fixture_commit": "8c1d73ab4baccdabcf7290d2b38ed903eb3c826b",
+    "candidate_protocol_initial_commit": "4d6566ab465c4adec55acdaba7eec1c7653186dd",
+    "candidate_protocol_frozen_commit": "b60b71dff5c6c891a13e46aeb153d68db282bf04",
+    "candidate_verifier_commit": "676cb699477820e638d51a8b0dbeb368c1ac2482",
+    "candidate_workflow_commit": "d1956c582f1f4999586eb479fa62ffc6ca1ac807",
+    "candidate_arm_commit": "631d0ef45e466d55ee5a77406261eca28cd81571"
+  },
+  "readiness_preflight": {
+    "classification": "BLOCKED_BY_MISSING_E122_CANDIDATE_AT_PREFLIGHT_SNAPSHOT",
+    "run": 35473330106,
+    "job": 105978161164,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "scientific_candidate_checks": "UNEXECUTED_BY_READINESS_GATE",
+    "fixture_ready": true,
+    "fixture_replay_exact": true,
+    "mixing_orthogonality_max_abs": 3.3306690738754696e-16,
+    "dense_vs_latent_probe_max_abs": 1.3322676295501878e-15,
+    "artifact": {
+      "name": "e123-independent-multisource-verifier",
+      "id": 10594091381,
+      "zip_sha256": "0098b20a76928b3f132c1b3665505705786eebf0730285a879e3e0954aee9d7a"
+    },
+    "note": "E122 implementation commits appeared after this preflight arm; preflight is not a scientific verdict on E122."
+  },
+  "adversarial_fixture": {
+    "input_dimension": 12,
+    "output_width": 12,
+    "relu_depth": 4,
+    "independent_source_pairs": 6,
+    "block_subnetwork_seeds": [
+      123300,
+      123301,
+      123302,
+      123303,
+      123304,
+      123305
+    ],
+    "orthogonal_mixing_seed": 123390,
+    "candidate_seeds": [
+      123400,
+      123401,
+      123402,
+      123403
+    ],
+    "iid_seeds": [
+      123500,
+      123501,
+      123502,
+      123503
+    ],
+    "directions_per_estimate": 4032,
+    "dense_input_mixing": true,
+    "candidate_received_block_decomposition": false,
+    "candidate_received_exact_reference": false,
+    "fixture_weights_sha256": "f4896420ac0fdc7ec6d1a3983296d4b89a9b3ea2b0a60de9f6204286859c0aa4",
+    "exact_mean_sha256": "19060afbd6d18b454b31a6e31c2885509d5686251bb49115f54fa57de639ec50",
+    "dense_vs_latent_probe_max_abs": 1.7763568394002505e-15
+  },
+  "deterministic_replay": {
+    "prediction_bitwise_exact_all": true,
+    "ledger_exact_all": true,
+    "max_frame_orthogonality_abs": 1.3975202503969604e-15,
+    "max_source_direction_norm_abs": 5.551115123125783e-16,
+    "verdict": "PASS"
+  },
+  "target_oracle_firewall": {
+    "candidate_callable_parameters": [
+      "weights",
+      "frames",
+      "seed"
+    ],
+    "candidate_imports": [
+      "__future__",
+      "dataclasses",
+      "math",
+      "numpy",
+      "typing"
+    ],
+    "forbidden_imports": [],
+    "dangerous_io_or_network_calls": [],
+    "runtime_exact_reference_materialized_after_all_candidate_and_iid_runs": true,
+    "candidate_received_exact_reference": false,
+    "candidate_received_block_decomposition": false,
+    "verdict": "PASS"
+  },
+  "adversarial_error": {
+    "per_seed_candidate_mse": [
+      0.0000034514226318255612,
+      0.0000035350424510408935,
+      0.000005335758666708139,
+      0.0000011766121411312778
+    ],
+    "pooled_candidate_mse": 0.0000033747089726764676,
+    "pooled_iid_mse": 0.000093949266100199,
+    "pooled_candidate_over_iid": 0.035920546405091285,
+    "frozen_ratio_gate": 0.95,
+    "ratio_gate_pass": true,
+    "raw_mse_scale_diagnostic": 1.89e-8,
+    "candidate_over_raw_scale": 178.5560303003422,
+    "interpretation": "The Haar-8 simplex candidate strongly beats same-node iid on the independent dense-mixed 12-D six-source fixture, but its absolute MSE remains far above the competition raw scale; the latter was diagnostic rather than an E122 admission gate."
+  },
+  "error_certificate": {
+    "candidate_result_fields": [
+      "mean",
+      "frame_orthogonality_max_abs",
+      "source_direction_norm_max_abs",
+      "ledger",
+      "finite"
+    ],
+    "predeclared_computable_finite_sample_certificate": false,
+    "certificate_output_field": false,
+    "verdict": "ERROR_CERTIFICATE_MISSING",
+    "gate_pass": false,
+    "reason": "E122 proves exact unbiasedness in expectation and preregisters empirical exact-reference MSE ratios, but defines no computable finite-sample error certificate/norm carried by the candidate."
+  },
+  "cost": {
+    "protocol_numeric_terms_match_independent_recompute": true,
+    "protocol_all_in_upper": 135554463424,
+    "protocol_hard_cap": 136758472261,
+    "protocol_slack": 1204008837,
+    "candidate_executes_unbilled_operation_classes": [
+      "per-frame orthogonality diagnostic U.T @ U",
+      "per-frame source-direction np.linalg.norm(q, axis=1) diagnostic"
+    ],
+    "omitted_diagnostic_flop_equivalent": 37680832,
+    "corrected_all_in_upper": 135592144256,
+    "corrected_slack": 1166328005,
+    "corrected_total_still_under_cap": true,
+    "accounting_complete": false,
+    "verdict": "ACCOUNTING_INCOMPLETE",
+    "gate_pass": false,
+    "reason": "E122 protocol explicitly declares any additional candidate operation class absent from the ledger an accounting failure. Correcting the omissions still fits under the cap, but does not repair completeness of the frozen ledger."
+  },
+  "simplex_algebra": {
+    "max_vertex_gram_error": 3.3306690738754696e-16,
+    "max_vertex_norm_error": 2.220446049250313e-16,
+    "vertex_sum_inf": 1.1102230246251565e-16,
+    "second_moment_max_abs_error": 5.551115123125783e-17,
+    "verdict": "PASS"
+  },
+  "candidate_bearing_execution": {
+    "run": 35473558089,
+    "job": 105978764075,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "5 passed in 0.16s",
+    "exactly_one_workflow_run_for_arm_head": true,
+    "artifact": {
+      "name": "e123-e122-c733af8-verifier",
+      "id": 10593286630,
+      "size_bytes": 7206,
+      "zip_sha256": "7a8ddcc17a33a4c922ea0228fa54d79c2be781c4cf6f5b7c2b4a8e189e52e0ce",
+      "expires_at": "2026-12-18T22:31:06Z"
+    }
+  },
+  "gates": {
+    "simplex_algebra_pass": true,
+    "candidate_outputs_finite_all": true,
+    "haar8_orthogonality_le_2e_12": true,
+    "source_direction_norm_le_2e_12": true,
+    "deterministic_replay_bitwise_exact_all": true,
+    "candidate_ledger_replay_exact_all": true,
+    "small_candidate_ledger_matches_independent_formula_all": true,
+    "adversarial_12d_candidate_over_iid_le_0_95": true,
+    "target_oracle_firewall_pass": true,
+    "runtime_reference_materialized_after_candidate": true,
+    "finite_sample_error_certificate_present_and_computable": false,
+    "production_cost_accounting_complete_and_under_cap": false,
+    "no_public_benchmark_scorer_holdout_full": true
+  },
+  "decision": {
+    "verdict": "TERMINAL_NO_GO_FOR_FROZEN_E122_CANDIDATE",
+    "positive_findings": [
+      "Independent adversarial 12-D six-source error ratio gate passes strongly.",
+      "Deterministic replay passes bitwise.",
+      "Target/oracle firewall passes.",
+      "Corrected production arithmetic remains below the hard FLOP cap."
+    ],
+    "blockers": [
+      "No predeclared computable finite-sample error certificate exists.",
+      "Frozen all-in ledger omits two operation classes executed by the candidate, violating E122's own accounting-completeness rule."
+    ],
+    "scope": "Applies only to frozen E122 head c733af8f3b179c9c9ef8314abc136b2ff6a7940b. No rescue or reinterpretation."
+  },
+  "scope": {
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "e122_modified": false,
+    "public": false,
+    "public_mini": false,
+    "benchmark_targets": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "production_execution": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "merge_to_canonical": false
+  }
+}
