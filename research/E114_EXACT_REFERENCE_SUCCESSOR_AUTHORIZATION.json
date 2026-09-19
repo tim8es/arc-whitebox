@@ -1,0 +1,47 @@
+{
+  "schema": "arc.whitebox.e114.exact_reference_successor_authorization.v1",
+  "experiment": "E114",
+  "idempotency_key": "ARC-E114-EXACT-REFERENCE-OUTPUT-COMPRESSION-V2-20260919",
+  "status": "AUTHORIZED_ENGINEERING_RETRY_SCIENCE_UNEXECUTED",
+  "branch": "research/e114-exact-reference-output-compression-20260919",
+  "reason": {
+    "prior_run": 35456285772,
+    "prior_job": 105932020587,
+    "prior_blocker": "pytest command not found",
+    "exact_reference_step_executed": false,
+    "scientific_measurements_executed": false,
+    "interpretation": "Engineering dependency blocker occurred before any frozen exact-reference corpus execution."
+  },
+  "frozen_science": {
+    "methods_blob": "3a8467f88501c114cb1540909777dbe266ad0be5",
+    "tests_blob": "e18832b65acf2bd3385c9e575a9e26243cedb099",
+    "harness_blob": "d4b8241d7d813e75472c0dd6d1a01e88583b8e6b",
+    "fixtures": "width=8 depth=4 input_dim=2 seeds 114200..114203",
+    "oracle_ranks": [
+      1,
+      2,
+      4
+    ],
+    "equations_changed": false,
+    "gates_changed": false
+  },
+  "authorized_change_only": "Install pytest==8.3.5 and execute the already-frozen tests/reference once.",
+  "one_shot": {
+    "arm_path": "research/E114_EXACT_REFERENCE_RUN_ARM_V2.json",
+    "arm_must_be_immediate_child_of_authorization": true,
+    "rerun": false,
+    "tuning": false,
+    "fixture_change": false,
+    "rank_change": false
+  },
+  "scope": {
+    "new_mechanism": false,
+    "public": false,
+    "benchmark_targets": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
