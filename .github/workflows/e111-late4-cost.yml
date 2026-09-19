@@ -1,0 +1,41 @@
+name: E111 late4 nonlinear cost audit
+
+on:
+  push:
+    branches:
+      - research/e111-late4-gaussian-relu-plugin-cost-20260919
+    paths:
+      - 'research/E111_PROTOCOL.md'
+      - 'scripts/e111_late4_cost.py'
+      - '.github/workflows/e111-late4-cost.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  cost:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen project dependencies
+        run: python -m pip install -e .
+      - name: Run one frozen E111 production accounting check
+        run: python scripts/e111_late4_cost.py
+      - name: Upload immutable E111 cost evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e111-late4-cost
+          path: e111-late4-cost.json
+          if-no-files-found: error
+          retention-days: 90
