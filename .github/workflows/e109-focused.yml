@@ -1,0 +1,29 @@
+name: E109 focused RED-GREEN
+
+on:
+  push:
+    branches:
+      - research/e109-late-gatepair-sign-cv-20260919
+    paths:
+      - "tests/test_e109_late_gatepair_sign_cv.py"
+      - "methods/e109_late_gatepair_sign_cv.py"
+      - ".github/workflows/e109-focused.yml"
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest
+      - name: Run E109 focused tests
+        run: python -m pytest -q tests/test_e109_late_gatepair_sign_cv.py
