@@ -1,0 +1,72 @@
+{
+  "schema": "arc.whitebox.e119.exact_reference_extension_receipt.v1",
+  "experiment": "E119",
+  "role": "exact_reference_engineer",
+  "branch": "review/e119-exact-reference-extension-20260919",
+  "status": "E119_EXACT_REFERENCE_EXTENSION_PASS",
+  "owner_lane_modified": false,
+  "production_authorized": false,
+  "provenance": {
+    "parent_branch": "research/e119-generic-boundary-flux-certificate-20260919",
+    "reference_harness_commit": "110b447917970f3e50c9db7f2b0047d0bddeefc5",
+    "comparator_commit": "e7b454fef6264ec48e5644509105cefdbcd92fc5",
+    "tests_commit": "97bf07c23a5ad30235e2b18991241cfa2994e960",
+    "evidence_runner_commit": "1d57c7c448ef690676b426169fac9d06123ce6e9",
+    "workflow_commit": "781510a0684dd5ae7320b8e2ea07174d825a3d3f",
+    "result_commit": "5785da0a1764c81bf7f97be8c8b1a89e275880c7",
+    "run": 35458239376,
+    "job": 105937257716,
+    "artifact_id": 10589800043,
+    "artifact_name": "e119-exact-reference-extension",
+    "artifact_sha256": "723f467cb56301dea0b6daa76dd5dab72b0c08e31648a237e7f21227b0dd3266",
+    "artifact_size_bytes": 1988
+  },
+  "coverage": {
+    "case_count": 6,
+    "input_dimension": 2,
+    "max_width": 8,
+    "max_depth": 4,
+    "heterogeneous_width_chains": true,
+    "hand_specified_dense_rectangular_chain": true,
+    "all_weights_dense_nonzero": true,
+    "focused_tests": "7 passed in 0.38s"
+  },
+  "worst_observed_errors": {
+    "sector_lower_endpoint": 0.0,
+    "sector_upper_endpoint": 0.0,
+    "sector_coefficient_max_abs": 0.0,
+    "boundary_angle_wrapped": 0.0,
+    "scalar_boundary_jump_max_abs": 2.220446049250313e-16,
+    "reference_sector_vs_direct_network_max_abs": 8.881784197001252e-16,
+    "generic_sector_vs_direct_network_max_abs": 8.881784197001252e-16,
+    "generic_scalar_mean_vs_exact_sector_abs": 4.440892098500626e-16,
+    "reference_flux_mean_vs_exact_sector_abs": 4.440892098500626e-16,
+    "partition_max_gap": 0.0,
+    "partition_max_overlap": 0.0
+  },
+  "gates": {
+    "layerwise_region_counts_match": true,
+    "final_region_counts_match": true,
+    "sector_endpoints_match": true,
+    "sector_coefficients_match": true,
+    "direct_network_interior_checks_pass": true,
+    "boundary_angles_match": true,
+    "scalar_jumps_match": true,
+    "generic_mean_matches_exact_sector_reference": true,
+    "reference_flux_identity_matches_sector_mean": true,
+    "deterministic_replay_exact": true
+  },
+  "scope": {
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "production_run": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "interpretation": "The generic E119 boundary construction is validated against an extended exact angular-sector oracle for arbitrary heterogeneous dense small networks. This strengthens reference correctness only; it does not solve the separate nonzero-boundary compression blocker."
+}
