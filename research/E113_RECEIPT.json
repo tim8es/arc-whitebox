@@ -1,0 +1,138 @@
+{
+  "schema": "arc.whitebox.e113.terminal_receipt.v1",
+  "experiment": "E113",
+  "idempotency_key": "ARC-E113-DEEP-FOLDED-RIDGE-RESIDUAL-20260919",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "competition_go": false,
+  "branch": "research/e113-deep-folded-ridge-residual-20260919",
+  "provenance": {
+    "parent_e111_terminal_head": "9d0dcc429fc4b62a6607ea28c97fbb44327dbaf2",
+    "protocol_initial_commit": "b94451ba48d47563ab7032307b7db01927e1f937",
+    "protocol_arithmetic_fix_commit": "dfdacf2734eb5d19a85af7e082b15e6dbaafc58f",
+    "implementation_commit": "58cf639ace4d83af03871a47414bb92ff0f0f172",
+    "tests_commit": "07e2ca0820b433dde6ca27e55eb78a23b0034f7b",
+    "executed_workflow_head": "4e88b8bf7b9d1eb4aa85a744d0a298ca0208b956",
+    "executed_blobs": {
+      "protocol": "02d942d5b2d31ff291ba535a380d1b1b47384138",
+      "script": "1b2f9d83d6831b249f14561c59e8d6e90c01b57e",
+      "tests": "a067cc897c874d7ba49b08b4b2d16f4e58c101af",
+      "workflow": "b53f9f59e08e29fecf044fbd5c52a8898aa08786"
+    }
+  },
+  "mechanism": {
+    "name": "deterministic deep folded-ridge residual control",
+    "base_law": "E104-style analytic chi-radius antithetic angular contribution",
+    "deep_direction": "exact realized-gate gradient at fixed probe p=ones/sqrt(n) of the normalized final-output sum",
+    "deterministic_coefficient": "a=0.5*(F(v)+F(-v))",
+    "exact_zero_mean_control": "C(q)=abs(v^T q)-Gamma(n/2)/(sqrt(pi) Gamma((n+1)/2))",
+    "candidate": "B(q)-E[chi_n]*a*C(q)",
+    "target_free": true,
+    "target_fitting": false,
+    "gaussian_relu_plugin": false,
+    "empirical_covariance_division": false,
+    "empirical_variance_division": false,
+    "ridge_or_matrix_solve": false
+  },
+  "stability_proof": {
+    "stochastic_denominator": false,
+    "control_bound": "for unit q,v, |C(q)|<1",
+    "exact_control_second_moment": "1/n-m_n^2",
+    "coefficient_source": "two deterministic full-network unit-ray evaluations",
+    "conclusion": "The proposed coefficient construction is denominator-free and bounded conditional on a valid nonzero deep direction."
+  },
+  "production_admission": {
+    "reference_e104_flops": 149047442096,
+    "frozen_overhead_upper_flops": 200000000,
+    "all_in_upper_flops": 149247442096,
+    "budget_flops": 2199023255552,
+    "utilization_upper": 0.06786987891973695,
+    "utilization_cap": 0.13,
+    "pass": true,
+    "production_execution_authorized": false
+  },
+  "frozen_smallwidth_instance": {
+    "width": 8,
+    "depth": 4,
+    "zero_bias": true,
+    "weight_seed": 113104,
+    "haar_root_seed": 113105,
+    "planned_estimator_realizations": 1024,
+    "planned_haar_bases_per_realization": 2
+  },
+  "execution": {
+    "run": 35455286150,
+    "job": 105929357808,
+    "run_attempt": 1,
+    "head": "4e88b8bf7b9d1eb4aa85a744d0a298ca0208b956",
+    "workflow_conclusion": "failure",
+    "focused_tests": "5 passed in 0.16s",
+    "scientific_step": {
+      "conclusion": "failure",
+      "exception_type": "RuntimeError",
+      "exception": "invalid deep probe gradient norm: 0.0",
+      "terminal_protocol_gate": "deep direction norm finite and >1e-12",
+      "observed_gradient_norm": 0.0
+    },
+    "rerun": false,
+    "artifact": null,
+    "artifact_note": "The script raised on the preregistered terminal integrity gate before writing the JSON payload; the always-upload step therefore also failed. The immutable Actions log is the execution evidence. No rerun is permitted."
+  },
+  "gates": {
+    "focused_exact_law_tests_pass": true,
+    "production_budget_admission_le_0_13": true,
+    "deep_direction_norm_gt_1e_12": false,
+    "risk_falsifier_reached": false,
+    "candidate_risk_lt_baseline": null,
+    "risk_ratio_le_0_80": null,
+    "unbiasedness_mean_shift_gate": null,
+    "no_targets_read": true
+  },
+  "interpretation": {
+    "verdict": "The denominator-free folded-ridge control is mathematically admissible and cheaply budget-admissible, but the frozen observable-direction construction is not robust: on the preregistered width-8/depth-4 network the exact realized-gate gradient at the fixed probe is identically zero.",
+    "blocker": "A deterministic single-probe deep Jacobian direction can die completely under ReLU gating, so the estimator cannot even define its normalized structural axis on the frozen instance.",
+    "why_no_rescue": "The protocol explicitly declared a non-finite or <=1e-12 direction norm terminal and forbade changing probe, direction, seed, width/depth, coefficient scale or rerunning after the result.",
+    "successor_constraint": "A successor may retain exact centered folded projections, but its structural axis must be defined without a single realized-gate probe that can die; it must preserve target independence and denominator-free coefficient stability."
+  },
+  "classification": {
+    "VERIFIED": {
+      "exact_control_law_unit_tests": true,
+      "deterministic_two_ray_coefficient_definition": true,
+      "denominator_free_stability_proof": true,
+      "budget_admission": true,
+      "frozen_probe_gradient_zero": true,
+      "terminal_integrity_failure": true
+    },
+    "UNEXECUTED": {
+      "planned_1024_realization_risk_measurement": false,
+      "production_shape_e113": false,
+      "raw_competition_final_layer_mse": null,
+      "adjusted_competition_score": null,
+      "public_mini": false,
+      "official_scorer": false,
+      "holdout": false,
+      "full_suite": false
+    }
+  },
+  "scope": {
+    "small_width_synthetic_only": true,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "target_fitting": false,
+    "gaussian_relu_plugin": false,
+    "covariance_division": false,
+    "variance_division": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt; no E113 rerun or post-result probe/direction/seed changes"
+}
