@@ -18,7 +18,8 @@ At E123 freeze, repository evidence is:
 - its own status is **PROTOCOL ONLY / NO SCIENTIFIC RUN AUTHORIZED BY E128**;
 - it explicitly requires a future dedicated E122 owner to freeze an
   implementation-level protocol before code;
-- no E122 owner branch exists;
+- a remote placeholder branch `research/e122-haar8-antipodal-simplex-source-code-20260920` exists, but at verifier freeze it still points to the E121 terminal head and contains no E122 artifact;
+- no authoritative E122 owner commit exists;
 - no `methods/e122*.py`, `scripts/e122*.py`, candidate manifest, E122
   result receipt, or E122 scientific run exists;
 - E128 registry classifies E122 as
