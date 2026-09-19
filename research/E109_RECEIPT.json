@@ -1,0 +1,143 @@
+{
+  "schema": "arc.whitebox.e109.terminal_receipt.v1",
+  "experiment": "E109",
+  "idempotency_key": "ARC-E109-DEEP-STEIN-JVP-CV-20260919",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "branch": "research/e109-deep-stein-jvp-cv-20260919",
+  "provenance": {
+    "parent_e108_terminal_head": "073c6b66064a12fdcd18ab939002ab5458f48f69",
+    "protocol_commit": "f0c1270bf08b9937d15e8094fb4badd1a852c268",
+    "script_initial_commit": "c8fb430b66064701371503bcb76e3d4bc6c5feea",
+    "frozen_script_commit": "9a7b35cbc7bfb0eef3241ae7755330d41007e4b2",
+    "workflow_commit": "9fc5e6522a658a5d4934e85c16e36a4e9e927833",
+    "arm_commit": "38285fb21acf95da4126643cb0723c7efaf97a1e",
+    "result_commit": "4d207909bad3717f37bd79f5b4a453d4bca67b79"
+  },
+  "mechanism": {
+    "name": "deep Gaussian-Stein final-layer directional-JVP control variate",
+    "identity": "E[D_v F_j(X) - (v dot X) F_j(X)] = 0 for X~N(0,I), fixed network-derived v",
+    "nonlinear_component": "directional derivative propagated through actual realized ReLU gates at all 16 layers",
+    "directions": 8,
+    "direction_rule": "eight fixed input sensitivities from 0.5-gate mean-field backprop of contiguous final-output groups; used only to choose v",
+    "sampling": "ordinary iid Gaussian antithetic",
+    "coefficient_rule": "per-direction, per-output scalar beta with fixed 124/124 half cross-fit and opposite-half application",
+    "ridge": false,
+    "clipping": false,
+    "fallback": false,
+    "target_free": true
+  },
+  "exclusions_verified": {
+    "haar_or_rao_blackwell": false,
+    "first_layer_exact_mean": false,
+    "e091": false,
+    "e100_orthogonal_sampler": false,
+    "latent_mixture": false,
+    "qmc_or_cubature": false
+  },
+  "admission": {
+    "budget_flops": 2199023255552,
+    "utilization_cap": 0.13,
+    "frozen_upper_flops": 271548019200,
+    "frozen_upper_utilization": 0.1234857423696667,
+    "pre_code_gate": true,
+    "measured_candidate_flops": 266952952000,
+    "measured_candidate_utilization": 0.12139614773332141,
+    "measured_gate": true,
+    "measured_baseline_standalone_flops": 133349212160,
+    "measured_baseline_standalone_utilization": 0.06064020097255707,
+    "exact_flop_reconciliation": true
+  },
+  "execution": {
+    "run": 35453167481,
+    "job": 105923744825,
+    "run_attempt": 1,
+    "workflow_conclusion": "success",
+    "exactly_one_workflow_run_for_arm_head": true,
+    "rerun": false,
+    "artifact": {
+      "name": "e109-deep-stein-jvp-cv",
+      "id": 10587586251,
+      "size_bytes": 4545,
+      "zip_sha256": "458476a94e6857979ba3651c0a74f67814ea55faa49964b8ae4501904a7a4304",
+      "expires_at": "2026-12-18T15:52:38Z"
+    }
+  },
+  "frozen_instance": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories_per_estimator": 3968,
+    "antithetic_pairs": 1984,
+    "control_directions": 8,
+    "pairs_per_direction": 248,
+    "crossfit_half_pairs": 124,
+    "weight_seed": 109104,
+    "estimator_seeds": [
+      109105,
+      109106
+    ],
+    "benchmark_targets_read": false
+  },
+  "measured": {
+    "baseline_target_free_raw_mse_risk": 0.000015656428546598965,
+    "candidate_target_free_raw_mse_risk": null,
+    "candidate_target_free_raw_mse_risk_state": "NaN_NONFINITE",
+    "candidate_over_baseline": null,
+    "candidate_over_baseline_state": "NaN_NONFINITE",
+    "competition_raw_target_scale": 1.89e-8,
+    "candidate_over_target_scale": null,
+    "antithetic_pair_max_abs": 0,
+    "direction_norm_min": 0.0032959341047387853,
+    "direction_norm_max": 0.0039843483257579046,
+    "control_den_min": 0,
+    "beta_abs_max": null,
+    "beta_abs_max_state": "NaN_NONFINITE",
+    "candidate_finite": false,
+    "baseline_bitwise_deterministic": true,
+    "baseline_risk_repeat_abs": 0,
+    "candidate_sha_replay_equal": true,
+    "candidate_finite_array_determinism_gate": false,
+    "candidate_risk_repeat_state": "NaN_NONFINITE",
+    "exact_accounting": true
+  },
+  "gates": {
+    "admission_upper_util_le_0_13": true,
+    "measured_util_le_0_13": true,
+    "exact_accounting_all": true,
+    "finite_all": false,
+    "shape_all_16x1024": true,
+    "antithetic_exact_all": true,
+    "direction_norms_positive_all": true,
+    "control_denominators_positive_all": false,
+    "candidate_bitwise_deterministic": false,
+    "baseline_bitwise_deterministic": true,
+    "risk_replay_exact": false,
+    "flop_ledgers_deterministic": true,
+    "candidate_risk_lt_baseline": false,
+    "candidate_over_baseline_le_0_80": false,
+    "adjusted_proxy_improves_baseline": false,
+    "no_targets_read": true
+  },
+  "interpretation": {
+    "result": "Budget admission and deep JVP execution are valid, but the frozen cross-fit is undefined on at least one half/output coordinate because empirical Stein-control variance is exactly zero.",
+    "blocker": "control_den_min == 0 forces division by zero under the preregistered no-ridge/no-fallback beta rule, producing non-finite coefficients and candidate risk.",
+    "terminal_reason": "The protocol forbids post-result ridge, clipping, fallback, seed/sample/K changes, or rescue, so the mechanism is closed under E109.",
+    "useful_evidence": "Deep nonlinear Stein controls fit under the 0.13 budget; the failure is coefficient identifiability/degenerate empirical control variance, not compute admission."
+  },
+  "verdict": "TERMINAL_NO_GO_DROP",
+  "scope": {
+    "synthetic_production_shape_only": true,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
