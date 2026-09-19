@@ -1,0 +1,36 @@
+name: E117 scalar-observable adjoint flux
+
+on:
+  push:
+    branches:
+      - research/e117-scalar-observable-adjoint-flux-20260919
+    paths:
+      - 'research/E117_PROTOCOL.md'
+      - 'scripts/e117_scalar_observable_adjoint_flux.py'
+      - '.github/workflows/e117-scalar-observable-adjoint-flux.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+
+jobs:
+  exact-identity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen E117 scalar-adjoint identity
+        run: python scripts/e117_scalar_observable_adjoint_flux.py
+      - name: Upload immutable E117 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e117-scalar-observable-adjoint-flux
+          path: e117_scalar_observable_adjoint_flux.json
+          if-no-files-found: error
+          retention-days: 90
