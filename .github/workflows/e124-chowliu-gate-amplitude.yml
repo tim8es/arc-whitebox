@@ -1,0 +1,39 @@
+name: E124 exact Chow-Liu gate-amplitude falsifier
+
+on:
+  push:
+    branches:
+      - research/e124-chowliu-gate-amplitude-cluster-20260920
+    paths:
+      - 'methods/e124_chowliu_gate_amplitude.py'
+      - 'tests/test_e124_chowliu_gate_amplitude.py'
+      - 'scripts/e124_chowliu_gate_amplitude.py'
+      - '.github/workflows/e124-chowliu-gate-amplitude.yml'
+
+jobs:
+  exact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E124 tests
+        run: python -m pytest -q tests/test_e124_chowliu_gate_amplitude.py
+      - name: Run sole E124 exact falsifier
+        run: python scripts/e124_chowliu_gate_amplitude.py
+      - name: Upload E124 payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: e124-chowliu-gate-amplitude
+          path: e124-chowliu-gate-amplitude.json
+          if-no-files-found: error
+          retention-days: 90
