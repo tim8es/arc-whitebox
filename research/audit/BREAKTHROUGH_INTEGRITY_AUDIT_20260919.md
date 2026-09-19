@@ -348,3 +348,14 @@ Until the E113 top-2 gate above is resolved:
 
 Audit decision:
 `NO_CURRENT_COMPETITION_BREAKTHROUGH_GO__NEXT_GATE_E113_TOP2_EXACT`.
+
+
+## Historical GO-surface cleanup
+
+A final branch-name sweep covered older branches returned by the repository around the historical GO surface:
+
+- `research/e031-output-hessian-diagonal-20260915` currently points exactly to canonical bootstrap head `29bee3f8d23fc620b77aaed414b1b7a928af4b83` and contains no E031-specific commit history. It has **zero experiment evidence** and must not be cited as an E031 result or GO.
+- `research/e033-diagonal-edgeworth-20260915@c97ac30f76ef4cda8e9754d644ed4003f7667842` is explicitly terminal diagonal Edgeworth NO-GO.
+- `research/e036-output-hessian-diagonal-20260915@97c9e88b88b20029fb7b61652ab437910bbbc635` is explicitly terminal centered-Hessian NO-GO.
+
+These historical branches add no surviving breakthrough GO.
