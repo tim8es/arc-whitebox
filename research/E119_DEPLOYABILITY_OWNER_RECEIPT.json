@@ -1,0 +1,121 @@
+{
+  "schema": "arc.whitebox.e119.owner_deployability_receipt.v1",
+  "experiment": "E119",
+  "idempotency_key": "ARC-E119-GENERIC-BOUNDARY-FLUX-CERT-20260919",
+  "branch": "research/e119-generic-boundary-flux-certificate-20260919",
+  "parent_head_before_owner_receipt": "de346277894ccb89ceef39e76ca6d8f12853b2ee",
+  "identity_separation": {
+    "E118": "online fixed-grid scalar boundary-flux sketch; no boundary enumeration; verifier-side exact bias measurement",
+    "E119": "weight-driven exact boundary/region materialization plus target-free L1 omitted-flux certificate",
+    "mixed": false
+  },
+  "strongest_implemented_path": {
+    "name": "generic exact weight-driven angular region construction + scalar jump materialization + L1-certified omission",
+    "protocol_first": true,
+    "exact_smallwidth_reference": true,
+    "generic_weight_driven_state": true,
+    "target_free": true,
+    "candidate_uses_e114_reference": false
+  },
+  "frozen_smallwidth_result": {
+    "status": "GO",
+    "width": 8,
+    "depth": 4,
+    "input_dimension": 2,
+    "seeds": [
+      114200,
+      114201,
+      114202,
+      114203
+    ],
+    "final_region_counts": [
+      55,
+      61,
+      83,
+      55
+    ],
+    "retained_atom_counts": [
+      54,
+      60,
+      82,
+      54
+    ],
+    "retained_fractions": [
+      0.9818181818181818,
+      0.9836065573770492,
+      0.9879518072289156,
+      0.9818181818181818
+    ],
+    "max_boundary_angle_wrapped_error": 0,
+    "max_scalar_jump_abs_error": 4.440892098500626e-16,
+    "max_full_mean_abs_error": 2.220446049250313e-16,
+    "deterministic_replay_max_abs": 0,
+    "max_all_in_accounted_flops": 105272,
+    "max_abs_remainder_certificate": 0,
+    "max_compressed_bias_mse": 4.930380657631324e-32,
+    "interpretation": "The generic constructor and certificate are exact on the frozen 2-D corpus, but the rigorous target-scale certificate omits only a zero-flux atom and retains essentially all nonzero boundary atoms."
+  },
+  "execution": {
+    "run": 35458020001,
+    "job": 105936659806,
+    "run_head": "d731e845c96d401ac001da82c8998c06a03ec484",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "rerun": false,
+    "artifact_id": 10589345345,
+    "artifact_name": "e119-generic-boundary-flux-certificate",
+    "artifact_size_bytes": 6954,
+    "artifact_zip_sha256": "7485a4380bca0175197afeb327aed9abeb2f5d14ca335cdff6571ad0c7ed78e3",
+    "independently_verified_zip_sha256": "7485a4380bca0175197afeb327aed9abeb2f5d14ca335cdff6571ad0c7ed78e3",
+    "extracted_json_sha256": "a4e2893c3bb3bb5af97f9145a83378f2c0a21c3620fc22ae62a1583e28cae384"
+  },
+  "remainder_bound": {
+    "raw_mse_target": 1.89e-8,
+    "total_rms_target": 0.000137477270849,
+    "formula": "B_abs = sqrt(pi/2)/(2*pi) * sum_abs(omitted_scalar_jumps)",
+    "rigorous": true,
+    "target_free": true,
+    "smallwidth_pass": true,
+    "material_compression_established": false
+  },
+  "production_budget": {
+    "user_incremental_cap_flops": 136758472261,
+    "production_input_dimension": 1024,
+    "production_width": 1024,
+    "production_depth": 16,
+    "direct_full_dim_live_affine_coefficients_per_cell": 1048576,
+    "direct_full_dim_live_affine_state_bytes_per_cell": 8388608,
+    "second_and_later_layer_dense_coeff_propagation_flops_per_cell": 2147483648,
+    "maximum_such_transitions_under_incremental_cap": 63,
+    "remaining_flops_after_63_transitions": 1467002437
+  },
+  "full_dimension_structural_gate": {
+    "statement": "For a square first layer W1 in R^(1024x1024) with full rank, the map x -> W1^T x is invertible. Every sign vector in {-,+}^1024 therefore has a nonempty preimage cone. The first ReLU layer has exactly 2^1024 nonempty sign cones (ignoring measure-zero boundaries).",
+    "full_rank_probability_under_iid_gaussian_weights": "1",
+    "first_layer_region_count_expression": "2^1024",
+    "exact_materialization_compatible_with_63_transition_budget": false,
+    "reason": "The direct E119 materializer requires explicit region/cell affine state. Full-dimensional first-layer state cardinality alone exceeds the hard budget by an astronomical factor before deeper-layer splitting, sorting, certificate work, or output materialization."
+  },
+  "owner_classification": {
+    "frozen_E119_smallwidth_gate": "GO",
+    "direct_full_dim_production_deployability": "TERMINAL_NO_GO",
+    "production_scientific_go": false,
+    "competition_go": false,
+    "no_contradiction": "The small-width GO verifies correctness of the generic 2-D constructor/certificate. The production NO-GO concerns dimensional state explosion of that same exact-materialization path."
+  },
+  "next_frontier_constraint": "A successor may reuse the E114 flux identity only if it aggregates full-dimensional output-relevant flux without enumerating full activation cells or storing an n-by-d affine state per region. It must have a protocol-first target-free remainder certificate and a <=136,758,472,261 incremental FLOP path. This is a new mechanism, not an E119 rescue.",
+  "scope": {
+    "new_scientific_run": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
