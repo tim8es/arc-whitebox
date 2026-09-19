@@ -1,0 +1,149 @@
+{
+  "schema": "arc.whitebox.e119.output_flux_tv_remainder_receipt.v1",
+  "experiment": "E119",
+  "idempotency_key": "ARC-E119-OUTPUT-FLUX-TV-REMAINDER-20260919",
+  "status": "TERMINAL_MATHEMATICAL_NO_GO_CLOSE_TV_REMAINDER",
+  "branch": "research/e119-output-flux-tv-remainder-20260919",
+  "parent_branch": "research/e118-output-specific-flux-sketch-20260919",
+  "candidate": {
+    "name": "weight-only total-variation omitted-boundary flux certificate",
+    "observable": "c_j=(j+1)/sqrt(sum r^2)",
+    "cells": 1024,
+    "exact_boundaries_used_by_candidate": false,
+    "exact_reference_used_by_candidate": false,
+    "formula": "B_abs = g*(1-cos(pi/M))*|c|^T V_L",
+    "recurrence": {
+      "first_layer": "A1=V1=2*column_l2_norm(W1)",
+      "later_area": "A_next=W_+^T A",
+      "later_variation": "V_next=A_next+2*abs(W)^T V"
+    }
+  },
+  "provenance": {
+    "protocol_commit": "f2236ea7715d1bf7c625355b6cc9bfb02b2e80f5",
+    "method_commit": "306176fc49123f618c74d15a22a9055feccd897e",
+    "tests_commit": "e1c9b38efa19f15a91209fb6cb8852ceaadce0cb",
+    "falsifier_commit": "55f6d44a8b0679a53030826d385b10367c235d6b",
+    "workflow_head": "b2662f54f1707a67c33109671e285b918b6a9ba7"
+  },
+  "frozen_corpus": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "seeds": [
+      114200,
+      114201,
+      114202,
+      114203
+    ],
+    "cells": 1024,
+    "rms_limit": 0.00013747727085
+  },
+  "per_seed": [
+    {
+      "seed": 114200,
+      "boundary_count": 55,
+      "exact_tv": 9.861103626888314,
+      "tv_bound": 1795.2996561827213,
+      "absolute_bound": 0.0016853360618534804,
+      "exact_sketch_abs_bias": 7.860049412444781e-7,
+      "tv_bound_over_exact": 182.0586948592113
+    },
+    {
+      "seed": 114201,
+      "boundary_count": 61,
+      "exact_tv": 24.008578581564997,
+      "tv_bound": 2244.4965923469354,
+      "absolute_bound": 0.002107019312771786,
+      "exact_sketch_abs_bias": 4.897354721755676e-7,
+      "tv_bound_over_exact": 93.48727517214924
+    },
+    {
+      "seed": 114202,
+      "boundary_count": 83,
+      "exact_tv": 32.822256933020796,
+      "tv_bound": 2057.592746244526,
+      "absolute_bound": 0.0019315634824034632,
+      "exact_sketch_abs_bias": 0.000002487326157818437,
+      "tv_bound_over_exact": 62.68894763828648
+    },
+    {
+      "seed": 114203,
+      "boundary_count": 55,
+      "exact_tv": 6.7097633201981175,
+      "tv_bound": 1708.1731694596886,
+      "absolute_bound": 0.001603546144771259,
+      "exact_sketch_abs_bias": 2.930548381741005e-8,
+      "tv_bound_over_exact": 254.5802419464852
+    }
+  ],
+  "summary": {
+    "angular_factor": 0.00000470619042380882,
+    "gaussian_factor": 0.19947114020071632,
+    "required_tv_bound_for_limit": 146.4472888680176,
+    "mean_exact_scalar_tv": 18.350425615418057,
+    "mean_weight_only_tv_bound": 1951.3905410584678,
+    "mean_tv_bound_over_exact": 148.20378990403304,
+    "rms_computable_bound": 0.00184270085409586,
+    "rms_limit": 0.00013747727085,
+    "rms_bound_over_limit": 13.403676423766163,
+    "rms_exact_sketch_bias": 0.0000013271487131363013,
+    "rms_bound_over_actual_bias": 1388.465991683187
+  },
+  "gates": {
+    "all_candidate_finite": true,
+    "exact_flux_identity_le_1e_10": true,
+    "tv_bound_dominates_exact_all": true,
+    "mean_bound_dominates_exact_sketch_bias_all": true,
+    "production_util_le_0_13": true,
+    "rms_bound_le_limit": false,
+    "deterministic_replay_exact": true,
+    "no_targets_public_scorer_holdout_full": true
+  },
+  "production_cost": {
+    "e118_upper_flops": 73719476736,
+    "certificate_overhead_upper_flops": 95433280,
+    "all_in_upper_flops": 73814910016,
+    "utilization": 0.03356713478569873,
+    "cap": 0.13
+  },
+  "execution": {
+    "run": 35458271579,
+    "job": 105937346267,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "4 passed in 0.13s",
+    "rerun": false,
+    "deterministic_sha256": "7faf2d72ccb8c5e85594020874cc5596b28fe91f69d9c042b7c88eeaf5afe284",
+    "artifact": {
+      "name": "e119-output-flux-tv-remainder",
+      "id": 10589575446,
+      "size_bytes": 4438,
+      "zip_sha256": "3f75a6de98c9a79c966672aff2fd47fe3e5cbdb53448c12a3b6bd8c2beab5fc1",
+      "expires_at": "2026-12-18T17:30:03Z"
+    }
+  },
+  "blocker": "The weight-only total-variation recursion is rigorous and cheap, but its pooled RMS remainder bound is 13.4037x above the required 1.3747727085e-4 threshold. Tightness, not estimator bias or FLOP cost, is the blocker.",
+  "interpretation": {
+    "exact_estimator_bias_small": true,
+    "certificate_is_rigorous": true,
+    "certificate_is_too_loose": true,
+    "mechanism_closed": true,
+    "no_rescue": "No alternate norm, calibration, boundary-count correction, cell-count change, cancellation heuristic, seed/width/depth change, or rerun under this identity."
+  },
+  "scope": {
+    "exact_small_width_only": true,
+    "production_scientific_run": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
