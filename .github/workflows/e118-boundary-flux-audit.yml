@@ -1,0 +1,39 @@
+name: E118 boundary-flux deployability audit
+
+on:
+  push:
+    branches:
+      - review/e118-boundary-flux-deployability-audit-20260919
+    paths:
+      - '.github/workflows/e118-boundary-flux-audit.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen project dependencies
+        run: python -m pip install -e .
+      - name: Run sole E118 deployability audit
+        run: python scripts/e118_boundary_flux_deployability_audit.py
+      - name: Upload immutable E118 audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e118-boundary-flux-audit
+          path: e118-boundary-flux-deployability-audit.json
+          if-no-files-found: error
+          retention-days: 90
