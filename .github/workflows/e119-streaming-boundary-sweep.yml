@@ -1,0 +1,40 @@
+name: E119 streaming boundary-sweep theory support
+
+on:
+  push:
+    branches:
+      - support/e119-streaming-boundary-sweep-20260919
+    paths:
+      - 'methods/e119_streaming_boundary_sweep.py'
+      - 'tests/test_e119_streaming_boundary_sweep.py'
+      - 'scripts/e119_streaming_boundary_sweep.py'
+      - '.github/workflows/e119-streaming-boundary-sweep.yml'
+
+jobs:
+  e119-streaming-sweep:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E119 streaming-sweep tests
+        run: python -m pytest -q tests/test_e119_streaming_boundary_sweep.py
+      - name: Run sole frozen E119 theory-support sweep
+        run: python scripts/e119_streaming_boundary_sweep.py
+      - name: Upload immutable support evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e119-streaming-boundary-sweep
+          path: e119-streaming-boundary-sweep.json
+          if-no-files-found: error
+          retention-days: 90
