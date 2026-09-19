@@ -1,0 +1,41 @@
+name: E104 target-free production transfer
+
+on:
+  push:
+    branches:
+      - research/e104-target-free-transfer-20260919
+    paths:
+      - 'research/E104_TARGET_TRANSFER_PROTOCOL.md'
+      - 'scripts/e104_target_transfer.py'
+      - 'tests/test_e104_target_transfer.py'
+      - '.github/workflows/e104-target-transfer.yml'
+
+jobs:
+  transfer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen local dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Focused E104 target-transfer tests
+        run: pytest -q tests/test_e104_target_transfer.py
+      - name: Sole target-free production-shaped transfer falsifier
+        run: python scripts/e104_target_transfer.py
+      - name: Upload E104 target-transfer receipt artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e104-target-transfer
+          path: e104-target-transfer.json
+          if-no-files-found: error
