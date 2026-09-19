@@ -135,6 +135,7 @@ def main() -> None:
                 "seed": seed,
                 "layer_region_counts": list(generic.layer_region_counts),
                 "final_region_count": len(generic.sectors),
+                "independent_reference_region_count": len(ref.sectors),
                 "boundary_atom_count": total_atoms,
                 "retained_atom_count": retained_count,
                 "omitted_atom_count": omitted_count,
@@ -215,7 +216,7 @@ def main() -> None:
             for r in records
         ),
         "final_region_count_matches_reference_all": all(
-            r["final_region_count"] == r["boundary_atom_count"]
+            r["final_region_count"] == r["independent_reference_region_count"]
             for r in records
         ),
         "boundary_count_matches_reference_all": all(
