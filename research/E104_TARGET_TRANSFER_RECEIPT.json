@@ -1,0 +1,124 @@
+{
+  "schema": "arc.whitebox.e104.target_free_transfer.receipt.v1",
+  "experiment": "E104",
+  "idempotency_key": "ARC-E104-TARGET-FREE-TRANSFER-20260919",
+  "status": "TARGET_FREE_TRANSFER_PASS",
+  "scientific_go": false,
+  "branch": "research/e104-target-free-transfer-20260919",
+  "provenance": {
+    "authoritative_e104_parent_head": "4c90b7d7b1f798f5706f368d80f23f8b98fa66b2",
+    "protocol_commit": "508d7e496098a879be82e21b7772d43a7f0a1516",
+    "script_commit": "bd469e5e8aeab288cd1bcfeeb8510a2d88fad8b1",
+    "test_commit": "2e8d6dc57288b9d94e63fd3d455ae018e078a854",
+    "executed_workflow_head": "2b63a480f8dc2f2240ca18b11b8cea26a567763a",
+    "executed_blobs": {
+      "protocol": "8534e7a67671735b44763942f38abc95b511286c",
+      "script": "1ef4b2b465ab11d53eff1b221c9a5c09de3ef5ac",
+      "tests": "54440e06e327aa9ebac54e8519215e72fb8e95a2",
+      "workflow": "b3b6807e3f513d83908351ed7ead2620f6ba7f8b"
+    },
+    "source_e104_stage_a_run": 35287541033,
+    "source_e104_production_verify_run": 35446062235
+  },
+  "workflow_evidence": {
+    "run": 35446912246,
+    "job": 105907313741,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "5 passed in 0.20s",
+    "artifact": {
+      "name": "e104-target-transfer",
+      "id": 10586160159,
+      "size_bytes": 1415,
+      "sha256": "3603827eb3d7bcac9f2e31cef8f289b6e9de88ab5c7a82317d1cfb3fdf497da2",
+      "expires_at": "2026-12-18T13:49:47Z"
+    }
+  },
+  "frozen_transfer_instance": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories": 4096,
+    "positive_directions": 2048,
+    "weight_seed": 104204,
+    "direction_seed": 104205,
+    "budget": 2199023255552,
+    "zero_bias": true,
+    "weight_law": "iid N(0,2/1024), float32",
+    "direction_law": "two float64 Haar-QR blocks with sign(diag(R)) canonicalization",
+    "radius_rule": "analytic E[chi_1024]",
+    "mechanism_changed": false
+  },
+  "measured": {
+    "transfer_metric_definition": "exact conditional pooled final-layer MSE of the E100 random-radius estimator around the E104 Rao-Blackwell conditional mean, given the frozen Haar directions",
+    "exact_conditional_radial_mse_removed": 2.760988353187633e-07,
+    "competition_target_mse_scale": 1.89e-08,
+    "radial_mse_over_target_scale": 14.60840398511975,
+    "radial_noise_rms": 0.0005254510779499489,
+    "rb_signal_mse_about_zero": 1.121756911109391,
+    "rb_signal_rms": 1.0591302616342293,
+    "radial_rms_over_rb_signal_rms": 0.0004961156308943361,
+    "flopscope_total_flops": 149047442096,
+    "reconciled_flops": 149047442096,
+    "input_construction_flops": 11474238128,
+    "layer_total_flops": 137573171200,
+    "per_layer_flops": 8598323200,
+    "layer_count": 16,
+    "finalization_flops": 32768,
+    "utilization": 0.06777892944955966,
+    "wall_s": 1.9208066280000082,
+    "delta_flops_vs_prior_e104_production_verify": 0,
+    "prediction_shape": [16, 1024],
+    "prediction_sha256": "b3836e47eea18399a2a208c29748b29358af881ac84feb756ca0a846ef4bfa41",
+    "prediction_max_abs": 5.407037223689258,
+    "antithetic_input_pair_max_abs": 0.0,
+    "haar_block_orthogonality_max_abs": 1.1102230246251565e-15,
+    "homogeneity_relative_error": 7.476250855816435e-07,
+    "billed_vs_reference_direction_max_abs": 7.449434791251264e-09,
+    "final_prediction_pair_mean_max_abs_diff": 0.0
+  },
+  "gates": {
+    "finite": true,
+    "prediction_shape_16x1024": true,
+    "antithetic_input_pair_exact": true,
+    "haar_orthogonality_le_1e_10": true,
+    "homogeneity_rel_le_2e_6": true,
+    "utilization_le_0_12": true,
+    "radial_mse_finite_positive": true,
+    "target_scale_materiality_ge_1_89e_8": true,
+    "no_targets_read": true
+  },
+  "classification": {
+    "VERIFIED": {
+      "frozen_e104_mechanism_reused_without_change": true,
+      "disjoint_production_shape_synthetic_instance_executed": true,
+      "target_free_transfer_statistic_exactly_computed": true,
+      "radial_variance_component_is_material_at_target_scale": true,
+      "production_cost_reproduced_exactly": true,
+      "public_or_benchmark_targets_read": false,
+      "public_or_full_evaluation_run": false
+    },
+    "UNEXECUTED": {
+      "raw_competition_final_layer_mse": null,
+      "adjusted_competition_score": null,
+      "official_scorer": false,
+      "public_mini": false,
+      "holdout": false,
+      "full_suite": false
+    }
+  },
+  "interpretation": "Target-free transfer of the E104 radial Rao-Blackwell mechanism is established at production shape on the preregistered disjoint synthetic instance: the exact radial variance component removed is 14.6084x the 1.89e-8 target-MSE scale while estimator utilization remains 0.06777893. This is not a measurement or bound of competition raw MSE.",
+  "decision": "TRANSFER_MECHANISM_VERIFIED_RAW_COMPETITION_MSE_UNEXECUTED",
+  "scope": {
+    "synthetic_production_shape_only": true,
+    "public": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "receipt_policy": "immutable one-shot receipt; no transfer rerun or post-result threshold/seed changes"
+}
