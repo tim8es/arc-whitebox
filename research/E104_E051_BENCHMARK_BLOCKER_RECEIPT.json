@@ -1,0 +1,79 @@
+{
+  "schema": "arc.whitebox.e104.e051_benchmark_blocker.v1",
+  "experiment": "E104",
+  "status": "BLOCKED_NO_EXECUTION",
+  "branch": "research/e104-haar-radial-raoblackwell-20260918",
+  "e104_head_before_receipt": "2ac454563587bc094b04517d75b1daffd177b7ef",
+  "requested_action": "Exactly one frozen local E104 benchmark on the same admissible benchmark record/split used by E051, with no tuning/sweep/rerun and no public/scorer/holdout/full.",
+  "e051_benchmark_provenance": {
+    "branch": "research/e051-v29-phase2-shape-reproduction-20260916",
+    "head": "642b6b0f5ec549a3c0f9e3fdb54fbae09a000133",
+    "dataset": "aicrowd/arc-whestbench-public-2026",
+    "revision": "v2-phase2",
+    "split": "mini",
+    "index": 0,
+    "width": 1024,
+    "depth": 16,
+    "sole_admissible_run": 35097946492,
+    "job": 104799875919,
+    "artifact_id": 10446649484,
+    "artifact_sha256": "aaf9d4dad8fb15ba5ceae2fe21e11a8fb1d26c0cb7780ef30e1aa3ea549afb8d",
+    "e051_raw_final_mse": 2.29004485946887e-8,
+    "e051_all_in_flops": 587262760431,
+    "e051_utilization": 0.2670561845802695,
+    "e051_failures": 0,
+    "e051_finite": true,
+    "e051_deterministic": true,
+    "e051_determinism_max_abs_diff": 0
+  },
+  "current_e104_authorization": {
+    "protocol_commit": "f85ce2487ae953f20b611b327d2269f1c54548fc",
+    "protocol_status": "SYNTHETIC_STAGE_A_ONLY",
+    "protocol_public_run_authorized": false,
+    "protocol_text_boundary": "A pass is LOCAL SCIENTIFIC GO only and authorizes no public run.",
+    "production_verify_benchmark_targets": false,
+    "independent_error_verify_receipt_present": true,
+    "independent_error_verify_current_authorization": "NOT GRANTED under E104; do not execute public/scorer from this receipt.",
+    "independent_error_verify_required_prerequisite": "Explicit successor protocol plus authorization for one benchmark-target evaluation."
+  },
+  "blocker": {
+    "primary": "The exact E051 record is itself the public benchmark dataset aicrowd/arc-whestbench-public-2026, split mini, index 0. Executing E104 on that target would violate the explicit no-public constraint and the frozen E104 protocol firewall.",
+    "data_availability": "The E051 artifact archives metrics/logs, not the target vector needed to score a new E104 prediction. The E051 script obtains target by loading the public dataset and reading row['final_means']; therefore the target cannot be reconstructed from the immutable E051 artifact without accessing the public benchmark.",
+    "all_layer_metric": "E051's frozen benchmark harness only consumed row['final_means']; it did not freeze/provenance an all-layer target tensor. Therefore an E104 all-layer benchmark MSE on 'the same E051 record' is not available from E051 evidence even independently of the public-access prohibition.",
+    "protocol_resolution": "No benchmark run was started. A compliant benchmark requires a successor protocol that explicitly authorizes this benchmark target and resolves the no-public constraint; until then E104 itself remains sealed from target-bearing benchmark execution."
+  },
+  "requested_metrics": {
+    "final_layer_raw_mse": "UNEXECUTED",
+    "all_layer_mse": "UNEXECUTED",
+    "measured_all_in_flops_for_benchmark_job": "UNEXECUTED",
+    "utilization_for_benchmark_job": "UNEXECUTED",
+    "failures": "UNEXECUTED",
+    "finite": "UNEXECUTED",
+    "deterministic": "UNEXECUTED"
+  },
+  "execution": {
+    "run": null,
+    "job": null,
+    "artifact_id": null,
+    "artifact_sha256": null,
+    "workflow_triggered": false,
+    "rerun": false
+  },
+  "preserved_e104_evidence": {
+    "local_scientific_go": true,
+    "production_shape_verify_pass": true,
+    "competition_go": false,
+    "raw_competition_target": "UNEXECUTED"
+  },
+  "scope": {
+    "public": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "verdict": "BLOCKED_BY_PROTOCOL_AND_TARGET_AVAILABILITY"
+}
