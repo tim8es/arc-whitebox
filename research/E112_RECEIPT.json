@@ -1,0 +1,70 @@
+{
+  "schema": "arc.whitebox.e112.terminal_receipt.v1",
+  "experiment": "E112",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "competition_go": false,
+  "branch": "research/e112-edgeworth4-relu-plugin-20260919",
+  "protocol_commit": "06d87a2e76d6ac0c99e34dfbcdd9c50f66c446d4",
+  "implementation_commit": "dd4036dcb1bfabe8633d2c8555237b6abab44795",
+  "verifier_commit": "33ae15ae616c864f75a053cfda56114e351fa3c8",
+  "arm_commit": "7b5d814a0407a41ded91d2a2b558ab56b72bd981",
+  "result_commit": "fa79c425f0968873afb11c5bb6c9cd04d3f49560",
+  "execution": {
+    "run": 35455219121,
+    "job": 105929179847,
+    "conclusion": "success",
+    "artifact_id": 10588046582,
+    "artifact_name": "e112-exact-gate",
+    "artifact_zip_sha256": "406132e2cd2ec7a50b103b67866e62269795329333370caf4c93920df6909a1b",
+    "artifact_json_sha256": "619009f2eee0f228af9db1c9f10ec1992d9da0e2d119c15c94c4d01ad07b5a7d",
+    "rerun": false
+  },
+  "exact_gate": {
+    "latent_dim": 2,
+    "width": 8,
+    "depth": 4,
+    "seed": 112112,
+    "monte_carlo": false,
+    "numerical_quadrature": false,
+    "deterministic_repeat_max_abs": 0
+  },
+  "measured": {
+    "layer_bias_mse": [
+      2.4074124304840448e-33,
+      0.000053614554238036615,
+      0.0005530464877850174,
+      0.00030035784800557875
+    ],
+    "pooled_all_layer_bias_mse": 0.0002267547225071582,
+    "final_bias_mse": 0.00030035784800557875,
+    "final_gaussian_bias_mse": 0.0043282315571962346,
+    "final_over_gaussian": 0.06939505061973768,
+    "final_over_target": 15891.9496299248
+  },
+  "cost": {
+    "all_in_upper_flops": 149720512434,
+    "utilization": 0.06808500640272541,
+    "cap": 0.13,
+    "pass": true
+  },
+  "gates": {
+    "integrity": true,
+    "final_bias_le_target": false,
+    "pooled_bias_le_target": false,
+    "strictly_better_than_gaussian": true
+  },
+  "scope": {
+    "public": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
