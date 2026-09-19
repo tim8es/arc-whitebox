@@ -1,0 +1,188 @@
+{
+  "schema": "arc.whitebox.e121.terminal_receipt.v1",
+  "experiment": "E121",
+  "idempotency_key": "ARC-E121-HAAR-PLANE-ORBIT-SOURCE-MEMORY-20260919",
+  "status": "TERMINAL_NO_GO_CLOSE_HAAR_PLANE_ORBIT_SOURCE_MEMORY",
+  "scientific_go": false,
+  "production_shape_authorized": false,
+  "branch": "research/e121-haar-plane-orbit-source-memory-20260919",
+  "parent": "research/e119-generic-boundary-flux-certificate-20260919@a69e542fa8a53708dd581aac47739fc5d8e36955",
+  "provenance": {
+    "protocol_only_first_commit": "baa802af0b11152389c7f6229648f9212d8257ff",
+    "protocol_arithmetic_correction_before_code": "d7535b9f146781b03d28a52d1365ac98518aecb4",
+    "protocol_precision_freeze_before_code": "62ab89ffa7f39e62245e79e8dc062fbf78104b83",
+    "implementation_commit": "8aac202bda370849b31ba4e19ca0aa385341fe90",
+    "tests_commit": "8064d4a6bbdf238d318ee6525336a559543247a7",
+    "falsifier_commit": "598a3889761402711bc9cf08af796b03a5d00ad3",
+    "executed_workflow_head": "92b1a4a3a4414f643799c2a2b5d82e04926db96a",
+    "candidate_source_sha256": "31768c4b946aef72c682bc913e950a320d72179bdc91cdbbbe5065fb753adb33"
+  },
+  "mechanism": {
+    "name": "Haar-plane cyclic-orbit source-memory estimator",
+    "identity": "for Haar orthonormal (u,v), every fixed u*cos(theta_m)+v*sin(theta_m) is uniform on S^(d-1); propagate the complete cyclic phase orbit through all ReLU layers and multiply the phase/frame average by exact E[chi_d]",
+    "source_memory": "the same 2-D source phase is propagated intact through every late ReLU layer",
+    "frames": 128,
+    "phases_per_frame": 64,
+    "total_directions": 8192,
+    "sign_cones_enumerated": false,
+    "activation_boundaries_enumerated": false,
+    "breakpoint_search": false,
+    "gaussian_plugin": false,
+    "target_fit": false,
+    "oracle_region_state": false,
+    "unbiased_in_exact_arithmetic": true
+  },
+  "non_duplication": {
+    "e104": "not radial-RB over discrete Haar directions; E121 variance structure is a correlated cyclic two-plane orbit",
+    "e110": "no Gaussian-line conditioning and no deep breakpoint enumeration",
+    "e114_e119": "no activation-boundary flux, sign-cone materialization, root solving, or omitted-flux certificate"
+  },
+  "exact_reference": {
+    "two_d": {
+      "networks": [
+        114200,
+        114201,
+        114202,
+        114203
+      ],
+      "reference": "E114 exact angular Gaussian final-output mean; verifier-only",
+      "pooled_candidate_mse": 2.7487054400861535e-10,
+      "pooled_iid_mse": 0.000009859799786045215,
+      "candidate_over_iid": 0.000027877903200189265,
+      "candidate_over_raw_1_89e_8": 0.014543415026910865,
+      "verdict": "PASS_STRONGLY"
+    },
+    "eight_d_block_stress": {
+      "subnetwork_seeds": [
+        121300,
+        121301,
+        121302,
+        121303
+      ],
+      "construction": "8x8 block-diagonal depth-4 network assembled from four exact 2-D width-2 subnetworks; candidate receives only assembled weights",
+      "candidate_seeds": [
+        121400,
+        121401,
+        121402,
+        121403
+      ],
+      "iid_seeds": [
+        121500,
+        121501,
+        121502,
+        121503
+      ],
+      "pooled_candidate_mse": 0.00010381126736820251,
+      "pooled_iid_mse": 0.0000090782420348022,
+      "candidate_over_iid": 11.435172907952149,
+      "candidate_over_raw_1_89e_8": 5492.659649111244,
+      "per_seed_candidate_mse": [
+        0.000003463413297138576,
+        2.4948024301414674e-7,
+        0.00019074716148245432,
+        0.00022078501445020303
+      ],
+      "gate": "candidate_over_iid <= 0.90",
+      "gate_passed": false
+    }
+  },
+  "deterministic_and_purity": {
+    "deterministic_replay_bitwise_exact_all": true,
+    "accounting_ledger_replay_exact_all": true,
+    "max_frame_orthogonality_abs": 5.376585451895366e-13,
+    "orthogonality_gate": 2e-12,
+    "candidate_forbidden_imports": [],
+    "candidate_reads_exact_reference": false,
+    "candidate_reads_targets": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false
+  },
+  "all_in_flops": {
+    "accounting_type": "frozen conservative closed-form upper; every candidate operation class explicitly charged",
+    "production_shape": {
+      "dimension": 1024,
+      "depth": 16,
+      "frames": 128,
+      "phases": 64,
+      "directions": 8192,
+      "frame_rng_norm_projection_normalization": 4202496,
+      "phase_trigonometry_and_source_materialization": 25690112,
+      "all_dense_matmuls_and_relu": 275146342400,
+      "final_reduction_and_radial_materialization": 8393728,
+      "all_in_upper": 275184628736,
+      "budget": 2199023255552,
+      "utilization": 0.12513948092237115,
+      "utilization_cap": 0.13,
+      "cap_flops": 285873023221.76,
+      "slack_flops": 10688394485.76001,
+      "gate_passed": true
+    },
+    "frozen_smallwidth_candidate": {
+      "exact_2d_all_in_upper_per_estimate": 4587560,
+      "exact_8d_block_all_in_upper_per_estimate": 5546024,
+      "reference_and_iid_comparator_cost_excluded_from_candidate_cost": true,
+      "rationale": "reference/comparator are falsifier-only and are not part of deployable E121 estimator"
+    },
+    "operation_classes": [
+      "frame RNG, norms, projection, orthogonalization and normalization",
+      "phase sin/cos and source vector materialization",
+      "every dense layer matrix multiply",
+      "every ReLU operation",
+      "final output reduction",
+      "exact radial-mean scaling/materialization"
+    ],
+    "omitted_candidate_operation_classes": []
+  },
+  "gates": {
+    "candidate_outputs_finite_all": true,
+    "frame_orthogonality_le_2e_12": true,
+    "deterministic_replay_bitwise_exact_all": true,
+    "accounting_ledger_replay_exact_all": true,
+    "exact_2d_candidate_beats_same_node_iid": true,
+    "exact_8d_block_candidate_over_iid_le_0_90": false,
+    "candidate_source_audit_no_reference_or_dataset_import": true,
+    "production_all_in_util_le_0_13": true,
+    "no_targets_public_scorer_holdout_full": true
+  },
+  "execution": {
+    "run": 35460988924,
+    "job": 105944694427,
+    "run_attempt": 1,
+    "workflow_conclusion": "success",
+    "focused_tests": "3 passed in 0.12s",
+    "scientific_run_count": 1,
+    "rerun": false,
+    "artifact": {
+      "name": "e121-haar-plane-orbit-falsifier",
+      "id": 10588818925,
+      "size_bytes": 3783,
+      "zip_sha256": "fb49a9be2945d0ffb3c8aaad3ae59600fd7cdc7493fd8959666319284632d836",
+      "expires_at": "2026-12-18T18:22:33Z"
+    }
+  },
+  "decision": {
+    "verdict": "TERMINAL NO-GO",
+    "reason": "The mechanism is exact-unbiased, deterministic, target-free, sign-cone-free and fits the <=0.13 all-in production FLOP cap. It is exceptionally accurate in the degenerate 2-D setting, but the frozen exact 8-D source-memory stress reverses the gain: pooled MSE is 11.435x the same-node iid spherical comparator, failing the preregistered <=0.90 gate.",
+    "measured_blocker": "correlation inside each two-plane orbit collapses effective high-dimensional source coverage; preserving a 2-D phase source is not sufficient source-memory for the multi-source late-ReLU law",
+    "no_rescue": "No P/M rebalance, alternate frame dimension, seed change, phase randomization, weighting, fitted correction, or second run under E121."
+  },
+  "successor_constraint": "A new successor must preserve multi-source dependence with source-state dimension >2 or adaptive algebraic compression, while keeping marginal correctness and avoiding sign-cone enumeration; it must not tune E121's plane/phase allocation.",
+  "scope": {
+    "target_free": true,
+    "synthetic_exact_reference_only": true,
+    "production_execution": false,
+    "benchmark_execution": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt"
+}
