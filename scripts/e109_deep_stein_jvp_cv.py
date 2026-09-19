@@ -57,7 +57,7 @@ def build_deep_directions_billed(weights: list[np.ndarray]):
 
 def build_inputs_billed(seed: int):
     rng = fnp.random.default_rng(seed)
-    pos = rng.standard_normal((PAIRS, WIDTH), dtype=fnp.float32)
+    pos = rng.standard_normal((PAIRS, WIDTH)).astype(fnp.float32)
     return fnp.concatenate((pos, -pos), axis=0)
 
 
