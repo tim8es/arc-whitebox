@@ -1,0 +1,64 @@
+{
+  "schema": "arc.whitebox.e119.target_free_crosscheck_manifest.v1",
+  "idempotency_key": "ARC-E119-TARGET-FREE-CROSSCHECK-20260919",
+  "executed_arm": "d731e845c96d401ac001da82c8998c06a03ec484",
+  "sealed_e119_head": "de346277894ccb89ceef39e76ca6d8f12853b2ee",
+  "fixture": {
+    "input_dimension": 2,
+    "width": 4,
+    "depth": 3,
+    "weight_seed": 119904,
+    "budget": 2199023255552
+  },
+  "scientific_blob_pairs": {
+    "methods/e119_generic_boundary_flux.py": {
+      "arm": "d21eb7ded086242fd1f3a87f3ab00ecd62205878",
+      "sealed": "d21eb7ded086242fd1f3a87f3ab00ecd62205878"
+    },
+    "methods/e118_output_flux_sketch.py": {
+      "arm": "1b1f4e9c7f992161b57e6f645413262c5db4caeb",
+      "sealed": "1b1f4e9c7f992161b57e6f645413262c5db4caeb"
+    },
+    "scripts/e119_generic_boundary_flux_certificate.py": {
+      "arm": "62700316f7bf92d023e725afad5cc744f1fb0fd5",
+      "sealed": "62700316f7bf92d023e725afad5cc744f1fb0fd5"
+    },
+    "tests/test_e119_generic_boundary_flux.py": {
+      "arm": "e28a3b5c2154778d81b6b17b9cc44ae1724d6a3e",
+      "sealed": "e28a3b5c2154778d81b6b17b9cc44ae1724d6a3e"
+    },
+    ".github/workflows/e119-generic-boundary-flux-certificate.yml": {
+      "arm": "262c3313d2e89687ba41cdc295eabe1d5c2e69aa",
+      "sealed": "262c3313d2e89687ba41cdc295eabe1d5c2e69aa"
+    },
+    "research/E119_PROTOCOL.md": {
+      "arm": "5f0f9c9a4521fd94ebc0f60fff758a5c58cf107b",
+      "sealed": "5f0f9c9a4521fd94ebc0f60fff758a5c58cf107b"
+    },
+    "research/E119_RUN_ARM.json": {
+      "arm": "cd61ce49b125eb77957ac2a29eb875b7fe88fb97",
+      "sealed": "cd61ce49b125eb77957ac2a29eb875b7fe88fb97"
+    }
+  },
+  "forbidden_runtime_calls": [
+    "methods.e114_exact_angular_reference.build_exact_reference",
+    "numpy.linalg.lstsq",
+    "numpy.linalg.solve",
+    "numpy.linalg.pinv",
+    "numpy.polyfit",
+    "numpy.cov",
+    "numpy.var",
+    "builtins.open",
+    "pathlib.Path.open",
+    "pathlib.Path.read_text",
+    "pathlib.Path.read_bytes",
+    "numpy.load",
+    "numpy.loadtxt",
+    "numpy.genfromtxt"
+  ],
+  "frozen_tolerances": {
+    "selection_numeric_abs": 1e-15
+  },
+  "rerun_allowed": false,
+  "rescue_allowed": false
+}
