@@ -1,0 +1,120 @@
+{
+  "schema": "arc.whitebox.e124.terminal_receipt.v1",
+  "experiment": "E124",
+  "idempotency_key": "ARC-E124-WALSH-COSET-SOURCE-INTERACTIONS-20260920",
+  "status": "TERMINAL_INSTRUMENT_NO_GO_NO_RERUN",
+  "scientific_go": false,
+  "scientific_verdict_evaluable": false,
+  "branch": "research/e124-walsh-coset-source-interactions-20260920",
+  "parent": "research/bootstrap@29bee3f8d23fc620b77aaed414b1b7a928af4b83",
+  "provenance": {
+    "protocol_commit": "00152db664a04b822cd5aae1d2216a027b3ee327",
+    "implementation_commit": "7c45ae95c0f8b0186b563620daf75187c5198feb",
+    "tests_commit": "325d633321b5440a0a06fa968ca7e3fdbe497350",
+    "executed_workflow_head": "617333d829ba2076524228ca1e08c3e1a51ceccc",
+    "executed_blobs": {
+      "protocol": "709616ecc607227289c8a2a703abaca7822d2529",
+      "script": "6605df51a0429cb2ce1790346bfaac2e912e4178",
+      "tests": "e5da33f8d4951da2ec34127794665905edd18b1d",
+      "workflow": "355422b5137b97786c705c130df5d01c78455ab7"
+    }
+  },
+  "mechanism": {
+    "name": "conditional Walsh-coset source-interaction stratification",
+    "source_decomposition": "X_j=|G_j| S_j with iid half-normal magnitudes and iid Rademacher source signs",
+    "candidate": "for each shared magnitude vector, average four full-network evaluations over a random Walsh coset in GF(2)^2",
+    "cross_source_law": "for differently labelled source coordinates i,j, the four-row orbit has exact average h(i)h(j)=0; same-label pairs have average 1",
+    "late_relu_handling": "every joint sign configuration is propagated through the actual complete ReLU network; no hidden-layer marginal closure or re-Gaussianization",
+    "target_fit": false,
+    "cov_var_division": false,
+    "gaussian_plugin": false,
+    "mask_state": false,
+    "boundary_flux": false,
+    "haar_plane": false,
+    "breakpoint_search": false
+  },
+  "execution": {
+    "run": 35473373186,
+    "job": 105978273376,
+    "run_attempt": 1,
+    "workflow_conclusion": "failure",
+    "focused_tests": "4 passed in 0.08s",
+    "scientific_step": {
+      "conclusion": "failure",
+      "failure_stage": "final JSON serialization after law/risk/FLOP functions returned",
+      "exception": "TypeError: Object of type bool is not JSON serializable",
+      "cause": "a NumPy boolean scalar entered the result payload; Python json rejected it",
+      "candidate_or_math_exception_before_serialization": false,
+      "immutable_scientific_payload_written": false
+    },
+    "rerun": false,
+    "artifact": {
+      "name": "e124-walsh-coset-falsifier",
+      "id": 10593831730,
+      "size_bytes": 4527,
+      "zip_sha256": "6a4a39dd321944e77f33e94f034a38236cff34043431ab09cbe6deb92133b2bc",
+      "expires_at": "2026-12-18T22:27:13Z",
+      "files_effectively_present": [
+        "e124-walsh-coset.log",
+        "research/E124_PROTOCOL.md"
+      ],
+      "scientific_json_present": false
+    }
+  },
+  "verified_before_terminal_serialization_failure": {
+    "focused_exact_walsh_tests_pass": true,
+    "walsh_degree1_character_cancellation_tested": true,
+    "walsh_different_label_pair_character_cancellation_tested": true,
+    "same_label_pair_character_identity_tested": true,
+    "exact_conditional_full_sign_vs_coset_partition_tested": true,
+    "dense_late_relu_fixture_nontriviality_tested": true,
+    "overlapping_source_exact_reference_fixture_dimensions_tested": true,
+    "production_flop_formula_tested": true,
+    "production_all_in_upper_flops": 275297735680,
+    "production_utilization_upper": 0.125190916005522,
+    "production_utilization_cap": 0.13,
+    "production_slack_flops": 10575287541.76
+  },
+  "not_admissible_as_scientific_evidence": {
+    "candidate_pooled_mse": null,
+    "iid_pooled_mse": null,
+    "candidate_over_iid": null,
+    "candidate_seed_wins": null,
+    "reason": "risk computation returned in-process but its values were never emitted to immutable log/JSON before serialization failure; no retrospective reconstruction is accepted"
+  },
+  "gates": {
+    "focused_tests_pass": true,
+    "exact_conditional_walsh_law_unit_gate": true,
+    "production_flop_proof_unit_gate": true,
+    "immutable_scientific_payload_recorded": false,
+    "candidate_mse_lt_iid": null,
+    "candidate_over_iid_le_0_90": null,
+    "candidate_wins_ge_3_of_4": null,
+    "exactly_one_actions_run": true,
+    "no_rerun": true
+  },
+  "decision": {
+    "verdict": "TERMINAL INSTRUMENT NO-GO",
+    "reason": "The preregistered one-shot Actions arm reached the final result serialization only after completing the law/risk/FLOP computations, but failed before emitting the immutable scientific payload. The protocol forbids rerun/rescue or post-result changes, so the MSE gates are unevaluable and no scientific GO/NO-GO about estimator performance is claimed.",
+    "mechanism_status": "unresolved scientifically; E124 lane closed procedurally under its frozen one-shot rule",
+    "no_rescue": "No serializer patch, seed change, label change, P/M change, comparator change, second Actions run or scientific reinterpretation."
+  },
+  "scope": {
+    "synthetic_only": true,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "production_execution": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt; E124 must not be rerun or repaired under this experiment id"
+}
