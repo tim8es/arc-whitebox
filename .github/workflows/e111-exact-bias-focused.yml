@@ -1,0 +1,29 @@
+name: E111 exact plug-in RED-GREEN
+
+on:
+  push:
+    branches:
+      - research/e111-late4-gaussian-relu-plugin-cost-20260919
+    paths:
+      - "tests/test_e111_gaussian_relu_bias.py"
+      - "methods/e111_gaussian_relu_bias.py"
+      - ".github/workflows/e111-exact-bias-focused.yml"
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install focused dependencies
+        run: python -m pip install -e . pytest
+      - name: Run E111 exact-bias focused tests
+        run: python -m pytest -q tests/test_e111_gaussian_relu_bias.py
