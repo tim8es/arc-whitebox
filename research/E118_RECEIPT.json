@@ -1,0 +1,181 @@
+{
+  "schema": "arc.whitebox.e118.result_receipt.v1",
+  "experiment": "E118",
+  "idempotency_key": "ARC-E118-OUTPUT-SPECIFIC-FLUX-SKETCH-20260919",
+  "status": "E118_OUTPUT_SPECIFIC_COMPRESSED_FLUX_GO",
+  "scientific_go": true,
+  "production_scientific_go": false,
+  "competition_accuracy_claim": false,
+  "branch": "research/e118-output-specific-flux-sketch-20260919",
+  "provenance": {
+    "parent_e114_exact_reference_head": "b02f1f7c00528fa494376ebf167be50737ff6460",
+    "protocol_commit": "17a1a0f8422cc70824e064703653a3b3c14acc92",
+    "implementation_commit": "2de68e5e2010564c2dde26304a988abc7c8333f7",
+    "tests_initial_commit": "bf9769b42fa80f6354fe77d9eaeeeba0a50e5008",
+    "tests_frozen_commit": "802bbb06922fa502e0bb2b6b11520de0db816669",
+    "harness_initial_commit": "366b4312c9347057d68f655e5dc0f074db7a8ce9",
+    "harness_frozen_commit": "ea6f0cb3ab2a246c17b033900b35b6f31459149b",
+    "workflow_commit": "7986e1b525bf6e6de20d2b4d16d5e1dd750b9a83",
+    "arm_commit": "4f7bae911dcfa85e4e96c39b599d639622602f9c",
+    "result_commit": "2d577c8df161a3daf85e551bea7c591515b4c0a0"
+  },
+  "representation": {
+    "name": "one-midpoint-atom-per-angular-cell scalar boundary-flux sketch",
+    "cells": 1024,
+    "stored_state_scalars": 1024,
+    "observable": "c_j=(j+1)/sqrt(sum_{r=1}^n r^2)",
+    "formula": "Delta_hat_m = [sin(h/2),cos(h/2)] dot (s_{m+1}-R(h)s_m), s=[F_c,F'_c]",
+    "mean_reconstruction": "mu_hat=sqrt(pi/2)/(2*pi)*sum_m Delta_hat_m",
+    "candidate_full_mask_enumeration": false,
+    "candidate_boundary_enumeration": false,
+    "candidate_exact_reference_access": false,
+    "gaussian_plugin": false,
+    "target_fitting": false,
+    "static_angle_stencil": "fixed compile-time constant; outside online flopscope billing"
+  },
+  "frozen_corpus": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "zero_bias": true,
+    "weight_seeds": [
+      114200,
+      114201,
+      114202,
+      114203
+    ],
+    "boundary_counts": [
+      55,
+      61,
+      83,
+      55
+    ],
+    "final_sector_counts": [
+      55,
+      61,
+      83,
+      55
+    ]
+  },
+  "exact_reference_bias": {
+    "scalar_exact_means": [
+      0.4623458110358122,
+      0.5059412406917312,
+      0.7299440517627314,
+      0.15391146559110228
+    ],
+    "scalar_candidate_means": [
+      0.46234502503087094,
+      0.5059417304272034,
+      0.7299415644365735,
+      0.1539114948965861
+    ],
+    "signed_bias": [
+      -7.860049412444781e-7,
+      4.897354721755676e-7,
+      -0.000002487326157818437,
+      2.930548381741005e-8
+    ],
+    "bias_mse": [
+      6.178037676607354e-13,
+      2.3984083270702613e-13,
+      6.186791415367828e-12,
+      8.588113817724823e-16
+    ],
+    "pooled_bias_mse": 1.7613237067793404e-12,
+    "max_bias_mse": 6.186791415367828e-12,
+    "raw_target_scale": 1.89e-8,
+    "pooled_over_target": 0.00009319173051742541,
+    "max_over_target": 0.00032734346113057287,
+    "candidate_vs_reference_atom_max_abs": 1.1102230246251565e-15,
+    "candidate_vs_reference_flux_sum_max_abs": 3.1086244689504383e-15,
+    "candidate_vs_exact_formula_bias_max_abs": 6.661338147750939e-16,
+    "deterministic_replay_max_abs": 0
+  },
+  "measured_flopscope": {
+    "per_frozen_network_flops": [
+      1886208,
+      1886208,
+      1886208,
+      1886208
+    ],
+    "max_flops": 1886208,
+    "utilization_vs_2pow41": 8.577480912208557e-7,
+    "breakdown": {
+      "input_wrap": 0,
+      "forward": 917504,
+      "observable": 30720,
+      "reverse": 897024,
+      "angular_derivative": 6144,
+      "sketch": 34816
+    },
+    "exact_reconciliation": true,
+    "deterministic": true,
+    "note": "Flopscope emitted auto-routing warnings for overloaded multiply operations; the operations were routed to billed fnp.multiply and the ledger reconciled exactly."
+  },
+  "production_admission": {
+    "width": 1024,
+    "depth": 16,
+    "cells": 1024,
+    "dense_forward_reverse_core_flops": 68719476736,
+    "helper_reserve_flops": 5000000000,
+    "upper_flops": 73719476736,
+    "budget_flops": 2199023255552,
+    "upper_utilization": 0.03352373675443232,
+    "cap": 0.13,
+    "pass": true,
+    "production_scientific_execution": false
+  },
+  "execution": {
+    "run": 35457418719,
+    "job": 105935065614,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "2 passed",
+    "exactly_one_workflow_run_for_arm_head": true,
+    "rerun": false,
+    "artifact": {
+      "name": "e118-output-specific-flux-sketch",
+      "id": 10588194482,
+      "size_bytes": 6914,
+      "zip_sha256": "f88ca8168f9b938081bd63a8667012872f61b2d8ae7039ace341cbcf45fc41d3",
+      "expires_at": "2026-12-18T17:13:35Z"
+    }
+  },
+  "gates": {
+    "candidate_finite_all": true,
+    "representation_length_eq_1024_all": true,
+    "flopscope_exact_reconciliation_all": true,
+    "measured_flops_deterministic": true,
+    "reference_flux_identity_le_1e_10": true,
+    "candidate_flux_sum_matches_reference_le_1e_10": true,
+    "candidate_bias_matches_exact_formula_le_1e_10": true,
+    "deterministic_replay_max_abs_eq_0": true,
+    "production_util_upper_le_0_13": true,
+    "every_network_bias_mse_le_1_89e_8": true,
+    "pooled_bias_mse_le_1_89e_8": true,
+    "no_targets_public_scorer_holdout_full": true
+  },
+  "interpretation": {
+    "verdict": "TARGET_FREE_EXACT_SMALL_CORPUS_GO",
+    "evidence": "The executable scalar boundary-flux sketch compresses each fixed angular cell to one signed scalar, agrees with the independent E114 boundary-jump formula to floating precision, and has exact-reference scalar mean-bias MSE far below 1.89e-8 on all four frozen networks.",
+    "limitation": "No production-shape scientific accuracy or competition score has been executed. The 0.03352 production utilization is a preregistered accounting upper bound, not a measured production run."
+  },
+  "scope": {
+    "target_free": true,
+    "production_scientific_run": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
