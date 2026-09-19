@@ -360,7 +360,7 @@ def exact_householder_stats(weights: Sequence[np.ndarray]) -> dict:
                 "independent_two_block_variance_gaussian": baseline_var_gaussian,
                 "householder_coupled_variance_gaussian": candidate_var_gaussian,
                 "variance_ratio": ratio,
-                "nondegenerate": baseline_var_gaussian > 1e-18,
+                "nondegenerate": bool(baseline_var_gaussian > 1e-18),
             }
         )
 
