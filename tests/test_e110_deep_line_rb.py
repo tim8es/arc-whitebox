@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import math
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -10,6 +11,7 @@ SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "e110_deep_line_rb.py
 SPEC = importlib.util.spec_from_file_location("e110_deep_line_rb", SCRIPT)
 assert SPEC is not None and SPEC.loader is not None
 MOD = importlib.util.module_from_spec(SPEC)
+sys.modules[SPEC.name] = MOD
 SPEC.loader.exec_module(MOD)
 
 
