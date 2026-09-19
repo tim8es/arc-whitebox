@@ -3,6 +3,7 @@ from __future__ import annotations
 import ast
 import json
 import math
+import textwrap
 from pathlib import Path
 
 import flopscope as flops
@@ -45,7 +46,7 @@ def _function_source(source: str, name: str) -> str:
 
 def _attribute_roots(source: str) -> set[str]:
     roots: set[str] = set()
-    tree = ast.parse(source)
+    tree = ast.parse(textwrap.dedent(source))
     for node in ast.walk(tree):
         if isinstance(node, ast.Attribute):
             cur = node
