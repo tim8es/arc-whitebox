@@ -153,7 +153,7 @@ def run_once() -> dict[str, object]:
         raise RuntimeError(f"expected 16 boundaries, got {len(bs)}")
 
     angles = [float(x["theta"]) for x in bs]
-    if any((b - a) <= 1e-10 for a, b in zip(angles, angles[1:], strict=True)):
+    if any((b - a) <= 1e-10 for a, b in zip(angles, angles[1:])):
         raise RuntimeError("non-distinct boundary angles")
 
     sectors: list[dict[str, object]] = []
