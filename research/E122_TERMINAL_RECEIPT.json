@@ -1,0 +1,241 @@
+{
+  "schema": "arc.whitebox.e122.terminal_receipt.v1",
+  "experiment": "E122",
+  "idempotency_key": "ARC-E122-HAAR8-ANTIPODAL-SIMPLEX-SOURCE-CODE-20260920",
+  "status": "TERMINAL_NO_GO_CLOSE_HAAR8_ANTIPODAL_SIMPLEX_SOURCE_CODE",
+  "scientific_go": false,
+  "production_shape_authorized": false,
+  "branch": "research/e122-haar8-antipodal-simplex-source-code-20260920",
+  "parent": "research/e121-haar-plane-orbit-source-memory-20260919@e2c7473a2919b4444daa581b14d1ed706960f7d8",
+  "provenance": {
+    "protocol_only_commit": "fd2f2d93ed7be6124cd70485b561177c3b2787ad",
+    "implementation_commit": "3853efd5177f6931c7dcf884dd97f7342751ca03",
+    "tests_commit": "c733af8f3b179c9c9ef8314abc136b2ff6a7940b",
+    "falsifier_commit": "4b861d4137adc3abe95123882bcc05f6861c385b",
+    "workflow_commit": "f5543dba3087df5371f4be1cf1cc84beeb66adac",
+    "executed_arm_head": "6c175236e578149c3d6ce6493a008a613c8883f1",
+    "candidate_source_sha256": "8ad7cc902c756ad2582ad70ffb87dbc6d6aade6d2e8577f5dff445ef67be8ef6"
+  },
+  "mechanism": {
+    "name": "Haar-8 antipodal regular-simplex source-code estimator",
+    "source_dimension": 8,
+    "simplex_vertices": 9,
+    "codewords_per_frame": 18,
+    "frames": 224,
+    "propagated_directions": 4032,
+    "unbiasedness_identity": "for each fixed unit coefficient a, Haar-Stiefel U makes Ua uniform on the sphere; equal-weight finite code averaging plus exact E[chi_d] radial factor is unbiased in exact arithmetic",
+    "target_free": true,
+    "sign_cone_enumeration": false,
+    "factorized_cumulants": false,
+    "hermite": false,
+    "gaussian_plugin": false,
+    "boundary_compression": false,
+    "e121_rescue": false
+  },
+  "simplex_algebra": {
+    "max_vertex_norm_error": 2.220446049250313e-16,
+    "max_vertex_gram_error": 3.3306690738754696e-16,
+    "vertex_sum_inf": 1.1102230246251565e-16,
+    "second_moment_max_abs_error": 5.551115123125783e-17,
+    "gate": 2e-14,
+    "pass": true
+  },
+  "exact_reference": {
+    "eight_d_four_source": {
+      "subnetwork_seeds": [
+        121300,
+        121301,
+        121302,
+        121303
+      ],
+      "candidate_seeds": [
+        122400,
+        122401,
+        122402,
+        122403
+      ],
+      "iid_seeds": [
+        122500,
+        122501,
+        122502,
+        122503
+      ],
+      "directions_per_estimate": 4032,
+      "pooled_candidate_mse": 8.810347464996878e-7,
+      "pooled_iid_mse": 0.00010457293371305308,
+      "candidate_over_iid": 0.008425074397522755,
+      "frozen_gate": "candidate_over_iid <= 0.90",
+      "gate_passed": true,
+      "candidate_over_raw_1_89e_8": 46.61559505289353,
+      "max_frame_orthogonality_abs": 1.0707087565186895e-11,
+      "max_source_direction_norm_abs": 1.2716494524056543e-12,
+      "per_seed_candidate_mse": [
+        1.8598590590177444e-7,
+        0.000001130276852314628,
+        2.45508645015046e-7,
+        0.000001962367582767303
+      ],
+      "per_seed_candidate_over_iid": [
+        0.0006729065438598922,
+        0.011729465909377011,
+        0.03469933162331611,
+        0.05102046172870714
+      ]
+    },
+    "sixteen_d_eight_source": {
+      "subnetwork_seeds": [
+        122300,
+        122301,
+        122302,
+        122303,
+        122304,
+        122305,
+        122306,
+        122307
+      ],
+      "candidate_seeds": [
+        122600,
+        122601,
+        122602,
+        122603
+      ],
+      "iid_seeds": [
+        122700,
+        122701,
+        122702,
+        122703
+      ],
+      "directions_per_estimate": 4032,
+      "pooled_candidate_mse": 0.000004239163838762134,
+      "pooled_iid_mse": 0.00002033742944661874,
+      "candidate_over_iid": 0.20844147732086804,
+      "frozen_gate": "candidate_over_iid <= 0.95",
+      "gate_passed": true,
+      "candidate_over_raw_1_89e_8": 224.29438300328752,
+      "max_frame_orthogonality_abs": 8.508087682496524e-16,
+      "max_source_direction_norm_abs": 4.440892098500626e-16,
+      "per_seed_candidate_mse": [
+        2.822058427565543e-7,
+        0.000007826733889948754,
+        0.000005356516221020043,
+        0.0000034911994013231854
+      ],
+      "per_seed_candidate_over_iid": [
+        0.016815746508575896,
+        0.3807074601366896,
+        0.3635073724462379,
+        0.1192616708825983
+      ]
+    },
+    "historical_e121_8d_candidate_over_iid": 11.435172907952149
+  },
+  "deterministic_and_purity": {
+    "deterministic_replay_bitwise_exact_all": true,
+    "accounting_ledger_replay_exact_all": true,
+    "candidate_forbidden_imports": [],
+    "candidate_source_audit_pass": true,
+    "candidate_reads_exact_reference": false,
+    "candidate_reads_targets": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false
+  },
+  "all_in_flops": {
+    "accounting_type": "frozen conservative closed-form upper independently recomputed by method and falsifier",
+    "production_shape": {
+      "dimension": 1024,
+      "width": 1024,
+      "depth": 16,
+      "source_dimension": 8,
+      "codewords_per_frame": 18,
+      "frames": 224,
+      "directions": 4032,
+      "simplex_setup_upper": 832,
+      "haar_frame_rng_mgs_upper": 60669952,
+      "source_code_materialization_upper": 66060288,
+      "deep_propagation_upper": 135423590400,
+      "final_reduction_radial_upper": 4141952,
+      "all_in_upper": 135554463424,
+      "hard_cap_flops": 136758472261,
+      "slack_flops": 1204008837,
+      "gate_passed": true
+    },
+    "independent_reconciliation": true
+  },
+  "gates": {
+    "simplex_algebra_exact": true,
+    "candidate_outputs_finite_all": true,
+    "frame_orthogonality_le_2e_12": false,
+    "source_direction_norm_le_2e_12": true,
+    "deterministic_replay_bitwise_exact_all": true,
+    "accounting_ledger_replay_exact_all": true,
+    "exact_8d_candidate_over_iid_le_0_90": true,
+    "exact_16d_candidate_over_iid_le_0_95": true,
+    "candidate_source_audit_pass": true,
+    "production_cost_independent_reconciliation": true,
+    "production_all_in_le_hard_cap": true,
+    "no_targets_public_scorer_holdout_full": true
+  },
+  "execution": {
+    "run": 35473392719,
+    "job": 105978326828,
+    "run_attempt": 1,
+    "workflow_conclusion": "failure",
+    "scientific_run_count": 1,
+    "focused_tests": "3 passed in 0.15s",
+    "rerun": false,
+    "artifact": {
+      "name": "e122-haar8-simplex-falsifier",
+      "id": 10593646150,
+      "size_bytes": 8411,
+      "zip_sha256": "0c80738a83e2d996ad3c6cf75b2b206402d916cc52d9b0b548dfb121ad34cb44",
+      "expires_at": "2026-12-18T22:27:40Z"
+    }
+  },
+  "decision": {
+    "verdict": "TERMINAL NO-GO",
+    "reason": "Both preregistered variance-reduction gates passed strongly and the complete production FLOP proof passed, but the frozen numerical-integrity gate failed: the square d=8 Haar-8 modified-Gram-Schmidt frame reached max |U^T U-I| = 1.0707087565186895e-11, above the required 2e-12.",
+    "measured_positive_signal": "The new 8-source algebraic code changed the E121 8-D failure from 11.435x iid to 0.008425x iid and achieved 0.208441x iid on the new 16-D stress.",
+    "measured_blocker": "one-pass modified Gram-Schmidt is not numerically reliable enough for the preregistered Haar-8 orthogonality integrity gate on the frozen 8-D seed set",
+    "no_rescue": "Protocol forbids rerun, precision change, frame algorithm change, seed change, K/J/P change, or post-result repair. A stable QR/Householder frame constructor would require a separately preregistered successor, not an E122 rescue."
+  },
+  "classification": {
+    "VERIFIED": {
+      "target_free_multi_source_state_dimension_8": true,
+      "exact_unbiasedness_identity": true,
+      "simplex_algebra": true,
+      "exact_8d_variance_gate": true,
+      "exact_16d_variance_gate": true,
+      "production_flop_cap": true,
+      "deterministic_replay": true,
+      "source_purity": true,
+      "frozen_8d_orthogonality_gate_failure": true
+    },
+    "UNEXECUTED": {
+      "production_shape_run": false,
+      "raw_competition_final_layer_mse": null,
+      "public_mini": false,
+      "official_scorer": false,
+      "holdout": false,
+      "full_suite": false,
+      "stable_qr_or_householder_successor": false
+    }
+  },
+  "scope": {
+    "target_free": true,
+    "synthetic_exact_reference_only": true,
+    "production_execution": false,
+    "benchmark_execution": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt; no E122 rerun or post-result frame/seed/precision changes"
+}
