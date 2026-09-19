@@ -1,0 +1,75 @@
+{
+  "schema": "arc.whitebox.e107.terminal_receipt.v1",
+  "experiment": "E107",
+  "idempotency_key": "ARC-E107-SPHERICAL-M4-CUBATURE-NOGO-20260919",
+  "decision": "TERMINAL_PRECODE_NO_GO",
+  "branch": "research/e107-exact-spherical-fourth-moment-cubature-bound-20260919",
+  "canonical_parent": "29bee3f8d23fc620b77aaed414b1b7a928af4b83",
+  "protocol_commit": "3a85a46806c70f234a8fcdfa2c501788a60311f9",
+  "candidate": {
+    "mechanism": "exact weighted spherical fourth-moment cubature after radial/odd-component elimination",
+    "genuinely_disjoint_from": [
+      "E100/E103/E104 stochastic Haar/radial-RB",
+      "E105 risk certification",
+      "E106 fitted quartic Haar CV",
+      "E032 backward-leverage cubature",
+      "E042 source-column cubature",
+      "E003 radial fourth-moment propagation"
+    ]
+  },
+  "frozen_constants": {
+    "width": 1024,
+    "depth": 16,
+    "budget": 2199023255552,
+    "utilization_cap": 0.13,
+    "raw_target_mse": 1.89e-8,
+    "true_forward_flops": 33554432,
+    "true_forwards_per_budget": 65536
+  },
+  "proof": {
+    "symmetric_state_dimension": 524800,
+    "statement": "The spherical fourth-moment operator E[vec_sym(qq^T) vec_sym(qq^T)^T] is positive definite on Sym_1024, hence rank 524800. Any N-node weighted cubature represents it as a sum of N rank-one outer products, so exact fourth-moment matching requires N>=524800, even with signed weights.",
+    "min_distinct_directions": 524800,
+    "max_true_forwards_at_util_0_13_if_all_else_free": 8519
+  },
+  "arithmetic": {
+    "forward_only_min_flops_one_forward_per_direction": 17609365913600,
+    "forward_only_min_utilization": 8.0078125,
+    "utilization_cap": 0.13,
+    "violation_factor": 61.59855769230769,
+    "antithetic_forward_only_min_utilization": 16.015625
+  },
+  "gates": {
+    "complete_production_utilization_le_0_13": false,
+    "raw_accuracy_path_gate": "NOT_REACHED_BECAUSE_COST_GATE_FAILED",
+    "implementation_authorized": false,
+    "benchmark_authorized": false
+  },
+  "classification": {
+    "VERIFIED": {
+      "rank_lower_bound": true,
+      "budget_arithmetic": true,
+      "branch_created": true,
+      "protocol_frozen_before_any_implementation": true
+    },
+    "UNEXECUTED": {
+      "code": false,
+      "local_benchmark": false,
+      "E051_comparison": false,
+      "E100_comparison": false,
+      "public": false,
+      "public_mini": false,
+      "scorer": false,
+      "holdout": false,
+      "full": false,
+      "tuning": false,
+      "sweep": false
+    }
+  },
+  "scope": {
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "public_or_benchmark_targets_read": false
+  },
+  "receipt_policy": "immutable terminal receipt; no rescue within E107"
+}
