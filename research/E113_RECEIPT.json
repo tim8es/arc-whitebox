@@ -1,0 +1,156 @@
+{
+  "schema": "arc.whitebox.e113.terminal_receipt.v1",
+  "experiment": "E113",
+  "idempotency_key": "ARC-E113-ANNEALED-RADIAL-SUFFICIENCY-20260919",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "production_shape_authorized": false,
+  "branch": "research/e113-annealed-radial-sufficiency-20260919",
+  "provenance": {
+    "parent_e111_terminal_head": "9d0dcc429fc4b62a6607ea28c97fbb44327dbaf2",
+    "protocol_commit": "c7848a5fbae482cdd63ea78af7cfeda4f5ce4d48",
+    "implementation_commit": "1f49a8645f231efa6e5a1725fc689584b851e67d",
+    "tests_commit": "21f9bb6030f2875f762bc5026c782f522f8db7af",
+    "falsifier_commit": "64ae992258452e8b73e030a7c8292f78bd7fe5c7",
+    "executed_workflow_head": "138403eb04967a9d0b49b6fbe2dd1540d9cf8221"
+  },
+  "execution": {
+    "run": 35455241102,
+    "job": 105929237404,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "5 passed in 0.19s",
+    "rerun": false,
+    "artifact": {
+      "name": "e113-radial-sufficiency",
+      "id": 10588541016,
+      "size_bytes": 1921,
+      "zip_sha256": "26a6b62fdc7aa0ead94785152e614bb486638d4186f5b7e5ba886b6880f3b998",
+      "expires_at": "2026-12-18T16:31:38Z"
+    }
+  },
+  "theorem": {
+    "annealed_positive_closure": {
+      "statement": "For fresh W_ji~N(0,2/d), ReLU(W h)|h depends on h only through r=||h||. Radius is an exact one-dimensional Markov sufficient state when future Gaussian weights are also averaged over.",
+      "transition": "R_next = r*sqrt(2/d)*chi_K, K~Binomial(m,1/2)",
+      "width8_expected_radius_multiplier": 0.9190510747660053
+    },
+    "quenched_obstruction": {
+      "statement": "For fixed invertible square W, on the open cone W^T h>0 the ReLU layer equals W^T h and has Jacobian rank n. Any C1 exact factorization through T:R^n->R^k has Jacobian rank <=k, so k>=n.",
+      "almost_sure_dense_gaussian": true,
+      "scope": "full next activation vector; C1 statistics; fixed realized full-rank square layer",
+      "does_not_rule_out": [
+        "discontinuous encodings",
+        "statistics for one special scalar observable",
+        "approximate compression",
+        "annealed weight averaging"
+      ]
+    }
+  },
+  "frozen_instance": {
+    "latent_dim": 2,
+    "width": 8,
+    "depth": 4,
+    "weight_seed": 113113,
+    "zero_bias": true,
+    "raw_target_mse": 1.89e-8
+  },
+  "obstruction_certificates": {
+    "later_layer_ranks": [
+      8,
+      8,
+      8
+    ],
+    "min_singular_values": [
+      0.2363766839371547,
+      0.28066592442611543,
+      0.08756279527377717
+    ],
+    "active_cone_max_residual": 1.9984014443252818e-15,
+    "same_radius_output_l2_deltas": [
+      1.8492064899050915,
+      1.0694298786480112,
+      1.200813953160937
+    ]
+  },
+  "exact_reference": {
+    "final_interval_count": 60,
+    "quenched_final_mean": [
+      0,
+      0,
+      0,
+      0.33315196355220256,
+      0.02810997215253549,
+      0.2073077795413996,
+      2.751469221177848,
+      0.09119574610397779
+    ],
+    "deterministic_replay_max_abs": 0,
+    "radius_quadrature_max_relative_64_vs_96": 3.338516518122936e-16
+  },
+  "new_class": {
+    "name": "annealed radial plug-in after exact realized prefix",
+    "description": "Keep realized network exact through layer s, then replace only future fixed dense layers by the exact fresh-weight annealed scalar radial law.",
+    "measurements": [
+      {
+        "start_layer": 1,
+        "remaining_annealed_layers": 3,
+        "predicted_mean": 0.33617647227113295,
+        "mse": 0.7930274670943649,
+        "mse_over_target": 41959125.24308809
+      },
+      {
+        "start_layer": 2,
+        "remaining_annealed_layers": 2,
+        "predicted_mean": 0.6072744060302525,
+        "mse": 0.8176003823049027,
+        "mse_over_target": 43259279.48703189
+      },
+      {
+        "start_layer": 3,
+        "remaining_annealed_layers": 1,
+        "predicted_mean": 0.5748764070135514,
+        "mse": 0.8069303558988863,
+        "mse_over_target": 42694727.825337894
+      }
+    ],
+    "strongest_late_test": "start_layer=3; first three realized layers exact; only final layer annealed",
+    "strongest_late_test_passed": false
+  },
+  "gates": {
+    "full_rank": true,
+    "active_cone_certificate": true,
+    "local_rank_obstruction": true,
+    "same_radius_counterexample": true,
+    "exact_reference_finite": true,
+    "quadrature_converged": true,
+    "deterministic": true,
+    "no_external_targets": true,
+    "all_radial_plugins_mse_le_1_89e_8": false,
+    "late_start3_mse_le_1_89e_8": false
+  },
+  "interpretation": {
+    "verdict": "There is an exact scalar sufficient state only in the annealed fresh-weight law. Conditioning on the realized dense white-box weights destroys any exact C1 dimension-reducing closure for the full activation vector. The one new class tested after this obstruction—exact-prefix plus annealed radial future—fails by ~4.27e7 times the raw target even when only the final layer is annealed.",
+    "primary_blocker": "quenched directional information is irreducible at full rank; radial averaging discards it",
+    "production_cost": "UNEXECUTED because the frozen small exact scientific gate failed; no production prototype authorized",
+    "successor_constraint": "A successor must leave the exact low-dimensional C1 full-vector closure class and the fresh-weight radial plug-in class. It must preserve quenched directional information without explicit 2^n mask state and without reopening E111/E112."
+  },
+  "scope": {
+    "small_exact_synthetic_only": true,
+    "production_shape_run": false,
+    "public": false,
+    "public_mini": false,
+    "benchmark_targets": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rerun": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt; no E113 rerun or post-result statistic augmentation"
+}
