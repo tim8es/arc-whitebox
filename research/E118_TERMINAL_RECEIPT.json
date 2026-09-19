@@ -1,0 +1,148 @@
+{
+  "schema": "arc.whitebox.e118.terminal_receipt.v1",
+  "experiment": "E118",
+  "idempotency_key": "ARC-E118-BOUNDARY-FLUX-PHYSICAL-COMPRESSION-20260919",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "production_go": false,
+  "branch": "research/e118-boundary-flux-physical-compression-20260919",
+  "parent_e114_branch": "research/e114-activation-boundary-flux-20260919",
+  "parent_e114_head": "b9f64030f65da9b32fc7718d04fb108ee1a73dab",
+  "provenance": {
+    "protocol_commit": "154d3ad5d030257acd9cf65a81bff74ab46b9d36",
+    "implementation_commit": "422c7f8c77819ae8ddaeb88f3e6dc2776ea5537f",
+    "tests_commit": "b26cec959712a4712021ebf674dcba00f1447d83",
+    "executable_commit": "2bfcbb247c78650e8896c9bd81bedb61930c91ff",
+    "scientific_arm_commit": "69b28aff1569c0fac9534a539f4b445691ba83ba",
+    "result_commit": "c7c6452c1425c06ecb7c5f587e7bb7f4f04b6bb9"
+  },
+  "mechanism": {
+    "name": "physical scalar activation-boundary-flux best-first compression",
+    "observable": "normalized sum of final coordinates",
+    "state": "(layer, theta_lo, theta_hi, hidden linear coefficient matrix A)",
+    "selection": "largest rigorous state-derived Frobenius/Lipschitz unresolved bound",
+    "oracle_selection": false,
+    "exact_reference_only_for_verification": true
+  },
+  "frozen_smallwidth": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "weight_seed": 118118,
+    "zero_bias": true,
+    "expansion_cap": 62,
+    "rms_limit": 0.000137477270849,
+    "numerical_quadrature": false,
+    "monte_carlo_truth": false
+  },
+  "execution": {
+    "run": 35457354702,
+    "job": 105934894435,
+    "run_attempt": 1,
+    "head": "69b28aff1569c0fac9534a539f4b445691ba83ba",
+    "tests": "3 passed in 0.09s",
+    "scientific_step": "success",
+    "artifact_upload": "success",
+    "workflow_conclusion": "failure_expected_terminal_exit_2",
+    "rerun": false,
+    "artifact": {
+      "name": "e118-boundary-flux-physical",
+      "id": 10588344207,
+      "size_bytes": 3250,
+      "zip_sha256": "3b99993d9021b990f786b5803e9b5300f19dc925ff329b9f63e85434de9b5c42",
+      "independently_verified_zip_sha256": "3b99993d9021b990f786b5803e9b5300f19dc925ff329b9f63e85434de9b5c42",
+      "json_sha256": "3849098edb1da9273b800b3102d0b17020ff9a8065a8c519426a8e3df244b245",
+      "log_sha256": "9c57487faf521e20f32a39dfb8b650ea56ad440be5056960f5d5b4ec1d07d57c",
+      "exit_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3"
+    }
+  },
+  "exact_reference": {
+    "mean": 1.913371359350446,
+    "flux_mean": 1.9133713593504451,
+    "flux_sector_abs_diff": 8.881784197001252e-16,
+    "final_interval_count": 62,
+    "layer_state_counts": [
+      1,
+      17,
+      31,
+      50,
+      62
+    ],
+    "child_states_materialized": 160,
+    "root_checks": 792,
+    "roots_materialized": 61,
+    "coefficient_bytes_materialized": 20512
+  },
+  "candidate": {
+    "estimate": 1.7952053421963705,
+    "actual_absolute_scalar_error": 0.11816601715407549,
+    "remainder_certificate": 1.7304891902620323,
+    "actual_over_limit": 859.5312986963839,
+    "certificate_over_limit": 12587.456672475979,
+    "expansions": 62,
+    "expansions_by_layer": [
+      1,
+      16,
+      24,
+      21
+    ],
+    "child_states_materialized": 116,
+    "materialized_by_layer": [
+      1,
+      17,
+      30,
+      43,
+      26
+    ],
+    "resolved_final_states": 26,
+    "unresolved_state_count": 29,
+    "max_live_queue": 47,
+    "root_checks": 496,
+    "roots_materialized": 54,
+    "coefficient_bytes_materialized": 14880,
+    "live_coefficient_bytes_at_stop": 3712,
+    "deterministic_replay": true,
+    "actual_error_within_certificate": true
+  },
+  "production_accounting": {
+    "incremental_cap_flops": 136758472261,
+    "dense_state_transition_flops": 2147483648,
+    "transition_count": 62,
+    "transition_total_flops": 133143986176,
+    "helpers_materialization_remainder_reserve_flops": 3600000000,
+    "all_in_incremental_ceiling_flops": 136743986176,
+    "margin_flops": 14486085,
+    "dense_float32_state_bytes": 4194304,
+    "observed_queue_dense_state_memory_lower_bound_bytes": 197132288,
+    "high_dimensional_cone_helpers_proven_within_reserve": false
+  },
+  "gates": {
+    "flux_identity_pass": true,
+    "physical_state_pass": true,
+    "explicit_remainder_certificate_pass": true,
+    "actual_error_within_certificate": true,
+    "deterministic": true,
+    "finite": true,
+    "incremental_budget_pass": true,
+    "actual_error_le_rms_limit": false,
+    "remainder_certificate_le_rms_limit": false
+  },
+  "blocker": "At the production-normalized 62-region-transition cap, the exact width-8/depth-4 physical representation leaves 29 unresolved states; actual scalar error is 859.5x the requested RMS limit and the rigorous remainder certificate is 12587x the limit. High-dimensional cone materialization would add cost and is not authorized.",
+  "decision": "TERMINAL_NO_GO_DROP",
+  "scope": {
+    "production_execution": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
