@@ -1,0 +1,65 @@
+{
+  "schema": "arc.whitebox.e114.result_receipt.v1",
+  "experiment": "E114",
+  "identity": "ARC-E114-ACTIVATION-BOUNDARY-FLUX-20260919",
+  "branch": "research/e114-activation-boundary-flux-20260919",
+  "status": "EXACT_POSITIVE_CLOSURE_ACTIVATION_BOUNDARY_FLUX_VERIFIED",
+  "scientific_go": true,
+  "production_go": false,
+  "competition_accuracy_claim": false,
+  "provenance": {
+    "protocol_commit": "2ef10a3cc00c7f1e6b8b967d3c0ced210ee1b11c",
+    "executable_commit": "800fc858c0a0b142f5ceecc18d929dffaaabe911",
+    "workflow_commit": "d9d37664bcd3f89d5dece2473a1614203ae0d99c",
+    "result_commit": "3cb02a60b16848af14e0c0dd9199509af9fb0767",
+    "run": 35455223230,
+    "job": 105929190535,
+    "artifact_id": 10588126544,
+    "artifact_name": "e114-activation-boundary-flux",
+    "artifact_sha256": "dd7a49166fe7f3cc469b145914e8b8b00680bfbeaa574b8539cdbad50defb84f",
+    "artifact_size_bytes": 1103
+  },
+  "identity_theorem": {
+    "class": "continuous degree-1 homogeneous piecewise-linear scalar maps",
+    "sphere_identity": "(d-1) integral_S f = sum_Gamma integral_Gamma J_Gamma",
+    "gaussian_identity": "E[F(X)] = E[R]/(|S^{d-1}|(d-1)) * sum_Gamma integral_Gamma J_Gamma",
+    "mechanism": "activation-boundary flux",
+    "not_gaussian_moment_closure": true,
+    "not_first_order_stein": true,
+    "not_latent_mixture": true,
+    "not_mask_message_table": true
+  },
+  "fixture": {
+    "input_dimension": 2,
+    "depth": 3,
+    "W1": [[1,0],[0,1]],
+    "W2": [[1,1],[-2,0]],
+    "W3": [[2],[-1]],
+    "downstream_kink_angle": 0.24497866312686414
+  },
+  "measurements": {
+    "direct_piecewise_max_abs": 1.1102230246251565e-16,
+    "derivative_jumps": [1.0,-4.0,4.123105625617661],
+    "jump_sum": 1.1231056256176606,
+    "sector_integral": 1.1231056256176606,
+    "gaussian_boundary_flux_value": 0.22402715970779358,
+    "gaussian_closed_form_value": 0.22402715970779363,
+    "closed_form": "(sqrt(17)-3)/(2*sqrt(2*pi))",
+    "deterministic_repeat_exact": true
+  },
+  "scope": {
+    "monte_carlo": false,
+    "numerical_quadrature": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "production_run": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "next_blocker": "production representation cost of the activation-boundary set/flux; exact correctness is established only on the frozen small deep fixture"
+}
