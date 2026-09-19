@@ -1,0 +1,39 @@
+name: E113 sole exact small-width gate
+
+on:
+  push:
+    branches:
+      - research/e113-top4-gate-conditioned-plugin-20260919
+    paths:
+      - ".github/workflows/e113-exact-gate.yml"
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen dependency
+        run: python -m pip install numpy
+      - name: Run exact small-width E113 gate
+        run: python scripts/e113_exact_gate.py | tee e113-exact-gate.log
+      - name: Verify frozen result
+        run: python scripts/e113_verify.py | tee e113-verify.log
+      - name: Upload immutable E113 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: e113-exact-gate
+          path: |
+            e113-exact-gate.json
+            e113-exact-gate.log
+            e113-verify.log
+          if-no-files-found: error
+          retention-days: 90
