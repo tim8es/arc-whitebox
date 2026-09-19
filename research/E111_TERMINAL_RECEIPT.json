@@ -1,0 +1,102 @@
+{
+  "schema": "arc.whitebox.e111.terminal_receipt.v1",
+  "experiment": "E111",
+  "idempotency_key": "ARC-E111-LATE4-GAUSSIAN-RELU-PLUGIN-EXACT-BIAS-20260919",
+  "status": "TERMINAL_SCIENTIFIC_NO_GO_DROP",
+  "scientific_go": false,
+  "competition_go": false,
+  "branch": "research/e111-late4-gaussian-relu-plugin-cost-20260919",
+  "identity": {
+    "mechanism": "deterministic late-layer Gaussian-ReLU moment plug-in",
+    "not_sampler": true,
+    "not_control_variate": true
+  },
+  "cost_gate": {
+    "source_receipt": "research/E111_COST_RECEIPT.jsonl",
+    "all_in_flops": 149220512434,
+    "utilization": 0.06785763272728218,
+    "utilization_cap": 0.13,
+    "pass": true
+  },
+  "exact_reference": {
+    "latent_gaussian_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "zero_bias": true,
+    "weight_seed": 111111,
+    "type": "exact piecewise angular integration with analytic Rayleigh radial moments",
+    "numerical_quadrature": false,
+    "monte_carlo": false,
+    "freeze_commit": "a7ca77a4c7360d9920f3302b2d6e7df6ce13a467",
+    "scientific_arm_head": "efd97d10311ded61aa943f4022e8a1c098a77711",
+    "final_interval_count": 91
+  },
+  "execution": {
+    "run": 35454366943,
+    "job": 105926930545,
+    "conclusion": "success",
+    "artifact_id": 10588270189,
+    "artifact_name": "e111-bias-falsifier",
+    "artifact_size_bytes": 3698,
+    "artifact_zip_sha256": "6e26857b181e9ce29ec99a231002e824ffe8f257fd2c302346d0e76d1be92b5d",
+    "independently_verified_zip_sha256": "6e26857b181e9ce29ec99a231002e824ffe8f257fd2c302346d0e76d1be92b5d",
+    "extracted_json_sha256": "276a46c205f4df0a1067b4a6ec4933e5621ca85fb637936aa182e94f978ce056",
+    "deterministic_repeat_max_abs": 0
+  },
+  "measured": {
+    "layer_mean_bias_mse": [
+      1.4059288594026822e-32,
+      0.002460899425463496,
+      0.004066378888984171,
+      0.0016698051697168073
+    ],
+    "final_layer_mean_bias_mse": 0.0016698051697168073,
+    "final_layer_mean_bias_max_abs": 0.07700470798758577,
+    "final_layer_mean_bias_signed_average": 0.030803717001582052,
+    "raw_target": 1.89e-8,
+    "final_bias_over_target": 88349.47987919615,
+    "max_layer_bias_over_target": 215152.32216847464,
+    "current_risk_reference": 0.000010016395958298237,
+    "final_bias_over_current_risk": 166.70718456706294
+  },
+  "engineering_sanity": {
+    "red_run": 35454357206,
+    "red_job": 105926906080,
+    "scalar_fix_commit": "632302ab7a9224a15d8ee15a56ef6cccff2d16c3",
+    "green_run": 35454492351,
+    "green_job": 105927263839,
+    "green_conclusion": "success",
+    "note": "ancillary one-dimensional two-ray sanity helper only; authoritative scientific verdict comes from the exact 2-D angular falsifier"
+  },
+  "gates": {
+    "cost_util_le_0_13": true,
+    "exact_reference_finite": true,
+    "deterministic": true,
+    "first_layer_gaussian_sanity": true,
+    "every_layer_bias_mse_le_target": false,
+    "final_layer_bias_mse_le_target": false,
+    "credible_path_from_current_risk_to_target": false,
+    "no_targets_read": true
+  },
+  "interpretation": {
+    "blocker": "Later-layer preactivation shape is strongly non-Gaussian after ReLU gating; even exact pre-ReLU mean and variance are insufficient for the Gaussian analytic ReLU mean formula.",
+    "decision": "No credible path to 1.89e-8 with the frozen Gaussian-ReLU plug-in alone. Any skew/kurtosis, mixture, clipping, alternate Gaussianization or fitted repair is a new mechanism, not an E111 rescue."
+  },
+  "result_commit": "996b438210ac2a60a8d3aaf46e9c095ef2a5d4de",
+  "scope": {
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "production_scientific_run": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
