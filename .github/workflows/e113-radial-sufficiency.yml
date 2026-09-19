@@ -1,0 +1,40 @@
+name: E113 annealed radial sufficiency falsifier
+
+on:
+  push:
+    branches:
+      - research/e113-annealed-radial-sufficiency-20260919
+    paths:
+      - 'methods/e113_radial_sufficiency.py'
+      - 'tests/test_e113_radial_sufficiency.py'
+      - 'scripts/e113_radial_sufficiency.py'
+      - '.github/workflows/e113-radial-sufficiency.yml'
+
+jobs:
+  e113:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E113 tests
+        run: python -m pytest -q tests/test_e113_radial_sufficiency.py
+      - name: Run sole frozen E113 falsifier
+        run: python scripts/e113_radial_sufficiency.py
+      - name: Upload immutable E113 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e113-radial-sufficiency
+          path: e113-radial-sufficiency.json
+          if-no-files-found: error
+          retention-days: 90
