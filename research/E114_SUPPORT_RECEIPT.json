@@ -1,0 +1,163 @@
+{
+  "schema": "arc.whitebox.e114.support_terminal_receipt.v1",
+  "experiment": "E114",
+  "idempotency_key": "ARC-E114-OBSERVABILITY-FLUX-RESIDUAL-SUPPORT-20260919",
+  "status": "TERMINAL_SUPPORT_NO_GO",
+  "scientific_go": false,
+  "production_go": false,
+  "branch": "research/e114-observability-flux-residual-support-20260919",
+  "parent_positive_closure_head": "b9f64030f65da9b32fc7718d04fb108ee1a73dab",
+  "provenance": {
+    "protocol_commit": "7065fd3492dc94e7ebf904749df22b61db524300",
+    "implementation_commit": "c82f31d8ab0af4ec6f26973ed984282ff32ded96",
+    "tests_commit": "f995906945db3c476c1e0cf69e79bb0ab0b6c745",
+    "executed_workflow_head": "0f2cb9750c115ff8b2622666208870ea35cef0a2",
+    "executed_blobs": {
+      "protocol": "ad799659d6fc8e513adae3b6b53396c7774105a5",
+      "script": "be0fc5ca1ef95ff78de1c560482d888386f36545",
+      "tests": "5295dc7f1b4c65347fb12d4980854cab24e92ba8",
+      "workflow": "160cef819e147a492d9db962fc5b111956074235"
+    }
+  },
+  "mechanism": {
+    "name": "weight-only observability subspace plus exact activation-boundary-flux analytic backbone and sampled orthogonal residual",
+    "projector_construction": "top-r eigenspace of deterministic downstream observability Gramian G=sum_l D_l^T D_l with D_{l-1}=0.5 W_l D_l",
+    "compression_rank": 2,
+    "hybrid_estimator": "mu_parallel_exact + sample_mean(B(q) Rperp)",
+    "target_free": true,
+    "target_fitting": false,
+    "empirical_covariance_division": false,
+    "empirical_variance_division": false,
+    "gaussian_relu_plugin": false,
+    "full_mask_state_table": false,
+    "stochastic_denominator": false,
+    "projector_operator_norm_bound": 1.0
+  },
+  "frozen_instance": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "weight_seed": 114214,
+    "compression_rank": 2,
+    "reference_sample_count": 4096
+  },
+  "execution": {
+    "run": 35456359927,
+    "job": 105932224419,
+    "run_attempt": 1,
+    "head": "0f2cb9750c115ff8b2622666208870ea35cef0a2",
+    "workflow_conclusion": "failure",
+    "scientific_step_conclusion": "failure_expected_terminal_gate_exit_2",
+    "focused_tests": "5 passed in 0.16s",
+    "rerun": false,
+    "artifact": {
+      "name": "e114-observability-flux-support",
+      "id": 10587589469,
+      "size_bytes": 1542,
+      "zip_sha256": "86897c8d5081854b9f613b6f61656fe5d7600a370ecf171903bcb14e44799a97",
+      "expires_at": "2026-12-18T16:53:17Z"
+    }
+  },
+  "exact_reference": {
+    "method": "analytic angular linear-region propagation, analytic activation-boundary derivative jumps, and analytic first/second trigonometric moments; no Monte Carlo and no numerical quadrature",
+    "layer_region_counts": [17, 28, 39, 52],
+    "final_region_count": 52,
+    "nonzero_boundary_count": 51,
+    "paired_interval_count": 94,
+    "boundary_flux_vs_sector_mean_max_abs": 1.1102230246251565e-16,
+    "paired_radial_rb_vs_boundary_flux_mean_max_abs": 1.6653345369377348e-16,
+    "partition_complete": true,
+    "deterministic_exact_replay": true
+  },
+  "observability": {
+    "eigenvalues_desc": [
+      3.7028195529768415,
+      2.708112762386818,
+      1.9811350978818074,
+      1.8429857091783977,
+      1.3972639662679518,
+      1.087378975842232,
+      1.0801863527673536,
+      1.0034806222236343
+    ],
+    "relative_eigengap_at_rank_2": 0.2684443848136821,
+    "projector_symmetry_error": 0.0,
+    "projector_idempotence_error": 3.3306690738754696e-16,
+    "projector_sha256": "f7bd9b5b271f25b47f8b7b3e5d802359911b148ec2cbdc757c60d75be7e5f421",
+    "stability_gate_pass": true
+  },
+  "exact_target_free_risk": {
+    "baseline_pooled_variance": 0.005658567332867882,
+    "residual_pooled_variance": 0.004921857781998192,
+    "residual_over_baseline": 0.8698063471666228,
+    "relative_variance_reduction_fraction": 0.13019365283337725,
+    "relative_variance_reduction_percent": 13.019365283337725,
+    "baseline_risk_at_4096": 1.3814861652509478e-06,
+    "residual_risk_at_4096": 1.2016254350581523e-06,
+    "raw_target_scale": 1.89e-08,
+    "residual_risk_over_target_scale": 63.57806534699218
+  },
+  "gates": {
+    "all_finite": true,
+    "partition_complete": true,
+    "boundary_flux_identity": true,
+    "paired_radial_rb_mean_identity": true,
+    "projector_integrity": true,
+    "relative_eigengap_ge_1e_6": true,
+    "deterministic_exact_replay": true,
+    "residual_variance_lt_baseline": true,
+    "residual_over_baseline_le_0_50": false,
+    "residual_risk_4096_le_1_89e_8": false,
+    "no_targets_read": true
+  },
+  "interpretation": {
+    "verdict": "The E114 exact boundary-flux identity can be combined with a stable, fully target-free observable-network projector without Gaussian closure, cov/var division, or full mask state. However the frozen rank-2 downstream observability subspace removes only 13.02% of exact radial-Rao-Blackwell angular variance.",
+    "primary_blocker": "The residual variance ratio 0.869806 misses the preregistered <=0.50 materiality gate.",
+    "target_path_blocker": "At the 4096-sample reference count, exact residual stochastic risk is 1.2016254350581523e-06, 63.58x above the 1.89e-8 target scale.",
+    "scope_of_no_go": "This closes only the frozen rank-2 weight-only observability-compression support mechanism. It does not invalidate the parent E114 activation-boundary-flux identity.",
+    "successor_constraint": "Any successor should preserve exact boundary-flux correctness and denominator-free stability, but must compress output-relevant flux far more strongly than a fixed low-rank mean-gate observability projector; no rank/seed rescue is allowed under this lane."
+  },
+  "classification": {
+    "VERIFIED": {
+      "observable_network_structure_only": true,
+      "no_target_fitting": true,
+      "no_cov_var_division": true,
+      "no_gaussian_relu_plugin": true,
+      "no_full_mask_state_table": true,
+      "exact_unbiased_hybrid_identity": true,
+      "variance_reduction_positive": true,
+      "support_gate_failed": true
+    },
+    "UNEXECUTED": {
+      "production_shape_support_run": false,
+      "raw_competition_final_layer_mse": null,
+      "adjusted_competition_score": null,
+      "public_mini": false,
+      "official_scorer": false,
+      "holdout": false,
+      "full_suite": false
+    }
+  },
+  "scope": {
+    "exact_small_network_only": true,
+    "monte_carlo_scientific_reference": false,
+    "numerical_quadrature_scientific_reference": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "target_fitting": false,
+    "gaussian_relu_plugin": false,
+    "full_mask_state_table": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal support receipt; no rank/seed/Gramian change or rerun under this E114 support lane"
+}
