@@ -1,0 +1,41 @@
+name: E113 deterministic deep folded-ridge falsifier
+
+on:
+  push:
+    branches:
+      - research/e113-deep-folded-ridge-residual-20260919
+    paths:
+      - 'research/E113_PROTOCOL.md'
+      - 'scripts/e113_deep_folded_ridge_residual.py'
+      - 'tests/test_e113_deep_folded_ridge_residual.py'
+      - '.github/workflows/e113-smallwidth-falsifier.yml'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen local dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Focused E113 exact-law tests
+        run: pytest -q tests/test_e113_deep_folded_ridge_residual.py
+      - name: Sole frozen E113 small-width falsifier
+        run: python scripts/e113_deep_folded_ridge_residual.py
+      - name: Upload E113 falsifier artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e113-smallwidth-falsifier
+          path: e113-smallwidth-falsifier.json
+          if-no-files-found: error
