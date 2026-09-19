@@ -1,0 +1,131 @@
+{
+  "schema": "arc.whitebox.hybrid_deep_kink_remainder.receipt.v1",
+  "idempotency_key": "ARC-HYBRID-DEEP-KINK-REMAINDER-20260919",
+  "status": "SMALLWIDTH_IDENTITY_AND_BUDGET_GO",
+  "production_scientific_go": false,
+  "branch": "research/hybrid-deep-kink-remainder-scout-20260919",
+  "mechanism": {
+    "name": "analytic mean-state backbone plus certified ReLU kink remainder",
+    "scalar_identity": "ReLU(z)=ReLU(m)+1[m>0](z-m)+kappa_m(z)",
+    "finite_cloud_mean_identity": "mean(ReLU(z))=ReLU(mean(z))+mean(kappa_mean(z)(z))",
+    "certified_support": "kappa is nonzero only when z lies on the opposite ReLU branch from anchor mean m",
+    "target_free": true,
+    "fitted_coefficients": false,
+    "first_layer_transport_cv": false,
+    "stein_jvp": false,
+    "line_conditioning": false
+  },
+  "provenance": {
+    "parent_branch": "research/post-e108-deep-final-jensen-variance-20260919",
+    "protocol_commit": "30fd0ae7eecc01ed2aa2892c605478542a13e265",
+    "method_commit": "05beb7c8bb41031274cbbfae38c2978a3aa9a78d",
+    "falsifier_commit": "08578c7185cb124c179379693823f4e0c2de4588",
+    "workflow_commit": "09bb166b16bd7fbf4510805b2578adb973bf252e",
+    "source_blobs": {
+      "protocol": "18e84572f3de1013889def6ae75b62671e897857",
+      "method": "f3beac609629bc3ab3e238c12f98693f4ef8f7f2",
+      "falsifier": "4639bbc38e27deb67b9b1859ffdec265739f325b",
+      "workflow": "3a4b6cbafc0ec074c87e3e28696516864a9cd745"
+    }
+  },
+  "execution": {
+    "run": 35455103790,
+    "job": 105928880826,
+    "run_attempt": 1,
+    "head": "09bb166b16bd7fbf4510805b2578adb973bf252e",
+    "conclusion": "success",
+    "artifact": {
+      "name": "hybrid-deep-kink-remainder-smallwidth",
+      "id": 10587802846,
+      "size_bytes": 1608,
+      "zip_sha256": "236ed0bbc9b5c8e28da5da43f515cfeaad069c02ff88125f3ba7cf019f7e7851"
+    }
+  },
+  "frozen_smallwidth": {
+    "width": 8,
+    "depth": 4,
+    "trajectories": 32,
+    "weight_seed": 111104,
+    "direction_seed": 111105,
+    "two_haar_blocks_plus_antipodes": true,
+    "analytic_mean_chi_radius": true,
+    "production_shape_executed": false
+  },
+  "measured_identity": {
+    "max_mean_reconstruction_abs": 1.1102230246251565e-16,
+    "max_pointwise_identity_abs": 2.220446049250313e-16,
+    "max_piecewise_remainder_abs": 2.220446049250313e-16,
+    "max_offsupport_remainder_abs": 0,
+    "max_anchor_vs_direct_preactivation_mean_abs": 1.6653345369377348e-16,
+    "minimum_remainder": 0,
+    "deterministic_replay_max_abs": 0,
+    "antithetic_pair_max_abs": 0,
+    "haar_orthogonality_max_abs": 4.440892098500626e-16,
+    "finite": true
+  },
+  "measured_remainder_diagnostics": {
+    "mean_support_fraction": 0.3623046875,
+    "max_support_fraction": 0.5,
+    "layer_support_fractions": [
+      0.5,
+      0.3515625,
+      0.33984375,
+      0.2578125
+    ],
+    "mean_remainder_energy_fraction_vs_activation": 0.6736028462064725,
+    "max_remainder_energy_fraction_vs_activation": 1,
+    "layer_remainder_energy_fractions": [
+      1,
+      0.673933939584006,
+      0.2544085141650687,
+      0.7660689310768153
+    ],
+    "interpretation": "The certified remainder is sparse-ish in support but not small in energy on this frozen small-width law test. This supports exact hybrid decomposition and potential sparse evaluation, not an approximation that drops the remainder."
+  },
+  "budget_admission": {
+    "budget_flops": 2199023255552,
+    "utilization_cap": 0.13,
+    "inherited_base_flops": 149114550960,
+    "inherited_base_utilization": 0.06780944702768466,
+    "frozen_overlay_reserve_flops": 1000000000,
+    "production_upper_flops": 150114550960,
+    "production_upper_utilization": 0.06826419437857112,
+    "gate": true,
+    "production_execution_authorized_in_this_scout": false
+  },
+  "gates": {
+    "finite": true,
+    "antithetic_exact": true,
+    "pointwise_identity_le_1e_12": true,
+    "mean_reconstruction_le_1e_12": true,
+    "piecewise_remainder_le_1e_12": true,
+    "offsupport_remainder_le_1e_12": true,
+    "remainder_nonnegative_to_1e_12": true,
+    "deterministic_replay_eq_0": true,
+    "production_static_budget_util_le_0_13": true,
+    "no_targets_read": true
+  },
+  "decision": {
+    "smallwidth_identity": "PASS",
+    "budget_first": "PASS",
+    "production_work": "NOT_EXECUTED_BY_DESIGN",
+    "next_admissible_step": "A separate production-shape successor may measure actual billed sparse-remainder extraction and target-free variance/risk contribution using the frozen identity. It must not drop the remainder based on support alone because measured remainder energy is large."
+  },
+  "scope": {
+    "small_width_only": true,
+    "production_shape_executed": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "target_fitting": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "receipt_policy": "immutable one-shot small-width scout receipt; production work requires a new successor protocol"
+}
