@@ -79,6 +79,7 @@ def run_estimator(weights: list[np.ndarray], direction_seed: int) -> dict:
         after_anchor = int(ctx.flops_used)
 
         h = build_two_haar_inputs_billed(WIDTH, direction_seed)
+        input_np = np.asarray(h, dtype=np.float32).copy()
         after_input = int(ctx.flops_used)
 
         radius = mean_chi_radius(WIDTH)
@@ -129,10 +130,7 @@ def run_estimator(weights: list[np.ndarray], direction_seed: int) -> dict:
     c2_np = np.asarray(c2, dtype=np.float64)
 
     half = TRAJECTORIES // 2
-    pair_max_abs = float(np.max(np.abs(
-        np.asarray(build_two_haar_inputs_plain(direction_seed)[:half], dtype=np.float32)
-        + np.asarray(build_two_haar_inputs_plain(direction_seed)[half:], dtype=np.float32)
-    )))
+    pair_max_abs = float(np.max(np.abs(input_np[:half] + input_np[half:])))
 
     anchor_flops = after_anchor - start_flops
     input_flops = after_input - after_anchor
