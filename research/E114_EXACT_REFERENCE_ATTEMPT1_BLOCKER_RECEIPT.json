@@ -1,0 +1,50 @@
+{
+  "schema": "arc.whitebox.e114.exact_reference_attempt_blocker.v1",
+  "experiment": "E114",
+  "tracking_key": "ARC-E114-EXACT-REFERENCE-OUTPUT-COMPRESSION-20260919",
+  "status": "ENGINEERING_BLOCKER_BEFORE_REFERENCE_EXECUTION",
+  "branch": "research/e114-exact-reference-output-compression-20260919",
+  "provenance": {
+    "protocol_commit": "c5bbae91fec244f0b33f02d55df7555eea94948f",
+    "reference_module_commit": "b6cefec41bb60363c5caa5ed5a49abb40be4e2ae",
+    "tests_commit": "8da707256c036bcd19e4d7a9b6cff9e0f022cfce",
+    "harness_commit": "762d8fa62de745a93a04552fe645f314d03d6f3c",
+    "workflow_commit": "6a54362789ab9e6d20dd88f9684ce3164018032d",
+    "arm_commit": "e3b2a64d5ce518462d0eeebb041989b86518eb89"
+  },
+  "execution": {
+    "run": 35456285772,
+    "job": 105932020587,
+    "run_attempt": 1,
+    "workflow_conclusion": "failure",
+    "blocker_step": "Focused exact-reference tests",
+    "blocker": "pytest: command not found",
+    "exit_code": 127,
+    "exact_reference_step_executed": false,
+    "scientific_measurements_executed": false,
+    "rerun_under_same_arm": false,
+    "artifact": {
+      "name": "e114-exact-reference-output-compression",
+      "id": 10587489513,
+      "size_bytes": 302,
+      "zip_sha256": "ee7764399aa1f3c449e8dc51d007c14cc3977358cb61de6847cd52e818e5d3a1",
+      "expires_at": "2026-12-18T16:51:45Z"
+    }
+  },
+  "interpretation": {
+    "scientific_result": "UNEXECUTED",
+    "exact_bias_covariance_remainder": "UNEXECUTED",
+    "cause": "CI test-runner dependency omission occurred before any exact corpus/reference execution.",
+    "permissible_successor": "Engineering-only successor may add pytest availability while keeping frozen reference module, tests, fixtures, ranks, equations and scientific gates unchanged."
+  },
+  "scope": {
+    "new_mechanism": false,
+    "public": false,
+    "benchmark_targets": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
