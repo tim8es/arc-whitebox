@@ -1,0 +1,41 @@
+name: E104 transfer variance decomposition
+
+on:
+  push:
+    branches:
+      - research/e104-haar-radial-raoblackwell-20260918
+    paths:
+      - 'research/E104_TRANSFER_VARIANCE_GATE.md'
+      - 'scripts/e104_transfer_variance.py'
+      - '.github/workflows/e104-transfer-variance.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  transfer-variance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project dependencies
+        run: python -m pip install -e .
+      - name: Run frozen E104 transfer variance benchmark once
+        run: python scripts/e104_transfer_variance.py
+      - name: Upload immutable transfer evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e104-transfer-variance
+          path: e104-transfer-variance.json
+          if-no-files-found: error
+          retention-days: 90
