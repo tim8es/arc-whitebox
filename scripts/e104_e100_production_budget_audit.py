@@ -43,6 +43,19 @@ def _function_source(source: str, name: str) -> str:
     raise RuntimeError(f"function {name} not found")
 
 
+def _attribute_roots(source: str) -> set[str]:
+    roots: set[str] = set()
+    tree = ast.parse(source)
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Attribute):
+            cur = node
+            while isinstance(cur, ast.Attribute):
+                cur = cur.value
+            if isinstance(cur, ast.Name):
+                roots.add(cur.id)
+    return roots
+
+
 def _source_firewall() -> dict:
     method = METHOD_PATH.read_text(encoding="utf-8")
     harness = HARNESS_PATH.read_text(encoding="utf-8")
@@ -51,6 +64,9 @@ def _source_firewall() -> dict:
     billed = _function_source(method, "orthogonal_antithetic_billed")
     predict = _function_source(method, "predict")
     reference = _function_source(method, "orthogonal_antithetic_numpy")
+    billed_roots = _attribute_roots(billed)
+    predict_roots = _attribute_roots(predict)
+    reference_roots = _attribute_roots(reference)
 
     required_billed_tokens = [
         "fnp.random.default_rng",
@@ -85,9 +101,9 @@ def _source_firewall() -> dict:
         "predict_has_required_flopscope_ops": all(
             token in predict for token in required_predict_tokens
         ),
-        "plain_numpy_rng_absent_from_billed_generator": "np.random" not in billed,
-        "plain_numpy_numeric_ops_absent_from_predict": "np." not in predict,
-        "reference_numpy_rng_confined_to_reference_function": "np.random" in reference,
+        "plain_numpy_absent_from_billed_generator": "np" not in billed_roots,
+        "plain_numpy_absent_from_predict": "np" not in predict_roots,
+        "reference_numpy_present_only_in_reference_helper": "np" in reference_roots,
         "reference_diagnostic_occurs_after_budget_context": diagnostic_pos > budget_pos,
         "receipt_records_exact_rng_delta": str(E104_EXPECTED_RNG_DELTA) in receipt,
         "receipt_records_measured_total": str(E104_MEASURED_FLOPS) in receipt,
