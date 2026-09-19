@@ -1,0 +1,37 @@
+name: E104 independent error verification
+
+on:
+  push:
+    branches:
+      - research/e104-haar-radial-raoblackwell-20260918
+    paths:
+      - 'research/E104_INDEPENDENT_ERROR_VERIFY_FREEZE.json'
+      - 'scripts/e104_independent_error_verify.py'
+      - '.github/workflows/e104-independent-error-verify.yml'
+
+jobs:
+  verify-error:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen project dependencies
+        run: python -m pip install -e .
+      - name: Run independent E104 error comparison
+        run: python scripts/e104_independent_error_verify.py
+      - name: Upload immutable E104 error evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e104-independent-error-verify
+          path: e104-independent-error-verify.json
+          if-no-files-found: error
+          retention-days: 90
