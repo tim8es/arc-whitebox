@@ -217,3 +217,69 @@ def fixture_replay_equal(a: MultiSourceFixture, b: MultiSourceFixture) -> bool:
         np.array_equal(x, y)
         for x, y in zip(a.dense_weights, b.dense_weights)
     )
+
+
+@dataclass(frozen=True)
+class CandidateVisibleFixture:
+    dense_weights: tuple[np.ndarray, ...]
+    _latent_block_weights: tuple[np.ndarray, ...]
+    _subnetworks: tuple[tuple[np.ndarray, ...], ...]
+    _mixing_q: np.ndarray
+    fixture_weights_sha256: str
+
+
+def build_candidate_visible_12d_fixture() -> CandidateVisibleFixture:
+    """Build candidate-visible dense weights without materializing exact means."""
+    block_seeds = (123300, 123301, 123302, 123303, 123304, 123305)
+    subnetworks_list = [
+        _he_2d_subnetwork(seed, depth=4) for seed in block_seeds
+    ]
+    latent_layers = [
+        _block_diag([sub[layer] for sub in subnetworks_list])
+        for layer in range(4)
+    ]
+    q = _orthogonal_mixing(123390, 12)
+    dense_layers = [q @ latent_layers[0], *latent_layers[1:]]
+
+    h = hashlib.sha256()
+    for w in dense_layers:
+        h.update(np.ascontiguousarray(w, dtype=np.float64).tobytes())
+
+    return CandidateVisibleFixture(
+        dense_weights=tuple(
+            np.asarray(w, dtype=np.float64) for w in dense_layers
+        ),
+        _latent_block_weights=tuple(
+            np.asarray(w, dtype=np.float64) for w in latent_layers
+        ),
+        _subnetworks=tuple(
+            tuple(np.asarray(w, dtype=np.float64) for w in sub)
+            for sub in subnetworks_list
+        ),
+        _mixing_q=np.asarray(q, dtype=np.float64),
+        fixture_weights_sha256=h.hexdigest(),
+    )
+
+
+def materialize_exact_reference_after_candidate(
+    state: CandidateVisibleFixture,
+) -> np.ndarray:
+    """Verifier-only exact reference; call only after candidate execution."""
+    block_means = [
+        exact_2d_gaussian_mean(sub) for sub in state._subnetworks
+    ]
+    return np.concatenate(block_means).astype(np.float64, copy=False)
+
+
+def candidate_visible_dense_latent_probe_error(
+    state: CandidateVisibleFixture,
+    *,
+    seed: int = 123399,
+    samples: int = 64,
+) -> float:
+    rng = np.random.Generator(np.random.PCG64(int(seed)))
+    x = rng.standard_normal((samples, 12)).astype(np.float64)
+    dense = forward_batch(x, state.dense_weights)
+    latent_x = x @ state._mixing_q
+    latent = forward_batch(latent_x, state._latent_block_weights)
+    return float(np.max(np.abs(dense - latent)))
