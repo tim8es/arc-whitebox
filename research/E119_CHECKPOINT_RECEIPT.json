@@ -1,0 +1,135 @@
+{
+  "schema": "arc.whitebox.e119.checkpoint_receipt.v1",
+  "experiment": "E119",
+  "checkpoint": "generic-weight-driven-boundary-implementation",
+  "idempotency_key": "ARC-E119-GENERIC-BOUNDARY-FLUX-CERT-20260919",
+  "branch": "research/e119-generic-boundary-flux-certificate-20260919",
+  "status": "CHECKPOINT_VERIFIED_TERMINAL_PRODUCTION_DEPLOYABILITY_NO_GO",
+  "parent_head": "41066799aedd413d81fe4bbe95e3aeaa1a5e2ba9",
+  "frozen_science": {
+    "protocol_blob": "5f0f9c9a4521fd94ebc0f60fff758a5c58cf107b",
+    "implementation_blob": "d21eb7ded086242fd1f3a87f3ab00ecd62205878",
+    "harness_blob": "62700316f7bf92d023e725afad5cc744f1fb0fd5",
+    "tests_blob": "e28a3b5c2154778d81b6b17b9cc44ae1724d6a3e",
+    "unchanged_since_run_head": true,
+    "run_head": "d731e845c96d401ac001da82c8998c06a03ec484"
+  },
+  "real_implementation": {
+    "generic_weight_driven_regions": true,
+    "fixture_specific_e118_path": false,
+    "supported_input_dimension": 2,
+    "supported_width_max": 8,
+    "supported_depth_max": 4,
+    "constructs_actual_preactivation_roots": true,
+    "constructs_actual_region_masks": true,
+    "constructs_scalar_boundary_jumps": true,
+    "target_free": true,
+    "gaussian_plugin": false,
+    "target_fitting": false
+  },
+  "exact_smallwidth_execution": {
+    "run": 35458020001,
+    "job": 105936659806,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "exactly_one_e119_workflow_run_on_branch": true,
+    "rerun": false,
+    "focused_tests": "3 passed in 0.37s",
+    "seeds": [
+      114200,
+      114201,
+      114202,
+      114203
+    ],
+    "final_region_counts": [
+      55,
+      61,
+      83,
+      55
+    ],
+    "max_boundary_angle_wrapped_error": 0,
+    "max_scalar_jump_abs_error": 4.440892098500626e-16,
+    "max_generic_full_mean_abs_error": 2.220446049250313e-16,
+    "deterministic_replay_max_abs": 0
+  },
+  "accounting": {
+    "budget_context_dense_accounting": true,
+    "max_actual_flopscope_dense_flops": 51456,
+    "max_manual_geometry_flop_equivalent": 53816,
+    "max_all_in_accounted_flops": 105272,
+    "max_all_in_utilization_vs_2pow41": 4.787216312251985e-8,
+    "exact_dense_reconciliation": true,
+    "manual_geometry_deterministic": true
+  },
+  "remainder": {
+    "formula": "B_abs = sqrt(pi/2)/(2*pi) * sum_abs(omitted_scalar_jumps)",
+    "raw_mse_gate": 1.89e-8,
+    "absolute_mean_gate": 0.0001374772708486752,
+    "omitted_flux_l1_budget": 0.000689208828456787,
+    "exact_gate_passed": true,
+    "retained_atom_counts": [
+      54,
+      60,
+      82,
+      54
+    ],
+    "omitted_atom_counts": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "retained_fractions": [
+      0.9818181818181818,
+      0.9836065573770492,
+      0.9879518072289156,
+      0.9818181818181818
+    ],
+    "omitted_nonzero_atoms": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "max_certificate_squared": 0,
+    "max_compressed_exact_bias_mse": 4.930380657631324e-32,
+    "material_compression_established": false
+  },
+  "artifact": {
+    "name": "e119-generic-boundary-flux-certificate",
+    "id": 10589345345,
+    "size_bytes": 6954,
+    "zip_sha256": "7485a4380bca0175197afeb327aed9abeb2f5d14ca335cdff6571ad0c7ed78e3",
+    "digest_verified_against_current_metadata": true
+  },
+  "production_structural_blocker": {
+    "owner_receipt_blob": "4e424ff4c6b6a07e1f24f4f81d2ad44ef813d553",
+    "owner_receipt_commit": "41066799aedd413d81fe4bbe95e3aeaa1a5e2ba9",
+    "classification": "TERMINAL_NO_GO",
+    "reason": "The direct generic E119 materializer requires explicit full-dimensional activation cells and an n-by-d affine coefficient state per cell. For a full-rank square 1024x1024 first layer, all 2^1024 first-layer sign cones are nonempty, so direct exact materialization is structurally incompatible with the production budget before deeper splitting or certificate work.",
+    "smallwidth_go_not_contradicted": true
+  },
+  "checkpoint_decision": {
+    "generic_smallwidth_construction": "VERIFIED_GO",
+    "rigorous_remainder_certificate": "VERIFIED_GO",
+    "meaningful_nonzero_atom_compression": "NO_GO",
+    "direct_full_dimension_materialization": "TERMINAL_NO_GO",
+    "new_scientific_run_authorized": false,
+    "rationale": "The requested one-frozen-run evidence already exists and is hash-stable. A second run would violate the frozen execution rule and cannot cure the structural state explosion."
+  },
+  "scope": {
+    "new_scientific_run": false,
+    "public": false,
+    "public_mini": false,
+    "benchmark_targets": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
