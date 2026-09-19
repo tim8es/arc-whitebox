@@ -158,7 +158,7 @@ Frozen upper bound:
 
 Admission utilization:
 
-`u_upper = 5,184,549,376 / 2^41 = 0.0023576840171590447 <= 0.13`.
+`u_upper = 5,184,549,376 / 2^41 = 0.0023576600942760706 <= 0.13`.
 
 **BUDGET ADMISSION PASS.**
 
