@@ -1,0 +1,62 @@
+{
+  "schema": "arc.whitebox.e128.result_receipt.v1",
+  "experiment": "E128",
+  "status": "OWNER_INTEGRATOR_GUARD_PASS",
+  "scientific_go": false,
+  "production_go": false,
+  "branch": "research/e128-owner-integrator-20260919",
+  "canonical_base": {
+    "branch": "research/bootstrap",
+    "head": "29bee3f8d23fc620b77aaed414b1b7a928af4b83"
+  },
+  "provenance": {
+    "protocol_commit": "7fedec113c3f480047961015985fff32c93c74e1",
+    "registry_commit": "fb15d8f1f116a8dac2ef791217a7359495322090",
+    "guard_commit": "73994b09b93bbbbbaf40fe5beb7e07dae0d63a3d",
+    "workflow_commit": "49f5e74df6d3727a1bfc1d1d696fd0fa29807cdd",
+    "ledger_candidate_commit": "593552b4b1619de7687cc5d825aea88b322fd893"
+  },
+  "execution": {
+    "run": 35460773455,
+    "job": 105944113484,
+    "conclusion": "success",
+    "artifact_id": 10589299257,
+    "artifact_sha256": "fa1d823a585159ca68def7da968d60d605454514c7cc63475d202508d4c08cc0",
+    "artifact_size_bytes": 506
+  },
+  "registry": {
+    "E121": "RESERVED_UNCLAIMED",
+    "E122": "RESERVED_UNCLAIMED",
+    "E123": "RESERVED_UNCLAIMED",
+    "E124": "RESERVED_UNCLAIMED",
+    "E125": "RESERVED_UNCLAIMED",
+    "E126": "RESERVED_UNCLAIMED",
+    "E127": "RESERVED_UNCLAIMED"
+  },
+  "gates": {
+    "registry_exact_e121_e127": true,
+    "registry_matches_remote_heads": true,
+    "no_same_id_collision": true,
+    "canonical_ledger_has_no_duplicate_ids": true,
+    "no_speculative_e121_e127_ledger_rows": true,
+    "initial_slots_still_unclaimed": true
+  },
+  "integration": {
+    "e121_e127_rows_integrated": 0,
+    "reason": "No evidence-bearing owner branches/runs exist for E121-E127 at guard execution; adding scientific rows would violate run-backed integration policy.",
+    "e128_governance_row_added_to_candidate_ledger": true
+  },
+  "pass_handling": "When an authoritative E121-E127 PASS appears, freeze owner head and receipt, then create an independent verifier action specifying reference/invariant, leakage checks, deterministic replay, all-in FLOPs, numerical gates, and explicit no-production/public/scorer/holdout/full authorization.",
+  "no_go_handling": "When an authoritative E121-E127 NO-GO appears, integrate measured blocker, freeze a reusable mechanism fingerprint/lesson, and allocate the next free ID only to a preregistered non-overlapping mechanism class; no rescue/tuning/rerun.",
+  "next_exact_action": "Detect first E121-E127 remote owner claim; fail closed on >1 claimant; require protocol+receipt+run before classification.",
+  "scope": {
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "production_run": false,
+    "canonical_mutated": false
+  }
+}
