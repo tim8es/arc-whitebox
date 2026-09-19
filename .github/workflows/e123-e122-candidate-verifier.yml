@@ -1,0 +1,97 @@
+name: E123 verify frozen E122 c733af8
+
+on:
+  push:
+    branches:
+      - research/e123-independent-multisource-verifier-20260920
+    paths:
+      - 'research/E123_CANDIDATE_RUN_ARM.json'
+
+jobs:
+  verifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and E122 blobs
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-E123-E122-C733AF8-ADVERSARIAL-12D-20260920",
+              "execute_once": True,
+          }
+          arm = json.loads(Path("research/E123_CANDIDATE_RUN_ARM.json").read_text())
+          if arm != expected:
+              raise SystemExit(f"invalid E123 candidate arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E123_CANDIDATE_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+
+          frozen = {
+              "research/E122_PROTOCOL.md": "fca1c0a0beb88f3bf2573cd4620a886b9dfaa0e7",
+              "methods/e122_haar8_simplex_source.py": "bf03692f9c205805fbea4113ec9e17e9d1ce2811",
+              "tests/test_e122_haar8_simplex_source.py": "7b6f1e80def4b76a00526c04c90b20bb008cfa6f",
+              "research/E123_CANDIDATE_PROTOCOL.md": "e74049946411788763f1fd1e97cf611877f7d072",
+              "scripts/e123_e122_candidate_verifier.py": "cee5181a621521109c66e058f5643dd6498f015e",
+              "methods/e123_multisource_verifier_fixture.py": "55012a8a53f70c337b15a311812bfd40cd07fdde",
+          }
+          for path, expected_sha in frozen.items():
+              actual = subprocess.check_output(
+                  ["git", "rev-parse", f"HEAD:{path}"], text=True
+              ).strip()
+              if actual != expected_sha:
+                  raise SystemExit(
+                      f"frozen blob mismatch {path}: {actual} != {expected_sha}"
+                  )
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install verifier dependencies
+        run: |
+          python -m pip install -e .
+          python -m pip install pytest==8.3.5
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e122_haar8_simplex_source.py
+          python -m py_compile methods/e123_multisource_verifier_fixture.py
+          python -m py_compile scripts/e123_e122_candidate_verifier.py
+
+      - name: Focused owner and independent tests
+        run: |
+          python -m pytest -q             tests/test_e122_haar8_simplex_source.py             tests/test_e123_multisource_verifier_fixture.py
+
+      - name: Run sole frozen candidate-bearing E123 verifier
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e123_e122_candidate_verifier.py 2>&1 | tee e123-e122-candidate-verifier.log
+
+      - name: Upload immutable verifier evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e123-e122-c733af8-verifier
+          path: |
+            e123-e122-candidate-verifier.log
+            e123-candidate-multisource-verifier.json
+            research/E123_CANDIDATE_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
