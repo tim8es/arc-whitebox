@@ -1,0 +1,41 @@
+name: E110 deep line Rao-Blackwell small-width law
+
+on:
+  push:
+    branches:
+      - research/e110-deep-line-rb-20260919
+    paths:
+      - 'research/E110_PROTOCOL.md'
+      - 'scripts/e110_deep_line_rb.py'
+      - 'tests/test_e110_deep_line_rb.py'
+      - '.github/workflows/e110-smallwidth-law.yml'
+
+jobs:
+  smallwidth-law:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen local dependencies
+        run: python -m pip install -e . pytest numpy
+      - name: Focused independent E110 law tests
+        run: pytest -q tests/test_e110_deep_line_rb.py
+      - name: Sole frozen E110 small-width law falsifier
+        run: python scripts/e110_deep_line_rb.py
+      - name: Upload E110 law receipt artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e110-smallwidth-law
+          path: e110-smallwidth-law.json
+          if-no-files-found: error
