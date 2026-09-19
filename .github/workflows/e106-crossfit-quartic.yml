@@ -1,0 +1,39 @@
+name: E106 cross-fit quartic Haar control variate
+
+on:
+  push:
+    branches:
+      - research/e106-crossfit-quartic-haar-cv-20260919
+    paths:
+      - 'methods/e106_crossfit_quartic.py'
+      - 'tests/test_e106_crossfit_quartic.py'
+      - 'scripts/e106_crossfit_quartic.py'
+      - '.github/workflows/e106-crossfit-quartic.yml'
+
+jobs:
+  e106:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E106 tests
+        run: python -m pytest -q tests/test_e106_crossfit_quartic.py
+      - name: Run sole frozen E106 diagnostic
+        run: python scripts/e106_crossfit_quartic.py
+      - name: Upload E106 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: e106-crossfit-quartic
+          path: e106-crossfit-quartic.json
+          if-no-files-found: error
+          retention-days: 90
