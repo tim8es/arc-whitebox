@@ -96,6 +96,7 @@ def compact_candidate(x) -> dict:
     return {
         "mean": x.mean,
         "atoms_sha256": sha256_array(x.atoms),
+        "atoms_length": int(x.atoms.shape[0]),
         "state_residual_sha256": sha256_array(x.state_residual),
         "atoms_l1": float(np.sum(np.abs(x.atoms))),
         "atoms_l2": float(np.linalg.norm(x.atoms)),
@@ -227,12 +228,7 @@ def main() -> None:
     gates = {
         "candidate_finite_all": all(r["candidate"]["finite"] for r in records),
         "representation_length_eq_1024_all": all(
-            r["candidate"]["nonzero_atoms_gt_1e_15"] <= CELLS
-            and len(
-                np.zeros(CELLS, dtype=np.float64)
-            )
-            == CELLS
-            for r in records
+            r["candidate"]["atoms_length"] == CELLS for r in records
         ),
         "flopscope_exact_reconciliation_all": all(
             r["candidate"]["flops"]["exact_reconciliation"] for r in records
