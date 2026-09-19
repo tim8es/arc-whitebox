@@ -1,0 +1,170 @@
+{
+  "schema": "arc.whitebox.e114.exact_reference_receipt.v1",
+  "experiment": "E114",
+  "tracking_key": "ARC-E114-EXACT-REFERENCE-OUTPUT-COMPRESSION-20260919",
+  "status": "E114_EXACT_REFERENCE_HARNESS_VERIFIED",
+  "branch": "research/e114-exact-reference-output-compression-20260919",
+  "scientific_scope": "reference-only extension of E114 activation-boundary flux; no new deployable compression mechanism",
+  "provenance": {
+    "parent_e114_head": "b9f64030f65da9b32fc7718d04fb108ee1a73dab",
+    "protocol_commit": "c5bbae91fec244f0b33f02d55df7555eea94948f",
+    "reusable_reference_initial_commit": "a628781b24694704c679873d42e4a3668bddda7d",
+    "reusable_reference_generalized_commit": "b6cefec41bb60363c5caa5ed5a49abb40be4e2ae",
+    "tests_commit": "8da707256c036bcd19e4d7a9b6cff9e0f022cfce",
+    "frozen_harness_commit": "762d8fa62de745a93a04552fe645f314d03d6f3c",
+    "first_workflow_commit": "6a54362789ab9e6d20dd88f9684ce3164018032d",
+    "attempt1_blocker_receipt_commit": "597f03d9d102a1343d043c79ca282105c6cb21f0",
+    "successor_workflow_commit": "758f53951efe91bf736f419feae6f50de64e4484",
+    "successor_authorization_commit": "16a4077dc02af60878e683eb37a56332b2b36eda",
+    "successful_arm_commit": "ce6dfdb09616500a3129d009cb4cc4fc3999430d",
+    "result_commit": "2ba0bfdd0386e3ad4f3d30b66f0bbb882baad1b3",
+    "frozen_blobs": {
+      "reusable_reference": "3a8467f88501c114cb1540909777dbe266ad0be5",
+      "tests": "e18832b65acf2bd3385c9e575a9e26243cedb099",
+      "harness": "d4b8241d7d813e75472c0dd6d1a01e88583b8e6b"
+    }
+  },
+  "engineering_attempt1": {
+    "run": 35456285772,
+    "job": 105932020587,
+    "conclusion": "failure",
+    "blocker": "pytest: command not found",
+    "exact_reference_step_executed": false,
+    "scientific_measurements_executed": false,
+    "artifact_id": 10587489513,
+    "artifact_sha256": "ee7764399aa1f3c449e8dc51d007c14cc3977358cb61de6847cd52e818e5d3a1"
+  },
+  "execution": {
+    "run": 35456370595,
+    "job": 105932253496,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "3 passed in 0.14s",
+    "exactly_one_successor_run_for_arm_head": true,
+    "artifact": {
+      "name": "e114-exact-reference-output-compression-v2",
+      "id": 10587574359,
+      "size_bytes": 65581,
+      "zip_sha256": "1d9ce1add971b924732276e565c9c19abcf24a8635b5139f692edd0471a7fad3",
+      "expires_at": "2026-12-18T16:53:30Z"
+    }
+  },
+  "reusable_harness": {
+    "module": "methods/e114_exact_angular_reference.py",
+    "script": "scripts/e114_exact_reference_output_compression.py",
+    "tests": "tests/test_e114_exact_angular_reference.py",
+    "capabilities": [
+      "complete exact 2-D angular ReLU sector enumeration for arbitrary zero-bias layer widths",
+      "exact Gaussian final-output mean, second moment and covariance",
+      "exact E114 final boundary derivative-jump vectors, flux sum and flux Gram",
+      "exact supplied-projector bias, compressed/residual covariance and cross-covariance",
+      "exact residual second moment and total mean-square remainder",
+      "exact per-final-coordinate observable bias, residual variance and residual MSE"
+    ],
+    "chooses_deployable_compression": false
+  },
+  "frozen_corpus": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "weight_seeds": [
+      114200,
+      114201,
+      114202,
+      114203
+    ],
+    "weight_law": "iid He-normal float64",
+    "zero_bias": true,
+    "monte_carlo": false,
+    "numerical_quadrature": false,
+    "final_sector_counts": [
+      55,
+      61,
+      83,
+      55
+    ],
+    "boundary_counts": [
+      55,
+      61,
+      83,
+      55
+    ]
+  },
+  "exact_measurements": {
+    "covariance_offdiag_rms": [
+      0.06030617653659119,
+      0.08803619051900402,
+      0.12364935826531466,
+      0.015045803805632836
+    ],
+    "max_flux_vs_sector_mean_abs": 3.3306690738754696e-16,
+    "max_covariance_symmetry_abs": 0,
+    "min_covariance_eigenvalue": -1.3161352367288633e-32,
+    "max_identity_projector_remainder_abs": 0,
+    "max_zero_projector_second_moment_reconstruction_abs": 1.1102230246251565e-16,
+    "max_oracle_projector_symmetry_abs": 0,
+    "max_oracle_projector_idempotence_abs": 1.5543122344752192e-15,
+    "deterministic_replay_max_abs": 0
+  },
+  "oracle_capacity_reference_only": {
+    "note": "Top eigenvectors of exact C_flux are oracle diagnostics only; they are not a candidate mechanism and cannot be used to construct a deployable compression.",
+    "rank1": {
+      "pooled_relative_flux_energy_remainder": 0.5094115836158905,
+      "pooled_relative_output_remainder_mse": 0.69770168709665,
+      "max_network_bias_mse_across_outputs": 0.10092233962702041,
+      "max_network_bias_max_abs": 0.6548876313528357,
+      "max_network_cross_covariance_fro": 0.531658554242716,
+      "max_observable_residual_mse": 1.2005837379354947
+    },
+    "rank2": {
+      "pooled_relative_flux_energy_remainder": 0.3175830428196701,
+      "pooled_relative_output_remainder_mse": 0.4447022467179565,
+      "max_network_bias_mse_across_outputs": 0.08313781262800225,
+      "max_network_bias_max_abs": 0.6707864361193144,
+      "max_network_cross_covariance_fro": 0.5342298622323052,
+      "max_observable_residual_mse": 1.2050250550173685
+    },
+    "rank4": {
+      "pooled_relative_flux_energy_remainder": 0.09830102553624856,
+      "pooled_relative_output_remainder_mse": 0.04581897107107757,
+      "max_network_bias_mse_across_outputs": 0.02192175245419047,
+      "max_network_bias_max_abs": 0.36761843571682806,
+      "max_network_cross_covariance_fro": 0.25246480366892643,
+      "max_observable_residual_mse": 0.21864797187719126
+    }
+  },
+  "gates": {
+    "all_numeric_reference_finite": true,
+    "partition_complete_ordered": true,
+    "flux_vs_sector_mean_max_abs_le_1e_10": true,
+    "covariance_symmetry_max_abs_le_1e_12": true,
+    "covariance_min_eigenvalue_ge_minus_1e_10": true,
+    "identity_projector_zero_remainder_le_1e_12": true,
+    "zero_projector_second_moment_reconstruction_le_1e_12": true,
+    "oracle_projector_symmetry_le_1e_12": true,
+    "oracle_projector_idempotence_le_1e_12": true,
+    "oracle_remainders_nonincreasing_with_rank": true,
+    "deterministic_replay_max_abs_eq_0": true,
+    "no_targets_public_scorer_holdout_full": true
+  },
+  "interpretation": {
+    "verdict": "REFERENCE_HARNESS_VERIFIED",
+    "compression_verdict": "NOT_EVALUATED; no deployable compression rule was introduced",
+    "structural_evidence": "Exact flux-energy concentration and final-observable remainder are distinct quantities; rank-4 oracle leaves ~9.83% pooled flux energy but ~4.58% pooled output mean-square remainder, while per-observable worst-case residual remains materially larger. Candidate compression must therefore be checked on exact bias/covariance/remainder, not flux capture alone."
+  },
+  "scope": {
+    "new_mechanism": false,
+    "production_run": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
