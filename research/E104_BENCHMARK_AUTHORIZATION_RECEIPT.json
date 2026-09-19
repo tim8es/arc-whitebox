@@ -1,0 +1,103 @@
+{
+  "schema": "arc.whitebox.e104.benchmark_authorization.receipt.v1",
+  "experiment": "E104",
+  "idempotency_key": "ARC-E104-BENCHMARK-OWNER-MINI0-20260919",
+  "status": "AUTHORIZED_NOT_EXECUTED",
+  "branch": "research/e104-benchmark-owner-successor-20260919",
+  "protocol": {
+    "path": "research/E104_BENCHMARK_SUCCESSOR_PROTOCOL.md",
+    "commit": "7ab984ab5de5e877243348611ad55d7f7964498d",
+    "status": "PREREGISTERED_ONE_SHOT_TARGET_BEARING_DIRECT_METRIC"
+  },
+  "harness": {
+    "path": "scripts/e104_benchmark_owner_mini0.py",
+    "commit": "f99d15553a3c68d647e64314abd936dcccecb61a",
+    "syntax_check": "PASS",
+    "mechanism_tuning": false
+  },
+  "workflow": {
+    "path": ".github/workflows/e104-benchmark-owner-mini0.yml",
+    "commit": "259ea520df556bd08050b047f785b131bea187f9",
+    "blob": "302db3b6f4ef230adaf4fd7c4f26948512236f04",
+    "trigger": "push creating research/E104_BENCHMARK_RUN_ARM.json on successor branch",
+    "target_access_before_authorization_check": false
+  },
+  "authorization_basis": {
+    "prior_protocol_status": "SYNTHETIC_STAGE_A_ONLY",
+    "prior_target_bearing_authorization": "NOT_GRANTED",
+    "prior_blocker_receipt": "research/E104_E051_BENCHMARK_BLOCKER_RECEIPT.json",
+    "prior_benchmark_verifier": "research/E104_BENCHMARK_INDEPENDENT_VERIFIER_RECEIPT.json",
+    "resolution": "This successor explicitly authorizes exactly one direct target-metric read of the previously identified E051 mini0 record. It does not authorize the official scorer, any other public record, holdout, or full evaluation."
+  },
+  "authorized_action": {
+    "dataset": "aicrowd/arc-whestbench-public-2026",
+    "revision": "v2-phase2",
+    "split": "mini",
+    "index": 0,
+    "target_field": "final_means",
+    "direct_metric_only": true,
+    "official_scorer": false,
+    "public_sweep": false,
+    "holdout": false,
+    "full_suite": false
+  },
+  "frozen_estimator": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories": 4096,
+    "positive_directions": 2048,
+    "haar_blocks": 2,
+    "direction_seed": 104105,
+    "radius_rule": "analytic E[chi_1024]",
+    "propagation_dtype": "float32",
+    "reduction_dtype": "float64",
+    "canonical_weight_orientation": "h @ w",
+    "rng_billed": true,
+    "budget": 2199023255552
+  },
+  "frozen_gates": {
+    "raw_final_mse_max": 1.89e-8,
+    "utilization_max": 0.135,
+    "failures_eq": 0,
+    "finite": true,
+    "exact_antithetic_pair": true,
+    "prediction_shape": [
+      16,
+      1024
+    ]
+  },
+  "one_shot": {
+    "arm_path": "research/E104_BENCHMARK_RUN_ARM.json",
+    "arm_must_be_immediate_child_of_receipt": true,
+    "rerun": false,
+    "tuning": false,
+    "rescue": false,
+    "alternate_record": false,
+    "seed_change": false,
+    "sample_count_change": false
+  },
+  "execution": {
+    "workflow_triggered": false,
+    "run": null,
+    "job": null,
+    "artifact_id": null,
+    "artifact_sha256": null,
+    "raw_final_mse": "UNEXECUTED",
+    "predict_flops": "UNEXECUTED",
+    "metric_flops": "UNEXECUTED",
+    "all_in_flops": "UNEXECUTED",
+    "utilization": "UNEXECUTED",
+    "failures": "UNEXECUTED"
+  },
+  "exact_next_command": "gh api --method PUT repos/tim8es/arc-whitebox/contents/research/E104_BENCHMARK_RUN_ARM.json -f message='ci(E104): arm sole authorized mini0 benchmark' -f branch='research/e104-benchmark-owner-successor-20260919' -f content=\"$(printf '%s\\n' '{\\\"idempotency_key\\\":\\\"ARC-E104-BENCHMARK-OWNER-MINI0-20260919\\\",\\\"execute_once\\\":true}' | base64 | tr -d '\\n')\"",
+  "scope": {
+    "public_mini0_direct_target_authorized_once": true,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
