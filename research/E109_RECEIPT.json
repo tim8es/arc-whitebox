@@ -1,0 +1,121 @@
+{
+  "schema": "arc.whitebox.e109.spherical_stein_jacobian_cv.receipt.v1",
+  "experiment": "E109",
+  "idempotency_key": "ARC-E109-SPHERICAL-STEIN-JACOBIAN-CV-20260919",
+  "decision": "TERMINAL_NO_GO_DROP",
+  "branch": "research/e109-spherical-stein-jacobian-cv-20260919",
+  "provenance": {
+    "canonical_parent": "29bee3f8d23fc620b77aaed414b1b7a928af4b83",
+    "protocol_commit": "4fdd24225b3bf7619305f804ce32afe5b00428ca",
+    "method_commit": "7f37a69d0fec70cf39a8879932ef797cb4b76347",
+    "tests_commit": "7a556cf19af7af3348ef90e7763420d60fc88e29",
+    "falsifier_commit": "355134e059ce6efbf16b0ae3a11c12e1aa15f6c2",
+    "workflow_commit": "e3a221b290d83aab23620154b9675f0f7caac0f3"
+  },
+  "execution": {
+    "run": 35453177017,
+    "job": 105923771033,
+    "run_attempt": 1,
+    "workflow_conclusion": "success",
+    "focused_tests": "3 passed in 0.19s",
+    "artifact_id": 10587113524,
+    "artifact_name": "e109-spherical-stein-jacobian",
+    "artifact_zip_sha256": "350860bc92057a6fa0ca12639da53db26efdc8ccad60accfc54a309e7c682fab",
+    "artifact_size_bytes": 1442,
+    "rerun": false
+  },
+  "hypothesis": {
+    "class": "target-free later-layer Jacobian / activation-region control variate",
+    "exact_identity": "For q uniform on S^(n-1), E[u^T grad_S g_j(q) - (n-1)(u^T q)g_j(q)] = 0.",
+    "derivative": "Exact forward JVP through realized ReLU masks; region boundaries have spherical measure zero.",
+    "anchor": "unit-normalized gradient of summed final antithetic response at q0=ones/sqrt(n)",
+    "crossfit": "one per-output scalar beta fit on opposite independent Haar block; no ridge/clipping/fallback"
+  },
+  "frozen_shape": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories_per_estimator": 4096,
+    "weight_seed": 109104,
+    "direction_seeds": [
+      109105,
+      109106
+    ],
+    "budget": 2199023255552
+  },
+  "measured": {
+    "uncorrected_e104_raw_risk": 0.00000927944874402075,
+    "uncorrected_over_raw_target": 490.9761240222619,
+    "candidate_raw_risk": null,
+    "candidate_raw_risk_status": "NaN / UNEVALUABLE",
+    "candidate_over_baseline": null,
+    "candidate_over_baseline_status": "NaN / UNEVALUABLE",
+    "beta_max_abs": null,
+    "beta_status": "NaN: frozen per-output coefficient division produced non-finite coefficients",
+    "anchor_unit_norm_error": 8.090514036496188e-9,
+    "antithetic_pair_max_abs": 0,
+    "control_block_mean_rms_A": [
+      1.233428668290597,
+      0.5353308536626061
+    ],
+    "control_block_mean_rms_B": [
+      1.4440973915215156,
+      0.3058982419426842
+    ],
+    "cost_per_estimator": {
+      "anchor": 134360064,
+      "input": 11541346992,
+      "tangent_setup": 18877440,
+      "layers_base_plus_jvp": 275146342400,
+      "control_crossfit": 37765120,
+      "total": 286878692016,
+      "exact_reconciliation": true,
+      "utilization": 0.13045732522004982,
+      "utilization_le_0_135": true
+    },
+    "cost_vs_e105_complete_e104": {
+      "e105_e104_flops": 149114550960,
+      "multiplier": 1.9238812722774135,
+      "incremental_flops": 137764141056
+    },
+    "deterministic": {
+      "anchor_sha256": "8d53e23a7a6b21b02873cea017b1721a2f07077cc45aff65ef9a4f4085e04678",
+      "baseline_A_bitwise": true,
+      "baseline_B_bitwise": true,
+      "baseline_risk_repeat_abs": 0,
+      "candidate_artifact_bytes_repeat_same_hashes": true,
+      "candidate_array_equal_gate": false,
+      "reason": "NaN values make NumPy array_equal false even when serialized candidate hashes repeat exactly",
+      "flop_ledgers_exact_repeat": true
+    }
+  },
+  "gate_evaluation": {
+    "candidate_risk_le_1_89e_8": false,
+    "candidate_risk_lt_baseline": false,
+    "utilization_le_0_135": true,
+    "exact_accounting": true,
+    "finite_predictions_controls_coefficients": false,
+    "exact_antithetic_pairs": true,
+    "anchor_unit": true,
+    "deterministic_candidate_gate": false,
+    "no_targets_read": true
+  },
+  "interpretation": {
+    "result": "The exact spherical-Stein control is mathematically target-free and fits the production budget, but the frozen one-direction cross-fit coefficient rule is numerically inadmissible at production shape: it yields non-finite beta/candidate coordinates.",
+    "no_rescue": "Protocol forbids ridge, clipping, fallback, anchor change, coefficient change, sample change, tuning or rerun. Therefore E109 is terminal.",
+    "comparison_to_closed_lanes": "E106 quartic angular CV and E108 first-layer transport were already terminal; E109 closes this single-direction exact Jacobian/activation-region Stein construction under the frozen coefficient rule.",
+    "broader_claim": "This does not prove that every later-layer conditional-law, Jacobian, or activation-region control variate is impossible."
+  },
+  "scope": {
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
