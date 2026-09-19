@@ -1,0 +1,104 @@
+{
+  "schema": "arc.whitebox.e104.benchmark_independent_verifier.v1",
+  "experiment": "E104",
+  "status": "VERIFIED_NO_OWNER_BENCHMARK_EXECUTION",
+  "branch": "research/e104-haar-radial-raoblackwell-20260918",
+  "verifier_scope": "Read-only verification of existing owner/experiment evidence. No benchmark execution, no mechanism change, no rerun.",
+  "observed_head_before_verifier": "3ad70307777e848b26c941b6461396b5d7fbf2e0",
+  "owner_benchmark_state": {
+    "blocker_receipt_commit": "3ad70307777e848b26c941b6461396b5d7fbf2e0",
+    "blocker_receipt_path": "research/E104_E051_BENCHMARK_BLOCKER_RECEIPT.json",
+    "blocker_receipt_blob_sha": "d90dc809fe6d388ee0346c112331b0edea841bb2",
+    "blocker_status": "BLOCKED_NO_EXECUTION",
+    "workflow_triggered": false,
+    "run": null,
+    "job": null,
+    "artifact_id": null,
+    "raw_final_layer_mse": "UNEXECUTED",
+    "benchmark_all_in_flops": "UNEXECUTED",
+    "benchmark_utilization": "UNEXECUTED",
+    "benchmark_failures": "UNEXECUTED",
+    "benchmark_finite": "UNEXECUTED",
+    "benchmark_deterministic": "UNEXECUTED",
+    "verified_reason": "The authoritative E104 branch has no target-bearing benchmark workflow/run. Latest owner-side E104 receipt explicitly records that the E051 target is public mini0 and execution would violate the frozen E104 no-public protocol."
+  },
+  "physical_e104_production_evidence": {
+    "run": 35446062235,
+    "job": 105905067035,
+    "artifact_id": 10584569066,
+    "artifact_zip_sha256": "3a22b369883b141be19528acec69df9165be627976152ad845e35c5f90320237",
+    "receipt_commit": "4c90b7d7b1f798f5706f368d80f23f8b98fa66b2",
+    "receipt_blob_sha": "26fa51a80cc742b62330cde74a52b15268e7530e",
+    "prediction_sha256": "ae0bfae00c7379673320a3a098c716272c7d9164588bcc73bd59bc7516c017e0",
+    "prediction_bitwise_repeat": true,
+    "prediction_repeat_max_abs": 0,
+    "finite": true,
+    "exact_flop_reconciliation": true,
+    "measured_flops": 149047442096,
+    "utilization": 0.06777892944955966,
+    "note": "Synthetic production-shape evidence only; it verifies cost/determinism, not competition raw MSE."
+  },
+  "physical_e051_reference": {
+    "branch": "research/e051-v29-phase2-shape-reproduction-20260916",
+    "head": "642b6b0f5ec549a3c0f9e3fdb54fbae09a000133",
+    "run": 35097946492,
+    "job": 104799875919,
+    "artifact_id": 10446649484,
+    "artifact_zip_sha256": "aaf9d4dad8fb15ba5ceae2fe21e11a8fb1d26c0cb7780ef30e1aa3ea549afb8d",
+    "raw_final_layer_mse": 2.29004485946887e-8,
+    "all_in_flops": 587262760431,
+    "utilization": 0.2670561845802695,
+    "failures": 0,
+    "finite": true,
+    "deterministic": true,
+    "deterministic_max_abs_diff": 0,
+    "target_record": "aicrowd/arc-whestbench-public-2026 revision v2-phase2 split mini index 0"
+  },
+  "gate_evaluation": {
+    "raw_target": 1.89e-8,
+    "utilization_target": 0.135,
+    "raw_gate": {
+      "status": "NOT_VERIFIED",
+      "measured_value": "UNEXECUTED",
+      "pass": false,
+      "interpretation": "No E104 benchmark raw MSE exists. This is an evidence failure, not evidence that E104 raw MSE exceeds the target."
+    },
+    "utilization_gate": {
+      "status": "PASS_ON_PRODUCTION_SHAPE_SYNTHETIC_PATH",
+      "measured_value": 0.06777892944955966,
+      "pass": true,
+      "margin_to_limit": 0.06722107055044035
+    },
+    "failures_gate": {
+      "status": "NOT_VERIFIED_ON_BENCHMARK",
+      "value": "UNEXECUTED"
+    },
+    "deterministic_output_gate": {
+      "status": "PASS_ON_PRODUCTION_SHAPE_SYNTHETIC_PATH",
+      "prediction_sha256": "ae0bfae00c7379673320a3a098c716272c7d9164588bcc73bd59bc7516c017e0",
+      "bitwise_repeat": true
+    }
+  },
+  "verdict": {
+    "competition_gate": "NO_GO",
+    "reason": "The conjunctive competition gate requires raw<=1.89e-8 and util<=0.135. Util is physically verified below the limit, but raw benchmark MSE and benchmark failures are unexecuted; therefore competition GO cannot be granted.",
+    "scientific_mechanism_terminal_no_go": false,
+    "wording": "NO-GO FOR COMPETITION PROMOTION DUE TO MISSING AUTHORIZED RAW BENCHMARK EVIDENCE; not a claim that E104 raw error exceeds the threshold."
+  },
+  "next_executable_step": {
+    "action": "Do not run a second benchmark. First create/approve a successor protocol that explicitly authorizes exactly one target-bearing evaluation on the E051 mini0 record and resolves the no-public firewall. Then the owner, not this verifier, runs one frozen E104 benchmark. After that, this verifier should hash-check that single artifact and evaluate raw MSE, all-in cost, failures and deterministic output without rerunning it.",
+    "currently_executable_under_e104_protocol": false
+  },
+  "mutation_audit": {
+    "mechanism_changed": false,
+    "benchmark_run_started": false,
+    "second_benchmark_started": false,
+    "public_access": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
