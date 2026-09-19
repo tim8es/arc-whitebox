@@ -1,0 +1,39 @@
+name: E112 sole exact small-width gate
+
+on:
+  push:
+    branches:
+      - research/e112-edgeworth4-relu-plugin-20260919
+    paths:
+      - ".github/workflows/e112-exact-gate.yml"
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen dependency
+        run: python -m pip install numpy
+      - name: Run exact small-width E112 gate
+        run: python scripts/e112_exact_gate.py | tee e112-exact-gate.log
+      - name: Verify frozen result
+        run: python scripts/e112_verify.py | tee e112-verify.log
+      - name: Upload immutable E112 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: e112-exact-gate
+          path: |
+            e112-exact-gate.json
+            e112-exact-gate.log
+            e112-verify.log
+          if-no-files-found: error
+          retention-days: 90
