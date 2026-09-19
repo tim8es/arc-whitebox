@@ -1,0 +1,109 @@
+{
+  "schema": "arc.whitebox.e114.error_budget_audit.v1",
+  "experiment": "E114",
+  "event": "PREPRODUCTION_ERROR_AND_FLOP_BUDGET_AUDIT",
+  "status": "AUDIT_COMPLETE_PRODUCTION_BLOCKED_PENDING_SMALLWIDTH_COMPRESSION_CERTIFICATE",
+  "branch": "review/e114-error-budget-audit-20260919",
+  "source": {
+    "e114_branch": "research/e114-activation-boundary-flux-20260919",
+    "e114_head": "b9f64030f65da9b32fc7718d04fb108ee1a73dab",
+    "e114_status": "EXACT_POSITIVE_CLOSURE_ACTIVATION_BOUNDARY_FLUX_VERIFIED",
+    "e114_production_go": false,
+    "e114_run": 35455223230,
+    "e114_job": 105929190535,
+    "e114_artifact_id": 10588126544,
+    "e114_artifact_sha256": "dd7a49166fe7f3cc469b145914e8b8b00680bfbeaa574b8539cdbad50defb84f"
+  },
+  "competition_constraints": {
+    "budget_flops": 2199023255552,
+    "utilization_cap": 0.13,
+    "raw_final_mse_cap": 1.89e-8,
+    "adjusted_score_cap": 2.5e-9,
+    "score_multiplier_rule": "max(0.1, utilization)",
+    "adjusted_raw_cap_at_u_0_13": 1.923076923076923e-8,
+    "utilization_where_adjusted_equals_raw_cap": 0.13227513227513227,
+    "binding_constraint_for_all_u_le_0_13": "raw_final_mse_cap_1.89e-8",
+    "adjusted_score_at_raw_cap_and_u_0_13": 2.457e-9,
+    "adjusted_score_margin_at_raw_cap_and_u_0_13": 4.3e-11
+  },
+  "exact_error_budget": {
+    "statement": "For an E114 production approximation whose exact target is the boundary-flux expectation, the full approximation/numerical/certificate error must fit inside the same final raw MSE cap; no helper or certificate error is extra-budget.",
+    "per_coordinate_mse_cap": 1.89e-8,
+    "per_coordinate_rms_cap": 0.0001374772708486752,
+    "width_1024_vector_squared_l2_cap": 0.0000193536,
+    "width_1024_vector_l2_cap": 0.004399272667157606,
+    "deterministic_sufficient_condition": "eps_compression + eps_remainder_certificate + eps_helpers <= 1.374772708486752e-4 in per-coordinate RMS norm",
+    "randomized_sufficient_condition": "(eps_compression + eps_remainder_certificate + eps_helpers)^2 + variance_residual_per_coordinate <= 1.89e-8",
+    "no_arbitrary_split_imposed": true,
+    "production_candidate_requirement": "Candidate must report each nonzero deterministic error bound and any residual stochastic variance, with the combined bound satisfying the formula above."
+  },
+  "exact_flop_budget": {
+    "all_in_integer_flop_ceiling": 285873023221,
+    "derivation": "floor(0.13 * 2^41) = floor(285873023221.76)",
+    "accounting_identity": "F_total = F_boundary_core + F_state_or_compression + F_helpers + F_remainder_certificate + F_materialization + F_fallback",
+    "standalone_boundary_flux_headroom": 285873023221,
+    "layered_on_authoritative_e105_e104_base": {
+      "base_flops": 149114550960,
+      "base_utilization": 0.06780944702768466,
+      "exact_incremental_headroom": 136758472261,
+      "admissibility_formula": "F_boundary_core + F_state_or_compression + F_helpers + F_remainder_certificate + F_materialization + F_fallback <= 136758472261"
+    },
+    "layered_on_e104_independent_verify_base": {
+      "base_flops": 149047442096,
+      "base_utilization": 0.06777892944955966,
+      "exact_incremental_headroom": 136825581125
+    },
+    "rule": "Helpers and the remainder certificate are billed inside these ceilings. A candidate may not quote core-only FLOPs."
+  },
+  "small_width_comparison": {
+    "fixture": {
+      "input_dimension": 2,
+      "depth": 3,
+      "exact_boundary_flux_value": 0.22402715970779358,
+      "independent_closed_form_value": 0.22402715970779363,
+      "observed_abs_discrepancy": 5.551115123125783e-17,
+      "observed_squared_discrepancy": 3.0814879110195774e-33,
+      "discrepancy_fraction_of_raw_mse_budget": 1.6304168841373425e-25,
+      "discrepancy_fraction_of_rms_budget": 4.037842102085398e-13,
+      "identity_error_gate": "PASS by enormous margin"
+    },
+    "cost_comparability": {
+      "e114_fixture_flopscope_ledger_present": false,
+      "protocol_execution_class": "deterministic standard-library exact fixture; no production FLOP accounting",
+      "exact_reference_output_compression_branch": "research/e114-exact-reference-output-compression-20260919",
+      "exact_reference_output_compression_branch_delta_from_e114_head": "IDENTICAL / 0 commits",
+      "output_schur_finalmean_branch": "research/e114-output-schur-finalmean-20260919",
+      "output_schur_finalmean_branch_delta_from_e114_head": "IDENTICAL / 0 commits",
+      "independent_verifier_branch": "review/e114-independent-verifier-20260919",
+      "independent_verifier_branch_delta_from_e114_head": "IDENTICAL / 0 commits",
+      "conclusion": "No physical small-width compression candidate exists yet to compare against the all-in FLOP ceiling or to provide an approximation/remainder certificate."
+    }
+  },
+  "gates": {
+    "exact_identity_available": true,
+    "exact_error_budget_computed": true,
+    "exact_all_in_flop_ceiling_computed": true,
+    "helper_cost_explicitly_in_budget": true,
+    "remainder_certificate_cost_explicitly_in_budget": true,
+    "small_width_identity_within_error_budget": true,
+    "small_width_compression_error_certificate_present": false,
+    "small_width_all_in_billed_cost_present": false,
+    "production_go": false
+  },
+  "blocker": {
+    "exact": "E114 exactness is established, but the repository contains no implemented small-width boundary-flux compression candidate with a certified approximation/remainder bound and no billed FLOP ledger including helpers/certificate. Therefore there is nothing admissible to scale to production yet.",
+    "minimum_preproduction_evidence": "A small-width compression candidate must bind (1) certified combined error <= 1.374772708486752e-4 RMS per coordinate, or the equivalent MSE/variance formula; and (2) all-in FLOPs including helpers and certificate under the relevant ceiling, before any production-shaped execution."
+  },
+  "scope": {
+    "production_run": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "receipt_policy": "audit receipt only; no production execution authorized"
+}
