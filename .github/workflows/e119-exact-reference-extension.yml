@@ -1,0 +1,47 @@
+name: E119 exact reference extension
+
+on:
+  push:
+    branches:
+      - review/e119-exact-reference-extension-20260919
+    paths:
+      - 'methods/e114_exact_angular_reference.py'
+      - 'methods/e119_exact_reference_compare.py'
+      - 'tests/test_e119_exact_reference_extension.py'
+      - 'scripts/e119_exact_reference_extension.py'
+      - '.github/workflows/e119-exact-reference-extension.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  exact-reference:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project and pytest
+        run: |
+          python -m pip install -e .
+          python -m pip install pytest==8.3.5
+      - name: Run reusable exact-reference tests
+        run: python -m pytest -q tests/test_e119_exact_reference_extension.py
+      - name: Run heterogeneous exact-reference evidence
+        run: python scripts/e119_exact_reference_extension.py
+      - name: Upload E119 exact-reference evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e119-exact-reference-extension
+          path: e119-exact-reference-extension.json
+          if-no-files-found: error
+          retention-days: 90
