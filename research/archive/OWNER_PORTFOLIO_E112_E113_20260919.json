@@ -1,0 +1,73 @@
+{
+  "schema": "arc.whitebox.owner.portfolio_e112_e113.v1",
+  "receipt_key": "ARC-OWNER-PORTFOLIO-E112-E113-20260919",
+  "canonical": "29bee3f8d23fc620b77aaed414b1b7a928af4b83",
+  "source_heads": {
+    "E112": "58c4f203990d3336a41d060a5a9d7bbf05e0ad58",
+    "E113": "b94cceb787715bafe3736d77798b1a4afeffc4a7"
+  },
+  "hypotheses": {
+    "E112": {
+      "mechanism": "fourth-order Edgeworth scalar Gaussian-ReLU closure",
+      "status": "TERMINAL_NO_GO_DROP",
+      "run": 35455219121,
+      "job": 105929179847,
+      "artifact_id": 10588046582,
+      "artifact_zip_sha256": "406132e2cd2ec7a50b103b67866e62269795329333370caf4c93920df6909a1b",
+      "artifact_json_sha256": "619009f2eee0f228af9db1c9f10ec1992d9da0e2d119c15c94c4d01ad07b5a7d",
+      "final_bias_mse": 0.00030035784800557875,
+      "final_over_gaussian": 0.06939505061973768,
+      "final_over_target": 15891.9496299248,
+      "pooled_all_layer_bias_mse": 0.0002267547225071582,
+      "utilization_upper": 0.06808500640272541
+    },
+    "E113": {
+      "mechanism": "top-4 actual upstream gate-pattern conditioned Gaussian-ReLU closure",
+      "status": "TERMINAL_NO_GO_DROP",
+      "run": 35455222505,
+      "job": 105929188669,
+      "artifact_id": 10587877752,
+      "artifact_zip_sha256": "67b1f603eb680825aef96ff4e031ad04be9302e2fd11ed974250685f5a3b7a32",
+      "artifact_json_sha256": "c576acd35e02c16c2e2856681327c13c617a77a69fa349ae0430efeb3ce5182d",
+      "final_bias_mse": 0.0025704565401863883,
+      "final_over_gaussian": 0.07906730052386626,
+      "final_over_target": 136002.99154425334,
+      "pooled_all_layer_bias_mse": 0.0013039198341694728,
+      "utilization_upper": 0.06899450110449834
+    }
+  },
+  "strongest_surviving_mechanism": null,
+  "strongest_failed_mechanism": "E112",
+  "production_gate_authorized": false,
+  "production_blocker": "No portfolio hypothesis passed the frozen absolute exact-small-width bias gates.",
+  "next_production_gate_template": {
+    "applies_to": "future new mechanism ID E114+ only after exact-small-width survival",
+    "exact_small_width_final_bias_mse_max": 1.89e-8,
+    "exact_small_width_pooled_bias_mse_max": 1.89e-8,
+    "production_utilization_upper_max": 0.13,
+    "production_shape": {
+      "width": 1024,
+      "depth": 16
+    },
+    "public": false,
+    "scorer": false,
+    "holdout": false,
+    "full": false,
+    "tuning": false,
+    "sweep": false,
+    "rerun": false,
+    "complete_flop_ledger_required": true,
+    "deterministic_verifier_required": true
+  },
+  "scope": {
+    "e104_e111_reopened": false,
+    "public": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
