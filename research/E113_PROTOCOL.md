@@ -137,7 +137,7 @@ Freeze a deliberately conservative overhead allowance of
 Then
 
 `F_upper = 149247442096 FLOPs`,
-`u_upper = F_upper / 2^41 = 0.06786916665421427 < 0.13`.
+`u_upper = F_upper / 2^41 = 0.06786987891973695 < 0.13`.
 
 **ADMISSION PASS.**
 
