@@ -1,0 +1,40 @@
+name: E121 Haar-plane orbit source-memory falsifier
+
+on:
+  push:
+    branches:
+      - research/e121-haar-plane-orbit-source-memory-20260919
+    paths:
+      - 'methods/e121_haar_plane_orbit.py'
+      - 'tests/test_e121_haar_plane_orbit.py'
+      - 'scripts/e121_haar_plane_orbit_falsifier.py'
+      - '.github/workflows/e121-haar-plane-orbit.yml'
+
+jobs:
+  e121-falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E121 tests
+        run: python -m pytest -q tests/test_e121_haar_plane_orbit.py
+      - name: Run sole frozen E121 falsifier
+        run: python scripts/e121_haar_plane_orbit_falsifier.py
+      - name: Upload immutable E121 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e121-haar-plane-orbit-falsifier
+          path: e121-haar-plane-orbit-falsifier.json
+          if-no-files-found: error
+          retention-days: 90
