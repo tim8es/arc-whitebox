@@ -1,0 +1,39 @@
+name: E119 output-flux TV remainder falsifier
+
+on:
+  push:
+    branches:
+      - research/e119-output-flux-tv-remainder-20260919
+    paths:
+      - 'methods/e119_output_flux_tv_remainder.py'
+      - 'tests/test_e119_output_flux_tv_remainder.py'
+      - 'scripts/e119_output_flux_tv_remainder.py'
+      - '.github/workflows/e119-output-flux-tv-remainder.yml'
+
+jobs:
+  exact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E119 TV tests
+        run: python -m pytest -q tests/test_e119_output_flux_tv_remainder.py
+      - name: Run sole E119 TV remainder falsifier
+        run: python scripts/e119_output_flux_tv_remainder.py
+      - name: Upload E119 TV remainder payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: e119-output-flux-tv-remainder
+          path: e119-output-flux-tv-remainder.json
+          if-no-files-found: error
+          retention-days: 90
