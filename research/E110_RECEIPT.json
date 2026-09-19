@@ -1,0 +1,171 @@
+{
+  "schema": "arc.whitebox.e110.terminal_receipt.v1",
+  "experiment": "E110",
+  "idempotency_key": "ARC-E110-DEEP-LINE-RB-20260919",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "branch": "research/e110-deep-line-rb-20260919",
+  "provenance": {
+    "parent_e108_terminal_head": "073c6b66064a12fdcd18ab939002ab5458f48f69",
+    "protocol_commit": "61c9aef608339e1066bd6a8544b1bb3d81a8fe17",
+    "implementation_commit": "d5215f35ca1240a9f30dd8aca543632eabf03a31",
+    "test_commit_initial": "c24f76e28e9704387d04f05854913f1884d794d9",
+    "test_wiring_fix_commit": "6e7feb9d1e1a2a63a6179976d3288e58ba64f0f3",
+    "executed_workflow_head": "1de4aab59474640876bad101ea67c156092cd829",
+    "executed_blobs": {
+      "protocol": "572c2aa1d553faf45bd98d0d1385db7d114fd8fd",
+      "script": "9d8771bb30a601149d8377616cbe2f2ccb259246",
+      "tests": "8d2e61ccd9c4175897f77c169da607f1d157ef45",
+      "workflow": "00da471c4ead18388b4c6b51f9546a7f75b835ed"
+    },
+    "e104_transfer_repeated": false,
+    "e109_stein_lane_reused": false
+  },
+  "mechanism": {
+    "name": "exact deep Gaussian-line Rao-Blackwellization",
+    "identity": "X=Z+Tv with T~N(0,1) independent of Z; G(Z)=E[F(Z+Tv)|Z]",
+    "deep_execution": "exact piecewise-affine propagation through realized ReLU gate breakpoints on the scalar line",
+    "integration": "closed-form Gaussian integral of each final affine interval",
+    "direction": "single weight-only mean-gate all-output deep sensitivity direction",
+    "target_free": true,
+    "stein_or_jvp_control": false,
+    "fitted_coefficients": false,
+    "haar_or_radial_transfer": false
+  },
+  "frozen_smallwidth_instance": {
+    "width": 8,
+    "depth": 5,
+    "weight_seed": 110104,
+    "outer_seed": 110105,
+    "outer_samples": 96,
+    "law_check_samples": 4,
+    "dense_grid_points": 32769,
+    "dense_grid_limit": 8.0,
+    "interval_cap": 20000,
+    "weight_dtype": "float64",
+    "zero_bias": true
+  },
+  "execution": {
+    "run": 35453340958,
+    "job": 105924204080,
+    "run_attempt": 1,
+    "head": "1de4aab59474640876bad101ea67c156092cd829",
+    "workflow_conclusion": "failure",
+    "scientific_step_conclusion": "failure_expected_terminal_no_go_exit_2",
+    "focused_tests": "4 passed in 0.19s",
+    "rerun": false,
+    "artifact": {
+      "name": "e110-smallwidth-law",
+      "id": 10587028818,
+      "size_bytes": 1598,
+      "zip_sha256": "0fd259e1cbefdce4b56f103d12183a90bdea88e31379b97a17f3f675ecb81be9",
+      "expires_at": "2026-12-18T15:56:02Z"
+    }
+  },
+  "law_verification": {
+    "closed_form_one_layer_test_passed": true,
+    "random_small_network_dense_integration_test_passed": true,
+    "max_abs_error_frozen_law_check": 8.11901634811818e-09,
+    "max_relative_error_frozen_law_check": 1.1837339229939896e-08,
+    "gate_max_relative_error": 0.0002,
+    "law_gate_passed": true,
+    "partition_complete_ordered": true,
+    "interval_cap_overflow": false,
+    "outputs_finite": true
+  },
+  "measured_target_free_risk": {
+    "baseline_single_sample_pooled_variance": 0.39744514776267115,
+    "conditional_single_sample_pooled_variance": 0.34264321076494825,
+    "conditional_over_baseline": 0.862114464584061,
+    "relative_variance_reduction_fraction": 0.13788553541593895,
+    "relative_variance_reduction_percent": 13.788553541593895,
+    "variance_ratio_gate": 0.8,
+    "variance_ratio_gate_passed": false,
+    "raw_target_mse_scale": 1.89e-08,
+    "samples_required_at_smallwidth_variance_for_target": 18129271
+  },
+  "deep_piecewise_cost": {
+    "mean_layer_input_intervals": [
+      1.0,
+      9.0,
+      16.71875,
+      23.15625,
+      34.270833333333336
+    ],
+    "mean_layer_output_intervals": [
+      9.0,
+      16.71875,
+      23.15625,
+      34.270833333333336,
+      40.59375
+    ],
+    "mean_interval_multiplier": 16.829166666666666,
+    "max_layer_input_intervals": 46,
+    "mean_final_interval_count": 40.59375,
+    "max_final_interval_count": 62,
+    "mean_affine_matmul_flops_proxy_smallwidth": 21541.333333333332
+  },
+  "production_path_diagnostic": {
+    "production_budget": 2199023255552,
+    "utilization_cap": 0.13,
+    "cap_flops": 285873023221.76,
+    "reference_4096_layer_flops": 137573171200,
+    "cost_lower_bound": "2 * measured_mean_interval_multiplier * reference_layer_flops * (N/4096), excluding root finding, sorting, integration, direction setup and input setup",
+    "optimistic_conditioned_samples_under_cap": 252,
+    "projected_smallwidth_target_free_mse_at_optimistic_budget": 0.0013596952808132866,
+    "projected_over_raw_target_scale": 71941.54924938024,
+    "path_gate_passed": false
+  },
+  "gates": {
+    "direction_norm_finite_positive": true,
+    "outputs_finite": true,
+    "no_interval_cap_overflow": true,
+    "partition_complete_ordered": true,
+    "independent_law_rel_le_2e_4": true,
+    "candidate_variance_lt_baseline": true,
+    "variance_ratio_le_0_80": false,
+    "optimistic_budget_samples_ge_1": true,
+    "projected_budget_risk_le_1_89e_8": false
+  },
+  "interpretation": {
+    "verdict": "The exact later-layer Rao-Blackwell law is numerically verified and reduces small-width final-layer variance by 13.79%, but the deep breakpoint count expands the affine propagation cost by a mean interval multiplier of 16.83. Even an intentionally optimistic production lower-bound budget permits only 252 conditioned samples, for a projected target-free MSE 7.19e4 times above the 1.89e-8 target scale.",
+    "primary_blocker": "Deep line conditioning is mathematically valid but computationally incompatible with the <=0.13 utilization path once realized ReLU breakpoint proliferation is accounted for.",
+    "secondary_blocker": "The observed one-direction variance reduction ratio 0.8621 also misses the preregistered <=0.80 materiality gate.",
+    "successor_constraint": "Do not rescue E110 by changing the direction, width/depth, seeds, interval cap or using approximate breakpoint pruning. A successor must obtain a later-layer target-free correction without enumerating deep line regions and must expose a measurable final-layer risk path before production execution."
+  },
+  "classification": {
+    "VERIFIED": {
+      "deep_conditional_expectation_law": true,
+      "independent_smallwidth_numerical_check": true,
+      "variance_reduction_positive": true,
+      "piecewise_cost_growth_measured": true,
+      "terminal_path_failure": true
+    },
+    "UNEXECUTED": {
+      "production_shape_e110": false,
+      "raw_competition_final_layer_mse": null,
+      "adjusted_competition_score": null,
+      "public_mini": false,
+      "official_scorer": false,
+      "holdout": false,
+      "full_suite": false
+    }
+  },
+  "scope": {
+    "small_width_synthetic_only": true,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt; no E110 rerun or post-result parameter changes"
+}
