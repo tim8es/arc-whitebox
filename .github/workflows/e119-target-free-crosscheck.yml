@@ -1,0 +1,59 @@
+name: E119 target-free estimator cross-check
+
+on:
+  push:
+    branches:
+      - review/e119-target-free-crosscheck-20260919
+    paths:
+      - '.github/workflows/e119-target-free-crosscheck.yml'
+
+jobs:
+  crosscheck:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen project and test runner
+        run: |
+          python -m pip install -e .
+          python -m pip install pytest==8.3.5
+
+      - name: Syntax check
+        run: |
+          python -m py_compile scripts/e119_target_free_crosscheck.py
+          python -m py_compile tests/test_e119_target_free_crosscheck.py
+
+      - name: Focused target-free cross-check tests
+        run: python -m pytest -q tests/test_e119_target_free_crosscheck.py
+
+      - name: Run sole frozen E119 target-free cross-check
+        run: |
+          set -o pipefail
+          python scripts/e119_target_free_crosscheck.py 2>&1 | tee e119-target-free-crosscheck.log
+
+      - name: Upload immutable cross-check evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e119-target-free-crosscheck
+          path: |
+            e119-target-free-crosscheck.log
+            e119-target-free-crosscheck.json
+            research/E119_TARGET_FREE_CROSSCHECK_PROTOCOL.md
+            research/E119_TARGET_FREE_CROSSCHECK_MANIFEST.json
+          if-no-files-found: error
+          retention-days: 90
