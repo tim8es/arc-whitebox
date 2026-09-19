@@ -1,0 +1,41 @@
+name: E104 target-free block variance probe
+
+on:
+  push:
+    branches:
+      - research/e104-error-estimator-probe-20260919
+    paths:
+      - 'research/E104_TARGET_FREE_BLOCKVAR_PROTOCOL.md'
+      - 'scripts/e104_target_free_blockvar_probe.py'
+      - '.github/workflows/e104-target-free-blockvar-probe.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project dependencies
+        run: python -m pip install -e .
+      - name: Run frozen target-free block variance probe once
+        run: python scripts/e104_target_free_blockvar_probe.py
+      - name: Upload immutable probe evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e104-target-free-blockvar-probe
+          path: e104-target-free-blockvar-probe.json
+          if-no-files-found: error
+          retention-days: 90
