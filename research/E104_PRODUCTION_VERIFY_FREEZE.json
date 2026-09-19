@@ -1,0 +1,57 @@
+{
+  "schema": "arc.whitebox.e104.production_independent_verify.freeze.v1",
+  "experiment": "E104",
+  "purpose": "Independent production-shape verification only; no mechanism change and no accuracy target.",
+  "base_evidence": {
+    "protocol_commit": "f85ce2487ae953f20b611b327d2269f1c54548fc",
+    "stage_a_implementation_commit": "12f355b8d905007ceb2abc139440468ffb47ac8f",
+    "stage_a_workflow_commit": "d21ee2567124fe73f124218c3033ff0a2a6123b5",
+    "result_commit": "785be77d27eb6770b251a87182184281fb571949",
+    "stage_a_run": 35287541033,
+    "stage_a_job": 105423103388,
+    "stage_a_artifact": 10524219347
+  },
+  "frozen_production_shape": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories": 4096,
+    "weight_seed": 104104,
+    "direction_seed": 104105,
+    "setup_seed": 104105,
+    "weights": "iid N(0,2/width), float32, zero bias",
+    "directions": "two independent Haar-QR blocks, positive diag(R) sign canonicalization",
+    "radius": "analytic E[chi_width], no random radii",
+    "propagation": "float32 h @ W.T then ReLU, float64 mean at each layer",
+    "budget": "2^41"
+  },
+  "verifier": {
+    "independent_reimplementation": true,
+    "executions": 2,
+    "deterministic_gate": "np.array_equal predictions AND exact equality of all measured FLOP ledger integers",
+    "accounting": "snapshot flops_used after input construction, after each of 16 layers, and after final stack; require exact sum of deltas == total",
+    "no_stage_a_code_import": true
+  },
+  "gates": {
+    "finite": true,
+    "shape": [
+      16,
+      1024
+    ],
+    "exact_antithetic_pair_max_abs": 0,
+    "deterministic_prediction_bitwise": true,
+    "deterministic_flop_ledger_exact": true,
+    "exact_accounting_reconciliation": true,
+    "utilization_max": 0.12,
+    "utilization_secondary_max": 0.135,
+    "homogeneity_relative_error_max": 0.000002
+  },
+  "scope": {
+    "public": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "mechanism_changed": false
+  }
+}
