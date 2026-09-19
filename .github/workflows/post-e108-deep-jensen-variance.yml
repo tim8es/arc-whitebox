@@ -1,0 +1,42 @@
+name: Post-E108 deep Jensen variance falsifier
+
+on:
+  push:
+    branches:
+      - research/post-e108-deep-final-jensen-variance-20260919
+    paths:
+      - 'research/POST_E108_DEEP_JENSEN_VAR_PROTOCOL.md'
+      - 'methods/post_e108_deep_jensen_variance.py'
+      - 'scripts/post_e108_deep_jensen_variance.py'
+      - '.github/workflows/post-e108-deep-jensen-variance.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project dependencies
+        run: python -m pip install -e .
+      - name: Run exactly one frozen deep Jensen variance falsifier
+        run: python scripts/post_e108_deep_jensen_variance.py
+      - name: Upload falsifier evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-e108-deep-jensen-variance
+          path: post-e108-deep-jensen-variance.json
+          if-no-files-found: error
+          retention-days: 90
