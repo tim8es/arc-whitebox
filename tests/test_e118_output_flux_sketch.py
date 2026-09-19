@@ -33,19 +33,24 @@ def _reference_atoms(ref, c: np.ndarray, cells: int) -> np.ndarray:
     return sin_mid * defects[:, 0] + cos_mid * defects[:, 1]
 
 
-def test_flux_sketch_matches_exact_boundary_projection_on_e114_fixture() -> None:
-    weights = [
-        np.array([[1.0, 0.0], [0.0, 1.0]], dtype=np.float64),
-        np.array([[1.0, 1.0], [-2.0, 0.0]], dtype=np.float64),
-        np.array([[2.0], [-1.0]], dtype=np.float64),
-    ]
+def test_flux_sketch_matches_exact_boundary_projection_random_fixture() -> None:
+    rng = np.random.Generator(np.random.PCG64(118117))
+    weights = []
+    w0 = rng.standard_normal((2, 4)).astype(np.float64)
+    w0 *= math.sqrt(2.0 / 2.0)
+    weights.append(w0)
+    for _ in range(2):
+        w = rng.standard_normal((4, 4)).astype(np.float64)
+        w *= math.sqrt(2.0 / 4.0)
+        weights.append(w)
+
     cells = 128
     ref = build_exact_reference(weights)
     candidate = run_flux_sketch(weights, cells=cells)
-    c = output_observable(1)
+    c = output_observable(4)
     atoms_ref = _reference_atoms(ref, c, cells)
 
-    np.testing.assert_allclose(candidate.atoms, atoms_ref, atol=1e-12, rtol=0.0)
+    np.testing.assert_allclose(candidate.atoms, atoms_ref, atol=1e-11, rtol=0.0)
     assert candidate.flops["exact_reconciliation"]
     assert candidate.finite
 
