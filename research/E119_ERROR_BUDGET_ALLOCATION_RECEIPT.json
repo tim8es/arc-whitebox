@@ -1,0 +1,174 @@
+{
+  "schema": "arc.whitebox.e119.error_budget_allocation.v1",
+  "experiment": "E119",
+  "event": "DETERMINISTIC_ERROR_BUDGET_ALLOCATION",
+  "status": "BUDGET_FROZEN_PRODUCTION_NOT_AUTHORIZED",
+  "branch": "review/e119-error-budget-allocation-20260919",
+  "source_heads": {
+    "generic_e119_branch": "research/e119-generic-boundary-flux-certificate-20260919",
+    "generic_e119_head": "de346277894ccb89ceef39e76ca6d8f12853b2ee",
+    "independent_audit_branch": "review/e119-independent-boundary-audit-20260919",
+    "independent_audit_head": "d553cb2b812d93796e947901823cb47c65b28dd5"
+  },
+  "global_budget": {
+    "raw_mse_cap": "1.89e-8",
+    "raw_mse_cap_float": 1.89e-8,
+    "rms_cap": "1.374772708486752e-4",
+    "rms_cap_float": 0.0001374772708486752,
+    "combination_rule": "deterministic_triangle",
+    "admission_inequality": "eps_omitted_flux + eps_numerical_geometry + eps_helpers + eps_final_materialization <= sqrt(1.89e-8)",
+    "joint_mse_rule": "(eps_omitted_flux + eps_numerical_geometry + eps_helpers + eps_final_materialization)^2 <= 1.89e-8",
+    "rss_or_independence_assumed": false,
+    "note": "Component self-MSE caps below are bookkeeping diagnostics only; admission uses the triangle/RMS inequality because the error signs may be aligned."
+  },
+  "allocation": [
+    {
+      "component": "omitted_boundary_flux",
+      "rms_share_rational": {
+        "numerator": 1,
+        "denominator": 2
+      },
+      "rms_cap": "6.87386354243376e-5",
+      "rms_cap_float": 0.0000687386354243376,
+      "self_mse_cap": "4.725e-9",
+      "self_mse_cap_float": 4.725e-9,
+      "gaussian_flux_factor": 0.19947114020071632,
+      "equivalent_omitted_scalar_flux_l1_cap": "3.446044142283935e-4",
+      "equivalent_omitted_scalar_flux_l1_cap_float": 0.0003446044142283935,
+      "certificate_rule": "B_omit = g * sum_abs(omitted_scalar_jumps) <= eps_omitted_flux"
+    },
+    {
+      "component": "numerical_geometry",
+      "rms_share_rational": {
+        "numerator": 1,
+        "denominator": 4
+      },
+      "rms_cap": "3.43693177121688e-5",
+      "rms_cap_float": 0.0000343693177121688,
+      "self_mse_cap": "1.18125e-9",
+      "self_mse_cap_float": 1.18125e-9,
+      "includes": [
+        "root_angle_numeric_error",
+        "root_dedup_or_ordering_numeric_error",
+        "midpoint_trigonometry_numeric_error",
+        "boundary_tangent_numeric_error",
+        "jump_evaluation_numeric_error"
+      ],
+      "certificate_rule": "A rigorous output-mean bound induced by all numerical geometry errors must be <= eps_numerical_geometry."
+    },
+    {
+      "component": "helpers",
+      "rms_share_rational": {
+        "numerator": 1,
+        "denominator": 8
+      },
+      "rms_cap": "1.71846588560844e-5",
+      "rms_cap_float": 0.0000171846588560844,
+      "self_mse_cap": "2.953125e-10",
+      "self_mse_cap_float": 2.953125e-10,
+      "includes": [
+        "sorting_and_dedup_helpers",
+        "priority_or_selection_helpers",
+        "suffix_norm_or_bound_helpers",
+        "remainder_certificate_reduction",
+        "state_bookkeeping_numeric_error"
+      ],
+      "certificate_rule": "All helper-induced numerical/bounding slack mapped to final scalar/output mean must be <= eps_helpers."
+    },
+    {
+      "component": "final_materialization",
+      "rms_share_rational": {
+        "numerator": 1,
+        "denominator": 8
+      },
+      "rms_cap": "1.71846588560844e-5",
+      "rms_cap_float": 0.0000171846588560844,
+      "self_mse_cap": "2.953125e-10",
+      "self_mse_cap_float": 2.953125e-10,
+      "includes": [
+        "retained_flux_accumulation_roundoff",
+        "final_scaling_roundoff",
+        "dtype_conversion_error",
+        "output_write_or_materialization_error"
+      ],
+      "certificate_rule": "Absolute/RMS error introduced after certified retained-flux construction through final output materialization must be <= eps_final_materialization."
+    }
+  ],
+  "exact_invariants": {
+    "rms_share_sum_rational": "1/2 + 1/4 + 1/8 + 1/8 = 1",
+    "rms_cap_sum": "1.374772708486752e-4",
+    "rms_cap_sum_matches_global": true,
+    "worst_case_joint_mse_at_all_component_caps": "1.89e-8",
+    "worst_case_joint_mse_matches_global": true,
+    "component_self_mse_sum": "6.496875e-9",
+    "component_self_mse_sum_fraction_of_global": 0.34375,
+    "warning": "Do not admit by summing component self-MSE caps; cross terms are covered only by the deterministic triangle rule."
+  },
+  "comparison_to_physical_e119": {
+    "generic_width8_depth4": {
+      "current_omitted_abs_flux_sum": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_absolute_remainder_certificate": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "omitted_flux_component_budget_pass": true,
+      "current_max_full_mean_abs_error": 2.220446049250313e-16,
+      "current_max_scalar_jump_abs_error": 4.440892098500626e-16,
+      "current_max_boundary_angle_wrapped_error": 0,
+      "numerical_geometry_observed_error_is_far_below_allocated_cap": true,
+      "helper_error_bound_separately_isolated": false,
+      "final_materialization_error_bound_separately_isolated": false,
+      "next_smallest_nonzero_atom_abs": [
+        0.009142560506137522,
+        0.0008991440333659011,
+        0.003739433377093484,
+        0.0007752215692883401
+      ],
+      "tightened_omitted_flux_l1_cap": 0.0003446044142283935,
+      "material_compression_effect": "unchanged: no frozen network can omit the next nonzero atom even under the prior larger full-budget L1 certificate"
+    },
+    "independent_production_candidate_audit": {
+      "actual_abs_error": 0.11816601715407593,
+      "actual_error_over_global_rms_cap": 859.5312986901349,
+      "reported_remainder_certificate": 1.7304891902620323,
+      "certificate_over_allocated_omitted_flux_rms_cap": 25174.913345011435,
+      "production_error_budget_pass": false,
+      "helper_cost_and_error_certificate_complete": false
+    }
+  },
+  "machine_checks": {
+    "all_component_rms_caps_nonnegative": true,
+    "share_numerators_sum_at_common_denominator_8": 8,
+    "share_denominator_common": 8,
+    "share_sum_exactly_one": true,
+    "omitted_flux_l1_cap_is_half_prior_full_rms_l1_cap": true,
+    "generic_smallwidth_omitted_flux_pass": true,
+    "generic_smallwidth_geometry_observed_pass": true,
+    "helper_component_certified_pass": false,
+    "final_materialization_component_certified_pass": false,
+    "production_candidate_pass": false,
+    "production_authorized": false
+  },
+  "authorization_rule": "Production requires a machine-verifiable certificate for each of the four components and the deterministic sum of certified RMS/absolute-mean bounds <= 1.374772708486752e-4. Missing component certificates are failures, not zero.",
+  "scope": {
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "benchmark_targets": false,
+    "holdout": false,
+    "full_suite": false,
+    "production_run": false,
+    "tuning": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
