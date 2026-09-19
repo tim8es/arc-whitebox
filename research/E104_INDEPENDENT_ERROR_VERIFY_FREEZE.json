@@ -1,0 +1,90 @@
+{
+  "schema": "arc.whitebox.e104.independent_error_verify.freeze.v1",
+  "experiment": "E104",
+  "purpose": "Smallest missing independent error verification after production-shape cost/determinism PASS.",
+  "prior_production_verify": {
+    "receipt_commit": "4c90b7d7b1f798f5706f368d80f23f8b98fa66b2",
+    "run": 35446062235,
+    "job": 105905067035,
+    "e104_flops": 149047442096,
+    "e104_utilization": 0.06777892944955966,
+    "e100_flops_from_e103": 149047446192,
+    "e100_utilization_from_e103": 0.0677789313122048
+  },
+  "same_corpus_error_corpus": {
+    "width": 64,
+    "depth": 16,
+    "network_seeds": [
+      104200,
+      104201,
+      104202,
+      104203
+    ],
+    "weight_distribution": "iid N(0,2/width), float32, zero bias",
+    "reference_samples": 65536,
+    "candidate_samples": 4096,
+    "reference_seeds": [
+      504200,
+      504201,
+      504202,
+      504203
+    ],
+    "iid_baseline_seeds": [
+      604200,
+      604201,
+      604202,
+      604203
+    ],
+    "haar_direction_seeds": [
+      704200,
+      704201,
+      704202,
+      704203
+    ],
+    "e100_radius_seeds": [
+      804200,
+      804201,
+      804202,
+      804203
+    ],
+    "e104_radius": "analytic E[chi_64]",
+    "rng": "NumPy PCG64"
+  },
+  "methods": {
+    "E104": "Haar directions + analytic E[chi_64] radius + antithetic pairs",
+    "E100": "same Haar directions + independent chi_64 radii + antithetic pairs",
+    "fixed_baseline": "ordinary iid Gaussian antithetic sampler with same N=4096",
+    "reference": "independent iid Gaussian antithetic sampler N=65536"
+  },
+  "metrics": [
+    "pooled final-layer raw MSE vs reference",
+    "pooled all-layer MSE vs reference",
+    "per-network final-layer MSE",
+    "final-layer max-abs error",
+    "E104/E100 and E104/fixed-baseline ratios",
+    "wins",
+    "finite and deterministic replay",
+    "production-shape measured FLOPs for E104/E100/fixed iid baseline"
+  ],
+  "production_cost_verification": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories": 4096,
+    "fixed_iid_weight_seed": 104300,
+    "fixed_iid_sample_seed": 104301,
+    "requirement": "measure fixed iid baseline under flopscope; reuse physical E103/E104 measured totals for E100/E104"
+  },
+  "historical_competition_reference": {
+    "E051_raw_final_layer_mse": 2.29004485946887e-8,
+    "E051_utilization": 0.267056,
+    "note": "Historical benchmark result only; not same corpus and not used in synthetic ratios."
+  },
+  "decision_scope": {
+    "scientific_target_raw_le_1_89e_8": "UNEXECUTED unless an authorized benchmark target is evaluated; this arm cannot satisfy it",
+    "no_public": true,
+    "no_scorer": true,
+    "no_holdout": true,
+    "no_full": true,
+    "no_tuning": true
+  }
+}
