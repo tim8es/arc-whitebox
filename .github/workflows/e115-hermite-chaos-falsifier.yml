@@ -1,0 +1,31 @@
+name: E115 Hermite chaos falsifier
+
+on:
+  push:
+    branches:
+      - research/e115-hermite-chaos-certified-tail-20260919
+    paths:
+      - research/E115_PROTOCOL.md
+      - scripts/e115_hermite_chaos_falsifier.py
+      - .github/workflows/e115-hermite-chaos-falsifier.yml
+  workflow_dispatch:
+
+jobs:
+  exact-falsifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run frozen exact falsifier
+        run: |
+          python scripts/e115_hermite_chaos_falsifier.py --output e115_hermite_chaos_falsifier.json
+      - name: Upload immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e115-hermite-chaos-falsifier
+          path: e115_hermite_chaos_falsifier.json
+          if-no-files-found: error
