@@ -1,0 +1,70 @@
+name: E109 deep Stein-JVP target-free falsifier
+
+on:
+  push:
+    branches:
+      - research/e109-deep-stein-jvp-cv-20260919
+    paths:
+      - 'research/E109_RUN_ARM.json'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen one-shot arm
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          arm = json.loads(Path("research/E109_RUN_ARM.json").read_text())
+          if arm != {
+              "idempotency_key": "ARC-E109-DEEP-STEIN-JVP-CV-20260919",
+              "execute_once": True,
+          }:
+              raise SystemExit(f"invalid arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E109_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen dependencies
+        run: python -m pip install -e .
+
+      - name: Syntax check
+        run: python -m py_compile scripts/e109_deep_stein_jvp_cv.py
+
+      - name: Run sole frozen target-free falsifier
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e109_deep_stein_jvp_cv.py 2>&1 | tee e109-deep-stein-jvp-cv.log
+
+      - name: Upload immutable E109 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e109-deep-stein-jvp-cv
+          path: |
+            e109-deep-stein-jvp-cv.log
+            e109-deep-stein-jvp-cv.json
+            research/E109_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
