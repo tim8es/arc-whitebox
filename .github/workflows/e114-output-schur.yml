@@ -1,0 +1,52 @@
+name: E114 output-Schur exact falsifier
+
+on:
+  push:
+    branches:
+      - research/e114-output-schur-finalmean-20260919
+    paths:
+      - ".github/workflows/e114-output-schur.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen project dependencies
+        run: python -m pip install -e . pytest
+      - name: Run exact algebra checks
+        run: python -m pytest -q tests/test_e114_output_schur.py
+      - name: Run sole frozen exact E114 output-Schur falsifier
+        shell: bash
+        run: |
+          set +e
+          python scripts/e114_output_schur_falsifier.py 2>&1 | tee e114-output-schur.log
+          status=${PIPESTATUS[0]}
+          if [ ! -f e114-output-schur-exit.txt ]; then echo "${status}" > e114-output-schur-exit.txt; fi
+          exit 0
+      - name: Upload immutable E114 output-Schur evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e114-output-schur
+          path: |
+            e114-output-schur-falsifier.json
+            e114-output-schur.log
+            e114-output-schur-exit.txt
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce frozen scientific terminal
+        if: always()
+        shell: bash
+        run: |
+          status=$(cat e114-output-schur-exit.txt)
+          exit "${status}"
