@@ -1,0 +1,140 @@
+{
+  "schema": "arc.whitebox.e108.terminal_receipt.v1",
+  "experiment": "E108",
+  "idempotency_key": "ARC-E108-FIRSTLAYER-EXACTMEAN-TRANSPORT-CV-20260919",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "branch": "research/e108-firstlayer-exactmean-transport-cv-20260919",
+  "repository_instruction_check": {
+    "requested_file": "AGENTS.md",
+    "recursive_tree_sha": "4d03dc0f37a039cee2854faebf252729de294ac3",
+    "recursive_tree_truncated": false,
+    "matching_paths": [],
+    "conclusion": "NO_AGENTS_MD_IN_REPOSITORY_TREE",
+    "local_checkout_available": false,
+    "local_clone_blocker": "runtime DNS could not resolve github.com; repository work executed through connected GitHub API"
+  },
+  "provenance": {
+    "parent_branch": "research/e105-two-haar-risk-cert-20260919",
+    "protocol_commit": "142a4b69f92855c06061daa1e2a2e5eebe9536fa",
+    "method_commit": "78fcbde20227c80bfb8ec1aca5e994641a6c305f",
+    "tests_commit": "39d9c5dbafd0bcfd3aa9a4cc331e7ceb3087964e",
+    "falsifier_commit": "2982a8b26ed195e4daa43f1af6bb5bec6d44a435",
+    "executed_workflow_head": "b0ec00990cf3f4553b91d1c337025bd46e724a46"
+  },
+  "mechanism": {
+    "name": "exact-mean first-layer transported control variate",
+    "first_layer_exact_mean": "||row_j(W1)||/sqrt(2*pi)",
+    "transport": "(0.5 W2.T)(0.5 W3.T)...(0.5 W16.T)",
+    "zero_mean_control": "(paired_first_layer_activation - exact_mean) @ transport",
+    "coefficient_rule": "one scalar beta per output coordinate, fit on opposite independent Haar block and cross-applied symmetrically",
+    "target_free": true,
+    "fitted_benchmark_coefficients": false,
+    "ridge_or_clipping": false,
+    "estimator_law_parent": "E104 analytic-radius two-Haar antithetic"
+  },
+  "admission": {
+    "utilization_cap": 0.13,
+    "budget_flops": 2199023255552,
+    "inherited_base_flops": 149114550960,
+    "inherited_base_utilization": 0.06780944702768466,
+    "pre_code_estimated_total_flops": 184474289328,
+    "pre_code_estimated_utilization": 0.08388919437857112,
+    "pre_code_gate": true,
+    "measured_total_flops": 187819635376,
+    "measured_utilization": 0.08541048163169762,
+    "measured_gate": true,
+    "measured_headroom_to_0_13_flops": 98053387845.76,
+    "estimate_shortfall_flops": 3345346048,
+    "estimate_shortfall_fraction": 0.0181344839987534,
+    "accounting_note": "The protocol called the pre-code figure conservative, but measured billing exceeded it by 3,345,346,048 FLOPs. This does not change admission: measured utilization remains 0.08541048 < 0.13."
+  },
+  "execution": {
+    "run": 35449335693,
+    "job": 105913650102,
+    "run_attempt": 1,
+    "head": "b0ec00990cf3f4553b91d1c337025bd46e724a46",
+    "conclusion": "success",
+    "focused_tests": "5 passed in 0.23s",
+    "rerun": false,
+    "artifact": {
+      "name": "e108-firstlayer-transport-cv",
+      "id": 10585484463,
+      "size_bytes": 1653,
+      "zip_sha256": "bb2910bc89dca2bcc880732877c887273c3fa4ef29ab094f5f76894fad6c5546",
+      "expires_at": "2026-12-18T14:38:03Z"
+    }
+  },
+  "frozen_instance": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories_per_estimator": 4096,
+    "weight_seed": 108104,
+    "direction_seeds": [
+      108105,
+      108106
+    ],
+    "independent_estimator_realizations": 2,
+    "deterministic_replay_realizations": 2,
+    "public_or_benchmark_targets_read": false
+  },
+  "measured": {
+    "baseline_target_free_raw_mse_risk": 0.00001004403426538555,
+    "candidate_target_free_raw_mse_risk": 0.000010016395958298237,
+    "candidate_over_baseline": 0.9972482862605754,
+    "relative_risk_reduction_fraction": 0.0027517137394246216,
+    "relative_risk_reduction_percent": 0.27517137394246216,
+    "competition_raw_target_scale": 1.89e-8,
+    "candidate_over_raw_target_scale": 529.9680401215999,
+    "score_multiplier": 0.1,
+    "adjusted_risk_proxy": 0.0000010016395958298238,
+    "adjusted_target": 2.5e-9,
+    "adjusted_proxy_over_target": 400.6558383319295,
+    "total_flops_per_estimator": 187819635376,
+    "utilization": 0.08541048163169762,
+    "input_construction_flops": 11541346992,
+    "control_setup_flops": 30068967424,
+    "layer_total_flops": 146167300096,
+    "finalization_flops": 42020864,
+    "exact_flop_reconciliation": true,
+    "antithetic_pair_max_abs": 0,
+    "deterministic_candidate_predictions": true,
+    "deterministic_baseline_predictions": true,
+    "candidate_risk_repeat_abs": 0,
+    "baseline_risk_repeat_abs": 0,
+    "finite": true,
+    "beta_abs_max_across_ab": 24.00655198066827
+  },
+  "gates": {
+    "admission_pre_code_util_le_0_13": true,
+    "measured_util_le_0_13": true,
+    "candidate_risk_lt_baseline": true,
+    "candidate_raw_risk_le_1_89e_8": false,
+    "adjusted_proxy_lt_2_5e_9": false,
+    "exact_accounting": true,
+    "deterministic_replay": true,
+    "antithetic_exact": true,
+    "finite": true,
+    "no_targets_read": true
+  },
+  "interpretation": {
+    "verdict": "The network-derived exact-mean control is active and slightly variance-reducing, but only by 0.275%, far below the roughly 530x reduction still required to reach the raw target scale.",
+    "blocker": "Dominant deep angular error is not explained by the linearly transported first-layer mean fluctuation; the frozen control has insufficient correlation with final-layer Haar error.",
+    "successor_constraint": "Do not rescue E108 by tuning beta/transport/seeds/samples. Any successor must attack a later-layer/deep nonlinear error component while preserving target-free unbiasedness and measured utilization <=0.13."
+  },
+  "scope": {
+    "synthetic_production_shape_only": true,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
