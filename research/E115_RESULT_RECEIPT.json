@@ -1,0 +1,93 @@
+{
+  "schema": "arc.whitebox.e115.result_receipt.v1",
+  "experiment": "E115",
+  "idempotency_key": "ARC-E115-HERMITE-CHAOS-CERTIFIED-TAIL-20260919",
+  "branch": "research/e115-hermite-chaos-certified-tail-20260919",
+  "parent_frontier": {
+    "branch": "research/e114-activation-boundary-flux-20260919",
+    "commit": "b9f64030f65da9b32fc7718d04fb108ee1a73dab"
+  },
+  "mechanism": "dense total-degree Wiener/Hermite chaos transport with exact Parseval L2 remainder",
+  "non_duplication": {
+    "e111_gaussian_plugin": false,
+    "e112_mask_treewidth": false,
+    "e114_boundary_flux": false,
+    "haar_or_control_variate": false,
+    "qmc_or_cubature": false,
+    "latent_mixture": false
+  },
+  "lineage": {
+    "protocol_commit": "9cd7f37e8889422fcf25dc0645ec7a295f7328f4",
+    "implementation_commit": "69c6f7d5eefa22414070578c9b4bdc1f6cae92da",
+    "workflow_commit": "6b0c19563297e7fc48379a42216caff17909e7fa"
+  },
+  "execution": {
+    "run_id": 35455536241,
+    "job_id": 105930018229,
+    "workflow_conclusion": "success",
+    "head_sha": "6b0c19563297e7fc48379a42216caff17909e7fa",
+    "artifact_id": 10587907959,
+    "artifact_name": "e115-hermite-chaos-falsifier",
+    "artifact_zip_sha256": "dc49cdfc8318af58972e7f9cbbfb7527fb5743d37a4c56963aea883381b026dd",
+    "artifact_size_bytes": 972,
+    "deterministic_replay_exact": true
+  },
+  "exact_falsifier": {
+    "scalar_operator": "ReLU(Z), Z~N(0,1)",
+    "method": "closed-form Hermite coefficients plus Parseval; no MC/quadrature",
+    "degree1_parseval_remainder_mse": 0.09084505690810465,
+    "degree1_remainder_over_1_89e_8": 4806616.767624585,
+    "degree2_parseval_remainder_mse": 0.011267585362156995,
+    "degree2_remainder_over_1_89e_8": 596168.5376802643
+  },
+  "admission": {
+    "latent_dimension": 1024,
+    "width": 1024,
+    "late_layers_billed": 2,
+    "budget_flops": 2199023255552,
+    "utilization_cap": 0.13,
+    "degree1_basis_count": 1025,
+    "degree1_linear_transport_lower_bound_flops": 4299161600,
+    "degree1_linear_transport_lower_bound_utilization": 0.0019550323486328125,
+    "degree1_budget_gate": "PASS",
+    "degree2_basis_count": 525825,
+    "degree2_linear_transport_lower_bound_flops": 2205469900800,
+    "degree2_linear_transport_lower_bound_utilization": 1.0029315948486328,
+    "degree2_over_util_cap": 7.7148584219125595,
+    "degree2_budget_gate": "FAIL",
+    "lower_bound_excludes": [
+      "nonlinear Hermite reprojection",
+      "base estimator",
+      "bookkeeping"
+    ]
+  },
+  "evidence_status": {
+    "verified": [
+      "closed-form degree-1 and degree-2 Parseval remainders",
+      "exact dense basis counts",
+      "two-late-layer favorable linear-transport FLOP lower bound",
+      "deterministic replay",
+      "GitHub Actions success and artifact digest"
+    ],
+    "unexecuted": [
+      "production Hermite nonlinear reprojection",
+      "public/benchmark/scorer/holdout/full evaluation",
+      "low-rank or tensorized chaos successor"
+    ]
+  },
+  "decision": {
+    "verdict": "TERMINAL_NO_GO_DENSE_TOTAL_DEGREE_HERMITE_CHAOS",
+    "reason": "degree 1 is budget-admissible but has a certified scalar ReLU L2 tail 4.8066e6x the raw target scale; degree 2 still has a large exact tail and its dense coefficient linear transport for only two late layers already costs utilization 1.00293, 7.71486x the 0.13 cap, before nonlinear projection or base-estimator cost",
+    "scope": "rules out dense total-degree Hermite chaos only; a separately preregistered low-rank/tensorized chaos mechanism is not ruled out"
+  },
+  "safety": {
+    "target_free": true,
+    "targets_read": false,
+    "benchmark_executed": false,
+    "public_executed": false,
+    "scorer_executed": false,
+    "holdout_full_executed": false,
+    "canonical_mutation": false,
+    "ledger_mutation": false
+  }
+}
