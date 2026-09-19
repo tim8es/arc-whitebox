@@ -65,6 +65,46 @@ def he_weights(
     return out
 
 
+
+def dense_he_weights(
+    seed: int,
+    *,
+    widths: Sequence[int],
+    input_dim: int = 2,
+) -> list[np.ndarray]:
+    """Deterministic float64 dense He-normal chain with arbitrary small widths."""
+    if input_dim != 2:
+        raise ValueError("exact angular reference currently requires input_dim=2")
+    if not widths:
+        raise ValueError("widths must be non-empty")
+    if any(int(w) <= 0 for w in widths):
+        raise ValueError("all widths must be positive")
+
+    rng = np.random.Generator(np.random.PCG64(int(seed)))
+    out: list[np.ndarray] = []
+    fan_in = int(input_dim)
+    for raw_width in widths:
+        width = int(raw_width)
+        w = rng.standard_normal((fan_in, width)).astype(np.float64)
+        w *= math.sqrt(2.0 / fan_in)
+        out.append(w)
+        fan_in = width
+    return out
+
+
+def evaluate_network_direction(
+    weights: Sequence[np.ndarray],
+    theta: float,
+) -> np.ndarray:
+    """Direct float64 network evaluation on q(theta), independent of sector state."""
+    _validate_weights(weights)
+    h = np.array([math.cos(theta), math.sin(theta)], dtype=np.float64)
+    for raw_w in weights:
+        h = h @ np.asarray(raw_w, dtype=np.float64)
+        h = np.maximum(h, 0.0)
+    return np.asarray(h, dtype=np.float64)
+
+
 def _roots_in_interval(a: float, b: float, lo: float, hi: float) -> list[float]:
     if math.hypot(a, b) <= 1e-15:
         return []
@@ -121,12 +161,15 @@ def _validate_weights(weights: Sequence[np.ndarray]) -> None:
         previous_width = int(w.shape[1])
 
 
-def enumerate_final_sectors(weights: Sequence[np.ndarray]) -> tuple[AngularSector, ...]:
-    """Enumerate the complete exact final angular partition."""
+def enumerate_layer_sectors(
+    weights: Sequence[np.ndarray],
+) -> tuple[tuple[AngularSector, ...], ...]:
+    """Enumerate the complete angular partition after every ReLU layer."""
     _validate_weights(weights)
     current: list[AngularSector] = [
         AngularSector(0.0, _TWO_PI, np.eye(2, dtype=np.float64))
     ]
+    layers: list[tuple[AngularSector, ...]] = []
 
     for raw_w in weights:
         w = np.asarray(raw_w, dtype=np.float64)
@@ -155,10 +198,16 @@ def enumerate_final_sectors(weights: Sequence[np.ndarray]) -> tuple[AngularSecto
                 coeff[~active, :] = 0.0
                 nxt.append(AngularSector(left, right, coeff))
         current = nxt
+        if not current:
+            raise RuntimeError("angular partition became empty")
+        layers.append(tuple(current))
 
-    if not current:
-        raise RuntimeError("final angular partition is empty")
-    return tuple(current)
+    return tuple(layers)
+
+
+def enumerate_final_sectors(weights: Sequence[np.ndarray]) -> tuple[AngularSector, ...]:
+    """Enumerate the complete exact final angular partition."""
+    return enumerate_layer_sectors(weights)[-1]
 
 
 def partition_diagnostics(sectors: Sequence[AngularSector]) -> dict:
