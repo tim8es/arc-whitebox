@@ -30,13 +30,20 @@ def gaussian_relu_mean(mu, var):
     if np.any(v < 0.0):
         raise ValueError("variance must be nonnegative")
     sigma = np.sqrt(v)
+
+    if m.ndim == 0:
+        if float(sigma) <= 0.0:
+            return max(float(m), 0.0)
+        alpha = float(m) / float(sigma)
+        phi = math.exp(-0.5 * alpha * alpha) * _INV_SQRT_2PI
+        Phi = 0.5 * (1.0 + math.erf(alpha / math.sqrt(2.0)))
+        return float(sigma) * phi + float(m) * Phi
+
     out = np.maximum(m, 0.0).astype(np.float64, copy=True)
     mask = sigma > 0.0
     if np.any(mask):
         alpha = m[mask] / sigma[mask]
         out[mask] = sigma[mask] * _phi(alpha) + m[mask] * _Phi(alpha)
-    if out.ndim == 0:
-        return float(out)
     return out
 
 
