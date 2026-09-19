@@ -1,0 +1,174 @@
+{
+  "schema": "arc.whitebox.e124.terminal_receipt.v1",
+  "experiment": "E124",
+  "idempotency_key": "ARC-E124-CHOWLIU-GATE-AMPLITUDE-CLUSTER-20260920",
+  "status": "TERMINAL_NO_GO_DROP_CHOWLIU_GATE_AMPLITUDE_CLUSTER",
+  "branch": "research/e124-chowliu-gate-amplitude-cluster-20260920",
+  "parent_branch": "research/bootstrap",
+  "mechanism": {
+    "name": "Chow-Liu gate-amplitude linked-cluster late-ReLU closure",
+    "purpose": "preserve selected cross-source gate/amplitude dependence at the final ReLU without a full mask state",
+    "gaussian_plugin": false,
+    "control_variate": false,
+    "shared_source_orbit": false,
+    "full_mask_state": false,
+    "tree_score": "binary gate mutual information",
+    "tree_state": "2x2 gate law plus endpoint conditional amplitude means"
+  },
+  "provenance": {
+    "protocol_commit": "e61bc531414c100688603086fa65d5923948a498",
+    "method_commit": "93e073bafdd1995e4e7cf24404fa1daaaec56924",
+    "tests_commit": "ac71c618723874be9765eda8f2dfe39d1de1324f",
+    "falsifier_commit": "d7abe2ad468b68f25f864253703b5d09a41a394c",
+    "workflow_head": "430f32b270a843ecdc8580864abbf6cc14b96b9f"
+  },
+  "frozen_corpus": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "seeds": [
+      124200,
+      124201,
+      124202,
+      124203,
+      124204,
+      124205,
+      124206,
+      124207
+    ],
+    "exact_reference": "piecewise angular integration with analytic E[R]",
+    "raw_target_mse": 1.89e-8
+  },
+  "scientific_result": {
+    "pooled_independence_bias_mse": 0.0030963942590008548,
+    "pooled_linked_bias_mse": 0.002257850564666443,
+    "linked_over_independence_mse": 0.7291870400880431,
+    "relative_mse_reduction_fraction": 0.27081295991195686,
+    "linked_improvement_count": 6,
+    "max_network_linked_mse": 0.009329195913704572,
+    "min_network_linked_mse": 0.00007557612666060583,
+    "pooled_linked_over_raw_target": 119462.99283949434,
+    "target_gate_passed": false
+  },
+  "per_network": [
+    {
+      "seed": 124200,
+      "independence_mse": 0.0047009204173851385,
+      "linked_mse": 0.0013283924751182781,
+      "improved": true
+    },
+    {
+      "seed": 124201,
+      "independence_mse": 0.0021002942509686473,
+      "linked_mse": 0.0037778569580753903,
+      "improved": false
+    },
+    {
+      "seed": 124202,
+      "independence_mse": 0.00045106920553731656,
+      "linked_mse": 0.0010221788999798338,
+      "improved": false
+    },
+    {
+      "seed": 124203,
+      "independence_mse": 0.011025343113478728,
+      "linked_mse": 0.009329195913704572,
+      "improved": true
+    },
+    {
+      "seed": 124204,
+      "independence_mse": 0.00038892840514389193,
+      "linked_mse": 0.00009548382415503238,
+      "improved": true
+    },
+    {
+      "seed": 124205,
+      "independence_mse": 0.002282790473132626,
+      "linked_mse": 0.0009906325905814006,
+      "improved": true
+    },
+    {
+      "seed": 124206,
+      "independence_mse": 0.0037163873690103572,
+      "linked_mse": 0.0014434877290564329,
+      "improved": true
+    },
+    {
+      "seed": 124207,
+      "independence_mse": 0.00010542083735012984,
+      "linked_mse": 0.00007557612666060583,
+      "improved": true
+    }
+  ],
+  "production_flop_proof": {
+    "width": 1024,
+    "depth": 16,
+    "samples": 4096,
+    "prefix_propagation": 128974848000,
+    "input_rng_materialization": 134217728,
+    "gate_cooccurrence": 8589934592,
+    "marginal_reductions": 33554432,
+    "mutual_information": 67108864,
+    "maximum_spanning_tree": 33554432,
+    "edge_conditional_amplitude_stats": 134217728,
+    "final_linked_cluster": 111149056,
+    "helper_reserve": 5000000000,
+    "total_upper_flops": 143078584832,
+    "budget_flops": 2199023255552,
+    "utilization_upper": 0.06506460742093623,
+    "cap": 0.13,
+    "headroom_flops": 142794438389.76,
+    "pass": true
+  },
+  "gates": {
+    "all_integrity_gates": true,
+    "every_network_linked_mse_le_1_89e_8": false,
+    "linked_improves_at_least_6_of_8": true,
+    "no_targets_public_scorer_holdout_full": true,
+    "pooled_linked_mse_le_1_89e_8": false,
+    "pooled_linked_strictly_below_independence": true,
+    "production_flop_formula_matches_protocol": true,
+    "production_util_upper_le_0_13": true
+  },
+  "execution": {
+    "run": 35473469592,
+    "job": 105978529834,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "4 passed in 0.16s",
+    "deterministic_replay_bitwise_json_equal": true,
+    "deterministic_sha256": "12b9d36a3e3c887c2d44a2fc01a10a3119365acddc12612496854ea65de8cec1",
+    "rerun": false,
+    "artifact": {
+      "name": "e124-chowliu-gate-amplitude",
+      "id": 10594021621,
+      "size_bytes": 5691,
+      "zip_sha256": "98d170d46fa5b2d3e5b6ab8a923414a656ba25b8aafc449dcfd02ddae00d3542",
+      "expires_at": "2026-12-18T22:29:18Z"
+    }
+  },
+  "blocker": "Tree-linked pair gate/amplitude dependence is real and lowers pooled exact bias MSE by about 27.1%, but the remaining deterministic closure bias is 0.002257850564666443, about 119463x the raw target. Pairwise tree dependence is therefore far too weak for the required late-ReLU accuracy.",
+  "interpretation": {
+    "cross_source_dependence_signal_present": true,
+    "mechanism_scientifically_insufficient": true,
+    "compute_not_blocker": true,
+    "no_rescue": "No alternate tree score, output-specific tree, extra edges, amplitude bins, Gaussian residual, clipping, calibration, seed/width/depth change, rerun, or renamed rescue under E124."
+  },
+  "scope": {
+    "synthetic_exact_small_width_only": true,
+    "production_scientific_run": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
