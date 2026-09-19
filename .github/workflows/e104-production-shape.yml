@@ -1,0 +1,46 @@
+name: E104 sole complete-billing production shape
+
+on:
+  push:
+    branches:
+      - research/e104-orthogonal-antithetic-complete-billing-20260918
+    paths:
+      - '.github/workflows/e104-production-shape.yml'
+
+jobs:
+  production-shape:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e .
+      - name: Run sole frozen E104 production-shape accounting
+        run: python scripts/e104_production_shape.py
+      - name: Write immutable run metadata
+        if: always()
+        run: |
+          {
+            echo "github_sha=$GITHUB_SHA"
+            echo "github_run_id=$GITHUB_RUN_ID"
+            echo "github_run_attempt=$GITHUB_RUN_ATTEMPT"
+            echo "github_workflow_ref=$GITHUB_WORKFLOW_REF"
+          } > e104-run-meta.txt
+      - name: Upload E104 production evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e104-production-shape
+          path: |
+            e104-production-shape.json
+            e104-run-meta.txt
+          if-no-files-found: error
+          retention-days: 90
