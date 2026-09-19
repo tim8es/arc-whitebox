@@ -1,0 +1,44 @@
+name: E119 skeptical scaling adversary
+
+on:
+  push:
+    branches:
+      - review/e119-adversarial-scaling-compression-20260919
+    paths:
+      - research/E119_SKEPTICAL_SCALING_PROTOCOL.md
+      - scripts/e119_skeptical_scaling_adversary.py
+      - .github/workflows/e119-skeptical-scaling-adversary.yml
+  workflow_dispatch:
+
+jobs:
+  skeptical-adversary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen project
+        run: python -m pip install -e .
+      - name: Syntax check
+        run: python -m py_compile scripts/e119_skeptical_scaling_adversary.py
+      - name: Run adversarial compression falsifier
+        run: |
+          set -o pipefail
+          python scripts/e119_skeptical_scaling_adversary.py             --output e119_skeptical_scaling_adversary.json             2>&1 | tee e119-skeptical-scaling-adversary.log
+      - name: Upload review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e119-skeptical-scaling-adversary
+          path: |
+            e119_skeptical_scaling_adversary.json
+            e119-skeptical-scaling-adversary.log
+          if-no-files-found: error
+          retention-days: 90
