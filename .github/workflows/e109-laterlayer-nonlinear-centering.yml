@@ -1,0 +1,36 @@
+name: E109 later-layer nonlinear centering gate
+
+on:
+  push:
+    branches:
+      - research/e109-laterlayer-nonlinear-centering-gate-20260919
+    paths:
+      - 'research/E109_PROTOCOL.md'
+      - 'scripts/e109_laterlayer_nonlinear_centering_gate.py'
+      - '.github/workflows/e109-laterlayer-nonlinear-centering.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen E109 exact identities
+        run: python scripts/e109_laterlayer_nonlinear_centering_gate.py
+      - name: Upload immutable E109 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e109-laterlayer-nonlinear-centering
+          path: e109_laterlayer_nonlinear_centering.json
+          if-no-files-found: error
+          retention-days: 90
