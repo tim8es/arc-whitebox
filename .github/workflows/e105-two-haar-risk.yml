@@ -1,0 +1,39 @@
+name: E105 two-Haar production risk certificate
+
+on:
+  push:
+    branches:
+      - research/e105-two-haar-risk-cert-20260919
+    paths:
+      - 'methods/e105_two_haar_risk.py'
+      - 'tests/test_e105_two_haar_risk.py'
+      - 'scripts/e105_two_haar_risk.py'
+      - '.github/workflows/e105-two-haar-risk.yml'
+
+jobs:
+  risk:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E105 tests
+        run: python -m pytest -q tests/test_e105_two_haar_risk.py
+      - name: Run sole frozen E105 production risk diagnostic
+        run: python scripts/e105_two_haar_risk.py
+      - name: Upload immutable E105 receipt payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: e105-two-haar-risk
+          path: e105-two-haar-risk.json
+          if-no-files-found: error
+          retention-days: 90
