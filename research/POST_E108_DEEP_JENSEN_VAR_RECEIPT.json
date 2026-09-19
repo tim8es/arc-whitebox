@@ -1,0 +1,123 @@
+{
+  "schema": "arc.whitebox.post_e108.deep_jensen_variance.receipt.v1",
+  "idempotency_key": "ARC-POST-E108-DEEP-JENSEN-VAR-20260919",
+  "status": "TARGET_FREE_DEEP_NONLINEAR_VARIANCE_GO",
+  "scientific_competition_go": false,
+  "branch": "research/post-e108-deep-final-jensen-variance-20260919",
+  "parent": {
+    "experiment": "E108",
+    "branch": "research/e108-firstlayer-exactmean-transport-cv-20260919",
+    "status": "TERMINAL_NO_GO_DROP",
+    "successor_constraint": "attack later/deeper nonlinear error component; no first-layer transported CV rescue"
+  },
+  "mechanism": {
+    "name": "final-layer Jensen residual variance decomposition",
+    "exact_identity": "Y_b = ReLU(mean(H_{L-1,b}) W_L^T) + J_b",
+    "total_risk": "R_Y=mean((Y1-Y2)^2)/4",
+    "mean_state_risk": "R_G=mean((G1-G2)^2)/4",
+    "deep_jensen_risk": "R_J=mean((J1-J2)^2)/4",
+    "cross_term": "C_GJ=mean((G1-G2)*(J1-J2))/2",
+    "exact_decomposition": "R_Y = R_G + R_J + C_GJ",
+    "target_free": true,
+    "first_layer_transport_cv": false,
+    "fitted_coefficients": false,
+    "stein_jvp": false
+  },
+  "provenance": {
+    "protocol_commit": "9077f9b79c322348e9a39dfe8da9f9fc49b94083",
+    "implementation_commit": "3525da036594cd1c55baba69c68155d9942d724c",
+    "falsifier_commit": "ffb040cf196cb30c1422afe4b9b516e4701760ec",
+    "workflow_commit": "86060e6f77ef5a3a5eba1ee45cba0ec07ffa6e2d",
+    "source_blobs": {
+      "protocol": "091337a0ff2646edb61ed4f47b0e51ba410e52d6",
+      "method": "ec1430afc65b70515f433256e9c0fe9e8e2e2898",
+      "falsifier": "a34da5b4417f4ead041c1d67f200e7651cff3a44",
+      "workflow": "44e2ad5758968e350f4b0401e12fcaaadae79d1f"
+    }
+  },
+  "admission": {
+    "budget_flops": 2199023255552,
+    "utilization_cap": 0.13,
+    "inherited_base_flops_reference": 149114550960,
+    "inherited_base_utilization": 0.06780944702768466,
+    "overlay_flop_reserve": 50000000,
+    "pre_code_upper_flops": 149164550960,
+    "pre_code_upper_utilization": 0.06783218439522898,
+    "gate": true
+  },
+  "execution": {
+    "run": 35453189532,
+    "job": 105923800391,
+    "run_attempt": 1,
+    "head": "86060e6f77ef5a3a5eba1ee45cba0ec07ffa6e2d",
+    "conclusion": "success",
+    "artifact": {
+      "name": "post-e108-deep-jensen-variance",
+      "id": 10587716113,
+      "size_bytes": 1859,
+      "zip_sha256": "3468db2fa2cbcd7d9b5bda135e927f1dfb37482fd8ca0f34459366eb3ec486ea"
+    }
+  },
+  "frozen_instance": {
+    "width": 1024,
+    "depth": 16,
+    "trajectories": 4096,
+    "weight_seed": 110104,
+    "direction_seed": 110105,
+    "synthetic_production_shape_only": true
+  },
+  "measured": {
+    "risk_total": 0.000010065958522151702,
+    "risk_mean_state": 0.000010445338023599126,
+    "risk_deep_jensen": 0.0000012204218419225456,
+    "cross_term": -0.0000015998013433699715,
+    "deep_jensen_over_total": 0.12124248666799274,
+    "jensen_rms": 0.0011047270440803672,
+    "identity_block0_max_abs": 0,
+    "identity_block1_max_abs": 0,
+    "risk_recompose_abs": 1.6940658945086007e-21,
+    "final_recompose_max_abs": 0,
+    "antithetic_pair_max_abs": 0,
+    "deterministic_prediction_repeat_max_abs": 0,
+    "deterministic_scalar_decomposition": true,
+    "finite": true,
+    "overlay_flops": 25208840,
+    "overlay_utilization": 0.000011463653208920732,
+    "total_flops": 149139759800,
+    "total_utilization": 0.06782091068089358,
+    "exact_flop_reconciliation": true
+  },
+  "gates": {
+    "pre_code_admission_util_le_0_13": true,
+    "measured_complete_util_le_0_13": true,
+    "overlay_flops_le_50000000": true,
+    "exact_flop_reconciliation": true,
+    "finite": true,
+    "antithetic_exact": true,
+    "deterministic_replay": true,
+    "jensen_identity_exact": true,
+    "risk_decomposition_exact": true,
+    "material_deep_nonlinear_share_ge_0_10": true,
+    "no_targets_read": true
+  },
+  "interpretation": {
+    "result": "The realized final-layer Jensen residual is a measurable, target-free deep nonlinear variance component and accounts for 12.124248666799274% of the frozen two-Haar risk on the one authorized production-shape synthetic probe.",
+    "limitation": "This is a residual/variance diagnostic only. It does not by itself reduce the point-estimator risk or establish benchmark raw MSE <= 1.89e-8.",
+    "comparison_to_E108": "Disjoint from E108: no first-layer exact mean, no 0.5-Jacobian transport, and no fitted CV coefficient."
+  },
+  "scope": {
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "target_fitting": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "receipt_policy": "immutable one-shot receipt; no rerun/rescue under this frozen falsifier"
+}
