@@ -1,0 +1,33 @@
+name: E128 integrator guard
+
+on:
+  push:
+    branches:
+      - research/e128-owner-integrator-20260919
+    paths:
+      - '.github/workflows/e128-integrator-guard.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run sole E128 collision and ledger guard
+        run: python scripts/e128_integrator_guard.py
+      - name: Upload immutable E128 guard evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e128-integrator-guard
+          path: e128-integrator-guard.json
+          if-no-files-found: error
+          retention-days: 90
