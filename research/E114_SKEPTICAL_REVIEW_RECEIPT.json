@@ -1,0 +1,109 @@
+{
+  "schema": "arc.whitebox.e114.skeptical_review_receipt.v1",
+  "review": "E114",
+  "idempotency_key": "ARC-E114-SKEPTICAL-OUTPUT-BOUNDARY-RETENTION-20260919",
+  "branch": "review/e114-skeptical-output-boundaries-20260919",
+  "reviewed_parent": {
+    "branch": "research/e114-activation-boundary-flux-20260919",
+    "commit": "b9f64030f65da9b32fc7718d04fb108ee1a73dab"
+  },
+  "prior_dead_end_context": {
+    "E111": "Gaussian late-layer first-two-moment plug-in exact bias failure",
+    "E112": "exact activation-mask message passing structural explosion",
+    "E113": "partial gate conditioning remained biased or structurally brittle",
+    "skeptical_question": "does E114 merely move exact-state complexity into output-relevant boundary interfaces?"
+  },
+  "construction": {
+    "input_dimension": 2,
+    "depth": 4,
+    "max_width": 4,
+    "zero_bias": true,
+    "A_weights_xpos_xneg": [
+      1,
+      2
+    ],
+    "B_weights_ypos_yneg": [
+      3,
+      5
+    ],
+    "outer_c": 0.4,
+    "final_observable": "abs(abs(A-B) - (2/5)*(A+B))"
+  },
+  "lineage": {
+    "protocol_commit": "c2d8bcec630e553a2af792aa2e56c296a366bfff",
+    "implementation_commit": "9d29cd3b5111fea176bb7293a5b9bc20fe50aed6",
+    "workflow_commit": "547b3afdebd06acf905bad1d88baf71233603e47",
+    "engineering_fix_commit": "3deeab2fa78d325e58c9728fb9124e24e52a81c2"
+  },
+  "execution_history": {
+    "first_run": {
+      "run_id": 35456379768,
+      "job_id": 105932276893,
+      "conclusion": "failure_before_scientific_gates",
+      "blocker": "adjacent-angle validation used zip(..., strict=True) on intentionally unequal-length slices",
+      "scientific_result": null
+    },
+    "authoritative_run": {
+      "run_id": 35456401823,
+      "job_id": 105932338372,
+      "conclusion": "success",
+      "head_sha": "3deeab2fa78d325e58c9728fb9124e24e52a81c2",
+      "artifact_id": 10588307986,
+      "artifact_name": "e114-skeptical-boundary-retention",
+      "artifact_zip_sha256": "a83f63579ffb97176662697f2ecd65434ffd6db9f35619ce6c788bcb44a75c4a",
+      "artifact_size_bytes": 3007
+    }
+  },
+  "verified_metrics": {
+    "final_output_kink_count": 16,
+    "origin_layer_counts": {
+      "layer1": 4,
+      "layer2": 4,
+      "layer3": 8
+    },
+    "nonzero_output_flux_atoms": 16,
+    "output_boundary_retention_fraction": 1,
+    "distinct_jump_values_tol_1e_12": 14,
+    "boundary_normal_rank": 2,
+    "boundary_normal_max_pair_det": 1,
+    "direct_sector_max_abs": 6.661338147750939e-16,
+    "jump_sum": 6.219466354113746,
+    "analytic_sector_integral": 6.219466354113741,
+    "identity_abs_error": 5.329070518200751e-15,
+    "gaussian_mean_from_flux": 1.240604045095061,
+    "gaussian_mean_from_sectors": 1.24060404509506,
+    "deterministic_replay_exact": true
+  },
+  "verdict": {
+    "exactness": "VERIFIED_ON_ADVERSARIAL_CONSTRUCTED_NETWORK",
+    "output_specific_compression": "NAIVE_BOUNDARY_THINNING_OR_LOW_RANK_NORMAL_SUFFICIENCY_FALSIFIED_ON_CONSTRUCTED_NETWORK",
+    "e114_overall": "MATHEMATICAL_IDENTITY_SURVIVES_BUT_PRODUCTION_COMPRESSION_REMAINS_UNPROVEN",
+    "interpretation": "The scalar final observable retains all 16 geometrically predicted layer-1/2/3 boundaries with nonzero flux, including eight downstream layer-3 boundaries, while the entire boundary-normal set has rank 2. Thus scalar-output pruning and low normal rank do not by themselves yield a compact exact representation. This mirrors E112's structural lesson: exactness can preserve combinatorial state rather than eliminate it.",
+    "scope_limit": "This does not prove that every symbolic, aggregate, or problem-specific compression is impossible."
+  },
+  "evidence_status": {
+    "VERIFIED": [
+      "E114 flux identity on a new depth-4 width-4 asymmetric zero-bias network",
+      "16/16 final-output boundary retention",
+      "14 distinct jump values at 1e-12 tolerance",
+      "rank-2 boundary-normal span",
+      "deterministic replay",
+      "Actions artifact digest"
+    ],
+    "UNEXECUTED": [
+      "production width-1024/depth-16 boundary representation",
+      "any proposed aggregate/symbolic compression algorithm",
+      "public/benchmark/scorer/holdout/full"
+    ]
+  },
+  "safety": {
+    "target_free": true,
+    "targets_read": false,
+    "public_executed": false,
+    "benchmark_executed": false,
+    "scorer_executed": false,
+    "holdout_full_executed": false,
+    "canonical_mutation": false,
+    "ledger_mutation": false
+  }
+}
