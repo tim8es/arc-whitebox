@@ -1,0 +1,214 @@
+{
+  "schema": "arc.whitebox.e119.result_receipt.v1",
+  "experiment": "E119",
+  "idempotency_key": "ARC-E119-GENERIC-BOUNDARY-FLUX-CERT-20260919",
+  "status": "E119_GENERIC_BOUNDARY_FLUX_CERTIFICATE_GO",
+  "scientific_go": true,
+  "deployability_material_compression_go": false,
+  "production_scientific_go": false,
+  "competition_accuracy_claim": false,
+  "branch": "research/e119-generic-boundary-flux-certificate-20260919",
+  "provenance": {
+    "parent_e118_receipt_head": "5db88d151cef14fa32bfbc146188a0cdf10e0f4f",
+    "protocol_initial_commit": "cd52016d8313cda5456ea9978cf18d2fd2c916f5",
+    "protocol_frozen_commit": "4b7b8fa36e0d61ee45f172d1ab130825cb432e35",
+    "implementation_initial_commit": "03fafce1a09c1fa2c86a744afa6716091a8d24ae",
+    "implementation_frozen_commit": "3eadbd7bf1c8d0522868b0ebd9f7d81d6b710c18",
+    "tests_commit": "5f58ac2c1867eb836d2b4f53e2bf1437406e5033",
+    "harness_initial_commit": "44611bd9fcdda6bb3d529a29e4807dcf92feee9a",
+    "harness_frozen_commit": "e17ed9efd5d6352e193b9bb8540f3446248671ca",
+    "workflow_commit": "c8d382a30a7601ef888478da0dcd62d3a1f3a244",
+    "arm_commit": "d731e845c96d401ac001da82c8998c06a03ec484",
+    "result_commit": "9f1994a16526d76f55ee5e9bfb09e41786048c9e"
+  },
+  "generic_construction": {
+    "supported_input_dimension": 2,
+    "max_width": 8,
+    "max_depth": 4,
+    "fixture_specific_boundaries": false,
+    "fixture_specific_masks": false,
+    "weight_driven_region_splitting": true,
+    "observable": "c_j=(j+1)/sqrt(sum_{r=1}^n r^2)",
+    "exact_scalar_flux_mean": "sqrt(pi/2)/(2*pi) * sum scalar derivative jumps",
+    "frozen_layer_region_counts": {
+      "114200": [
+        17,
+        33,
+        47,
+        55
+      ],
+      "114201": [
+        17,
+        31,
+        47,
+        61
+      ],
+      "114202": [
+        17,
+        37,
+        53,
+        83
+      ],
+      "114203": [
+        17,
+        35,
+        45,
+        55
+      ]
+    },
+    "final_region_counts": [
+      55,
+      61,
+      83,
+      55
+    ],
+    "exact_reference_final_region_counts": [
+      55,
+      61,
+      83,
+      55
+    ],
+    "max_boundary_angle_wrapped_error": 0,
+    "max_scalar_jump_abs_error": 4.440892098500626e-16,
+    "max_full_mean_abs_error": 2.220446049250313e-16,
+    "max_reference_flux_identity_abs_error": 1.1102230246251565e-16,
+    "deterministic_replay_max_abs": 0
+  },
+  "omitted_flux_certificate": {
+    "raw_mse_gate": 1.89e-8,
+    "absolute_mean_gate": 0.0001374772708486752,
+    "gaussian_flux_factor": 0.19947114020071632,
+    "omitted_flux_l1_budget": 0.000689208828456787,
+    "rule": "omit longest deterministic ascending-|jump| prefix with cumulative absolute scalar flux <= omitted_flux_l1_budget",
+    "certificate": "B_abs = gaussian_flux_factor * sum_abs(omitted_scalar_jumps)",
+    "retained_atom_counts": [
+      54,
+      60,
+      82,
+      54
+    ],
+    "omitted_atom_counts": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "retained_fractions": [
+      0.9818181818181818,
+      0.9836065573770492,
+      0.9879518072289156,
+      0.9818181818181818
+    ],
+    "omitted_abs_flux_sum": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "absolute_remainder_certificate": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "certificate_squared": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "compressed_exact_bias_mse": [
+      4.930380657631324e-32,
+      0,
+      4.930380657631324e-32,
+      0
+    ],
+    "next_smallest_nonzero_atom_abs": [
+      0.009142560506137522,
+      0.0008991440333659011,
+      0.003739433377093484,
+      0.0007752215692883401
+    ],
+    "l1_minimal_under_certificate_all": true,
+    "interpretation": "The rigorous certificate omits only the periodic zero-flux atom on every frozen network. No nonzero atom can be omitted within the frozen L1 budget."
+  },
+  "accounting": {
+    "flopscope_budget_context_used": true,
+    "max_actual_flopscope_dense_flops": 51456,
+    "max_manual_geometry_flop_equivalent": 53816,
+    "max_all_in_accounted_flops": 105272,
+    "max_all_in_utilization_vs_2pow41": 4.787216312251985e-8,
+    "flopscope_exact_reconciliation_all": true,
+    "manual_geometry_ledger_deterministic": true,
+    "charge_schedule": [
+      "root solve candidate: 32",
+      "midpoint sin/cos pair: 32",
+      "midpoint row sign: 4 per neuron",
+      "coefficient mask application: 2 per neuron coefficient",
+      "boundary tangent sin/cos pair: 32",
+      "scalar jump row evaluation: 5 per output coordinate plus 4",
+      "sort comparison equivalent: 8*N*ceil(log2(max(N,2)))",
+      "omission/certificate arithmetic: 6 per boundary"
+    ]
+  },
+  "execution": {
+    "run": 35458020001,
+    "job": 105936659806,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "focused_tests": "3 passed in 0.37s",
+    "exactly_one_workflow_run_for_arm_head": true,
+    "rerun": false,
+    "artifact": {
+      "name": "e119-generic-boundary-flux-certificate",
+      "id": 10589345345,
+      "size_bytes": 6954,
+      "zip_sha256": "7485a4380bca0175197afeb327aed9abeb2f5d14ca335cdff6571ad0c7ed78e3",
+      "expires_at": "2026-12-18T17:24:58Z"
+    }
+  },
+  "gates": {
+    "generic_finite_all": true,
+    "partition_complete_ordered_all": true,
+    "final_region_count_matches_reference_all": true,
+    "boundary_count_matches_reference_all": true,
+    "boundary_angle_error_le_1e_10": true,
+    "scalar_jump_error_le_1e_10": true,
+    "generic_full_mean_error_le_1e_10": true,
+    "reference_flux_identity_le_1e_10": true,
+    "deterministic_replay_max_abs_eq_0": true,
+    "certificate_contains_omission_all": true,
+    "certificate_squared_le_1_89e_8_all": true,
+    "compressed_exact_bias_mse_le_1_89e_8_all": true,
+    "l1_minimal_under_certificate_all": true,
+    "flopscope_dense_reconciliation_all": true,
+    "manual_geometry_ledger_deterministic": true,
+    "all_in_cost_deterministic": true,
+    "no_targets_public_scorer_holdout_full": true
+  },
+  "interpretation": {
+    "frozen_verdict": "GENERIC_CONSTRUCTION_AND_RIGOROUS_REMAINDER_CERTIFICATE_VERIFIED",
+    "material_compression_verdict": "NOT_ESTABLISHED",
+    "primary_positive_result": "E118/E114 activation-boundary flux is now constructed mechanically from arbitrary supported weights/regions and exactly matches the independent E114 reference on the frozen corpus.",
+    "primary_blocker": "The triangle-inequality omitted-flux certificate is too conservative to remove any nonzero boundary atom on the frozen corpus; 98.18%-98.80% of atoms remain.",
+    "production_implication": "No production/benchmark execution is authorized. Generic exact construction is verified only for input dimension 2, width<=8, depth<=4."
+  },
+  "scope": {
+    "target_free": true,
+    "width_le_8_depth_le_4_only": true,
+    "production_scientific_run": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
