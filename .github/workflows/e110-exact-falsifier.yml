@@ -1,0 +1,39 @@
+name: E110 exact deep-harmonic falsifier
+
+on:
+  push:
+    branches:
+      - research/e110-deep-jacobian-fourth-harmonic-20260919
+    paths:
+      - 'methods/e110_deep_harmonic.py'
+      - 'tests/test_e110_deep_harmonic.py'
+      - 'scripts/e110_exact_falsifier.py'
+      - '.github/workflows/e110-exact-falsifier.yml'
+
+jobs:
+  exact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E110 exact tests
+        run: python -m pytest -q tests/test_e110_deep_harmonic.py
+      - name: Run sole E110 exact falsifier
+        run: python scripts/e110_exact_falsifier.py
+      - name: Upload E110 exact payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: e110-exact-falsifier
+          path: e110-exact-falsifier.json
+          if-no-files-found: error
+          retention-days: 90
