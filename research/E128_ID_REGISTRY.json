@@ -1,0 +1,94 @@
+{
+  "schema": "arc.whitebox.e128.id_registry.v1",
+  "experiment": "E128",
+  "canonical_base": {
+    "branch": "research/bootstrap",
+    "head": "29bee3f8d23fc620b77aaed414b1b7a928af4b83",
+    "ledger": "research/ledger.csv"
+  },
+  "discovery_scope": "live GitHub branch search in tim8es/arc-whitebox during E128 initialization",
+  "ids": {
+    "E121": {
+      "status": "RESERVED_UNCLAIMED",
+      "observed_claiming_branches": [],
+      "authoritative_branch": null,
+      "protocol": null,
+      "receipt": null,
+      "run": null,
+      "decision": null,
+      "canonical_ledger_integrated": false,
+      "next_action": "Await first evidence-bearing owner branch; collision-check before classification."
+    },
+    "E122": {
+      "status": "RESERVED_UNCLAIMED",
+      "observed_claiming_branches": [],
+      "authoritative_branch": null,
+      "protocol": null,
+      "receipt": null,
+      "run": null,
+      "decision": null,
+      "canonical_ledger_integrated": false,
+      "next_action": "Await first evidence-bearing owner branch; collision-check before classification."
+    },
+    "E123": {
+      "status": "RESERVED_UNCLAIMED",
+      "observed_claiming_branches": [],
+      "authoritative_branch": null,
+      "protocol": null,
+      "receipt": null,
+      "run": null,
+      "decision": null,
+      "canonical_ledger_integrated": false,
+      "next_action": "Await first evidence-bearing owner branch; collision-check before classification."
+    },
+    "E124": {
+      "status": "RESERVED_UNCLAIMED",
+      "observed_claiming_branches": [],
+      "authoritative_branch": null,
+      "protocol": null,
+      "receipt": null,
+      "run": null,
+      "decision": null,
+      "canonical_ledger_integrated": false,
+      "next_action": "Await first evidence-bearing owner branch; collision-check before classification."
+    },
+    "E125": {
+      "status": "RESERVED_UNCLAIMED",
+      "observed_claiming_branches": [],
+      "authoritative_branch": null,
+      "protocol": null,
+      "receipt": null,
+      "run": null,
+      "decision": null,
+      "canonical_ledger_integrated": false,
+      "next_action": "Await first evidence-bearing owner branch; collision-check before classification."
+    },
+    "E126": {
+      "status": "RESERVED_UNCLAIMED",
+      "observed_claiming_branches": [],
+      "authoritative_branch": null,
+      "protocol": null,
+      "receipt": null,
+      "run": null,
+      "decision": null,
+      "canonical_ledger_integrated": false,
+      "next_action": "Await first evidence-bearing owner branch; collision-check before classification."
+    },
+    "E127": {
+      "status": "RESERVED_UNCLAIMED",
+      "observed_claiming_branches": [],
+      "authoritative_branch": null,
+      "protocol": null,
+      "receipt": null,
+      "run": null,
+      "decision": null,
+      "canonical_ledger_integrated": false,
+      "next_action": "Await first evidence-bearing owner branch; collision-check before classification."
+    }
+  },
+  "collision_count": 0,
+  "runless_claims_integrated": 0,
+  "target_leakage_claims_integrated": 0,
+  "canonical_rows_added_for_e121_e127": 0,
+  "note": "No scientific result is inferred from absence of branches. Registry records only current occupancy."
+}
