@@ -34,17 +34,9 @@ jobs:
           if arm.get("idempotency_key") != key or arm.get("execute_once") is not True:
               raise SystemExit("invalid E104 benchmark arm marker")
 
-          auth_commit = str(arm.get("authorization_commit", ""))
-          if len(auth_commit) != 40:
-              raise SystemExit("invalid authorization commit SHA")
-
-          parent = subprocess.check_output(
+          auth_commit = subprocess.check_output(
               ["git", "rev-parse", "HEAD^"], text=True
           ).strip()
-          if parent != auth_commit:
-              raise SystemExit(
-                  f"arm commit parent {parent} != authorization commit {auth_commit}"
-              )
 
           prior = subprocess.run(
               ["git", "cat-file", "-e", "HEAD^:research/E104_BENCHMARK_RUN_ARM.json"],
@@ -73,6 +65,8 @@ jobs:
               raise SystemExit("authorization receipt idempotency mismatch")
           if receipt.get("status") != "AUTHORIZED_NOT_EXECUTED":
               raise SystemExit("authorization receipt is not in AUTHORIZED_NOT_EXECUTED state")
+          if receipt.get("one_shot", {}).get("arm_must_be_immediate_child_of_receipt") is not True:
+              raise SystemExit("authorization receipt does not require immediate-child arm")
           action = receipt.get("authorized_action", {})
           expected = {
               "dataset": "aicrowd/arc-whestbench-public-2026",
@@ -84,7 +78,7 @@ jobs:
           for k, v in expected.items():
               if action.get(k) != v:
                   raise SystemExit(f"authorization mismatch for {k}: {action.get(k)!r}")
-          print("E104_AUTHORIZATION_VERIFIED=1")
+          print("E104_AUTHORIZATION_VERIFIED=" + auth_commit)
           PY
 
       - uses: actions/setup-python@v5
