@@ -1,0 +1,75 @@
+name: E114 exact output-compression reference
+
+on:
+  push:
+    branches:
+      - research/e114-exact-reference-output-compression-20260919
+    paths:
+      - 'research/E114_EXACT_REFERENCE_RUN_ARM.json'
+
+jobs:
+  reference:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen one-shot arm
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-E114-EXACT-REFERENCE-OUTPUT-COMPRESSION-20260919",
+              "execute_once": True,
+          }
+          arm = json.loads(Path("research/E114_EXACT_REFERENCE_RUN_ARM.json").read_text())
+          if arm != expected:
+              raise SystemExit(f"invalid E114 exact-reference arm: {arm!r}")
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E114_EXACT_REFERENCE_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen dependencies
+        run: python -m pip install -e .
+
+      - name: Syntax check reusable reference
+        run: |
+          python -m py_compile methods/e114_exact_angular_reference.py
+          python -m py_compile scripts/e114_exact_reference_output_compression.py
+
+      - name: Focused exact-reference tests
+        run: pytest -q tests/test_e114_exact_angular_reference.py
+
+      - name: Run sole frozen exact reference
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e114_exact_reference_output_compression.py 2>&1 | tee e114-exact-reference-output-compression.log
+
+      - name: Upload immutable exact-reference evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e114-exact-reference-output-compression
+          path: |
+            e114-exact-reference-output-compression.log
+            e114-exact-reference-output-compression.json
+            research/E114_EXACT_REFERENCE_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
