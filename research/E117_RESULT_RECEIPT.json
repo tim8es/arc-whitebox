@@ -1,0 +1,74 @@
+{
+  "schema": "arc.whitebox.e117.result_receipt.v1",
+  "experiment": "E117",
+  "identity": "ARC-E117-SCALAR-OBSERVABLE-ADJOINT-FLUX-20260919",
+  "branch": "research/e117-scalar-observable-adjoint-flux-20260919",
+  "status": "EXACT_POSITIVE_SCALAR_OBSERVABLE_CONDITIONAL_TRANSPORT_VERIFIED",
+  "scientific_go": true,
+  "production_go": false,
+  "competition_accuracy_claim": false,
+  "provenance": {
+    "parent_e114_receipt_commit": "b9f64030f65da9b32fc7718d04fb108ee1a73dab",
+    "protocol_commit": "299231c3ddca1025fc5db7c5404d04dc2aed0aae",
+    "executable_commit": "1bda8fd0133015009a1637b16588e1a764ea700e",
+    "workflow_commit": "bff728f38fb006674f4fd3558bf8ab6d3760ae39",
+    "result_commit": "9c9de0df2b57306766168c7f93c4bf09f9bbbfd7",
+    "run": 35456272279,
+    "job": 105931983784,
+    "artifact_id": 10587968246,
+    "artifact_name": "e117-scalar-observable-adjoint-flux",
+    "artifact_sha256": "29857a2c2ab1001d7c4952601a3b1e2a5476623da0b4a0dad16a5ee129023f1e",
+    "artifact_size_bytes": 1156
+  },
+  "exact_identity": {
+    "local_gradient_jump": "grad F_active - grad F_inactive = lambda_g * a_g",
+    "scalar_flux": "J_Gamma = lambda_g * ||a_g||",
+    "global_gaussian_expectation": "E[F(X)] = E[R]/(|S^{d-1}|(d-1)) * sum_Gamma integral_Gamma lambda_Gamma ||grad_x z_Gamma|| d sigma",
+    "scalar_final_observable_only": true,
+    "full_vector_output_closure_required": false
+  },
+  "fixture_measurements": {
+    "facet_1": {
+      "a": ["1","0"],
+      "lambda": "1",
+      "full_gradient_jump": ["1","0"],
+      "factored_gradient_jump": ["1","0"],
+      "scalar_flux": 1.0
+    },
+    "facet_2": {
+      "a": ["0","1"],
+      "lambda": "-4",
+      "full_gradient_jump": ["0","-4"],
+      "factored_gradient_jump": ["0","-4"],
+      "scalar_flux": -4.0
+    },
+    "facet_3": {
+      "a": ["1","-4"],
+      "lambda": "1",
+      "full_gradient_jump": ["1","-4"],
+      "factored_gradient_jump": ["1","-4"],
+      "scalar_flux": 4.123105625617661
+    },
+    "max_flux_abs_error": 0.0,
+    "scalar_flux_sum": 1.1231056256176606,
+    "closed_form_flux_sum": "sqrt(17)-3",
+    "gaussian_expectation_from_scalar_flux": 0.22402715970779358,
+    "gaussian_expectation_closed_form": 0.22402715970779363,
+    "deterministic_repeat_exact": true
+  },
+  "scope": {
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "monte_carlo": false,
+    "numerical_quadrature": false,
+    "production_run": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "next_blocker": "compressibility of downstream-mask-refined boundary cells into a small number of distinct output-specific signatures (a_g, lambda_g)"
+}
