@@ -1,0 +1,39 @@
+name: E117 rigorous Schur certificate
+
+on:
+  push:
+    branches:
+      - research/e117-lipschitz-schur-certified-tail-20260919
+    paths:
+      - '.github/workflows/e117-schur-certificate.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  proof:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen project dependencies
+        run: python -m pip install -e .
+      - name: Run sole E117 proof checker
+        run: python scripts/e117_schur_certificate.py
+      - name: Upload immutable E117 proof evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e117-schur-certificate
+          path: e117-schur-certificate.json
+          if-no-files-found: error
+          retention-days: 90
