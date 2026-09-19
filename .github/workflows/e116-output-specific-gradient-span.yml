@@ -1,0 +1,40 @@
+name: E116 output-specific gradient-span falsifier
+
+on:
+  push:
+    branches:
+      - research/e116-output-specific-gradient-span-20260919
+    paths:
+      - 'methods/e116_output_specific_transport.py'
+      - 'tests/test_e116_output_specific_transport.py'
+      - 'scripts/e116_output_specific_transport.py'
+      - '.github/workflows/e116-output-specific-gradient-span.yml'
+
+jobs:
+  e116:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E116 tests
+        run: python -m pytest -q tests/test_e116_output_specific_transport.py
+      - name: Run sole frozen E116 exact falsifier
+        run: python scripts/e116_output_specific_transport.py
+      - name: Upload immutable E116 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e116-output-specific-gradient-span
+          path: e116-output-specific-gradient-span.json
+          if-no-files-found: error
+          retention-days: 90
