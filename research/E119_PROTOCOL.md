@@ -156,6 +156,7 @@ The manual ledger uses fixed frozen charges:
 - root solve candidate: 32 FLOP-equivalent;
 - midpoint sin/cos pair: 32;
 - midpoint row sign: 4 per neuron;
+- coefficient mask application: 2 per neuron coefficient (two angular coefficients);
 - boundary tangent sin/cos pair: 32;
 - scalar jump row evaluation: 5 per output coordinate plus 4;
 - sort comparison equivalent: conservative `8*N*ceil(log2(max(N,2)))`;
