@@ -242,7 +242,7 @@ Conservative:
 
 Against `B=2^41=2,199,023,255,552`:
 
-`util <= 0.12513948045670986`.
+`util <= 0.12513948092237115`.
 
 The `0.13B` cap is `285,873,023,221.76`, leaving at least
 `10,688,394,485.76` FLOPs of frozen slack.
