@@ -1,0 +1,172 @@
+{
+  "schema": "arc.whitebox.e112.terminal_receipt.v1",
+  "experiment": "E112",
+  "idempotency_key": "ARC-E112-CUMULANT-JOINTLAW-20260919",
+  "status": "TERMINAL_NO_GO_DROP",
+  "scientific_go": false,
+  "branch": "research/e112-cumulant-jointlaw-20260919",
+  "provenance": {
+    "parent_e111_terminal_head": "9d0dcc429fc4b62a6607ea28c97fbb44327dbaf2",
+    "protocol_freeze_commit": "91f47f246c6abce34ad5aef42895d7a8a05690d9",
+    "protocol_arithmetic_correction_commit": "2875ae1b7d16d6b912b222b2d06c14934a54af3e",
+    "implementation_commit": "421ab39cf8d2bf878d802624c91008246c82ab77",
+    "workflow_commit": "21af36019076c4add11829c4225d8a4cd51c9edc",
+    "arm_commit": "0feffc6a57457e7a0b94174139458bcc17b71356",
+    "result_commit": "58746f56f8f790c6c11caf84e7eab8835ef37f9a"
+  },
+  "mechanism": {
+    "name": "factorized fourth-cumulant joint-CGF closure",
+    "representation": "post-ReLU product of non-Gaussian marginals carrying cumulants kappa1..kappa4",
+    "joint_linear_law": "K_z(t)=sum_i K_i((W t)_i), exact cumulant convolution through order four under the frozen factorized-source ansatz",
+    "relu_transform": "analytic second-order Edgeworth/Hermite positive-part raw moments p=1..4",
+    "closure_step": "convert raw moments back to cumulants and refactorize post-ReLU coordinates",
+    "gaussian_plugin": false,
+    "stein_or_jvp": false,
+    "first_layer_control": false,
+    "qmc_or_cubature": false,
+    "latent_mixture": false,
+    "haar_or_rao_blackwell": false,
+    "e091_reused": false,
+    "e100_reused": false,
+    "target_free": true
+  },
+  "exact_falsifier": {
+    "latent_gaussian_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "zero_bias": true,
+    "weight_seed": 111111,
+    "reference": "recursive exact angular-sector integration; analytic Rayleigh radial moments p=1..4; exact pair-product covariance integration",
+    "monte_carlo": false,
+    "numerical_quadrature": false,
+    "final_interval_count": 91,
+    "exact_reference_repeat_max_abs": 0,
+    "closure_repeat_max_abs": 0
+  },
+  "joint_law_diagnostic": {
+    "exact_layer_offdiag_cov_rms": [
+      0.14817407919653816,
+      0.07758978031131109,
+      0.027408636712609007,
+      0.007907209362973842
+    ],
+    "exact_layer_offdiag_cov_max_abs": [
+      0.47393835093714576,
+      0.3193293345217606,
+      0.15326296137900922,
+      0.03930782543999707
+    ],
+    "closure_post_relu_offdiag_covariance": "forced_to_zero_by_refactorization",
+    "interpretation": "exact reference contains substantial post-ReLU joint dependence that the frozen closure discards"
+  },
+  "measured_science": {
+    "layer_mean_bias_mse": [
+      2.4314865547888853e-33,
+      0.008172662030772975,
+      0.0125910790455065,
+      0.004138954933770478
+    ],
+    "layer_mean_bias_max_abs": [
+      1.1102230246251565e-16,
+      0.1523136208216579,
+      0.2850177850726481,
+      0.17098595063388178
+    ],
+    "negative_relu_mean_counts": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "negative_relu_variance_counts": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "predicted_variance_min": [
+      0.020292012361871538,
+      0.0010939319077548325,
+      -0.004512970521328679,
+      -0.068569750723808
+    ],
+    "final_layer_mean_bias_mse": 0.004138954933770478,
+    "raw_target_scale": 1.89e-8,
+    "final_bias_over_raw_target": 218992.3245381205,
+    "e111_gaussian_plugin_final_bias_mse": 0.0016698051697168073,
+    "final_bias_over_e111_gaussian_plugin": 2.4787053057647612
+  },
+  "budget_admission": {
+    "width": 1024,
+    "depth": 16,
+    "budget_flops": 2199023255552,
+    "utilization_cap": 0.13,
+    "dense_core_formula": "11 * 16 * 1024^2",
+    "dense_core_flops_correct": 184549376,
+    "nonlinear_and_helper_reserve_flops": 5000000000,
+    "production_upper_flops": 5184549376,
+    "production_upper_utilization": 0.0023576600942760706,
+    "pass": true,
+    "executed_json_diagnostic_bug": {
+      "field": "budget_admission.dense_core_flops",
+      "recorded_value": 46137344,
+      "cause": "display field reused small-falsifier DEPTH=4 constant",
+      "gate_impact": false,
+      "correction": "the preregistered/gate-driving production_upper_flops already contains the correct 16-layer dense core of 184549376 FLOPs",
+      "rerun_performed": false
+    }
+  },
+  "execution": {
+    "run": 35455150908,
+    "job": 105929003614,
+    "run_attempt": 1,
+    "workflow_conclusion": "success",
+    "exactly_one_workflow_run_for_arm_head": true,
+    "rerun": false,
+    "artifact": {
+      "name": "e112-cumulant-jointlaw",
+      "id": 10588441092,
+      "size_bytes": 3729,
+      "zip_sha256": "61cdcf57a364f1a30b38e290dc188d19ddd7fdcd1b179214e1723aa9e2d5be3d",
+      "expires_at": "2026-12-18T16:30:05Z"
+    }
+  },
+  "gates": {
+    "budget_upper_util_le_0_13": true,
+    "exact_reference_finite": true,
+    "exact_reference_deterministic": true,
+    "closure_deterministic": true,
+    "closure_finite_all_layers": true,
+    "first_layer_mean_mse_le_1e_24": true,
+    "all_predicted_relu_means_nonnegative": false,
+    "all_predicted_relu_variances_nonnegative": false,
+    "every_layer_mean_bias_mse_le_1_89e_8": false,
+    "final_layer_mean_bias_mse_le_1_89e_8": false,
+    "final_bias_improves_e111_gaussian_plugin": false,
+    "no_targets_read": true
+  },
+  "interpretation": {
+    "primary_blocker": "post-ReLU refactorization discards large exact joint dependencies; the fourth-cumulant Edgeworth signed-density closure becomes non-physical by layer 3",
+    "secondary_blocker": "final mean-bias MSE is 2.4787x worse than the already-failed E111 Gaussian plug-in and 2.1899e5x the raw target scale",
+    "cost_blocker": false,
+    "terminal_rule": "no clipping, moment repair, variance flooring, higher Edgeworth order, dependence patch, fixture/seed change, tuning, rescue, or rerun"
+  },
+  "verdict": "TERMINAL_NO_GO_DROP",
+  "scope": {
+    "synthetic_small_exact_only": true,
+    "production_scientific_run": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "benchmark_targets": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
