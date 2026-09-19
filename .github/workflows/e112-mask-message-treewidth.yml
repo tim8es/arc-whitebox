@@ -1,0 +1,39 @@
+name: E112 exact mask-message treewidth falsifier
+
+on:
+  push:
+    branches:
+      - research/e112-exact-mask-message-treewidth-20260919
+    paths:
+      - 'methods/e112_mask_message_treewidth.py'
+      - 'tests/test_e112_mask_message_treewidth.py'
+      - 'scripts/e112_mask_message_treewidth.py'
+      - '.github/workflows/e112-mask-message-treewidth.yml'
+
+jobs:
+  structural:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E112 tests
+        run: python -m pytest -q tests/test_e112_mask_message_treewidth.py
+      - name: Run sole E112 structural falsifier
+        run: python scripts/e112_mask_message_treewidth.py
+      - name: Upload E112 structural payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: e112-mask-message-treewidth
+          path: e112-mask-message-treewidth.json
+          if-no-files-found: error
+          retention-days: 90
