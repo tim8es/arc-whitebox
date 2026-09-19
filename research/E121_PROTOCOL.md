@@ -104,6 +104,7 @@ Production-shaped estimator constants are frozen before code:
 - float32 network propagation, float64 reduction;
 - PCG64 frame generation;
 - modified Gram-Schmidt two-frame construction;
+- falsifier propagation is float64 to compare against the exact float64 reference; the production cost projection keeps the frozen float32 propagation law;
 - no antithetic add-on: the even cyclic orbit already contains
   `theta+pi`.
 
