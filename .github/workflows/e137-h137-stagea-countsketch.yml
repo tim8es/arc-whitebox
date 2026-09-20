@@ -1,0 +1,43 @@
+name: E137 H137 Stage-A CountSketch falsifier
+
+on:
+  push:
+    branches:
+      - research/e137-mit-v25-v29-improvement-scout-20260921
+    paths:
+      - 'vendor/e137_estimator_v25_pinned.py'
+      - 'methods/e137_h137_countsketch.py'
+      - 'tests/test_e137_h137_countsketch.py'
+      - 'scripts/e137_h137_stagea_countsketch.py'
+      - '.github/workflows/e137-h137-stagea-countsketch.yml'
+
+jobs:
+  stagea:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Phase-2 grader-compatible dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "flopscope==0.12.0" "whestbench==0.16.0" "pytest>=8.2,<9"
+      - name: Run focused H137 tests
+        run: python -m pytest -q tests/test_e137_h137_countsketch.py
+      - name: Run sole target-free H137 Stage-A falsifier
+        run: python scripts/e137_h137_stagea_countsketch.py
+      - name: Upload Stage-A receipt payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: e137-h137-stagea-countsketch
+          path: e137-h137-stagea-countsketch.json
+          if-no-files-found: error
+          retention-days: 90
