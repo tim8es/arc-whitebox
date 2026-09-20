@@ -1,0 +1,102 @@
+{
+  "schema": "arc.whitebox.e139.h137_independent_verifier_receipt.v1",
+  "experiment": "E139",
+  "role": "H137 independent verifier",
+  "branch": "review/e139-h137-independent-verifier-20260921",
+  "verified_owner_branch": "research/e137-mit-v25-v29-improvement-scout-20260921",
+  "verified_owner_head": "e9b63b96ad7bd58660e321c1ca25e7f9bdfcd1c0",
+  "h137_identity": "ARC-E137-H137-STAGEA-COUNTSKETCH-S512-20260921",
+  "status": "INDEPENDENT_VERIFIER_TERMINAL_NO_GO_UNEVALUABLE_SCIENTIFIC_GATES",
+  "scientific_go": false,
+  "verifier_run_executed": false,
+  "rescue_executed": false,
+  "canonical_mutated": false,
+  "ledger_mutated": false,
+  "owner_provenance": {
+    "stagea_protocol_commit": "ce5a217eca58e8608d824c7f5ef82dab6097e98a",
+    "pinned_v25_vendor_commit": "3ff7fa9b8bf6abcc22b6bd1391a9be219f4495df",
+    "countsketch_helper_commit": "01f4987c62d1a015236522ddc46e498383706f52",
+    "focused_tests_commit": "a973b20ecc6af590f6f6076da816650dc2f183a6",
+    "falsifier_commit": "dea40e2f7d7709959297e56eeae6529f66d99d67",
+    "workflow_head": "eb21ee6bb5838255293d1b8a7ae48b1aa7b20569",
+    "owner_terminal_receipt_commit": "e9b63b96ad7bd58660e321c1ca25e7f9bdfcd1c0",
+    "pinned_public_v25_blob": "195373a110215256b759d7c172ba8c923c62e5cc"
+  },
+  "owner_execution": {
+    "run_id": 35544178486,
+    "job_id": 106167052999,
+    "run_attempt": 1,
+    "run_conclusion": "failure",
+    "focused_tests": "5 passed in 0.15s",
+    "scientific_falsifier_started": false,
+    "failure": "ModuleNotFoundError: No module named 'methods'",
+    "failure_location": "scripts/e137_h137_stagea_countsketch.py:15 during module import",
+    "artifact_uploaded": false,
+    "rerun": false
+  },
+  "independent_gate_audit": {
+    "target_free_d21_relative_error_le_0_022": {
+      "status": "UNEVALUATED",
+      "observed_value": null,
+      "reason": "The scientific falsifier failed during import before either frozen MLP was built, before old-tier operands were captured, and before any D21 exact/sketched comparison was computed."
+    },
+    "deterministic_replay": {
+      "status": "UNEVALUATED",
+      "observed_value": null,
+      "reason": "The scripted two-pass JSON comparison was never reached."
+    },
+    "full_all_in_flops": {
+      "status": "UNEVALUATED",
+      "observed_candidate_all_in_flops": null,
+      "observed_baseline_all_in_flops": null,
+      "reason": "The run never entered the V25 flopscope execution, so neither measured full V25 FLOPs nor the projected all-in H137 replacement cost exists as run evidence.",
+      "static_formula_audit": "CONSISTENT_WITH_PROTOCOL_ONLY",
+      "formula": "F_H137 = F_V25_measured - measured_exact_old_contract_flops + countsketch_old_contract_upper_flops",
+      "static_limitation": "Without the failed run's missing measured baseline/namespace values, the all-in numeric gate cannot be independently certified."
+    },
+    "no_removed_columns": {
+      "status": "VERIFIED_STATIC",
+      "reason": "balanced_countsketch_plan uses PCG64 permutation(n).reshape(s,2) with frozen n=1024,s=512; permutation is a bijection, so every original hub column appears exactly once in exactly one bucket. sketch_last_axis sums both signed columns of every pair. No slice/drop/pruning path exists in the CountSketch helper.",
+      "focused_test_support": "test_balanced_plan_is_deterministic_and_uses_every_column_once passed in the owner run's 5-test suite.",
+      "runtime_1024_materialization_observed": false
+    },
+    "no_target_reference_leakage": {
+      "status": "VERIFIED_STATIC_AND_EXECUTION_PREFIX",
+      "reason": "The Stage-A script constructs only synthetic PCG64 weights, reads the vendored pinned V25 source, hashes prediction bytes without scoring, and contains no target/reference/scorer loader. The failure occurred before synthetic MLP construction or estimator execution. The owner receipt also records no benchmark/public/scorer/holdout/full access.",
+      "final_mse_validation_performed": false
+    },
+    "pinned_v25_identity": {
+      "status": "UNEVALUATED_AT_RUNTIME",
+      "expected_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "static_vendor_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "reason": "The vendored file at the scientific head has the expected Git blob, but the runtime verifier that recomputes the blob was not reached."
+    },
+    "exact_v25_state_evolution_preserved_by_patch": {
+      "status": "VERIFIED_STATIC",
+      "reason": "The patch replaces four exact old-tier einsums with the same einsum wrapped in a flops namespace, calls H137 capture only as a diagnostic side channel, and leaves D21 = inner @ Qc.T on the exact inner path. Sketched products do not feed V25 state evolution in Stage A."
+    }
+  },
+  "verdict": {
+    "decision": "H137_S512_INDEPENDENT_VERIFIER_NO_GO_UNDER_FROZEN_PROTOCOL",
+    "basis": "The frozen H137 protocol declares any failed or unevaluable gate terminal NO-GO. The sole authorized run failed before scientific execution, so the required <=2.2% D21 error, deterministic replay, and full all-in FLOP gates are not observed and cannot be promoted to PASS. Static audit verifies no removed columns and no target/reference leakage, but these do not rescue the missing scientific gates.",
+    "numeric_countsketch_accuracy_claim": false,
+    "final_mse_validation_authorized": false
+  },
+  "scope": {
+    "append_only_receipt": true,
+    "new_scientific_run": false,
+    "rerun": false,
+    "rescue": false,
+    "sketch_width_change": false,
+    "seed_change": false,
+    "final_mse_validation": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
