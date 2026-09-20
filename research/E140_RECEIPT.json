@@ -7,14 +7,15 @@
   "parent": "research/e137-mit-v25-v29-improvement-scout-20260921",
   "protocol": {
     "path": "research/E140_PROTOCOL.md",
-    "commit": "308ade13e061f7313f8d0bec20d051649479a089",
-    "blob": "52b81f1793b570c2b76d21b4fca9e89ff0a1eef5"
+    "commit": "1306557350c91db4101d3d1ed3168e6eba59cb20",
+    "blob": "9394e855982c26b0336737cd65b62c6e9b121132",
+    "original_freeze_commit": "308ade13e061f7313f8d0bec20d051649479a089"
   },
   "note": {
     "path": "research/E140_PRIMARY_SOURCE_NOTE.md",
-    "commit": "d4b13ddff92326cdd3110c86b4065a58035b7ebe",
+    "commit": "7e686647c12617a336fb614f015ab31b166aa00e",
     "substantive_first_commit": "12e2189b2bbb0ef33bbbd8ac6955ad57a64a25a0",
-    "blob": "a06903908f8fdfc33a2c7b6098d17d4ab5179c0b"
+    "blob": "89e383acfd1f59ffd1cd743927336389c974a475"
   },
   "primary_sources": {
     "arc": [
@@ -143,7 +144,8 @@
       "deterministic_replay": true,
       "finite": true
     },
-    "failure_policy": "Any failed or unevaluable gate => terminal NO-GO for H140 rank-4 SMV; no rank sweep/rescue/seed replacement."
+    "failure_policy": "Any failed or unevaluable gate => terminal NO-GO for H140 rank-4 SMV; no rank sweep/rescue/seed replacement.",
+    "compression": "top-4 SVD of mode-3 unfolding K_(12),3; reshape left singular vectors to symmetric R_a; orthogonally symmetrize reconstruction"
   },
   "overlap_audit": {
     "e124": "disjoint: no pair-tree/Chow-Liu or Walsh-coset pair closure",
