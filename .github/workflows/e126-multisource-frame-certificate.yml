@@ -1,0 +1,46 @@
+name: E126 multisource frame certificate
+
+on:
+  push:
+    branches:
+      - research/e126-multisource-frame-certificate-20260920
+    paths:
+      - 'research/E126_PROTOCOL.md'
+      - 'methods/e126_frame_certificate.py'
+      - 'methods/e126_adversarial_fixture.py'
+      - 'tests/test_e126_frame_certificate.py'
+      - 'scripts/e126_multisource_frame_certificate.py'
+      - '.github/workflows/e126-multisource-frame-certificate.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project dependencies
+        run: python -m pip install -e .
+      - name: Focused E126 tests
+        run: python -m pytest -q tests/test_e126_frame_certificate.py
+      - name: Run exactly one frozen E126 theory falsifier
+        run: python scripts/e126_multisource_frame_certificate.py
+      - name: Upload immutable E126 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e126-multisource-frame-certificate
+          path: e126-multisource-frame-certificate.json
+          if-no-files-found: error
+          retention-days: 90
