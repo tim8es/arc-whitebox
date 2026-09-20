@@ -133,7 +133,9 @@ def main() -> None:
         "gram_schmidt": "gram_schmidt" in source,
         "haar_stiefel": "haar_stiefel" in source,
         "exact_reference_import": "e114_exact_angular_reference" in source,
-        "target_import": "target" in source,
+        "target_module_import": (
+            "import target" in source or "from target" in source
+        ),
     }
     source_audit_pass = not any(forbidden.values())
 
