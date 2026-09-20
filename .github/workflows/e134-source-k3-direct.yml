@@ -1,0 +1,54 @@
+name: E134 source-age K3 direct closure
+
+on:
+  push:
+    branches:
+      - research/e134-source-k3-direct-closure-20260920
+    paths:
+      - '.github/workflows/e134-source-k3-direct.yml'
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen dependencies
+        run: python -m pip install numpy==2.4.6 pytest==8.3.5
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e134_source_k3_direct.py
+          python -m py_compile methods/e134_exact_angular_reference.py
+          python -m py_compile scripts/e134_source_k3_direct_falsifier.py
+
+      - name: Focused E134 tests
+        run: python -m pytest -q tests/test_e134_source_k3_direct.py
+
+      - name: Sole frozen E134 exact-small scientific run
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e134_source_k3_direct_falsifier.py 2>&1 | tee e134-source-k3-direct.log
+
+      - name: Upload immutable E134 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e134-source-k3-direct-closure
+          path: |
+            e134-source-k3-direct.log
+            e134-source-k3-direct-closure.json
+            research/E134_PROTOCOL.md
+          if-no-files-found: warn
+          retention-days: 90
