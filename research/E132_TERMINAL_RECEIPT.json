@@ -1,0 +1,275 @@
+{
+  "schema": "arc.whitebox.e132.terminal_receipt.v1",
+  "experiment": "E132",
+  "idempotency_key": "ARC-E132-LAYER-BORN-SOURCE-AGE-D21-20260920",
+  "status": "TERMINAL_NO_GO_CLOSE_LAYER_BORN_SOURCE_AGE_D21",
+  "scientific_go": false,
+  "production_scientific_go": false,
+  "branch": "research/e132-layer-born-source-age-d21-20260920",
+  "parent": {
+    "branch": "research/bootstrap",
+    "head": "7a0034088ebbffbd74b441e1797c272e9d33cbff"
+  },
+  "mechanism": {
+    "name": "layer-born source-age transported D21 Hermite estimator",
+    "public_clue_used": [
+      "non-Gaussian source terms are born at different ReLU layers",
+      "cross-neuron D21=kappa3_iic is a meaningful later-layer interface",
+      "older sources can retain high-rank dependence while sharing a common subspace"
+    ],
+    "independent_choices": {
+      "pilot": 256,
+      "evaluation": 2048,
+      "production_age_ranks": {
+        "young": 32,
+        "shared_age_2_to_4": 48,
+        "nested_age_ge_5": 24
+      },
+      "d21_transport": "(W o W)^T D W",
+      "correction": "off-diagonal compressed D21 times zero-mean cubic Gaussian Hermite features",
+      "coefficient_scale": "1/(n*max(1,||D_corr||_F))"
+    },
+    "conditional_unbiasedness": true,
+    "target_fit": false,
+    "gaussian_plugin": false,
+    "e122_rescue": false,
+    "e124_rescue": false,
+    "e127_rescue": false
+  },
+  "provenance": {
+    "protocol_commit": "d12500820f153b15a5e71a642c9ddcba6b0ecb43",
+    "candidate_commit": "b3635130ba5436bab383aecd2762e3dd8797f6c6",
+    "exact_reference_commit": "0893e34213f6b99cb61160923578ab226a508fcf",
+    "tests_commit": "b1e8a226d453a7269b9af9c9e880a5daa2017c1c",
+    "protocol_arithmetic_erratum_commit": "bd95544ae3795c4badc78eacb606343c0771d05b",
+    "falsifier_commit": "dc6c941323742a6db644645b7e09050a4411a6da",
+    "workflow_commit": "c28530276f1cbe31d968d2f397ade8c71a7367bb",
+    "executed_arm_head": "9d8f91e591c5e775ef0d96f3d6c333de923d377b"
+  },
+  "frozen_small_falsifier": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 8,
+    "zero_bias": true,
+    "network_seeds": [
+      132200,
+      132201,
+      132202,
+      132203
+    ],
+    "candidate_seeds": [
+      132400,
+      132401,
+      132402,
+      132403
+    ],
+    "pilot": 256,
+    "evaluation": 2048,
+    "ranks_width8": [
+      1,
+      1,
+      1
+    ],
+    "exact_reference": "independent exact 2-D angular piecewise-linear integration",
+    "exact_layer_sector_counts": [
+      [
+        17,
+        29,
+        43,
+        61,
+        78,
+        84,
+        90,
+        107
+      ],
+      [
+        17,
+        35,
+        47,
+        61,
+        67,
+        77,
+        91,
+        91
+      ],
+      [
+        17,
+        31,
+        43,
+        53,
+        65,
+        71,
+        73,
+        79
+      ],
+      [
+        17,
+        28,
+        46,
+        50,
+        57,
+        61,
+        61,
+        63
+      ]
+    ]
+  },
+  "integrity": {
+    "focused_tests": "3 passed in 0.16s",
+    "candidate_finite_all": true,
+    "deterministic_replay_bitwise_exact_all": true,
+    "ledger_replay_exact_all": true,
+    "nested_age_ge_5_exercised_all": true,
+    "birth_identity_max_abs": 8.881784197001252e-16,
+    "birth_identity_gate_le_1e_12": true,
+    "d21_correction_diagonal_max_abs": 0,
+    "source_audit_pass": true,
+    "candidate_imports": [
+      "__future__",
+      "dataclasses",
+      "math",
+      "numpy",
+      "typing"
+    ],
+    "forbidden_imports": [],
+    "io_network_calls": [],
+    "reference_materialized_only_after_candidate": true,
+    "no_target_public_scorer_holdout_full": true
+  },
+  "scientific_result": {
+    "per_network": [
+      {
+        "network_seed": 132200,
+        "baseline_mse": 0.00004435143569821009,
+        "candidate_mse": 0.000068445286833489,
+        "candidate_over_baseline": 1.5432485049463973,
+        "certificate_mse": 424109.29439768236,
+        "certificate_over_raw_target": 22439645206226.58
+      },
+      {
+        "network_seed": 132201,
+        "baseline_mse": 0.00003146427836269086,
+        "candidate_mse": 0.000029978606267370457,
+        "candidate_over_baseline": 0.9527822606260039,
+        "certificate_mse": 816146.1500128491,
+        "certificate_over_raw_target": 43182335979515.83
+      },
+      {
+        "network_seed": 132202,
+        "baseline_mse": 0.000028099943747088842,
+        "candidate_mse": 0.00010082061686661839,
+        "candidate_over_baseline": 3.5879294910354904,
+        "certificate_mse": 1304608.7138321241,
+        "certificate_over_raw_target": 69026916075773.766
+      },
+      {
+        "network_seed": 132203,
+        "baseline_mse": 0.000039736314380501395,
+        "candidate_mse": 0.00009211007442948933,
+        "candidate_over_baseline": 2.3180326576711336,
+        "certificate_mse": 637840.577887457,
+        "certificate_over_raw_target": 33748178724204.07
+      }
+    ],
+    "pooled_baseline_mse": 0.000035912993047122795,
+    "pooled_candidate_mse": 0.0000728386460992418,
+    "candidate_over_baseline": 2.0281975942152037,
+    "improve_count": 1,
+    "raw_mse_target": 1.89e-8,
+    "pooled_candidate_over_raw_target": 3853.8966189969206,
+    "max_candidate_mse": 0.00010082061686661839,
+    "max_certificate_mse": 1304608.7138321241,
+    "max_certificate_over_raw_target": 69026916075773.766
+  },
+  "certificate": {
+    "formula": "CERT_MSE = M^-1 mean_j [L_j + sd(g_j)]^2",
+    "lipschitz_bound": "prod_{l<L} sqrt(||W_l||_1 ||W_l||_inf) * ||W_L[:,j]||_2",
+    "hermite_sd_bound": "gamma*sqrt(6)*sum_i |W_L[i,j]| sum_c |D_corr[i,c]|",
+    "exact_arithmetic_total_mse_bound": true,
+    "target_free": true,
+    "every_network_pass": false,
+    "blocker": "The rigorous Gaussian-Poincare/Minkowski certificate is enormously too loose; worst frozen CERT_MSE is 1.3046087e6 versus 1.89e-8 allowed."
+  },
+  "production_cost": {
+    "protocol_arithmetic_erratum_applied": true,
+    "width": 1024,
+    "depth": 16,
+    "pilot": 256,
+    "evaluation": 2048,
+    "ranks": {
+      "young": 32,
+      "shared": 48,
+      "nested": 24
+    },
+    "all_in_upper_flops": 120722404352,
+    "hard_cap_flops": 136758472261,
+    "slack_flops": 16036067909,
+    "pass": true,
+    "formula_matches_independent_recompute": true,
+    "operation_classes_complete_in_frozen_ledger": true
+  },
+  "gates": {
+    "candidate_finite_all": true,
+    "deterministic_replay_bitwise_exact_all": true,
+    "ledger_replay_exact_all": true,
+    "nested_age_ge_5_exercised_all": true,
+    "birth_identity_max_abs_le_1e_12": true,
+    "d21_correction_diagonal_exact_zero": true,
+    "candidate_source_audit_pass": true,
+    "reference_materialized_only_after_candidate": true,
+    "no_target_public_scorer_holdout_full": true,
+    "pooled_candidate_mse_strictly_below_baseline": false,
+    "candidate_improves_at_least_3_of_4": false,
+    "certificate_mse_le_1_89e_8_every_network": false,
+    "pooled_candidate_mse_le_1_89e_8": false,
+    "every_network_candidate_mse_le_1_89e_8": false,
+    "production_cost_formula_matches_independent_sum": true,
+    "production_all_in_le_hard_cap": true,
+    "small_ledger_matches_protocol_formula_all": true
+  },
+  "execution": {
+    "run": 35522586592,
+    "job": 106109114714,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "exactly_one_workflow_run_for_arm_head": true,
+    "rerun": false,
+    "artifact": {
+      "name": "e132-layer-born-source-age-d21",
+      "id": 10609281498,
+      "size_bytes": 8050,
+      "zip_sha256": "5a138e05ca2213bce0a2f828a593cdf68e787bce2dac40556012566f69cdf298",
+      "expires_at": "2026-12-19T16:23:56Z"
+    }
+  },
+  "blocker": {
+    "primary": "The computable total-MSE certificate fails by more than 13 orders of magnitude on the frozen corpus because the valid weight-only Lipschitz bound compounds strongly with depth.",
+    "secondary": "The actual D21 Hermite correction also increases pooled exact MSE: candidate/baseline ratio 2.0282 and only 1 of 4 networks improves.",
+    "compute_not_blocker": true,
+    "source_age_construction_verified": true,
+    "d21_cross_neuron_correction_executed": true
+  },
+  "decision": {
+    "verdict": "TERMINAL_NO_GO",
+    "reason": "Cost passes, but both the rigorous certificate gate and realized exact-small accuracy/variance-reduction gates fail. Under the frozen no-rescue rule E132 is closed.",
+    "no_rescue": "No rank/sample/gamma/certificate/age-threshold/seed change, clipping, fitted coefficient, rerun, production run, public/scorer access or renamed E132 rescue."
+  },
+  "scope": {
+    "synthetic_exact_small_width_only": true,
+    "target_free": true,
+    "production_scientific_run": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
