@@ -2,8 +2,8 @@
 
 Status: **PRIMARY-SOURCE RESEARCH COMPLETE / H140 ADMITTED FOR ONE TARGET-FREE FALSIFIER / NO RUN YET**
 
-Protocol: \`research/E140_PROTOCOL.md\`  
-Protocol commit: \`308ade13e061f7313f8d0bec20d051649479a089\`
+Protocol: `research/E140_PROTOCOL.md`  
+Protocol commit: `308ade13e061f7313f8d0bec20d051649479a089`
 
 This note is deliberately not a version overview. The research contribution is Section 4:
 a new algebraic carrier for quenched K3 whose transport and D3/D21 readout are derived
@@ -42,11 +42,11 @@ as a one-shot falsifier.
 
    Reviewed blobs:
 
-   - \`README.md\`: \`0665357e37164f1896392fbbd4431a5a4e692871\`
-   - \`src/mlp_kprop/factor_k3.py\`: \`ed7cddd91fcf3a744a02aacfba6f24f9f743c82a\`
-   - \`src/mlp_kprop/wick.py\`: \`2947a40c33fac64441dbc5b180bfe6a865cca452\`
+   - `README.md`: `0665357e37164f1896392fbbd4431a5a4e692871`
+   - `src/mlp_kprop/factor_k3.py`: `ed7cddd91fcf3a744a02aacfba6f24f9f743c82a`
+   - `src/mlp_kprop/wick.py`: `2947a40c33fac64441dbc5b180bfe6a865cca452`
 
-   The reference \`FactoredTensor\` stores
+   The reference `FactoredTensor` stores
 
    \[
    T=\operatorname{Sym}\sum_r A_{1,:,r}\otimes A_{2,:,r}\otimes A_{3,:,r}.
@@ -65,10 +65,10 @@ https://github.com/504aldo/whest-p2-cumulant-k3/tree/18c17e2d7a9aeacd399cfc2c6b5
 
 Reviewed public blobs:
 
-- \`docs/community_post.md\`: \`aa06c6d24c0bf9f6cb9cfd326c4862d6a4ee3a73\`
-- \`docs/findings_log.md\`: \`09cf41e8826052ceb83109115cae688c03baaaca\`
-- \`docs/derivation_code_map.md\`: \`2b7f1e7df1ddf08a3925bbe883ebe0db14942eff\`
-- \`estimators/estimator_v29.py\`: \`17df1a073a24f96c4705b04bcf61ef60fa06dd0c\`
+- `docs/community_post.md`: `aa06c6d24c0bf9f6cb9cfd326c4862d6a4ee3a73`
+- `docs/findings_log.md`: `09cf41e8826052ceb83109115cae688c03baaaca`
+- `docs/derivation_code_map.md`: `2b7f1e7df1ddf08a3925bbe883ebe0db14942eff`
+- `estimators/estimator_v29.py`: `17df1a073a24f96c4705b04bcf61ef60fa06dd0c`
 
 Community post:
 
@@ -172,7 +172,7 @@ This closes an E137-style "cheaper old contraction only" direction for E140.
 **LOCAL VERIFIED.**
 
 E137-H137's sole Actions run failed at import
-(\`ModuleNotFoundError: No module named 'methods'\`) before D21, cost, or deterministic
+(`ModuleNotFoundError: No module named 'methods'`) before D21, cost, or deterministic
 scientific gates were evaluated. Its frozen protocol nevertheless makes that experiment
 identity terminal.
 
@@ -354,7 +354,7 @@ So the exact interface used by the ReLU update is available without materializin
 
 ### 4.5 The only unresolved mathematical question is birth separation rank
 
-ARC's reference \`factor_k3.py\` shows that each ReLU injects new factored K3 content,
+ARC's reference `factor_k3.py` shows that each ReLU injects new factored K3 content,
 including two-leg path terms with an identity middle factor. In the source
 representation this appends \(O(n)\) columns per layer.
 
@@ -428,7 +428,7 @@ allowance, H140 is terminally dead even if the small fixture is accurate.
 ## 6. Frozen falsifier
 
 No E140 code/run is authorized by this research note. The executable protocol is already
-frozen in \`research/E140_PROTOCOL.md\`.
+frozen in `research/E140_PROTOCOL.md`.
 
 ### Fixture/reference
 
