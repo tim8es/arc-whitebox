@@ -105,8 +105,11 @@ the first and only Stage-A falsifier is:
 - fixture A: width 32, depth 8, zero bias, deterministic He-Gaussian weights, seed 140032;
 - fixture B: width 16, depth 8, deterministic dense adversarial rotation/diagonal-gain
   construction, seed 140016;
-- after every nonlinear birth, compute the **best Frobenius rank-4 matrix-vector
-  separation** allowed by the representation (small fixture may materialize K3);
+- after every nonlinear birth, materialize K3 only on the small fixture, take the top-4
+  SVD of the mode-3 unfolding K_(12),3, reshape each left singular vector to a symmetric
+  matrix R_a (the unfolding columns are vectorized symmetric slices), then orthogonally
+  symmetrize the resulting sum_a R_a tensor v_a. Because the exact K3 is symmetric,
+  this symmetrization cannot increase Frobenius error;
 - propagate the rank-4 candidate through the next linear/Wick step using only the closed
   response-mode formulas;
 - compare candidate D3/D21 to exact K3 D3/D21 before the next nonlinear update.
