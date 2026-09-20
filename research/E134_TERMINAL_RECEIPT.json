@@ -1,0 +1,111 @@
+{
+  "schema": "arc.whitebox.e134.terminal_receipt.v1",
+  "experiment": "E134",
+  "idempotency_key": "ARC-E134-SOURCE-K3-DIRECT-CLOSURE-20260920",
+  "status": "TERMINAL_INSTRUMENT_NO_GO_NO_RERUN",
+  "scientific_go": false,
+  "scientific_mse_evaluable": false,
+  "branch": "research/e134-source-k3-direct-closure-20260920",
+  "parent": "research/bootstrap@7a0034088ebbffbd74b441e1797c272e9d33cbff",
+  "provenance": {
+    "protocol_commit": "efe7fb20133944885a2af0f057ee531383107010",
+    "candidate_commit": "716dc606b6a181987279da520125b7f9bd8e7d6b",
+    "exact_reference_commit": "aa6312ff970bb8db33723d708de66a303b3382a7",
+    "tests_commit": "c3d036c2203efa5ec5c59c3acea79288af848f72",
+    "falsifier_commit": "6a96cb5cf25c85373799d0eb1ccbab413ed4e4b1",
+    "executed_workflow_head": "0418edfa4f916121c53b9a591669f20877467ab4",
+    "executed_blobs": {
+      "protocol": "6abe513ccf91ff39a130b553aac2ee064f666bf6",
+      "candidate": "4ef749dc83ebc9573ffd49f54369cf2ae623db1e",
+      "exact_reference": "7748d879073d9b94481f77099eb887491ab50f27",
+      "tests": "036bf62e583878f2944f53bf0cc6704b103fb9f3",
+      "falsifier": "d01cbd4ca04febd601f47e0b5c752f7cfc7a87e8",
+      "workflow": "d0759b436d2d626f1c7bae6638dad13ee57ac98e"
+    }
+  },
+  "mechanism": {
+    "name": "source-age full-K3 direct Edgeworth ReLU-mean closure",
+    "zero_mean_posthoc_correction": false,
+    "layer_born_sources": true,
+    "full_k3_tensor_transport": true,
+    "d3_d21_same_tensor_slices": true,
+    "source_age_schedule": {
+      "age_0_1": "separate bases",
+      "age_2_4": "shared basis",
+      "age_ge_5": "nested sub-basis"
+    },
+    "target_fit": false,
+    "e132_rescue": false
+  },
+  "verified_pre_scientific_run": {
+    "focused_tests": "4 passed in 0.11s",
+    "represented_full_k3_linear_transport_exact_test": true,
+    "edgeworth_zero_k3_gaussian_limit_test": true,
+    "nested_age_path_test": true,
+    "target_free_certificate_containment_test": true,
+    "production_cost_formula_test": true,
+    "small_ranks": [1, 2, 1],
+    "production_ranks": [32, 48, 24]
+  },
+  "production_cost": {
+    "all_in_upper_flops": 189262033408,
+    "budget_flops": 2199023255552,
+    "utilization": 0.08606640831567347,
+    "utilization_cap": 0.13,
+    "cap_flops": 285873023221.76,
+    "slack_flops": 96610989813.76,
+    "focused_test_verified_frozen_total": true
+  },
+  "execution": {
+    "run": 35526963588,
+    "job": 106120701515,
+    "run_attempt": 1,
+    "workflow_conclusion": "failure",
+    "scientific_step_conclusion": "failure",
+    "failure_stage": "falsifier module import before candidate execution",
+    "exception": "ModuleNotFoundError: No module named 'methods'",
+    "candidate_executed": false,
+    "exact_reference_executed": false,
+    "mse_scored": false,
+    "rerun": false,
+    "artifact": {
+      "name": "e134-source-k3-direct-closure",
+      "id": 10610071720,
+      "size_bytes": 5691,
+      "zip_sha256": "db9c660ca93043b73c9cd7ce4f98cadde393434f9fef416cb493fa0015a49454",
+      "expires_at": "2026-12-19T17:47:10Z"
+    }
+  },
+  "scientific_result": {
+    "pooled_candidate_mse": null,
+    "pooled_baseline_mse": null,
+    "candidate_over_baseline": null,
+    "improve_count": null,
+    "certificate_mse": null,
+    "reason": "The sole frozen Actions scientific step failed before importing the candidate. No candidate prediction, baseline prediction, exact reference, or residual certificate was produced."
+  },
+  "decision": {
+    "verdict": "TERMINAL_INSTRUMENT_NO_GO",
+    "reason": "The protocol required exactly one scientific Actions run and explicitly prohibited rerun/rescue. The sole run failed before candidate execution because the script invocation did not place repository root on sys.path. Therefore the exact-small MSE gate is unevaluable and cannot be retrospectively classified as scientific pass or failure.",
+    "no_rescue": "No PYTHONPATH/import patch, workflow patch, second run, rank/sample/seed change, Edgeworth change, certificate change, or renamed E134 rescue."
+  },
+  "scope": {
+    "synthetic_exact_small_width_only": true,
+    "target_free_design": true,
+    "production_execution": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt; no rerun under E134"
+}
