@@ -1,0 +1,31 @@
+{
+  "schema": "arc.whitebox.e136.followup.run_arm.v1",
+  "experiment": "E136 FOLLOW-UP",
+  "branch": "research/e136-public-k3-reproduction",
+  "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+  "estimators": {
+    "v25": {
+      "path": "methods/public_504aldo/estimator_v25.py",
+      "role": "non-Strassen reference"
+    },
+    "v29": {
+      "path": "methods/public_504aldo/estimator_v29.py",
+      "role": "published cost-engineered path"
+    }
+  },
+  "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+  "split": "mini",
+  "n_mlps": 100,
+  "streaming": true,
+  "runner": "local",
+  "flop_budget": 2199023255552,
+  "wall_time_limit_s": 120,
+  "residual_wall_time_limit_s": 0.4,
+  "max_threads": 1,
+  "blas_env_threads": 1,
+  "bounded_subset_policy": "Run all 100 mini MLPs. Only reduce the count after a recorded technical blocker; do not silently truncate.",
+  "holdout": false,
+  "full_split": false,
+  "official_scorer": false,
+  "submission": false
+}
