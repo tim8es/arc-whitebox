@@ -1,0 +1,249 @@
+name: E136 public K3 full-mini follow-up
+
+on:
+  push:
+    branches:
+      - research/e136-public-k3-reproduction
+    paths:
+      - research/E136_FOLLOWUP_RUN_ARM.json
+  workflow_dispatch:
+
+jobs:
+  run:
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [v25, v29]
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned research toolchain
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Record environment
+        run: |
+          mkdir -p e136_followup
+          whest version --json > e136_followup/whest_version.json
+          python - <<'PY' > e136_followup/environment.txt
+          import platform
+          import flopscope, whestbench
+          print("python", platform.python_version())
+          print("platform", platform.platform())
+          print("flopscope", getattr(flopscope, "__version__", "unknown"))
+          print("whestbench", getattr(whestbench, "__version__", "unknown"))
+          PY
+
+      - name: Validate pinned estimator
+        id: validate
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          whest validate \
+            --estimator methods/public_504aldo/estimator_${{ matrix.version }}.py \
+            --json \
+            > e136_followup/validate.json 2> e136_followup/validate.stderr
+          code=$?
+          echo "$code" > e136_followup/validate.exit
+          exit "$code"
+
+      - name: Run complete public v2-phase2 mini
+        id: mini
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          whest run \
+            --estimator methods/public_504aldo/estimator_${{ matrix.version }}.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --streaming \
+            --n-mlps 100 \
+            --runner local \
+            --flop-budget 2199023255552 \
+            --wall-time-limit 120 \
+            --residual-wall-time-limit 0.4 \
+            --max-threads 1 \
+            --format json \
+            > e136_followup/report.json 2> e136_followup/run.stderr
+          code=$?
+          echo "$code" > e136_followup/run.exit
+          exit "$code"
+
+      - name: Hash evidence
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib
+          root=pathlib.Path("e136_followup")
+          out={}
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  out[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/"sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+
+      - name: Upload per-version evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e136-followup-${{ matrix.version }}
+          path: e136_followup/
+          if-no-files-found: error
+
+  summarize:
+    if: always()
+    needs: run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: e136-followup-*
+          path: e136_inputs
+
+      - name: Build exact follow-up receipt
+        shell: bash
+        run: |
+          mkdir -p e136_summary
+          python - <<'PY'
+          import ast, hashlib, json, pathlib, re
+
+          B=2199023255552
+          root=pathlib.Path("e136_inputs")
+          repo=pathlib.Path(".")
+          def sha(p):
+              return hashlib.sha256(p.read_bytes()).hexdigest()
+          def read_int(p):
+              try: return int(p.read_text().strip())
+              except Exception: return None
+          def suite_gate(version):
+              p=repo/f"methods/public_504aldo/estimator_{version}.py"
+              src=p.read_text()
+              tree=ast.parse(src)
+              depth=None
+              for node in tree.body:
+                  if isinstance(node, ast.Assign):
+                      for target in node.targets:
+                          if isinstance(target, ast.Name) and target.id=="CORR_BETA":
+                              depth=len(ast.literal_eval(node.value))
+              gate=bool(re.search(r"riders\s*=\s*\(n\s*==\s*1024\s*and\s*L\s*==\s*len\(CORR_BETA\)\)",src))
+              if depth is None or not gate:
+                  raise RuntimeError(f"unable to prove suite gate for {version}")
+              return {"width":1024,"depth":depth,"source_gate":"n == 1024 and L == len(CORR_BETA)"}
+
+          versions={}
+          for version in ("v25","v29"):
+              d=root/f"e136-followup-{version}"
+              rp=d/"report.json"
+              ep=d/"run.exit"
+              vp=d/"validate.exit"
+              item={
+                "run_exit":read_int(ep),
+                "validate_exit":read_int(vp),
+                "report_sha256":sha(rp) if rp.exists() else None,
+                "stderr_sha256":sha(d/"run.stderr") if (d/"run.stderr").exists() else None,
+                "validate_sha256":sha(d/"validate.json") if (d/"validate.json").exists() else None,
+                "suite_gate":suite_gate(version),
+              }
+              if rp.exists() and rp.stat().st_size:
+                  try:
+                      report=json.loads(rp.read_text())
+                      cfg=report.get("run_config",{})
+                      res=report.get("results",{})
+                      per=res.get("per_mlp",[])
+                      width=cfg.get("width")
+                      depth=cfg.get("depth")
+                      gate=item["suite_gate"]
+                      fallback_count=(0 if width==gate["width"] and depth==gate["depth"] else len(per))
+                      mean_cb_recomputed=(sum(float(x.get("effective_compute",0.0)) for x in per)/(len(per)*float(B))) if per else None
+                      item.update({
+                        "schema_version":report.get("schema_version"),
+                        "whestbench_version":report.get("whestbench_version"),
+                        "dataset":cfg.get("dataset"),
+                        "n_mlps_requested":cfg.get("n_mlps"),
+                        "n_mlps_reported":len(per),
+                        "width":width,
+                        "depth":depth,
+                        "flop_budget":cfg.get("flop_budget"),
+                        "wall_time_limit_s":cfg.get("wall_time_limit_s"),
+                        "residual_wall_time_limit_s":cfg.get("residual_wall_time_limit_s"),
+                        "lambda_flops_per_second":cfg.get("lambda_flops_per_second"),
+                        "mean_raw_final_layer_mse":res.get("final_layer_mse"),
+                        "mean_effective_compute":res.get("mean_effective_compute"),
+                        "mean_c_over_b":res.get("mean_compute_utilization"),
+                        "mean_c_over_b_recomputed":mean_cb_recomputed,
+                        "n_failed_mlps":res.get("n_failed_mlps"),
+                        "failure_breakdown":res.get("failure_breakdown"),
+                        "shape_fallback_count":fallback_count,
+                        "shape_fallback_method":"fixed dataset run_config width/depth checked against the pinned estimator riders gate",
+                        "max_residual_wall_time_s":max((float(x.get("residual_wall_time_s",0.0)) for x in per),default=None),
+                        "max_wall_time_s":max((float(x.get("wall_time_s",0.0)) for x in per),default=None),
+                        "per_mlp_index_sha256":hashlib.sha256(json.dumps(
+                            [{"mlp_index":x.get("mlp_index"),"mlp_name":x.get("mlp_name"),
+                              "final_layer_mse":x.get("final_layer_mse"),"flops_used":x.get("flops_used"),
+                              "effective_compute":x.get("effective_compute"),
+                              "budget_exhausted":x.get("budget_exhausted"),
+                              "time_exhausted":x.get("time_exhausted"),
+                              "residual_wall_time_exhausted":x.get("residual_wall_time_exhausted"),
+                              "error_code":x.get("error_code")}
+                             for x in per],sort_keys=True,separators=(",",":")).encode()).hexdigest(),
+                      })
+                  except Exception as e:
+                      item["parse_error"]=repr(e)
+              versions[version]=item
+
+          v25=versions["v25"]; v29=versions["v29"]
+          comparison={}
+          if v25.get("mean_raw_final_layer_mse") is not None and v29.get("mean_raw_final_layer_mse") is not None:
+              comparison["raw_mse_v29_minus_v25"]=v29["mean_raw_final_layer_mse"]-v25["mean_raw_final_layer_mse"]
+              comparison["raw_mse_ratio_v29_over_v25"]=v29["mean_raw_final_layer_mse"]/v25["mean_raw_final_layer_mse"]
+          if v25.get("mean_c_over_b") is not None and v29.get("mean_c_over_b") is not None:
+              comparison["c_over_b_v29_minus_v25"]=v29["mean_c_over_b"]-v25["mean_c_over_b"]
+              comparison["c_over_b_ratio_v29_over_v25"]=v29["mean_c_over_b"]/v25["mean_c_over_b"]
+
+          receipt={
+            "schema":"arc.whitebox.e136.followup.runtime.v1",
+            "scope":"public v2-phase2/mini complete 100-MLP split; V25 and V29; local runner; no holdout/full/scorer/submission",
+            "branch":"research/e136-public-k3-reproduction",
+            "upstream_commit":"18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+            "settings":{
+              "dataset":"hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+              "split":"mini","streaming":True,"n_mlps":100,"runner":"local",
+              "flop_budget":B,"wall_time_limit_s":120,
+              "residual_wall_time_limit_s":0.4,"max_threads":1,
+              "blas_env_threads":1,
+              "holdout":False,"full_split":False,"official_scorer":False,"submission":False,
+            },
+            "versions":versions,
+            "comparison":comparison,
+          }
+          out=pathlib.Path("e136_summary/E136_FOLLOWUP_RUNTIME_RECEIPT.json")
+          out.write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
+          print(json.dumps(receipt,indent=2,sort_keys=True))
+          PY
+
+      - name: Upload combined receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e136-followup-summary
+          path: e136_summary/
+          if-no-files-found: error
