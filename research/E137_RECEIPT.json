@@ -1,0 +1,92 @@
+{
+  "schema": "arc.whitebox.e137.primary_source_note_receipt.v1",
+  "experiment": "E137",
+  "idempotency_key": "ARC-E137-MIT-V25-V29-IMPROVEMENT-SCOUT-20260921",
+  "status": "PRIMARY_SOURCE_NOTE_COMPLETE_NO_CODE_RUN",
+  "branch": "research/e137-mit-v25-v29-improvement-scout-20260921",
+  "protocol": {
+    "path": "research/E137_PROTOCOL.md",
+    "commit": "77c13ded84bb8b5e6bd4a092cd2021b3732a21fe",
+    "blob": "e7d1781b47002df2bc674917c279a59514844912"
+  },
+  "note": {
+    "path": "research/E137_PRIMARY_SOURCE_NOTE.md",
+    "commit": "9b90f83bbbf4d6d2f60720f0fd5a8d52c1951bb5",
+    "blob": "00f7720edc8d3920d0e0346f42d6e4dbb91389f6"
+  },
+  "public_primary_source": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "main_head": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "license": "MIT",
+    "files": {
+      "LICENSE": "2c843327a87b547245b566f02391295ba71ad26a",
+      "docs/community_post.md": "aa06c6d24c0bf9f6cb9cfd326c4862d6a4ee3a73",
+      "docs/ablation_table.md": "ae4ae52ead96feb32cd996cacd9bae8e546e69e4",
+      "docs/findings_log.md": "09cf41e8826052ceb83109115cae688c03baaaca",
+      "docs/derivation_code_map.md": "2b7f1e7df1ddf08a3925bbe883ebe0db14942eff",
+      "estimators/estimator_v16b.py": "e5e2e2dcd1be1b402ee3384147c25d221ace2315",
+      "estimators/estimator_v17.py": "9c60c5a0bd92729f27bde23eeb619944e71beabe",
+      "estimators/estimator_v18.py": "71b2bbfd64de3f32a947ea8ee148744d1721a935",
+      "estimators/estimator_v22.py": "e15f6445acbfb4dd4602b933cd295fee6ba75ed6",
+      "estimators/estimator_v24.py": "571a2dc49a9f5fb58d48a352ef68aeae0cad6323",
+      "estimators/estimator_v25.py": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "estimators/estimator_v29.py": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+    },
+    "forum_url": "https://discourse.aicrowd.com/t/everything-we-tried-a-factorized-k-3-cumulant-propagation-estimator-at-0-25-x-b-where-its-flops-go-and-25-measured-dead-ends-team-504aldo-rank-10/18218"
+  },
+  "arc_reference_source": {
+    "repository": "alignment-research-center/mlp_cumulant_propagation",
+    "readme_blob": "0665357e37164f1896392fbbd4431a5a4e692871",
+    "license_blob": "8da0189712dc3d815a88629cac1137c95ef87ed1",
+    "license": "MIT",
+    "paper": "arXiv:2605.05179"
+  },
+  "baseline_versions": {
+    "method_baseline": {
+      "version": "V25",
+      "submission": 329644,
+      "raw_mse": 2.13e-8,
+      "c_over_b": 0.3667,
+      "adjusted": 7.8e-9
+    },
+    "live_cost_baseline": {
+      "version": "V29",
+      "submission": 330093,
+      "raw_mse": 2.13e-8,
+      "c_over_b": 0.2526,
+      "adjusted": 5.4e-9
+    }
+  },
+  "selected_hypothesis": {
+    "id": "H137",
+    "name": "old-tier CountSketch contraction patch",
+    "class": "baseline-native randomized matrix multiplication delta",
+    "standalone_estimator": false,
+    "changes_source_state": false,
+    "changes_closure": false,
+    "changes_age_schedule": false,
+    "target_free_construction": true
+  },
+  "overlap_audit": {
+    "e132": "disjoint: no source-age D21/Hermite control",
+    "e134": "disjoint: no source-age full-K3/direct Edgeworth closure",
+    "e135": "disjoint by frozen scope: no Parseval/transport-residual/deterministic truncation certificate",
+    "public_dead_ends": "distinguished from column truncation, Tucker, exact Khatri-Rao factorization, source dropping, sampling sidecars, and pricing-only changes"
+  },
+  "execution": {
+    "estimator_code_created": false,
+    "workflow_created": false,
+    "actions_run": false,
+    "actions_run_count_verified": 0,
+    "scientific_run": false,
+    "public_run": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
