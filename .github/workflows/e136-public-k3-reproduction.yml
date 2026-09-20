@@ -1,0 +1,144 @@
+name: E136 public K3 reproduction
+
+on:
+  push:
+    branches:
+      - research/e136-public-k3-reproduction
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned research toolchain
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Static provenance and Phase-2 audit
+        run: |
+          mkdir -p e136_artifacts
+          python scripts/e136_public_k3_audit.py > e136_artifacts/static_audit.log
+          whest version --json > e136_artifacts/whest_version.json
+          python - <<'PY' > e136_artifacts/environment.txt
+          import platform
+          import flopscope, whestbench
+          print("python", platform.python_version())
+          print("platform", platform.platform())
+          print("flopscope", getattr(flopscope, "__version__", "unknown"))
+          print("whestbench", getattr(whestbench, "__version__", "unknown"))
+          PY
+
+      - name: Validate V25 non-suite fallback
+        id: validate_v25
+        continue-on-error: true
+        run: |
+          set +e
+          whest validate --estimator methods/public_504aldo/estimator_v25.py --json             > e136_artifacts/v25_validate.json 2> e136_artifacts/v25_validate.stderr
+          code=$?
+          echo "$code" > e136_artifacts/v25_validate.exit
+          exit "$code"
+
+      - name: Validate V29 non-suite fallback
+        id: validate_v29
+        continue-on-error: true
+        run: |
+          set +e
+          whest validate --estimator methods/public_504aldo/estimator_v29.py --json             > e136_artifacts/v29_validate.json 2> e136_artifacts/v29_validate.stderr
+          code=$?
+          echo "$code" > e136_artifacts/v29_validate.exit
+          exit "$code"
+
+      - name: Public mini smoke V25
+        id: mini_v25
+        continue-on-error: true
+        run: |
+          set +e
+          whest run             --estimator methods/public_504aldo/estimator_v25.py             --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2             --split mini --streaming --n-mlps 3 --runner local             --flop-budget 2199023255552             --wall-time-limit 120             --residual-wall-time-limit 0.4             --max-threads 1             --format plain             > e136_artifacts/v25_mini3.log 2>&1
+          code=$?
+          echo "$code" > e136_artifacts/v25_mini3.exit
+          exit "$code"
+
+      - name: Public mini smoke V29
+        id: mini_v29
+        continue-on-error: true
+        run: |
+          set +e
+          whest run             --estimator methods/public_504aldo/estimator_v29.py             --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2             --split mini --streaming --n-mlps 3 --runner local             --flop-budget 2199023255552             --wall-time-limit 120             --residual-wall-time-limit 0.4             --max-threads 1             --format plain             > e136_artifacts/v29_mini3.log 2>&1
+          code=$?
+          echo "$code" > e136_artifacts/v29_mini3.exit
+          exit "$code"
+
+      - name: Runtime receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, re
+          root = pathlib.Path("e136_artifacts")
+          def code(name):
+              p=root/f"{name}.exit"
+              return int(p.read_text().strip()) if p.exists() else None
+          def log(name):
+              p=root/name
+              return p.read_text(errors="replace") if p.exists() else ""
+          def extract(text):
+              pats = {
+                  "final_layer_mse": r"final_layer_mse[^0-9eE+.-]*([0-9.eE+-]+)",
+                  "adjusted_final_layer_score": r"adjusted_final_layer_score[^0-9eE+.-]*([0-9.eE+-]+)",
+                  "estimator_flops": r"(?:estimator_flops|effective_compute)[^0-9eE+.-]*([0-9.eE+-]+)",
+              }
+              out={}
+              for k,p in pats.items():
+                  m=re.search(p,text,re.I)
+                  if m:
+                      try: out[k]=float(m.group(1))
+                      except ValueError: pass
+              return out
+          v25=log("v25_mini3.log"); v29=log("v29_mini3.log")
+          receipt={
+            "schema":"arc.whitebox.e136.runtime.v1",
+            "scope":"public v2-phase2 mini, first 3 MLPs, streaming, local runner",
+            "published_targets":{"raw_final_layer_mse_approx":2.13e-8,"v25_cb":0.3667,"v29_cb":0.2526},
+            "exit_codes":{
+              "v25_validate":code("v25_validate"),
+              "v29_validate":code("v29_validate"),
+              "v25_mini3":code("v25_mini3"),
+              "v29_mini3":code("v29_mini3"),
+            },
+            "parsed":{"v25_mini3":extract(v25),"v29_mini3":extract(v29)},
+            "logs_sha256":{
+              "v25_mini3":hashlib.sha256(v25.encode()).hexdigest(),
+              "v29_mini3":hashlib.sha256(v29.encode()).hexdigest(),
+            },
+            "restrictions":{
+              "public_only":True,"holdout":False,"full_split":False,
+              "official_scorer":False,"submission":False,
+              "flop_budget":2199023255552,"max_threads":1,
+              "residual_wall_time_limit_s":0.4,
+            },
+          }
+          (root/"E136_RUNTIME_RECEIPT.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
+          print(json.dumps(receipt,indent=2,sort_keys=True))
+          PY
+
+      - name: Upload E136 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e136-public-k3-reproduction
+          path: e136_artifacts/
+          if-no-files-found: error
