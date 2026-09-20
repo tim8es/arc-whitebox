@@ -1,0 +1,85 @@
+{
+  "schema": "arc.whitebox.e125.terminal_preflight_blocker.v1",
+  "experiment": "E125",
+  "idempotency_key": "ARC-E125-CLIFFORD8-RATIONAL-TIGHTFRAME-20260920",
+  "branch": "research/e125-clifford8-rational-tightframe-20260920",
+  "status": "TERMINAL_PREFLIGHT_INSTRUMENT_NO_GO",
+  "scientific_go": false,
+  "scientific_run_authorized": false,
+  "protocol_only_commit": "fab8a6e6cb962862e617180ff59e1c72c142b0ec",
+  "candidate_commit": "e1220128a3967ed6bd951d72a209eb8bbcdca101",
+  "preflight_tests_commit": "4c7f70610ceec3971cedf2b0eebcdefce3855c62",
+  "preflight_script_commits": [
+    "e45726821fc4449d81515cd53305c25b4e3d0180",
+    "ffef69e08066786b5336e7c2400a47d19fc2c51d"
+  ],
+  "preflight_workflow_commit": "a9ca6129c2c602ef8700cd12ba119a2584fdd188",
+  "execution": {
+    "run": 35503145305,
+    "job": 106058362338,
+    "workflow_conclusion": "failure",
+    "static_preflight_tests": "3 passed in 0.13s",
+    "certificate_step_executed": false,
+    "candidate_source_evaluation_executed": false,
+    "artifact_uploaded": false
+  },
+  "mechanism": {
+    "name": "Clifford-8 rational signed-permutation antipodal multi-source estimator",
+    "source_dimension": 8,
+    "codewords_per_frame": 16,
+    "frames": 252,
+    "directions": 4032,
+    "uses_e122_candidate_code": false,
+    "uses_simplex": false,
+    "uses_haar_stiefel": false,
+    "uses_gram_schmidt": false,
+    "exact_operator_entries": "{0,+1,-1}",
+    "algebraic_identity": "(A_i q)^T(A_j q)=||q||^2 delta_ij for d divisible by 8"
+  },
+  "preflight_failure": {
+    "stage": "weight-only finite-sample certificate setup",
+    "exception": "ModuleNotFoundError",
+    "message": "No module named 'methods.e114_exact_angular_reference'",
+    "root_cause": "The E125 preflight script imported a reference-only synthetic He-weight helper that is not present on the frozen research/bootstrap parent. This helper was not part of the E125 candidate mechanism.",
+    "scientific_gate_observed": false,
+    "clifford_algebra_failure_observed": false,
+    "cost_gate_failure_observed": false,
+    "finite_sample_certificate_observed": false
+  },
+  "verified_before_blocker": {
+    "protocol_commit_changed_only_research_E125_PROTOCOL_md": true,
+    "static_integer_clifford_tests_passed": true,
+    "frozen_production_ledger_test_passed": true,
+    "weight_only_certificate_unit_test_passed": true,
+    "production_all_in_upper_flops": 135469896432,
+    "hard_cap_flops": 136758472261,
+    "frozen_slack_flops": 1288575829
+  },
+  "unexecuted": {
+    "numerical_8d_preflight_certificate": true,
+    "numerical_16d_preflight_certificate": true,
+    "8d_exact_stress": true,
+    "16d_exact_stress": true,
+    "iid_comparator": true,
+    "runtime_frame_orthogonality_stress": true,
+    "scientific_variance_ratio": true,
+    "production_run": true,
+    "benchmark_public_scorer_holdout_full": true
+  },
+  "terminal_rule": "The frozen protocol states that a failed preflight closes E125 before scientific execution. No helper-import repair, rerun, seed change, or scientific stress is permitted under E125.",
+  "decision": "TERMINAL PREFLIGHT INSTRUMENT NO-GO. No conclusion is available on the Clifford-8 estimator's 8D/16D variance performance or finite-sample certificate magnitude.",
+  "scope": {
+    "targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
