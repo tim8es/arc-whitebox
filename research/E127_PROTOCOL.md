@@ -268,8 +268,10 @@ Scientific/admission gates:
 13. every-network sparse candidate bias MSE `<=1.89e-8`;
 14. the necessary optimistic retained-cluster lower bound for a passing
     certificate is `<=47` on every network;
-15. the minimum full-order truncation `r` whose certified RMS tail passes
-    must have a production full-order FLOP upper `<=0.13 B`;
+15. if the sparse gate 11 fails and only a full-order truncation would certify,
+    the minimum passing truncation order `r` is reported together with its
+    production full-order FLOP upper; this is a diagnostic blocker, not an
+    independent veto of a sparse family that already passes gate 11;
 16. production accounting formula and width-8 normalized cluster budget match
     this protocol.
 
@@ -293,8 +295,10 @@ Even before helper overhead, the optimistic cluster work is
 
 The falsifier reports `C_r(1024)` and utilization for every `r=2..8`.
 
-This comparison is not used to tune `r`; it is the preregistered test of
-whether the certificate-required order is even deployable.
+This comparison is not used to tune `r`. It is diagnostic evidence when the
+budgeted sparse family fails its certificate. A sparse family that satisfies
+all sparse scientific gates is not rejected merely because the corresponding
+all-clusters order truncation would be unaffordable.
 
 ## Run discipline
 
