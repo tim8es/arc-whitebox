@@ -1,0 +1,134 @@
+{
+  "schema": "arc.whitebox.e135.theory_terminal_receipt.v1",
+  "experiment": "E135",
+  "idempotency_key": "ARC-E135-OBSERVABLE-RESIDUAL-CERTIFICATE-20260921",
+  "status": "TERMINAL_THEORY_NO_GO_NORM_ONLY_RESIDUAL_CERTIFICATE",
+  "scientific_go": false,
+  "production_go": false,
+  "branch": "research/e135-observable-residual-certificate-20260921",
+  "note": {
+    "path": "research/E135_PRIMARY_SOURCE_RESIDUAL_CERTIFICATE.md",
+    "commit": "b233622253f14a8881d68599a2fbc8005039a72b",
+    "blob_sha": "f1ab152a6ce829e95c96d2a53171764f9226742a"
+  },
+  "primary_sources": [
+    {
+      "type": "official_arc_blog",
+      "title": "Announcing the ARC White-Box Estimation Challenge",
+      "url": "https://www.alignment.org/blog/announcing-the-arc-white-box-estimation-challenge/"
+    },
+    {
+      "type": "official_arc_blog",
+      "title": "Competing with sampling",
+      "url": "https://www.alignment.org/blog/competing-with-sampling/"
+    },
+    {
+      "type": "official_arc_paper",
+      "title": "Estimating the expected output of wide random MLPs more efficiently than sampling",
+      "url": "https://arxiv.org/abs/2605.05179"
+    },
+    {
+      "type": "official_arc_code",
+      "title": "alignment-research-center/mlp_cumulant_propagation",
+      "url": "https://github.com/alignment-research-center/mlp_cumulant_propagation"
+    },
+    {
+      "type": "official_challenge_kit",
+      "title": "AIcrowd whest-starterkit",
+      "url": "https://github.com/AIcrowd/whest-starterkit"
+    },
+    {
+      "type": "504aldo_repo",
+      "title": "whest-p2-cumulant-k3 pinned source",
+      "url": "https://github.com/504aldo/whest-p2-cumulant-k3/tree/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45"
+    },
+    {
+      "type": "504aldo_writeup",
+      "title": "Factorized K=3 cumulant propagation write-up",
+      "url": "https://discourse.aicrowd.com/t/everything-we-tried-a-factorized-k-3-cumulant-propagation-estimator-at-0-25-x-b-where-its-flops-go-and-25-measured-dead-ends-team-504aldo-rank-10/18218"
+    },
+    {
+      "type": "504aldo_findings",
+      "title": "Pinned raw findings log",
+      "url": "https://github.com/504aldo/whest-p2-cumulant-k3/blob/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/docs/findings_log.md",
+      "relevant_findings": [
+        "F65",
+        "F66",
+        "F72",
+        "F73",
+        "F88"
+      ]
+    }
+  ],
+  "requested_certificate_family": {
+    "parseval_orthogonal_source_decomposition": true,
+    "observable_residual_norm": true,
+    "transported_residual_norm": true,
+    "deterministic_truncation_bound": true,
+    "exact_reference_or_target": false
+  },
+  "exact_identity": {
+    "decomposition": "S = QQ^T S + (I-QQ^T)S",
+    "parseval": "||S||_F^2 = ||QQ^T S||_F^2 + ||(I-QQ^T)S||_F^2",
+    "consequence": "The omitted residual magnitude is exactly observable at the projection point."
+  },
+  "impossibility_lemma": {
+    "statement": "If the certificate retains only residual norm rho in an omitted subspace, then for downstream linear sensitivity a the sharp deterministic bound is |a^T r| <= rho ||P_perp a||_2, and equality is attainable by alignment. Thus norm-only state cannot distinguish zero-impact residual orientation from worst-impact orientation for arbitrary dense weights.",
+    "applies_to_arbitrary_dense_weights": true,
+    "proof_type": "finite-dimensional Cauchy-Schwarz with equality case",
+    "target_free": true
+  },
+  "nonlinear_extension": {
+    "k3_d21_structure": "Hadamard/bilinear contractions of transported source legs",
+    "effect": "Retained-plus-residual expansion creates orientation-sensitive first-order and bilinear residual terms. Scalar/block residual energy is not closed under these contractions.",
+    "public_measurement_alignment": "504aldo F65/F66/F72/F73 report high-rank accuracy-relevant residuals, energy-metric failure, and sharp rank cliffs."
+  },
+  "cost_blocker": {
+    "public_v29_total_units_approx": 260,
+    "public_v29_total_c_over_b_approx": 0.254,
+    "public_v29_old_tier_units_approx": 107,
+    "public_v29_without_old_tier_units_approx": 153,
+    "public_v29_without_old_tier_c_over_b": 0.15,
+    "project_utilization_cap": 0.135,
+    "zero_cost_certificate_still_fails_cap": true,
+    "note": "This production-cost blocker applies specifically to layering the requested certificate onto the published 504aldo V29 source machinery."
+  },
+  "internal_context": {
+    "e132_status": "TERMINAL_NO_GO_CLOSE_LAYER_BORN_SOURCE_AGE_D21",
+    "e132_certificate_failure": "Global Gaussian-Poincare/Minkowski certificate exceeded target by >1e13x on frozen small corpus.",
+    "e136_status": "PUBLIC_BASELINE_REPRODUCED_SMOKE",
+    "e136_v25_mean_c_over_b_from_3_mlp_report": 0.36682952971508104,
+    "e136_v29_mean_c_over_b_from_3_mlp_report": 0.25769016550232965
+  },
+  "decision": {
+    "verdict": "TERMINAL_THEORY_NO_GO",
+    "scope": "Only the requested norm-only Parseval/transport-residual deterministic certificate family is closed.",
+    "reason": [
+      "Parseval certifies residual magnitude but discards downstream-relevant orientation.",
+      "For arbitrary dense weights the sharp deterministic norm-only bound is the worst-alignment operator bound.",
+      "D21 source contractions are Hadamard/bilinear and require directional cross-state for tight bounds.",
+      "Primary-source measurements show energy concentration is not a reliable accuracy certificate and expose sharp rank cliffs.",
+      "Orientation-aware exact residual tracking reconstructs omitted source state/cross-state rather than remaining a cheap certificate.",
+      "On published V29, even deleting the entire old tier leaves 0.150xB, already above the 0.135 project cap."
+    ],
+    "successor_constraint": "Any successor must provide a new exact orientation-aware sufficient statistic closed under D21/Hadamard transport at materially lower cost. It is not an E135 rescue and needs a new experiment ID."
+  },
+  "scope": {
+    "web_primary_source_research": true,
+    "exact_reference": false,
+    "benchmark_targets": false,
+    "public_execution": false,
+    "public_mini_execution": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "production_execution": false,
+    "target_fitting": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "receipt_policy": "immutable theory receipt; no production run authorized under E135"
+}
