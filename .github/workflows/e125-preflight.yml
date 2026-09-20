@@ -1,0 +1,46 @@
+name: E125 preflight certificate
+
+on:
+  push:
+    branches:
+      - research/e125-clifford8-rational-tightframe-20260920
+    paths:
+      - 'methods/e125_clifford8_tightframe.py'
+      - 'tests/test_e125_clifford8_preflight.py'
+      - 'scripts/e125_preflight_certificate.py'
+      - '.github/workflows/e125-preflight.yml'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: '0'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project and pytest
+        run: |
+          python -m pip install -e .
+          python -m pip install pytest==8.3.5
+      - name: Static preflight tests only
+        run: python -m pytest -q tests/test_e125_clifford8_preflight.py
+      - name: Compute weight-only certificates and ledger
+        run: python scripts/e125_preflight_certificate.py
+      - name: Upload preflight evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e125-preflight-certificate
+          path: e125-preflight-certificate.json
+          if-no-files-found: error
+          retention-days: 90
