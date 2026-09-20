@@ -1,0 +1,96 @@
+name: E132 layer-born source-age D21
+
+on:
+  push:
+    branches:
+      - research/e132-layer-born-source-age-d21-20260920
+    paths:
+      - 'research/E132_RUN_ARM.json'
+
+jobs:
+  e132:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen one-shot arm and blobs
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected_arm = {
+              "idempotency_key": "ARC-E132-LAYER-BORN-SOURCE-AGE-D21-20260920",
+              "execute_once": True,
+          }
+          arm = json.loads(Path("research/E132_RUN_ARM.json").read_text())
+          if arm != expected_arm:
+              raise SystemExit(f"invalid arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E132_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+
+          frozen = {
+              "research/E132_PROTOCOL.md": "df69e0a3082d6ec313eead15f09abb1d8285d079",
+              "research/E132_PROTOCOL_ARITHMETIC_ERRATUM.md": "c18127197f8fa98d5bdcc67fd8f922934011f9cb",
+              "methods/e132_layer_born_d21.py": "24ac36b39dca18b5b442f2d9cb6dd371119719dc",
+              "methods/e132_exact_angular_reference.py": "e4827aa8df09e385b71cc71c8281f6a0eb3222ef",
+              "tests/test_e132_layer_born_d21.py": "109e1081647289d72aa2b15605573424cd93a4bd",
+              "scripts/e132_layer_born_source_age_d21_falsifier.py": "981de7b5649873e9d6cd2feac0249c672a27a9d2",
+          }
+          for path, expected_sha in frozen.items():
+              actual = subprocess.check_output(
+                  ["git", "rev-parse", f"HEAD:{path}"], text=True
+              ).strip()
+              if actual != expected_sha:
+                  raise SystemExit(
+                      f"frozen blob mismatch {path}: {actual} != {expected_sha}"
+                  )
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen project and tests
+        run: |
+          python -m pip install -e .
+          python -m pip install pytest==8.3.5
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e132_layer_born_d21.py
+          python -m py_compile methods/e132_exact_angular_reference.py
+          python -m py_compile scripts/e132_layer_born_source_age_d21_falsifier.py
+
+      - name: Focused tests
+        run: python -m pytest -q tests/test_e132_layer_born_d21.py
+
+      - name: Run sole frozen E132 scientific falsifier
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e132_layer_born_source_age_d21_falsifier.py 2>&1 | tee e132-layer-born-source-age-d21.log
+
+      - name: Upload immutable E132 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e132-layer-born-source-age-d21
+          path: |
+            e132-layer-born-source-age-d21.log
+            e132-layer-born-source-age-d21.json
+            research/E132_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
