@@ -1,0 +1,15 @@
+{
+  "schema": "arc.whitebox.e136.run_arm.v1",
+  "experiment": "E136",
+  "branch": "research/e136-public-k3-reproduction",
+  "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+  "scope": "public v2-phase2 mini only",
+  "v25": "non-Strassen reference",
+  "v29": "published cost-engineered path",
+  "n_mlps": 3,
+  "streaming": true,
+  "holdout": false,
+  "full_split": false,
+  "official_scorer": false,
+  "submission": false
+}
