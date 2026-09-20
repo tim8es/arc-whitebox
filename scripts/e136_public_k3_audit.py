@@ -61,7 +61,7 @@ for name in ("estimator_v25.py", "estimator_v29.py"):
 
 shape_tokens = (
     "n == 1024 and L == 16",
-    "n == 1024 and l == 16",
+    "n == 1024 and L == len(CORR_BETA)",
 )
 receipt = {
     "schema": "arc.whitebox.e136.public_k3_static.v1",
