@@ -108,3 +108,36 @@ shape-fallback evidence, and measured public-mini smoke results.
 
 Success does **not** mean the baseline wins, reaches the private leaderboard, or
 is suitable for direct submission without further independent review.
+
+
+## Recorded result
+
+Authoritative Actions run: `35540584740`, job `106157369520`, head
+`830bb11a27cc3a3d9c1e42fb4c6f6fa2004fffe4`.
+
+- Static provenance/license/rules audit: PASS.
+- V25 non-suite `whest validate`: PASS.
+- V29 non-suite `whest validate`: PASS.
+- Public `v2-phase2/mini`, streaming first 3 MLPs, V25: PASS,
+  raw final-layer MSE `2.33e-8`.
+- Same three public MLPs, V29: PASS, raw final-layer MSE `2.33e-8`.
+- V25 plain report recorded aggregate estimator FLOPs `2.42e12` over three
+  MLPs, implying mean `C/B ~= 0.36683` from the rounded report, versus the
+  published `0.3667`.
+- V29 plain report recorded aggregate estimator FLOPs `1.70e12` over three
+  MLPs, implying mean `C/B ~= 0.25769`. This is about 2% above the published
+  `0.2526` steady-state path; the upstream write-up explicitly says the first
+  predict uses a shallower, higher-cost Strassen level, so a three-MLP mean is
+  expected to sit above steady state.
+
+The three-MLP raw value is 2.4% above the author's published V29 eight-dump raw
+`2.275e-8`, 4.5% above the published V25 100-MLP mini raw `2.23e-8`, and
+9.4% above the public-LB `~2.13e-8`. Those are compatible smoke results, not a
+claim of exact suite parity. The stronger local reproduction fact is that V25
+and V29 give the same raw result on the identical three public MLPs while the
+metered cost falls along the published V25 -> V29 path.
+
+Immutable receipt: `research/E136_REPRODUCTION_RECEIPT.json`.
+
+Evidence artifact: Actions artifact `10614453799`,
+SHA256 `103b5d4b97fb6584a45805877414545ea05705693f573f816d1ef76b8ce7b658`.
