@@ -1,0 +1,39 @@
+name: E127 sparse hypergraph exact falsifier
+
+on:
+  push:
+    branches:
+      - research/e127-sparse-hypergraph-certified-tail-20260920
+    paths:
+      - 'methods/e127_sparse_hypergraph.py'
+      - 'tests/test_e127_sparse_hypergraph.py'
+      - 'scripts/e127_sparse_hypergraph.py'
+      - '.github/workflows/e127-sparse-hypergraph.yml'
+
+jobs:
+  exact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: python -m pip install -e . pytest
+      - name: Run focused E127 tests
+        run: python -m pytest -q tests/test_e127_sparse_hypergraph.py
+      - name: Run sole E127 exact falsifier
+        run: python scripts/e127_sparse_hypergraph.py
+      - name: Upload E127 payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: e127-sparse-hypergraph
+          path: e127-sparse-hypergraph.json
+          if-no-files-found: error
+          retention-days: 90
