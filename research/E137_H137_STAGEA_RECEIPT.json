@@ -1,0 +1,68 @@
+{
+  "schema": "arc.whitebox.e137.h137.stagea.terminal_receipt.v1",
+  "experiment": "E137-H137-STAGEA",
+  "idempotency_key": "ARC-E137-H137-STAGEA-COUNTSKETCH-S512-20260921",
+  "status": "TERMINAL_NO_GO_EXECUTION_FAILURE_CLOSE_H137_COUNTSKETCH_S512",
+  "branch": "research/e137-mit-v25-v29-improvement-scout-20260921",
+  "frozen_stagea_protocol_commit": "ce5a217eca58e8608d824c7f5ef82dab6097e98a",
+  "scout_protocol_commit": "77c13ded84bb8b5e6bd4a092cd2021b3732a21fe",
+  "note_commit": "9b90f83bbbf4d6d2f60720f0fd5a8d52c1951bb5",
+  "implementation": {
+    "pinned_v25_vendor_commit": "3ff7fa9b8bf6abcc22b6bd1391a9be219f4495df",
+    "pinned_public_v25_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "helper_commit": "01f4987c62d1a015236522ddc46e498383706f52",
+    "tests_commit": "a973b20ecc6af590f6f6076da816650dc2f183a6",
+    "falsifier_commit": "dea40e2f7d7709959297e56eeae6529f66d99d67",
+    "workflow_head": "eb21ee6bb5838255293d1b8a7ae48b1aa7b20569",
+    "sketch_width": 512
+  },
+  "execution": {
+    "run_id": 35544178486,
+    "job_id": 106167052999,
+    "run_attempt": 1,
+    "run_conclusion": "failure",
+    "focused_tests": "5 passed in 0.15s",
+    "scientific_falsifier_started": false,
+    "failure_step": "Run sole target-free H137 Stage-A falsifier",
+    "exception": "ModuleNotFoundError: No module named 'methods'",
+    "exception_location": "scripts/e137_h137_stagea_countsketch.py line 15 during import",
+    "artifact_uploaded": false,
+    "artifact_id": null,
+    "rerun": false
+  },
+  "gates": {
+    "pinned_v25_blob_identity": "UNEVALUATED",
+    "finite_states": "UNEVALUATED",
+    "old_tier_measurement_each_mlp": "UNEVALUATED",
+    "pooled_relative_d21_error_le_0_022": "UNEVALUATED",
+    "candidate_all_in_strictly_below_v25": "UNEVALUATED",
+    "candidate_all_in_within_budget": "UNEVALUATED",
+    "factor_vs_lifted_error_gap_le_1e_5": "UNEVALUATED",
+    "deterministic_replay_bitwise_exact": "UNEVALUATED",
+    "no_target_reference_scorer_access": true
+  },
+  "measured_metrics": {
+    "pooled_relative_d21_error": null,
+    "candidate_projected_all_in_flops": null,
+    "candidate_projected_utilization": null,
+    "deterministic_payload_sha256": null
+  },
+  "decision_basis": "The frozen Stage-A protocol states any failed or unevaluable gate is TERMINAL NO-GO with no rerun/rescue. The sole authorized Actions run failed before the falsifier imported, so the D21/cost/determinism gates are unevaluable and H137 s=512 is closed under this experiment identity.",
+  "scope": {
+    "final_mse_validation_performed": false,
+    "final_mse_validation_authorized": false,
+    "target_read": false,
+    "benchmark_weights_read": false,
+    "public_dataset": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "sweep": false,
+    "rescue": false,
+    "second_actions_run": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
