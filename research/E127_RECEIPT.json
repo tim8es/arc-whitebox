@@ -1,0 +1,268 @@
+{
+  "schema": "arc.whitebox.e127.terminal_receipt.v1",
+  "experiment": "E127",
+  "idempotency_key": "ARC-E127-SPARSE-HYPERGRAPH-CERTIFIED-TAIL-20260920",
+  "status": "TERMINAL_NO_GO_SPARSE_HYPERGRAPH_CERTIFIED_TAIL_EXCEEDS_FLOP_CAP",
+  "scientific_go": false,
+  "production_scientific_go": false,
+  "branch": "research/e127-sparse-hypergraph-certified-tail-20260920",
+  "provenance": {
+    "parent_branch": "research/bootstrap",
+    "parent_head_observed": "7a0034088ebbffbd74b441e1797c272e9d33cbff",
+    "protocol_commit": "621bc2371d175e82d1d14e023e12e8f00aa76a5e",
+    "protocol_clarification_commit": "8d82fc23818f997dad0dfbdad3ca9bac8683ddd2",
+    "implementation_commit": "f69e24055fd4bf3a221b7f2b32cd5b91b80079a0",
+    "falsifier_commit": "5bfa60b0113d1d9469e8da7ddb7e5a1f504612ff",
+    "tests_commit": "9d6a7041002d72b977958595bd5a5b0915aebcc0",
+    "workflow_head": "1afc34432d5213e31d0f3cc9a10ffab46f29a877"
+  },
+  "mechanism": {
+    "name": "sparse higher-order Mobius hypergraph closure",
+    "exact_identity": "F(V)=sum_{S subseteq V} Delta(S), Delta is the subset Mobius transform of F(S)=E[ReLU(sum_{i in S} w_i H_i)]",
+    "arbitrary_joint_dependence": true,
+    "pair_tree_rescue": false,
+    "chow_liu": false,
+    "gaussian_plugin": false,
+    "control_variate": false,
+    "target_fitting": false,
+    "production_full_mask_state": false,
+    "certificate": "|Delta_j(S)| <= 2^(|S|-1) min_{i in S} |w_ij| E[H_i]",
+    "selector": "certificate-ranked downward-closed simplicial complex"
+  },
+  "frozen_corpus": {
+    "input_dimension": 2,
+    "width": 8,
+    "depth": 4,
+    "seeds": [
+      127200,
+      127201,
+      127202,
+      127203,
+      127204,
+      127205,
+      127206,
+      127207
+    ],
+    "weight_law": "iid He-normal float64, zero bias",
+    "exact_reference": "piecewise angular integration with analytic E[R]",
+    "raw_target_mse": 1.89e-8,
+    "raw_target_rms": 0.0001374772708486752
+  },
+  "integrity": {
+    "all_integrity_gates": true,
+    "max_mobius_full_direct_error": 1.7763568394002505e-15,
+    "cluster_envelope_verified": true,
+    "sparse_downward_closed": true,
+    "deterministic_replay_bitwise_json_equal": true,
+    "deterministic_sha256": "083018bc48c179ad7504bab107afe263ae80ee16ea5d1c37fde4b41ec320ad1d",
+    "candidate_reads_exact_final_before_scoring": false,
+    "no_targets_public_scorer_holdout_full": true
+  },
+  "scientific_result": {
+    "pooled_sparse_candidate_mse": 0.00039423726348519186,
+    "pooled_sparse_over_raw_target": 20859.114470115972,
+    "min_network_sparse_candidate_mse": 0.000009375142978328593,
+    "max_network_sparse_candidate_mse": 0.0015575972982027457,
+    "min_sparse_certificate_rms": 1.8247726965068751,
+    "max_sparse_certificate_rms": 73.79057979136299,
+    "min_certificate_over_rms_target": 13273.268266399105,
+    "max_certificate_over_rms_target": 536747.4880453963,
+    "minimum_certified_orders": [
+      7,
+      8,
+      6,
+      7,
+      7,
+      7,
+      7,
+      7
+    ],
+    "necessary_retained_non_singletons": [
+      120,
+      247,
+      57,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "sparse_selected_non_singletons": [
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37
+    ],
+    "sparse_cluster_units": [
+      141,
+      141,
+      141,
+      140,
+      141,
+      140,
+      141,
+      141
+    ],
+    "per_network": [
+      {
+        "seed": 127200,
+        "min_certified_order": 7,
+        "necessary_retained": 120,
+        "selected_non_singletons": 37,
+        "certificate_rms": 7.495701735975931,
+        "mse": 0.00012369475492184383
+      },
+      {
+        "seed": 127201,
+        "min_certified_order": 8,
+        "necessary_retained": 247,
+        "selected_non_singletons": 37,
+        "certificate_rms": 10.707792266354193,
+        "mse": 0.00002583744060011423
+      },
+      {
+        "seed": 127202,
+        "min_certified_order": 6,
+        "necessary_retained": 57,
+        "selected_non_singletons": 37,
+        "certificate_rms": 12.760720956037634,
+        "mse": 0.0011017141901479208
+      },
+      {
+        "seed": 127203,
+        "min_certified_order": 7,
+        "necessary_retained": 120,
+        "selected_non_singletons": 37,
+        "certificate_rms": 12.366582093106343,
+        "mse": 0.00005000017843590034
+      },
+      {
+        "seed": 127204,
+        "min_certified_order": 7,
+        "necessary_retained": 120,
+        "selected_non_singletons": 37,
+        "certificate_rms": 1.8247726965068751,
+        "mse": 0.000009375142978328593
+      },
+      {
+        "seed": 127205,
+        "min_certified_order": 7,
+        "necessary_retained": 120,
+        "selected_non_singletons": 37,
+        "certificate_rms": 10.617797958911805,
+        "mse": 0.00019342198632528869
+      },
+      {
+        "seed": 127206,
+        "min_certified_order": 7,
+        "necessary_retained": 120,
+        "selected_non_singletons": 37,
+        "certificate_rms": 73.79057979136299,
+        "mse": 0.0015575972982027457
+      },
+      {
+        "seed": 127207,
+        "min_certified_order": 7,
+        "necessary_retained": 120,
+        "selected_non_singletons": 37,
+        "certificate_rms": 7.632370243773213,
+        "mse": 0.0000922571162693929
+      }
+    ]
+  },
+  "production_cost": {
+    "budget_flops": 2199023255552,
+    "utilization_cap": 0.13,
+    "integer_cap_flops": 285873023221,
+    "baseline_total": 134176174592,
+    "headroom_flops": 151696848629,
+    "small_width_homologous_cluster_unit_cap": 141,
+    "optimistic_pair_count_cap": 47,
+    "optimistic_necessary_count_min": 57,
+    "optimistic_necessary_count_max": 247,
+    "count_cap_pass": false,
+    "full_order": {
+      "order2": {
+        "total_upper_flops": 13315430806016,
+        "utilization_upper": 6.055156884947792,
+        "passes": false
+      },
+      "order6": {
+        "total_upper_flops": 9.312736626972072e+22,
+        "utilization_upper": 42349423106.18895,
+        "passes": false
+      },
+      "order7": {
+        "total_upper_flops": 1.5493233461968963e+25,
+        "utilization_upper": 7045506873495.907,
+        "passes": false
+      },
+      "order8": {
+        "total_upper_flops": 2.217949031804706e+27,
+        "utilization_upper": 1008606446614388,
+        "passes": false
+      }
+    }
+  },
+  "gates": {
+    "all_integrity_gates": true,
+    "sparse_certificate_rms_le_target_every_network": false,
+    "pooled_sparse_candidate_mse_le_1_89e_8": false,
+    "every_network_sparse_candidate_mse_le_1_89e_8": false,
+    "optimistic_necessary_retained_count_le_47_every_network": false,
+    "production_accounting_matches_protocol": true,
+    "no_targets_public_scorer_holdout_full": true
+  },
+  "execution": {
+    "run": 35509275149,
+    "job": 106074241954,
+    "run_number": 1,
+    "run_attempt": 1,
+    "event": "push",
+    "conclusion": "success",
+    "focused_tests": "4 passed in 0.15s",
+    "scientific_falsifier_run_count": 1,
+    "rerun": false,
+    "artifact": {
+      "name": "e127-sparse-hypergraph",
+      "id": 10604588862,
+      "size_bytes": 12311,
+      "zip_sha256": "379a34f9aed8f7d4440e720a88d70183002e47ee9a03205e7b6b13f81a813a85",
+      "expires_at": "2026-12-19T11:57:59Z"
+    }
+  },
+  "blocker": {
+    "primary": "Even with exact penultimate means and an optimistic certificate-count lower bound that ignores downward-closure helper cost, the easiest frozen network requires at least 57 retained non-singleton clusters to certify the RMS target, while the production-homologous optimistic pair-cost cap is 47. Six networks require 120 and one requires all 247 higher-order clusters.",
+    "secondary": "The actual budgeted downward-closed sparse family retains only 37 non-singleton clusters and leaves certified RMS tails between 1.8247726965068751 and 73.79057979136299, versus 1.374772708486752e-4 allowed.",
+    "adaptive_order": "Certified full-order truncation needs order 6, 7, or 8 on the frozen corpus. Even all pairs at production width already cost 6.055x the total 2^41 budget under the optimistic cluster floor; orders 6-8 are vastly beyond the cap.",
+    "actual_error": "The sparse candidate pooled MSE is 0.00039423726348519186, about 20,859x the target."
+  },
+  "decision": {
+    "verdict": "TERMINAL_NO_GO",
+    "reason": "Higher-order joint dependence is representable exactly by the Mobius hypergraph identity, but the certified omitted-cluster tail is not sparse enough under the 0.13 FLOP cap. The mechanism fails both the certificate budget lower bound and the actual small-width MSE gate.",
+    "no_rescue": "No threshold change, selector change, seed change, order change, certificate weakening, rerun, pair-tree hybrid, target fit, production run, public/scorer/holdout/full access, canonical mutation, or ledger mutation under E127."
+  },
+  "scope": {
+    "synthetic_exact_small_width_only": true,
+    "production_scientific_run": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "target_fitting": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt"
+}
