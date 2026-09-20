@@ -1,0 +1,120 @@
+{
+  "schema": "arc.whitebox.e136.reproduction_receipt.v1",
+  "experiment": "E136",
+  "status": "PUBLIC_BASELINE_REPRODUCED_SMOKE",
+  "branch": "research/e136-public-k3-reproduction",
+  "baseline_claim": "working reproducible public base; not a win claim",
+  "upstream": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "license": "MIT",
+    "license_notice_preserved": true,
+    "vendored_git_blobs": {
+      "estimator_v25.py": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "estimator_v29.py": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+      "LICENSE": "2c843327a87b547245b566f02391295ba71ad26a"
+    },
+    "vendored_blob_identity_gate": true
+  },
+  "phase2_audit": {
+    "direct_forbidden_numpy_scipy_torch_imports": false,
+    "stdlib_flopscope_whestbench_import_model": true,
+    "suite_shape_gate_present": true,
+    "v25_strassen_present": false,
+    "v29_strassen_cost_path_present": true,
+    "public_only": true,
+    "holdout": false,
+    "full_split": false,
+    "official_scorer": false,
+    "submission": false,
+    "flop_budget": 2199023255552,
+    "max_threads": 1,
+    "residual_wall_time_limit_s": 0.4
+  },
+  "shape_fallback": {
+    "test": "whest validate uses a small non-suite validation MLP",
+    "v25_exit_code": 0,
+    "v29_exit_code": 0,
+    "verdict": "PASS"
+  },
+  "public_mini_smoke": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "split": "mini",
+    "streaming": true,
+    "n_mlps": 3,
+    "runner": "local",
+    "v25": {
+      "exit_code": 0,
+      "raw_final_layer_mse_reported": 2.33e-8,
+      "aggregate_estimator_flops_reported_plain": 2.42e12,
+      "derived_mean_c_over_b_from_rounded_aggregate": 0.36682952971508104,
+      "published_c_over_b": 0.3667,
+      "relative_cost_difference_from_published": 0.00035323074742571995
+    },
+    "v29": {
+      "exit_code": 0,
+      "raw_final_layer_mse_reported": 2.33e-8,
+      "aggregate_estimator_flops_reported_plain": 1.70e12,
+      "derived_mean_c_over_b_from_rounded_aggregate": 0.25769016550232965,
+      "published_steady_state_c_over_b": 0.2526,
+      "relative_cost_difference_from_published_steady_state": 0.020151090666388195,
+      "interpretation": "three-MLP mean includes the first-predict warm-up path; upstream explicitly reports a shallower/higher-cost first predict and 0.2526 steady state"
+    },
+    "v25_v29_raw_same_to_report_precision": true,
+    "raw_vs_published": {
+      "published_leaderboard_raw_approx": 2.13e-8,
+      "published_v25_100_mlp_mini_raw": 2.23e-8,
+      "published_v29_8_dump_raw": 2.275e-8,
+      "smoke_vs_leaderboard_relative_difference": 0.09389671361502354,
+      "smoke_vs_v25_100_mlp_relative_difference": 0.044843049327354216,
+      "smoke_vs_v29_8_dump_relative_difference": 0.02417582417582422,
+      "caveat": "3 MLP smoke is not precise enough to replace 100-MLP or leaderboard estimates"
+    }
+  },
+  "execution": {
+    "authoritative_run": 35540584740,
+    "job": 106157369520,
+    "head": "830bb11a27cc3a3d9c1e42fb4c6f6fa2004fffe4",
+    "conclusion": "success",
+    "artifact": {
+      "id": 10614453799,
+      "name": "e136-public-k3-reproduction",
+      "size_bytes": 10557,
+      "zip_sha256": "103b5d4b97fb6584a45805877414545ea05705693f573f816d1ef76b8ce7b658",
+      "expires_at": "2026-12-19T22:05:31Z"
+    },
+    "mini_log_sha256": {
+      "v25": "9ce098025649050223591245f41a33889dfc3fc53123c62b95c2cb1887fdf686",
+      "v29": "2f4de5d4d455290f7482bd69e1ac964308c0500b1f2ac8f4ca798360bf5b00b5"
+    },
+    "preflight_runs": [
+      {
+        "run": 35540534841,
+        "classification": "INSTRUMENT_PREFLIGHT_ONLY",
+        "mini_executed": false,
+        "reason": "initial static shape-token check was too literal"
+      },
+      {
+        "run": 35540538681,
+        "classification": "INSTRUMENT_PREFLIGHT_ONLY",
+        "mini_executed": false,
+        "reason": "same static check failed before validation/mini"
+      }
+    ]
+  },
+  "strassen_rule_note": {
+    "original_writeup_state": "awaiting sponsor clarification",
+    "later_public_update": "504aldo reported that the sponsor confirmed on 2026-09-11 that Strassen-Winograd expressed as flopscope operations is permitted with no recursion-level limit",
+    "e136_policy": "retain V25 as non-Strassen reference and treat V29 separately as the published cost path"
+  },
+  "decision": {
+    "verdict": "REPRODUCIBLE_PUBLIC_BASE_ESTABLISHED",
+    "not_claimed": [
+      "challenge win",
+      "private/holdout parity",
+      "100-MLP raw parity from the 3-MLP smoke",
+      "new estimator improvement"
+    ],
+    "next_use": "baseline for independent E136-successor improvements with provenance preserved"
+  }
+}
