@@ -439,9 +439,12 @@ Two target-free exact-small fixtures:
 
 Reference is ARC K=3-simple K3 state, not competition final means.
 
-At small width it is legal to materialize the exact K3 tensor solely to compute the
-**best possible rank-4 SMV approximation** after each nonlinear birth. This deliberately
-gives H140 an oracle *within its representation class* while remaining target-free.
+At small width it is legal to materialize the exact K3 tensor solely for a deterministic
+rank-4 compression after each nonlinear birth: take the top-4 SVD of the mode-3 unfolding
+(K_{(12),3}), reshape each left singular vector into a symmetric matrix (R_a), then
+orthogonally symmetrize the reconstructed tensor. The unfolding columns are vectorized
+symmetric slices, so the nonzero left singular space is symmetric; because exact K3 is
+fully symmetric, the final symmetrization cannot increase Frobenius error.
 
 The candidate then uses only SMV formulas for the following linear/Wick transport and
 D3/D21 readout.
