@@ -1,9 +1,6 @@
 name: E136 public K3 reproduction
 
 on:
-  push:
-    branches:
-      - research/e136-public-k3-reproduction
   workflow_dispatch:
 
 jobs:
