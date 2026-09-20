@@ -1,0 +1,211 @@
+{
+  "schema": "arc.whitebox.e126.terminal_receipt.v1",
+  "experiment": "E126",
+  "idempotency_key": "ARC-E126-MULTISOURCE-FRAME-CERTIFICATE-20260920",
+  "status": "TERMINAL_NO_GO_FINITE_SAMPLE_CERTIFICATE_NOT_TIGHT_ENOUGH_UNDER_PRODUCTION_BUDGET",
+  "scientific_go": false,
+  "production_scientific_go": false,
+  "branch": "research/e126-multisource-frame-certificate-20260920",
+  "provenance": {
+    "parent_branch": "research/e123-independent-multisource-verifier-20260920",
+    "parent_head": "8fea9f1ee240fa44c553f5e95c3d8acee1e0aa20",
+    "protocol_commit": "15712057ac12f7495f9bf8e4d03b74b49a9f9eee",
+    "certificate_implementation_commit": "b164ab2e039e04680a209b609561c8e7bef149e6",
+    "adversarial_fixture_commit": "d6964087f0c5a06db91cf5507861cebd998f8952",
+    "tests_commit": "8a08623ff1c8046f6f99a76dd0e6ce507cd8a58c",
+    "falsifier_commit": "98077c52c313a0b8e9c86cece643c9daab386430",
+    "initial_workflow_commit": "5294723c92ee7da5628329669d25abe8615e627c",
+    "dependency_only_workflow_fix_commit": "98ead77291f21d3733b765640f772489107e28fd",
+    "result_commit": "7fc1ab04808d42a0ac2a9cdfb8aac573a93587a9",
+    "source_blobs": {
+      "protocol": "38853fc79612be9b5d452745d9fca0a36fd862e1",
+      "certificate_method": "2148ab9501afa3458be44836aca56a11de787b1f",
+      "adversarial_fixture": "57ecde58b4d09caf64701e6da279729283569c74",
+      "tests": "4a5adb92122352b9b7ddab85f8d77cb8d702c927",
+      "falsifier": "d51d9729f33c92289fdfef6ab7e64dd62422b35b",
+      "workflow": "da5084ca00dabbb6cc2f22e59b88a35c3aa87b95",
+      "result": "fc98ad183348bd095491a49e4b20608cdb6b0add"
+    }
+  },
+  "theory": {
+    "estimator_class": "independent Haar-Stiefel multi-source algebraic frames with fixed finite code",
+    "instantiated_source_dimension": 8,
+    "instantiated_code": "18-word antipodal regular simplex",
+    "exact_unbiasedness": "For each fixed unit codeword a, Ua is uniform on S^(d-1); frame expectation equals spherical expectation; multiply by E[chi_d] for Gaussian expectation.",
+    "arbitrary_dense_weights": true,
+    "target_free": true,
+    "confidence": 0.95,
+    "delta": 0.05,
+    "weight_only_range": "B_j=E[chi_d]*prod_{l<L}||W_l||_F*||W_L[:,j]||_2",
+    "empirical_bernstein_radius": "sqrt(2*s_j^2*log(4m/delta)/P)+7*B_j*log(4m/delta)/(3(P-1))",
+    "familywise_rms_certificate": "sqrt(mean_j radius_j^2)",
+    "optimistic_variance_only_floor": "sqrt(mean_j 2*s_j^2*log(4m/delta)/P)",
+    "raw_mse_cap": 1.89e-8,
+    "raw_rms_cap": 0.0001374772708486752
+  },
+  "adversarial_fixtures": {
+    "construction": "Exact 2-D nonlinear source blocks hidden behind dense orthogonal input mixing and three positive dense A=(1-rho)I+rho*11^T/d gauge layers with compensating A^-1, rho=0.99.",
+    "dense_weight_fraction_min": 1,
+    "positive_mix_condition_number": 100,
+    "eight_d": {
+      "dimension": 8,
+      "independent_exact_2d_sources": 4,
+      "block_seeds": [
+        126800,
+        126801,
+        126802,
+        126803
+      ],
+      "mixing_seed": 126890,
+      "frame_seeds": [
+        126900,
+        126901,
+        126902,
+        126903
+      ],
+      "dense_vs_latent_probe_max_abs": 1.0080825063596421e-13,
+      "min_actual_rms_verifier_only": 0.00020400897696890716,
+      "max_actual_rms_verifier_only": 0.003250902741364716,
+      "min_target_free_certificate": 18688275.874742072,
+      "min_variance_only_rms": 0.007881661601567797,
+      "min_variance_only_over_target": 57.33065220827192,
+      "max_variance_only_over_target": 63.79990119108592,
+      "min_spectral_range_certificate_verifier_only": 5183352.897702908
+    },
+    "sixteen_d": {
+      "dimension": 16,
+      "independent_exact_2d_sources": 8,
+      "block_seeds": [
+        1261600,
+        1261601,
+        1261602,
+        1261603,
+        1261604,
+        1261605,
+        1261606,
+        1261607
+      ],
+      "mixing_seed": 1261690,
+      "frame_seeds": [
+        1261700,
+        1261701,
+        1261702,
+        1261703
+      ],
+      "dense_vs_latent_probe_max_abs": 7.638334409421077e-14,
+      "min_actual_rms_verifier_only": 0.0001454062425583449,
+      "max_actual_rms_verifier_only": 0.0063112965228182905,
+      "min_target_free_certificate": 39497324.71284978,
+      "min_variance_only_rms": 0.018028559193493995,
+      "min_variance_only_over_target": 131.13847170663215,
+      "max_variance_only_over_target": 132.41926882034744,
+      "min_spectral_range_certificate_verifier_only": 3973833.5701897983
+    }
+  },
+  "production_cost": {
+    "inherited_e104_base_flops": 149114550960,
+    "total_budget_flops": 2199023255552,
+    "utilization_cap": 0.13,
+    "total_integer_cap_flops": 285873023221,
+    "incremental_cap_flops": 136758472261,
+    "p225": {
+      "frames": 225,
+      "directions": 4050,
+      "incremental_all_in_upper": 136237052214,
+      "incremental_slack": 521420047,
+      "total_with_e104_base": 285351603174,
+      "utilization": 0.12976288561458205,
+      "passes": true
+    },
+    "p226": {
+      "frames": 226,
+      "directions": 4068,
+      "incremental_all_in_upper": 136842400884,
+      "incremental_over_cap": 83928623,
+      "total_with_e104_base": 285956951844,
+      "utilization": 0.1300381663186272,
+      "passes": false
+    },
+    "max_budget_admissible_frames": 225,
+    "billed_operation_classes": [
+      "algebraic simplex setup",
+      "Haar-8 RNG/MGS/normalization",
+      "source-code materialization",
+      "all dense propagation and ReLU work",
+      "final reduction/radial materialization",
+      "orthogonality diagnostics",
+      "source-direction norm diagnostics",
+      "Frobenius range-envelope computation",
+      "per-frame reductions",
+      "sample mean/variance",
+      "certificate radii/materialization"
+    ]
+  },
+  "execution": {
+    "pre_scientific_infrastructure_attempt": {
+      "run": 35503180953,
+      "job": 106058452194,
+      "head": "5294723c92ee7da5628329669d25abe8615e627c",
+      "conclusion": "failure",
+      "blocker": "pytest missing from runner environment",
+      "focused_tests_executed": false,
+      "scientific_falsifier_executed": false,
+      "scientific_artifact_present": false
+    },
+    "scientific_falsifier": {
+      "run": 35503232256,
+      "job": 106058580566,
+      "head": "98ead77291f21d3733b765640f772489107e28fd",
+      "run_attempt": 1,
+      "conclusion": "success",
+      "focused_tests": "4 passed in 0.16s",
+      "scientific_falsifier_run_count": 1,
+      "artifact": {
+        "name": "e126-multisource-frame-certificate",
+        "id": 10603195978,
+        "size_bytes": 5647,
+        "zip_sha256": "0ef4538a57b8e6bcfa1c40d087f916dbb6870d76b0aa5b436c687ec088629bb0",
+        "expires_at": "2026-12-19T09:46:26Z"
+      }
+    }
+  },
+  "gates": {
+    "source_firewall_pass": true,
+    "simplex_algebra_pass": true,
+    "fixture_and_candidate_integrity_pass": true,
+    "posthoc_coverage_check_all": true,
+    "target_free_certificate_le_raw_rms_target_all": false,
+    "optimistic_variance_only_floor_le_raw_rms_target_all": false,
+    "production_p225_pass_and_p226_fail": true,
+    "no_public_benchmark_scorer_holdout_full": true
+  },
+  "blocker": {
+    "primary": "At the maximum production-admissible P=225, the target-free empirical-Bernstein variance-only term already exceeds the ARC RMS target by at least 57.33x on the adversarial 8-D fixture and 131.14x on the 16-D fixture.",
+    "consequence": "Even a hypothetical perfect zero-cost exact range envelope cannot make this certificate pass at the frozen production sample budget.",
+    "secondary": "Layerwise Frobenius and even verifier-only exact spectral norm range envelopes are catastrophically loose under dense positive gauge reparameterizations that preserve the network function.",
+    "not_posthoc_exact_mse": "Exact-reference RMS was used only after candidate/certificate materialization to check coverage/tightness and was never an input to the emitted certificate."
+  },
+  "decision": {
+    "verdict": "TERMINAL_NO_GO",
+    "reason": "A target-free finite-sample certificate exists and is valid for arbitrary dense weights, but cannot be sufficiently tight under the verified production frame budget. The variance-only lower component of the certificate already fails by orders of magnitude.",
+    "no_rescue": "No confidence change, frame-count increase, source-dimension change, algebraic-code change, fixture change, seed change, alternative range norm, target fitting, or rerun under E126."
+  },
+  "scope": {
+    "synthetic_adversarial_only": true,
+    "production_execution": false,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "target_fitting": false,
+    "tuning": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "receipt_policy": "immutable terminal receipt"
+}
