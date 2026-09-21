@@ -30,23 +30,17 @@ V29-level final MSE. That is the point of the future owner-run gate below.
 
 Budget:
 
-[
-B = 2^{41} = 2,199,023,255,552;	ext{FLOPs}.
-]
+`B = 2^41 = 2,199,023,255,552 FLOPs`.
 
-One F86 unit is
+One F86 unit is:
 
-[
-u = 2n^3 = 2^{31} = 2,147,483,648;	ext{FLOPs}
-]
+`u = 2 n^3 = 2^31 = 2,147,483,648 FLOPs`
 
-for `n=1024`, so `B = 1024 u`.
+for `n = 1024`, so `B = 1024 u`.
 
 Hard cap:
 
-[
-0.135 B = 138.24u = 296,868,139,499.52;	ext{FLOPs}.
-]
+`0.135 B = 138.24 u = 296,868,139,499.52 FLOPs`.
 
 Pinned public V29 F86 anatomy (steady-state total about `260.1u`):
 
@@ -58,18 +52,13 @@ Pinned public V29 F86 anatomy (steady-state total about `260.1u`):
 | covariance | 7.1 |
 | closure + birth | 5.7 |
 
-Deleting the whole old tier leaves about
+Deleting the whole old tier leaves about:
 
-[
-C_{m no-old}=153.0u=0.1494140625B.
-]
+`C_no-old = 153.0u = 0.1494140625 B`.
 
-Therefore the **hard lower bound on the saving E180 must create outside the old tier** is
+Therefore the **hard lower bound on the saving E180 must create outside the old tier** is:
 
-[
-Delta C_{min}=153.0-138.24=14.76u
-=31,696,858,644.48;	ext{FLOPs}.
-]
+`Delta_C_min = 153.0 - 138.24 = 14.76u = 31,696,858,644.48 FLOPs`.
 
 Any proposal that cannot remove at least `14.76u` from the non-old path is a cost NO-GO
 without an accuracy experiment.
@@ -98,56 +87,34 @@ one more age/rank threshold to the existing source stack.
 ## 3. Official equations that make CP a legitimate carrier
 
 The ARC paper (Wu et al., arXiv:2605.05179, Eq. 15 / S.4.3) factorizes a symmetric
-third-order tensor as
+third-order tensor as:
 
-[
-T_{i_1 i_2 i_3}
-=
-rac{1}{6}
-sum_{sigmain S_3}
-sum_{j=1}^{J}
-A_{i_{sigma(1)},j}
-B_{i_{sigma(2)},j}
-C_{i_{sigma(3)},j},
-qquad J=O(n).
-]
+`T[i1,i2,i3] = (1/6) * sum_{sigma in S3} sum_{j=1..J}
+A[i_sigma(1),j] B[i_sigma(2),j] C[i_sigma(3),j]`, with `J = O(n)`.
 
 The pinned official implementation expresses the same object as `FactoredTensor`.
 Its `contract_W` maps every factor through the linear layer:
 
-[
-(A,B,C)mapsto (WA,WB,WC).
-]
+`(A, B, C) -> (W A, W B, W C)`.
 
 The implementation also computes repeated-index slices from the factors and has a
 `from_dstensor` bridge for the `(3)` and `(2,1)` slices. So an aggregate factored
 carrier is not foreign to the official mathematics; it is the native K=3 representation.
 
-H180 specializes the carrier to a **symmetric CP/Waring form**
+H180 specializes the carrier to a **symmetric CP/Waring form**:
 
-[
-T^{m inh}
-approx
-sum_{q=1}^{R}lambda_q,u_q^{otimes 3},
-qquad R=3n.
-]
+`T_inh ~= sum_{q=1..R} lambda_q * u_q tensor u_q tensor u_q`, with `R = 3n`.
 
 Because a linear MLP layer applies the same `W` on each tensor index,
 
-[
-u_qmapsto Wu_q
-]
+`u_q -> W u_q`
 
 preserves this symmetric CP form exactly through the linear step. The repeated slices
-needed by the K3 closure are available without an n^3 tensor:
+needed by the K3 closure are available without an `n^3` tensor:
 
-[
-D3_i = sum_q lambda_q u_{iq}^3,
-]
+`D3[i] = sum_q lambda_q * u[i,q]^3`
 
-[
-D21_{ic} = sum_q lambda_q u_{iq}^2 u_{cq}
-]
+`D21[i,c] = sum_q lambda_q * u[i,q]^2 * u[c,q]`
 
 (up to the official slice-normalization convention, which the future implementation must
 match exactly).
@@ -190,59 +157,46 @@ The cost model below is deliberately conservative and keeps all non-young F86 gr
 (`24.8 + 7.1 + 5.7 = 37.6u`) even though a clean CP port may make some thin/source
 work unnecessary.
 
-For a symmetric CP matrix `U in R^{n x R}` with `R = rho n`:
+For a symmetric CP matrix `U` of shape `n x R` with `R = rho*n`:
 
-1. one linear transport `W @ U` costs classically about `rho u`;
+1. one linear transport `W @ U` costs classically about `rho*u`;
 2. a full D21 extraction can be written as
-   `(U*U) @ U.T` (with column weights folded in), also about `rho u`;
+   `(U*U) @ U.T` (with column weights folded in), also about `rho*u`;
 3. D3 and elementwise scaling are lower-order relative to `u`.
 
 For depth 16, inherited K3 is transported across at most 15 later layers. V29's exact
 final-layer trim does not require D21 at the final layer, so plan for 15 transports and
 14 full D21 extractions:
 
-[
-C_{m CP,core}(ho) approx (15+14)ho u = 29ho u.
-]
+`C_CP_core(rho) ~= (15 + 14) * rho * u = 29*rho*u`.
 
-At the frozen public rank `rho=3`:
+At the frozen public rank `rho = 3`:
 
-[
-C_{m CP,core}(3)approx87u.
-]
+`C_CP_core(3) ~= 87u`.
 
 Keeping the conservative fixed remainder:
 
-[
-C_{m plan,before reprojection}
-approx 37.6u + 87u
-=124.6u
-=0.1216796875B.
-]
+`C_plan_before_reprojection ~= 37.6u + 87u = 124.6u = 0.1216796875 B`.
 
-That leaves only
+That leaves only:
 
-[
-138.24u-124.6u = 13.64u
-]
+`138.24u - 124.6u = 13.64u`
 
-or about `29.29e9` FLOPs for **all** reprojection, construction, normalization,
+or about `29.29e9 FLOPs` for **all** reprojection, construction, normalization,
 bookkeeping and integration overhead before the hard cap is hit.
 
 This yields a useful rank ceiling under the same classical accounting:
 
-[
-37.6 + 29ho le 138.24
-quadRightarrowquad
-ho le 3.4703.
-]
+`37.6 + 29*rho <= 138.24`
 
-So the public `3n` point is admissible; the public `4.5n` point is not. At `4.5n`,
-the same full-D21 carrier would already be roughly
+so
 
-[
-37.6 + 29(4.5) = 168.1u approx 0.1642B
-]
+`rho <= 3.4703`.
+
+Therefore the public `3n` point is admissible; the public `4.5n` point is not. At
+`4.5n`, the same full-D21 carrier would already be roughly:
+
+`37.6 + 29*4.5 = 168.1u ~= 0.1642 B`
 
 before reprojection overhead.
 
@@ -277,7 +231,7 @@ This is a sketch only. E180 does not authorize a run.
 
 ### Candidate
 
-One candidate only: `R=3072` symmetric inherited-K3 CP carrier.
+One candidate only: `R = 3072` symmetric inherited-K3 CP carrier.
 
 - Start from the clean V29-compatible line selected by the owner.
 - Remove the per-source inherited K3 A/P age history from the candidate path.
@@ -299,7 +253,7 @@ Before any scientific result exists, commit:
 3. a proof/check that D3/D21 extracted from an uncompressed CP tensor match the
    official `FactoredTensor` slice convention;
 4. an all-in symbolic FLOP ledger with named namespaces;
-5. the rank `R=3072` and all gates below.
+5. the rank `R = 3072` and all gates below.
 
 ### Cheap structural gate before ground truth
 
@@ -308,11 +262,7 @@ any reference targets.
 
 Required structural condition:
 
-[
-mathrm{RMS}(D21_{m CP}-D21_{m parent}) /
-mathrm{RMS}(D21_{m parent})
-le 0.015
-]
+`RMS(D21_CP - D21_parent) / RMS(D21_parent) <= 0.015`
 
 over the non-final layers, with finite vectors and deterministic replay.
 
@@ -329,16 +279,12 @@ normalization, covariance/K4 paths, setup charged by the benchmark, and any fall
 
 Required:
 
-[
-C_{m candidate}/B le 0.135.
-]
+`C_candidate / B <= 0.135`.
 
 Additionally, the measured implementation must demonstrate at least the E177-required
 non-old saving:
 
-[
-C_{m no-old,parent}-C_{m candidate} ge 14.76u.
-]
+`C_no-old-parent - C_candidate >= 14.76u`.
 
 If either fails: **terminal COST NO-GO**.
 
@@ -347,7 +293,9 @@ If either fails: **terminal COST NO-GO**.
 Use one pinned target-free public/local-mini evaluation, not a submission/leaderboard
 run. Retain immutable parent/candidate/reference vectors and paired per-MLP final MSE.
 
-Define `r = mean(MSE_candidate) / mean(MSE_parent_V29)`.
+Define:
+
+`r = mean(MSE_candidate) / mean(MSE_parent_V29)`.
 
 **E180 GO iff all of the following are true:**
 
