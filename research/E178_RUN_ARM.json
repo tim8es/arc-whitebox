@@ -1,0 +1,31 @@
+{
+  "schema": "arc.whitebox.e178.run_arm.v1",
+  "experiment": "E178",
+  "hypothesis": "H177 higher-order AGO gauge",
+  "branch": "research/e178-h177-higher-order-ago-gauge-20260921",
+  "authorized_runs": 1,
+  "protocol_commit": "f90ef635796c41517afd274214a5662ed489cf78",
+  "implementation_commit": "d502af8755f343eedc671361fbc230e3c09db989",
+  "workflow_commit": "1980201057f5639075e8560293a0fde43739b522",
+  "e177_authorization_commit": "e1536d36a5e2d641ab3596892847e2fcf41e83ab",
+  "public_v17": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "blob": "9c60c5a0bd92729f27bde23eeb619944e71beabe",
+    "lambda0": 0.0019516
+  },
+  "scope": {
+    "target_free": true,
+    "public_mini": false,
+    "full": false,
+    "holdout": false,
+    "scorer": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "rank_sweep": false,
+    "seed_sweep": false,
+    "lambda_refit": false,
+    "rerun": false
+  },
+  "terminal_policy": "one run only; any failed mandatory gate or execution failure is terminal"
+}
