@@ -1,0 +1,166 @@
+{
+  "schema": "arc.whitebox.e152.terminal_receipt.v1",
+  "experiment": "E152",
+  "idempotency_key": "ARC-E152-FINAL-OBSERVABLE-ADJOINT-THEORY-GATE-20260921",
+  "status": "TERMINAL_NO_GO",
+  "decision": "E152_TERMINAL_NO_GO_EXACT_FINAL_OBSERVABLE_ACTION_ONLY",
+  "branch": "research/e152-final-observable-adjoint-theory-gate-20260921",
+  "provenance": {
+    "theory_note": {
+      "commit": "7e1d76f560f97655328cef57704a750960847717",
+      "blob": "1f2496d661dffcd8b5e2acfef5a3adc24170229f",
+      "path": "research/E152_THEORY_GATE.md"
+    },
+    "falsifier": {
+      "commit": "2b597016cff56cf4905f55043d0ad1f4e1f7a7ae",
+      "blob": "bcdd89fcd384f7c7e82ef027c71e6ec36382228a",
+      "path": "scripts/e152_final_observable_action_gate.py"
+    },
+    "workflow": {
+      "commit": "8ff52220f7f7490edef8e14bdcc9a97e93509123",
+      "blob": "d6f61e2cead4e9d2021b75242c91ee971cc5ea39",
+      "path": ".github/workflows/e152-final-observable-theory-gate.yml"
+    },
+    "arm": {
+      "commit": "5819040464ab2f54ba872197af2b3dac0d7999c9",
+      "blob": "8b26f80daac6612428b396e7faa60f45d1e1b5de",
+      "path": "research/E152_RUN_ARM.json"
+    }
+  },
+  "primary_sources": {
+    "public_repository": "504aldo/whest-p2-cumulant-k3",
+    "public_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "term_table_blob": "9572ace30b98cd7803054b5222c48381ff72c5ae",
+    "v29_blob": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "namespace_audit_blob": "a689ef69fd64bed7765cb93ce4910c3fedcbd04a",
+    "community_post_blob": "aa06c6d24c0bf9f6cb9cfd326c4862d6a4ee3a73",
+    "claims_evidence_blob": "087aaa2404a046afd06bd954a1cc0bf09ffdf05c",
+    "findings_log_blob": "09cf41e8826052ceb83109115cae688c03baaaca",
+    "official_arc_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb"
+  },
+  "mechanism_class": {
+    "name": "AFO-SA",
+    "description": "adaptive final-observable adjoint/source actions with no full or entrywise-equivalent intermediate D21",
+    "allowed_d21_access": ["D S", "D^T T"],
+    "adaptive_queries": true,
+    "target_free": true,
+    "full_d21_forbidden": true,
+    "e142_replay": false,
+    "e147_replay": false,
+    "e148_replay": false
+  },
+  "algebraic_gate": {
+    "zero_diagonal_d21_dimension": "n(n-1)",
+    "transcript_rank_upper": "n(q_R+q_L)",
+    "necessary_condition_for_exactness": "q_R+q_L >= n-1",
+    "adaptive_kernel_argument": "Run the adaptive algorithm on D=0 to freeze its zero-answer query sequence; if q_R+q_L<n-1, choose nonzero zero-diagonal E in the final transcript kernel. D=0 and D=E then generate the same complete adaptive action transcript.",
+    "public_separating_term": {
+      "output_program": "(1,1)",
+      "term": ["d21T", "d21T", 6, 12, 0.25],
+      "wick_pairs": [[2,1],[4,1]],
+      "mu": 0,
+      "var": 1,
+      "multiplier": "-1/(8*pi)",
+      "nonzero": true
+    },
+    "conclusion": "The pinned nonlinear closure is not a function of any action transcript with q_R+q_L<n-1."
+  },
+  "exact_small": {
+    "n": 8,
+    "q_right": 3,
+    "q_left": 3,
+    "q_total": 6,
+    "threshold": 7,
+    "hidden_state": "E[3,4]=1 and all other entries zero",
+    "zero_diagonal": true,
+    "E_S_exact_zero": true,
+    "E_transpose_T_exact_zero": true,
+    "quadratic_closure_support": [[4,3]],
+    "quadratic_closure_nonzero": true,
+    "kernel_dimension_lower_bound": 8,
+    "pass": true
+  },
+  "production_lower_bound": {
+    "scope": "Pinned V29 dense-young factor/source-action circuit using direct dense-thin source actions; information lower bound is algebraic, FLOP bound is class-conditional rather than a universal matrix-multiplication lower bound.",
+    "n": 1024,
+    "necessary_q_right_plus_q_left": 1023,
+    "information_response_scalars_per_layer": 1047552,
+    "full_d21_entries_per_layer": 1048576,
+    "information_fraction_of_full_d21": 0.9990234375,
+    "young_source_layer_instances_layers_1_to_14": 50,
+    "young_action_flops_formula": "50 * 8 * n^2 * (n-1)",
+    "young_action_flops": 429077299200,
+    "budget_flops": 2199023255552,
+    "utilization": 0.19512176513671875,
+    "cap_fraction": 0.135,
+    "cap_flops": 296868139499.52,
+    "over_cap_flops": 132209159700.48,
+    "passes_cap": false,
+    "public_namespace_crosscheck_units": {
+      "young_transport": 60.71,
+      "hub": 54.90,
+      "old_legs": 27.89,
+      "shared": 27.91,
+      "covariance": 7.10,
+      "closure_birth": 5.71,
+      "sum": 184.22
+    }
+  },
+  "primary_dead_end_constraints": [
+    "F65: D3/D21 slice-only state is not transport-closed; omitted fully off-diagonal K3 materially contributes to next D21.",
+    "F66/F72/F73: source content has high-rank age-dependent cliffs rather than a cheap low-rank universal basis.",
+    "F69: D21 feedback is accuracy-relevant.",
+    "F71: D21 is exactly removable only at the final mean-only layer, not at prior nonlinear layers.",
+    "F76: capped merged atoms remain too high-rank.",
+    "F82: response/slice-series memoryless closure lands on the same slice-state floor.",
+    "F88: same-chain higher-rank knobs do not provide a cheap escape."
+  ],
+  "execution": {
+    "run_id": 35592718850,
+    "job_id": 106310472483,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "physical_network_run": false,
+    "artifact": {
+      "id": 10634794792,
+      "name": "e152-theory-gate",
+      "size_bytes": 3462,
+      "zip_sha256": "6f9b7a54c2648735de0f8e7813ef2816cc223711115ae3ec20e0a8e5ef6c572a",
+      "expires_at": "2026-12-20T11:11:15Z"
+    }
+  },
+  "gates": {
+    "exact_small_hidden_state_exists": true,
+    "same_complete_action_transcript": true,
+    "pinned_public_quadratic_d21_term_verified": true,
+    "nonlinear_closure_separates_hidden_state": true,
+    "necessary_query_count_is_almost_full_d21": true,
+    "production_source_action_floor_le_0_135B": false,
+    "target_oracle_firewall": true
+  },
+  "terminal_reasons": [
+    "For q_R+q_L<n-1, adaptive D S / D^T T actions are not an exact sufficient statistic for the public nonlinear K3 closure.",
+    "For n=1024, exactness requires at least 1023 queried directions, exposing 99.90234375% as many response scalars as a full D21 matrix has entries.",
+    "In the requested pinned V29 dense-young source-action circuit, those necessary actions alone cost 0.1951217651 B, above the 0.135 B project cap before old sources or low-order work.",
+    "Using a full or entrywise-equivalent adjoint/primal matrix would violate the defining E152 requirement rather than solve it."
+  ],
+  "scope": {
+    "target_free": true,
+    "benchmark_targets": false,
+    "public_data": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "physical_network_run": false,
+    "rank_sweep": false,
+    "basis_sweep": false,
+    "adjoint_sweep": false,
+    "final_mse_validation": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "successor_rule": "Only a deliberately approximate dual compression or a different nonlinear sufficient statistic can be a successor. It requires a new experiment identity and must not be labeled an E152 rescue."
+}
