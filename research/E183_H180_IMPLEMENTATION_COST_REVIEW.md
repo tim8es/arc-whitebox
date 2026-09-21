@@ -5,20 +5,18 @@ Branch: `research/e183-h180-implementation-cost-review-20260921`
 Parent: E180 head `805d11f8d59d9a502aab8b5bbf935d2f865fecea`  
 Mode: **desk review only — no scientific run, no benchmark, no baseline/ledger mutation**
 
-## 1. Scope
+## 1. Scope and pinned inputs
 
-Review only H180:
-
-> one aggregate symmetric CP carrier for inherited K3, fixed
-> `R = 3n = 3072`, deterministic target-free reprojection after each non-final
-> ReLU, with D3/D21 read directly from the carrier.
+Review only H180: one aggregate symmetric-CP inherited-K3 carrier at
+`R = 3n = 3072`, deterministic target-free reprojection after each non-final
+ReLU, with D3/D21 read directly from that carrier.
 
 This note does not reopen E176/E178 and does not authorize a scientific run.
 It is intended as implementation/cost input for E181.
 
 Pinned evidence:
 
-- E180 research artifact blob:
+- E180 artifact:
   `research/E180_COST_WALL_CP_RESEARCH.md@672eeb5d4eb3f9a0921957db81439848728fae64`.
 - public V29:
   `504aldo/whest-p2-cumulant-k3@18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45`,
@@ -29,387 +27,283 @@ Pinned evidence:
 
 ## 2. Concrete carrier and layer operations
 
-Freeze the carrier as
+Freeze the carrier as:
 
-[
-K_3 = sum_{q=1}^{R} lambda_q,u_q^{otimes 3},qquad
-U=[u_1,ldots,u_R]inmathbb R^{n	imes R}, R=3072.
-]
+`K3 = sum[q=1..R] lambda[q] * u[q] tensor u[q] tensor u[q]`
 
-At Phase-2 shape `n=1024`, define one F86 unit
+with `U = [u[1] ... u[R]]` of shape `(n,R)`.
 
-[
-u = 2n^3 = 2^{31}=2,147,483,648 {m FLOPs}.
-]
-
-One non-final layer should have exactly these CP-specific stages.
+At `n=1024`, one F86 unit is
+`u = 2*n^3 = 2^31 = 2,147,483,648 FLOPs`.
 
 ### A. Linear transport
 
-[
-U_{m pre}=W U.
-]
+`U_pre = W @ U`.
 
-A classical `(n,n) @ (n,R)` product costs
+A classical `(n,n) @ (n,R)` product at `R=3n` costs:
 
-[
-2n^2R = 3u = 6,442,450,944 {m FLOPs}.
-]
+`2*n^2*R = 3u = 6,442,450,944 FLOPs`.
 
-There are at most 15 carried transports in a 16-layer network:
+At most 15 carried transports:
 
-[
-C_{m transport}=45u=96,636,764,160.
-]
+`C_transport = 45u = 96,636,764,160 FLOPs`.
 
 No second full `W @ U`-class operation is affordable in the projection path.
 
-### B. Slice extraction
+### B. D3 / D21 extraction
 
-Fold (lambda) into the columnwise square for
+Mathematically, before applying the official repeated-slice normalization:
 
-[
-D_{21}=((U_{m pre}odot U_{m pre}),lambda),U_{m pre}^{T}.
-]
+`D3[i] = sum_q lambda[q] * U_pre[i,q]^3`
 
-The dense `(n,R) @ (R,n)` contraction is another `3u` per full
-D21. V29 final-layer trim does not require D21 at the final layer, hence at
-most 14 full extractions:
+`D21 = ((U_pre * U_pre) * lambda[None,:]) @ U_pre.T`.
 
-[
-C_{D21}=42u=90,194,313,216.
-]
+The dense `(n,R) @ (R,n)` D21 contraction costs another `3u`.
+V29 final-layer trim does not require D21 at the final layer, so at most
+14 full D21 extractions cost:
 
-The diagonal slice is lower order:
+`C_D21 = 42u = 90,194,313,216 FLOPs`.
 
-[
-D_3[i]=sum_qlambda_q U_{m pre}[i,q]^3.
-]
+D3, column weighting and the elementwise square/cube are `O(nR)`; they still
+must be metered and charged to the integration allowance below.
 
-Squaring/cubing, column scaling, D3 reduction and Wick row scaling are
-`O(nR)`; they must nevertheless be metered and charged to the integration
-allowance below.
-
-**Normalization warning:** the formulas above are mathematical tensor slices.
-The official `DSTensor` repeated-index convention contains scaling conventions
-(the official `FactoredTensor.from_dstensor` explicitly carries a factor 3 for
-the `(2,1)` slice). E181 must not hard-code the displayed D21 formula as the
-V29 convention until the identity gate in section 5 passes.
+**Normalization warning:** the official `DSTensor` repeated-index convention
+contains scaling conventions; `FactoredTensor.from_dstensor` explicitly has
+a factor 3 around the `(2,1)` bridge. E181 must not assume the displayed
+mathematical D21 is byte-for-byte the V29 slice convention until G1 passes.
 
 ### C. Post-ReLU inherited part
 
-For the inherited K3 term, equal Wick contraction on all three legs is
+For the equal-leg inherited K3 term, official Wick contraction specializes to:
 
-[
-u_q leftarrow d(w_1)u_q,
-]
+`U <- w1[:,None] * U`.
 
-which is only a row scaling of `U`. This is the symmetric-CP specialization
-of the official `FactoredTensor.contract_wick` operation.
+This is `O(nR)`.
 
 ### D. Exact birth integration before compression
 
-V29's K3 birth has the structured hubs
+V29's structured K3 birth is:
 
-[
-B_1=operatorname{Sym}(X_1,P,Y_1),qquad
-B_3=operatorname{Sym}(M,P,P),
-]
+`B1 = Sym(X1, P, Y1)`
 
-with the V18 D21 feedback folded into (X_1,Y_1), and the V17 K4 regeneration
-feeding the same structured source machinery.
+`B3 = Sym(M, P, P)`.
 
-A general symmetric rank-one triplet has the exact polarization
+V18 D21 feedback is folded into `X1,Y1`; V17 K4 regeneration feeds the same
+structured source machinery.
 
-[
-operatorname{Sym}(a,b,c)=rac1{24}left[
-(a+b+c)^{otimes3}+(a-b-c)^{otimes3}
-+(-a+b-c)^{otimes3}+(-a-b+c)^{otimes3}ight].
-]
+A general symmetric triplet has the exact polarization identity:
 
-Thus a rank-(n) B1 birth can be converted exactly to at most `4n` symmetric
-CP atoms.
+`Sym(a,b,c) = ((a+b+c)^3 + (a-b-c)^3 + (-a+b-c)^3 + (-a-b+c)^3) / 24`
 
-For the repeated-leg B3 term,
+where `v^3` denotes `v tensor v tensor v`. Therefore rank-`n` B1 needs at
+most `4n` symmetric CP atoms.
 
-[
-operatorname{Sym}(m,p,p)=rac16left[
-(m+p)^{otimes3}+(m-p)^{otimes3}-2m^{otimes3}ight],
-]
+For the repeated-leg term:
 
-so B3 needs at most `3n` atoms.
+`Sym(m,p,p) = ((m+p)^3 + (m-p)^3 - 2*m^3) / 6`.
 
-Therefore a literal exact merge of the inherited `3n` carrier plus the two
-newborn hubs can expose as many as
+Therefore rank-`n` B3 needs at most `3n` atoms.
 
-[
-3n+4n+3n=10n=10,240
-]
+A literal exact merge can therefore expose:
 
-atoms before reprojection. The polarization itself is only `O(n^2)`, but a
-generic CP fit of those 10,240 atoms is not affordable. The implementation
-should stream these atoms; materializing a `1024 x 10240` float32 factor slab
-would be about 40 MiB and is unnecessary.
+`3n inherited + 4n B1 + 3n B3 = 10n = 10,240 atoms`
+
+before reprojection. The polarization is only `O(n^2)`; the dangerous step is
+compressing those atoms back to `3n`. The implementation should stream birth
+atoms rather than materialize a `1024 x 10240` slab (~40 MiB float32).
 
 ### E. Reprojection
 
-This is the only scientifically new approximation and the only cost component
-not specified by E180. It must map the post-ReLU aggregate back to exactly
-`R=3072` atoms using estimator state/weights only.
+Reprojection is the only scientifically new approximation and the only
+major H180 cost not specified by E180. It must deterministically map the
+post-ReLU aggregate to exactly `R=3072` atoms using estimator state/weights
+only.
 
-The protocol must freeze its equations **before** any target-bearing execution.
-A generic ALS/SVD/Gram solve is not admissible under the cost envelope below.
+A generic ALS/SVD/full-Gram fit is not admissible under the envelope below.
 
 ## 3. Conservative all-in budget
 
-E180 conservatively keeps every non-young/non-old V29 family:
+E180 conservatively preserves all non-young/non-old V29 groups:
 
-- K3 thin/elementwise: `24.8u`;
-- covariance: `7.1u`;
-- closure + birth: `5.7u`.
+| family | cost |
+|---|---:|
+| K3 thin / elementwise | 24.8u |
+| covariance | 7.1u |
+| closure + birth | 5.7u |
+| **fixed remainder** | **37.6u** |
+| 15 CP transports | 45.0u |
+| 14 full D21 extractions | 42.0u |
+| **base before CP integration/reprojection** | **124.6u** |
 
-Fixed remainder:
+Numerically:
 
-[
-C_{m fixed}=37.6u=80,745,385,164.8.
-]
+- `C_base = 124.6u = 267,576,462,540.8 FLOPs = 0.1216796875B`.
+- hard cap `0.135B = 138.24u = 296,868,139,499.52 FLOPs`.
+- all CP-specific integration + reprojection + normalization + extra
+  bookkeeping together have only
+  `13.64u = 29,291,676,958.72 FLOPs = 0.0133203125B`.
 
-CP dense core:
+For a conservative E181 protocol, reserve `1.00u` for all lower-order
+`O(nR)` / `O(n^2)` preparation, polarization, scaling, normalization and
+bookkeeping. This leaves the frozen reprojection ceiling:
 
-[
-C_{m CP-core}=45u+42u=87u=186,831,077,376.
-]
+`C_reproject <= 12.64u = 27,144,193,310.72 FLOPs total`.
 
-Before reprojection/integration overhead:
+Across 15 carried states:
 
-[
-C_{m base}=124.6u
-=267,576,462,540.8
-=0.1216796875B.
-]
+`12.64u / 15 = 0.8426667u ~= 1.810e9 FLOPs per reprojection`.
 
-Hard cap:
+This is a ceiling, not a target. Any extra cost elsewhere reduces it.
 
-[
-0.135B=138.24u=296,868,139,499.52.
-]
-
-So **all CP-specific integration + reprojection + normalization + extra
-bookkeeping together have only**
-
-[
-C_{m integration,max}=13.64u
-=29,291,676,958.72
-=0.0133203125B.
-]
-
-For a conservative implementation protocol, reserve `1.00u` of that envelope
-for all `O(nR)` / `O(n^2)` CP preparation, polarization, scaling,
-normalization and bookkeeping. That leaves a frozen **reprojection ceiling**
-
-[
-C_{m reproj,max}=12.64u
-=27,144,193,310.72.
-]
-
-With 15 non-final carried states, the average reprojection allowance is only
-
-[
-12.64u/15=0.8426667u
-approx 1.810	imes10^9 {m FLOPs/layer}.
-]
-
-This is a ceiling, not a target. Any cost charged elsewhere reduces it.
-
-### Immediate cost-kill patterns
+### Immediate static cost kills
 
 At `R=3n`:
 
-- one extra `(n,n)@(n,R)` multiply = `3u` per layer: **dead**;
-- one dense `U^T U` or `(n,R)@(R,R)`-scale interaction costs
-  `2nR^2=9u` per layer: **dead**;
+- one extra `(n,n) @ (n,R)` multiply is `3u/layer`: **NO-GO**;
+- one dense `U.T @ U` or equivalent `R^2` interaction is
+  `2*n*R^2 = 9u/layer`: **NO-GO**;
 - full `R x R` eigendecomposition/SVD/ALS normal equations are therefore
-  outside the envelope before solver iterations are counted;
-- one sketch contraction `(n,R)@(R,r)` costs
-  `(3r/n)u`. Under the `0.8427u` average ceiling, a single pass has the
-  mathematical bound `r < 288`; `r=256` costs `0.75u` and is the largest
-  sensible one-pass round point;
-- two such passes require approximately `r<=128` merely to leave any room for
-  other projection work.
+  outside the envelope before iterations are counted;
+- one sketch contraction `(n,R) @ (R,r)` costs `(3r/n)u`.
+  Under the `0.8427u` average ceiling, a single pass requires `r < 288`;
+  `r=256` costs `0.75u` and is the largest sensible one-pass round point;
+- two such passes require approximately `r<=128` merely to leave any room
+  for other projection work.
 
-These are necessary cost conditions only; they do not establish a valid
-reprojection.
+These are necessary cost conditions, not evidence that such a projector is
+scientifically valid.
 
 ## 4. Cost-wall correction for E181
 
-E180's prose uses `153.0u` for the no-old parent and therefore writes a
-required saving of `14.76u`. The pinned F86 ledger itself reports
+E180 prose uses `153.0u` for the no-old parent and therefore writes a
+`14.76u` required saving. The pinned F86 grouped ledger itself reports:
 
-[
-115.6+24.8+7.1+5.7=153.2u.
-]
+`115.6 + 24.8 + 7.1 + 5.7 = 153.2u`.
 
-Using the source ledger rather than the rounded prose gives the conservative
-requirement
+Using that source ledger gives the conservative gate:
 
-[
-153.2-138.24=14.96u
-=32,126,355,374.08 {m FLOPs}.
-]
+`153.2u - 138.24u = 14.96u = 32,126,355,374.08 FLOPs`.
 
-E181 should freeze **14.96u** as the non-old saving gate unless it can recover
-an exact machine-readable F86 total that supersedes the published grouped
-rounding. Do not silently mix the `153.0u` and `153.2u` versions.
-
-This correction does not change H180's CP plan: the proposed `124.6u` base is
-still below the cap, but the projection margin remains tight.
+E181 should freeze **14.96u** as the non-old saving gate unless an exact
+machine-readable F86 total supersedes the published grouped rounding. Do not
+silently mix the `153.0u` and `153.2u` versions.
 
 ## 5. Minimal pre-science identity / kill gates
 
-These gates need no benchmark target and should run on exact-small synthetic
-objects only. Failure of any gate should terminate the implementation before
+All gates are target-free exact-small checks. Failure should stop H180 before
 an expensive scientific run.
 
 ### G1 — CP materialization / slice convention
 
-For small `n<=8`, materialize
-(sum_qlambda_q u_q^{otimes3}) and compare:
+For `n<=8`, materialize the CP tensor and compare full tensor, D3, both D21
+orientations, repeated-index zeroing and scaling against official
+`FactoredTensor.get_dslice` / `DSTensor`.
 
-- full tensor;
-- D3;
-- both D21 orientations;
-- repeated-index zeroing/scaling;
+Gate: float64 max-abs `<=1e-12`, deterministic replay.
 
-against the official `FactoredTensor.get_dslice` / `DSTensor` convention.
-
-Required: float64 max-abs `<=1e-12` and deterministic replay.
-
-**Kills:** normalization/orientation mistakes, especially the official
-`(2,1)` scaling.
+Kills normalization/orientation errors.
 
 ### G2 — linear transport identity
 
-Materialize both
+Compare materialized `(W tensor W tensor W) K3` with the tensor reconstructed
+from `U <- W @ U`.
 
-[
-(W^{otimes3})K_3
-quad	ext{and}quad
-sum_qlambda_q(Wu_q)^{otimes3}.
-]
+Gate: max-abs `<=1e-12`.
 
-Required max-abs `<=1e-12`.
-
-**Kills:** orientation mistakes (`W` versus `W.T`) before any network run.
+Kills `W` / `W.T` mistakes.
 
 ### G3 — Wick contraction identity
 
 Compare official equal-leg K3 Wick contraction with
+`U <- w1[:,None] * U`.
 
-[
-Uleftarrow d(w_1)U
-]
+Gate: max-abs `<=1e-12`.
 
-on the same small carrier.
-
-Required max-abs `<=1e-12`.
-
-**Kills:** an invalid assumption that the inherited post-ReLU term remains the
-same symmetric CP object under the frozen convention.
+Kills an invalid inherited-state transformation.
 
 ### G4 — exact birth polarization
 
-On frozen small V29 birth factors, separately materialize B1 and B3 from the
-original factored formulas and from the 4-atom / 3-atom polarization identities
-above. Include nonzero V18 feedback factors and V17-regeneration inputs in the
-birth-factor construction; do not test only the degenerate base case.
+On frozen small V29 birth factors, compare B1/B3 from the original factored
+formulas against the 4-atom / 3-atom polarization formulas. Include nonzero
+V18 feedback and V17-regeneration inputs; do not test only a degenerate base
+case.
 
-Required full-tensor and D3/D21 max-abs `<=1e-12`.
+Gate: full tensor and D3/D21 max-abs `<=1e-12`.
 
-**Kills:** wrong symmetrization coefficients or a birth term that is not
-actually covered by the proposed aggregate carrier.
+Kills missing birth terms or wrong symmetrization coefficients.
 
 ### G5 — projector no-op / idempotence
 
 For an input whose exact symmetric CP rank is already `<=R`, reprojection
 must not damage representable state.
 
-Required:
+Gate:
 
 - deterministic identical replay;
 - D3/D21 relative error `<=1e-12`;
-- applying the projector twice changes D3/D21 by `<=1e-12`.
+- second projection changes D3/D21 by `<=1e-12`.
 
-**Kills:** a projector whose own normalization or canonicalization injects
-error even before rank pressure exists.
+Kills a projector that corrupts state even before rank pressure.
 
-### G6 — exact-small overcomplete structural falsifier
+### G6 — one exact-small overcomplete structural falsifier
 
-Construct one frozen target-free small case by exact birth merge, so the
-preprojection carrier exceeds the scaled rank cap. Materialize the exact tensor
-before projection and compare the projected carrier.
+Construct one frozen target-free small case by exact birth merge so the
+preprojection carrier exceeds the scaled rank cap. Materialize the exact
+tensor before projection.
 
-Required before any target-bearing run:
+Gate:
 
-- finite output;
-- deterministic replay;
-- pooled D21 relative RMS `<=0.015` (E180's frozen structural threshold);
+- finite result and deterministic replay;
+- pooled D21 relative RMS `<=0.015` (E180 frozen threshold);
 - D3 finite and recorded;
-- no reference target, MSE label, lambda refit, rank change or rescue.
+- no target, MSE label, lambda refit, rank change or rescue.
 
 Failure is terminal H180 structural NO-GO.
 
 ### G7 — static operation-ledger gate
 
 Before production shape, enumerate every projection primitive and substitute
-`n=1024,R=3072`. Reject without running if:
+`n=1024,R=3072`.
+
+Reject without scientific execution if:
 
 - all-in symbolic total exceeds `138.24u`;
 - integration overhead exceeds `13.64u`;
 - reprojection exceeds `12.64u` after the `1u` lower-order reserve;
 - the graph contains a per-layer dense `R^2` interaction or an additional
-  full `n x n` by `n x R` product not already counted.
+  full `(n,n)@(n,R)` product not already counted.
 
-This gate is deliberately stricter than “meter it later”: H180 has too little
-headroom to discover an obvious cubic projection after a benchmark run.
+## 6. Protocol inputs E181 should freeze
 
-## 6. Implementation constraints for E181
-
-A protocol derived from this review should freeze:
-
-1. exactly one deterministic reprojection algorithm at `R=3072`;
-2. exact atom-generation/polarization equations;
-3. whether (lambda) is stored explicitly or absorbed into signed/scaled
-   factors, including cube-root/sign handling;
-4. D3/D21 normalization against the official implementation;
-5. event count: at most 15 carried transports, 14 full D21 extractions and
-   15 reprojections; final layer remains V29 mean-only trim;
-6. named FLOP namespaces:
+1. Exactly one deterministic reprojection algorithm at `R=3072`.
+2. Exact birth polarization and normalization equations.
+3. Whether `lambda` is explicit or absorbed into signed/scaled factors,
+   including cube-root/sign handling.
+4. D3/D21 convention verified against the official implementation.
+5. Event counts: <=15 transports, <=14 full D21 extractions, <=15
+   reprojections; final layer remains V29 mean-only trim.
+6. FLOP namespaces:
    `cp_transport`, `cp_d21`, `cp_d3`, `cp_wick`, `cp_birth`,
-   `cp_reproject`, `cp_normalize`, plus the preserved V29 remainder;
-7. the `14.96u` conservative non-old saving gate;
-8. terminal behavior: no rank sweep, alternate projector, AGO, lambda refit,
+   `cp_reproject`, `cp_normalize`, plus preserved V29 remainder.
+7. Conservative non-old saving gate `>=14.96u`.
+8. Terminal behavior: no rank sweep, alternate projector, AGO, lambda refit,
    source-age hybrid or benchmark rescue after a failed identity/cost gate.
 
 ## 7. Review decision
 
 **IMPLEMENTATION-WORTHY ONLY IF THE REPROJECTOR FITS THE STATIC CEILING.**
 
-The dense CP core is arithmetically feasible:
+The dense CP core is arithmetically feasible at
+`124.6u = 0.12168B` before CP integration/reprojection overhead. The remaining
+all-in allowance is only `13.64u`; after a conservative `1u` lower-order
+reserve, reprojection gets `12.64u` total / `0.8427u` per carried layer.
 
-[
-124.6u = 0.12168B
-]
+The main implementation risk is not `W@U` or D21 extraction; those are already
+priced. It is deterministic compression of a post-birth carrier that can
+transiently contain up to `10n` symmetric atoms back to `3n` without any
+dense `R x R` interaction and without moving D21 beyond the frozen structural
+threshold.
 
-before CP integration/reprojection overhead. The remaining all-in allowance is
-only `13.64u`, and a conservative projector allowance after lower-order
-reserve is `12.64u` total / `0.8427u` per carried layer.
-
-The main implementation risk is therefore not `W@U` or D21 extraction; those
-are already priced. It is the deterministic compression of an exact
-post-birth carrier that can transiently contain up to `10n` symmetric atoms
-back to `3n` **without any dense R-by-R interaction** and without moving D21
-by more than the frozen structural threshold.
-
-E181 should kill H180 before scientific execution if G1–G7 cannot all be
+E181 should kill H180 before scientific execution if G1-G7 cannot all be
 specified and passed. This review authorizes no benchmark or target-bearing
 run.
