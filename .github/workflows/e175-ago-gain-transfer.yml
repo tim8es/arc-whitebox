@@ -1,0 +1,57 @@
+name: E175 AGO-GAIN one-shot
+
+on:
+  push:
+    branches:
+      - research/e175-ago-public-gain-transfer-20260921
+    paths:
+      - .github/workflows/e175-ago-gain-transfer.yml
+
+permissions:
+  contents: read
+
+jobs:
+  e175-one-shot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify frozen E175 blobs
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/E175_RESEARCH_NOTE.md)" = "af94db27f17bd01ee3a699c6f4e18fb8ec2e0b19"
+          test "$(git hash-object research/E175_PROTOCOL.md)" = "725a6aba7fa0bd3b51b29c412aedce7b78543cb9"
+          test "$(git hash-object methods/e175_public_gain_ago.py)" = "8ed7044dae38870b157104843e685725ba3b5b07"
+          test "$(git hash-object scripts/e175_ago_gain_transfer.py)" = "fdabb079ef502ab083052dffa9d0a0429df51f7e"
+          test "$(git hash-object methods/e171_reference_streaming.py)" = "f75cdef00dc5e15d358c29163a2a3b3ec140d78b"
+          test "$(git hash-object research/E175_RUN_ARM.json)" = "c7b0bca0f286b9a98e83f795638723595fb4e390"
+      - name: Install pinned runtime
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check numpy==2.3.3
+      - name: Run sole E175 target-free falsifier
+        run: |
+          set -euo pipefail
+          mkdir -p e175_artifacts
+          /usr/bin/time -v python scripts/e175_ago_gain_transfer.py \
+            --out-dir e175_artifacts \
+            2>&1 | tee e175_artifacts/run.log
+      - name: Upload immutable E175 artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e175-ago-gain-transfer
+          path: e175_artifacts/
+          if-no-files-found: error
+          retention-days: 90
