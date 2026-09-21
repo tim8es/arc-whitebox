@@ -1,1 +1,10 @@
-"""E173 official-mini parent entrypoint.\n\nThe local subclass is required by WhestBench 0.16.1 loader discovery.\n"""\n\nfrom methods.e173_starter_ago import ParentEstimator\n\n\nclass Estimator(ParentEstimator):\n    pass\n
+"""E173 official-mini parent entrypoint.
+
+The local subclass is required by WhestBench 0.16.1 loader discovery.
+"""
+
+from methods.e173_starter_ago import ParentEstimator
+
+
+class Estimator(ParentEstimator):
+    pass
