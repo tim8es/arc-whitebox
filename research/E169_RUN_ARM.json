@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-E169-MULTISEED-PRODUCTION-AGO-20260921",
+  "execute_once": true,
+  "scope": "synthetic multi-seed 1024x16 AGO only"
+}
