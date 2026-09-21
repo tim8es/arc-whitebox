@@ -1,0 +1,94 @@
+{
+  "schema": "arc.whitebox.e149.h143_verifier_reservation.v1",
+  "experiment": "E149",
+  "role": "independent_verifier_reservation_for_H143",
+  "status": "RESERVED_WAITING_FOR_H143_STAGEA_COMPLETION",
+  "reservation_branch": "review/e149-h143-verifier-reservation-20260921",
+  "reserved_against": {
+    "e143_branch": "research/e143-primary-source-particle-repair-20260921",
+    "e143_head_at_reservation": "c94fa7dbf5d243cfd00dce7df47d66b114d2374a",
+    "e143_research_protocol": "research/E143_PROTOCOL.md",
+    "e143_research_receipt": "research/E143_RESEARCH_RECEIPT.json",
+    "admitted_hypothesis": "H143_MUB128_INFLOW_D21_BIRTH_FEEDBACK_REPAIR"
+  },
+  "prerequisite": {
+    "h143_protocol_required": true,
+    "exactly_one_completed_target_free_stagea_run_required": true,
+    "immutable_stagea_receipt_required": true,
+    "if_missing": "DO_NOT_VERIFY_DO_NOT_CREATE_RECEIPT"
+  },
+  "verifier_checks_after_prerequisite": {
+    "exact_d21_reference": {
+      "required": true,
+      "requirement": "Confirm exact-small D21 reference is independently constructed and only used for evaluation, not candidate construction or coefficient selection."
+    },
+    "repaired_vs_baseline_ratio": {
+      "required": true,
+      "observable": "pooled relative Frobenius D21 error entering birth-feedback channel",
+      "gate": "repaired_error / baseline_error <= 0.90",
+      "fixture_families": [
+        "He-Gaussian width32 depth8",
+        "adversarial dense rotation/gain width32 depth8"
+      ],
+      "must_pass_each_family": true
+    },
+    "deterministic_replay": {
+      "required": true,
+      "requirement": "Confirm frozen Stage-A replay is deterministic under the protocol seed/node recipe with no post-result replacement."
+    },
+    "incremental_flops": {
+      "required": true,
+      "frozen_research_upper": 9621733376,
+      "verifier_requirement": "Reconcile the actual Stage-A/production incremental operation ledger including cloud generation/load, particle propagation, moment repair, D21 formation, rank-16 projection/injection, reductions and data movement. Do not silently inherit the research-note estimate if implementation adds operations."
+    },
+    "leakage_firewall": {
+      "required": true,
+      "forbidden": [
+        "benchmark/public final means",
+        "target/reference values in construction",
+        "official scorer",
+        "holdout/full",
+        "post-result shrinkage or coefficient fit",
+        "particle-count/MUB-subset/layer sweep"
+      ],
+      "exact_reference_allowed_only_for_postconstruction_scoring": true
+    }
+  },
+  "run_discipline": {
+    "create_candidate": false,
+    "modify_h143": false,
+    "rerun_h143": false,
+    "create_verifier_scientific_run": false,
+    "sweep": false,
+    "rescue": false,
+    "canonical_ledger_mutation": false,
+    "merge": false,
+    "final_action": "Append exactly one E149 independent-verifier receipt after auditing the immutable H143 Stage-A evidence."
+  },
+  "receipt_policy": {
+    "append_only": true,
+    "one_receipt_only": true,
+    "allowed_verdicts": [
+      "GO",
+      "FAIL",
+      "UNEVALUATED"
+    ],
+    "must_record": [
+      "H143 protocol commit/blob",
+      "run id/job/attempt/head",
+      "artifact id/digest",
+      "exact reference identity",
+      "family ratios",
+      "determinism evidence",
+      "incremental FLOP reconciliation",
+      "leakage audit"
+    ]
+  },
+  "current_state": {
+    "h143_protocol_present": false,
+    "h143_stagea_run_present": false,
+    "h143_stagea_receipt_present": false,
+    "verification_performed": false,
+    "e149_receipt_created": false
+  }
+}
