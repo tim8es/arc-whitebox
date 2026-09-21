@@ -1,0 +1,118 @@
+{
+  "schema": "arc.whitebox.e140.h140_terminal_receipt.v1",
+  "experiment": "E140",
+  "hypothesis": "H140",
+  "status": "TERMINAL_NO_GO",
+  "decision": "TERMINAL_NO_GO_H140_RANK4_SMV",
+  "reason_class": [
+    "ONE_SHOT_SCIENTIFIC_EXECUTION_FAILED_BEFORE_METRICS",
+    "COMPLETE_PRODUCTION_COST_GATE_UNEVALUABLE"
+  ],
+  "branch": "research/e140-smv-rank4-execution-20260921",
+  "protocol": {
+    "frozen_commit": "1306557350c91db4101d3d1ed3168e6eba59cb20",
+    "path": "research/E140_PROTOCOL.md"
+  },
+  "execution_arm": {
+    "commit": "138ca08a3f886e770e83001c0fd128d87af0b9b0",
+    "blob": "7ac7af4a9b78dba66864c587492e750ade5ac239",
+    "path": "research/E140_EXECUTION_ARM.json",
+    "scientific_runs_authorized": 1
+  },
+  "implementation": {
+    "commit": "5b909e8ee6adc9ce8c8605da02eec3ec238975e8",
+    "blob": "5aac605f4a688b4c799b5262ed0cb2743e8f5617",
+    "path": "scripts/e140_h140_rank4_smv.py"
+  },
+  "workflow": {
+    "launch_commit": "68a24c6b23bd3ad8ed896c5f3f0ae654f981ec4b",
+    "blob": "49a54df52f9794ef0f219eb043442bc88c8db5e7",
+    "path": ".github/workflows/e140-h140-rank4-smv.yml",
+    "run_id": 35546898927,
+    "run_attempt": 1,
+    "job_id": 106174316038,
+    "github_conclusion": "success",
+    "scientific_step_effective_result": "FAIL",
+    "conclusion_caveat": "The shell pipeline `python ... | tee ...` did not enable pipefail, so tee returned zero and GitHub marked the step/workflow successful although Python raised before scientific evaluation."
+  },
+  "pinned_arc_primary": {
+    "repository": "alignment-research-center/mlp_cumulant_propagation",
+    "commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb"
+  },
+  "failure": {
+    "phase": "module import before fixture construction",
+    "exception": "ModuleNotFoundError: No module named 'joblib'",
+    "import_chain": [
+      "scripts/e140_h140_rank4_smv.py",
+      "mlp_kprop.kprop_harmonic",
+      "mlp_kprop.cumulants",
+      "mlp_kprop.diagslice",
+      "mlp_kprop.tensor_utils",
+      "mlp_kprop.flop_utils",
+      "from joblib import Memory"
+    ],
+    "interpretation": "The sole authorized scientific run did not reach either synthetic fixture. Under the frozen no-rerun/no-rescue policy this is terminal; installing the omitted dependency and retrying would be a second scientific run."
+  },
+  "gates": {
+    "exact_linear_transport_identity": "UNEVALUATED_FAIL",
+    "exact_wick_scaling_identity": "UNEVALUATED_FAIL",
+    "he32_pooled_d21_relative_error": "UNEVALUATED_FAIL",
+    "adv16_pooled_d21_relative_error": "UNEVALUATED_FAIL",
+    "per_layer_d21_relative_error": "UNEVALUATED_FAIL",
+    "d3_relative_error": "UNEVALUATED_FAIL",
+    "deterministic_replay": "UNEVALUATED_FAIL",
+    "finite": "UNEVALUATED_FAIL",
+    "complete_all_in_cost": "UNEVALUATED_FAIL",
+    "target_firewall": "PASS_BY_WORKFLOW_SCOPE"
+  },
+  "production_cost": {
+    "budget_flops": 2199023255552,
+    "cap_utilization": 0.135,
+    "cap_units": 138.24,
+    "frozen_pre_recompression_subtotal_units": 124.2,
+    "frozen_pre_recompression_subtotal_utilization": 0.1212890625,
+    "remaining_units_for_birth_recompression": 14.04,
+    "production_birth_recompression_algorithm_defined_before_run": false,
+    "complete_all_in_units": null,
+    "complete_all_in_utilization": null,
+    "gate_pass": false,
+    "reason": "The preregistered 124.2-unit subtotal excludes SMV birth/recompression. No production n^3-free recompression algorithm with a finite <=14.04-unit upper bound was defined before the run; the small-fixture dense SVD is explicitly forbidden in production."
+  },
+  "artifact": {
+    "id": 10616479782,
+    "name": "e140-h140-rank4-smv",
+    "size_bytes": 1281,
+    "zip_sha256": "4294aa0876d6203b68b0e26b03ab33a7fe874483fd2fc717e0babbe970154f88",
+    "contains_scientific_result_json": false,
+    "contains_failure_log": true
+  },
+  "run_count_audit": {
+    "matching_branch_workflow_runs": 1,
+    "run_ids": [
+      35546898927
+    ],
+    "second_run_permitted": false,
+    "rerun_performed": false
+  },
+  "target_firewall": {
+    "public_dataset": false,
+    "benchmark_target": false,
+    "benchmark_reference_mean": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false
+  },
+  "restrictions": {
+    "rank_sweep": false,
+    "rescue": false,
+    "seed_replacement": false,
+    "canonical_mutation": false,
+    "ledger_mutation": false
+  },
+  "verifier_handoff": {
+    "requested_on_go_only": true,
+    "performed": false,
+    "reason": "H140 did not GO; frozen instruction requires terminal NO-GO receipt on any failure."
+  }
+}
