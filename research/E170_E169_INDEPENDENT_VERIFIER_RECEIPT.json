@@ -1,0 +1,170 @@
+{
+  "schema": "arc.whitebox.e170.e169_independent_verifier_receipt.v1",
+  "experiment": "E170",
+  "verifies": "E169",
+  "status": "UNEVALUATED",
+  "decision": "E170_INDEPENDENT_VERIFIER_UNEVALUATED_E169_NUMERIC_RECOMPUTATION_EVIDENCE_INCOMPLETE",
+  "branch": "review/e170-e169-independent-verifier-20260921",
+  "immutable_owner_receipt": {
+    "path": "research/E169_RECEIPT.json",
+    "commit": "3eb9c506ef96a1ff3bba7e604832e851a84fe12b",
+    "blob": "aeb1028ed1f00ead1df3ccd436ae89854202833d"
+  },
+  "frozen_provenance": {
+    "scientific_parent": "342f2ab03ad5251971b17f8d8d43c1861774cbb6",
+    "protocol": {"commit":"bc2469e0ca5dbd6c8d5c8b8cc54d04014ab5fdd4","blob":"127fe7a2ced0fab545904c79654f1f2ee956ccea","path":"research/E169_OWNER_PROTOCOL.md"},
+    "candidate": {"path":"methods/e164_ago.py","blob":"ea9078eccc2e2bf2a2bea499ef10a4daf80ea0d4","runtime_sha256":"533149d0a1c05be12097b997b8762270b299c574cf6c32324de7d17ec285169c"},
+    "reference": {"commit":"1e52373bcb8181205031eac0ddf391697bbab53a","blob":"bed83baec6eea86b880cbacb7ea1b300e9782165","path":"methods/e169_reference_streaming.py"},
+    "tests": {"commit":"1a9ae4d53f87ca5bbf85471bc943759c0a702983","blob":"fe09b62ce7a5e9cc1f6b3f0088aec689b141abd6","path":"tests/test_e169_reference.py"},
+    "owner_script": {"commit":"4327a4c7f20e13fcf03b0686fe2a933bd004bd7e","blob":"b43df48e322976ddc0e9d4a344e927a76b2db887","path":"scripts/e169_multiseed_ago.py"},
+    "workflow": {"commit":"6b6601bca3f1b94e583eb71ded71c38c01c581b5","blob":"f8aeb46beb10073711d13befa45cc674b79b0102","path":".github/workflows/e169-multiseed-ago.yml"},
+    "arm": {"commit":"eb9fcb39a4f74e53dd4146b623e52625b53903c9","blob":"a34e9d0865a4964041e06aaeb4dc759dd0a41de0","path":"research/E169_RUN_ARM.json"}
+  },
+  "execution_evidence": {
+    "run_id": 35610324934,
+    "job_id": 106367522989,
+    "attempt": 1,
+    "head_sha": "eb9fcb39a4f74e53dd4146b623e52625b53903c9",
+    "conclusion": "success",
+    "branch_actions_run_count": 1,
+    "artifact": {"id":10644057088,"name":"e169-multiseed-ago","size_bytes":31122,"zip_sha256":"339167cb44e46d346629175c11d95a889a79df0ad35de608cc4e7bbfc203d209"},
+    "rerun": false,
+    "rescue": false
+  },
+  "checks": {
+    "absolute_reference_se_preregistration": {
+      "verdict": "VERIFIED",
+      "frozen_before_owner_run": true,
+      "definition": "SE_j=std_b(m_b,j,ddof=1)/sqrt(48); SE_ref=sqrt(mean_j(SE_j^2))",
+      "units": "final Gaussian-mean coordinate units after exact radial a1(1024) scaling",
+      "batch_count": 48,
+      "batch_size": 4096,
+      "samples_per_seed": 196608,
+      "absolute_limit": 0.0007,
+      "adaptive_sample_count_forbidden": true,
+      "post_result_threshold_or_sample_change_observed": false
+    },
+    "batch_seeds": {
+      "verdict": "VERIFIED",
+      "weight_seeds": [1691024,1692024,1693024],
+      "reference_seeds": [169196608,169296608,169396608],
+      "order_matches_protocol_and_execution": true,
+      "deterministic_reference_generator": "PCG64 seed passed to frozen streaming reference implementation",
+      "executed_samples_batches_match_preregistration": true
+    },
+    "absolute_reference_se_numeric_recomputation": {
+      "verdict": "UNEVALUATED",
+      "owner_reported_values": [0.0005857354238994327,0.0005730571745063825,0.00060602182718796],
+      "owner_reported_all_pass": true,
+      "reason": "The immutable owner artifact/log/receipt retains the derived SE_ref scalars but not the 48x1024 batch final-mean vectors or coordinatewise SE vectors required to independently recompute SE_ref. Re-generating them would be a new reference execution, explicitly forbidden for E170.",
+      "no_inference_from_self_report": true
+    },
+    "ago_mse_improvement": {
+      "verdict": "UNEVALUATED",
+      "reported_seed_metrics": [
+        {"weight_seed":1691024,"parent_mse":4.494833313396172e-6,"ago_mse":3.7863011814959924e-6,"ratio":0.8423674288902979,"reported_improvement":true},
+        {"weight_seed":1692024,"parent_mse":4.983792442733391e-6,"ago_mse":4.298916900171731e-6,"ratio":0.8625794411723062,"reported_improvement":true},
+        {"weight_seed":1693024,"parent_mse":4.607051545831163e-6,"ago_mse":3.849813939114508e-6,"ratio":0.8356350912978462,"reported_improvement":true}
+      ],
+      "reported_pooled_parent_mse": 4.695225767320242e-6,
+      "reported_pooled_ago_mse": 3.97834400692741e-6,
+      "reported_pooled_ratio": 0.8473168712391894,
+      "reported_all_protocol_gates_pass": true,
+      "arithmetic_consistency_of_reported_ratios": "VERIFIED",
+      "reason": "The immutable evidence retains final-mean hashes and derived MSE scalars, but not the 1024-coordinate parent/AGO/reference final-mean vectors or error vectors needed to independently recompute the MSEs. Re-executing candidate/reference is forbidden for E170. Therefore the scientific MSE gate cannot be independently certified from retained immutable values alone."
+    },
+    "paired_batch_improvement": {
+      "verdict": "VERIFIED_FROM_RETAINED_BATCH_MSE_DELTAS",
+      "positive_count": 136,
+      "total": 144,
+      "mean_delta": 7.168817603928372e-7,
+      "se_delta": 4.099648795390248e-8,
+      "mean_over_se": 17.486418865901825,
+      "protocol_positive_count_min": 96,
+      "protocol_mean_gt_3se": true,
+      "per_seed_positive_counts": [45,46,45],
+      "per_seed_mean_delta_positive": true
+    },
+    "ago_identities": {
+      "verdict": "VERIFIED",
+      "frozen_candidate_source_matches_e164": true,
+      "gauge_roundtrip_max": 4.497859597260071e-16,
+      "homogeneity_max": 2.3222854411947047e-15,
+      "radial_readout_max_error": 0.0,
+      "tolerance": 2e-12,
+      "radial_a1_1024": 0.9997558892135413,
+      "radial_a1_absolute_error": 0.0
+    },
+    "target_reference_firewall": {
+      "verdict": "VERIFIED",
+      "candidate_parameters": ["weights"],
+      "candidate_reference_import": false,
+      "candidate_io_network_calls": [],
+      "candidate_forbidden_tokens_present": [],
+      "reference_materialization_after_parent_ago_freeze": true,
+      "synthetic_only": true,
+      "public_benchmark_scorer_holdout_full_submission": false,
+      "post_result_tuning_sweep_rescue_observed": false
+    },
+    "full_flops": {
+      "verdict": "VERIFIED",
+      "candidate_components": {
+        "covariance_linear_transport":68719476736,
+        "mean_matvec":33554432,
+        "nonlinear_second_order_arithmetic":402653184,
+        "normal_scalar_work":16777216,
+        "helper_reserve":42949672960,
+        "angular_gauge_overlay":9437184
+      },
+      "independently_summed_candidate_all_in":112131571712,
+      "candidate_budget":2199023255552,
+      "candidate_cap":296868139499,
+      "candidate_slack":184736567787,
+      "candidate_cap_pass":true,
+      "reference_research_cost_per_seed_dense_upper":6597069766656,
+      "reference_research_cost_three_seed_dense_upper":19791209299968,
+      "reference_cost_charged_to_candidate_cap":false,
+      "reference_cost_exclusion_preregistered":true,
+      "note":"E169 protocol explicitly defines the 0.135B cap as deployed candidate arithmetic and reports synthetic reference research cost separately."
+    },
+    "deterministic_replay": {
+      "verdict": "VERIFIED",
+      "parent_bitwise_exact_all": true,
+      "ago_bitwise_exact_all": true,
+      "weight_hashes_retained": true,
+      "frozen_blob_guard": true,
+      "branch_actions_run_count": 1,
+      "run_attempt": 1,
+      "rerun": false,
+      "rescue": false
+    },
+    "clean_ancestry": {
+      "verdict": "VERIFIED",
+      "scientific_parent_is_e164_receipt": true,
+      "e164_receipt_is_merge_base": true,
+      "commits_ahead_of_e164_receipt": 7,
+      "only_e169_added_paths": ["research/E169_OWNER_PROTOCOL.md","methods/e169_reference_streaming.py","tests/test_e169_reference.py","scripts/e169_multiseed_ago.py",".github/workflows/e169-multiseed-ago.yml","research/E169_RUN_ARM.json","research/E169_RECEIPT.json"],
+      "candidate_mechanism_byte_identical_to_e164": true,
+      "e167_candidate_or_result_ancestry_used": false,
+      "note": "E169 protocol discusses E166/E167 observations as motivation, but literal E169 git ancestry starts from the sealed E164 receipt and adds only E169 protocol/reference/test/owner-script/workflow/arm/receipt files; no E167 candidate/result file is introduced into the mechanism."
+    }
+  },
+  "overall": {
+    "verdict": "UNEVALUATED",
+    "reason": "All provenance, preregistration, seed, identity, firewall, FLOP, paired-batch, deterministic and clean-ancestry checks are supported by immutable evidence. However two requested independent numeric certifications cannot be completed without prohibited execution: absolute reference SE cannot be recomputed because batch final-mean vectors were not retained, and parent-vs-AGO MSE cannot be recomputed because final mean/error vectors were retained only as hashes plus derived scalars. Strict verifier discipline forbids promoting owner self-reported derived scalars to independently VERIFIED.",
+    "scientific_go_certified": false,
+    "public_validation_authorized": false
+  },
+  "verifier_discipline": {
+    "candidate_created": false,
+    "candidate_executed": false,
+    "reference_executed": false,
+    "scientific_run_created": false,
+    "rerun": false,
+    "rescue": false,
+    "owner_branch_modified": false,
+    "canonical_ledger_modified": false,
+    "merge": false,
+    "append_only": true
+  }
+}
