@@ -1,0 +1,72 @@
+{
+  "schema": "arc.whitebox.e151.terminal_receipt.v1",
+  "experiment": "E151",
+  "idempotency_key": "ARC-E151-ARSG-FORENSICS-20260921",
+  "branch": "research/e151-leader-forensics-angular-strassen-20260921",
+  "frozen_parent_head": "9bd3f0e7a4d99c2cf9a0bc274b7cc802d24afe51",
+  "workflow_commit": "398d2bf49bcf088e6ba41f0349bbd7830bf94399",
+  "arm_commit": "a8e9adf1c13fe655e0c3051c3eb9a07a14d2f021",
+  "workflow_blob": "cb6b7e626dbde56a03fc10b299d3ed772a5d38e5",
+  "arm_blob": "6b6205b6079eba362f9e568f7128b427d0f8a108",
+  "frozen_blobs": {
+    "research/E151_LEADER_FORENSICS.md": "6c8d171dce86d4adf1cc43772ccb49f8cd81c736",
+    "research/E151_PROTOCOL.md": "8b484ea0c5b8c8ea02b3f91575693e44a1e645a3",
+    "methods/e151_angular_strassen.py": "c14385eb0a09c9051ceccceeb18f5b5cd7caa094",
+    "scripts/e151_angular_strassen_falsifier.py": "7a59d4df401dd97f70caf96475f13ccc403b1cfc",
+    "research/E151_FREEZE_RECEIPT.json": "f0225b6b4b852818a3aea053d4877cdb173e94ad"
+  },
+  "execution": {
+    "workflow_run_id": 35593352619,
+    "workflow_run_number": 1,
+    "workflow_job_id": 106312487858,
+    "head_sha": "a8e9adf1c13fe655e0c3051c3eb9a07a14d2f021",
+    "conclusion": "failure",
+    "falsifier_process_invocations": 1,
+    "reruns": 0,
+    "failure_step": "Run sole frozen E151 target-free falsifier",
+    "exit_status": 1,
+    "failure_class": "INFRASTRUCTURE_IMPORT_PATH",
+    "failure_message": "ModuleNotFoundError: No module named 'methods'",
+    "scientific_main_entered": false,
+    "result_json_materialized": false
+  },
+  "artifact": {
+    "id": 10635776518,
+    "name": "e151-arsg-falsifier",
+    "size_in_bytes": 915,
+    "sha256": "6743e76b9b09d309ec0ccda116bcf1020bc7d95cd779ff5a2130de0c973d8938",
+    "expires_at": "2026-12-20T11:18:23Z",
+    "contains_log": true,
+    "contains_arm": true,
+    "contains_result_json": false
+  },
+  "gates": {
+    "frozen_arm_and_blob_verification": "PASS",
+    "dependency_install": "PASS",
+    "syntax_check": "PASS",
+    "exact_2d_sector_identity": "NOT_EVALUATED",
+    "dense32_depth8_homogeneity": "NOT_EVALUATED",
+    "adversarial16_depth8_homogeneity": "NOT_EVALUATED",
+    "angular_k4_identities": "NOT_EVALUATED",
+    "strassen_numerical_parity": "NOT_EVALUATED",
+    "complete_transfer_cost_gate": "NOT_EVALUATED",
+    "source_firewall_inside_falsifier": "NOT_EVALUATED"
+  },
+  "scope": {
+    "public_target_runs": 0,
+    "public_mini_runs": 0,
+    "scorer_runs": 0,
+    "holdout_runs": 0,
+    "full_runs": 0,
+    "submission_runs": 0,
+    "sweeps": 0,
+    "rescues": 0,
+    "reruns": 0,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "decision_rule_applied": "USER_REQUIRED_FAIL_IMPLIES_TERMINAL_RECEIPT; NO_RESCUE_OR_RERUN",
+  "scientific_go": false,
+  "production_scientific_go": false,
+  "status": "TERMINAL_NO_GO_EXECUTION_FAILED_BEFORE_SCIENTIFIC_GATES_IMPORT_PATH"
+}
