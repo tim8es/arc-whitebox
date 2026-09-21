@@ -1,0 +1,96 @@
+name: E147 RAP-K3 exact-small
+
+on:
+  push:
+    branches:
+      - research/e147-response-projected-k3-estimator-20260921
+    paths:
+      - 'research/E147_RUN_ARM.json'
+
+jobs:
+  e147:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and blobs
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-E147-RESPONSE-PROJECTED-K3-ESTIMATOR-20260921",
+              "execute_once": True,
+              "scope": "target-free exact-small 32D/16D only",
+          }
+          arm = json.loads(Path("research/E147_RUN_ARM.json").read_text())
+          if arm != expected:
+              raise SystemExit(f"invalid arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E147_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+
+          frozen = {
+              "research/E147_PROTOCOL.md": "1bbcec3ca3b1581493d508460c668e7a88e024ba",
+              "methods/e147_rap_k3.py": "2ddff8602bc08090f2af368b4f6a81f018152c81",
+              "methods/e147_exact_dense_k3_reference.py": "1e2dc12215bef252c289ca2a2ec4d18e41b9f1e6",
+              "tests/test_e147_rap_k3.py": "0993835f34ce08b2e2de40f36e8f03cf8918d6e5",
+              "scripts/e147_rap_k3_exact_small.py": "1a893b3606220d8b514c8c32d26a80f06e6fe752",
+          }
+          for path, expected_sha in frozen.items():
+              actual = subprocess.check_output(
+                  ["git", "rev-parse", f"HEAD:{path}"], text=True
+              ).strip()
+              if actual != expected_sha:
+                  raise SystemExit(
+                      f"frozen blob mismatch {path}: {actual} != {expected_sha}"
+                  )
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install project and test dependency
+        run: |
+          python -m pip install -e .
+          python -m pip install pytest==8.3.5
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e147_rap_k3.py
+          python -m py_compile methods/e147_exact_dense_k3_reference.py
+          python -m py_compile scripts/e147_rap_k3_exact_small.py
+
+      - name: Focused tests
+        run: python -m pytest -q tests/test_e147_rap_k3.py
+
+      - name: Run sole frozen E147 target-free exact-small falsifier
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e147_rap_k3_exact_small.py 2>&1 | tee e147-rap-k3-exact-small.log
+
+      - name: Upload immutable E147 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e147-rap-k3-exact-small
+          path: |
+            e147-rap-k3-exact-small.log
+            e147-rap-k3-exact-small.json
+            research/E147_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
