@@ -147,7 +147,7 @@ C_{m all}^{upper}
 With (B=2^{41}):
 
 [
-C_{m all}^{upper}/B=0.02397399907148845<0.135.
+C_{m all}^{upper}/B=0.02397367915500581<0.135.
 ]
 
 The research Monte-Carlo reference is verifier-only and is not estimator cost.
