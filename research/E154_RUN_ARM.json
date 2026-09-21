@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-E154-CLEAN-ANGULAR-RADIAL-K4-20260921",
+  "execute_once": true,
+  "scope": "target-free 2D/32D/16D only"
+}
