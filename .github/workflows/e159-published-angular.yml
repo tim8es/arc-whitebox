@@ -1,0 +1,58 @@
+name: E159 published angular one-shot
+
+on:
+  push:
+    branches:
+      - research/e159-published-angular-gauge-20260921
+    paths:
+      - .github/workflows/e159-published-angular.yml
+
+permissions:
+  contents: read
+
+jobs:
+  e159-one-shot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify frozen E159 blobs and clean-room imports
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/E159_PRIMARY_SOURCE_NOTE.md)" = "6b96d00acf38f69ea48fd3855c699b893f7e30cf"
+          test "$(git hash-object research/E159_PROTOCOL.md)" = "4d0c44607e72e34378346b02a3ccc4559d21a792"
+          test "$(git hash-object scripts/e159_published_angular_ablation.py)" = "a8b00324c4c961ed0ab97d25425da98b094fad03"
+          if grep -En '^(from|import).*(e151|e154|e157)' scripts/e159_published_angular_ablation.py; then
+            echo "forbidden prior-lane import"
+            exit 1
+          fi
+      - name: Install pinned runtime
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check numpy==2.3.3
+      - name: Run sole E159 target-free falsifier
+        run: |
+          set -euo pipefail
+          mkdir -p e159_artifacts
+          python scripts/e159_published_angular_ablation.py \
+            --out e159_artifacts/E159_RUN_RECEIPT.json \
+            2>&1 | tee e159_artifacts/run.log
+      - name: Upload immutable run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e159-published-angular
+          path: e159_artifacts/
+          if-no-files-found: error
+          retention-days: 90
