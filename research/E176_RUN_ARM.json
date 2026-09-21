@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-E176-CLEANROOM-AGO-GAIN-MINI-20260921",
+  "execute_once": true,
+  "scope": "synthetic target-free local mini only"
+}
