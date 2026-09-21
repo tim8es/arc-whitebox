@@ -1,0 +1,340 @@
+{
+  "schema": "arc.whitebox.e187.h185_protocol_lock.v1",
+  "experiment": "E187",
+  "hypothesis_id": "H185",
+  "hypothesis_text": "Preserve the full V29 estimator state and D21/K3 arithmetic; replace only dense bilinear matrix-product schedules by an exact trilinear-aggregation algorithm.",
+  "ancestry": {
+    "e185_protocol_commit": "10f5f0ab41da70b0661f44596f23f9e7f182ec11",
+    "e186_review_commit": "89b514fff8c1e7e48a8bb3fc8e542984a84ba045",
+    "h180_ancestry_used": false
+  },
+  "coefficient_table": {
+    "provider_repository": "khoruzhii/lita",
+    "provider_commit": "c1dd9225df98676e385b53ae7517ff2ea0ec5779",
+    "path": "schemes/32x32x32_r14197.npz",
+    "rank": 14197,
+    "tensor": [
+      32,
+      32,
+      32
+    ],
+    "format": "sparse rational U/V/W coefficient matrices in NPZ",
+    "git_blob_sha1": "6f2dea4820245303dc2eb1fba13816436fabe54d",
+    "size_bytes": 2057836,
+    "generator_path": "scripts/lita.py",
+    "generator_git_blob_sha1": "278b52d91fc349eb2846439fcc9404208847a59b",
+    "scheme_header_path": "src/scheme.h",
+    "scheme_header_git_blob_sha1": "bb3570c8d2a969b615771f9790c22595f217f9df",
+    "coefficient_order_rule": "Use CSR row order exactly as stored; no row reordering, coefficient refit, reduction, fusion, or post-result scheme selection.",
+    "hash_policy": "Git object identity freezes the external coefficient table pre-run. Any future vendored copy must additionally record SHA-256 in the owner manifest before an arm file exists."
+  },
+  "base_case_and_blocking": {
+    "ta_outer_dimension": 32,
+    "recursion_depth": 1,
+    "input_padding": "For A[m,k] and B[k,n], pad m,k,n independently upward to the next multiple of 32 with exact zeros.",
+    "partition": "Partition each padded axis into exactly 32 equal contiguous blocks.",
+    "leaf_multiply": "Use the frozen parent fnp.matmul for each rank-term block multiplication; no TA recursion and no alternative leaf algorithm.",
+    "reconstruction": "Apply W coefficient rows in stored order; crop the padded output to original m x n.",
+    "dtype": "Coefficient values are formed from stored rationals and cast once to the operation dtype (float64 for identity gate, float32 for production gate).",
+    "fallback": {
+      "production_dense_k3_whole_product_fallback": "FORBIDDEN",
+      "off_contract_fallback": "Parent matmul is permitted only for n!=1024, depth!=16, or a non-frozen dtype; any such event in the authorized production-shape bundle is terminal COVERAGE_NO_GO."
+    }
+  },
+  "coverage": {
+    "canonical_dense_units_source_resolution": 222.44,
+    "no_selected_products": true,
+    "routing_rule": "Within every listed dense-K3 namespace, every bilinear matrix product routes to TA32; non-bilinear arithmetic in the namespace remains byte-for-byte parent arithmetic; whole-product parent fallback is forbidden for production-shape cases.",
+    "families": [
+      {
+        "namespace": "young_transport",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "hub",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "shared",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "old_legs",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "j_rf",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "j_rot",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "j_proj",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "j_tier2",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "j_qc",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "j_core",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      },
+      {
+        "namespace": "qc_transport",
+        "route": {
+          "bilinear": "TA32",
+          "nonbilinear": "UNCHANGED",
+          "fallback": "FORBIDDEN_PRODUCTION"
+        }
+      }
+    ],
+    "reconciliation_rule": "Coverage pass uses the source GROUPED dense total 222.44u, not the sum of two-decimal family display rows. Any dense operation escaping the listed namespace rule is terminal."
+  },
+  "exact_small_gate": {
+    "fixture": "Small integer/rational matrices with dimensions chosen as one 32x32 coefficient instance and one padded rectangular instance.",
+    "reference": "Exact integer/rational parent matrix product.",
+    "requirement": "Bit-for-bit exact rational equality after TA reconstruction before any floating-point gate.",
+    "failure": "TERMINAL_NO_GO_IDENTITY"
+  },
+  "float64_gate": {
+    "product_rel_fro_max": 2e-12,
+    "d3_rel_rms_max": 2e-12,
+    "d21_offdiag_rel_rms_max": 2e-12,
+    "denominator_rule": "relative_denominator=max(reference_norm, 1e-300)",
+    "absolute_norms_required": true,
+    "failure": "TERMINAL_NO_GO_FLOAT64"
+  },
+  "float32_gate": {
+    "production_shape_required": true,
+    "reference": "Parent float64 output on byte-identical synthetic inputs.",
+    "control": "Parent float32 output on byte-identical synthetic inputs.",
+    "candidate": "TA32 float32 output on byte-identical synthetic inputs.",
+    "metrics": [
+      "relative_Frobenius",
+      "max_absolute",
+      "D3_relative_RMS",
+      "D21_offdiag_relative_RMS"
+    ],
+    "requirement": "For every product family and for D3/D21, each TA32 float32 error metric versus parent-float64 must be <= 1.05 times the corresponding parent-float32 error metric. If the parent metric is exactly zero, the candidate metric must also be zero.",
+    "failure": "TERMINAL_NO_GO_FLOAT32"
+  },
+  "flopscope_projection": {
+    "fixed_units_source_resolution": 37.62,
+    "dense_parent_units_source_resolution": 222.44,
+    "mechanism_ratio_gate": 0.42,
+    "projected_cost_formula": "C_projected_u = 37.62 + C_TA_dense_u + C_setup_u",
+    "hard_cap_units": 138.24,
+    "required": [
+      "all coefficient linear combinations charged",
+      "all additions/subtractions charged",
+      "all coefficient multiplies charged",
+      "all zero padding/cropping charged when billed",
+      "all leaf matmuls charged",
+      "all copies/temporaries charged when billed",
+      "all setup charged",
+      "no unmetered numerical path"
+    ],
+    "parent_raw_count_precondition": "Before any future arm, an exact raw flopscope parent integer ledger must be committed and must reconcile to the published 222.44u/260.06u rounding. This prerequisite is currently unmet."
+  },
+  "runtime_projection": {
+    "parent_residual_seconds_source_resolution": 0.322,
+    "source_log_git_blob_sha1": "a689ef69fd64bed7765cb93ce4910c3fedcbd04a",
+    "formula": "T_projected = 0.322 + (T_TA_dense_bundle - T_parent_dense_bundle) + T_setup",
+    "threshold_seconds": 0.4,
+    "measurement_contract": "Same process, one BLAS thread, same dtype, same synthetic inputs, same operation multiplicities; setup is included; replay timing is evidence-only and may not replace the first measurement.",
+    "failure": "TERMINAL_NO_GO_RUNTIME"
+  },
+  "one_owner_one_run": {
+    "current_authorized_owner_runs": 0,
+    "future_semantics_if_reauthorized": {
+      "authorized_owner_runs": 1,
+      "run_attempts": 1,
+      "seed_count": 1,
+      "candidate_count": 1,
+      "coefficient_tables": 1,
+      "rerun": false,
+      "rescue": false,
+      "sweep": false,
+      "post_result_table_change": false,
+      "replay_inside_same_workflow": 1
+    },
+    "arm_must_pin": [
+      "owner_branch",
+      "owner_head_sha",
+      "protocol_revision_sha",
+      "parent_ledger_sha",
+      "implementation_sha",
+      "coefficient_table_git_blob_sha1",
+      "coefficient_table_sha256_if_vendored",
+      "seed",
+      "environment_versions"
+    ],
+    "terminal_on_any_gate_failure": true
+  },
+  "immutable_manifest_contract": {
+    "manifest_schema": "arc.whitebox.e187.owner_evidence.v1",
+    "hash_algorithm_for_run_artifacts": "SHA-256",
+    "required_top_level": [
+      "run_id",
+      "armed_head_sha",
+      "protocol_sha",
+      "implementation_sha",
+      "coefficient_identity",
+      "environment",
+      "seed",
+      "target_firewall",
+      "parent_ledger_identity",
+      "cases",
+      "cost",
+      "runtime",
+      "replay",
+      "decision"
+    ],
+    "each_case_required": [
+      "case_id",
+      "family",
+      "dtype",
+      "input_paths",
+      "input_raw_array_sha256",
+      "input_file_sha256",
+      "shape",
+      "nbytes",
+      "parent_output_path",
+      "parent_output_sha256",
+      "candidate_output_path",
+      "candidate_output_sha256",
+      "float64_metrics",
+      "float32_metrics",
+      "d3_sha256",
+      "d21_sha256"
+    ],
+    "cost_required": [
+      "raw_flopscope_log",
+      "raw_flopscope_log_sha256",
+      "parent_dense_flops_exact",
+      "candidate_dense_flops_exact",
+      "setup_flops_exact",
+      "coverage_reconciliation",
+      "projected_cost_units"
+    ],
+    "runtime_required": [
+      "parent_bundle_seconds",
+      "candidate_bundle_seconds",
+      "setup_seconds",
+      "projected_seconds"
+    ],
+    "replay_required": [
+      "candidate_output_sha256_match",
+      "ledger_sha256_match",
+      "manifest_payload_sha256_match"
+    ],
+    "immutability": "All evidence paths are append-only and content-addressed; no owner evidence file may be overwritten after first write."
+  },
+  "verifier_handoff": {
+    "verifier_may_use_only": [
+      "committed E185 protocol",
+      "E186 review",
+      "E187 revision/lock/ledger",
+      "immutable owner artifacts from the sole authorized workflow"
+    ],
+    "verifier_must_recompute": [
+      "manifest completeness",
+      "all SHA-256 values",
+      "coefficient identity",
+      "exact-small identity",
+      "float64 product/D3/D21 metrics",
+      "float32 control-vs-candidate metrics",
+      "coverage reconciliation",
+      "parent/candidate raw FLOPs",
+      "bundle ratio",
+      "projected all-in cost",
+      "runtime projection",
+      "replay/provenance",
+      "target firewall"
+    ],
+    "verifier_forbidden": [
+      "new decomposition",
+      "new seed",
+      "new hypothesis run",
+      "candidate repair",
+      "fallback substitution",
+      "threshold change"
+    ],
+    "verifier_receipt_fields": [
+      "mechanism_go",
+      "protocol_go",
+      "integration_readiness",
+      "blocking_reason"
+    ]
+  },
+  "target_firewall": {
+    "forbidden_reads": [
+      "benchmark target/reference means",
+      "scorer",
+      "holdout",
+      "submission endpoint",
+      "leaderboard result data used for tuning"
+    ],
+    "required_receipt": "source/import/access audit"
+  },
+  "unresolved_blockers": [
+    {
+      "id": "G2_EXACT_RAW_PARENT_LEDGER",
+      "status": "BLOCKING",
+      "reason": "The published F86 log exposes headline/group/family values only at rounded unit precision and does not expose the exact raw flopscope integer count needed by E186 G2. Creating that count would require a new execution, forbidden in E187."
+    }
+  ],
+  "decision": {
+    "protocol_status": "NO_GO",
+    "owner_run_authorized": false,
+    "hypothesis_status": "UNCHANGED_AND_NOT_SCIENTIFICALLY_REJECTED",
+    "rationale": "At least one mandatory pre-run item cannot be frozen without execution; per E187 instructions no owner run may be armed."
+  }
+}
