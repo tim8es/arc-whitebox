@@ -1,0 +1,247 @@
+{
+  "schema": "arc.whitebox.e169.receipt.v1",
+  "experiment": "E169",
+  "idempotency_key": "ARC-E169-MULTISEED-PRODUCTION-AGO-20260921",
+  "status": "GO",
+  "decision": "E169_SYNTHETIC_MULTISEED_PRODUCTION_SHAPED_OWNER_GO_AGO",
+  "branch": "research/e169-multiseed-ago-20260921",
+  "scientific_parent": {
+    "e164_receipt_commit": "342f2ab03ad5251971b17f8d8d43c1861774cbb6",
+    "e165_verifier_status": "GO",
+    "candidate_path": "methods/e164_ago.py",
+    "candidate_blob": "ea9078eccc2e2bf2a2bea499ef10a4daf80ea0d4",
+    "candidate_runtime_sha256": "533149d0a1c05be12097b997b8762270b299c574cf6c32324de7d17ec285169c"
+  },
+  "provenance": {
+    "protocol": {
+      "commit": "bc2469e0ca5dbd6c8d5c8b8cc54d04014ab5fdd4",
+      "blob": "127fe7a2ced0fab545904c79654f1f2ee956ccea",
+      "path": "research/E169_OWNER_PROTOCOL.md"
+    },
+    "reference": {
+      "commit": "1e52373bcb8181205031eac0ddf391697bbab53a",
+      "blob": "bed83baec6eea86b880cbacb7ea1b300e9782165",
+      "path": "methods/e169_reference_streaming.py"
+    },
+    "tests": {
+      "commit": "1a9ae4d53f87ca5bbf85471bc943759c0a702983",
+      "blob": "fe09b62ce7a5e9cc1f6b3f0088aec689b141abd6",
+      "path": "tests/test_e169_reference.py"
+    },
+    "falsifier": {
+      "commit": "4327a4c7f20e13fcf03b0686fe2a933bd004bd7e",
+      "blob": "b43df48e322976ddc0e9d4a344e927a76b2db887",
+      "path": "scripts/e169_multiseed_ago.py"
+    },
+    "workflow": {
+      "commit": "6b6601bca3f1b94e583eb71ded71c38c01c581b5",
+      "blob": "f8aeb46beb10073711d13befa45cc674b79b0102",
+      "path": ".github/workflows/e169-multiseed-ago.yml"
+    },
+    "arm": {
+      "commit": "eb9fcb39a4f74e53dd4146b623e52625b53903c9",
+      "blob": "a34e9d0865a4964041e06aaeb4dc759dd0a41de0",
+      "path": "research/E169_RUN_ARM.json"
+    }
+  },
+  "execution": {
+    "run_id": 35610324934,
+    "job_id": 106367522989,
+    "run_attempt": 1,
+    "head_sha": "eb9fcb39a4f74e53dd4146b623e52625b53903c9",
+    "github_conclusion": "success",
+    "exactly_one_run_for_arm_head": true,
+    "frozen_blob_guard": "PASS",
+    "standalone_dependency_install": "PASS",
+    "syntax_check": "PASS",
+    "e164_mechanism_tests": "4 passed in 0.11s",
+    "e169_reference_tests": "3 passed in 0.09s",
+    "owner_step": "COMPLETED",
+    "rerun": false,
+    "rescue": false,
+    "artifact": {
+      "id": 10644057088,
+      "name": "e169-multiseed-ago",
+      "size_bytes": 31122,
+      "zip_sha256": "339167cb44e46d346629175c11d95a889a79df0ad35de608cc4e7bbfc203d209",
+      "expires_at": "2026-12-20T14:10:08Z"
+    }
+  },
+  "panel": {
+    "width": 1024,
+    "depth": 16,
+    "zero_bias": true,
+    "weight_seeds": [
+      1691024,
+      1692024,
+      1693024
+    ],
+    "reference_seeds": [
+      169196608,
+      169296608,
+      169396608
+    ],
+    "reference_samples_per_seed": 196608,
+    "reference_batches_per_seed": 48,
+    "reference_batch_size": 4096,
+    "absolute_reference_se_limit": 0.0007,
+    "streaming": true
+  },
+  "seeds": [
+    {
+      "weight_seed": 1691024,
+      "weights_sha256": "47eb4312939c792244d1b9afe40036c4e5c64693996d94a331ee67eb600f1b1c",
+      "reference_seed": 169196608,
+      "reference_mean_sha256": "a2519aabd431dab9de15db6434d6603e0f73f472a9954e4e0e7d04436b007732",
+      "reference_se_rms": 0.0005857354238994327,
+      "reference_absolute_se_pass": true,
+      "parent_mse": 0.000004494833313396172,
+      "ago_mse": 0.0000037863011814959924,
+      "ago_over_parent": 0.8423674288902979,
+      "mse_improvement_fraction": 0.15763257110970208,
+      "batch_positive_count": 45,
+      "batch_count": 48,
+      "batch_delta_mean": 7.085321319001836e-7,
+      "batch_delta_se": 7.553860638630542e-8,
+      "gauge_roundtrip_error": 4.497114533313173e-16,
+      "homogeneity_error": 2.1963144057451576e-15,
+      "radial_readout_error": 0,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "finite": true
+    },
+    {
+      "weight_seed": 1692024,
+      "weights_sha256": "bfa4defaf28d6ebcd3dab10e13618ab8c52992c45e2223a7ab8f87797e437263",
+      "reference_seed": 169296608,
+      "reference_mean_sha256": "e27bfb17e55364791bb00869e8098ac2b58428bc25291ca6b355489ba9a96420",
+      "reference_se_rms": 0.0005730571745063825,
+      "reference_absolute_se_pass": true,
+      "parent_mse": 0.000004983792442733391,
+      "ago_mse": 0.000004298916900171731,
+      "ago_over_parent": 0.8625794411723062,
+      "mse_improvement_fraction": 0.13742055882769377,
+      "batch_positive_count": 46,
+      "batch_count": 48,
+      "batch_delta_mean": 6.848755425616562e-7,
+      "batch_delta_se": 6.01276442409431e-8,
+      "gauge_roundtrip_error": 4.496860062755308e-16,
+      "homogeneity_error": 2.3222854411947047e-15,
+      "radial_readout_error": 0,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "finite": true
+    },
+    {
+      "weight_seed": 1693024,
+      "weights_sha256": "516c930dd213b57c11f30ef965e297ecca68c001714b3cfdaa2cdb7f4a93b4ea",
+      "reference_seed": 169396608,
+      "reference_mean_sha256": "7baddae37a5de5b50be88fd8e08f7c86519d64365d1dd1ea8c269936c0100398",
+      "reference_se_rms": 0.00060602182718796,
+      "reference_absolute_se_pass": true,
+      "parent_mse": 0.000004607051545831163,
+      "ago_mse": 0.000003849813939114508,
+      "ago_over_parent": 0.8356350912978462,
+      "mse_improvement_fraction": 0.1643649087021538,
+      "batch_positive_count": 45,
+      "batch_count": 48,
+      "batch_delta_mean": 7.572376067166719e-7,
+      "batch_delta_se": 7.721154431629733e-8,
+      "gauge_roundtrip_error": 4.497859597260071e-16,
+      "homogeneity_error": 2.1970981349805917e-15,
+      "radial_readout_error": 0,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "finite": true
+    }
+  ],
+  "panel_metrics": {
+    "pooled_parent_mse": 0.000004695225767320242,
+    "pooled_ago_mse": 0.00000397834400692741,
+    "pooled_ago_over_parent": 0.8473168712391894,
+    "pooled_mse_improvement_fraction": 0.15268312876081058,
+    "strong_seed_count": 3,
+    "batch_positive_count": 136,
+    "batch_total": 144,
+    "batch_delta_mean": 7.168817603928372e-7,
+    "batch_delta_se": 4.099648795390248e-8,
+    "batch_delta_mean_over_se": 17.486418865901825,
+    "radial_a1_1024": 0.9997558892135413,
+    "radial_a1_absolute_error": 0
+  },
+  "identities": {
+    "gauge_roundtrip_max": 4.497859597260071e-16,
+    "homogeneity_max": 2.3222854411947047e-15,
+    "radial_readout_max_error": 0,
+    "tolerance": 2e-12,
+    "pass": true
+  },
+  "production_cost": {
+    "covariance_linear_transport": 68719476736,
+    "mean_matvec": 33554432,
+    "nonlinear_second_order_arithmetic": 402653184,
+    "normal_scalar_work": 16777216,
+    "helper_reserve": 42949672960,
+    "angular_gauge_overlay": 9437184,
+    "all_in_upper": 112131571712,
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "utilization": 0.05099153518676758,
+    "slack_flops": 184736567787,
+    "independent_formula_reconcile": true,
+    "pass": true
+  },
+  "reference_research_cost": {
+    "per_seed_dense_eval_upper_flops": 6597069766656,
+    "three_seed_dense_eval_upper_flops": 19791209299968,
+    "charged_to_candidate_cap": false
+  },
+  "gates": {
+    "absolute_reference_se_le_7e_4_all": true,
+    "ago_improves_all_3_seeds": true,
+    "ago_replay_bitwise_exact_all": true,
+    "at_least_2_of_3_seed_ratios_le_0_98": true,
+    "batch_delta_mean_gt_3se": true,
+    "batch_delta_mean_positive": true,
+    "batch_positive_at_least_96_of_144": true,
+    "complete_candidate_cost_le_0_135B": true,
+    "finite_all": true,
+    "frozen_e164_candidate_source_identity": true,
+    "gauge_roundtrip_le_2e_12_all": true,
+    "homogeneity_le_2e_12_all": true,
+    "independent_cost_reconcile": true,
+    "no_posthoc_gate_change_sweep_rescue_rerun": true,
+    "no_public_benchmark_scorer_holdout_full_submission": true,
+    "parent_replay_bitwise_exact_all": true,
+    "per_seed_batch_delta_mean_positive_all": true,
+    "pooled_mse_ratio_le_0_98": true,
+    "radial_a1_1024_identity_le_1e_15": true,
+    "radial_readout_identity_le_2e_12_all": true,
+    "reference_after_candidate_freeze_all": true,
+    "source_public_firewall": true,
+    "scientific_go": true
+  },
+  "firewall": {
+    "public_or_benchmark_execution": false,
+    "public_blocked_pending_independent_e169_verifier_go": true
+  },
+  "scope": {
+    "synthetic_only": true,
+    "target_free": true,
+    "production_shaped": true,
+    "standalone_execution": true,
+    "public": false,
+    "public_mini": false,
+    "benchmark_target": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "rerun": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "authorization": "E169 establishes synthetic multi-seed production-shaped AGO owner GO only. Public/benchmark work remains blocked pending an independent E169 verifier GO and a later explicitly authorized owner protocol."
+}
