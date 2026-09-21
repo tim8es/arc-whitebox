@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-E147-RESPONSE-PROJECTED-K3-ESTIMATOR-20260921",
+  "execute_once": true,
+  "scope": "target-free exact-small 32D/16D only"
+}
