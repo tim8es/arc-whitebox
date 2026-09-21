@@ -1,0 +1,186 @@
+name: E178 H177 higher-order AGO
+
+on:
+  push:
+    branches:
+      - research/e178-h177-higher-order-ago-gauge-20260921
+    paths:
+      - research/E178_RUN_ARM.json
+
+permissions:
+  contents: write
+
+jobs:
+  e178:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: "0"
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+    steps:
+      - name: Checkout frozen arm
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        id: python
+        uses: actions/setup-python@v5
+        continue-on-error: true
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen dependency
+        id: deps
+        continue-on-error: true
+        shell: bash
+        run: python -m pip install --disable-pip-version-check numpy==2.1.3
+
+      - name: Verify protocol-first arm ancestry
+        id: guard
+        continue-on-error: true
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+
+          with open("research/E178_RUN_ARM.json", "r", encoding="utf-8") as f:
+              arm = json.load(f)
+
+          assert arm["experiment"] == "E178"
+          assert arm["authorized_runs"] == 1
+          assert arm["protocol_commit"] == "f90ef635796c41517afd274214a5662ed489cf78"
+          assert arm["implementation_commit"] == "d502af8755f343eedc671361fbc230e3c09db989"
+          assert arm["workflow_commit"]
+
+          for sha in (
+              arm["protocol_commit"],
+              arm["implementation_commit"],
+              arm["workflow_commit"],
+          ):
+              subprocess.run(
+                  ["git", "merge-base", "--is-ancestor", sha, "HEAD"],
+                  check=True,
+              )
+
+          assert subprocess.check_output(
+              ["git", "show", "--format=", "--name-only", "HEAD"],
+              text=True,
+          ).strip() == "research/E178_RUN_ARM.json"
+          PY
+
+      - name: Run the sole target-free falsifier
+        id: science
+        if: steps.python.outcome == 'success' && steps.deps.outcome == 'success' && steps.guard.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/e178_h177_falsifier.py | tee e178_stdout.txt
+
+      - name: Terminalize and seal evidence
+        id: seal
+        if: always()
+        shell: bash
+        run: |
+          OUT="research/e178_evidence/${GITHUB_RUN_ID}"
+          mkdir -p "$OUT"
+
+          if [ -f e178_stdout.txt ]; then
+            cp e178_stdout.txt "$OUT/stdout.txt"
+          fi
+
+          if [ ! -f "$OUT/E178_TERMINAL_RECEIPT.json" ]; then
+            export E178_PYTHON_OUTCOME="${{ steps.python.outcome }}"
+            export E178_DEPS_OUTCOME="${{ steps.deps.outcome }}"
+            export E178_GUARD_OUTCOME="${{ steps.guard.outcome }}"
+            export E178_SCIENCE_OUTCOME="${{ steps.science.outcome }}"
+            python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          out = Path("research/e178_evidence") / os.environ["GITHUB_RUN_ID"]
+          outcomes = {
+              "python": os.environ.get("E178_PYTHON_OUTCOME"),
+              "deps": os.environ.get("E178_DEPS_OUTCOME"),
+              "guard": os.environ.get("E178_GUARD_OUTCOME"),
+              "science": os.environ.get("E178_SCIENCE_OUTCOME"),
+          }
+          receipt = {
+              "schema": "arc.whitebox.e178.terminal_receipt.v1",
+              "experiment": "E178",
+              "status": "TERMINAL_NO_GO",
+              "decision": "INFRA_FAILURE_BEFORE_COMPLETE_SCIENCE",
+              "branch": os.environ.get("GITHUB_REF_NAME"),
+              "run_id": os.environ.get("GITHUB_RUN_ID"),
+              "armed_head_sha": os.environ.get("GITHUB_SHA"),
+              "step_outcomes": outcomes,
+              "rerun_authorized": False,
+              "no_public_target_or_scorer": True,
+              "authorization": "terminal infrastructure receipt only; no rerun/rescue/public execution authorized",
+          }
+          p = out / "E178_TERMINAL_RECEIPT.json"
+          p.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          manifest = {
+              "schema": "arc.whitebox.e178.manifest.v1",
+              "run_id": os.environ.get("GITHUB_RUN_ID"),
+              "head_sha": os.environ.get("GITHUB_SHA"),
+              "infrastructure_terminal": True,
+              "payload_sha256": {
+                  p.name: hashlib.sha256(p.read_bytes()).hexdigest(),
+              },
+          }
+          (out / "manifest.json").write_text(
+              json.dumps(manifest, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          PY
+          fi
+
+          (
+            cd "$OUT"
+            sha256sum * > SHA256SUMS.txt
+          )
+
+          test -s "$OUT/E178_TERMINAL_RECEIPT.json"
+          test -s "$OUT/manifest.json"
+
+      - name: Upload immutable run artifact
+        if: always() && steps.seal.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: e178-h177-${{ github.run_id }}
+          path: research/e178_evidence/${{ github.run_id }}
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Commit immutable run evidence
+        id: commit_evidence
+        if: always() && steps.seal.outcome == 'success'
+        shell: bash
+        run: |
+          OUT="research/e178_evidence/${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT"
+          git commit -m "research(E178): seal terminal H177 receipt run ${GITHUB_RUN_ID}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Enforce terminal infrastructure semantics
+        if: always()
+        shell: bash
+        run: |
+          if [ "${{ steps.python.outcome }}" != "success" ] || \
+             [ "${{ steps.deps.outcome }}" != "success" ] || \
+             [ "${{ steps.guard.outcome }}" != "success" ] || \
+             [ "${{ steps.science.outcome }}" != "success" ]; then
+            echo "E178 terminal infrastructure/science execution failure; rerun is not authorized."
+            exit 1
+          fi
+          echo "E178 sole scientific execution completed; receipt decision is authoritative."
