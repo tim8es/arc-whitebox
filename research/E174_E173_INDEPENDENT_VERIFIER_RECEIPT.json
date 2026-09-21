@@ -1,0 +1,471 @@
+{
+  "schema": "arc.whitebox.e174.e173_independent_verifier_receipt.v1",
+  "experiment": "E174",
+  "verifies": "E173",
+  "status": "GO",
+  "branch": "review/e174-e173-independent-verifier-20260921",
+  "immutable_owner_receipt": {
+    "path": "research/E173_RECEIPT.json",
+    "commit": "83d3337cb948a5f7dbc15329e9dd92da6a5d7f03",
+    "blob": "3df68bc378da402d931efb5e5f59308096bcec16"
+  },
+  "frozen_provenance": {
+    "scientific_parent": "fea2747b04bd8027bdd98c9680ebce1dc1bb022c",
+    "e172_verifier_commit": "423edafe9e7a1c83b6e58ec1ea4862becafc2162",
+    "e172_decision": "E172_INDEPENDENT_VERIFIER_GO_E171_VERIFIER_READY_AGO",
+    "protocol": {
+      "commit": "bbcb3c9cbbfe8197cbf329b5208435d5d02e58d7",
+      "blob": "422f217f7a9055156e2b4959bcbd5f7bcf5ed5b4",
+      "path": "research/E173_OWNER_PROTOCOL.md"
+    },
+    "e164_clean_ago": {
+      "blob": "ea9078eccc2e2bf2a2bea499ef10a4daf80ea0d4",
+      "path": "methods/e164_ago.py"
+    },
+    "starter_adapter": {
+      "blob": "67516eeea5efe859cb4f00adaa479d5c8143c866",
+      "path": "methods/e173_starter_ago.py"
+    },
+    "parent_entrypoint": {
+      "blob": "e3f20c69c6ccadcd9d40b12e31ccd227e8777c82",
+      "path": "methods/e173_parent_estimator.py"
+    },
+    "ago_entrypoint": {
+      "blob": "0abfe108a0041c321d73228c7c6a078f0fc512ed",
+      "path": "methods/e173_ago_estimator.py"
+    },
+    "tests": {
+      "blob": "9e29d8333d7fc4f8904bddf0bf18f3abce06f519",
+      "path": "tests/test_e173_starter_ago.py"
+    },
+    "capture": {
+      "blob": "25a8387c41ae4feb5e2890050a22e2844f4ab83d",
+      "path": "scripts/e173_capture_vectors.py"
+    },
+    "summarizer": {
+      "blob": "dbb0344843c9cd44fc6e2ac0a6ad8413ebf741ae",
+      "path": "scripts/e173_summarize.py"
+    },
+    "workflow": {
+      "blob": "183f2a83320ca8c110b6f19bfb8ff647706c039f",
+      "path": ".github/workflows/e173-official-mini-ago.yml"
+    },
+    "arm": {
+      "commit": "5ce89871699e20e2df374236471dcd6b6df69300",
+      "blob": "1cb56fd759b2f23a8c223029128677099cc8572f",
+      "path": "research/E173_RUN_ARM.json"
+    },
+    "canonical_baseline_blob": "f547b378faa56e299559bcefc89909fd401b8026",
+    "generic_estimator_blob": "935a994072265155fd79d2db373f28c6fa7e5550"
+  },
+  "execution_evidence": {
+    "valid_scientific_run": {
+      "run_id": 35621103274,
+      "job_id": 106404059329,
+      "run_number": 5,
+      "run_attempt": 1,
+      "head_sha": "5ce89871699e20e2df374236471dcd6b6df69300",
+      "conclusion": "success",
+      "artifact": {
+        "id": 10650296065,
+        "name": "e173-official-mini-ago",
+        "size_bytes": 1062163,
+        "zip_sha256": "7869fe6ac1af128f406be84f057568422dc0ab99b9cd31114e0ec46605182c4e"
+      }
+    },
+    "prior_infrastructure_runs": [
+      {
+        "run_id": 35617293225,
+        "artifact_id": 10646489759,
+        "artifact_sha256": "9c7be335185f0df953fa95e70a28de78d6183cd05f0225fc24578df2bc21cf63",
+        "science_valid": false,
+        "reason": "lineage guard failed before setup/tests/validate/capture/official runs"
+      },
+      {
+        "run_id": 35617467564,
+        "artifact_id": 10647765925,
+        "artifact_sha256": "72c0c7a7fbc84d9e9ee16e32baad879b8a0c336d6624f84e7c00484abc79ddcf",
+        "science_valid": false,
+        "reason": "both whest validators exit 1; both official runs exit 1 with No BaseEstimator subclasses; capture vectors existed but no valid official result"
+      },
+      {
+        "run_id": 35618428982,
+        "artifact_id": 10647337261,
+        "artifact_sha256": "126e79d86cd4f396765a1dab4853794b239c84edc0626e11cb8b704d3895d191",
+        "science_valid": false,
+        "reason": "validators exit 1; capture and official runs skipped"
+      },
+      {
+        "run_id": 35620891447,
+        "artifact_id": 10649396412,
+        "artifact_sha256": "9b4e70b1b2b2ccdeaeca6166a46a3c173c34cf15b0d5a2da64ebc8e6f1ccf754",
+        "science_valid": false,
+        "reason": "syntax check failed; validation/capture/official runs skipped"
+      }
+    ],
+    "infrastructure_policy_audit": {
+      "protocol_section_14_explicitly_allows_pre_valid_evidence_infrastructure_repairs": true,
+      "exactly_one_valid_complete_scientific_run": true,
+      "scientific_rerun_after_valid_result": false,
+      "rescue": false,
+      "threshold_or_gate_change": false,
+      "seed_or_fixture_change": false,
+      "parent_or_ago_math_change": false,
+      "note": "Attempt 2 exposed capture-only target/prediction vectors before loader repair. Subsequent commits changed only workflow diagnostics/guards and thin BaseEstimator entrypoint wrappers; the frozen starter adapter, mathematical mechanism, fixture order, gates and cap did not change."
+    }
+  },
+  "immutable_evidence": {
+    "vector_manifest_sha256": "55d01bcc1bf3b0294eeecbf7ac0fc4cf4e9c861080275ec042d86142d6522027",
+    "summary_sha256": "16c27e2ad841c006fc772a9b0e4e41dd9635917d186cad9b2679a20ac0ebb859",
+    "parent_report_sha256": "7b2545b06369413f38492f0773a86e23f38bf26710a6884f1508fa0632e84ef2",
+    "ago_report_sha256": "ba8656380a8cea691df31d8f9ebed302b962747381d2228f05985e77e9a45dd8",
+    "parent_validate_sha256": "1396215518f5dcdaafc2c3ddcf4fe4efc4ebcd3210e654d64eb50530e32a0416",
+    "ago_validate_sha256": "7220a74630234f21067653969167d6953a17b762ff7d8b9b7618956bd00b04aa",
+    "sha256_map_entries": 61,
+    "sha256_map_all_verified": true,
+    "numeric_payload_count": 35,
+    "all_manifest_file_sha256_verified": true,
+    "all_manifest_raw_array_sha256_verified": true,
+    "all_manifest_dtype_shape_nbytes_verified": true,
+    "payload_schema": {
+      "target_all_layer_means": {
+        "dtype": "float32",
+        "shape": [
+          16,
+          1024
+        ]
+      },
+      "parent_prediction": {
+        "dtype": "float32",
+        "shape": [
+          16,
+          1024
+        ]
+      },
+      "ago_prediction": {
+        "dtype": "float32",
+        "shape": [
+          16,
+          1024
+        ]
+      },
+      "parent_final_error": {
+        "dtype": "float64",
+        "shape": [
+          1024
+        ]
+      },
+      "ago_final_error": {
+        "dtype": "float64",
+        "shape": [
+          1024
+        ]
+      },
+      "parent_final_squared_error": {
+        "dtype": "float64",
+        "shape": [
+          1024
+        ]
+      },
+      "ago_final_squared_error": {
+        "dtype": "float64",
+        "shape": [
+          1024
+        ]
+      }
+    }
+  },
+  "seed_separation": {
+    "verdict": "VERIFIED",
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "split": "mini",
+    "first_five_official_order": true,
+    "mlps": [
+      {
+        "index": 0,
+        "id": 0,
+        "name": "logan-fitzgerald",
+        "input_mlp_seed_exact": "6319981554997072999",
+        "target_raw_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82",
+        "parent_prediction_raw_sha256": "52027a3a762ed77b61c1f119248fb9f965f06380da53a8271ad11d63dbba4268",
+        "ago_prediction_raw_sha256": "a15826926b0dd25871437d38a5492e61364a8f0a2d4066be97ab7069784915de"
+      },
+      {
+        "index": 1,
+        "id": 1,
+        "name": "william-graves",
+        "input_mlp_seed_exact": "2392109381927064353",
+        "target_raw_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4",
+        "parent_prediction_raw_sha256": "12519da20354ade493d2cda77921bcaab50f848ad072ab98a8ba4c8c43e26cb4",
+        "ago_prediction_raw_sha256": "989de2e82f651a1aaf60fc0f20e12e142b2971c3e6ba45e952ae615f1d8999e9"
+      },
+      {
+        "index": 2,
+        "id": 2,
+        "name": "raymond-barnes",
+        "input_mlp_seed_exact": "4030325997523501402",
+        "target_raw_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34",
+        "parent_prediction_raw_sha256": "310f90829c42f368d1bdd54935cec73ce4a5d239ac90d88540e6b5d03b46e37c",
+        "ago_prediction_raw_sha256": "bb59af31c593dce45970e64da88a26727fb5bb7744d9dc31a2c3a75f80c7c8fd"
+      },
+      {
+        "index": 3,
+        "id": 3,
+        "name": "steven-rice",
+        "input_mlp_seed_exact": "6959524404880716684",
+        "target_raw_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b",
+        "parent_prediction_raw_sha256": "44c3995e86ccc7584bc8efb75681e261bf8bc7ce764117dd0b97885a881ed5e3",
+        "ago_prediction_raw_sha256": "c74ab5c72daa2fee582130dc3e15b920ace88f6f5c546b8a6c30562e936d2c9a"
+      },
+      {
+        "index": 4,
+        "id": 4,
+        "name": "sarah-kelley",
+        "input_mlp_seed_exact": "3958198382245770826",
+        "target_raw_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9",
+        "parent_prediction_raw_sha256": "43db05e504a5cff097a350aa38b8ba72eb4a73d56ae9ffc7c630ca6f9456156b",
+        "ago_prediction_raw_sha256": "0dd65d797c915d984f7bd333a06261dfedaae27b87867ae07bbf266ebd13f782"
+      }
+    ],
+    "target_hashes_unique": true,
+    "prediction_hashes_unique_by_mlp": true,
+    "capture_loop_stops_at_exactly_5": true,
+    "parent_and_ago_use_same_mlp_object_per_record": true,
+    "owner_receipt_seed_metadata_note": "The owner receipt's per_mlp input_mlp_seed JSON numbers are rounded relative to the exact 64-bit values retained in the immutable vector manifest. E174 treats the hashed manifest as authoritative. MLP selection is by frozen first-five dataset order and was not driven by these receipt summary numbers.",
+    "execution_effect_of_receipt_seed_rounding": false
+  },
+  "independent_numeric_recomputation": {
+    "verdict": "VERIFIED_FROM_IMMUTABLE_COORDINATE_VECTORS",
+    "reference_se_applicability": "NOT_APPLICABLE: E173 evaluates baked official Mini target means and has no stochastic reference-SE gate. E174 recomputed the protocol-defined coordinate squared-error SE_MSE from each saved 1024-vector.",
+    "per_mlp": [
+      {
+        "name": "logan-fitzgerald",
+        "parent_mse": 0.000004057992100570118,
+        "ago_mse": 0.0000033904161682585254,
+        "ago_over_parent": 0.835491071503613,
+        "parent_coordinate_mse_se": 2.7660760792969086e-7,
+        "ago_coordinate_mse_se": 2.3083094902176526e-7,
+        "delta": 6.675759323115926e-7,
+        "official_parent_diff": 0,
+        "official_ago_diff": 0
+      },
+      {
+        "name": "william-graves",
+        "parent_mse": 0.000004718485797639005,
+        "ago_mse": 0.000003889329036610434,
+        "ago_over_parent": 0.8242748210785211,
+        "parent_coordinate_mse_se": 3.175925371579069e-7,
+        "ago_coordinate_mse_se": 2.6089043103638687e-7,
+        "delta": 8.291567610285711e-7,
+        "official_parent_diff": 0,
+        "official_ago_diff": 0
+      },
+      {
+        "name": "raymond-barnes",
+        "parent_mse": 0.000005391612830862869,
+        "ago_mse": 0.000004408399945532437,
+        "ago_over_parent": 0.8176403024152091,
+        "parent_coordinate_mse_se": 3.899724276834604e-7,
+        "ago_coordinate_mse_se": 3.198422007244517e-7,
+        "delta": 9.832128853304312e-7,
+        "official_parent_diff": 0,
+        "official_ago_diff": 0
+      },
+      {
+        "name": "steven-rice",
+        "parent_mse": 0.0000035016648780583637,
+        "ago_mse": 0.000002915387540269876,
+        "ago_over_parent": 0.8325718313416752,
+        "parent_coordinate_mse_se": 2.1981838926876662e-7,
+        "ago_coordinate_mse_se": 1.8372459464899293e-7,
+        "delta": 5.862773377884878e-7,
+        "official_parent_diff": 0,
+        "official_ago_diff": 0
+      },
+      {
+        "name": "sarah-kelley",
+        "parent_mse": 0.0000033858229926408967,
+        "ago_mse": 0.0000029050520424789283,
+        "ago_over_parent": 0.8580047004208647,
+        "parent_coordinate_mse_se": 2.2617552986048395e-7,
+        "ago_coordinate_mse_se": 1.9313570476242603e-7,
+        "delta": 4.807709501619684e-7,
+        "official_parent_diff": 0,
+        "official_ago_diff": 0
+      }
+    ],
+    "panel": {
+      "mean_parent_mse": 0.0000042111157199542505,
+      "mean_ago_mse": 0.00000350171694663004,
+      "ago_over_parent": 0.8315413727619156,
+      "improvement_fraction": 0.16845862723808436,
+      "improve_count": 5,
+      "required_improve_count": 3,
+      "required_ratio_max": 0.98,
+      "paired_delta_mean": 7.093987733242102e-7,
+      "paired_delta_se": 8.90210264475203e-8,
+      "paired_delta_mean_over_se": 7.968890066016202,
+      "all_scientific_gates_pass": true
+    },
+    "saved_error_vectors_reconcile_exactly_when_predictions_and_targets_are_cast_to_float64_before_subtraction": true,
+    "saved_squared_error_vectors_reconcile_exactly": true,
+    "captured_final_mse_equals_official_per_mlp_final_mse_all": true,
+    "aggregate_layerwise_ago_never_exceeds_parent": true
+  },
+  "exact_identities": {
+    "verdict": "VERIFIED",
+    "radial_a1_formula": "exp(0.5*log(2/n)+lgamma((n+1)/2)-lgamma(n/2))",
+    "independently_recomputed_radial_a1_1024": 0.9997558892135413,
+    "gaussian_to_angular": "mA=mG/a1; CA=CG-(a1^-2-1)mG mG^T",
+    "angular_to_gaussian": "mG=a1*mA; CG=CA+(1-a1^2)mA mA^T",
+    "algebraic_roundtrip_exact": true,
+    "starter_orientation": "pre_mean=weight.T@mean; pre_cov=weight.T@cov@weight",
+    "first_activation_only_gauge": true,
+    "every_returned_ago_row_radial_readout": "row=a1*current_mean",
+    "non_suite_parent_fallback_exact_by_source": true,
+    "focused_tests": "10 passed",
+    "float32_roundtrip_tolerance": 0.000002,
+    "e164_source_unchanged": true
+  },
+  "validator": {
+    "verdict": "VERIFIED",
+    "validator_kind": "WhestBench 0.16.1 whest validate; no custom mutable E173 validator",
+    "parent": {
+      "exit": 0,
+      "ok": true,
+      "class_name": "Estimator",
+      "output_shape": [
+        2,
+        4
+      ],
+      "json_sha256": "1396215518f5dcdaafc2c3ddcf4fe4efc4ebcd3210e654d64eb50530e32a0416"
+    },
+    "ago": {
+      "exit": 0,
+      "ok": true,
+      "class_name": "Estimator",
+      "output_shape": [
+        2,
+        4
+      ],
+      "json_sha256": "7220a74630234f21067653969167d6953a17b762ff7d8b9b7618956bd00b04aa"
+    },
+    "frozen_before_valid_scientific_run": true,
+    "smoke_shape_uses_non_suite_parent_fallback": true,
+    "validator_mutates_candidate_or_thresholds": false
+  },
+  "cost": {
+    "verdict": "VERIFIED",
+    "deployed_analytic_components": {
+      "covariance_linear_transport": 68719476736,
+      "mean_matvec": 33554432,
+      "nonlinear_second_order_arithmetic": 402653184,
+      "normal_scalar_work": 16777216,
+      "helper_reserve": 42949672960,
+      "angular_gauge_overlay": 9437184
+    },
+    "deployed_analytic_all_in": 112131571712,
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "utilization": 0.05099153518676758,
+    "slack_flops": 184736567787,
+    "analytic_cap_pass": true,
+    "official_metered_parent_flops_per_mlp": 69149082591,
+    "official_metered_ago_flops_per_mlp": 69159064030,
+    "all_runtime_flops_below_cap": true,
+    "note": "Validation/capture/evidence-generation are preregistered research/verification work, not deployed estimator arithmetic. WhestBench runtime meter includes adapter execution overhead for the deployed entrypoints."
+  },
+  "deterministic_replay": {
+    "verdict": "VERIFIED",
+    "parent_replay_bitwise_exact_all": true,
+    "ago_replay_bitwise_exact_all": true,
+    "retained_target_prediction_error_hashes_verified": true,
+    "exactly_one_valid_complete_scientific_run": true,
+    "valid_run_attempt": 1,
+    "valid_result_rerun": false
+  },
+  "firewall_and_target_leakage": {
+    "verdict": "VERIFIED",
+    "public_mini_targets_used_for_post_freeze_evaluation": true,
+    "candidate_adapter_contains_target_dataset_scorer_submission_holdout_io_tokens": false,
+    "candidate_accepts_only_mlp_and_budget_through_BaseEstimator_interface": true,
+    "protocol_frozen_before_public_mini_result": true,
+    "mathematical_candidate_frozen_before_public_mini_result": true,
+    "public_targets_enter_candidate_construction": false,
+    "target_derived_coefficients": false,
+    "per_mlp_tuning": false,
+    "threshold_or_gate_change_after_result": false,
+    "holdout_full_private_grader": false,
+    "official_remote_scorer": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "attempt2_capture_observation_note": "Attempt 2 retained public-Mini capture vectors despite loader validation failure. All subsequent repairs were restricted to workflow diagnostics/guards and loader wrapper syntax/subclass discovery; no mathematical source, seed/order, gate, cap or comparison rule changed."
+  },
+  "clean_ancestry": {
+    "verdict": "VERIFIED",
+    "e171_receipt_is_literal_merge_base": true,
+    "e173_commits_ahead_of_e171_receipt": 24,
+    "protocol_first": true,
+    "base_to_protocol_exactly_one_commit_and_only_protocol_file": true,
+    "arm_to_receipt_exactly_one_commit_and_only_receipt_file": true,
+    "changed_paths_since_e171": [
+      ".github/workflows/e173-official-mini-ago.yml",
+      "methods/e173_ago_estimator.py",
+      "methods/e173_parent_estimator.py",
+      "methods/e173_starter_ago.py",
+      "research/E173_OWNER_PROTOCOL.md",
+      "research/E173_RECEIPT.json",
+      "research/E173_RUN_ARM.json",
+      "scripts/e173_capture_vectors.py",
+      "scripts/e173_summarize.py",
+      "tests/test_e173_starter_ago.py"
+    ],
+    "canonical_baseline_modified": false,
+    "generic_estimator_modified": false,
+    "forbidden_branches_literal_ancestors": {
+      "e154": false,
+      "e157": false,
+      "e162": false,
+      "e166": false,
+      "e167": false,
+      "e169": false,
+      "e170": false
+    },
+    "e172_review_branch_literal_ancestor": false,
+    "e172_used_only_as_authorizing_independent_verifier_receipt": true,
+    "allowed_mechanism_reuse": "byte-identical E164/E171 clean AGO mechanism"
+  },
+  "conclusions": {
+    "scientific_go": {
+      "status": "GO",
+      "reason": "All five official local Mini MLPs independently recompute as AGO improvements from retained coordinate vectors; panel AGO/parent MSE ratio 0.8315413727619156 and all frozen scientific gates pass."
+    },
+    "protocol_go": {
+      "status": "GO",
+      "reason": "Protocol was frozen first; validator, immutable evidence, cost, replay, firewall and ancestry pass. Four pre-valid-evidence infrastructure attempts are explicitly allowed by E173 section 14; there was exactly one valid completed scientific run and no post-valid-result rerun/rescue or scientific gate/mechanism/seed change.",
+      "metadata_caveat": "Owner receipt rounds 64-bit input seed summary fields; the immutable hashed manifest preserves exact seeds and execution/order is unaffected."
+    },
+    "external_submission_readiness": {
+      "status": "READY",
+      "reason": "The starter-compatible AGO entrypoint passes WhestBench validation, independent E174 scientific/protocol verification, replay and cost gates. READY means technically ready only for a separately authorized external-submission protocol.",
+      "external_submission_authorized": false,
+      "external_submission_performed": false,
+      "full_or_holdout_authorized": false,
+      "leaderboard_mutation_authorized": false
+    }
+  },
+  "verifier_discipline": {
+    "candidate_created": false,
+    "candidate_executed": false,
+    "validator_executed": false,
+    "reference_executed": false,
+    "benchmark_run_created": false,
+    "rerun": false,
+    "rescue": false,
+    "external_submission": false,
+    "owner_branch_modified": false,
+    "canonical_ledger_modified": false,
+    "merge": false,
+    "append_only": true
+  }
+}
