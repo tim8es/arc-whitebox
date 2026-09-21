@@ -38,7 +38,7 @@ jobs:
           expected = {
               "idempotency_key": "ARC-E173-OFFICIAL-MINI-AGO-INTEGRATION-20260921",
               "execute": True,
-              "attempt": 2,
+              "attempt": 3,
               "scope": "official local v2-phase2 mini first 5; parent vs AGO; no submission",
           }
           arm = json.loads(Path("research/E173_RUN_ARM.json").read_text())
@@ -135,9 +135,13 @@ jobs:
         shell: bash
         run: |
           set +e
-          whest validate             --estimator methods/e173_parent_estimator.py             --json             > e173_artifacts/parent_validate.json             2> e173_artifacts/parent_validate.stderr
+          whest validate             --estimator methods/e173_parent_estimator.py             --json             --debug             > e173_artifacts/parent_validate.json             2> e173_artifacts/parent_validate.stderr
           code=$?
           echo "$code" > e173_artifacts/parent_validate.exit
+          echo "=== parent validate JSON ==="
+          cat e173_artifacts/parent_validate.json || true
+          echo "=== parent validate stderr ==="
+          cat e173_artifacts/parent_validate.stderr || true
           exit "$code"
 
       - name: Validate AGO entrypoint and fallback
@@ -146,12 +150,17 @@ jobs:
         shell: bash
         run: |
           set +e
-          whest validate             --estimator methods/e173_ago_estimator.py             --json             > e173_artifacts/ago_validate.json             2> e173_artifacts/ago_validate.stderr
+          whest validate             --estimator methods/e173_ago_estimator.py             --json             --debug             > e173_artifacts/ago_validate.json             2> e173_artifacts/ago_validate.stderr
           code=$?
           echo "$code" > e173_artifacts/ago_validate.exit
+          echo "=== AGO validate JSON ==="
+          cat e173_artifacts/ago_validate.json || true
+          echo "=== AGO validate stderr ==="
+          cat e173_artifacts/ago_validate.stderr || true
           exit "$code"
 
       - name: Capture verifier-ready vectors on first 5 official Mini MLPs
+        if: steps.validate_parent.outcome == 'success' && steps.validate_ago.outcome == 'success'
         id: capture
         continue-on-error: true
         shell: bash
@@ -164,6 +173,7 @@ jobs:
           exit "$code"
 
       - name: Official local Mini parent run
+        if: steps.validate_parent.outcome == 'success' && steps.validate_ago.outcome == 'success'
         id: run_parent
         continue-on-error: true
         shell: bash
@@ -175,6 +185,7 @@ jobs:
           exit "$code"
 
       - name: Official local Mini AGO run
+        if: steps.validate_parent.outcome == 'success' && steps.validate_ago.outcome == 'success'
         id: run_ago
         continue-on-error: true
         shell: bash
