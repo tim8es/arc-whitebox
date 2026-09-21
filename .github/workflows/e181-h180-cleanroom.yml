@@ -1,0 +1,61 @@
+name: E181 H180 cleanroom target-free falsifier
+
+on:
+  push:
+    branches:
+      - research/e181-h180-symmetric-cp-carrier-cleanroom-20260921
+    paths:
+      - research/E181_RUN_ARM.json
+
+permissions:
+  contents: write
+
+jobs:
+  e181:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout frozen branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/e181-h180-symmetric-cp-carrier-cleanroom-20260921
+          fetch-depth: 0
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pin runtime
+        run: python -m pip install --disable-pip-version-check numpy==2.3.5
+
+      - name: Run exactly one frozen target-free E181 experiment
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p research/e181_artifacts
+          python scripts/e181_h180_symmetric_cp_falsifier.py \
+            --output-dir research/e181_artifacts \
+            | tee research/e181_artifacts/E181_STDOUT.log
+
+      - name: Commit immutable run artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/e181_artifacts
+          if git diff --cached --quiet; then
+            echo "ERROR: E181 produced no run artifacts" >&2
+            exit 2
+          fi
+          git commit -m "E181 terminal receipt: H180 target-free run"
+          git push origin HEAD:research/e181-h180-symmetric-cp-carrier-cleanroom-20260921
+          echo "E181_RESULT_COMMIT=$(git rev-parse HEAD)"
+
+      - name: Preserve Actions copy
+        uses: actions/upload-artifact@v4
+        with:
+          name: e181-h180-target-free-run
+          path: research/e181_artifacts
+          if-no-files-found: error
