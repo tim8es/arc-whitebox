@@ -104,6 +104,8 @@ def main() -> None:
 
     parent_report = _read_json(PARENT_REPORT)
     ago_report = _read_json(AGO_REPORT)
+    parent_validate = _read_json(PARENT_VALIDATE)
+    ago_validate = _read_json(AGO_VALIDATE)
     manifest = _read_json(VECTOR_MANIFEST)
 
     parent_exit = _read_int(ROOT / "parent_run.exit")
