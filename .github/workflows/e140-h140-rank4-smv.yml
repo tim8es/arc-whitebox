@@ -1,0 +1,73 @@
+name: E140 H140 rank-4 SMV one-shot
+
+on:
+  push:
+    branches:
+      - research/e140-smv-rank4-execution-20260921
+    paths:
+      - .github/workflows/e140-h140-rank4-smv.yml
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+      E140_ARC_COMMIT: "93d091a4c26c042bfffa28f2e76a81bc0aba94bb"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install minimal pinned scientific dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.8.0
+          python -m pip install numpy==2.3.3 einops==0.8.1 jaxtyping==0.3.2 tqdm==4.67.1 opt_einsum==3.4.0
+
+      - name: Checkout pinned ARC primary implementation
+        run: |
+          git clone https://github.com/alignment-research-center/mlp_cumulant_propagation.git _arc_upstream
+          git -C _arc_upstream checkout "$E140_ARC_COMMIT"
+          test "$(git -C _arc_upstream rev-parse HEAD)" = "$E140_ARC_COMMIT"
+
+      - name: Record immutable provenance
+        run: |
+          mkdir -p e140_artifacts
+          git rev-parse HEAD > e140_artifacts/e140_head.txt
+          git -C _arc_upstream rev-parse HEAD > e140_artifacts/arc_head.txt
+          sha256sum scripts/e140_h140_rank4_smv.py > e140_artifacts/script.sha256
+          python - <<'PY' > e140_artifacts/environment.txt
+          import platform
+          import torch
+          print("python", platform.python_version())
+          print("platform", platform.platform())
+          print("torch", torch.__version__)
+          print("threads", torch.get_num_threads())
+          PY
+
+      - name: Run the one authorized target-free scientific falsifier
+        env:
+          PYTHONPATH: "${{ github.workspace }}/_arc_upstream/src:${{ github.workspace }}"
+        run: |
+          python scripts/e140_h140_rank4_smv.py | tee e140_artifacts/run.log
+
+      - name: Seal artifact checksums
+        if: always()
+        run: |
+          find e140_artifacts -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum > e140_artifacts/SHA256SUMS.txt.tmp
+          mv e140_artifacts/SHA256SUMS.txt.tmp e140_artifacts/SHA256SUMS.txt
+
+      - name: Upload immutable E140 result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e140-h140-rank4-smv
+          path: e140_artifacts/
+          if-no-files-found: error
