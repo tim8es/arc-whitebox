@@ -1,0 +1,121 @@
+{
+  "accuracy": {
+    "candidate_parent_mse_ratio": null,
+    "gate_ratio": 1.02,
+    "gate_upper95": 0.02,
+    "paired_degradation_upper95": null,
+    "paired_relative_degradation_se": null,
+    "status": "NOT_RUN_BY_FROZEN_GATE"
+  },
+  "ancestry": {
+    "arc_reference": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+    "e177": "e1536d36a5e2d641ab3596892847e2fcf41e83ab",
+    "e178_used": false,
+    "e180_branch": "research/e180-cost-wall-cp-20260921",
+    "public_v29": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45"
+  },
+  "branch": "research/e181-h180-symmetric-cp-carrier-cleanroom-20260921",
+  "cost": {
+    "accounting_kind": "frozen full-chain classical arithmetic ledger; no Strassen credit",
+    "budget_flops": 2199023255552,
+    "candidate_cost_ratio": 0.12192764282226562,
+    "candidate_total_flops": 268121722061,
+    "candidate_total_u": 124.85390625,
+    "cap_ratio": 0.135,
+    "d21_extraction_u": 42.0,
+    "fixed_remainder_u": 37.6,
+    "min_saving_u": 14.76,
+    "no_old_parent_u": 153.0,
+    "pass": true,
+    "projection_overhead_flops": 545259520,
+    "projection_overhead_u": 0.25390625,
+    "rank": 3072,
+    "rho": 3.0,
+    "saving_u": 28.146093750000006,
+    "transport_u": 45.0,
+    "unit_flops": 2147483648
+  },
+  "environment": {
+    "numpy": "2.3.5",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]"
+  },
+  "exact_small": {
+    "d21_cp_relmax": 2.6544772614522075e-16,
+    "d21_dense_formula_relmax": 1.061790904580883e-16,
+    "d3_cp_relmax": 2.1270706972583052e-16,
+    "d3_dense_formula_relmax": 1.418047131505537e-16,
+    "max_rel_error": 7.814680885807528e-16,
+    "pass": true,
+    "tensor_polarization_relmax": 3.71626816603309e-16,
+    "transport_cp_relmax": 7.814680885807528e-16,
+    "transport_parent_relmax": 2.232765967373579e-16
+  },
+  "experiment": "E181",
+  "forbidden_actions": {
+    "baseline_mutation": false,
+    "leaderboard_mutation": false,
+    "projection_rescue": false,
+    "public_submission": false,
+    "rank_sweep": false,
+    "source_age_hybrid": false
+  },
+  "hypothesis": "H180 aggregate symmetric-CP carrier",
+  "protocol_go": true,
+  "rank": 3072,
+  "run_kind": "single_target_free_owner_run",
+  "scientific_go": false,
+  "seed": 181180,
+  "structural": {
+    "candidate_meta": {
+      "stage0_input_terms": 4096,
+      "stage0_kept": 3072,
+      "stage1_input_terms": 7168,
+      "stage1_kept": 3072
+    },
+    "d21_gate": 0.015,
+    "finite": true,
+    "n": 1024,
+    "pass": false,
+    "rank": 3072,
+    "replay_bitwise": true,
+    "replay_meta_equal": true,
+    "stage0_d21_rms_ratio": 0.2626435881468867,
+    "stage1_d21_rms_ratio": 0.4169990347589253,
+    "stage1_d3_rms_ratio": 0.4488406625479034
+  },
+  "submission_readiness": false,
+  "terminal_reason": "G2_D21_RMS_GATE_FAILURE",
+  "vector_hashes": {
+    "candidate_d21": {
+      "dtype": "float64",
+      "sha256": "b800b6597e2e20dbb4f3dca0c3e1c0456cb15a1e5da8d894bc618345db064cf0",
+      "shape": [
+        1024,
+        1024
+      ]
+    },
+    "candidate_d3": {
+      "dtype": "float64",
+      "sha256": "18034bed8edcf673d0a3ef107d71a61c9593d80dd88496f7f6604cab77b68eec",
+      "shape": [
+        1024
+      ]
+    },
+    "parent_d21": {
+      "dtype": "float64",
+      "sha256": "338a8fa40af32db067139a6aee04209937fb24ad9cc7459cf58dfb1070132dcc",
+      "shape": [
+        1024,
+        1024
+      ]
+    },
+    "parent_d3": {
+      "dtype": "float64",
+      "sha256": "e5a14509021262f0f41441f37cc5d9ce047b61f9df496f743e3120cff693437f",
+      "shape": [
+        1024
+      ]
+    }
+  }
+}

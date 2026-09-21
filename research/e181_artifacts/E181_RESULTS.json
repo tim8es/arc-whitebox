@@ -1,0 +1,60 @@
+{
+  "accuracy": {
+    "candidate_parent_mse_ratio": null,
+    "gate_ratio": 1.02,
+    "gate_upper95": 0.02,
+    "paired_degradation_upper95": null,
+    "paired_relative_degradation_se": null,
+    "status": "NOT_RUN_BY_FROZEN_GATE"
+  },
+  "cost": {
+    "accounting_kind": "frozen full-chain classical arithmetic ledger; no Strassen credit",
+    "budget_flops": 2199023255552,
+    "candidate_cost_ratio": 0.12192764282226562,
+    "candidate_total_flops": 268121722061,
+    "candidate_total_u": 124.85390625,
+    "cap_ratio": 0.135,
+    "d21_extraction_u": 42.0,
+    "fixed_remainder_u": 37.6,
+    "min_saving_u": 14.76,
+    "no_old_parent_u": 153.0,
+    "pass": true,
+    "projection_overhead_flops": 545259520,
+    "projection_overhead_u": 0.25390625,
+    "rank": 3072,
+    "rho": 3.0,
+    "saving_u": 28.146093750000006,
+    "transport_u": 45.0,
+    "unit_flops": 2147483648
+  },
+  "exact_small": {
+    "d21_cp_relmax": 2.6544772614522075e-16,
+    "d21_dense_formula_relmax": 1.061790904580883e-16,
+    "d3_cp_relmax": 2.1270706972583052e-16,
+    "d3_dense_formula_relmax": 1.418047131505537e-16,
+    "max_rel_error": 7.814680885807528e-16,
+    "pass": true,
+    "tensor_polarization_relmax": 3.71626816603309e-16,
+    "transport_cp_relmax": 7.814680885807528e-16,
+    "transport_parent_relmax": 2.232765967373579e-16
+  },
+  "structural": {
+    "candidate_meta": {
+      "stage0_input_terms": 4096,
+      "stage0_kept": 3072,
+      "stage1_input_terms": 7168,
+      "stage1_kept": 3072
+    },
+    "d21_gate": 0.015,
+    "finite": true,
+    "n": 1024,
+    "pass": false,
+    "rank": 3072,
+    "replay_bitwise": true,
+    "replay_meta_equal": true,
+    "stage0_d21_rms_ratio": 0.2626435881468867,
+    "stage1_d21_rms_ratio": 0.4169990347589253,
+    "stage1_d3_rms_ratio": 0.4488406625479034
+  },
+  "terminal_reason": "G2_D21_RMS_GATE_FAILURE"
+}

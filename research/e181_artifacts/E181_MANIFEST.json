@@ -1,0 +1,50 @@
+{
+  "array_hashes": {
+    "candidate_d21": {
+      "dtype": "float64",
+      "sha256": "b800b6597e2e20dbb4f3dca0c3e1c0456cb15a1e5da8d894bc618345db064cf0",
+      "shape": [
+        1024,
+        1024
+      ]
+    },
+    "candidate_d3": {
+      "dtype": "float64",
+      "sha256": "18034bed8edcf673d0a3ef107d71a61c9593d80dd88496f7f6604cab77b68eec",
+      "shape": [
+        1024
+      ]
+    },
+    "parent_d21": {
+      "dtype": "float64",
+      "sha256": "338a8fa40af32db067139a6aee04209937fb24ad9cc7459cf58dfb1070132dcc",
+      "shape": [
+        1024,
+        1024
+      ]
+    },
+    "parent_d3": {
+      "dtype": "float64",
+      "sha256": "e5a14509021262f0f41441f37cc5d9ce047b61f9df496f743e3120cff693437f",
+      "shape": [
+        1024
+      ]
+    }
+  },
+  "files": {
+    "E181_IMMUTABLE_VECTORS.npz": {
+      "bytes": 16115501,
+      "sha256": "49dd9e906e9a17bf2eb9cb1c24d5322f35232a0cae58fe054f4783adb5e4ca01"
+    },
+    "E181_RECEIPT.json": {
+      "bytes": 3595,
+      "sha256": "9e27127efd783476c76233642986ae7b1830db06c970c73d9320cf32a975a85c"
+    },
+    "E181_RESULTS.json": {
+      "bytes": 1843,
+      "sha256": "53d73abcea85ee3c1ead1fa4f99da43dc5d71f3b4b49d5eb30143d0f11e07990"
+    }
+  },
+  "rank": 3072,
+  "seed": 181180
+}
