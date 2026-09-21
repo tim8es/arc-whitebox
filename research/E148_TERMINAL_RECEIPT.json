@@ -1,0 +1,118 @@
+{
+  "schema": "arc.whitebox.e148.terminal_receipt.v1",
+  "experiment": "E148",
+  "idempotency_key": "ARC-E148-GLOBAL-SEED-TT-K3-20260921",
+  "branch": "research/e148-global-seed-tt-k3-20260921",
+  "protocol_blob": "0317790709e465f277925e68a7f12e79b65e0cf5",
+  "note_blob": "a7a7a8b375eacbe7406f13b78e895f9c693ed4bc",
+  "candidate_blob": "c53d4dda3516a4741c76ae5884cf7688771077a5",
+  "falsifier_blob": "aeea8cb32baa40ffa5a26cb6b646db9ecf63477e",
+  "arm_commit": "32f33320d555d2f74e52e4754012ba83357759db",
+  "run": {
+    "workflow_run_id": 35550915761,
+    "workflow_run_number": 1,
+    "job_id": 106185373716,
+    "conclusion": "success",
+    "artifact_id": 10618351672,
+    "artifact_name": "e148-gstt-k3",
+    "artifact_size_bytes": 14941,
+    "artifact_zip_sha256": "c371dd1baf5c876e423d26fc0ca3e85c402690dc4080922c9964a8aeca744159",
+    "sole_scientific_execution": true,
+    "rerun_permitted": false
+  },
+  "source_verification": {
+    "official_arc_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+    "official_arc_verified": true,
+    "public_v29_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "public_v29_blob": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "public_v29_verified": true,
+    "target_oracle_firewall_pass": true
+  },
+  "implementation_scope": {
+    "candidate_carrier": "GSTT-K3 open-core rank-4 small / rank-40 production",
+    "executed_closure": "official ARC K3 SIMPLE factorized closure with GSTT replacing only K3 carrier",
+    "dense_reference": "official ARC K3 SIMPLE unfactored closure",
+    "frozen_protocol_requested_closure": "V18/V19-class low-order/nonlinear closure",
+    "exact_v18_v19_closure_match": false,
+    "protocol_integrity_note": "The single execution used the official ARC K3 SIMPLE primary-source closure rather than a literal V18/V19 public closure. This is a protocol-scope mismatch and independently prevents promotion. No rerun or rescue is authorized."
+  },
+  "fixtures": {
+    "dense32_depth8": {
+      "seed": 148032,
+      "rank": 4,
+      "pooled_d21_relative_rms": 0.9545665441992723,
+      "max_layer_d21_relative_rms": 0.9818059756597406,
+      "pooled_d3_relative_rms": 0.947400656782353,
+      "max_layer_d3_relative_rms": 0.9912440434183316,
+      "final_mean_rms_error": 0.057534742717687035,
+      "exact_k3_correction_rms": 0.06091691452433495,
+      "final_mean_error_over_exact_k3_correction": 0.9444789376964124,
+      "certificate_containment": true,
+      "deterministic_replay": true,
+      "representation_identity_max_relative_error": 4.728214261695909e-16
+    },
+    "adversarial16_depth8": {
+      "seed": 148016,
+      "rank": 4,
+      "pooled_d21_relative_rms": 0.9864160385576694,
+      "max_layer_d21_relative_rms": 0.9978617145728633,
+      "pooled_d3_relative_rms": 0.9669313418877706,
+      "max_layer_d3_relative_rms": 0.9981303391739985,
+      "final_mean_rms_error": 0.567779791933205,
+      "exact_k3_correction_rms": 0.5296132138961159,
+      "final_mean_error_over_exact_k3_correction": 1.0720650033565355,
+      "certificate_containment": true,
+      "deterministic_replay": true,
+      "representation_identity_max_relative_error": 4.0334142774754327e-16
+    }
+  },
+  "gates": {
+    "finite_all": true,
+    "deterministic_replay_all": true,
+    "identity_middle_all": true,
+    "representation_identities_all": true,
+    "pooled_d21_le_0_010_both": false,
+    "max_layer_d21_le_0_015_both": false,
+    "pooled_d3_le_0_010_both": false,
+    "final_mean_over_k3_correction_le_0_10_both": false,
+    "certificate_containment_all": true,
+    "exact_v18_v19_closure_match": false,
+    "production_cost_reconcile": true,
+    "production_all_in_le_0_135B": true,
+    "no_public_target_scorer_holdout_full": true
+  },
+  "production_cost": {
+    "rank": 40,
+    "all_in_upper_flops": 256014155776,
+    "budget_flops": 2199023255552,
+    "utilization": 0.11642175912857056,
+    "cap_flops": 296868139499,
+    "slack_to_cap_flops": 40853983723,
+    "rank48_all_in_upper_flops": 311058497536,
+    "rank48_utilization": 0.14145302772521973,
+    "rank48_over_cap": true
+  },
+  "decision": "E148_TERMINAL_NO_GO_CLOSE_GSTT_K3",
+  "scientific_go": false,
+  "promotion_authorized": false,
+  "terminal_reasons": [
+    "Rank-4 homolog loses approximately 95-99% of dense-reference D21/D3 norm on both frozen fixtures, far outside the 1% gates.",
+    "Final mean error is 0.944x and 1.072x of the exact K3 correction, versus the frozen <=0.10 gate.",
+    "The sole execution used official ARC K3 SIMPLE closure rather than a literal V18/V19 public closure; protocol integrity therefore also blocks promotion.",
+    "Protocol forbids rank sweep, alternate basis, rescue, seed replacement, and second run."
+  ],
+  "scope": {
+    "synthetic_only": true,
+    "public_target": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "rank_sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  }
+}
