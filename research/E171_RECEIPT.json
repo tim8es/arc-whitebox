@@ -1,0 +1,292 @@
+{
+  "schema": "arc.whitebox.e171.receipt.v1",
+  "experiment": "E171",
+  "idempotency_key": "ARC-E171-VERIFIER-READY-MULTISEED-AGO-20260921",
+  "status": "GO",
+  "decision": "E171_SYNTHETIC_VERIFIER_READY_MULTISEED_PRODUCTION_SHAPED_OWNER_GO_AGO",
+  "branch": "research/e171-verifier-ready-ago-20260921",
+  "scientific_parent": {
+    "e164_receipt_commit": "342f2ab03ad5251971b17f8d8d43c1861774cbb6",
+    "candidate_path": "methods/e164_ago.py",
+    "candidate_blob": "ea9078eccc2e2bf2a2bea499ef10a4daf80ea0d4",
+    "candidate_runtime_sha256": "533149d0a1c05be12097b997b8762270b299c574cf6c32324de7d17ec285169c",
+    "e170_status": "UNEVALUATED",
+    "e170_reason": "E169 retained derived scalars/hashes but not the underlying batch/final vectors needed for independent numeric recomputation."
+  },
+  "provenance": {
+    "protocol": {
+      "commit": "6783426d21a3acc00ed555c3b3e55af089047f83",
+      "blob": "88cb953974e0dbf970f188c915261635ae2720c7",
+      "path": "research/E171_OWNER_PROTOCOL.md"
+    },
+    "reference": {
+      "commit": "b0eb11d1b545ac36bbd26fcd0c27835abc42e2e7",
+      "blob": "f75cdef00dc5e15d358c29163a2a3b3ec140d78b",
+      "path": "methods/e171_reference_streaming.py"
+    },
+    "tests": {
+      "commit": "e1dc631ae0d8e8e3040a7d8ae208e4f28eadbc32",
+      "blob": "ae5e2de06b82cea565780f9d4f18e5050434e113",
+      "path": "tests/test_e171_reference.py"
+    },
+    "falsifier": {
+      "commit": "f7e6f2113a5a2a5339ee293327f34f1b8acd929b",
+      "blob": "0160da17a5510e4db4a5a93a352779393318e9d3",
+      "path": "scripts/e171_verifier_ready_ago.py"
+    },
+    "workflow": {
+      "commit": "53082b01aad12abbe4a971228167cd9323ba5f31",
+      "blob": "ed0ea88faf8e40b16b24fee951ef44147208c487",
+      "path": ".github/workflows/e171-verifier-ready-ago.yml"
+    },
+    "arm": {
+      "commit": "7e94835606dd5c48eb5fc5a8244c75957ba9beb0",
+      "blob": "884c0b736099c35cf26b64ffabb1535652a7caf2",
+      "path": "research/E171_RUN_ARM.json"
+    }
+  },
+  "execution": {
+    "run_id": 35613064558,
+    "job_id": 106376772199,
+    "run_attempt": 1,
+    "head_sha": "7e94835606dd5c48eb5fc5a8244c75957ba9beb0",
+    "github_conclusion": "success",
+    "exactly_one_run_for_arm_head": true,
+    "frozen_blob_guard": "PASS",
+    "standalone_dependency_install": "PASS",
+    "syntax_check": "PASS",
+    "e164_mechanism_tests": "4 passed in 0.09s",
+    "e171_reference_payload_tests": "4 passed in 0.09s",
+    "owner_step": "COMPLETED",
+    "evidence_validation_step": "PASS",
+    "evidence_upload_step": "PASS",
+    "rerun": false,
+    "rescue": false,
+    "artifact": {
+      "id": 10645164045,
+      "name": "e171-verifier-ready-ago",
+      "size_bytes": 3111341,
+      "zip_sha256": "f8c25a1f962811f7addc91a66e79ef3a916e4c5961f3a8851c1d76c8550e7406",
+      "expires_at": "2026-12-20T14:34:28Z"
+    }
+  },
+  "evidence": {
+    "manifest_path": "e171-evidence-manifest.json",
+    "manifest_file_sha256": "e7dd9febd03f2cd338de082bc8610be3c882186c3014188adc42796203ad1cdd",
+    "evidence_root": "e171_evidence",
+    "required_payloads_per_seed": [
+      "parent_final_mean.npy",
+      "ago_final_mean.npy",
+      "reference_final_mean.npy",
+      "reference_batch_means.npy",
+      "parent_batch_means.npy",
+      "ago_batch_means.npy",
+      "parent_batch_errors.npy",
+      "ago_batch_errors.npy",
+      "reference_coordinate_se.npy"
+    ],
+    "expected_npy_file_count": 27,
+    "observed_npy_file_count": 27,
+    "complete_and_hashed": true,
+    "manifest_contains_per_file": {
+      "relative_path": true,
+      "dtype": true,
+      "shape": true,
+      "nbytes": true,
+      "exact_file_sha256": true,
+      "raw_contiguous_array_sha256": true,
+      "reload_hash": true
+    },
+    "workflow_validated_before_upload": true,
+    "receipt_written_after_artifact_finalization": true
+  },
+  "panel": {
+    "width": 1024,
+    "depth": 16,
+    "zero_bias": true,
+    "weight_seeds": [
+      1711024,
+      1712024,
+      1713024
+    ],
+    "reference_seeds": [
+      171196608,
+      171296608,
+      171396608
+    ],
+    "reference_samples_per_seed": 196608,
+    "reference_batches_per_seed": 48,
+    "reference_batch_size": 4096,
+    "absolute_reference_se_limit": 0.0007
+  },
+  "seeds": [
+    {
+      "weight_seed": 1711024,
+      "weights_sha256": "744536025d65c1bf57f2b5b897d9b36c27758da277ece52ac4879beaa8e12ea0",
+      "reference_seed": 171196608,
+      "reference_final_mean_raw_sha256": "e7dcef40f7c0de29a70399ae1de02c87af08e90496f0fa7c60cf82b540ab26e4",
+      "reference_batch_means_raw_sha256": "4fefbce4cb4cc4c8cb7ef96285c2fc44e5fa823d38c04da7f2ec3fbd65363bf2",
+      "reference_coordinate_se_raw_sha256": "8e103080e5a563fb74c17eacec41bbe4fbb9b754e770e836477662ab0a240064",
+      "reference_se_rms": 0.000552868505079863,
+      "parent_mse": 0.000004410012236743749,
+      "ago_mse": 0.0000037024856873752894,
+      "ago_over_parent": 0.8395635859072171,
+      "mse_improvement_fraction": 0.16043641409278286,
+      "batch_positive_count": 45,
+      "batch_count": 48,
+      "batch_delta_mean": 7.075265493684673e-7,
+      "batch_delta_se": 7.060779404815857e-8,
+      "gauge_roundtrip_error": 4.496352740731995e-16,
+      "homogeneity_error": 2.1830222793993034e-15,
+      "radial_readout_error": 0,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "payload_manifest_pass": true
+    },
+    {
+      "weight_seed": 1712024,
+      "weights_sha256": "b100f92f394ff7c1aab8e13ce06d467eaf2f1b425c0ec0f82c4664cc6ad35fdf",
+      "reference_seed": 171296608,
+      "reference_final_mean_raw_sha256": "88d4460e25e81ca481282bed6cf0f6c937e918070eb96888de0489f6866c733a",
+      "reference_batch_means_raw_sha256": "4c0f70d4f7ea53bed39bcac0a6b519ad3c5800e8293485afdb322c37e9a55ab0",
+      "reference_coordinate_se_raw_sha256": "28433179b7a6c0480fdacf382606742e518bdbdf88d832bc3480df08c21e9e39",
+      "reference_se_rms": 0.000586152220975544,
+      "parent_mse": 0.0000037723250069135027,
+      "ago_mse": 0.0000032416767447063414,
+      "ago_over_parent": 0.8593312449922402,
+      "mse_improvement_fraction": 0.14066875500775977,
+      "batch_positive_count": 43,
+      "batch_count": 48,
+      "batch_delta_mean": 5.306482622071655e-7,
+      "batch_delta_se": 6.467056722720496e-8,
+      "gauge_roundtrip_error": 4.495242470325561e-16,
+      "homogeneity_error": 2.3997582935670177e-15,
+      "radial_readout_error": 0,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "payload_manifest_pass": true
+    },
+    {
+      "weight_seed": 1713024,
+      "weights_sha256": "2ba526bee940bd3c7b75e54ed82ba7a5a0bfd3f95b087357063debba04edf2c6",
+      "reference_seed": 171396608,
+      "reference_final_mean_raw_sha256": "f5770ecaecc9ca5456122d2d475d1f39176835b44263f35f79874ca8b245332f",
+      "reference_batch_means_raw_sha256": "2bfc3ca862ba4b2c859f1c220ed950a99a5c5e8e425d4701fcd1513210c19110",
+      "reference_coordinate_se_raw_sha256": "783a017c2b6a7618b6af0aea7153bfda732dffecda65ad7ae5c5e70b917dadce",
+      "reference_se_rms": 0.0006214780742805185,
+      "parent_mse": 0.0000036073256537417636,
+      "ago_mse": 0.0000030407086633506985,
+      "ago_over_parent": 0.8429260219954549,
+      "mse_improvement_fraction": 0.15707397800454515,
+      "batch_positive_count": 43,
+      "batch_count": 48,
+      "batch_delta_mean": 5.66616990391079e-7,
+      "batch_delta_se": 6.420543463812128e-8,
+      "gauge_roundtrip_error": 4.49976515610002e-16,
+      "homogeneity_error": 2.4485859000158898e-15,
+      "radial_readout_error": 0,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "payload_manifest_pass": true
+    }
+  ],
+  "panel_metrics": {
+    "pooled_parent_mse": 0.0000039298876324663385,
+    "pooled_ago_mse": 0.00000332829036514411,
+    "pooled_ago_over_parent": 0.8469174379561903,
+    "pooled_mse_improvement_fraction": 0.15308256204380966,
+    "strong_seed_count": 3,
+    "batch_positive_count": 131,
+    "batch_total": 144,
+    "batch_delta_mean": 6.015972673222372e-7,
+    "batch_delta_se": 3.868804727966089e-8,
+    "batch_delta_mean_over_se": 15.549951719545932,
+    "radial_a1_1024": 0.9997558892135413,
+    "radial_a1_absolute_error": 0
+  },
+  "identities": {
+    "gauge_roundtrip_max": 4.49976515610002e-16,
+    "homogeneity_max": 2.4485859000158898e-15,
+    "radial_readout_max_error": 0,
+    "tolerance": 2e-12,
+    "pass": true
+  },
+  "production_cost": {
+    "covariance_linear_transport": 68719476736,
+    "mean_matvec": 33554432,
+    "nonlinear_second_order_arithmetic": 402653184,
+    "normal_scalar_work": 16777216,
+    "helper_reserve": 42949672960,
+    "angular_gauge_overlay": 9437184,
+    "all_in_upper": 112131571712,
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "utilization": 0.05099153518676758,
+    "slack_flops": 184736567787,
+    "independent_formula_reconcile": true,
+    "pass": true
+  },
+  "reference_research_cost": {
+    "per_seed_dense_eval_upper_flops": 6597069766656,
+    "three_seed_dense_eval_upper_flops": 19791209299968,
+    "charged_to_candidate_cap": false
+  },
+  "gates": {
+    "absolute_reference_se_le_7e_4_all": true,
+    "ago_improves_all_3_seeds": true,
+    "ago_replay_bitwise_exact_all": true,
+    "at_least_2_of_3_seed_ratios_le_0_98": true,
+    "batch_delta_mean_gt_3se": true,
+    "batch_delta_mean_positive": true,
+    "batch_positive_at_least_96_of_144": true,
+    "complete_candidate_cost_le_0_135B": true,
+    "evidence_payload_complete_and_hashed": true,
+    "finite_all": true,
+    "frozen_e164_candidate_source_identity": true,
+    "gauge_roundtrip_le_2e_12_all": true,
+    "homogeneity_le_2e_12_all": true,
+    "independent_cost_reconcile": true,
+    "manifest_written_before_result": true,
+    "no_posthoc_gate_change_sweep_rescue_rerun": true,
+    "no_public_benchmark_scorer_holdout_full_submission": true,
+    "parent_replay_bitwise_exact_all": true,
+    "per_seed_batch_delta_mean_positive_all": true,
+    "pooled_mse_ratio_le_0_98": true,
+    "radial_a1_1024_identity_le_1e_15": true,
+    "radial_readout_identity_le_2e_12_all": true,
+    "reference_after_candidate_freeze_all": true,
+    "reference_final_reconciles_batch_mean_all": true,
+    "source_public_firewall": true,
+    "scientific_go": true
+  },
+  "ancestry": {
+    "base_e164_receipt": "342f2ab03ad5251971b17f8d8d43c1861774cbb6",
+    "arm_head": "7e94835606dd5c48eb5fc5a8244c75957ba9beb0",
+    "commits_ahead_before_receipt": 6,
+    "candidate_byte_identical_to_e164": true,
+    "e169_or_e170_execution_ancestry_used": false
+  },
+  "firewall": {
+    "public_or_benchmark_execution": false,
+    "public_blocked_pending_independent_e171_verifier_go": true
+  },
+  "scope": {
+    "synthetic_only": true,
+    "target_free": true,
+    "production_shaped": true,
+    "standalone_execution": true,
+    "public": false,
+    "public_mini": false,
+    "benchmark_target": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "rerun": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "authorization": "E171 establishes verifier-ready synthetic multi-seed production-shaped AGO owner GO only. Public/benchmark work remains blocked until an independent E171 verifier recomputes the retained numeric payloads and issues GO under a separately authorized next-stage protocol."
+}
