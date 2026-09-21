@@ -1,0 +1,147 @@
+{
+  "experiment": "E157",
+  "candidate": "AIK4-1",
+  "status": "TERMINAL_NO_GO",
+  "decision": "E157_TERMINAL_NO_GO_AIK4_1",
+  "terminal": true,
+  "date": "2026-09-21",
+  "reason_class": "SYNTHETIC_EXACT_MEAN_GATE_FAILED",
+  "reason": "Exact 2D target-free mean MSE worsened; candidate/parent MSE ratio 1.2771688819655316 exceeds frozen <=0.98 gate.",
+  "ancestry": {
+    "support_branch": "research/e155-cleanroom-angular-k4-support-20260921",
+    "support_protocol_blob": "e34cd387be1a8137cd234d84a6fee49613d034c0",
+    "owner_branch": "research/e157-owner-aik4-onebirth-20260921",
+    "owner_protocol_blob": "4fdaff001faedca323d464cf8ae218611efc32e4",
+    "parent_commit": "cf1c86edf4f1a35f887bd464f78d5454eefcc68b",
+    "parent_blob": "cf233297780b509da35edd149e3c83d1a3a06087",
+    "parent_cost_blob": "aab829ed3f8e4eb5f8de2ee8a4fc38ae9980c465",
+    "candidate_commit": "3641d4a03e9a6cb2be4abc3100d933b4c10f2cc6",
+    "candidate_blob": "ec8789e0681ffa29d07b66dff804abd07f95bd6c",
+    "arm_blob": "a230eec9bd4ab20b8b3ceb71c410cdef28580320",
+    "workflow_blob": "4d01823051bbda1f62e68e303ce1325edf1110cb",
+    "launch_sha": "f5720c423ac8b82111b8d75d1ee13594495e4010"
+  },
+  "execution": {
+    "authorized_external_scientific_runs": 1,
+    "observed_matching_runs": 1,
+    "run_id": 35600676928,
+    "run_attempt": 1,
+    "job_id": 106335760826,
+    "github_conclusion": "success",
+    "artifact_id": 10639360054,
+    "artifact_name": "e157-aik4-onebirth",
+    "artifact_size_bytes": 2466,
+    "artifact_zip_sha256": "b188a603b49053d1476dd48c52bc956af29a22730062c4a13ec9a7ed8d07f3db",
+    "rerun": false,
+    "sweep": false,
+    "rescue": false
+  },
+  "exact2d": {
+    "seed": 155002,
+    "width": 2,
+    "depth": 8,
+    "sector_count": 7,
+    "exact_gaussian_mean": [
+      0,
+      0.000051296681432764435
+    ],
+    "parent_mean": [
+      0.005347036145158688,
+      0.1720776096079125
+    ],
+    "candidate_mean": [
+      0.0060056946536687795,
+      0.1944626453109491
+    ],
+    "parent_mse": 0.014810821567308377,
+    "candidate_mse": 0.01891592042211022,
+    "candidate_parent_mse_ratio": 1.2771688819655316,
+    "required_ratio_max": 0.98,
+    "relative_worsening_pct": 27.716888196553157,
+    "gate": false
+  },
+  "identities": {
+    "exact2d": {
+      "homogeneity_max_rel": 0,
+      "angular_k4_dense_identity_rel_frob": 0,
+      "arc_factor_carrier_rel_frob": 9.221689455323626e-17,
+      "d4_max_rel": 0,
+      "d22_max_rel": 0,
+      "wick_selected_max_rel": 0
+    },
+    "dense32": {
+      "homogeneity_max_rel": 7.262124004098271e-14,
+      "angular_k4_dense_identity_rel_frob": 8.312050782487362e-16,
+      "arc_factor_carrier_rel_frob": 1.6115163223810507e-16,
+      "d4_max_rel": 2.1218838453290744e-16,
+      "d22_max_rel": 2.326469222974272e-16,
+      "wick_selected_max_rel": 4.0215446408358164e-16
+    },
+    "adversarial16": {
+      "homogeneity_max_rel": 2.2605554664922175e-13,
+      "angular_k4_dense_identity_rel_frob": 6.40752088962097e-16,
+      "arc_factor_carrier_rel_frob": 1.4947864696134993e-16,
+      "d4_max_rel": 1.761930175462922e-16,
+      "d22_max_rel": 2.35181102345394e-16,
+      "wick_selected_max_rel": 3.697168661177512e-16
+    },
+    "tolerance": 2e-12,
+    "all_identity_gates": true
+  },
+  "state": {
+    "overlay_calls": 1,
+    "recurrent_k4_state": false,
+    "strassen": false,
+    "no_recurrence_gate": true,
+    "deterministic_replay": true
+  },
+  "cost": {
+    "budget_flops": 2199023255552,
+    "parent_cost_upper_flops": 74238787584,
+    "parent_utilization_upper": 0.033759891986846924,
+    "parent_required_max": 0.1349904166907072,
+    "parent_gate": true,
+    "overlay_cost_upper_flops": 21073920,
+    "combined_cost_upper_flops": 74259861504,
+    "combined_utilization_upper": 0.03376947529613972,
+    "combined_required_max": 0.135,
+    "complete_cost_gate": true
+  },
+  "firewall": {
+    "target_free": true,
+    "benchmark_targets": false,
+    "public_targets": false,
+    "mini_targets": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "sampling": false,
+    "E151_or_E154_artifacts": false
+  },
+  "gate_summary": {
+    "target_firewall": true,
+    "radial_homogeneity": true,
+    "angular_k4_dense_identity": true,
+    "arc_factor_carrier_identity": true,
+    "d4_parity": true,
+    "d22_parity": true,
+    "selected_wick_term_parity": true,
+    "no_recurrent_k4": true,
+    "deterministic_replay": true,
+    "parent_cost": true,
+    "complete_cost": true,
+    "synthetic_mean_improvement": false
+  },
+  "restrictions": {
+    "rerun_forbidden": true,
+    "rescue_forbidden": true,
+    "seed_change_forbidden": true,
+    "sweep_forbidden": true,
+    "E151_rescue_forbidden": true,
+    "E154_rescue_forbidden": true,
+    "public_target_forbidden": true,
+    "canonical_ledger_mutation": false
+  },
+  "verifier_handoff": "NOT_REQUESTED_BECAUSE_GO_GATE_FAILED"
+}
