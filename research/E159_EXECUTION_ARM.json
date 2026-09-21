@@ -1,0 +1,82 @@
+{
+  "experiment": "E159",
+  "arm_id": "E159-PUBLISHED-ANGULAR-ABLATION-ONE-SHOT-20260921",
+  "status": "ARMED_ONE_TARGET_FREE_RUN",
+  "branch": "research/e159-published-angular-gauge-20260921",
+  "clean_room_base": "2af54da98045e36b37330e1f7c9f36f0943f3661",
+  "primary_source_note": {
+    "path": "research/E159_PRIMARY_SOURCE_NOTE.md",
+    "blob": "6b96d00acf38f69ea48fd3855c699b893f7e30cf"
+  },
+  "protocol": {
+    "path": "research/E159_PROTOCOL.md",
+    "commit": "1551f71ca38f25d802da6dd3aed7ee0e49abb327",
+    "blob": "4d0c44607e72e34378346b02a3ccc4559d21a792"
+  },
+  "implementation": {
+    "path": "scripts/e159_published_angular_ablation.py",
+    "commit": "72c8b3b01f9b5631663d3086d2c8f2ede5a74c8c",
+    "blob": "a8b00324c4c961ed0ab97d25425da98b094fad03"
+  },
+  "public_evidence": {
+    "repo": "barnobarno666/ARC-White-Box-Estimation-2026",
+    "commit": "1558651e49d68b40821930f0f9c9a059f33d3a52",
+    "report_blob": "3087457e972c0ea4692aeb9070c2a456cd1aed60",
+    "g_k2_blob": "116244b48085e3c4c7447cdca1354ef43a990212",
+    "a_k2_blob": "be22c6b881bb154867ca66ba7c288d349cb6d093",
+    "g_k2k4_blob": "384abab18ff39c11a7ce573276576bf091442f74",
+    "a_k2k4_blob": "67a4bee83517314cb122fe2691826ec910cdb21d",
+    "g_k3c65_blob": "dbf1f6b662208a2624272c8c179cae86fbdde5d7",
+    "a_k3c65_blob": "17faa6cfe84f26c28d8238c908e84e9ab3028c6e"
+  },
+  "fixtures": [
+    {
+      "name": "exact2d_depth8",
+      "width": 2,
+      "depth": 8,
+      "seed": 159002
+    },
+    {
+      "name": "dense32_depth8",
+      "width": 32,
+      "depth": 8,
+      "seed": 159032
+    },
+    {
+      "name": "adversarial16_depth8",
+      "width": 16,
+      "depth": 8,
+      "seed": 159016
+    }
+  ],
+  "primary_gate": {
+    "metric": "exact2d A-K2 MSE / G-K2 MSE",
+    "max": 0.98
+  },
+  "production_cost_upper": {
+    "formula": "(6*d-8)*n^3 + 10000*d*n^2 + 10000*n^2",
+    "n": 1024,
+    "depth": 16,
+    "flops": 272747200512,
+    "budget": 2199023255552,
+    "utilization": 0.12403106689453125,
+    "cap": 0.135
+  },
+  "firewall": {
+    "public_targets": false,
+    "mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full": false,
+    "submission": false,
+    "sampling": false,
+    "strassen": false,
+    "E151_rescue": false,
+    "E154_rescue": false,
+    "E157_rescue": false
+  },
+  "external_scientific_runs_authorized": 1,
+  "rerun_authorized": false,
+  "rescue_authorized": false,
+  "sweep_authorized": false
+}
