@@ -1,0 +1,177 @@
+{
+  "schema": "arc.whitebox.e167.terminal_receipt.v1",
+  "experiment": "E167",
+  "idempotency_key": "ARC-E167-PRECERTIFIED-REFERENCE-AGO-20260921",
+  "status": "TERMINAL_NO_GO",
+  "decision": "E167_TERMINAL_NO_GO_REFERENCE_PRECERTIFICATION",
+  "terminal": true,
+  "branch": "research/e167-precertified-reference-ago-20260921",
+  "scientific_parent": {
+    "e164_receipt_commit": "342f2ab03ad5251971b17f8d8d43c1861774cbb6",
+    "e165_verifier_status": "GO",
+    "e165_verifier_receipt_blob": "a2a2ab678185b769a790657af0743b52738e9490",
+    "candidate_path": "methods/e164_ago.py",
+    "candidate_blob": "ea9078eccc2e2bf2a2bea499ef10a4daf80ea0d4",
+    "candidate_runtime_sha256": "533149d0a1c05be12097b997b8762270b299c574cf6c32324de7d17ec285169c"
+  },
+  "provenance": {
+    "protocol": {
+      "commit": "431685e6dcf80a2f1841e7f0229234bf5110eabf",
+      "blob": "d542c0a4a4c2367fa310669d5f8fef94b858bccf",
+      "path": "research/E167_OWNER_PROTOCOL.md"
+    },
+    "reference": {
+      "commit": "aa8b26f86d72fbff6922c7159934f9d6cf76ff67",
+      "blob": "f8fdb5f4855dbf175d9d67638b15c49471004c9a",
+      "path": "methods/e167_reference_streaming.py"
+    },
+    "tests": {
+      "commit": "e1202f23219bae852f6f151466ba6d09daae006f",
+      "blob": "d9691c812682b8c6eec63c476e36db5a650940cd",
+      "path": "tests/test_e167_reference.py"
+    },
+    "falsifier": {
+      "commit": "5a18296b5780b5dfd17b085defb9c3f4b32e3a96",
+      "blob": "ddf801086d65d459120d42842d7e405e0fca4fe5",
+      "path": "scripts/e167_precertified_ago.py"
+    },
+    "workflow": {
+      "commit": "3a73270a620faa48649c6ba3577fe3a95b1eeaad",
+      "blob": "e674d6f98df642d526108e7ed0bb815981c15d3d",
+      "path": ".github/workflows/e167-precertified-ago.yml"
+    },
+    "arm": {
+      "commit": "458ef70f8e47b8ae092b257409f1c7e9b0a5980a",
+      "blob": "30a1f9f910cca83aa8b1519256a9c2650cbf7682",
+      "path": "research/E167_RUN_ARM.json"
+    }
+  },
+  "execution": {
+    "run_id": 35607925972,
+    "job_id": 106359504079,
+    "run_attempt": 1,
+    "head_sha": "458ef70f8e47b8ae092b257409f1c7e9b0a5980a",
+    "github_conclusion": "success",
+    "exactly_one_run_for_arm_head": true,
+    "frozen_blob_guard": "PASS",
+    "standalone_dependency_install": "PASS",
+    "syntax_check": "PASS",
+    "e164_mechanism_tests": "4 passed in 0.13s",
+    "e167_reference_tests": "3 passed in 0.09s",
+    "owner_step": "COMPLETED",
+    "candidate_executed": false,
+    "rerun": false,
+    "rescue": false,
+    "artifact": {
+      "id": 10642563726,
+      "name": "e167-precertified-ago",
+      "size_bytes": 6791,
+      "zip_sha256": "41e1bd0867180c7ac7dbd9abe03f5936e88321183b1fbe7fc8b70b4a7c5371bd",
+      "expires_at": "2026-12-20T13:47:57Z"
+    }
+  },
+  "fixture": {
+    "width": 1024,
+    "depth": 16,
+    "zero_bias": true,
+    "weight_seed": 1671024,
+    "weights_sha256": "e8c4c93ffd086d7228b6654198afb43aaa4511a614386ee1f6661cd63337d7f2"
+  },
+  "reference_design": {
+    "antithetic_samples": 196608,
+    "reference_seed": 167196608,
+    "batches": 48,
+    "batch_size": 4096,
+    "streaming": true,
+    "e166_sample_multiplier": 24,
+    "nominal_sqrtN_precision_gain_over_e166": 4.898979485566356,
+    "reference_dense_eval_upper_flops": 6597069766656,
+    "pre_candidate_certification": true
+  },
+  "pre_candidate_reference": {
+    "reference_mean_sha256": "b8f74e7dc2c8b78ce496836b59decb9bfcd12c24f719d690f8fc805a841bffc3",
+    "reference_se_rms": 0.0005905340995593883,
+    "absolute_se_limit": 0.0007,
+    "absolute_se_gate": true,
+    "parent_mse": 0.000003807079754574002,
+    "parent_rmse": 0.0019511739426750251,
+    "parent_relative_se_limit": 0.000390234788535005,
+    "parent_relative_se_gate": false,
+    "reference_se_over_parent_relative_limit": 1.513283096008744,
+    "pre_reference_go": false
+  },
+  "comparison_to_e166_reference": {
+    "e166_reference_se_rms": 0.0030812641362217745,
+    "e167_reference_se_rms": 0.0005905340995593883,
+    "observed_precision_gain_factor": 5.21775804650947,
+    "interpretation": "The a-priori larger reference budget reduced absolute reference SE more than the nominal sqrt(24) design factor and passed the fixed absolute 7e-4 gate. The new seed's parent error was substantially smaller, making the independently frozen parent-relative 20% gate stricter; that gate failed before AGO execution."
+  },
+  "candidate_state": {
+    "executed": false,
+    "ago_mse": "NOT_EVALUATED",
+    "ago_over_parent": "NOT_EVALUATED",
+    "deterministic_replay": "NOT_EVALUATED",
+    "gauge_roundtrip": "NOT_EVALUATED",
+    "batch_significance": "NOT_EVALUATED"
+  },
+  "verified_pre_candidate_checks": {
+    "source_firewall": true,
+    "frozen_e164_candidate_source_identity": true,
+    "parent_finite": true,
+    "parent_replay_bitwise_exact": true,
+    "reference_finite": true,
+    "homogeneity_le_2e_12": true,
+    "homogeneity_error": "PASS",
+    "absolute_reference_se_gate": true,
+    "parent_relative_reference_se_gate": false,
+    "cost_formula_exact_reconcile": true,
+    "complete_candidate_cost_le_0_135B": true
+  },
+  "production_cost": {
+    "covariance_linear_transport": 68719476736,
+    "mean_matvec": 33554432,
+    "nonlinear_second_order_arithmetic": 402653184,
+    "normal_scalar_work": 16777216,
+    "helper_reserve": 42949672960,
+    "angular_gauge_overlay": 9437184,
+    "all_in_upper": 112131571712,
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "utilization": 0.05099153518676758,
+    "slack_flops": 184736567787,
+    "independent_formula_reconcile": true,
+    "pass": true
+  },
+  "diagnosis": {
+    "terminal_blocker": "The preregistered pre-candidate parent-relative reference precision gate failed: SE_ref 5.90534e-4 exceeded 20% of parent RMSE, 3.90235e-4.",
+    "reference_design_result": "The large frozen reference budget itself worked in the absolute sense: SE_ref passed 7e-4 and improved more than fivefold versus E166.",
+    "scientific_scope": "No E167 AGO effect was measured because the protocol correctly prevented candidate evaluation after reference pre-certification failure.",
+    "no_rescue": "Increasing the sample budget, weakening the relative gate, running AGO anyway, changing seed, or rerunning is forbidden."
+  },
+  "gates": {
+    "pre_candidate_reference_certified": false,
+    "scientific_go": false
+  },
+  "firewall": {
+    "public_or_benchmark_execution": false,
+    "public_blocked_pending_independent_e167_verifier_go": true
+  },
+  "scope": {
+    "synthetic_only": true,
+    "target_free": true,
+    "production_shaped": true,
+    "public": false,
+    "public_mini": false,
+    "benchmark_target": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "rerun": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "terminal_policy": "E167 is sealed because the frozen pre-candidate reference certification failed. AGO was not executed, and no rerun or reference-budget adjustment is permitted."
+}
