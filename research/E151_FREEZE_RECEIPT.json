@@ -1,0 +1,30 @@
+{
+  "schema": "arc.whitebox.e151.freeze.v1",
+  "experiment": "E151",
+  "idempotency_key": "ARC-E151-ARSG-FORENSICS-20260921",
+  "branch": "research/e151-leader-forensics-angular-strassen-20260921",
+  "parent": "d79eb8e670fbb8ff007283d9ed1eab6dd53a8b35",
+  "hypothesis": "ARSG: exact angular/radial state gauge plus one exact level of Strassen on eligible dense matrix products",
+  "artifacts": {
+    "research/E151_LEADER_FORENSICS.md": "6c8d171dce86d4adf1cc43772ccb49f8cd81c736",
+    "research/E151_PROTOCOL.md": "8b484ea0c5b8c8ea02b3f91575693e44a1e645a3",
+    "methods/e151_angular_strassen.py": "c14385eb0a09c9051ceccceeb18f5b5cd7caa094",
+    "scripts/e151_angular_strassen_falsifier.py": "7a59d4df401dd97f70caf96475f13ccc403b1cfc"
+  },
+  "source_pins": {
+    "official_arc_repo": "alignment-research-center/mlp_cumulant_propagation",
+    "official_arc_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+    "open_phase2_repo": "barnobarno666/ARC-White-Box-Estimation-2026",
+    "open_phase2_commit": "1558651e49d68b40821930f0f9c9a059f33d3a52",
+    "open_phase2_report_blob": "3087457e972c0ea4692aeb9070c2a456cd1aed60",
+    "open_phase2_estimator_blob": "fc743f80329c00cf2f0985333918496c006af2a2"
+  },
+  "status": "HYPOTHESIS_AND_FALSIFIER_FROZEN_NOT_EXECUTED",
+  "execution_count": 0,
+  "public_target_runs": 0,
+  "scorer_runs": 0,
+  "holdout_runs": 0,
+  "full_runs": 0,
+  "canonical_mutated": false,
+  "ledger_mutated": false
+}
