@@ -1,0 +1,154 @@
+{
+  "schema": "arc.whitebox.e143.primary_source_research_receipt.v1",
+  "experiment": "E143",
+  "idempotency_key": "ARC-E143-PRIMARY-SOURCE-PARTICLE-REPAIR-20260921",
+  "branch": "research/e143-primary-source-particle-repair-20260921",
+  "status": "PRIMARY_SOURCE_RESEARCH_COMPLETE_ONE_HYPOTHESIS_ADMITTED",
+  "protocol_commit": "493c1989f3e28cd89fe843036e841ef42d826c60",
+  "note_commit": "61ddc16e0530c5edcec3f9038ec7825e3dc084ae",
+  "code_run": false,
+  "actions_run": false,
+  "implementation_created": false,
+  "canonical_mutated": false,
+  "ledger_mutated": false,
+  "primary_sources": {
+    "arc_official": [
+      "https://www.alignment.org/blog/competing-with-sampling/",
+      "https://www.alignment.org/blog/mechanistic-estimation-for-wide-random-mlps/",
+      "https://www.alignment.org/blog/announcing-the-arc-white-box-estimation-challenge/",
+      "https://arxiv.org/abs/2605.05179",
+      "https://github.com/alignment-research-center/mlp_cumulant_propagation"
+    ],
+    "whest_official": [
+      "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/reference/estimator-contract.md",
+      "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/how-to/manage-flop-budget.md",
+      "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/concepts/allowed-code.md",
+      "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/troubleshooting/faq.md",
+      "https://github.com/AIcrowd/whestbench/blob/main/docs/reference/estimator-contract.md"
+    ],
+    "v29_primary": [
+      "https://github.com/504aldo/whest-p2-cumulant-k3/tree/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "https://github.com/504aldo/whest-p2-cumulant-k3/blob/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/docs/community_post.md",
+      "https://github.com/504aldo/whest-p2-cumulant-k3/blob/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/docs/findings_log.md",
+      "https://github.com/504aldo/whest-p2-cumulant-k3/blob/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/docs/claims_evidence.md"
+    ],
+    "kerdock_mub_primary": [
+      "https://github.com/SkyeNygaard/ARC-Whitebox",
+      "https://github.com/SkyeNygaard/ARC-Whitebox/blob/main/whestbench/claims.csv",
+      "https://discourse.aicrowd.com/t/phase-1-write-up-the-missing-basis-was-not-the-mechanism-submission-327749/18176"
+    ],
+    "particle_repair_primary": [
+      "https://github.com/AndreiBulzan/arc-whitebox-submission-and-documentation",
+      "https://github.com/AndreiBulzan/arc-whitebox-submission-and-documentation/blob/main/method/METHOD.md",
+      "https://github.com/AndreiBulzan/arc-whitebox-submission-and-documentation/blob/main/ledger/experiments/hidden_cloud_denoiser_20260728/VERDICT_R1_20260728.md",
+      "https://github.com/AndreiBulzan/arc-whitebox-submission-and-documentation/blob/main/ledger/experiments/final_hidden_rao_blackwell_20260729/VERDICT_FINAL_HIDDEN_RAO_BLACKWELL_R1_20260729.md",
+      "https://github.com/AndreiBulzan/arc-whitebox-submission-and-documentation/blob/main/ledger/experiments/conditional_width_impute_20260729/VERDICT_CONDITIONAL_W200_R1_20260729.md",
+      "https://github.com/AndreiBulzan/arc-whitebox-submission-and-documentation/blob/main/ledger/experiments/coupled_closure_h2_rank8_cloud_20260729/VERDICT_COUPLED_CLOSURE_H2_RANK8_CLOUD_R1_20260729.md",
+      "https://github.com/AndreiBulzan/arc-whitebox-submission-and-documentation/blob/main/ledger/experiments/coupled_harmonic_residual_cloud_20260729/VERDICT_COUPLED_HARMONIC_RESIDUAL_CLOUD_R1_20260729.md",
+      "https://discourse.aicrowd.com/t/phase-1-report-submission-327801/18183"
+    ],
+    "variance_reduction_primary": [
+      "https://discourse.aicrowd.com/t/phase-1-write-up-variance-reduction-beats-closure-refinement-a-moment-matched-sampling-estimator-submission-324497/18201"
+    ]
+  },
+  "verified_measurements": {
+    "phase2_contract": {
+      "width": 1024,
+      "depth": 16,
+      "budget_flops": 2199023255552,
+      "wall_cap_s": 120,
+      "residual_cap_s": 0.4,
+      "setup_cap_s": 5,
+      "process_memory_gb": 8,
+      "single_array_cap_gib": 4
+    },
+    "v29": {
+      "raw_final_mse": 2.13e-8,
+      "compute_utilization": 0.2526,
+      "adjusted": 5.40e-9
+    },
+    "phase1_kerdock_320802": {
+      "nodes": 66048,
+      "bases": 129,
+      "graded_adjusted": 1.55e-7,
+      "graded_public_rows": "50/50",
+      "failures": 0,
+      "dense_raw_mse_local100": 2.2826e-7,
+      "winograd_raw_mse_local100": 2.2819e-7,
+      "dense_effective_compute": 2.689e11,
+      "winograd_effective_compute": 1.748e11
+    },
+    "phase1_particle_327801": {
+      "public_adjusted": 1.1432995022695342e-7,
+      "public_final_mse": 2.206820236239082e-7,
+      "mean_effective_compute": 140703286543.49994,
+      "public_rows": "50/50",
+      "complete_grader": "100/100 zero failures"
+    },
+    "particle_negative_examples": {
+      "hidden_denoiser_full_ratio": 1.02416,
+      "hidden_denoiser_generated_ratio": 1.01037,
+      "final_hidden_rb_full_ratio": 1.00396,
+      "final_hidden_rb_generated_ratio": 1.02005,
+      "h2_cloud_full_ratio": 43.3352,
+      "h2_cloud_generated_ratio": 343.6665,
+      "harmonic_cloud_full_ratio": 0.696887,
+      "harmonic_cloud_generated_ratio": 0.945038
+    }
+  },
+  "derived_phase2_full_cloud": {
+    "dimension": 1024,
+    "complete_real_mub_basis_count": 513,
+    "antipodal_node_count": 1050624,
+    "one_ordinary_dense_layer_flops": 2203318222848,
+    "one_ordinary_dense_layer_over_budget": 1.001953125,
+    "single_float32_cloud_bytes": 4303355904,
+    "single_float32_cloud_gib": 4.0078125,
+    "decision": "CLOSE_LITERAL_COMPLETE_CLOUD_BEFORE_IMPLEMENTATION",
+    "scope_hedge": "This closes literal complete-cloud propagation on the ordinary dense surface. It is not a universal lower bound against every possible exact fast-matrix representation."
+  },
+  "admitted_hypothesis": {
+    "name": "H143_MUB128_INFLOW_D21_BIRTH_FEEDBACK_REPAIR",
+    "status": "ADMITTED_FOR_FUTURE_TARGET_FREE_FALSIFIER_ONLY",
+    "particles": 128,
+    "positive_mub_lines": 64,
+    "antipodal": true,
+    "backbone": "V29 unchanged analytic carrier",
+    "repair_target": "rank-16 D21 birth-feedback residual only",
+    "output_particle_estimator": false,
+    "target_fit": false,
+    "incremental_flop_upper": 9621733376,
+    "incremental_budget_fraction": 0.004375457763671875,
+    "projected_total_utilization_with_v29": 0.25697545776367187,
+    "relative_compute_multiplier_vs_v29": 1.0173216855252252,
+    "raw_mse_break_even_ratio": 0.9829732465436611,
+    "minimum_raw_reduction_fraction": 0.01702675345633886,
+    "break_even_raw_mse_from_2_13e_8": 2.093733015137998e-8,
+    "production_claim": false,
+    "accuracy_claim": false
+  },
+  "closed_classes": [
+    "literal complete 1024D Kerdock/MUB cloud propagation",
+    "standalone static particle sampling",
+    "ordinary iid/antithetic/QMC V29 competitor",
+    "output-only MC/control-variate hybrid",
+    "endpoint hidden denoiser",
+    "final-hidden PCA/conditional-Gaussian Rao-Blackwellization",
+    "Gaussian rank-8 H2 coupled cloud",
+    "first-harmonic-only in-flow repair",
+    "another low-order Gaussian/marginal closure"
+  ],
+  "future_gate": {
+    "requires_new_protocol": true,
+    "target_free": true,
+    "fixed_particle_count": 128,
+    "fixed_feedback_rank": 16,
+    "primary_observable": "D21 birth-feedback relative Frobenius error",
+    "required_pooled_error_ratio_each_fixture_family": 0.90,
+    "max_allowed_layer_worsening_ratio": 1.05,
+    "no_particle_count_sweep": true,
+    "no_layer_selection_sweep": true,
+    "no_shrinkage_fit": true,
+    "no_final_output_blend": true
+  }
+}
