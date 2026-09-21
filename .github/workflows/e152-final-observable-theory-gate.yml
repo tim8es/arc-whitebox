@@ -1,0 +1,75 @@
+name: E152 final-observable action theory gate
+
+on:
+  push:
+    branches:
+      - research/e152-final-observable-adjoint-theory-gate-20260921
+    paths:
+      - 'research/E152_RUN_ARM.json'
+
+jobs:
+  e152:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      E152_PUBLIC_COMMIT: '18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45'
+      E152_PUBLIC_PATH: '/tmp/v29'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and theory blobs
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          arm=json.loads(Path("research/E152_RUN_ARM.json").read_text())
+          assert arm=={"idempotency_key":"ARC-E152-FINAL-OBSERVABLE-ADJOINT-THEORY-GATE-20260921","execute_once":True}
+          changed=subprocess.check_output(["git","diff","--name-only","HEAD^","HEAD"],text=True).splitlines()
+          assert changed==["research/E152_RUN_ARM.json"], changed
+          frozen={
+            "research/E152_THEORY_GATE.md":"1f2496d661dffcd8b5e2acfef5a3adc24170229f",
+            "scripts/e152_final_observable_action_gate.py":"bcdd89fcd384f7c7e82ef027c71e6ec36382228a",
+          }
+          for path,sha in frozen.items():
+              got=subprocess.check_output(["git","rev-parse",f"HEAD:{path}"],text=True).strip()
+              assert got==sha,(path,got,sha)
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install numpy
+        run: python -m pip install numpy==2.3.3
+
+      - name: Checkout pinned public V29 source
+        run: |
+          git clone -q https://github.com/504aldo/whest-p2-cumulant-k3.git /tmp/v29
+          git -C /tmp/v29 checkout -q "$E152_PUBLIC_COMMIT"
+          test "$(git -C /tmp/v29 rev-parse HEAD)" = "$E152_PUBLIC_COMMIT"
+
+      - name: Syntax check
+        run: python -m py_compile scripts/e152_final_observable_action_gate.py
+
+      - name: Run exact-small theory falsifier
+        run: |
+          set -o pipefail
+          python scripts/e152_final_observable_action_gate.py 2>&1 | tee e152-theory-gate.log
+
+      - name: Upload E152 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e152-theory-gate
+          path: |
+            e152-theory-gate.log
+            e152-theory-gate.json
+            research/E152_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
