@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-E171-VERIFIER-READY-MULTISEED-AGO-20260921",
+  "execute_once": true,
+  "scope": "synthetic verifier-ready multi-seed 1024x16 AGO only"
+}
