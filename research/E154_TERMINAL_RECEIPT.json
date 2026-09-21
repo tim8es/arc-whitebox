@@ -1,0 +1,208 @@
+{
+  "schema": "arc.whitebox.e154.terminal_receipt.v1",
+  "experiment": "E154",
+  "idempotency_key": "ARC-E154-CLEAN-ANGULAR-RADIAL-K4-20260921",
+  "status": "TERMINAL_NO_GO",
+  "decision": "E154_TERMINAL_NO_GO_CLOSE_ARK4",
+  "branch": "research/e154-clean-angular-radial-k4-20260921",
+  "clean_parent": {
+    "branch": "research/e150-observable-response-query-closure-20260921",
+    "commit": "86f736cda004b60bc6c9d7379efe71164cecdef5"
+  },
+  "e151_firewall": {
+    "e151_code_used": false,
+    "e151_branch_parent": false,
+    "e151_rerun": false,
+    "note": "Only the E151 terminal receipt status was consulted to confirm that E151 science was never entered and that rerun was forbidden."
+  },
+  "provenance": {
+    "protocol": {
+      "commit": "b4d3f6d034269d664c05c2fb4003160168b1fbd7",
+      "blob": "a7469ccf52184e45a38af0e82ebc6ebbe6326247",
+      "path": "research/E154_PROTOCOL.md"
+    },
+    "candidate": {
+      "commit": "03d5def9703cb9fa4c6f7ccbf4ffdd0589a4974e",
+      "blob": "c1b2fcc2c5366af7dfd5414ae36c035a19217d58",
+      "runtime_sha256": "3b06f06d1ebeec4c1d071df3062613f756309a503296391b225a7eaa7e4ebb7f",
+      "path": "methods/e154_angular_radial_k4.py"
+    },
+    "reference": {
+      "commit": "8d4e14ee9d37283290bc34800617a5228618ba9c",
+      "blob": "415526fcc928d1899ac8fca87b53f1af2fa80981",
+      "path": "methods/e154_reference.py"
+    },
+    "tests": {
+      "commit": "e321e8dcaf7c0e6938cf0a0fc040c700a4f65fec",
+      "blob": "4df595d4e806b183674c484aea7fbbb5e7e38d9a",
+      "path": "tests/test_e154_angular_radial_k4.py"
+    },
+    "falsifier": {
+      "commit": "96530f912c463b85e91b235f0810f9392e58e3dc",
+      "blob": "8478b15718f107be5a96ef8a7f7defaece2a1b5f",
+      "path": "scripts/e154_angular_radial_k4_falsifier.py"
+    },
+    "workflow": {
+      "commit": "fd6a0af515a205132ae076840eaeea7579d3b390",
+      "blob": "b0034670892c86376ebe1e16400eabfae78de00f",
+      "path": ".github/workflows/e154-angular-radial-k4.yml"
+    },
+    "arm": {
+      "commit": "fb1bc55f54b13a9c2dfa2a980b785c4b4f82072f",
+      "blob": "5f8ad89a2fb188d797bca09dd2f3b1b5644d0128",
+      "path": "research/E154_RUN_ARM.json"
+    }
+  },
+  "mechanism": {
+    "name": "ARK4",
+    "exact_homogeneity": "For zero-bias ReLU F, F((R/sqrt(n))Y)=(R/sqrt(n))F(Y)",
+    "exact_radial_moments": {
+      "a2": 1,
+      "a3": "((n+1)/n)*a1",
+      "a4": "(n+2)/n"
+    },
+    "analytic_sphere_k4": {
+      "diagonal": "-6 C_ii^2/(n+2)",
+      "k31": "-6 C_ii C_ij/(n+2)",
+      "k22": "-2(C_ii C_jj+2 C_ij^2)/(n+2)"
+    },
+    "executed_closure": "full angular mean/covariance plus first-order fourth-Wick ReLU correction with memoryless covariance-matched sphere K4 diagonal",
+    "v29_compatible_scope": "mechanistic full-covariance/fourth-Wick interface only; no V29 fitted LAM/CORR_BETA/K3 source stack",
+    "strassen_levels": 0,
+    "strassen_reason": "Classical complete production upper already passed 0.135B with large slack; protocol therefore forbade Strassen."
+  },
+  "execution": {
+    "run_id": 35595066151,
+    "job_id": 106317878198,
+    "run_attempt": 1,
+    "github_conclusion": "failure",
+    "focused_tests": "4 passed in 0.16s",
+    "scientific_result_json_materialized": true,
+    "exactly_one_run_for_arm_head": true,
+    "rerun": false,
+    "artifact": {
+      "id": 10636273829,
+      "name": "e154-angular-radial-k4",
+      "size_bytes": 12565,
+      "zip_sha256": "35237eeffaabcd7fe723e13f1ba2cae503d7731f62e41f2fd199d4b97a7c8c96",
+      "expires_at": "2026-12-20T11:37:42Z"
+    }
+  },
+  "fixtures": {
+    "exact2d": {
+      "width": 2,
+      "depth": 8,
+      "seed": 154002,
+      "sector_count": 6,
+      "homogeneity_relative_error": 0,
+      "analytic_input_k4_absolute_error": 0,
+      "baseline_final_mean_relative_rms": 2.403042646656564e+148,
+      "candidate_final_mean_relative_rms": 1.2981984304076025e+148,
+      "candidate_over_baseline": 0.5402311241599606,
+      "interpretation": "The exact sector final mean is zero on this frozen network, so the protocol's relative final-mean metric is ill-conditioned and fails. The frozen rule forbids changing the metric after the run."
+    },
+    "dense32": {
+      "width": 32,
+      "depth": 8,
+      "seed": 154032,
+      "reference_samples": 32768,
+      "reference_seed": 154320,
+      "homogeneity_relative_error": 8.056083920293855e-16,
+      "input_k4_relative_rms": 0.166798855139298,
+      "first_preactivation_k4_relative_rms": 0.19717226814696143,
+      "deep_preactivation_k4_relative_rms": 1.280279689303633,
+      "baseline_final_mean_relative_rms": 0.06996621447064387,
+      "candidate_final_mean_relative_rms": 0.06735395868606409,
+      "candidate_over_baseline": 0.9626640400035388,
+      "reference_standard_error_rms": 0.0014545631173341577,
+      "candidate_error_rms": 0.02851822648492859,
+      "reference_stability_pass": true
+    },
+    "adversarial16": {
+      "width": 16,
+      "depth": 8,
+      "seed": 154016,
+      "reference_samples": 32768,
+      "reference_seed": 154160,
+      "homogeneity_relative_error": 3.8572480491297923e-16,
+      "input_k4_relative_rms": 0.08391129424092147,
+      "first_preactivation_k4_relative_rms": 0.09652013535478125,
+      "deep_preactivation_k4_relative_rms": 1.3018672466300862,
+      "baseline_final_mean_relative_rms": 0.07163670989919448,
+      "candidate_final_mean_relative_rms": 0.0740661768122803,
+      "candidate_over_baseline": 1.0339137143024089,
+      "reference_standard_error_rms": 0.002585190309703978,
+      "candidate_error_rms": 0.07462092524130008,
+      "reference_stability_pass": true
+    }
+  },
+  "gates": {
+    "passed": {
+      "candidate_and_reference_finite_all": true,
+      "deterministic_replay_bitwise_exact_all": true,
+      "candidate_source_firewall_pass": true,
+      "reference_after_candidate_freeze_all": true,
+      "homogeneity_relative_error_le_1e_12_all": true,
+      "analytic_2d_input_k4_abs_le_1e_14": true,
+      "reference_stability_32_16": true,
+      "production_cost_formula_exact_reconcile": true,
+      "production_all_in_le_0_135B": true,
+      "strassen_disabled": true,
+      "no_public_scorer_holdout_full_submission": true
+    },
+    "failed": {
+      "empirical_input_k4_rel_le_0_06_32_16": false,
+      "first_preactivation_k4_rel_le_0_06_32_16": false,
+      "deep_preactivation_k4_rel_le_0_35_32_16": false,
+      "ark4_strictly_improves_final_mean_all": false,
+      "ark4_over_baseline_le_0_95_32": false,
+      "ark4_over_baseline_le_0_95_16": false,
+      "ark4_final_mean_rel_le_0_05_2d": false,
+      "ark4_final_mean_rel_le_0_05_32": false,
+      "ark4_final_mean_rel_le_0_05_16": false
+    },
+    "integrity_go": false,
+    "scientific_go": false
+  },
+  "production_cost": {
+    "covariance_classical_two_gemm": 68719476736,
+    "mean_matvec": 33554432,
+    "relu_covariance_update": 268435456,
+    "k4_diagonal_and_wick": 8388608,
+    "radial_scalar_helpers": 2097152,
+    "helper_accounting_reserve": 42949672960,
+    "all_in_upper": 111981625344,
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "utilization": 0.05092334747314453,
+    "slack_flops": 184886514155,
+    "independent_formula_reconcile": true,
+    "pass": true
+  },
+  "diagnosis": {
+    "exact_result": "The angular-radial homogeneity theorem and analytic 2D input K4 identity passed.",
+    "reference_quality_issue": "The frozen M=32768 empirical K4 gates were too tight for the small O(1/n) sphere K4 signal: input/first-preactivation relative errors were 16.7%/19.7% at 32D and 8.4%/9.7% at 16D. Protocol forbids increasing M or changing these gates after the run.",
+    "scientific_failure": "More decisively, the memoryless covariance-matched sphere K4 hypothesis fails after ReLU: deep K4 diagonal relative RMS is about 1.28-1.30 on both high-dimensional fixtures.",
+    "final_mean_failure": "ARK4 improves the dense32 baseline only from 6.997% to 6.735% (ratio 0.963, short of the frozen 0.95 gate), and worsens adversarial16 from 7.164% to 7.407% (ratio 1.034).",
+    "strassen": "Not implicated; classical cost has 184.9B FLOP slack and Strassen was correctly not used."
+  },
+  "terminal_policy": "Any failed or unevaluable frozen gate closes E154. No correction of the empirical reference gate, no change of the 2D metric, no Strassen addition, no closure modification, no rerun, and no E151 repair is permitted.",
+  "scope": {
+    "target_free": true,
+    "synthetic_only": true,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "strassen": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "e151_repair": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
