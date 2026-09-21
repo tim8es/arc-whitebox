@@ -1,0 +1,149 @@
+{
+  "schema": "arc.whitebox.e187.parent_ledger.v1",
+  "experiment": "E187",
+  "hypothesis": "H185 exact trilinear-aggregation compiler",
+  "source": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "estimator_path": "estimators/estimator_v29_ns.py",
+    "estimator_git_blob_sha1": "f91df783b83cb5fae0af57a16799c5df81891bd2",
+    "audit_path": "harness/audit_v29_ns.py",
+    "audit_git_blob_sha1": "279d8e0308360fde7616d56f8e8cc2705b529898",
+    "log_path": "docs/audit_v29_ns_d0.log",
+    "log_git_blob_sha1": "a689ef69fd64bed7765cb93ce4910c3fedcbd04a",
+    "semantics": "dump0 call 2; steady state; second predict; STRASSEN_FIRST warm call excluded",
+    "unit_definition": "u = 2*n^3 FLOPs, n=1024",
+    "budget_units": 1024,
+    "cap_units": 138.24,
+    "parent_residual_seconds_reported": 0.322
+  },
+  "reconciliation": {
+    "source_headline_total_units_1dp": 260.1,
+    "canonical_grouped_total_units_source_resolution": 260.06,
+    "canonical_dense_k3_units_source_resolution": 222.44,
+    "canonical_fixed_units_source_resolution": 37.62,
+    "legacy_coarse_dense_units_forbidden": 222.4,
+    "legacy_coarse_fixed_units_forbidden": 37.6,
+    "legacy_coarse_total_units_forbidden": 260,
+    "rule": "Use GROUPED source rows at their published 0.01u resolution. 260.06 rounds to the 260.1 headline. Do not recompute canonical group totals by summing display-rounded family rows.",
+    "exact_raw_flopscope_integer_available_in_published_log": false,
+    "exact_raw_flopscope_integer_status": "BLOCKING_G2"
+  },
+  "groups": [
+    {
+      "name": "K3 young (dense per-source)",
+      "units": 115.61,
+      "route_scope": "DENSE_K3"
+    },
+    {
+      "name": "K3 old (shared basis)",
+      "units": 106.83,
+      "route_scope": "DENSE_K3"
+    },
+    {
+      "name": "K3 thin / elementwise",
+      "units": 24.78,
+      "route_scope": "FIXED_UNCHANGED"
+    },
+    {
+      "name": "covariance",
+      "units": 7.1,
+      "route_scope": "FIXED_UNCHANGED"
+    },
+    {
+      "name": "birth / closure (n^2)",
+      "units": 5.71,
+      "route_scope": "FIXED_UNCHANGED"
+    },
+    {
+      "name": "other / untagged",
+      "units": 0.03,
+      "route_scope": "FIXED_UNCHANGED"
+    }
+  ],
+  "dense_family_display_rows": [
+    {
+      "name": "young_transport",
+      "units_display": 60.71,
+      "calls": 1753,
+      "group": "K3 young"
+    },
+    {
+      "name": "hub",
+      "units_display": 54.9,
+      "calls": 1811,
+      "group": "K3 young"
+    },
+    {
+      "name": "shared",
+      "units_display": 27.91,
+      "calls": 1083,
+      "group": "K3 old"
+    },
+    {
+      "name": "old_legs",
+      "units_display": 27.89,
+      "calls": 1105,
+      "group": "K3 old"
+    },
+    {
+      "name": "j_rf",
+      "units_display": 20.76,
+      "calls": 153,
+      "group": "K3 old"
+    },
+    {
+      "name": "j_rot",
+      "units_display": 9.14,
+      "calls": 42,
+      "group": "K3 old"
+    },
+    {
+      "name": "j_proj",
+      "units_display": 7.5,
+      "calls": 20,
+      "group": "K3 old"
+    },
+    {
+      "name": "j_tier2",
+      "units_display": 6.7,
+      "calls": 135,
+      "group": "K3 old"
+    },
+    {
+      "name": "j_qc",
+      "units_display": 3.75,
+      "calls": 10,
+      "group": "K3 old"
+    },
+    {
+      "name": "j_core",
+      "units_display": 2.82,
+      "calls": 59,
+      "group": "K3 old"
+    },
+    {
+      "name": "qc_transport",
+      "units_display": 0.37,
+      "calls": 1,
+      "group": "K3 old"
+    }
+  ],
+  "projection": {
+    "fixed_units_source_resolution": 37.62,
+    "dense_units_source_resolution": 222.44,
+    "dense_budget_units": 100.62,
+    "required_ratio_formula": "(138.24 - 37.62) / 222.44",
+    "required_ratio_approx": 0.4523467,
+    "frozen_mechanism_gate_ratio": 0.42,
+    "candidate_dense_units_at_gate": 93.4248,
+    "projected_total_units_at_gate": 131.0448,
+    "modeled_headroom_units_at_gate": 7.1952
+  },
+  "decision": {
+    "ledger_reconciliation": "FROZEN_AT_PUBLISHED_0.01U_RESOLUTION",
+    "exact_raw_parent_ledger_gate": "FAIL",
+    "owner_run_authorized": false,
+    "protocol_status": "NO_GO"
+  }
+}
