@@ -1,1 +1,10 @@
-"""E173 official-mini AGO entrypoint.\n\nThe local subclass is required by WhestBench 0.16.1 loader discovery.\n"""\n\nfrom methods.e173_starter_ago import AGOEstimator\n\n\nclass Estimator(AGOEstimator):\n    pass\n
+"""E173 official-mini AGO entrypoint.
+
+The local subclass is required by WhestBench 0.16.1 loader discovery.
+"""
+
+from methods.e173_starter_ago import AGOEstimator
+
+
+class Estimator(AGOEstimator):
+    pass
