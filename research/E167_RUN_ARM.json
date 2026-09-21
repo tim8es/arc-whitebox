@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-E167-PRECERTIFIED-REFERENCE-AGO-20260921",
+  "execute_once": true,
+  "scope": "synthetic 1024x16 AGO with pre-certified reference only"
+}
