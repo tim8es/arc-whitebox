@@ -1,6 +1,7 @@
 """E176 clean-room public gain-only covariance parent and one-time AGO gauge.
 
-This module is independent of E175 and contains no reference/target/data access.
+This module is independent of prior transfer-lane implementations and contains
+no reference, target, dataset, scorer, or network access.
 """
 from __future__ import annotations
 
@@ -79,7 +80,7 @@ def gain_only_layer(
     ez2 = (pre_mean * pre_mean + var) * Phi + pre_mean * sigma * phi
     out_var = np.maximum(ez2 - out_mean * out_mean, 0.0)
 
-    # Gain-only off diagonal. Intentionally no 0.5*C_ij^2 Wick correction.
+    # Gain-only off diagonal. Intentionally no quadratic off-diagonal correction.
     out_cov = pre_cov * np.outer(Phi, Phi)
     np.fill_diagonal(out_cov, out_var)
     out_cov = 0.5 * (out_cov + out_cov.T)
