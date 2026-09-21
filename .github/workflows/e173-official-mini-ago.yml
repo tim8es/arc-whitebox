@@ -25,10 +25,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Verify frozen arm, clean lineage, and blobs
         run: |
+          mkdir -p e173_artifacts
           python - <<'PY'
           import json
           import subprocess
@@ -37,7 +38,7 @@ jobs:
           expected = {
               "idempotency_key": "ARC-E173-OFFICIAL-MINI-AGO-INTEGRATION-20260921",
               "execute": True,
-              "attempt": 1,
+              "attempt": 2,
               "scope": "official local v2-phase2 mini first 5; parent vs AGO; no submission",
           }
           arm = json.loads(Path("research/E173_RUN_ARM.json").read_text())
