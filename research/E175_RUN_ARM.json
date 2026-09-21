@@ -1,0 +1,54 @@
+{
+  "schema": "arc.whitebox.e175.arm.v1",
+  "experiment": "E175",
+  "idempotency": "ARC-E175-AGO-GAIN-TRANSFER-20260921",
+  "status": "ARMED_ONE_TARGET_FREE_RUN",
+  "branch": "research/e175-ago-public-gain-transfer-20260921",
+  "base_verifier": "review/e172-e171-independent-verifier-20260921@423edafe9e7a1c83b6e58ec1ea4862becafc2162",
+  "hypothesis": "AGO-GAIN: exact first-state angular gauge plus final radial readout on the official public gain-only covariance closure",
+  "frozen": {
+    "note_blob": "af94db27f17bd01ee3a699c6f4e18fb8ec2e0b19",
+    "protocol_blob": "725a6aba7fa0bd3b51b29c412aedce7b78543cb9",
+    "candidate_blob": "8ed7044dae38870b157104843e685725ba3b5b07",
+    "falsifier_blob": "fdabb079ef502ab083052dffa9d0a0429df51f7e",
+    "reference_blob": "f75cdef00dc5e15d358c29163a2a3b3ec140d78b",
+    "official_public_parent": {
+      "repository": "AIcrowd/whest-starterkit",
+      "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "path": "examples/03_covariance_propagation.py",
+      "blob": "675b3dd8f032f342112a99f431115b35f8481620"
+    },
+    "public_v29": {
+      "repository": "504aldo/whest-p2-cumulant-k3",
+      "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "estimator_blob": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+    }
+  },
+  "panel": {
+    "width": 1024,
+    "depth": 16,
+    "weight_seed": 1751024,
+    "reference_seed": 175196608,
+    "reference_samples": 65536,
+    "reference_batches": 16
+  },
+  "cost": {
+    "all_in_upper_flops": 52718677983,
+    "budget_flops": 2199023255552,
+    "utilization_upper": 0.02397367915500581,
+    "cap": 0.135
+  },
+  "firewall": {
+    "public_dataset": false,
+    "public_target": false,
+    "public_mini": false,
+    "public_full": false,
+    "scorer": false,
+    "leaderboard": false,
+    "submission": false
+  },
+  "external_scientific_runs_authorized": 1,
+  "rerun_authorized": false,
+  "rescue_authorized": false,
+  "sweep_authorized": false
+}
