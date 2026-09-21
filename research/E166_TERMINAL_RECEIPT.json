@@ -1,0 +1,190 @@
+{
+  "schema": "arc.whitebox.e166.terminal_receipt.v1",
+  "experiment": "E166",
+  "idempotency_key": "ARC-E166-PRODUCTION-SHAPED-AGO-20260921",
+  "status": "TERMINAL_NO_GO",
+  "decision": "E166_TERMINAL_NO_GO",
+  "terminal": true,
+  "branch": "research/e166-production-shaped-ago-20260921",
+  "parent_e164": {
+    "receipt_commit": "342f2ab03ad5251971b17f8d8d43c1861774cbb6",
+    "candidate_blob": "ea9078eccc2e2bf2a2bea499ef10a4daf80ea0d4",
+    "candidate_runtime_sha256": "533149d0a1c05be12097b997b8762270b299c574cf6c32324de7d17ec285169c",
+    "mechanism": "AGO"
+  },
+  "provenance": {
+    "protocol": {
+      "commit": "e8895594e2280d7f0c5037d5aba5151253aa9b13",
+      "blob": "d3271ce7e6da160c8152be877ec63c5adb1d18f1",
+      "path": "research/E166_OWNER_PROTOCOL.md"
+    },
+    "falsifier": {
+      "commit": "7276bb670b7fe969e79bbfaa4867ef410d809110",
+      "blob": "ea7a22698089f9d98ed13248aa72bcc915ff4b3b",
+      "path": "scripts/e166_production_shaped_ago.py"
+    },
+    "workflow": {
+      "commit": "cfeaf5db4603ceb77dbea255b68c5f4367bc778d",
+      "blob": "96f5443d40592f9530592178fba93260f0628a56",
+      "path": ".github/workflows/e166-production-shaped-ago.yml"
+    },
+    "arm": {
+      "commit": "40c9177a3f32d38d915b9f5da7c40431284859d1",
+      "blob": "02f38b1b06de9f34a65c6ab7f55d7fd99ad6dc77",
+      "path": "research/E166_RUN_ARM.json"
+    }
+  },
+  "execution": {
+    "run_id": 35606863697,
+    "job_id": 106355965383,
+    "run_attempt": 1,
+    "head_sha": "40c9177a3f32d38d915b9f5da7c40431284859d1",
+    "github_conclusion": "success",
+    "exactly_one_run_for_arm_head": true,
+    "frozen_blob_guard": "PASS",
+    "standalone_dependency_install": "PASS",
+    "syntax_check": "PASS",
+    "frozen_e164_unit_tests": "4 passed in 0.10s",
+    "owner_scientific_step": "COMPLETED",
+    "rerun": false,
+    "rescue": false,
+    "artifact": {
+      "id": 10642051274,
+      "name": "e166-production-shaped-ago",
+      "size_bytes": 10016,
+      "zip_sha256": "98c21ee635ceb8a224bd693177c7a1214cfd161b47d12bc14f254929009f9994",
+      "expires_at": "2026-12-20T13:38:01Z"
+    }
+  },
+  "fixture": {
+    "width": 1024,
+    "depth": 16,
+    "zero_bias": true,
+    "weight_seed": 1661024,
+    "weights_sha256": "e2807e1373d294ffd3676ecad80c08117265782b270acb20795dbe544507e0f4",
+    "reference_samples": 8192,
+    "reference_seed": 1668192,
+    "reference_batches": 8
+  },
+  "mechanism": {
+    "name": "AGO",
+    "delta": "Exact K1/K2 Gaussian-to-angular gauge after first activation plus exact final radial a1 mean readout.",
+    "higher_order_state": false,
+    "k4": false,
+    "d4": false,
+    "d22": false,
+    "c4": false,
+    "recurrent_k4": false,
+    "strassen": false,
+    "target_fit": false
+  },
+  "metrics": {
+    "parent_mse": 0.000018811649099480322,
+    "ago_mse": 0.000017538238290386996,
+    "ago_over_parent": 0.9323073271057079,
+    "mse_improvement_fraction": 0.06769267289429215,
+    "parent_rmse": 0.004337239801933982,
+    "ago_rmse": 0.004187867988653295,
+    "parent_relative_rms": 0.004281007587547447,
+    "ago_relative_rms": 0.0041335723763942156,
+    "reference_se_rms": 0.0030812641362217745,
+    "allowed_reference_se_relative": 0.000837573597730659,
+    "reference_se_ratio_to_allowed": 3.678797664878309,
+    "batch_improvement_count": 6,
+    "batch_count": 8,
+    "batch_delta_mean": 0.0000012734108090933804,
+    "batch_delta_se": 4.858668441807913e-7,
+    "batch_delta_mean_over_se": 2.620904337760046,
+    "batch_parent_mse": [
+      0.00006801324326609115,
+      0.00007228843227918266,
+      0.00007626069606681259,
+      0.00007139637243818433,
+      0.00009220027646691752,
+      0.0001173115846895985,
+      0.00006662463887266078,
+      0.000118072514637725
+    ],
+    "batch_ago_mse": [
+      0.00006871772956587172,
+      0.00007187921012865315,
+      0.00007465317361542498,
+      0.00007185148434543176,
+      0.00008963427739124298,
+      0.0001147451424714645,
+      0.00006514060502777117,
+      0.00011535884969856523
+    ],
+    "gauge_roundtrip_error": 4.499049901405295e-16,
+    "homogeneity_error": 2.213345425906933e-15,
+    "reference_mean_sha256": "d80fa9821e9fe15833e75bc313fd6311743f06a30d2e9ec6d1d530b69163bfa8"
+  },
+  "production_cost": {
+    "covariance_linear_transport": 68719476736,
+    "mean_matvec": 33554432,
+    "nonlinear_second_order_arithmetic": 402653184,
+    "normal_scalar_work": 16777216,
+    "helper_reserve": 42949672960,
+    "angular_gauge_overlay": 9437184,
+    "all_in_upper": 112131571712,
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "utilization": 0.05099153518676758,
+    "slack_flops": 184736567787,
+    "independent_formula_reconcile": true,
+    "pass": true
+  },
+  "gates": {
+    "passed": {
+      "frozen_e164_candidate_blob_identity": true,
+      "source_public_firewall": true,
+      "finite_parent_ago_reference": true,
+      "reference_after_candidate_freeze": true,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "gauge_roundtrip_le_2e_12": true,
+      "homogeneity_le_2e_12": true,
+      "ago_improves_at_least_6_of_8_batches": true,
+      "batch_delta_mean_gt_2se": true,
+      "aggregate_mse_ratio_le_0_98": true,
+      "independent_cost_reconcile": true,
+      "complete_production_cost_le_0_135B": true,
+      "no_public_benchmark_scorer_holdout_full_submission": true,
+      "no_sweep_rescue_rerun": true
+    },
+    "failed": {
+      "reference_standard_error_gate": false
+    },
+    "scientific_go": false
+  },
+  "diagnosis": {
+    "positive_signal": "AGO reduced aggregate target-free synthetic production-shaped MSE by 6.77%, passed the 0.98 transfer ratio, improved 6/8 batch references, and the mean batch improvement exceeded 2 standard errors.",
+    "terminal_blocker": "The frozen 8192-sample sphere reference was not precise enough under the preregistered standard-error gate. Reference SE RMS was 0.0030813 versus an allowed relative threshold of 0.0008376.",
+    "interpretation": "E166 does not falsify the AGO production-shaped effect; it is terminal because the sole frozen reference cannot certify the effect to the preregistered precision.",
+    "no_rescue": "Increasing reference samples, changing the stability threshold, using the observed batch significance as a replacement gate, or rerunning would violate the frozen one-run protocol."
+  },
+  "firewall": {
+    "public_or_benchmark_execution": false,
+    "public_blocked_pending_e165_verifier_go": true,
+    "e165_verifier_status_not_used_to_relax_owner_firewall": true
+  },
+  "scope": {
+    "synthetic_only": true,
+    "target_free": true,
+    "production_shaped": true,
+    "standalone_execution": true,
+    "public": false,
+    "public_mini": false,
+    "benchmark_target": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "rerun": false,
+    "rescue": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "terminal_policy": "Frozen E166 protocol requires every mandatory gate. The failed reference-stability gate therefore seals E166 terminal NO-GO despite a positive aggregate and batch-consistent AGO signal."
+}
