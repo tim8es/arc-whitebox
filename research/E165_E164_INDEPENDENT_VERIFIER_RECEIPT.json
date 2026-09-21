@@ -1,0 +1,237 @@
+{
+  "schema": "arc.whitebox.e165.e164_independent_verifier_receipt.v1",
+  "experiment": "E165",
+  "verifies": "E164",
+  "status": "GO",
+  "decision": "E165_INDEPENDENT_VERIFIER_GO_E164_CLEANROOM_AGO",
+  "branch": "review/e165-e164-independent-verifier-20260921",
+  "immutable_owner_receipt": {
+    "path": "research/E164_RECEIPT.json",
+    "commit": "342f2ab03ad5251971b17f8d8d43c1861774cbb6",
+    "blob": "a13c095cc2078711e722a6a6deb953aed33fdf81"
+  },
+  "frozen_provenance": {
+    "bootstrap_parent": "7a0034088ebbffbd74b441e1797c272e9d33cbff",
+    "protocol": {
+      "commit": "b40957707e51f6d2fc142b913d9a500795d1bfe7",
+      "blob": "b9b4c5d7d655c0f8a7650512cf30f89f8f9a11ba",
+      "path": "research/E164_OWNER_PROTOCOL.md"
+    },
+    "candidate": {
+      "commit": "5709a167535b488d54974db9b4559afc16696fd8",
+      "blob": "ea9078eccc2e2bf2a2bea499ef10a4daf80ea0d4",
+      "runtime_sha256": "533149d0a1c05be12097b997b8762270b299c574cf6c32324de7d17ec285169c",
+      "path": "methods/e164_ago.py"
+    },
+    "reference": {
+      "commit": "c7d40e46c0488a8d9c163f87165f7bfdb040fc07",
+      "blob": "7f976941cf35e3b4d721dd7ec830b9b59791443a",
+      "path": "methods/e164_reference.py"
+    },
+    "tests": {
+      "commit": "863ad55bdd4af11253da3e9527e22373312297df",
+      "blob": "309ab16198b750b0043922d4043264102ddb3143",
+      "path": "tests/test_e164_ago.py"
+    },
+    "falsifier": {
+      "commit": "1c99c4e51d4a9dedb4fc2149fdf4ffe71a81de53",
+      "blob": "f9472e5193491575c1eb9372874df736b2739464",
+      "path": "scripts/e164_ago_falsifier.py"
+    },
+    "workflow": {
+      "commit": "670a38029846ff7245c8f1ed982a6f6ad228f6bb",
+      "blob": "5a5fd3c9ffad1a5915edd00847eabdb7ef5da0ce",
+      "path": ".github/workflows/e164-ago.yml"
+    },
+    "arm": {
+      "commit": "ee9bafc24206cdf32e9c8d5f8085783b8fb6e421",
+      "blob": "b138e56a258a0e4dcf5a7841beb0857dc2c608dd",
+      "path": "research/E164_RUN_ARM.json"
+    }
+  },
+  "execution_evidence": {
+    "run_id": 35604133996,
+    "job_id": 106347007723,
+    "attempt": 1,
+    "head_sha": "ee9bafc24206cdf32e9c8d5f8085783b8fb6e421",
+    "conclusion": "success",
+    "branch_run_count": 1,
+    "artifact": {
+      "id": 10641735549,
+      "name": "e164-ago",
+      "size_bytes": 15522,
+      "zip_sha256": "9397f519215a8a4b07b1c7b517032b4d6d4575de121c562b04ae5844e6669bea"
+    },
+    "focused_tests": "4 passed in 0.13s",
+    "falsifier_exit_status": 0,
+    "falsifier_wall_seconds": 0.18,
+    "max_rss_kb": 71532,
+    "rerun": false
+  },
+  "checks": {
+    "ago_k1_k2_identities": {
+      "verdict": "VERIFIED",
+      "exact_formula": {
+        "radial_a1": "sqrt(2/n) * Gamma((n+1)/2) / Gamma(n/2)",
+        "gaussian_to_angular_mean": "mu_A = mu_G / a1",
+        "gaussian_to_angular_covariance": "C_A = C_G - (a1^-2 - 1) mu_G mu_G^T",
+        "angular_to_gaussian_mean": "mu_G = a1 mu_A",
+        "angular_to_gaussian_covariance": "C_G = C_A + (1-a1^2) mu_A mu_A^T"
+      },
+      "implementation_matches_formula": true,
+      "first_activation_only": true,
+      "final_radial_readout_only": true,
+      "gauge_roundtrip_max": 1.8991982144301774e-16,
+      "exact2d_analytic_first_state_gauge_error": 5.793689899742398e-17,
+      "homogeneity_max": 5.081177859361469e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    "radial_a1": {
+      "verdict": "VERIFIED",
+      "values": {
+        "n2": 0.8862269254527578,
+        "n16": 0.9845064054718329,
+        "n32": 0.9922191984572402,
+        "n1024": 0.9997558892135413
+      },
+      "n2_exact_identity": "sqrt(pi)/2",
+      "n2_test_tolerance": 2e-15,
+      "candidate_final_readout": "radial_a1(n) * final_angular_mean",
+      "pass": true
+    },
+    "parent_vs_ago_mse": {
+      "verdict": "VERIFIED_FROM_IMMUTABLE_ERROR_VECTORS",
+      "fixtures": [
+        {
+          "name": "exact2d",
+          "parent_mse": 0.0000018371467213930349,
+          "ago_mse": 9.137853811032136e-7,
+          "ratio": 0.4973937957499261,
+          "improvement_fraction": 0.5026062042500739,
+          "individual_gate": true
+        },
+        {
+          "name": "dense32",
+          "parent_mse": 0.0016560228616983796,
+          "ago_mse": 0.0013586465178610139,
+          "ratio": 0.8204273922085935,
+          "improvement_fraction": 0.1795726077914065,
+          "individual_gate": true
+        },
+        {
+          "name": "adversarial16",
+          "parent_mse": 0.026053104446946848,
+          "ago_mse": 0.016843976988252372,
+          "ratio": 0.6465247557177898,
+          "improvement_fraction": 0.3534752442822102,
+          "individual_gate": true
+        }
+      ],
+      "pooled": {
+        "coordinate_count": 50,
+        "parent_mse": 0.00939692154037881,
+        "ago_mse": 0.006259642959087052,
+        "ratio": 0.6661376209420509,
+        "required_max_ratio": 0.98,
+        "pass": true
+      },
+      "exact2d_note": "Reference final mean is zero; protocol correctly uses absolute MSE, not ill-conditioned relative RMS.",
+      "reference_stability_dense32": true,
+      "reference_stability_adversarial16": true,
+      "pass": true
+    },
+    "target_reference_firewall": {
+      "verdict": "VERIFIED",
+      "candidate_parameters": [
+        "weights"
+      ],
+      "candidate_imports": [
+        "__future__",
+        "dataclasses",
+        "math",
+        "numpy",
+        "typing"
+      ],
+      "candidate_io_network_calls": [],
+      "candidate_reference_import": false,
+      "forbidden_candidate_tokens_present": [],
+      "ordering": "parent and AGO plus deterministic replay are computed and frozen before verifier-only reference import/materialization",
+      "synthetic_only": true,
+      "public": false,
+      "public_mini": false,
+      "scorer": false,
+      "holdout": false,
+      "full_suite": false,
+      "submission": false,
+      "target_fit": false,
+      "pass": true
+    },
+    "complete_flops": {
+      "verdict": "VERIFIED",
+      "n": 1024,
+      "depth": 16,
+      "components": {
+        "covariance_linear_transport": 68719476736,
+        "mean_matvec": 33554432,
+        "nonlinear_second_order_arithmetic": 402653184,
+        "normal_scalar_work": 16777216,
+        "helper_reserve": 42949672960,
+        "angular_gauge_overlay": 9437184
+      },
+      "independently_summed_all_in_upper": 112131571712,
+      "budget_flops": 2199023255552,
+      "cap_flops": 296868139499,
+      "utilization": 0.05099153518676758,
+      "slack_flops": 184736567787,
+      "implementation_formula_matches_protocol": true,
+      "pass": true
+    },
+    "deterministic_replay": {
+      "verdict": "VERIFIED",
+      "parent_bitwise_exact_all": true,
+      "ago_bitwise_exact_all": true,
+      "frozen_blob_guard": true,
+      "arm_commit_only_changed": "research/E164_RUN_ARM.json",
+      "branch_actions_runs": 1,
+      "run_attempt": 1,
+      "rerun": false,
+      "rescue": false,
+      "pass": true
+    },
+    "cleanroom_ancestry": {
+      "verdict": "VERIFIED",
+      "protocol_is_direct_child_of_bootstrap": true,
+      "bootstrap_to_protocol_commits": 1,
+      "bootstrap_to_receipt_commits": 8,
+      "protocol_first": true,
+      "one_file_per_freeze_commit": true,
+      "e154_branch_is_ancestor": false,
+      "e157_branch_is_ancestor": false,
+      "e162_branch_is_ancestor": false,
+      "e154_merge_base": "7a0034088ebbffbd74b441e1797c272e9d33cbff",
+      "e157_merge_base": "2af54da98045e36b37330e1f7c9f36f0943f3661",
+      "e162_merge_base": "2af54da98045e36b37330e1f7c9f36f0943f3661",
+      "prohibited_lane_code_imported": false,
+      "prohibited_lane_tokens_in_candidate": false,
+      "pass": true,
+      "scope_note": "Branches share older repository history/common ancestors, but no E154/E157/E162 lane commit is in the E164 ancestry; E164 begins from the frozen research/bootstrap parent."
+    }
+  },
+  "overall": {
+    "verdict": "GO",
+    "scientific_scope": "frozen synthetic target-free E164 AGO fixtures only",
+    "public_validation_authorized": false,
+    "all_requested_checks_pass": true
+  },
+  "verifier_discipline": {
+    "candidate_created": false,
+    "scientific_run_created": false,
+    "rerun": false,
+    "rescue": false,
+    "owner_branch_modified": false,
+    "canonical_ledger_modified": false,
+    "merge": false,
+    "append_only": true
+  }
+}
