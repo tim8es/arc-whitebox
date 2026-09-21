@@ -1,0 +1,100 @@
+name: E181 H180 symmetric CP carrier falsifier
+
+on:
+  push:
+    branches:
+      - research/e181-h180-symmetric-cp-carrier-20260921
+    paths:
+      - research/E181_RUN_ARM.json
+
+permissions:
+  contents: write
+
+jobs:
+  h180:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned research toolchain
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Verify one-shot arm and protocol freeze
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          arm = json.loads(Path("research/E181_RUN_ARM.json").read_text())
+          assert arm["schema"] == "arc.whitebox.e181.arm.v1"
+          assert arm["experiment"] == "E181"
+          assert arm["hypothesis"] == "H180"
+          assert arm["rank"] == 3072
+          assert arm["target_free"] is True
+          assert arm["allow_second_arm"] is False
+          assert Path("research/E181_PROTOCOL.md").exists()
+          assert Path("scripts/e181_h180_symmetric_cp_falsifier.py").exists()
+          print(json.dumps(arm, indent=2, sort_keys=True))
+          PY
+
+      - name: Run exactly one armed H180 falsifier
+        run: |
+          rm -rf research/e181_runtime
+          mkdir -p research/e181_runtime
+          python scripts/e181_h180_symmetric_cp_falsifier.py             --out research/e181_runtime             | tee research/e181_runtime/stdout_receipt.log
+
+      - name: Verify receipt and manifest
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("research/e181_runtime")
+          receipt = json.loads((root / "receipt.json").read_text())
+          manifest = json.loads((root / "manifest.json").read_text())
+          assert receipt["experiment"] == "E181"
+          assert receipt["target_free"] is True
+          assert receipt["e178_used"] is False
+          assert receipt["rank_production"] == 3072
+          assert receipt["public_submission"] is False
+          assert receipt["leaderboard_mutation"] is False
+          assert receipt["baseline_mutation"] is False
+          assert manifest["replay_match"] is True
+          for item in manifest["immutable_evidence"]:
+              p = root / item["path"]
+              assert p.exists(), item
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item["sha256"], item
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Commit immutable E181 evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/e181_runtime
+          git commit -m "E181: record H180 terminal evidence [skip ci]"
+          git push origin HEAD:research/e181-h180-symmetric-cp-carrier-20260921
+
+      - name: Upload E181 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e181-h180-symmetric-cp-carrier
+          path: research/e181_runtime/
+          if-no-files-found: error
