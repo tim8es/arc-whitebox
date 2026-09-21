@@ -1,0 +1,84 @@
+{
+  "schema": "arc.whitebox.e146.h143_terminal_receipt.v1",
+  "experiment": "E146",
+  "hypothesis": "H143_MUB128_INFLOW_D21_BIRTH_FEEDBACK_REPAIR",
+  "status": "TERMINAL_NO_GO",
+  "decision": "E146_TERMINAL_NO_GO_H143_STAGE_A_INFRASTRUCTURE_FAILURE",
+  "branch": "research/e146-h143-mub128-d21-falsifier-20260921",
+  "protocol_commit": "e1ba14b48eace4346fda8eb0cec143e9c6f56247",
+  "implementation_commit": "4b5e124742a6c856904f9b2e58f3e2db66617575",
+  "workflow_commit": "5539edba47bb6ce29ad47170f5a5b1b5be114295",
+  "arm_commit": "df92dc84fd89d9da4f17eee51417732f11f2fbe2",
+  "execution": {
+    "run_id": 35549380702,
+    "job_id": 106181169012,
+    "run_attempt": 1,
+    "github_conclusion": "failure",
+    "scientific_step": "failure_before_fixture_metrics",
+    "rerun": false
+  },
+  "pinned_sources": {
+    "v29_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "arc_commit": "93d091a4c26c042bfffa28f2e76a81bc0aba94bb",
+    "checkout_verified_before_failure": true
+  },
+  "failure": {
+    "phase": "candidate instrumentation before exact-reference construction",
+    "exception": "AttributeError: module 'estimator_v29' has no attribute 'WickCache'",
+    "location": "scripts/e146_h143_mub128_d21_falsifier.py:137 run_v29_capture",
+    "interpretation": "The frozen harness assumed the public V29 module exposed the lean-reference WickCache class. The pinned estimator computes Wick coefficients inline and has no WickCache symbol. Candidate arrays were therefore not constructed and exact ARC D21 reference materialization was never reached.",
+    "reference_leakage_before_failure": false
+  },
+  "gates": {
+    "he32_repaired_over_baseline_le_0p90": "UNEVALUATED_FAIL",
+    "adversarial32_repaired_over_baseline_le_0p90": "UNEVALUATED_FAIL",
+    "max_layer_ratio_le_1p05": "UNEVALUATED_FAIL",
+    "deterministic_replay": "UNEVALUATED_FAIL",
+    "candidate_before_exact_reference": "PASS_TO_FAILURE_POINT",
+    "pinned_commits": "PASS",
+    "incremental_cost_le_0p00437546B": "FORMULA_FROZEN_BUT_RUN_GATE_UNEVALUATED",
+    "finite": "UNEVALUATED_FAIL",
+    "target_firewall": "PASS_BY_SCOPE"
+  },
+  "frozen_cost_formula": {
+    "particle_dense_propagation": 4294967296,
+    "empirical_d21": 4294967296,
+    "moment_repair": 25165824,
+    "rank16_projection_injection": 1006632960,
+    "all_in_incremental": 9621733376,
+    "budget": 2199023255552,
+    "fraction": 0.004375457763671875,
+    "cap_fraction": 0.00437546,
+    "analytic_pre_run_pass": true
+  },
+  "artifact": {
+    "id": 10617593604,
+    "name": "e146-h143-stage-a",
+    "size_bytes": 1111,
+    "zip_sha256": "b4b37ca2ea51bed6f44b9d510c101f26d1e8971b0e29eba165094b415160f395",
+    "contains_result_json": false,
+    "contains_failure_log": true
+  },
+  "run_count_audit": {
+    "authorized_scientific_runs": 1,
+    "performed": 1,
+    "second_run_permitted": false,
+    "rerun_performed": false
+  },
+  "scope": {
+    "synthetic_only": true,
+    "benchmark_targets": false,
+    "public": false,
+    "public_mini": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "final_mse_validation": false,
+    "particle_sweep": false,
+    "rank_sweep": false,
+    "layer_sweep": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "closure": "Frozen E146 policy says any Stage-A failure is terminal and forbids rerun/rescue. H143 is therefore closed without final-MSE validation."
+}
