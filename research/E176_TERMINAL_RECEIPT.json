@@ -1,0 +1,174 @@
+{
+  "schema": "arc.whitebox.e176.terminal_receipt.v1",
+  "experiment": "E176",
+  "idempotency_key": "ARC-E176-CLEANROOM-AGO-GAIN-MINI-20260921",
+  "branch": "research/e176-cleanroom-ago-gain-mini-20260921",
+  "status": "TERMINAL_SCIENTIFIC_NO_GO",
+  "decision": "E176_TERMINAL_SCIENTIFIC_NO_GO_REFERENCE_PRECISION_GATE",
+  "scientific_hypothesis": "One-time AGO gauge transfers to the official public gain-only covariance closure.",
+  "scientific_hypothesis_result": "NOT_PROMOTABLE_UNDER_FROZEN_GATE",
+  "interpretation": "The sole frozen mini showed a large favorable candidate signal, but the preregistered reference RMS coordinate SE limit failed. This is terminal under the one-run/no-rescue protocol and is not treated as scientific GO.",
+  "clean_room": {
+    "scientific_parent_branch": "review/e172-e171-independent-verifier-20260921",
+    "scientific_parent_commit": "423edafe9e7a1c83b6e58ec1ea4862becafc2162",
+    "e175_branch_in_ancestry": false,
+    "e175_code_imported": false,
+    "e175_artifact_used": false,
+    "e175_rerun_or_rescue": false
+  },
+  "provenance": {
+    "protocol": {
+      "commit": "fbc068f08ba6d5de6452d07f3bbb6fbcf6d1d00b",
+      "blob": "00c7c81c7cd4f5b380675cfd393fb0a420b7ca65",
+      "path": "research/E176_PROTOCOL.md"
+    },
+    "candidate": {
+      "commits": [
+        "cd20af535c25531aa8c6adea809c20dda6149505",
+        "c80e467bd31767da1728a0da96ace3569df7970c"
+      ],
+      "final_blob": "f5d801c162dce11e82e2ece0d21cbe738832b3b3",
+      "path": "methods/e176_gain_ago.py",
+      "pre_run_change_note": "Only removed a false-positive prior-lane token from the module docstring/comment before workflow freeze; mechanism arithmetic was unchanged."
+    },
+    "reference": {
+      "commit": "4ee20f02d362d550c06450e48c4fe4d5654cc91d",
+      "blob": "0d0afc40209f782af1b7839c03ab2a380ec90683",
+      "path": "methods/e176_reference.py"
+    },
+    "falsifier": {
+      "commit": "c22c179611e223cf964d497684a3d135e5c3fbf3",
+      "blob": "5d064f142c1ed4742fd3c47d3998266f039e59d3",
+      "path": "scripts/e176_gain_ago_mini.py"
+    },
+    "workflow": {
+      "commit": "dca168b4990c0fe5d75083134fe7d65cb8d3f02f",
+      "blob": "07b9d6915f7dbb9d1d6802183877f12631d887e9",
+      "path": ".github/workflows/e176-cleanroom-ago-gain-mini.yml"
+    },
+    "arm": {
+      "commit": "5d506b098b91e36e33a657e95a09166c39894a54",
+      "blob": "559870a8fb0aac91ee8490f9a26b1fb163d9d887",
+      "path": "research/E176_RUN_ARM.json"
+    },
+    "committed_result": {
+      "commit": "814b37381d527bbc89cc44b61e97283fc6798647",
+      "blob": "f9aaf9ce1b2040f9186944e8a7ff0e699e640749",
+      "path": "research/E176_RESULT.json"
+    },
+    "official_parent": {
+      "repository": "AIcrowd/whest-starterkit",
+      "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "path": "examples/03_covariance_propagation.py",
+      "blob": "675b3dd8f032f342112a99f431115b35f8481620"
+    }
+  },
+  "execution": {
+    "authorized_scientific_runs": 1,
+    "observed_scientific_runs": 1,
+    "run_id": 35631993362,
+    "job_id": 106440150908,
+    "run_attempt": 1,
+    "head_sha": "5d506b098b91e36e33a657e95a09166c39894a54",
+    "github_conclusion": "success",
+    "science_exit": 2,
+    "science_exit_semantics": "complete frozen evidence with scientific gate failure",
+    "rerun": false,
+    "rescue": false,
+    "sweep": false,
+    "artifact": {
+      "id": 10655120593,
+      "name": "e176-cleanroom-ago-gain-mini",
+      "size_bytes": 4585729,
+      "zip_sha256": "0129b347bdc749c3f19d051783ae662dbf1a97b18b8458d4e49cca07083cfbe4",
+      "expires_at": "2026-12-20T17:26:14Z"
+    }
+  },
+  "fixture": {
+    "width": 256,
+    "depth": 8,
+    "weight_seed": 1760256,
+    "reference_seed": 17665536,
+    "reference_samples": 65536,
+    "reference_batches": 16,
+    "reference_batch_size": 4096,
+    "synthetic_target_free": true
+  },
+  "immutable_vectors": {
+    "manifest_sha256": "f40e820d2ac156ff59119d0cd1f6baaec6a59cc484f4ef59f20320873e0dfe29",
+    "payload_count": 17,
+    "weights_raw_sha256": "a496dbc456f12affc2933b6b3f251b5d3e3a0322bf6054a472c51cb3c48f6c47",
+    "parent_prediction_raw_sha256": "c1303e12a618810b9e673d851dccc1a2cc8989cb31dc1fdd5e954794bc8cfb78",
+    "candidate_prediction_raw_sha256": "b09c1e6bbf772555b33d345680e2f7f84eadd81e5c316dcb6cc573c05c808a90",
+    "pre_reference_freeze_sha256": "153d5542658ce630aa93b250c2777a052f1809428b5cbd2828023233337a5d6a",
+    "candidate_frozen_before_reference_import": true
+  },
+  "metrics": {
+    "parent_mse": 3.7871092632971474e-5,
+    "candidate_mse": 3.1738428860932444e-5,
+    "candidate_over_parent": 0.8380647785509154,
+    "improvement_fraction": 0.16193522144908457,
+    "parent_coordinate_mse_se": 4.83329250518147e-6,
+    "candidate_coordinate_mse_se": 4.228676187195708e-6,
+    "reference_coordinate_se_rms": 0.0016499405198955508,
+    "reference_coordinate_se_limit": 0.0015,
+    "paired_batch_delta_mean": 6.132663772039012e-6,
+    "paired_batch_delta_se": 9.93284621732392e-7,
+    "paired_delta_mean_over_se": 6.174125359298332,
+    "positive_batch_count": 15,
+    "batch_count": 16,
+    "gauge_roundtrip_relative_error": 1.323239494269448e-16,
+    "reference_batch_reconcile_max_abs": 0.0
+  },
+  "replay": {
+    "parent_bitwise_exact": true,
+    "candidate_bitwise_exact": true
+  },
+  "flops": {
+    "production_parent_official_measured": 51709240799,
+    "production_candidate_all_in_upper": 51782694367,
+    "production_candidate_utilization_upper": 0.023548043085156678,
+    "production_budget": 2199023255552,
+    "production_cap": 296868139499,
+    "production_cost_pass": true,
+    "local_mini_parent_research_upper": 545390592,
+    "local_mini_candidate_research_upper": 545982464,
+    "local_mini_candidate_incremental_upper": 591872,
+    "reference_research_upper": 68719476736,
+    "reference_excluded_from_estimator_cost": true
+  },
+  "gates": {
+    "source_firewall": true,
+    "gain_only_parent_audit": true,
+    "gauge_roundtrip_le_2e_12": true,
+    "parent_replay_bitwise": true,
+    "candidate_replay_bitwise": true,
+    "all_arrays_finite": true,
+    "reference_batch_reconcile_le_2e_12": true,
+    "reference_se_rms_le_1p5e_3": false,
+    "candidate_mse_lt_parent": true,
+    "candidate_over_parent_le_0p98": true,
+    "paired_delta_mean_positive": true,
+    "paired_delta_mean_gt_2se": true,
+    "positive_batches_ge_11_of_16": true,
+    "production_candidate_cost_le_0p135B": true,
+    "exactly_one_external_run_protocol": true,
+    "scientific_go": false
+  },
+  "terminal_reason": "The reference RMS coordinate SE was 0.0016499405198955508, exceeding the frozen 0.0015 limit. The protocol explicitly forbids increasing the reference sample count or rerunning after a noisy reference.",
+  "scientific_readout": "The realized point is suggestive for the hypothesis (16.19% lower MSE, 15/16 positive paired batches, paired delta 6.17 SE), but these observations cannot override the failed preregistered reference-precision gate.",
+  "scope": {
+    "public_dataset": false,
+    "public_mini": false,
+    "leaderboard": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "rerun": false,
+    "rescue": false,
+    "sample_increase": false
+  }
+}
