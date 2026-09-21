@@ -1,0 +1,98 @@
+{
+  "schema": "arc.whitebox.e158.e157_verifier_reservation.v1",
+  "experiment": "E158",
+  "role": "independent_verifier_reservation_for_E157",
+  "status": "RESERVED_WAITING_FOR_E157_COMPLETE_PHYSICAL_RECEIPT",
+  "reservation_branch": "review/e158-e157-verifier-reservation-20260921",
+  "base": {
+    "branch": "research/bootstrap",
+    "head": "7a0034088ebbffbd74b441e1797c272e9d33cbff"
+  },
+  "prerequisite": {
+    "e157_complete_physical_receipt_required": true,
+    "exactly_one_completed_authorized_physical_run_required": true,
+    "immutable_owner_receipt_required": true,
+    "if_missing": "DO_NOT_VERIFY_DO_NOT_CREATE_FINAL_VERIFIER_RECEIPT"
+  },
+  "verifier_checks_after_prerequisite": {
+    "exact_AIK4_1_identities": {
+      "required": true,
+      "checks": [
+        "exact dense K4 identity",
+        "factor representation identity",
+        "D4 identity",
+        "D22 identity",
+        "Wick identity"
+      ],
+      "requirement": "Verify against frozen exact-small/reference evidence; reference may be evaluation-only and must not enter candidate construction."
+    },
+    "synthetic_mean_quality": {
+      "required": true,
+      "checks": [
+        "synthetic mean bias",
+        "synthetic mean MSE"
+      ],
+      "requirement": "Verify every frozen E157 bias/MSE gate on all required synthetic fixtures without substituting public targets."
+    },
+    "cost": {
+      "required": true,
+      "gate": "parent_cost + incremental_AIK4_1_cost <= 0.135 * 2^41",
+      "requirement": "Independently reconcile parent cost identity and every incremental operation class, including K4 factor transport/contractions, D4/D22/Wick work, Strassen arithmetic if used, certificates/diagnostics/helpers/RNG/materialization/setup/reserves."
+    },
+    "target_firewall": {
+      "required": true,
+      "forbidden": [
+        "benchmark/public/public-mini targets",
+        "official scorer",
+        "holdout/full/submission",
+        "reference-derived candidate coefficients",
+        "post-result tuning, sweep or rescue"
+      ]
+    },
+    "deterministic_replay": {
+      "required": true,
+      "requirement": "Verify protocol-required deterministic replay and exactly-one-run/no-rerun discipline."
+    },
+    "ancestry": {
+      "required": true,
+      "requirement": "Inspect literal git ancestry and mechanism ancestry against every forbidden/revival/rescue class named by E157 and its governing predecessors."
+    }
+  },
+  "run_discipline": {
+    "create_candidate": false,
+    "modify_e157": false,
+    "rerun_e157": false,
+    "create_verifier_scientific_run": false,
+    "sweep": false,
+    "rescue": false,
+    "public_target_run": false,
+    "canonical_ledger_mutation": false,
+    "merge": false
+  },
+  "final_receipt_policy": {
+    "append_only": true,
+    "exactly_one_receipt": true,
+    "allowed_verdicts": [
+      "GO",
+      "FAIL",
+      "UNEVALUATED"
+    ],
+    "must_record": [
+      "E157 protocol/implementation/workflow/arm/owner-receipt commits and blobs",
+      "run/job/attempt/head",
+      "artifact id/digest where available",
+      "exact K4/factor/D4/D22/Wick identity results",
+      "synthetic mean bias/MSE gates",
+      "parent and incremental cost reconciliation",
+      "target firewall",
+      "deterministic replay",
+      "literal and mechanism ancestry"
+    ]
+  },
+  "current_state": {
+    "e157_present": false,
+    "e157_complete_physical_receipt_present": false,
+    "verification_performed": false,
+    "e158_final_receipt_created": false
+  }
+}
