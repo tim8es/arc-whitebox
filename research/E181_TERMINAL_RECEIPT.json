@@ -1,0 +1,107 @@
+{
+  "schema": "arc.whitebox.e181.terminal.v1",
+  "experiment": "E181",
+  "hypothesis": "H180 aggregate symmetric-CP inherited-K3 carrier",
+  "branch": "research/e181-h180-symmetric-cp-carrier-20260921",
+  "decision": "NO-GO",
+  "terminal": true,
+  "clean_base": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+  "protocol_commit": "df41aea0f4cff8a6cb72c8b6a2189af4f902433c",
+  "falsifier_commit": "1b0219ab47473a47e2e014046a7dcb7a65234b3b",
+  "workflow_commit": "ef6e9e60b159742835c48c5bcc437fb455e4ac0f",
+  "arm_commit": "147cb201a162d98c0a683a4e58b2d30209da6b0f",
+  "run": {
+    "id": 35641709985,
+    "number": 1,
+    "attempt": 1,
+    "event": "push",
+    "head_sha": "147cb201a162d98c0a683a4e58b2d30209da6b0f",
+    "falsifier_step_conclusion": "success",
+    "workflow_conclusion": "failure",
+    "wrapper_failure": {
+      "step": "Verify receipt and manifest",
+      "reason": "manifest captured stdout_receipt.log at 0 bytes while tee was still writing; post-run verification therefore saw a SHA256 mismatch",
+      "consequence": "automatic evidence commit was skipped; scientific result and uploaded evidence artifact remain valid",
+      "rerun_performed": false
+    }
+  },
+  "firewall": {
+    "e178_code_used": false,
+    "e178_artifacts_used": false,
+    "e178_rerun": false,
+    "rank_sweep": false,
+    "projection_rescue": false,
+    "source_age_hybrid": false,
+    "public_submission": false,
+    "scorer": false,
+    "leaderboard_mutation": false,
+    "baseline_mutation": false
+  },
+  "candidate": {
+    "rank": 3072,
+    "rule": "R=3n fixed",
+    "projection": "top |lambda|*||u||^3 with stable original-index tiebreak"
+  },
+  "exact_small": {
+    "threshold": 1e-12,
+    "carrier_d3_rel_rms": 3.3491944110964457e-17,
+    "carrier_d21_rel_rms": 5.781731509609742e-17,
+    "linear_transport_rel_rms": 5.685640941640108e-16,
+    "roundtrip_d3_rel_rms": 2.3645348121574883e-16,
+    "roundtrip_d21_rel_rms": 4.93350819362753e-16,
+    "pass": true
+  },
+  "structural": {
+    "n_small": 24,
+    "rank_small": 72,
+    "depth": 16,
+    "max_d21_rel_rms": 0.08845639298080632,
+    "d21_threshold": 0.015,
+    "worst_d21_layer": 8,
+    "max_d3_rel_rms": 0.11270390050111768,
+    "all_finite": true,
+    "pass": false
+  },
+  "flops": {
+    "budget_flops": "2199023255552",
+    "total_flops": "267703213260.8",
+    "total_u": "124.6590229034423828125",
+    "c_over_b": "0.12173732705414295196533203125",
+    "saving_from_no_old_parent_u": "28.3409770965576171875",
+    "cap_c_over_b": "0.135",
+    "required_saving_u": "14.76",
+    "pass": true
+  },
+  "accuracy": {
+    "state": "not_run_due_to_d21_rms_gate",
+    "candidate_parent_mse_ratio": null,
+    "paired_relative_degradation_u95": null,
+    "se": null,
+    "target_exposed": false
+  },
+  "replay": {
+    "vector_digest": "42d5fba553ae28a196e9e8a916af37522aaa4bd1ff3bed8ae0a16ff4232f8a4e",
+    "replay_vector_digest": "42d5fba553ae28a196e9e8a916af37522aaa4bd1ff3bed8ae0a16ff4232f8a4e",
+    "match": true
+  },
+  "immutable_evidence": {
+    "artifact_id": 10659065918,
+    "artifact_name": "e181-h180-symmetric-cp-carrier",
+    "size_in_bytes": 144557,
+    "archive_sha256": "757dd08001d4799728141ebc4387ac886839622687b2409f31f44108570b3999",
+    "contains": [
+      "parent/candidate D21 .npy vectors",
+      "parent/candidate D3 .npy vectors",
+      "exact_small.json",
+      "structural_metrics.json",
+      "flops.json",
+      "replay.json",
+      "receipt.json",
+      "manifest.json",
+      "stdout_receipt.log"
+    ],
+    "note": "Original run artifact is the immutable runtime evidence. The workflow's automatic git commit was skipped only because of the stdout_receipt.log manifest race described above."
+  },
+  "first_failing_gate": "d21_rms_gate",
+  "terminal_reason": "max D21 relative RMS 0.08845639298080632 exceeds frozen threshold 0.015; by protocol MSE/SE reference stage is suppressed and no rescue/rerun is allowed."
+}
