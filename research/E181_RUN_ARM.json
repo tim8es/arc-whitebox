@@ -1,0 +1,15 @@
+{
+  "schema": "arc.whitebox.e181.arm.v1",
+  "experiment": "E181",
+  "hypothesis": "H180",
+  "rank": 3072,
+  "target_free": true,
+  "protocol_commit": "df41aea0f4cff8a6cb72c8b6a2189af4f902433c",
+  "falsifier_commit": "1b0219ab47473a47e2e014046a7dcb7a65234b3b",
+  "workflow_commit": "ef6e9e60b159742835c48c5bcc437fb455e4ac0f",
+  "allow_second_arm": false,
+  "public_submission": false,
+  "scorer": false,
+  "leaderboard_mutation": false,
+  "baseline_mutation": false
+}
