@@ -1,0 +1,143 @@
+{
+  "schema": "arc.whitebox.e162.terminal_receipt.v1",
+  "experiment": "E162",
+  "idempotency_key": "ARC-E162-OWNER-AGO-GAUGE-ONLY-20260921",
+  "status": "TERMINAL_PROCEDURAL_NO_GO",
+  "decision": "E162_TERMINAL_NO_GO_CLOSE_AGO",
+  "terminal": true,
+  "reason_class": "ENVIRONMENT_INSTALL_FAILURE_BEFORE_SCIENCE",
+  "reason": "The sole authorized GitHub Actions run failed at `python -m pip install -e .` because the repository root contains neither setup.py nor pyproject.toml. Syntax checks, focused tests, the target-free falsifier, gauge identities, parent-vs-AGO MSE, deterministic replay, and executable cost reconciliation were therefore not evaluated. Frozen one-run policy forbids repair or rerun.",
+  "branch": "research/e162-owner-ago-gauge-only-20260921",
+  "ancestry": {
+    "support_branch": "research/e160-primary-source-angular-support-20260921",
+    "support_commit": "f425e18feab11ebcb3e8a908e713f36677f84e09",
+    "owner_protocol_commit": "81debd79362dbd822391a07598aad5cb507fe331",
+    "owner_protocol_blob": "32a5b809ddfc9bbcc1426f6076a7ed4362101a47",
+    "candidate_commit": "2034e9d015c4efd5d83e1eb76907cb3d41dceb6f",
+    "candidate_blob": "4c30094d53fc16a2523edf0e97e2a1be5a36d2fa",
+    "reference_commit": "011474a653a4e65561011103a2ae60f9b43e9c8b",
+    "reference_blob": "f131f8f442d5931424f548bbea39966b98168e7a",
+    "tests_commit": "a3522c76cf7b71e355374cc6918a6061e9e5b9dc",
+    "tests_blob": "f83d1690948fea563666a76e2ce5c85a074a1a2a",
+    "falsifier_commit": "c3f0560ff8b0c61602038e8a1b766b5eebbeaa8b",
+    "falsifier_blob": "06cd18c2412c23a5f436909ca97b1f60d36cea95",
+    "workflow_commit": "24495dcad0e84f3b3247ca1797876efd380eb0cd",
+    "workflow_blob": "71a7a161dea758490256519079aaaf49fcd0dea8",
+    "arm_commit": "177ce09b6649a7db9c4b4dd97da48a4272b66fdc",
+    "arm_blob": "706487aab2f9d6e7d441e18605e18243d00a08be"
+  },
+  "mechanism": {
+    "name": "AGO",
+    "candidate_delta": "Exact K1/K2 Gaussian-to-angular gauge after first activation plus exact final radial a1 readout.",
+    "higher_order_state": false,
+    "k4": false,
+    "d4": false,
+    "d22": false,
+    "c4": false,
+    "recurrent_k4": false,
+    "e154_code_used": false,
+    "e157_code_used": false,
+    "strassen": false
+  },
+  "execution": {
+    "authorized_external_runs": 1,
+    "observed_matching_runs": 1,
+    "run_id": 35603072598,
+    "run_attempt": 1,
+    "job_id": 106343552228,
+    "head_sha": "177ce09b6649a7db9c4b4dd97da48a4272b66fdc",
+    "github_conclusion": "failure",
+    "frozen_arm_blob_guard": "PASS",
+    "checkout": "PASS",
+    "python_setup": "PASS",
+    "install_project_and_test_dependency": "FAIL",
+    "install_error": "ERROR: file:///home/runner/work/arc-whitebox/arc-whitebox does not appear to be a Python project: neither 'setup.py' nor 'pyproject.toml' found.",
+    "syntax_check": "NOT_RUN",
+    "focused_tests": "NOT_RUN",
+    "scientific_falsifier": "NOT_RUN",
+    "rerun": false,
+    "rescue": false,
+    "artifact": {
+      "id": 10639349777,
+      "name": "e162-ago",
+      "size_bytes": 302,
+      "zip_sha256": "b4ec57438f8b36e856f3e620dc50fcffbee6119340d23250ac32fa652f385810",
+      "expires_at": "2026-12-20T13:02:29Z"
+    }
+  },
+  "frozen_protocol": {
+    "fixtures": [
+      {
+        "name": "exact2d",
+        "width": 2,
+        "depth": 8,
+        "seed": 162002
+      },
+      {
+        "name": "dense32",
+        "width": 32,
+        "depth": 8,
+        "seed": 162032,
+        "reference_samples": 32768,
+        "reference_seed": 162320
+      },
+      {
+        "name": "adversarial16",
+        "width": 16,
+        "depth": 8,
+        "seed": 162016,
+        "reference_samples": 32768,
+        "reference_seed": 162160
+      }
+    ],
+    "scientific_gate": "AGO MSE <= 0.98 * parent MSE on each fixture",
+    "gauge_identity_tolerance": 2e-12,
+    "homogeneity_tolerance": 2e-12,
+    "planned_complete_cost_upper_flops": 112131571712,
+    "cap_flops": 296868139499,
+    "planned_utilization": 0.05099153518676758,
+    "planned_slack_flops": 184736567787
+  },
+  "gate_summary": {
+    "frozen_blob_guard": true,
+    "exactly_one_run": true,
+    "source_firewall": "NOT_EVALUATED",
+    "no_e154_e157_runtime_import": "NOT_EVALUATED",
+    "no_higher_order_runtime_state": "NOT_EVALUATED",
+    "finite_parent_candidate_reference": "NOT_EVALUATED",
+    "gauge_roundtrip": "NOT_EVALUATED",
+    "exact2d_first_state_gauge_identity": "NOT_EVALUATED",
+    "homogeneity": "NOT_EVALUATED",
+    "deterministic_replay": "NOT_EVALUATED",
+    "reference_stability": "NOT_EVALUATED",
+    "exact2d_parent_vs_ago_mse": "NOT_EVALUATED",
+    "dense32_parent_vs_ago_mse": "NOT_EVALUATED",
+    "adversarial16_parent_vs_ago_mse": "NOT_EVALUATED",
+    "executable_cost_reconciliation": "NOT_EVALUATED",
+    "complete_cost_runtime_gate": "NOT_EVALUATED",
+    "scientific_go": false
+  },
+  "restrictions": {
+    "rerun_forbidden": true,
+    "repair_and_rerun_forbidden": true,
+    "seed_change_forbidden": true,
+    "threshold_change_forbidden": true,
+    "sweep_forbidden": true,
+    "rescue_forbidden": true,
+    "public_target_forbidden": true,
+    "canonical_ledger_mutation": false
+  },
+  "scope": {
+    "target_free_intent": true,
+    "scientific_execution_completed": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  }
+}
