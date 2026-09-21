@@ -1,0 +1,139 @@
+{
+  "schema": "arc.whitebox.e175.terminal_receipt.v1",
+  "experiment": "E175",
+  "idempotency": "ARC-E175-AGO-GAIN-TRANSFER-20260921",
+  "status": "TERMINAL_NO_GO",
+  "decision": "E175_TERMINAL_NO_GO_EXECUTION_INTEGRITY_BEFORE_SCIENCE",
+  "scientific_hypothesis": "AGO-GAIN: exact first-state angular gauge plus final radial readout on the official public gain-only covariance closure",
+  "scientific_hypothesis_result": "UNEVALUATED",
+  "terminal_reason_class": "FROZEN_BLOB_GUARD_MISMATCH",
+  "terminal_reason": "The sole authorized GitHub Actions run failed in the pre-science frozen-blob guard because the workflow hard-coded an incorrect E175_RUN_ARM.json blob. Expected c7b0bca0f286b9a98e83f795638723595fb4e390, actual immutable arm blob 79e7c5f29f57af42270f37931b0322359c1d272e. Runtime installation and the scientific falsifier were skipped. The frozen one-run/no-rescue protocol therefore makes E175 terminal; no rerun is authorized.",
+  "hypothesis_selection_evidence": {
+    "e164_owner": "AGO target-free GO; pooled AGO/parent MSE ratio 0.6661376209420509; cost 0.05099153518676758B.",
+    "e165_verifier": "Independent GO on E164 identities, replay, firewall and cost.",
+    "e171_owner": "Production-shaped 1024x16 three-seed GO; pooled ratio 0.8469174379561903; all 3 seeds improved; 131/144 paired batches positive.",
+    "e172_verifier": "Independent recomputation from saved vectors confirmed E171 pooled ratio 0.8469174379561903 and cost 0.05099153518676758B.",
+    "public_parent": "Official starter-kit gain-only covariance estimator is a distinct K2 closure; measured cost 51,709,240,799 FLOPs at 1024x16.",
+    "public_v29": "Pinned V29 reports raw ~2.13e-8 but C/B ~0.2526, so V29 itself is not an admissible <=0.135B parent for E175."
+  },
+  "provenance": {
+    "base": "review/e172-e171-independent-verifier-20260921@423edafe9e7a1c83b6e58ec1ea4862becafc2162",
+    "branch": "research/e175-ago-public-gain-transfer-20260921",
+    "research_note": {
+      "commit": "c3ffd92243eb398211c23fc6e5ef74743ed84137",
+      "blob": "af94db27f17bd01ee3a699c6f4e18fb8ec2e0b19",
+      "path": "research/E175_RESEARCH_NOTE.md"
+    },
+    "protocol": {
+      "final_freeze_commit": "bcba3241b10350f7ddc97649bf0c9910b7d76643",
+      "blob": "725a6aba7fa0bd3b51b29c412aedce7b78543cb9",
+      "path": "research/E175_PROTOCOL.md"
+    },
+    "candidate": {
+      "commit": "e820e9f9559fa7a6cefab009db77a286bba0bf90",
+      "blob": "8ed7044dae38870b157104843e685725ba3b5b07",
+      "path": "methods/e175_public_gain_ago.py"
+    },
+    "falsifier": {
+      "commit": "722dfc4d7694e45e6e0610efd8ad93b407cb0e0a",
+      "blob": "fdabb079ef502ab083052dffa9d0a0429df51f7e",
+      "path": "scripts/e175_ago_gain_transfer.py"
+    },
+    "arm": {
+      "commit": "1e48f5118da0def82567477ca37b2cf6e7ec35fc",
+      "blob": "79e7c5f29f57af42270f37931b0322359c1d272e",
+      "path": "research/E175_RUN_ARM.json"
+    },
+    "workflow": {
+      "launch_commit": "e9c17a0f28a3d2013877a15ca0b5b5acc07137f0",
+      "blob": "b528a5a6bb58c7c464c2cde310e78582c56c481e",
+      "path": ".github/workflows/e175-ago-gain-transfer.yml"
+    },
+    "reference_helper": {
+      "blob": "f75cdef00dc5e15d358c29163a2a3b3ec140d78b",
+      "path": "methods/e171_reference_streaming.py"
+    },
+    "official_public_parent": {
+      "repository": "AIcrowd/whest-starterkit",
+      "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "path": "examples/03_covariance_propagation.py",
+      "blob": "675b3dd8f032f342112a99f431115b35f8481620"
+    },
+    "public_v29": {
+      "repository": "504aldo/whest-p2-cumulant-k3",
+      "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "estimator_blob": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+    }
+  },
+  "execution": {
+    "authorized_external_runs": 1,
+    "observed_runs": 1,
+    "run_id": 35616483800,
+    "run_attempt": 1,
+    "head_sha": "e9c17a0f28a3d2013877a15ca0b5b5acc07137f0",
+    "job_id": 106388394761,
+    "github_conclusion": "failure",
+    "failed_step": "Verify frozen E175 blobs",
+    "scientific_step": "SKIPPED",
+    "runtime_install_step": "SKIPPED",
+    "artifact_upload_step": "FAILED_NO_FILES",
+    "artifacts": [],
+    "rerun": false,
+    "rescue": false,
+    "sweep": false
+  },
+  "guard_failure": {
+    "workflow_expected_arm_blob": "c7b0bca0f286b9a98e83f795638723595fb4e390",
+    "actual_arm_blob": "79e7c5f29f57af42270f37931b0322359c1d272e",
+    "other_frozen_blob_checks_before_arm": "PASS",
+    "exit_code": 1
+  },
+  "planned_panel": {
+    "width": 1024,
+    "depth": 16,
+    "weight_seed": 1751024,
+    "reference_seed": 175196608,
+    "reference_samples": 65536,
+    "reference_batches": 16
+  },
+  "scientific_metrics": {
+    "parent_mse": null,
+    "candidate_mse": null,
+    "candidate_over_parent": null,
+    "reference_se_rms": null,
+    "batch_positive_count": null,
+    "deterministic_replay": null,
+    "reason": "UNEVALUATED: scientific step never executed."
+  },
+  "cost_gate": {
+    "status": "PRE_RUN_ANALYTIC_PASS_ONLY",
+    "official_public_parent_measured_flops": 51709240799,
+    "ago_overlay_upper_flops": 9437184,
+    "integration_accounting_reserve_flops": 1000000000,
+    "all_in_upper_flops": 52718677983,
+    "budget_flops": 2199023255552,
+    "utilization_upper": 0.02397367915500581,
+    "cap": 0.135,
+    "pass": true
+  },
+  "scope": {
+    "target_free": true,
+    "public_dataset_opened": false,
+    "public_target_opened": false,
+    "public_mini_run": false,
+    "public_full_run": false,
+    "scorer": false,
+    "leaderboard": false,
+    "submission": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false
+  },
+  "terminal_policy": {
+    "rerun_forbidden": true,
+    "rescue_forbidden": true,
+    "seed_change_forbidden": true,
+    "sample_change_forbidden": true,
+    "threshold_change_forbidden": true,
+    "new_workflow_attempt_under_E175_forbidden": true
+  }
+}
