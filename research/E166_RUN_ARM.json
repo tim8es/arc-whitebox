@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-E166-PRODUCTION-SHAPED-AGO-20260921",
+  "execute_once": true,
+  "scope": "synthetic 1024x16 production-shaped AGO only"
+}
