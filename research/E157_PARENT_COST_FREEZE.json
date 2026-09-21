@@ -1,0 +1,36 @@
+{
+  "experiment": "E157",
+  "artifact": "PARENT_COST_FREEZE",
+  "status": "FROZEN_BEFORE_CANDIDATE_RUN",
+  "date": "2026-09-21",
+  "parent_class": "clean_room_angular_K2_no_K4",
+  "parent_commit": "cf1c86edf4f1a35f887bd464f78d5454eefcc68b",
+  "parent_blob": "cf233297780b509da35edd149e3c83d1a3a06087",
+  "production_shape": {
+    "width": 1024,
+    "max_depth": 16
+  },
+  "budget_flops": 2199023255552,
+  "parent_cost_upper_flops": 74238787584,
+  "parent_utilization_upper": 0.033759891986846924,
+  "required_parent_utilization_max": 0.1349904166907072,
+  "overlay_cost_upper_flops": 21073920,
+  "overlay_utilization_upper": 0.000009583309292793274,
+  "combined_cost_upper_flops": 74259861504,
+  "combined_utilization_upper": 0.03376947529613972,
+  "cap_utilization": 0.135,
+  "parent_owns_first_layer_M": true,
+  "accounting": [
+    "4*n^3 per layer covariance sandwich",
+    "200*n^2 + 1000*n per layer upper allowance for mean matvec, Wick, cross-covariance, symmetrization, radial bookkeeping",
+    "extra 2*n^3 explicitly covers first-layer M ownership/materialization",
+    "AIK4-1 overlay upper bound 20*n^2 + 100*n"
+  ],
+  "exclusions": [
+    "no Strassen",
+    "no recurrent K4/c4",
+    "no benchmark/public target access",
+    "no sampling"
+  ],
+  "scientific_run_count": 0
+}
