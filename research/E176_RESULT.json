@@ -1,0 +1,127 @@
+{
+  "schema": "arc.whitebox.e176.committed_result.v1",
+  "experiment": "E176",
+  "idempotency_key": "ARC-E176-CLEANROOM-AGO-GAIN-MINI-20260921",
+  "branch": "research/e176-cleanroom-ago-gain-mini-20260921",
+  "status": "TERMINAL_SCIENTIFIC_NO_GO_REFERENCE_PRECISION_GATE",
+  "scientific_go": false,
+  "hypothesis": "One-time AGO gauge after the first ReLU transfers to the official public gain-only covariance closure.",
+  "interpretation": "The candidate showed a large favorable effect on the sole frozen synthetic mini, but the preregistered reference-precision gate failed. Under the frozen protocol this is a terminal NO-GO and does not establish transfer.",
+  "fixture": {
+    "width": 256,
+    "depth": 8,
+    "zero_bias": true,
+    "weight_seed": 1760256,
+    "reference_seed": 17665536,
+    "reference_samples": 65536,
+    "reference_batches": 16,
+    "reference_batch_size": 4096
+  },
+  "source": {
+    "official_starter_repo": "AIcrowd/whest-starterkit",
+    "official_starter_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "official_gain_only_path": "examples/03_covariance_propagation.py",
+    "official_gain_only_blob": "675b3dd8f032f342112a99f431115b35f8481620",
+    "scientific_parent_branch": "review/e172-e171-independent-verifier-20260921",
+    "scientific_parent_commit": "423edafe9e7a1c83b6e58ec1ea4862becafc2162",
+    "e175_ancestry_or_import_used": false
+  },
+  "execution": {
+    "run_id": 35631993362,
+    "job_id": 106440150908,
+    "run_attempt": 1,
+    "head_sha": "5d506b098b91e36e33a657e95a09166c39894a54",
+    "github_conclusion": "success",
+    "scientific_process_exit": 2,
+    "scientific_process_exit_meaning": "frozen scientific gate failure with complete evidence",
+    "rerun": false,
+    "rescue": false,
+    "sweep": false,
+    "artifact": {
+      "id": 10655120593,
+      "name": "e176-cleanroom-ago-gain-mini",
+      "size_bytes": 4585729,
+      "zip_sha256": "0129b347bdc749c3f19d051783ae662dbf1a97b18b8458d4e49cca07083cfbe4",
+      "expires_at": "2026-12-20T17:26:14Z"
+    }
+  },
+  "immutable_evidence": {
+    "manifest_path": "e176_manifest.json",
+    "manifest_sha256": "f40e820d2ac156ff59119d0cd1f6baaec6a59cc484f4ef59f20320873e0dfe29",
+    "payload_count": 17,
+    "weights_raw_sha256": "a496dbc456f12affc2933b6b3f251b5d3e3a0322bf6054a472c51cb3c48f6c47",
+    "parent_prediction_raw_sha256": "c1303e12a618810b9e673d851dccc1a2cc8989cb31dc1fdd5e954794bc8cfb78",
+    "candidate_prediction_raw_sha256": "b09c1e6bbf772555b33d345680e2f7f84eadd81e5c316dcb6cc573c05c808a90",
+    "pre_reference_freeze_sha256": "153d5542658ce630aa93b250c2777a052f1809428b5cbd2828023233337a5d6a",
+    "candidate_frozen_before_reference_import": true
+  },
+  "metrics": {
+    "parent_mse": 0.000037871092632971474,
+    "candidate_mse": 0.000031738428860932444,
+    "candidate_over_parent": 0.8380647785509154,
+    "improvement_fraction": 0.16193522144908457,
+    "parent_coordinate_mse_se": 0.00000483329250518147,
+    "candidate_coordinate_mse_se": 0.000004228676187195708,
+    "reference_coordinate_se_rms": 0.0016499405198955508,
+    "reference_coordinate_se_limit": 0.0015,
+    "reference_batch_reconcile_max_abs": 0.0,
+    "paired_batch_delta_mean": 0.000006132663772039012,
+    "paired_batch_delta_se": 0.000000993284621732392,
+    "paired_delta_mean_over_se": 6.174125359298332,
+    "positive_batch_count": 15,
+    "batch_count": 16,
+    "gauge_roundtrip_relative_error": 1.323239494269448e-16
+  },
+  "replay": {
+    "parent_bitwise_exact": true,
+    "candidate_bitwise_exact": true
+  },
+  "flops": {
+    "production_parent_official_measured": 51709240799,
+    "production_candidate_all_in_upper": 51782694367,
+    "production_candidate_utilization_upper": 0.023548043085156678,
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "production_cost_pass": true,
+    "local_mini_parent_research_upper": 545390592,
+    "local_mini_candidate_research_upper": 545982464,
+    "local_mini_candidate_incremental_upper": 591872,
+    "reference_research_upper": 68719476736,
+    "reference_excluded_from_estimator_cost": true
+  },
+  "wall_seconds": {
+    "parent": 0.03796547600001077,
+    "candidate": 0.013298882999990269,
+    "reference": 1.1983121089999997
+  },
+  "gates": {
+    "source_firewall": true,
+    "gain_only_parent_audit": true,
+    "gauge_roundtrip_le_2e_12": true,
+    "parent_replay_bitwise": true,
+    "candidate_replay_bitwise": true,
+    "all_arrays_finite": true,
+    "reference_batch_reconcile_le_2e_12": true,
+    "reference_se_rms_le_1p5e_3": false,
+    "candidate_mse_lt_parent": true,
+    "candidate_over_parent_le_0p98": true,
+    "paired_delta_mean_positive": true,
+    "paired_delta_mean_gt_2se": true,
+    "positive_batches_ge_11_of_16": true,
+    "production_candidate_cost_le_0p135B": true,
+    "exactly_one_external_run_protocol": true
+  },
+  "terminal_reason": "The sole failing mandatory gate is reference RMS coordinate SE: 0.0016499405198955508 > 0.0015. The protocol explicitly states that a noisy reference is failure and does not authorize more samples.",
+  "authorization": {
+    "public_mini": false,
+    "leaderboard": false,
+    "submission": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "canonical_change": false,
+    "ledger_change": false,
+    "rerun": false,
+    "sample_increase": false
+  }
+}
