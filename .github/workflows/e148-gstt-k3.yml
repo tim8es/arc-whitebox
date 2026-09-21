@@ -1,0 +1,111 @@
+name: E148 GSTT-K3 target-free falsifier
+
+on:
+  push:
+    branches:
+      - research/e148-global-seed-tt-k3-20260921
+    paths:
+      - 'research/E148_RUN_ARM.json'
+
+jobs:
+  e148:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      VECLIB_MAXIMUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and E148 blobs
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-E148-GLOBAL-SEED-TT-K3-20260921",
+              "execute_once": True,
+          }
+          arm = json.loads(Path("research/E148_RUN_ARM.json").read_text())
+          if arm != expected:
+              raise SystemExit(f"invalid arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E148_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+
+          frozen = {
+              "research/E148_PRIMARY_SOURCE_NOTE.md": "a7a7a8b375eacbe7406f13b78e895f9c693ed4bc",
+              "research/E148_PROTOCOL.md": "0317790709e465f277925e68a7f12e79b65e0cf5",
+              "methods/e148_gstt_k3.py": "c53d4dda3516a4741c76ae5884cf7688771077a5",
+              "scripts/e148_gstt_k3_falsifier.py": "aeea8cb32baa40ffa5a26cb6b646db9ecf63477e",
+          }
+          for path, expected_sha in frozen.items():
+              actual = subprocess.check_output(
+                  ["git", "rev-parse", f"HEAD:{path}"], text=True
+              ).strip()
+              if actual != expected_sha:
+                  raise SystemExit(
+                      f"frozen blob mismatch {path}: {actual} != {expected_sha}"
+                  )
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install exact-small dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.8.0
+          python -m pip install numpy==2.3.3 jaxtyping==0.3.2 tqdm==4.67.1 einops==0.8.1 opt_einsum==3.4.0 joblib==1.5.2
+
+      - name: Verify pinned official ARC and public V29 sources
+        run: |
+          set -euo pipefail
+          git clone -q https://github.com/alignment-research-center/mlp_cumulant_propagation.git /tmp/mlp_cumulant_propagation
+          git -C /tmp/mlp_cumulant_propagation checkout -q 93d091a4c26c042bfffa28f2e76a81bc0aba94bb
+          test "$(git -C /tmp/mlp_cumulant_propagation rev-parse HEAD)" = "93d091a4c26c042bfffa28f2e76a81bc0aba94bb"
+          echo "E148_OFFICIAL_SOURCE_OK=1" >> "$GITHUB_ENV"
+
+          git clone -q https://github.com/504aldo/whest-p2-cumulant-k3.git /tmp/public_v29
+          git -C /tmp/public_v29 checkout -q 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+          test "$(git -C /tmp/public_v29 rev-parse HEAD)" = "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45"
+          test "$(git -C /tmp/public_v29 rev-parse HEAD:estimators/estimator_v29.py)" = "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+          echo "E148_PUBLIC_V29_SOURCE_OK=1" >> "$GITHUB_ENV"
+
+      - name: Syntax check
+        env:
+          PYTHONPATH: /tmp/mlp_cumulant_propagation/src:${{ github.workspace }}
+        run: |
+          python -m py_compile methods/e148_gstt_k3.py
+          python -m py_compile scripts/e148_gstt_k3_falsifier.py
+
+      - name: Run sole frozen E148 target-free falsifier
+        env:
+          PYTHONPATH: /tmp/mlp_cumulant_propagation/src:${{ github.workspace }}
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e148_gstt_k3_falsifier.py 2>&1 | tee e148-gstt-k3.log
+
+      - name: Upload immutable E148 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e148-gstt-k3
+          path: |
+            e148-gstt-k3.log
+            e148-gstt-k3.json
+            research/E148_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
