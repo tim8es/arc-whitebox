@@ -1,0 +1,96 @@
+name: E154 clean angular-radial K4
+
+on:
+  push:
+    branches:
+      - research/e154-clean-angular-radial-k4-20260921
+    paths:
+      - 'research/E154_RUN_ARM.json'
+
+jobs:
+  e154:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and blobs
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-E154-CLEAN-ANGULAR-RADIAL-K4-20260921",
+              "execute_once": True,
+              "scope": "target-free 2D/32D/16D only",
+          }
+          arm = json.loads(Path("research/E154_RUN_ARM.json").read_text())
+          if arm != expected:
+              raise SystemExit(f"invalid arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E154_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+
+          frozen = {
+              "research/E154_PROTOCOL.md": "a7469ccf52184e45a38af0e82ebc6ebbe6326247",
+              "methods/e154_angular_radial_k4.py": "c1b2fcc2c5366af7dfd5414ae36c035a19217d58",
+              "methods/e154_reference.py": "415526fcc928d1899ac8fca87b53f1af2fa80981",
+              "tests/test_e154_angular_radial_k4.py": "4df595d4e806b183674c484aea7fbbb5e7e38d9a",
+              "scripts/e154_angular_radial_k4_falsifier.py": "8478b15718f107be5a96ef8a7f7defaece2a1b5f",
+          }
+          for path, expected_sha in frozen.items():
+              actual = subprocess.check_output(
+                  ["git", "rev-parse", f"HEAD:{path}"], text=True
+              ).strip()
+              if actual != expected_sha:
+                  raise SystemExit(
+                      f"frozen blob mismatch {path}: {actual} != {expected_sha}"
+                  )
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install project and test dependency
+        run: |
+          python -m pip install -e .
+          python -m pip install pytest==8.3.5
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e154_angular_radial_k4.py
+          python -m py_compile methods/e154_reference.py
+          python -m py_compile scripts/e154_angular_radial_k4_falsifier.py
+
+      - name: Focused tests
+        run: python -m pytest -q tests/test_e154_angular_radial_k4.py
+
+      - name: Run sole frozen E154 target-free falsifier
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e154_angular_radial_k4_falsifier.py 2>&1 | tee e154-angular-radial-k4.log
+
+      - name: Upload immutable E154 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e154-angular-radial-k4
+          path: |
+            e154-angular-radial-k4.log
+            e154-angular-radial-k4.json
+            research/E154_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
