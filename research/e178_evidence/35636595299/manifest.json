@@ -1,0 +1,9 @@
+{
+  "head_sha": "dee4488e0a283ba3b3e8fa7505ca09d8299f8f90",
+  "infrastructure_terminal": true,
+  "payload_sha256": {
+    "E178_TERMINAL_RECEIPT.json": "024e51090d2a6450bbcc83c9eb37314c5b5731d9c64fdef6f1c336f2d3353452"
+  },
+  "run_id": "35636595299",
+  "schema": "arc.whitebox.e178.manifest.v1"
+}

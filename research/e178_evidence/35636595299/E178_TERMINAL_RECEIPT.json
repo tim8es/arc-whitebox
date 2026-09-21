@@ -1,0 +1,18 @@
+{
+  "armed_head_sha": "dee4488e0a283ba3b3e8fa7505ca09d8299f8f90",
+  "authorization": "terminal infrastructure receipt only; no rerun/rescue/public execution authorized",
+  "branch": "research/e178-h177-higher-order-ago-gauge-20260921",
+  "decision": "INFRA_FAILURE_BEFORE_COMPLETE_SCIENCE",
+  "experiment": "E178",
+  "no_public_target_or_scorer": true,
+  "rerun_authorized": false,
+  "run_id": "35636595299",
+  "schema": "arc.whitebox.e178.terminal_receipt.v1",
+  "status": "TERMINAL_NO_GO",
+  "step_outcomes": {
+    "deps": "success",
+    "guard": "success",
+    "python": "success",
+    "science": "failure"
+  }
+}
