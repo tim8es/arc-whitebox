@@ -1,0 +1,181 @@
+{
+  "schema": "arc.whitebox.e190.cost_evidence_recovery.v1",
+  "experiment": "E190",
+  "mode": "READ_ONLY_EXISTING_EVIDENCE_RECOVERY",
+  "ancestry": {
+    "e187_head": "06fbb08fb9ece3b5b3d8da7b60fee331030a044f",
+    "e187_protocol_status": "NO_GO_G2_MISSING_EXACT_RAW_PARENT_COUNT"
+  },
+  "f86_source": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "namespace_log": {
+      "path": "docs/audit_v29_ns_d0.log",
+      "git_blob_sha1": "a689ef69fd64bed7765cb93ce4910c3fedcbd04a",
+      "displayed_call1": {
+        "c_over_b": 0.2671,
+        "units": 273.5,
+        "ops": 12905
+      },
+      "displayed_call2": {
+        "c_over_b": 0.254,
+        "units": 260.1,
+        "ops": 13121
+      },
+      "grouped_units_display": {
+        "K3_young": 115.61,
+        "K3_old": 106.83,
+        "K3_thin_elementwise": 24.78,
+        "covariance": 7.1,
+        "birth_closure": 5.71,
+        "other_untagged": 0.03,
+        "dense_K3": 222.44,
+        "remainder": 37.62,
+        "total": 260.06
+      }
+    },
+    "audit_script": {
+      "path": "harness/audit_v29_ns.py",
+      "git_blob_sha1": "279d8e0308360fde7616d56f8e8cc2705b529898",
+      "semantics": "C = float(ctx.flops_used); second predict is ledger; output formats C/B to 4 decimals, total units to 1 decimal, family/group units to 2 decimals"
+    },
+    "plain_estimator_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "namespaced_estimator_git_blob_sha1": "f91df783b83cb5fae0af57a16799c5df81891bd2",
+    "namespace_generator": {
+      "path": "generators/make_v29_ns.py",
+      "git_blob_sha1": "6c0e439eaeefcb2e06991cb86d9bda3b174fc30d",
+      "invariant": "pure textual namespace wrapping; asserted anchors; op stream unchanged"
+    },
+    "flopscope_version_family": "0.12.1",
+    "cost_shape_invariant": "F86 states flopscope counts are shape-based so one dump is the ledger"
+  },
+  "recovered_existing_evidence": {
+    "repository": "tim8es/arc-whitebox",
+    "branch": "research/e136-public-k3-reproduction",
+    "workflow_run_id": 35544406064,
+    "workflow_name": "E136 public K3 full-mini follow-up",
+    "workflow_head_sha": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "v29_job_id": 106167659295,
+    "artifact": {
+      "id": 10617318650,
+      "name": "e136-followup-v29",
+      "size_bytes": 102407,
+      "github_digest_sha256": "32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681",
+      "downloaded_zip_sha256_verified_equal": true,
+      "expires_at": "2026-12-19T23:21:31Z"
+    },
+    "report": {
+      "path": "report.json",
+      "sha256": "76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b",
+      "per_mlp_index_sha256_from_existing_summary": "36becb062d04f8b6fdf76d9d5d4e0407cb357e3b111d744be459ba83394e5b5a",
+      "schema_version": "1.1",
+      "width": 1024,
+      "depth": 16,
+      "flop_budget": 2199023255552,
+      "lambda_flops_per_second": 0,
+      "n_mlps": 100,
+      "shape_fallback_count": 0
+    },
+    "environment": {
+      "python": "3.11.16",
+      "flopscope": "0.12.1+np2.4.6",
+      "one_blas_thread": true
+    },
+    "vendored_v29_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "exact_flops_sequence": {
+      "mlp_index_0": 587262754287,
+      "mlp_index_1": 558473140719,
+      "mlp_indices_2_through_99": 555383704047,
+      "multiplicities": {
+        "587262754287": 1,
+        "558473140719": 1,
+        "555383704047": 98
+      }
+    }
+  },
+  "bridge_proof": {
+    "exact_call1": {
+      "flops": 587262754287,
+      "units": "273.465530149172991514205932617",
+      "c_over_b": "0.267056181786301749525591731071",
+      "f86_render": {
+        "units_1dp": 273.5,
+        "c_over_b_4dp": 0.2671
+      },
+      "matches_f86_call1_render": true
+    },
+    "exact_call2_parent_raw": {
+      "flops": 558473140719,
+      "units": "260.059321634005755186080932617",
+      "c_over_b": "0.253964181283208745298907160759",
+      "f86_render": {
+        "units_1dp": 260.1,
+        "c_over_b_4dp": 0.254
+      },
+      "grouped_render_2dp": 260.06,
+      "matches_f86_call2_render": true,
+      "matches_f86_grouped_total_rounding": true
+    },
+    "identity_basis": [
+      "E136 vendored estimator_v29.py Git blob equals the pinned upstream estimator_v29.py blob",
+      "make_v29_ns.py states and implements namespace-only wrapping with unchanged op stream",
+      "F86 uses the second predict as the parent ledger",
+      "E136 exact first and second call cost fingerprints render exactly as F86 call1/call2",
+      "both evidence paths use flopscope 0.12.1 family and width=1024/depth=16",
+      "F86 states FLOP counts are shape-based"
+    ],
+    "recovered_exact_parent_raw_flops": 558473140719
+  },
+  "decomposition_reconciliation": {
+    "exact_parent_units": "260.059321634005755186080932617",
+    "source_dense_display_units": 222.44,
+    "source_remainder_display_units": 37.62,
+    "source_display_sum_units": 260.06,
+    "relationship": "222.44 + 37.62 = 260.06, and exact parent units round to 260.06 at 0.01u and 260.1 at 0.1u",
+    "exact_dense_raw_flops_recovered": false,
+    "exact_remainder_raw_flops_recovered": false,
+    "reason_components_not_exact": "The committed F86 namespace log formats group totals to 0.01u and does not preserve the raw namespace op_log or exact group FLOP integers.",
+    "component_rounding_intervals_units_if_nearest_0_01": {
+      "dense": "[222.43, 222.45)",
+      "remainder": "[37.60, 37.64)"
+    }
+  },
+  "machine_readable_recovery": {
+    "possible_without_new_execution": true,
+    "exact_fields_available": [
+      "parent_total_flops",
+      "parent_total_units derived from integer/u",
+      "artifact/run/job/head provenance",
+      "artifact ZIP SHA-256",
+      "report.json SHA-256",
+      "estimator Git blob identity",
+      "call1/call2 cost fingerprint"
+    ],
+    "rounded_source_fields_only": [
+      "dense_K3_group_units=222.44",
+      "remainder_group_units=37.62",
+      "individual F86 namespace/group unit totals"
+    ],
+    "cannot_recover_without_raw_namespaced_op_log_or_reexecution": [
+      "exact dense_K3 raw FLOP integer",
+      "exact remainder raw FLOP integer",
+      "exact per-namespace raw FLOP integers"
+    ]
+  },
+  "search_coverage": {
+    "upstream_git_tree": "recursive tree inspected; only committed F86 namespace log and rounded cost-anatomy CSV found; no raw audit_v29_d0.log, raw op_log, receipt, or machine-readable exact F86 ledger",
+    "upstream_actions": "0 workflow runs",
+    "arc_whitebox_e136": "reproduction receipt, authoritative run logs, full-mini run metadata, V29 artifact, summary job and report hashes inspected",
+    "arc_whitebox_e180_e185_e186_e187_actions": "0 workflow runs on all four branches",
+    "direct_exact_integer_code_search": "558473140719 not committed as repository text in either repo; value is preserved inside E136 immutable Actions report.json"
+  },
+  "decision": {
+    "terminal_evidence_gap_for_parent_total": false,
+    "exact_parent_raw_flops_recovered": true,
+    "exact_parent_raw_flops": 558473140719,
+    "machine_readable_ledger_can_be_created_read_only": true,
+    "exact_component_split_gap_remains": true,
+    "owner_or_scientific_run_authorized_by_e190": false,
+    "status": "RAW_PARENT_TOTAL_RECOVERED_FROM_EXISTING_IMMUTABLE_EVIDENCE"
+  }
+}
