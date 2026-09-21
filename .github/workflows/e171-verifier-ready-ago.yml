@@ -1,0 +1,122 @@
+name: E171 verifier-ready multi-seed AGO owner
+
+on:
+  push:
+    branches:
+      - research/e171-verifier-ready-ago-20260921
+    paths:
+      - 'research/E171_RUN_ARM.json'
+
+jobs:
+  e171:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: '.'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and blobs
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-E171-VERIFIER-READY-MULTISEED-AGO-20260921",
+              "execute_once": True,
+              "scope": "synthetic verifier-ready multi-seed 1024x16 AGO only",
+          }
+          arm = json.loads(Path("research/E171_RUN_ARM.json").read_text())
+          if arm != expected:
+              raise SystemExit(f"invalid arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"],
+              text=True,
+          ).splitlines()
+          if changed != ["research/E171_RUN_ARM.json"]:
+              raise SystemExit(f"unexpected arm diff: {changed}")
+
+          frozen = {
+              "research/E171_OWNER_PROTOCOL.md": "88cb953974e0dbf970f188c915261635ae2720c7",
+              "methods/e164_ago.py": "ea9078eccc2e2bf2a2bea499ef10a4daf80ea0d4",
+              "methods/e171_reference_streaming.py": "f75cdef00dc5e15d358c29163a2a3b3ec140d78b",
+              "tests/test_e171_reference.py": "ae5e2de06b82cea565780f9d4f18e5050434e113",
+              "scripts/e171_verifier_ready_ago.py": "0160da17a5510e4db4a5a93a352779393318e9d3",
+          }
+          for path, expected_sha in frozen.items():
+              actual = subprocess.check_output(
+                  ["git", "rev-parse", f"HEAD:{path}"],
+                  text=True,
+              ).strip()
+              if actual != expected_sha:
+                  raise SystemExit(
+                      f"frozen blob mismatch {path}: {actual} != {expected_sha}"
+                  )
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install standalone dependencies
+        run: python -m pip install numpy==2.1.3 pytest==8.3.5
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e164_ago.py
+          python -m py_compile methods/e171_reference_streaming.py
+          python -m py_compile scripts/e171_verifier_ready_ago.py
+
+      - name: Focused tests
+        run: |
+          python -m pytest -q tests/test_e164_ago.py
+          python -m pytest -q tests/test_e171_reference.py
+
+      - name: Run sole frozen E171 owner execution
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e171_verifier_ready_ago.py 2>&1 | tee e171-verifier-ready-ago.log
+
+      - name: Validate evidence files exist before upload
+        if: always()
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          result = Path("e171-verifier-ready-ago.json")
+          manifest = Path("e171-evidence-manifest.json")
+          evidence = sorted(Path("e171_evidence").rglob("*.npy"))
+          if not result.is_file():
+              raise SystemExit("missing result JSON")
+          if not manifest.is_file():
+              raise SystemExit("missing evidence manifest")
+          if len(evidence) != 27:
+              raise SystemExit(f"expected 27 npy payloads, got {len(evidence)}")
+          payload = json.loads(result.read_text())
+          if not payload["evidence"]["complete_and_hashed"]:
+              raise SystemExit("result says evidence incomplete")
+          PY
+
+      - name: Upload immutable E171 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e171-verifier-ready-ago
+          path: |
+            e171-verifier-ready-ago.log
+            e171-verifier-ready-ago.json
+            e171-evidence-manifest.json
+            e171_evidence/**/*.npy
+            research/E171_RUN_ARM.json
+          if-no-files-found: error
+          retention-days: 90
