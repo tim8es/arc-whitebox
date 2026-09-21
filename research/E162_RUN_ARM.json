@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-E162-OWNER-AGO-GAUGE-ONLY-20260921",
+  "execute_once": true,
+  "scope": "target-free exact2D dense32 adversarial16 only"
+}
