@@ -38,7 +38,7 @@ jobs:
           expected = {
               "idempotency_key": "ARC-E173-OFFICIAL-MINI-AGO-INTEGRATION-20260921",
               "execute": True,
-              "attempt": 3,
+              "attempt": 4,
               "scope": "official local v2-phase2 mini first 5; parent vs AGO; no submission",
           }
           arm = json.loads(Path("research/E173_RUN_ARM.json").read_text())
@@ -55,8 +55,8 @@ jobs:
           frozen = {
               "research/E173_OWNER_PROTOCOL.md": "422f217f7a9055156e2b4959bcbd5f7bcf5ed5b4",
               "methods/e173_starter_ago.py": "67516eeea5efe859cb4f00adaa479d5c8143c866",
-              "methods/e173_parent_estimator.py": "591800e3f4cf50d518c654c4be59cea4996cc33b",
-              "methods/e173_ago_estimator.py": "b80545d085b341f24dd1be3ad590e79f17904c39",
+              "methods/e173_parent_estimator.py": "046cf3a8a51c025d3d3a3a67894da0d17740e7a5",
+              "methods/e173_ago_estimator.py": "6077260bc35a1dfc2acf88869c6021d247a138d3",
               "tests/test_e173_starter_ago.py": "9e29d8333d7fc4f8904bddf0bf18f3abce06f519",
               "scripts/e173_capture_vectors.py": "25a8387c41ae4feb5e2890050a22e2844f4ab83d",
               "scripts/e173_summarize.py": "dbb0344843c9cd44fc6e2ac0a6ad8413ebf741ae",
