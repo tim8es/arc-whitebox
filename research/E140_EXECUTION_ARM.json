@@ -1,0 +1,49 @@
+{
+  "schema": "arc.whitebox.e140.execution_arm.v1",
+  "experiment": "E140",
+  "hypothesis": "H140",
+  "branch": "research/e140-smv-rank4-execution-20260921",
+  "protocol_commit": "1306557350c91db4101d3d1ed3168e6eba59cb20",
+  "authorization": "user message E140 EXECUTION",
+  "scientific_runs_authorized": 1,
+  "rank": 4,
+  "fixtures": [
+    {
+      "name": "he32",
+      "width": 32,
+      "depth": 8,
+      "seed": 140032,
+      "weights": "dense He-Gaussian sqrt(2/n)"
+    },
+    {
+      "name": "adv16",
+      "width": 16,
+      "depth": 8,
+      "seed": 140016,
+      "weights": "deterministic dense QR rotation / diagonal gain / QR rotation"
+    }
+  ],
+  "compression": "deterministic top-4 SVD of mode-3 unfolding after each nonlinear birth; reshape left modes to symmetric R; full tensor symmetrization",
+  "reference": "synthetic ARC K=3 SIMPLE factorized state only; no benchmark targets/reference means/datasets",
+  "gates": {
+    "linear_transport_identity_max_abs": 1e-12,
+    "wick_scaling_identity_max_abs": 1e-12,
+    "pooled_d21_relative_error_max_each_fixture": 0.022,
+    "per_layer_d21_relative_error_max": 0.03,
+    "pooled_d3_relative_error_max_each_fixture": 0.022,
+    "production_utilization_max": 0.135,
+    "deterministic_replay": true,
+    "finite": true,
+    "production_n3_materialization": false,
+    "production_dense_n3m_svd": false
+  },
+  "cost_policy": {
+    "budget_flops": 2199023255552,
+    "budget_units": 1024,
+    "cap_units": 138.24,
+    "frozen_pre_recompression_subtotal_units": 124.2,
+    "remaining_units_for_birth_recompression": 14.04,
+    "rule": "A complete production birth/recompression algorithm with a finite all-in upper bound is mandatory. The small-fixture dense SVD is forbidden in production. If no n^3-free production recompression is demonstrated within 14.04 units, the cost gate fails."
+  },
+  "failure_policy": "Any failed or unevaluable gate => terminal NO-GO. No rerun, rank sweep, rescue, seed replacement, public/scorer/holdout/full run, target access, canonical or ledger mutation."
+}
