@@ -1,0 +1,209 @@
+{
+  "schema": "arc.whitebox.e144.e142_independent_verifier.v1",
+  "experiment": "E144",
+  "role": "independent_verifier_for_E142",
+  "status": "VERIFIER_FAIL_FORBIDDEN_LITERAL_ANCESTRY",
+  "verified_subject": {
+    "experiment": "E142",
+    "branch": "research/e142-response-aligned-old-d21-20260921",
+    "receipt_commit": "c8418babd468a8c2c6e214512dfed5ebd3a34ee2",
+    "receipt_blob": "10b793751b0ef3efc2a47166ac1416aa1fa049f0",
+    "run_id": 35547655818,
+    "job_id": 106176379063,
+    "run_attempt": 1,
+    "arm_head": "fbf0d22431318a9cbfaec0de20e29adea4d72adf",
+    "artifact": {
+      "id": 10615949927,
+      "name": "e142-response-aligned-old-d21",
+      "zip_sha256": "c811cb63045c5c781ed229f89a197137078398f26ba3549e4fe9ae02519be529",
+      "size_bytes": 7216
+    }
+  },
+  "protocol_ancestry": {
+    "protocol_commit": "620d3fb0cd72008443d44248a5c5c4489020f4a1",
+    "protocol_blob": "bf5072400f3200f13e1c8a4db715add00b0a5396",
+    "pre_run_erratum_commit": "93730d1a542fc65243155b55f1f496fef2f53f8a",
+    "pre_run_erratum_blob": "acf343f3c2b5eb0401e05002fea1b1b4f10b14f4",
+    "implementation_commit": "ed60ce96f6ebed3c4f8f1f1976ca9e5b958f07c7",
+    "erratum_precedes_implementation": true,
+    "erratum_to_implementation_ahead_by": 1,
+    "workflow_commit": "38a415ca638de2adf2ce8fec85249a9187145e81",
+    "arm_head": "fbf0d22431318a9cbfaec0de20e29adea4d72adf",
+    "arm_changed_only": "research/E142_RUN_ARM.json",
+    "run_count_on_e142_branch": 1,
+    "rerun": false
+  },
+  "exact_small_reference": {
+    "verdict": "VERIFIED",
+    "reference_implementation_location": "scripts/e142_response_aligned_old_d21_falsifier.py",
+    "reference_independent_of_candidate_module": true,
+    "reference_materialization_occurs_after_candidate_and_replay": true,
+    "dense32": {
+      "max_direct_action_relative_error": 4.493976170433762e-16,
+      "q2_projector_relative_error": 8.50251659735715e-16,
+      "adaptive_b_relative_error": 4.630931170126358e-16
+    },
+    "adversarial16": {
+      "max_direct_action_relative_error": 7.28191702775034e-16,
+      "q2_projector_relative_error": 1.8406667267311523e-15,
+      "adaptive_b_relative_error": 2.671906127143847e-15
+    },
+    "frozen_thresholds": {
+      "direct_action_relative_error": 1e-12,
+      "q2_projector_relative_error": 1e-11,
+      "adaptive_b_relative_error": 1e-12
+    },
+    "pass": true
+  },
+  "direct_action_errors": {
+    "verdict": "VERIFIED",
+    "both_orientations_tested": true,
+    "adaptive_sequence": [
+      "D Omega",
+      "D^T Q1",
+      "D Z1",
+      "D^T Q2"
+    ],
+    "dense32": [
+      4.493976170433762e-16,
+      2.7846466372479406e-16,
+      3.499139161931704e-16,
+      2.3694721939244585e-16
+    ],
+    "adversarial16": [
+      6.981158325643211e-16,
+      6.021659996209638e-16,
+      6.345902180195437e-16,
+      7.28191702775034e-16
+    ],
+    "floating_point_certificate_pass_all": true
+  },
+  "heldout_orientation_certificate": {
+    "verdict": "VERIFIED_WITH_CAVEAT",
+    "comparator_erratum_was_pre_code_pre_run": true,
+    "dense32": {
+      "actual_error": 1.4959394106592077,
+      "orientation_certificate": 44.92482435131745,
+      "sourcewise_norm_only_certificate": 139.7365090686763,
+      "sharp_full_residual_norm_diagnostic": 10.51910123967671,
+      "containment": true,
+      "orientation_le_sourcewise_norm": true,
+      "orientation_le_sharp_full_residual_norm": false
+    },
+    "adversarial16": {
+      "actual_error": 0.03961045784718082,
+      "orientation_certificate": 3.626599597987906,
+      "sourcewise_norm_only_certificate": 10.25427951619041,
+      "sharp_full_residual_norm_diagnostic": 0.5606314060020015,
+      "containment": true,
+      "orientation_le_sourcewise_norm": true,
+      "orientation_le_sharp_full_residual_norm": false
+    },
+    "caveat": "The valid frozen comparator after the pre-run erratum is the computable sourcewise norm-only bound. The orientation-aware certificate contains the held-out error on both fixtures, but it is looser than the verifier-only sharp ||R||_F||E||_F diagnostic on both fixtures."
+  },
+  "leakage_firewall": {
+    "verdict": "VERIFIED",
+    "candidate_imports": [
+      "__future__",
+      "dataclasses",
+      "math",
+      "numpy",
+      "typing"
+    ],
+    "dangerous_io_network_calls": [],
+    "benchmark_public_data_access": false,
+    "target_oracle_access": false,
+    "scorer_access": false,
+    "exact_reference_import_in_candidate": false,
+    "heldout_seed_independent_of_adaptive_response_seed": true,
+    "candidate_frozen_before_reference_materialization": true,
+    "pass": true
+  },
+  "deterministic_replay": {
+    "verdict": "VERIFIED",
+    "bitwise_exact_dense32": true,
+    "bitwise_exact_adversarial16": true,
+    "canonical_qr_sign_rule": true,
+    "exactly_one_actions_run": true,
+    "workflow_run_conclusion": "success",
+    "focused_tests": "4 passed in 0.16s"
+  },
+  "full_residual_materialization": {
+    "verdict": "VERIFIED_MODULE_PATH_NO_FULL_RESIDUAL",
+    "candidate_method_file": "methods/e142_response_aligned_d21.py",
+    "candidate_materializes_full_residual": false,
+    "verifier_materializes_full_residual": true,
+    "verifier_materialization_timing": "only after candidate adaptive sequence, deterministic replay, held-out projection and orientation certificate are computed",
+    "production_claim": "E142 module does not require materializing R or full old D21"
+  },
+  "module_flops": {
+    "verdict": "VERIFIED_MODULE_SCOPE_ONLY",
+    "scope": "E142 old-tier response-statistic module from existing old-source factor arrays through four adaptive response passes and certificates",
+    "independently_recomputed": {
+      "left_factor_build_upper": 17179869184,
+      "shared_response_actions_upper": 94489280512,
+      "nested_response_actions_upper": 83751862272,
+      "basis_lifts_upper": 981467136,
+      "adaptive_qr_upper": 67108864,
+      "adaptive_query_products_upper": 134217728,
+      "certificate_norms_upper": 8858370048,
+      "helper_reserve": 20000000000,
+      "all_in_upper": 225462175744,
+      "budget_flops": 2199023255552,
+      "module_cap_flops": 296868139499,
+      "utilization": 0.10252832714468241,
+      "slack_to_module_cap": 71405963755
+    },
+    "exact_reconcile_with_candidate_formula": true,
+    "full_estimator_all_in_proven": false,
+    "pass_for_frozen_module_cap": true,
+    "caveat": "This is complete all-in accounting only for the frozen E142 module scope. It is not a complete challenge-estimator cost proof."
+  },
+  "rescue_ancestry": {
+    "verdict": "FAIL_LITERAL_ANCESTRY",
+    "mechanism_reuse_audit": {
+      "countsketch": false,
+      "h137_patch": false,
+      "smv_rank4": false,
+      "svd_recompression": false,
+      "h140_carrier": false,
+      "conclusion": "No H137 CountSketch or H140 rank-4 SMV mechanism is reused by E142 code."
+    },
+    "literal_git_ancestry": {
+      "h140_terminal_commit": "b269b2e57ac61a3c25a3f5ea06e32594d12ab998",
+      "h140_is_direct_merge_base": true,
+      "e142_commits_ahead_of_h140": 8,
+      "h137_terminal_commit": "e9b63b96ad7bd58660e321c1ca25e7f9bdfcd1c0",
+      "h137_is_ancestor_merge_base": true,
+      "e142_commits_ahead_of_h137": 19,
+      "pass": false
+    },
+    "interpretation": "If the verifier gate means no reuse of failed mechanisms, E142 passes. If it means no H140/H137 ancestry at all, E142 fails: both terminal commits are literal git ancestors, with H140 the declared parent."
+  },
+  "gates": {
+    "exact_small_reference": true,
+    "direct_action_errors": true,
+    "heldout_certificate_containment": true,
+    "no_target_reference_leakage": true,
+    "deterministic_replay": true,
+    "exact_module_flops": true,
+    "no_full_residual_materialization_in_candidate": true,
+    "no_H140_H137_mechanism_reuse": true,
+    "no_H140_H137_literal_git_ancestry": false
+  },
+  "overall_verdict": {
+    "status": "FAIL",
+    "reason": "Forbidden literal ancestry gate fails. Scientific exact-small, containment, leakage, replay, module FLOP, and no-full-residual checks otherwise verify.",
+    "e142_exact_small_go_retracted_by_verifier": false,
+    "note": "E144 does not alter E142's scientific receipt; it records that E142 cannot satisfy a strict ancestry-clean verifier requirement."
+  },
+  "verifier_scope": {
+    "candidate_created": false,
+    "scientific_run_created": false,
+    "rerun": false,
+    "repository_code_modified": false,
+    "e142_modified": false,
+    "canonical_ledger_modified": false,
+    "append_only_receipt_only": true
+  }
+}
