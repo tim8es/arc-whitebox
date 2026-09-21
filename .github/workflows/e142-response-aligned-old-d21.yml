@@ -1,0 +1,94 @@
+name: E142 response-aligned old-D21
+
+on:
+  push:
+    branches:
+      - research/e142-response-aligned-old-d21-20260921
+    paths:
+      - 'research/E142_RUN_ARM.json'
+
+jobs:
+  e142:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and blobs
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-E142-RESPONSE-ALIGNED-OLD-D21-20260921",
+              "execute_once": True,
+          }
+          arm = json.loads(Path("research/E142_RUN_ARM.json").read_text())
+          if arm != expected:
+              raise SystemExit(f"invalid arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E142_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+
+          frozen = {
+              "research/E142_PROTOCOL.md": "bf5072400f3200f13e1c8a4db715add00b0a5396",
+              "research/E142_PROTOCOL_CERTIFICATE_ERRATUM.md": "acf343f3c2b5eb0401e05002fea1b1b4f10b14f4",
+              "methods/e142_response_aligned_d21.py": "6c1073ad6a3ae9f67c3bf049c8bcb12c069a7e3e",
+              "tests/test_e142_response_aligned_d21.py": "25f68b1663a246ff030de7f006406448e327ef97",
+              "scripts/e142_response_aligned_old_d21_falsifier.py": "c31df0e0719ef5e9d2cb769f829fea54192cb2c4",
+          }
+          for path, expected_sha in frozen.items():
+              actual = subprocess.check_output(
+                  ["git", "rev-parse", f"HEAD:{path}"], text=True
+              ).strip()
+              if actual != expected_sha:
+                  raise SystemExit(
+                      f"frozen blob mismatch {path}: {actual} != {expected_sha}"
+                  )
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install project and test dependency
+        run: |
+          python -m pip install -e .
+          python -m pip install pytest==8.3.5
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e142_response_aligned_d21.py
+          python -m py_compile scripts/e142_response_aligned_old_d21_falsifier.py
+
+      - name: Focused tests
+        run: python -m pytest -q tests/test_e142_response_aligned_d21.py
+
+      - name: Run sole frozen E142 exact-small falsifier
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e142_response_aligned_old_d21_falsifier.py 2>&1 | tee e142-response-aligned-old-d21.log
+
+      - name: Upload immutable E142 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e142-response-aligned-old-d21
+          path: |
+            e142-response-aligned-old-d21.log
+            e142-response-aligned-old-d21.json
+            research/E142_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
