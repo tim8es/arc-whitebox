@@ -1,0 +1,149 @@
+name: E176 clean-room AGO gain-only local mini
+
+on:
+  push:
+    branches:
+      - research/e176-cleanroom-ago-gain-mini-20260921
+    paths:
+      - 'research/E176_RUN_ARM.json'
+
+jobs:
+  e176:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+      PYTHONPATH: '.'
+      PYTHONUNBUFFERED: '1'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify clean lineage, arm, and frozen blobs
+        run: |
+          mkdir -p e176_artifacts
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+
+          expected_arm = {
+              "idempotency_key": "ARC-E176-CLEANROOM-AGO-GAIN-MINI-20260921",
+              "execute_once": True,
+              "scope": "synthetic target-free local mini only",
+          }
+          arm = json.loads(Path("research/E176_RUN_ARM.json").read_text())
+          if arm != expected_arm:
+              raise SystemExit(f"invalid arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git","diff","--name-only","HEAD^","HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E176_RUN_ARM.json"]:
+              raise SystemExit(f"unexpected arm diff: {changed}")
+
+          frozen = {
+              "research/E176_PROTOCOL.md": "00c7c81c7cd4f5b380675cfd393fb0a420b7ca65",
+              "methods/e176_gain_ago.py": "f5d801c162dce11e82e2ece0d21cbe738832b3b3",
+              "methods/e176_reference.py": "0d0afc40209f782af1b7839c03ab2a380ec90683",
+              "scripts/e176_gain_ago_mini.py": "5d064f142c1ed4742fd3c47d3998266f039e59d3",
+          }
+          for path, expected in frozen.items():
+              actual = subprocess.check_output(
+                  ["git","rev-parse",f"HEAD:{path}"], text=True
+              ).strip()
+              if actual != expected:
+                  raise SystemExit(f"frozen blob mismatch {path}: {actual} != {expected}")
+
+          base = "423edafe9e7a1c83b6e58ec1ea4862becafc2162"
+          mb = subprocess.check_output(
+              ["git","merge-base",base,"HEAD"], text=True
+          ).strip()
+          if mb != base:
+              raise SystemExit(f"E172 verifier head is not clean base: {mb}")
+
+          tracked = subprocess.check_output(["git","ls-files"], text=True).splitlines()
+          bad = [p for p in tracked if "e175" in p.lower()]
+          if bad:
+              raise SystemExit(f"E175 files unexpectedly present in clean branch: {bad}")
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.1.3
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e176_gain_ago.py
+          python -m py_compile methods/e176_reference.py
+          python -m py_compile scripts/e176_gain_ago_mini.py
+
+      - name: Execute sole frozen target-free local mini
+        id: science
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          /usr/bin/time -v python scripts/e176_gain_ago_mini.py             > e176_artifacts/science.log             2> e176_artifacts/science.stderr
+          code=$?
+          echo "$code" > e176_artifacts/science.exit
+          cat e176_artifacts/science.log
+          cat e176_artifacts/science.stderr
+          exit "$code"
+
+      - name: Hash retained evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          paths=[]
+          for root in [Path("e176_artifacts"),Path("e176_evidence")]:
+              if root.exists():
+                  paths.extend(p for p in root.rglob("*") if p.is_file())
+          for p in [Path("e176_manifest.json"),Path("e176_result.json"),Path("research/E176_RUN_ARM.json")]:
+              if p.is_file():
+                  paths.append(p)
+          out={}
+          for p in sorted(set(paths), key=str):
+              out[str(p)] = hashlib.sha256(p.read_bytes()).hexdigest()
+          Path("e176_artifacts/sha256.json").write_text(
+              json.dumps(out,indent=2,sort_keys=True)+"\n",encoding="utf-8"
+          )
+          print("hashed",len(out),"files")
+          PY
+
+      - name: Upload immutable E176 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e176-cleanroom-ago-gain-mini
+          path: |
+            e176_artifacts/
+            e176_evidence/**/*.npy
+            e176_manifest.json
+            e176_result.json
+            research/E176_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
+
+      - name: Enforce scientific exit
+        if: always()
+        run: |
+          test -f e176_artifacts/science.exit
+          code="$(cat e176_artifacts/science.exit)"
+          if [ "$code" != "0" ] && [ "$code" != "2" ]; then
+            echo "infrastructure/runtime failure code=$code"
+            exit "$code"
+          fi
+          exit 0
