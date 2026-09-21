@@ -1,0 +1,207 @@
+{
+  "schema": "arc.whitebox.e147.terminal_receipt.v1",
+  "experiment": "E147",
+  "idempotency_key": "ARC-E147-RESPONSE-PROJECTED-K3-ESTIMATOR-20260921",
+  "status": "TERMINAL_NO_GO",
+  "decision": "E147_TERMINAL_NO_GO_CLOSE_RAP_K3",
+  "scientific_go": false,
+  "physical_run_authorized": false,
+  "branch": "research/e147-response-projected-k3-estimator-20260921",
+  "provenance": {
+    "protocol": {
+      "commit": "daf997a9b1204f7916e9f5b78eba3aa6ff113d49",
+      "blob": "1bbcec3ca3b1581493d508460c668e7a88e024ba",
+      "path": "research/E147_PROTOCOL.md"
+    },
+    "candidate": {
+      "commit": "6d85d17d153233f64010d1c93556b22c70ea9734",
+      "blob": "2ddff8602bc08090f2af368b4f6a81f018152c81",
+      "path": "methods/e147_rap_k3.py",
+      "runtime_sha256": "0ecb0520c4b067bbcd6d3934993fbbddf9a36f9f6236af4df8d8d1072bfb660f"
+    },
+    "exact_reference": {
+      "commit": "3f962d6d8d456edad4abec757933017ac588b6d5",
+      "blob": "1e2dc12215bef252c289ca2a2ec4d18e41b9f1e6",
+      "path": "methods/e147_exact_dense_k3_reference.py"
+    },
+    "tests": {
+      "commit": "48cbbd77cdb40d3feba8678b62525b53c50481af",
+      "blob": "0993835f34ce08b2e2de40f36e8f03cf8918d6e5",
+      "path": "tests/test_e147_rap_k3.py"
+    },
+    "falsifier": {
+      "commit": "816bb5a131e5a397de31cb06214f8c43c49b88d6",
+      "blob": "1a893b3606220d8b514c8c32d26a80f06e6fe752",
+      "path": "scripts/e147_rap_k3_exact_small.py"
+    },
+    "workflow": {
+      "commit": "119e23ef5de18d8e3e7386f1e167b7f9d08e55c0",
+      "blob": "6d14aeb971c732280f68df627c1071c132b50eec",
+      "path": ".github/workflows/e147-rap-k3-exact-small.yml"
+    },
+    "arm": {
+      "commit": "d9b962facec5500d230941df15d607b18b000bdc",
+      "blob": "d82c89488aea2d9e21606e5f5d4f668dfac16306",
+      "path": "research/E147_RUN_ARM.json"
+    }
+  },
+  "mechanism": {
+    "name": "RAP-K3",
+    "production_q": 96,
+    "production_r": 48,
+    "exact_small_q": 8,
+    "exact_small_r": 4,
+    "persistent_source_stack": false,
+    "full_d21_estimator_state": false,
+    "response_aligned_projected_core": true,
+    "closure_execution": "target-free simple K3 leading closure with Gaussian K2 scaffold, Wick-linear represented-K3 transport, and projected Gaussian-ReLU diagonal K3 birth",
+    "rank_sweep": false,
+    "basis_sweep": false,
+    "certificate_sweep": false,
+    "rescue": false
+  },
+  "execution": {
+    "run_id": 35550965242,
+    "job_id": 106185511147,
+    "run_attempt": 1,
+    "github_conclusion": "success",
+    "focused_tests": "3 passed in 0.15s",
+    "scientific_step_completed": true,
+    "exactly_one_workflow_run_for_arm_head": true,
+    "rerun": false,
+    "artifact": {
+      "id": 10617789145,
+      "name": "e147-rap-k3-exact-small",
+      "size_bytes": 13536,
+      "zip_sha256": "0b0afc633bdd2e5194b8fb943a5a25c0a8cae0226acac664b1c2e4740b31abff",
+      "expires_at": "2026-12-20T01:27:40Z"
+    }
+  },
+  "fixtures": [
+    {
+      "name": "dense32",
+      "width": 32,
+      "depth": 8,
+      "network_seed": 147032,
+      "final_basis_seed": 147320,
+      "q": 8,
+      "r": 4,
+      "weights_sha256": "1f16e419abc1dc5e9940e95df7f12eecc0ff3d2928dd1d554edc202a51fad588",
+      "pooled_d21_relative_rms": 0.9933250637756657,
+      "max_layer_d21_relative_error": 6.5172627184632165e+149,
+      "note_on_max_layer": "Layer 0 exact off-diagonal D21 norm is effectively zero, so the relative ratio uses the frozen denominator floor; layers 1-7 are approximately 0.978-0.997 relative error.",
+      "pooled_d3_relative_rms": 0.989509075961819,
+      "final_mean_relative_rms": 0.010088307856182362,
+      "pullback_residual_max": 1.021223152264304e-15,
+      "transport_identity_max_relative_error": 7.081985586422899e-16,
+      "pooled_certified_d21_relative_error": "Infinity",
+      "every_layer_relative_certificate": "Infinity",
+      "d21_certificate_contains_actual_every_layer": true,
+      "relative_certificate_contains_actual_every_layer": true,
+      "final_mean_absolute_l2_error": 0.04608886642921864,
+      "final_mean_certificate": 74887578.47844082,
+      "final_mean_certificate_contains_error": true,
+      "deterministic_replay_bitwise_exact": true,
+      "finite": true
+    },
+    {
+      "name": "adversarial16",
+      "width": 16,
+      "depth": 8,
+      "network_seed": 147016,
+      "final_basis_seed": 147160,
+      "q": 8,
+      "r": 4,
+      "weights_sha256": "f0a288e4aa0aa5d81309de75b04140175e5a3cac81cf7b2b8aafc69f1dbea8b8",
+      "pooled_d21_relative_rms": 1.01595196405166,
+      "max_layer_d21_relative_error": 2.1151428712035826e+150,
+      "note_on_max_layer": "Layer 0 exact off-diagonal D21 norm is effectively zero, so the relative ratio uses the frozen denominator floor; later layers remain approximately 0.901-1.012 relative error.",
+      "pooled_d3_relative_rms": 0.917835138559919,
+      "final_mean_relative_rms": 0.005521478608685495,
+      "pullback_residual_max": 1.6475395291361522e-15,
+      "transport_identity_max_relative_error": 5.691382007450659e-16,
+      "pooled_certified_d21_relative_error": "Infinity",
+      "every_layer_relative_certificate": "Infinity",
+      "d21_certificate_contains_actual_every_layer": true,
+      "relative_certificate_contains_actual_every_layer": true,
+      "final_mean_absolute_l2_error": 0.018391315899721938,
+      "final_mean_certificate": 162911.08753531612,
+      "final_mean_certificate_contains_error": true,
+      "deterministic_replay_bitwise_exact": true,
+      "finite": true
+    }
+  ],
+  "gates": {
+    "integrity": {
+      "finite_all": true,
+      "deterministic_replay_bitwise_exact_all": true,
+      "backward_pullback_residual_le_1e_12_all": true,
+      "projected_core_transport_identity_le_1e_11_all": true,
+      "candidate_source_audit_pass": true,
+      "reference_after_candidate_freeze_all": true,
+      "no_public_publicmini_scorer_holdout_full_submission": true,
+      "production_cost_formula_exact_reconcile": true,
+      "production_all_in_le_0_135B": true,
+      "go": true
+    },
+    "scientific": {
+      "pooled_d21_relative_rms_le_0_022_both": false,
+      "max_layer_d21_relative_error_le_0_030_both": false,
+      "pooled_d3_relative_rms_le_0_022_both": false,
+      "final_mean_relative_rms_le_0_022_both": true,
+      "certificate_contains_every_exact_d21_error": true,
+      "relative_certificate_contains_every_exact_d21_error": true,
+      "certified_d21_relative_error_le_0_030_every_layer": false,
+      "pooled_certified_d21_relative_error_le_0_022_both": false,
+      "final_mean_error_contained_by_certificate_both": true,
+      "go": false
+    }
+  },
+  "production_cost": {
+    "retained_low_order_public_style_allowance": 81604378624,
+    "backward_response_basis_dense": 4529848320,
+    "thin_qr_sign_canonicalization": 1415577600,
+    "projected_k3_core_transport": 3185049600,
+    "d21_response_and_surrogate": 15099494400,
+    "direct_projected_nonlinear_k3_birth": 93616865280,
+    "error_certificate": 60397977600,
+    "helper_accounting_reserve": 21474836480,
+    "all_in_upper": 281324027904,
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "utilization": 0.1279313564300537,
+    "slack_flops": 15544111595,
+    "independent_formula_reconcile": true,
+    "pass": true
+  },
+  "diagnosis": {
+    "primary_failure": "Frozen q=8/r=4 response-projected state preserves the algebraic transport identities but loses nearly all true D21 and D3 content on both exact-small fixtures.",
+    "certificate_failure": "The deterministic Frobenius projection certificate is valid for containment but unusably loose: rho exceeds ||Dhat|| at every layer, so every relative certificate is infinite.",
+    "final_mean_diagnostic": "The frozen final-mean relative error gate passes on both fixtures, but protocol requires all D21/D3/certificate gates and therefore cannot authorize the physical run.",
+    "architecture_result": "Response alignment alone is not a sufficient estimator-level K3 compression at the frozen ranks under this execution."
+  },
+  "conformance_caveat": {
+    "statement": "The executable instantiates the protocol's frozen RAP-K3 architecture on a target-free simple K3 leading closure. It does not execute the full public V25/V29 augmented nonlinear term set.",
+    "consequence": "Because the frozen RAP-K3 scientific and certificate gates already fail decisively in this simpler closure, no broader/full-closure physical run is authorized under E147 and no rescue implementation is attempted."
+  },
+  "scope": {
+    "synthetic_exact_small_only": true,
+    "target_free": true,
+    "physical_1024x16_run": false,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "rank_sweep": false,
+    "basis_sweep": false,
+    "certificate_sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "terminal_policy": "Frozen protocol says any failed or unevaluable gate closes E147; no rank/basis/certificate sweep, rescue, seed replacement, public target read, or physical rerun."
+}
