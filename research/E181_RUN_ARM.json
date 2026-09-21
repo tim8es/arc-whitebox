@@ -1,0 +1,20 @@
+{
+  "experiment": "E181",
+  "hypothesis": "H180 aggregate symmetric-CP carrier",
+  "branch": "research/e181-h180-symmetric-cp-carrier-cleanroom-20260921",
+  "rank": 3072,
+  "n": 1024,
+  "seed": 181180,
+  "authorized_target_free_runs": 1,
+  "protocol_commit": "ef0d837c4b933ff4bf1bee26f248231b6b70d374",
+  "implementation_commit": "d0b688a7fe9efbb680d6707bdea387e83569e527",
+  "workflow_commit": "f5b6763959edd55e0cc24146ac831e975d2221b9",
+  "e178_used": false,
+  "rank_sweep": false,
+  "projection_rescue": false,
+  "source_age_hybrid": false,
+  "public_submission": false,
+  "leaderboard_mutation": false,
+  "baseline_mutation": false,
+  "armed": true
+}
