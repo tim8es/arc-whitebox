@@ -1,0 +1,48 @@
+name: E157 AIK4-1 one-shot
+
+on:
+  push:
+    branches:
+      - research/e157-owner-aik4-onebirth-20260921
+    paths:
+      - .github/workflows/e157-aik4-onebirth.yml
+
+permissions:
+  contents: read
+
+jobs:
+  e157-one-shot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned runtime
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check numpy==2.3.3
+      - name: Run sole E157 target-free falsifier
+        run: |
+          set -euo pipefail
+          mkdir -p e157_artifacts
+          PYTHONPATH="$GITHUB_WORKSPACE" python scripts/e157_aik4_onebirth.py \
+            --out e157_artifacts/E157_RUN_RECEIPT.json \
+            2>&1 | tee e157_artifacts/run.log
+      - name: Upload immutable run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e157-aik4-onebirth
+          path: e157_artifacts/
+          if-no-files-found: error
+          retention-days: 90
