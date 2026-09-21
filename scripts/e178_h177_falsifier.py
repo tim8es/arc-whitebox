@@ -320,7 +320,7 @@ def main():
     identity_pass = bool(max(all_identity) <= IDENTITY_TOL)
     replay_pass = bool(replay["arrays_bitwise_equal"] and replay["metrics_json_equal"])
     closure_pass = bool(metrics1["closure"]["passes"])
-    cost_pass = bool(PUBLIC_V17_COST_LOWER <= CAP)
+    cost_pass = bool(FULL_COST_REPORTED_PLUS_OVERLAY <= CAP)
 
     if not identity_pass:
         decision = "TERMINAL_NO_GO_IDENTITY"
@@ -359,11 +359,14 @@ def main():
             "budget_flops": BUDGET,
             "cap_flops": CAP,
             "public_v17_c_over_b": PUBLIC_V17_C_OVER_B,
-            "public_v17_cost_lower_bound_flops": PUBLIC_V17_COST_LOWER,
-            "public_v17_over_cap_ratio": PUBLIC_V17_COST_LOWER / CAP,
-            "h177_overlay_lower_bound_flops": 0,
-            "full_cost_lower_bound_flops": PUBLIC_V17_COST_LOWER,
-            "logic": "unchanged V17 already exceeds 0.135B; even a zero-cost H177 overlay cannot pass",
+            "public_v17_reported_cost_flops": PUBLIC_V17_COST_REPORTED,
+            "public_v17_over_cap_ratio": PUBLIC_V17_COST_REPORTED / CAP,
+            "h177_overlay_upper_flops": H177_OVERLAY_UPPER,
+            "h177_overlay_c_over_b": H177_OVERLAY_UPPER / BUDGET,
+            "h177_overlay_passes_0_002B": H177_OVERLAY_UPPER <= 0.002 * BUDGET,
+            "full_reported_plus_overlay_flops": FULL_COST_REPORTED_PLUS_OVERLAY,
+            "full_reported_plus_overlay_c_over_b": FULL_COST_REPORTED_PLUS_OVERLAY / BUDGET,
+            "logic": "unchanged public V17 reported cost already exceeds 0.135B; the conservative H177 O(n^2) overlay is charged on top",
         },
         "decision": decision,
     }
