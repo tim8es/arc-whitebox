@@ -1,0 +1,76 @@
+{
+  "experiment": "E157",
+  "arm_id": "E157-AIK4-1-ONE-SHOT-20260921",
+  "status": "ARMED_ONE_TARGET_FREE_RUN",
+  "branch": "research/e157-owner-aik4-onebirth-20260921",
+  "support_protocol": {
+    "path": "research/E155_SUPPORT_PROTOCOL.md",
+    "blob": "e34cd387be1a8137cd234d84a6fee49613d034c0"
+  },
+  "owner_protocol": {
+    "path": "research/E157_OWNER_PROTOCOL.md",
+    "blob": "4fdaff001faedca323d464cf8ae218611efc32e4"
+  },
+  "parent": {
+    "path": "scripts/e157_aik4_parent.py",
+    "commit": "cf1c86edf4f1a35f887bd464f78d5454eefcc68b",
+    "blob": "cf233297780b509da35edd149e3c83d1a3a06087"
+  },
+  "parent_cost": {
+    "path": "research/E157_PARENT_COST_FREEZE.json",
+    "blob": "aab829ed3f8e4eb5f8de2ee8a4fc38ae9980c465",
+    "utilization_upper": 0.033759891986846924,
+    "required_max": 0.1349904166907072
+  },
+  "candidate": {
+    "path": "scripts/e157_aik4_onebirth.py",
+    "commit": "3641d4a03e9a6cb2be4abc3100d933b4c10f2cc6",
+    "blob": "ec8789e0681ffa29d07b66dff804abd07f95bd6c"
+  },
+  "fixtures": [
+    {
+      "name": "exact2d_depth8",
+      "width": 2,
+      "depth": 8,
+      "seed": 155002,
+      "kind": "dense_gaussian"
+    },
+    {
+      "name": "dense32_depth8",
+      "width": 32,
+      "depth": 8,
+      "seed": 155032,
+      "kind": "dense_gaussian"
+    },
+    {
+      "name": "adversarial16_depth8",
+      "width": 16,
+      "depth": 8,
+      "seed": 155016,
+      "kind": "qr_diagonal_gain"
+    }
+  ],
+  "gates": {
+    "identity_tolerance": 2e-12,
+    "synthetic_mse_ratio_max": 0.98,
+    "combined_utilization_max": 0.135,
+    "deterministic_replay": "bitwise canonical JSON equality"
+  },
+  "firewall": {
+    "public_targets": false,
+    "mini_targets": false,
+    "scorer": false,
+    "holdout": false,
+    "full": false,
+    "submission": false,
+    "sampling": false,
+    "strassen": false,
+    "recurrent_k4": false,
+    "E151_rescue": false,
+    "E154_rescue": false
+  },
+  "external_scientific_runs_authorized": 1,
+  "rerun_authorized": false,
+  "rescue_authorized": false,
+  "sweep_authorized": false
+}
