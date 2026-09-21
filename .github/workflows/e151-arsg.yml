@@ -1,0 +1,91 @@
+name: E151 ARSG target-free falsifier
+
+on:
+  push:
+    branches:
+      - research/e151-leader-forensics-angular-strassen-20260921
+    paths:
+      - 'research/E151_RUN_ARM.json'
+
+jobs:
+  e151:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      VECLIB_MAXIMUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and E151 blobs
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-E151-ARSG-FORENSICS-20260921",
+              "execute_once": True,
+          }
+          arm = json.loads(Path("research/E151_RUN_ARM.json").read_text())
+          if arm != expected:
+              raise SystemExit(f"invalid arm: {arm!r}")
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"], text=True
+          ).splitlines()
+          if changed != ["research/E151_RUN_ARM.json"]:
+              raise SystemExit(f"arm commit changed unexpected paths: {changed}")
+
+          frozen = {
+              "research/E151_LEADER_FORENSICS.md": "6c8d171dce86d4adf1cc43772ccb49f8cd81c736",
+              "research/E151_PROTOCOL.md": "8b484ea0c5b8c8ea02b3f91575693e44a1e645a3",
+              "methods/e151_angular_strassen.py": "c14385eb0a09c9051ceccceeb18f5b5cd7caa094",
+              "scripts/e151_angular_strassen_falsifier.py": "7a59d4df401dd97f70caf96475f13ccc403b1cfc",
+              "research/E151_FREEZE_RECEIPT.json": "f0225b6b4b852818a3aea053d4877cdb173e94ad",
+          }
+          for path, expected_sha in frozen.items():
+              actual = subprocess.check_output(
+                  ["git", "rev-parse", f"HEAD:{path}"], text=True
+              ).strip()
+              if actual != expected_sha:
+                  raise SystemExit(
+                      f"frozen blob mismatch {path}: {actual} != {expected_sha}"
+                  )
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen dependency
+        run: python -m pip install numpy==2.3.3
+
+      - name: Syntax check
+        run: |
+          python -m py_compile methods/e151_angular_strassen.py
+          python -m py_compile scripts/e151_angular_strassen_falsifier.py
+
+      - name: Run sole frozen E151 target-free falsifier
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e151_angular_strassen_falsifier.py 2>&1 | tee e151-arsg-falsifier.log
+
+      - name: Upload immutable E151 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e151-arsg-falsifier
+          path: |
+            e151-arsg-falsifier.log
+            e151-arsg-falsifier.json
+            research/E151_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
