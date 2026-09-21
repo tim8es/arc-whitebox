@@ -1,0 +1,115 @@
+{
+  "experiment": "E159",
+  "status": "TERMINAL_NO_GO",
+  "decision": "E159_TERMINAL_NO_GO_PUBLISHED_ANGULAR_GAUGE",
+  "terminal": true,
+  "date": "2026-09-21",
+  "reason_class": "ONE_SHOT_EXECUTION_NONFINITE_EXCEPTION",
+  "reason": "The sole frozen target-free run produced non-finite values in the reconstructed recurrent-K4 diagnostic path; strict deterministic canonicalization rejected NaN before mandatory identity/scientific metrics could be frozen. Protocol forbids rerun or rescue.",
+  "primary_source_conclusion": {
+    "full_k3_reported_raw_mse": {
+      "gaussian": 3.7859e-8,
+      "angular": 3.4859e-8,
+      "relative_reduction": 0.0792
+    },
+    "code_level_fact": "Pinned G-K3C65 and A-K3C65 implementations differ in executable configuration only by is_angular False->True; use_k4 remains True.",
+    "causal_limit": "The full-K3 7.92% pair does not isolate radial/angular gauge from initial/recurrent scalar K4.",
+    "separating_public_k2_ablation": {
+      "G_K2": 0.0000041257,
+      "A_K2": 0.0000034236,
+      "G_K2K4": 0.0000040639,
+      "A_K2K4": 0.0000034303,
+      "gauge_only_relative_reduction": 0.1701771820539545,
+      "angular_k4_relative_change": 0.0019570043229348855,
+      "interpretation": "Gauge-only angular K2 improved 17.02%; enabling recurrent scalar K4 on the angular K2 arm worsened aggregate raw MSE about 0.196%. Thus published evidence shows gauge is sufficient for an angular improvement, while K4 is not identified as the source of the full-K3 7.92% gain."
+    }
+  },
+  "ancestry": {
+    "clean_room_base": "2af54da98045e36b37330e1f7c9f36f0943f3661",
+    "branch": "research/e159-published-angular-gauge-20260921",
+    "primary_source_note_commit": "5e4236adf94a9df682be3428ef4a130f324a23a6",
+    "primary_source_note_blob": "6b96d00acf38f69ea48fd3855c699b893f7e30cf",
+    "protocol_commit": "1551f71ca38f25d802da6dd3aed7ee0e49abb327",
+    "protocol_blob": "4d0c44607e72e34378346b02a3ccc4559d21a792",
+    "implementation_commit": "72c8b3b01f9b5631663d3086d2c8f2ede5a74c8c",
+    "implementation_blob": "a8b00324c4c961ed0ab97d25425da98b094fad03",
+    "arm_commit": "dfec25b6e411e9979bad260886c45726364d6a1e",
+    "arm_blob": "0325408bfdc186e37aa84c6d880cf8ad02a2d9b9",
+    "launch_commit": "dd8fc9df05bf27ca7e5cfc9d78bf0f58e1dfc089",
+    "workflow_blob": "79d7fabd8a69a07736189cd1868fd28a9ee4d2d4"
+  },
+  "public_evidence": {
+    "repository": "barnobarno666/ARC-White-Box-Estimation-2026",
+    "commit": "1558651e49d68b40821930f0f9c9a059f33d3a52",
+    "report_blob": "3087457e972c0ea4692aeb9070c2a456cd1aed60",
+    "g_k2_blob": "116244b48085e3c4c7447cdca1354ef43a990212",
+    "a_k2_blob": "be22c6b881bb154867ca66ba7c288d349cb6d093",
+    "g_k2k4_blob": "384abab18ff39c11a7ce573276576bf091442f74",
+    "a_k2k4_blob": "67a4bee83517314cb122fe2691826ec910cdb21d",
+    "g_k3c65_blob": "dbf1f6b662208a2624272c8c179cae86fbdde5d7",
+    "a_k3c65_blob": "17faa6cfe84f26c28d8238c908e84e9ab3028c6e",
+    "builder_blob": "ddc796052106e97e611f01b090b0ed94b2e8b803"
+  },
+  "execution": {
+    "authorized_external_scientific_runs": 1,
+    "observed_matching_runs": 1,
+    "run_id": 35602168233,
+    "run_attempt": 1,
+    "job_id": 106340610062,
+    "github_workflow_conclusion": "success",
+    "scientific_conclusion": "TERMINAL_NO_GO",
+    "note": "Workflow success only means the exception receipt was uploaded; the script intentionally caught the terminal exception.",
+    "artifact_id": 10638919116,
+    "artifact_name": "e159-published-angular",
+    "artifact_size_bytes": 1624,
+    "artifact_zip_sha256": "518b8ba466fda3f563a2315b4d40621d50e4197c072b6564d7e227de2f5cf167",
+    "exception_type": "ValueError",
+    "exception": "Out of range float values are not JSON compliant: nan",
+    "runtime_warnings": [
+      "invalid value encountered in divide",
+      "overflow encountered in power",
+      "invalid value encountered in multiply"
+    ],
+    "exception_location": "deterministic canonicalization after run_once/replay; non-finite values already existed in frozen result"
+  },
+  "mandatory_gates": {
+    "target_firewall": "PASS_BY_STATIC_WORKFLOW_SCOPE",
+    "identities": "UNEVALUATED_NO_IMMUTABLE_METRICS",
+    "exact2d_gauge_scientific": "UNEVALUATED_NO_IMMUTABLE_METRICS",
+    "k4_separation_diagnostics": "UNEVALUATED_NO_IMMUTABLE_METRICS",
+    "deterministic_replay": "FAIL_NONFINITE_CANONICALIZATION",
+    "finite": "FAIL",
+    "exactly_one_external_run": "PASS",
+    "complete_cost": "PASS_PRE_RUN_ANALYTIC_LEDGER"
+  },
+  "cost": {
+    "budget_flops": 2199023255552,
+    "production_n": 1024,
+    "production_depth": 16,
+    "formula": "(6*d-8)*n^3 + 10000*d*n^2 + 10000*n^2",
+    "all_in_upper_flops": 272747200512,
+    "utilization_upper": 0.12403106689453125,
+    "cap": 0.135,
+    "strassen_credit": false,
+    "gate": true
+  },
+  "firewall": {
+    "public_target_opened": false,
+    "mini_opened": false,
+    "scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "sampling": false,
+    "strassen": false,
+    "E151_E154_E157_imports": false
+  },
+  "restrictions": {
+    "rerun_forbidden": true,
+    "rescue_forbidden": true,
+    "seed_change_forbidden": true,
+    "threshold_change_forbidden": true,
+    "sweep_forbidden": true,
+    "public_target_forbidden": true
+  }
+}
