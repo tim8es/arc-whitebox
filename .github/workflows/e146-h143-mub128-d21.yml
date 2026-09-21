@@ -1,0 +1,80 @@
+name: E146 H143 MUB128 D21 Stage-A
+
+on:
+  push:
+    branches:
+      - research/e146-h143-mub128-d21-falsifier-20260921
+    paths:
+      - 'research/E146_RUN_ARM.json'
+
+jobs:
+  e146:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      E146_V29_COMMIT: '18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45'
+      E146_ARC_COMMIT: '93d091a4c26c042bfffa28f2e76a81bc0aba94bb'
+      E146_V29_PATH: '/tmp/v29'
+      PYTHONPATH: '/tmp/arc'
+      V26_WARM: '0'
+      V26_STRASSEN: '0'
+      V26_STRASSEN_HUB: '0'
+      V28_STRASSEN_SB: '0'
+      V29_CPRE_LEV: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify one-shot arm
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          arm=json.loads(Path("research/E146_RUN_ARM.json").read_text())
+          assert arm=={"idempotency_key":"ARC-E146-H143-MUB128-D21-20260921","execute_once":True}
+          changed=subprocess.check_output(["git","diff","--name-only","HEAD^","HEAD"],text=True).splitlines()
+          assert changed==["research/E146_RUN_ARM.json"], changed
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install harness dependencies
+        run: |
+          python -m pip install -e .
+          python -m pip install torch==2.7.1 joblib scipy
+
+      - name: Checkout pinned V29 and ARC reference
+        run: |
+          git clone -q https://github.com/504aldo/whest-p2-cumulant-k3.git /tmp/v29
+          git -C /tmp/v29 checkout -q "$E146_V29_COMMIT"
+          test "$(git -C /tmp/v29 rev-parse HEAD)" = "$E146_V29_COMMIT"
+          git clone -q https://github.com/alignment-research-center/mlp_cumulant_propagation.git /tmp/arc
+          git -C /tmp/arc checkout -q "$E146_ARC_COMMIT"
+          test "$(git -C /tmp/arc rev-parse HEAD)" = "$E146_ARC_COMMIT"
+
+      - name: Syntax check
+        run: python -m py_compile scripts/e146_h143_mub128_d21_falsifier.py
+
+      - name: Run sole frozen Stage-A
+        run: |
+          set -o pipefail
+          /usr/bin/time -v python scripts/e146_h143_mub128_d21_falsifier.py 2>&1 | tee e146-h143-stage-a.log
+
+      - name: Upload immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e146-h143-stage-a
+          path: |
+            e146-h143-stage-a.log
+            e146-h143-stage-a.json
+            research/E146_RUN_ARM.json
+          if-no-files-found: warn
+          retention-days: 90
