@@ -1,0 +1,216 @@
+{
+  "schema": "arc.whitebox.e164.receipt.v1",
+  "experiment": "E164",
+  "idempotency_key": "ARC-E164-CLEANROOM-AGO-20260921",
+  "status": "GO",
+  "decision": "E164_TARGET_FREE_SCIENTIFIC_GO_AGO",
+  "branch": "research/e164-cleanroom-ago-20260921",
+  "cleanroom": {
+    "bootstrap_parent": "7a0034088ebbffbd74b441e1797c272e9d33cbff",
+    "e162_branch_ancestry": false,
+    "e162_code_used": false,
+    "e154_code_used": false,
+    "e157_code_used": false,
+    "standalone_execution": true,
+    "pip_editable_install": false
+  },
+  "provenance": {
+    "protocol": {
+      "commit": "b40957707e51f6d2fc142b913d9a500795d1bfe7",
+      "blob": "b9b4c5d7d655c0f8a7650512cf30f89f8f9a11ba",
+      "path": "research/E164_OWNER_PROTOCOL.md"
+    },
+    "candidate": {
+      "commit": "5709a167535b488d54974db9b4559afc16696fd8",
+      "blob": "ea9078eccc2e2bf2a2bea499ef10a4daf80ea0d4",
+      "runtime_sha256": "533149d0a1c05be12097b997b8762270b299c574cf6c32324de7d17ec285169c",
+      "path": "methods/e164_ago.py"
+    },
+    "reference": {
+      "commit": "c7d40e46c0488a8d9c163f87165f7bfdb040fc07",
+      "blob": "7f976941cf35e3b4d721dd7ec830b9b59791443a",
+      "path": "methods/e164_reference.py"
+    },
+    "tests": {
+      "commit": "863ad55bdd4af11253da3e9527e22373312297df",
+      "blob": "309ab16198b750b0043922d4043264102ddb3143",
+      "path": "tests/test_e164_ago.py"
+    },
+    "falsifier": {
+      "commit": "1c99c4e51d4a9dedb4fc2149fdf4ffe71a81de53",
+      "blob": "f9472e5193491575c1eb9372874df736b2739464",
+      "path": "scripts/e164_ago_falsifier.py"
+    },
+    "workflow": {
+      "commit": "670a38029846ff7245c8f1ed982a6f6ad228f6bb",
+      "blob": "5a5fd3c9ffad1a5915edd00847eabdb7ef5da0ce",
+      "path": ".github/workflows/e164-ago.yml"
+    },
+    "arm": {
+      "commit": "ee9bafc24206cdf32e9c8d5f8085783b8fb6e421",
+      "blob": "b138e56a258a0e4dcf5a7841beb0857dc2c608dd",
+      "path": "research/E164_RUN_ARM.json"
+    }
+  },
+  "mechanism": {
+    "name": "AGO",
+    "delta": "Exact K1/K2 Gaussian-to-angular gauge after first activation plus exact final radial a1 mean readout.",
+    "higher_order_state": false,
+    "k4": false,
+    "d4": false,
+    "d22": false,
+    "c4": false,
+    "recurrent_k4": false,
+    "strassen": false,
+    "target_fit": false
+  },
+  "execution": {
+    "run_id": 35604133996,
+    "job_id": 106347007723,
+    "run_attempt": 1,
+    "head_sha": "ee9bafc24206cdf32e9c8d5f8085783b8fb6e421",
+    "github_conclusion": "success",
+    "exactly_one_run_for_arm_head": true,
+    "focused_tests": "4 passed in 0.13s",
+    "frozen_blob_guard": "PASS",
+    "standalone_dependencies": "PASS",
+    "syntax_check": "PASS",
+    "scientific_falsifier": "PASS",
+    "rerun": false,
+    "rescue": false,
+    "artifact": {
+      "id": 10641735549,
+      "name": "e164-ago",
+      "size_bytes": 15522,
+      "zip_sha256": "9397f519215a8a4b07b1c7b517032b4d6d4575de121c562b04ae5844e6669bea",
+      "expires_at": "2026-12-20T13:12:38Z"
+    }
+  },
+  "fixtures": [
+    {
+      "name": "exact2d",
+      "width": 2,
+      "depth": 8,
+      "network_seed": 164002,
+      "sector_count": 6,
+      "parent_mse": 0.0000018371467213930349,
+      "ago_mse": 9.137853811032136e-7,
+      "ago_over_parent": 0.4973937957499261,
+      "mse_improvement_fraction": 0.5026062042500739,
+      "candidate_roundtrip_error": 0,
+      "analytic_first_state_gauge_error": 5.793689899742398e-17,
+      "homogeneity_error": 0,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "finite": true,
+      "note": "The exact final reference mean is zero, so relative-RMS diagnostics are ill-conditioned. The frozen scientific gate uses absolute MSE and is well-defined."
+    },
+    {
+      "name": "dense32",
+      "width": 32,
+      "depth": 8,
+      "network_seed": 164032,
+      "reference_samples": 32768,
+      "reference_seed": 164320,
+      "parent_mse": 0.0016560228616983798,
+      "ago_mse": 0.0013586465178610134,
+      "ago_over_parent": 0.8204273922085932,
+      "mse_improvement_fraction": 0.17957260779140682,
+      "parent_relative_rms": 0.0418951334096602,
+      "ago_relative_rms": 0.03794754229914092,
+      "candidate_roundtrip_error": 1.178077317106145e-16,
+      "homogeneity_error": 5.081177859361469e-16,
+      "reference_se_rms": 0.0016465638451646676,
+      "reference_stability_pass": true,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "finite": true
+    },
+    {
+      "name": "adversarial16",
+      "width": 16,
+      "depth": 8,
+      "network_seed": 164016,
+      "reference_samples": 32768,
+      "reference_seed": 164160,
+      "parent_mse": 0.026053104446946848,
+      "ago_mse": 0.016843976988252372,
+      "ago_over_parent": 0.6465247557177898,
+      "mse_improvement_fraction": 0.3534752442822102,
+      "parent_relative_rms": 0.08063501937194423,
+      "ago_relative_rms": 0.06483600902690055,
+      "candidate_roundtrip_error": 1.8991982144301774e-16,
+      "homogeneity_error": 3.5462274966245103e-16,
+      "reference_se_rms": 0.0042707800594188085,
+      "reference_stability_pass": true,
+      "parent_replay_bitwise_exact": true,
+      "ago_replay_bitwise_exact": true,
+      "finite": true
+    }
+  ],
+  "pooled": {
+    "parent_mse": 0.00939692154037881,
+    "ago_mse": 0.006259642959087052,
+    "ago_over_parent": 0.6661376209420509,
+    "mse_improvement_fraction": 0.3338623790579491
+  },
+  "identities": {
+    "gauge_roundtrip_max": 1.8991982144301774e-16,
+    "exact2d_analytic_first_state_gauge_error": 5.793689899742398e-17,
+    "homogeneity_max": 5.081177859361469e-16,
+    "tolerance": 2e-12,
+    "pass": true
+  },
+  "production_cost": {
+    "covariance_linear_transport": 68719476736,
+    "mean_matvec": 33554432,
+    "nonlinear_second_order_arithmetic": 402653184,
+    "normal_scalar_work": 16777216,
+    "helper_reserve": 42949672960,
+    "angular_gauge_overlay": 9437184,
+    "all_in_upper": 112131571712,
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "utilization": 0.05099153518676758,
+    "slack_flops": 184736567787,
+    "independent_formula_reconcile": true,
+    "pass": true
+  },
+  "gates": {
+    "source_firewall": true,
+    "finite_all": true,
+    "reference_after_freeze_all": true,
+    "parent_replay_bitwise_exact_all": true,
+    "ago_replay_bitwise_exact_all": true,
+    "candidate_roundtrip_le_2e_12_all": true,
+    "exact2d_first_state_gauge_le_2e_12": true,
+    "homogeneity_le_2e_12_all": true,
+    "reference_stability_dense32_adversarial16": true,
+    "individual_improvement_exact2d": true,
+    "individual_improvement_dense32": true,
+    "individual_improvement_adversarial16": true,
+    "pooled_mse_ratio_le_0_98": true,
+    "cost_formula_exact_reconcile": true,
+    "complete_cost_le_0_135B": true,
+    "no_public_scorer_holdout_full_submission": true,
+    "no_sweep_rescue_rerun": true,
+    "scientific_go": true
+  },
+  "scope": {
+    "target_free": true,
+    "synthetic_only": true,
+    "public": false,
+    "public_mini": false,
+    "official_scorer": false,
+    "holdout": false,
+    "full_suite": false,
+    "submission": false,
+    "sweep": false,
+    "rescue": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "ledger_mutated": false,
+    "merged": false
+  },
+  "authorization": "This owner GO establishes H160 AGO on the frozen synthetic target-free fixtures only. It does not authorize public/scorer/holdout/full/submission execution without the separately requested next-stage protocol/verifier."
+}
