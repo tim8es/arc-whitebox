@@ -1,6 +1,6 @@
 {
   "idempotency_key": "ARC-E173-OFFICIAL-MINI-AGO-INTEGRATION-20260921",
   "execute": true,
-  "attempt": 3,
+  "attempt": 4,
   "scope": "official local v2-phase2 mini first 5; parent vs AGO; no submission"
 }
