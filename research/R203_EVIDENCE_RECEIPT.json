@@ -1,0 +1,154 @@
+{
+  "schema": "arc.whitebox.r203.evidence_audit_receipt.v1",
+  "experiment": "R203",
+  "role": "evidence_audit_owner",
+  "date": "2026-09-22",
+  "branch": "review/r203-evidence-audit-20260922",
+  "base": {
+    "branch": "review/e174-e173-independent-verifier-20260921",
+    "commit": "c2dde864c51d1fe54f176dd9dbd2e84bc78c10a7"
+  },
+  "scope": {
+    "scientific_rerun": false,
+    "benchmark_rerun": false,
+    "submission": false,
+    "leaderboard": false,
+    "baseline_mutation": false,
+    "canonical_ledger_mutation": false,
+    "duplicates_r201_r202": false
+  },
+  "commands": {
+    "artifact_materialization": "GitHub Actions artifact 10650296065 -> e173-official-mini-ago.zip",
+    "extract": "unzip -q e173-official-mini-ago.zip -d /tmp/e173_art",
+    "audit": "python scripts/r203_evidence_audit.py /tmp/e173_art --zip e173-official-mini-ago.zip --expected-zip-sha256 7869fe6ac1af128f406be84f057568422dc0ab99b9cd31114e0ec46605182c4e",
+    "replay": "repeat the same audit command; JSON output SHA256 must equal f363e8a587d75802859c031e8ae0a8b44782301b9e3baee0aa7621ebf6115741"
+  },
+  "immutable_e173": {
+    "owner_receipt": {
+      "path": "research/E173_RECEIPT.json",
+      "commit": "83d3337cb948a5f7dbc15329e9dd92da6a5d7f03",
+      "blob": "3df68bc378da402d931efb5e5f59308096bcec16"
+    },
+    "verifier_receipt": {
+      "path": "research/E174_E173_INDEPENDENT_VERIFIER_RECEIPT.json",
+      "commit": "c2dde864c51d1fe54f176dd9dbd2e84bc78c10a7",
+      "blob": "84dea0f558884f7666d0d33e7062d83374e0f6b8"
+    },
+    "run_id": 35621103274,
+    "job_id": 106404059329,
+    "artifact_id": 10650296065,
+    "artifact_name": "e173-official-mini-ago",
+    "artifact_size_bytes": 1062163,
+    "artifact_zip_sha256": "7869fe6ac1af128f406be84f057568422dc0ab99b9cd31114e0ec46605182c4e"
+  },
+  "executed_audit": {
+    "script_path": "scripts/r203_evidence_audit.py",
+    "local_script_sha256_precommit": "aadc1ac2b2b5727d095ac40e62dbb8fcc9a8c48c15572a40b860cd2b8e9be493",
+    "replay_identical": true,
+    "output_sha256": "f363e8a587d75802859c031e8ae0a8b44782301b9e3baee0aa7621ebf6115741",
+    "checks": {
+      "artifact_zip_sha256_match": true,
+      "sha256_map_entries": 61,
+      "sha256_map_all_verified": true,
+      "vector_manifest_records": 5,
+      "vector_file_raw_shape_dtype_nbytes_all_verified": true,
+      "e173_summary_panel_matches_recomputed_vectors": true,
+      "normalization_parent_verified": true,
+      "normalization_ago_verified": true,
+      "existing_focused_tests_exit": 0,
+      "existing_parent_validate_exit": 0,
+      "existing_ago_validate_exit": 0,
+      "existing_parent_run_exit": 0,
+      "existing_ago_run_exit": 0,
+      "existing_summarize_exit": 0,
+      "existing_focused_tests_log": "10 passed, 13 warnings in 1.24s"
+    }
+  },
+  "normalization": {
+    "authoritative_comparison_metric": "raw final_layer_mse",
+    "mean_score_multiplier": 0.1,
+    "verified_relation": "adjusted_final_layer_score = raw final_layer_mse * 0.1",
+    "inverse_for_history_if_adjusted": "raw final_layer_mse = adjusted_final_layer_score / 0.1",
+    "warning": "Do not compare adjusted_final_layer_score directly against raw final_layer_mse."
+  },
+  "compatible_panel": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "split": "mini",
+    "exact_first_five_order": [
+      "logan-fitzgerald",
+      "william-graves",
+      "raymond-barnes",
+      "steven-rice",
+      "sarah-kelley"
+    ],
+    "width": 1024,
+    "depth": 16,
+    "whestbench_version": "0.16.1",
+    "budget_flops": 2199023255552,
+    "cap_flops": 296868139499,
+    "max_threads": 1,
+    "residual_wall_time_limit_s": 0.4
+  },
+  "strongest_reproducible_historical_result": {
+    "status": "VERIFIED",
+    "experiment": "E173",
+    "method": "AGO",
+    "exact_panel_compatible": true,
+    "official_mean_raw_final_layer_mse": 0.00000350171694663004,
+    "vector_recomputed_mean_raw_final_layer_mse": 0.000003501716933665207,
+    "adjusted_final_layer_score": 3.50171694663004e-7,
+    "parent_official_mean_raw_final_layer_mse": 0.0000042111157199542505,
+    "ago_over_parent_official": 0.8315413727619156,
+    "improvement_fraction_official": 0.16845862723808436,
+    "improve_count": 5,
+    "paired_delta_mean_official": 7.093987733242102e-7,
+    "paired_delta_se_official": 8.90210264475203e-8,
+    "mean_metered_flops": 69159064030,
+    "failures": 0,
+    "deterministic_replay": true,
+    "independent_verifier": "E174 GO"
+  },
+  "excluded_or_partial_history": [
+    {
+      "experiment": "E136 V29",
+      "status": "NOT_EXACT_PANEL_COMPATIBLE",
+      "reason": "same public v2-phase2/mini source but only first 3 MLP smoke; no exact first-five paired panel, and reported mean cost is about 0.25769B, above the 0.135B cap",
+      "raw_final_layer_mse_reported_3_mlp": 2.33e-8
+    },
+    {
+      "experiment": "E171",
+      "status": "NOT_PANEL_COMPATIBLE",
+      "reason": "production-shaped synthetic three-seed panel, not the public first-five Mini targets"
+    },
+    {
+      "experiment": "E176",
+      "status": "NOT_PANEL_COMPATIBLE",
+      "reason": "synthetic width 256/depth 8 fixture; public Mini not opened"
+    }
+  ],
+  "history_json": {
+    "status": "UNKNOWN",
+    "verified_absence_in": [
+      "E173 branch recursive tree",
+      "E174 verifier branch recursive tree",
+      "downloaded immutable E173 Actions artifact",
+      "visible R202 branch tree at audit time"
+    ],
+    "consequence": "No history row can be independently tied to estimator commit, exact five-MLP panel, metric semantics, normalization multiplier, per-MLP values, cost/failure status, or immutable artifact hash.",
+    "forbidden_inference": "Do not infer a historical raw MSE by treating an unverified history score as raw; if the field is adjusted_final_layer_score, it is smaller by exactly 10x."
+  },
+  "exact_comparison_gaps": [
+    "history.json itself is not present in the inspected committed refs or retained E173 artifact, so its content/provenance is UNKNOWN",
+    "no immutable mapping from any history row to the exact E173 five MLP names/order and v2-phase2 revision",
+    "no verified field semantics for a history score: raw final_layer_mse versus adjusted_final_layer_score",
+    "no retained per-MLP history values or prediction/target hashes to recompute paired deltas against E173",
+    "no immutable history-row estimator commit/blob identity",
+    "no verified history-row FLOPs/failure/residual-time metadata under the E173 0.135B comparison contract"
+  ],
+  "conclusion": {
+    "verified": "E173 AGO is the strongest currently VERIFIED reproducible historical comparator on the exact five-MLP public Mini panel under the E173 cost contract.",
+    "unknown": "A stronger entry may exist in an external/local history.json, but no inspectable immutable history.json was available, so that claim cannot be verified.",
+    "comparison_ready": false,
+    "reason": "history-side provenance/panel/metric/cost evidence is missing even though E173 itself is fully normalized and reproducible."
+  }
+}
