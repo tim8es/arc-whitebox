@@ -1340,6 +1340,18 @@
       "owner": "v25-optimization",
       "payload": {},
       "revision": 103
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T22:13:00.000Z",
+      "job": "R226",
+      "owner": "results-integration",
+      "payload": {
+        "run_id": "R226-r224-normalized-mini100-registry-integration",
+        "code_commit": "42b5b658ee4cb3950e88a697416c8fb09fcf2f37",
+        "command": "integrate exact R224 normalized R209 V25/V29 mini-100 records into latest research/control-v2; regenerate STATUS via arc_control report; run check and compare; preserve concurrent queue events; no estimator run or leaderboard-rank claim"
+      },
+      "revision": 104
     }
   ],
   "jobs": [
@@ -2166,7 +2178,14 @@
     },
     {
       "assigned_owner": "results-integration",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R226-r224-normalized-mini100-registry-integration",
+          "code_commit": "42b5b658ee4cb3950e88a697416c8fb09fcf2f37",
+          "command": "integrate exact R224 normalized R209 V25/V29 mini-100 records into latest research/control-v2; regenerate STATUS via arc_control report; run check and compare; preserve concurrent queue events; no estimator run or leaderboard-rank claim",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Use R224's schema-valid V25/V29 mini-100 records and receipt, without rerunning the estimator. Integrate the two exact result JSON files into the authoritative `research/control-v2` `research/results/` registry, verify `arc_control.py check`, `compare`, and regenerated `STATUS.md`. Preserve V29's 57 failed rows and raw-tensor limitation. Refresh from the latest control head before writing; publish a non-force commit with only normalized records/overview so concurrent queue events are not lost. Provide commit, hashes, comparison, and finish receipt. No holdout, paid compute, submission or leaderboard claim.",
       "depends_on": [
         "R224"
@@ -2175,7 +2194,7 @@
       "id": "R226",
       "owner": "results-integration",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Integrate verified R209 V25/V29 mini-100 records into shared registry"
     },
     {
@@ -2194,7 +2213,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 103,
+  "revision": 104,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
