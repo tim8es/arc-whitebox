@@ -1248,16 +1248,16 @@
       "revision": 96
     },
     {
-      "revision": 97,
       "action": "start",
+      "at": "2026-09-22T21:41:01.000Z",
       "job": "R224",
       "owner": "postflight-audit",
       "payload": {
-        "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
         "code_commit": "7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b",
-        "command": "read-only recover published @v2-phase2 mini-100 network_id/target_sha256/dtype; verify dataset SHA/name-order; normalize R209 V25/V29 only if schema-complete; no estimator run"
+        "command": "read-only recover published @v2-phase2 mini-100 network_id/target_sha256/dtype; verify dataset SHA/name-order; normalize R209 V25/V29 only if schema-complete; no estimator run",
+        "run_id": "R224-r209-mini100-fingerprint-recovery-20260922"
       },
-      "at": "2026-09-22T21:41:01.000Z"
+      "revision": 97
     },
     {
       "action": "finish",
@@ -1267,8 +1267,8 @@
       "payload": {
         "reason": "Independent read-only R219 audit complete. Scientific terminal proof VERIFIED within the frozen pairwise-calibrated one-factor Gaussian-copula scope: parity and independence have identical univariate/all pair laws; E[ReLU(sum Xi)] = 1/2 vs 3/4; same-state minimax absolute error lower bound = 1/8; cost arithmetic, artifact ZIP/hash contents, and protocol lineage check out. Exact flaw range: R219 protocol steps 5-6 required the executable to verify the one-factor loading implication, but scripts/r219_1fgc_falsifier.py line 60 hardcodes at_most_one_nonzero=True and line 70 feeds that boolean directly to the gate. Thus executable/protocol evidence is incomplete for that implication, although R225 independently proves it analytically, so the R219 scientific terminal conclusion is unchanged. No rerun, family extension, holdout, paid compute, submission, canonical or leaderboard mutation.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/e7590e21fb079ae9571adafb2bb584a7034f7c95/research/R225_R219_TERMINAL_PROOF_INDEPENDENT_AUDIT.json",
-          "sha256": "8967eda8542f1f95ce9d16b3d735409f940b628545ed63acd076c07741d3f8fc"
+          "sha256": "8967eda8542f1f95ce9d16b3d735409f940b628545ed63acd076c07741d3f8fc",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/e7590e21fb079ae9571adafb2bb584a7034f7c95/research/R225_R219_TERMINAL_PROOF_INDEPENDENT_AUDIT.json"
         },
         "run_id": "R225-r219-terminal-proof-independent-audit",
         "status": "COMPLETE"
@@ -1276,20 +1276,70 @@
       "revision": 98
     },
     {
-      "revision": 99,
       "action": "finish",
+      "at": "2026-09-22T21:49:01.000Z",
       "job": "R224",
       "owner": "postflight-audit",
       "payload": {
-        "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
-        "status": "COMPLETE",
+        "reason": "Published @v2-phase2 mini-100 evidence closed the R222 schema gap without any estimator run: metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1, exact 100-name/order SHA256 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce, 100 unique exact int64 mlp_seed-derived network IDs, 100 raw float32 all_layer_means target SHA256 fingerprints, dtype float32[16,1024], and E174 first-five controls all verified. Normalized R209 V25/V29 mini-100 records were created and exact installed bytes pass arc_control.py check; compare preserves V29's 57 residual failures and full score 0.5270942878803215 versus V25 0 failures and 8.170397440117226e-9. Raw prediction tensors remain absent. No holdout, full split, paid/larger runner, submission or leaderboard mutation.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/8fb0afb77ae834d88bae29557a41356d4d98401f/research/r224/R224_RECEIPT.json",
-          "sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330"
+          "sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/8fb0afb77ae834d88bae29557a41356d4d98401f/research/r224/R224_RECEIPT.json"
         },
-        "reason": "Published @v2-phase2 mini-100 evidence closed the R222 schema gap without any estimator run: metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1, exact 100-name/order SHA256 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce, 100 unique exact int64 mlp_seed-derived network IDs, 100 raw float32 all_layer_means target SHA256 fingerprints, dtype float32[16,1024], and E174 first-five controls all verified. Normalized R209 V25/V29 mini-100 records were created and exact installed bytes pass arc_control.py check; compare preserves V29's 57 residual failures and full score 0.5270942878803215 versus V25 0 failures and 8.170397440117226e-9. Raw prediction tensors remain absent. No holdout, full split, paid/larger runner, submission or leaderboard mutation."
+        "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-22T21:49:01.000Z"
+      "revision": 99
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T22:11:29.431Z",
+      "job": "R226",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "results-integration",
+        "deliverable": "Use R224's schema-valid V25/V29 mini-100 records and receipt, without rerunning the estimator. Integrate the two exact result JSON files into the authoritative `research/control-v2` `research/results/` registry, verify `arc_control.py check`, `compare`, and regenerated `STATUS.md`. Preserve V29's 57 failed rows and raw-tensor limitation. Refresh from the latest control head before writing; publish a non-force commit with only normalized records/overview so concurrent queue events are not lost. Provide commit, hashes, comparison, and finish receipt. No holdout, paid compute, submission or leaderboard claim.",
+        "depends_on": [
+          "R224"
+        ],
+        "hypothesis_id": "R224-NORMALIZED-MINI100-SHARED-REGISTRY",
+        "priority": 1,
+        "title": "Integrate verified R209 V25/V29 mini-100 records into shared registry"
+      },
+      "revision": 100
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T22:11:29.431Z",
+      "job": "R227",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "v25-optimization",
+        "deliverable": "Read current `AGENTS.md`, `research/RESEARCH_PROCESS.md`, immutable history and R224's normalized per-network V25 mini-100 records. Choose exactly one untried algorithm-level change aimed at lowering official adjusted score on this same public development panel; explicitly exclude R223's K4-to-K3 per-neuron feed-lambda patch, R219's factor-copula family, and all previously falsified mechanisms. Freeze parent/source/config/falsifier, predicted cost and GO/NO-GO before execution. Run at most one bounded same-panel candidate evaluation using verified free/existing compute only; keep canonical V25 unchanged. Retain every network row/failure, compare official adjusted score and measured FLOPs, create artifact/receipt/commit. If no distinct feasible candidate exists, finish with a scoped terminal NO-GO. No paid resource, holdout or submission.",
+        "depends_on": [
+          "R224"
+        ],
+        "hypothesis_id": "V25-NOVEL-SCORE-IMPROVEMENT-POST-R223",
+        "priority": 1,
+        "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure"
+      },
+      "revision": 101
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T22:11:29.431Z",
+      "job": "R226",
+      "owner": "results-integration",
+      "payload": {},
+      "revision": 102
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T22:11:29.431Z",
+      "job": "R227",
+      "owner": "v25-optimization",
+      "payload": {},
+      "revision": 103
     }
   ],
   "jobs": [
@@ -2050,19 +2100,19 @@
       "assigned_owner": "postflight-audit",
       "attempts": [
         {
-          "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
           "code_commit": "7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b",
           "command": "read-only recover published @v2-phase2 mini-100 network_id/target_sha256/dtype; verify dataset SHA/name-order; normalize R209 V25/V29 only if schema-complete; no estimator run",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
-            "status": "COMPLETE",
+            "reason": "Published @v2-phase2 mini-100 evidence closed the R222 schema gap without any estimator run: metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1, exact 100-name/order SHA256 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce, 100 unique exact int64 mlp_seed-derived network IDs, 100 raw float32 all_layer_means target SHA256 fingerprints, dtype float32[16,1024], and E174 first-five controls all verified. Normalized R209 V25/V29 mini-100 records were created and exact installed bytes pass arc_control.py check; compare preserves V29's 57 residual failures and full score 0.5270942878803215 versus V25 0 failures and 8.170397440117226e-9. Raw prediction tensors remain absent. No holdout, full split, paid/larger runner, submission or leaderboard mutation.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/8fb0afb77ae834d88bae29557a41356d4d98401f/research/r224/R224_RECEIPT.json",
-              "sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330"
+              "sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/8fb0afb77ae834d88bae29557a41356d4d98401f/research/r224/R224_RECEIPT.json"
             },
-            "reason": "Published @v2-phase2 mini-100 evidence closed the R222 schema gap without any estimator run: metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1, exact 100-name/order SHA256 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce, 100 unique exact int64 mlp_seed-derived network IDs, 100 raw float32 all_layer_means target SHA256 fingerprints, dtype float32[16,1024], and E174 first-five controls all verified. Normalized R209 V25/V29 mini-100 records were created and exact installed bytes pass arc_control.py check; compare preserves V29's 57 residual failures and full score 0.5270942878803215 versus V25 0 failures and 8.170397440117226e-9. Raw prediction tensors remain absent. No holdout, full split, paid/larger runner, submission or leaderboard mutation."
-          }
+            "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
+            "status": "COMPLETE"
+          },
+          "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Continue from R222's precise schema gap. Using only the published immutable `@v2-phase2` mini-100 dataset, recover and verify per-network `network_id`, canonical target_sha256 and explicit dtype for the exact R209 V25/V29 100-row name/order. Reconcile the panel with dataset SHA 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1; document canonical hashing method and any ambiguity. Do not run an estimator. If all required fields are proved, create schema-valid normalized V25/V29 records from the existing R209 reports/artifacts and run `arc_control.py check/compare`; otherwise publish precise NOT_COMPARABLE receipt. Preserve V29 failures and absence of raw prediction tensors. Work on a review branch; no paid compute, holdout or submission.",
@@ -2073,13 +2123,13 @@
       "id": "R224",
       "owner": "postflight-audit",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Recover exact mini-100 target fingerprints for R209 normalization",
+      "reason": "Published @v2-phase2 mini-100 evidence closed the R222 schema gap without any estimator run: metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1, exact 100-name/order SHA256 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce, 100 unique exact int64 mlp_seed-derived network IDs, 100 raw float32 all_layer_means target SHA256 fingerprints, dtype float32[16,1024], and E174 first-five controls all verified. Normalized R209 V25/V29 mini-100 records were created and exact installed bytes pass arc_control.py check; compare preserves V29's 57 residual failures and full score 0.5270942878803215 versus V25 0 failures and 8.170397440117226e-9. Raw prediction tensors remain absent. No holdout, full split, paid/larger runner, submission or leaderboard mutation.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/8fb0afb77ae834d88bae29557a41356d4d98401f/research/r224/R224_RECEIPT.json",
-        "sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330"
+        "sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/8fb0afb77ae834d88bae29557a41356d4d98401f/research/r224/R224_RECEIPT.json"
       },
-      "reason": "Published @v2-phase2 mini-100 evidence closed the R222 schema gap without any estimator run: metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1, exact 100-name/order SHA256 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce, 100 unique exact int64 mlp_seed-derived network IDs, 100 raw float32 all_layer_means target SHA256 fingerprints, dtype float32[16,1024], and E174 first-five controls all verified. Normalized R209 V25/V29 mini-100 records were created and exact installed bytes pass arc_control.py check; compare preserves V29's 57 residual failures and full score 0.5270942878803215 versus V25 0 failures and 8.170397440117226e-9. Raw prediction tensors remain absent. No holdout, full split, paid/larger runner, submission or leaderboard mutation."
+      "status": "COMPLETE",
+      "title": "Recover exact mini-100 target fingerprints for R209 normalization"
     },
     {
       "assigned_owner": "leaderboard-audit",
@@ -2087,17 +2137,17 @@
         {
           "code_commit": "43af94b811f4bd384474f5ea7bc4440894e33817",
           "command": "read-only independent verification of frozen R219 terminal proof/artifacts: exact-small laws, ReLU expectations, minimax lower bound, one-factor Gaussian-copula scope, cost arithmetic, and source/protocol lineage; no rerun or family extension",
-          "run_id": "R225-r219-terminal-proof-independent-audit",
-          "status": "COMPLETE",
           "completion": {
             "reason": "Independent read-only R219 audit complete. Scientific terminal proof VERIFIED within the frozen pairwise-calibrated one-factor Gaussian-copula scope: parity and independence have identical univariate/all pair laws; E[ReLU(sum Xi)] = 1/2 vs 3/4; same-state minimax absolute error lower bound = 1/8; cost arithmetic, artifact ZIP/hash contents, and protocol lineage check out. Exact flaw range: R219 protocol steps 5-6 required the executable to verify the one-factor loading implication, but scripts/r219_1fgc_falsifier.py line 60 hardcodes at_most_one_nonzero=True and line 70 feeds that boolean directly to the gate. Thus executable/protocol evidence is incomplete for that implication, although R225 independently proves it analytically, so the R219 scientific terminal conclusion is unchanged. No rerun, family extension, holdout, paid compute, submission, canonical or leaderboard mutation.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/e7590e21fb079ae9571adafb2bb584a7034f7c95/research/R225_R219_TERMINAL_PROOF_INDEPENDENT_AUDIT.json",
-              "sha256": "8967eda8542f1f95ce9d16b3d735409f940b628545ed63acd076c07741d3f8fc"
+              "sha256": "8967eda8542f1f95ce9d16b3d735409f940b628545ed63acd076c07741d3f8fc",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/e7590e21fb079ae9571adafb2bb584a7034f7c95/research/R225_R219_TERMINAL_PROOF_INDEPENDENT_AUDIT.json"
             },
             "run_id": "R225-r219-terminal-proof-independent-audit",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "R225-r219-terminal-proof-independent-audit",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read-only independent audit of R219 receipt `research/r219/R219_TERMINAL_RECEIPT.json` (receipt SHA256 c8c0fd2f91d885b5ec4ec7fa56b7ff6f7c453a85900fd14f8c48ae9d97a47eb7). Recompute the even-parity four-Rademacher and independent-law marginals/pair laws, E[ReLU(sum Xi)] values, minimax error lower bound 1/8, and verify the claimed one-factor Gaussian-copula state limitation and conservative cost arithmetic against the frozen protocol/artifacts. Report exact scope and any flaw; do not rerun or widen the rejected family. Create a review receipt/commit and finish queue. No holdout, paid resource, submission or leaderboard changes.",
@@ -2106,17 +2156,45 @@
       "id": "R225",
       "owner": "leaderboard-audit",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Independently verify R219 factor-copula non-closure proof",
+      "reason": "Independent read-only R219 audit complete. Scientific terminal proof VERIFIED within the frozen pairwise-calibrated one-factor Gaussian-copula scope: parity and independence have identical univariate/all pair laws; E[ReLU(sum Xi)] = 1/2 vs 3/4; same-state minimax absolute error lower bound = 1/8; cost arithmetic, artifact ZIP/hash contents, and protocol lineage check out. Exact flaw range: R219 protocol steps 5-6 required the executable to verify the one-factor loading implication, but scripts/r219_1fgc_falsifier.py line 60 hardcodes at_most_one_nonzero=True and line 70 feeds that boolean directly to the gate. Thus executable/protocol evidence is incomplete for that implication, although R225 independently proves it analytically, so the R219 scientific terminal conclusion is unchanged. No rerun, family extension, holdout, paid compute, submission, canonical or leaderboard mutation.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/e7590e21fb079ae9571adafb2bb584a7034f7c95/research/R225_R219_TERMINAL_PROOF_INDEPENDENT_AUDIT.json",
-        "sha256": "8967eda8542f1f95ce9d16b3d735409f940b628545ed63acd076c07741d3f8fc"
+        "sha256": "8967eda8542f1f95ce9d16b3d735409f940b628545ed63acd076c07741d3f8fc",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/e7590e21fb079ae9571adafb2bb584a7034f7c95/research/R225_R219_TERMINAL_PROOF_INDEPENDENT_AUDIT.json"
       },
-      "reason": "Independent read-only R219 audit complete. Scientific terminal proof VERIFIED within the frozen pairwise-calibrated one-factor Gaussian-copula scope: parity and independence have identical univariate/all pair laws; E[ReLU(sum Xi)] = 1/2 vs 3/4; same-state minimax absolute error lower bound = 1/8; cost arithmetic, artifact ZIP/hash contents, and protocol lineage check out. Exact flaw range: R219 protocol steps 5-6 required the executable to verify the one-factor loading implication, but scripts/r219_1fgc_falsifier.py line 60 hardcodes at_most_one_nonzero=True and line 70 feeds that boolean directly to the gate. Thus executable/protocol evidence is incomplete for that implication, although R225 independently proves it analytically, so the R219 scientific terminal conclusion is unchanged. No rerun, family extension, holdout, paid compute, submission, canonical or leaderboard mutation."
+      "status": "COMPLETE",
+      "title": "Independently verify R219 factor-copula non-closure proof"
+    },
+    {
+      "assigned_owner": "results-integration",
+      "attempts": [],
+      "deliverable": "Use R224's schema-valid V25/V29 mini-100 records and receipt, without rerunning the estimator. Integrate the two exact result JSON files into the authoritative `research/control-v2` `research/results/` registry, verify `arc_control.py check`, `compare`, and regenerated `STATUS.md`. Preserve V29's 57 failed rows and raw-tensor limitation. Refresh from the latest control head before writing; publish a non-force commit with only normalized records/overview so concurrent queue events are not lost. Provide commit, hashes, comparison, and finish receipt. No holdout, paid compute, submission or leaderboard claim.",
+      "depends_on": [
+        "R224"
+      ],
+      "hypothesis_id": "R224-NORMALIZED-MINI100-SHARED-REGISTRY",
+      "id": "R226",
+      "owner": "results-integration",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Integrate verified R209 V25/V29 mini-100 records into shared registry"
+    },
+    {
+      "assigned_owner": "v25-optimization",
+      "attempts": [],
+      "deliverable": "Read current `AGENTS.md`, `research/RESEARCH_PROCESS.md`, immutable history and R224's normalized per-network V25 mini-100 records. Choose exactly one untried algorithm-level change aimed at lowering official adjusted score on this same public development panel; explicitly exclude R223's K4-to-K3 per-neuron feed-lambda patch, R219's factor-copula family, and all previously falsified mechanisms. Freeze parent/source/config/falsifier, predicted cost and GO/NO-GO before execution. Run at most one bounded same-panel candidate evaluation using verified free/existing compute only; keep canonical V25 unchanged. Retain every network row/failure, compare official adjusted score and measured FLOPs, create artifact/receipt/commit. If no distinct feasible candidate exists, finish with a scoped terminal NO-GO. No paid resource, holdout or submission.",
+      "depends_on": [
+        "R224"
+      ],
+      "hypothesis_id": "V25-NOVEL-SCORE-IMPROVEMENT-POST-R223",
+      "id": "R227",
+      "owner": "v25-optimization",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 99,
+  "revision": 103,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
