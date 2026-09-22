@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-R219-1FGC8-20260922",
+  "execute_once": true,
+  "scope": "target-free exact-small synthetic only"
+}
