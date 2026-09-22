@@ -546,6 +546,14 @@
         "title": "Find one untested cost-feasible method from the research frontier"
       },
       "revision": 43
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T18:11:52.226760+00:00",
+      "job": "R212",
+      "owner": "method-research",
+      "payload": {},
+      "revision": 44
     }
   ],
   "jobs": [
@@ -930,14 +938,14 @@
       "depends_on": [],
       "hypothesis_id": "FRONTIER-GAP-CANDIDATE",
       "id": "R212",
-      "owner": null,
+      "owner": "method-research",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Find one untested cost-feasible method from the research frontier"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 43,
+  "revision": 44,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
