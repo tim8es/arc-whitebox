@@ -1,0 +1,236 @@
+{
+  "schema": "arc.whitebox.r225.r219_terminal_proof_independent_audit.v1",
+  "job_id": "R225",
+  "audited_job": "R219",
+  "owner": "leaderboard-audit",
+  "audit_mode": "read-only independent audit; no R219 rerun; no rejected-family extension",
+  "verdict": "SCIENTIFIC_PROOF_VERIFIED_WITH_EXECUTABLE_PROTOCOL_GAP",
+  "summary": "R219's mathematical terminal witness is correct within its frozen scope: the even-parity four-Rademacher law and the independent law have identical univariate and all pairwise laws; exact ReLU means are 1/2 and 3/4; any deterministic same-state prediction has minimax absolute error at least 1/8. Cost arithmetic and immutable lineage are correct. However, the R219 executable does not actually compute/verify the key one-factor loading implication required by protocol steps 5-6: it hardcodes at_most_one_nonzero=True. This is an artifact/protocol-evidence gap, not a mathematical counterexample to the terminal proof, because this audit independently verifies the implication analytically.",
+  "audited_receipt": {
+    "commit": "6e1bcf7b6833254ce1c2671ff7c291a32d1ee09c",
+    "path": "research/r219/R219_TERMINAL_RECEIPT.json",
+    "git_blob_sha": "a9226927de06213e6a1e01a615ea1a36c434dec9",
+    "sha256": "c8c0fd2f91d885b5ec4ec7fa56b7ff6f7c453a85900fd14f8c48ae9d97a47eb7",
+    "sha256_recomputed_matches": true
+  },
+  "exact_small_independent_recomputation": {
+    "parity_support_count": 8,
+    "independent_support_count": 16,
+    "univariate_laws": "for each Xi, P(-1)=P(+1)=1/2 under both laws",
+    "all_six_pair_laws": "for every i<j, each of (-1,-1),(-1,+1),(+1,-1),(+1,+1) has probability 1/4 under both laws",
+    "parity_sum_distribution": {
+      "0": "3/4",
+      "4": "1/8",
+      "-4": "1/8"
+    },
+    "independent_sum_distribution": {
+      "0": "3/8",
+      "2": "1/4",
+      "4": "1/16",
+      "-4": "1/16",
+      "-2": "1/4"
+    },
+    "parity_relu_mean": "1/2",
+    "independent_relu_mean": "3/4",
+    "gap": "1/4",
+    "minimax_same_state_absolute_error_lower_bound": "1/8",
+    "minimax_argument": "For any common deterministic estimate a, max(|a-1/2|,|a-3/4|) >= |3/4-1/2|/2 = 1/8; equality occurs at a=5/8."
+  },
+  "one_factor_gaussian_copula_check": {
+    "frozen_model": "Zi=lambda_i F + sqrt(1-lambda_i^2) epsilon_i with independent standard-normal F, epsilon_i; Xi are symmetric sign/Rademacher margins",
+    "pair_sign_correlation": "Corr(Xi,Xj)=(2/pi) asin(lambda_i lambda_j)",
+    "deduction": [
+      "Exact pairwise independence gives Corr(Xi,Xj)=0 for every i!=j.",
+      "asin is zero only at zero, so lambda_i lambda_j=0 for every i!=j.",
+      "Over real loadings this permits at most one nonzero lambda_i.",
+      "Therefore every off-diagonal latent Gaussian covariance is zero; the latent Gaussian vector is independent, and coordinate-wise sign transforms remain independent."
+    ],
+    "conclusion": "Within the frozen pairwise-calibrated one-factor Gaussian-copula closure, the parity law and independent law map to the same independent represented state, so the 1/4 observable gap is a valid non-closure witness.",
+    "scope_qualification": "This does not prove that every conceivable projection/fitting rule into a one-factor Gaussian-copula family must return identical parameters if that rule is allowed to use higher-order information while deliberately sacrificing exact pairwise laws. R219's frozen protocol explicitly selects the state from scalar marginals/pairwise dependencies, so that broader claim is outside R219."
+  },
+  "executable_protocol_gap": {
+    "severity": "LIMITED_PROTOCOL_EVIDENCE_GAP_DOES_NOT_CHANGE_SCIENTIFIC_TERMINAL_CONCLUSION",
+    "protocol_required": [
+      {
+        "path": "research/r219/R219_PROTOCOL.md",
+        "blob_sha": "49049ed51ee783798bd9e230551e93f3ade50a9b",
+        "line": 271,
+        "requirement": "verify the one-factor loading constraint implies at most one nonzero loading"
+      },
+      {
+        "path": "research/r219/R219_PROTOCOL.md",
+        "blob_sha": "49049ed51ee783798bd9e230551e93f3ade50a9b",
+        "line": 272,
+        "requirement": "verify the family therefore selects the independent four-coordinate joint law"
+      }
+    ],
+    "implementation": [
+      {
+        "path": "scripts/r219_1fgc_falsifier.py",
+        "blob_sha": "972189fe6d7fd1a600b28d6d7a9bfecb3e6ca30a",
+        "line": 60,
+        "observation": "at_most_one_nonzero=True is hardcoded after comments; no executable derivation/check is performed"
+      },
+      {
+        "path": "scripts/r219_1fgc_falsifier.py",
+        "blob_sha": "972189fe6d7fd1a600b28d6d7a9bfecb3e6ca30a",
+        "line": 70,
+        "observation": "the protocol gate one_factor_zero_pair_constraint_implies_independence directly consumes that hardcoded boolean"
+      }
+    ],
+    "affected_claim_range": "Only the claim that the sole synthetic executable itself verified protocol steps 5-6 / the one-factor-state implication. The exact enumeration, ReLU means, minimax arithmetic, artifact replay, cost arithmetic, and the mathematical implication independently checked in R225 remain valid.",
+    "result_fields_affected_as_evidence_not_truth": [
+      {
+        "path": "research/r219/R219_RESULT.json",
+        "line": 60,
+        "field": "exact_small.gaussian_one_factor_constraint"
+      },
+      {
+        "path": "research/r219/R219_RESULT.json",
+        "line": 93,
+        "field": "gates.one_factor_state_identical"
+      }
+    ]
+  },
+  "cost_recomputation": {
+    "n": 1024,
+    "L": 16,
+    "Q": 8,
+    "B": 2199023255552,
+    "mandatory_lower_formula": "4*Q*n^2*L",
+    "mandatory_lower_flops": 536870912,
+    "mandatory_lower_fraction": 0.000244140625,
+    "core_formula": "L*(8*Q*n^2 + 128*Q*n)",
+    "core_flops": 1090519040,
+    "reserve_flops": 4000000000,
+    "all_in_flops": 5090519040,
+    "all_in_fraction": 0.0023149000480771065,
+    "cap_fraction": 0.135,
+    "cap_flops": 296868139499.52,
+    "arithmetic_pass": true,
+    "scope": "This is the frozen protocol's conservative accounting envelope, not an instrumented FLOP measurement of a production implementation and not a cost claim for multi-factor/vine/higher-order families."
+  },
+  "artifact_audit": {
+    "actions_run_id": 35784042283,
+    "actions_job_id": 106936348157,
+    "head_sha": "bdad47262c1aafaf9a801c6985ee747d929e4813",
+    "job_conclusion": "success",
+    "artifact_id": 10719057296,
+    "artifact_name": "r219-1fgc8-falsifier",
+    "artifact_size_bytes": 2380,
+    "artifact_expired": false,
+    "artifact_zip_sha256": "6ba641d86aaf6eecd3465ddcb55d0e4fd9eac91f59f4e3414c6d31baba176fb4",
+    "artifact_zip_sha256_recomputed_matches": true,
+    "files": [
+      {
+        "path": "r219_artifacts/r219-result.json",
+        "sha256": "8b5b633763a9440f3d67daabafa18524553fec03304b872ca87d4709ebf8e452",
+        "manifest_match": true
+      },
+      {
+        "path": "r219_artifacts/r219.log",
+        "sha256": "c1a190c154b0404d7075809d4ee285fb1d50e4eb483edb34be5e665bea819d3d",
+        "manifest_match": true
+      },
+      {
+        "path": "r219_artifacts/sha256.json",
+        "sha256": "b9e75ef533a5811d8086697ca6116d03593715189a7125ad9cd075337b82819b"
+      },
+      {
+        "path": "research/r219/R219_RUN_ARM.json",
+        "sha256": "bf4c7a630409d73c953b539cd5c916b2c813ed0270a4a769bf96c5b13a49d578"
+      }
+    ],
+    "run_arm": {
+      "idempotency_key": "ARC-R219-1FGC8-20260922",
+      "execute_once": true,
+      "scope": "target-free exact-small synthetic only"
+    },
+    "replay_claim": "The artifact/log confirms the script generated identical canonical JSON twice. This replay checks determinism of the frozen executable; it does not independently prove the hardcoded loading implication."
+  },
+  "lineage": {
+    "queue_start": {
+      "revision": 74,
+      "commit": "872993f8bd55148db8aa1886be7451f9bad51c63",
+      "at": "2026-09-22T20:53:35.338526+00:00",
+      "code_commit": "96c7c247da995ad7dae5bdd13a9a463fb635082c"
+    },
+    "ordered_commits": [
+      {
+        "role": "protocol",
+        "commit": "3efca375771496309206932904334b68e0283f4f",
+        "created_at": "2026-09-22T21:00:54Z",
+        "changed_only": "research/r219/R219_PROTOCOL.md"
+      },
+      {
+        "role": "falsifier",
+        "commit": "cfe292400bc629328293f0eec5c7dac13fdb8e27",
+        "created_at": "2026-09-22T21:01:13Z",
+        "changed_only": "scripts/r219_1fgc_falsifier.py"
+      },
+      {
+        "role": "workflow",
+        "commit": "ed3a5e1ff19e701e229f3884bc357376425e8365",
+        "created_at": "2026-09-22T21:01:29Z",
+        "changed_only": ".github/workflows/r219-1fgc8.yml"
+      },
+      {
+        "role": "run_arm",
+        "commit": "bdad47262c1aafaf9a801c6985ee747d929e4813",
+        "created_at": "2026-09-22T21:01:36Z",
+        "changed_only": "research/r219/R219_RUN_ARM.json"
+      },
+      {
+        "role": "result",
+        "commit": "64e662bb45927060a423791a8b7a18f19053ea37",
+        "created_at": "2026-09-22T21:02:25Z",
+        "changed_only": "research/r219/R219_RESULT.json"
+      },
+      {
+        "role": "terminal_receipt",
+        "commit": "6e1bcf7b6833254ce1c2671ff7c291a32d1ee09c",
+        "created_at": "2026-09-22T21:02:46Z",
+        "changed_only": "research/r219/R219_TERMINAL_RECEIPT.json"
+      }
+    ],
+    "sequential_ancestry_verified": true,
+    "workflow_frozen_blobs": {
+      "protocol": "49049ed51ee783798bd9e230551e93f3ade50a9b",
+      "falsifier": "972189fe6d7fd1a600b28d6d7a9bfecb3e6ca30a"
+    },
+    "lineage_pass": true
+  },
+  "source_audit": {
+    "factor_copula_primary": {
+      "citation": "Pavel Krupskii and Harry Joe, Factor copula models for multivariate data, Journal of Multivariate Analysis 120 (2013) 85-101, DOI 10.1016/j.jmva.2013.05.001",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0047259X13000870",
+      "verified_claim": "Primary abstract explicitly describes general conditional-independence models using latent variables and states that the classical multivariate normal model with factor-structured correlation is a special case."
+    },
+    "nataf_bibliography": {
+      "citation": "A. Nataf, Determination des distributions de probabilites dont les marges sont donnees, C. R. Acad. Sci. Paris 255 (1962) 42-43",
+      "url": "https://dml.cz/handle/10338.dmlcz/125838",
+      "verified_claim": "Bibliographic identity/year/volume/pages confirmed. R219 terminal witness does not depend on the Nataf citation for its exact-small proof."
+    }
+  },
+  "final_scope": {
+    "scientific_terminal_proof_valid": true,
+    "closes": "frozen one-factor Gaussian-copula conditional-independence closure whose represented state is scalar marginals plus pairwise-calibrated one-factor dependence",
+    "does_not_close": [
+      "arbitrary full-law projection rules that may sacrifice pairwise matching",
+      "multi-factor copulas",
+      "vine copulas",
+      "explicit higher-order dependence carriers"
+    ],
+    "r219_family_extension_performed": false
+  },
+  "audit_scope": {
+    "rerun": false,
+    "new_scientific_run": false,
+    "public_benchmark": false,
+    "paid_compute": false,
+    "holdout": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "canonical_mutation": false
+  }
+}
