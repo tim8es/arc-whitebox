@@ -1,0 +1,68 @@
+{
+  "contract_gates": {
+    "all_six_blocks_same_worker": true,
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "flopscope": "0.12.1",
+    "numpy": "2.4.6",
+    "python": "3.11.16",
+    "required_allowed_cpus": [
+      0,
+      1
+    ],
+    "same_50_names_and_order": true,
+    "same_flop_accounting_per_mlp": true,
+    "source_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "whestbench": "0.16.1"
+  },
+  "design": {
+    "V26_STRASSEN": "4",
+    "block_sequence": [
+      "U",
+      "C0",
+      "C1",
+      "C1",
+      "C0",
+      "U"
+    ],
+    "conditions": {
+      "C0": "taskset to CPU 0",
+      "C1": "taskset to CPU 1",
+      "U": "un-pinned process with inherited allowed affinity set"
+    },
+    "estimator": "unchanged pinned V29",
+    "evaluations": 300,
+    "flop_budget": 2199023255552,
+    "max_threads": 1,
+    "name": "same-runner balanced three-condition crossover",
+    "no_holdout": true,
+    "no_submission": true,
+    "panel": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2 mini:first-50",
+    "reason": "The symmetric six-block order gives every condition mean block position 3.5, balancing a linear time trend while keeping all conditions on one Actions worker.",
+    "residual_wall_time_limit_s": 0.4
+  },
+  "go_no_go": {
+    "GO_CPU0_SPECIFIC": "All contract gates pass AND primary_delta_s >= 0.020 AND cpu0_slower_count >= 35/50 AND failure_difference >= 10.",
+    "NO_GO_CPU0_SPECIFIC": "All contract gates pass and any GO threshold fails.",
+    "PROTOCOL_INVALID": "Any contract/provenance gate fails; do not interpret runtime causally."
+  },
+  "hypothesis": "CPU0-specific affinity is the dominant cause of the R210 late-run residual slowdown, rather than generic single-CPU pinning or time-varying host contention.",
+  "mandatory_instrumentation": [
+    "record GitHub worker ID/region and keep all six blocks in one job",
+    "record lscpu -J, /proc/cpuinfo, /proc/self/status and os.sched_getaffinity(0) before each block",
+    "record chosen affinity and taskset -pc for each block",
+    "record environment versions and thread variables exactly as R207/R210",
+    "record per-MLP residual, MSE, FLOPs, failure flags and official adjusted score for every block"
+  ],
+  "predeclared_analysis": {
+    "cpu0_slower_count": "count_i(C0_mean_i > C1_mean_i)",
+    "failure_difference": "sum failures across two C0 blocks minus sum failures across two C1 blocks",
+    "per_mlp_C0_mean": "mean of the two C0 residuals for each MLP",
+    "per_mlp_C1_mean": "mean of the two C1 residuals for each MLP",
+    "per_mlp_U_mean": "mean of the two U residuals for each MLP",
+    "primary_delta_s": "median_i(C0_mean_i - C1_mean_i)",
+    "secondary_generic_pinning": "compare both C0 and C1 means against U; descriptive only for the primary CPU0-specific verdict"
+  },
+  "rerun_policy": "One six-block job only. No retry/rescue based on observed outcomes.",
+  "schema": "arc.whitebox.r217.next_runtime_protocol.v1",
+  "status": "FROZEN_NOT_RUN"
+}

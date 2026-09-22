@@ -1,0 +1,168 @@
+{
+  "diagnosis": {
+    "causal_limits": [
+      "R207 did not record its effective CPU affinity or CPU migration history.",
+      "R207 and R210 ran on different GitHub hosted workers and different Azure regions (westus3 versus eastus).",
+      "There is one observation per condition; no same-worker randomized/counterbalanced crossover.",
+      "No CPU model/frequency/steal-time/noisy-neighbor telemetry was recorded in the artifacts.",
+      "CPU0 pinning is therefore confounded with worker/region/run-time conditions; association cannot identify CPU0 as the cause."
+    ],
+    "evidence_against_simple_constant_cpu0_penalty": "Indices 0-15 are faster on average in R210 (-19.57 ms; 13/16 faster), while every index 16-49 is slower (+61.05 ms mean; 34/34 slower). Four R207 failures become successes in R210. The effect is strongly sequence/time dependent.",
+    "evidence_for_association": "R210 pinned to CPU0 has +35.25 ms mean and +39.27 ms median paired residual shift, 33 versus 10 timeouts, and worse official adjusted score.",
+    "verdict": "CPU0_CAUSAL_ROLE_NOT_ESTABLISHED"
+  },
+  "identity_checks": {
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "estimator_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "r207_affinity_recorded": false,
+    "r210_allowed_cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "r210_chosen_cpu": 0,
+    "same_50_names_order": true,
+    "same_V26_STRASSEN": true,
+    "same_dataset_sha256": true,
+    "same_estimator_sha256": true,
+    "same_flops_per_mlp": true,
+    "same_python_numpy_flopscope_whestbench": true,
+    "same_thread_env": true
+  },
+  "job_id": "R217",
+  "mode": "READ_ONLY_NO_SCIENTIFIC_RUN",
+  "outputs": {
+    "next_protocol_path": "research/r217/R217_NEXT_RUNTIME_PROTOCOL.json",
+    "next_protocol_sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968",
+    "paired_table_path": "research/r217/R217_PAIRED_RESIDUALS.csv",
+    "paired_table_sha256": "cc26d4b83ce4d541d76b16e634927815db98b54f1da28eb830c7474285ff68f1"
+  },
+  "owner": "baseline-diagnosis",
+  "paired_summary": {
+    "adjusted_score_delta": 0.4165367182695693,
+    "adjusted_score_ratio_r210_over_r207": 3.10266687849465,
+    "best_descriptive_delta_split_index": 16,
+    "delta_negative_count": 13,
+    "delta_positive_count": 37,
+    "failure_delta": 23,
+    "indices_0_15": {
+      "mean_delta_s": -0.019574196315279124,
+      "negative_count": 13,
+      "positive_count": 3
+    },
+    "indices_16_49": {
+      "mean_delta_s": 0.061050038380685956,
+      "negative_count": 0,
+      "positive_count": 34
+    },
+    "mean_delta_s": 0.035250283277977135,
+    "median_delta_s": 0.03926782047915367,
+    "quantiles_s": {
+      "delta": {
+        "0.0": -0.04186505498546467,
+        "0.05": -0.0363527217006208,
+        "0.1": -0.02850817799546803,
+        "0.25": -0.007714833510306107,
+        "0.5": 0.03926782047915367,
+        "0.75": 0.06382972900559025,
+        "0.9": 0.09602202559697162,
+        "0.95": 0.10685713814339123,
+        "1.0": 0.11238461001994438
+      },
+      "r207": {
+        "0.0": 0.3605781259898322,
+        "0.05": 0.36128846719224156,
+        "0.1": 0.36192304751562004,
+        "0.25": 0.365184645517445,
+        "0.5": 0.3727658669995435,
+        "0.75": 0.3960683884910736,
+        "0.9": 0.44844464719187727,
+        "0.95": 0.4839095267049856,
+        "1.0": 0.5300859230158039
+      },
+      "r210": {
+        "0.0": 0.35796430200127816,
+        "0.05": 0.37244037495262317,
+        "0.1": 0.3739646695979559,
+        "0.25": 0.39413498449789586,
+        "0.5": 0.4131156329883652,
+        "0.75": 0.45286589126641275,
+        "0.9": 0.4723600294051266,
+        "0.95": 0.5187090359471765,
+        "1.0": 0.6012795139856735
+      }
+    },
+    "r207_failures": 10,
+    "r207_max_residual_s": 0.5300859230158039,
+    "r207_mean_residual_s": 0.38951696230098604,
+    "r207_median_residual_s": 0.3727658669995435,
+    "r207_official_adjusted_score": 0.19809924364613474,
+    "r207_p95_residual_s": 0.4839095267049856,
+    "r210_failures": 33,
+    "r210_max_residual_s": 0.6012795139856735,
+    "r210_mean_residual_s": 0.42476724557896317,
+    "r210_median_residual_s": 0.4131156329883652,
+    "r210_official_adjusted_score": 0.614635961915704,
+    "r210_p95_residual_s": 0.5187090359471765,
+    "run_duration_delta_s": 35.1392183303833,
+    "transitions": {
+      "FAIL\u2192FAIL": 6,
+      "FAIL\u2192OK": 4,
+      "OK\u2192FAIL": 27,
+      "OK\u2192OK": 13
+    }
+  },
+  "runner_metadata_from_actions_job_logs": {
+    "note": "Worker/region lines are in GitHub Actions job logs, not in the uploaded artifact manifest; job IDs bind this observation.",
+    "r207": {
+      "azure_region": "westus3",
+      "runner_image": "ubuntu-24.04",
+      "runner_image_version": "20260907.300.1",
+      "runner_version": "2.337.0",
+      "worker_id": "4817e550-240d-4a81-9194-e4c6a950a28c"
+    },
+    "r210": {
+      "azure_region": "eastus",
+      "runner_image": "ubuntu-24.04",
+      "runner_image_version": "20260907.300.1",
+      "runner_version": "2.337.0",
+      "worker_id": "6ee598a9-b114-409e-a9f9-525c5b725b6b"
+    }
+  },
+  "safety": {
+    "new_scientific_run": false,
+    "paid_run": false,
+    "private_holdout": false,
+    "submission": false
+  },
+  "schema": "arc.whitebox.r217.r207_r210_forensics.v1",
+  "source_evidence": {
+    "r207": {
+      "actions_job_id": 106840538172,
+      "actions_run_id": 35755631386,
+      "artifact_id": 10709911534,
+      "artifact_zip_sha256": "53fecd878787078ff9526da4af80531a8eee1314fcaf8f7c905e09f505b36090",
+      "command_sha256": "af15c7aaf53ea27bd562758ac8e34393f0ff29ce69d8164c2e5d0c9cb3e9d3d3",
+      "environment_sha256": "0d14c31303a0f3552f6f9c3976624a77444d09be3d58771ca6325803dd042a66",
+      "per_mlp_canonical_sha256": "2056a1d2210d4b2f90da7b8c488548d6cf65a0910bf273b241dca68d242f564f",
+      "receipt_sha256": "fa40c03b89c493d811e493498c152ffc1c7bd6f069626316318e33ba826ea9ee",
+      "report_sha256": "6427cf6db345bbb47bdb551507f5afe83e2d21d981d0a495cb8c19e41a85807e",
+      "whest_version_sha256": "c47add2684b095c56ea2a6f951f10098560476094435b1c8159a1fef45ccb29a"
+    },
+    "r210": {
+      "actions_job_id": 106862288745,
+      "actions_run_id": 35762066733,
+      "artifact_id": 10712680276,
+      "artifact_zip_sha256": "09719be2466bf43d513f52a025a60482ec9402a3455783710d3fe22e699e30f2",
+      "chosen_cpu_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "command_sha256": "7ab6ddd65c1234b715f418785228d2a09259bdae521f20ef5a7778dc1bc827d1",
+      "environment_sha256": "a1ba544bbd863ce908d86a2610ac5e8853da57d45b4692df33874b26a7c4e4c2",
+      "per_mlp_canonical_sha256": "d722d5ed2e5a7a3f1c383798d1f7ce9978d08e72d85c77a2c3fa54c91388f300",
+      "receipt_sha256": "7651e4d8caccaa720f9cbfa928b2b84649dc0aeafde8057f411a5b40094698b2",
+      "report_sha256": "dc1e37f7fbc57853e05dfb91ecfe7919906391f79f44aaedeacd471fea8f9645",
+      "whest_version_sha256": "c47add2684b095c56ea2a6f951f10098560476094435b1c8159a1fef45ccb29a"
+    }
+  },
+  "status": "COMPLETE"
+}
