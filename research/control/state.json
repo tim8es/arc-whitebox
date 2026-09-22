@@ -1456,6 +1456,18 @@
         "status": "COMPLETE"
       },
       "revision": 112
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T22:37:37.000Z",
+      "job": "R229",
+      "owner": "paired-score-decomposition",
+      "payload": {
+        "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
+        "code_commit": "2c18ac98e2ab948eac8f4054f6c7d1ee05ef4280",
+        "command": "read-only paired decomposition of R209 normalized mini-100 records; preserve exact row IDs, separate timeout penalty from matched-success MSE, no estimator run"
+      },
+      "revision": 113
     }
   ],
   "jobs": [
@@ -2374,18 +2386,25 @@
       "title": "Decompose paired V25/V29 mini-100 score gap",
       "owner": "paired-score-decomposition",
       "assigned_owner": "paired-score-decomposition",
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "priority": 1,
       "hypothesis_id": "R209-V25-V29-MINI100-PAIRED-DECOMPOSITION",
       "depends_on": [
         "R226"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
+          "code_commit": "2c18ac98e2ab948eac8f4054f6c7d1ee05ef4280",
+          "command": "read-only paired decomposition of R209 normalized mini-100 records; preserve exact row IDs, separate timeout penalty from matched-success MSE, no estimator run",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read the R226-integrated exact R209 V25/V29 normalized mini-100 records and official scoring implementation. Freeze the analysis plan and input hashes first. Independently verify row alignment, then decompose adjusted-score gap into failed/time-out rows versus matched successful rows; report paired distribution, uncertainty only where justified, and available architecture/runtime associations. Use no estimator run and do not infer leaderboard rank. Save reproducible analysis script/table, append-only receipt and commit; recommend one evidence-backed next lever without modifying canonical estimators."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 112,
+  "revision": 113,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
