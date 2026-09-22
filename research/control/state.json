@@ -1147,8 +1147,8 @@
       "payload": {
         "reason": "Source-backed access audit complete: NO_DOCUMENTED_LOCAL_EXACT_PUBLIC50_ASSET. The official local scoring pipeline and exact live grader version semantics are documented, but the official published Phase-2 local assets expose mini-100/full-1000 only; no exact leaderboard public-50 weights/seeds/ground-truth split is published, so V25 cannot be established locally on that exact panel without a submission. One allowed next step only: ask ARC/AIcrowd organizers on the public challenge forum to publish or identify an immutable public-only Phase-2 grader-panel artifact/manifest. No R216 redo, submission, private access/inference, paid resource, scientific run, or leaderboard mutation.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/7971492ddc979400433546cb7b81ea4c7036acef/research/R221_OFFICIAL_PUBLIC50_LOCAL_ACCESS_AUDIT.json",
-          "sha256": "9e953999b2347384790aeb4d5e92ac365c74de4c44b0dc2d2787f5c56140971b"
+          "sha256": "9e953999b2347384790aeb4d5e92ac365c74de4c44b0dc2d2787f5c56140971b",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/7971492ddc979400433546cb7b81ea4c7036acef/research/R221_OFFICIAL_PUBLIC50_LOCAL_ACCESS_AUDIT.json"
         },
         "run_id": "R221-official-public50-access-audit",
         "status": "COMPLETE"
@@ -1156,20 +1156,36 @@
       "revision": 89
     },
     {
-      "revision": 90,
       "action": "finish",
+      "at": "2026-09-22T21:29:01.000Z",
       "job": "R222",
       "owner": "postflight-audit",
       "payload": {
-        "run_id": "R222-r209-v25-v29-normalization-20260922",
-        "status": "COMPLETE",
+        "reason": "Read-only normalization audit verified run 35544406064 artifact hashes/manifests, exact 100-row mlp_index/mlp_name order, FLOPs, V25 score arithmetic, and all 57 V29 official residual-failure penalties/score arithmetic. Shared normalized records were NOT created because current arc_control.py requires per-row network_id and target_sha256, both absent from all authorized R209 Actions evidence; panel.dtype is also not explicitly evidenced as a benchmark-panel field. V29 failures and absence of raw prediction tensors are preserved. No rerun, holdout, paid resource or submission.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b/research/R222_R209_V25_V29_NORMALIZATION_RECEIPT.json",
-          "sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec"
+          "sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b/research/R222_R209_V25_V29_NORMALIZATION_RECEIPT.json"
         },
-        "reason": "Read-only normalization audit verified run 35544406064 artifact hashes/manifests, exact 100-row mlp_index/mlp_name order, FLOPs, V25 score arithmetic, and all 57 V29 official residual-failure penalties/score arithmetic. Shared normalized records were NOT created because current arc_control.py requires per-row network_id and target_sha256, both absent from all authorized R209 Actions evidence; panel.dtype is also not explicitly evidenced as a benchmark-panel field. V29 failures and absence of raw prediction tensors are preserved. No rerun, holdout, paid resource or submission."
+        "run_id": "R222-r209-v25-v29-normalization-20260922",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-22T21:29:01.000Z"
+      "revision": 90
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T21:31:33.905225+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "reason": "R223 froze one novel accuracy-directed V25 delta (normalized per-neuron K4->K3 feed lambda) after auditing the immutable R209 mini-100 parent. The standard public GitHub-hosted compute gate and pinned upstream V25 blob check passed, but the mandatory pre-panel byte-provenance guard failed before parent artifact download, whest validate, or any candidate mini-100 execution. Exact blocker: YAML block-scalar dedentation corrupted indentation inside the inline multiline source pattern, causing assert p.count(old)==1 to fail. A separate read-only audit also found a literal backslash-n in the candidate docstring; arithmetic patch bytes otherwise match after that docstring normalization. Frozen protocol forbids repair/retry, so no per-network candidate result exists and no scientific score claim is made.",
+        "receipt": {
+          "sha256": "cdc27cf6342639249ac6d0753c428e637f74d7085ea8cf152a29c91f5ddfa4ea",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/64b5fa1a2fed2a3f77021534875dbc7b0e2ff27f/research/r223/R223_TERMINAL_RECEIPT.json"
+        },
+        "run_id": "R223-v25-isolated-improvement-20260922",
+        "status": "INFRA_ERROR"
+      },
+      "revision": 91
     }
   ],
   "jobs": [
@@ -1833,17 +1849,17 @@
         {
           "code_commit": "a4d4e255c6169387cb48dfd6e42fef75913e6a90",
           "command": "read-only official-source audit of exact Phase-2 leaderboard public-50 local accessibility; no submission, private split, paid resource, or leaderboard mutation",
-          "run_id": "R221-official-public50-access-audit",
-          "status": "COMPLETE",
           "completion": {
             "reason": "Source-backed access audit complete: NO_DOCUMENTED_LOCAL_EXACT_PUBLIC50_ASSET. The official local scoring pipeline and exact live grader version semantics are documented, but the official published Phase-2 local assets expose mini-100/full-1000 only; no exact leaderboard public-50 weights/seeds/ground-truth split is published, so V25 cannot be established locally on that exact panel without a submission. One allowed next step only: ask ARC/AIcrowd organizers on the public challenge forum to publish or identify an immutable public-only Phase-2 grader-panel artifact/manifest. No R216 redo, submission, private access/inference, paid resource, scientific run, or leaderboard mutation.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/7971492ddc979400433546cb7b81ea4c7036acef/research/R221_OFFICIAL_PUBLIC50_LOCAL_ACCESS_AUDIT.json",
-              "sha256": "9e953999b2347384790aeb4d5e92ac365c74de4c44b0dc2d2787f5c56140971b"
+              "sha256": "9e953999b2347384790aeb4d5e92ac365c74de4c44b0dc2d2787f5c56140971b",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/7971492ddc979400433546cb7b81ea4c7036acef/research/R221_OFFICIAL_PUBLIC50_LOCAL_ACCESS_AUDIT.json"
             },
             "run_id": "R221-official-public50-access-audit",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "R221-official-public50-access-audit",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independently inspect official starter-kit/docs and accessible public data/split metadata to determine whether the exact 50 scored public MLPs and a local official evaluator are available without submitting or touching the sealed private split. Distinguish verified access from inference; record exact URLs, hashes, version semantics and any access gate. No submission, private holdout, leaderboard mutation or paid resources. Produce a source-backed receipt/commit and one permitted next step.",
@@ -1852,13 +1868,13 @@
       "id": "R221",
       "owner": "leaderboard-audit",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Verify a compliant exact-panel path for V25 versus official public-50",
+      "reason": "Source-backed access audit complete: NO_DOCUMENTED_LOCAL_EXACT_PUBLIC50_ASSET. The official local scoring pipeline and exact live grader version semantics are documented, but the official published Phase-2 local assets expose mini-100/full-1000 only; no exact leaderboard public-50 weights/seeds/ground-truth split is published, so V25 cannot be established locally on that exact panel without a submission. One allowed next step only: ask ARC/AIcrowd organizers on the public challenge forum to publish or identify an immutable public-only Phase-2 grader-panel artifact/manifest. No R216 redo, submission, private access/inference, paid resource, scientific run, or leaderboard mutation.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/7971492ddc979400433546cb7b81ea4c7036acef/research/R221_OFFICIAL_PUBLIC50_LOCAL_ACCESS_AUDIT.json",
-        "sha256": "9e953999b2347384790aeb4d5e92ac365c74de4c44b0dc2d2787f5c56140971b"
+        "sha256": "9e953999b2347384790aeb4d5e92ac365c74de4c44b0dc2d2787f5c56140971b",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/7971492ddc979400433546cb7b81ea4c7036acef/research/R221_OFFICIAL_PUBLIC50_LOCAL_ACCESS_AUDIT.json"
       },
-      "reason": "Source-backed access audit complete: NO_DOCUMENTED_LOCAL_EXACT_PUBLIC50_ASSET. The official local scoring pipeline and exact live grader version semantics are documented, but the official published Phase-2 local assets expose mini-100/full-1000 only; no exact leaderboard public-50 weights/seeds/ground-truth split is published, so V25 cannot be established locally on that exact panel without a submission. One allowed next step only: ask ARC/AIcrowd organizers on the public challenge forum to publish or identify an immutable public-only Phase-2 grader-panel artifact/manifest. No R216 redo, submission, private access/inference, paid resource, scientific run, or leaderboard mutation."
+      "status": "COMPLETE",
+      "title": "Verify a compliant exact-panel path for V25 versus official public-50"
     },
     {
       "assigned_owner": "postflight-audit",
@@ -1866,17 +1882,17 @@
         {
           "code_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
           "command": "read-only normalize existing Actions run 35544406064 V25/V29 artifacts; verify immutable hashes, 100-row IDs/order, target fingerprints, failure penalties, FLOPs and official score arithmetic; no rerun",
-          "run_id": "R222-r209-v25-v29-normalization-20260922",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R222-r209-v25-v29-normalization-20260922",
-            "status": "COMPLETE",
+            "reason": "Read-only normalization audit verified run 35544406064 artifact hashes/manifests, exact 100-row mlp_index/mlp_name order, FLOPs, V25 score arithmetic, and all 57 V29 official residual-failure penalties/score arithmetic. Shared normalized records were NOT created because current arc_control.py requires per-row network_id and target_sha256, both absent from all authorized R209 Actions evidence; panel.dtype is also not explicitly evidenced as a benchmark-panel field. V29 failures and absence of raw prediction tensors are preserved. No rerun, holdout, paid resource or submission.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b/research/R222_R209_V25_V29_NORMALIZATION_RECEIPT.json",
-              "sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec"
+              "sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b/research/R222_R209_V25_V29_NORMALIZATION_RECEIPT.json"
             },
-            "reason": "Read-only normalization audit verified run 35544406064 artifact hashes/manifests, exact 100-row mlp_index/mlp_name order, FLOPs, V25 score arithmetic, and all 57 V29 official residual-failure penalties/score arithmetic. Shared normalized records were NOT created because current arc_control.py requires per-row network_id and target_sha256, both absent from all authorized R209 Actions evidence; panel.dtype is also not explicitly evidenced as a benchmark-panel field. V29 failures and absence of raw prediction tensors are preserved. No rerun, holdout, paid resource or submission."
-          }
+            "run_id": "R222-r209-v25-v29-normalization-20260922",
+            "status": "COMPLETE"
+          },
+          "run_id": "R222-r209-v25-v29-normalization-20260922",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Use only the existing R209 Actions artifacts/receipt for V25 and V29; do not rerun. Validate panel identity, per-network metrics, target fingerprints, failure penalties, hashes and official adjusted-score arithmetic. Add schema-valid normalized records and regenerate the shared comparison overview only if every required field is evidenced; otherwise record the exact missing field(s) and mark NOT_COMPARABLE rather than guessing. Preserve V29 failed rows and the absence of raw prediction tensors. Commit an integration receipt; no paid run, holdout or submission.",
@@ -1885,13 +1901,13 @@
       "id": "R222",
       "owner": "postflight-audit",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Normalize immutable R209 V25/V29 mini-100 evidence into shared results",
+      "reason": "Read-only normalization audit verified run 35544406064 artifact hashes/manifests, exact 100-row mlp_index/mlp_name order, FLOPs, V25 score arithmetic, and all 57 V29 official residual-failure penalties/score arithmetic. Shared normalized records were NOT created because current arc_control.py requires per-row network_id and target_sha256, both absent from all authorized R209 Actions evidence; panel.dtype is also not explicitly evidenced as a benchmark-panel field. V29 failures and absence of raw prediction tensors are preserved. No rerun, holdout, paid resource or submission.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b/research/R222_R209_V25_V29_NORMALIZATION_RECEIPT.json",
-        "sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec"
+        "sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b/research/R222_R209_V25_V29_NORMALIZATION_RECEIPT.json"
       },
-      "reason": "Read-only normalization audit verified run 35544406064 artifact hashes/manifests, exact 100-row mlp_index/mlp_name order, FLOPs, V25 score arithmetic, and all 57 V29 official residual-failure penalties/score arithmetic. Shared normalized records were NOT created because current arc_control.py requires per-row network_id and target_sha256, both absent from all authorized R209 Actions evidence; panel.dtype is also not explicitly evidenced as a benchmark-panel field. V29 failures and absence of raw prediction tensors are preserved. No rerun, holdout, paid resource or submission."
+      "status": "COMPLETE",
+      "title": "Normalize immutable R209 V25/V29 mini-100 evidence into shared results"
     },
     {
       "assigned_owner": "method-research",
@@ -1899,8 +1915,17 @@
         {
           "code_commit": "67a5edd35304eea0dd4a37a783e72fe86ff3e082",
           "command": "inspect immutable V25 mini-100 evidence and history; freeze exactly one novel algorithm-level score-improvement change and same-panel development test; at most one bounded run on verified free/existing compute",
+          "completion": {
+            "reason": "R223 froze one novel accuracy-directed V25 delta (normalized per-neuron K4->K3 feed lambda) after auditing the immutable R209 mini-100 parent. The standard public GitHub-hosted compute gate and pinned upstream V25 blob check passed, but the mandatory pre-panel byte-provenance guard failed before parent artifact download, whest validate, or any candidate mini-100 execution. Exact blocker: YAML block-scalar dedentation corrupted indentation inside the inline multiline source pattern, causing assert p.count(old)==1 to fail. A separate read-only audit also found a literal backslash-n in the candidate docstring; arithmetic patch bytes otherwise match after that docstring normalization. Frozen protocol forbids repair/retry, so no per-network candidate result exists and no scientific score claim is made.",
+            "receipt": {
+              "sha256": "cdc27cf6342639249ac6d0753c428e637f74d7085ea8cf152a29c91f5ddfa4ea",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/64b5fa1a2fed2a3f77021534875dbc7b0e2ff27f/research/r223/R223_TERMINAL_RECEIPT.json"
+            },
+            "run_id": "R223-v25-isolated-improvement-20260922",
+            "status": "INFRA_ERROR"
+          },
           "run_id": "R223-v25-isolated-improvement-20260922",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR"
         }
       ],
       "deliverable": "Inspect immutable history and V25's existing per-network public mini-100 evidence, then select exactly one untried, non-duplicative algorithm-level change aimed at reducing official adjusted score (not merely FLOPs below the 0.1B floor). Freeze the parent, code/config, falsifier, gates and exact panel before execution. Run at most one bounded development test on the same public mini-100 panel using only verified free/existing compute; do not alter canonical code. Compare every network, failures, MSE/FLOPs/runtime and score to V25; retain artifacts/hashes and commit. If novelty, cost or evidence is insufficient, finish with an explicit NO-GO and why. No holdout, paid resources, submission or leaderboard claims.",
@@ -1909,12 +1934,17 @@
       "id": "R223",
       "owner": "method-research",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "R223 froze one novel accuracy-directed V25 delta (normalized per-neuron K4->K3 feed lambda) after auditing the immutable R209 mini-100 parent. The standard public GitHub-hosted compute gate and pinned upstream V25 blob check passed, but the mandatory pre-panel byte-provenance guard failed before parent artifact download, whest validate, or any candidate mini-100 execution. Exact blocker: YAML block-scalar dedentation corrupted indentation inside the inline multiline source pattern, causing assert p.count(old)==1 to fail. A separate read-only audit also found a literal backslash-n in the candidate docstring; arithmetic patch bytes otherwise match after that docstring normalization. Frozen protocol forbids repair/retry, so no per-network candidate result exists and no scientific score claim is made.",
+      "receipt": {
+        "sha256": "cdc27cf6342639249ac6d0753c428e637f74d7085ea8cf152a29c91f5ddfa4ea",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/64b5fa1a2fed2a3f77021534875dbc7b0e2ff27f/research/r223/R223_TERMINAL_RECEIPT.json"
+      },
+      "status": "INFRA_ERROR",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 90,
+  "revision": 91,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
