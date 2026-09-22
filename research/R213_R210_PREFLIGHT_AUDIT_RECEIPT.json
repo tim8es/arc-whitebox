@@ -1,0 +1,330 @@
+{
+  "schema": "arc.whitebox.r213.r210_preflight_audit.v1",
+  "job_id": "R213",
+  "role": "preflight-audit",
+  "date": "2026-09-22",
+  "branch": "review/r213-r210-preflight-20260922",
+  "mode": "READ_ONLY_RESULT_BLIND_PREFLIGHT",
+  "status": "COMPLETE",
+  "decision": "PRELIMINARY_ACCEPT_FROZEN_CONTRACT_WITH_PROVENANCE_CONDITION",
+  "scope": {
+    "scientific_run_started_by_r213": false,
+    "r210_scientific_output_inspected": false,
+    "private_holdout_accessed": false,
+    "paid_resources_used": false,
+    "submission_performed": false,
+    "competition_scorer_used": false,
+    "leaderboard_mutation": false
+  },
+  "frozen_lineage": {
+    "r207_receipt_commit": "4ca70833a24396106a8b1c7c6e51bd3cd282d8c7",
+    "r207_receipt_path": "research/R207_RECEIPT.json",
+    "r207_receipt_blob_sha1": "ff8df64359d26a5e875b87ff34854e8c2b60e62e",
+    "r207_receipt_sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26",
+    "r210_protocol_commit": "672ed3f7947caff741d7f720e434f8193f5daaa1",
+    "r210_protocol_path": "research/R210_PROTOCOL.json",
+    "r210_protocol_blob_sha1": "ef1e6e8b68b58c53d95e438e304b5aefbe162832",
+    "r210_protocol_sha256": "e1ef52f5ca79e48fd1e73ca2bab92abfc8ada11dd6707185bc8e831f2f0ec988",
+    "r210_workflow_path": ".github/workflows/r210-v29-l4-single-cpu-public50.yml",
+    "r210_workflow_blob_sha1": "a69e20fb0e696bbb930e7183df9d7f592f1dedcd",
+    "r210_workflow_sha256": "4ceb8fbe196f68bfec1846d28ef486d06188b4d82db0024c3a74d65b1a59be6e",
+    "r210_arm_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
+    "r210_arm_path": "research/R210_RUN_ARM.json",
+    "r210_arm_blob_sha1": "176f3a3c104102dde2205fa555a48e572c1b9f7d",
+    "r210_arm_sha256": "556b53970d71b80659b82a8f75c3fa659538cff1af61d69a2271fd5556022006",
+    "arm_parent_is_protocol_commit": true,
+    "arm_commit_changes_only": [
+      "research/R210_RUN_ARM.json"
+    ]
+  },
+  "actions_preflight_identity": {
+    "actions_run_id": 35762066733,
+    "workflow_name": "R210 V29 L4 single-CPU-affinity public-50",
+    "run_number": 1,
+    "event": "push",
+    "head_branch": "research/r205-v29-residual-timeout-20260922",
+    "head_sha": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
+    "head_matches_frozen_arm_commit": true,
+    "workflow_path": ".github/workflows/r210-v29-l4-single-cpu-public50.yml",
+    "result_blind_note": "R213 used run metadata only to verify frozen provenance and did not inspect R210 report, artifact metrics, or scientific result."
+  },
+  "control_metadata_caveat": {
+    "r210_control_start_run_id": "R210-v29-l4-single-cpu-public50-attempt1",
+    "recorded_code_commit": "672ed3f7947caff741d7f720e434f8193f5daaa1",
+    "actual_actions_head_sha": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
+    "classification": "NON_SCIENTIFIC_PROVENANCE_MISMATCH",
+    "explanation": "The control start recorded the frozen protocol commit, while the triggered Actions run is the direct-child arm commit that adds only R210_RUN_ARM.json. The future R210 receipt must explicitly record both protocol and arm SHAs and bind the receipt/artifact to Actions head aead0bf4...; otherwise R213 rejects the receipt provenance.",
+    "scientific_semantics_affected": false
+  },
+  "r207_failure_evidence": {
+    "actions_run_id": 35755631386,
+    "artifact_id": 10709911534,
+    "artifact_name": "r207-v29-l4-public50",
+    "artifact_zip_sha256": "53fecd878787078ff9526da4af80531a8eee1314fcaf8f7c905e09f505b36090",
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini:first-50",
+    "count": 50,
+    "successes": 40,
+    "failures": 10,
+    "official_adjusted_score": 0.19809924364613474,
+    "common_failure": "residual_wall_time_exhausted",
+    "failure_indices": [
+      3,
+      4,
+      7,
+      9,
+      11,
+      12,
+      13,
+      16,
+      28,
+      40
+    ],
+    "failure_names": [
+      "steven-rice",
+      "sarah-kelley",
+      "renee-park",
+      "christina-lopez",
+      "john-koch",
+      "susan-butler",
+      "crystal-gonzales",
+      "adam-morrison",
+      "terri-salazar",
+      "sylvia-stanley"
+    ],
+    "failure_residual_wall_time_s": [
+      0.41133040199554216,
+      0.47244559400246544,
+      0.4015334919936322,
+      0.41579813900011686,
+      0.4514815190157151,
+      0.4130422080138487,
+      0.4481072169892286,
+      0.5300859230158039,
+      0.49941320999460004,
+      0.4932891080070476
+    ],
+    "all_failed_rows_measured_flops": 581994796527,
+    "budget_exhausted_failures": 0,
+    "combined_budget_exhausted_failures": 0,
+    "time_exhausted_failures": 0,
+    "numerical_signal": "40 successful rows retain success-only mean raw MSE 2.254070645690831e-8; R207 attributes all ten failures to residual-wall-time variability, not FLOP exhaustion."
+  },
+  "estimator_semantics": {
+    "upstream_repo": "504aldo/whest-p2-cumulant-k3",
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "v29_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "expected_estimator_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "r207_v29_blob_same": true,
+    "r210_protocol_v29_blob_same": true,
+    "r210_workflow_runtime_blob_check": true,
+    "estimator_source_modified": false,
+    "V26_STRASSEN": "4",
+    "V26_STRASSEN_unchanged_from_r207": true,
+    "only_frozen_runtime_change": "single_cpu_affinity",
+    "single_cpu_affinity_rule": "choose min(os.sched_getaffinity(0)); execute whest run under taskset -c chosen_cpu",
+    "forbidden_extra_mitigations": [
+      "changed residual limit",
+      "changed estimator code",
+      "warm-up rerun",
+      "changed network order",
+      "retry-on-failure",
+      "nice/chrt priority change",
+      "additional thread changes"
+    ]
+  },
+  "execution_contract": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "expected_dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini:first-50",
+    "n_mlps": 50,
+    "streaming": true,
+    "runner": "local",
+    "flop_budget": 2199023255552,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "max_threads": 1,
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1",
+    "flop_meter_preserved_from_r207": true,
+    "public_panel_only": true
+  },
+  "preflight_checks": [
+    {
+      "id": "P01",
+      "check": "R210 protocol is frozen before arm",
+      "result": "PASS",
+      "evidence": "protocol status FROZEN_BEFORE_RUN at 672ed3f...; arm aead0bf4... is its direct child"
+    },
+    {
+      "id": "P02",
+      "check": "Arm adds only frozen run declaration",
+      "result": "PASS",
+      "evidence": "aead0bf4... changes only research/R210_RUN_ARM.json"
+    },
+    {
+      "id": "P03",
+      "check": "Actual Actions run binds to arm",
+      "result": "PASS",
+      "evidence": "run 35762066733 run_number=1 head_sha=aead0bf4..."
+    },
+    {
+      "id": "P04",
+      "check": "Single mitigation only",
+      "result": "PASS",
+      "evidence": "count=1 single_cpu_affinity; taskset wrapper; no estimator-source change"
+    },
+    {
+      "id": "P05",
+      "check": "Pinned estimator semantics unchanged",
+      "result": "PASS",
+      "evidence": "same upstream commit, V29 git blob 17df1a..., expected SHA256 86d9ca..., V26_STRASSEN=4"
+    },
+    {
+      "id": "P06",
+      "check": "Residual cap unchanged",
+      "result": "PASS",
+      "evidence": "0.4 s in protocol, arm execution workflow and control command"
+    },
+    {
+      "id": "P07",
+      "check": "Thread contract unchanged",
+      "result": "PASS",
+      "evidence": "--max-threads 1 plus BLAS/OpenMP env vars all 1"
+    },
+    {
+      "id": "P08",
+      "check": "FLOP meter and budget unchanged",
+      "result": "PASS",
+      "evidence": "flopscope==0.12.1; flop budget 2199023255552"
+    },
+    {
+      "id": "P09",
+      "check": "Public-50 panel command unchanged except CPU affinity",
+      "result": "PASS",
+      "evidence": "same v2-phase2 mini, streaming, first 50, local runner and ordering semantics"
+    },
+    {
+      "id": "P10",
+      "check": "R207 failure evidence retained",
+      "result": "PASS",
+      "evidence": "immutable R207 receipt and artifact; 10/50 residual-only failures"
+    },
+    {
+      "id": "P11",
+      "check": "Safety constraints frozen",
+      "result": "PASS",
+      "evidence": "no private holdout, paid resources, submission, scorer or blind rerun"
+    },
+    {
+      "id": "P12",
+      "check": "Control start commit equals actual Actions head",
+      "result": "WARN",
+      "evidence": "control records protocol 672ed3f... while Actions head is arm aead0bf4...; final receipt must reconcile both"
+    }
+  ],
+  "future_r210_receipt_acceptance_checklist": {
+    "evidence_acceptance": [
+      {
+        "id": "A01",
+        "accept_if": "receipt names protocol commit 672ed3f7947caff741d7f720e434f8193f5daaa1 and arm commit aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd; Actions head equals arm",
+        "reject_if": "either SHA differs, ancestry is not direct, or arm/head provenance is omitted"
+      },
+      {
+        "id": "A02",
+        "accept_if": "exact pinned V29 upstream commit 18c17e...; git blob 17df1a...; downloaded estimator SHA256 86d9ca...",
+        "reject_if": "any estimator byte/source identity changes"
+      },
+      {
+        "id": "A03",
+        "accept_if": "mitigation is exactly one single_cpu_affinity taskset wrapper with V26_STRASSEN=4",
+        "reject_if": "warmup, retries, order change, priority manipulation, code edit, limit change, or any second mitigation appears"
+      },
+      {
+        "id": "A04",
+        "accept_if": "only one R210 scientific attempt; run_number=1 and no rerun",
+        "reject_if": "additional scientific rerun/retry exists outside protocol"
+      },
+      {
+        "id": "A05",
+        "accept_if": "report proves public v2-phase2 dataset SHA256 264fa1..., mini:first-50, same first-50 order/identities as R207",
+        "reject_if": "dataset hash/revision, count, order, or panel identity differs"
+      },
+      {
+        "id": "A06",
+        "accept_if": "report has width=1024 depth=16, flop_budget=2199023255552, wall=120, residual=0.4, max_threads=1",
+        "reject_if": "any execution limit differs"
+      },
+      {
+        "id": "A07",
+        "accept_if": "environment proves numpy 2.4.6, flopscope 0.12.1, whestbench 0.16.1 and BLAS/OpenMP thread settings all 1",
+        "reject_if": "meter/evaluator or thread contract differs"
+      },
+      {
+        "id": "A08",
+        "accept_if": "artifact retains exactly 50 per-MLP rows with name/index/seed, raw MSE, measured FLOPs, residual time, failure flags and official adjusted score",
+        "reject_if": "partial panel or missing per-row evidence"
+      },
+      {
+        "id": "A09",
+        "accept_if": "official adjusted-score arithmetic can be independently recomputed from retained rows under the official failure semantics",
+        "reject_if": "reported aggregate cannot be reproduced or failed rows are silently treated as successes"
+      },
+      {
+        "id": "A10",
+        "accept_if": "immutable artifact/report/receipt hashes are supplied and verify",
+        "reject_if": "artifact is mutable/unhashed or hash mismatch occurs"
+      },
+      {
+        "id": "A11",
+        "accept_if": "private_holdout=false, paid_resources=false, submission=false, competition_scorer=false",
+        "reject_if": "any forbidden resource/action was used"
+      }
+    ],
+    "scientific_mitigation_decision": [
+      {
+        "id": "S01",
+        "decision": "CONFIRMED_ZERO_FAILURES",
+        "condition": "evidence acceptance passes and all 50 rows finish without any failure, with residual_wall_time_s <= 0.4 for every successful row"
+      },
+      {
+        "id": "S02",
+        "decision": "MITIGATION_INSUFFICIENT",
+        "condition": "evidence acceptance passes and complete 50-row run exists, but one or more official failures remain; this is a valid negative result, not an evidence rejection"
+      },
+      {
+        "id": "S03",
+        "decision": "INFRA_ERROR",
+        "condition": "validate/run/report infrastructure prevents a complete 50-row official measurement"
+      },
+      {
+        "id": "S04",
+        "decision": "REJECT_PROTOCOL",
+        "condition": "any A01-A07 or A11 frozen-protocol condition is violated regardless of score"
+      },
+      {
+        "id": "S05",
+        "decision": "REJECT_EVIDENCE",
+        "condition": "A08-A10 evidence is incomplete or non-reproducible"
+      }
+    ]
+  },
+  "current_receipt_builder_gaps_to_check_externally": [
+    "The frozen R210 generated receipt schema does not itself persist dataset_sha256; R213 requires verification from the retained report/artifact against 264fa1f4... before evidence acceptance.",
+    "The frozen R210 generated receipt does not itself persist Actions run_id/head_sha/protocol_commit/arm_commit; R213 requires these to be bound externally or added to the final normalized receipt.",
+    "The frozen R210 generated receipt stores MLP names/seeds but not R207 target hashes/network IDs; exact public-50 identity must therefore be verified from retained report/dataset identity and order.",
+    "The frozen R210 generated receipt does not independently rederive every per-row adjusted score; R213 requires an independent arithmetic check from retained rows."
+  ],
+  "conclusion": {
+    "preflight": "ACCEPT frozen R210 contract for audit purposes, subject to explicit arm/Actions provenance binding in the eventual receipt.",
+    "scientific_result": "UNKNOWN_BY_DESIGN: R213 did not inspect R210 scientific output.",
+    "blocker": false,
+    "no_scientific_rerun": true
+  }
+}
