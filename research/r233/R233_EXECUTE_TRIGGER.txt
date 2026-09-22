@@ -1,0 +1,5 @@
+R233 fixture trigger
+run_id=R233-v25-onehot-wick-cse-20260923
+frozen_code_commit=48a9ccb3eaeca34a21e7dab636ab10935629e17b
+workflow_commit=cb419a5eed46c6c8efd3e162d3c3bce5127929db
+scope=micro-fixture-only
