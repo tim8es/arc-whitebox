@@ -1102,6 +1102,18 @@
         "to_thread_id": "6aaa80a8-4f38-83ed-98f7-766d832a4b17"
       },
       "revision": 85
+    },
+    {
+      "revision": 86,
+      "action": "start",
+      "job": "R222",
+      "owner": "postflight-audit",
+      "payload": {
+        "run_id": "R222-r209-v25-v29-normalization-20260922",
+        "code_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+        "command": "read-only normalize existing Actions run 35544406064 V25/V29 artifacts; verify immutable hashes, 100-row IDs/order, target fingerprints, failure penalties, FLOPs and official score arithmetic; no rerun"
+      },
+      "at": "2026-09-22T21:14:02.402Z"
     }
   ],
   "jobs": [
@@ -1773,14 +1785,21 @@
     },
     {
       "assigned_owner": "postflight-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R222-r209-v25-v29-normalization-20260922",
+          "code_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+          "command": "read-only normalize existing Actions run 35544406064 V25/V29 artifacts; verify immutable hashes, 100-row IDs/order, target fingerprints, failure penalties, FLOPs and official score arithmetic; no rerun",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Use only the existing R209 Actions artifacts/receipt for V25 and V29; do not rerun. Validate panel identity, per-network metrics, target fingerprints, failure penalties, hashes and official adjusted-score arithmetic. Add schema-valid normalized records and regenerate the shared comparison overview only if every required field is evidenced; otherwise record the exact missing field(s) and mark NOT_COMPARABLE rather than guessing. Preserve V29 failed rows and the absence of raw prediction tensors. Commit an integration receipt; no paid run, holdout or submission.",
       "depends_on": [],
       "hypothesis_id": "R209-V25-V29-NORMALIZATION",
       "id": "R222",
       "owner": "postflight-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Normalize immutable R209 V25/V29 mini-100 evidence into shared results"
     },
     {
@@ -1797,7 +1816,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 85,
+  "revision": 86,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
