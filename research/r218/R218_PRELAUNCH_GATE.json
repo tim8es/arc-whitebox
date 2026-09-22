@@ -1,0 +1,73 @@
+{
+  "schema": "arc.whitebox.r218.prelaunch_gate.v1",
+  "job_id": "R218",
+  "frozen_protocol": {
+    "path": "research/r217/R217_NEXT_RUNTIME_PROTOCOL.json",
+    "sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968"
+  },
+  "compute_gate": {
+    "repository": "tim8es/arc-whitebox",
+    "repository_visibility": "public",
+    "runner_label": "ubuntu-24.04",
+    "runner_class": "standard_github_hosted",
+    "billing_verdict": "VERIFIED_FREE_PUBLIC_STANDARD_RUNNER",
+    "larger_runner": false,
+    "paid_resource_requested": false,
+    "official_docs": [
+      "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+      "https://docs.github.com/en/billing/concepts/product-billing/github-actions"
+    ]
+  },
+  "static_contract_gate": {
+    "r207_artifact_id": 10709911534,
+    "r207_zip_sha256": "53fecd878787078ff9526da4af80531a8eee1314fcaf8f7c905e09f505b36090",
+    "r210_artifact_id": 10712680276,
+    "r210_zip_sha256": "09719be2466bf43d513f52a025a60482ec9402a3455783710d3fe22e699e30f2",
+    "r207_r210_same_50_names_order": true,
+    "r207_r210_same_flop_vector": true,
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "estimator_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "V26_STRASSEN": "4",
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1",
+    "expected_flops": {
+      "index_0": 587262754287,
+      "indices_1_49": 581994796527
+    }
+  },
+  "runtime_pre_science_gates": [
+    "protocol hash",
+    "expected-panel identity",
+    "estimator source hash",
+    "exact versions",
+    "thread env",
+    "V26_STRASSEN=4",
+    "CPU0 and CPU1 in os.sched_getaffinity(0)",
+    "single-job worker design"
+  ],
+  "post_block_contract_gates": [
+    "dataset report SHA identity",
+    "exact 50 names/order",
+    "exact per-MLP FLOP vector",
+    "budget/limits",
+    "width/depth",
+    "whestbench version"
+  ],
+  "run_policy": {
+    "attempts": 1,
+    "blocks": [
+      "U",
+      "C0",
+      "C1",
+      "C1",
+      "C0",
+      "U"
+    ],
+    "retry": false,
+    "rescue": false,
+    "holdout": false,
+    "submission": false
+  }
+}

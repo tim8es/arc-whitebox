@@ -1,0 +1,112 @@
+name: R218 same-worker CPU-affinity crossover
+
+on:
+  push:
+    branches:
+      - research/r218-affinity-crossover-20260922
+    paths:
+      - research/R218_RUN_ARM.json
+
+jobs:
+  crossover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+      V26_STRASSEN: "4"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.16"
+
+      - name: Prepare exact public runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p r218 methods/r218
+          python -m pip install --upgrade pip
+          python -m pip install "numpy==2.4.6" "flopscope==0.12.1" "whestbench==0.16.1"
+          curl -fsSL \
+            https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v29.py \
+            -o methods/r218/estimator_v29.py
+          cp research/r218/R218_EXPECTED_PANEL.json r218/R218_EXPECTED_PANEL.json
+          cp research/r217/R217_NEXT_RUNTIME_PROTOCOL.json r218/R217_NEXT_RUNTIME_PROTOCOL.json
+          cp research/r218/R218_PRELAUNCH_GATE.json r218/R218_PRELAUNCH_GATE.json
+
+      - name: Record runner and machine telemetry before science
+        shell: bash
+        run: |
+          set -euo pipefail
+          env | sort > r218/runner_env.txt
+          lscpu -J > r218/preflight_lscpu.json
+          cat /proc/cpuinfo > r218/preflight_proc_cpuinfo.txt
+          cat /proc/self/status > r218/preflight_proc_self_status.txt
+          taskset -pc $$ > r218/preflight_taskset.txt
+          python - <<'PY' > r218/preflight_affinity.json
+          import json, os
+          print(json.dumps({"allowed_cpus": sorted(os.sched_getaffinity(0))}, sort_keys=True))
+          PY
+          curl -fsS --max-time 5 -H Metadata:true \
+            'http://169.254.169.254/metadata/instance?api-version=2021-02-01' \
+            > r218/azure_instance_metadata.json || printf '{}\n' > r218/azure_instance_metadata.json
+          whest version --json > r218/whest_version.json
+
+      - name: Execute exactly one frozen six-block crossover
+        id: measure
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          printf '%s\n' 'python scripts/r218_run_crossover.py --estimator methods/r218/estimator_v29.py --protocol research/r217/R217_NEXT_RUNTIME_PROTOCOL.json --expected-panel research/r218/R218_EXPECTED_PANEL.json --out r218 --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2' > r218/command.txt
+          python scripts/r218_run_crossover.py \
+            --estimator methods/r218/estimator_v29.py \
+            --protocol research/r217/R217_NEXT_RUNTIME_PROTOCOL.json \
+            --expected-panel research/r218/R218_EXPECTED_PANEL.json \
+            --out r218 \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            > r218/orchestrator.stdout 2> r218/orchestrator.stderr
+          code=$?
+          echo "$code" > r218/orchestrator.exit
+          exit "$code"
+
+      - name: Hash complete R218 evidence
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib
+          root=pathlib.Path('r218')
+          out={}
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='sha256.json':
+                  out[str(p.relative_to(root))]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/'sha256.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print((root/'sha256.json').read_text())
+          PY
+
+      - name: Upload immutable R218 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r218-v29-l4-affinity-crossover
+          path: r218/
+          if-no-files-found: error
+
+      - name: Propagate protocol/infra failure after artifact upload
+        if: always()
+        shell: bash
+        run: |
+          code="$(cat r218/orchestrator.exit 2>/dev/null || echo 99)"
+          if [ "$code" -ne 0 ]; then
+            echo "R218 orchestrator exit=$code"
+            exit "$code"
+          fi

@@ -1,0 +1,280 @@
+{
+  "schema": "arc.whitebox.r218.expected_panel.v1",
+  "dataset": {
+    "path": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini:first-50"
+  },
+  "source": {
+    "git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27"
+  },
+  "environment": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1",
+    "V26_STRASSEN": "4",
+    "threads": 1
+  },
+  "source_evidence": {
+    "r207_artifact_id": 10709911534,
+    "r207_artifact_zip_sha256": "53fecd878787078ff9526da4af80531a8eee1314fcaf8f7c905e09f505b36090",
+    "r207_report_sha256": "6427cf6db345bbb47bdb551507f5afe83e2d21d981d0a495cb8c19e41a85807e",
+    "r210_artifact_id": 10712680276,
+    "r210_artifact_zip_sha256": "09719be2466bf43d513f52a025a60482ec9402a3455783710d3fe22e699e30f2",
+    "r210_report_sha256": "dc1e37f7fbc57853e05dfb91ecfe7919906391f79f44aaedeacd471fea8f9645"
+  },
+  "panel": [
+    {
+      "mlp_index": 0,
+      "mlp_name": "logan-fitzgerald",
+      "measured_flops": 587262754287
+    },
+    {
+      "mlp_index": 1,
+      "mlp_name": "william-graves",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 2,
+      "mlp_name": "raymond-barnes",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 3,
+      "mlp_name": "steven-rice",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 4,
+      "mlp_name": "sarah-kelley",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 5,
+      "mlp_name": "christopher-morales",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 6,
+      "mlp_name": "cheryl-graham",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 7,
+      "mlp_name": "renee-park",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 8,
+      "mlp_name": "justin-johnson",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 9,
+      "mlp_name": "christina-lopez",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 10,
+      "mlp_name": "randy-murray",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 11,
+      "mlp_name": "john-koch",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 12,
+      "mlp_name": "susan-butler",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 13,
+      "mlp_name": "crystal-gonzales",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 14,
+      "mlp_name": "troy-richardson",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 15,
+      "mlp_name": "sharon-whitehead",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 16,
+      "mlp_name": "adam-morrison",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 17,
+      "mlp_name": "william-simmons",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 18,
+      "mlp_name": "william-bryant",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 19,
+      "mlp_name": "angela-hancock",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 20,
+      "mlp_name": "lisa-aguirre",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 21,
+      "mlp_name": "marissa-perez",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 22,
+      "mlp_name": "matthew-cruz",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 23,
+      "mlp_name": "dana-parker",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 24,
+      "mlp_name": "justin-thomas",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 25,
+      "mlp_name": "jose-booker",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 26,
+      "mlp_name": "jennifer-best",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 27,
+      "mlp_name": "lisa-dean",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 28,
+      "mlp_name": "terri-salazar",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 29,
+      "mlp_name": "monica-duncan",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 30,
+      "mlp_name": "katherine-allen",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 31,
+      "mlp_name": "stephanie-fowler",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 32,
+      "mlp_name": "nathan-valdez",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 33,
+      "mlp_name": "mark-sweeney",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 34,
+      "mlp_name": "rachel-warren",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 35,
+      "mlp_name": "cory-clarke",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 36,
+      "mlp_name": "patricia-cochran",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 37,
+      "mlp_name": "paige-miller",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 38,
+      "mlp_name": "daniel-smith",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 39,
+      "mlp_name": "rebecca-jackson",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 40,
+      "mlp_name": "sylvia-stanley",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 41,
+      "mlp_name": "john-lee",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 42,
+      "mlp_name": "crystal-carrillo",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 43,
+      "mlp_name": "renee-garcia",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 44,
+      "mlp_name": "anita-collier",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 45,
+      "mlp_name": "tina-webb",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 46,
+      "mlp_name": "lisa-mitchell",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 47,
+      "mlp_name": "douglas-kelly",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 48,
+      "mlp_name": "maria-calderon",
+      "measured_flops": 581994796527
+    },
+    {
+      "mlp_index": 49,
+      "mlp_name": "jay-harris",
+      "measured_flops": 581994796527
+    }
+  ]
+}
