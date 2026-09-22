@@ -725,6 +725,14 @@
       "owner": "method-research",
       "payload": {},
       "revision": 57
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T20:29:02.812543+00:00",
+      "job": "R216",
+      "owner": "leaderboard-audit",
+      "payload": {},
+      "revision": 58
     }
   ],
   "jobs": [
@@ -1213,9 +1221,9 @@
       "depends_on": [],
       "hypothesis_id": "V25-PUBLIC-LEADERBOARD-GAP",
       "id": "R216",
-      "owner": null,
+      "owner": "leaderboard-audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Determine whether the clean V25 public result is leaderboard-comparable"
     },
     {
@@ -1232,7 +1240,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 57,
+  "revision": 58,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
