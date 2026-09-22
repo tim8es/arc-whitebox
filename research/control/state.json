@@ -80,6 +80,18 @@
         "status": "SCIENTIFIC_REJECT"
       },
       "revision": 7
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T15:49:26.511234+00:00",
+      "job": "R203",
+      "owner": "audit",
+      "payload": {
+        "code_commit": "bf13c925dfb3146372531fedbd15408e3af30235",
+        "command": "python scripts/r203_evidence_audit.py /tmp/e173_art --zip e173-official-mini-ago.zip --expected-zip-sha256 7869fe6ac1af128f406be84f057568422dc0ab99b9cd31114e0ec46605182c4e",
+        "run_id": "R203-evidence-audit-20260922"
+      },
+      "revision": 8
     }
   ],
   "jobs": [
@@ -151,14 +163,21 @@
     },
     {
       "assigned_owner": "audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "bf13c925dfb3146372531fedbd15408e3af30235",
+          "command": "python scripts/r203_evidence_audit.py /tmp/e173_art --zip e173-official-mini-ago.zip --expected-zip-sha256 7869fe6ac1af128f406be84f057568422dc0ab99b9cd31114e0ec46605182c4e",
+          "run_id": "R203-evidence-audit-20260922",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independent audit of history.json and E173 normalization; identify strongest reproducible historical candidate and missing comparisons; pinned evidence and known gaps, no scientific rerun.",
       "depends_on": [],
       "hypothesis_id": "EVIDENCE-AUDIT",
       "id": "R203",
       "owner": "audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Проверить архив, дубликаты и baseline E007/E051/E136"
     },
     {
@@ -177,7 +196,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 7,
+  "revision": 8,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
