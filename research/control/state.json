@@ -257,16 +257,33 @@
       "revision": 21
     },
     {
-      "revision": 22,
       "action": "start",
+      "at": "2026-09-22T16:30:00+00:00",
       "job": "R207",
       "owner": "baseline",
       "payload": {
-        "run_id": "R207-v29-l4-public50-attempt1",
         "code_commit": "0df5922165d8fb116841dd72e0c4928e02612572",
-        "command": "V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json"
+        "command": "V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+        "run_id": "R207-v29-l4-public50-attempt1"
       },
-      "at": "2026-09-22T16:30:00+00:00"
+      "revision": 22
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T16:43:03.191700+00:00",
+      "job": "R208",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "independent-audit",
+        "deliverable": "Read-only independent verification of the R205 receipt, normalized five-network result, code/artifact provenance, failure semantics and adjusted-score arithmetic. Recompute the reported 0.22478213802104935 to 6.199991295837055e-9 change from the per-network rows. No scientific rerun, paid resources, holdout or submission; produce an audit artifact and receipt.",
+        "depends_on": [
+          "R205"
+        ],
+        "hypothesis_id": "R205-INDEPENDENT-VERIFICATION",
+        "priority": 1,
+        "title": "Independent verification of R205 receipt and score"
+      },
+      "revision": 23
     }
   ],
   "jobs": [
@@ -449,9 +466,9 @@
       "assigned_owner": "baseline",
       "attempts": [
         {
-          "run_id": "R207-v29-l4-public50-attempt1",
           "code_commit": "0df5922165d8fb116841dd72e0c4928e02612572",
           "command": "V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "run_id": "R207-v29-l4-public50-attempt1",
           "status": "RUNNING"
         }
       ],
@@ -465,10 +482,24 @@
       "priority": 1,
       "status": "RUNNING",
       "title": "Confirm V29 L4 mitigation on the full accessible public split"
+    },
+    {
+      "assigned_owner": "independent-audit",
+      "attempts": [],
+      "deliverable": "Read-only independent verification of the R205 receipt, normalized five-network result, code/artifact provenance, failure semantics and adjusted-score arithmetic. Recompute the reported 0.22478213802104935 to 6.199991295837055e-9 change from the per-network rows. No scientific rerun, paid resources, holdout or submission; produce an audit artifact and receipt.",
+      "depends_on": [
+        "R205"
+      ],
+      "hypothesis_id": "R205-INDEPENDENT-VERIFICATION",
+      "id": "R208",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Independent verification of R205 receipt and score"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 22,
+  "revision": 23,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
