@@ -1,0 +1,164 @@
+{
+  "attempt": 1,
+  "cost": {
+    "arithmetic_flops": 18826027008,
+    "block_shape": [
+      32,
+      32,
+      32
+    ],
+    "classical_padded_flops": 2147483648,
+    "classical_unpadded_flops": 2147483648,
+    "coefficient_multiplies": {
+      "u": 2985929728,
+      "v": 3002582016,
+      "w": 2974356480
+    },
+    "complete_arithmetic_gate_pass": false,
+    "copy_flops_by_convention": 0,
+    "crop_output_scalars_copied": 0,
+    "fallback_count": 0,
+    "fallback_flops": 0,
+    "interpretation": "ratio denominator is a classical same-shape matmul. The frozen V29 dense path is classical-or-faster (Strassen on dominant families), so failure even against the classical denominator is a conservative H185 NO-GO.",
+    "leaf_matmul_flops": 930414592,
+    "leaf_only_gate_pass": false,
+    "leaf_ratio_to_classical_unpadded": 0.433258056640625,
+    "linear_combination_additions": {
+      "u": 2971392000,
+      "v": 2988044288,
+      "w_reconstruction": 2973307904
+    },
+    "mechanism_ratio_gate": 0.42,
+    "nnz": {
+      "u": 2915947,
+      "v": 2932209,
+      "w": 2904645
+    },
+    "padded_shape": [
+      1024,
+      1024,
+      1024
+    ],
+    "padding_input_scalars_copied": 0,
+    "rank": 14197,
+    "ratio_to_classical_unpadded": 8.766551971435547,
+    "shape": [
+      1024,
+      1024,
+      1024
+    ]
+  },
+  "decision": {
+    "cost_gate": false,
+    "exact_gate": true,
+    "float32_gate": false,
+    "full_compiler_authorized": false,
+    "kernel_go": false,
+    "scientific_run_authorized": false,
+    "status": "TERMINAL_NO_GO_COST",
+    "submission_authorized": false
+  },
+  "environment": {
+    "blas_threads": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "numpy": "2.4.6",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
+    "scipy": "1.17.1"
+  },
+  "exact_scalar_block": {
+    "a_sha256": "c54a8ad8a5bafce447935dee8ffde907cbff6366d7927262a05bd6a129d1786a",
+    "b_sha256": "bd98f3b384deeabd81235092ead6626ede1cb967f603cb8bbabb73abcb48ddf8",
+    "exact_equal": true,
+    "grid": 244608,
+    "max_abs_scaled_integer_residual": 0,
+    "scale_grid_cubed": 14635648482803712,
+    "seconds": 3.861963093
+  },
+  "experiment": "R202",
+  "float32": {
+    "candidate32_sha256": "fdaa1b4cc3d38a4ef697fb69666674ef83902fae68913534e0e200422a28a651",
+    "candidate_timing": {
+      "crop_copy_seconds": 0.0009046559999958959,
+      "leaf_seconds": 0.02045788000000215,
+      "total_seconds": 1.0219930829999981,
+      "u_form_seconds": 0.3294196659999997,
+      "v_form_seconds": 0.3320073069999978,
+      "w_reconstruct_seconds": 0.33920357400000256
+    },
+    "checks": {
+      "max_absolute": {
+        "candidate": 0.042948419180206907,
+        "limit_ratio": 1.05,
+        "parent": 1.0071120103843922e-07,
+        "pass": false,
+        "ratio_candidate_to_parent": 426451.26597005286
+      },
+      "relative_frobenius": {
+        "candidate": 0.05629030844146132,
+        "limit_ratio": 1.05,
+        "parent": 2.9618162122284807e-07,
+        "pass": false,
+        "ratio_candidate_to_parent": 190053.34702759393
+      }
+    },
+    "input_a_sha256": "e7f7514b669bb11f74496e528b3d12d6ec6b714882aa1b8ac8f47af29867fa53",
+    "input_b_sha256": "ef880419af9b8262138edf83c6b12e635ea021f72c936caae1749d1958541a13",
+    "parent32_seconds": 0.02497698399999848,
+    "parent32_sha256": "65905007d12f68fa1fc08f6992ea84744841a2cba938c5eb78b18a8aec8259b7",
+    "pass": false,
+    "reference64_seconds": 0.053994475000003206,
+    "reference64_sha256": "fea6ab8290b97e89fb2d3548fb614df11f12f0ccdb3f15e47b4c29fc1ba0eb3e"
+  },
+  "git": {
+    "branch": "research/r202-h185-ta32-kernel-20260922",
+    "head_sha": "a991959880550a13f4f6b417376eda9cfc16772a"
+  },
+  "hypothesis": "H185 exact TA32 kernel",
+  "mode": "MINIMAL_KERNEL_PROTOTYPE_SYNTHETIC_ONLY",
+  "schema": "arc.whitebox.r202.ta32_kernel.v1",
+  "scheme": {
+    "commit": "c1dd9225df98676e385b53ae7517ff2ea0ec5779",
+    "git_blob_sha1_expected": "6f2dea4820245303dc2eb1fba13816436fabe54d",
+    "local_sha256": "a6e4a7bb71c153e75ea2497a3d0546cc26db109e99d94109de29afad0c52a701",
+    "metadata": {
+      "axis_convention": "U,V read row-major inputs; W writes row-major C=AB.",
+      "coefficient_field": "Q",
+      "construction": "LITA row-column aggregation",
+      "format": "fmmp.qcsr.v1",
+      "is_complete_matrix_multiplication_scheme": true,
+      "rank": 14197,
+      "tensor": [
+        32,
+        32,
+        32
+      ]
+    },
+    "nnz": {
+      "u": 2915947,
+      "v": 2932209,
+      "w": 2904645
+    },
+    "path": "schemes/32x32x32_r14197.npz",
+    "provider": "khoruzhii/lita"
+  },
+  "seed": 202,
+  "shape": [
+    1024,
+    1024,
+    1024
+  ],
+  "target_firewall": {
+    "benchmark_targets_read": false,
+    "holdout_read": false,
+    "inputs": "deterministic synthetic matrices only",
+    "reference_means_read": false,
+    "scorer_read": false,
+    "submission_attempted": false
+  }
+}
