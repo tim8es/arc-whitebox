@@ -491,6 +491,18 @@
       "owner": "method-research",
       "payload": {},
       "revision": 39
+    },
+    {
+      "revision": 40,
+      "action": "start",
+      "job": "R210",
+      "owner": "baseline",
+      "payload": {
+        "run_id": "R210-v29-l4-single-cpu-public50-attempt1",
+        "code_commit": "672ed3f7947caff741d7f720e434f8193f5daaa1",
+        "command": "CPU=$(python -c \"import os; print(min(os.sched_getaffinity(0)))\"); taskset -c \"$CPU\" whest run --estimator methods/r210/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json"
+      },
+      "at": "2026-09-22T17:40:00+00:00"
     }
   ],
   "jobs": [
@@ -816,7 +828,14 @@
     },
     {
       "assigned_owner": "baseline",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R210-v29-l4-single-cpu-public50-attempt1",
+          "code_commit": "672ed3f7947caff741d7f720e434f8193f5daaa1",
+          "command": "CPU=$(python -c \"import os; print(min(os.sched_getaffinity(0)))\"); taskset -c \"$CPU\" whest run --estimator methods/r210/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Analyze the ten R207 residual_wall_time_exhausted rows and design one minimal non-overfit runtime mitigation that preserves the pinned V29 estimator semantics. Freeze the change before a bounded public-50 confirmation, measure all 50 per-MLP scores/residuals/failures, and report official adjusted score. No holdout, paid resources, submission or blind rerun; retain the R207 failure evidence.",
       "depends_on": [
         "R207"
@@ -825,7 +844,7 @@
       "id": "R210",
       "owner": "baseline",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Reduce V29 public-50 residual jitter after L4 mitigation"
     },
     {
@@ -842,7 +861,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 39,
+  "revision": 40,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
