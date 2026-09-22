@@ -164,6 +164,18 @@
       "owner": "kernel",
       "payload": {},
       "revision": 14
+    },
+    {
+      "revision": 15,
+      "action": "start",
+      "job": "R205",
+      "owner": "baseline",
+      "payload": {
+        "run_id": "R205-v29-l4-five-grid-attempt1",
+        "code_commit": "774c932ac1697b767e3760062183271e9dac62e4",
+        "command": "V26_STRASSEN=4 whest run --estimator methods/r205/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 5 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json"
+      },
+      "at": "2026-09-22T15:22:00+00:00"
     }
   ],
   "jobs": [
@@ -282,7 +294,14 @@
     },
     {
       "assigned_owner": "baseline",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R205-v29-l4-five-grid-attempt1",
+          "code_commit": "774c932ac1697b767e3760062183271e9dac62e4",
+          "command": "V26_STRASSEN=4 whest run --estimator methods/r205/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 5 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Bounded reproducible investigation of the william-graves residual_wall_time_exhausted failure from R201 under the exact E173 panel and official contract. Identify root cause, test the smallest safe repair or measurement-only mitigation, and report adjusted score impact across all five networks. No paid run, no holdout access, no submission; preserve receipt and failed attempts.",
       "depends_on": [
         "R201"
@@ -291,7 +310,7 @@
       "id": "R205",
       "owner": "baseline",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Recover V29 residual-timeout on the exact five-network panel"
     },
     {
@@ -308,7 +327,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 14,
+  "revision": 15,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
