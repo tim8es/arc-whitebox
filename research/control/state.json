@@ -16,6 +16,14 @@
       "owner": "kernel",
       "payload": {},
       "revision": 2
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T15:20:25.255412+00:00",
+      "job": "R203",
+      "owner": "audit",
+      "payload": {},
+      "revision": 3
     }
   ],
   "jobs": [
@@ -50,9 +58,9 @@
       "depends_on": [],
       "hypothesis_id": "EVIDENCE-AUDIT",
       "id": "R203",
-      "owner": null,
+      "owner": "audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Проверить архив, дубликаты и baseline E007/E051/E136"
     },
     {
@@ -71,7 +79,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 2,
+  "revision": 3,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
