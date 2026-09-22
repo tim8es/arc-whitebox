@@ -1368,6 +1368,18 @@
         "status": "COMPLETE"
       },
       "at": "2026-09-22T22:23:00.000Z"
+    },
+    {
+      "revision": 106,
+      "action": "start",
+      "job": "R227",
+      "owner": "v25-optimization",
+      "payload": {
+        "run_id": "R227-v25-srm2-feasibility-20260923",
+        "code_commit": "6715c89debd53554cbce5691150180fbb933e503",
+        "command": "python scripts/r227_srm2_feasibility.py --v25 /tmp/estimator_v25.py --probe /tmp/g_regen_probe.py --findings /tmp/findings_log.md --claims /tmp/claims_evidence.md --out r227-feasibility.json; pinned upstream blobs must match; no mini-100 unless deployability gate passes"
+      },
+      "at": "2026-09-22T22:20:20.697Z"
     }
   ],
   "jobs": [
@@ -2229,7 +2241,14 @@
     },
     {
       "assigned_owner": "v25-optimization",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R227-v25-srm2-feasibility-20260923",
+          "code_commit": "6715c89debd53554cbce5691150180fbb933e503",
+          "command": "python scripts/r227_srm2_feasibility.py --v25 /tmp/estimator_v25.py --probe /tmp/g_regen_probe.py --findings /tmp/findings_log.md --claims /tmp/claims_evidence.md --out r227-feasibility.json; pinned upstream blobs must match; no mini-100 unless deployability gate passes",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read current `AGENTS.md`, `research/RESEARCH_PROCESS.md`, immutable history and R224's normalized per-network V25 mini-100 records. Choose exactly one untried algorithm-level change aimed at lowering official adjusted score on this same public development panel; explicitly exclude R223's K4-to-K3 per-neuron feed-lambda patch, R219's factor-copula family, and all previously falsified mechanisms. Freeze parent/source/config/falsifier, predicted cost and GO/NO-GO before execution. Run at most one bounded same-panel candidate evaluation using verified free/existing compute only; keep canonical V25 unchanged. Retain every network row/failure, compare official adjusted score and measured FLOPs, create artifact/receipt/commit. If no distinct feasible candidate exists, finish with a scoped terminal NO-GO. No paid resource, holdout or submission.",
       "depends_on": [
         "R224"
@@ -2238,12 +2257,12 @@
       "id": "R227",
       "owner": "v25-optimization",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 105,
+  "revision": 106,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
