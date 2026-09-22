@@ -717,6 +717,14 @@
       "owner": "postflight-audit",
       "payload": {},
       "revision": 56
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T20:28:49.172309+00:00",
+      "job": "R215",
+      "owner": "method-research",
+      "payload": {},
+      "revision": 57
     }
   ],
   "jobs": [
@@ -1193,9 +1201,9 @@
       "depends_on": [],
       "hypothesis_id": "ESTIMATOR-LEVEL-FRONTIER-SCREEN",
       "id": "R215",
-      "owner": null,
+      "owner": "method-research",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Screen one new estimator-level research family after R212"
     },
     {
@@ -1224,7 +1232,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 56,
+  "revision": 57,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
