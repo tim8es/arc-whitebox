@@ -443,6 +443,23 @@
         "status": "COMPLETE"
       },
       "revision": 35
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T17:34:26.674573+00:00",
+      "job": "R210",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "baseline",
+        "deliverable": "Analyze the ten R207 residual_wall_time_exhausted rows and design one minimal non-overfit runtime mitigation that preserves the pinned V29 estimator semantics. Freeze the change before a bounded public-50 confirmation, measure all 50 per-MLP scores/residuals/failures, and report official adjusted score. No holdout, paid resources, submission or blind rerun; retain the R207 failure evidence.",
+        "depends_on": [
+          "R207"
+        ],
+        "hypothesis_id": "V29-PUBLIC-JITTER-REDUCTION",
+        "priority": 1,
+        "title": "Reduce V29 public-50 residual jitter after L4 mitigation"
+      },
+      "revision": 36
     }
   ],
   "jobs": [
@@ -765,10 +782,24 @@
       },
       "status": "COMPLETE",
       "title": "Recover existing 100-MLP V25/V29 evidence without rerun"
+    },
+    {
+      "assigned_owner": "baseline",
+      "attempts": [],
+      "deliverable": "Analyze the ten R207 residual_wall_time_exhausted rows and design one minimal non-overfit runtime mitigation that preserves the pinned V29 estimator semantics. Freeze the change before a bounded public-50 confirmation, measure all 50 per-MLP scores/residuals/failures, and report official adjusted score. No holdout, paid resources, submission or blind rerun; retain the R207 failure evidence.",
+      "depends_on": [
+        "R207"
+      ],
+      "hypothesis_id": "V29-PUBLIC-JITTER-REDUCTION",
+      "id": "R210",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Reduce V29 public-50 residual jitter after L4 mitigation"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 35,
+  "revision": 36,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
