@@ -1,0 +1,89 @@
+{
+  "schema": "arc.whitebox.r234.verifier_checklist.v1",
+  "job_id": "R234",
+  "purpose": "Prepare R220 independent postflight tooling only; do not inspect a not-yet-complete R218 artifact or run estimator.",
+  "frozen_sources": {
+    "r217_protocol": {
+      "path": "research/r217/R217_NEXT_RUNTIME_PROTOCOL.json",
+      "commit": "e8fc0364f69c12f2f94a06362b43e925ea61b365",
+      "git_blob_sha1": "a940706931d280fe2a720836d9db248146862270",
+      "sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968"
+    },
+    "r218_executor_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+    "workflow": {
+      "path": ".github/workflows/r218-affinity-crossover.yml",
+      "git_blob_sha1": "d1fa366b1056d09f829a9620eda81034584147af"
+    },
+    "script": {
+      "path": "scripts/r218_run_crossover.py",
+      "git_blob_sha1": "456364bd0558eb98d41a4f9cd0512484fe972d20"
+    },
+    "expected_panel": {
+      "path": "research/r218/R218_EXPECTED_PANEL.json",
+      "git_blob_sha1": "8669ffff7408c4f251c700ca0d5f9fc24db5c8f0"
+    },
+    "prelaunch_gate": {
+      "path": "research/r218/R218_PRELAUNCH_GATE.json",
+      "git_blob_sha1": "fe0745d3d0265b7afb8d952530998c6b0f942aa3"
+    }
+  },
+  "frozen_contract": {
+    "block_sequence": [
+      "U",
+      "C0",
+      "C1",
+      "C1",
+      "C0",
+      "U"
+    ],
+    "rows_total": 300,
+    "rows_per_block": 50,
+    "condition_observations_each": 100,
+    "panel": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2 mini:first-50",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "estimator_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "flop_budget": 2199023255552,
+    "residual_wall_time_limit_s": 0.4,
+    "width": 1024,
+    "depth": 16,
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1",
+    "V26_STRASSEN": "4",
+    "max_threads": 1,
+    "expected_flops": {
+      "index_0": 587262754287,
+      "indices_1_49": 581994796527
+    }
+  },
+  "independent_postflight_checks": [
+    "Verify artifact sha256.json against every listed file before interpreting measurements.",
+    "Verify frozen R217 protocol SHA256 and exact six-block sequence U,C0,C1,C1,C0,U.",
+    "Independently inspect the GitHub Actions run/job after R218 COMPLETE: same run attempt, one crossover job containing all six blocks, frozen source commit 85f5ba..., no rerun/rescue.",
+    "Verify runner_env/preflight identity agrees with Actions run/job metadata; preserve worker name/region and any missing telemetry.",
+    "For every block, require orchestrator allowed affinity to contain CPU0 and CPU1 and equal the preflight allowed set.",
+    "Require child taskset C0={0}, C1={1}; U must equal inherited allowed set and include 0 and 1.",
+    "Compare stable lscpu identity across all six block telemetry directories; do not use dynamic MHz fields as machine identity.",
+    "Parse six raw block reports independently; require exactly 50 rows each, exact expected name/order and exact per-MLP FLOPs.",
+    "Require dataset SHA/path, budget, residual limit, width/depth and whestbench version on every block.",
+    "Reconstruct all 300 observations and compare recomputed primary metrics to owner R218 receipt; discrepancy is protocol-invalid until explained.",
+    "For each MLP compute means across the two U blocks, two C0 blocks and two C1 blocks.",
+    "Primary delta = median_i(C0_mean_i - C1_mean_i). cpu0_slower_count = count_i(C0_mean_i > C1_mean_i).",
+    "failure_difference = total failures across two C0 blocks minus total failures across two C1 blocks.",
+    "Secondary comparisons C0-vs-U and C1-vs-U are descriptive only and cannot replace the predeclared primary CPU0-specific verdict."
+  ],
+  "decision_rule": {
+    "GO_CPU0_SPECIFIC": "All contract/provenance gates pass AND primary_delta_s >= 0.020 AND cpu0_slower_count >= 35/50 AND failure_difference >= 10.",
+    "NO_GO_CPU0_SPECIFIC": "All contract/provenance gates pass and any GO threshold fails.",
+    "PROTOCOL_INVALID": "Any contract/provenance gate fails; do not interpret runtime causally.",
+    "PENDING_EXTERNAL_ACTIONS_PROVENANCE": "Artifact-local checks pass but independent Actions run/job provenance has not yet been supplied."
+  },
+  "explicit_limits": [
+    "R234 does not poll or inspect the in-progress R218 scientific artifact.",
+    "R234 does not execute whest, estimator_v29, mini-50, mini-100, holdout, or submission.",
+    "R234 does not alter or repeat R218.",
+    "R234 does not claim or start R220; R220 remains dependency-gated on R218 COMPLETE.",
+    "Artifact alone cannot independently prove the GitHub Actions single-job provenance; R220 must obtain run/job evidence from GitHub Actions and feed/record it."
+  ]
+}
