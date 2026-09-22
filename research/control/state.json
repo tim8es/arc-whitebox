@@ -64,6 +64,22 @@
         "run_id": "R202-ta32-probe-35747466353"
       },
       "revision": 6
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T15:49:17.254051+00:00",
+      "job": "R202",
+      "owner": "kernel",
+      "payload": {
+        "reason": "Existing Actions probe completed and receipt verified. Exact identity passed, but leaf-only cost gate failed at 0.433258x versus 0.42x; full arithmetic was 8.766552x classical and float32 gate failed. No rerun is authorized.",
+        "receipt": {
+          "sha256": "4f0bb8acaa3f064ac6ae62d4ca9638a88819701721f9fea50ae918ca2cd8d12a",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/df9cca77f9885644c6058dc4307acc187a2a2dcb/research/r202/R202_TA32_KERNEL_RECEIPT.json"
+        },
+        "run_id": "R202-ta32-probe-35747466353",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 7
     }
   ],
   "jobs": [
@@ -106,8 +122,17 @@
         {
           "code_commit": "a991959880550a13f4f6b417376eda9cfc16772a",
           "command": "python scripts/r202_ta32_probe.py --scheme .cache/r202/32x32x32_r14197.npz --out artifacts/r202/R202_TA32_KERNEL_RECEIPT.json --seed 202 --n 1024",
+          "completion": {
+            "reason": "Existing Actions probe completed and receipt verified. Exact identity passed, but leaf-only cost gate failed at 0.433258x versus 0.42x; full arithmetic was 8.766552x classical and float32 gate failed. No rerun is authorized.",
+            "receipt": {
+              "sha256": "4f0bb8acaa3f064ac6ae62d4ca9638a88819701721f9fea50ae918ca2cd8d12a",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/df9cca77f9885644c6058dc4307acc187a2a2dcb/research/r202/R202_TA32_KERNEL_RECEIPT.json"
+            },
+            "run_id": "R202-ta32-probe-35747466353",
+            "status": "SCIENTIFIC_REJECT"
+          },
           "run_id": "R202-ta32-probe-35747466353",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Small executable exploratory kernel, exact/float32 checks and all-in cost including additions/fallback; repair technical failures with logged attempts. Keep/drop by measured benefit, do not build full compiler first.",
@@ -116,7 +141,12 @@
       "id": "R202",
       "owner": "kernel",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "Existing Actions probe completed and receipt verified. Exact identity passed, but leaf-only cost gate failed at 0.433258x versus 0.42x; full arithmetic was 8.766552x classical and float32 gate failed. No rerun is authorized.",
+      "receipt": {
+        "sha256": "4f0bb8acaa3f064ac6ae62d4ca9638a88819701721f9fea50ae918ca2cd8d12a",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/df9cca77f9885644c6058dc4307acc187a2a2dcb/research/r202/R202_TA32_KERNEL_RECEIPT.json"
+      },
+      "status": "SCIENTIFIC_REJECT",
       "title": "Маленькое ядро TA32: измерить сложения, точность и время до интеграции"
     },
     {
@@ -147,7 +177,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 6,
+  "revision": 7,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
