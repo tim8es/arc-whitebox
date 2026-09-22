@@ -1,0 +1,32 @@
+{
+  "schema": "arc.whitebox.r218.arm.v1",
+  "job_id": "R218",
+  "owner": "baseline-diagnosis",
+  "attempt": 1,
+  "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
+  "executor_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+  "protocol": {
+    "path": "research/r217/R217_NEXT_RUNTIME_PROTOCOL.json",
+    "sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968"
+  },
+  "command": "python scripts/r218_run_crossover.py --estimator methods/r218/estimator_v29.py --protocol research/r217/R217_NEXT_RUNTIME_PROTOCOL.json --expected-panel research/r218/R218_EXPECTED_PANEL.json --out r218 --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+  "block_sequence": [
+    "U",
+    "C0",
+    "C1",
+    "C1",
+    "C0",
+    "U"
+  ],
+  "compute": {
+    "runner": "ubuntu-24.04",
+    "class": "standard_github_hosted",
+    "repo_public": true,
+    "paid": false
+  },
+  "attempts_allowed": 1,
+  "retry": false,
+  "rescue": false,
+  "private_holdout": false,
+  "submission": false
+}
