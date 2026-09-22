@@ -1,0 +1,67 @@
+name: R206 TA rank sweep
+
+on:
+  push:
+    branches:
+      - research/r206-ta-rank-sweep-20260922
+    paths:
+      - methods/r206_ta_rank_sweep.py
+      - tests/test_r206_ta_rank_sweep.py
+      - scripts/r206_ta_rank_sweep.py
+      - .github/workflows/r206-ta-rank-sweep.yml
+  workflow_dispatch:
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      VECLIB_MAXIMUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install minimal dependencies
+        run: python -m pip install "numpy>=2.0" "scipy>=1.13" "pytest>=8.2"
+
+      - name: Fetch four frozen LITA schemes
+        run: |
+          mkdir -p .cache/r206
+          for spec in \
+            26x26x26_r8052 \
+            28x28x28_r9847 \
+            30x30x30_r11890 \
+            32x32x32_r14197
+          do
+            curl --fail --location --retry 3 \
+              "https://raw.githubusercontent.com/khoruzhii/lita/c1dd9225df98676e385b53ae7517ff2ea0ec5779/schemes/${spec}.npz" \
+              -o ".cache/r206/${spec}.npz"
+          done
+
+      - name: Focused tests
+        run: python -m pytest -q tests/test_r202_ta32_kernel.py tests/test_r206_ta_rank_sweep.py
+
+      - name: Frozen synthetic rank sweep
+        run: |
+          mkdir -p artifacts/r206
+          python scripts/r206_ta_rank_sweep.py \
+            --scheme-dir .cache/r206 \
+            --out artifacts/r206/R206_TA_RANK_SWEEP_RECEIPT.json \
+            --seed 206 \
+            --n 1024
+          sha256sum artifacts/r206/R206_TA_RANK_SWEEP_RECEIPT.json
+
+      - name: Upload immutable receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: r206-ta-rank-sweep-receipt
+          path: artifacts/r206/R206_TA_RANK_SWEEP_RECEIPT.json
+          if-no-files-found: error
+          retention-days: 90
