@@ -1521,6 +1521,22 @@
         "command": "read-only official AIcrowd audit of public submission details 331539 and 331308; verify public method/source visibility before comparison; no competitor-code download/run, private data, estimator run, paid compute, submission, or canonical edits"
       },
       "revision": 117
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T22:48:08.000Z",
+      "job": "R230",
+      "owner": "leader-method-audit",
+      "payload": {
+        "reason": "Read-only official AIcrowd audit of top Phase-2 submission IDs 331539 and 331308 complete. Their public leaderboard rows and View routes are visible, but anonymous detail retrieval exposed only a client-side Loading shell and no submission-specific method description, source link, artifact download, or system-description field. AIcrowd staff separately confirms RBAC protects submission-detail error fields; no bypass was attempted. Official-forum speculation about leader mechanisms was explicitly marked unvalidated and was excluded. Comparison against R209 V25/V29 and experiment history therefore yields UNKNOWN novelty for both targets and admits 0 leader-derived hypotheses rather than inventing a method. Audit SHA256 19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2. No competitor code download/run, estimator run, paid compute, submission, private/holdout access, external mutation, or canonical edit.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/12d5e6260b99ba822ad86644b74932844f43d903/research/R230_PUBLIC_LEADER_METHOD_AUDIT_RECEIPT.json",
+          "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8"
+        },
+        "run_id": "R230-public-leader-method-audit-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 118
     }
   ],
   "jobs": [
@@ -2474,7 +2490,7 @@
       "title": "Audit public methods of top ARC Phase-2 submissions",
       "owner": "leader-method-audit",
       "assigned_owner": "leader-method-audit",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "priority": 1,
       "hypothesis_id": "PUBLIC-LEADER-METHODS-TRANSFER-AUDIT",
       "depends_on": [
@@ -2485,14 +2501,28 @@
           "run_id": "R230-public-leader-method-audit-20260923",
           "code_commit": "f55de5498921bd57b68e88f7ed179e6c13c15ce7",
           "command": "read-only official AIcrowd audit of public submission details 331539 and 331308; verify public method/source visibility before comparison; no competitor-code download/run, private data, estimator run, paid compute, submission, or canonical edits",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "Read-only official AIcrowd audit of top Phase-2 submission IDs 331539 and 331308 complete. Their public leaderboard rows and View routes are visible, but anonymous detail retrieval exposed only a client-side Loading shell and no submission-specific method description, source link, artifact download, or system-description field. AIcrowd staff separately confirms RBAC protects submission-detail error fields; no bypass was attempted. Official-forum speculation about leader mechanisms was explicitly marked unvalidated and was excluded. Comparison against R209 V25/V29 and experiment history therefore yields UNKNOWN novelty for both targets and admits 0 leader-derived hypotheses rather than inventing a method. Audit SHA256 19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2. No competitor code download/run, estimator run, paid compute, submission, private/holdout access, external mutation, or canonical edit.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/12d5e6260b99ba822ad86644b74932844f43d903/research/R230_PUBLIC_LEADER_METHOD_AUDIT_RECEIPT.json",
+              "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8"
+            },
+            "run_id": "R230-public-leader-method-audit-20260923",
+            "status": "COMPLETE"
+          }
         }
       ],
-      "deliverable": "Read only the publicly visible official AIcrowd details and artifacts for the current top Phase-2 public submissions (start with submission IDs 331539 and 331308 from R228's snapshot). Determine whether methods/source are actually public and permitted to inspect; compare documented mechanisms against ARC experiment history and R209 V25/V29. Produce an append-only source-cited method audit, deduplication table, and one or two transferable testable hypotheses with explicit uncertainty and cost/evidence gates. Do not download/run competitor code, use private/holdout data, launch an estimator, spend money, submit, or alter canonical results. If details are unavailable, preserve exact access failure and derive no invented method claims."
+      "deliverable": "Read only the publicly visible official AIcrowd details and artifacts for the current top Phase-2 public submissions (start with submission IDs 331539 and 331308 from R228's snapshot). Determine whether methods/source are actually public and permitted to inspect; compare documented mechanisms against ARC experiment history and R209 V25/V29. Produce an append-only source-cited method audit, deduplication table, and one or two transferable testable hypotheses with explicit uncertainty and cost/evidence gates. Do not download/run competitor code, use private/holdout data, launch an estimator, spend money, submit, or alter canonical results. If details are unavailable, preserve exact access failure and derive no invented method claims.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/12d5e6260b99ba822ad86644b74932844f43d903/research/R230_PUBLIC_LEADER_METHOD_AUDIT_RECEIPT.json",
+        "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8"
+      },
+      "reason": "Read-only official AIcrowd audit of top Phase-2 submission IDs 331539 and 331308 complete. Their public leaderboard rows and View routes are visible, but anonymous detail retrieval exposed only a client-side Loading shell and no submission-specific method description, source link, artifact download, or system-description field. AIcrowd staff separately confirms RBAC protects submission-detail error fields; no bypass was attempted. Official-forum speculation about leader mechanisms was explicitly marked unvalidated and was excluded. Comparison against R209 V25/V29 and experiment history therefore yields UNKNOWN novelty for both targets and admits 0 leader-derived hypotheses rather than inventing a method. Audit SHA256 19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2. No competitor code download/run, estimator run, paid compute, submission, private/holdout access, external mutation, or canonical edit."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 117,
+  "revision": 118,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
