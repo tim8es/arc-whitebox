@@ -1,0 +1,23 @@
+{
+  "schema": "arc.whitebox.r210.arm.v1",
+  "job_id": "R210",
+  "owner": "baseline",
+  "attempt": 1,
+  "run_id": "R210-v29-l4-single-cpu-public50-attempt1",
+  "protocol_commit": "672ed3f7947caff741d7f720e434f8193f5daaa1",
+  "mitigation": {
+    "count": 1,
+    "name": "single_cpu_affinity",
+    "rule": "choose min(os.sched_getaffinity(0)); taskset -c chosen_cpu",
+    "V26_STRASSEN": "4",
+    "semantic_change": false
+  },
+  "panel": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2 mini:first-50",
+  "safety": {
+    "paid_resources": false,
+    "private_holdout": false,
+    "submission": false,
+    "blind_rerun": false
+  },
+  "attempts_allowed": 1
+}
