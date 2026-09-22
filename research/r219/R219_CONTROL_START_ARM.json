@@ -1,0 +1,6 @@
+{
+  "idempotency_key": "ARC-R219-CONTROL-START-20260922",
+  "job": "R219",
+  "execute_once": true,
+  "scientific_run": false
+}
