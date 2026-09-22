@@ -192,6 +192,16 @@
         }
       },
       "at": "2026-09-22T15:59:30+00:00"
+    },
+    {
+      "revision": 17,
+      "action": "repair",
+      "job": "R205",
+      "owner": "baseline",
+      "payload": {
+        "reason": "Repair attempt-1 infrastructure only: replace unavailable local editable install with pinned direct public dependencies (numpy==2.4.6, flopscope==0.12.1, whestbench==0.16.1) and create evidence directory before install. Scientific source/panel/mitigation unchanged."
+      },
+      "at": "2026-09-22T16:00:00+00:00"
     }
   ],
   "jobs": [
@@ -335,13 +345,13 @@
       "id": "R205",
       "owner": "baseline",
       "priority": 1,
-      "status": "INFRA_ERROR",
+      "status": "CLAIMED",
       "title": "Recover V29 residual-timeout on the exact five-network panel",
       "receipt": {
         "url": "https://github.com/tim8es/arc-whitebox/blob/ae39d8425bfdb569575adafb74ec55c069a53f76/research/R205_ATTEMPT1_INFRA_RECEIPT.json",
         "sha256": "03f75d8e54f5e59252d00266ef2efecab14a2b7d10dfb74d1dd164768997a6d2"
       },
-      "reason": "Attempt 1 failed before science: research/control-v2 has no setup.py/pyproject.toml, so inherited 'pip install -e .' failed. No estimator/measurement ran. Repair is dependency-only; panel, source and V26_STRASSEN=4 mitigation unchanged."
+      "reason": "Repair attempt-1 infrastructure only: replace unavailable local editable install with pinned direct public dependencies (numpy==2.4.6, flopscope==0.12.1, whestbench==0.16.1) and create evidence directory before install. Scientific source/panel/mitigation unchanged."
     },
     {
       "assigned_owner": "kernel",
@@ -357,7 +367,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 16,
+  "revision": 17,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
