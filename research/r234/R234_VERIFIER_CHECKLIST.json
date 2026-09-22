@@ -68,6 +68,7 @@
     "Verify artifact sha256.json against every listed file before interpreting measurements.",
     "Verify frozen R217 protocol SHA256 and exact six-block sequence U,C0,C1,C1,C0,U.",
     "Independently inspect the GitHub Actions run/job after R218 COMPLETE: same run attempt, one crossover job containing all six blocks, no rerun/rescue; verify the arm record pins executor_commit 85f5ba..., without assuming the workflow run head SHA itself equals that executor commit.",
+    "Because estimator_v29.py is not copied into the r218 artifact, independently fetch/verify the frozen upstream estimator blob after R218 COMPLETE and record estimator_source_sha256_verified=86d9ca... in R220 Actions evidence; do not treat the owner's preflight boolean alone as independent source verification.",
     "Verify runner_env/preflight identity agrees with Actions run/job metadata; preserve worker name/region and any missing telemetry.",
     "For every block, require orchestrator allowed affinity to contain CPU0 and CPU1 and equal the preflight allowed set.",
     "Require child taskset C0={0}, C1={1}; U must equal inherited allowed set and include 0 and 1.",
@@ -91,6 +92,7 @@
     "R234 does not execute whest, estimator_v29, mini-50, mini-100, holdout, or submission.",
     "R234 does not alter or repeat R218.",
     "R234 does not claim or start R220; R220 remains dependency-gated on R218 COMPLETE.",
-    "Artifact alone cannot independently prove the GitHub Actions single-job provenance; R220 must obtain run/job evidence from GitHub Actions and feed/record it."
+    "Artifact alone cannot independently prove the GitHub Actions single-job provenance; R220 must obtain run/job evidence from GitHub Actions and feed/record it.",
+    "The workflow does not upload methods/r218/estimator_v29.py inside the R218 artifact, so independent source-hash verification is an external R220 provenance check."
   ]
 }
