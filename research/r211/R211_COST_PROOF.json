@@ -1,0 +1,57 @@
+{
+  "schema": "arc.whitebox.r211.exact_small_and_cost_proof.v1",
+  "experiment": "R211",
+  "idempotency_key": "ARC-R211-EXACT-DAG-CSE-REASSOC-20260922",
+  "mechanism_class": "exact contraction-DAG common-subexpression elimination and reassociation with frozen leaf matmul kernels",
+  "exact_small": {
+    "batching_identity": "W[A P] = [WA WP]",
+    "hub_identity": "[X1 X2][Y1 Y2]^T = X1Y1^T + X2Y2^T",
+    "integer_fixture": {
+      "W": [[1,2],[3,4]],
+      "A": [[2,-1],[0,3]],
+      "P": [[1,4],[-2,1]],
+      "WA": [[2,5],[6,9]],
+      "WP": [[-3,6],[-5,16]],
+      "W_concat_AP": [[2,5,-3,6],[6,9,-5,16]],
+      "X1": [[1,0],[2,1]],
+      "X2": [[0,1],[1,-1]],
+      "Y1": [[2,1],[-1,3]],
+      "Y2": [[1,-2],[2,0]],
+      "hub_parent": [[0,-1],[8,3]],
+      "hub_reassociated": [[0,-1],[8,3]]
+    },
+    "exact_equal": true
+  },
+  "production_lower_bound": {
+    "source": "504aldo/whest-p2-cumulant-k3@18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45 docs/audit_v29_ns_d0.log, source-resolution ledger inherited through E187/R206",
+    "unit_definition": "u = 2*1024^3 FLOPs",
+    "dense_k3_units": 222.44,
+    "young_transport_units": 60.71,
+    "hub_units": 54.90,
+    "irreducible_floor_units": 115.61,
+    "candidate_floor_ratio": 0.5197356590541269,
+    "mechanism_gate_ratio": 0.42,
+    "excess_units_over_gate": 22.1852,
+    "passes": false,
+    "conservatism": [
+      "all other dense K3 namespaces charged as zero",
+      "all old-source/join work charged as zero",
+      "all explicit batching/reduction/copy overhead inside young_transport/hub allowed to become zero",
+      "all thin/covariance/closure/integration/runtime work charged as zero"
+    ],
+    "scope_caveat": "This lower bound is specific to the R211 class, which freezes leaf matrix multiplication algorithms. It is not a universal matrix multiplication lower bound."
+  },
+  "float32_gate": {
+    "relative_frobenius_candidate_over_parent_max": 1.05,
+    "max_absolute_candidate_over_parent_max": 1.05,
+    "status": "NOT_AUTHORIZED_NOT_EVALUATED",
+    "reason": "The pre-execution production cost lower bound is already above 0.42."
+  },
+  "decision": "TERMINAL_NO_GO_COST_LOWER_BOUND",
+  "synthetic_run_executed": false,
+  "compiler_built": false,
+  "ta_rank_sweep_repeated": false,
+  "holdout_used": false,
+  "paid_resources_used": false,
+  "submission_attempted": false
+}
