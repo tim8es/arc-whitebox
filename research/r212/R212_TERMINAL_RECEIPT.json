@@ -1,0 +1,83 @@
+{
+  "schema": "arc.whitebox.r212.terminal_receipt.v1",
+  "job_id": "R212",
+  "status": "TERMINAL_NO_GO",
+  "decision": "TERMINAL_NO_GO_COST_LOWER_BOUND",
+  "branch": "research/r212-alternative-basis-strassen-20260922",
+  "selected_family": {
+    "name": "Karstadt-Schwartz Alternative-Basis Strassen",
+    "definition": "stationary 2x2 rank-7 recursion, frozen uniform recursion depth, classical leaves",
+    "why_new_in_project": "No prior project branch/commit matched alternative-basis/ABMM/Winograd-variant; the family changes the basis/linear phase of a rank-7 Strassen leaf rather than changing tensor rank or the contraction DAG.",
+    "not_duplicates": [
+      "E011 Hopcroft-Kerr rectangular bilinear kernel",
+      "R202 fixed TA32/LITA kernel",
+      "R206 TA/LITA rank sweep",
+      "R211 exact contraction-DAG CSE/reassociation"
+    ]
+  },
+  "primary_sources": [
+    {
+      "doi": "10.1145/3364504",
+      "claim_used": "Alternative basis reduces the leading arithmetic coefficient for 2x2 rank-7 Strassen."
+    },
+    {
+      "doi": "10.1137/22M1502719",
+      "claim_used": "Exact phi/nu basis maps; 7 multiplications and 12 bilinear additions; exact ring identity."
+    },
+    {
+      "doi": "10.1007/s00211-026-01531-9",
+      "claim_used": "Alternative-basis matrix multiplication has a normwise-stability theory; R212 nevertheless keeps an empirical float32 gate."
+    }
+  ],
+  "immutable_arc_source": {
+    "repo": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "estimator_v29_blob": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "audit_v29_ns_d0_blob": "a689ef69fd64bed7765cb93ce4910c3fedcbd04a"
+  },
+  "provenance": {
+    "parent_r211_receipt_commit": "9a24c88baf2dad6ade40f500922958c5f59a626f",
+    "protocol_commit": "e50f829fcf6aa15224d35916be45203f7176c5a1",
+    "cost_proof_commit": "4f99cac9201cfe616f840a4c920ea03cb2419d59",
+    "protocol_path": "research/r212/R212_PROTOCOL.md",
+    "cost_proof_path": "research/r212/R212_COST_PROOF.json"
+  },
+  "exact_small_gate": {
+    "status": "FROZEN_PASS",
+    "A": [[1,2],[3,4]],
+    "B": [[5,-1],[2,3]],
+    "direct_AB": [[9,5],[23,9]],
+    "alternative_basis_output": [[9,5],[23,9]],
+    "integer_exact_equal": true
+  },
+  "production_cost_gate": {
+    "screen_shape": [1024,1024,1024],
+    "classical_flops": 2147483648,
+    "gate_ratio_max": 0.42,
+    "lower_bound_scope": "Mandatory rank-7 classical leaves plus mandatory 12 bilinear additions per recursive 2x2 node. All basis transforms, copies, materialization, padding, setup, integration and runtime are set to zero.",
+    "depths_checked": "all integer uniform recursion depths L=0..10",
+    "best_depth": 7,
+    "best_lower_bound_flops": 1049940736,
+    "best_lower_bound_ratio": 0.4889167547225952,
+    "absolute_ratio_gap": 0.0689167547225952,
+    "relative_excess_over_gate": 0.16408751124427428,
+    "passes": false,
+    "blocker": "Even the optimistic lower bound is 0.4889167547 of classical, above the frozen 0.42 mechanism gate. Basis-transform and integration costs can only increase it."
+  },
+  "float32_gate": {
+    "relative_frobenius_candidate_over_parent_max": 1.05,
+    "max_absolute_candidate_over_parent_max": 1.05,
+    "status": "NOT_EVALUATED",
+    "reason": "Synthetic execution is authorized only after cost feasibility. The lower-bound cost gate failed."
+  },
+  "execution": {
+    "synthetic_check_executed": false,
+    "github_actions_run_created": false,
+    "paid_run_used": false,
+    "holdout_used": false,
+    "submission_attempted": false,
+    "old_experiment_repeated": false
+  },
+  "reusable_conclusion": "Stationary 2x2 rank-7 Karstadt-Schwartz Alternative-Basis Strassen cannot meet the R206/H185 0.42 production mechanism gate at n=1024 even when basis-transform, materialization, setup and integration costs are optimistically set to zero.",
+  "scope_caveat": "This terminal result does not cover different base sizes/ranks or higher-dimensional decomposed-recursive alternative-basis algorithms; those are different algorithmic families."
+}
