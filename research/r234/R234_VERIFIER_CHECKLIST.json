@@ -25,6 +25,13 @@
     "prelaunch_gate": {
       "path": "research/r218/R218_PRELAUNCH_GATE.json",
       "git_blob_sha1": "fe0745d3d0265b7afb8d952530998c6b0f942aa3"
+    },
+    "r218_arm": {
+      "path": "research/R218_RUN_ARM.json",
+      "branch": "research/r218-affinity-crossover-20260922",
+      "git_blob_sha1": "542f8f80cee29c83b4f9648a1c56f49ae9b9262a",
+      "executor_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "attempts_allowed": 1
     }
   },
   "frozen_contract": {
@@ -60,7 +67,7 @@
   "independent_postflight_checks": [
     "Verify artifact sha256.json against every listed file before interpreting measurements.",
     "Verify frozen R217 protocol SHA256 and exact six-block sequence U,C0,C1,C1,C0,U.",
-    "Independently inspect the GitHub Actions run/job after R218 COMPLETE: same run attempt, one crossover job containing all six blocks, frozen source commit 85f5ba..., no rerun/rescue.",
+    "Independently inspect the GitHub Actions run/job after R218 COMPLETE: same run attempt, one crossover job containing all six blocks, no rerun/rescue; verify the arm record pins executor_commit 85f5ba..., without assuming the workflow run head SHA itself equals that executor commit.",
     "Verify runner_env/preflight identity agrees with Actions run/job metadata; preserve worker name/region and any missing telemetry.",
     "For every block, require orchestrator allowed affinity to contain CPU0 and CPU1 and equal the preflight allowed set.",
     "Require child taskset C0={0}, C1={1}; U must equal inherited allowed set and include 0 and 1.",
