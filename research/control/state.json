@@ -579,32 +579,48 @@
       "revision": 46
     },
     {
-      "revision": 47,
       "action": "start",
+      "at": "2026-09-22T18:15:18.669Z",
       "job": "R213",
       "owner": "preflight-audit",
       "payload": {
-        "run_id": "R213-r210-preflight-20260922",
         "code_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
-        "command": "read-only audit of R210 frozen protocol/arm, R207 failure evidence and execution contract"
+        "command": "read-only audit of R210 frozen protocol/arm, R207 failure evidence and execution contract",
+        "run_id": "R213-r210-preflight-20260922"
       },
-      "at": "2026-09-22T18:15:18.669Z"
+      "revision": 47
     },
     {
-      "revision": 48,
       "action": "finish",
+      "at": "2026-09-22T18:15:19.669Z",
       "job": "R213",
       "owner": "preflight-audit",
       "payload": {
-        "run_id": "R213-r210-preflight-20260922",
-        "status": "COMPLETE",
+        "reason": "Read-only preflight verified the frozen R210 protocol/arm lineage, single_cpu_affinity-only mitigation, unchanged pinned V29 semantics, residual cap 0.4s, max_threads=1, flopscope 0.12.1 and public-50 contract against immutable R207 failure evidence. One non-scientific provenance caveat remains: control start recorded the protocol commit while Actions ran the direct-child arm commit; the future R210 receipt must bind both SHAs and the Actions head. No R210 scientific output was inspected by R213.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/e7441dcc27b03a29ef5a3bd695bf755faef370fb/research/R213_R210_PREFLIGHT_AUDIT_RECEIPT.json",
-          "sha256": "21d4faa09fc4b61e308b991f3c22e6743de471b80a61e09be73cd7a227e066b9"
+          "sha256": "21d4faa09fc4b61e308b991f3c22e6743de471b80a61e09be73cd7a227e066b9",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/e7441dcc27b03a29ef5a3bd695bf755faef370fb/research/R213_R210_PREFLIGHT_AUDIT_RECEIPT.json"
         },
-        "reason": "Read-only preflight verified the frozen R210 protocol/arm lineage, single_cpu_affinity-only mitigation, unchanged pinned V29 semantics, residual cap 0.4s, max_threads=1, flopscope 0.12.1 and public-50 contract against immutable R207 failure evidence. One non-scientific provenance caveat remains: control start recorded the protocol commit while Actions ran the direct-child arm commit; the future R210 receipt must bind both SHAs and the Actions head. No R210 scientific output was inspected by R213."
+        "run_id": "R213-r210-preflight-20260922",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-22T18:15:19.669Z"
+      "revision": 48
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T20:24:05.075950+00:00",
+      "job": "R210",
+      "owner": "baseline",
+      "payload": {
+        "reason": "Actions run 35762066733 completed successfully on all 50 public rows, but the single_cpu_affinity mitigation was ineffective: 33/50 residual_wall_time_exhausted failures, official adjusted score 0.614635961915704, mean raw MSE 0.6146359676171455, max residual 0.6012795139856735s. Independent score recomputation from all 50 receipt rows matches to 1e-16. Dataset SHA from report is 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1. Provenance binding: protocol 672ed3f7947caff741d7f720e434f8193f5daaa1; arm and Actions head aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd; run 35762066733. R213 found arm is direct child adding only run-arm JSON. Artifact manifest verifies R210_RECEIPT.json SHA256 7651e4d8caccaa720f9cbfa928b2b84649dc0aeafde8057f411a5b40094698b2 and report SHA256 dc1e37f7fbc57853e05dfb91ecfe7919906391f79f44aaedeacd471fea8f9645. No paid resources, private holdout or submission.",
+        "receipt": {
+          "sha256": "09719be2466bf43d513f52a025a60482ec9402a3455783710d3fe22e699e30f2",
+          "url": "https://github.com/tim8es/arc-whitebox/actions/runs/35762066733/artifacts/10712680276"
+        },
+        "run_id": "R210-v29-l4-single-cpu-public50-attempt1",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 49
     }
   ],
   "jobs": [
@@ -934,8 +950,17 @@
         {
           "code_commit": "672ed3f7947caff741d7f720e434f8193f5daaa1",
           "command": "CPU=$(python -c \"import os; print(min(os.sched_getaffinity(0)))\"); taskset -c \"$CPU\" whest run --estimator methods/r210/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "completion": {
+            "reason": "Actions run 35762066733 completed successfully on all 50 public rows, but the single_cpu_affinity mitigation was ineffective: 33/50 residual_wall_time_exhausted failures, official adjusted score 0.614635961915704, mean raw MSE 0.6146359676171455, max residual 0.6012795139856735s. Independent score recomputation from all 50 receipt rows matches to 1e-16. Dataset SHA from report is 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1. Provenance binding: protocol 672ed3f7947caff741d7f720e434f8193f5daaa1; arm and Actions head aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd; run 35762066733. R213 found arm is direct child adding only run-arm JSON. Artifact manifest verifies R210_RECEIPT.json SHA256 7651e4d8caccaa720f9cbfa928b2b84649dc0aeafde8057f411a5b40094698b2 and report SHA256 dc1e37f7fbc57853e05dfb91ecfe7919906391f79f44aaedeacd471fea8f9645. No paid resources, private holdout or submission.",
+            "receipt": {
+              "sha256": "09719be2466bf43d513f52a025a60482ec9402a3455783710d3fe22e699e30f2",
+              "url": "https://github.com/tim8es/arc-whitebox/actions/runs/35762066733/artifacts/10712680276"
+            },
+            "run_id": "R210-v29-l4-single-cpu-public50-attempt1",
+            "status": "SCIENTIFIC_REJECT"
+          },
           "run_id": "R210-v29-l4-single-cpu-public50-attempt1",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Analyze the ten R207 residual_wall_time_exhausted rows and design one minimal non-overfit runtime mitigation that preserves the pinned V29 estimator semantics. Freeze the change before a bounded public-50 confirmation, measure all 50 per-MLP scores/residuals/failures, and report official adjusted score. No holdout, paid resources, submission or blind rerun; retain the R207 failure evidence.",
@@ -946,7 +971,12 @@
       "id": "R210",
       "owner": "baseline",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Actions run 35762066733 completed successfully on all 50 public rows, but the single_cpu_affinity mitigation was ineffective: 33/50 residual_wall_time_exhausted failures, official adjusted score 0.614635961915704, mean raw MSE 0.6146359676171455, max residual 0.6012795139856735s. Independent score recomputation from all 50 receipt rows matches to 1e-16. Dataset SHA from report is 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1. Provenance binding: protocol 672ed3f7947caff741d7f720e434f8193f5daaa1; arm and Actions head aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd; run 35762066733. R213 found arm is direct child adding only run-arm JSON. Artifact manifest verifies R210_RECEIPT.json SHA256 7651e4d8caccaa720f9cbfa928b2b84649dc0aeafde8057f411a5b40094698b2 and report SHA256 dc1e37f7fbc57853e05dfb91ecfe7919906391f79f44aaedeacd471fea8f9645. No paid resources, private holdout or submission.",
+      "receipt": {
+        "sha256": "09719be2466bf43d513f52a025a60482ec9402a3455783710d3fe22e699e30f2",
+        "url": "https://github.com/tim8es/arc-whitebox/actions/runs/35762066733/artifacts/10712680276"
+      },
+      "status": "SCIENTIFIC_REJECT",
       "title": "Reduce V29 public-50 residual jitter after L4 mitigation"
     },
     {
@@ -998,19 +1028,19 @@
       "assigned_owner": "preflight-audit",
       "attempts": [
         {
-          "run_id": "R213-r210-preflight-20260922",
           "code_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
           "command": "read-only audit of R210 frozen protocol/arm, R207 failure evidence and execution contract",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R213-r210-preflight-20260922",
-            "status": "COMPLETE",
+            "reason": "Read-only preflight verified the frozen R210 protocol/arm lineage, single_cpu_affinity-only mitigation, unchanged pinned V29 semantics, residual cap 0.4s, max_threads=1, flopscope 0.12.1 and public-50 contract against immutable R207 failure evidence. One non-scientific provenance caveat remains: control start recorded the protocol commit while Actions ran the direct-child arm commit; the future R210 receipt must bind both SHAs and the Actions head. No R210 scientific output was inspected by R213.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/e7441dcc27b03a29ef5a3bd695bf755faef370fb/research/R213_R210_PREFLIGHT_AUDIT_RECEIPT.json",
-              "sha256": "21d4faa09fc4b61e308b991f3c22e6743de471b80a61e09be73cd7a227e066b9"
+              "sha256": "21d4faa09fc4b61e308b991f3c22e6743de471b80a61e09be73cd7a227e066b9",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/e7441dcc27b03a29ef5a3bd695bf755faef370fb/research/R213_R210_PREFLIGHT_AUDIT_RECEIPT.json"
             },
-            "reason": "Read-only preflight verified the frozen R210 protocol/arm lineage, single_cpu_affinity-only mitigation, unchanged pinned V29 semantics, residual cap 0.4s, max_threads=1, flopscope 0.12.1 and public-50 contract against immutable R207 failure evidence. One non-scientific provenance caveat remains: control start recorded the protocol commit while Actions ran the direct-child arm commit; the future R210 receipt must bind both SHAs and the Actions head. No R210 scientific output was inspected by R213."
-          }
+            "run_id": "R213-r210-preflight-20260922",
+            "status": "COMPLETE"
+          },
+          "run_id": "R213-r210-preflight-20260922",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read-only audit of the frozen R210 protocol, single_cpu_affinity mitigation, R207 failure evidence and official execution constraints while R210 runs. Verify that estimator semantics, residual cap, thread count, order, FLOP meter and public panel remain unchanged; define exact acceptance/rejection checks for the eventual R210 receipt. No scientific rerun, holdout, paid resources or submission.",
@@ -1019,17 +1049,17 @@
       "id": "R213",
       "owner": "preflight-audit",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Preflight audit of R210 runtime-jitter mitigation",
+      "reason": "Read-only preflight verified the frozen R210 protocol/arm lineage, single_cpu_affinity-only mitigation, unchanged pinned V29 semantics, residual cap 0.4s, max_threads=1, flopscope 0.12.1 and public-50 contract against immutable R207 failure evidence. One non-scientific provenance caveat remains: control start recorded the protocol commit while Actions ran the direct-child arm commit; the future R210 receipt must bind both SHAs and the Actions head. No R210 scientific output was inspected by R213.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/e7441dcc27b03a29ef5a3bd695bf755faef370fb/research/R213_R210_PREFLIGHT_AUDIT_RECEIPT.json",
-        "sha256": "21d4faa09fc4b61e308b991f3c22e6743de471b80a61e09be73cd7a227e066b9"
+        "sha256": "21d4faa09fc4b61e308b991f3c22e6743de471b80a61e09be73cd7a227e066b9",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/e7441dcc27b03a29ef5a3bd695bf755faef370fb/research/R213_R210_PREFLIGHT_AUDIT_RECEIPT.json"
       },
-      "reason": "Read-only preflight verified the frozen R210 protocol/arm lineage, single_cpu_affinity-only mitigation, unchanged pinned V29 semantics, residual cap 0.4s, max_threads=1, flopscope 0.12.1 and public-50 contract against immutable R207 failure evidence. One non-scientific provenance caveat remains: control start recorded the protocol commit while Actions ran the direct-child arm commit; the future R210 receipt must bind both SHAs and the Actions head. No R210 scientific output was inspected by R213."
+      "status": "COMPLETE",
+      "title": "Preflight audit of R210 runtime-jitter mitigation"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 48,
+  "revision": 49,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
