@@ -809,6 +809,22 @@
         "run_id": "R215-marginal-cf-falsifier-35781645472"
       },
       "revision": 64
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T20:43:46.743109+00:00",
+      "job": "R215",
+      "owner": "method-research",
+      "payload": {
+        "reason": "One new estimator-level family was screened: factorized marginal characteristic-function closure FMCF-32. Production arithmetic was cost-feasible (conservative estimator-only upper 0.006105423B < 0.135B), so exactly one target-free exact-small synthetic falsifier ran. Two joint laws with identical complete univariate marginal characteristic functions produced different next preactivation CFs and ReLU means (1 vs 0), giving a same-state worst-case absolute error lower bound 1/2. Therefore marginal-only CF transport is not closed under dependent dense mixing; terminal scientific NO-GO. No holdout, paid resource, submission, sweep or rerun.",
+        "receipt": {
+          "sha256": "025997c8d1f07664eb36a55ac01f2bf526cf829b37dddadf4837f986f17c8e2c",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/fb73acf53af31c8ce8553211d202134a20b7c1c5/research/r215/R215_TERMINAL_RECEIPT.json"
+        },
+        "run_id": "R215-marginal-cf-falsifier-35781645472",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 65
     }
   ],
   "jobs": [
@@ -1305,8 +1321,17 @@
         {
           "code_commit": "7377d87d12cfcd7c6db27ba9911a2a1b969ceb0c",
           "command": "existing Actions run 35781645472: frozen cost-feasible exact-small FMCF-32 nonclosure falsifier",
+          "completion": {
+            "reason": "One new estimator-level family was screened: factorized marginal characteristic-function closure FMCF-32. Production arithmetic was cost-feasible (conservative estimator-only upper 0.006105423B < 0.135B), so exactly one target-free exact-small synthetic falsifier ran. Two joint laws with identical complete univariate marginal characteristic functions produced different next preactivation CFs and ReLU means (1 vs 0), giving a same-state worst-case absolute error lower bound 1/2. Therefore marginal-only CF transport is not closed under dependent dense mixing; terminal scientific NO-GO. No holdout, paid resource, submission, sweep or rerun.",
+            "receipt": {
+              "sha256": "025997c8d1f07664eb36a55ac01f2bf526cf829b37dddadf4837f986f17c8e2c",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/fb73acf53af31c8ce8553211d202134a20b7c1c5/research/r215/R215_TERMINAL_RECEIPT.json"
+            },
+            "run_id": "R215-marginal-cf-falsifier-35781645472",
+            "status": "SCIENTIFIC_REJECT"
+          },
           "run_id": "R215-marginal-cf-falsifier-35781645472",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Search the immutable experiment history and primary literature for exactly one untested estimator-level method, avoiding repeated fast-matmul/Strassen/TA/DAG families and previously falsified ideas. State what information it uses, freeze an exact-small falsifier and conservative production cost bound, and run a minimal synthetic check only if cost-feasible. Otherwise record a terminal cost/identity NO-GO with artifact and commit. No holdout, paid resource, submission or duplicate experiment.",
@@ -1315,7 +1340,12 @@
       "id": "R215",
       "owner": "method-research",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "One new estimator-level family was screened: factorized marginal characteristic-function closure FMCF-32. Production arithmetic was cost-feasible (conservative estimator-only upper 0.006105423B < 0.135B), so exactly one target-free exact-small synthetic falsifier ran. Two joint laws with identical complete univariate marginal characteristic functions produced different next preactivation CFs and ReLU means (1 vs 0), giving a same-state worst-case absolute error lower bound 1/2. Therefore marginal-only CF transport is not closed under dependent dense mixing; terminal scientific NO-GO. No holdout, paid resource, submission, sweep or rerun.",
+      "receipt": {
+        "sha256": "025997c8d1f07664eb36a55ac01f2bf526cf829b37dddadf4837f986f17c8e2c",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/fb73acf53af31c8ce8553211d202134a20b7c1c5/research/r215/R215_TERMINAL_RECEIPT.json"
+      },
+      "status": "SCIENTIFIC_REJECT",
       "title": "Screen one new estimator-level research family after R212"
     },
     {
@@ -1365,7 +1395,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 64,
+  "revision": 65,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
