@@ -1,0 +1,44 @@
+{
+  "schema": "arc.whitebox.r227.source_audit.v1",
+  "job_id": "R227",
+  "hypothesis": "V25-SRM2 second memoryless K4 regeneration mode",
+  "governance": {
+    "agents_and_process_reviewed": true,
+    "immutable_history_reviewed": true,
+    "r224_parent_reviewed": true
+  },
+  "parent": {
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "v25_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "r224_record_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "failures": 0,
+    "mean_raw_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117226e-9,
+    "mean_flops": 806303721965,
+    "mean_c_over_b": 0.36666448157347986
+  },
+  "pinned_sources": {
+    "lean/g_regen_probe.py": "2a443055a58e577700585d5664902d0541ec2d2c",
+    "docs/findings_log.md": "09cf41e8826052ceb83109115cae688c03baaaca",
+    "docs/claims_evidence.md": "087aaa2404a046afd06bd954a1cc0bf09ffdf05c"
+  },
+  "excluded": [
+    "R223 feed-local lambda",
+    "R219 factor-copula",
+    "QPASS/rank/lambda/f64 ladders",
+    "E009 future-aware basis",
+    "E022 oversampled basis",
+    "E137 CountSketch",
+    "E142/E145 response-aligned D21",
+    "R212 Strassen"
+  ],
+  "findings": {
+    "upstream_only_untried_track2": "F68 second regeneration mode",
+    "oracle_gain_text": "2.230e-8 -> 2.205e-8 with 9 live modes",
+    "coefficient_source": "torch.linalg.lstsq against dense augmented-chain G_off",
+    "xregen_source": "fit each dump to dense G_off, replay mean coefficients of other dumps",
+    "published_transferable_multimode_table": false,
+    "published_target_free_online_second_mode_rule": false,
+    "published_factorized_second_mode_feed": false
+  }
+}

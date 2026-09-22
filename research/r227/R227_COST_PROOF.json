@@ -1,0 +1,17 @@
+{
+  "schema": "arc.whitebox.r227.cost_falsifier.v1",
+  "job_id": "R227",
+  "budget": 2199023255552,
+  "parent_flops": 806303721965,
+  "parent_c_over_b": 0.36666448157347986,
+  "width": 1024,
+  "feed_layers": 14,
+  "dense_second_mode_feed_lower_bound_per_layer": 2147483648,
+  "extra_lower_bound_flops": 30064771072,
+  "extra_c_over_b": 0.013671875,
+  "optimistic_oracle_raw_multiplier": 0.989,
+  "optimistic_candidate_c_over_b": 0.38033635657347986,
+  "optimistic_adjusted_ratio_vs_parent": 1.025876995330922,
+  "dense_literal_score_improves": false,
+  "caveat": "This lower bound applies to a literal dense extra live mode. A candidate needs an explicit cheaper algebraic factorization before mini-100 authorization."
+}
