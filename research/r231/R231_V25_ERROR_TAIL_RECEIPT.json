@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "job": "R231",
+  "hypothesis_id": "R209-V25-ERROR-TAIL-TARGET-FRONTIER",
+  "owner": "v25-error-tail-audit",
+  "run_id": "R231-v25-error-tail-audit-20260923",
+  "status": "COMPLETE",
+  "conclusion": "GLOBAL_ACCURACY_PRIMARY; COMPUTE_ONLY_FLOOR_INSUFFICIENT; ERROR_TAIL_WEAKLY_CONCENTRATED",
+  "queue": {
+    "assigned_revision": 121,
+    "observed_prestart_revision": 122,
+    "start_revision": 123,
+    "protocol_commit": "5d41ec95d7efebeb5377f2e592076c2363a999e6",
+    "start_commit": "cd2dba92474ad7a7eb9d82db64f781d0d62faf93"
+  },
+  "input": {
+    "path": "research/results/R209-v25-mini100.json",
+    "normalized_id": "R209-v25-mini100",
+    "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "git_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "source_integration_commit": "20fafab5471e6ed227562c651179dd2ef331ea22",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "rows": 100,
+    "unique_names": 100,
+    "unique_network_ids": 100,
+    "unique_target_sha256": 100,
+    "target_sha256_present_all": true,
+    "shape": [
+      16,
+      1024
+    ],
+    "budget_flops": 2199023255552,
+    "unique_measured_flops": [
+      806303721965
+    ],
+    "all_status_ok": true,
+    "failures": 0,
+    "raw_prediction_tensors_archived": false,
+    "score_formula_max_abs_recompute_error": 0
+  },
+  "distribution": {
+    "mean_raw_mse": 2.228303490170447e-8,
+    "median_raw_mse": 2.2776289299031305e-8,
+    "quantile_method": "linear interpolation, equivalent to NumPy default",
+    "quantiles": {
+      "q0": 1.4371615009167726e-8,
+      "q10": 1.7661151829884147e-8,
+      "q25": 1.981994879329818e-8,
+      "q50": 2.2776289299031305e-8,
+      "q75": 2.420327938068567e-8,
+      "q90": 2.61090972841771e-8,
+      "q95": 2.7616096343052732e-8,
+      "q99": 2.956936937081878e-8,
+      "q100": 3.028865336318631e-8
+    },
+    "top_share_total_raw_mse": {
+      "top1": 0.013592696639751474,
+      "top5": 0.06471417664447708,
+      "top10": 0.12472450907335074,
+      "top20": 0.23847414826413793
+    },
+    "gini_raw_mse": 0.07978133112646968
+  },
+  "leave_one_out": {
+    "full_mean_raw_mse": 2.228303490170447e-8,
+    "min_mean_raw_mse": 2.2202170068760206e-8,
+    "max_mean_raw_mse": 2.2362948233952313e-8,
+    "max_abs_delta": 8.086483294426365e-11,
+    "max_abs_delta_fraction_of_full_mean": 0.0036289865047995844,
+    "most_influential_network_id": "1876000384391229791",
+    "note": "Influence is descriptive only; row labels are not causal features."
+  },
+  "official_score_math": {
+    "formula": "suite mean of final_layer_mse_m * max(0.1, C_m/B) for valid runs",
+    "phase2_effective_compute": "C_m = F_m",
+    "budget_flops": 2199023255552,
+    "observed_compute_factor": 0.36666448157347986,
+    "observed_mean_adjusted_score": 8.170397440117225e-9,
+    "fixed_raw_score_floor_at_factor_0_1": 2.228303490170447e-9,
+    "numerical_orientation_score": 2.1e-9,
+    "required_mean_raw_mse_at_floor_0_1": 2.1e-8,
+    "absolute_raw_mean_reduction_needed": 1.2830349017044704e-9,
+    "relative_raw_mean_reduction_needed": 0.05757900157515477,
+    "fixed_raw_floor_excess_over_orientation_fraction": 0.061096900081165195,
+    "interpretation": "Cross-panel numerical target only. Not a comparable-panel result and not a rank."
+  },
+  "tail_only_target_diagnostics": {
+    "aggregate_reduction_needed_fraction": 0.05757900157515477,
+    "required_fractional_reduction_of_current_subset_mass": {
+      "top1": 4.236024911110467,
+      "top5": 0.8897432457725435,
+      "top10": 0.46164945448927314,
+      "top20": 0.24144756148318144
+    },
+    "caveat": "These arithmetic diagnostics do not imply the same rows remain high-error after an estimator change and do not provide a target-free subset identifier."
+  },
+  "recommendation": {
+    "primary": "GLOBAL_ACCURACY",
+    "not_primary": [
+      "COMPUTE_FACTOR_ONLY",
+      "SMALL_ERROR_TAIL_SUBSET"
+    ],
+    "basis": [
+      "Compute-only floor at fixed raw MSE is 2.228303490170447e-9, above 2.1e-9 numerical orientation.",
+      "At least 5.757900157515477% aggregate raw-MSE reduction is needed even at factor 0.1.",
+      "Top-10 and top-20 account for only 12.472450907335074% and 23.847414826413793% of raw-MSE mass.",
+      "Maximum single-row leave-one-out mean shift is 0.36289865047995844%."
+    ]
+  },
+  "artifacts": {
+    "script": {
+      "path": "research/r231/r231_v25_error_tail.py",
+      "commit": "7c2300be689e07a8d9780ca5472ec0e3259662a5",
+      "sha256": "11b857b41b7722bd5aeb9dcfd0ca48457ded9fd33f91002f9cfe4a23636ba6b0"
+    },
+    "table": {
+      "path": "research/r231/R231_V25_ERROR_TAIL_TABLE.csv",
+      "commit": "77564a763c83afbf6a5365e3cc6f4fe5f239d320",
+      "sha256": "d2659587b31100ba96de54cc2011d06bffaac5f0f57c7850c293865c1247f157"
+    },
+    "report": {
+      "path": "research/r231/R231_V25_ERROR_TAIL_REPORT.md",
+      "commit": "6ed0ad0c7c20ad7e46fa1a273fd6e1569f992c76",
+      "sha256": "f1f1d34b9e589e9ddea6793f8b75323ff7f1abdd5c179cf5bbce83a9f8bd6c48"
+    }
+  },
+  "sources": {
+    "exact_input": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/results/R209-v25-mini100.json",
+    "official_score_reference": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/reference/score-report-fields.md",
+    "official_phase2_overview": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/README.md",
+    "r228_snapshot_context": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT.md"
+  },
+  "limits": [
+    "All networks have fixed [16,1024] shape and identical budget; no size-effect estimate is possible.",
+    "No causal architecture features are present beyond identifiers and fixed metadata.",
+    "Raw prediction tensors are absent; no within-network residual/error-direction decomposition is possible.",
+    "R209 mini-100 and official grader panels are not exact-comparable for rank."
+  ],
+  "forbidden_and_not_performed": [
+    "estimator run",
+    "paid compute",
+    "private or holdout data access",
+    "competition submission",
+    "canonical estimator edit",
+    "canonical result edit",
+    "leaderboard rank inference"
+  ]
+}
