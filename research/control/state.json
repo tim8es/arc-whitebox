@@ -1104,16 +1104,28 @@
       "revision": 85
     },
     {
-      "revision": 86,
       "action": "start",
+      "at": "2026-09-22T21:14:02.402Z",
       "job": "R222",
       "owner": "postflight-audit",
       "payload": {
-        "run_id": "R222-r209-v25-v29-normalization-20260922",
         "code_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
-        "command": "read-only normalize existing Actions run 35544406064 V25/V29 artifacts; verify immutable hashes, 100-row IDs/order, target fingerprints, failure penalties, FLOPs and official score arithmetic; no rerun"
+        "command": "read-only normalize existing Actions run 35544406064 V25/V29 artifacts; verify immutable hashes, 100-row IDs/order, target fingerprints, failure penalties, FLOPs and official score arithmetic; no rerun",
+        "run_id": "R222-r209-v25-v29-normalization-20260922"
       },
-      "at": "2026-09-22T21:14:02.402Z"
+      "revision": 86
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T21:16:21.212840+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "code_commit": "67a5edd35304eea0dd4a37a783e72fe86ff3e082",
+        "command": "inspect immutable V25 mini-100 evidence and history; freeze exactly one novel algorithm-level score-improvement change and same-panel development test; at most one bounded run on verified free/existing compute",
+        "run_id": "R223-v25-isolated-improvement-20260922"
+      },
+      "revision": 87
     }
   ],
   "jobs": [
@@ -1787,9 +1799,9 @@
       "assigned_owner": "postflight-audit",
       "attempts": [
         {
-          "run_id": "R222-r209-v25-v29-normalization-20260922",
           "code_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
           "command": "read-only normalize existing Actions run 35544406064 V25/V29 artifacts; verify immutable hashes, 100-row IDs/order, target fingerprints, failure penalties, FLOPs and official score arithmetic; no rerun",
+          "run_id": "R222-r209-v25-v29-normalization-20260922",
           "status": "RUNNING"
         }
       ],
@@ -1804,19 +1816,26 @@
     },
     {
       "assigned_owner": "method-research",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "67a5edd35304eea0dd4a37a783e72fe86ff3e082",
+          "command": "inspect immutable V25 mini-100 evidence and history; freeze exactly one novel algorithm-level score-improvement change and same-panel development test; at most one bounded run on verified free/existing compute",
+          "run_id": "R223-v25-isolated-improvement-20260922",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Inspect immutable history and V25's existing per-network public mini-100 evidence, then select exactly one untried, non-duplicative algorithm-level change aimed at reducing official adjusted score (not merely FLOPs below the 0.1B floor). Freeze the parent, code/config, falsifier, gates and exact panel before execution. Run at most one bounded development test on the same public mini-100 panel using only verified free/existing compute; do not alter canonical code. Compare every network, failures, MSE/FLOPs/runtime and score to V25; retain artifacts/hashes and commit. If novelty, cost or evidence is insufficient, finish with an explicit NO-GO and why. No holdout, paid resources, submission or leaderboard claims.",
       "depends_on": [],
       "hypothesis_id": "V25-LOW-RISK-SCORE-IMPROVEMENT",
       "id": "R223",
       "owner": "method-research",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 86,
+  "revision": 87,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
