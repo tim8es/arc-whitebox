@@ -531,6 +531,21 @@
         "status": "SCIENTIFIC_REJECT"
       },
       "revision": 42
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T18:11:28.760530+00:00",
+      "job": "R212",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "method-research",
+        "deliverable": "Search the immutable research history and primary sources for exactly one algorithmic family not already falsified by R202/R206/R211 or prior ARC experiments. Freeze its required information, conservative production FLOP lower bound, exact-small identity and falsifier. Run a minimal synthetic check only if the lower bound can plausibly meet the official cost/stability gates; otherwise record terminal NO-GO. No duplicate historical experiment, holdout, paid resources or submission.",
+        "depends_on": [],
+        "hypothesis_id": "FRONTIER-GAP-CANDIDATE",
+        "priority": 2,
+        "title": "Find one untested cost-feasible method from the research frontier"
+      },
+      "revision": 43
     }
   ],
   "jobs": [
@@ -907,10 +922,22 @@
       },
       "status": "SCIENTIFIC_REJECT",
       "title": "Falsify exact contraction-DAG common-subexpression elimination"
+    },
+    {
+      "assigned_owner": "method-research",
+      "attempts": [],
+      "deliverable": "Search the immutable research history and primary sources for exactly one algorithmic family not already falsified by R202/R206/R211 or prior ARC experiments. Freeze its required information, conservative production FLOP lower bound, exact-small identity and falsifier. Run a minimal synthetic check only if the lower bound can plausibly meet the official cost/stability gates; otherwise record terminal NO-GO. No duplicate historical experiment, holdout, paid resources or submission.",
+      "depends_on": [],
+      "hypothesis_id": "FRONTIER-GAP-CANDIDATE",
+      "id": "R212",
+      "owner": null,
+      "priority": 2,
+      "status": "QUEUED",
+      "title": "Find one untested cost-feasible method from the research frontier"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 42,
+  "revision": 43,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
