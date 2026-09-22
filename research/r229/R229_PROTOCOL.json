@@ -1,0 +1,53 @@
+{
+  "job_id": "R229",
+  "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
+  "owner": "paired-score-decomposition",
+  "source_commit": "2c18ac98e2ab948eac8f4054f6c7d1ee05ef4280",
+  "dependency": {
+    "R226": "COMPLETE"
+  },
+  "inputs": {
+    "v25": {
+      "path": "research/results/R209-v25-mini100.json",
+      "sha256_from_R226": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+      "git_blob_sha": "0183d0570f7c9965e00e8553ffc003c313865232"
+    },
+    "v29": {
+      "path": "research/results/R209-v29-mini100.json",
+      "sha256_from_R226": "1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751",
+      "git_blob_sha": "1c5d779ef7d6b0d85963c1db7bc4e91887a7086c"
+    }
+  },
+  "row_alignment_checks": {
+    "row_count_v25": 100,
+    "row_count_v29": 100,
+    "exact_order_name": true,
+    "exact_order_network_id": true,
+    "exact_order_target_sha256": true,
+    "exact_order_budget_flops": true,
+    "mismatches": 0,
+    "panel_metadata_exact_match": true
+  },
+  "raw_prediction_tensors_archived": false,
+  "scoring_contract": {
+    "source": "research/RESEARCH_PROCESS.md and R228 official-source audit",
+    "per_network_success": "final_mse * max(0.1, measured_flops / budget_flops)",
+    "failed_networks": "retain official adjusted failure penalty recorded by evaluator; do not recompute from success formula",
+    "aggregate": "arithmetic mean of per-network official adjusted scores on the identical panel"
+  },
+  "analysis_plan": [
+    "Re-verify each stored official_adjusted_score against the success formula on status=ok rows and verify failed rows are preserved as stored official penalties.",
+    "Compute mean score gap V29 - V25 over all 100 aligned rows.",
+    "Partition that exact additive gap by V29 failed rows versus jointly successful rows; because V25 has 100/100 success, these form a complete 57/43 partition.",
+    "For jointly successful rows, report paired score and MSE differences, quantiles, sample SD and descriptive paired SE across networks; do not treat the SE as a held-out significance test.",
+    "For failure rows, report penalty contribution and runtime threshold behavior; never infer counterfactual V29 MSE without the failed rows.",
+    "Inspect only associations supported by normalized fields: wall_time_s, residual_wall_time_s, measured_flops, fixed panel shape/budget. If per-network architecture size is invariant or absent, state that size association is not estimable.",
+    "Write a minimal standard-library Python reproduction script, a row-level CSV table, an append-only JSON receipt, and one evidence-backed next-step recommendation. No estimator execution, canonical estimator edits, submission, or leaderboard rank."
+  ],
+  "hard_limits": [
+    "No raw prediction tensors exist in the normalized evidence.",
+    "No counterfactual successful V29 prediction/MSE may be imputed for timeout rows.",
+    "No leaderboard-rank inference.",
+    "No estimator run or canonical estimator mutation."
+  ]
+}
