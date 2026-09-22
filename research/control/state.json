@@ -554,6 +554,21 @@
       "owner": "method-research",
       "payload": {},
       "revision": 44
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T18:14:53.814508+00:00",
+      "job": "R213",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "preflight-audit",
+        "deliverable": "Read-only audit of the frozen R210 protocol, single_cpu_affinity mitigation, R207 failure evidence and official execution constraints while R210 runs. Verify that estimator semantics, residual cap, thread count, order, FLOP meter and public panel remain unchanged; define exact acceptance/rejection checks for the eventual R210 receipt. No scientific rerun, holdout, paid resources or submission.",
+        "depends_on": [],
+        "hypothesis_id": "R210-PREFLIGHT-AUDIT",
+        "priority": 1,
+        "title": "Preflight audit of R210 runtime-jitter mitigation"
+      },
+      "revision": 45
     }
   ],
   "jobs": [
@@ -942,10 +957,22 @@
       "priority": 2,
       "status": "CLAIMED",
       "title": "Find one untested cost-feasible method from the research frontier"
+    },
+    {
+      "assigned_owner": "preflight-audit",
+      "attempts": [],
+      "deliverable": "Read-only audit of the frozen R210 protocol, single_cpu_affinity mitigation, R207 failure evidence and official execution constraints while R210 runs. Verify that estimator semantics, residual cap, thread count, order, FLOP meter and public panel remain unchanged; define exact acceptance/rejection checks for the eventual R210 receipt. No scientific rerun, holdout, paid resources or submission.",
+      "depends_on": [],
+      "hypothesis_id": "R210-PREFLIGHT-AUDIT",
+      "id": "R213",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Preflight audit of R210 runtime-jitter mitigation"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 44,
+  "revision": 45,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
