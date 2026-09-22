@@ -343,6 +343,22 @@
         "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission."
       },
       "at": "2026-09-22T16:43:54.815Z"
+    },
+    {
+      "revision": 29,
+      "action": "finish",
+      "job": "R207",
+      "owner": "baseline",
+      "payload": {
+        "run_id": "R207-v29-l4-public50-attempt1",
+        "status": "COMPLETE",
+        "reason": "Public-50 confirmation completed under the frozen R205 V26_STRASSEN=4 mitigation. Result: 40/50 successful, 10/50 residual_wall_time_exhausted failures, official adjusted score 0.19809924364613474. Therefore the five-grid zero-failure result does not robustly generalize to this 50-MLP run; no rerun or rescue was performed.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/4ca70833a24396106a8b1c7c6e51bd3cd282d8c7/research/R207_RECEIPT.json",
+          "sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26"
+        }
+      },
+      "at": "2026-09-22T17:23:30+00:00"
     }
   ],
   "jobs": [
@@ -549,7 +565,16 @@
           "code_commit": "0df5922165d8fb116841dd72e0c4928e02612572",
           "command": "V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
           "run_id": "R207-v29-l4-public50-attempt1",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R207-v29-l4-public50-attempt1",
+            "status": "COMPLETE",
+            "reason": "Public-50 confirmation completed under the frozen R205 V26_STRASSEN=4 mitigation. Result: 40/50 successful, 10/50 residual_wall_time_exhausted failures, official adjusted score 0.19809924364613474. Therefore the five-grid zero-failure result does not robustly generalize to this 50-MLP run; no rerun or rescue was performed.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/4ca70833a24396106a8b1c7c6e51bd3cd282d8c7/research/R207_RECEIPT.json",
+              "sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26"
+            }
+          }
         }
       ],
       "deliverable": "Run the R205 V26_STRASSEN=4 mitigation on the full accessible Phase-2 public split (50 public MLPs) under the official contract, with per-MLP MSE/FLOPs/residual/failure receipt and adjusted score. Use no private holdout, no paid resources, no submission; compare against the current public leader metric only after panel and metric alignment.",
@@ -560,8 +585,13 @@
       "id": "R207",
       "owner": "baseline",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Confirm V29 L4 mitigation on the full accessible public split"
+      "status": "COMPLETE",
+      "title": "Confirm V29 L4 mitigation on the full accessible public split",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/4ca70833a24396106a8b1c7c6e51bd3cd282d8c7/research/R207_RECEIPT.json",
+        "sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26"
+      },
+      "reason": "Public-50 confirmation completed under the frozen R205 V26_STRASSEN=4 mitigation. Result: 40/50 successful, 10/50 residual_wall_time_exhausted failures, official adjusted score 0.19809924364613474. Therefore the five-grid zero-failure result does not robustly generalize to this 50-MLP run; no rerun or rescue was performed."
     },
     {
       "assigned_owner": "independent-audit",
@@ -591,7 +621,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 28,
+  "revision": 29,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
