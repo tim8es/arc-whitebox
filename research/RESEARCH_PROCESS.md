@@ -96,10 +96,14 @@ python scripts/arc_control.py repair R201 --owner baseline --payload repair.json
 
 start.json is `{"run_id":"unique-run-id","code_commit":"full SHA","command":"actual executable command"}`.
 Use a local UUID if no external run ID exists yet and include the external ID in the
-receipt afterwards. finish.json is `{"status":"COMPLETE","reason":"measured conclusion",
+receipt afterwards. finish.json is `{"run_id":"same unique-run-id","status":"COMPLETE","reason":"measured conclusion",
 "receipt":{"url":"durable artifact URL","sha256":"64 hex characters"}}`.
 For failure use INFRA_ERROR, INCONCLUSIVE or SCIENTIFIC_REJECT. repair.json records
 `{"reason":"root cause and repair; scientific changes if any"}`.
+
+Every completion, including a desk review, must identify a recorded start and full
+40-character code/source commit. Late identical completions are no-ops; a different
+completion for an old attempt is rejected. Repair does not overwrite earlier evidence.
 
 The command fetches current control state, validates dependencies/ownership, creates
 a commit with that exact parent and pushes without force. If two checkouts race, one

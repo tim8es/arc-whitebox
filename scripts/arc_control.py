@@ -59,23 +59,29 @@ def score_record(record):
     for row in rows:
         require(isinstance(row.get("target_sha256"), str) and
                 re.fullmatch(r"[0-9a-f]{64}", row["target_sha256"]), "Missing target fingerprint")
-        mse = finite(row["final_mse"], "MSE")
-        flops = finite(row["measured_flops"], "measured FLOPs")
         budget = finite(row["budget_flops"], "budget")
         require(budget > 0, "Budget must be positive")
         require(row["status"] in {"ok", "failed"}, "Unknown evaluation status")
         if row["status"] == "ok":
+            mse = finite(row["final_mse"], "MSE")
+            flops = finite(row["measured_flops"], "measured FLOPs")
             require(flops <= budget, "Successful row exceeds official FLOP budget")
             score = mse * max(0.1, flops / budget)
         else:
+            for field in ("final_mse", "measured_flops"):
+                if row.get(field) is not None:
+                    finite(row[field], field)
             score = finite(row.get("official_adjusted_score"), "official failure score")
         if "official_adjusted_score" in row:
             require(math.isclose(score, row["official_adjusted_score"], rel_tol=1e-9,
                                  abs_tol=1e-18), "Score disagrees with official report")
         scores.append(score)
+    def complete_mean(field):
+        values = [r.get(field) for r in rows]
+        return statistics.mean(values) if all(v is not None for v in values) else None
     return {"adjusted_score": statistics.mean(scores),
-            "raw_mse": statistics.mean(r["final_mse"] for r in rows),
-            "mean_measured_flops": statistics.mean(r["measured_flops"] for r in rows),
+            "raw_mse": complete_mean("final_mse"),
+            "mean_measured_flops": complete_mean("measured_flops"),
             "failures": sum(r["status"] == "failed" for r in rows), "scores": scores}
 
 
@@ -118,6 +124,10 @@ def validate_state(state):
                 "Invalid dependency")
         if job["status"] in {"CLAIMED", "RUNNING"}:
             require(bool(job.get("owner")), "Owned state without owner")
+        if job["status"] == "COMPLETE":
+            require(job.get("receipt") and job.get("attempts") and
+                    job["attempts"][-1]["status"] == "COMPLETE" and
+                    job["attempts"][-1].get("code_commit"), "Completion lacks recorded attempt")
         for attempt in job.get("attempts", []):
             require(isinstance(attempt["run_id"], str), "Run IDs must be strings")
             run_ids.append(attempt["run_id"])
@@ -169,12 +179,19 @@ def update(state, action, job_id, owner, payload=None):
                         "Repeated start changed run metadata")
                 return state
             require(job["status"] == "CLAIMED", "Claim before starting")
-            require(payload.get("code_commit") and payload.get("command"),
+            require(isinstance(payload.get("code_commit"), str) and
+                    re.fullmatch(r"[0-9a-f]{40}", payload["code_commit"]) and payload.get("command"),
                     "Record code commit and executable command before launch")
             job.setdefault("attempts", []).append({**payload, "status": "RUNNING"})
             job["status"] = "RUNNING"
         elif action == "finish":
-            require(job["status"] in {"CLAIMED", "RUNNING"}, "Job is not active")
+            matches = [a for a in job.get("attempts", []) if a["run_id"] == payload.get("run_id")]
+            require(len(matches) == 1, "Finish requires its recorded run_id")
+            attempt = matches[0]
+            if attempt.get("completion") == payload:
+                return state  # late identical completion never affects a later attempt
+            require(job["status"] == "RUNNING" and attempt is job["attempts"][-1]
+                    and attempt["status"] == "RUNNING", "Only current running attempt can finish")
             require(payload.get("status") in {"COMPLETE", "INFRA_ERROR", "INCONCLUSIVE",
                                                "SCIENTIFIC_REJECT", "WAITING_INPUT"},
                     "Invalid finish status")
@@ -183,8 +200,8 @@ def update(state, action, job_id, owner, payload=None):
                     "Durable receipt URL and SHA256 required")
             require(payload.get("reason"), "Reason required")
             job.update(status=payload["status"], receipt=receipt, reason=payload["reason"])
-            if job.get("attempts"):
-                job["attempts"][-1]["status"] = payload["status"]
+            attempt["status"] = payload["status"]
+            attempt["completion"] = copy.deepcopy(payload)
         elif action == "repair":
             require(job["status"] == "INFRA_ERROR", "Only infrastructure repair uses repair")
             require(payload.get("reason"), "Repair explanation required")
@@ -239,6 +256,10 @@ def esc(value):
     return str(value).replace("|", "\\|").replace("\n", " ")
 
 
+def number(value):
+    return "UNKNOWN" if value is None else f"{value:.8g}"
+
+
 def report(state, data, history):
     validate_state(state)
     lines = ["# ARC — исследования и результаты", "",
@@ -254,8 +275,8 @@ def report(state, data, history):
     for record in data:
         result = score_record(record)
         groups.setdefault(panel_key(record), []).append(record)
-        lines.append(f"| {esc(record['id'])} | {len(record['per_network'])} | {result['raw_mse']:.8g} | "
-                     f"{result['adjusted_score']:.8g} | {result['mean_measured_flops']:.0f} | "
+        lines.append(f"| {esc(record['id'])} | {len(record['per_network'])} | {number(result['raw_mse'])} | "
+                     f"{result['adjusted_score']:.8g} | {number(result['mean_measured_flops'])} | "
                      f"{result['failures']} | [{esc(record['evidence_level'])}]({record['receipt_url']}) |")
     lines += ["", "### Сравнения внутри одинаковых панелей", ""]
     for n, group in enumerate(groups.values(), 1):
@@ -266,9 +287,12 @@ def report(state, data, history):
             if item.get("parent_id") in by_id:
                 cmp = compare(item, by_id[item["parent_id"]])
                 ratio = cmp["score_ratio"]
-                lines.append(f"- {item['id']} / {item['parent_id']}: {ratio:.8f}; "
-                             f"улучшение {(1-ratio)*100:.4f}%; "
+                gain = "не определено (нулевой parent)" if ratio is None else f"{(1-ratio)*100:.4f}%"
+                lines.append(f"- {item['id']} / {item['parent_id']}: {number(ratio)}; "
+                             f"улучшение {gain}; "
                              f"{cmp['improved_networks']}/{cmp['networks']} сетей.")
+            ratio_best = compare(item, best)["score_ratio"]
+            lines.append(f"- {item['id']} / лучший загруженный {best['id']}: {number(ratio_best)}.")
         lines.append("")
     lines += ["## Очередь работ", "", "| ID | Приоритет | Работа | Статус | Исполнитель | Зависит от |",
               "|---|---:|---|---|---|---|"]

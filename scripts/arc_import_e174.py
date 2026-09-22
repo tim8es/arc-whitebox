@@ -7,12 +7,24 @@ COMMIT = "c2dde864c51d1fe54f176dd9dbd2e84bc78c10a7"
 PATH = "research/E174_E173_INDEPENDENT_VERIFIER_RECEIPT.json"
 
 
+def write_outputs(outputs):
+    # Inspect both destinations before any write; preserve independent annotations.
+    for target, content in outputs.items():
+        if target.exists() and target.read_text(encoding="utf-8") != content:
+            raise SystemExit(f"Existing evidence differs: {target}. Preserve and review it; import aborted.")
+    for target, content in outputs.items():
+        if not target.exists():
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(content, encoding="utf-8")
+
+
 def main():
     receipt = json.loads(git("show", f"{COMMIT}:{PATH}"))
     networks = receipt["seed_separation"]["mlps"]
     metrics = receipt["independent_numeric_recomputation"]["per_mlp"]
     by_name = {n["name"]: n for n in networks}
     url = f"https://github.com/tim8es/arc-whitebox/blob/{COMMIT}/{PATH}"
+    outputs = {}
     for arm in ("parent", "ago"):
         record = {
             "id": f"E173-{arm}", "hypothesis_id": "AGO", "experiment_id": "E173",
@@ -39,8 +51,8 @@ def main():
             record["analytic_flops_upper"] = receipt["cost"]["deployed_analytic_all_in"]
         score_record(record)
         target = ROOT / "research/results" / f"{record['id']}.json"
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(encoded(record), encoding="utf-8")
+        outputs[target] = encoded(record)
+    write_outputs(outputs)
     print("Imported E173-parent and E173-ago from pinned E174; no scientific run.")
 
 

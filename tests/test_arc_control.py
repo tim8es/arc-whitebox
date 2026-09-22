@@ -6,9 +6,11 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import arc_control as c
+from arc_import_e174 import write_outputs
 
 
 def result(name="a"):
@@ -26,6 +28,15 @@ def state():
 
 
 class ControlTests(unittest.TestCase):
+    def test_import_never_overwrites_existing_evidence(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            first, second = Path(tmp)/"first.json", Path(tmp)/"second.json"
+            second.write_text("user annotation", encoding="utf-8")
+            with self.assertRaises(SystemExit): write_outputs({first: "new", second: "replacement"})
+            self.assertFalse(first.exists())
+            self.assertEqual(second.read_text(), "user annotation")
+            write_outputs({second: "user annotation"})
+
     def test_score_is_mean_of_products_with_floor(self):
         self.assertAlmostEqual(c.score_record(result())["adjusted_score"], .8)
         self.assertNotAlmostEqual(.8, 2*.275)
@@ -66,13 +77,47 @@ class ControlTests(unittest.TestCase):
 
     def test_infra_repair_retains_attempts(self):
         s = c.update(state(), "claim", "a", "alice")
-        s = c.update(s, "start", "a", "alice", {"run_id": "1", "code_commit": "abc", "command": "smoke"})
-        s = c.update(s, "finish", "a", "alice", {"status": "INFRA_ERROR", "reason": "import",
-            "receipt": {"url": "https://example.org/receipt", "sha256": "f"*64}})
+        start = {"run_id": "1", "code_commit": "a"*40, "command": "smoke"}
+        s = c.update(s, "start", "a", "alice", start)
+        finish = {"run_id": "1", "status": "INFRA_ERROR", "reason": "import",
+            "receipt": {"url": "https://example.org/receipt", "sha256": "f"*64}}
+        s = c.update(s, "finish", "a", "alice", finish)
         s = c.update(s, "repair", "a", "alice", {"reason": "fixed import"})
-        s = c.update(s, "start", "a", "alice", {"run_id": "2", "code_commit": "def", "command": "smoke"})
+        with self.assertRaises(ValueError):
+            c.update(s, "finish", "a", "alice", {**finish, "status": "COMPLETE"})
+        s = c.update(s, "start", "a", "alice", {**start, "run_id": "2", "code_commit": "b"*40})
+        self.assertEqual(s, c.update(s, "finish", "a", "alice", finish))
+        with self.assertRaises(ValueError):
+            c.update(s, "finish", "a", "alice", {**finish, "reason": "different late report"})
         self.assertEqual(len(s["jobs"][0]["attempts"]), 2)
         self.assertEqual(s["jobs"][0]["attempts"][0]["status"], "INFRA_ERROR")
+        self.assertEqual(s["jobs"][0]["attempts"][1]["status"], "RUNNING")
+
+    def test_completion_requires_start_and_releases_dependency(self):
+        s = c.update(state(), "claim", "a", "alice")
+        finish = {"run_id": "1", "status": "COMPLETE", "reason": "review complete",
+                  "receipt": {"url": "https://example.org/receipt", "sha256": "f"*64}}
+        with self.assertRaises(ValueError): c.update(s, "finish", "a", "alice", finish)
+        s = c.update(s, "start", "a", "alice", {"run_id": "1", "code_commit": "a"*40, "command": "review"})
+        s = c.update(s, "finish", "a", "alice", finish)
+        self.assertEqual(c.update(s, "claim", "b", "bob")["jobs"][1]["status"], "CLAIMED")
+
+    def test_failed_unknown_measurements_and_zero_comparator_report(self):
+        r = result(); r["per_network"][0].update(status="failed", final_mse=None,
+                    measured_flops=None, official_adjusted_score=8)
+        self.assertIsNone(c.score_record(r)["raw_mse"])
+        self.assertIsNone(c.score_record(r)["mean_measured_flops"])
+        self.assertEqual(c.score_record(r)["adjusted_score"], 4.75)
+        parent, candidate, stronger = result("parent"), result("candidate"), result("stronger")
+        for row in parent["per_network"]: row["final_mse"] = 0
+        candidate["parent_id"] = "parent"
+        for record in (parent, candidate, stronger):
+            record.update(evidence_level="TEST", receipt_url="https://example.org/r")
+        s = state()
+        for job in s["jobs"]: job.update(priority=1, title="test")
+        text = c.report(s, [parent, candidate, stronger], {"experiments": []})
+        self.assertIn("нулевой parent", text)
+        self.assertIn("candidate / лучший загруженный parent", text)
 
     def test_cycles_rejected(self):
         s = state(); s["jobs"][0]["depends_on"] = ["b"]
@@ -104,7 +149,12 @@ class ControlTests(unittest.TestCase):
             git(work, "config", "user.email", "test@example.org")
             git(work, "config", "user.name", "Test")
             (work/"state.json").write_text(json.dumps(state()))
-            git(work, "add", "state.json"); git(work, "commit", "-m", "base")
+            queue = state()
+            for job in queue["jobs"]: job.update(priority=1, title="test")
+            (work/"research/control").mkdir(parents=True)
+            (work/c.STATE).write_text(json.dumps(queue))
+            (work/"research/history.json").write_text('{"experiments":[]}')
+            git(work, "add", "."); git(work, "commit", "-m", "base")
             base = git(work, "rev-parse", "HEAD").stdout.strip()
             git(work, "push", "origin", f"{base}:refs/heads/control")
             commits = []
@@ -117,6 +167,21 @@ class ControlTests(unittest.TestCase):
             rejected = git(work, "push", "origin", f"{commits[1]}:refs/heads/control", ok=False)
             self.assertNotEqual(rejected.returncode, 0)
             self.assertIn("rejected", rejected.stderr)
+            git(work, "push", "origin", f"{base}:refs/heads/{c.CONTROL_BRANCH}")
+            with patch.object(c, "ROOT", work), patch.dict(os.environ, env):
+                claimed = c.publish("claim", "a", "alice", {})
+                self.assertEqual(claimed["revision"], 1)
+                self.assertTrue(c.publish("claim", "a", "alice", {})["idempotent"])
+                with self.assertRaises(ValueError): c.publish("claim", "a", "bob", {})
+                c.publish("start", "a", "alice", {"run_id": "run-1", "code_commit": base, "command": "test"})
+                c.publish("finish", "a", "alice", {"run_id": "run-1", "status": "COMPLETE",
+                    "reason": "test", "receipt": {"url": "https://example.org/evidence", "sha256": "a"*64}})
+                self.assertEqual(c.publish("claim", "b", "bob", {})["revision"], 4)
+            self.assertEqual(git(work, "rev-parse", "HEAD").stdout.strip(), base)
+            git(work, "fetch", "origin", c.CONTROL_BRANCH)
+            live = json.loads(git(work, "show", f"FETCH_HEAD:{c.STATE}").stdout)
+            self.assertEqual(live["jobs"][0]["status"], "COMPLETE")
+            self.assertEqual(live["jobs"][1]["owner"], "bob")
 
 
 if __name__ == "__main__":
