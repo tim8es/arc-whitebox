@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "job": "R230",
+  "hypothesis_id": "PUBLIC-LEADER-METHODS-TRANSFER-AUDIT",
+  "owner": "leader-method-audit",
+  "run_id": "R230-public-leader-method-audit-20260923",
+  "status": "COMPLETE",
+  "conclusion": "NO_PUBLIC_METHOD_EVIDENCE_FOR_TARGET_SUBMISSIONS",
+  "access_window": {
+    "start": "2026-09-23T01:44:36+03:00",
+    "end": "2026-09-23T01:46:44+03:00",
+    "utc_start": "2026-09-22T22:44:36Z",
+    "utc_end": "2026-09-22T22:46:44Z"
+  },
+  "queue": {
+    "assigned_revision": 116,
+    "claim_revision": 116,
+    "start_revision": 117,
+    "protocol_commit": "f55de5498921bd57b68e88f7ed179e6c13c15ce7",
+    "start_commit": "f471601a79f43f3eada4f19144050615b486d3bd"
+  },
+  "audit": {
+    "path": "research/R230_PUBLIC_LEADER_METHOD_AUDIT.md",
+    "commit": "e87c71cab3449d99b09907b128d7ff698dcd1410",
+    "sha256": "19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2"
+  },
+  "targets": [
+    {
+      "submission_id": 331539,
+      "participant_or_team": "J2W",
+      "public_adjusted_score": 2.1e-9,
+      "public_final_layer_mse": 1.64e-8,
+      "compute_utilization": 0.1306572576,
+      "official_view_link_public": true,
+      "anonymous_detail_body": "client-side Loading shell",
+      "public_method_description_observed": false,
+      "public_source_link_observed": false,
+      "public_artifact_download_observed": false,
+      "method_status": "UNKNOWN_NOT_PUBLICLY_EVIDENCED"
+    },
+    {
+      "submission_id": 331308,
+      "participant_or_team": "marius_binner",
+      "public_adjusted_score": 2.4e-9,
+      "public_final_layer_mse": 1.68e-8,
+      "compute_utilization": 0.1459323523,
+      "official_view_link_public": true,
+      "anonymous_detail_body": "client-side Loading shell",
+      "public_method_description_observed": false,
+      "public_source_link_observed": false,
+      "public_artifact_download_observed": false,
+      "method_status": "UNKNOWN_NOT_PUBLICLY_EVIDENCED"
+    }
+  ],
+  "permission_findings": {
+    "public_view_links_allowed": true,
+    "hidden_fields_probed": false,
+    "rbac_bypass_attempted": false,
+    "official_staff_rbac_evidence": "AIcrowd staff states submission detail error fields are visible only to submitting team; global-message leakage was acknowledged for repair",
+    "competitor_code_downloaded": false,
+    "competitor_code_executed": false
+  },
+  "excluded_inference": [
+    {
+      "source": "AIcrowd forum 504aldo V25/V29 write-up",
+      "reason": "leader explanation explicitly labeled best guess / not validated; not admissible as method evidence for target IDs"
+    },
+    {
+      "source": "leaderboard score/utilization telemetry",
+      "reason": "telemetry is not algorithm identification"
+    }
+  ],
+  "internal_comparison": {
+    "r209_v25": {
+      "panel": "v2-phase2 mini:all-100",
+      "adjusted_score": 8.170397440117225e-9,
+      "final_layer_mse": 2.228303490170447e-8,
+      "failures": 0,
+      "known_family": "public V25 factorized K3 + memoryless K4 lineage"
+    },
+    "r209_v29": {
+      "panel": "v2-phase2 mini:all-100",
+      "adjusted_score": 0.5270942878803214,
+      "failures": 57,
+      "known_family": "same arithmetic lineage with V29 cost engineering; archived local run dominated by residual failures"
+    },
+    "history_overlap_checked": [
+      "E007 V25 reproduction",
+      "E010/E014 V29/Strassen cost paths",
+      "E017/E052/E094 old-source/source-axis compression",
+      "E019/E154 higher-order/K4 variants",
+      "E137 CountSketch old-tier hypothesis",
+      "E151 leader-forensics angular-radial/Strassen hypothesis"
+    ]
+  },
+  "novelty": {
+    "target_methods_identified": 0,
+    "leader_derived_hypotheses_admitted": 0,
+    "reason": "No submission-specific public method/source disclosure was observed for either target; novelty cannot be computed from telemetry or third-party speculation."
+  },
+  "successor_evidence_gates": [
+    "Official AIcrowd method/system-description/source link explicitly tied to submission 331539 or 331308 becomes public.",
+    "Submitting participant publishes an official AIcrowd forum post explicitly tying a described mechanism to the exact submission ID."
+  ],
+  "successor_cost_gate": "Before any implementation, compare exact mechanism to history and derive all-in Phase-2 FLOP bound; require plausible adjusted-score improvement on an identical development panel, and do not count compute savings below the 0.1 multiplier floor without accuracy improvement.",
+  "primary_official_sources": [
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331539",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331308",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/J2W",
+    "https://discourse.aicrowd.com/t/errors-are-leaking-information/18217",
+    "https://discourse.aicrowd.com/t/everything-we-tried-a-factorized-k-3-cumulant-propagation-estimator-at-0-25-x-b-where-its-flops-go-and-25-measured-dead-ends-team-504aldo-rank-10/18218"
+  ],
+  "internal_sources": [
+    "research/history.json",
+    "research/E137_PRIMARY_SOURCE_NOTE.md@01f4987c62d1a015236522ddc46e498383706f52",
+    "research/E151_LEADER_FORENSICS.md@25eec9d50561d7080b086b0579025fe2cd6646f5",
+    "research/E154_TERMINAL_RECEIPT.json@c599aa6deb7fc7630951be88bac9e0ce1afbe949",
+    "research/results/R209-v25-mini100.json",
+    "research/results/R209-v29-mini100.json"
+  ],
+  "forbidden_and_not_performed": [
+    "estimator run",
+    "paid compute",
+    "competition submission",
+    "private or holdout data access",
+    "competitor code download",
+    "competitor code execution",
+    "access-control bypass",
+    "canonical result edit"
+  ]
+}
