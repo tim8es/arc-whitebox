@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-R215-CONTROL-FINALIZE-20260922",
+  "existing_scientific_run_id": 35781645472,
+  "new_scientific_run": false
+}
