@@ -1274,6 +1274,22 @@
         "status": "COMPLETE"
       },
       "revision": 98
+    },
+    {
+      "revision": 99,
+      "action": "finish",
+      "job": "R224",
+      "owner": "postflight-audit",
+      "payload": {
+        "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
+        "status": "COMPLETE",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/8fb0afb77ae834d88bae29557a41356d4d98401f/research/r224/R224_RECEIPT.json",
+          "sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330"
+        },
+        "reason": "Published @v2-phase2 mini-100 evidence closed the R222 schema gap without any estimator run: metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1, exact 100-name/order SHA256 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce, 100 unique exact int64 mlp_seed-derived network IDs, 100 raw float32 all_layer_means target SHA256 fingerprints, dtype float32[16,1024], and E174 first-five controls all verified. Normalized R209 V25/V29 mini-100 records were created and exact installed bytes pass arc_control.py check; compare preserves V29's 57 residual failures and full score 0.5270942878803215 versus V25 0 failures and 8.170397440117226e-9. Raw prediction tensors remain absent. No holdout, full split, paid/larger runner, submission or leaderboard mutation."
+      },
+      "at": "2026-09-22T21:49:01.000Z"
     }
   ],
   "jobs": [
@@ -2037,7 +2053,16 @@
           "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
           "code_commit": "7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b",
           "command": "read-only recover published @v2-phase2 mini-100 network_id/target_sha256/dtype; verify dataset SHA/name-order; normalize R209 V25/V29 only if schema-complete; no estimator run",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R224-r209-mini100-fingerprint-recovery-20260922",
+            "status": "COMPLETE",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/8fb0afb77ae834d88bae29557a41356d4d98401f/research/r224/R224_RECEIPT.json",
+              "sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330"
+            },
+            "reason": "Published @v2-phase2 mini-100 evidence closed the R222 schema gap without any estimator run: metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1, exact 100-name/order SHA256 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce, 100 unique exact int64 mlp_seed-derived network IDs, 100 raw float32 all_layer_means target SHA256 fingerprints, dtype float32[16,1024], and E174 first-five controls all verified. Normalized R209 V25/V29 mini-100 records were created and exact installed bytes pass arc_control.py check; compare preserves V29's 57 residual failures and full score 0.5270942878803215 versus V25 0 failures and 8.170397440117226e-9. Raw prediction tensors remain absent. No holdout, full split, paid/larger runner, submission or leaderboard mutation."
+          }
         }
       ],
       "deliverable": "Continue from R222's precise schema gap. Using only the published immutable `@v2-phase2` mini-100 dataset, recover and verify per-network `network_id`, canonical target_sha256 and explicit dtype for the exact R209 V25/V29 100-row name/order. Reconcile the panel with dataset SHA 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1; document canonical hashing method and any ambiguity. Do not run an estimator. If all required fields are proved, create schema-valid normalized V25/V29 records from the existing R209 reports/artifacts and run `arc_control.py check/compare`; otherwise publish precise NOT_COMPARABLE receipt. Preserve V29 failures and absence of raw prediction tensors. Work on a review branch; no paid compute, holdout or submission.",
@@ -2048,8 +2073,13 @@
       "id": "R224",
       "owner": "postflight-audit",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Recover exact mini-100 target fingerprints for R209 normalization"
+      "status": "COMPLETE",
+      "title": "Recover exact mini-100 target fingerprints for R209 normalization",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/8fb0afb77ae834d88bae29557a41356d4d98401f/research/r224/R224_RECEIPT.json",
+        "sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330"
+      },
+      "reason": "Published @v2-phase2 mini-100 evidence closed the R222 schema gap without any estimator run: metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1, exact 100-name/order SHA256 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce, 100 unique exact int64 mlp_seed-derived network IDs, 100 raw float32 all_layer_means target SHA256 fingerprints, dtype float32[16,1024], and E174 first-five controls all verified. Normalized R209 V25/V29 mini-100 records were created and exact installed bytes pass arc_control.py check; compare preserves V29's 57 residual failures and full score 0.5270942878803215 versus V25 0 failures and 8.170397440117226e-9. Raw prediction tensors remain absent. No holdout, full split, paid/larger runner, submission or leaderboard mutation."
     },
     {
       "assigned_owner": "leaderboard-audit",
@@ -2086,7 +2116,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 98,
+  "revision": 99,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
