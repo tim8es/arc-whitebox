@@ -1,0 +1,143 @@
+name: R227 source feasibility
+
+on:
+  push:
+    branches:
+      - research/r227-v25-second-regen-feasibility-20260923
+    paths:
+      - research/r227/R227_EXECUTE_TRIGGER.txt
+
+jobs:
+  feasibility:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      UPSTREAM_COMMIT: 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+      R227_FROZEN_COMMIT: 6715c89debd53554cbce5691150180fbb933e503
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Verify frozen local executor inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object scripts/r227_srm2_feasibility.py)" = "8d14e413eac16573efc9d79cf2ef8420d889b113"
+          test "$(git hash-object research/r227/R227_PROTOCOL.md)" = "d0e26ac48da09e08953d6744a9639927bfaa63af"
+          test "$(git hash-object research/r227/R227_SOURCE_AUDIT.json)" = "b6e74f93b4e84edb94933cc30cf63944b3266fc6"
+          test "$(git hash-object research/r227/R227_COST_PROOF.json)" = "b6933e2806cdedb13e03d8e178ee3a9f03ace818"
+
+      - name: Fetch and verify pinned upstream source inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p r227-inputs
+          base="https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/${UPSTREAM_COMMIT}"
+          curl -fsSL "$base/estimators/estimator_v25.py" -o r227-inputs/estimator_v25.py
+          curl -fsSL "$base/lean/g_regen_probe.py" -o r227-inputs/g_regen_probe.py
+          curl -fsSL "$base/docs/findings_log.md" -o r227-inputs/findings_log.md
+          curl -fsSL "$base/docs/claims_evidence.md" -o r227-inputs/claims_evidence.md
+
+          test "$(git hash-object r227-inputs/estimator_v25.py)" = "195373a110215256b759d7c172ba8c923c62e5cc"
+          test "$(git hash-object r227-inputs/g_regen_probe.py)" = "2a443055a58e577700585d5664902d0541ec2d2c"
+          test "$(git hash-object r227-inputs/findings_log.md)" = "09cf41e8826052ceb83109115cae688c03baaaca"
+          test "$(git hash-object r227-inputs/claims_evidence.md)" = "087aaa2404a046afd06bd954a1cc0bf09ffdf05c"
+
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          files = {
+              "v25": Path("r227-inputs/estimator_v25.py"),
+              "probe": Path("r227-inputs/g_regen_probe.py"),
+              "findings": Path("r227-inputs/findings_log.md"),
+              "claims": Path("r227-inputs/claims_evidence.md"),
+          }
+          identities = {
+              k: subprocess.check_output(["git", "hash-object", str(v)], text=True).strip()
+              for k, v in files.items()
+          }
+          Path("r227-input-identities.json").write_text(
+              json.dumps(
+                  {
+                      "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+                      "git_blobs": identities,
+                  },
+                  indent=2,
+                  sort_keys=True,
+              ) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Run exactly one frozen source-feasibility falsifier
+        id: falsifier
+        shell: bash
+        run: |
+          set +e
+          python scripts/r227_srm2_feasibility.py             --v25 r227-inputs/estimator_v25.py             --probe r227-inputs/g_regen_probe.py             --findings r227-inputs/findings_log.md             --claims r227-inputs/claims_evidence.md             --out r227-feasibility.json             2>&1 | tee r227-feasibility.stdout.log
+          code=${PIPESTATUS[0]}
+          printf '%s\n' "$code" > r227-feasibility.exit-code.txt
+          export R227_EXIT_CODE="$code"
+          python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+
+          def blob(path):
+              return subprocess.check_output(["git", "hash-object", path], text=True).strip()
+
+          result = None
+          p = Path("r227-feasibility.json")
+          if p.exists():
+              result = json.loads(p.read_text(encoding="utf-8"))
+
+          receipt = {
+              "schema": "arc.whitebox.r227.actions_execution_receipt.v1",
+              "job_id": "R227",
+              "attempt_id": "R227-v25-srm2-feasibility-repair-20260923",
+              "github_run_id": os.environ.get("GITHUB_RUN_ID"),
+              "github_run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+              "github_sha": os.environ.get("GITHUB_SHA"),
+              "runner_os": os.environ.get("RUNNER_OS"),
+              "runner_arch": os.environ.get("RUNNER_ARCH"),
+              "runner_name": os.environ.get("RUNNER_NAME"),
+              "exit_code": int(os.environ["R227_EXIT_CODE"]),
+              "script_blob": blob("scripts/r227_srm2_feasibility.py"),
+              "protocol_blob": blob("research/r227/R227_PROTOCOL.md"),
+              "input_identities": json.loads(
+                  Path("r227-input-identities.json").read_text(encoding="utf-8")
+              ),
+              "feasibility_result": result,
+              "scope": {
+                  "source_feasibility_only": True,
+                  "estimator_run": False,
+                  "mini100": False,
+                  "holdout": False,
+                  "submission": False,
+                  "paid_runner": False,
+              },
+          }
+          Path("r227-actions-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          PY
+          exit "$code"
+
+      - name: Upload immutable R227 feasibility evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r227-source-feasibility
+          path: |
+            r227-feasibility.stdout.log
+            r227-feasibility.exit-code.txt
+            r227-input-identities.json
+            r227-actions-receipt.json
+            r227-feasibility.json
+            research/r227/R227_PROTOCOL.md
+            scripts/r227_srm2_feasibility.py
+          if-no-files-found: warn
+          retention-days: 90
