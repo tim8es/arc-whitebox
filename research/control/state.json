@@ -1428,6 +1428,18 @@
       "owner": "paired-score-decomposition",
       "payload": {},
       "revision": 110
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T22:29:56.000Z",
+      "job": "R228",
+      "owner": "official-leaderboard-audit",
+      "payload": {
+        "run_id": "R228-official-leaderboard-audit-20260923",
+        "code_commit": "e47da3c92416e374435fba8313ed7606b5a72227",
+        "command": "read-only primary-official-source audit of ARC White-Box Phase-2 scoring, visible leaderboard/submissions, exact evaluation panel, and R209 mini-100 rankability; no estimator run, paid compute, submission, external mutation, or canonical-result changes"
+      },
+      "revision": 111
     }
   ],
   "jobs": [
@@ -2313,11 +2325,18 @@
       "title": "Audit official ARC leaderboard and rank comparability",
       "owner": "official-leaderboard-audit",
       "assigned_owner": "official-leaderboard-audit",
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "priority": 1,
       "hypothesis_id": "OFFICIAL-LEADERBOARD-RANKABILITY-AUDIT",
       "depends_on": [],
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R228-official-leaderboard-audit-20260923",
+          "code_commit": "e47da3c92416e374435fba8313ed7606b5a72227",
+          "command": "read-only primary-official-source audit of ARC White-Box Phase-2 scoring, visible leaderboard/submissions, exact evaluation panel, and R209 mini-100 rankability; no estimator run, paid compute, submission, external mutation, or canonical-result changes",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Using primary official sources only, verify the current ARC White-Box Phase-2 rules, metric, visible leaderboard/submissions and exact-panel comparability. Freeze a concise protocol before research; save an append-only source-cited audit and machine-readable receipt with retrieval time. State rank only if the official score/panel is exactly comparable; otherwise explain what is missing. No submission, paid compute, estimator run, or changes to canonical results."
     },
     {
@@ -2336,7 +2355,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 110,
+  "revision": 111,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
