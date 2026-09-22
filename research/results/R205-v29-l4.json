@@ -1,0 +1,96 @@
+{
+  "attempt_id": "35751396092",
+  "code_commit": "37d4deb34e80a5867fd2b85f14bd8ddd01fcaf62",
+  "evidence_level": "MEASURED_OFFICIAL_LOCAL_FREE_ACTIONS",
+  "experiment_id": "R205",
+  "hypothesis_id": "V29-RESIDUAL-TIMEOUT",
+  "id": "R205-v29-l4",
+  "panel": {
+    "count": 5,
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dtype": "float32",
+    "evaluator": "whestbench 0.16.1",
+    "meter": "flopscope 0.12.1",
+    "revision": "v2-phase2; target content identified per-network by SHA256",
+    "shape": [
+      16,
+      1024
+    ],
+    "split": "mini:first-5",
+    "stage": "development"
+  },
+  "parent_id": "R201-v29",
+  "per_network": [
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 2.2902616692022093e-8,
+      "measured_flops": 587262754287,
+      "name": "logan-fitzgerald",
+      "network_id": "6319981554997072999",
+      "official_adjusted_score": 6.116285366686641e-9,
+      "status": "ok",
+      "target_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82",
+      "residual_wall_time_s": 0.3772977440013108
+    },
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 2.0860513316733886e-8,
+      "measured_flops": 581994796527,
+      "name": "william-graves",
+      "network_id": "2392109381927064353",
+      "official_adjusted_score": 5.520955802795157e-9,
+      "status": "ok",
+      "target_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4",
+      "residual_wall_time_s": 0.3674648519966013
+    },
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 2.611176874722787e-8,
+      "measured_flops": 581994796527,
+      "name": "raymond-barnes",
+      "network_id": "4030325997523501402",
+      "official_adjusted_score": 6.910756173512237e-9,
+      "status": "ok",
+      "target_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34",
+      "residual_wall_time_s": 0.3718243630005418
+    },
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 2.4979392776458553e-8,
+      "measured_flops": 581994796527,
+      "name": "steven-rice",
+      "network_id": "6959524404880716684",
+      "official_adjusted_score": 6.611060878778066e-9,
+      "status": "ok",
+      "target_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b",
+      "residual_wall_time_s": 0.33122230700081445
+    },
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 2.2069391647505654e-8,
+      "measured_flops": 581994796527,
+      "name": "sarah-kelley",
+      "network_id": "3958198382245770826",
+      "official_adjusted_score": 5.840898257413176e-9,
+      "status": "ok",
+      "target_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9",
+      "residual_wall_time_s": 0.33540261300265684
+    }
+  ],
+  "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/1d705672e560ef3b2895056888430bd629b4f658/research/R205_RECEIPT.json",
+  "source": {
+    "actions_run_id": 35751396092,
+    "actions_job_id": 106826163806,
+    "artifact_id": 10704583952,
+    "artifact_zip_sha256": "92941ea4a05ad7c301a140ca4366073fddff4cf3c74edfee387a4e4537537043",
+    "report_sha256": "53e0d16f13fd097aef2d29c230463c0e97d336976f3f4142a8d02ff3f8069a5d",
+    "v29_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "mitigation": {
+      "V26_STRASSEN": "4"
+    },
+    "estimator_source_modified": false,
+    "paid_resources": false,
+    "holdout": false,
+    "submission": false
+  }
+}
