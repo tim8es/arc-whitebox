@@ -709,6 +709,14 @@
         "title": "Explain why single-CPU affinity worsened R210 and freeze the next runtime hypothesis"
       },
       "revision": 55
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T20:28:33.647530+00:00",
+      "job": "R214",
+      "owner": "postflight-audit",
+      "payload": {},
+      "revision": 56
     }
   ],
   "jobs": [
@@ -1173,9 +1181,9 @@
       "depends_on": [],
       "hypothesis_id": "R210-POSTRUN-INDEPENDENT-AUDIT",
       "id": "R214",
-      "owner": null,
+      "owner": "postflight-audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Independently audit R210 artifact, provenance and score"
     },
     {
@@ -1216,7 +1224,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 55,
+  "revision": 56,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
