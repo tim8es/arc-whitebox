@@ -1,0 +1,74 @@
+{
+  "analytic_flops_upper": 112131571712,
+  "attempt_id": "35621103274",
+  "code_commit": "5ce89871699e20e2df374236471dcd6b6df69300",
+  "evidence_level": "IMPORTED_VERIFIER_RECEIPT",
+  "experiment_id": "E173",
+  "hypothesis_id": "AGO",
+  "id": "E173-ago",
+  "panel": {
+    "count": 5,
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dtype": "float32",
+    "evaluator": "whestbench 0.16.1",
+    "meter": "flopscope 0.12.1",
+    "revision": "v2-phase2; target content identified per-network by SHA256",
+    "shape": [
+      16,
+      1024
+    ],
+    "split": "mini:first-5",
+    "stage": "development"
+  },
+  "parent_id": "E173-parent",
+  "per_network": [
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 3.3904161682585254e-06,
+      "measured_flops": 69159064030,
+      "name": "logan-fitzgerald",
+      "network_id": "6319981554997072999",
+      "status": "ok",
+      "target_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82"
+    },
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 3.889329036610434e-06,
+      "measured_flops": 69159064030,
+      "name": "william-graves",
+      "network_id": "2392109381927064353",
+      "status": "ok",
+      "target_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4"
+    },
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 4.408399945532437e-06,
+      "measured_flops": 69159064030,
+      "name": "raymond-barnes",
+      "network_id": "4030325997523501402",
+      "status": "ok",
+      "target_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34"
+    },
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 2.915387540269876e-06,
+      "measured_flops": 69159064030,
+      "name": "steven-rice",
+      "network_id": "6959524404880716684",
+      "status": "ok",
+      "target_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b"
+    },
+    {
+      "budget_flops": 2199023255552,
+      "final_mse": 2.9050520424789283e-06,
+      "measured_flops": 69159064030,
+      "name": "sarah-kelley",
+      "network_id": "3958198382245770826",
+      "status": "ok",
+      "target_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9"
+    }
+  ],
+  "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/c2dde864c51d1fe54f176dd9dbd2e84bc78c10a7/research/E174_E173_INDEPENDENT_VERIFIER_RECEIPT.json",
+  "source_receipt_commit": "c2dde864c51d1fe54f176dd9dbd2e84bc78c10a7",
+  "verification_note": "Receipt read from pinned Git object; arrays not rerun by importer."
+}
