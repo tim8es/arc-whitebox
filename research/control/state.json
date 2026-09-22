@@ -621,6 +621,18 @@
         "status": "SCIENTIFIC_REJECT"
       },
       "revision": 49
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T20:24:18.082191+00:00",
+      "job": "R212",
+      "owner": "method-research",
+      "payload": {
+        "code_commit": "4f99cac9201cfe616f840a4c920ea03cb2419d59",
+        "command": "protocol-first Alternative-Basis Strassen exact-small witness and all uniform recursion-depth cost lower bounds L=0..10; stop before synthetic run if lower bound exceeds 0.42",
+        "run_id": "R212-abs-cost-screen-20260922"
+      },
+      "revision": 50
     }
   ],
   "jobs": [
@@ -1014,14 +1026,21 @@
     },
     {
       "assigned_owner": "method-research",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "4f99cac9201cfe616f840a4c920ea03cb2419d59",
+          "command": "protocol-first Alternative-Basis Strassen exact-small witness and all uniform recursion-depth cost lower bounds L=0..10; stop before synthetic run if lower bound exceeds 0.42",
+          "run_id": "R212-abs-cost-screen-20260922",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Search the immutable research history and primary sources for exactly one algorithmic family not already falsified by R202/R206/R211 or prior ARC experiments. Freeze its required information, conservative production FLOP lower bound, exact-small identity and falsifier. Run a minimal synthetic check only if the lower bound can plausibly meet the official cost/stability gates; otherwise record terminal NO-GO. No duplicate historical experiment, holdout, paid resources or submission.",
       "depends_on": [],
       "hypothesis_id": "FRONTIER-GAP-CANDIDATE",
       "id": "R212",
       "owner": "method-research",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Find one untested cost-feasible method from the research frontier"
     },
     {
@@ -1059,7 +1078,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 49,
+  "revision": 50,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
