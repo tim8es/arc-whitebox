@@ -371,6 +371,22 @@
         "run_id": "R206-ta-rank-sweep-35750632262"
       },
       "revision": 30
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T17:32:28.958534+00:00",
+      "job": "R206",
+      "owner": "kernel",
+      "payload": {
+        "reason": "All four exact TA rank points failed the joint cost/stability gates. Best leaf ratio was 0.43326 versus 0.42 and all float32 error ratios were tens of thousands above 1.05. Terminal NO-GO; no compiler or rerun authorized.",
+        "receipt": {
+          "sha256": "3ad1900fe03fd821794053700721e45950918b4536f719ad7e88c2dc4e61265b",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/7eec12a45aeded930fccc7917631fd994e217606/research/r206/R206_TA_RANK_SWEEP_RECEIPT.json"
+        },
+        "run_id": "R206-ta-rank-sweep-35750632262",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 31
     }
   ],
   "jobs": [
@@ -564,8 +580,17 @@
         {
           "code_commit": "c74bf80beea36e5b0dba087a3030f34a8aad8c5f",
           "command": "existing Actions run 35750632262: frozen synthetic-only TA rank sweep 26^3, 28^3, 30^3, 32^3",
+          "completion": {
+            "reason": "All four exact TA rank points failed the joint cost/stability gates. Best leaf ratio was 0.43326 versus 0.42 and all float32 error ratios were tens of thousands above 1.05. Terminal NO-GO; no compiler or rerun authorized.",
+            "receipt": {
+              "sha256": "3ad1900fe03fd821794053700721e45950918b4536f719ad7e88c2dc4e61265b",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/7eec12a45aeded930fccc7917631fd994e217606/research/r206/R206_TA_RANK_SWEEP_RECEIPT.json"
+            },
+            "run_id": "R206-ta-rank-sweep-35750632262",
+            "status": "SCIENTIFIC_REJECT"
+          },
           "run_id": "R206-ta-rank-sweep-35750632262",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Bounded synthetic-only rank sweep around the pinned TA32 scheme to map the cost/float32 error Pareto frontier. Use the existing probe/kernel, record exact identity status, leaf/full arithmetic FLOPs, runtime and float32 error for a small predetermined rank set. Stop if no point can approach the 0.42 mechanism gate and 1.05 stability gate; no full compiler, paid run, holdout or submission.",
@@ -574,7 +599,12 @@
       "id": "R206",
       "owner": "kernel",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "All four exact TA rank points failed the joint cost/stability gates. Best leaf ratio was 0.43326 versus 0.42 and all float32 error ratios were tens of thousands above 1.05. Terminal NO-GO; no compiler or rerun authorized.",
+      "receipt": {
+        "sha256": "3ad1900fe03fd821794053700721e45950918b4536f719ad7e88c2dc4e61265b",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/7eec12a45aeded930fccc7917631fd994e217606/research/r206/R206_TA_RANK_SWEEP_RECEIPT.json"
+      },
+      "status": "SCIENTIFIC_REJECT",
       "title": "TA32 rank sweep: cost and float32 stability frontier"
     },
     {
@@ -640,7 +670,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 30,
+  "revision": 31,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
