@@ -1,0 +1,259 @@
+name: R207 V29 L4 public-50 confirmation
+
+on:
+  push:
+    branches:
+      - research/r205-v29-residual-timeout-20260922
+    paths:
+      - research/R207_RUN_ARM.json
+
+jobs:
+  confirm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+      V26_STRASSEN: "4"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Prepare evidence and pinned public toolchain
+        shell: bash
+        run: |
+          mkdir -p r207 methods/r207
+          python -m pip install --upgrade pip
+          python -m pip install "numpy==2.4.6" "flopscope==0.12.1" "whestbench==0.16.1"
+
+      - name: Fetch and verify pinned V29
+        shell: bash
+        run: |
+          curl -fsSL \
+            https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v29.py \
+            -o methods/r207/estimator_v29.py
+          python - <<'PY'
+          import hashlib, pathlib
+          p=pathlib.Path("methods/r207/estimator_v29.py")
+          b=p.read_bytes()
+          git_blob=hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()
+          sha256=hashlib.sha256(b).hexdigest()
+          print("git_blob_sha1", git_blob)
+          print("sha256", sha256)
+          if git_blob != "17df1a073a24f96c4705b04bcf61ef60fa06dd0c":
+              raise SystemExit("pinned V29 git blob mismatch")
+          pathlib.Path("r207/estimator_sha256.txt").write_text(sha256+"\n")
+          PY
+
+      - name: Record environment
+        shell: bash
+        run: |
+          whest version --json > r207/whest_version.json
+          python - <<'PY' > r207/environment.txt
+          import os, platform, flopscope, whestbench, numpy
+          print("python", platform.python_version())
+          print("platform", platform.platform())
+          print("numpy", numpy.__version__)
+          print("flopscope", getattr(flopscope, "__version__", "unknown"))
+          print("whestbench", getattr(whestbench, "__version__", "unknown"))
+          print("V26_STRASSEN", os.environ.get("V26_STRASSEN"))
+          for k in ("OMP_NUM_THREADS","OPENBLAS_NUM_THREADS","MKL_NUM_THREADS","NUMEXPR_NUM_THREADS"):
+              print(k, os.environ.get(k))
+          PY
+
+      - name: Validate unchanged V29 under L4 mitigation
+        id: validate
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          whest validate \
+            --estimator methods/r207/estimator_v29.py \
+            --json > r207/validate.json 2> r207/validate.stderr
+          code=$?
+          echo "$code" > r207/validate.exit
+          exit "$code"
+
+      - name: Confirm exact public Phase-2 first 50
+        id: measure
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          printf '%s\n' 'V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json' > r207/command.txt
+          whest run \
+            --estimator methods/r207/estimator_v29.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --streaming \
+            --n-mlps 50 \
+            --runner local \
+            --flop-budget 2199023255552 \
+            --wall-time-limit 120 \
+            --residual-wall-time-limit 0.4 \
+            --max-threads 1 \
+            --format json \
+            > r207/report.json 2> r207/run.stderr
+          code=$?
+          echo "$code" > r207/run.exit
+          exit "$code"
+
+      - name: Build R207 receipt
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, math, pathlib, statistics
+          root=pathlib.Path("r207")
+          root.mkdir(parents=True, exist_ok=True)
+          r205=json.loads(pathlib.Path("research/results/R205-v29-l4.json").read_text())
+          def sha(p):
+              return hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
+          def read_int(p):
+              try: return int(p.read_text().strip())
+              except Exception: return None
+          report=None
+          parse_error=None
+          rp=root/"report.json"
+          if rp.exists() and rp.stat().st_size:
+              try: report=json.loads(rp.read_text())
+              except Exception as e: parse_error=repr(e)
+          rows=[]
+          run_config={}
+          if report:
+              run_config=report.get("run_config",{})
+              for i,x in enumerate(report.get("results",{}).get("per_mlp",[])):
+                  reasons=[k for k in ("budget_exhausted","combined_budget_exhausted","time_exhausted","residual_wall_time_exhausted")
+                           if x.get(k)]
+                  if x.get("traceback"): reasons.append("traceback")
+                  rows.append({
+                    "mlp_index":i,
+                    "mlp_name":x.get("mlp_name"),
+                    "mlp_seed":x.get("mlp_seed"),
+                    "final_mse":x.get("final_layer_mse"),
+                    "measured_flops":x.get("flops_used"),
+                    "compute_utilization":x.get("compute_utilization"),
+                    "residual_wall_time_s":x.get("residual_wall_time_s"),
+                    "wall_time_s":x.get("wall_time_s"),
+                    "official_adjusted_score":x.get("adjusted_final_layer_score"),
+                    "status":"failed" if reasons else "ok",
+                    "failure_reasons":reasons,
+                  })
+          complete_rows=(len(rows)==50)
+          scores=[float(x["official_adjusted_score"]) for x in rows
+                  if x.get("official_adjusted_score") is not None]
+          mses=[float(x["final_mse"]) for x in rows if x.get("final_mse") is not None]
+          flops=[float(x["measured_flops"]) for x in rows if x.get("measured_flops") is not None]
+          residuals=[float(x["residual_wall_time_s"]) for x in rows if x.get("residual_wall_time_s") is not None]
+          failures=sum(x["status"]=="failed" for x in rows)
+          r205_rows=r205["per_network"]
+          first5_match=(len(rows)>=5 and all(
+              rows[i]["mlp_name"]==r205_rows[i]["name"] and
+              math.isclose(float(rows[i]["final_mse"]),float(r205_rows[i]["final_mse"]),rel_tol=0,abs_tol=0) and
+              int(rows[i]["measured_flops"])==int(r205_rows[i]["measured_flops"])
+              for i in range(5)
+          ))
+          aggregate={
+            "count":len(rows),
+            "failures":failures,
+            "mean_raw_mse":statistics.mean(mses) if len(mses)==50 else None,
+            "mean_measured_flops":statistics.mean(flops) if len(flops)==50 else None,
+            "mean_adjusted_score_recomputed":statistics.mean(scores) if len(scores)==50 else None,
+            "mean_residual_wall_time_s":statistics.mean(residuals) if len(residuals)==50 else None,
+            "max_residual_wall_time_s":max(residuals) if residuals else None,
+            "max_residual_mlp":rows[residuals.index(max(residuals))]["mlp_name"] if residuals and len(residuals)==len(rows) else None,
+            "p95_residual_wall_time_s":sorted(residuals)[math.ceil(0.95*len(residuals))-1] if len(residuals)==50 else None,
+            "report_mean_final_layer_mse":report.get("results",{}).get("mean_final_layer_mse") if report else None,
+            "report_mean_adjusted_final_layer_score":report.get("results",{}).get("mean_adjusted_final_layer_score") if report else None,
+          }
+          execution_ok=(read_int(root/"validate.exit")==0 and read_int(root/"run.exit")==0 and complete_rows)
+          confirmation=(execution_ok and failures==0)
+          receipt={
+            "schema":"arc.whitebox.r207.public50_confirmation.v1",
+            "job_id":"R207",
+            "owner":"baseline",
+            "status":"COMPLETE" if execution_ok else "INFRA_ERROR",
+            "decision":"CONFIRMED_ZERO_FAILURES" if confirmation else ("NOT_CONFIRMED_FAILURES_REMAIN" if execution_ok else "INFRA_ERROR"),
+            "stage":"confirmation",
+            "source":{
+              "upstream_repo":"504aldo/whest-p2-cumulant-k3",
+              "upstream_commit":"18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+              "v29_git_blob_sha1":"17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+              "downloaded_estimator_sha256":(root/"estimator_sha256.txt").read_text().strip() if (root/"estimator_sha256.txt").exists() else None,
+              "r205_receipt_commit":"1d705672e560ef3b2895056888430bd629b4f658",
+            },
+            "mitigation":{"environment":{"V26_STRASSEN":"4"},"source_code_modified":False},
+            "panel":{
+              "dataset":"hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+              "split":"mini:first-50",
+              "public":True,
+              "count_expected":50,
+              "count_measured":len(rows),
+              "dataset_identity_from_report":run_config.get("dataset"),
+              "width":run_config.get("width"),
+              "depth":run_config.get("depth"),
+              "flop_budget":run_config.get("flop_budget"),
+              "residual_wall_time_limit_s":run_config.get("residual_wall_time_limit"),
+              "max_threads":run_config.get("max_threads"),
+            },
+            "budget":{"paid_resources":False,"public_github_actions":True,"private_holdout":False,"submission":False,"competition_scorer":False},
+            "execution":{
+              "validate_exit":read_int(root/"validate.exit"),
+              "run_exit":read_int(root/"run.exit"),
+              "command":(root/"command.txt").read_text().strip() if (root/"command.txt").exists() else None,
+              "report_sha256":sha(root/"report.json"),
+              "run_stderr_sha256":sha(root/"run.stderr"),
+              "parse_error":parse_error,
+            },
+            "reproducibility":{
+              "r205_first5_mse_and_flops_exact_match":first5_match,
+              "no_separate_five_grid_rerun":True,
+            },
+            "aggregate":aggregate,
+            "per_mlp":rows,
+          }
+          (root/"R207_RECEIPT.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
+          print(json.dumps({
+            "status":receipt["status"],
+            "decision":receipt["decision"],
+            "count":aggregate["count"],
+            "failures":aggregate["failures"],
+            "mean_adjusted_score":aggregate["mean_adjusted_score_recomputed"],
+            "mean_raw_mse":aggregate["mean_raw_mse"],
+            "max_residual_wall_time_s":aggregate["max_residual_wall_time_s"],
+            "first5_exact_match":first5_match,
+          },sort_keys=True))
+          PY
+
+      - name: Hash R207 evidence
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib
+          root=pathlib.Path("r207")
+          root.mkdir(parents=True, exist_ok=True)
+          out={}
+          for p in sorted(root.iterdir()):
+              if p.is_file() and p.name != "sha256.json":
+                  out[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/"sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          print((root/"sha256.json").read_text())
+          PY
+
+      - name: Upload R207 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r207-v29-l4-public50
+          path: r207/
+          if-no-files-found: error

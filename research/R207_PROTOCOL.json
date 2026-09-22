@@ -1,0 +1,47 @@
+{
+  "schema": "arc.whitebox.r207.protocol.v1",
+  "job_id": "R207",
+  "owner": "baseline",
+  "stage": "confirmation",
+  "ancestry": {
+    "r205_receipt_commit": "1d705672e560ef3b2895056888430bd629b4f658",
+    "r205_result_commit": "6c1b8211de9ec8f6311966468b8287442cf0b9e9",
+    "v29_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+  },
+  "frozen_mitigation": {
+    "V26_STRASSEN": "4",
+    "estimator_source_modified": false
+  },
+  "panel": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "split": "mini",
+    "n_mlps": 50,
+    "public_only": true,
+    "flop_budget": 2199023255552,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "max_threads": 1
+  },
+  "execution": {
+    "runner": "GitHub Actions ubuntu-latest",
+    "public_repo_free_hosted_runner": true,
+    "one_confirmation_run": true,
+    "no_separate_five_grid_rerun": true
+  },
+  "evidence": [
+    "per_mlp final_mse",
+    "flops_used",
+    "residual_wall_time_s",
+    "wall_time_s",
+    "failure flags",
+    "official_adjusted_score",
+    "raw report SHA256",
+    "artifact SHA256"
+  ],
+  "forbidden": {
+    "paid_resources": true,
+    "private_holdout": true,
+    "submission": true,
+    "leaderboard_mutation": true
+  }
+}
