@@ -315,6 +315,18 @@
       "owner": "archive-evidence",
       "payload": {},
       "revision": 26
+    },
+    {
+      "revision": 27,
+      "action": "start",
+      "job": "R204",
+      "owner": "audit",
+      "payload": {
+        "run_id": "R204-integration-audit-r201-r205-e173",
+        "code_commit": "b95b0bae959d20cb6c1c7802079944184d87748d",
+        "command": "python scripts/arc_control.py compare research/results/R205-v29-l4.json research/results/E173-ago.json"
+      },
+      "at": "2026-09-22T16:43:53.815Z"
     }
   ],
   "jobs": [
@@ -419,7 +431,14 @@
     },
     {
       "assigned_owner": "audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R204-integration-audit-r201-r205-e173",
+          "code_commit": "b95b0bae959d20cb6c1c7802079944184d87748d",
+          "command": "python scripts/arc_control.py compare research/results/R205-v29-l4.json research/results/E173-ago.json",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Verify exact result commit/artifact, comparable panel and score; recommend one bounded measured change, or explicit INCONCLUSIVE. No rejection because upstream input is absent.",
       "depends_on": [
         "R201"
@@ -428,7 +447,7 @@
       "id": "R204",
       "owner": "audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Независимо проверить результат R201 и назначить следующую модификацию"
     },
     {
@@ -542,7 +561,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 26,
+  "revision": 27,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
