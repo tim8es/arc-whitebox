@@ -1,0 +1,300 @@
+{
+  "schema": "arc.whitebox.r222.r209_normalization_audit.v1",
+  "job_id": "R222",
+  "owner": "postflight-audit",
+  "date": "2026-09-22",
+  "branch": "review/r222-r209-normalization-20260922",
+  "mode": "READ_ONLY_EXISTING_ACTIONS_EVIDENCE_ONLY",
+  "status": "COMPLETE",
+  "decision": "NOT_COMPARABLE",
+  "normalization_action": {
+    "shared_result_json_added": false,
+    "shared_overview_regenerated": false,
+    "reason": "Current arc_control.py normalized-result schema requires per-row network_id and target_sha256. Neither field exists in the immutable R209 V25/V29 Actions reports or summary receipt. panel.dtype is also not recorded as a benchmark-panel field. R222 does not guess or import these fields from other experiments.",
+    "arc_control_check_authorization": "NOT_REACHED",
+    "explanation": "The evidence-completeness gate failed before any normalized result was created, so arc_control.py check was not used to authorize an invalid record."
+  },
+  "source_run": {
+    "actions_run_id": 35544406064,
+    "run_url": "https://github.com/tim8es/arc-whitebox/actions/runs/35544406064",
+    "head_branch": "research/e136-public-k3-reproduction",
+    "head_sha": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "run_attempt": 1,
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "run_arm_blob_sha1": "d57bb883d27686ce861746380e2b861ca1edbd34",
+    "workflow_blob_sha1": "4dea7107d9c7677659898e661b6ac5c306c68f7b",
+    "estimator_blob_sha1": {
+      "v25": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "v29": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+    }
+  },
+  "r209_receipt": {
+    "commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+    "path": "research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json",
+    "blob_sha1": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+    "sha256": "5c87e8868ce3221b01979f7360079960e8991629926a7623037662f3c4511740"
+  },
+  "artifact_verification": {
+    "v25": {
+      "artifact_id": 10617855153,
+      "name": "e136-followup-v25",
+      "zip_sha256_expected": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08",
+      "zip_sha256_recomputed": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08",
+      "report_sha256_expected": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+      "report_sha256_recomputed": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+      "sha256_manifest_sha256": "3c9811586583ca122be5cdf726ce717f19b627a743fa35a978a2e2b1b1d7d4e5",
+      "manifest_entries": 8,
+      "manifest_entries_verified": 8,
+      "internal_manifest_all_verified": true
+    },
+    "v29": {
+      "artifact_id": 10617318650,
+      "name": "e136-followup-v29",
+      "zip_sha256_expected": "32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681",
+      "zip_sha256_recomputed": "32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681",
+      "report_sha256_expected": "76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b",
+      "report_sha256_recomputed": "76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b",
+      "sha256_manifest_sha256": "582ed623b81a435eb20e12fe76e91c27dd808ef071333384ead7b9e4beb38b97",
+      "manifest_entries": 8,
+      "manifest_entries_verified": 8,
+      "internal_manifest_all_verified": true
+    },
+    "summary": {
+      "artifact_id": 10617372279,
+      "name": "e136-followup-summary",
+      "zip_sha256_expected": "96d22843e17f5f47b31728e80a0d5e4d4bfa25ac150da2181b3897082cb4f039",
+      "zip_sha256_recomputed": "96d22843e17f5f47b31728e80a0d5e4d4bfa25ac150da2181b3897082cb4f039",
+      "runtime_receipt_sha256": "17866edd6527e37a41677efcfc96a274cc2d48f425237f18909653293f6a96d0"
+    }
+  },
+  "panel_evidence": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini",
+    "streaming": true,
+    "n_mlps": 100,
+    "width": 1024,
+    "depth": 16,
+    "flop_budget": 2199023255552,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "max_threads": 1,
+    "whestbench": "0.16.1",
+    "flopscope": "0.12.1+np2.4.6",
+    "numpy": "2.4.6",
+    "same_dataset_config_v25_v29": true
+  },
+  "row_identity_order_audit": {
+    "v25_row_count": 100,
+    "v29_row_count": 100,
+    "v25_indices_exact_0_through_99": true,
+    "v29_indices_exact_0_through_99": true,
+    "v25_unique_mlp_names": 100,
+    "v29_unique_mlp_names": 100,
+    "exact_same_index_name_order_v25_v29": true,
+    "mlp_names_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "artifact_native_identity_fields_present": [
+      "mlp_index",
+      "mlp_name"
+    ],
+    "schema_required_network_id_present_rows": {
+      "v25": 0,
+      "v29": 0
+    },
+    "schema_required_target_sha256_present_rows": {
+      "v25": 0,
+      "v29": 0
+    },
+    "target_hash_verification": "NOT_AVAILABLE_IN_R209_ACTIONS_EVIDENCE"
+  },
+  "score_and_flop_audit": {
+    "successful_row_formula": "final_layer_mse * max(0.1, flops_used / 2199023255552)",
+    "failed_row_penalty_verified": "adjusted_final_layer_score == final_layer_mse for every failed row",
+    "v25": {
+      "rows": 100,
+      "successes": 100,
+      "failures": 0,
+      "failure_breakdown": {
+        "budget_exhausted": 0,
+        "time_exhausted": 0,
+        "residual_wall_time_exhausted": 0,
+        "combined_budget_exhausted": 0,
+        "error": 0
+      },
+      "full_records_canonical_sha256": "85472c4808bff7a83a9ca853688ad9068895b073bb1592fd0f364d82c112b13e",
+      "per_row_score_max_abs_difference": 0,
+      "independently_recomputed_mean_adjusted_score": 8.170397440117226e-9,
+      "reported_mean_adjusted_score": 8.170397440117225e-9,
+      "aggregate_difference": 1.6543612251060553e-24,
+      "mean_raw_final_layer_mse": 2.228303490170447e-8,
+      "flops_unique_values": [
+        806303721965
+      ],
+      "mean_flops": 806303721965,
+      "total_flops": 80630372196500
+    },
+    "v29": {
+      "rows": 100,
+      "successes": 43,
+      "failures": 57,
+      "failure_breakdown": {
+        "budget_exhausted": 0,
+        "time_exhausted": 0,
+        "residual_wall_time_exhausted": 57,
+        "combined_budget_exhausted": 0,
+        "error": 0
+      },
+      "failed_indices": [
+        1,
+        6,
+        7,
+        8,
+        9,
+        10,
+        15,
+        17,
+        18,
+        19,
+        20,
+        22,
+        24,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        45,
+        46,
+        50,
+        52,
+        57,
+        58,
+        59,
+        60,
+        67,
+        68,
+        70,
+        71,
+        72,
+        75,
+        76,
+        78,
+        79,
+        80,
+        83,
+        87,
+        90,
+        91,
+        93,
+        94,
+        95,
+        96,
+        97,
+        99
+      ],
+      "preserve_failed_rows": true,
+      "successful_only_rows_are_diagnostic_not_replacement": true,
+      "full_records_canonical_sha256": "28b6f61951f6b1bd04c36588da6421f398bd1823bba0ca07bb6f3f6dd7fadbe1",
+      "per_row_score_max_abs_difference": 0,
+      "failed_row_penalty_max_abs_difference": 0,
+      "independently_recomputed_mean_adjusted_score": 0.5270942878803215,
+      "reported_mean_adjusted_score": 0.5270942878803215,
+      "aggregate_difference": 0,
+      "mean_raw_final_layer_mse": 0.5270942949467906,
+      "flops_unique_values": [
+        555383704047,
+        558473140719,
+        587262754287
+      ],
+      "mean_flops": 555733388916.12,
+      "total_flops": 55573338891612
+    }
+  },
+  "schema_gate": {
+    "current_checker": "scripts/arc_control.py score_record/panel_key on research/control-v2",
+    "required_panel_fields": [
+      "dataset",
+      "revision",
+      "stage",
+      "shape",
+      "dtype",
+      "evaluator",
+      "meter",
+      "count"
+    ],
+    "required_per_network_fields": [
+      "network_id",
+      "target_sha256",
+      "budget_flops",
+      "status",
+      "final_mse/measured_flops for success",
+      "official_adjusted_score for failure"
+    ],
+    "blocking_missing_fields": [
+      {
+        "field": "per_network[*].network_id",
+        "affected_records": [
+          "V25",
+          "V29"
+        ],
+        "affected_rows": "100/100 each",
+        "evidence_search": "Absent from report.json, validate.json, summary runtime receipt and other files in both Actions ZIPs.",
+        "consequence": "arc_control.py requires non-empty unique network_id strings and panel_key uses them."
+      },
+      {
+        "field": "per_network[*].target_sha256",
+        "affected_records": [
+          "V25",
+          "V29"
+        ],
+        "affected_rows": "100/100 each",
+        "evidence_search": "Absent from report.json, validate.json, summary runtime receipt and other files in both Actions ZIPs.",
+        "consequence": "arc_control.py requires a 64-hex target fingerprint for every row and panel_key uses it."
+      },
+      {
+        "field": "panel.dtype",
+        "affected_records": [
+          "V25",
+          "V29"
+        ],
+        "affected_rows": "panel-level",
+        "evidence_search": "No benchmark-panel dtype field exists in report/run_config/summary receipt. stderr mentions float32 estimator operations but does not establish the dataset panel dtype.",
+        "consequence": "arc_control.py requires panel.dtype to be non-null; R222 will not infer it."
+      }
+    ],
+    "hypothetical_normalized_record_would_pass_arc_control_check": false,
+    "reason": "Required identity/fingerprint fields cannot be populated from the authorized evidence set without guessing or importing evidence from another experiment."
+  },
+  "raw_prediction_tensors": {
+    "v25_archived": false,
+    "v29_archived": false,
+    "zip_file_lists_contain_prediction_tensor_files": false,
+    "consequence": "Recorded MSE/score arithmetic can be audited, but MSE cannot be independently recomputed from raw predictions."
+  },
+  "verdict": {
+    "archive_metrics_integrity": "VERIFIED",
+    "artifact_hashes": "VERIFIED",
+    "row_index_name_order": "VERIFIED",
+    "target_hashes": "MISSING_NOT_VERIFIABLE",
+    "official_failure_penalties": "VERIFIED",
+    "flops": "VERIFIED",
+    "score_arithmetic": "VERIFIED",
+    "normalized_shared_results": "NOT_CREATED",
+    "overview": "NOT_REGENERATED",
+    "comparability_status": "NOT_COMPARABLE_TO_SHARED_SCHEMA",
+    "no_rerun": true,
+    "no_holdout": true,
+    "no_submission": true
+  }
+}
