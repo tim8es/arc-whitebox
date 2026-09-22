@@ -1645,6 +1645,80 @@
         "status": "COMPLETE"
       },
       "revision": 126
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T23:47:41.000Z",
+      "job": "R232",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "global-accuracy-research",
+        "deliverable": "Continue after R227's terminal pre-science NO-GO and R231's finding that the V25 error tail is weakly concentrated. Read the complete immutable experiment ledger, current AGENTS/RESEARCH_PROCESS, and R227/R231 receipts. Identify exactly one genuinely untested global-accuracy estimator family (not per-network tail tuning, second K4 regeneration, feed-local lambda, one-factor copula, CountSketch, response-aligned D21, Walsh-coset/serializer rescue, or any renamed rejected mechanism). Freeze a mathematical specification, exact-small target-free falsifier, full production FLOP bound, and measurable GO/NO-GO before any run. Run only the small falsifier on verified free/existing compute; allow at most one same-panel mini-100 only if falsifier and cost gates pass. Preserve V25; no paid compute, holdout, or submission. If no strict novelty/feasibility, save terminal NO-GO with exact reason.",
+        "depends_on": [
+          "R231"
+        ],
+        "hypothesis_id": "GLOBAL-ACCURACY-POST-R227-R231",
+        "priority": 1,
+        "title": "Find one novel global-accuracy estimator hypothesis"
+      },
+      "revision": 127
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T23:47:41.000Z",
+      "job": "R232",
+      "owner": "global-accuracy-research",
+      "payload": {},
+      "revision": 128
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T23:47:41.000Z",
+      "job": "R233",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "v25-compute-audit",
+        "deliverable": "Perform a source-level cost audit of pinned public V25 using R226 records and R231 compute/score floor. Search for one algebraically equivalent/common-subexpression or memory-layout change that provably preserves estimator outputs while reducing counted FLOPs/runtime; distinguish true FLOP savings from wall-clock-only changes. Freeze exact identity/equivalence fixture, cost proof and a meaningful score/runtime gate first. Do not overlap with R232's estimator-family search. No canonical edits, no full estimator run initially; one isolated micro-fixture is allowed. Only authorize one bounded public mini-100 candidate if exact equivalence and a credible cost reduction are both demonstrated on free compute. If savings cannot approach a meaningful frontier, terminal NO-GO with evidence.",
+        "depends_on": [
+          "R226",
+          "R231"
+        ],
+        "hypothesis_id": "V25-OUTPUT-PRESERVING-COST-REDUCTION",
+        "priority": 1,
+        "title": "Find output-preserving V25 FLOP reductions"
+      },
+      "revision": 129
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T23:47:41.000Z",
+      "job": "R233",
+      "owner": "v25-compute-audit",
+      "payload": {},
+      "revision": 130
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T23:47:41.000Z",
+      "job": "R234",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "postflight-preflight",
+        "deliverable": "While the frozen R218 Actions run is still executing, independently inspect R217's frozen thresholds, R218 workflow and output schema. Prepare a small reproducible postflight verifier/checklist that will validate the six blocks, all 300 rows, same worker/allowed CPU gates, panel/order/FLOPs, per-MLP C0/C1/U means, primary delta and failure difference, then apply the predeclared GO/NO-GO exactly. Protocol/tooling prep only now: do not wait-poll repeatedly, inspect hidden data, rerun or alter the experiment. Commit the verifier/receipt; when R218 completes, use this prepared work for R220 (the queued postflight audit) without duplicating the scientific run.",
+        "depends_on": [],
+        "hypothesis_id": "R218-POSTFLIGHT-VERIFIER-PREP",
+        "priority": 1,
+        "title": "Prepare independent R218 crossover postflight verifier"
+      },
+      "revision": 131
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T23:47:41.000Z",
+      "job": "R234",
+      "owner": "postflight-preflight",
+      "payload": {},
+      "revision": 132
     }
   ],
   "jobs": [
@@ -2692,10 +2766,51 @@
         "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff"
       },
       "reason": "R231 read-only V25 mini-100 tail/frontier audit complete on exact input SHA256 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742. Verified 100/100 unique rows, fixed [16,1024] shape, B=2**41, 0 failures, exact stored-score recomputation. Mean raw MSE 2.228303490170447e-8; median 2.2776289299031305e-8. Top-1/5/10/20 raw-MSE shares are 1.3593%/6.4714%/12.4725%/23.8474%; Gini 0.0797813; max leave-one-out mean shift 0.362899%. With observed raw MSE fixed, factor-floor score is 2.228303490170447e-9, so compute reduction alone cannot reach the cross-panel numerical orientation 2.1e-9. At factor 0.1, required mean raw MSE is 2.1e-8, a 5.757900157515477% reduction from V25. This is not an exact-panel comparison or rank. Recommendation: prioritize global accuracy; tail-only evidence is weakly concentrated. No estimator run, paid/private/holdout data, submission, raw-tensor inference, canonical edit, or rank claim."
+    },
+    {
+      "id": "R232",
+      "title": "Find one novel global-accuracy estimator hypothesis",
+      "owner": "global-accuracy-research",
+      "assigned_owner": "global-accuracy-research",
+      "status": "CLAIMED",
+      "priority": 1,
+      "hypothesis_id": "GLOBAL-ACCURACY-POST-R227-R231",
+      "depends_on": [
+        "R231"
+      ],
+      "attempts": [],
+      "deliverable": "Continue after R227's terminal pre-science NO-GO and R231's finding that the V25 error tail is weakly concentrated. Read the complete immutable experiment ledger, current AGENTS/RESEARCH_PROCESS, and R227/R231 receipts. Identify exactly one genuinely untested global-accuracy estimator family (not per-network tail tuning, second K4 regeneration, feed-local lambda, one-factor copula, CountSketch, response-aligned D21, Walsh-coset/serializer rescue, or any renamed rejected mechanism). Freeze a mathematical specification, exact-small target-free falsifier, full production FLOP bound, and measurable GO/NO-GO before any run. Run only the small falsifier on verified free/existing compute; allow at most one same-panel mini-100 only if falsifier and cost gates pass. Preserve V25; no paid compute, holdout, or submission. If no strict novelty/feasibility, save terminal NO-GO with exact reason."
+    },
+    {
+      "id": "R233",
+      "title": "Find output-preserving V25 FLOP reductions",
+      "owner": "v25-compute-audit",
+      "assigned_owner": "v25-compute-audit",
+      "status": "CLAIMED",
+      "priority": 1,
+      "hypothesis_id": "V25-OUTPUT-PRESERVING-COST-REDUCTION",
+      "depends_on": [
+        "R226",
+        "R231"
+      ],
+      "attempts": [],
+      "deliverable": "Perform a source-level cost audit of pinned public V25 using R226 records and R231 compute/score floor. Search for one algebraically equivalent/common-subexpression or memory-layout change that provably preserves estimator outputs while reducing counted FLOPs/runtime; distinguish true FLOP savings from wall-clock-only changes. Freeze exact identity/equivalence fixture, cost proof and a meaningful score/runtime gate first. Do not overlap with R232's estimator-family search. No canonical edits, no full estimator run initially; one isolated micro-fixture is allowed. Only authorize one bounded public mini-100 candidate if exact equivalence and a credible cost reduction are both demonstrated on free compute. If savings cannot approach a meaningful frontier, terminal NO-GO with evidence."
+    },
+    {
+      "id": "R234",
+      "title": "Prepare independent R218 crossover postflight verifier",
+      "owner": "postflight-preflight",
+      "assigned_owner": "postflight-preflight",
+      "status": "CLAIMED",
+      "priority": 1,
+      "hypothesis_id": "R218-POSTFLIGHT-VERIFIER-PREP",
+      "depends_on": [],
+      "attempts": [],
+      "deliverable": "While the frozen R218 Actions run is still executing, independently inspect R217's frozen thresholds, R218 workflow and output schema. Prepare a small reproducible postflight verifier/checklist that will validate the six blocks, all 300 rows, same worker/allowed CPU gates, panel/order/FLOPs, per-MLP C0/C1/U means, primary delta and failure difference, then apply the predeclared GO/NO-GO exactly. Protocol/tooling prep only now: do not wait-poll repeatedly, inspect hidden data, rerun or alter the experiment. Commit the verifier/receipt; when R218 completes, use this prepared work for R220 (the queued postflight audit) without duplicating the scientific run."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 126,
+  "revision": 132,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
