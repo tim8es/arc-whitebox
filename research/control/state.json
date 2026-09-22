@@ -1352,6 +1352,22 @@
         "command": "integrate exact R224 normalized R209 V25/V29 mini-100 records into latest research/control-v2; regenerate STATUS via arc_control report; run check and compare; preserve concurrent queue events; no estimator run or leaderboard-rank claim"
       },
       "revision": 104
+    },
+    {
+      "revision": 105,
+      "action": "finish",
+      "job": "R226",
+      "owner": "results-integration",
+      "payload": {
+        "reason": "Integrated exact R224-normalized R209 V25/V29 mini-100 records from commit 8fb0afb77ae834d88bae29557a41356d4d98401f into latest research/control-v2 without estimator execution. Integration commit 20fafab5471e6ed227562c651179dd2ef331ea22 changes only research/results/R209-v25-mini100.json, research/results/R209-v29-mini100.json, and regenerated research/control/STATUS.md. SHA256: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; STATUS a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2. Validation: PASS 6 normalized results, 27 jobs, 194 history entries; V29/V25 score_ratio 64512686.407671124, improved_networks 43/100, paired_gain_mean -0.5270942797099241, paired_gain_se 0.04886972545240127; V29 preserves 57 residual_wall_time_exhausted failures and raw prediction tensors remain absent. Non-force fast-forward from refreshed head; no queue events lost. No estimator run, holdout, paid compute, submission, or leaderboard-rank claim.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/control/STATUS.md",
+          "sha256": "a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2"
+        },
+        "run_id": "R226-r224-normalized-mini100-registry-integration",
+        "status": "COMPLETE"
+      },
+      "at": "2026-09-22T22:23:00.000Z"
     }
   ],
   "jobs": [
@@ -2183,7 +2199,16 @@
           "run_id": "R226-r224-normalized-mini100-registry-integration",
           "code_commit": "42b5b658ee4cb3950e88a697416c8fb09fcf2f37",
           "command": "integrate exact R224 normalized R209 V25/V29 mini-100 records into latest research/control-v2; regenerate STATUS via arc_control report; run check and compare; preserve concurrent queue events; no estimator run or leaderboard-rank claim",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "Integrated exact R224-normalized R209 V25/V29 mini-100 records from commit 8fb0afb77ae834d88bae29557a41356d4d98401f into latest research/control-v2 without estimator execution. Integration commit 20fafab5471e6ed227562c651179dd2ef331ea22 changes only research/results/R209-v25-mini100.json, research/results/R209-v29-mini100.json, and regenerated research/control/STATUS.md. SHA256: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; STATUS a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2. Validation: PASS 6 normalized results, 27 jobs, 194 history entries; V29/V25 score_ratio 64512686.407671124, improved_networks 43/100, paired_gain_mean -0.5270942797099241, paired_gain_se 0.04886972545240127; V29 preserves 57 residual_wall_time_exhausted failures and raw prediction tensors remain absent. Non-force fast-forward from refreshed head; no queue events lost. No estimator run, holdout, paid compute, submission, or leaderboard-rank claim.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/control/STATUS.md",
+              "sha256": "a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2"
+            },
+            "run_id": "R226-r224-normalized-mini100-registry-integration",
+            "status": "COMPLETE"
+          }
         }
       ],
       "deliverable": "Use R224's schema-valid V25/V29 mini-100 records and receipt, without rerunning the estimator. Integrate the two exact result JSON files into the authoritative `research/control-v2` `research/results/` registry, verify `arc_control.py check`, `compare`, and regenerated `STATUS.md`. Preserve V29's 57 failed rows and raw-tensor limitation. Refresh from the latest control head before writing; publish a non-force commit with only normalized records/overview so concurrent queue events are not lost. Provide commit, hashes, comparison, and finish receipt. No holdout, paid compute, submission or leaderboard claim.",
@@ -2194,8 +2219,13 @@
       "id": "R226",
       "owner": "results-integration",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Integrate verified R209 V25/V29 mini-100 records into shared registry"
+      "status": "COMPLETE",
+      "title": "Integrate verified R209 V25/V29 mini-100 records into shared registry",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/control/STATUS.md",
+        "sha256": "a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2"
+      },
+      "reason": "Integrated exact R224-normalized R209 V25/V29 mini-100 records from commit 8fb0afb77ae834d88bae29557a41356d4d98401f into latest research/control-v2 without estimator execution. Integration commit 20fafab5471e6ed227562c651179dd2ef331ea22 changes only research/results/R209-v25-mini100.json, research/results/R209-v29-mini100.json, and regenerated research/control/STATUS.md. SHA256: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; STATUS a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2. Validation: PASS 6 normalized results, 27 jobs, 194 history entries; V29/V25 score_ratio 64512686.407671124, improved_networks 43/100, paired_gain_mean -0.5270942797099241, paired_gain_se 0.04886972545240127; V29 preserves 57 residual_wall_time_exhausted failures and raw prediction tensors remain absent. Non-force fast-forward from refreshed head; no queue events lost. No estimator run, holdout, paid compute, submission, or leaderboard-rank claim."
     },
     {
       "assigned_owner": "v25-optimization",
@@ -2213,7 +2243,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 104,
+  "revision": 105,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
