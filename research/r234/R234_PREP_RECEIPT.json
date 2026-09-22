@@ -1,0 +1,91 @@
+{
+  "schema": "arc.whitebox.r234.prep_receipt.v1",
+  "job_id": "R234",
+  "run_id": "R234-r218-postflight-verifier-prep-20260923",
+  "owner": "postflight-preflight",
+  "status": "COMPLETE",
+  "scope": "Protocol/tooling preparation only for future R220 independent postflight after R218 COMPLETE.",
+  "queue_start": {
+    "revision": 133,
+    "commit": "cbebe3688f079d754efd24173a3419729fbf2b9a",
+    "source_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33"
+  },
+  "inspected_frozen_sources": {
+    "r217_protocol": {
+      "commit": "e8fc0364f69c12f2f94a06362b43e925ea61b365",
+      "path": "research/r217/R217_NEXT_RUNTIME_PROTOCOL.json",
+      "git_blob_sha1": "a940706931d280fe2a720836d9db248146862270",
+      "sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968"
+    },
+    "r218_executor_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+    "workflow": {
+      "path": ".github/workflows/r218-affinity-crossover.yml",
+      "git_blob_sha1": "d1fa366b1056d09f829a9620eda81034584147af"
+    },
+    "executor": {
+      "path": "scripts/r218_run_crossover.py",
+      "git_blob_sha1": "456364bd0558eb98d41a4f9cd0512484fe972d20"
+    },
+    "expected_panel": {
+      "path": "research/r218/R218_EXPECTED_PANEL.json",
+      "git_blob_sha1": "8669ffff7408c4f251c700ca0d5f9fc24db5c8f0"
+    },
+    "prelaunch_gate": {
+      "path": "research/r218/R218_PRELAUNCH_GATE.json",
+      "git_blob_sha1": "fe0745d3d0265b7afb8d952530998c6b0f942aa3"
+    },
+    "arm": {
+      "path": "research/R218_RUN_ARM.json",
+      "branch": "research/r218-affinity-crossover-20260922",
+      "git_blob_sha1": "542f8f80cee29c83b4f9648a1c56f49ae9b9262a"
+    }
+  },
+  "frozen_verdict_rule": {
+    "GO_CPU0_SPECIFIC": "all contract/provenance gates pass AND primary_delta_s >= 0.020 AND cpu0_slower_count >= 35 AND failure_difference >= 10",
+    "NO_GO_CPU0_SPECIFIC": "all contract/provenance gates pass and any GO threshold fails",
+    "PROTOCOL_INVALID": "any contract/provenance gate fails; no causal interpretation",
+    "primary_delta_s": "median_i(C0_mean_i - C1_mean_i)",
+    "cpu0_slower_count": "count_i(C0_mean_i > C1_mean_i)",
+    "failure_difference": "failures across two C0 blocks minus failures across two C1 blocks",
+    "secondary_generic_pinning": "C0/C1 versus U is descriptive only"
+  },
+  "prepared_artifacts": {
+    "verifier": {
+      "path": "research/r234/r234_verify_r218.py",
+      "git_blob_sha1": "772843d4bc2b5929e851e621f33dd25a38cd5319",
+      "latest_commit": "0a4ddaa499199c88213eb2b13336d2649bff5ef8",
+      "behavior": [
+        "verify artifact manifest hashes",
+        "verify frozen protocol/artifact protocol copy and expected-panel copy",
+        "parse six raw block reports, not owner summary, requiring 50 rows each and 300 total",
+        "verify exact panel name/order and per-MLP FLOPs",
+        "verify budget, residual limit, width/depth and whestbench version per block",
+        "verify preflight thread/V26/allowed-CPU gates and per-block child affinity C0={0}, C1={1}, U=inherited allowed set",
+        "compare stable lscpu identity across all six blocks",
+        "recompute per-MLP U/C0/C1 means, primary delta, cpu0_slower_count, failure difference and block/condition summaries",
+        "cross-check owner R218 receipt metrics without trusting its verdict",
+        "withhold final GO/NO-GO until independent GitHub Actions same-job provenance and external estimator source hash are supplied"
+      ]
+    },
+    "checklist": {
+      "path": "research/r234/R234_VERIFIER_CHECKLIST.json",
+      "git_blob_sha1": "610c71426f262c08a4c7390f9bb089aacb0c62da",
+      "latest_commit": "5dc06399db5a59ce63646f6a9eff023450310075"
+    }
+  },
+  "identified_postflight_limits": [
+    "R218 artifact does not itself prove GitHub Actions single-job provenance; R220 must independently inspect the completed run/job.",
+    "R218 workflow does not upload methods/r218/estimator_v29.py into the artifact; R220 must independently verify the frozen upstream estimator SHA256.",
+    "Workflow run head SHA may be an arm commit above the frozen executor commit, so R220 verifies the arm->executor pin rather than incorrectly requiring head_sha == 85f5ba...."
+  ],
+  "execution": {
+    "estimator_run": false,
+    "r218_artifact_polled_or_interpreted": false,
+    "holdout_access": false,
+    "submission": false,
+    "r218_modified_or_repeated": false,
+    "r220_claimed_or_started": false,
+    "verifier_run_against_r218_artifact": false
+  },
+  "next_dependency_action": "After R218 is COMPLETE, R220 owner may use this prepared verifier plus independently retrieved Actions/job/source provenance. R234 itself performs no postflight verdict."
+}
