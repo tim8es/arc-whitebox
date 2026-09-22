@@ -1,0 +1,37 @@
+{
+  "schema": "arc.whitebox.r219.control_finalization.v1",
+  "job_id": "R219",
+  "branch": "research/r219-dependence-carrier-frontier-20260922",
+  "scientific_receipt": {
+    "commit": "6e1bcf7b6833254ce1c2671ff7c291a32d1ee09c",
+    "path": "research/r219/R219_TERMINAL_RECEIPT.json",
+    "sha256": "c8c0fd2f91d885b5ec4ec7fa56b7ff6f7c453a85900fd14f8c48ae9d97a47eb7"
+  },
+  "central_control": {
+    "claimed_revision": 73,
+    "start_revision": 74,
+    "start_commit": "872993f8bd55148db8aa1886be7451f9bad51c63",
+    "finish_revision": 76,
+    "finish_commit": "d0b06ec4eb6045ee2df1a0d56bc95f1eb5b64d30",
+    "status": "SCIENTIFIC_REJECT",
+    "attempt_count": 1,
+    "run_id": "R219-dependence-carrier-frontier-20260922",
+    "note": "Revision 75 was consumed by a concurrent control update between R219 start and finish; R219 itself performed one start and one finish."
+  },
+  "scientific_execution": {
+    "actions_run_id": 35784042283,
+    "actions_job_id": 106936348157,
+    "artifact_id": 10719057296,
+    "artifact_zip_sha256": "6ba641d86aaf6eecd3465ddcb55d0e4fd9eac91f59f4e3414c6d31baba176fb4",
+    "new_scientific_run_during_queue_finish": false
+  },
+  "scope": {
+    "public_benchmark": false,
+    "paid_compute": false,
+    "holdout": false,
+    "submission": false,
+    "sweep": false,
+    "rerun": false,
+    "r215_rescue": false
+  }
+}
