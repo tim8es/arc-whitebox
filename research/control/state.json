@@ -1589,6 +1589,18 @@
         "reason": "The only recorded R227 attempt did not execute: no Actions run/process/evidence existed, and no estimator or mini-100 run occurred. Repair the missing free public-runner path for the already-frozen source-feasibility script only; preserve the hypothesis/protocol and do not authorize candidate evaluation unless the frozen source gate passes."
       },
       "revision": 122
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T22:57:00.000Z",
+      "job": "R231",
+      "owner": "v25-error-tail-audit",
+      "payload": {
+        "run_id": "R231-v25-error-tail-audit-20260923",
+        "code_commit": "5d41ec95d7efebeb5377f2e592076c2363a999e6",
+        "command": "read-only deterministic analysis of research/results/R209-v25-mini100.json: verify SHA/100 rows; compute raw-MSE distribution, top-k concentration, leave-one-out sensitivity, score floor and cross-panel 2.1e-9 numerical target; no estimator, paid/private data, submission, or canonical edits"
+      },
+      "revision": 123
     }
   ],
   "jobs": [
@@ -2591,19 +2603,26 @@
       "title": "Quantify V25 mini-100 error-tail concentration and target frontier",
       "owner": "v25-error-tail-audit",
       "assigned_owner": "v25-error-tail-audit",
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "priority": 1,
       "hypothesis_id": "R209-V25-ERROR-TAIL-TARGET-FRONTIER",
       "depends_on": [
         "R228",
         "R229"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R231-v25-error-tail-audit-20260923",
+          "code_commit": "5d41ec95d7efebeb5377f2e592076c2363a999e6",
+          "command": "read-only deterministic analysis of research/results/R209-v25-mini100.json: verify SHA/100 rows; compute raw-MSE distribution, top-k concentration, leave-one-out sensitivity, score floor and cross-panel 2.1e-9 numerical target; no estimator, paid/private data, submission, or canonical edits",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Using the exact R226-integrated R209 V25 mini-100 row data and the R228 public leaderboard snapshot, perform a reproducible descriptive tail-concentration and target-frontier audit. Verify input hashes and all 100 rows; report mean/median/quantiles, top-1/5/10/20 network shares of total raw MSE, leave-one-out mean sensitivity, and any concentration statistic justified by the exact fields. Derive the official score floor under V25's current C/B and the minimum raw-MSE reduction needed to numerically match the displayed 2.1e-9 leader score at the 0.1 compute-factor floor; label this strictly as a cross-panel numerical target, not rank/comparable evidence. State limits from missing raw tensors and fixed network size/shape. No estimator run, experiment, paid/holdout data, submission or canonical edits. Save a small reproducible script/table and append-only report/receipt with hashes; recommend whether the next effort should target global accuracy, compute factor, or a measurable tail subset."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 122,
+  "revision": 123,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
