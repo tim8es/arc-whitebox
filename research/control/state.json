@@ -327,6 +327,22 @@
         "command": "python scripts/arc_control.py compare research/results/R205-v29-l4.json research/results/E173-ago.json"
       },
       "at": "2026-09-22T16:43:53.815Z"
+    },
+    {
+      "revision": 28,
+      "action": "finish",
+      "job": "R204",
+      "owner": "audit",
+      "payload": {
+        "run_id": "R204-integration-audit-r201-r205-e173",
+        "status": "COMPLETE",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b95b0bae959d20cb6c1c7802079944184d87748d/research/R204_R205_INTEGRATION_RECEIPT.json",
+          "sha256": "286a757440426a112e629862cb7bd8d224eba10269908f63d566f12edc52fabc"
+        },
+        "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission."
+      },
+      "at": "2026-09-22T16:43:54.815Z"
     }
   ],
   "jobs": [
@@ -436,7 +452,16 @@
           "run_id": "R204-integration-audit-r201-r205-e173",
           "code_commit": "b95b0bae959d20cb6c1c7802079944184d87748d",
           "command": "python scripts/arc_control.py compare research/results/R205-v29-l4.json research/results/E173-ago.json",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R204-integration-audit-r201-r205-e173",
+            "status": "COMPLETE",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/b95b0bae959d20cb6c1c7802079944184d87748d/research/R204_R205_INTEGRATION_RECEIPT.json",
+              "sha256": "286a757440426a112e629862cb7bd8d224eba10269908f63d566f12edc52fabc"
+            },
+            "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission."
+          }
         }
       ],
       "deliverable": "Verify exact result commit/artifact, comparable panel and score; recommend one bounded measured change, or explicit INCONCLUSIVE. No rejection because upstream input is absent.",
@@ -447,8 +472,13 @@
       "id": "R204",
       "owner": "audit",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Независимо проверить результат R201 и назначить следующую модификацию"
+      "status": "COMPLETE",
+      "title": "Независимо проверить результат R201 и назначить следующую модификацию",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/b95b0bae959d20cb6c1c7802079944184d87748d/research/R204_R205_INTEGRATION_RECEIPT.json",
+        "sha256": "286a757440426a112e629862cb7bd8d224eba10269908f63d566f12edc52fabc"
+      },
+      "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission."
     },
     {
       "assigned_owner": "baseline",
@@ -561,7 +591,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 27,
+  "revision": 28,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
