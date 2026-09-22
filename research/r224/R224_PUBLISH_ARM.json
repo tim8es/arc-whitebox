@@ -1,0 +1,24 @@
+{
+  "schema": "arc.whitebox.r224.publish_arm.v1",
+  "job_id": "R224",
+  "owner": "postflight-audit",
+  "attempt": 1,
+  "run_id": "R224-publish-normalized-evidence-attempt1",
+  "publish_workflow_commit": "668c73a34bc111f8ae9fa98dff2761beb64b6b19",
+  "fingerprint_run_id": 35788780990,
+  "fingerprint_artifact_id": 10720913493,
+  "normalize_run_id": 35789283577,
+  "normalize_artifact_id": 10721785679,
+  "expected_normalized_sha256": {
+    "v25": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "v29": "1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751"
+  },
+  "expected_check": "PASS: 6 normalized results, 25 jobs, 194 history entries",
+  "estimator_run": false,
+  "safety": {
+    "holdout": false,
+    "full_split": false,
+    "submission": false,
+    "paid_or_larger_runner": false
+  }
+}
