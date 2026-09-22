@@ -1186,6 +1186,54 @@
         "status": "INFRA_ERROR"
       },
       "revision": 91
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T21:40:15.983Z",
+      "job": "R224",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "postflight-audit",
+        "deliverable": "Continue from R222's precise schema gap. Using only the published immutable `@v2-phase2` mini-100 dataset, recover and verify per-network `network_id`, canonical target_sha256 and explicit dtype for the exact R209 V25/V29 100-row name/order. Reconcile the panel with dataset SHA 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1; document canonical hashing method and any ambiguity. Do not run an estimator. If all required fields are proved, create schema-valid normalized V25/V29 records from the existing R209 reports/artifacts and run `arc_control.py check/compare`; otherwise publish precise NOT_COMPARABLE receipt. Preserve V29 failures and absence of raw prediction tensors. Work on a review branch; no paid compute, holdout or submission.",
+        "depends_on": [
+          "R222"
+        ],
+        "hypothesis_id": "R209-MINI100-TARGET-FINGERPRINT-RECOVERY",
+        "priority": 1,
+        "title": "Recover exact mini-100 target fingerprints for R209 normalization"
+      },
+      "revision": 92
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T21:40:15.983Z",
+      "job": "R225",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "leaderboard-audit",
+        "deliverable": "Read-only independent audit of R219 receipt `research/r219/R219_TERMINAL_RECEIPT.json` (receipt SHA256 c8c0fd2f91d885b5ec4ec7fa56b7ff6f7c453a85900fd14f8c48ae9d97a47eb7). Recompute the even-parity four-Rademacher and independent-law marginals/pair laws, E[ReLU(sum Xi)] values, minimax error lower bound 1/8, and verify the claimed one-factor Gaussian-copula state limitation and conservative cost arithmetic against the frozen protocol/artifacts. Report exact scope and any flaw; do not rerun or widen the rejected family. Create a review receipt/commit and finish queue. No holdout, paid resource, submission or leaderboard changes.",
+        "depends_on": [],
+        "hypothesis_id": "R219-1FGC8-INDEPENDENT-VERIFICATION",
+        "priority": 1,
+        "title": "Independently verify R219 factor-copula non-closure proof"
+      },
+      "revision": 93
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T21:40:15.983Z",
+      "job": "R224",
+      "owner": "postflight-audit",
+      "payload": {},
+      "revision": 94
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T21:40:15.983Z",
+      "job": "R225",
+      "owner": "leaderboard-audit",
+      "payload": {},
+      "revision": 95
     }
   ],
   "jobs": [
@@ -1941,10 +1989,36 @@
       },
       "status": "INFRA_ERROR",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
+    },
+    {
+      "assigned_owner": "postflight-audit",
+      "attempts": [],
+      "deliverable": "Continue from R222's precise schema gap. Using only the published immutable `@v2-phase2` mini-100 dataset, recover and verify per-network `network_id`, canonical target_sha256 and explicit dtype for the exact R209 V25/V29 100-row name/order. Reconcile the panel with dataset SHA 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1; document canonical hashing method and any ambiguity. Do not run an estimator. If all required fields are proved, create schema-valid normalized V25/V29 records from the existing R209 reports/artifacts and run `arc_control.py check/compare`; otherwise publish precise NOT_COMPARABLE receipt. Preserve V29 failures and absence of raw prediction tensors. Work on a review branch; no paid compute, holdout or submission.",
+      "depends_on": [
+        "R222"
+      ],
+      "hypothesis_id": "R209-MINI100-TARGET-FINGERPRINT-RECOVERY",
+      "id": "R224",
+      "owner": "postflight-audit",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Recover exact mini-100 target fingerprints for R209 normalization"
+    },
+    {
+      "assigned_owner": "leaderboard-audit",
+      "attempts": [],
+      "deliverable": "Read-only independent audit of R219 receipt `research/r219/R219_TERMINAL_RECEIPT.json` (receipt SHA256 c8c0fd2f91d885b5ec4ec7fa56b7ff6f7c453a85900fd14f8c48ae9d97a47eb7). Recompute the even-parity four-Rademacher and independent-law marginals/pair laws, E[ReLU(sum Xi)] values, minimax error lower bound 1/8, and verify the claimed one-factor Gaussian-copula state limitation and conservative cost arithmetic against the frozen protocol/artifacts. Report exact scope and any flaw; do not rerun or widen the rejected family. Create a review receipt/commit and finish queue. No holdout, paid resource, submission or leaderboard changes.",
+      "depends_on": [],
+      "hypothesis_id": "R219-1FGC8-INDEPENDENT-VERIFICATION",
+      "id": "R225",
+      "owner": "leaderboard-audit",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Independently verify R219 factor-copula non-closure proof"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 91,
+  "revision": 95,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
