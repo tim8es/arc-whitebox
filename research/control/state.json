@@ -108,6 +108,14 @@
         "status": "COMPLETE"
       },
       "revision": 9
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T15:50:17.548911+00:00",
+      "job": "R204",
+      "owner": "audit",
+      "payload": {},
+      "revision": 10
     }
   ],
   "jobs": [
@@ -219,14 +227,14 @@
       ],
       "hypothesis_id": "BASELINE-COMPARISON",
       "id": "R204",
-      "owner": null,
+      "owner": "audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Независимо проверить результат R201 и назначить следующую модификацию"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 9,
+  "revision": 10,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
