@@ -1,0 +1,88 @@
+name: R215 finalize central control
+
+on:
+  push:
+    branches:
+      - research/r215-marginal-characteristic-function-20260922
+    paths:
+      - 'research/r215/R215_CONTROL_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R215 control"
+          git config user.email "arc-control@users.noreply.github.com"
+
+      - name: Verify R215 receipt and publish start
+        run: |
+          set -euo pipefail
+          git fetch origin fb73acf53af31c8ce8553211d202134a20b7c1c5
+          git show fb73acf53af31c8ce8553211d202134a20b7c1c5:research/r215/R215_TERMINAL_RECEIPT.json > /tmp/r215_receipt.json
+          sha256sum /tmp/r215_receipt.json
+
+          cat > /tmp/r215_start.json <<'JSON'
+          {
+            "run_id": "R215-marginal-cf-falsifier-35781645472",
+            "code_commit": "7377d87d12cfcd7c6db27ba9911a2a1b969ceb0c",
+            "command": "existing Actions run 35781645472: frozen cost-feasible exact-small FMCF-32 nonclosure falsifier"
+          }
+          JSON
+
+          python scripts/arc_control.py start R215             --owner method-research             --payload /tmp/r215_start.json             --publish | tee /tmp/r215_control_start.json
+
+      - name: Publish terminal scientific reject
+        run: |
+          set -euo pipefail
+          RECEIPT_SHA="$(sha256sum /tmp/r215_receipt.json | awk '{print $1}')"
+          python - "$RECEIPT_SHA" <<'PY'
+          import json, sys
+          sha=sys.argv[1]
+          payload={
+            "run_id":"R215-marginal-cf-falsifier-35781645472",
+            "status":"SCIENTIFIC_REJECT",
+            "reason":"One new estimator-level family was screened: factorized marginal characteristic-function closure FMCF-32. Production arithmetic was cost-feasible (conservative estimator-only upper 0.006105423B < 0.135B), so exactly one target-free exact-small synthetic falsifier ran. Two joint laws with identical complete univariate marginal characteristic functions produced different next preactivation CFs and ReLU means (1 vs 0), giving a same-state worst-case absolute error lower bound 1/2. Therefore marginal-only CF transport is not closed under dependent dense mixing; terminal scientific NO-GO. No holdout, paid resource, submission, sweep or rerun.",
+            "receipt":{
+              "url":"https://github.com/tim8es/arc-whitebox/blob/fb73acf53af31c8ce8553211d202134a20b7c1c5/research/r215/R215_TERMINAL_RECEIPT.json",
+              "sha256":sha
+            }
+          }
+          open("/tmp/r215_finish.json","w").write(json.dumps(payload,indent=2,sort_keys=True)+"\n")
+          PY
+
+          python scripts/arc_control.py finish R215             --owner method-research             --payload /tmp/r215_finish.json             --publish | tee /tmp/r215_control_finish.json
+
+      - name: Verify remote R215 terminal state
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control_state.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control_state.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R215")
+          assert job["status"]=="SCIENTIFIC_REJECT", job
+          assert len(job["attempts"])==1, job["attempts"]
+          assert job["attempts"][0]["run_id"]=="R215-marginal-cf-falsifier-35781645472"
+          assert job["receipt"]["url"].endswith("/research/r215/R215_TERMINAL_RECEIPT.json")
+          print(json.dumps({
+            "revision":state["revision"],
+            "status":job["status"],
+            "attempts":job["attempts"],
+            "receipt":job["receipt"],
+            "reason":job["reason"]
+          },indent=2,sort_keys=True))
+          PY
