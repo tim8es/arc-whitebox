@@ -1,0 +1,68 @@
+{
+  "schema": "arc.whitebox.r224.fingerprint_recovery_protocol.v1",
+  "job_id": "R224",
+  "owner": "postflight-audit",
+  "status": "FROZEN_BEFORE_EXTRACTION",
+  "mode": "PUBLISHED_DATASET_EVIDENCE_ONLY_NO_ESTIMATOR",
+  "parent_r222_receipt_commit": "7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b",
+  "dataset": {
+    "repo": "aicrowd/arc-whestbench-public-2026",
+    "revision": "v2-phase2",
+    "split": "mini",
+    "expected_count": 100,
+    "expected_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "expected_name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce"
+  },
+  "fields_read": [
+    "mlp_id",
+    "mlp_name",
+    "mlp_seed",
+    "all_layer_means"
+  ],
+  "network_id_rule": "decimal string of exact published int64 mlp_seed; validated against E174 first-five seed_separation",
+  "target_sha256_rule": "sha256(np.ascontiguousarray(np.asarray(all_layer_means,dtype=np.float32)).tobytes())",
+  "dtype_rule": "float32 from published dataset schema and runtime all_layer_means array; expected shape [16,1024]",
+  "first5_controls": [
+    {
+      "name": "logan-fitzgerald",
+      "network_id": "6319981554997072999",
+      "target_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82"
+    },
+    {
+      "name": "william-graves",
+      "network_id": "2392109381927064353",
+      "target_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4"
+    },
+    {
+      "name": "raymond-barnes",
+      "network_id": "4030325997523501402",
+      "target_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34"
+    },
+    {
+      "name": "steven-rice",
+      "network_id": "6959524404880716684",
+      "target_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b"
+    },
+    {
+      "name": "sarah-kelley",
+      "network_id": "3958198382245770826",
+      "target_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9"
+    }
+  ],
+  "gates": [
+    "metadata sha exact",
+    "100 rows",
+    "exact 100-name order",
+    "unique network_id",
+    "unique target_sha256",
+    "all target dtype float32 shape [16,1024]",
+    "first-five controls exact"
+  ],
+  "forbidden": [
+    "estimator import or execution",
+    "prediction generation",
+    "holdout/full split",
+    "submission",
+    "paid/larger runner"
+  ]
+}

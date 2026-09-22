@@ -1,0 +1,53 @@
+name: R224 mini-100 fingerprint recovery
+on:
+  push:
+    branches:
+      - review/r224-r209-mini100-fingerprints-20260922
+    paths:
+      - research/r224/R224_RUN_ARM.json
+permissions:
+  contents: read
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install evidence-only dependencies
+        run: python -m pip install "numpy==2.4.6" "datasets==4.1.1"
+      - name: Extract published mini-100 fingerprints
+        run: |
+          mkdir -p r224
+          python scripts/r224_extract_public_mini100.py \
+            --expected-names research/r224/R224_R209_EXPECTED_NAMES.json \
+            --out r224/R224_MINI100_FINGERPRINTS.json \
+            > r224/extract.stdout 2> r224/extract.stderr
+          printf '%s\n' $? > r224/extract.exit
+      - name: Record environment and hashes
+        if: always()
+        run: |
+          python - <<'PY' > r224/environment.txt
+          import platform, numpy, datasets, huggingface_hub
+          print("python",platform.python_version())
+          print("numpy",numpy.__version__)
+          print("datasets",datasets.__version__)
+          print("huggingface_hub",huggingface_hub.__version__)
+          PY
+          python - <<'PY'
+          import hashlib,json,pathlib
+          root=pathlib.Path("r224"); out={}
+          for p in sorted(root.iterdir()):
+              if p.is_file() and p.name!="sha256.json":
+                  out[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/"sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r224-mini100-fingerprints
+          path: r224/
+          if-no-files-found: error
