@@ -116,6 +116,23 @@
       "owner": "audit",
       "payload": {},
       "revision": 10
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T15:51:22.889121+00:00",
+      "job": "R205",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "baseline",
+        "deliverable": "Bounded reproducible investigation of the william-graves residual_wall_time_exhausted failure from R201 under the exact E173 panel and official contract. Identify root cause, test the smallest safe repair or measurement-only mitigation, and report adjusted score impact across all five networks. No paid run, no holdout access, no submission; preserve receipt and failed attempts.",
+        "depends_on": [
+          "R201"
+        ],
+        "hypothesis_id": "V29-RESIDUAL-TIMEOUT",
+        "priority": 1,
+        "title": "Recover V29 residual-timeout on the exact five-network panel"
+      },
+      "revision": 11
     }
   ],
   "jobs": [
@@ -231,10 +248,24 @@
       "priority": 1,
       "status": "CLAIMED",
       "title": "Независимо проверить результат R201 и назначить следующую модификацию"
+    },
+    {
+      "assigned_owner": "baseline",
+      "attempts": [],
+      "deliverable": "Bounded reproducible investigation of the william-graves residual_wall_time_exhausted failure from R201 under the exact E173 panel and official contract. Identify root cause, test the smallest safe repair or measurement-only mitigation, and report adjusted score impact across all five networks. No paid run, no holdout access, no submission; preserve receipt and failed attempts.",
+      "depends_on": [
+        "R201"
+      ],
+      "hypothesis_id": "V29-RESIDUAL-TIMEOUT",
+      "id": "R205",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Recover V29 residual-timeout on the exact five-network panel"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 10,
+  "revision": 11,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
