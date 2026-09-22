@@ -1731,6 +1731,22 @@
         "command": "read-only inspect frozen R217 protocol and R218 workflow/executor/schema; prepare independent offline artifact verifier/checklist only; do not run estimator, poll/alter R218, access holdout, or claim R220"
       },
       "revision": 133
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T23:54:00.000Z",
+      "job": "R234",
+      "owner": "postflight-preflight",
+      "payload": {
+        "reason": "R234 protocol/tooling prep complete without inspecting the in-progress R218 artifact or running any estimator. Independently pinned R217 frozen protocol (SHA256 40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968), R218 executor/workflow/expected-panel/prelaunch/arm sources, and the exact predeclared verdict: GO only if all contract/provenance gates pass plus primary median C0-C1 >=20 ms, CPU0 slower on >=35/50 MLPs, and C0-C1 failure difference >=10; any gate failure => PROTOCOL_INVALID. Prepared research/r234/r234_verify_r218.py to verify artifact hashes, all six raw block reports/300 rows, exact panel/order/FLOPs, budget/limits, per-block CPU affinity and stable worker telemetry, recompute U/C0/C1 paired means, primary delta, failure difference and owner-summary consistency. Prepared R234_VERIFIER_CHECKLIST.json with mandatory external R220 gates for single-job Actions provenance and estimator source SHA, since those cannot be proved from the artifact alone. R218 remains RUNNING; R220 remains QUEUED/unclaimed. No estimator, holdout, submission, retry/rescue, R218 mutation, or R220 claim/start.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/2a0e68fed7e66e4e4952a97103df880b1cb223bf/research/r234/R234_PREP_RECEIPT.json",
+          "sha256": "c90cf7dc64badf1330adc51753356769659cbb713957ced7e583d35d711aae84"
+        },
+        "run_id": "R234-r218-postflight-verifier-prep-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 134
     }
   ],
   "jobs": [
@@ -2813,7 +2829,7 @@
       "title": "Prepare independent R218 crossover postflight verifier",
       "owner": "postflight-preflight",
       "assigned_owner": "postflight-preflight",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "priority": 1,
       "hypothesis_id": "R218-POSTFLIGHT-VERIFIER-PREP",
       "depends_on": [],
@@ -2822,14 +2838,28 @@
           "run_id": "R234-r218-postflight-verifier-prep-20260923",
           "code_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
           "command": "read-only inspect frozen R217 protocol and R218 workflow/executor/schema; prepare independent offline artifact verifier/checklist only; do not run estimator, poll/alter R218, access holdout, or claim R220",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "R234 protocol/tooling prep complete without inspecting the in-progress R218 artifact or running any estimator. Independently pinned R217 frozen protocol (SHA256 40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968), R218 executor/workflow/expected-panel/prelaunch/arm sources, and the exact predeclared verdict: GO only if all contract/provenance gates pass plus primary median C0-C1 >=20 ms, CPU0 slower on >=35/50 MLPs, and C0-C1 failure difference >=10; any gate failure => PROTOCOL_INVALID. Prepared research/r234/r234_verify_r218.py to verify artifact hashes, all six raw block reports/300 rows, exact panel/order/FLOPs, budget/limits, per-block CPU affinity and stable worker telemetry, recompute U/C0/C1 paired means, primary delta, failure difference and owner-summary consistency. Prepared R234_VERIFIER_CHECKLIST.json with mandatory external R220 gates for single-job Actions provenance and estimator source SHA, since those cannot be proved from the artifact alone. R218 remains RUNNING; R220 remains QUEUED/unclaimed. No estimator, holdout, submission, retry/rescue, R218 mutation, or R220 claim/start.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/2a0e68fed7e66e4e4952a97103df880b1cb223bf/research/r234/R234_PREP_RECEIPT.json",
+              "sha256": "c90cf7dc64badf1330adc51753356769659cbb713957ced7e583d35d711aae84"
+            },
+            "run_id": "R234-r218-postflight-verifier-prep-20260923",
+            "status": "COMPLETE"
+          }
         }
       ],
-      "deliverable": "While the frozen R218 Actions run is still executing, independently inspect R217's frozen thresholds, R218 workflow and output schema. Prepare a small reproducible postflight verifier/checklist that will validate the six blocks, all 300 rows, same worker/allowed CPU gates, panel/order/FLOPs, per-MLP C0/C1/U means, primary delta and failure difference, then apply the predeclared GO/NO-GO exactly. Protocol/tooling prep only now: do not wait-poll repeatedly, inspect hidden data, rerun or alter the experiment. Commit the verifier/receipt; when R218 completes, use this prepared work for R220 (the queued postflight audit) without duplicating the scientific run."
+      "deliverable": "While the frozen R218 Actions run is still executing, independently inspect R217's frozen thresholds, R218 workflow and output schema. Prepare a small reproducible postflight verifier/checklist that will validate the six blocks, all 300 rows, same worker/allowed CPU gates, panel/order/FLOPs, per-MLP C0/C1/U means, primary delta and failure difference, then apply the predeclared GO/NO-GO exactly. Protocol/tooling prep only now: do not wait-poll repeatedly, inspect hidden data, rerun or alter the experiment. Commit the verifier/receipt; when R218 completes, use this prepared work for R220 (the queued postflight audit) without duplicating the scientific run.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/2a0e68fed7e66e4e4952a97103df880b1cb223bf/research/r234/R234_PREP_RECEIPT.json",
+        "sha256": "c90cf7dc64badf1330adc51753356769659cbb713957ced7e583d35d711aae84"
+      },
+      "reason": "R234 protocol/tooling prep complete without inspecting the in-progress R218 artifact or running any estimator. Independently pinned R217 frozen protocol (SHA256 40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968), R218 executor/workflow/expected-panel/prelaunch/arm sources, and the exact predeclared verdict: GO only if all contract/provenance gates pass plus primary median C0-C1 >=20 ms, CPU0 slower on >=35/50 MLPs, and C0-C1 failure difference >=10; any gate failure => PROTOCOL_INVALID. Prepared research/r234/r234_verify_r218.py to verify artifact hashes, all six raw block reports/300 rows, exact panel/order/FLOPs, budget/limits, per-block CPU affinity and stable worker telemetry, recompute U/C0/C1 paired means, primary delta, failure difference and owner-summary consistency. Prepared R234_VERIFIER_CHECKLIST.json with mandatory external R220 gates for single-job Actions provenance and estimator source SHA, since those cannot be proved from the artifact alone. R218 remains RUNNING; R220 remains QUEUED/unclaimed. No estimator, holdout, submission, retry/rescue, R218 mutation, or R220 claim/start."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 133,
+  "revision": 134,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
