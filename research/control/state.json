@@ -733,6 +733,14 @@
       "owner": "leaderboard-audit",
       "payload": {},
       "revision": 58
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T20:29:16.338270+00:00",
+      "job": "R217",
+      "owner": "baseline-diagnosis",
+      "payload": {},
+      "revision": 59
     }
   ],
   "jobs": [
@@ -1233,14 +1241,14 @@
       "depends_on": [],
       "hypothesis_id": "R210-AFFINITY-ROOT-CAUSE",
       "id": "R217",
-      "owner": null,
+      "owner": "baseline-diagnosis",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Explain why single-CPU affinity worsened R210 and freeze the next runtime hypothesis"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 58,
+  "revision": 59,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
