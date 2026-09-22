@@ -1,0 +1,64 @@
+name: R202 TA32 kernel probe
+
+on:
+  push:
+    branches:
+      - research/r202-h185-ta32-kernel-20260922
+    paths:
+      - methods/r202_ta32_kernel.py
+      - tests/test_r202_ta32_kernel.py
+      - scripts/r202_ta32_probe.py
+      - .github/workflows/r202-ta32-kernel.yml
+  workflow_dispatch:
+
+jobs:
+  ta32-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      VECLIB_MAXIMUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install minimal probe dependencies
+        run: python -m pip install "numpy>=2.0" "scipy>=1.13" "pytest>=8.2"
+
+      - name: Fetch pinned TA32 scheme
+        run: |
+          mkdir -p .cache/r202
+          curl --fail --location --retry 3 \
+            "https://raw.githubusercontent.com/khoruzhii/lita/c1dd9225df98676e385b53ae7517ff2ea0ec5779/schemes/32x32x32_r14197.npz" \
+            -o .cache/r202/32x32x32_r14197.npz
+          python - <<'PY'
+          from pathlib import Path
+          from methods.r202_ta32_kernel import git_blob_sha1, sha256_file, SCHEME_GIT_BLOB_SHA1
+          p = Path(".cache/r202/32x32x32_r14197.npz")
+          got = git_blob_sha1(p.read_bytes())
+          print("scheme_bytes", p.stat().st_size)
+          print("scheme_git_blob_sha1", got)
+          print("scheme_sha256", sha256_file(p))
+          if got != SCHEME_GIT_BLOB_SHA1:
+              raise SystemExit("pinned scheme Git blob mismatch")
+          PY
+
+      - name: Unit tests
+        run: python -m pytest -q tests/test_r202_ta32_kernel.py
+
+      - name: Exact and float32 production-shape kernel probe
+        run: |
+          mkdir -p artifacts/r202
+          python scripts/r202_ta32_probe.py \
+            --scheme .cache/r202/32x32x32_r14197.npz \
+            --out artifacts/r202/R202_TA32_KERNEL_RECEIPT.json \
+            --seed 202 \
+            --n 1024
+          echo "receipt_sha256=$(sha256sum artifacts/r202/R202_TA32_KERNEL_RECEIPT.json | cut -d' ' -f1)"
