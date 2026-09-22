@@ -1613,6 +1613,22 @@
         "command": "GitHub Actions .github/workflows/r227-source-feasibility.yml on standard ubuntu-24.04: fetch pinned upstream commit 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45, verify exact git blobs, run exactly once `python scripts/r227_srm2_feasibility.py --v25 r227-inputs/estimator_v25.py --probe r227-inputs/g_regen_probe.py --findings r227-inputs/findings_log.md --claims r227-inputs/claims_evidence.md --out r227-feasibility.json`; source-feasibility only, no estimator/mini-100"
       },
       "at": "2026-09-22T22:57:15.889Z"
+    },
+    {
+      "revision": 125,
+      "action": "finish",
+      "job": "R227",
+      "owner": "v25-optimization",
+      "payload": {
+        "reason": "Frozen R227 V25-SRM2 source/deployability falsifier executed exactly once on free standard ubuntu-24.04 GitHub Actions for this public repository (run 35795094121, job 106972445213, exit 0). All pinned upstream git blobs matched. The gate is terminal PRE-SCIENCE NO-GO: published evidence obtains extra regeneration coefficients by dense augmented-chain G_off least-squares/xregen fitting; pinned V25 contains no deployable multi-mode runtime rule/table, and a literal dense extra mode is score-worse even granting the full 1.1% oracle raw gain (optimistic adjusted ratio 1.0258769953309217). Artifact 10723657950 preserves stdout, exit code, input identities, execution receipt and feasibility JSON, zip SHA256 a15c149a8598aacdb40313c6e125aecca9cea8bf7fa1fc2d86e455855d3f2f65. No estimator/mini-100 run, paid runner, holdout, submission, protocol/parent change, rescue or canonical mutation.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/0989fa6f7153bf007f7e7500c59f506e59eb7950/research/r227/R227_TERMINAL_RECEIPT.json",
+          "sha256": "f2d378346dafb2141b46abee31931e95aabec7fd880b9e369003d3f5f048de3b"
+        },
+        "run_id": "R227-v25-srm2-feasibility-repair-20260923",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "at": "2026-09-22T23:00:09.326Z"
     }
   ],
   "jobs": [
@@ -2494,7 +2510,16 @@
           "run_id": "R227-v25-srm2-feasibility-repair-20260923",
           "code_commit": "d9afae35aa7b6af1f065b27f450c89065ef6a5ef",
           "command": "GitHub Actions .github/workflows/r227-source-feasibility.yml on standard ubuntu-24.04: fetch pinned upstream commit 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45, verify exact git blobs, run exactly once `python scripts/r227_srm2_feasibility.py --v25 r227-inputs/estimator_v25.py --probe r227-inputs/g_regen_probe.py --findings r227-inputs/findings_log.md --claims r227-inputs/claims_evidence.md --out r227-feasibility.json`; source-feasibility only, no estimator/mini-100",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT",
+          "completion": {
+            "reason": "Frozen R227 V25-SRM2 source/deployability falsifier executed exactly once on free standard ubuntu-24.04 GitHub Actions for this public repository (run 35795094121, job 106972445213, exit 0). All pinned upstream git blobs matched. The gate is terminal PRE-SCIENCE NO-GO: published evidence obtains extra regeneration coefficients by dense augmented-chain G_off least-squares/xregen fitting; pinned V25 contains no deployable multi-mode runtime rule/table, and a literal dense extra mode is score-worse even granting the full 1.1% oracle raw gain (optimistic adjusted ratio 1.0258769953309217). Artifact 10723657950 preserves stdout, exit code, input identities, execution receipt and feasibility JSON, zip SHA256 a15c149a8598aacdb40313c6e125aecca9cea8bf7fa1fc2d86e455855d3f2f65. No estimator/mini-100 run, paid runner, holdout, submission, protocol/parent change, rescue or canonical mutation.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/0989fa6f7153bf007f7e7500c59f506e59eb7950/research/r227/R227_TERMINAL_RECEIPT.json",
+              "sha256": "f2d378346dafb2141b46abee31931e95aabec7fd880b9e369003d3f5f048de3b"
+            },
+            "run_id": "R227-v25-srm2-feasibility-repair-20260923",
+            "status": "SCIENTIFIC_REJECT"
+          }
         }
       ],
       "deliverable": "Read current `AGENTS.md`, `research/RESEARCH_PROCESS.md`, immutable history and R224's normalized per-network V25 mini-100 records. Choose exactly one untried algorithm-level change aimed at lowering official adjusted score on this same public development panel; explicitly exclude R223's K4-to-K3 per-neuron feed-lambda patch, R219's factor-copula family, and all previously falsified mechanisms. Freeze parent/source/config/falsifier, predicted cost and GO/NO-GO before execution. Run at most one bounded same-panel candidate evaluation using verified free/existing compute only; keep canonical V25 unchanged. Retain every network row/failure, compare official adjusted score and measured FLOPs, create artifact/receipt/commit. If no distinct feasible candidate exists, finish with a scoped terminal NO-GO. No paid resource, holdout or submission.",
@@ -2505,13 +2530,13 @@
       "id": "R227",
       "owner": "v25-optimization",
       "priority": 1,
-      "status": "RUNNING",
+      "status": "SCIENTIFIC_REJECT",
       "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json",
-        "sha256": "779003b529981c331e755441d457067823cdae6870c7b452f0c7aad159bd89ba"
+        "url": "https://github.com/tim8es/arc-whitebox/blob/0989fa6f7153bf007f7e7500c59f506e59eb7950/research/r227/R227_TERMINAL_RECEIPT.json",
+        "sha256": "f2d378346dafb2141b46abee31931e95aabec7fd880b9e369003d3f5f048de3b"
       },
-      "reason": "The only recorded R227 attempt did not execute: no Actions run/process/evidence existed, and no estimator or mini-100 run occurred. Repair the missing free public-runner path for the already-frozen source-feasibility script only; preserve the hypothesis/protocol and do not authorize candidate evaluation unless the frozen source gate passes."
+      "reason": "Frozen R227 V25-SRM2 source/deployability falsifier executed exactly once on free standard ubuntu-24.04 GitHub Actions for this public repository (run 35795094121, job 106972445213, exit 0). All pinned upstream git blobs matched. The gate is terminal PRE-SCIENCE NO-GO: published evidence obtains extra regeneration coefficients by dense augmented-chain G_off least-squares/xregen fitting; pinned V25 contains no deployable multi-mode runtime rule/table, and a literal dense extra mode is score-worse even granting the full 1.1% oracle raw gain (optimistic adjusted ratio 1.0258769953309217). Artifact 10723657950 preserves stdout, exit code, input identities, execution receipt and feasibility JSON, zip SHA256 a15c149a8598aacdb40313c6e125aecca9cea8bf7fa1fc2d86e455855d3f2f65. No estimator/mini-100 run, paid runner, holdout, submission, protocol/parent change, rescue or canonical mutation."
     },
     {
       "id": "R228",
@@ -2640,7 +2665,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 124,
+  "revision": 125,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
