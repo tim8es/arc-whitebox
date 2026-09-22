@@ -1,0 +1,171 @@
+{
+  "schema": "arc.whitebox.r216.v25_leaderboard_comparability.v1",
+  "task": "R216",
+  "audit_date": "2026-09-22",
+  "mode": "source-backed read-only leaderboard comparability audit; no submission; no private holdout",
+  "base_evidence": {
+    "r209_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+    "r209_receipt_blob_sha": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+    "v25": {
+      "local_panel": "published Public Release dataset @v2-phase2, split mini",
+      "n_mlps": 100,
+      "adjusted_final_layer_score": 8.170397440117225e-9,
+      "mean_raw_final_layer_mse": 2.228303490170447e-8,
+      "mean_c_over_b": 0.36666448157347986,
+      "n_failed_mlps": 0,
+      "report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+      "estimator_blob_sha": "195373a110215256b759d7c172ba8c923c62e5cc"
+    }
+  },
+  "official_sources": [
+    {
+      "id": "aicrowd_current_leaderboard",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+      "accessed": "2026-09-22",
+      "role": "current official Phase-2 public leaderboard",
+      "observed": {
+        "columns": [
+          "Adjusted Score",
+          "Final Layer MSE",
+          "Compute utilisation",
+          "MLPs failed"
+        ],
+        "first_displayed_entry": {
+          "rank_display": "01",
+          "participant": "J2W",
+          "adjusted_score": 2.1e-9,
+          "final_layer_mse": 1.64e-8,
+          "compute_utilisation": 0.1306572576,
+          "mlps_failed": 0
+        },
+        "entry_504aldo": {
+          "rank_display": "42",
+          "adjusted_score": 5.4e-9,
+          "final_layer_mse": 2.13e-8,
+          "compute_utilisation": 0.2541647096,
+          "mlps_failed": 0
+        }
+      },
+      "note": "These are leaderboard-page displayed values and are rounded by the site. They are context only for R216; no V25 rank is inferred from them."
+    },
+    {
+      "id": "aicrowd_phase2_submission_semantics",
+      "url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+      "accessed": "2026-09-22",
+      "role": "official Phase-2 graded submission page demonstrating current public/private scoring partition",
+      "observed": {
+        "round": "Phase 2",
+        "public_scored": "50/50",
+        "public_score_is_mean_over": "50 public MLPs",
+        "test_set_partition": "50 public + 50 private/gated",
+        "full_test_set": "100 MLPs",
+        "private_status": "sealed until results release",
+        "public_page_statement": "current visible submission metrics are graded on the 50 public MLPs; final full-test score uses all 100 after the private half is released"
+      }
+    },
+    {
+      "id": "official_phase2_launch",
+      "url": "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197",
+      "accessed": "2026-09-22",
+      "role": "AIcrowd organizer Phase-2 launch announcement",
+      "observed": {
+        "width": 1024,
+        "depth": 16,
+        "flop_budget": 2199023255552,
+        "wall_time_limit_s": 120,
+        "residual_wall_time_limit_s": 0.4,
+        "dataset_revision": "v2-phase2",
+        "effective_compute": "C_m = F_m",
+        "residual_lambda": 0
+      }
+    },
+    {
+      "id": "official_starterkit_scoring",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/reference/score-report-fields.md",
+      "accessed": "2026-09-22",
+      "role": "official starter-kit score definition",
+      "observed": {
+        "ranked_metric": "adjusted_final_layer_score",
+        "formula": "suite mean of per-MLP final_layer_mse * max(0.1, C_m/B); failure multiplier = 1.0",
+        "phase2_effective_compute": "C_m = F_m",
+        "phase2_budget": 2199023255552
+      }
+    },
+    {
+      "id": "official_starterkit_public_release_dataset",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/how-to/use-evaluation-datasets.md",
+      "accessed": "2026-09-22",
+      "role": "official starter-kit semantics for the published local evaluation dataset",
+      "observed": {
+        "dataset": "aicrowd/arc-whestbench-public-2026@v2-phase2",
+        "mini": "100 MLPs; day-to-day iteration",
+        "full": "1000 MLPs; final lock-in check before submit",
+        "mini_and_full": "independent; different MLPs entirely",
+        "local_mini_reproducible": true
+      }
+    },
+    {
+      "id": "official_starterkit_rounds",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/reference/rounds.md",
+      "accessed": "2026-09-22",
+      "role": "official round configuration",
+      "observed": {
+        "current_round": "v2-phase2",
+        "width": 1024,
+        "depth": 16,
+        "flop_budget": 2199023255552,
+        "effective_compute": "C_m = F_m",
+        "residual_cap_s": 0.4,
+        "wall_cap_s": 120,
+        "ground_truth_samples_per_mlp": 1000000000,
+        "scoring_shape": "MSE_final,m * max(0.1, C_m/B_m)"
+      }
+    }
+  ],
+  "comparability": {
+    "same_round_revision": true,
+    "same_architecture": true,
+    "same_nominal_flop_budget": true,
+    "same_scoring_formula": true,
+    "same_residual_semantics": true,
+    "exact_scored_panel_match": false,
+    "reason_panel_does_not_match": [
+      "R209 V25 score is a suite mean over 100 MLPs from the published local Public Release mini split.",
+      "The current AIcrowd public leaderboard score is computed over 50 public grader MLPs.",
+      "A 100-row local suite and a 50-row grader public suite are not the same scored panel by cardinality.",
+      "No primary source found by this audit provides an identity mapping proving the leaderboard 50 are a subset of, or identical to any 50 rows of, the published mini-100."
+    ],
+    "exact_grader_environment_match_proved": false,
+    "environment_note": "R209 ran whestbench 0.16.1 and flopscope 0.12.1+np2.4.6. The Phase-2 launch specifies the supported version families, but this audit does not have a current primary grader build fingerprint proving byte-for-byte meter equivalence to R209.",
+    "numerical_context_only": {
+      "v25_local_mini100_score": 8.170397440117225e-9,
+      "current_leaderboard_best_displayed_score": 2.1e-9,
+      "current_504aldo_best_displayed_score": 5.4e-9,
+      "interpretation": "V25 mini-100 is numerically higher (worse, lower-is-better) than these displayed public-leaderboard values, but the numbers are on different panels and must not be converted into a leaderboard position."
+    }
+  },
+  "verdict": {
+    "leaderboard_rank_claim_permitted": false,
+    "verdict_code": "NOT_EXACT_PANEL_COMPARABLE_NO_RANK",
+    "statement": "V25 is a valid Phase-2 local mini-100 result under matching round/scoring semantics, but it is not an official public-leaderboard-panel score. No rank is assigned or implied."
+  },
+  "correct_next_step": {
+    "preferred_no_new_submission_path": "Recover an official AIcrowd public-grader record for the exact V25 artifact/version, then verify estimator identity, evaluator/meter versions, 50-public-MLP score, failures and compute utilization from that primary record.",
+    "if_no_exact_existing_official_record_is_available": "The missing datum is an official 50-public-MLP grader evaluation of this exact V25 artifact. Producing it would require a submission; R216 explicitly does not perform one.",
+    "private_holdout": "Do not access or infer it. Final full-test ranking requires the sealed 50 private MLPs and is outside R216."
+  },
+  "evidence_gap": {
+    "blocking_for_rank": true,
+    "gap": "No official 50-public-MLP grader score tied by primary evidence to the exact R209 V25 estimator artifact was established.",
+    "non_blocking_for_local_quality_claim": true
+  },
+  "actions_taken": {
+    "submission": false,
+    "workflow_dispatch": false,
+    "scientific_rerun": false,
+    "private_holdout_access": false,
+    "full_public_release_run": false,
+    "leaderboard_mutation": false,
+    "audit_only_commit": true
+  }
+}
