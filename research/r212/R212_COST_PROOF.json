@@ -1,0 +1,84 @@
+{
+  "schema": "arc.whitebox.r212.abs_cost_proof.v1",
+  "experiment": "R212",
+  "idempotency_key": "ARC-R212-ABS-20260922",
+  "family": "Karstadt-Schwartz Alternative-Basis Strassen, stationary 2x2 rank-7, uniform recursion depth, classical leaves",
+  "primary_sources": [
+    {
+      "title": "Matrix Multiplication, a Little Faster",
+      "authors": ["Elaye Karstadt", "Oded Schwartz"],
+      "venue": "JACM 67(1), 2020",
+      "doi": "10.1145/3364504"
+    },
+    {
+      "title": "Pebbling Game and Alternative Basis for High Performance Matrix Multiplication",
+      "authors": ["Oded Schwartz", "Noa Vaknin"],
+      "doi": "10.1137/22M1502719"
+    },
+    {
+      "title": "Alternative Basis matrix multiplication is fast and stable",
+      "venue": "Numerische Mathematik 158, 2026",
+      "doi": "10.1007/s00211-026-01531-9"
+    }
+  ],
+  "history_exclusions": {
+    "E011_Hopcroft_Kerr_rectangular": true,
+    "R202_TA32": true,
+    "R206_TA_rank_sweep": true,
+    "R211_DAG_CSE_reassociation": true,
+    "prior_ABMM_branch_or_commit_found": false
+  },
+  "exact_small": {
+    "A": [[1,2],[3,4]],
+    "B": [[5,-1],[2,3]],
+    "phi_A": [[1,2],[3,3]],
+    "phi_B": [[5,-1],[2,0]],
+    "temps": [6,1,2,-5,2,1],
+    "products_m1_to_m7": [5,4,-15,0,12,1,-2],
+    "C_prime": [[9,14],[-14,9]],
+    "inverse_basis_output": [[9,5],[23,9]],
+    "direct_AB": [[9,5],[23,9]],
+    "exact_equal_over_integers": true
+  },
+  "production_screen": {
+    "shape": [1024,1024,1024],
+    "classical_flops": 2147483648,
+    "gate_ratio_max": 0.42,
+    "lower_bound_definition": "7^L classical leaves plus mandatory 12 bilinear additions per 2x2 recursive node; input/output basis transforms, copies, materialization, padding, setup, integration and runtime are all charged as zero",
+    "recursion_depth_table": [
+      {"L":0,"leaf_flops":2147483648,"bilinear_add_flops":0,"lower_bound_flops":2147483648,"ratio":1.0},
+      {"L":1,"leaf_flops":1879048192,"bilinear_add_flops":3145728,"lower_bound_flops":1882193920,"ratio":0.87646484375},
+      {"L":2,"leaf_flops":1644167168,"bilinear_add_flops":8650752,"lower_bound_flops":1652817920,"ratio":0.7696533203125},
+      {"L":3,"leaf_flops":1438646272,"bilinear_add_flops":18284544,"lower_bound_flops":1456930816,"ratio":0.678436279296875},
+      {"L":4,"leaf_flops":1258815488,"bilinear_add_flops":35143680,"lower_bound_flops":1293959168,"ratio":0.6025466918945312},
+      {"L":5,"leaf_flops":1101463552,"bilinear_add_flops":64647168,"lower_bound_flops":1166110720,"ratio":0.5430126190185547},
+      {"L":6,"leaf_flops":963780608,"bilinear_add_flops":116278272,"lower_bound_flops":1080058880,"ratio":0.5029416084289551},
+      {"L":7,"leaf_flops":843308032,"bilinear_add_flops":206632704,"lower_bound_flops":1049940736,"ratio":0.4889167547225952},
+      {"L":8,"leaf_flops":737894528,"bilinear_add_flops":364752960,"lower_bound_flops":1102647488,"ratio":0.513460248708725},
+      {"L":9,"leaf_flops":645657712,"bilinear_add_flops":641463408,"lower_bound_flops":1287121120,"ratio":0.5993624776601791},
+      {"L":10,"leaf_flops":564950498,"bilinear_add_flops":1125706692,"lower_bound_flops":1690657190,"ratio":0.7872736034914851}
+    ],
+    "best_depth": 7,
+    "best_lower_bound_flops": 1049940736,
+    "best_lower_bound_ratio": 0.4889167547225952,
+    "absolute_ratio_gap_vs_gate": 0.0689167547225952,
+    "relative_excess_vs_gate": 0.16408751124427428,
+    "passes_cost_gate": false
+  },
+  "frozen_float32_falsifier": {
+    "authorized_only_if_cost_gate_passes": true,
+    "seed": 212,
+    "relative_frobenius_candidate_over_parent_max": 1.05,
+    "max_absolute_candidate_over_parent_max": 1.05,
+    "deterministic_replay_required": true,
+    "status": "NOT_AUTHORIZED_NOT_EVALUATED"
+  },
+  "decision": "TERMINAL_NO_GO_COST_LOWER_BOUND",
+  "execution": {
+    "synthetic_run_executed": false,
+    "github_actions_run_created": false,
+    "holdout_used": false,
+    "paid_resources_used": false,
+    "submission_attempted": false
+  }
+}
