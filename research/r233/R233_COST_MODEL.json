@@ -1,0 +1,88 @@
+{
+  "schema": "arc.whitebox.r233.cost_model.v1",
+  "frozen_before_fixture": true,
+  "candidate": "ONEHOT-WICK-ROW-SELECT",
+  "source": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "path": "estimators/estimator_v25.py",
+    "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "relevant_lines": {
+      "onehot_construction": "384-399",
+      "dense_transforms": "785-790",
+      "suite_mode_gate": "436,468",
+      "layer_loop": "501-503"
+    }
+  },
+  "official_cost_reference": {
+    "repository": "AIcrowd/whest-starterkit",
+    "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "path": "docs/reference/flopscope-primer.md",
+    "formulas": {
+      "matmul_float32": "M*N*(2*K-1)",
+      "take_or_fancy_gather_float32": "4*N",
+      "elementwise_multiply_float32": "N"
+    }
+  },
+  "dimensions": {
+    "width_n": 1024,
+    "depth_L": 16,
+    "wick_pairs_K": 21
+  },
+  "term_counts": {
+    "mode0": {
+      "d2": 6,
+      "d1": 4
+    },
+    "mode1": {
+      "d2": 52,
+      "d1": 14
+    }
+  },
+  "suite_schedule": {
+    "layer0": "mode0; d2+d1",
+    "layers1_to_14": "mode1; d2+d1",
+    "layer15": "trimmed mode1; d1 only"
+  },
+  "per_term_costs": {
+    "dense_single_transform_factor_per_output_element": 41,
+    "candidate_SL_factor_per_output_element": 5,
+    "candidate_SR_factor_per_output_element": 4,
+    "d2_pair_saving_factor_per_term_per_width": 73,
+    "d1_saving_factor_per_term_per_width": 36
+  },
+  "projected_savings": {
+    "layer0_flops": 595968,
+    "each_layer1_to_14_flops": 4403200,
+    "layer15_flops": 516096,
+    "total_flops_per_mlp": 62756864
+  },
+  "pinned_v25": {
+    "counted_flops_per_mlp": 806303721965,
+    "compute_factor": 0.36666448157347986,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "record_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+  },
+  "projected_effect": {
+    "relative_count_reduction": 0.00007783278470680822,
+    "percent_count_reduction": 0.007783278470680822,
+    "new_counted_flops_per_mlp": 806240965101,
+    "new_compute_factor": 0.3666359430558259,
+    "fixed_raw_projected_mean_adjusted_score": 8.169761515332299e-9,
+    "fixed_raw_absolute_score_drop": 6.359247849260651e-13
+  },
+  "gates": {
+    "identity": "bitwise equality on deterministic finite float32 fixture for modes 0 and 1",
+    "count": "measured flopscope 0.12.1 saving > 0 and exact match to analytic fixture model",
+    "meaningful": {
+      "threshold_relative_v25_count": 0.001,
+      "threshold_flops_per_mlp": 806303722,
+      "rationale": "modest 0.1% materiality threshold; far below the reduction needed to approach the R231 compute floor"
+    },
+    "mini100_authorized_only_if_all_pass": true
+  },
+  "pre_fixture_projection": {
+    "meaningful_gate_expected": false,
+    "ratio_of_projected_saving_to_threshold": 0.07783278470680821
+  }
+}
