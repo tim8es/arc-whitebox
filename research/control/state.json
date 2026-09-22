@@ -460,6 +460,21 @@
         "title": "Reduce V29 public-50 residual jitter after L4 mitigation"
       },
       "revision": 36
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T17:34:39.076336+00:00",
+      "job": "R211",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "method-research",
+        "deliverable": "Protocol-first synthetic falsifier for the distinct contraction-DAG/reassociation class proposed by R206. Freeze one exact-small identity and conservative full FLOP accounting before any run; require a plausible <=0.42 cost gate and <=1.05 float32 stability gate. Stop at terminal NO-GO if either lower bound fails; do not build a full compiler, use holdout, paid resources or submission.",
+        "depends_on": [],
+        "hypothesis_id": "H185-CONTRACTION-DAG-CSE",
+        "priority": 2,
+        "title": "Falsify exact contraction-DAG common-subexpression elimination"
+      },
+      "revision": 37
     }
   ],
   "jobs": [
@@ -796,10 +811,22 @@
       "priority": 1,
       "status": "QUEUED",
       "title": "Reduce V29 public-50 residual jitter after L4 mitigation"
+    },
+    {
+      "assigned_owner": "method-research",
+      "attempts": [],
+      "deliverable": "Protocol-first synthetic falsifier for the distinct contraction-DAG/reassociation class proposed by R206. Freeze one exact-small identity and conservative full FLOP accounting before any run; require a plausible <=0.42 cost gate and <=1.05 float32 stability gate. Stop at terminal NO-GO if either lower bound fails; do not build a full compiler, use holdout, paid resources or submission.",
+      "depends_on": [],
+      "hypothesis_id": "H185-CONTRACTION-DAG-CSE",
+      "id": "R211",
+      "owner": null,
+      "priority": 2,
+      "status": "QUEUED",
+      "title": "Falsify exact contraction-DAG common-subexpression elimination"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 36,
+  "revision": 37,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
