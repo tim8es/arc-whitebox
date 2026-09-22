@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "job": "R228",
+  "hypothesis_id": "OFFICIAL-LEADERBOARD-RANKABILITY-AUDIT",
+  "owner": "official-leaderboard-audit",
+  "run_id": "R228-official-leaderboard-audit-20260923",
+  "status": "COMPLETE",
+  "conclusion": "NOT_RANKABLE_FROM_R209_MINI100",
+  "access_window": {
+    "local_tz": "+03:00",
+    "start": "2026-09-23T01:29:56+03:00",
+    "end": "2026-09-23T01:33:14+03:00",
+    "utc_start": "2026-09-22T22:29:56Z",
+    "utc_end": "2026-09-22T22:33:14Z"
+  },
+  "queue": {
+    "assigned_revision": 110,
+    "claim_revision": 108,
+    "start_revision": 111,
+    "protocol_commit": "e47da3c92416e374435fba8313ed7606b5a72227",
+    "start_commit": "127ed05f8776d8435df8ddec0665544f0d2ed851"
+  },
+  "audit": {
+    "path": "research/R228_OFFICIAL_LEADERBOARD_AUDIT.md",
+    "commit": "0adc9661728a0f1d0db4516c9d869fae0ab254d9",
+    "sha256": "da5ecc4ac5549a8703e6bb3c925a19cce48e57b732229cfa8ae8f221613e651f"
+  },
+  "official_round": {
+    "tag": "v2-phase2",
+    "width": 1024,
+    "depth": 16,
+    "budget_flops": 2199023255552,
+    "effective_compute": "C_m = F_m",
+    "predict_wall_limit_s": 120,
+    "residual_wall_limit_s": 0.4,
+    "setup_timeout_s": 5,
+    "metric": "mean_m(final_layer_mse_m * max(0.1, C_m / B_m))",
+    "lower_is_better": true,
+    "failure_semantics": "failed per-MLP predictions are zeroed and multiplier forced to 1.0"
+  },
+  "live_leaderboard": {
+    "observed_rows": 50,
+    "displayed_rank_min": 1,
+    "displayed_rank_max": 43,
+    "displayed_adjusted_score_min": 2.1e-9,
+    "displayed_adjusted_score_max": 5.4e-9,
+    "interpretation": "current public leaderboard only; not final full-100 ranking",
+    "top_10": [
+      {
+        "rank": "01",
+        "participant": "J2W",
+        "adjusted_score": 2.1e-9,
+        "final_layer_mse": 1.64e-8,
+        "compute_utilization": 0.1306572576,
+        "failed": 0,
+        "entries": 310,
+        "submission_id": 331539
+      },
+      {
+        "rank": "02",
+        "participant": "marius_binner",
+        "adjusted_score": 2.4e-9,
+        "final_layer_mse": 1.68e-8,
+        "compute_utilization": 0.1459323523,
+        "failed": 0,
+        "entries": 152,
+        "submission_id": 331308
+      },
+      {
+        "rank": "02",
+        "participant": "suliman_tadros",
+        "adjusted_score": 2.4e-9,
+        "final_layer_mse": 1.83e-8,
+        "compute_utilization": 0.1320802423,
+        "failed": 0,
+        "entries": 39,
+        "submission_id": 331854
+      },
+      {
+        "rank": "04",
+        "participant": "a_s6",
+        "adjusted_score": 2.5e-9,
+        "final_layer_mse": 2e-8,
+        "compute_utilization": 0.1258033415,
+        "failed": 0,
+        "entries": 106,
+        "submission_id": 331756
+      },
+      {
+        "rank": "05",
+        "participant": "Puffi",
+        "adjusted_score": 2.8e-9,
+        "final_layer_mse": 1.94e-8,
+        "compute_utilization": 0.1456939183,
+        "failed": 0,
+        "entries": 78,
+        "submission_id": 330322
+      },
+      {
+        "rank": "05",
+        "participant": "reds",
+        "adjusted_score": 2.8e-9,
+        "final_layer_mse": 1.73e-8,
+        "compute_utilization": 0.1623309082,
+        "failed": 0,
+        "entries": 59,
+        "submission_id": 331730
+      },
+      {
+        "rank": "07",
+        "participant": "oqaris",
+        "adjusted_score": 3.1e-9,
+        "final_layer_mse": 2.15e-8,
+        "compute_utilization": 0.1459882369,
+        "failed": 0,
+        "entries": 93,
+        "submission_id": 330951
+      },
+      {
+        "rank": "07",
+        "participant": "ben3",
+        "adjusted_score": 3.1e-9,
+        "final_layer_mse": 1.68e-8,
+        "compute_utilization": 0.183882171,
+        "failed": 0,
+        "entries": 23,
+        "submission_id": 331882
+      },
+      {
+        "rank": "09",
+        "participant": "Camaro",
+        "adjusted_score": 3.3e-9,
+        "final_layer_mse": 1.9e-8,
+        "compute_utilization": 0.1754820884,
+        "failed": 0,
+        "entries": 67,
+        "submission_id": 331734
+      },
+      {
+        "rank": "10",
+        "participant": "mliston",
+        "adjusted_score": 3.5e-9,
+        "final_layer_mse": 1.91e-8,
+        "compute_utilization": 0.183789581,
+        "failed": 0,
+        "entries": 35,
+        "submission_id": 331760
+      }
+    ]
+  },
+  "panel": {
+    "local_public_release": {
+      "dataset": "aicrowd/arc-whestbench-public-2026",
+      "revision": "v2-phase2",
+      "mini_count": 100,
+      "full_count": 1000,
+      "mini_role": "day-to-day iteration"
+    },
+    "competition_grader": {
+      "total_count": 100,
+      "public_count": 50,
+      "private_count": 50,
+      "private_state": "sealed until results release",
+      "visible_score_basis": "mean over 50 public grader MLPs",
+      "final_score_basis": "all 100 grader MLPs"
+    }
+  },
+  "r209": {
+    "v25": {
+      "id": "R209-v25-mini100",
+      "panel": "v2-phase2 mini:all-100 development",
+      "evaluator": "whestbench 0.16.1",
+      "meter": "flopscope 0.12.1+np2.4.6",
+      "score": 8.170397440117225e-9,
+      "final_mse": 2.228303490170447e-8,
+      "failures": 0,
+      "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+      "registry_sha256_from_R226": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    },
+    "v29": {
+      "id": "R209-v29-mini100",
+      "panel": "same mini:all-100 development panel",
+      "evaluator": "whestbench 0.16.1",
+      "meter": "flopscope 0.12.1+np2.4.6",
+      "score": 0.5270942878803214,
+      "failures": 57,
+      "failure_reason": "residual_wall_time_exhausted",
+      "registry_sha256_from_R226": "1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751"
+    }
+  },
+  "exact_comparability_gates": {
+    "same_scoring_formula_family": true,
+    "same_round_shape_budget": true,
+    "same_evaluation_panel": false,
+    "same_evaluator_meter_exactly": false,
+    "official_submission_for_R209_candidate": false,
+    "private_final_panel_available": false
+  },
+  "exact_gaps": [
+    "R209 mini:all-100 is not the official 50-public grader panel.",
+    "The final 50-private grader partition is sealed and unavailable.",
+    "R209 records use whestbench 0.16.1 / flopscope 0.12.1; official grader is documented as whestbench 0.16.0 / flopscope 0.12.0.",
+    "No official grader submission/result exists for the R209 V25/V29 artifact being compared."
+  ],
+  "primary_official_sources": [
+    {
+      "id": "S1",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026",
+      "kind": "live challenge page"
+    },
+    {
+      "id": "S2",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+      "kind": "live leaderboard"
+    },
+    {
+      "id": "S3",
+      "url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+      "kind": "official Phase-2 submission detail"
+    },
+    {
+      "id": "S4",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/concepts/scoring-model.md",
+      "git_blob_sha": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e"
+    },
+    {
+      "id": "S5",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/reference/rounds.md",
+      "git_blob_sha": "2aaf38a54b5d6ed83ce2604870dcac59e62cee59"
+    },
+    {
+      "id": "S6",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/how-to/use-evaluation-datasets.md",
+      "git_blob_sha": "53af1ead77023bb2c4c27fa2a64b494a4f46aa26"
+    },
+    {
+      "id": "S7",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/pyproject.toml",
+      "git_blob_sha": "2c1d562a2073046d6912868184b52c8c593d23c5"
+    },
+    {
+      "id": "S8",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/README.md",
+      "kind": "official starter-kit README"
+    }
+  ],
+  "official_source_commit": {
+    "repo": "AIcrowd/whest-starterkit",
+    "sha": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "commit_timestamp": "2026-09-16T05:53:44Z"
+  },
+  "actions_forbidden_and_not_performed": [
+    "estimator run",
+    "paid compute",
+    "competition submission",
+    "private split access",
+    "external mutation",
+    "canonical result modification",
+    "leaderboard rank claim for R209"
+  ]
+}
