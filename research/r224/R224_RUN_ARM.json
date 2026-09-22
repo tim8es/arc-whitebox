@@ -1,0 +1,18 @@
+{
+  "schema": "arc.whitebox.r224.fingerprint_recovery_arm.v1",
+  "job_id": "R224",
+  "owner": "postflight-audit",
+  "attempt": 1,
+  "run_id": "R224-mini100-fingerprint-extract-attempt1",
+  "protocol_commit": "bb1a98d4e928403b1b15f014970d8f475b2ef1f0",
+  "action": "extract published v2-phase2 mini-100 mlp_seed/all_layer_means fingerprints only",
+  "estimator_run": false,
+  "expected_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+  "expected_name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+  "safety": {
+    "holdout": false,
+    "full_split": false,
+    "submission": false,
+    "paid_or_larger_runner": false
+  }
+}
