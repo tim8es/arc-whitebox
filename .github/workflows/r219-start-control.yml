@@ -1,0 +1,56 @@
+name: R219 start central control
+
+on:
+  push:
+    branches:
+      - research/r219-dependence-carrier-frontier-20260922
+    paths:
+      - 'research/r219/R219_CONTROL_START_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  start:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R219 control"
+          git config user.email "arc-control@users.noreply.github.com"
+      - name: Publish R219 start
+        run: |
+          cat > /tmp/r219_start.json <<'JSON'
+          {
+            "run_id": "R219-dependence-carrier-frontier-20260922",
+            "code_commit": "PLACEHOLDER",
+            "command": "protocol-first immutable-history and primary-literature screen for exactly one dependence-aware estimator family; freeze exact-small witness and production FLOP bound; run at most one target-free synthetic falsifier only if cost-feasible"
+          }
+          JSON
+          python - <<'PY'
+          import json, subprocess
+          p="/tmp/r219_start.json"
+          obj=json.load(open(p))
+          obj["code_commit"]=subprocess.check_output(["git","ls-remote","origin","refs/heads/research/r219-dependence-carrier-frontier-20260922"],text=True).split()[0]
+          open(p,"w").write(json.dumps(obj,indent=2,sort_keys=True)+"\n")
+          PY
+          python scripts/arc_control.py start R219             --owner method-research             --payload /tmp/r219_start.json             --publish | tee /tmp/r219_control_start.json
+      - name: Verify remote state
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R219")
+          assert job["status"]=="RUNNING", job
+          assert len(job["attempts"])==1, job
+          print(json.dumps({"revision":state["revision"],"job":job},indent=2,sort_keys=True))
+          PY
