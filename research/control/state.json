@@ -679,6 +679,21 @@
         "title": "Screen one new estimator-level research family after R212"
       },
       "revision": 53
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T20:27:26.464927+00:00",
+      "job": "R216",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "leaderboard-audit",
+        "deliverable": "Audit the immutable 100-MLP V25 result from R209, establish whether its panel overlaps exactly with the official scored public leaderboard split, and fetch the current official leaderboard score/rank from AIcrowd. Compare only identical metrics and panels; report V25 adjusted score 8.170397440117225e-9 only if provenance/panel support it, quantify the gap to current leader, and recommend the next eligible experiment. Create a source-backed audit receipt/commit. Do not submit or access private holdout.",
+        "depends_on": [],
+        "hypothesis_id": "V25-PUBLIC-LEADERBOARD-GAP",
+        "priority": 1,
+        "title": "Determine whether the clean V25 public result is leaderboard-comparable"
+      },
+      "revision": 54
     }
   ],
   "jobs": [
@@ -1159,10 +1174,22 @@
       "priority": 2,
       "status": "QUEUED",
       "title": "Screen one new estimator-level research family after R212"
+    },
+    {
+      "assigned_owner": "leaderboard-audit",
+      "attempts": [],
+      "deliverable": "Audit the immutable 100-MLP V25 result from R209, establish whether its panel overlaps exactly with the official scored public leaderboard split, and fetch the current official leaderboard score/rank from AIcrowd. Compare only identical metrics and panels; report V25 adjusted score 8.170397440117225e-9 only if provenance/panel support it, quantify the gap to current leader, and recommend the next eligible experiment. Create a source-backed audit receipt/commit. Do not submit or access private holdout.",
+      "depends_on": [],
+      "hypothesis_id": "V25-PUBLIC-LEADERBOARD-GAP",
+      "id": "R216",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Determine whether the clean V25 public result is leaderboard-comparable"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 53,
+  "revision": 54,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
