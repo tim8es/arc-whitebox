@@ -156,6 +156,14 @@
         "title": "TA32 rank sweep: cost and float32 stability frontier"
       },
       "revision": 13
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T15:53:00.884760+00:00",
+      "job": "R206",
+      "owner": "kernel",
+      "payload": {},
+      "revision": 14
     }
   ],
   "jobs": [
@@ -293,14 +301,14 @@
       "depends_on": [],
       "hypothesis_id": "H185-RANK-SWEEP",
       "id": "R206",
-      "owner": null,
+      "owner": "kernel",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "TA32 rank sweep: cost and float32 stability frontier"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 13,
+  "revision": 14,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
