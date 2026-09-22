@@ -577,6 +577,18 @@
       "owner": "preflight-audit",
       "payload": {},
       "revision": 46
+    },
+    {
+      "revision": 47,
+      "action": "start",
+      "job": "R213",
+      "owner": "preflight-audit",
+      "payload": {
+        "run_id": "R213-r210-preflight-20260922",
+        "code_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
+        "command": "read-only audit of R210 frozen protocol/arm, R207 failure evidence and execution contract"
+      },
+      "at": "2026-09-22T18:15:18.669Z"
     }
   ],
   "jobs": [
@@ -968,19 +980,26 @@
     },
     {
       "assigned_owner": "preflight-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R213-r210-preflight-20260922",
+          "code_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
+          "command": "read-only audit of R210 frozen protocol/arm, R207 failure evidence and execution contract",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read-only audit of the frozen R210 protocol, single_cpu_affinity mitigation, R207 failure evidence and official execution constraints while R210 runs. Verify that estimator semantics, residual cap, thread count, order, FLOP meter and public panel remain unchanged; define exact acceptance/rejection checks for the eventual R210 receipt. No scientific rerun, holdout, paid resources or submission.",
       "depends_on": [],
       "hypothesis_id": "R210-PREFLIGHT-AUDIT",
       "id": "R213",
       "owner": "preflight-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Preflight audit of R210 runtime-jitter mitigation"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 46,
+  "revision": 47,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
