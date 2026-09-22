@@ -904,6 +904,36 @@
         "title": "Independently audit the same-worker R210 crossover evidence"
       },
       "revision": 70
+    },
+    {
+      "action": "enqueue-correction",
+      "at": "2026-09-22T20:51:03.611Z",
+      "job": "R219",
+      "owner": "coordinator",
+      "payload": {
+        "depends_on": [],
+        "previous_depends_on": [
+          "R215"
+        ],
+        "reason": "R215 is a terminal SCIENTIFIC_REJECT with a durable receipt; its finding is prior evidence, not a pending successful prerequisite. R219 remains a distinct method screen and is claimable without that dependency."
+      },
+      "revision": 71
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T20:51:03.611Z",
+      "job": "R218",
+      "owner": "baseline-diagnosis",
+      "payload": {},
+      "revision": 72
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T20:51:03.611Z",
+      "job": "R219",
+      "owner": "method-research",
+      "payload": {},
+      "revision": 73
     }
   ],
   "jobs": [
@@ -1502,23 +1532,21 @@
       ],
       "hypothesis_id": "R210-AFFINITY-CAUSAL-TEST",
       "id": "R218",
-      "owner": null,
+      "owner": "baseline-diagnosis",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Same-worker CPU-affinity crossover after R217 forensic diagnosis"
     },
     {
       "assigned_owner": "method-research",
       "attempts": [],
       "deliverable": "Search immutable ARC history and primary literature for exactly one dependence-aware estimator family that carries information beyond coordinate-wise marginals and does not duplicate prior rejected lanes. Define its state/information requirement, exact-small discriminating witness, and conservative production FLOP bound first. Run one minimal target-free synthetic falsifier only if cost-feasible; otherwise record terminal NO-GO with arithmetic. Preserve artifact, citations, hashes and commit. No public benchmark, paid resources, holdout, submission, broad sweep or repeat of R215.",
-      "depends_on": [
-        "R215"
-      ],
+      "depends_on": [],
       "hypothesis_id": "DEPENDENCE-CARRIER-FRONTIER",
       "id": "R219",
-      "owner": null,
+      "owner": "method-research",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Screen one dependence-aware estimator family after FMCF non-closure"
     },
     {
@@ -1537,7 +1565,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 70,
+  "revision": 73,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
