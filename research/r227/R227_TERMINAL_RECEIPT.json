@@ -1,0 +1,123 @@
+{
+  "schema": "arc.whitebox.r227.terminal_receipt.v1",
+  "job_id": "R227",
+  "attempt_id": "R227-v25-srm2-feasibility-repair-20260923",
+  "status": "TERMINAL_PRE_SCIENCE_NO_GO",
+  "decision": "R227_TERMINAL_PRE_SCIENCE_NO_GO",
+  "branch": "research/r227-v25-second-regen-feasibility-20260923",
+  "frozen_protocol_commit": "6715c89debd53554cbce5691150180fbb933e503",
+  "executor_commit": "d9afae35aa7b6af1f065b27f450c89065ef6a5ef",
+  "trigger_commit": "03ef47a4fb8c2006b0a0a0886d1b0c6ceb9cd122",
+  "prior_attempt": {
+    "run_id": "R227-v25-srm2-feasibility-20260923",
+    "status": "INFRA_ERROR",
+    "receipt_commit": "56ad738fca269e3ad92a9e9a1ac2801f757fde56",
+    "preserved": true,
+    "executed": false
+  },
+  "runner_admission": {
+    "repository_visibility": "public",
+    "runner_label": "ubuntu-24.04",
+    "paid_runner": false,
+    "basis": "GitHub official documentation states standard GitHub-hosted runners are free and unlimited for public repositories; repository API reports private=false, visibility=public.",
+    "official_docs": [
+      "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+      "https://docs.github.com/en/actions/concepts/billing-and-usage"
+    ]
+  },
+  "execution": {
+    "workflow": ".github/workflows/r227-source-feasibility.yml",
+    "workflow_blob": "bc5b4eabcd5e1777eda71b142cef8532e955c948",
+    "github_run_id": 35795094121,
+    "github_job_id": 106972445213,
+    "run_attempt": 1,
+    "event": "push",
+    "head_sha": "03ef47a4fb8c2006b0a0a0886d1b0c6ceb9cd122",
+    "conclusion": "success",
+    "falsifier_exit_code": 0,
+    "exactly_one_workflow_run": true,
+    "runner": {
+      "os": "Ubuntu 24.04.5 LTS",
+      "image": "ubuntu-24.04",
+      "image_version": "20260920.314.1",
+      "runner_version": "2.337.0",
+      "region": "westus3"
+    },
+    "artifact": {
+      "name": "r227-source-feasibility",
+      "id": 10723657950,
+      "size_bytes": 8273,
+      "zip_sha256": "a15c149a8598aacdb40313c6e125aecca9cea8bf7fa1fc2d86e455855d3f2f65",
+      "expires_at": "2026-12-21T22:58:06Z",
+      "files": [
+        "r227-feasibility.stdout.log",
+        "r227-feasibility.exit-code.txt",
+        "r227-input-identities.json",
+        "r227-actions-receipt.json",
+        "r227-feasibility.json",
+        "research/r227/R227_PROTOCOL.md",
+        "scripts/r227_srm2_feasibility.py"
+      ]
+    }
+  },
+  "pinned_inputs": {
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "git_blobs": {
+      "v25": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "probe": "2a443055a58e577700585d5664902d0541ec2d2c",
+      "findings": "09cf41e8826052ceb83109115cae688c03baaaca",
+      "claims": "087aaa2404a046afd06bd954a1cc0bf09ffdf05c"
+    },
+    "identities_all_verified": true,
+    "frozen_script_blob": "8d14e413eac16573efc9d79cf2ef8420d889b113",
+    "frozen_protocol_blob": "d0e26ac48da09e08953d6744a9639927bfaa63af"
+  },
+  "feasibility_result": {
+    "schema": "arc.whitebox.r227.srm2_feasibility.v1",
+    "deployable_second_mode_found": false,
+    "decision": "R227_TERMINAL_PRE_SCIENCE_NO_GO",
+    "facts": {
+      "oracle_lstsq_against_Goff": true,
+      "xregen_fit_then_replay": true,
+      "upstream_untried_marker": true,
+      "oracle_9mode_marker": true,
+      "v25_multimode_runtime_marker": false
+    },
+    "gates": {
+      "all_pinned_blob_identities": true,
+      "oracle_coefficients_use_dense_Goff": true,
+      "xregen_fits_dense_chain_before_replay": true,
+      "upstream_marks_second_mode_only_untried_track2": true,
+      "oracle_9mode_gain_recorded": true,
+      "published_deployable_multimode_runtime_rule": false,
+      "literal_dense_mode_would_improve_adjusted_score": false
+    },
+    "cost": {
+      "parent_flops": 806303721965,
+      "parent_c_over_b": 0.36666448157347986,
+      "literal_dense_extra_lower_bound_flops": 30064771072,
+      "literal_dense_extra_c_over_b": 0.013671875,
+      "optimistic_oracle_raw_multiplier": 0.989,
+      "optimistic_adjusted_ratio_vs_parent": 1.0258769953309217
+    }
+  },
+  "scientific_interpretation": {
+    "exact_blocker": "The only upstream-untried second-regeneration lever is evidenced only through dense augmented-chain G_off least-squares/oracle fitting. The pinned V25 source publishes no deployable multi-mode runtime rule/table or explicit non-dense factorization. A literal dense implementation is adjusted-score-worse even under the full recorded oracle raw gain.",
+    "candidate_authorized": false,
+    "mini100_authorized": false,
+    "scientific_run_performed": false,
+    "parent_v25_unchanged": true
+  },
+  "scope": {
+    "source_feasibility_only": true,
+    "estimator_run": false,
+    "mini100": false,
+    "paid_compute": false,
+    "holdout": false,
+    "submission": false,
+    "protocol_change": false,
+    "parent_estimator_change": false,
+    "rescue": false,
+    "canonical_mutated": false
+  }
+}
