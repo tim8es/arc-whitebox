@@ -1,0 +1,132 @@
+{
+  "schema": "arc.whitebox.r223.terminal_receipt.v1",
+  "job_id": "R223",
+  "idempotency_key": "ARC-R223-V25-LOCAL-FEED-LAMBDA-20260922",
+  "status": "INFRA_ERROR",
+  "decision": "R223_TERMINAL_PRE_PANEL_PROVENANCE_GUARD_FAILURE_NO_RERUN",
+  "branch": "research/r223-v25-isolated-improvement-20260922",
+  "central_start": {
+    "revision": 87,
+    "control_commit": "a4d4e255c6169387cb48dfd6e42fef75913e6a90",
+    "run_id": "R223-v25-isolated-improvement-20260922",
+    "owner": "method-research"
+  },
+  "selected_change": {
+    "name": "V25-LF normalized per-neuron K4-to-K3 feed lambda",
+    "novelty": "Project/upstream searches found no implemented per-neuron feed-local lambda or lambda-vector mechanism. The public baseline adapts one scalar lambda per layer/MLP.",
+    "accuracy_target": "Only the K4-to-K3 feed c1 column scaling is localized; scalar V25 transport/use-side, dG, wk431, source ranks, age gates and all other arithmetic remain unchanged.",
+    "target_free": true,
+    "not_a_below_0p1B_floor_play": true,
+    "conservative_extra_flop_upper": 143360
+  },
+  "parent_evidence": {
+    "upstream_repo": "504aldo/whest-p2-cumulant-k3",
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "v25_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "r209_actions_run": 35544406064,
+    "r209_v25_job": 106167659234,
+    "r209_artifact_id": 10617855153,
+    "r209_artifact_zip_sha256": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08",
+    "r209_report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+    "panel_names_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "n_mlps": 100,
+    "failures": 0,
+    "mean_raw_final_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "mean_effective_compute": 806303721965,
+    "mean_c_over_b": 0.36666448157347986,
+    "max_residual_wall_time_s": 0.19043814401743475,
+    "read_only_inspected": true
+  },
+  "provenance": {
+    "protocol_commit": "bfa01a85ae7fbc2111afe35ffba5749fae2fac57",
+    "protocol_blob": "1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+    "candidate_commit": "3fd18dd4a4ec69f5cb1a9f69b071272e89e1f05d",
+    "candidate_blob": "a09ec139bc7399f169ace02cf587d55bc1c8771b",
+    "comparator_commit": "7a4c1f27bb3fa5d8f86f813c913ec0b574a5cec8",
+    "comparator_blob": "fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0",
+    "workflow_commit": "0ad4e0a7b8167ed9704b93a22b052ea42ba766a4",
+    "arm_commit": "d00f02717402e685a71ced68e05b132e1ec689d4"
+  },
+  "execution": {
+    "workflow_run_id": 35786723402,
+    "workflow_job_id": 106945213303,
+    "run_attempt": 1,
+    "head_sha": "d00f02717402e685a71ced68e05b132e1ec689d4",
+    "github_conclusion": "failure",
+    "scientific_panel_run_started": false,
+    "whest_validate_started": false,
+    "parent_artifact_download_in_workflow_started": false,
+    "candidate_per_network_rows": null,
+    "candidate_per_network_rows_reason": "The mandatory pre-panel source/provenance guard failed before parent-artifact download, validation, or whest run.",
+    "rerun": false
+  },
+  "free_compute_gate": {
+    "passed_before_failure": true,
+    "repository": "tim8es/arc-whitebox",
+    "visibility": "public",
+    "runs_on": "ubuntu-24.04",
+    "larger_runner_requested": false,
+    "runner_name": "GitHub Actions 1000005106",
+    "runner_os": "Linux",
+    "runner_arch": "X64",
+    "toolchain_installed": {
+      "numpy": "2.4.6",
+      "flopscope": "0.12.1+np2.4.6",
+      "whestbench_cli": "0.16.1",
+      "python_observed": "3.12.3"
+    },
+    "note": "The standard public-repository runner gate passed. The scientific panel was never invoked."
+  },
+  "failure": {
+    "phase": "pre-panel exact source/provenance verification",
+    "exception": "AssertionError at line 25 of the frozen inline verifier: assert p.count(old)==1",
+    "primary_root_cause": "The workflow embedded the multi-line Python source pattern inside a YAML block scalar without adding YAML indentation to continuation lines. YAML removed the common block indentation, so continuation lines in the runtime triple-quoted 'old' pattern had fewer leading spaces than the actual pinned V25 source. The pinned upstream blob hash itself had already verified successfully.",
+    "secondary_read_only_finding": "The committed candidate docstring contains a literal backslash-n sequence between the V25 and R223 description lines instead of an actual LF. Independently normalizing only that docstring sequence makes the candidate file equal to the intended preregistered arithmetic transformation of pinned V25.",
+    "scientific_interpretation": "No accuracy or adjusted-score conclusion can be drawn. The selected V25-LF algorithm remains scientifically unevaluated under R223.",
+    "retry_policy": "The frozen R223 protocol states that a pre-panel structural/provenance failure is terminal and forbids patch/retry. No second candidate run is authorized."
+  },
+  "artifact": {
+    "id": 10720651878,
+    "name": "r223-v25-local-feed-mini100",
+    "size_bytes": 29106,
+    "zip_sha256": "bc1389fdc08ddb97711dd832ad9bf067ffc9c60a252ea8b44319096e01c7f154",
+    "expires_at": "2026-12-21T21:27:08Z",
+    "contents": [
+      "r223_evidence/compute_gate.json",
+      "r223_evidence/environment.txt",
+      "r223_evidence/sha256.json",
+      "r223_evidence/whest_version.json",
+      "research/r223/R223_RUN_ARM.json",
+      "research/r223/R223_PROTOCOL.md",
+      "methods/r223_estimator_v25_local_feed.py",
+      "scripts/r223_compare_panel.py"
+    ]
+  },
+  "gates": {
+    "central_start_published": true,
+    "novel_algorithm_level_change_frozen": true,
+    "immutable_parent_evidence_inspected": true,
+    "production_incremental_cost_feasible": true,
+    "verified_free_standard_compute": true,
+    "pinned_upstream_v25_blob_verified_in_workflow": true,
+    "exact_candidate_source_transform_verified": false,
+    "parent_artifact_reverified_in_workflow": false,
+    "candidate_validation": false,
+    "same_panel_development_test": false,
+    "scientific_score_gates": "UNEVALUATED"
+  },
+  "scope": {
+    "dependence_carrier_exploration": false,
+    "affinity_runtime_experiment": false,
+    "canonical_baseline_mutated": false,
+    "paid_resource": false,
+    "holdout": false,
+    "submission": false,
+    "official_scorer": false,
+    "public_panel_scientific_run": false,
+    "second_run": false
+  },
+  "terminal_reason": "Exact pre-panel provenance guard failed before any candidate mini-100 execution. Under the preregistered one-run/no-repair discipline R223 closes as a specific INFRA_ERROR rather than fabricating a scientific result."
+}
