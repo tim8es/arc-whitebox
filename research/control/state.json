@@ -1440,6 +1440,22 @@
         "command": "read-only primary-official-source audit of ARC White-Box Phase-2 scoring, visible leaderboard/submissions, exact evaluation panel, and R209 mini-100 rankability; no estimator run, paid compute, submission, external mutation, or canonical-result changes"
       },
       "revision": 111
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T22:35:14.000Z",
+      "job": "R228",
+      "owner": "official-leaderboard-audit",
+      "payload": {
+        "reason": "Primary-official-source Phase-2 leaderboard audit complete. Official metric is mean per-MLP final-layer MSE times max(0.1,C/B), with C=F, B=2**41 and failure multiplier 1.0. The live public leaderboard exposes 50-participant rows scored on a 50-public-MLP grader split; official submission detail states final ranking uses all 100 grader MLPs with a distinct 50-private split still sealed. R209 V25/V29 are local v2-phase2 mini:all-100 development results, not that grader public-50 panel; their evaluator/meter is whestbench 0.16.1/flopscope 0.12.1 versus the documented grader pair 0.16.0/0.12.0, and no official submission exists for the R209 artifact. Therefore R209 is NOT_RANKABLE_FROM_R209_MINI100 and no leaderboard rank is claimed. Audit SHA256 da5ecc4ac5549a8703e6bb3c925a19cce48e57b732229cfa8ae8f221613e651f. No estimator run, paid compute, submission, private access, external mutation, or canonical-result change.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT_RECEIPT.json",
+          "sha256": "d9d244d2ff7352e113af4d8cbb956dc379b4e6cfaf0357444fce77695ed8bdc5"
+        },
+        "run_id": "R228-official-leaderboard-audit-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 112
     }
   ],
   "jobs": [
@@ -2325,7 +2341,7 @@
       "title": "Audit official ARC leaderboard and rank comparability",
       "owner": "official-leaderboard-audit",
       "assigned_owner": "official-leaderboard-audit",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "priority": 1,
       "hypothesis_id": "OFFICIAL-LEADERBOARD-RANKABILITY-AUDIT",
       "depends_on": [],
@@ -2334,10 +2350,24 @@
           "run_id": "R228-official-leaderboard-audit-20260923",
           "code_commit": "e47da3c92416e374435fba8313ed7606b5a72227",
           "command": "read-only primary-official-source audit of ARC White-Box Phase-2 scoring, visible leaderboard/submissions, exact evaluation panel, and R209 mini-100 rankability; no estimator run, paid compute, submission, external mutation, or canonical-result changes",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "Primary-official-source Phase-2 leaderboard audit complete. Official metric is mean per-MLP final-layer MSE times max(0.1,C/B), with C=F, B=2**41 and failure multiplier 1.0. The live public leaderboard exposes 50-participant rows scored on a 50-public-MLP grader split; official submission detail states final ranking uses all 100 grader MLPs with a distinct 50-private split still sealed. R209 V25/V29 are local v2-phase2 mini:all-100 development results, not that grader public-50 panel; their evaluator/meter is whestbench 0.16.1/flopscope 0.12.1 versus the documented grader pair 0.16.0/0.12.0, and no official submission exists for the R209 artifact. Therefore R209 is NOT_RANKABLE_FROM_R209_MINI100 and no leaderboard rank is claimed. Audit SHA256 da5ecc4ac5549a8703e6bb3c925a19cce48e57b732229cfa8ae8f221613e651f. No estimator run, paid compute, submission, private access, external mutation, or canonical-result change.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT_RECEIPT.json",
+              "sha256": "d9d244d2ff7352e113af4d8cbb956dc379b4e6cfaf0357444fce77695ed8bdc5"
+            },
+            "run_id": "R228-official-leaderboard-audit-20260923",
+            "status": "COMPLETE"
+          }
         }
       ],
-      "deliverable": "Using primary official sources only, verify the current ARC White-Box Phase-2 rules, metric, visible leaderboard/submissions and exact-panel comparability. Freeze a concise protocol before research; save an append-only source-cited audit and machine-readable receipt with retrieval time. State rank only if the official score/panel is exactly comparable; otherwise explain what is missing. No submission, paid compute, estimator run, or changes to canonical results."
+      "deliverable": "Using primary official sources only, verify the current ARC White-Box Phase-2 rules, metric, visible leaderboard/submissions and exact-panel comparability. Freeze a concise protocol before research; save an append-only source-cited audit and machine-readable receipt with retrieval time. State rank only if the official score/panel is exactly comparable; otherwise explain what is missing. No submission, paid compute, estimator run, or changes to canonical results.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT_RECEIPT.json",
+        "sha256": "d9d244d2ff7352e113af4d8cbb956dc379b4e6cfaf0357444fce77695ed8bdc5"
+      },
+      "reason": "Primary-official-source Phase-2 leaderboard audit complete. Official metric is mean per-MLP final-layer MSE times max(0.1,C/B), with C=F, B=2**41 and failure multiplier 1.0. The live public leaderboard exposes 50-participant rows scored on a 50-public-MLP grader split; official submission detail states final ranking uses all 100 grader MLPs with a distinct 50-private split still sealed. R209 V25/V29 are local v2-phase2 mini:all-100 development results, not that grader public-50 panel; their evaluator/meter is whestbench 0.16.1/flopscope 0.12.1 versus the documented grader pair 0.16.0/0.12.0, and no official submission exists for the R209 artifact. Therefore R209 is NOT_RANKABLE_FROM_R209_MINI100 and no leaderboard rank is claimed. Audit SHA256 da5ecc4ac5549a8703e6bb3c925a19cce48e57b732229cfa8ae8f221613e651f. No estimator run, paid compute, submission, private access, external mutation, or canonical-result change."
     },
     {
       "id": "R229",
@@ -2355,7 +2385,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 111,
+  "revision": 112,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
