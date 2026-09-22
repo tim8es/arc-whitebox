@@ -741,6 +741,18 @@
       "owner": "baseline-diagnosis",
       "payload": {},
       "revision": 59
+    },
+    {
+      "revision": 60,
+      "action": "start",
+      "job": "R214",
+      "owner": "postflight-audit",
+      "payload": {
+        "run_id": "R214-r210-postflight-20260922",
+        "code_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
+        "command": "read-only audit artifact 10712680276; verify hashes/manifest/50-row scoring/panel/provenance against R207/R205"
+      },
+      "at": "2026-09-22T20:29:17.338Z"
     }
   ],
   "jobs": [
@@ -1200,14 +1212,21 @@
     },
     {
       "assigned_owner": "postflight-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R214-r210-postflight-20260922",
+          "code_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
+          "command": "read-only audit artifact 10712680276; verify hashes/manifest/50-row scoring/panel/provenance against R207/R205",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read-only audit R210 Actions run 35762066733 and artifact 10712680276. Verify ZIP/receipt/report hashes, 50-row completeness, dataset SHA and first-50 names/order against R207, protocol/arm/Actions-head binding, official per-row score arithmetic, and failure semantics. Recompute aggregate score independently, compare R210 to R207/R205, and write an audit receipt/commit with any limitations. No rerun, paid resource, holdout, scorer or submission.",
       "depends_on": [],
       "hypothesis_id": "R210-POSTRUN-INDEPENDENT-AUDIT",
       "id": "R214",
       "owner": "postflight-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Independently audit R210 artifact, provenance and score"
     },
     {
@@ -1248,7 +1267,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 59,
+  "revision": 60,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
