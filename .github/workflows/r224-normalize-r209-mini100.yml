@@ -1,0 +1,60 @@
+name: R224 normalize R209 mini-100 evidence
+on:
+  push:
+    branches:
+      - review/r224-r209-mini100-fingerprints-20260922
+    paths:
+      - research/r224/R224_NORMALIZE_ARM.json
+permissions:
+  contents: read
+  actions: read
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download immutable evidence only
+        run: |
+          mkdir -p r224/fp r224/v25 r224/v29 r224/out
+          gh run download 35788780990 -n r224-mini100-fingerprints -D r224/fp
+          gh run download 35544406064 -n e136-followup-v25 -D r224/v25
+          gh run download 35544406064 -n e136-followup-v29 -D r224/v29
+      - name: Normalize V25/V29 without estimator
+        run: |
+          python scripts/r224_normalize_r209.py \
+            --fingerprints r224/fp/R224_MINI100_FINGERPRINTS.json \
+            --v25-report r224/v25/report.json \
+            --v29-report r224/v29/report.json \
+            --out-dir research/results \
+            > r224/out/normalize.stdout 2> r224/out/normalize.stderr
+      - name: Regenerate and check shared overview
+        run: |
+          python scripts/arc_control.py report
+          python scripts/arc_control.py check | tee r224/out/arc_control_check.txt
+          python scripts/arc_control.py compare research/results/R209-v29-mini100.json research/results/R209-v25-mini100.json | tee r224/out/compare-v29-v25.json
+          cp research/results/R209-v25-mini100.json r224/out/
+          cp research/results/R209-v29-mini100.json r224/out/
+          cp research/control/STATUS.md r224/out/STATUS.md
+      - name: Hash output
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib
+          root=pathlib.Path("r224/out"); out={}
+          for p in sorted(root.iterdir()):
+              if p.is_file() and p.name!="sha256.json": out[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/"sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+      - name: Upload normalization evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r224-normalized-r209-mini100
+          path: r224/out/
+          if-no-files-found: error
