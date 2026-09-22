@@ -202,6 +202,18 @@
         "reason": "Repair attempt-1 infrastructure only: replace unavailable local editable install with pinned direct public dependencies (numpy==2.4.6, flopscope==0.12.1, whestbench==0.16.1) and create evidence directory before install. Scientific source/panel/mitigation unchanged."
       },
       "at": "2026-09-22T16:00:00+00:00"
+    },
+    {
+      "revision": 18,
+      "action": "start",
+      "job": "R205",
+      "owner": "baseline",
+      "payload": {
+        "run_id": "R205-v29-l4-five-grid-attempt2",
+        "code_commit": "ab77abda52fc5b7a66ef9e75120edfa9d51310df",
+        "command": "V26_STRASSEN=4 whest run --estimator methods/r205/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 5 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json"
+      },
+      "at": "2026-09-22T16:01:00+00:00"
     }
   ],
   "jobs": [
@@ -335,6 +347,12 @@
               "sha256": "03f75d8e54f5e59252d00266ef2efecab14a2b7d10dfb74d1dd164768997a6d2"
             }
           }
+        },
+        {
+          "run_id": "R205-v29-l4-five-grid-attempt2",
+          "code_commit": "ab77abda52fc5b7a66ef9e75120edfa9d51310df",
+          "command": "V26_STRASSEN=4 whest run --estimator methods/r205/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 5 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "status": "RUNNING"
         }
       ],
       "deliverable": "Bounded reproducible investigation of the william-graves residual_wall_time_exhausted failure from R201 under the exact E173 panel and official contract. Identify root cause, test the smallest safe repair or measurement-only mitigation, and report adjusted score impact across all five networks. No paid run, no holdout access, no submission; preserve receipt and failed attempts.",
@@ -345,7 +363,7 @@
       "id": "R205",
       "owner": "baseline",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Recover V29 residual-timeout on the exact five-network panel",
       "receipt": {
         "url": "https://github.com/tim8es/arc-whitebox/blob/ae39d8425bfdb569575adafb74ec55c069a53f76/research/R205_ATTEMPT1_INFRA_RECEIPT.json",
@@ -367,7 +385,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 17,
+  "revision": 18,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
