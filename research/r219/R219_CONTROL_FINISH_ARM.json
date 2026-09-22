@@ -1,0 +1,6 @@
+{
+  "idempotency_key": "ARC-R219-CONTROL-FINISH-20260922",
+  "job": "R219",
+  "scientific_receipt_commit": "6e1bcf7b6833254ce1c2671ff7c291a32d1ee09c",
+  "new_scientific_run": false
+}
