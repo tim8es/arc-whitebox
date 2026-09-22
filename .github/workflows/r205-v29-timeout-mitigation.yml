@@ -30,8 +30,9 @@ jobs:
 
       - name: Install pinned research toolchain
         run: |
+          mkdir -p r205 methods/r205
           python -m pip install --upgrade pip
-          python -m pip install -e .
+          python -m pip install "numpy==2.4.6" "flopscope==0.12.1" "whestbench==0.16.1"
 
       - name: Fetch and verify pinned V29
         shell: bash
