@@ -1234,6 +1234,18 @@
       "owner": "leaderboard-audit",
       "payload": {},
       "revision": 95
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T21:41:00.000Z",
+      "job": "R225",
+      "owner": "leaderboard-audit",
+      "payload": {
+        "code_commit": "43af94b811f4bd384474f5ea7bc4440894e33817",
+        "command": "read-only independent verification of frozen R219 terminal proof/artifacts: exact-small laws, ReLU expectations, minimax lower bound, one-factor Gaussian-copula scope, cost arithmetic, and source/protocol lineage; no rerun or family extension",
+        "run_id": "R225-r219-terminal-proof-independent-audit"
+      },
+      "revision": 96
     }
   ],
   "jobs": [
@@ -2006,19 +2018,26 @@
     },
     {
       "assigned_owner": "leaderboard-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "43af94b811f4bd384474f5ea7bc4440894e33817",
+          "command": "read-only independent verification of frozen R219 terminal proof/artifacts: exact-small laws, ReLU expectations, minimax lower bound, one-factor Gaussian-copula scope, cost arithmetic, and source/protocol lineage; no rerun or family extension",
+          "run_id": "R225-r219-terminal-proof-independent-audit",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read-only independent audit of R219 receipt `research/r219/R219_TERMINAL_RECEIPT.json` (receipt SHA256 c8c0fd2f91d885b5ec4ec7fa56b7ff6f7c453a85900fd14f8c48ae9d97a47eb7). Recompute the even-parity four-Rademacher and independent-law marginals/pair laws, E[ReLU(sum Xi)] values, minimax error lower bound 1/8, and verify the claimed one-factor Gaussian-copula state limitation and conservative cost arithmetic against the frozen protocol/artifacts. Report exact scope and any flaw; do not rerun or widen the rejected family. Create a review receipt/commit and finish queue. No holdout, paid resource, submission or leaderboard changes.",
       "depends_on": [],
       "hypothesis_id": "R219-1FGC8-INDEPENDENT-VERIFICATION",
       "id": "R225",
       "owner": "leaderboard-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Independently verify R219 factor-copula non-closure proof"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 95,
+  "revision": 96,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
