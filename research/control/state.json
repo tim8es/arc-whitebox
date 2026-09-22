@@ -475,6 +475,14 @@
         "title": "Falsify exact contraction-DAG common-subexpression elimination"
       },
       "revision": 37
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T17:35:08.239345+00:00",
+      "job": "R210",
+      "owner": "baseline",
+      "payload": {},
+      "revision": 38
     }
   ],
   "jobs": [
@@ -807,9 +815,9 @@
       ],
       "hypothesis_id": "V29-PUBLIC-JITTER-REDUCTION",
       "id": "R210",
-      "owner": null,
+      "owner": "baseline",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Reduce V29 public-50 residual jitter after L4 mitigation"
     },
     {
@@ -826,7 +834,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 37,
+  "revision": 38,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
