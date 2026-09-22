@@ -1509,6 +1509,18 @@
       "owner": "leader-method-audit",
       "payload": {},
       "revision": 116
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T22:44:36.000Z",
+      "job": "R230",
+      "owner": "leader-method-audit",
+      "payload": {
+        "run_id": "R230-public-leader-method-audit-20260923",
+        "code_commit": "f55de5498921bd57b68e88f7ed179e6c13c15ce7",
+        "command": "read-only official AIcrowd audit of public submission details 331539 and 331308; verify public method/source visibility before comparison; no competitor-code download/run, private data, estimator run, paid compute, submission, or canonical edits"
+      },
+      "revision": 117
     }
   ],
   "jobs": [
@@ -2462,18 +2474,25 @@
       "title": "Audit public methods of top ARC Phase-2 submissions",
       "owner": "leader-method-audit",
       "assigned_owner": "leader-method-audit",
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "priority": 1,
       "hypothesis_id": "PUBLIC-LEADER-METHODS-TRANSFER-AUDIT",
       "depends_on": [
         "R228"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R230-public-leader-method-audit-20260923",
+          "code_commit": "f55de5498921bd57b68e88f7ed179e6c13c15ce7",
+          "command": "read-only official AIcrowd audit of public submission details 331539 and 331308; verify public method/source visibility before comparison; no competitor-code download/run, private data, estimator run, paid compute, submission, or canonical edits",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read only the publicly visible official AIcrowd details and artifacts for the current top Phase-2 public submissions (start with submission IDs 331539 and 331308 from R228's snapshot). Determine whether methods/source are actually public and permitted to inspect; compare documented mechanisms against ARC experiment history and R209 V25/V29. Produce an append-only source-cited method audit, deduplication table, and one or two transferable testable hypotheses with explicit uncertainty and cost/evidence gates. Do not download/run competitor code, use private/holdout data, launch an estimator, spend money, submit, or alter canonical results. If details are unavailable, preserve exact access failure and derive no invented method claims."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 116,
+  "revision": 117,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
