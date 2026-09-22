@@ -1,0 +1,90 @@
+{
+  "schema": "arc.whitebox.r211.terminal_receipt.v1",
+  "job_id": "R211",
+  "status": "TERMINAL_NO_GO",
+  "decision": "TERMINAL_NO_GO_COST_LOWER_BOUND",
+  "branch": "research/r211-exact-dag-cse-reassociation-20260922",
+  "scientific_mode": "PROTOCOL_FIRST_PREEXECUTION_FALSIFIER",
+  "parent": {
+    "branch": "research/r206-ta-rank-sweep-20260922",
+    "head": "5f7f564b0641bfc8c0a808e475166ff74558959e",
+    "r206_terminal_note_blob": "5c35ee827c891ac4a9bc76d4aa5a0fd84ac3ff51",
+    "r206_recommendation": "exact contraction-DAG common-subexpression elimination with contraction-order reassociation"
+  },
+  "provenance": {
+    "public_v29_repo": "504aldo/whest-p2-cumulant-k3",
+    "public_v29_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "ledger_path": "docs/audit_v29_ns_d0.log",
+    "e187_parent_ledger_blob": "33699fbfa47e23ffef99b6a99e064aa130100671",
+    "protocol_commit": "c488c31dfe3a71a73f6298540ff7800676da02eb",
+    "cost_proof_commit": "29d3d16202f04ff29e07af20cac9f92f1af9691a"
+  },
+  "mechanism_boundary": {
+    "allowed": [
+      "exact duplicate contraction-node elimination",
+      "legal matrix-chain reassociation",
+      "exact batching/concatenation identities",
+      "reuse of identical intermediates"
+    ],
+    "forbidden": [
+      "TA/LITA rank sweep",
+      "changing the bilinear leaf multiplication algorithm",
+      "approximate matrix multiplication",
+      "K3/D21 compression",
+      "rank/source/seed sweeps",
+      "full compiler construction"
+    ]
+  },
+  "exact_small_gate": {
+    "status": "FROZEN_PASS_BY_EXACT_ALGEBRA",
+    "identities": [
+      "W[A P] = [WA WP]",
+      "[X1 X2][Y1 Y2]^T = X1Y1^T + X2Y2^T"
+    ],
+    "integer_witness_exact_equal": true,
+    "witness_path": "research/r211/R211_COST_PROOF.json"
+  },
+  "production_cost_gate": {
+    "unit": "u = 2*1024^3 FLOPs",
+    "dense_k3_parent_units": 222.44,
+    "young_transport_units": 60.71,
+    "hub_units": 54.90,
+    "irreducible_floor_units_under_r211": 115.61,
+    "floor_ratio": 0.5197356590541269,
+    "required_ratio_max": 0.42,
+    "excess_units_over_gate": 22.1852,
+    "passes": false,
+    "proof_strength": "conservative",
+    "conservative_assumptions": [
+      "every dense namespace except young_transport and hub is free",
+      "all old-source and join work is free",
+      "all explicit batching/reduction/copy overhead in young_transport and hub is free",
+      "all thin/covariance/closure/integration/runtime work is free"
+    ],
+    "blocker": "The two binary contraction families that remain irreducible under graph-level CSE/reassociation alone already cost 51.97% of the full dense-K3 bill, above the 42% mechanism gate."
+  },
+  "float32_gate": {
+    "required_candidate_over_parent_max": 1.05,
+    "status": "NOT_EVALUATED",
+    "reason": "Protocol orders the production cost lower-bound gate before numerical execution; the cost gate failed."
+  },
+  "execution": {
+    "minimal_synthetic_check_executed": false,
+    "scientific_run_executed": false,
+    "github_actions_run_created": false,
+    "reason": "No execution is authorized after a pre-execution structural lower-bound failure."
+  },
+  "interpretation": {
+    "what_failed": "the graph-level mechanism class, not numerical stability",
+    "what_is_not_claimed": "This is not a universal matrix-multiplication lower bound. A successor that changes the leaf bilinear algorithm is a different mechanism and would overlap the already-closed TA/rank line unless independently new.",
+    "reusable_result": "Exact CSE/reassociation above frozen V29 leaf contractions cannot by itself reach the R206/H185 0.42 dense-cost gate."
+  },
+  "safety": {
+    "holdout": false,
+    "paid_resources": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "canonical_mutation": false,
+    "ta_rank_sweep_repeated": false
+  }
+}
