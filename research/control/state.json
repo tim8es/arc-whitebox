@@ -569,6 +569,14 @@
         "title": "Preflight audit of R210 runtime-jitter mitigation"
       },
       "revision": 45
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T18:15:17.669653+00:00",
+      "job": "R213",
+      "owner": "preflight-audit",
+      "payload": {},
+      "revision": 46
     }
   ],
   "jobs": [
@@ -965,14 +973,14 @@
       "depends_on": [],
       "hypothesis_id": "R210-PREFLIGHT-AUDIT",
       "id": "R213",
-      "owner": null,
+      "owner": "preflight-audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Preflight audit of R210 runtime-jitter mitigation"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 45,
+  "revision": 46,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
