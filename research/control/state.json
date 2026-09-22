@@ -493,16 +493,28 @@
       "revision": 39
     },
     {
-      "revision": 40,
       "action": "start",
+      "at": "2026-09-22T17:40:00+00:00",
       "job": "R210",
       "owner": "baseline",
       "payload": {
-        "run_id": "R210-v29-l4-single-cpu-public50-attempt1",
         "code_commit": "672ed3f7947caff741d7f720e434f8193f5daaa1",
-        "command": "CPU=$(python -c \"import os; print(min(os.sched_getaffinity(0)))\"); taskset -c \"$CPU\" whest run --estimator methods/r210/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json"
+        "command": "CPU=$(python -c \"import os; print(min(os.sched_getaffinity(0)))\"); taskset -c \"$CPU\" whest run --estimator methods/r210/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+        "run_id": "R210-v29-l4-single-cpu-public50-attempt1"
       },
-      "at": "2026-09-22T17:40:00+00:00"
+      "revision": 40
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T18:09:46.285613+00:00",
+      "job": "R211",
+      "owner": "method-research",
+      "payload": {
+        "code_commit": "29d3d16202f04ff29e07af20cac9f92f1af9691a",
+        "command": "protocol-only exact-small DAG CSE/reassociation identity and production cost lower-bound proof",
+        "run_id": "R211-dag-cse-20260922"
+      },
+      "revision": 41
     }
   ],
   "jobs": [
@@ -830,9 +842,9 @@
       "assigned_owner": "baseline",
       "attempts": [
         {
-          "run_id": "R210-v29-l4-single-cpu-public50-attempt1",
           "code_commit": "672ed3f7947caff741d7f720e434f8193f5daaa1",
           "command": "CPU=$(python -c \"import os; print(min(os.sched_getaffinity(0)))\"); taskset -c \"$CPU\" whest run --estimator methods/r210/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "run_id": "R210-v29-l4-single-cpu-public50-attempt1",
           "status": "RUNNING"
         }
       ],
@@ -849,19 +861,26 @@
     },
     {
       "assigned_owner": "method-research",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "29d3d16202f04ff29e07af20cac9f92f1af9691a",
+          "command": "protocol-only exact-small DAG CSE/reassociation identity and production cost lower-bound proof",
+          "run_id": "R211-dag-cse-20260922",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Protocol-first synthetic falsifier for the distinct contraction-DAG/reassociation class proposed by R206. Freeze one exact-small identity and conservative full FLOP accounting before any run; require a plausible <=0.42 cost gate and <=1.05 float32 stability gate. Stop at terminal NO-GO if either lower bound fails; do not build a full compiler, use holdout, paid resources or submission.",
       "depends_on": [],
       "hypothesis_id": "H185-CONTRACTION-DAG-CSE",
       "id": "R211",
       "owner": "method-research",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Falsify exact contraction-DAG common-subexpression elimination"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 40,
+  "revision": 41,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
