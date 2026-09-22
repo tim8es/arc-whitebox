@@ -985,6 +985,75 @@
         "status": "SCIENTIFIC_REJECT"
       },
       "revision": 76
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T21:05:01.218Z",
+      "job": "R221",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "public-panel-audit",
+        "deliverable": "Independently inspect official starter-kit/docs and accessible public data/split metadata to determine whether the exact 50 scored public MLPs and a local official evaluator are available without submitting or touching the sealed private split. Distinguish verified access from inference; record exact URLs, hashes, version semantics and any access gate. No submission, private holdout, leaderboard mutation or paid resources. Produce a source-backed receipt/commit and one permitted next step.",
+        "depends_on": [],
+        "hypothesis_id": "V25-OFFICIAL-PUBLIC50-ACCESS",
+        "priority": 1,
+        "title": "Verify a compliant exact-panel path for V25 versus official public-50"
+      },
+      "revision": 77
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T21:05:01.218Z",
+      "job": "R222",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "result-integration",
+        "deliverable": "Use only the existing R209 Actions artifacts/receipt for V25 and V29; do not rerun. Validate panel identity, per-network metrics, target fingerprints, failure penalties, hashes and official adjusted-score arithmetic. Add schema-valid normalized records and regenerate the shared comparison overview only if every required field is evidenced; otherwise record the exact missing field(s) and mark NOT_COMPARABLE rather than guessing. Preserve V29 failed rows and the absence of raw prediction tensors. Commit an integration receipt; no paid run, holdout or submission.",
+        "depends_on": [],
+        "hypothesis_id": "R209-V25-V29-NORMALIZATION",
+        "priority": 1,
+        "title": "Normalize immutable R209 V25/V29 mini-100 evidence into shared results"
+      },
+      "revision": 78
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T21:05:01.218Z",
+      "job": "R223",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "v25-optimization",
+        "deliverable": "Inspect immutable history and V25's existing per-network public mini-100 evidence, then select exactly one untried, non-duplicative algorithm-level change aimed at reducing official adjusted score (not merely FLOPs below the 0.1B floor). Freeze the parent, code/config, falsifier, gates and exact panel before execution. Run at most one bounded development test on the same public mini-100 panel using only verified free/existing compute; do not alter canonical code. Compare every network, failures, MSE/FLOPs/runtime and score to V25; retain artifacts/hashes and commit. If novelty, cost or evidence is insufficient, finish with an explicit NO-GO and why. No holdout, paid resources, submission or leaderboard claims.",
+        "depends_on": [],
+        "hypothesis_id": "V25-LOW-RISK-SCORE-IMPROVEMENT",
+        "priority": 2,
+        "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
+      },
+      "revision": 79
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T21:05:01.218Z",
+      "job": "R221",
+      "owner": "public-panel-audit",
+      "payload": {},
+      "revision": 80
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T21:05:01.218Z",
+      "job": "R222",
+      "owner": "result-integration",
+      "payload": {},
+      "revision": 81
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T21:05:01.218Z",
+      "job": "R223",
+      "owner": "v25-optimization",
+      "payload": {},
+      "revision": 82
     }
   ],
   "jobs": [
@@ -1641,10 +1710,46 @@
       "priority": 1,
       "status": "QUEUED",
       "title": "Independently audit the same-worker R210 crossover evidence"
+    },
+    {
+      "assigned_owner": "public-panel-audit",
+      "attempts": [],
+      "deliverable": "Independently inspect official starter-kit/docs and accessible public data/split metadata to determine whether the exact 50 scored public MLPs and a local official evaluator are available without submitting or touching the sealed private split. Distinguish verified access from inference; record exact URLs, hashes, version semantics and any access gate. No submission, private holdout, leaderboard mutation or paid resources. Produce a source-backed receipt/commit and one permitted next step.",
+      "depends_on": [],
+      "hypothesis_id": "V25-OFFICIAL-PUBLIC50-ACCESS",
+      "id": "R221",
+      "owner": "public-panel-audit",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Verify a compliant exact-panel path for V25 versus official public-50"
+    },
+    {
+      "assigned_owner": "result-integration",
+      "attempts": [],
+      "deliverable": "Use only the existing R209 Actions artifacts/receipt for V25 and V29; do not rerun. Validate panel identity, per-network metrics, target fingerprints, failure penalties, hashes and official adjusted-score arithmetic. Add schema-valid normalized records and regenerate the shared comparison overview only if every required field is evidenced; otherwise record the exact missing field(s) and mark NOT_COMPARABLE rather than guessing. Preserve V29 failed rows and the absence of raw prediction tensors. Commit an integration receipt; no paid run, holdout or submission.",
+      "depends_on": [],
+      "hypothesis_id": "R209-V25-V29-NORMALIZATION",
+      "id": "R222",
+      "owner": "result-integration",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Normalize immutable R209 V25/V29 mini-100 evidence into shared results"
+    },
+    {
+      "assigned_owner": "v25-optimization",
+      "attempts": [],
+      "deliverable": "Inspect immutable history and V25's existing per-network public mini-100 evidence, then select exactly one untried, non-duplicative algorithm-level change aimed at reducing official adjusted score (not merely FLOPs below the 0.1B floor). Freeze the parent, code/config, falsifier, gates and exact panel before execution. Run at most one bounded development test on the same public mini-100 panel using only verified free/existing compute; do not alter canonical code. Compare every network, failures, MSE/FLOPs/runtime and score to V25; retain artifacts/hashes and commit. If novelty, cost or evidence is insufficient, finish with an explicit NO-GO and why. No holdout, paid resources, submission or leaderboard claims.",
+      "depends_on": [],
+      "hypothesis_id": "V25-LOW-RISK-SCORE-IMPROVEMENT",
+      "id": "R223",
+      "owner": "v25-optimization",
+      "priority": 2,
+      "status": "CLAIMED",
+      "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 76,
+  "revision": 82,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
