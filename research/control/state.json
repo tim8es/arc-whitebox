@@ -1747,6 +1747,18 @@
         "status": "COMPLETE"
       },
       "revision": 134
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T23:56:48.000Z",
+      "job": "R233",
+      "owner": "v25-compute-audit",
+      "payload": {
+        "run_id": "R233-v25-onehot-wick-cse-20260923",
+        "code_commit": "48a9ccb3eaeca34a21e7dab636ab10935629e17b",
+        "command": "one isolated flopscope 0.12.1 micro-fixture for frozen ONEHOT-WICK-ROW-SELECT on pinned estimator_v25.py blob 195373a110215256b759d7c172ba8c923c62e5cc; prove bitwise identity and counted-FLOP delta only; no estimator/mini-100 unless identity+count+0.1%-materiality gates pass"
+      },
+      "revision": 135
     }
   ],
   "jobs": [
@@ -2814,14 +2826,21 @@
       "title": "Find output-preserving V25 FLOP reductions",
       "owner": "v25-compute-audit",
       "assigned_owner": "v25-compute-audit",
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "priority": 1,
       "hypothesis_id": "V25-OUTPUT-PRESERVING-COST-REDUCTION",
       "depends_on": [
         "R226",
         "R231"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R233-v25-onehot-wick-cse-20260923",
+          "code_commit": "48a9ccb3eaeca34a21e7dab636ab10935629e17b",
+          "command": "one isolated flopscope 0.12.1 micro-fixture for frozen ONEHOT-WICK-ROW-SELECT on pinned estimator_v25.py blob 195373a110215256b759d7c172ba8c923c62e5cc; prove bitwise identity and counted-FLOP delta only; no estimator/mini-100 unless identity+count+0.1%-materiality gates pass",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Perform a source-level cost audit of pinned public V25 using R226 records and R231 compute/score floor. Search for one algebraically equivalent/common-subexpression or memory-layout change that provably preserves estimator outputs while reducing counted FLOPs/runtime; distinguish true FLOP savings from wall-clock-only changes. Freeze exact identity/equivalence fixture, cost proof and a meaningful score/runtime gate first. Do not overlap with R232's estimator-family search. No canonical edits, no full estimator run initially; one isolated micro-fixture is allowed. Only authorize one bounded public mini-100 candidate if exact equivalence and a credible cost reduction are both demonstrated on free compute. If savings cannot approach a meaningful frontier, terminal NO-GO with evidence."
     },
     {
@@ -2859,7 +2878,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 134,
+  "revision": 135,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
