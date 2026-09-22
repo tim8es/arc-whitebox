@@ -1,0 +1,112 @@
+{
+  "schema": "arc.whitebox.r219.terminal_receipt.v1",
+  "job_id": "R219",
+  "status": "TERMINAL_NO_GO",
+  "decision": "R219_TERMINAL_NO_GO_ONE_FACTOR_COPULA_NONCLOSURE",
+  "branch": "research/r219-dependence-carrier-frontier-20260922",
+  "queue": {
+    "claimed_revision": 73,
+    "start_revision": 74,
+    "start_control_commit": "872993f8bd55148db8aa1886be7451f9bad51c63",
+    "run_id": "R219-dependence-carrier-frontier-20260922",
+    "owner": "method-research"
+  },
+  "provenance": {
+    "control_start_workflow_commit": "a2a59e720ca4bd4329ddfe4d005ddc42dc2284f1",
+    "control_start_arm_commit": "96c7c247da995ad7dae5bdd13a9a463fb635082c",
+    "protocol_commit": "3efca375771496309206932904334b68e0283f4f",
+    "falsifier_commit": "cfe292400bc629328293f0eec5c7dac13fdb8e27",
+    "workflow_commit": "ed3a5e1ff19e701e229f3884bc357376425e8365",
+    "run_arm_commit": "bdad47262c1aafaf9a801c6985ee747d929e4813",
+    "result_commit": "64e662bb45927060a423791a8b7a18f19053ea37",
+    "protocol_path": "research/r219/R219_PROTOCOL.md",
+    "result_path": "research/r219/R219_RESULT.json"
+  },
+  "family": {
+    "name": "one-factor Gaussian-copula conditional-independence closure 1FGC-8",
+    "dependence_information": "one common latent Gaussian factor plus scalar marginals",
+    "factor_nodes": 8,
+    "new_vs_r215": true,
+    "r215_rescue": false
+  },
+  "history_audit": {
+    "prior_factor_copula_branch_or_commit_found": false,
+    "inspected_closed_lanes": {
+      "E039": "two-component half-space Gaussian location mixture; distinct mechanism",
+      "E124": "Chow-Liu pairwise gate-amplitude tree; distinct mechanism",
+      "E127": "sparse higher-order Mobius hypergraph closure; distinct mechanism",
+      "R215": "coordinate-wise marginal characteristic functions only; no dependence carrier"
+    }
+  },
+  "primary_literature": [
+    {
+      "doi": "10.1016/j.jmva.2013.05.001",
+      "citation": "Krupskii P, Joe H. Factor copula models for multivariate data. Journal of Multivariate Analysis 120 (2013) 85-101.",
+      "claim_used": "latent-factor conditional-independence copula representation with parsimonious O(d) dependence parameters"
+    },
+    {
+      "citation": "Nataf A. Determination des distributions de probabilites dont les marges sont donnees. C. R. Acad. Sci. Paris 255 (1962) 42-43.",
+      "claim_used": "prescribed marginals combined with a normal dependence construction"
+    }
+  ],
+  "production_cost": {
+    "width": 1024,
+    "depth": 16,
+    "factor_nodes": 8,
+    "budget_flops": 2199023255552,
+    "cap_fraction": 0.135,
+    "mandatory_lower_flops": 536870912,
+    "mandatory_lower_fraction": 0.000244140625,
+    "conservative_core_upper_flops": 1090519040,
+    "reserve_flops": 4000000000,
+    "conservative_all_in_upper_flops": 5090519040,
+    "conservative_all_in_upper_fraction": 0.0023149000480771065,
+    "cost_feasible": true
+  },
+  "exact_small": {
+    "law_parity": "uniform over four-Rademacher states with product +1",
+    "law_independent": "four independent Rademachers",
+    "identical_univariate_marginals": true,
+    "identical_all_pairwise_joint_laws": true,
+    "all_pairwise_correlations_zero": true,
+    "one_factor_loading_implication": "for Gaussian sign margins Corr(Xi,Xj)=2/pi*asin(lambda_i*lambda_j); pairwise independence gives lambda_i*lambda_j=0 for every i!=j, so at most one loading is nonzero and the modeled observed law is independent",
+    "observable": "ReLU(X1+X2+X3+X4)",
+    "parity_true_mean": "1/2",
+    "independent_true_mean": "3/4",
+    "true_gap": "1/4",
+    "same_state_worst_case_abs_error_lower_bound": "1/8",
+    "specific_one_factor_projection_error_on_parity": "1/4",
+    "accuracy_gate": 0.000001,
+    "accuracy_gate_pass": false
+  },
+  "execution": {
+    "authorized_synthetic_runs": 1,
+    "performed_synthetic_runs": 1,
+    "actions_run_id": 35784042283,
+    "actions_job_id": 106936348157,
+    "run_attempt": 1,
+    "head_sha": "bdad47262c1aafaf9a801c6985ee747d929e4813",
+    "github_conclusion": "success",
+    "deterministic_replay_bitwise_json": true,
+    "artifact": {
+      "id": 10719057296,
+      "name": "r219-1fgc8-falsifier",
+      "size_bytes": 2380,
+      "zip_sha256": "6ba641d86aaf6eecd3465ddcb55d0e4fd9eac91f59f4e3414c6d31baba176fb4",
+      "expires_at": "2026-12-21T21:01:38Z"
+    }
+  },
+  "terminal_reason": "The family is cheap enough, but a single Gaussian latent factor cannot encode irreducible four-way parity dependence. The parity and independent laws have identical scalar marginals and identical pairwise laws, forcing the same 1FGC dependence state, yet the next dense ReLU mean differs by 1/4.",
+  "boundary_of_applicability": "This result closes one-factor Gaussian-copula conditional-independence closure only. Multi-factor, vine, and explicit higher-order copula/state families are not covered and require new experiment identities.",
+  "scope": {
+    "public_benchmark": false,
+    "paid_compute": false,
+    "holdout": false,
+    "submission": false,
+    "sweep": false,
+    "rerun": false,
+    "rescue_r215": false,
+    "canonical_mutated": false,
+    "leaderboard_mutated": false
+  }
+}
