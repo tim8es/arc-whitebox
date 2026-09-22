@@ -1,0 +1,237 @@
+{
+  "schema": "arc.whitebox.r208.r205_independent_audit.v1",
+  "job_id": "R208",
+  "role": "independent read-only verifier",
+  "status": "VERIFIED",
+  "decision": "R208_R205_AUDIT_PASS_WITH_NON_BLOCKING_PROVENANCE_NOTE",
+  "branch": "review/r208-r205-independent-audit-20260922",
+  "scope": {
+    "scientific_rerun": false,
+    "holdout": false,
+    "paid_resources": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "canonical_mutation": false,
+    "read_only_source_audit": true
+  },
+  "audited_objects": {
+    "r205_receipt_commit": "1d705672e560ef3b2895056888430bd629b4f658",
+    "r205_receipt_blob": "d9cb214921236ff97332541c68d51fa7b744be32",
+    "r205_normalized_result_commit": "6c1b8211de9ec8f6311966468b8287442cf0b9e9",
+    "r205_normalized_result_blob": "43f135a80da4f17e54b9fef738f66c5855012c4e",
+    "r201_control_commit": "ab40a9836b4570621ac064d906b016f4af3e9039",
+    "r201_control_blob": "d74854eb5d47ce12e4a540b62bce3ec62206f1dc",
+    "r201_receipt_commit": "80342008fa37c81f1f7a2660cd3e18a2a494390f",
+    "r201_receipt_blob": "3e57c111a1ccd1cf882289f63e36451a60df8faa"
+  },
+  "commit_lineage": {
+    "r205_receipt_parent": "37d4deb34e80a5867fd2b85f14bd8ddd01fcaf62",
+    "r205_normalized_parent": "1d705672e560ef3b2895056888430bd629b4f658",
+    "normalized_is_direct_child_of_receipt": true,
+    "r201_control_present_in_r205_run_commit_blob": "d74854eb5d47ce12e4a540b62bce3ec62206f1dc",
+    "r201_control_blob_matches_published_r201_control": true
+  },
+  "official_scoring_contract": {
+    "repository": "AIcrowd/whest-starterkit",
+    "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "scoring_model_blob": "4656a892bfeea52a233b900f6d698db8524936fc",
+    "estimator_contract_blob": "43c1494420b46aad4bc1dbbab83528eca6b89668",
+    "budget_flops": 2199023255552,
+    "formula_success": "adjusted = final_layer_mse * max(0.1, flops_used / budget)",
+    "formula_failed_cap": "predictions are replaced by zeros and multiplier is forced to 1.0",
+    "residual_cap_s": 0.4
+  },
+  "panel_identity": {
+    "count": 5,
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "split": "mini:first-5",
+    "shape": [16, 1024],
+    "same_name_order": true,
+    "same_network_ids": true,
+    "same_target_hashes": true,
+    "rows": [
+      {
+        "name": "logan-fitzgerald",
+        "network_id": "6319981554997072999",
+        "target_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82"
+      },
+      {
+        "name": "william-graves",
+        "network_id": "2392109381927064353",
+        "target_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4"
+      },
+      {
+        "name": "raymond-barnes",
+        "network_id": "4030325997523501402",
+        "target_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34"
+      },
+      {
+        "name": "steven-rice",
+        "network_id": "6959524404880716684",
+        "target_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b"
+      },
+      {
+        "name": "sarah-kelley",
+        "network_id": "3958198382245770826",
+        "target_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9"
+      }
+    ]
+  },
+  "r205_execution_provenance": {
+    "actions_run_id": 35751396092,
+    "actions_job_id": 106826163806,
+    "head_sha": "37d4deb34e80a5867fd2b85f14bd8ddd01fcaf62",
+    "github_conclusion": "success",
+    "validate_exit": 0,
+    "run_exit": 0,
+    "artifact_id": 10704583952,
+    "artifact_zip_sha256": "92941ea4a05ad7c301a140ca4366073fddff4cf3c74edfee387a4e4537537043",
+    "report_sha256": "53e0d16f13fd097aef2d29c230463c0e97d336976f3f4142a8d02ff3f8069a5d",
+    "run_stderr_sha256": "5d160527096baf5086f6a57b2f96c5c883c5d45727bbe86125952f02a945a43a",
+    "upstream_repo": "504aldo/whest-p2-cumulant-k3",
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "v29_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "downloaded_estimator_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "source_modified": false,
+    "mitigation_env": {
+      "V26_STRASSEN": "4"
+    },
+    "max_threads": 1,
+    "residual_wall_time_limit_s": 0.4
+  },
+  "attempt_semantics": {
+    "attempt1_run_id": 35751007326,
+    "attempt1_status": "INFRA_ERROR",
+    "attempt1_science_started": false,
+    "attempt1_exact_error": "pip install -e . failed because the branch was not a Python package",
+    "attempt2_run_id": 35751396092,
+    "attempt2_science_started": true,
+    "attempt2_complete": true,
+    "repair_scientific_change": false,
+    "artifact_internal_attempt_field": 1,
+    "authoritative_attempt_number": 2,
+    "note": "The uploaded run receipt template retained a stale internal attempt=1 field. Actions run_number/head SHA and final R205 receipt correctly identify the successful measurement as attempt 2. This is a provenance blemish but does not alter report bytes, hashes, rows, or arithmetic.",
+    "blocking": false
+  },
+  "independent_adjusted_score_recalculation": {
+    "method": "decimal recomputation from committed per-network final_mse and measured_flops using the official Phase-2 scoring formula; failed rows use multiplier 1.0",
+    "control_r201": {
+      "reported_mean_adjusted_score": 0.22478213802104935,
+      "recomputed_mean_adjusted_score_decimal": "0.22478213802104936024072058113685347652790369465948",
+      "absolute_difference_vs_reported": "1.024072058113685347652790369465948e-17",
+      "failures": 1,
+      "success_only_mean_raw_mse": "2.40152981945129795e-8"
+    },
+    "candidate_r205": {
+      "reported_mean_adjusted_score": 6.199991295837055e-9,
+      "recomputed_mean_adjusted_score_decimal": "6.1999912958370554854864161090517882257699966430664e-9",
+      "absolute_difference_vs_reported": "4.854864161090517882257699966430664e-25",
+      "mean_raw_mse_recomputed": "2.33847366359896112e-8",
+      "mean_measured_flops_recomputed": "583048388079",
+      "mean_compute_utilization_recomputed": "0.26513970991754831629805266857147216796875",
+      "failures": 0
+    },
+    "transition": {
+      "reported_before": 0.22478213802104935,
+      "reported_after": 6.199991295837055e-9,
+      "recomputed_after_minus_before": "-0.22478213182105806440366509565043736747611546888948",
+      "recomputed_after_over_before": "2.7582224061132772547004430427069749062188744901945e-8",
+      "before_over_after_factor": "36255234.450406067018053022858672195434273451742123",
+      "verified": true
+    }
+  },
+  "per_network_arithmetic": [
+    {
+      "name": "logan-fitzgerald",
+      "status": "ok",
+      "final_mse": "2.2902616692022093e-8",
+      "measured_flops": 587262754287,
+      "recomputed_adjusted": "6.1162853666866408978578250257669424172490835189819e-9",
+      "committed_adjusted": "6.116285366686641e-9",
+      "absolute_difference": "1.021421749742330575827509164810181e-25"
+    },
+    {
+      "name": "william-graves",
+      "status": "ok",
+      "final_mse": "2.0860513316733886e-8",
+      "measured_flops": 581994796527,
+      "recomputed_adjusted": "5.5209558027951570178520405179369845427572727203369e-9",
+      "committed_adjusted": "5.520955802795157e-9",
+      "absolute_difference": "1.78520405179369845427572727203369e-26"
+    },
+    {
+      "name": "raymond-barnes",
+      "status": "ok",
+      "final_mse": "2.611176874722787e-8",
+      "measured_flops": 581994796527,
+      "recomputed_adjusted": "6.9107561735122371355617394738146685995161533355713e-9",
+      "committed_adjusted": "6.910756173512237e-9",
+      "absolute_difference": "1.355617394738146685995161533355713e-25"
+    },
+    {
+      "name": "steven-rice",
+      "status": "ok",
+      "final_mse": "2.4979392776458553e-8",
+      "measured_flops": 581994796527,
+      "recomputed_adjusted": "6.6110608787780661936648563964809000026434659957886e-9",
+      "committed_adjusted": "6.611060878778066e-9",
+      "absolute_difference": "1.936648563964809000026434659957886e-25"
+    },
+    {
+      "name": "sarah-kelley",
+      "status": "ok",
+      "final_mse": "2.2069391647505654e-8",
+      "measured_flops": 581994796527,
+      "recomputed_adjusted": "5.8408982574131761824956191312594455666840076446533e-9",
+      "committed_adjusted": "5.840898257413176e-9",
+      "absolute_difference": "1.824956191312594455666840076446533e-25"
+    }
+  ],
+  "failure_semantics_audit": {
+    "control_failed_network": "william-graves",
+    "control_failure_reason": "residual_wall_time_exhausted",
+    "control_residual_wall_time_s": 0.43323872200062397,
+    "cap_s": 0.4,
+    "official_behavior": "zero predictions and multiplier forced to 1.0",
+    "control_zero_prediction_final_mse": 1.123910665512085,
+    "control_official_adjusted_score": 1.123910665512085,
+    "candidate_residual_wall_time_s": 0.3674648519966013,
+    "candidate_status": "ok",
+    "candidate_final_mse": 2.0860513316733886e-8,
+    "candidate_adjusted_score": 5.520955802795157e-9,
+    "residual_delta_s": -0.06577387000402268,
+    "failure_count_transition": "1 -> 0",
+    "headline_transition_driver": "The approximately 3.63e7-fold panel-score change is dominated by removing the single failed-row zero-prediction penalty, not by a comparable raw-MSE improvement."
+  },
+  "same_success_rows_sensitivity": {
+    "networks": ["logan-fitzgerald", "raymond-barnes", "steven-rice", "sarah-kelley"],
+    "control_mean_raw_mse": "2.40152981945129795e-8",
+    "r205_mean_raw_mse": "2.40157924658035425e-8",
+    "raw_mse_relative_change": "2.058151793742587e-5",
+    "control_mean_adjusted_score": "6.14829045030090085e-9",
+    "r205_mean_adjusted_score": "6.369750169097530e-9",
+    "adjusted_score_ratio": "1.036019722976130834",
+    "interpretation": "On the four rows that were healthy in both runs, L4 leaves raw accuracy essentially unchanged but raises adjusted score by about 3.6% because measured FLOPs are higher on three of the four rows. The mitigation's value is reliability under the residual cap."
+  },
+  "root_cause_consistency": {
+    "verified_as_consistent_not_reexecuted": true,
+    "pinned_v29_first_call_behavior": "STRASSEN_FIRST=4; subsequent calls use STRASSEN_LEVELS when ncall>0",
+    "upstream_f80_evidence": "documents persistent-pool first-touch effects of +47/+88/+168 ms at L3/L4/L5 and the second-call L5 position effect",
+    "r201_sequence_consistent": true,
+    "r205_uniform_l4_consistent": true,
+    "causal_claim_strength": "supported by source plus timing pattern; R208 performed no rerun and therefore does not upgrade this to an independent causal reproduction"
+  },
+  "blockers": [],
+  "non_blocking_notes": [
+    "Artifact-internal attempt field is stale (1) while authoritative successful attempt is 2; final receipt documents this explicitly.",
+    "R205 worker lineage is not a direct descendant of the final R201 publication branch, but the R201-v29 control blob present at the successful R205 run commit is byte-identical to the published R201 normalized result blob."
+  ],
+  "overall": {
+    "adjusted_score_arithmetic_verified": true,
+    "panel_provenance_verified": true,
+    "failure_semantics_verified": true,
+    "receipt_normalized_result_consistent": true,
+    "transition_0p22478213802104935_to_6p199991295837055e_9_verified": true,
+    "r205_result_usable_for_read_only_comparison": true
+  }
+}
