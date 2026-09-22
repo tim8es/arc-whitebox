@@ -349,7 +349,14 @@ def main():
         add_gate(gates, "owner_receipt_300_rows", len(owner_receipt.get("per_observation", [])) == 300)
         if analysis:
             oa = owner_receipt.get("analysis", {})
-            add_gate(gates, "owner_primary_delta_matches", math.isclose(float(oa.get("primary_delta_s")), analysis["primary_delta_s"], rel_tol=0.0, abs_tol=1e-12))
+            owner_primary = oa.get("primary_delta_s")
+            add_gate(
+                gates,
+                "owner_primary_delta_matches",
+                isinstance(owner_primary, (int, float))
+                and math.isclose(float(owner_primary), analysis["primary_delta_s"], rel_tol=0.0, abs_tol=1e-12),
+                owner_primary,
+            )
             add_gate(gates, "owner_cpu0_slower_count_matches", oa.get("cpu0_slower_count") == analysis["cpu0_slower_count"])
             add_gate(gates, "owner_failure_difference_matches", oa.get("failure_difference") == analysis["failure_difference"])
 
@@ -363,7 +370,7 @@ def main():
             and str(actions_evidence.get("run_attempt")) == str(github.get("GITHUB_RUN_ATTEMPT"))
             and actions_evidence.get("job_name") == github.get("GITHUB_JOB") == "crossover"
             and actions_evidence.get("single_crossover_job_verified") is True
-            and actions_evidence.get("source_commit") == "85f5ba13236aad07bf31436b356cfa2a3744ad33"
+            and actions_evidence.get("executor_commit") == "85f5ba13236aad07bf31436b356cfa2a3744ad33"
         )
     add_gate(
         gates,
