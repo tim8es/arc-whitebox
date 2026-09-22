@@ -1,0 +1,20 @@
+{
+  "schema": "arc.whitebox.r207.arm.v1",
+  "job_id": "R207",
+  "owner": "baseline",
+  "attempt": 1,
+  "run_id": "R207-v29-l4-public50-attempt1",
+  "code_commit": "0df5922165d8fb116841dd72e0c4928e02612572",
+  "source_v29_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+  "mitigation_env": {
+    "V26_STRASSEN": "4"
+  },
+  "panel": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2 mini:first-50",
+  "budget": {
+    "paid_resources": false,
+    "private_holdout": false,
+    "submission": false,
+    "public_github_actions": true
+  },
+  "command": "V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json"
+}
