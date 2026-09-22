@@ -94,5 +94,14 @@
     "R234 does not claim or start R220; R220 remains dependency-gated on R218 COMPLETE.",
     "Artifact alone cannot independently prove the GitHub Actions single-job provenance; R220 must obtain run/job evidence from GitHub Actions and feed/record it.",
     "The workflow does not upload methods/r218/estimator_v29.py inside the R218 artifact, so independent source-hash verification is an external R220 provenance check."
-  ]
+  ],
+  "r220_actions_evidence_schema": {
+    "run_id": "must equal artifact preflight GITHUB_RUN_ID",
+    "run_attempt": "must equal artifact preflight GITHUB_RUN_ATTEMPT",
+    "job_name": "crossover",
+    "single_crossover_job_verified": true,
+    "executor_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+    "estimator_source_sha256_verified": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+    "note": "R220 must derive these from GitHub Actions + frozen arm/upstream source evidence after R218 COMPLETE; do not copy owner conclusions."
+  }
 }
