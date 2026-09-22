@@ -1138,6 +1138,22 @@
         "run_id": "R221-official-public50-access-audit"
       },
       "revision": 88
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T21:29:00.000Z",
+      "job": "R221",
+      "owner": "leaderboard-audit",
+      "payload": {
+        "reason": "Source-backed access audit complete: NO_DOCUMENTED_LOCAL_EXACT_PUBLIC50_ASSET. The official local scoring pipeline and exact live grader version semantics are documented, but the official published Phase-2 local assets expose mini-100/full-1000 only; no exact leaderboard public-50 weights/seeds/ground-truth split is published, so V25 cannot be established locally on that exact panel without a submission. One allowed next step only: ask ARC/AIcrowd organizers on the public challenge forum to publish or identify an immutable public-only Phase-2 grader-panel artifact/manifest. No R216 redo, submission, private access/inference, paid resource, scientific run, or leaderboard mutation.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/7971492ddc979400433546cb7b81ea4c7036acef/research/R221_OFFICIAL_PUBLIC50_LOCAL_ACCESS_AUDIT.json",
+          "sha256": "9e953999b2347384790aeb4d5e92ac365c74de4c44b0dc2d2787f5c56140971b"
+        },
+        "run_id": "R221-official-public50-access-audit",
+        "status": "COMPLETE"
+      },
+      "revision": 89
     }
   ],
   "jobs": [
@@ -1802,7 +1818,16 @@
           "code_commit": "a4d4e255c6169387cb48dfd6e42fef75913e6a90",
           "command": "read-only official-source audit of exact Phase-2 leaderboard public-50 local accessibility; no submission, private split, paid resource, or leaderboard mutation",
           "run_id": "R221-official-public50-access-audit",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "Source-backed access audit complete: NO_DOCUMENTED_LOCAL_EXACT_PUBLIC50_ASSET. The official local scoring pipeline and exact live grader version semantics are documented, but the official published Phase-2 local assets expose mini-100/full-1000 only; no exact leaderboard public-50 weights/seeds/ground-truth split is published, so V25 cannot be established locally on that exact panel without a submission. One allowed next step only: ask ARC/AIcrowd organizers on the public challenge forum to publish or identify an immutable public-only Phase-2 grader-panel artifact/manifest. No R216 redo, submission, private access/inference, paid resource, scientific run, or leaderboard mutation.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/7971492ddc979400433546cb7b81ea4c7036acef/research/R221_OFFICIAL_PUBLIC50_LOCAL_ACCESS_AUDIT.json",
+              "sha256": "9e953999b2347384790aeb4d5e92ac365c74de4c44b0dc2d2787f5c56140971b"
+            },
+            "run_id": "R221-official-public50-access-audit",
+            "status": "COMPLETE"
+          }
         }
       ],
       "deliverable": "Independently inspect official starter-kit/docs and accessible public data/split metadata to determine whether the exact 50 scored public MLPs and a local official evaluator are available without submitting or touching the sealed private split. Distinguish verified access from inference; record exact URLs, hashes, version semantics and any access gate. No submission, private holdout, leaderboard mutation or paid resources. Produce a source-backed receipt/commit and one permitted next step.",
@@ -1811,8 +1836,13 @@
       "id": "R221",
       "owner": "leaderboard-audit",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Verify a compliant exact-panel path for V25 versus official public-50"
+      "status": "COMPLETE",
+      "title": "Verify a compliant exact-panel path for V25 versus official public-50",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/7971492ddc979400433546cb7b81ea4c7036acef/research/R221_OFFICIAL_PUBLIC50_LOCAL_ACCESS_AUDIT.json",
+        "sha256": "9e953999b2347384790aeb4d5e92ac365c74de4c44b0dc2d2787f5c56140971b"
+      },
+      "reason": "Source-backed access audit complete: NO_DOCUMENTED_LOCAL_EXACT_PUBLIC50_ASSET. The official local scoring pipeline and exact live grader version semantics are documented, but the official published Phase-2 local assets expose mini-100/full-1000 only; no exact leaderboard public-50 weights/seeds/ground-truth split is published, so V25 cannot be established locally on that exact panel without a submission. One allowed next step only: ask ARC/AIcrowd organizers on the public challenge forum to publish or identify an immutable public-only Phase-2 grader-panel artifact/manifest. No R216 redo, submission, private access/inference, paid resource, scientific run, or leaderboard mutation."
     },
     {
       "assigned_owner": "postflight-audit",
@@ -1854,7 +1884,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 88,
+  "revision": 89,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
