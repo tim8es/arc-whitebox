@@ -1,0 +1,56 @@
+name: R223 start central control
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_CONTROL_START_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  start:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git
+        run: |
+          git config user.name "ARC R223 control"
+          git config user.email "arc-control@users.noreply.github.com"
+      - name: Publish R223 start
+        run: |
+          cat > /tmp/r223_start.json <<'JSON'
+          {
+            "run_id": "R223-v25-isolated-improvement-20260922",
+            "code_commit": "PLACEHOLDER",
+            "command": "inspect immutable V25 mini-100 evidence and history; freeze exactly one novel algorithm-level score-improvement change and same-panel development test; at most one bounded run on verified free/existing compute"
+          }
+          JSON
+          python - <<'PY'
+          import json, subprocess
+          p="/tmp/r223_start.json"
+          obj=json.load(open(p))
+          obj["code_commit"]=subprocess.check_output(["git","ls-remote","origin","refs/heads/research/r223-v25-isolated-improvement-20260922"],text=True).split()[0]
+          open(p,"w").write(json.dumps(obj,indent=2,sort_keys=True)+"\n")
+          PY
+          python scripts/arc_control.py start R223             --owner method-research             --payload /tmp/r223_start.json             --publish | tee /tmp/r223_control_start.json
+      - name: Verify
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R223")
+          assert job["status"]=="RUNNING", job
+          assert len(job["attempts"])==1, job
+          print(json.dumps({"revision":state["revision"],"attempt":job["attempts"][0]},indent=2,sort_keys=True))
+          PY
