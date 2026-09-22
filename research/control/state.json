@@ -753,6 +753,18 @@
         "command": "read-only audit artifact 10712680276; verify hashes/manifest/50-row scoring/panel/provenance against R207/R205"
       },
       "at": "2026-09-22T20:29:17.338Z"
+    },
+    {
+      "revision": 61,
+      "action": "start",
+      "job": "R217",
+      "owner": "baseline-diagnosis",
+      "payload": {
+        "run_id": "R217-r207-r210-paired-forensics-20260922",
+        "code_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
+        "command": "read-only paired forensic analysis of R207 artifact 10709911534 and R210 artifact 10712680276; no scientific run"
+      },
+      "at": "2026-09-22T20:34:00+00:00"
     }
   ],
   "jobs": [
@@ -1255,19 +1267,26 @@
     },
     {
       "assigned_owner": "baseline-diagnosis",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R217-r207-r210-paired-forensics-20260922",
+          "code_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
+          "command": "read-only paired forensic analysis of R207 artifact 10709911534 and R210 artifact 10712680276; no scientific run",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read-only paired analysis of all 50 per-MLP R207 and R210 rows, environment/CPU affinity metadata and unchanged V29 source. Quantify residual shifts, identify whether pinning to CPU 0 or another measured factor explains the 10-to-33 failure increase, and freeze one falsifiable next runtime hypothesis with acceptance criteria and official-contract checks. Do not launch another scientific run in this task; preserve all evidence and commit the diagnosis/protocol.",
       "depends_on": [],
       "hypothesis_id": "R210-AFFINITY-ROOT-CAUSE",
       "id": "R217",
       "owner": "baseline-diagnosis",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Explain why single-CPU affinity worsened R210 and freeze the next runtime hypothesis"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 60,
+  "revision": 61,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
