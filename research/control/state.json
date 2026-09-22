@@ -1154,6 +1154,22 @@
         "status": "COMPLETE"
       },
       "revision": 89
+    },
+    {
+      "revision": 90,
+      "action": "finish",
+      "job": "R222",
+      "owner": "postflight-audit",
+      "payload": {
+        "run_id": "R222-r209-v25-v29-normalization-20260922",
+        "status": "COMPLETE",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b/research/R222_R209_V25_V29_NORMALIZATION_RECEIPT.json",
+          "sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec"
+        },
+        "reason": "Read-only normalization audit verified run 35544406064 artifact hashes/manifests, exact 100-row mlp_index/mlp_name order, FLOPs, V25 score arithmetic, and all 57 V29 official residual-failure penalties/score arithmetic. Shared normalized records were NOT created because current arc_control.py requires per-row network_id and target_sha256, both absent from all authorized R209 Actions evidence; panel.dtype is also not explicitly evidenced as a benchmark-panel field. V29 failures and absence of raw prediction tensors are preserved. No rerun, holdout, paid resource or submission."
+      },
+      "at": "2026-09-22T21:29:01.000Z"
     }
   ],
   "jobs": [
@@ -1851,7 +1867,16 @@
           "code_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
           "command": "read-only normalize existing Actions run 35544406064 V25/V29 artifacts; verify immutable hashes, 100-row IDs/order, target fingerprints, failure penalties, FLOPs and official score arithmetic; no rerun",
           "run_id": "R222-r209-v25-v29-normalization-20260922",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R222-r209-v25-v29-normalization-20260922",
+            "status": "COMPLETE",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b/research/R222_R209_V25_V29_NORMALIZATION_RECEIPT.json",
+              "sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec"
+            },
+            "reason": "Read-only normalization audit verified run 35544406064 artifact hashes/manifests, exact 100-row mlp_index/mlp_name order, FLOPs, V25 score arithmetic, and all 57 V29 official residual-failure penalties/score arithmetic. Shared normalized records were NOT created because current arc_control.py requires per-row network_id and target_sha256, both absent from all authorized R209 Actions evidence; panel.dtype is also not explicitly evidenced as a benchmark-panel field. V29 failures and absence of raw prediction tensors are preserved. No rerun, holdout, paid resource or submission."
+          }
         }
       ],
       "deliverable": "Use only the existing R209 Actions artifacts/receipt for V25 and V29; do not rerun. Validate panel identity, per-network metrics, target fingerprints, failure penalties, hashes and official adjusted-score arithmetic. Add schema-valid normalized records and regenerate the shared comparison overview only if every required field is evidenced; otherwise record the exact missing field(s) and mark NOT_COMPARABLE rather than guessing. Preserve V29 failed rows and the absence of raw prediction tensors. Commit an integration receipt; no paid run, holdout or submission.",
@@ -1860,8 +1885,13 @@
       "id": "R222",
       "owner": "postflight-audit",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Normalize immutable R209 V25/V29 mini-100 evidence into shared results"
+      "status": "COMPLETE",
+      "title": "Normalize immutable R209 V25/V29 mini-100 evidence into shared results",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b/research/R222_R209_V25_V29_NORMALIZATION_RECEIPT.json",
+        "sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec"
+      },
+      "reason": "Read-only normalization audit verified run 35544406064 artifact hashes/manifests, exact 100-row mlp_index/mlp_name order, FLOPs, V25 score arithmetic, and all 57 V29 official residual-failure penalties/score arithmetic. Shared normalized records were NOT created because current arc_control.py requires per-row network_id and target_sha256, both absent from all authorized R209 Actions evidence; panel.dtype is also not explicitly evidenced as a benchmark-panel field. V29 failures and absence of raw prediction tensors are preserved. No rerun, holdout, paid resource or submission."
     },
     {
       "assigned_owner": "method-research",
@@ -1884,7 +1914,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 89,
+  "revision": 90,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
