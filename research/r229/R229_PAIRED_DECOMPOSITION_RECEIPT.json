@@ -1,0 +1,195 @@
+{
+  "job_id": "R229",
+  "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
+  "owner": "paired-score-decomposition",
+  "status": "COMPLETE",
+  "scope": "read-only decomposition of R226-integrated R209 V25/V29 mini-100 normalized records; no estimator run",
+  "queue_start": {
+    "revision": 113,
+    "source_commit": "2c18ac98e2ab948eac8f4054f6c7d1ee05ef4280",
+    "at": "2026-09-22T22:37:37.000Z",
+    "command": "read-only paired decomposition of R209 normalized mini-100 records; preserve exact row IDs, separate timeout penalty from matched-success MSE, no estimator run"
+  },
+  "dependency": {
+    "R226": "COMPLETE"
+  },
+  "inputs": {
+    "v25": {
+      "path": "research/results/R209-v25-mini100.json",
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+      "git_blob_sha": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "rows": 100
+    },
+    "v29": {
+      "path": "research/results/R209-v29-mini100.json",
+      "sha256": "1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751",
+      "git_blob_sha": "1c5d779ef7d6b0d85963c1db7bc4e91887a7086c",
+      "rows": 100
+    },
+    "exact_hash_match_to_R226": true
+  },
+  "protocol": {
+    "path": "research/r229/R229_PROTOCOL.json",
+    "commit": "0da9269a070be39fe1387eb11033ca45bea5016b",
+    "sha256": "91ce2c36c6e1cfa0460c44fa9ccc664dfcf07d6d42644ccececa210a4cad3689"
+  },
+  "row_alignment": {
+    "name_order": true,
+    "network_id_order": true,
+    "target_sha256_order": true,
+    "budget_flops_order": true,
+    "panel_metadata_exact_match": true,
+    "mismatches": 0,
+    "panel": {
+      "count": 100,
+      "shape": [
+        16,
+        1024
+      ],
+      "budget_flops": 2199023255552,
+      "split": "mini:all-100",
+      "dtype": "float32",
+      "evaluator": "whestbench 0.16.1",
+      "meter": "flopscope 0.12.1+np2.4.6"
+    }
+  },
+  "scoring": {
+    "official_formula_source": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/concepts/scoring-model.md",
+    "local_contract_source": "research/RESEARCH_PROCESS.md",
+    "success_formula": "final_mse * max(0.1, measured_flops / budget_flops)",
+    "failed_rows": "preserve evaluator official adjusted failure penalty rather than applying the success cost factor",
+    "aggregate": "mean of per-network official_adjusted_score over the same 100-row panel",
+    "verification": {
+      "v25_success_max_abs_error": 0,
+      "v29_success_max_abs_error": 0,
+      "v29_failed_official_score_minus_final_mse_max_abs_error": 0
+    }
+  },
+  "result": {
+    "status_counts": {
+      "v25": {
+        "ok": 100,
+        "failed": 0
+      },
+      "v29": {
+        "ok": 43,
+        "failed": 57
+      }
+    },
+    "aggregate_scores": {
+      "v25_mean": 8.170397440117225e-9,
+      "v29_mean": 0.5270942878803214,
+      "gap_v29_minus_v25": 0.527094279709924,
+      "ratio_v29_over_v25": 64512686.407671124
+    },
+    "exact_additive_gap_partition": {
+      "v29_failure_rows_contribution_to_100_row_mean_gap": 0.5270942807855769,
+      "common_success_rows_contribution_to_100_row_mean_gap": -1.0756526879701367e-9,
+      "reconstructed_total": 0.5270942797099242,
+      "interpretation": "The positive overall gap is entirely driven by the 57 V29 failure penalties; the 43 common-success rows contribute a tiny score improvement."
+    },
+    "common_success_43": {
+      "v25_mse_mean": 2.199492334001619e-8,
+      "v29_mse_mean": 2.1996888073301813e-8,
+      "paired_mse_delta_v29_minus_v25": {
+        "mean": 1.964733285625021e-12,
+        "sd": 2.214756233993233e-11,
+        "se_descriptive": 3.377471593191917e-12,
+        "min": -4.5638159917871235e-11,
+        "q25": -9.674927525793464e-12,
+        "median": 1.0054179711005418e-12,
+        "q75": 1.3500311979441904e-11,
+        "max": 7.686473679768824e-11,
+        "v29_lower_mse_count": 20,
+        "n": 43
+      },
+      "paired_score_delta_v29_minus_v25": {
+        "mean": -2.501517879000318e-9,
+        "sd": 3.656629170973173e-10,
+        "se_descriptive": 5.576307208099063e-11,
+        "median": -2.485166667004009e-9,
+        "v29_lower_score_count": 43,
+        "n": 43
+      },
+      "score_factor": {
+        "v25": 0.36666448157347986,
+        "v29_median": 0.25255926814088525,
+        "note": "V29 successful-row score is lower despite essentially unchanged MSE because its measured FLOP factor is lower. A unique further attribution of score delta to MSE versus cost is not claimed without choosing an arbitrary decomposition convention."
+      },
+      "uncertainty_note": "SE is descriptive across the 43 observed common-success networks, conditional on V29 success. It is not a held-out significance test and does not quantify the counterfactual MSE of timeout rows."
+    },
+    "v29_failures_57": {
+      "reason": "residual_wall_time_exhausted",
+      "all_same_reason": true,
+      "penalty_score": {
+        "mean": 0.9247268166458398,
+        "sd": 0.2189541874869147,
+        "median": 0.9184470772743225,
+        "min": 0.5673137903213501,
+        "max": 1.4825083017349243
+      },
+      "residual_wall_time_s": {
+        "mean": 0.4551903392627473,
+        "median": 0.41338733403108563,
+        "min": 0.4008630989847006,
+        "max": 1.2995900200139658,
+        "all_ge_0_4": true
+      }
+    },
+    "runtime_common_success_43": {
+      "v29_residual_wall_time_s": {
+        "mean": 0.3910174673809452,
+        "median": 0.3922836400251981,
+        "max": 0.3992267389744484,
+        "all_lt_0_4": true
+      },
+      "v29_wall_time_s_mean": 47.27433826148836,
+      "v25_residual_wall_time_s_mean": 0.17871873030333857,
+      "v25_wall_time_s_mean": 29.518643983209312
+    },
+    "v29_measured_flops_groups": {
+      "587262754287": {
+        "n": 1,
+        "ok": 1,
+        "failed": 0
+      },
+      "558473140719": {
+        "n": 1,
+        "ok": 0,
+        "failed": 1
+      },
+      "555383704047": {
+        "n": 98,
+        "ok": 42,
+        "failed": 56
+      }
+    },
+    "size_association_limit": "Not estimable from these normalized records: panel shape is fixed at [16,1024], budget is constant, and no per-network parameter-count/architecture-size field is present."
+  },
+  "raw_predictions": {
+    "archived": false,
+    "consequence": "No tensor-level residual/error localization or counterfactual MSE reconstruction is possible; none was attempted."
+  },
+  "artifacts": {
+    "script": {
+      "path": "research/r229/r229_decompose.py",
+      "commit": "d28274aed8707417189680e140edb8204cb9c76c",
+      "sha256": "a8cf6075d32d94a55f529a993bb74abf30c6dfde5d889ca8a11cb0eb7d54de32"
+    },
+    "paired_table": {
+      "path": "research/r229/R229_PAIRED_ROWS.csv",
+      "commit": "270b9fccbdef3582794b2372eaf62ce8b6b3ce62",
+      "sha256": "2ac62d7071818896addfe6a1a50566a1ba14b1e91d5ea1c27902f3d93b8553d7",
+      "rows": 100
+    }
+  },
+  "practical_next_step": "Before accuracy tuning, test a bounded V29 residual-runtime hardening that preserves the successful-row estimator math/output while creating explicit margin below the 0.4 s residual limit (targeting worst-case <=0.39 s on the same development panel). The observed data show a sharp status boundary: every common success is <0.4 s and every failure is >=0.4 s, while paired MSE on successes is essentially unchanged.",
+  "prohibited_claims": {
+    "leaderboard_rank": false,
+    "counterfactual_timeout_mse": false,
+    "raw_tensor_analysis": false
+  },
+  "estimator_run_performed": false,
+  "canonical_estimators_changed": false,
+  "submission_performed": false
+}
