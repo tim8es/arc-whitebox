@@ -1,0 +1,309 @@
+{
+  "schema": "arc.whitebox.r209.archive_evidence_audit.v1",
+  "task": "R209",
+  "mode": "read-only evidence recovery; no scientific rerun",
+  "audit_date": "2026-09-22",
+  "verdict": "COMPLETE_FOR_REQUESTED_ARCHIVE_AUDIT_WITH_RAW_PREDICTION_VECTOR_LIMITATION",
+  "source_run": {
+    "repository": "tim8es/arc-whitebox",
+    "run_id": 35544406064,
+    "run_url": "https://github.com/tim8es/arc-whitebox/actions/runs/35544406064",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "push",
+    "run_attempt": 1,
+    "head_branch": "research/e136-public-k3-reproduction",
+    "head_sha": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "created_at": "2026-09-20T23:21:30Z",
+    "updated_at": "2026-09-21T00:56:57Z",
+    "jobs": {
+      "v25": {
+        "job_id": 106167659234,
+        "name": "run (v25)",
+        "conclusion": "success"
+      },
+      "v29": {
+        "job_id": 106167659295,
+        "name": "run (v29)",
+        "conclusion": "success"
+      },
+      "summarize": {
+        "job_id": 106180901915,
+        "name": "summarize",
+        "conclusion": "success"
+      }
+    }
+  },
+  "provenance": {
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "run_arm_blob_sha": "d57bb883d27686ce861746380e2b861ca1edbd34",
+    "workflow_blob_sha": "4dea7107d9c7677659898e661b6ac5c306c68f7b",
+    "estimator_blobs": {
+      "v25": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "v29": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+    },
+    "toolchain_observed": {
+      "python": "3.11.16",
+      "whestbench": "0.16.1",
+      "flopscope": "0.12.1+np2.4.6",
+      "numpy": "2.4.6"
+    }
+  },
+  "split_semantics": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini",
+    "streaming": true,
+    "n_mlps_requested": 100,
+    "n_mlps_reported_each_version": 100,
+    "width": 1024,
+    "depth": 16,
+    "same_order_across_versions": true,
+    "mlp_names_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "verification_basis": [
+      "run-arm blob fixes dataset/split/n_mlps",
+      "workflow blob invokes whest run with --split mini --n-mlps 100",
+      "both report.json files record the same dataset path, dataset SHA256, n_mlps=100, width=1024, depth=16",
+      "both per_mlp arrays contain indices 0..99 and the same 100 unique names"
+    ]
+  },
+  "execution_constraints": {
+    "flop_budget_per_mlp": 2199023255552,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "max_threads": 1,
+    "blas_env_threads": 1,
+    "runner": "local",
+    "holdout": false,
+    "full_split": false,
+    "official_scorer": false,
+    "submission": false
+  },
+  "artifacts": {
+    "v25": {
+      "artifact_id": 10617855153,
+      "name": "e136-followup-v25",
+      "zip_sha256": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08",
+      "size_in_bytes": 106494,
+      "expired_at_audit": false,
+      "expires_at": "2026-12-19T23:21:31Z",
+      "report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+      "sha256_manifest_sha256": "3c9811586583ca122be5cdf726ce717f19b627a743fa35a978a2e2b1b1d7d4e5",
+      "internal_hash_manifest_verified": true,
+      "internal_hashes": {
+        "environment.txt": "13d60bf5de4ac31310c76a0d2526a7b8ac1e66f9e983f30057e693213529fbf2",
+        "report.json": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+        "run.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "run.stderr": "43575a4114bc947e715568aae334ed0a8b86643d4d1c8f75ce6024a9c2fb5286",
+        "validate.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "validate.json": "4d507d2cf7a511d4b444f275e3a879aa0db9ed06ddabbe5e433ad767936ad311",
+        "validate.stderr": "8d8e4f289f375ffe276a714cb3a0e312198ae76266a8f6f1d2983021f0ecef11",
+        "whest_version.json": "c47add2684b095c56ea2a6f951f10098560476094435b1c8159a1fef45ccb29a"
+      }
+    },
+    "v29": {
+      "artifact_id": 10617318650,
+      "name": "e136-followup-v29",
+      "zip_sha256": "32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681",
+      "size_in_bytes": 102407,
+      "expired_at_audit": false,
+      "expires_at": "2026-12-19T23:21:31Z",
+      "report_sha256": "76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b",
+      "sha256_manifest_sha256": "582ed623b81a435eb20e12fe76e91c27dd808ef071333384ead7b9e4beb38b97",
+      "internal_hash_manifest_verified": true,
+      "internal_hashes": {
+        "environment.txt": "13d60bf5de4ac31310c76a0d2526a7b8ac1e66f9e983f30057e693213529fbf2",
+        "report.json": "76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b",
+        "run.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "run.stderr": "1fef99a9ff211fcfcbc053e4b946fc17d29377b8fa54046c3fd2e6785a8be8fc",
+        "validate.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "validate.json": "8d678cef214ee384663da93f6482b464253d524d1ca09c9b11b460f83c774490",
+        "validate.stderr": "0aae58cb58fcf42c7b6b405bebbec1ec5607a099e3193cb34ebfb557cdd840f4",
+        "whest_version.json": "c47add2684b095c56ea2a6f951f10098560476094435b1c8159a1fef45ccb29a"
+      }
+    },
+    "summary": {
+      "artifact_id": 10617372279,
+      "name": "e136-followup-summary",
+      "zip_sha256": "96d22843e17f5f47b31728e80a0d5e4d4bfa25ac150da2181b3897082cb4f039",
+      "size_in_bytes": 1681,
+      "expired_at_audit": false,
+      "expires_at": "2026-12-19T23:21:31Z",
+      "runtime_receipt_sha256": "17866edd6527e37a41677efcfc96a274cc2d48f425237f18909653293f6a96d0"
+    }
+  },
+  "per_mlp_evidence": {
+    "v25": {
+      "records_present": 100,
+      "full_records_canonical_sha256": "85472c4808bff7a83a9ca853688ad9068895b073bb1592fd0f364d82c112b13e",
+      "index_metric_sha256_from_runtime_receipt": "f5605b03d55808ac4afd7ff2de42c317b96ae20483551a2f7ddddb9d89cd680b",
+      "indices_complete_0_through_99": true,
+      "raw_prediction_vectors_archived": false
+    },
+    "v29": {
+      "records_present": 100,
+      "full_records_canonical_sha256": "28b6f61951f6b1bd04c36588da6421f398bd1823bba0ca07bb6f3f6dd7fadbe1",
+      "index_metric_sha256_from_runtime_receipt": "36becb062d04f8b6fdf76d9d5d4e0407cb357e3b111d744be459ba83394e5b5a",
+      "indices_complete_0_through_99": true,
+      "raw_prediction_vectors_archived": false
+    },
+    "record_contents": [
+      "mlp_index",
+      "mlp_name",
+      "final_layer_mse",
+      "all_layers_mse",
+      "per_layer_mse",
+      "adjusted_final_layer_score",
+      "flops_used",
+      "effective_compute",
+      "budget/time/residual/combined exhaustion flags",
+      "timings",
+      "breakdowns",
+      "traceback"
+    ],
+    "immutability_basis": "per_mlp records are embedded in report.json; report SHA256 is recorded by sha256.json; artifact ZIP SHA256 is recorded by GitHub Actions"
+  },
+  "results": {
+    "v25": {
+      "run_exit": 0,
+      "validate_exit": 0,
+      "n_failed_mlps": 0,
+      "failure_breakdown": {
+        "budget_exhausted": 0,
+        "time_exhausted": 0,
+        "residual_wall_time_exhausted": 0,
+        "combined_budget_exhausted": 0,
+        "error": 0
+      },
+      "mean_raw_final_layer_mse": 2.228303490170447e-8,
+      "adjusted_final_layer_score": 8.170397440117225e-9,
+      "all_layers_mse": 8.862352514071858e-9,
+      "total_estimator_flops_used": 80630372196500,
+      "mean_effective_compute": 806303721965,
+      "mean_c_over_b": 0.36666448157347986,
+      "max_residual_wall_time_s": 0.19043814401743475,
+      "shape_fallback_count": 0
+    },
+    "v29": {
+      "run_exit": 0,
+      "validate_exit": 0,
+      "n_failed_mlps": 57,
+      "failure_breakdown": {
+        "budget_exhausted": 0,
+        "time_exhausted": 0,
+        "residual_wall_time_exhausted": 57,
+        "combined_budget_exhausted": 0,
+        "error": 0
+      },
+      "failed_mlp_indices": [
+        1,
+        6,
+        7,
+        8,
+        9,
+        10,
+        15,
+        17,
+        18,
+        19,
+        20,
+        22,
+        24,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        45,
+        46,
+        50,
+        52,
+        57,
+        58,
+        59,
+        60,
+        67,
+        68,
+        70,
+        71,
+        72,
+        75,
+        76,
+        78,
+        79,
+        80,
+        83,
+        87,
+        90,
+        91,
+        93,
+        94,
+        95,
+        96,
+        97,
+        99
+      ],
+      "mean_raw_final_layer_mse": 0.5270942949467906,
+      "adjusted_final_layer_score": 0.5270942878803215,
+      "all_layers_mse": 0.4368567451007972,
+      "total_estimator_flops_used": 55573338891612,
+      "mean_effective_compute": 555733388916.12,
+      "mean_c_over_b": 0.25271828640876265,
+      "max_residual_wall_time_s": 1.2995900200139658,
+      "shape_fallback_count": 0,
+      "successful_rows_diagnostic_only": {
+        "n": 43,
+        "mean_raw_final_layer_mse": 2.1996888073301813e-8,
+        "mean_adjusted_final_layer_score": 5.563239284715151e-9,
+        "mean_c_over_b": 0.25289640566752286
+      },
+      "failed_rows_diagnostic_only": {
+        "n": 57,
+        "mean_raw_final_layer_mse": 0.9247268166458398,
+        "mean_adjusted_final_layer_score": 0.9247268166458398,
+        "mean_c_over_b": 0.2525839157398734
+      }
+    }
+  },
+  "audit_findings": {
+    "run_completed_full_100_mlp_panel": true,
+    "immutable_per_mlp_metric_records_present": true,
+    "hashes_verified": true,
+    "split_semantics_verified": true,
+    "failures_accounted": true,
+    "flops_accounted": true,
+    "scores_present": true,
+    "shape_fallback_count_both_versions": 0,
+    "v25_clean_panel": true,
+    "v29_clean_panel": false,
+    "v29_failure_reason": "57/100 MLPs exceeded the frozen residual_wall_time_limit_s=0.4; the aggregate V29 raw MSE/score therefore includes failed rows and is not a clean full-panel quality comparator",
+    "successful_only_v29_is_posthoc_diagnostic_not_replacement_score": true
+  },
+  "evidence_gap_or_limitation": {
+    "blocking_gap_for_requested_archive_audit": false,
+    "raw_prediction_vectors_not_archived": true,
+    "consequence": "The archived artifacts are sufficient to audit recorded per-MLP metrics, failures, FLOPs, split identity and scores, but not to recompute MSE independently from raw estimator prediction tensors.",
+    "run_meta_timestamp_note": "report run_meta records run_duration_s but run_started_at_utc/run_finished_at_utc are nearly identical; Actions job/run timestamps are authoritative for execution chronology."
+  },
+  "actions_taken": {
+    "rerun": false,
+    "workflow_dispatch": false,
+    "holdout_access": false,
+    "full_split_access": false,
+    "scorer_access": false,
+    "submission": false,
+    "scientific_artifacts_mutated": false,
+    "audit_only_commit": true
+  }
+}
