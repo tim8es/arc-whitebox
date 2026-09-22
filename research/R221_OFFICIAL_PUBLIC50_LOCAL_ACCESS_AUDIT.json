@@ -1,0 +1,133 @@
+{
+  "schema": "arc.whitebox.r221.official_public50_local_access.v1",
+  "task": "R221",
+  "audit_date": "2026-09-23",
+  "owner": "leaderboard-audit",
+  "mode": "source-backed read-only access audit; no submission; no private split access; no paid resources; no leaderboard mutation",
+  "question": "Can the exact Phase-2 leaderboard public-50 panel be measured locally with V25, using official published assets, without a submission or private holdout access?",
+  "answer": {
+    "yes_no": "NO",
+    "verdict_code": "NO_DOCUMENTED_LOCAL_EXACT_PUBLIC50_ASSET",
+    "statement": "The official local scoring pipeline is available, but the exact Phase-2 grader public-50 inputs/ground truth are not published as a local evaluation split in the official starter-kit or the official Public Release dataset. Public submission pages expose the 50 public labels and graded telemetry, not a documented downloadable panel containing the exact weights/seeds/ground truth. Therefore V25 cannot be established as measured locally on the exact leaderboard public-50 from the official public assets audited here."
+  },
+  "boundaries": {
+    "r216_panel_count_comparison_redone": false,
+    "submission": false,
+    "private_split_access": false,
+    "private_split_inference": false,
+    "paid_resources": false,
+    "leaderboard_mutation": false,
+    "scientific_run": false
+  },
+  "sources": [
+    {
+      "id": "starterkit_use_evaluation_datasets",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/how-to/use-evaluation-datasets.md",
+      "repository_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "git_blob_sha": "53af1ead77023bb2c4c27fa2a64b494a4f46aa26",
+      "observed": [
+        "Official published Public Release dataset is aicrowd/arc-whestbench-public-2026.",
+        "For v2-phase2 the documented local splits are mini=100 MLPs and full=1000 MLPs.",
+        "The documented local commands select mini or full; no leaderboard-public-50 split or exact grader-panel download is documented.",
+        "Dataset traceability uses metadata.json plus the revision commit OID and per-MLP seeds stored in parquet."
+      ]
+    },
+    {
+      "id": "starterkit_stage3_local",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/getting-started/stage-3-run-local.md",
+      "repository_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "git_blob_sha": "2bc23fd23210f513a9bfab4917dde6f4ef18c125",
+      "observed": [
+        "Stage 3 runs the real scoring pipeline, described as the same one the grader uses.",
+        "That pipeline is demonstrated locally against the Public Mini split of 100 fixed MLPs, not the grader public-50."
+      ]
+    },
+    {
+      "id": "starterkit_faq_grader_suite",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/troubleshooting/faq.md",
+      "repository_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "git_blob_sha": "f81bd8b5a0f3d585e8399a2536cfbd565008d739",
+      "observed": [
+        "The grader evaluates 100 MLPs split into a public half driving the visible leaderboard and a held-out half.",
+        "Each graded MLP has different random weights and a grader-supplied mlp.seed."
+      ]
+    },
+    {
+      "id": "starterkit_phase2_versions",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/pyproject.toml",
+      "repository_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "git_blob_sha": "2c1d562a2073046d6912868184b52c8c593d23c5",
+      "observed": [
+        "Starter-kit dependency range is whestbench>=0.16.1,<0.17.0 and flopscope>=0.12.1,<0.13.0.",
+        "The file explicitly records the live grader pair as whestbench 0.16.0 with flopscope[server] 0.12.0 and explains that the kit leads by one patch."
+      ]
+    },
+    {
+      "id": "official_phase2_grader_version_confirmation",
+      "url": "https://discourse.aicrowd.com/t/shipped-covariance-propagation-example-trips-the-phase-2-residual-cap-locally-0-16-0-but-grades-fine-what-happens-when-the-evaluator-upgrades/18202/2",
+      "observed": [
+        "Organizer Mohanty states that evaluators run whestbench@v0.16.0 and flopscope server/client 0.12.0."
+      ]
+    },
+    {
+      "id": "official_hf_v2_phase2_metadata",
+      "url": "https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026/blob/v2-phase2/metadata.json",
+      "revision": "v2-phase2",
+      "current_revision_commit_oid_observed": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "observed": [
+        "schema_version=3.0, width=1024, depth=16, n_samples=1000000000.",
+        "splits contains mini with n_mlps=100 and full with n_mlps=1000.",
+        "prepared_splits contains only mini and full.",
+        "No public50, leaderboard, grader-public, or equivalent exact 50-row local split is declared."
+      ],
+      "version_note": "The current v2-phase2 tree shows commit aa99830fdc09fad15407b10e8e3459d3e18bba0a adding prepared_splits mini/full to metadata. This audit pins the commit OID rather than treating an older documentation-example metadata SHA256 as current."
+    },
+    {
+      "id": "official_phase2_public_submission_page",
+      "url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+      "observed": [
+        "Phase 2 grading exposes 50/50 public scored MLPs and public per-MLP labels/telemetry.",
+        "The page describes the visible public score as the mean over the 50 public MLPs.",
+        "The audited public page does not provide a documented local dataset URI, seed manifest, weight artifact, or ground-truth artifact for reconstructing that exact public-50 panel."
+      ]
+    }
+  ],
+  "access_matrix": {
+    "local_official_scoring_pipeline": {
+      "available": true,
+      "evidence": "starterkit Stage 3"
+    },
+    "exact_live_grader_version_semantics": {
+      "available_as_documented_versions": true,
+      "grader_pair": "whestbench 0.16.0 + flopscope 0.12.0"
+    },
+    "published_phase2_local_mini100": {
+      "available": true
+    },
+    "published_phase2_local_full1000": {
+      "available": true
+    },
+    "public50_names_and_submission_telemetry": {
+      "available": true
+    },
+    "exact_public50_weights": {
+      "available_from_audited_official_public_assets": false
+    },
+    "exact_public50_seed_manifest": {
+      "available_from_audited_official_public_assets": false
+    },
+    "exact_public50_ground_truth": {
+      "available_from_audited_official_public_assets": false
+    },
+    "exact_public50_local_split": {
+      "available_from_audited_official_public_assets": false
+    }
+  },
+  "blocking_gate": "Exact panel identity is not enough by label alone: a local official score requires the exact grader MLP weights/seeds and corresponding ground truth. The official published local dataset exposes mini/full only, while the grader supplies its own MLP seeds. No official public artifact audited here supplies the exact public-50 evaluation rows.",
+  "one_allowed_next_step": {
+    "action": "Ask the ARC/AIcrowd organizers, via the public challenge forum, to publish or point to an immutable public-only Phase-2 grader-panel artifact/manifest containing the exact 50 public MLP weights or seeds plus ground truth and its evaluator/version fingerprint. If such an artifact is released, V25 can then be run locally through the documented scoring pipeline without touching the private split.",
+    "submission_required": false,
+    "private_access_required": false,
+    "paid_resource_required": false
+  }
+}
