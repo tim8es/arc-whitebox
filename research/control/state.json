@@ -26,32 +26,44 @@
       "revision": 3
     },
     {
-      "revision": 4,
       "action": "start",
+      "at": "2026-09-22T15:21:30+00:00",
       "job": "R201",
       "owner": "baseline",
       "payload": {
-        "run_id": "R201-reuse-e136-35544406064-e173-35621103274",
         "code_commit": "e4685835b8fd1faf81f7476ed363adda3934f38c",
-        "command": "python scripts/r201_reuse_v29_baseline.py --e136-zip e136-followup-v29.zip --e173-ago research/results/E173-ago.json --normalizer-commit e4685835b8fd1faf81f7476ed363adda3934f38c --output research/results/R201-v29.json --receipt research/R201_BASELINE_RECEIPT.json"
+        "command": "python scripts/r201_reuse_v29_baseline.py --e136-zip e136-followup-v29.zip --e173-ago research/results/E173-ago.json --normalizer-commit e4685835b8fd1faf81f7476ed363adda3934f38c --output research/results/R201-v29.json --receipt research/R201_BASELINE_RECEIPT.json",
+        "run_id": "R201-reuse-e136-35544406064-e173-35621103274"
       },
-      "at": "2026-09-22T15:21:30+00:00"
+      "revision": 4
     },
     {
-      "revision": 5,
       "action": "finish",
+      "at": "2026-09-22T15:28:30+00:00",
       "job": "R201",
       "owner": "baseline",
       "payload": {
-        "run_id": "R201-reuse-e136-35544406064-e173-35621103274",
-        "status": "COMPLETE",
         "reason": "Reused immutable E136 V29 official report on the exact E173 first-five Phase-2 mini panel; V29 has four valid low-MSE rows and one residual_wall_time_exhausted failure, while E173-AGO has zero failures. No new paid or scientific run was started.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/80342008fa37c81f1f7a2660cd3e18a2a494390f/research/R201_BASELINE_RECEIPT.json",
-          "sha256": "bb0ff5da86da0c24d4b9c09e1a7e9516971cf897f5864ab25534dbd253a85c18"
-        }
+          "sha256": "bb0ff5da86da0c24d4b9c09e1a7e9516971cf897f5864ab25534dbd253a85c18",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/80342008fa37c81f1f7a2660cd3e18a2a494390f/research/R201_BASELINE_RECEIPT.json"
+        },
+        "run_id": "R201-reuse-e136-35544406064-e173-35621103274",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-22T15:28:30+00:00"
+      "revision": 5
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T15:49:05.469722+00:00",
+      "job": "R202",
+      "owner": "kernel",
+      "payload": {
+        "code_commit": "a991959880550a13f4f6b417376eda9cfc16772a",
+        "command": "python scripts/r202_ta32_probe.py --scheme .cache/r202/32x32x32_r14197.npz --out artifacts/r202/R202_TA32_KERNEL_RECEIPT.json --seed 202 --n 1024",
+        "run_id": "R202-ta32-probe-35747466353"
+      },
+      "revision": 6
     }
   ],
   "jobs": [
@@ -59,19 +71,19 @@
       "assigned_owner": "baseline",
       "attempts": [
         {
-          "run_id": "R201-reuse-e136-35544406064-e173-35621103274",
           "code_commit": "e4685835b8fd1faf81f7476ed363adda3934f38c",
           "command": "python scripts/r201_reuse_v29_baseline.py --e136-zip e136-followup-v29.zip --e173-ago research/results/E173-ago.json --normalizer-commit e4685835b8fd1faf81f7476ed363adda3934f38c --output research/results/R201-v29.json --receipt research/R201_BASELINE_RECEIPT.json",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R201-reuse-e136-35544406064-e173-35621103274",
-            "status": "COMPLETE",
             "reason": "Reused immutable E136 V29 official report on the exact E173 first-five Phase-2 mini panel; V29 has four valid low-MSE rows and one residual_wall_time_exhausted failure, while E173-AGO has zero failures. No new paid or scientific run was started.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/80342008fa37c81f1f7a2660cd3e18a2a494390f/research/R201_BASELINE_RECEIPT.json",
-              "sha256": "bb0ff5da86da0c24d4b9c09e1a7e9516971cf897f5864ab25534dbd253a85c18"
-            }
-          }
+              "sha256": "bb0ff5da86da0c24d4b9c09e1a7e9516971cf897f5864ab25534dbd253a85c18",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/80342008fa37c81f1f7a2660cd3e18a2a494390f/research/R201_BASELINE_RECEIPT.json"
+            },
+            "run_id": "R201-reuse-e136-35544406064-e173-35621103274",
+            "status": "COMPLETE"
+          },
+          "run_id": "R201-reuse-e136-35544406064-e173-35621103274",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Pinned runnable parent; official per-network reports, actual FLOPs/time/failures; normalized JSON against E173 panel; code+receipt. Reuse existing complete reports if matching, otherwise bounded local evaluation. No new paid run until budget reconciled.",
@@ -80,24 +92,31 @@
       "id": "R201",
       "owner": "baseline",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Сильный V29 baseline и AGO: одинаковые первые 5 сетей Phase-2 mini",
+      "reason": "Reused immutable E136 V29 official report on the exact E173 first-five Phase-2 mini panel; V29 has four valid low-MSE rows and one residual_wall_time_exhausted failure, while E173-AGO has zero failures. No new paid or scientific run was started.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/80342008fa37c81f1f7a2660cd3e18a2a494390f/research/R201_BASELINE_RECEIPT.json",
-        "sha256": "bb0ff5da86da0c24d4b9c09e1a7e9516971cf897f5864ab25534dbd253a85c18"
+        "sha256": "bb0ff5da86da0c24d4b9c09e1a7e9516971cf897f5864ab25534dbd253a85c18",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/80342008fa37c81f1f7a2660cd3e18a2a494390f/research/R201_BASELINE_RECEIPT.json"
       },
-      "reason": "Reused immutable E136 V29 official report on the exact E173 first-five Phase-2 mini panel; V29 has four valid low-MSE rows and one residual_wall_time_exhausted failure, while E173-AGO has zero failures. No new paid or scientific run was started."
+      "status": "COMPLETE",
+      "title": "Сильный V29 baseline и AGO: одинаковые первые 5 сетей Phase-2 mini"
     },
     {
       "assigned_owner": "kernel",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "a991959880550a13f4f6b417376eda9cfc16772a",
+          "command": "python scripts/r202_ta32_probe.py --scheme .cache/r202/32x32x32_r14197.npz --out artifacts/r202/R202_TA32_KERNEL_RECEIPT.json --seed 202 --n 1024",
+          "run_id": "R202-ta32-probe-35747466353",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Small executable exploratory kernel, exact/float32 checks and all-in cost including additions/fallback; repair technical failures with logged attempts. Keep/drop by measured benefit, do not build full compiler first.",
       "depends_on": [],
       "hypothesis_id": "H185",
       "id": "R202",
       "owner": "kernel",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Маленькое ядро TA32: измерить сложения, точность и время до интеграции"
     },
     {
@@ -128,7 +147,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 5,
+  "revision": 6,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
