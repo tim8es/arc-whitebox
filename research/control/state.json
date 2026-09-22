@@ -317,48 +317,60 @@
       "revision": 26
     },
     {
-      "revision": 27,
       "action": "start",
+      "at": "2026-09-22T16:43:53.815Z",
       "job": "R204",
       "owner": "audit",
       "payload": {
-        "run_id": "R204-integration-audit-r201-r205-e173",
         "code_commit": "b95b0bae959d20cb6c1c7802079944184d87748d",
-        "command": "python scripts/arc_control.py compare research/results/R205-v29-l4.json research/results/E173-ago.json"
+        "command": "python scripts/arc_control.py compare research/results/R205-v29-l4.json research/results/E173-ago.json",
+        "run_id": "R204-integration-audit-r201-r205-e173"
       },
-      "at": "2026-09-22T16:43:53.815Z"
+      "revision": 27
     },
     {
-      "revision": 28,
       "action": "finish",
+      "at": "2026-09-22T16:43:54.815Z",
       "job": "R204",
       "owner": "audit",
       "payload": {
-        "run_id": "R204-integration-audit-r201-r205-e173",
-        "status": "COMPLETE",
+        "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/b95b0bae959d20cb6c1c7802079944184d87748d/research/R204_R205_INTEGRATION_RECEIPT.json",
-          "sha256": "286a757440426a112e629862cb7bd8d224eba10269908f63d566f12edc52fabc"
+          "sha256": "286a757440426a112e629862cb7bd8d224eba10269908f63d566f12edc52fabc",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b95b0bae959d20cb6c1c7802079944184d87748d/research/R204_R205_INTEGRATION_RECEIPT.json"
         },
-        "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission."
+        "run_id": "R204-integration-audit-r201-r205-e173",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-22T16:43:54.815Z"
+      "revision": 28
     },
     {
-      "revision": 29,
       "action": "finish",
+      "at": "2026-09-22T17:23:30+00:00",
       "job": "R207",
       "owner": "baseline",
       "payload": {
-        "run_id": "R207-v29-l4-public50-attempt1",
-        "status": "COMPLETE",
         "reason": "Public-50 confirmation completed under the frozen R205 V26_STRASSEN=4 mitigation. Result: 40/50 successful, 10/50 residual_wall_time_exhausted failures, official adjusted score 0.19809924364613474. Therefore the five-grid zero-failure result does not robustly generalize to this 50-MLP run; no rerun or rescue was performed.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/4ca70833a24396106a8b1c7c6e51bd3cd282d8c7/research/R207_RECEIPT.json",
-          "sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26"
-        }
+          "sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/4ca70833a24396106a8b1c7c6e51bd3cd282d8c7/research/R207_RECEIPT.json"
+        },
+        "run_id": "R207-v29-l4-public50-attempt1",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-22T17:23:30+00:00"
+      "revision": 29
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T17:32:16.511379+00:00",
+      "job": "R206",
+      "owner": "kernel",
+      "payload": {
+        "code_commit": "c74bf80beea36e5b0dba087a3030f34a8aad8c5f",
+        "command": "existing Actions run 35750632262: frozen synthetic-only TA rank sweep 26^3, 28^3, 30^3, 32^3",
+        "run_id": "R206-ta-rank-sweep-35750632262"
+      },
+      "revision": 30
     }
   ],
   "jobs": [
@@ -465,19 +477,19 @@
       "assigned_owner": "audit",
       "attempts": [
         {
-          "run_id": "R204-integration-audit-r201-r205-e173",
           "code_commit": "b95b0bae959d20cb6c1c7802079944184d87748d",
           "command": "python scripts/arc_control.py compare research/results/R205-v29-l4.json research/results/E173-ago.json",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R204-integration-audit-r201-r205-e173",
-            "status": "COMPLETE",
+            "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/b95b0bae959d20cb6c1c7802079944184d87748d/research/R204_R205_INTEGRATION_RECEIPT.json",
-              "sha256": "286a757440426a112e629862cb7bd8d224eba10269908f63d566f12edc52fabc"
+              "sha256": "286a757440426a112e629862cb7bd8d224eba10269908f63d566f12edc52fabc",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/b95b0bae959d20cb6c1c7802079944184d87748d/research/R204_R205_INTEGRATION_RECEIPT.json"
             },
-            "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission."
-          }
+            "run_id": "R204-integration-audit-r201-r205-e173",
+            "status": "COMPLETE"
+          },
+          "run_id": "R204-integration-audit-r201-r205-e173",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Verify exact result commit/artifact, comparable panel and score; recommend one bounded measured change, or explicit INCONCLUSIVE. No rejection because upstream input is absent.",
@@ -488,13 +500,13 @@
       "id": "R204",
       "owner": "audit",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Независимо проверить результат R201 и назначить следующую модификацию",
+      "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/b95b0bae959d20cb6c1c7802079944184d87748d/research/R204_R205_INTEGRATION_RECEIPT.json",
-        "sha256": "286a757440426a112e629862cb7bd8d224eba10269908f63d566f12edc52fabc"
+        "sha256": "286a757440426a112e629862cb7bd8d224eba10269908f63d566f12edc52fabc",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/b95b0bae959d20cb6c1c7802079944184d87748d/research/R204_R205_INTEGRATION_RECEIPT.json"
       },
-      "reason": "Verified exact R201/R205/E173 first-five panel, target identities and adjusted-score arithmetic. R205 V29-L4 has 0/5 failures and mean adjusted score 6.199991295837055e-9 versus E173 AGO 3.50171694663004e-7 (56.47938488206017x lower), while R205 remains above the separate 0.135B project cap. No leaderboard-rank claim or submission."
+      "status": "COMPLETE",
+      "title": "Независимо проверить результат R201 и назначить следующую модификацию"
     },
     {
       "assigned_owner": "baseline",
@@ -548,14 +560,21 @@
     },
     {
       "assigned_owner": "kernel",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "c74bf80beea36e5b0dba087a3030f34a8aad8c5f",
+          "command": "existing Actions run 35750632262: frozen synthetic-only TA rank sweep 26^3, 28^3, 30^3, 32^3",
+          "run_id": "R206-ta-rank-sweep-35750632262",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Bounded synthetic-only rank sweep around the pinned TA32 scheme to map the cost/float32 error Pareto frontier. Use the existing probe/kernel, record exact identity status, leaf/full arithmetic FLOPs, runtime and float32 error for a small predetermined rank set. Stop if no point can approach the 0.42 mechanism gate and 1.05 stability gate; no full compiler, paid run, holdout or submission.",
       "depends_on": [],
       "hypothesis_id": "H185-RANK-SWEEP",
       "id": "R206",
       "owner": "kernel",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "TA32 rank sweep: cost and float32 stability frontier"
     },
     {
@@ -564,17 +583,17 @@
         {
           "code_commit": "0df5922165d8fb116841dd72e0c4928e02612572",
           "command": "V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
-          "run_id": "R207-v29-l4-public50-attempt1",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R207-v29-l4-public50-attempt1",
-            "status": "COMPLETE",
             "reason": "Public-50 confirmation completed under the frozen R205 V26_STRASSEN=4 mitigation. Result: 40/50 successful, 10/50 residual_wall_time_exhausted failures, official adjusted score 0.19809924364613474. Therefore the five-grid zero-failure result does not robustly generalize to this 50-MLP run; no rerun or rescue was performed.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/4ca70833a24396106a8b1c7c6e51bd3cd282d8c7/research/R207_RECEIPT.json",
-              "sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26"
-            }
-          }
+              "sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/4ca70833a24396106a8b1c7c6e51bd3cd282d8c7/research/R207_RECEIPT.json"
+            },
+            "run_id": "R207-v29-l4-public50-attempt1",
+            "status": "COMPLETE"
+          },
+          "run_id": "R207-v29-l4-public50-attempt1",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Run the R205 V26_STRASSEN=4 mitigation on the full accessible Phase-2 public split (50 public MLPs) under the official contract, with per-MLP MSE/FLOPs/residual/failure receipt and adjusted score. Use no private holdout, no paid resources, no submission; compare against the current public leader metric only after panel and metric alignment.",
@@ -585,13 +604,13 @@
       "id": "R207",
       "owner": "baseline",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Confirm V29 L4 mitigation on the full accessible public split",
+      "reason": "Public-50 confirmation completed under the frozen R205 V26_STRASSEN=4 mitigation. Result: 40/50 successful, 10/50 residual_wall_time_exhausted failures, official adjusted score 0.19809924364613474. Therefore the five-grid zero-failure result does not robustly generalize to this 50-MLP run; no rerun or rescue was performed.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/4ca70833a24396106a8b1c7c6e51bd3cd282d8c7/research/R207_RECEIPT.json",
-        "sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26"
+        "sha256": "b5f0ad223fd27bc080fbf9855357bc409891f9d45704b2f412f729ab0d6a2a26",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/4ca70833a24396106a8b1c7c6e51bd3cd282d8c7/research/R207_RECEIPT.json"
       },
-      "reason": "Public-50 confirmation completed under the frozen R205 V26_STRASSEN=4 mitigation. Result: 40/50 successful, 10/50 residual_wall_time_exhausted failures, official adjusted score 0.19809924364613474. Therefore the five-grid zero-failure result does not robustly generalize to this 50-MLP run; no rerun or rescue was performed."
+      "status": "COMPLETE",
+      "title": "Confirm V29 L4 mitigation on the full accessible public split"
     },
     {
       "assigned_owner": "independent-audit",
@@ -621,7 +640,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 29,
+  "revision": 30,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
