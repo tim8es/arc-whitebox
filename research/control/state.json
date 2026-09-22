@@ -1126,6 +1126,18 @@
         "run_id": "R223-v25-isolated-improvement-20260922"
       },
       "revision": 87
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T21:20:00.000Z",
+      "job": "R221",
+      "owner": "leaderboard-audit",
+      "payload": {
+        "code_commit": "a4d4e255c6169387cb48dfd6e42fef75913e6a90",
+        "command": "read-only official-source audit of exact Phase-2 leaderboard public-50 local accessibility; no submission, private split, paid resource, or leaderboard mutation",
+        "run_id": "R221-official-public50-access-audit"
+      },
+      "revision": 88
     }
   ],
   "jobs": [
@@ -1785,14 +1797,21 @@
     },
     {
       "assigned_owner": "leaderboard-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "a4d4e255c6169387cb48dfd6e42fef75913e6a90",
+          "command": "read-only official-source audit of exact Phase-2 leaderboard public-50 local accessibility; no submission, private split, paid resource, or leaderboard mutation",
+          "run_id": "R221-official-public50-access-audit",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independently inspect official starter-kit/docs and accessible public data/split metadata to determine whether the exact 50 scored public MLPs and a local official evaluator are available without submitting or touching the sealed private split. Distinguish verified access from inference; record exact URLs, hashes, version semantics and any access gate. No submission, private holdout, leaderboard mutation or paid resources. Produce a source-backed receipt/commit and one permitted next step.",
       "depends_on": [],
       "hypothesis_id": "V25-OFFICIAL-PUBLIC50-ACCESS",
       "id": "R221",
       "owner": "leaderboard-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Verify a compliant exact-panel path for V25 versus official public-50"
     },
     {
@@ -1835,7 +1854,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 87,
+  "revision": 88,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
