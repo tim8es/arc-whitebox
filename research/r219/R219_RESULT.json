@@ -1,0 +1,111 @@
+{
+  "schema": "arc.whitebox.r219.result.v1",
+  "job_id": "R219",
+  "idempotency_key": "ARC-R219-1FGC8-20260922",
+  "branch": "research/r219-dependence-carrier-frontier-20260922",
+  "status": "TERMINAL_SCIENTIFIC_NO_GO",
+  "decision": "R219_TERMINAL_NO_GO_ONE_FACTOR_COPULA_NONCLOSURE",
+  "family": {
+    "name": "one-factor Gaussian-copula conditional-independence closure 1FGC-8",
+    "dependence_state": "one common latent Gaussian factor plus scalar marginals",
+    "factor_nodes": 8,
+    "r215_rescue": false
+  },
+  "novelty": {
+    "prior_factor_copula_branch_found": false,
+    "prior_factor_copula_commit_found": false,
+    "non_overlap": {
+      "R215_FMCF_marginals_only": true,
+      "E039_two_component_halfspace_gaussian_mixture": true,
+      "E124_Chow_Liu_pair_tree": true,
+      "E127_sparse_Mobius_hypergraph": true
+    },
+    "substantive_continuation": "1FGC can represent R215's perfect correlated/anti-correlated 2D witnesses with loadings (1,1) and (1,-1), so it genuinely adds shared dependence rather than adding marginal frequencies."
+  },
+  "primary_literature": [
+    {
+      "authors": "Pavel Krupskii; Harry Joe",
+      "title": "Factor copula models for multivariate data",
+      "journal": "Journal of Multivariate Analysis 120 (2013) 85-101",
+      "doi": "10.1016/j.jmva.2013.05.001",
+      "claim_used": "conditional-independence copula models with latent factors; O(d) dependence parameterization; factor-structured Gaussian copula as a special case"
+    },
+    {
+      "author": "Andre Nataf",
+      "title": "Determination des distributions de probabilites dont les marges sont donnees",
+      "journal": "C. R. Acad. Sci. Paris 255 (1962) 42-43",
+      "claim_used": "normal-copula style construction separating prescribed marginals from dependence"
+    }
+  ],
+  "production_cost": {
+    "width": 1024,
+    "depth": 16,
+    "factor_nodes": 8,
+    "budget_flops": 2199023255552,
+    "cap_fraction": 0.135,
+    "mandatory_lower_flops": 536870912,
+    "mandatory_lower_fraction": 0.000244140625,
+    "core_conservative_upper_flops": 1090519040,
+    "reserve_flops": 4000000000,
+    "all_in_conservative_upper_flops": 5090519040,
+    "all_in_conservative_upper_fraction": 0.0023149000480771065,
+    "cost_feasible": true
+  },
+  "exact_small": {
+    "parity_law": "uniform on the eight Rademacher states with X1*X2*X3*X4=+1",
+    "independent_law": "four independent Rademacher coordinates",
+    "marginals_identical": true,
+    "all_pair_laws_identical": true,
+    "all_pair_correlations_zero": true,
+    "gaussian_one_factor_constraint": "Corr(sign Zi, sign Zj)=2/pi*asin(lambda_i*lambda_j); zero pair correlations imply lambda_i*lambda_j=0 for every i!=j, hence at most one loading is nonzero and the modeled observed joint law is independent",
+    "observable": "U=X1+X2+X3+X4",
+    "parity_relu_mean": "1/2",
+    "independent_relu_mean": "3/4",
+    "true_gap": "1/4",
+    "same_state_worst_case_absolute_error_lower_bound": "1/8",
+    "specific_one_factor_independent_projection_error_on_parity": "1/4",
+    "continuation_gate": 0.000001,
+    "continuation_gate_pass": false
+  },
+  "execution": {
+    "central_queue_start_revision": 74,
+    "central_queue_start_commit": "872993f8bd55148db8aa1886be7451f9bad51c63",
+    "control_run_id": "R219-dependence-carrier-frontier-20260922",
+    "scientific_actions_run_id": 35784042283,
+    "scientific_actions_job_id": 106936348157,
+    "run_attempt": 1,
+    "head_sha": "bdad47262c1aafaf9a801c6985ee747d929e4813",
+    "github_conclusion": "success",
+    "deterministic_replay_bitwise_json": true,
+    "artifact": {
+      "id": 10719057296,
+      "name": "r219-1fgc8-falsifier",
+      "size_bytes": 2380,
+      "zip_sha256": "6ba641d86aaf6eecd3465ddcb55d0e4fd9eac91f59f4e3414c6d31baba176fb4",
+      "expires_at": "2026-12-21T21:01:38Z"
+    }
+  },
+  "gates": {
+    "novel_dependence_family": true,
+    "production_cost_feasible": true,
+    "marginals_identical": true,
+    "all_pair_laws_identical": true,
+    "one_factor_state_identical": true,
+    "true_next_observable_separates": true,
+    "deterministic_replay": true,
+    "required_accuracy": false
+  },
+  "terminal_reason": "A single Gaussian latent factor is not an information-complete dependence carrier. The exact even-parity law has the same univariate marginals and all pair laws as independence, forcing the one-factor Gaussian-copula state to the independent representation, while the next dense ReLU observable differs by 1/4.",
+  "boundary": "This closes only one-factor Gaussian-copula conditional-independence closure. Multi-factor copulas, vines, or explicit higher-order dependence carriers are different families and are not R219 rescue.",
+  "scope": {
+    "target_free": true,
+    "public_benchmark": false,
+    "paid_compute": false,
+    "holdout": false,
+    "submission": false,
+    "sweep": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "leaderboard_mutated": false
+  }
+}
