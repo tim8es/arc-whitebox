@@ -164,6 +164,34 @@ def main():
     add_gate(gates, "protocol_source_hash", protocol.get("contract_gates", {}).get("source_sha256") == ESTIMATOR_SHA256)
     add_gate(gates, "protocol_dataset_hash", protocol.get("contract_gates", {}).get("dataset_sha256") == DATASET_SHA256)
 
+    artifact_protocol = root / "R217_NEXT_RUNTIME_PROTOCOL.json"
+    artifact_expected = root / "R218_EXPECTED_PANEL.json"
+    artifact_prelaunch = root / "R218_PRELAUNCH_GATE.json"
+    add_gate(
+        gates,
+        "artifact_protocol_copy_hash",
+        artifact_protocol.is_file() and sha256(artifact_protocol) == PROTOCOL_SHA256,
+        sha256(artifact_protocol) if artifact_protocol.is_file() else None,
+    )
+    add_gate(
+        gates,
+        "artifact_expected_panel_copy_matches_frozen",
+        artifact_expected.is_file() and sha256(artifact_expected) == sha256(args.expected_panel),
+    )
+    add_gate(gates, "artifact_prelaunch_gate_present", artifact_prelaunch.is_file())
+    if artifact_prelaunch.is_file():
+        prelaunch_spec = read_json(artifact_prelaunch)
+        add_gate(
+            gates,
+            "artifact_prelaunch_protocol_hash",
+            prelaunch_spec.get("frozen_protocol", {}).get("sha256") == PROTOCOL_SHA256,
+        )
+        add_gate(
+            gates,
+            "artifact_prelaunch_source_hash",
+            prelaunch_spec.get("static_contract_gate", {}).get("estimator_sha256") == ESTIMATOR_SHA256,
+        )
+
     panel = expected.get("panel", [])
     expected_names = [x.get("mlp_name") for x in panel]
     expected_flops = [int(x.get("measured_flops")) for x in panel]
@@ -273,13 +301,23 @@ def main():
             lscpu_identities.append(lscpu_identity(lscpu_path))
 
         failures = sum(r["status"] == "failed" for r in rows)
+        row_score_mean = statistics.mean(float(r["official_adjusted_score"]) for r in rows)
+        report_score = report.get("results", {}).get("adjusted_final_layer_score")
+        add_gate(
+            gates,
+            f"block_{bi:02d}_aggregate_score_matches_rows",
+            isinstance(report_score, (int, float))
+            and math.isclose(float(report_score), row_score_mean, rel_tol=0.0, abs_tol=1e-12),
+            {"report": report_score, "row_mean": row_score_mean},
+        )
         block_summaries.append({
             "block_index": bi,
             "condition": condition,
             "failures": failures,
             "mean_residual_wall_time_s": statistics.mean(float(r["residual_wall_time_s"]) for r in rows),
             "median_residual_wall_time_s": statistics.median(float(r["residual_wall_time_s"]) for r in rows),
-            "official_adjusted_score_from_report": report.get("results", {}).get("adjusted_final_layer_score"),
+            "official_adjusted_score_from_report": report_score,
+            "official_adjusted_score_recomputed_row_mean": row_score_mean,
             "report_sha256": sha256(report_path),
         })
 
@@ -371,6 +409,7 @@ def main():
             and actions_evidence.get("job_name") == github.get("GITHUB_JOB") == "crossover"
             and actions_evidence.get("single_crossover_job_verified") is True
             and actions_evidence.get("executor_commit") == "85f5ba13236aad07bf31436b356cfa2a3744ad33"
+            and actions_evidence.get("estimator_source_sha256_verified") == ESTIMATOR_SHA256
         )
     add_gate(
         gates,
