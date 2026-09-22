@@ -415,6 +415,18 @@
         "status": "COMPLETE"
       },
       "revision": 33
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T17:32:57.139705+00:00",
+      "job": "R209",
+      "owner": "archive-evidence",
+      "payload": {
+        "code_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+        "command": "read-only audit of existing Actions run 35544406064 V25/V29 100-MLP artifacts",
+        "run_id": "R209-archive-audit-35544406064"
+      },
+      "revision": 34
     }
   ],
   "jobs": [
@@ -707,19 +719,26 @@
     },
     {
       "assigned_owner": "archive-evidence",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+          "command": "read-only audit of existing Actions run 35544406064 V25/V29 100-MLP artifacts",
+          "run_id": "R209-archive-audit-35544406064",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read-only inspect the existing Actions run 35544406064 and its V25/V29 artifacts to determine whether a complete 100-MLP Phase-2 mini/public result already exists, with immutable hashes, split semantics, failures, FLOPs and score. Reuse only if complete and provenance is verified; otherwise record the exact evidence gap. No rerun, paid resources, holdout access or submission.",
       "depends_on": [],
       "hypothesis_id": "EXISTING-100MLP-EVIDENCE-RECOVERY",
       "id": "R209",
       "owner": "archive-evidence",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Recover existing 100-MLP V25/V29 evidence without rerun"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 33,
+  "revision": 34,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
