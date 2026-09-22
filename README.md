@@ -2,9 +2,19 @@
 
 Research project for the **ARC White-Box Estimation Challenge 2026 — Phase 2**.
 
+## Research control — start here
+
+- [Results, comparisons and historical coverage](research/control/STATUS.md)
+- [Live assignments and attempts](https://github.com/tim8es/arc-whitebox/blob/research/control-v2/research/control/state.json)
+- [Research process and commands](research/RESEARCH_PROCESS.md)
+- [Agent instructions](AGENTS.md)
+
+The v2 process replaces earlier blanket no-repair/one-run-only and universal
+0.135B restrictions for new work. Historical evidence remains intact.
+
 ## Objective
 
-Build a FLOP-efficient estimator that predicts per-neuron expected post-ReLU activations of a random ReLU MLP under standard-normal input, with primary focus on minimizing **final-layer MSE** under the official compute model.
+Build a FLOP-efficient estimator that predicts per-neuron expected post-ReLU activations of a random ReLU MLP under standard-normal input, minimizing the official **adjusted_final_layer_score**: mean across networks of final-layer MSE times max(0.1, measured FLOPs / budget). Raw MSE is a diagnostic; compare on matching panels.
 
 Phase 2 target architecture:
 - width: 1024

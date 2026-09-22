@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "revision": 0,
+  "policy_version": "research-process-v2",
+  "coordinator": "Control Center 7.09",
+  "spending": {"cap_usd": 100, "spent_usd": null, "remaining_usd": null, "new_paid_runs_authorized": false},
+  "jobs": [
+    {"id": "R201", "hypothesis_id": "BASELINE-COMPARISON", "priority": 1, "title": "Сильный V29 baseline и AGO: одинаковые первые 5 сетей Phase-2 mini", "status": "QUEUED", "assigned_owner": "baseline", "owner": null, "depends_on": [], "attempts": [], "deliverable": "Pinned runnable parent; official per-network reports, actual FLOPs/time/failures; normalized JSON against E173 panel; code+receipt. Reuse existing complete reports if matching, otherwise bounded local evaluation. No new paid run until budget reconciled."},
+    {"id": "R202", "hypothesis_id": "H185", "priority": 2, "title": "Маленькое ядро TA32: измерить сложения, точность и время до интеграции", "status": "QUEUED", "assigned_owner": "kernel", "owner": null, "depends_on": [], "attempts": [], "deliverable": "Small executable exploratory kernel, exact/float32 checks and all-in cost including additions/fallback; repair technical failures with logged attempts. Keep/drop by measured benefit, do not build full compiler first."},
+    {"id": "R203", "hypothesis_id": "EVIDENCE-AUDIT", "priority": 1, "title": "Проверить архив, дубликаты и baseline E007/E051/E136", "status": "QUEUED", "assigned_owner": "audit", "owner": null, "depends_on": [], "attempts": [], "deliverable": "Independent audit of history.json and E173 normalization; identify strongest reproducible historical candidate and missing comparisons; pinned evidence and known gaps, no scientific rerun."},
+    {"id": "R204", "hypothesis_id": "BASELINE-COMPARISON", "priority": 1, "title": "Независимо проверить результат R201 и назначить следующую модификацию", "status": "QUEUED", "assigned_owner": "audit", "owner": null, "depends_on": ["R201"], "attempts": [], "deliverable": "Verify exact result commit/artifact, comparable panel and score; recommend one bounded measured change, or explicit INCONCLUSIVE. No rejection because upstream input is absent."}
+  ],
+  "events": []
+}
