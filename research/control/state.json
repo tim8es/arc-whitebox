@@ -387,6 +387,18 @@
         "status": "SCIENTIFIC_REJECT"
       },
       "revision": 31
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T17:32:38.616704+00:00",
+      "job": "R208",
+      "owner": "independent-audit",
+      "payload": {
+        "code_commit": "ddb5e2a376d21a1442b6f208ce1d487b724e66e6",
+        "command": "read-only audit of R205 receipt, normalized result, per-network rows and official score arithmetic",
+        "run_id": "R208-r205-audit-20260922"
+      },
+      "revision": 32
     }
   ],
   "jobs": [
@@ -644,7 +656,14 @@
     },
     {
       "assigned_owner": "independent-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "ddb5e2a376d21a1442b6f208ce1d487b724e66e6",
+          "command": "read-only audit of R205 receipt, normalized result, per-network rows and official score arithmetic",
+          "run_id": "R208-r205-audit-20260922",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read-only independent verification of the R205 receipt, normalized five-network result, code/artifact provenance, failure semantics and adjusted-score arithmetic. Recompute the reported 0.22478213802104935 to 6.199991295837055e-9 change from the per-network rows. No scientific rerun, paid resources, holdout or submission; produce an audit artifact and receipt.",
       "depends_on": [
         "R205"
@@ -653,7 +672,7 @@
       "id": "R208",
       "owner": "independent-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Independent verification of R205 receipt and score"
     },
     {
@@ -670,7 +689,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 31,
+  "revision": 32,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
