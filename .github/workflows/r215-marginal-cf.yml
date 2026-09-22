@@ -1,0 +1,84 @@
+name: R215 marginal characteristic-function exact-small falsifier
+
+on:
+  push:
+    branches:
+      - research/r215-marginal-characteristic-function-20260922
+    paths:
+      - 'research/r215/R215_RUN_ARM.json'
+
+jobs:
+  r215:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and blobs
+        run: |
+          mkdir -p r215_artifacts
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+
+          expected = {
+              "idempotency_key": "ARC-R215-MARGINAL-CF-20260922",
+              "execute_once": True,
+              "scope": "exact-small synthetic only"
+          }
+          arm=json.loads(Path("research/r215/R215_RUN_ARM.json").read_text())
+          assert arm == expected, arm
+
+          changed=subprocess.check_output(["git","diff","--name-only","HEAD^","HEAD"],text=True).splitlines()
+          assert changed == ["research/r215/R215_RUN_ARM.json"], changed
+
+          frozen={
+            "research/r215/R215_PROTOCOL.md":"4dbbb5fc38ca065cb43af6592099f71619bf33a8",
+            "scripts/r215_marginal_cf_falsifier.py":"5caf24ebd71223f8a012b28b87c97a3c5ac29d0d",
+          }
+          for path,sha in frozen.items():
+              got=subprocess.check_output(["git","rev-parse",f"HEAD:{path}"],text=True).strip()
+              assert got == sha, (path,got,sha)
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Syntax check
+        run: python -m py_compile scripts/r215_marginal_cf_falsifier.py
+
+      - name: Run sole exact-small synthetic falsifier
+        run: |
+          set -o pipefail
+          python scripts/r215_marginal_cf_falsifier.py 2>&1 | tee r215_artifacts/r215.log
+          cp r215-result.json r215_artifacts/r215-result.json
+
+      - name: Hash evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          out={}
+          for p in sorted(Path("r215_artifacts").glob("*")):
+              if p.is_file():
+                  out[str(p)] = hashlib.sha256(p.read_bytes()).hexdigest()
+          Path("r215_artifacts/sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+
+      - name: Upload immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r215-marginal-cf-falsifier
+          path: |
+            r215_artifacts/
+            research/r215/R215_RUN_ARM.json
+          if-no-files-found: error
+          retention-days: 90
