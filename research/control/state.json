@@ -1579,6 +1579,16 @@
       "owner": "v25-error-tail-audit",
       "payload": {},
       "revision": 121
+    },
+    {
+      "action": "repair",
+      "at": "2026-09-22T22:54:42.000Z",
+      "job": "R227",
+      "owner": "v25-optimization",
+      "payload": {
+        "reason": "The only recorded R227 attempt did not execute: no Actions run/process/evidence existed, and no estimator or mini-100 run occurred. Repair the missing free public-runner path for the already-frozen source-feasibility script only; preserve the hypothesis/protocol and do not authorize candidate evaluation unless the frozen source gate passes."
+      },
+      "revision": 122
     }
   ],
   "jobs": [
@@ -2465,13 +2475,13 @@
       "id": "R227",
       "owner": "v25-optimization",
       "priority": 1,
-      "status": "INFRA_ERROR",
+      "status": "CLAIMED",
       "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure",
       "receipt": {
         "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json",
         "sha256": "779003b529981c331e755441d457067823cdae6870c7b452f0c7aad159bd89ba"
       },
-      "reason": "R227 frozen feasibility attempt never executed: Actions query for code commit 6715c89debd53554cbce5691150180fbb933e503 returned 0 runs; branch tree contained protocol/source/cost/script only and no r227-feasibility.json; no live process/stdout evidence existed after the RUNNING checkpoint. Durable receipt commit 56ad738fca269e3ad92a9e9a1ac2801f757fde56 records the no-executor blocker. No estimator or mini-100 run, paid compute, holdout, submission, or canonical V25 mutation occurred."
+      "reason": "The only recorded R227 attempt did not execute: no Actions run/process/evidence existed, and no estimator or mini-100 run occurred. Repair the missing free public-runner path for the already-frozen source-feasibility script only; preserve the hypothesis/protocol and do not authorize candidate evaluation unless the frozen source gate passes."
     },
     {
       "id": "R228",
@@ -2593,7 +2603,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 121,
+  "revision": 122,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
