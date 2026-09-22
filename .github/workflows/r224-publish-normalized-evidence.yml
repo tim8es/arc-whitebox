@@ -1,0 +1,106 @@
+name: R224 publish normalized evidence
+on:
+  push:
+    branches:
+      - review/r224-r209-mini100-fingerprints-20260922
+    paths:
+      - research/r224/R224_PUBLISH_ARM.json
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download validated evidence artifacts
+        run: |
+          mkdir -p r224/fp r224/norm research/r224
+          gh run download 35788780990 -n r224-mini100-fingerprints -D r224/fp
+          gh run download 35789283577 -n r224-normalized-r209-mini100 -D r224/norm
+      - name: Install exact validated bytes into review tree
+        run: |
+          cp r224/fp/R224_MINI100_FINGERPRINTS.json research/r224/R224_MINI100_FINGERPRINTS.json
+          cp r224/norm/R209-v25-mini100.json research/results/R209-v25-mini100.json
+          cp r224/norm/R209-v29-mini100.json research/results/R209-v29-mini100.json
+          cp r224/norm/compare-v29-v25.json research/r224/R224_COMPARE_V29_V25.json
+          cp r224/norm/arc_control_check.txt research/r224/R224_ARC_CONTROL_CHECK.txt
+          cp r224/norm/STATUS.md research/control/STATUS.md
+      - name: Recheck exact installed normalized tree
+        run: |
+          python scripts/arc_control.py check | tee research/r224/R224_FINAL_CHECK.txt
+          python scripts/arc_control.py compare research/results/R209-v29-mini100.json research/results/R209-v25-mini100.json > research/r224/R224_FINAL_COMPARE.json
+      - name: Build durable receipt
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib,statistics
+          def sha(p): return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          def load(p): return json.loads(pathlib.Path(p).read_text())
+          fp=load("research/r224/R224_MINI100_FINGERPRINTS.json")
+          v25=load("research/results/R209-v25-mini100.json")
+          v29=load("research/results/R209-v29-mini100.json")
+          cmp=load("research/r224/R224_FINAL_COMPARE.json")
+          check=pathlib.Path("research/r224/R224_FINAL_CHECK.txt").read_text().strip()
+          receipt={
+            "schema":"arc.whitebox.r224.r209_mini100_normalization.v1",
+            "job_id":"R224","owner":"postflight-audit","status":"COMPLETE",
+            "decision":"SCHEMA_VALID_NORMALIZATION_COMPLETE",
+            "mode":"PUBLISHED_DATASET_EVIDENCE_RECOVERY_ONLY_NO_ESTIMATOR",
+            "parent_r222":{"receipt_commit":"7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b","receipt_sha256":"ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec"},
+            "protocol":{"commit":"bb1a98d4e928403b1b15f014970d8f475b2ef1f0","extract_arm_commit":"bbf4c7f7bdb31d07cc222f9e9a5b05229d9364c5","normalizer_commit":"e236e20e99ab77871a5591c5e8390f22226283c0","normalize_arm_commit":"0822ea0a2d58e92339d440fa575799948583eceb"},
+            "fingerprint_extraction":{
+              "actions_run_id":35788780990,"actions_job_id":106951975172,"actions_head_sha":"bbf4c7f7bdb31d07cc222f9e9a5b05229d9364c5",
+              "artifact_id":10720913493,"artifact_name":"r224-mini100-fingerprints","artifact_zip_sha256":"28feb5da04d3508b86a8b7afddc39a35f9a57a61bad76c0f63fbf3a2ee6de686",
+              "fingerprint_json_sha256":sha("research/r224/R224_MINI100_FINGERPRINTS.json"),
+              "metadata_sha256":fp["dataset"]["metadata_sha256"],"dataset_info_sha256":fp["dataset"]["dataset_info_sha256"],
+              "rows":len(fp["records"]),"target_dtype":fp["dataset"]["target_dtype"],"target_shape":fp["dataset"]["target_shape"],
+              "name_order_sha256":fp["canonicalization"]["name_order_sha256"],"first5_controls_verified":fp["first5_controls_verified"],
+              "network_id_rule":fp["canonicalization"]["network_id"],"target_sha256_rule":fp["canonicalization"]["target_sha256"],
+              "unique_network_ids":len({r["network_id"] for r in fp["records"]}),
+              "unique_target_hashes":len({r["target_sha256"] for r in fp["records"]})
+            },
+            "published_dataset":{"repo":"aicrowd/arc-whestbench-public-2026","revision":"v2-phase2","split":"mini","metadata_sha256":"264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1","count":100,"dtype":"float32","target_shape":[16,1024]},
+            "r209_source":{
+              "actions_run_id":35544406064,
+              "v25":{"artifact_id":10617855153,"zip_sha256":"820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08","report_sha256":"68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3"},
+              "v29":{"artifact_id":10617318650,"zip_sha256":"32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681","report_sha256":"76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b"},
+              "raw_prediction_tensors_archived":False
+            },
+            "normalization_validation":{
+              "actions_run_id":35789283577,"actions_job_id":106953620270,"actions_head_sha":"0822ea0a2d58e92339d440fa575799948583eceb",
+              "artifact_id":10721785679,"artifact_name":"r224-normalized-r209-mini100","artifact_zip_sha256":"7326786a4f711b3f48553f59f4ac80adc177dcb6a0f1cf189e1034413bcbc7f7",
+              "arc_control_check":check,"compare":cmp
+            },
+            "normalized_results":{
+              "v25":{"path":"research/results/R209-v25-mini100.json","sha256":sha("research/results/R209-v25-mini100.json"),"rows":len(v25["per_network"]),"failures":sum(r["status"]=="failed" for r in v25["per_network"]),"adjusted_score":8.170397440117226e-9,"mean_raw_mse":2.228303490170447e-8,"mean_flops":806303721965},
+              "v29":{"path":"research/results/R209-v29-mini100.json","sha256":sha("research/results/R209-v29-mini100.json"),"rows":len(v29["per_network"]),"failures":sum(r["status"]=="failed" for r in v29["per_network"]),"adjusted_score":0.5270942878803215,"mean_raw_mse":0.5270942949467905,"mean_flops":555733388916.12}
+            },
+            "preservation":{"v29_failed_rows_preserved":True,"v29_failure_count":57,"successful_only_v29_not_substituted":True,"raw_prediction_tensors_still_absent":True},
+            "safety":{"estimator_executed":False,"prediction_generated":False,"holdout_access":False,"full_split_access":False,"paid_or_larger_runner":False,"submission":False,"leaderboard_mutation":False},
+            "limitations":["These mini-100 normalized records are development-panel evidence, not the exact official leaderboard public-50 panel.","Raw prediction tensors remain absent, so MSE cannot be recomputed independently from predictions."]
+          }
+          pathlib.Path("research/r224/R224_RECEIPT.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
+          PY
+      - name: Commit review artifacts
+        run: |
+          git config user.name "R224 postflight-audit"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/r224/R224_MINI100_FINGERPRINTS.json \
+                  research/r224/R224_COMPARE_V29_V25.json \
+                  research/r224/R224_ARC_CONTROL_CHECK.txt \
+                  research/r224/R224_FINAL_CHECK.txt \
+                  research/r224/R224_FINAL_COMPARE.json \
+                  research/r224/R224_RECEIPT.json \
+                  research/results/R209-v25-mini100.json \
+                  research/results/R209-v29-mini100.json \
+                  research/control/STATUS.md
+          git commit -m "review(R224): normalize R209 V25/V29 mini-100 evidence"
+          git push origin HEAD:review/r224-r209-mini100-fingerprints-20260922
