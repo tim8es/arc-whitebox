@@ -1,0 +1,129 @@
+name: R233 V25 one-hot Wick micro-fixture
+
+on:
+  push:
+    branches:
+      - research/control-v2
+    paths:
+      - research/r233/R233_EXECUTE_TRIGGER.txt
+
+jobs:
+  fixture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      UPSTREAM_COMMIT: 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+      UPSTREAM_V25_BLOB: 195373a110215256b759d7c172ba8c923c62e5cc
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify frozen R233 local inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/r233/R233_PROTOCOL.md)" = "789b65e74f0cd99f187a7ade8f7fc5451de2c6e2"
+          test "$(git hash-object research/r233/R233_COST_MODEL.json)" = "31b2dda55e2ffd7692a927ddcdb10cdfdb8ec3ad"
+          test "$(git hash-object scripts/r233_v25_onehot_wick_fixture.py)" = "b43a2738828c6e0a50cb5cebe097b2ae6f87e625"
+
+      - name: Install pinned fixture dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check --no-input "numpy==2.4.6" "flopscope==0.12.1"
+
+      - name: Fetch and verify exact upstream V25 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p r233-inputs
+          url="https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/${UPSTREAM_COMMIT}/estimators/estimator_v25.py"
+          curl -fsSL "$url" -o r233-inputs/estimator_v25.py
+          test "$(git hash-object r233-inputs/estimator_v25.py)" = "$UPSTREAM_V25_BLOB"
+          python - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          p=Path("r233-inputs/estimator_v25.py")
+          Path("r233-input-identities.json").write_text(json.dumps({
+              "upstream_commit":"18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+              "v25_git_blob":subprocess.check_output(["git","hash-object",str(p)],text=True).strip(),
+              "v25_sha256":hashlib.sha256(p.read_bytes()).hexdigest(),
+          },indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          PY
+
+      - name: Run exactly one R233 micro-fixture
+        id: fixture
+        shell: bash
+        run: |
+          set +e
+          python scripts/r233_v25_onehot_wick_fixture.py \
+            --source r233-inputs/estimator_v25.py \
+            --out r233-fixture.json \
+            2>&1 | tee r233-fixture.stdout.log
+          code=${PIPESTATUS[0]}
+          printf '%s\n' "$code" > r233-fixture.exit-code.txt
+          export R233_EXIT_CODE="$code"
+          python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+
+          def blob(path):
+              return subprocess.check_output(["git","hash-object",path],text=True).strip()
+
+          result=None
+          p=Path("r233-fixture.json")
+          if p.exists():
+              result=json.loads(p.read_text(encoding="utf-8"))
+
+          receipt={
+              "schema":"arc.whitebox.r233.actions_fixture_receipt.v1",
+              "job_id":"R233",
+              "attempt_id":"R233-v25-onehot-wick-cse-20260923",
+              "github_run_id":os.environ.get("GITHUB_RUN_ID"),
+              "github_run_attempt":os.environ.get("GITHUB_RUN_ATTEMPT"),
+              "github_sha":os.environ.get("GITHUB_SHA"),
+              "runner_os":os.environ.get("RUNNER_OS"),
+              "runner_arch":os.environ.get("RUNNER_ARCH"),
+              "runner_name":os.environ.get("RUNNER_NAME"),
+              "exit_code":int(os.environ["R233_EXIT_CODE"]),
+              "protocol_blob":blob("research/r233/R233_PROTOCOL.md"),
+              "cost_model_blob":blob("research/r233/R233_COST_MODEL.json"),
+              "fixture_blob":blob("scripts/r233_v25_onehot_wick_fixture.py"),
+              "input_identities":json.loads(Path("r233-input-identities.json").read_text()),
+              "fixture_result":result,
+              "scope":{
+                  "micro_fixture_only":True,
+                  "estimator_run":False,
+                  "mini100":False,
+                  "holdout":False,
+                  "submission":False,
+                  "paid_runner":False
+              }
+          }
+          Path("r233-actions-receipt.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          PY
+          exit "$code"
+
+      - name: Upload immutable R233 fixture evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r233-v25-onehot-wick-fixture
+          path: |
+            r233-fixture.stdout.log
+            r233-fixture.exit-code.txt
+            r233-fixture.json
+            r233-input-identities.json
+            r233-actions-receipt.json
+            research/r233/R233_PROTOCOL.md
+            research/r233/R233_COST_MODEL.json
+            scripts/r233_v25_onehot_wick_fixture.py
+          if-no-files-found: warn
+          retention-days: 90
