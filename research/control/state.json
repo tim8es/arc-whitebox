@@ -825,6 +825,34 @@
         "status": "SCIENTIFIC_REJECT"
       },
       "revision": 65
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T20:45:46.110834+00:00",
+      "job": "R216",
+      "owner": "leaderboard-audit",
+      "payload": {
+        "code_commit": "837f9cd640279d682e53887883ea711cd9e8cb6c",
+        "command": "read-only source-backed audit of R209 V25 local mini-100 versus official Phase-2 public-50 scoring semantics; no rerun, submission, or private holdout",
+        "run_id": "R216-v25-leaderboard-comparability-audit-837f9cd6"
+      },
+      "revision": 66
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T20:45:46.110835+00:00",
+      "job": "R216",
+      "owner": "leaderboard-audit",
+      "payload": {
+        "reason": "R216 source-backed read-only audit completed: 100-MLP vs official public-50 mismatch. Verdict NOT_EXACT_PANEL_COMPARABLE_NO_RANK; the R209 V25 local mini-100 score is not an official public-leaderboard-panel score, so no rank is assigned or implied. No rerun, submission, or private holdout access occurred.",
+        "receipt": {
+          "sha256": "6c1762198969b12d3ede1ae70aea46284d913578018e14ec0b810fc1034aaf79",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/837f9cd640279d682e53887883ea711cd9e8cb6c/research/R216_V25_LEADERBOARD_COMPARABILITY_AUDIT.json"
+        },
+        "run_id": "R216-v25-leaderboard-comparability-audit-837f9cd6",
+        "status": "COMPLETE"
+      },
+      "revision": 67
     }
   ],
   "jobs": [
@@ -1350,15 +1378,36 @@
     },
     {
       "assigned_owner": "leaderboard-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "837f9cd640279d682e53887883ea711cd9e8cb6c",
+          "command": "read-only source-backed audit of R209 V25 local mini-100 versus official Phase-2 public-50 scoring semantics; no rerun, submission, or private holdout",
+          "run_id": "R216-v25-leaderboard-comparability-audit-837f9cd6",
+          "completion": {
+            "reason": "R216 source-backed read-only audit completed: 100-MLP vs official public-50 mismatch. Verdict NOT_EXACT_PANEL_COMPARABLE_NO_RANK; the R209 V25 local mini-100 score is not an official public-leaderboard-panel score, so no rank is assigned or implied. No rerun, submission, or private holdout access occurred.",
+            "receipt": {
+              "sha256": "6c1762198969b12d3ede1ae70aea46284d913578018e14ec0b810fc1034aaf79",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/837f9cd640279d682e53887883ea711cd9e8cb6c/research/R216_V25_LEADERBOARD_COMPARABILITY_AUDIT.json"
+            },
+            "run_id": "R216-v25-leaderboard-comparability-audit-837f9cd6",
+            "status": "COMPLETE"
+          },
+          "status": "COMPLETE"
+        }
+      ],
       "deliverable": "Audit the immutable 100-MLP V25 result from R209, establish whether its panel overlaps exactly with the official scored public leaderboard split, and fetch the current official leaderboard score/rank from AIcrowd. Compare only identical metrics and panels; report V25 adjusted score 8.170397440117225e-9 only if provenance/panel support it, quantify the gap to current leader, and recommend the next eligible experiment. Create a source-backed audit receipt/commit. Do not submit or access private holdout.",
       "depends_on": [],
       "hypothesis_id": "V25-PUBLIC-LEADERBOARD-GAP",
       "id": "R216",
       "owner": "leaderboard-audit",
       "priority": 1,
-      "status": "CLAIMED",
-      "title": "Determine whether the clean V25 public result is leaderboard-comparable"
+      "status": "COMPLETE",
+      "title": "Determine whether the clean V25 public result is leaderboard-comparable",
+      "receipt": {
+        "sha256": "6c1762198969b12d3ede1ae70aea46284d913578018e14ec0b810fc1034aaf79",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/837f9cd640279d682e53887883ea711cd9e8cb6c/research/R216_V25_LEADERBOARD_COMPARABILITY_AUDIT.json"
+      },
+      "reason": "R216 source-backed read-only audit completed: 100-MLP vs official public-50 mismatch. Verdict NOT_EXACT_PANEL_COMPARABLE_NO_RANK; the R209 V25 local mini-100 score is not an official public-leaderboard-panel score, so no rank is assigned or implied. No rerun, submission, or private holdout access occurred."
     },
     {
       "assigned_owner": "baseline-diagnosis",
@@ -1395,7 +1444,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 65,
+  "revision": 67,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
