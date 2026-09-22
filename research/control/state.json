@@ -255,6 +255,18 @@
       "owner": "baseline",
       "payload": {},
       "revision": 21
+    },
+    {
+      "revision": 22,
+      "action": "start",
+      "job": "R207",
+      "owner": "baseline",
+      "payload": {
+        "run_id": "R207-v29-l4-public50-attempt1",
+        "code_commit": "0df5922165d8fb116841dd72e0c4928e02612572",
+        "command": "V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json"
+      },
+      "at": "2026-09-22T16:30:00+00:00"
     }
   ],
   "jobs": [
@@ -435,7 +447,14 @@
     },
     {
       "assigned_owner": "baseline",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R207-v29-l4-public50-attempt1",
+          "code_commit": "0df5922165d8fb116841dd72e0c4928e02612572",
+          "command": "V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Run the R205 V26_STRASSEN=4 mitigation on the full accessible Phase-2 public split (50 public MLPs) under the official contract, with per-MLP MSE/FLOPs/residual/failure receipt and adjusted score. Use no private holdout, no paid resources, no submission; compare against the current public leader metric only after panel and metric alignment.",
       "depends_on": [
         "R205"
@@ -444,12 +463,12 @@
       "id": "R207",
       "owner": "baseline",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Confirm V29 L4 mitigation on the full accessible public split"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 21,
+  "revision": 22,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
