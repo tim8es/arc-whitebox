@@ -1,0 +1,227 @@
+name: R205 V29 residual-timeout mitigation
+
+on:
+  push:
+    branches:
+      - research/r205-v29-residual-timeout-20260922
+    paths:
+      - research/R205_RUN_ARM.json
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+      V26_STRASSEN: "4"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned research toolchain
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Fetch and verify pinned V29
+        shell: bash
+        run: |
+          mkdir -p r205 methods/r205
+          curl -fsSL             https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v29.py             -o methods/r205/estimator_v29.py
+          python - <<'PY'
+          import hashlib, pathlib
+          p=pathlib.Path("methods/r205/estimator_v29.py")
+          b=p.read_bytes()
+          git_blob=hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()
+          sha256=hashlib.sha256(b).hexdigest()
+          print("git_blob_sha1",git_blob)
+          print("sha256",sha256)
+          if git_blob != "17df1a073a24f96c4705b04bcf61ef60fa06dd0c":
+              raise SystemExit("pinned V29 git blob mismatch")
+          pathlib.Path("r205/estimator_sha256.txt").write_text(sha256+"\n")
+          PY
+
+      - name: Record environment
+        shell: bash
+        run: |
+          whest version --json > r205/whest_version.json
+          python - <<'PY' > r205/environment.txt
+          import platform, flopscope, whestbench, os
+          print("python", platform.python_version())
+          print("platform", platform.platform())
+          print("flopscope", getattr(flopscope, "__version__", "unknown"))
+          print("whestbench", getattr(whestbench, "__version__", "unknown"))
+          print("V26_STRASSEN", os.environ.get("V26_STRASSEN"))
+          for k in ("OMP_NUM_THREADS","OPENBLAS_NUM_THREADS","MKL_NUM_THREADS","NUMEXPR_NUM_THREADS"):
+              print(k, os.environ.get(k))
+          PY
+
+      - name: Validate unchanged V29 source under L4 mitigation
+        id: validate
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          whest validate             --estimator methods/r205/estimator_v29.py             --json > r205/validate.json 2> r205/validate.stderr
+          code=$?
+          echo "$code" > r205/validate.exit
+          exit "$code"
+
+      - name: Measure exact E173 first-five panel once
+        id: measure
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          printf '%s\n' 'V26_STRASSEN=4 whest run --estimator methods/r205/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 5 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json' > r205/command.txt
+          whest run             --estimator methods/r205/estimator_v29.py             --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2             --split mini             --streaming             --n-mlps 5             --runner local             --flop-budget 2199023255552             --wall-time-limit 120             --residual-wall-time-limit 0.4             --max-threads 1             --format json             > r205/report.json 2> r205/run.stderr
+          code=$?
+          echo "$code" > r205/run.exit
+          exit "$code"
+
+      - name: Build normalized receipt
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, math, pathlib, statistics
+          root=pathlib.Path("r205")
+          before=json.loads(pathlib.Path("research/results/R201-v29.json").read_text())
+          ago=json.loads(pathlib.Path("research/results/E173-ago.json").read_text())
+          def sha(p):
+              return hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
+          def read_int(p):
+              try: return int(p.read_text().strip())
+              except Exception: return None
+          report=None
+          rp=root/"report.json"
+          parse_error=None
+          if rp.exists() and rp.stat().st_size:
+              try: report=json.loads(rp.read_text())
+              except Exception as e: parse_error=repr(e)
+          rows=[]
+          if report:
+              per=report.get("results",{}).get("per_mlp",[])
+              e173=ago["per_network"]
+              for i,(x,e) in enumerate(zip(per,e173)):
+                  reasons=[k for k in ("budget_exhausted","combined_budget_exhausted","time_exhausted","residual_wall_time_exhausted")
+                           if x.get(k)]
+                  if x.get("traceback"): reasons.append("traceback")
+                  rows.append({
+                    "index":i,
+                    "name":x.get("mlp_name"),
+                    "network_id":e["network_id"],
+                    "target_sha256":e["target_sha256"],
+                    "final_mse":x.get("final_layer_mse"),
+                    "measured_flops":x.get("flops_used"),
+                    "official_adjusted_score":x.get("adjusted_final_layer_score"),
+                    "residual_wall_time_s":x.get("residual_wall_time_s"),
+                    "wall_time_s":x.get("wall_time_s"),
+                    "status":"failed" if reasons else "ok",
+                    "failure_reasons":reasons,
+                  })
+          before_rows=before["per_network"]
+          before_scores=[float(x["official_adjusted_score"]) for x in before_rows]
+          after_scores=[float(x["official_adjusted_score"]) for x in rows if x.get("official_adjusted_score") is not None]
+          same_panel=(len(rows)==5 and
+                      [x["name"] for x in rows]==[x["name"] for x in ago["per_network"]] and
+                      all(x["network_id"]==e["network_id"] and x["target_sha256"]==e["target_sha256"]
+                          for x,e in zip(rows,ago["per_network"])))
+          comparison={
+            "before_mean_adjusted_score":statistics.mean(before_scores),
+            "before_failures":sum(x["status"]=="failed" for x in before_rows),
+            "before_william_residual_s":next(x["residual_wall_time_s"] for x in before_rows if x["name"]=="william-graves"),
+            "after_mean_adjusted_score":statistics.mean(after_scores) if len(after_scores)==5 else None,
+            "after_failures":sum(x["status"]=="failed" for x in rows) if len(rows)==5 else None,
+            "after_william_residual_s":next((x["residual_wall_time_s"] for x in rows if x["name"]=="william-graves"),None),
+            "score_ratio_after_over_before":statistics.mean(after_scores)/statistics.mean(before_scores) if len(after_scores)==5 else None,
+            "score_delta_after_minus_before":statistics.mean(after_scores)-statistics.mean(before_scores) if len(after_scores)==5 else None,
+            "william_residual_delta_s":(next((x["residual_wall_time_s"] for x in rows if x["name"]=="william-graves"),0.0)
+                                        - next(x["residual_wall_time_s"] for x in before_rows if x["name"]=="william-graves"))
+                                       if len(rows)==5 else None,
+          }
+          root_cause={
+            "classification":"ONE_TIME_DEEP_STRASSEN_POOL_ALLOCATION_ON_L5_TRANSITION",
+            "evidence":[
+              "Pinned V29 uses STRASSEN_FIRST=4 and switches to STRASSEN_LEVELS=5 after ncall>0.",
+              "Strassen pools persist across predict calls and allocate/first-touch buffers when a missing/deeper key is first reached.",
+              "R201 exact sequence: first call residual 0.39181s, second call william 0.43324s failure, later calls 0.375-0.376s.",
+              "Upstream F80 documents +168ms first-time L5 allocation/first-touch and rejects full-size setup warmup.",
+              "Uniform L4 removes the L4->L5 transition rather than moving it to another network."
+            ],
+            "mitigation":"Set only V26_STRASSEN=4 for the measurement process; derived V29 main/hub/shared-basis/C_pre defaults therefore remain uniformly L4. Estimator source bytes are unchanged.",
+          }
+          status="COMPLETE" if (read_int(root/"validate.exit")==0 and read_int(root/"run.exit")==0 and same_panel and len(rows)==5) else "INFRA_ERROR"
+          receipt={
+            "schema":"arc.whitebox.r205.timeout_mitigation.v1",
+            "job_id":"R205",
+            "owner":"baseline",
+            "status":status,
+            "attempt":1,
+            "mode":"BOUNDED_FREE_GITHUB_ACTIONS_PUBLIC_REPO",
+            "source":{
+              "upstream_repo":"504aldo/whest-p2-cumulant-k3",
+              "upstream_commit":"18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+              "v29_git_blob_sha1":"17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+              "downloaded_estimator_sha256":(root/"estimator_sha256.txt").read_text().strip() if (root/"estimator_sha256.txt").exists() else None,
+            },
+            "budget":{
+              "paid_resources":False,"public_github_actions":True,"holdout":False,"submission":False,
+              "competition_scorer":False,"panel":"public v2-phase2 mini:first-5"
+            },
+            "mitigation":{"environment":{"V26_STRASSEN":"4"},"source_code_modified":False},
+            "root_cause":root_cause,
+            "panel_identity":{
+              "same_as_e173_first_five":same_panel,
+              "dataset":"hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+              "count":len(rows),
+            },
+            "execution":{
+              "validate_exit":read_int(root/"validate.exit"),
+              "run_exit":read_int(root/"run.exit"),
+              "report_sha256":sha(root/"report.json"),
+              "run_stderr_sha256":sha(root/"run.stderr"),
+              "command":(root/"command.txt").read_text().strip() if (root/"command.txt").exists() else None,
+              "parse_error":parse_error,
+            },
+            "before_r201":before_rows,
+            "after":rows,
+            "comparison":comparison,
+            "decision":("MITIGATION_MEASURED" if status=="COMPLETE" else "INFRA_ERROR"),
+          }
+          (root/"R205_RECEIPT.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
+          print(json.dumps(receipt,indent=2,sort_keys=True))
+          PY
+
+      - name: Hash evidence
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib
+          root=pathlib.Path("r205")
+          out={}
+          for p in sorted(root.iterdir()):
+              if p.is_file() and p.name != "sha256.json":
+                  out[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/"sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          print((root/"sha256.json").read_text())
+          PY
+
+      - name: Upload R205 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r205-v29-l4-five-grid
+          path: r205/
+          if-no-files-found: error

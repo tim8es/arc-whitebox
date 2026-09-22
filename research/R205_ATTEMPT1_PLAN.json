@@ -1,0 +1,31 @@
+{
+  "schema": "arc.whitebox.r205.plan.v1",
+  "job_id": "R205",
+  "owner": "baseline",
+  "created_at": "2026-09-22",
+  "baseline_receipt": "https://github.com/tim8es/arc-whitebox/blob/80342008fa37c81f1f7a2660cd3e18a2a494390f/research/R201_BASELINE_RECEIPT.json",
+  "observed_failure": {
+    "network": "william-graves",
+    "panel_index": 1,
+    "residual_wall_time_s": 0.43323872200062397,
+    "limit_s": 0.4,
+    "status": "residual_wall_time_exhausted"
+  },
+  "bounded_investigation": {
+    "root_cause_hypothesis": "V29 first call is capped at Strassen L4, second call switches to L5 and pays one-time deeper persistent-pool allocation/first-touch; later calls reuse pools.",
+    "source_evidence": [
+      "V29 ncall switch: s_lev = STRASSEN_LEVELS if ncall > 0 else min(STRASSEN_LEVELS, STRASSEN_FIRST)",
+      "V29 _Strassen pools persist across predict calls and allocate/first-touch on missing keys.",
+      "Upstream F80 documents +168ms first-time L5 effect and position-dependent local residual hiccups."
+    ],
+    "mitigation": "Set V26_STRASSEN=4 only, making first and subsequent calls uniformly L4. No estimator source modification.",
+    "measurement": "One free public-GitHub-Actions run on exact E173 mini:first-5; no 100-network rerun.",
+    "rationale_for_five_networks": "Mitigation changes the compute schedule for every network, so all five must be remeasured to recompute the panel adjusted score."
+  },
+  "forbidden": {
+    "paid_resources": true,
+    "holdout": true,
+    "submission": true,
+    "leaderboard": true
+  }
+}
