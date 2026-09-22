@@ -141,6 +141,21 @@
       "owner": "baseline",
       "payload": {},
       "revision": 12
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T15:52:37.263007+00:00",
+      "job": "R206",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "kernel",
+        "deliverable": "Bounded synthetic-only rank sweep around the pinned TA32 scheme to map the cost/float32 error Pareto frontier. Use the existing probe/kernel, record exact identity status, leaf/full arithmetic FLOPs, runtime and float32 error for a small predetermined rank set. Stop if no point can approach the 0.42 mechanism gate and 1.05 stability gate; no full compiler, paid run, holdout or submission.",
+        "depends_on": [],
+        "hypothesis_id": "H185-RANK-SWEEP",
+        "priority": 2,
+        "title": "TA32 rank sweep: cost and float32 stability frontier"
+      },
+      "revision": 13
     }
   ],
   "jobs": [
@@ -270,10 +285,22 @@
       "priority": 1,
       "status": "CLAIMED",
       "title": "Recover V29 residual-timeout on the exact five-network panel"
+    },
+    {
+      "assigned_owner": "kernel",
+      "attempts": [],
+      "deliverable": "Bounded synthetic-only rank sweep around the pinned TA32 scheme to map the cost/float32 error Pareto frontier. Use the existing probe/kernel, record exact identity status, leaf/full arithmetic FLOPs, runtime and float32 error for a small predetermined rank set. Stop if no point can approach the 0.42 mechanism gate and 1.05 stability gate; no full compiler, paid run, holdout or submission.",
+      "depends_on": [],
+      "hypothesis_id": "H185-RANK-SWEEP",
+      "id": "R206",
+      "owner": null,
+      "priority": 2,
+      "status": "QUEUED",
+      "title": "TA32 rank sweep: cost and float32 stability frontier"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 12,
+  "revision": 13,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
