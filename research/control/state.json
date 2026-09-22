@@ -515,6 +515,22 @@
         "run_id": "R211-dag-cse-20260922"
       },
       "revision": 41
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T18:09:59.267062+00:00",
+      "job": "R211",
+      "owner": "method-research",
+      "payload": {
+        "reason": "Exact-small identities passed, but the maximally favorable production lower bound is 115.61u / 222.44u = 0.5197357, above the 0.42 gate. Synthetic execution and compiler build were correctly skipped; terminal structural cost NO-GO.",
+        "receipt": {
+          "sha256": "ef663f31cbe1153f49dd5e3123475d0a1794df91d143b69d9464a9bbec9808cc",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/9a24c88baf2dad6ade40f500922958c5f59a626f/research/r211/R211_TERMINAL_RECEIPT.json"
+        },
+        "run_id": "R211-dag-cse-20260922",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 42
     }
   ],
   "jobs": [
@@ -865,8 +881,17 @@
         {
           "code_commit": "29d3d16202f04ff29e07af20cac9f92f1af9691a",
           "command": "protocol-only exact-small DAG CSE/reassociation identity and production cost lower-bound proof",
+          "completion": {
+            "reason": "Exact-small identities passed, but the maximally favorable production lower bound is 115.61u / 222.44u = 0.5197357, above the 0.42 gate. Synthetic execution and compiler build were correctly skipped; terminal structural cost NO-GO.",
+            "receipt": {
+              "sha256": "ef663f31cbe1153f49dd5e3123475d0a1794df91d143b69d9464a9bbec9808cc",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/9a24c88baf2dad6ade40f500922958c5f59a626f/research/r211/R211_TERMINAL_RECEIPT.json"
+            },
+            "run_id": "R211-dag-cse-20260922",
+            "status": "SCIENTIFIC_REJECT"
+          },
           "run_id": "R211-dag-cse-20260922",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Protocol-first synthetic falsifier for the distinct contraction-DAG/reassociation class proposed by R206. Freeze one exact-small identity and conservative full FLOP accounting before any run; require a plausible <=0.42 cost gate and <=1.05 float32 stability gate. Stop at terminal NO-GO if either lower bound fails; do not build a full compiler, use holdout, paid resources or submission.",
@@ -875,12 +900,17 @@
       "id": "R211",
       "owner": "method-research",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "Exact-small identities passed, but the maximally favorable production lower bound is 115.61u / 222.44u = 0.5197357, above the 0.42 gate. Synthetic execution and compiler build were correctly skipped; terminal structural cost NO-GO.",
+      "receipt": {
+        "sha256": "ef663f31cbe1153f49dd5e3123475d0a1794df91d143b69d9464a9bbec9808cc",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/9a24c88baf2dad6ade40f500922958c5f59a626f/research/r211/R211_TERMINAL_RECEIPT.json"
+      },
+      "status": "SCIENTIFIC_REJECT",
       "title": "Falsify exact contraction-DAG common-subexpression elimination"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 41,
+  "revision": 42,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
