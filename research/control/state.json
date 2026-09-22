@@ -92,6 +92,22 @@
         "run_id": "R203-evidence-audit-20260922"
       },
       "revision": 8
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T15:49:36.359869+00:00",
+      "job": "R203",
+      "owner": "audit",
+      "payload": {
+        "reason": "Existing read-only audit and deterministic replay completed; E173 evidence is fully verified, while history-side provenance remains UNKNOWN. No scientific rerun, baseline mutation or submission occurred.",
+        "receipt": {
+          "sha256": "f363e8a587d75802859c031e8ae0a8b44782301b9e3baee0aa7621ebf6115741",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/bf13c925dfb3146372531fedbd15408e3af30235/research/R203_EVIDENCE_RECEIPT.json"
+        },
+        "run_id": "R203-evidence-audit-20260922",
+        "status": "COMPLETE"
+      },
+      "revision": 9
     }
   ],
   "jobs": [
@@ -167,8 +183,17 @@
         {
           "code_commit": "bf13c925dfb3146372531fedbd15408e3af30235",
           "command": "python scripts/r203_evidence_audit.py /tmp/e173_art --zip e173-official-mini-ago.zip --expected-zip-sha256 7869fe6ac1af128f406be84f057568422dc0ab99b9cd31114e0ec46605182c4e",
+          "completion": {
+            "reason": "Existing read-only audit and deterministic replay completed; E173 evidence is fully verified, while history-side provenance remains UNKNOWN. No scientific rerun, baseline mutation or submission occurred.",
+            "receipt": {
+              "sha256": "f363e8a587d75802859c031e8ae0a8b44782301b9e3baee0aa7621ebf6115741",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/bf13c925dfb3146372531fedbd15408e3af30235/research/R203_EVIDENCE_RECEIPT.json"
+            },
+            "run_id": "R203-evidence-audit-20260922",
+            "status": "COMPLETE"
+          },
           "run_id": "R203-evidence-audit-20260922",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independent audit of history.json and E173 normalization; identify strongest reproducible historical candidate and missing comparisons; pinned evidence and known gaps, no scientific rerun.",
@@ -177,7 +202,12 @@
       "id": "R203",
       "owner": "audit",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Existing read-only audit and deterministic replay completed; E173 evidence is fully verified, while history-side provenance remains UNKNOWN. No scientific rerun, baseline mutation or submission occurred.",
+      "receipt": {
+        "sha256": "f363e8a587d75802859c031e8ae0a8b44782301b9e3baee0aa7621ebf6115741",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/bf13c925dfb3146372531fedbd15408e3af30235/research/R203_EVIDENCE_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Проверить архив, дубликаты и baseline E007/E051/E136"
     },
     {
@@ -196,7 +226,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 8,
+  "revision": 9,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
