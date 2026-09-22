@@ -633,6 +633,22 @@
         "run_id": "R212-abs-cost-screen-20260922"
       },
       "revision": 50
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T20:24:28.554834+00:00",
+      "job": "R212",
+      "owner": "method-research",
+      "payload": {
+        "reason": "The exact-small Alternative-Basis Strassen identity passed. Across all uniform depths L=0..10, the best optimistic production lower bound was 1,049,940,736 FLOPs, ratio 0.4889167547225952 versus required <=0.42. Basis transforms and integration were assumed free, so cost cannot improve enough; synthetic float32 run correctly skipped and stability gate remains NOT_EVALUATED. No holdout, paid resources, Actions run or submission.",
+        "receipt": {
+          "sha256": "9b2bd274ab8a4c94c668509e07edb16db4811888e85d980b09726c70a2ad0cf3",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/de6ee4d88b321f2ed98d8dbe2a643d84c384ed8a/research/r212/R212_TERMINAL_RECEIPT.json"
+        },
+        "run_id": "R212-abs-cost-screen-20260922",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 51
     }
   ],
   "jobs": [
@@ -1030,8 +1046,17 @@
         {
           "code_commit": "4f99cac9201cfe616f840a4c920ea03cb2419d59",
           "command": "protocol-first Alternative-Basis Strassen exact-small witness and all uniform recursion-depth cost lower bounds L=0..10; stop before synthetic run if lower bound exceeds 0.42",
+          "completion": {
+            "reason": "The exact-small Alternative-Basis Strassen identity passed. Across all uniform depths L=0..10, the best optimistic production lower bound was 1,049,940,736 FLOPs, ratio 0.4889167547225952 versus required <=0.42. Basis transforms and integration were assumed free, so cost cannot improve enough; synthetic float32 run correctly skipped and stability gate remains NOT_EVALUATED. No holdout, paid resources, Actions run or submission.",
+            "receipt": {
+              "sha256": "9b2bd274ab8a4c94c668509e07edb16db4811888e85d980b09726c70a2ad0cf3",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/de6ee4d88b321f2ed98d8dbe2a643d84c384ed8a/research/r212/R212_TERMINAL_RECEIPT.json"
+            },
+            "run_id": "R212-abs-cost-screen-20260922",
+            "status": "SCIENTIFIC_REJECT"
+          },
           "run_id": "R212-abs-cost-screen-20260922",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Search the immutable research history and primary sources for exactly one algorithmic family not already falsified by R202/R206/R211 or prior ARC experiments. Freeze its required information, conservative production FLOP lower bound, exact-small identity and falsifier. Run a minimal synthetic check only if the lower bound can plausibly meet the official cost/stability gates; otherwise record terminal NO-GO. No duplicate historical experiment, holdout, paid resources or submission.",
@@ -1040,7 +1065,12 @@
       "id": "R212",
       "owner": "method-research",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "The exact-small Alternative-Basis Strassen identity passed. Across all uniform depths L=0..10, the best optimistic production lower bound was 1,049,940,736 FLOPs, ratio 0.4889167547225952 versus required <=0.42. Basis transforms and integration were assumed free, so cost cannot improve enough; synthetic float32 run correctly skipped and stability gate remains NOT_EVALUATED. No holdout, paid resources, Actions run or submission.",
+      "receipt": {
+        "sha256": "9b2bd274ab8a4c94c668509e07edb16db4811888e85d980b09726c70a2ad0cf3",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/de6ee4d88b321f2ed98d8dbe2a643d84c384ed8a/research/r212/R212_TERMINAL_RECEIPT.json"
+      },
+      "status": "SCIENTIFIC_REJECT",
       "title": "Find one untested cost-feasible method from the research frontier"
     },
     {
@@ -1078,7 +1108,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 50,
+  "revision": 51,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
