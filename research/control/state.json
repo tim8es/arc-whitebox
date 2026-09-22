@@ -934,6 +934,18 @@
       "owner": "method-research",
       "payload": {},
       "revision": 73
+    },
+    {
+      "action": "start",
+      "at": "2026-09-22T20:53:35.338526+00:00",
+      "job": "R219",
+      "owner": "method-research",
+      "payload": {
+        "code_commit": "96c7c247da995ad7dae5bdd13a9a463fb635082c",
+        "command": "protocol-first immutable-history and primary-literature screen for exactly one dependence-aware estimator family; freeze exact-small witness and production FLOP bound; run at most one target-free synthetic falsifier only if cost-feasible",
+        "run_id": "R219-dependence-carrier-frontier-20260922"
+      },
+      "revision": 74
     }
   ],
   "jobs": [
@@ -1539,14 +1551,21 @@
     },
     {
       "assigned_owner": "method-research",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "96c7c247da995ad7dae5bdd13a9a463fb635082c",
+          "command": "protocol-first immutable-history and primary-literature screen for exactly one dependence-aware estimator family; freeze exact-small witness and production FLOP bound; run at most one target-free synthetic falsifier only if cost-feasible",
+          "run_id": "R219-dependence-carrier-frontier-20260922",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Search immutable ARC history and primary literature for exactly one dependence-aware estimator family that carries information beyond coordinate-wise marginals and does not duplicate prior rejected lanes. Define its state/information requirement, exact-small discriminating witness, and conservative production FLOP bound first. Run one minimal target-free synthetic falsifier only if cost-feasible; otherwise record terminal NO-GO with arithmetic. Preserve artifact, citations, hashes and commit. No public benchmark, paid resources, holdout, submission, broad sweep or repeat of R215.",
       "depends_on": [],
       "hypothesis_id": "DEPENDENCE-CARRIER-FRONTIER",
       "id": "R219",
       "owner": "method-research",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Screen one dependence-aware estimator family after FMCF non-closure"
     },
     {
@@ -1565,7 +1584,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 73,
+  "revision": 74,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
