@@ -1537,6 +1537,22 @@
         "status": "COMPLETE"
       },
       "revision": 118
+    },
+    {
+      "revision": 119,
+      "action": "finish",
+      "job": "R227",
+      "owner": "v25-optimization",
+      "payload": {
+        "reason": "R227 frozen feasibility attempt never executed: Actions query for code commit 6715c89debd53554cbce5691150180fbb933e503 returned 0 runs; branch tree contained protocol/source/cost/script only and no r227-feasibility.json; no live process/stdout evidence existed after the RUNNING checkpoint. Durable receipt commit 56ad738fca269e3ad92a9e9a1ac2801f757fde56 records the no-executor blocker. No estimator or mini-100 run, paid compute, holdout, submission, or canonical V25 mutation occurred.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json",
+          "sha256": "779003b529981c331e755441d457067823cdae6870c7b452f0c7aad159bd89ba"
+        },
+        "run_id": "R227-v25-srm2-feasibility-20260923",
+        "status": "INFRA_ERROR"
+      },
+      "at": "2026-09-22T22:49:41.323Z"
     }
   ],
   "jobs": [
@@ -2403,7 +2419,16 @@
           "run_id": "R227-v25-srm2-feasibility-20260923",
           "code_commit": "6715c89debd53554cbce5691150180fbb933e503",
           "command": "python scripts/r227_srm2_feasibility.py --v25 /tmp/estimator_v25.py --probe /tmp/g_regen_probe.py --findings /tmp/findings_log.md --claims /tmp/claims_evidence.md --out r227-feasibility.json; pinned upstream blobs must match; no mini-100 unless deployability gate passes",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR",
+          "completion": {
+            "reason": "R227 frozen feasibility attempt never executed: Actions query for code commit 6715c89debd53554cbce5691150180fbb933e503 returned 0 runs; branch tree contained protocol/source/cost/script only and no r227-feasibility.json; no live process/stdout evidence existed after the RUNNING checkpoint. Durable receipt commit 56ad738fca269e3ad92a9e9a1ac2801f757fde56 records the no-executor blocker. No estimator or mini-100 run, paid compute, holdout, submission, or canonical V25 mutation occurred.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json",
+              "sha256": "779003b529981c331e755441d457067823cdae6870c7b452f0c7aad159bd89ba"
+            },
+            "run_id": "R227-v25-srm2-feasibility-20260923",
+            "status": "INFRA_ERROR"
+          }
         }
       ],
       "deliverable": "Read current `AGENTS.md`, `research/RESEARCH_PROCESS.md`, immutable history and R224's normalized per-network V25 mini-100 records. Choose exactly one untried algorithm-level change aimed at lowering official adjusted score on this same public development panel; explicitly exclude R223's K4-to-K3 per-neuron feed-lambda patch, R219's factor-copula family, and all previously falsified mechanisms. Freeze parent/source/config/falsifier, predicted cost and GO/NO-GO before execution. Run at most one bounded same-panel candidate evaluation using verified free/existing compute only; keep canonical V25 unchanged. Retain every network row/failure, compare official adjusted score and measured FLOPs, create artifact/receipt/commit. If no distinct feasible candidate exists, finish with a scoped terminal NO-GO. No paid resource, holdout or submission.",
@@ -2414,8 +2439,13 @@
       "id": "R227",
       "owner": "v25-optimization",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure"
+      "status": "INFRA_ERROR",
+      "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json",
+        "sha256": "779003b529981c331e755441d457067823cdae6870c7b452f0c7aad159bd89ba"
+      },
+      "reason": "R227 frozen feasibility attempt never executed: Actions query for code commit 6715c89debd53554cbce5691150180fbb933e503 returned 0 runs; branch tree contained protocol/source/cost/script only and no r227-feasibility.json; no live process/stdout evidence existed after the RUNNING checkpoint. Durable receipt commit 56ad738fca269e3ad92a9e9a1ac2801f757fde56 records the no-executor blocker. No estimator or mini-100 run, paid compute, holdout, submission, or canonical V25 mutation occurred."
     },
     {
       "id": "R228",
@@ -2522,7 +2552,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 118,
+  "revision": 119,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
