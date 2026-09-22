@@ -1,0 +1,5 @@
+R227 repaired source-feasibility execution trigger
+attempt_id=R227-v25-srm2-feasibility-repair-20260923
+executor_commit=d9afae35aa7b6af1f065b27f450c89065ef6a5ef
+frozen_protocol_commit=6715c89debd53554cbce5691150180fbb933e503
+scope=source-feasibility-only
