@@ -284,6 +284,21 @@
         "title": "Independent verification of R205 receipt and score"
       },
       "revision": 23
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T16:43:13.784884+00:00",
+      "job": "R209",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "archive-evidence",
+        "deliverable": "Read-only inspect the existing Actions run 35544406064 and its V25/V29 artifacts to determine whether a complete 100-MLP Phase-2 mini/public result already exists, with immutable hashes, split semantics, failures, FLOPs and score. Reuse only if complete and provenance is verified; otherwise record the exact evidence gap. No rerun, paid resources, holdout access or submission.",
+        "depends_on": [],
+        "hypothesis_id": "EXISTING-100MLP-EVIDENCE-RECOVERY",
+        "priority": 2,
+        "title": "Recover existing 100-MLP V25/V29 evidence without rerun"
+      },
+      "revision": 24
     }
   ],
   "jobs": [
@@ -496,10 +511,22 @@
       "priority": 1,
       "status": "QUEUED",
       "title": "Independent verification of R205 receipt and score"
+    },
+    {
+      "assigned_owner": "archive-evidence",
+      "attempts": [],
+      "deliverable": "Read-only inspect the existing Actions run 35544406064 and its V25/V29 artifacts to determine whether a complete 100-MLP Phase-2 mini/public result already exists, with immutable hashes, split semantics, failures, FLOPs and score. Reuse only if complete and provenance is verified; otherwise record the exact evidence gap. No rerun, paid resources, holdout access or submission.",
+      "depends_on": [],
+      "hypothesis_id": "EXISTING-100MLP-EVIDENCE-RECOVERY",
+      "id": "R209",
+      "owner": null,
+      "priority": 2,
+      "status": "QUEUED",
+      "title": "Recover existing 100-MLP V25/V29 evidence without rerun"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 23,
+  "revision": 24,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
