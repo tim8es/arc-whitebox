@@ -1,0 +1,206 @@
+{
+  "schema": "arc.whitebox.r207.public50.final_receipt.v1",
+  "job_id": "R207",
+  "owner": "baseline",
+  "status": "COMPLETE",
+  "decision": "NOT_CONFIRMED_FAILURES_REMAIN",
+  "branch": "research/r205-v29-residual-timeout-20260922",
+  "ancestry": {
+    "r205_receipt_commit": "1d705672e560ef3b2895056888430bd629b4f658",
+    "r205_result_commit": "6c1b8211de9ec8f6311966468b8287442cf0b9e9",
+    "r207_protocol_commit": "0df5922165d8fb116841dd72e0c4928e02612572",
+    "r207_arm_commit": "32afc7e21da831778e570df04ee51549d183cf67",
+    "upstream_repo": "504aldo/whest-p2-cumulant-k3",
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "v29_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "estimator_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27"
+  },
+  "contract": {
+    "command": "V26_STRASSEN=4 whest run --estimator methods/r207/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini:first-50",
+    "count": 50,
+    "width": 1024,
+    "depth": 16,
+    "flop_budget": 2199023255552,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "max_threads": 1,
+    "mitigation": {
+      "V26_STRASSEN": "4"
+    },
+    "estimator_source_modified": false
+  },
+  "execution": {
+    "actions_run_id": 35755631386,
+    "actions_job_id": 106840538172,
+    "workflow_run_number": 1,
+    "workflow_conclusion": "success",
+    "validate_exit": 0,
+    "run_exit": 0,
+    "run_duration_s": 1855.0892374515533,
+    "environment": {
+      "python": "3.11.16",
+      "numpy": "2.4.6",
+      "flopscope": "0.12.1+np2.4.6",
+      "whestbench": "0.16.1",
+      "blas_threads": 1
+    }
+  },
+  "evidence": {
+    "artifact_id": 10709911534,
+    "artifact_name": "r207-v29-l4-public50",
+    "artifact_zip_sha256": "53fecd878787078ff9526da4af80531a8eee1314fcaf8f7c905e09f505b36090",
+    "artifact_receipt_sha256": "fa40c03b89c493d811e493498c152ffc1c7bd6f069626316318e33ba826ea9ee",
+    "report_sha256": "6427cf6db345bbb47bdb551507f5afe83e2d21d981d0a495cb8c19e41a85807e",
+    "run_stderr_sha256": "be4f1bd859d2a8bf80fec734927b8b62e53627f0c6e4918ed3e097c83d94e265",
+    "per_mlp_count": 50,
+    "per_mlp_canonical_sha256": "2056a1d2210d4b2f90da7b8c488548d6cf65a0910bf273b241dca68d242f564f",
+    "per_mlp_location": "R207_RECEIPT.json inside artifact r207-v29-l4-public50",
+    "full_per_mlp_fields": [
+      "mlp_index",
+      "mlp_name",
+      "final_mse",
+      "measured_flops",
+      "compute_utilization",
+      "residual_wall_time_s",
+      "wall_time_s",
+      "official_adjusted_score",
+      "status",
+      "failure_reasons"
+    ]
+  },
+  "aggregate": {
+    "official_adjusted_score": 0.19809924364613474,
+    "official_final_layer_mse": 0.19809925690509325,
+    "mean_measured_flops": 582100155682.2,
+    "mean_compute_utilization": 0.26470850374707877,
+    "failures": 10,
+    "successes": 40,
+    "failure_breakdown": {
+      "residual_wall_time_exhausted": 10,
+      "budget_exhausted": 0,
+      "time_exhausted": 0,
+      "combined_budget_exhausted": 0,
+      "error": 0
+    },
+    "mean_residual_wall_time_s": 0.38951696230098604,
+    "p95_residual_wall_time_s": 0.4932891080070476,
+    "max_residual_wall_time_s": 0.5300859230158039,
+    "max_residual_mlp": "adam-morrison",
+    "success_only_mean_raw_mse": 2.254070645690831e-8,
+    "success_only_mean_adjusted_score": 5.967008345758751e-9
+  },
+  "failed_mlps": [
+    {
+      "mlp_index": 3,
+      "mlp_name": "steven-rice",
+      "final_mse": 0.937675952911377,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.41133040199554216,
+      "official_adjusted_score": 0.937675952911377,
+      "failure_reason": "residual_wall_time_exhausted"
+    },
+    {
+      "mlp_index": 4,
+      "mlp_name": "sarah-kelley",
+      "final_mse": 0.633193850517273,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.47244559400246544,
+      "official_adjusted_score": 0.633193850517273,
+      "failure_reason": "residual_wall_time_exhausted"
+    },
+    {
+      "mlp_index": 7,
+      "mlp_name": "renee-park",
+      "final_mse": 1.0328001976013184,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.4015334919936322,
+      "official_adjusted_score": 1.0328001976013184,
+      "failure_reason": "residual_wall_time_exhausted"
+    },
+    {
+      "mlp_index": 9,
+      "mlp_name": "christina-lopez",
+      "final_mse": 1.080543041229248,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.41579813900011686,
+      "official_adjusted_score": 1.080543041229248,
+      "failure_reason": "residual_wall_time_exhausted"
+    },
+    {
+      "mlp_index": 11,
+      "mlp_name": "john-koch",
+      "final_mse": 1.2793785333633423,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.4514815190157151,
+      "official_adjusted_score": 1.2793785333633423,
+      "failure_reason": "residual_wall_time_exhausted"
+    },
+    {
+      "mlp_index": 12,
+      "mlp_name": "susan-butler",
+      "final_mse": 0.7865991592407227,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.4130422080138487,
+      "official_adjusted_score": 0.7865991592407227,
+      "failure_reason": "residual_wall_time_exhausted"
+    },
+    {
+      "mlp_index": 13,
+      "mlp_name": "crystal-gonzales",
+      "final_mse": 0.8049421310424805,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.4481072169892286,
+      "official_adjusted_score": 0.8049421310424805,
+      "failure_reason": "residual_wall_time_exhausted"
+    },
+    {
+      "mlp_index": 16,
+      "mlp_name": "adam-morrison",
+      "final_mse": 0.9322844743728638,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.5300859230158039,
+      "official_adjusted_score": 0.9322844743728638,
+      "failure_reason": "residual_wall_time_exhausted"
+    },
+    {
+      "mlp_index": 28,
+      "mlp_name": "terri-salazar",
+      "final_mse": 1.1146550178527832,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.49941320999460004,
+      "official_adjusted_score": 1.1146550178527832,
+      "failure_reason": "residual_wall_time_exhausted"
+    },
+    {
+      "mlp_index": 40,
+      "mlp_name": "sylvia-stanley",
+      "final_mse": 1.3028895854949951,
+      "measured_flops": 581994796527,
+      "residual_wall_time_s": 0.4932891080070476,
+      "official_adjusted_score": 1.3028895854949951,
+      "failure_reason": "residual_wall_time_exhausted"
+    }
+  ],
+  "reproducibility": {
+    "separate_five_grid_rerun": false,
+    "r205_first_three_mse_and_flops_exact_match": true,
+    "r205_first_five_exact_match": false,
+    "explanation": "Rows 3 and 4 (steven-rice, sarah-kelley) crossed the 0.4 s residual limit in the 50-MLP run; their failure penalties therefore replace the successful R205 five-grid values. The first three rows retain exact R205 MSE/FLOPs."
+  },
+  "interpretation": {
+    "confirmation": "R205 V26_STRASSEN=4 does not robustly clear the official 0.4 s residual limit on the 50-MLP confirmation run.",
+    "numerical_path": "All 40 successful rows retain ~2e-8 raw MSE; success-only mean adjusted score is 5.967008345758751e-9.",
+    "limiting_factor": "Residual-wall-time variability, not FLOP budget or numerical accuracy, produced all 10 failures.",
+    "rerun_performed": false
+  },
+  "safety": {
+    "private_holdout": false,
+    "paid_resources": false,
+    "submission": false,
+    "competition_scorer": false,
+    "leaderboard_mutation": false
+  }
+}
