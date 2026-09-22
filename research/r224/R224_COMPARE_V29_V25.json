@@ -1,0 +1,12 @@
+{
+  "candidate": "R209-v29-mini100",
+  "improved_networks": 43,
+  "interpretation": "SE across networks; not a significance or holdout claim",
+  "networks": 100,
+  "paired_gain_mean": -0.5270942797099241,
+  "paired_gain_se": 0.04886972545240127,
+  "parent": "R209-v25-mini100",
+  "score_ratio": 64512686.407671124,
+  "worst_score_degradation": 1.482508292501254
+}
+

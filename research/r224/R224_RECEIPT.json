@@ -1,0 +1,126 @@
+{
+  "decision": "SCHEMA_VALID_NORMALIZATION_COMPLETE",
+  "fingerprint_extraction": {
+    "actions_head_sha": "bbf4c7f7bdb31d07cc222f9e9a5b05229d9364c5",
+    "actions_job_id": 106951975172,
+    "actions_run_id": 35788780990,
+    "artifact_id": 10720913493,
+    "artifact_name": "r224-mini100-fingerprints",
+    "artifact_zip_sha256": "28feb5da04d3508b86a8b7afddc39a35f9a57a61bad76c0f63fbf3a2ee6de686",
+    "dataset_info_sha256": "f6596bdac1e2c21ccecb3ada0fb2fafdca65986410b8ddb18b476761475ea747",
+    "fingerprint_json_sha256": "ae0b3659568cc1297aeac89f6babf9f2df2b2752d0216e638141ec6411f629a4",
+    "first5_controls_verified": true,
+    "metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "network_id_rule": "decimal exact int64 mlp_seed",
+    "rows": 100,
+    "target_dtype": "float32",
+    "target_sha256_rule": "SHA256 C-contiguous raw float32 all_layer_means bytes",
+    "target_shape": [
+      16,
+      1024
+    ],
+    "unique_network_ids": 100,
+    "unique_target_hashes": 100
+  },
+  "job_id": "R224",
+  "limitations": [
+    "These mini-100 normalized records are development-panel evidence, not the exact official leaderboard public-50 panel.",
+    "Raw prediction tensors remain absent, so MSE cannot be recomputed independently from predictions."
+  ],
+  "mode": "PUBLISHED_DATASET_EVIDENCE_RECOVERY_ONLY_NO_ESTIMATOR",
+  "normalization_validation": {
+    "actions_head_sha": "0822ea0a2d58e92339d440fa575799948583eceb",
+    "actions_job_id": 106953620270,
+    "actions_run_id": 35789283577,
+    "arc_control_check": "PASS: 6 normalized results, 25 jobs, 194 history entries",
+    "artifact_id": 10721785679,
+    "artifact_name": "r224-normalized-r209-mini100",
+    "artifact_zip_sha256": "7326786a4f711b3f48553f59f4ac80adc177dcb6a0f1cf189e1034413bcbc7f7",
+    "compare": {
+      "candidate": "R209-v29-mini100",
+      "improved_networks": 43,
+      "interpretation": "SE across networks; not a significance or holdout claim",
+      "networks": 100,
+      "paired_gain_mean": -0.5270942797099241,
+      "paired_gain_se": 0.04886972545240127,
+      "parent": "R209-v25-mini100",
+      "score_ratio": 64512686.407671124,
+      "worst_score_degradation": 1.482508292501254
+    }
+  },
+  "normalized_results": {
+    "v25": {
+      "adjusted_score": 8.170397440117226e-09,
+      "failures": 0,
+      "mean_flops": 806303721965,
+      "mean_raw_mse": 2.228303490170447e-08,
+      "path": "research/results/R209-v25-mini100.json",
+      "rows": 100,
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    },
+    "v29": {
+      "adjusted_score": 0.5270942878803215,
+      "failures": 57,
+      "mean_flops": 555733388916.12,
+      "mean_raw_mse": 0.5270942949467905,
+      "path": "research/results/R209-v29-mini100.json",
+      "rows": 100,
+      "sha256": "1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751"
+    }
+  },
+  "owner": "postflight-audit",
+  "parent_r222": {
+    "receipt_commit": "7a3b74d4ea86d4e66c2e3977e913e12ff40ff35b",
+    "receipt_sha256": "ff414605b215e88df5b035498b50295909383c8e51d081812256982fce3f8cec"
+  },
+  "preservation": {
+    "raw_prediction_tensors_still_absent": true,
+    "successful_only_v29_not_substituted": true,
+    "v29_failed_rows_preserved": true,
+    "v29_failure_count": 57
+  },
+  "protocol": {
+    "commit": "bb1a98d4e928403b1b15f014970d8f475b2ef1f0",
+    "extract_arm_commit": "bbf4c7f7bdb31d07cc222f9e9a5b05229d9364c5",
+    "normalize_arm_commit": "0822ea0a2d58e92339d440fa575799948583eceb",
+    "normalizer_commit": "e236e20e99ab77871a5591c5e8390f22226283c0"
+  },
+  "published_dataset": {
+    "count": 100,
+    "dtype": "float32",
+    "metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "repo": "aicrowd/arc-whestbench-public-2026",
+    "revision": "v2-phase2",
+    "split": "mini",
+    "target_shape": [
+      16,
+      1024
+    ]
+  },
+  "r209_source": {
+    "actions_run_id": 35544406064,
+    "raw_prediction_tensors_archived": false,
+    "v25": {
+      "artifact_id": 10617855153,
+      "report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+      "zip_sha256": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08"
+    },
+    "v29": {
+      "artifact_id": 10617318650,
+      "report_sha256": "76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b",
+      "zip_sha256": "32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681"
+    }
+  },
+  "safety": {
+    "estimator_executed": false,
+    "full_split_access": false,
+    "holdout_access": false,
+    "leaderboard_mutation": false,
+    "paid_or_larger_runner": false,
+    "prediction_generated": false,
+    "submission": false
+  },
+  "schema": "arc.whitebox.r224.r209_mini100_normalization.v1",
+  "status": "COMPLETE"
+}

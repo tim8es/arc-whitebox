@@ -1,0 +1,1324 @@
+{
+  "canonicalization": {
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "network_id": "decimal exact int64 mlp_seed",
+    "target_sha256": "SHA256 C-contiguous raw float32 all_layer_means bytes"
+  },
+  "dataset": {
+    "count": 100,
+    "dataset_info_sha256": "f6596bdac1e2c21ccecb3ada0fb2fafdca65986410b8ddb18b476761475ea747",
+    "metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "repo": "aicrowd/arc-whestbench-public-2026",
+    "revision": "v2-phase2",
+    "split": "mini",
+    "target_dtype": "float32",
+    "target_shape": [
+      16,
+      1024
+    ]
+  },
+  "first5_controls_verified": true,
+  "records": [
+    {
+      "mlp_id": 0,
+      "mlp_index": 0,
+      "mlp_name": "logan-fitzgerald",
+      "mlp_seed": "6319981554997072999",
+      "network_id": "6319981554997072999",
+      "target_dtype": "float32",
+      "target_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 1,
+      "mlp_index": 1,
+      "mlp_name": "william-graves",
+      "mlp_seed": "2392109381927064353",
+      "network_id": "2392109381927064353",
+      "target_dtype": "float32",
+      "target_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 2,
+      "mlp_index": 2,
+      "mlp_name": "raymond-barnes",
+      "mlp_seed": "4030325997523501402",
+      "network_id": "4030325997523501402",
+      "target_dtype": "float32",
+      "target_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 3,
+      "mlp_index": 3,
+      "mlp_name": "steven-rice",
+      "mlp_seed": "6959524404880716684",
+      "network_id": "6959524404880716684",
+      "target_dtype": "float32",
+      "target_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 4,
+      "mlp_index": 4,
+      "mlp_name": "sarah-kelley",
+      "mlp_seed": "3958198382245770826",
+      "network_id": "3958198382245770826",
+      "target_dtype": "float32",
+      "target_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 5,
+      "mlp_index": 5,
+      "mlp_name": "christopher-morales",
+      "mlp_seed": "7846555140217393207",
+      "network_id": "7846555140217393207",
+      "target_dtype": "float32",
+      "target_sha256": "1dedfc1aabb61c8a578f2a91059b26ba4c68c7efe1095d46cd731e50c0d6e311",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 6,
+      "mlp_index": 6,
+      "mlp_name": "cheryl-graham",
+      "mlp_seed": "6455969887580159404",
+      "network_id": "6455969887580159404",
+      "target_dtype": "float32",
+      "target_sha256": "bd4df7a96ed021c89e26464cfbcb734a2ee2075fdb7f9cb216aba631371ee7e6",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 7,
+      "mlp_index": 7,
+      "mlp_name": "renee-park",
+      "mlp_seed": "3642947882172421415",
+      "network_id": "3642947882172421415",
+      "target_dtype": "float32",
+      "target_sha256": "eca85716a43ebce6b8cb41f3950e3eab1e186b41b9fb19afa117c49910ad7803",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 8,
+      "mlp_index": 8,
+      "mlp_name": "justin-johnson",
+      "mlp_seed": "1231855977102813932",
+      "network_id": "1231855977102813932",
+      "target_dtype": "float32",
+      "target_sha256": "5752ff4f59f5f6f7172117a06b4dafa83fefaa27e88977cc7b8503b5df97b65d",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 9,
+      "mlp_index": 9,
+      "mlp_name": "christina-lopez",
+      "mlp_seed": "2704129700552098135",
+      "network_id": "2704129700552098135",
+      "target_dtype": "float32",
+      "target_sha256": "f178769226c1630ee8564ab45329ec3d241a6bf63d84c29f1b54ab2ec3b71805",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 10,
+      "mlp_index": 10,
+      "mlp_name": "randy-murray",
+      "mlp_seed": "2106691863424732350",
+      "network_id": "2106691863424732350",
+      "target_dtype": "float32",
+      "target_sha256": "5bfc3630831da9c1f4e903c4af0559d2247ef4959528b1c5f9dc1016813079da",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 11,
+      "mlp_index": 11,
+      "mlp_name": "john-koch",
+      "mlp_seed": "7223822770173254400",
+      "network_id": "7223822770173254400",
+      "target_dtype": "float32",
+      "target_sha256": "83693ba40d4d28ec44a9450e4ccb176c48c69de1c02dae3c98ce2d861e0dec5d",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 12,
+      "mlp_index": 12,
+      "mlp_name": "susan-butler",
+      "mlp_seed": "996126425053749872",
+      "network_id": "996126425053749872",
+      "target_dtype": "float32",
+      "target_sha256": "fa549e11b6cc5199c699e81a2cc810871dc7aa786f906aa579ff6021d27b87c1",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 13,
+      "mlp_index": 13,
+      "mlp_name": "crystal-gonzales",
+      "mlp_seed": "8412308475179182746",
+      "network_id": "8412308475179182746",
+      "target_dtype": "float32",
+      "target_sha256": "4854a290abb533bbdcf4fb7730b6748e0e0b522ffdeae8a4ca3fa99dd217ff2b",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 14,
+      "mlp_index": 14,
+      "mlp_name": "troy-richardson",
+      "mlp_seed": "3448660450172082933",
+      "network_id": "3448660450172082933",
+      "target_dtype": "float32",
+      "target_sha256": "bede3e842a6e9d216062c411d49188baffd3d10ea32751a1124bbd3cbe302b8d",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 15,
+      "mlp_index": 15,
+      "mlp_name": "sharon-whitehead",
+      "mlp_seed": "944045338291930753",
+      "network_id": "944045338291930753",
+      "target_dtype": "float32",
+      "target_sha256": "15f1f91886ddd3c6ebfee30327ff5d919d691a4eecb09b5fc109acc874c117d3",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 16,
+      "mlp_index": 16,
+      "mlp_name": "adam-morrison",
+      "mlp_seed": "3786732390200298364",
+      "network_id": "3786732390200298364",
+      "target_dtype": "float32",
+      "target_sha256": "f9490b29537c33c5ed30f810b8704637adecba1bac17a6edbdf302aefb191d00",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 17,
+      "mlp_index": 17,
+      "mlp_name": "william-simmons",
+      "mlp_seed": "834438545481244494",
+      "network_id": "834438545481244494",
+      "target_dtype": "float32",
+      "target_sha256": "97a1b988dec4e58c6283b735f5cea37cbe6e2af732b7289c9f7d758924f45aed",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 18,
+      "mlp_index": 18,
+      "mlp_name": "william-bryant",
+      "mlp_seed": "2176353874128788411",
+      "network_id": "2176353874128788411",
+      "target_dtype": "float32",
+      "target_sha256": "884147c379c3a9acab0225e74309f27cf09ed4302b1cdbea28a523e69c18cd9b",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 19,
+      "mlp_index": 19,
+      "mlp_name": "angela-hancock",
+      "mlp_seed": "8262064847276688196",
+      "network_id": "8262064847276688196",
+      "target_dtype": "float32",
+      "target_sha256": "d13fb7ce7da78370bc10f66d21e6f182691f9668a8f101d61b90fbd182a73a17",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 20,
+      "mlp_index": 20,
+      "mlp_name": "lisa-aguirre",
+      "mlp_seed": "7926735209001626063",
+      "network_id": "7926735209001626063",
+      "target_dtype": "float32",
+      "target_sha256": "a239eb56b9cbdf2c8fb997b63b66f5a6d8e4894bfdf25f5a50c91ffaf911ca74",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 21,
+      "mlp_index": 21,
+      "mlp_name": "marissa-perez",
+      "mlp_seed": "6127855443806155466",
+      "network_id": "6127855443806155466",
+      "target_dtype": "float32",
+      "target_sha256": "36a526a0cbb238068affa00266a7858faf86e2233d263955c07e22d9f748c415",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 22,
+      "mlp_index": 22,
+      "mlp_name": "matthew-cruz",
+      "mlp_seed": "9076486323495801462",
+      "network_id": "9076486323495801462",
+      "target_dtype": "float32",
+      "target_sha256": "56401bf34f4cd882a1b6812855c77838742ba4443bec7df9e73da306827ba75e",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 23,
+      "mlp_index": 23,
+      "mlp_name": "dana-parker",
+      "mlp_seed": "4238367645243012349",
+      "network_id": "4238367645243012349",
+      "target_dtype": "float32",
+      "target_sha256": "364296baa626d306f657ba27bc68fcb64d8ce9b2114dfac2b5c90d1192439881",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 24,
+      "mlp_index": 24,
+      "mlp_name": "justin-thomas",
+      "mlp_seed": "3687427835061578571",
+      "network_id": "3687427835061578571",
+      "target_dtype": "float32",
+      "target_sha256": "59c85090a2b952ae6ef5cc654bfb4a7f6c1af0d93949547e8245049c0ea87eca",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 25,
+      "mlp_index": 25,
+      "mlp_name": "jose-booker",
+      "mlp_seed": "6591564818157006431",
+      "network_id": "6591564818157006431",
+      "target_dtype": "float32",
+      "target_sha256": "29c11c39c0774f3014817120cbf88e829de5f9397cbbdd0a6466d7449f461015",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 26,
+      "mlp_index": 26,
+      "mlp_name": "jennifer-best",
+      "mlp_seed": "3478610531759830282",
+      "network_id": "3478610531759830282",
+      "target_dtype": "float32",
+      "target_sha256": "5542b9129a81f9a5b5207a8b7187d20115154da5f8644f457f4c758e3bb80950",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 27,
+      "mlp_index": 27,
+      "mlp_name": "lisa-dean",
+      "mlp_seed": "2763505389249373930",
+      "network_id": "2763505389249373930",
+      "target_dtype": "float32",
+      "target_sha256": "02be51a0c668306a838807cb8fa3922e51f049352a65e5182f0385bace0de621",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 28,
+      "mlp_index": 28,
+      "mlp_name": "terri-salazar",
+      "mlp_seed": "1023494082822387594",
+      "network_id": "1023494082822387594",
+      "target_dtype": "float32",
+      "target_sha256": "6ba755b6d3c664eb3e057e7e43e0b8a7fe992cfd18e7591d86fb9b32870b3887",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 29,
+      "mlp_index": 29,
+      "mlp_name": "monica-duncan",
+      "mlp_seed": "796435967347525644",
+      "network_id": "796435967347525644",
+      "target_dtype": "float32",
+      "target_sha256": "c18bd5a207be92ae584aab94f4c9fda557a5d8bc51ec1a05e96737912fe976d3",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 30,
+      "mlp_index": 30,
+      "mlp_name": "katherine-allen",
+      "mlp_seed": "3695113754369497827",
+      "network_id": "3695113754369497827",
+      "target_dtype": "float32",
+      "target_sha256": "4c1ce8ecde2b26317ae242f0a3af865677506a30626e5ec69c475a5ce4917d1c",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 31,
+      "mlp_index": 31,
+      "mlp_name": "stephanie-fowler",
+      "mlp_seed": "8052006587265362085",
+      "network_id": "8052006587265362085",
+      "target_dtype": "float32",
+      "target_sha256": "56aad1b4c6aa9d184be5c1a07cce75fec82030d51631a018ecfa5beb37f5fa38",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 32,
+      "mlp_index": 32,
+      "mlp_name": "nathan-valdez",
+      "mlp_seed": "5916827073025923411",
+      "network_id": "5916827073025923411",
+      "target_dtype": "float32",
+      "target_sha256": "88100654a95b5fd3d66e8a7667c116f9d33339a60116afd81036d172533996d0",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 33,
+      "mlp_index": 33,
+      "mlp_name": "mark-sweeney",
+      "mlp_seed": "420371704280610938",
+      "network_id": "420371704280610938",
+      "target_dtype": "float32",
+      "target_sha256": "6430f5e64c91ceecbe7714cedeb078f6c4d4fca044ffe15469e54787255b9084",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 34,
+      "mlp_index": 34,
+      "mlp_name": "rachel-warren",
+      "mlp_seed": "8920457781230169818",
+      "network_id": "8920457781230169818",
+      "target_dtype": "float32",
+      "target_sha256": "9a0f2ba7bb28224b911fa45bad3038ccbcdd564ab9bda3ee909ee4d51ba6dacd",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 35,
+      "mlp_index": 35,
+      "mlp_name": "cory-clarke",
+      "mlp_seed": "2711634248630657917",
+      "network_id": "2711634248630657917",
+      "target_dtype": "float32",
+      "target_sha256": "c38c0e9e6e328bc9ebc50e6d6a34f8aad6ce2f76d6e3fe5d580e01243156e26e",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 36,
+      "mlp_index": 36,
+      "mlp_name": "patricia-cochran",
+      "mlp_seed": "4049013147162560479",
+      "network_id": "4049013147162560479",
+      "target_dtype": "float32",
+      "target_sha256": "3a12cc823cec3db7b896b704d56f51353029bd9025e06c873eef457d638965db",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 37,
+      "mlp_index": 37,
+      "mlp_name": "paige-miller",
+      "mlp_seed": "3703256763869420164",
+      "network_id": "3703256763869420164",
+      "target_dtype": "float32",
+      "target_sha256": "dc4f6133cdae0af9bf692f50d0579e217c04451fbbd6a54616a5579c59d30c8c",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 38,
+      "mlp_index": 38,
+      "mlp_name": "daniel-smith",
+      "mlp_seed": "2787599716161986387",
+      "network_id": "2787599716161986387",
+      "target_dtype": "float32",
+      "target_sha256": "f7bef65e375895d4c235f8f5f1ff3fe10b77b005802052292c787585bd393a9b",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 39,
+      "mlp_index": 39,
+      "mlp_name": "rebecca-jackson",
+      "mlp_seed": "9077028007935113016",
+      "network_id": "9077028007935113016",
+      "target_dtype": "float32",
+      "target_sha256": "704c66277f8f4d1664d846b2212963ef39b597d3c0c59f91f2a4fc4a66f65e46",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 40,
+      "mlp_index": 40,
+      "mlp_name": "sylvia-stanley",
+      "mlp_seed": "8509454987965736357",
+      "network_id": "8509454987965736357",
+      "target_dtype": "float32",
+      "target_sha256": "c19454fc2c5d601ce45e0eee52f0c097113c3f90a2c5fe718a20bead2ac1f673",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 41,
+      "mlp_index": 41,
+      "mlp_name": "john-lee",
+      "mlp_seed": "4534372957096958739",
+      "network_id": "4534372957096958739",
+      "target_dtype": "float32",
+      "target_sha256": "f9e9c1fa4834089766a6963dc10002745d2124f2bb011077c579c620c4fc5b9d",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 42,
+      "mlp_index": 42,
+      "mlp_name": "crystal-carrillo",
+      "mlp_seed": "4977787987958539383",
+      "network_id": "4977787987958539383",
+      "target_dtype": "float32",
+      "target_sha256": "3ae9032fbc7fd467dabf63f3efbb6c03631104620500d258d66d3c919ca15c2b",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 43,
+      "mlp_index": 43,
+      "mlp_name": "renee-garcia",
+      "mlp_seed": "2457771942486756887",
+      "network_id": "2457771942486756887",
+      "target_dtype": "float32",
+      "target_sha256": "b2c6ef3a1e9f575944720b48902dae6b26406b96b58b33a3044cbf8923590ce9",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 44,
+      "mlp_index": 44,
+      "mlp_name": "anita-collier",
+      "mlp_seed": "8005359733654539502",
+      "network_id": "8005359733654539502",
+      "target_dtype": "float32",
+      "target_sha256": "5ed3a2684fa49197d6ebe17684b4ea03675684923c9ab689fc40ce7bcf9f8c09",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 45,
+      "mlp_index": 45,
+      "mlp_name": "tina-webb",
+      "mlp_seed": "3197215999203804376",
+      "network_id": "3197215999203804376",
+      "target_dtype": "float32",
+      "target_sha256": "4556b9460c2a68b2b44a1b3b0bf7f228a9e7e6b30793f8512013ac8c3d281fc6",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 46,
+      "mlp_index": 46,
+      "mlp_name": "lisa-mitchell",
+      "mlp_seed": "2621221337532183241",
+      "network_id": "2621221337532183241",
+      "target_dtype": "float32",
+      "target_sha256": "8eb3cfd3bd7500ba0e565cce7b42647137f0f802fa87b5cf11a40a0c3fa293bb",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 47,
+      "mlp_index": 47,
+      "mlp_name": "douglas-kelly",
+      "mlp_seed": "1876000384391229791",
+      "network_id": "1876000384391229791",
+      "target_dtype": "float32",
+      "target_sha256": "e7e276e55667cc175301cc5a865679be7f8b6cec5cc460935d417c6f3d86f4db",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 48,
+      "mlp_index": 48,
+      "mlp_name": "maria-calderon",
+      "mlp_seed": "3276298747013761189",
+      "network_id": "3276298747013761189",
+      "target_dtype": "float32",
+      "target_sha256": "8ed535d3c8c3acc643fc667450b72b3fbfa9ee4144670617a94079efd4f0c382",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 49,
+      "mlp_index": 49,
+      "mlp_name": "jay-harris",
+      "mlp_seed": "4470491132045783488",
+      "network_id": "4470491132045783488",
+      "target_dtype": "float32",
+      "target_sha256": "b5c8c2e1d8e60257e4b3039020132f7f7c74923d2665bf7f6c64301e8c579f3c",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 50,
+      "mlp_index": 50,
+      "mlp_name": "robyn-davis",
+      "mlp_seed": "1972264219902224093",
+      "network_id": "1972264219902224093",
+      "target_dtype": "float32",
+      "target_sha256": "350ad6ab1d209bccdb416b59e25a0588ef080bce2aa8b54d2c0c59c61fab729c",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 51,
+      "mlp_index": 51,
+      "mlp_name": "daniel-vasquez",
+      "mlp_seed": "2096587585286866638",
+      "network_id": "2096587585286866638",
+      "target_dtype": "float32",
+      "target_sha256": "31785522842a3f5bfd079033dc74d77da1b758eb738e31ca883aab5309211ab4",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 52,
+      "mlp_index": 52,
+      "mlp_name": "richard-davis",
+      "mlp_seed": "6516760550695168709",
+      "network_id": "6516760550695168709",
+      "target_dtype": "float32",
+      "target_sha256": "ad34b89a2822f75eb35543a7a3d2ef9a389c01a6c7754e12fff00d7df6cc43de",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 53,
+      "mlp_index": 53,
+      "mlp_name": "darryl-lewis",
+      "mlp_seed": "2599332908236606914",
+      "network_id": "2599332908236606914",
+      "target_dtype": "float32",
+      "target_sha256": "7debc8b94181d079ba2f20ebd85a6c6055f755b236949ccca4acc363feaffc59",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 54,
+      "mlp_index": 54,
+      "mlp_name": "james-parsons",
+      "mlp_seed": "2633982697218239142",
+      "network_id": "2633982697218239142",
+      "target_dtype": "float32",
+      "target_sha256": "a1996a2e2c23b64781bf8fffc7d2a491217f5a572fc447925d9c6dbea1249eec",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 55,
+      "mlp_index": 55,
+      "mlp_name": "victor-short",
+      "mlp_seed": "3088209523042816135",
+      "network_id": "3088209523042816135",
+      "target_dtype": "float32",
+      "target_sha256": "8bfb2b68452b03f0e0b07ec399ddd706198578d50fa8b6dadd4e483ae6aceb55",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 56,
+      "mlp_index": 56,
+      "mlp_name": "katherine-singh",
+      "mlp_seed": "6838115367257519733",
+      "network_id": "6838115367257519733",
+      "target_dtype": "float32",
+      "target_sha256": "aafcfa55448a6c792dcbe9d4b84d39755286c16259203a168c7fac2cd223aa27",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 57,
+      "mlp_index": 57,
+      "mlp_name": "gregory-wilson",
+      "mlp_seed": "7580473291617765187",
+      "network_id": "7580473291617765187",
+      "target_dtype": "float32",
+      "target_sha256": "8f789f34613f464917a9b71906c71e7c1b0b6e4f6efa8802a47c654be4e3c9b6",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 58,
+      "mlp_index": 58,
+      "mlp_name": "daniel-graves",
+      "mlp_seed": "6256191955956926982",
+      "network_id": "6256191955956926982",
+      "target_dtype": "float32",
+      "target_sha256": "d0279f1b2ed46e5bea06ca8889553bf82af583fb6871b1352935dca8af54ae12",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 59,
+      "mlp_index": 59,
+      "mlp_name": "amy-fields",
+      "mlp_seed": "1202559381807847992",
+      "network_id": "1202559381807847992",
+      "target_dtype": "float32",
+      "target_sha256": "359e37dc7d765f0d169e97916af3455f942b50bb32c670420d9d7df22656e843",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 60,
+      "mlp_index": 60,
+      "mlp_name": "erica-whitaker",
+      "mlp_seed": "7850441526471123853",
+      "network_id": "7850441526471123853",
+      "target_dtype": "float32",
+      "target_sha256": "35789402945d10752ffd401243bcc674fb42a192ca6b606aa476022adc23cb09",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 61,
+      "mlp_index": 61,
+      "mlp_name": "mallory-morales",
+      "mlp_seed": "7713237186030878987",
+      "network_id": "7713237186030878987",
+      "target_dtype": "float32",
+      "target_sha256": "e80975fb211bcf2fdbd00a5b1371b8dd4bee6723b6c18a9f7b3f878e911bd641",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 62,
+      "mlp_index": 62,
+      "mlp_name": "walter-moore",
+      "mlp_seed": "1846860118540496368",
+      "network_id": "1846860118540496368",
+      "target_dtype": "float32",
+      "target_sha256": "8813ded25511f2b3704565af6f9537175b632cbe7b544a5242b59cf3fb39e3c6",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 63,
+      "mlp_index": 63,
+      "mlp_name": "dillon-taylor",
+      "mlp_seed": "1399957212469161720",
+      "network_id": "1399957212469161720",
+      "target_dtype": "float32",
+      "target_sha256": "acb4d6de824ce2bb173fb1407998662f09bb5a4a5c9367c6be50141092f17287",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 64,
+      "mlp_index": 64,
+      "mlp_name": "diane-jones",
+      "mlp_seed": "379099306488066524",
+      "network_id": "379099306488066524",
+      "target_dtype": "float32",
+      "target_sha256": "f39af2cc5ed93f648e47eeb3c62100c9cc6e8b11fbcc96a9e5b4cdefb940134a",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 65,
+      "mlp_index": 65,
+      "mlp_name": "brandon-king",
+      "mlp_seed": "4758217560929263782",
+      "network_id": "4758217560929263782",
+      "target_dtype": "float32",
+      "target_sha256": "01038364428cf3cc3a0cc6dfccf5e8380aa5c976b7bdf3cd5dadd569a7456d40",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 66,
+      "mlp_index": 66,
+      "mlp_name": "samuel-simon",
+      "mlp_seed": "8384567043090176381",
+      "network_id": "8384567043090176381",
+      "target_dtype": "float32",
+      "target_sha256": "7b1fb326283656749692558bece4de141f41cb4630fd62c6ae950c5bc529520d",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 67,
+      "mlp_index": 67,
+      "mlp_name": "marie-paul",
+      "mlp_seed": "2474931402529981222",
+      "network_id": "2474931402529981222",
+      "target_dtype": "float32",
+      "target_sha256": "8865ba3d55bd68e1386ac72c93f8866eed7184855396fdb6232a1f146eb20c24",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 68,
+      "mlp_index": 68,
+      "mlp_name": "barbara-walls",
+      "mlp_seed": "7508821215085830111",
+      "network_id": "7508821215085830111",
+      "target_dtype": "float32",
+      "target_sha256": "500303650e166c0c9f2aa520463585dee271dae27026b8faa60f78102ddcc6cc",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 69,
+      "mlp_index": 69,
+      "mlp_name": "deborah-harris",
+      "mlp_seed": "7407377602205352667",
+      "network_id": "7407377602205352667",
+      "target_dtype": "float32",
+      "target_sha256": "bb1fbc618dace33512e327ae5ef1823f9dd2285e6e5c563f27f86f913a5f785b",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 70,
+      "mlp_index": 70,
+      "mlp_name": "daniel-smith-2",
+      "mlp_seed": "2866660226654851759",
+      "network_id": "2866660226654851759",
+      "target_dtype": "float32",
+      "target_sha256": "70de7edbe3b267dcce527997973e55dfca9d35f9fb7394025d6a458fd229fb35",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 71,
+      "mlp_index": 71,
+      "mlp_name": "mary-garrett",
+      "mlp_seed": "8915800854652069828",
+      "network_id": "8915800854652069828",
+      "target_dtype": "float32",
+      "target_sha256": "65f55370857f9258123bd511b037011ea385e1039d07c770c7609fa151b245fa",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 72,
+      "mlp_index": 72,
+      "mlp_name": "sandra-powell",
+      "mlp_seed": "5937758525897362098",
+      "network_id": "5937758525897362098",
+      "target_dtype": "float32",
+      "target_sha256": "e6d0080647fb1f16a87fbd0a7e25497cf4fc3384d02124aec52c993265cc562f",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 73,
+      "mlp_index": 73,
+      "mlp_name": "victor-garrett",
+      "mlp_seed": "8439345745453955992",
+      "network_id": "8439345745453955992",
+      "target_dtype": "float32",
+      "target_sha256": "31f6fb8a2f3a78be1006691213c360eac038c5f6f05e5405cf31a069daf55193",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 74,
+      "mlp_index": 74,
+      "mlp_name": "steven-montgomery",
+      "mlp_seed": "2009240036358336991",
+      "network_id": "2009240036358336991",
+      "target_dtype": "float32",
+      "target_sha256": "bffb01eb8f0dd16bb32567d4cdff131bf9659087ae7947ead31a50242fc4c531",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 75,
+      "mlp_index": 75,
+      "mlp_name": "jennifer-perez",
+      "mlp_seed": "3567951564090217873",
+      "network_id": "3567951564090217873",
+      "target_dtype": "float32",
+      "target_sha256": "d9be5a2688d06e40deef2fe68e6ffc1ec898e9c77b102a67ee55eba1b7e50cdf",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 76,
+      "mlp_index": 76,
+      "mlp_name": "scott-young",
+      "mlp_seed": "5322187042263020144",
+      "network_id": "5322187042263020144",
+      "target_dtype": "float32",
+      "target_sha256": "f9e78522cb222de36c3afb30939d481ce9da5d380fd7f3f02ea3001df650698f",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 77,
+      "mlp_index": 77,
+      "mlp_name": "debra-jones",
+      "mlp_seed": "8995904922783675230",
+      "network_id": "8995904922783675230",
+      "target_dtype": "float32",
+      "target_sha256": "3733881d409a94dc67e6e479940b2dcc14a66733776340a0978d959dd207f809",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 78,
+      "mlp_index": 78,
+      "mlp_name": "george-chase",
+      "mlp_seed": "5495818927611162469",
+      "network_id": "5495818927611162469",
+      "target_dtype": "float32",
+      "target_sha256": "ea4206452598cb900a4c8965c656918a115a596b7dfc5c7f7a1f967bc231298f",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 79,
+      "mlp_index": 79,
+      "mlp_name": "troy-welch",
+      "mlp_seed": "5635285983559139555",
+      "network_id": "5635285983559139555",
+      "target_dtype": "float32",
+      "target_sha256": "86b86c9958f0824159c0df3c74ac85b710f82e49633c57cdcbabc51797caff77",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 80,
+      "mlp_index": 80,
+      "mlp_name": "jacob-adams",
+      "mlp_seed": "3515154164765914809",
+      "network_id": "3515154164765914809",
+      "target_dtype": "float32",
+      "target_sha256": "d11adb5ee9963dc4444b4792cba9263ded77e7235e549255ce826342e1ce5c91",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 81,
+      "mlp_index": 81,
+      "mlp_name": "courtney-baker",
+      "mlp_seed": "189314070552559745",
+      "network_id": "189314070552559745",
+      "target_dtype": "float32",
+      "target_sha256": "c7bf9bd4631c0409baf6e916c746232669edc90ef85cc5f2056ac8d4f691f652",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 82,
+      "mlp_index": 82,
+      "mlp_name": "pamela-carr",
+      "mlp_seed": "6158616676286068120",
+      "network_id": "6158616676286068120",
+      "target_dtype": "float32",
+      "target_sha256": "06824dc39adf4bf89930f7ddff6a7cfb06a39f09cd2b414765d12014ff9c20c4",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 83,
+      "mlp_index": 83,
+      "mlp_name": "denise-smith",
+      "mlp_seed": "5783865521103757372",
+      "network_id": "5783865521103757372",
+      "target_dtype": "float32",
+      "target_sha256": "4a178e8e537c913d9690a1cc163eb65f5c48e0d2971210d78c71bff25785b3fa",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 84,
+      "mlp_index": 84,
+      "mlp_name": "michelle-taylor",
+      "mlp_seed": "1513056364632441852",
+      "network_id": "1513056364632441852",
+      "target_dtype": "float32",
+      "target_sha256": "24c447ecffce18d69e3af4d8b9f68de0b882f50e1a92ec4265c8d1ed48f1db3f",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 85,
+      "mlp_index": 85,
+      "mlp_name": "ashley-williams",
+      "mlp_seed": "5008846919609497772",
+      "network_id": "5008846919609497772",
+      "target_dtype": "float32",
+      "target_sha256": "fb04cd2e9293162b111e1b762a0f6a1e2a345da15f6230fb6ce81a9307d132db",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 86,
+      "mlp_index": 86,
+      "mlp_name": "judith-maxwell",
+      "mlp_seed": "7552522903653607488",
+      "network_id": "7552522903653607488",
+      "target_dtype": "float32",
+      "target_sha256": "347f93fdb529d6a9fefa7c3fc2f2fd10fa355d0e5436d37332f0b6b75213512a",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 87,
+      "mlp_index": 87,
+      "mlp_name": "travis-reed",
+      "mlp_seed": "6991373316760258100",
+      "network_id": "6991373316760258100",
+      "target_dtype": "float32",
+      "target_sha256": "69d0b47c49a0d7a9c7eb51a5dd98c2cd93b2179323efcd59c01274368b24694d",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 88,
+      "mlp_index": 88,
+      "mlp_name": "heather-strickland",
+      "mlp_seed": "4126904310431152331",
+      "network_id": "4126904310431152331",
+      "target_dtype": "float32",
+      "target_sha256": "c48f38818f6dcfb03a0b9b573ded71a2017b6311a0afe526aabc1cc853058c57",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 89,
+      "mlp_index": 89,
+      "mlp_name": "kyle-petersen",
+      "mlp_seed": "4421956426608759848",
+      "network_id": "4421956426608759848",
+      "target_dtype": "float32",
+      "target_sha256": "87be179b52cba9cd713570cf58456ecdfbcafba679cfd9718622fb729b7920f9",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 90,
+      "mlp_index": 90,
+      "mlp_name": "rachel-kelley",
+      "mlp_seed": "5451601564174840496",
+      "network_id": "5451601564174840496",
+      "target_dtype": "float32",
+      "target_sha256": "76da891438d5404d1c5f33b3c9b842ad7bc793d0f9bfa3d97c4f3aa8a3b6efd3",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 91,
+      "mlp_index": 91,
+      "mlp_name": "robert-patrick",
+      "mlp_seed": "7649872791877645292",
+      "network_id": "7649872791877645292",
+      "target_dtype": "float32",
+      "target_sha256": "9550998b285af76d0999ac71d3c98698194dd95cdffa383d9107f9fcbc2edb1e",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 92,
+      "mlp_index": 92,
+      "mlp_name": "james-perez",
+      "mlp_seed": "4058513975018849492",
+      "network_id": "4058513975018849492",
+      "target_dtype": "float32",
+      "target_sha256": "5ddc87ab888496423c77509a34dd270bdeab52cf48809924fda8923b11c662cc",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 93,
+      "mlp_index": 93,
+      "mlp_name": "nathan-moore",
+      "mlp_seed": "7807267696492052470",
+      "network_id": "7807267696492052470",
+      "target_dtype": "float32",
+      "target_sha256": "4ab085900ecda3c008f68a6fc603908df189638a36e1abdae509a28c6c00e13a",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 94,
+      "mlp_index": 94,
+      "mlp_name": "gregory-harrison",
+      "mlp_seed": "5678711027797573345",
+      "network_id": "5678711027797573345",
+      "target_dtype": "float32",
+      "target_sha256": "fb164679fdbd08f9528afbed32e9bd516060446328215ed5d0a1720b75351714",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 95,
+      "mlp_index": 95,
+      "mlp_name": "mark-snyder",
+      "mlp_seed": "3109974749458014971",
+      "network_id": "3109974749458014971",
+      "target_dtype": "float32",
+      "target_sha256": "6a83c6642a00c2b50d87dfd3865708f6d5b2231cd0727fad57231d9f4352d18a",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 96,
+      "mlp_index": 96,
+      "mlp_name": "kathleen-mueller",
+      "mlp_seed": "2405080982703051941",
+      "network_id": "2405080982703051941",
+      "target_dtype": "float32",
+      "target_sha256": "b845fff7cb78f640cb9d459348014863c23d85d51d20771e4f9985256e6c2d2d",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 97,
+      "mlp_index": 97,
+      "mlp_name": "michelle-kramer",
+      "mlp_seed": "1026162449252698879",
+      "network_id": "1026162449252698879",
+      "target_dtype": "float32",
+      "target_sha256": "82d69ce049a162abd35ed08818f2a22cea9f0067426b53b88ff373244ecb7032",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 98,
+      "mlp_index": 98,
+      "mlp_name": "elizabeth-hughes",
+      "mlp_seed": "8915680942698473024",
+      "network_id": "8915680942698473024",
+      "target_dtype": "float32",
+      "target_sha256": "4cd7860eb6d194b7a55d340a25a147b616266d4a9a41a951f05332903378bdd5",
+      "target_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "mlp_id": 99,
+      "mlp_index": 99,
+      "mlp_name": "kelsey-gonzalez",
+      "mlp_seed": "998801302670386654",
+      "network_id": "998801302670386654",
+      "target_dtype": "float32",
+      "target_sha256": "dd2bc4637d80b652e51c94d5120e9364e1e7fbadda9d59e38610853c1e728673",
+      "target_shape": [
+        16,
+        1024
+      ]
+    }
+  ],
+  "schema": "arc.whitebox.r224.mini100_fingerprints.v1"
+}
