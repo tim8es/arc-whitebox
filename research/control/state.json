@@ -694,6 +694,21 @@
         "title": "Determine whether the clean V25 public result is leaderboard-comparable"
       },
       "revision": 54
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T20:27:41.317204+00:00",
+      "job": "R217",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "baseline-diagnosis",
+        "deliverable": "Read-only paired analysis of all 50 per-MLP R207 and R210 rows, environment/CPU affinity metadata and unchanged V29 source. Quantify residual shifts, identify whether pinning to CPU 0 or another measured factor explains the 10-to-33 failure increase, and freeze one falsifiable next runtime hypothesis with acceptance criteria and official-contract checks. Do not launch another scientific run in this task; preserve all evidence and commit the diagnosis/protocol.",
+        "depends_on": [],
+        "hypothesis_id": "R210-AFFINITY-ROOT-CAUSE",
+        "priority": 1,
+        "title": "Explain why single-CPU affinity worsened R210 and freeze the next runtime hypothesis"
+      },
+      "revision": 55
     }
   ],
   "jobs": [
@@ -1186,10 +1201,22 @@
       "priority": 1,
       "status": "QUEUED",
       "title": "Determine whether the clean V25 public result is leaderboard-comparable"
+    },
+    {
+      "assigned_owner": "baseline-diagnosis",
+      "attempts": [],
+      "deliverable": "Read-only paired analysis of all 50 per-MLP R207 and R210 rows, environment/CPU affinity metadata and unchanged V29 source. Quantify residual shifts, identify whether pinning to CPU 0 or another measured factor explains the 10-to-33 failure increase, and freeze one falsifiable next runtime hypothesis with acceptance criteria and official-contract checks. Do not launch another scientific run in this task; preserve all evidence and commit the diagnosis/protocol.",
+      "depends_on": [],
+      "hypothesis_id": "R210-AFFINITY-ROOT-CAUSE",
+      "id": "R217",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Explain why single-CPU affinity worsened R210 and freeze the next runtime hypothesis"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 54,
+  "revision": 55,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
