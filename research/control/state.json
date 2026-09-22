@@ -853,6 +853,57 @@
         "status": "COMPLETE"
       },
       "revision": 67
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T20:48:28.081Z",
+      "job": "R218",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "baseline-diagnosis",
+        "deliverable": "Execute exactly the frozen R217 six-block U,C0,C1,C1,C0,U crossover on the same Actions worker, using the same public first-50 MLPs and unchanged V29/L4 source. Before execution verify every frozen gate (worker identity, allowed CPUs 0 and 1, versions, dataset/source hashes, order, FLOPs and thread environment); if any gate fails, stop and record protocol-invalid/INFRA_ERROR. Use only verified free/existing compute; do not incur or request new paid resources. Preserve all 300 per-MLP observations, worker/region and telemetry, failures, hashes and block scores. One six-block run only, no retry/rescue, private holdout or submission. Treat this as an exposed-panel runtime diagnostic, not a fresh independent generalization claim; publish artifact and finish queue with measured GO/NO-GO.",
+        "depends_on": [
+          "R217"
+        ],
+        "hypothesis_id": "R210-AFFINITY-CAUSAL-TEST",
+        "priority": 1,
+        "title": "Same-worker CPU-affinity crossover after R217 forensic diagnosis"
+      },
+      "revision": 68
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T20:48:28.097Z",
+      "job": "R219",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "method-research",
+        "deliverable": "Search immutable ARC history and primary literature for exactly one dependence-aware estimator family that carries information beyond coordinate-wise marginals and does not duplicate prior rejected lanes. Define its state/information requirement, exact-small discriminating witness, and conservative production FLOP bound first. Run one minimal target-free synthetic falsifier only if cost-feasible; otherwise record terminal NO-GO with arithmetic. Preserve artifact, citations, hashes and commit. No public benchmark, paid resources, holdout, submission, broad sweep or repeat of R215.",
+        "depends_on": [
+          "R215"
+        ],
+        "hypothesis_id": "DEPENDENCE-CARRIER-FRONTIER",
+        "priority": 2,
+        "title": "Screen one dependence-aware estimator family after FMCF non-closure"
+      },
+      "revision": 69
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T20:48:28.097Z",
+      "job": "R220",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "postflight-audit",
+        "deliverable": "After R218 completes, independently verify its immutable artifact, all six blocks and same-worker/CPU gates, recompute per-MLP C0/C1/U residual summaries, failure differences and official adjusted scores, and apply R217's predeclared thresholds exactly. Confirm or reject the causal interpretation within the protocol's limits; preserve missing telemetry or deviations. Create audit receipt/commit and finish the job. No rerun, holdout, paid run or submission.",
+        "depends_on": [
+          "R218"
+        ],
+        "hypothesis_id": "R210-AFFINITY-CROSSOVER-AUDIT",
+        "priority": 1,
+        "title": "Independently audit the same-worker R210 crossover evidence"
+      },
+      "revision": 70
     }
   ],
   "jobs": [
@@ -1382,7 +1433,6 @@
         {
           "code_commit": "837f9cd640279d682e53887883ea711cd9e8cb6c",
           "command": "read-only source-backed audit of R209 V25 local mini-100 versus official Phase-2 public-50 scoring semantics; no rerun, submission, or private holdout",
-          "run_id": "R216-v25-leaderboard-comparability-audit-837f9cd6",
           "completion": {
             "reason": "R216 source-backed read-only audit completed: 100-MLP vs official public-50 mismatch. Verdict NOT_EXACT_PANEL_COMPARABLE_NO_RANK; the R209 V25 local mini-100 score is not an official public-leaderboard-panel score, so no rank is assigned or implied. No rerun, submission, or private holdout access occurred.",
             "receipt": {
@@ -1392,6 +1442,7 @@
             "run_id": "R216-v25-leaderboard-comparability-audit-837f9cd6",
             "status": "COMPLETE"
           },
+          "run_id": "R216-v25-leaderboard-comparability-audit-837f9cd6",
           "status": "COMPLETE"
         }
       ],
@@ -1401,13 +1452,13 @@
       "id": "R216",
       "owner": "leaderboard-audit",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Determine whether the clean V25 public result is leaderboard-comparable",
+      "reason": "R216 source-backed read-only audit completed: 100-MLP vs official public-50 mismatch. Verdict NOT_EXACT_PANEL_COMPARABLE_NO_RANK; the R209 V25 local mini-100 score is not an official public-leaderboard-panel score, so no rank is assigned or implied. No rerun, submission, or private holdout access occurred.",
       "receipt": {
         "sha256": "6c1762198969b12d3ede1ae70aea46284d913578018e14ec0b810fc1034aaf79",
         "url": "https://github.com/tim8es/arc-whitebox/blob/837f9cd640279d682e53887883ea711cd9e8cb6c/research/R216_V25_LEADERBOARD_COMPARABILITY_AUDIT.json"
       },
-      "reason": "R216 source-backed read-only audit completed: 100-MLP vs official public-50 mismatch. Verdict NOT_EXACT_PANEL_COMPARABLE_NO_RANK; the R209 V25 local mini-100 score is not an official public-leaderboard-panel score, so no rank is assigned or implied. No rerun, submission, or private holdout access occurred."
+      "status": "COMPLETE",
+      "title": "Determine whether the clean V25 public result is leaderboard-comparable"
     },
     {
       "assigned_owner": "baseline-diagnosis",
@@ -1441,10 +1492,52 @@
       },
       "status": "COMPLETE",
       "title": "Explain why single-CPU affinity worsened R210 and freeze the next runtime hypothesis"
+    },
+    {
+      "assigned_owner": "baseline-diagnosis",
+      "attempts": [],
+      "deliverable": "Execute exactly the frozen R217 six-block U,C0,C1,C1,C0,U crossover on the same Actions worker, using the same public first-50 MLPs and unchanged V29/L4 source. Before execution verify every frozen gate (worker identity, allowed CPUs 0 and 1, versions, dataset/source hashes, order, FLOPs and thread environment); if any gate fails, stop and record protocol-invalid/INFRA_ERROR. Use only verified free/existing compute; do not incur or request new paid resources. Preserve all 300 per-MLP observations, worker/region and telemetry, failures, hashes and block scores. One six-block run only, no retry/rescue, private holdout or submission. Treat this as an exposed-panel runtime diagnostic, not a fresh independent generalization claim; publish artifact and finish queue with measured GO/NO-GO.",
+      "depends_on": [
+        "R217"
+      ],
+      "hypothesis_id": "R210-AFFINITY-CAUSAL-TEST",
+      "id": "R218",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Same-worker CPU-affinity crossover after R217 forensic diagnosis"
+    },
+    {
+      "assigned_owner": "method-research",
+      "attempts": [],
+      "deliverable": "Search immutable ARC history and primary literature for exactly one dependence-aware estimator family that carries information beyond coordinate-wise marginals and does not duplicate prior rejected lanes. Define its state/information requirement, exact-small discriminating witness, and conservative production FLOP bound first. Run one minimal target-free synthetic falsifier only if cost-feasible; otherwise record terminal NO-GO with arithmetic. Preserve artifact, citations, hashes and commit. No public benchmark, paid resources, holdout, submission, broad sweep or repeat of R215.",
+      "depends_on": [
+        "R215"
+      ],
+      "hypothesis_id": "DEPENDENCE-CARRIER-FRONTIER",
+      "id": "R219",
+      "owner": null,
+      "priority": 2,
+      "status": "QUEUED",
+      "title": "Screen one dependence-aware estimator family after FMCF non-closure"
+    },
+    {
+      "assigned_owner": "postflight-audit",
+      "attempts": [],
+      "deliverable": "After R218 completes, independently verify its immutable artifact, all six blocks and same-worker/CPU gates, recompute per-MLP C0/C1/U residual summaries, failure differences and official adjusted scores, and apply R217's predeclared thresholds exactly. Confirm or reject the causal interpretation within the protocol's limits; preserve missing telemetry or deviations. Create audit receipt/commit and finish the job. No rerun, holdout, paid run or submission.",
+      "depends_on": [
+        "R218"
+      ],
+      "hypothesis_id": "R210-AFFINITY-CROSSOVER-AUDIT",
+      "id": "R220",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Independently audit the same-worker R210 crossover evidence"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 67,
+  "revision": 70,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
