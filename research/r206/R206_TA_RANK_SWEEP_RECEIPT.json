@@ -1,0 +1,509 @@
+{
+  "decision": {
+    "all_exact": true,
+    "any_joint_gate_pass": false,
+    "paid_run_used": false,
+    "status": "TERMINAL_NO_GO_NO_PARETO_POINT_MEETS_COST_AND_STABILITY",
+    "stop_before_compiler": true,
+    "submission_attempted": false
+  },
+  "environment": {
+    "blas_threads": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "numpy": "2.4.6",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
+    "scipy": "1.17.1"
+  },
+  "experiment": "R206",
+  "fixture": {
+    "a32_sha256": "0c5c4c1022b20cf807118d9aee046d5ed9212771eed2160b179308981bd79979",
+    "b32_sha256": "dc780367f6c82bdb12ec4b48968646d7018e77dacfbbba73fb81e8237a793533",
+    "parent32_seconds": 0.022706061000000943,
+    "parent32_sha256": "ad4ae7fe1de8335c76a368e491c22edd65e01ff11afb06932f31c52b871124b7",
+    "reference64_seconds": 0.050247790999996766,
+    "reference64_sha256": "596818d375cb29dd37f984f4baaeeaa7c39cab5a4a4bc978aef3f89ca2ae89cb"
+  },
+  "git": {
+    "branch": "research/r206-ta-rank-sweep-20260922",
+    "head_sha": "c74bf80beea36e5b0dba087a3030f34a8aad8c5f"
+  },
+  "lita_commit": "c1dd9225df98676e385b53ae7517ff2ea0ec5779",
+  "parent": "R202@df9cca77f9885644c6058dc4307acc187a2a2dcb",
+  "points": [
+    {
+      "cost": {
+        "block_shape": [
+          40,
+          40,
+          40
+        ],
+        "classical_unpadded_flops": 2147483648,
+        "coefficient_multiplies": {
+          "u": 2081635200,
+          "v": 2095539200,
+          "w": 2072931200
+        },
+        "copy_flops_by_convention": 0,
+        "crop_output_scalars_copied": 1081600,
+        "fallback_count": 0,
+        "fallback_flops": 0,
+        "full_arithmetic_flops": 13504019200,
+        "full_ratio": 6.288298964500427,
+        "leaf_matmul_flops": 1030656000,
+        "leaf_ratio": 0.4799365997314453,
+        "linear_combination_additions": {
+          "u": 2068752000,
+          "v": 2082656000,
+          "w_reconstruction": 2071849600
+        },
+        "nnz": {
+          "u": 1301022,
+          "v": 1309712,
+          "w": 1295582
+        },
+        "padded_shape": [
+          1040,
+          1040,
+          1040
+        ],
+        "padding_input_scalars_copied": 2163200,
+        "rank": 8052,
+        "shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "tensor_dim": 26
+      },
+      "dim": 26,
+      "exact": {
+        "a_sha256": "d7d7fe9122bf474a73fc4b915a8c3f1f94ad061d6e91638f2a5aa0673e76c5db",
+        "b_sha256": "d852aba4dff9fab09b27ce7914235e2c7021a3408f9a670dbc100df5b9e018fc",
+        "coefficient_grid": 9680,
+        "exact_equal": true,
+        "max_abs_scaled_integer_residual": 0,
+        "seconds": 1.5044898109999991
+      },
+      "float32": {
+        "candidate_sha256": "de33efdf04c71a09df08cd4cb04074403a27331a7590399466b89407d4ff28df",
+        "checks": {
+          "max_absolute": {
+            "candidate": 0.01629868399595514,
+            "parent": 7.290967534573367e-8,
+            "pass": false,
+            "ratio_candidate_to_parent": 223546.24291862056
+          },
+          "relative_frobenius": {
+            "candidate": 0.025415470076563675,
+            "parent": 2.9619515982982244e-7,
+            "pass": false,
+            "ratio_candidate_to_parent": 85806.50031947184
+          }
+        },
+        "pass": false
+      },
+      "gates": {
+        "exact": true,
+        "full_cost": false,
+        "joint_full_cost_and_stability": false,
+        "leaf_cost": false,
+        "stability": false
+      },
+      "rank": 8052,
+      "runtime": {
+        "crop_copy_seconds": 0.002259997000003011,
+        "leaf_seconds": 0.02080119800000091,
+        "ratio_candidate_to_parent32": 30.477966257554364,
+        "total_seconds": 0.6920345609999998,
+        "u_form_seconds": 0.2244878650000004,
+        "v_form_seconds": 0.21769406800000013,
+        "w_reconstruct_seconds": 0.22679143299999538
+      },
+      "scheme": {
+        "git_blob_sha1": "be5a2f9131ef77c3c3351dc1d218d21ec6845368",
+        "metadata": {
+          "axis_convention": "U,V read row-major inputs; W writes row-major C=AB.",
+          "coefficient_field": "Q",
+          "construction": "LITA row-column aggregation",
+          "format": "fmmp.qcsr.v1",
+          "is_complete_matrix_multiplication_scheme": true,
+          "rank": 8052,
+          "tensor": [
+            26,
+            26,
+            26
+          ]
+        },
+        "sha256": "42fbf5e0df6566110d17919317a4e9b5eb57ffab3ac3545d215c4130fc5b4921"
+      }
+    },
+    {
+      "cost": {
+        "block_shape": [
+          37,
+          37,
+          37
+        ],
+        "classical_unpadded_flops": 2147483648,
+        "coefficient_multiplies": {
+          "u": 2374411397,
+          "v": 2389292427,
+          "w": 2364705187
+        },
+        "copy_flops_by_convention": 0,
+        "crop_output_scalars_copied": 1073296,
+        "fallback_count": 0,
+        "fallback_flops": 0,
+        "full_arithmetic_flops": 15226343822,
+        "full_ratio": 7.090318865142763,
+        "leaf_matmul_flops": 997560182,
+        "leaf_ratio": 0.46452515851706266,
+        "linear_combination_additions": {
+          "u": 2360930854,
+          "v": 2375811884,
+          "w_reconstruction": 2363631891
+        },
+        "nnz": {
+          "u": 1734413,
+          "v": 1745283,
+          "w": 1727323
+        },
+        "padded_shape": [
+          1036,
+          1036,
+          1036
+        ],
+        "padding_input_scalars_copied": 2146592,
+        "rank": 9847,
+        "shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "tensor_dim": 28
+      },
+      "dim": 28,
+      "exact": {
+        "a_sha256": "5784cff1a5b23279e9b797d23a039fd797d56e0cafa1501ee646a2d24258b29d",
+        "b_sha256": "6158df8b2fd0e109dc282b4df1b57855a6422f0f09f8501ca35f753e22b6479c",
+        "coefficient_grid": 6336,
+        "exact_equal": true,
+        "max_abs_scaled_integer_residual": 0,
+        "seconds": 2.0323396519999974
+      },
+      "float32": {
+        "candidate_sha256": "1e7fc8c4edf35ec82075a72e3204095f6905bb8b1486bf27fee84ccb6a4a4586",
+        "checks": {
+          "max_absolute": {
+            "candidate": 0.01811897237200656,
+            "parent": 7.290967534573367e-8,
+            "pass": false,
+            "ratio_candidate_to_parent": 248512.59158798048
+          },
+          "relative_frobenius": {
+            "candidate": 0.032898492439425504,
+            "parent": 2.9619515982982244e-7,
+            "pass": false,
+            "ratio_candidate_to_parent": 111070.32423597733
+          }
+        },
+        "pass": false
+      },
+      "gates": {
+        "exact": true,
+        "full_cost": false,
+        "joint_full_cost_and_stability": false,
+        "leaf_cost": false,
+        "stability": false
+      },
+      "rank": 9847,
+      "runtime": {
+        "crop_copy_seconds": 0.0023604129999981183,
+        "leaf_seconds": 0.0243518019999982,
+        "ratio_candidate_to_parent32": 40.61881679961826,
+        "total_seconds": 0.9222933319999953,
+        "u_form_seconds": 0.284182487999999,
+        "v_form_seconds": 0.28607390999999893,
+        "w_reconstruct_seconds": 0.32532471900000104
+      },
+      "scheme": {
+        "git_blob_sha1": "af512cdf847f49d02c97de7d328c8b611ac1a12f",
+        "metadata": {
+          "axis_convention": "U,V read row-major inputs; W writes row-major C=AB.",
+          "coefficient_field": "Q",
+          "construction": "LITA row-column aggregation",
+          "format": "fmmp.qcsr.v1",
+          "is_complete_matrix_multiplication_scheme": true,
+          "rank": 9847,
+          "tensor": [
+            28,
+            28,
+            28
+          ]
+        },
+        "sha256": "8104c512d7d2d1ce214a627aff441927f04dceb9a341d1ee3f7a3a38095f1ead"
+      }
+    },
+    {
+      "cost": {
+        "block_shape": [
+          35,
+          35,
+          35
+        ],
+        "classical_unpadded_flops": 2147483648,
+        "coefficient_multiplies": {
+          "u": 2778226500,
+          "v": 2794624350,
+          "w": 2767157400
+        },
+        "copy_flops_by_convention": 0,
+        "crop_output_scalars_copied": 1102500,
+        "fallback_count": 0,
+        "fallback_flops": 0,
+        "full_arithmetic_flops": 17669351000,
+        "full_ratio": 8.22793273255229,
+        "leaf_matmul_flops": 1019567500,
+        "leaf_ratio": 0.47477311454713345,
+        "linear_combination_additions": {
+          "u": 2763661250,
+          "v": 2780059100,
+          "w_reconstruction": 2766054900
+        },
+        "nnz": {
+          "u": 2267940,
+          "v": 2281326,
+          "w": 2258904
+        },
+        "padded_shape": [
+          1050,
+          1050,
+          1050
+        ],
+        "padding_input_scalars_copied": 2205000,
+        "rank": 11890,
+        "shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "tensor_dim": 30
+      },
+      "dim": 30,
+      "exact": {
+        "a_sha256": "f7b5724676ea6998f06bd48e685865fac4594f159dfc9f151186b57a7a75a63a",
+        "b_sha256": "d931f45307199bed2d2b2f85e3f4ddfabb21eda0167dc49c4130e49192386f09",
+        "coefficient_grid": 16224,
+        "exact_equal": true,
+        "max_abs_scaled_integer_residual": 0,
+        "seconds": 2.685371883000002
+      },
+      "float32": {
+        "candidate_sha256": "f8d99bb122004305ae638104801e1340455d497f5187399a4d260144fd954fce",
+        "checks": {
+          "max_absolute": {
+            "candidate": 0.027548602735679825,
+            "parent": 7.290967534573367e-8,
+            "pass": false,
+            "ratio_candidate_to_parent": 377845.6371537229
+          },
+          "relative_frobenius": {
+            "candidate": 0.04070966654369244,
+            "parent": 2.9619515982982244e-7,
+            "pass": false,
+            "ratio_candidate_to_parent": 137442.03844209336
+          }
+        },
+        "pass": false
+      },
+      "gates": {
+        "exact": true,
+        "full_cost": false,
+        "joint_full_cost_and_stability": false,
+        "leaf_cost": false,
+        "stability": false
+      },
+      "rank": 11890,
+      "runtime": {
+        "crop_copy_seconds": 0.001193927000002759,
+        "leaf_seconds": 0.0289760699999988,
+        "ratio_candidate_to_parent32": 47.95117114324483,
+        "total_seconds": 1.088782217000002,
+        "u_form_seconds": 0.33455747400000035,
+        "v_form_seconds": 0.3337333529999995,
+        "w_reconstruct_seconds": 0.3903213930000007
+      },
+      "scheme": {
+        "git_blob_sha1": "0cd64a9423d228b0336b07449d65f26931c5bd35",
+        "metadata": {
+          "axis_convention": "U,V read row-major inputs; W writes row-major C=AB.",
+          "coefficient_field": "Q",
+          "construction": "LITA row-column aggregation",
+          "format": "fmmp.qcsr.v1",
+          "is_complete_matrix_multiplication_scheme": true,
+          "rank": 11890,
+          "tensor": [
+            30,
+            30,
+            30
+          ]
+        },
+        "sha256": "f1c85ac0974b799fb4c389a4f4052c192faf30d9722639693abfd4ac952ac9b7"
+      }
+    },
+    {
+      "cost": {
+        "block_shape": [
+          32,
+          32,
+          32
+        ],
+        "classical_unpadded_flops": 2147483648,
+        "coefficient_multiplies": {
+          "u": 2985929728,
+          "v": 3002582016,
+          "w": 2974356480
+        },
+        "copy_flops_by_convention": 0,
+        "crop_output_scalars_copied": 0,
+        "fallback_count": 0,
+        "fallback_flops": 0,
+        "full_arithmetic_flops": 18826027008,
+        "full_ratio": 8.766551971435547,
+        "leaf_matmul_flops": 930414592,
+        "leaf_ratio": 0.433258056640625,
+        "linear_combination_additions": {
+          "u": 2971392000,
+          "v": 2988044288,
+          "w_reconstruction": 2973307904
+        },
+        "nnz": {
+          "u": 2915947,
+          "v": 2932209,
+          "w": 2904645
+        },
+        "padded_shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "padding_input_scalars_copied": 0,
+        "rank": 14197,
+        "shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "tensor_dim": 32
+      },
+      "dim": 32,
+      "exact": {
+        "a_sha256": "714a0f720d380fa181622f88d83b5884abd7d903bf6ed62d7660b017dc860f3e",
+        "b_sha256": "41d671b435dad55d3c8f18ebfe40ea10f764e25f0f043e839019063017bc60a9",
+        "coefficient_grid": 10192,
+        "exact_equal": true,
+        "max_abs_scaled_integer_residual": 0,
+        "seconds": 3.345440612999994
+      },
+      "float32": {
+        "candidate_sha256": "67e8656daaf62c0612ebd800931331075f97b0a36a073f33aa7714ebfd0115fe",
+        "checks": {
+          "max_absolute": {
+            "candidate": 0.03708316706641313,
+            "parent": 7.290967534573367e-8,
+            "pass": false,
+            "ratio_candidate_to_parent": 508617.91511986294
+          },
+          "relative_frobenius": {
+            "candidate": 0.052316842209318024,
+            "parent": 2.9619515982982244e-7,
+            "pass": false,
+            "ratio_candidate_to_parent": 176629.63243348213
+          }
+        },
+        "pass": false
+      },
+      "gates": {
+        "exact": true,
+        "full_cost": false,
+        "joint_full_cost_and_stability": false,
+        "leaf_cost": false,
+        "stability": false
+      },
+      "rank": 14197,
+      "runtime": {
+        "crop_copy_seconds": 0.0006773479999964138,
+        "leaf_seconds": 0.02296488599999691,
+        "ratio_candidate_to_parent32": 43.980794335043555,
+        "total_seconds": 0.9986305989999948,
+        "u_form_seconds": 0.3179744119999981,
+        "v_form_seconds": 0.3167311030000022,
+        "w_reconstruct_seconds": 0.34028285000000125
+      },
+      "scheme": {
+        "git_blob_sha1": "6f2dea4820245303dc2eb1fba13816436fabe54d",
+        "metadata": {
+          "axis_convention": "U,V read row-major inputs; W writes row-major C=AB.",
+          "coefficient_field": "Q",
+          "construction": "LITA row-column aggregation",
+          "format": "fmmp.qcsr.v1",
+          "is_complete_matrix_multiplication_scheme": true,
+          "rank": 14197,
+          "tensor": [
+            32,
+            32,
+            32
+          ]
+        },
+        "sha256": "a6e4a7bb71c153e75ea2497a3d0546cc26db109e99d94109de29afad0c52a701"
+      }
+    }
+  ],
+  "protocol": {
+    "frozen_points": [
+      {
+        "dim": 26,
+        "git_blob_sha1": "be5a2f9131ef77c3c3351dc1d218d21ec6845368",
+        "rank": 8052
+      },
+      {
+        "dim": 28,
+        "git_blob_sha1": "af512cdf847f49d02c97de7d328c8b611ac1a12f",
+        "rank": 9847
+      },
+      {
+        "dim": 30,
+        "git_blob_sha1": "0cd64a9423d228b0336b07449d65f26931c5bd35",
+        "rank": 11890
+      },
+      {
+        "dim": 32,
+        "git_blob_sha1": "6f2dea4820245303dc2eb1fba13816436fabe54d",
+        "rank": 14197
+      }
+    ],
+    "mechanism_ratio_gate": 0.42,
+    "seed": 206,
+    "shape": [
+      1024,
+      1024,
+      1024
+    ],
+    "stability_ratio_gate": 1.05
+  },
+  "schema": "arc.whitebox.r206.ta_rank_sweep.v1",
+  "target_firewall": {
+    "benchmark_targets_read": false,
+    "compiler_built": false,
+    "holdout_read": false,
+    "scorer_read": false,
+    "submission_attempted": false,
+    "synthetic_only": true
+  }
+}
