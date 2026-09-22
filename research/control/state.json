@@ -299,6 +299,14 @@
         "title": "Recover existing 100-MLP V25/V29 evidence without rerun"
       },
       "revision": 24
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T16:43:42.466256+00:00",
+      "job": "R208",
+      "owner": "independent-audit",
+      "payload": {},
+      "revision": 25
     }
   ],
   "jobs": [
@@ -507,9 +515,9 @@
       ],
       "hypothesis_id": "R205-INDEPENDENT-VERIFICATION",
       "id": "R208",
-      "owner": null,
+      "owner": "independent-audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Independent verification of R205 receipt and score"
     },
     {
@@ -526,7 +534,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 24,
+  "revision": 25,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
