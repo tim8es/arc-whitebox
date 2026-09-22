@@ -1629,6 +1629,22 @@
         "status": "SCIENTIFIC_REJECT"
       },
       "at": "2026-09-22T23:00:09.326Z"
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T23:01:35.000Z",
+      "job": "R231",
+      "owner": "v25-error-tail-audit",
+      "payload": {
+        "reason": "R231 read-only V25 mini-100 tail/frontier audit complete on exact input SHA256 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742. Verified 100/100 unique rows, fixed [16,1024] shape, B=2**41, 0 failures, exact stored-score recomputation. Mean raw MSE 2.228303490170447e-8; median 2.2776289299031305e-8. Top-1/5/10/20 raw-MSE shares are 1.3593%/6.4714%/12.4725%/23.8474%; Gini 0.0797813; max leave-one-out mean shift 0.362899%. With observed raw MSE fixed, factor-floor score is 2.228303490170447e-9, so compute reduction alone cannot reach the cross-panel numerical orientation 2.1e-9. At factor 0.1, required mean raw MSE is 2.1e-8, a 5.757900157515477% reduction from V25. This is not an exact-panel comparison or rank. Recommendation: prioritize global accuracy; tail-only evidence is weakly concentrated. No estimator run, paid/private/holdout data, submission, raw-tensor inference, canonical edit, or rank claim.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json",
+          "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff"
+        },
+        "run_id": "R231-v25-error-tail-audit-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 126
     }
   ],
   "jobs": [
@@ -2646,7 +2662,7 @@
       "title": "Quantify V25 mini-100 error-tail concentration and target frontier",
       "owner": "v25-error-tail-audit",
       "assigned_owner": "v25-error-tail-audit",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "priority": 1,
       "hypothesis_id": "R209-V25-ERROR-TAIL-TARGET-FRONTIER",
       "depends_on": [
@@ -2658,14 +2674,28 @@
           "run_id": "R231-v25-error-tail-audit-20260923",
           "code_commit": "5d41ec95d7efebeb5377f2e592076c2363a999e6",
           "command": "read-only deterministic analysis of research/results/R209-v25-mini100.json: verify SHA/100 rows; compute raw-MSE distribution, top-k concentration, leave-one-out sensitivity, score floor and cross-panel 2.1e-9 numerical target; no estimator, paid/private data, submission, or canonical edits",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "R231 read-only V25 mini-100 tail/frontier audit complete on exact input SHA256 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742. Verified 100/100 unique rows, fixed [16,1024] shape, B=2**41, 0 failures, exact stored-score recomputation. Mean raw MSE 2.228303490170447e-8; median 2.2776289299031305e-8. Top-1/5/10/20 raw-MSE shares are 1.3593%/6.4714%/12.4725%/23.8474%; Gini 0.0797813; max leave-one-out mean shift 0.362899%. With observed raw MSE fixed, factor-floor score is 2.228303490170447e-9, so compute reduction alone cannot reach the cross-panel numerical orientation 2.1e-9. At factor 0.1, required mean raw MSE is 2.1e-8, a 5.757900157515477% reduction from V25. This is not an exact-panel comparison or rank. Recommendation: prioritize global accuracy; tail-only evidence is weakly concentrated. No estimator run, paid/private/holdout data, submission, raw-tensor inference, canonical edit, or rank claim.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json",
+              "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff"
+            },
+            "run_id": "R231-v25-error-tail-audit-20260923",
+            "status": "COMPLETE"
+          }
         }
       ],
-      "deliverable": "Using the exact R226-integrated R209 V25 mini-100 row data and the R228 public leaderboard snapshot, perform a reproducible descriptive tail-concentration and target-frontier audit. Verify input hashes and all 100 rows; report mean/median/quantiles, top-1/5/10/20 network shares of total raw MSE, leave-one-out mean sensitivity, and any concentration statistic justified by the exact fields. Derive the official score floor under V25's current C/B and the minimum raw-MSE reduction needed to numerically match the displayed 2.1e-9 leader score at the 0.1 compute-factor floor; label this strictly as a cross-panel numerical target, not rank/comparable evidence. State limits from missing raw tensors and fixed network size/shape. No estimator run, experiment, paid/holdout data, submission or canonical edits. Save a small reproducible script/table and append-only report/receipt with hashes; recommend whether the next effort should target global accuracy, compute factor, or a measurable tail subset."
+      "deliverable": "Using the exact R226-integrated R209 V25 mini-100 row data and the R228 public leaderboard snapshot, perform a reproducible descriptive tail-concentration and target-frontier audit. Verify input hashes and all 100 rows; report mean/median/quantiles, top-1/5/10/20 network shares of total raw MSE, leave-one-out mean sensitivity, and any concentration statistic justified by the exact fields. Derive the official score floor under V25's current C/B and the minimum raw-MSE reduction needed to numerically match the displayed 2.1e-9 leader score at the 0.1 compute-factor floor; label this strictly as a cross-panel numerical target, not rank/comparable evidence. State limits from missing raw tensors and fixed network size/shape. No estimator run, experiment, paid/holdout data, submission or canonical edits. Save a small reproducible script/table and append-only report/receipt with hashes; recommend whether the next effort should target global accuracy, compute factor, or a measurable tail subset.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json",
+        "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff"
+      },
+      "reason": "R231 read-only V25 mini-100 tail/frontier audit complete on exact input SHA256 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742. Verified 100/100 unique rows, fixed [16,1024] shape, B=2**41, 0 failures, exact stored-score recomputation. Mean raw MSE 2.228303490170447e-8; median 2.2776289299031305e-8. Top-1/5/10/20 raw-MSE shares are 1.3593%/6.4714%/12.4725%/23.8474%; Gini 0.0797813; max leave-one-out mean shift 0.362899%. With observed raw MSE fixed, factor-floor score is 2.228303490170447e-9, so compute reduction alone cannot reach the cross-panel numerical orientation 2.1e-9. At factor 0.1, required mean raw MSE is 2.1e-8, a 5.757900157515477% reduction from V25. This is not an exact-panel comparison or rank. Recommendation: prioritize global accuracy; tail-only evidence is weakly concentrated. No estimator run, paid/private/holdout data, submission, raw-tensor inference, canonical edit, or rank claim."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 125,
+  "revision": 126,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
