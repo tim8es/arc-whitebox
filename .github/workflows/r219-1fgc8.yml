@@ -1,0 +1,79 @@
+name: R219 one-factor copula exact-small falsifier
+
+on:
+  push:
+    branches:
+      - research/r219-dependence-carrier-frontier-20260922
+    paths:
+      - 'research/r219/R219_RUN_ARM.json'
+
+jobs:
+  r219:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONHASHSEED: '0'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify frozen arm and blobs
+        run: |
+          mkdir -p r219_artifacts
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          arm=json.loads(Path("research/r219/R219_RUN_ARM.json").read_text())
+          assert arm=={
+            "idempotency_key":"ARC-R219-1FGC8-20260922",
+            "execute_once":True,
+            "scope":"target-free exact-small synthetic only"
+          }, arm
+          changed=subprocess.check_output(["git","diff","--name-only","HEAD^","HEAD"],text=True).splitlines()
+          assert changed==["research/r219/R219_RUN_ARM.json"], changed
+          frozen={
+            "research/r219/R219_PROTOCOL.md":"49049ed51ee783798bd9e230551e93f3ade50a9b",
+            "scripts/r219_1fgc_falsifier.py":"972189fe6d7fd1a600b28d6d7a9bfecb3e6ca30a"
+          }
+          for path,sha in frozen.items():
+              got=subprocess.check_output(["git","rev-parse",f"HEAD:{path}"],text=True).strip()
+              assert got==sha,(path,got,sha)
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Syntax check
+        run: python -m py_compile scripts/r219_1fgc_falsifier.py
+
+      - name: Run sole exact-small falsifier
+        run: |
+          set -o pipefail
+          python scripts/r219_1fgc_falsifier.py 2>&1 | tee r219_artifacts/r219.log
+          cp r219-result.json r219_artifacts/r219-result.json
+
+      - name: Hash evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          out={}
+          for p in sorted(Path("r219_artifacts").glob("*")):
+              if p.is_file(): out[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
+          Path("r219_artifacts/sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r219-1fgc8-falsifier
+          path: |
+            r219_artifacts/
+            research/r219/R219_RUN_ARM.json
+          if-no-files-found: error
+          retention-days: 90
