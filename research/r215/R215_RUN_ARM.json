@@ -1,0 +1,5 @@
+{
+  "idempotency_key": "ARC-R215-MARGINAL-CF-20260922",
+  "execute_once": true,
+  "scope": "exact-small synthetic only"
+}
