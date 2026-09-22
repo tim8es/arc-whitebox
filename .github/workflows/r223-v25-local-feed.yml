@@ -1,0 +1,214 @@
+name: R223 V25 local-feed same-panel development test
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_RUN_ARM.json'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r223:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    env:
+      PYTHONHASHSEED: "0"
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify arm, immutable blobs, and free standard compute
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p r223_evidence
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          arm=json.loads(Path("research/r223/R223_RUN_ARM.json").read_text())
+          assert arm=={
+            "idempotency_key":"ARC-R223-V25-LOCAL-FEED-LAMBDA-20260922",
+            "execute_once":True,
+            "panel":"public-v2-phase2-mini-100",
+            "scope":"one same-panel candidate development run only"
+          }, arm
+          changed=subprocess.check_output(["git","diff","--name-only","HEAD^","HEAD"],text=True).splitlines()
+          assert changed==["research/r223/R223_RUN_ARM.json"], changed
+          frozen={
+            "research/r223/R223_PROTOCOL.md":"1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+            "methods/r223_estimator_v25_local_feed.py":"a09ec139bc7399f169ace02cf587d55bc1c8771b",
+            "scripts/r223_compare_panel.py":"fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0"
+          }
+          for path,sha in frozen.items():
+              got=subprocess.check_output(["git","rev-parse",f"HEAD:{path}"],text=True).strip()
+              assert got==sha,(path,got,sha)
+          PY
+
+          private="$(gh api repos/${GITHUB_REPOSITORY} --jq '.private')"
+          visibility="$(gh api repos/${GITHUB_REPOSITORY} --jq '.visibility')"
+          test "$private" = "false"
+          test "$visibility" = "public"
+          cat > r223_evidence/compute_gate.json <<JSON
+          {
+            "repository": "${GITHUB_REPOSITORY}",
+            "private": $private,
+            "visibility": "$visibility",
+            "runs_on": "ubuntu-24.04",
+            "larger_runner_requested": false,
+            "runner_name": "${RUNNER_NAME}",
+            "runner_os": "${RUNNER_OS}",
+            "runner_arch": "${RUNNER_ARCH}",
+            "verified_free_existing_compute": true
+          }
+          JSON
+
+      - name: Install pinned R209-compatible toolchain
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "numpy==2.4.6" "whestbench==0.16.1" "flopscope>=0.12.1,<0.13.0"
+          whest version --json > r223_evidence/whest_version.json
+          python - <<'PY' > r223_evidence/environment.txt
+          import platform, numpy, flopscope, whestbench
+          print("python",platform.python_version())
+          print("numpy",numpy.__version__)
+          print("flopscope",getattr(flopscope,"__version__","unknown"))
+          print("whestbench",getattr(whestbench,"__version__","unknown"))
+          PY
+
+      - name: Verify pinned upstream source and exact R223 patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q https://github.com/504aldo/whest-p2-cumulant-k3.git /tmp/v25up
+          git -C /tmp/v25up checkout -q 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+          test "$(git -C /tmp/v25up hash-object estimators/estimator_v25.py)" = "195373a110215256b759d7c172ba8c923c62e5cc"
+
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("/tmp/v25up/estimators/estimator_v25.py").read_text()
+          old='''                        dG0 = t_g + t_v * lam_prev                # table value first
+                        rr = fnp.mean(dG0) / fnp.mean(var)
+                        ref = float(REF_R[min(li - 1, len(REF_R) - 1)])
+                        # clamp: an odd MLP must never turn the rule into NaN/inf (zero fallback)
+                        lam_prev = lam_prev * fnp.power(fnp.clip(rr / ref, 0.5, 2.0), BETA)
+                        dG = t_g + t_v * lam_prev                 # var == diag(C_pre)
+                    else:
+                        dG = WW @ (g_prev - var_prev * lam_prev) + var * lam_prev  # var == diag(C_pre)'''
+          new='''                        dG0 = t_g + t_v * lam_prev                # table value first
+                        rr = fnp.mean(dG0) / fnp.mean(var)
+                        ref = float(REF_R[min(li - 1, len(REF_R) - 1)])
+                        # R223: feed-only local heterogeneity. Reuse V25's own clamp,
+                        # normalize back to unit mean, and leave scalar transport/use-side unchanged.
+                        feed_scale = fnp.clip((dG0 / var) / rr, 0.5, 2.0)
+                        feed_scale = feed_scale / fnp.mean(feed_scale)
+                        # clamp: an odd MLP must never turn the rule into NaN/inf (zero fallback)
+                        lam_prev = lam_prev * fnp.power(fnp.clip(rr / ref, 0.5, 2.0), BETA)
+                        dG = t_g + t_v * lam_prev                 # var == diag(C_pre)
+                        lam_feed = feed_scale * lam_prev
+                    else:
+                        dG = WW @ (g_prev - var_prev * lam_prev) + var * lam_prev  # var == diag(C_pre)
+                        lam_feed = ones_n * lam_prev'''
+          assert p.count(old)==1
+          p=p.replace(old,new)
+          assert p.count("                c1_b = w1 * lam_prev")==1
+          p=p.replace("                c1_b = w1 * lam_prev","                c1_b = w1 * lam_feed")
+          olddoc="ADAPTIVE PER-MLP LAMBDA (V25, 2026-09-03)."
+          newdoc="ADAPTIVE PER-MLP LAMBDA (V25, 2026-09-03).\n+ R223 FEED-ONLY NORMALIZED PER-NEURON LAMBDA (development candidate, 2026-09-22)."
+          assert p.count(olddoc)==1
+          p=p.replace(olddoc,newdoc)
+          c=Path("methods/r223_estimator_v25_local_feed.py").read_text()
+          assert p==c, "candidate differs from exact preregistered transformation"
+          Path("r223_evidence/source_patch_verified.txt").write_text("PASS\n")
+          PY
+
+          python - <<'PY'
+          import math
+          lam=0.007
+          q=[1.0,1.0,1.0,1.0]
+          r=sum(q)/len(q)
+          s=[min(2.0,max(0.5,x/r)) for x in q]
+          s=[x/(sum(s)/len(s)) for x in s]
+          lf=[lam*x for x in s]
+          assert lf==[lam]*4
+          q=[0.4,0.8,1.2,2.6]
+          r=sum(q)/len(q)
+          s=[min(2.0,max(0.5,x/r)) for x in q]
+          s=[x/(sum(s)/len(s)) for x in s]
+          lf=[lam*x for x in s]
+          assert abs(sum(lf)/len(lf)-lam) <= 2e-15
+          assert all(math.isfinite(x) for x in lf)
+          print("static feed identity PASS")
+          PY
+
+      - name: Download and verify immutable R209 V25 parent artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL             -H "Authorization: Bearer ${GITHUB_TOKEN}"             -H "Accept: application/vnd.github+json"             "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10617855153/zip"             -o /tmp/r209-v25.zip
+          echo "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08  /tmp/r209-v25.zip" | sha256sum -c -
+          mkdir -p /tmp/r209-v25
+          unzip -q /tmp/r209-v25.zip -d /tmp/r209-v25
+          echo "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3  /tmp/r209-v25/report.json" | sha256sum -c -
+          cp /tmp/r209-v25/report.json r223_evidence/parent-report.json
+
+      - name: Validate frozen candidate
+        shell: bash
+        run: |
+          set +e
+          whest validate             --estimator methods/r223_estimator_v25_local_feed.py             --json > r223_evidence/validate.json 2> r223_evidence/validate.stderr
+          code=$?
+          echo "$code" > r223_evidence/validate.exit
+          test "$code" = "0"
+
+      - name: Run sole same-panel V25-LF development test
+        shell: bash
+        run: |
+          set +e
+          whest run             --estimator methods/r223_estimator_v25_local_feed.py             --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2             --split mini             --streaming             --n-mlps 100             --runner local             --flop-budget 2199023255552             --wall-time-limit 120             --residual-wall-time-limit 0.4             --max-threads 1             --format json             > r223_evidence/candidate-report.json 2> r223_evidence/run.stderr
+          code=$?
+          echo "$code" > r223_evidence/run.exit
+          test "$code" = "0"
+
+      - name: Build paired 100-row result
+        run: |
+          python scripts/r223_compare_panel.py             r223_evidence/parent-report.json             r223_evidence/candidate-report.json             r223_evidence/R223_RESULT.json
+
+      - name: Hash immutable evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          out={}
+          for p in sorted(Path("r223_evidence").glob("*")):
+              if p.is_file(): out[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          out["candidate_estimator.py"]=hashlib.sha256(Path("methods/r223_estimator_v25_local_feed.py").read_bytes()).hexdigest()
+          out["protocol.md"]=hashlib.sha256(Path("research/r223/R223_PROTOCOL.md").read_bytes()).hexdigest()
+          Path("r223_evidence/sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+
+      - name: Upload R223 immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r223-v25-local-feed-mini100
+          path: |
+            r223_evidence/
+            research/r223/R223_RUN_ARM.json
+            research/r223/R223_PROTOCOL.md
+            methods/r223_estimator_v25_local_feed.py
+            scripts/r223_compare_panel.py
+          if-no-files-found: error
+          retention-days: 90
