@@ -1,0 +1,116 @@
+{
+  "schema": "arc.whitebox.r215.terminal_receipt.v1",
+  "job_id": "R215",
+  "status": "TERMINAL_NO_GO",
+  "decision": "R215_TERMINAL_NO_GO_MARGINAL_CF_NONCLOSURE",
+  "branch": "research/r215-marginal-characteristic-function-20260922",
+  "selected_family": {
+    "name": "factorized marginal characteristic-function closure FMCF-32",
+    "estimator_level": true,
+    "history_status_before_r215": "documented lead only in E125 append-only lesson",
+    "history_source_commit": "7b1fa757c6bbad076d91b29009913f84cde441c4",
+    "history_source_blob": "e81876b0f827450cb37ae2d168f28b6f72a93404",
+    "prior_executed_branch_found": false
+  },
+  "non_duplication": {
+    "strassen": false,
+    "alternative_basis_strassen": false,
+    "ta_lita": false,
+    "dag_cse_reassociation": false,
+    "dense_hermite_chaos": false,
+    "direct_particle_cubature_qmc": false,
+    "gaussian_mixture": false,
+    "k3_d21_carrier_compression": false
+  },
+  "primary_sources": [
+    {
+      "doi": "10.1007/s10959-016-0709-1",
+      "claim_used": "positive-part and absolute moments admit characteristic-function representations"
+    },
+    {
+      "doi": "10.1016/j.spl.2015.07.031",
+      "claim_used": "the characteristic function of the positive part can be expressed from the original characteristic function"
+    }
+  ],
+  "lineage": {
+    "protocol_commit": "922eba029c10bb9181d0dcb3c30926959600a489",
+    "protocol_blob": "4dbbb5fc38ca065cb43af6592099f71619bf33a8",
+    "falsifier_commit": "1ef8917291d88b1d2eb9ba92e4f789e678a7f796",
+    "falsifier_blob": "5caf24ebd71223f8a012b28b87c97a3c5ac29d0d",
+    "workflow_commit": "35c806bffda257c4027c36e5d22714375a6477cf",
+    "workflow_blob": "f19d4a1030326010f8af420aa7e5cf98c1b5afdc",
+    "arm_commit": "7377d87d12cfcd7c6db27ba9911a2a1b969ceb0c",
+    "arm_blob": "38f54fe1c50f68a9d0e001714eafbc87b41c1ec0",
+    "result_commit": "0be733041da3b1bb489b3288b930e0969eb71143",
+    "result_blob": "cf0ea050e2429e332713b3aa7303684d18096707"
+  },
+  "production_cost_screen": {
+    "width": 1024,
+    "depth": 16,
+    "frequency_count": 32,
+    "budget_flops": 2199023255552,
+    "cap_fraction": 0.135,
+    "mandatory_lower_flops": 3218079744,
+    "mandatory_lower_fraction": 0.0014634132385253906,
+    "conservative_estimator_only_upper_flops": 13425967104,
+    "conservative_estimator_only_upper_fraction": 0.0061054229736328125,
+    "cost_feasible": true,
+    "synthetic_gate_authorized": true
+  },
+  "exact_small_falsifier": {
+    "correlated_law": "(X,Y)=(S,S), S uniform on {-1,+1}",
+    "anticorrelated_law": "(X,Y)=(S,-S), S uniform on {-1,+1}",
+    "marginal_cf_both_laws": "phi_X(t)=phi_Y(t)=cos(t) for every real t",
+    "linear_observable": "U=X+Y",
+    "true_correlated_relu_mean": 1,
+    "true_anticorrelated_relu_mean": 0,
+    "frozen_frequency": "pi/2",
+    "factorized_phi_u_both_laws": 0,
+    "true_correlated_phi_u": -1,
+    "true_anticorrelated_phi_u": 1,
+    "same_state_worst_case_absolute_error_lower_bound": 0.5,
+    "continuation_accuracy_gate": 1e-6,
+    "continuation_gate_pass": false,
+    "stronger_statement": "The complete univariate marginal characteristic functions are identical, so increasing K or changing the frequency grid cannot repair the missing dependence."
+  },
+  "execution": {
+    "authorized_synthetic_runs": 1,
+    "performed_synthetic_runs": 1,
+    "run_id": 35781645472,
+    "job_id": 106928326650,
+    "run_attempt": 1,
+    "head_sha": "7377d87d12cfcd7c6db27ba9911a2a1b969ceb0c",
+    "github_conclusion": "success",
+    "deterministic_replay_bitwise_json": true,
+    "artifact": {
+      "id": 10718057416,
+      "name": "r215-marginal-cf-falsifier",
+      "size_bytes": 5605,
+      "zip_sha256": "b668f2b492cc9a91b7d090df279e459a33ae557fafba980102211cfe1ef13a04",
+      "expires_at": "2026-12-21T20:38:56Z"
+    }
+  },
+  "gates": {
+    "novel_estimator_family": true,
+    "cost_feasible": true,
+    "exact_marginal_state_identity": true,
+    "factorized_state_identity": true,
+    "true_next_state_separation": true,
+    "true_relu_mean_separation": true,
+    "deterministic_replay": true,
+    "required_accuracy": false
+  },
+  "terminal_reason": "FMCF is not transport-closed under dependent dense linear mixing. Two joint laws can have identical complete coordinate-wise characteristic functions yet different characteristic functions and ReLU means after the same dense linear observable. Any deterministic estimator carrying only marginal CF state must emit the same candidate state for both and therefore incur worst-case absolute mean error at least 1/2.",
+  "reusable_boundary": "The terminal result rules out marginal-only characteristic-function closure, irrespective of K or scalar inversion accuracy. Joint-CF, copula, or another explicit dependence carrier is a different family and is not an R215 rescue.",
+  "scope": {
+    "target_free": true,
+    "holdout": false,
+    "public_benchmark": false,
+    "paid_resources": false,
+    "submission": false,
+    "sweep": false,
+    "rerun": false,
+    "canonical_mutated": false,
+    "leaderboard_mutated": false
+  }
+}
