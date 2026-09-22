@@ -1,0 +1,19 @@
+R201 baseline reuse execution
+=============================
+
+control_start_run_id: R201-reuse-e136-35544406064-e173-35621103274
+normalizer_commit: e4685835b8fd1faf81f7476ed363adda3934f38c
+command:
+python scripts/r201_reuse_v29_baseline.py --e136-zip e136-followup-v29.zip --e173-ago research/results/E173-ago.json --normalizer-commit e4685835b8fd1faf81f7476ed363adda3934f38c --output research/results/R201-v29.json --receipt research/R201_BASELINE_RECEIPT.json
+
+exit_code: 0
+
+stdout:
+{"e173_ago_mean_official_adjusted_score": 3.5017169466300405e-07, "output": "research/results/R201-v29.json", "receipt": "research/R201_BASELINE_RECEIPT.json", "status": "COMPLETE", "v29_failures": 1, "v29_mean_official_adjusted_score": 0.22478213802104935, "v29_mean_raw_mse_success_rows_only": 2.401529819451298e-08, "v29_over_e173_ago_adjusted_score_ratio": 641919.7823438406}
+
+stderr_sha256: d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d
+stderr_note: host Python startup emitted an unrelated artifact_tool spreadsheet warmup warning; parser exit code remained 0 and both R201 output files were written and hashed.
+receipt_sha256: bb0ff5da86da0c24d4b9c09e1a7e9516971cf897f5864ab25534dbd253a85c18
+prepublish_result_sha256: 8809bc7150f2f1ad401ec5bca07492236e668f6ff48ea685bc1c7b4c3ff7bab9
+new_paid_run_started: false
+new_scientific_run_started: false

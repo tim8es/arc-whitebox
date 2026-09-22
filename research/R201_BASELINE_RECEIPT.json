@@ -1,0 +1,119 @@
+{
+  "budget": {
+    "cap_usd": 100,
+    "new_paid_runs_authorized": false,
+    "paid_run_started": false,
+    "remaining_usd": null
+  },
+  "command": "python scripts/r201_reuse_v29_baseline.py --e136-zip e136-followup-v29.zip --e173-ago research/results/E173-ago.json --normalizer-commit e4685835b8fd1faf81f7476ed363adda3934f38c --output research/results/R201-v29.json --receipt research/R201_BASELINE_RECEIPT.json",
+  "comparison": {
+    "e173_ago_failures": 0,
+    "e173_ago_improves_official_score_networks": 1,
+    "e173_ago_mean_measured_flops": 69159064030,
+    "e173_ago_mean_official_adjusted_score": 3.5017169466300405e-07,
+    "e173_ago_mean_raw_mse": 3.50171694663004e-06,
+    "paired_v29_minus_ago_score_mean": 0.22478178784935468,
+    "paired_v29_minus_ago_score_se": 0.2247821221824583,
+    "v29_failures": 1,
+    "v29_mean_measured_flops": 562377401429.4,
+    "v29_mean_official_adjusted_score": 0.22478213802104935,
+    "v29_mean_raw_mse_all_rows": 0.22478215231465554,
+    "v29_mean_raw_mse_success_rows_only": 2.401529819451298e-08,
+    "v29_over_e173_ago_adjusted_score_ratio": 641919.7823438406
+  },
+  "conclusion": "Comparable first-five V29 evidence already existed, so no duplicate experiment was run. V29 has four valid low-MSE rows but one official residual-time failure (william-graves), which dominates the five-network official adjusted-score mean. E173-AGO has zero failures.",
+  "evidence": {
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "e136_artifact_id": 10617318650,
+    "e136_artifact_sha256": "32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681",
+    "e136_head_sha": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "e136_job_id": 106167659295,
+    "e136_report_sha256": "76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b",
+    "e136_workflow_run_id": 35544406064,
+    "new_scientific_run": false,
+    "reuse_only": true,
+    "v29_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+  },
+  "job_id": "R201",
+  "mode": "EXISTING_EVIDENCE_REUSE",
+  "normalizer_commit": "e4685835b8fd1faf81f7476ed363adda3934f38c",
+  "owner": "baseline",
+  "panel_bridge": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "e173_result_id": "E173-ago",
+    "same_first_five_names_and_order": true,
+    "target_hashes_from_pinned_e173_panel": true
+  },
+  "per_network": [
+    {
+      "budget_flops": 2199023255552,
+      "failure_reasons": [],
+      "final_mse": 2.2902616692022093e-08,
+      "measured_flops": 587262754287,
+      "name": "logan-fitzgerald",
+      "network_id": "6319981554997072999",
+      "official_adjusted_score": 6.116285366686641e-09,
+      "residual_wall_time_s": 0.3918096079883071,
+      "status": "ok",
+      "target_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82",
+      "wall_time_s": 38.139570349999985
+    },
+    {
+      "budget_flops": 2199023255552,
+      "failure_reasons": [
+        "residual_wall_time_exhausted"
+      ],
+      "final_mse": 1.123910665512085,
+      "measured_flops": 558473140719,
+      "name": "william-graves",
+      "network_id": "2392109381927064353",
+      "official_adjusted_score": 1.123910665512085,
+      "residual_wall_time_s": 0.43323872200062397,
+      "status": "failed",
+      "target_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4",
+      "wall_time_s": 51.163595215999976
+    },
+    {
+      "budget_flops": 2199023255552,
+      "failure_reasons": [],
+      "final_mse": 2.609719729207427e-08,
+      "measured_flops": 555383704047,
+      "name": "raymond-barnes",
+      "network_id": "4030325997523501402",
+      "official_adjusted_score": 6.5910890486145704e-09,
+      "residual_wall_time_s": 0.37521838000930074,
+      "status": "ok",
+      "target_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34",
+      "wall_time_s": 47.10804302099996
+    },
+    {
+      "budget_flops": 2199023255552,
+      "failure_reasons": [],
+      "final_mse": 2.4999200931574705e-08,
+      "measured_flops": 555383704047,
+      "name": "steven-rice",
+      "network_id": "6959524404880716684",
+      "official_adjusted_score": 6.313779891385445e-09,
+      "residual_wall_time_s": 0.3764123200071481,
+      "status": "ok",
+      "target_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b",
+      "wall_time_s": 47.159933161000026
+    },
+    {
+      "budget_flops": 2199023255552,
+      "failure_reasons": [],
+      "final_mse": 2.206217786238085e-08,
+      "measured_flops": 555383704047,
+      "name": "sarah-kelley",
+      "network_id": "3958198382245770826",
+      "official_adjusted_score": 5.572007494516947e-09,
+      "residual_wall_time_s": 0.37606937999976253,
+      "status": "ok",
+      "target_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9",
+      "wall_time_s": 47.20351586799984
+    }
+  ],
+  "schema": "arc.whitebox.r201.baseline_receipt.v1",
+  "status": "COMPLETE"
+}
