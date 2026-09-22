@@ -8,6 +8,14 @@
       "owner": "baseline",
       "payload": {},
       "revision": 1
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T15:20:16.547342+00:00",
+      "job": "R202",
+      "owner": "kernel",
+      "payload": {},
+      "revision": 2
     }
   ],
   "jobs": [
@@ -30,9 +38,9 @@
       "depends_on": [],
       "hypothesis_id": "H185",
       "id": "R202",
-      "owner": null,
+      "owner": "kernel",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Маленькое ядро TA32: измерить сложения, точность и время до интеграции"
     },
     {
@@ -63,7 +71,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 1,
+  "revision": 2,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
