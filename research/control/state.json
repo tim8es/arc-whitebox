@@ -946,6 +946,29 @@
         "run_id": "R219-dependence-carrier-frontier-20260922"
       },
       "revision": 74
+    },
+    {
+      "revision": 75,
+      "action": "start",
+      "job": "R218",
+      "owner": "baseline-diagnosis",
+      "payload": {
+        "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
+        "code_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+        "command": "python scripts/r218_run_crossover.py --estimator methods/r218/estimator_v29.py --protocol research/r217/R217_NEXT_RUNTIME_PROTOCOL.json --expected-panel research/r218/R218_EXPECTED_PANEL.json --out r218 --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+        "protocol_sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968",
+        "compute_gate": "public repository + standard ubuntu-24.04 GitHub-hosted runner; official GitHub docs state standard hosted runners are free/unlimited for public repositories; no larger runner",
+        "attempts_allowed": 1,
+        "block_sequence": [
+          "U",
+          "C0",
+          "C1",
+          "C1",
+          "C0",
+          "U"
+        ]
+      },
+      "at": "2026-09-22T20:46:00+00:00"
     }
   ],
   "jobs": [
@@ -1537,7 +1560,14 @@
     },
     {
       "assigned_owner": "baseline-diagnosis",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
+          "code_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+          "command": "python scripts/r218_run_crossover.py --estimator methods/r218/estimator_v29.py --protocol research/r217/R217_NEXT_RUNTIME_PROTOCOL.json --expected-panel research/r218/R218_EXPECTED_PANEL.json --out r218 --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Execute exactly the frozen R217 six-block U,C0,C1,C1,C0,U crossover on the same Actions worker, using the same public first-50 MLPs and unchanged V29/L4 source. Before execution verify every frozen gate (worker identity, allowed CPUs 0 and 1, versions, dataset/source hashes, order, FLOPs and thread environment); if any gate fails, stop and record protocol-invalid/INFRA_ERROR. Use only verified free/existing compute; do not incur or request new paid resources. Preserve all 300 per-MLP observations, worker/region and telemetry, failures, hashes and block scores. One six-block run only, no retry/rescue, private holdout or submission. Treat this as an exposed-panel runtime diagnostic, not a fresh independent generalization claim; publish artifact and finish queue with measured GO/NO-GO.",
       "depends_on": [
         "R217"
@@ -1546,7 +1576,7 @@
       "id": "R218",
       "owner": "baseline-diagnosis",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Same-worker CPU-affinity crossover after R217 forensic diagnosis"
     },
     {
@@ -1584,7 +1614,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 74,
+  "revision": 75,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
