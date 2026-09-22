@@ -1468,6 +1468,22 @@
         "command": "read-only paired decomposition of R209 normalized mini-100 records; preserve exact row IDs, separate timeout penalty from matched-success MSE, no estimator run"
       },
       "revision": 113
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T22:43:15.000Z",
+      "job": "R229",
+      "owner": "paired-score-decomposition",
+      "payload": {
+        "reason": "Read-only paired decomposition of the exact R226-integrated R209 mini-100 records complete. Input SHA256 verified: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; 100/100 name/network_id/target_sha256/budget rows align. V25 succeeds 100/100; V29 succeeds 43/100 and has 57 residual_wall_time_exhausted failures. Mean adjusted score is 8.170397440117225e-9 (V25) vs 0.5270942878803214 (V29); exact V29-V25 gap 0.527094279709924 decomposes into +0.5270942807855769 from the 57 failure rows and -1.0756526879701367e-9 from the 43 common-success rows. On common successes paired MSE delta mean is +1.964733285625021e-12 with descriptive SE 3.377471593191917e-12 (20/43 lower for V29), while all 43 V29 adjusted scores are lower due to lower measured-FLOP factor. Runtime shows all 43 successes residual<0.4s (max 0.399226739) and all 57 failures >=0.4s (min 0.400863099). Per-network size association is not estimable because shape/budget are fixed and no size field exists. Raw prediction tensors are absent; no counterfactual timeout MSE, leaderboard rank, estimator run, canonical-estimator change, or submission.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/8e97c274ed79edf14cf795060f58dcec7237e5da/research/r229/R229_PAIRED_DECOMPOSITION_RECEIPT.json",
+          "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52"
+        },
+        "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
+        "status": "COMPLETE"
+      },
+      "revision": 114
     }
   ],
   "jobs": [
@@ -2386,7 +2402,7 @@
       "title": "Decompose paired V25/V29 mini-100 score gap",
       "owner": "paired-score-decomposition",
       "assigned_owner": "paired-score-decomposition",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "priority": 1,
       "hypothesis_id": "R209-V25-V29-MINI100-PAIRED-DECOMPOSITION",
       "depends_on": [
@@ -2397,14 +2413,28 @@
           "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
           "code_commit": "2c18ac98e2ab948eac8f4054f6c7d1ee05ef4280",
           "command": "read-only paired decomposition of R209 normalized mini-100 records; preserve exact row IDs, separate timeout penalty from matched-success MSE, no estimator run",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "Read-only paired decomposition of the exact R226-integrated R209 mini-100 records complete. Input SHA256 verified: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; 100/100 name/network_id/target_sha256/budget rows align. V25 succeeds 100/100; V29 succeeds 43/100 and has 57 residual_wall_time_exhausted failures. Mean adjusted score is 8.170397440117225e-9 (V25) vs 0.5270942878803214 (V29); exact V29-V25 gap 0.527094279709924 decomposes into +0.5270942807855769 from the 57 failure rows and -1.0756526879701367e-9 from the 43 common-success rows. On common successes paired MSE delta mean is +1.964733285625021e-12 with descriptive SE 3.377471593191917e-12 (20/43 lower for V29), while all 43 V29 adjusted scores are lower due to lower measured-FLOP factor. Runtime shows all 43 successes residual<0.4s (max 0.399226739) and all 57 failures >=0.4s (min 0.400863099). Per-network size association is not estimable because shape/budget are fixed and no size field exists. Raw prediction tensors are absent; no counterfactual timeout MSE, leaderboard rank, estimator run, canonical-estimator change, or submission.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/8e97c274ed79edf14cf795060f58dcec7237e5da/research/r229/R229_PAIRED_DECOMPOSITION_RECEIPT.json",
+              "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52"
+            },
+            "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
+            "status": "COMPLETE"
+          }
         }
       ],
-      "deliverable": "Read the R226-integrated exact R209 V25/V29 normalized mini-100 records and official scoring implementation. Freeze the analysis plan and input hashes first. Independently verify row alignment, then decompose adjusted-score gap into failed/time-out rows versus matched successful rows; report paired distribution, uncertainty only where justified, and available architecture/runtime associations. Use no estimator run and do not infer leaderboard rank. Save reproducible analysis script/table, append-only receipt and commit; recommend one evidence-backed next lever without modifying canonical estimators."
+      "deliverable": "Read the R226-integrated exact R209 V25/V29 normalized mini-100 records and official scoring implementation. Freeze the analysis plan and input hashes first. Independently verify row alignment, then decompose adjusted-score gap into failed/time-out rows versus matched successful rows; report paired distribution, uncertainty only where justified, and available architecture/runtime associations. Use no estimator run and do not infer leaderboard rank. Save reproducible analysis script/table, append-only receipt and commit; recommend one evidence-backed next lever without modifying canonical estimators.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/8e97c274ed79edf14cf795060f58dcec7237e5da/research/r229/R229_PAIRED_DECOMPOSITION_RECEIPT.json",
+        "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52"
+      },
+      "reason": "Read-only paired decomposition of the exact R226-integrated R209 mini-100 records complete. Input SHA256 verified: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; 100/100 name/network_id/target_sha256/budget rows align. V25 succeeds 100/100; V29 succeeds 43/100 and has 57 residual_wall_time_exhausted failures. Mean adjusted score is 8.170397440117225e-9 (V25) vs 0.5270942878803214 (V29); exact V29-V25 gap 0.527094279709924 decomposes into +0.5270942807855769 from the 57 failure rows and -1.0756526879701367e-9 from the 43 common-success rows. On common successes paired MSE delta mean is +1.964733285625021e-12 with descriptive SE 3.377471593191917e-12 (20/43 lower for V29), while all 43 V29 adjusted scores are lower due to lower measured-FLOP factor. Runtime shows all 43 successes residual<0.4s (max 0.399226739) and all 57 failures >=0.4s (min 0.400863099). Per-network size association is not estimable because shape/budget are fixed and no size field exists. Raw prediction tensors are absent; no counterfactual timeout MSE, leaderboard rank, estimator run, canonical-estimator change, or submission."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 113,
+  "revision": 114,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
