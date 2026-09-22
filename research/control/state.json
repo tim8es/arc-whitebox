@@ -399,6 +399,22 @@
         "run_id": "R208-r205-audit-20260922"
       },
       "revision": 32
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T17:32:47.562344+00:00",
+      "job": "R208",
+      "owner": "independent-audit",
+      "payload": {
+        "reason": "Independent audit verified R205 arithmetic, exact panel provenance, failure semantics and receipt lineage. Only a non-blocking stale internal attempt field was found; no scientific rerun occurred.",
+        "receipt": {
+          "sha256": "0283a8ba945e8eb119a20faf2e69f3c108fa75f1f1bd71366ec64471b1d05a8a",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/ddb5e2a376d21a1442b6f208ce1d487b724e66e6/research/R208_R205_INDEPENDENT_AUDIT_RECEIPT.json"
+        },
+        "run_id": "R208-r205-audit-20260922",
+        "status": "COMPLETE"
+      },
+      "revision": 33
     }
   ],
   "jobs": [
@@ -660,8 +676,17 @@
         {
           "code_commit": "ddb5e2a376d21a1442b6f208ce1d487b724e66e6",
           "command": "read-only audit of R205 receipt, normalized result, per-network rows and official score arithmetic",
+          "completion": {
+            "reason": "Independent audit verified R205 arithmetic, exact panel provenance, failure semantics and receipt lineage. Only a non-blocking stale internal attempt field was found; no scientific rerun occurred.",
+            "receipt": {
+              "sha256": "0283a8ba945e8eb119a20faf2e69f3c108fa75f1f1bd71366ec64471b1d05a8a",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/ddb5e2a376d21a1442b6f208ce1d487b724e66e6/research/R208_R205_INDEPENDENT_AUDIT_RECEIPT.json"
+            },
+            "run_id": "R208-r205-audit-20260922",
+            "status": "COMPLETE"
+          },
           "run_id": "R208-r205-audit-20260922",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read-only independent verification of the R205 receipt, normalized five-network result, code/artifact provenance, failure semantics and adjusted-score arithmetic. Recompute the reported 0.22478213802104935 to 6.199991295837055e-9 change from the per-network rows. No scientific rerun, paid resources, holdout or submission; produce an audit artifact and receipt.",
@@ -672,7 +697,12 @@
       "id": "R208",
       "owner": "independent-audit",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Independent audit verified R205 arithmetic, exact panel provenance, failure semantics and receipt lineage. Only a non-blocking stale internal attempt field was found; no scientific rerun occurred.",
+      "receipt": {
+        "sha256": "0283a8ba945e8eb119a20faf2e69f3c108fa75f1f1bd71366ec64471b1d05a8a",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/ddb5e2a376d21a1442b6f208ce1d487b724e66e6/research/R208_R205_INDEPENDENT_AUDIT_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Independent verification of R205 receipt and score"
     },
     {
@@ -689,7 +719,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 32,
+  "revision": 33,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
