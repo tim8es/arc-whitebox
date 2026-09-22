@@ -247,6 +247,14 @@
         "title": "Confirm V29 L4 mitigation on the full accessible public split"
       },
       "revision": 20
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T16:34:41.208765+00:00",
+      "job": "R207",
+      "owner": "baseline",
+      "payload": {},
+      "revision": 21
     }
   ],
   "jobs": [
@@ -434,14 +442,14 @@
       ],
       "hypothesis_id": "V29-L4-PUBLIC-CONFIRMATION",
       "id": "R207",
-      "owner": null,
+      "owner": "baseline",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Confirm V29 L4 mitigation on the full accessible public split"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 20,
+  "revision": 21,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
