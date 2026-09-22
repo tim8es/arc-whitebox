@@ -1,0 +1,119 @@
+{
+  "schema": "arc.whitebox.r215.result.v1",
+  "job_id": "R215",
+  "idempotency_key": "ARC-R215-MARGINAL-CF-20260922",
+  "branch": "research/r215-marginal-characteristic-function-20260922",
+  "status": "TERMINAL_SCIENTIFIC_NO_GO",
+  "decision": "R215_TERMINAL_NO_GO_MARGINAL_CF_NONCLOSURE",
+  "family": "factorized marginal characteristic-function closure FMCF-32",
+  "novelty": {
+    "immutable_history_source": {
+      "path": "research/E125_APPEND_ONLY_LESSON.md",
+      "commit": "7b1fa757c6bbad076d91b29009913f84cde441c4",
+      "blob": "e81876b0f827450cb37ae2d168f28b6f72a93404",
+      "status_in_history": "documented lead only; no prior protocol/scientific run"
+    },
+    "repository_search_found_executed_cf_branch": false,
+    "not_duplicates": [
+      "Strassen / Alternative-Basis Strassen",
+      "TA/LITA rank or leaf schemes",
+      "contraction-DAG CSE/reassociation",
+      "dense Hermite chaos E115",
+      "particle/cubature/QMC families",
+      "Gaussian mixture families",
+      "K3/D21 carrier compression"
+    ]
+  },
+  "primary_literature": [
+    {
+      "author": "Iosif Pinelis",
+      "title": "Positive-part moments via characteristic functions, and more general expressions",
+      "venue": "Journal of Theoretical Probability 31 (2018), 527-555",
+      "doi": "10.1007/s10959-016-0709-1",
+      "role": "positive-part and absolute moments from characteristic functions"
+    },
+    {
+      "author": "Iosif Pinelis",
+      "title": "Characteristic function of the positive part of a random variable and related results, with applications",
+      "venue": "Statistics & Probability Letters 106 (2015), 281-286",
+      "doi": "10.1016/j.spl.2015.07.031",
+      "role": "positive-part characteristic-function transform"
+    }
+  ],
+  "production_cost": {
+    "width": 1024,
+    "depth": 16,
+    "frequency_count": 32,
+    "budget_flops": 2199023255552,
+    "cap_fraction": 0.135,
+    "cap_flops": 296868139499.52,
+    "mandatory_lower_flops": 3218079744,
+    "mandatory_lower_fraction": 0.0014634132385253906,
+    "estimator_only_conservative_upper_flops": 13425967104,
+    "estimator_only_conservative_upper_fraction": 0.0061054229736328125,
+    "cost_feasible_for_synthetic_gate": true
+  },
+  "exact_small": {
+    "law_correlated": {
+      "support": [[[1,1],"1/2"],[[-1,-1],"1/2"]],
+      "relu_mean_of_X_plus_Y": "1"
+    },
+    "law_anticorrelated": {
+      "support": [[[1,-1],"1/2"],[[-1,1],"1/2"]],
+      "relu_mean_of_X_plus_Y": "0"
+    },
+    "marginals": "both coordinates are Rademacher under both laws",
+    "full_univariate_cf_identity": "phi_X(t)=phi_Y(t)=cos(t) for every real t under both laws",
+    "frozen_grid": "t_k=k*pi/64, k=1..32",
+    "marginal_grid_max_gap": 0.0,
+    "factorized_preactivation_grid_max_gap": 0.0,
+    "pi_over_2": {
+      "marginal_phi_x": 0,
+      "marginal_phi_y": 0,
+      "factorized_phi_u_both_laws": 0,
+      "true_correlated_phi_u": -1,
+      "true_anticorrelated_phi_u": 1
+    },
+    "exact_relu_mean_gap": "1",
+    "same_state_worst_case_absolute_error_lower_bound": "1/2",
+    "continuation_gate": 0.000001,
+    "continuation_gate_pass": false
+  },
+  "execution": {
+    "run_id": 35781645472,
+    "job_id": 106928326650,
+    "run_attempt": 1,
+    "head_sha": "7377d87d12cfcd7c6db27ba9911a2a1b969ceb0c",
+    "github_conclusion": "success",
+    "deterministic_replay_bitwise_json": true,
+    "artifact": {
+      "id": 10718057416,
+      "name": "r215-marginal-cf-falsifier",
+      "size_bytes": 5605,
+      "zip_sha256": "b668f2b492cc9a91b7d090df279e459a33ae557fafba980102211cfe1ef13a04",
+      "expires_at": "2026-12-21T20:38:56Z"
+    }
+  },
+  "gates": {
+    "novel_family_found": true,
+    "production_cost_feasible": true,
+    "marginal_states_identical": true,
+    "factorized_candidate_states_identical": true,
+    "true_next_cf_separates": true,
+    "true_relu_mean_separates": true,
+    "deterministic_replay": true,
+    "same_state_worst_case_error_le_1e_6": false
+  },
+  "terminal_reason": "Univariate marginal characteristic functions are not transport-closed under dependent dense linear mixing. The two exact joint laws have identical complete marginal-CF states for all frequencies, but their next preactivation laws and ReLU means differ. Increasing K, changing quadrature, or improving the scalar positive-part transform cannot recover missing cross-coordinate dependence.",
+  "successor_boundary": "A joint characteristic-function, copula, or other explicit dependence state is a different algorithmic family and is not an R215 rescue.",
+  "scope": {
+    "target_free": true,
+    "holdout": false,
+    "public_benchmark": false,
+    "paid_resources": false,
+    "submission": false,
+    "sweep": false,
+    "canonical_mutated": false,
+    "leaderboard_mutated": false
+  }
+}
