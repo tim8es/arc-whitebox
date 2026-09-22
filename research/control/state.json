@@ -664,6 +664,21 @@
         "title": "Independently audit R210 artifact, provenance and score"
       },
       "revision": 52
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T20:27:08.553400+00:00",
+      "job": "R215",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "method-research",
+        "deliverable": "Search the immutable experiment history and primary literature for exactly one untested estimator-level method, avoiding repeated fast-matmul/Strassen/TA/DAG families and previously falsified ideas. State what information it uses, freeze an exact-small falsifier and conservative production cost bound, and run a minimal synthetic check only if cost-feasible. Otherwise record a terminal cost/identity NO-GO with artifact and commit. No holdout, paid resource, submission or duplicate experiment.",
+        "depends_on": [],
+        "hypothesis_id": "ESTIMATOR-LEVEL-FRONTIER-SCREEN",
+        "priority": 2,
+        "title": "Screen one new estimator-level research family after R212"
+      },
+      "revision": 53
     }
   ],
   "jobs": [
@@ -1132,10 +1147,22 @@
       "priority": 1,
       "status": "QUEUED",
       "title": "Independently audit R210 artifact, provenance and score"
+    },
+    {
+      "assigned_owner": "method-research",
+      "attempts": [],
+      "deliverable": "Search the immutable experiment history and primary literature for exactly one untested estimator-level method, avoiding repeated fast-matmul/Strassen/TA/DAG families and previously falsified ideas. State what information it uses, freeze an exact-small falsifier and conservative production cost bound, and run a minimal synthetic check only if cost-feasible. Otherwise record a terminal cost/identity NO-GO with artifact and commit. No holdout, paid resource, submission or duplicate experiment.",
+      "depends_on": [],
+      "hypothesis_id": "ESTIMATOR-LEVEL-FRONTIER-SCREEN",
+      "id": "R215",
+      "owner": null,
+      "priority": 2,
+      "status": "QUEUED",
+      "title": "Screen one new estimator-level research family after R212"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 52,
+  "revision": 53,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
