@@ -133,6 +133,14 @@
         "title": "Recover V29 residual-timeout on the exact five-network panel"
       },
       "revision": 11
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T15:51:44.475738+00:00",
+      "job": "R205",
+      "owner": "baseline",
+      "payload": {},
+      "revision": 12
     }
   ],
   "jobs": [
@@ -258,14 +266,14 @@
       ],
       "hypothesis_id": "V29-RESIDUAL-TIMEOUT",
       "id": "R205",
-      "owner": null,
+      "owner": "baseline",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Recover V29 residual-timeout on the exact five-network panel"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 11,
+  "revision": 12,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
