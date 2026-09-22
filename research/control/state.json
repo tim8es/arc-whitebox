@@ -1553,6 +1553,32 @@
         "status": "INFRA_ERROR"
       },
       "at": "2026-09-22T22:49:41.323Z"
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T22:51:25.000Z",
+      "job": "R231",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "v25-error-tail-audit",
+        "deliverable": "Using the exact R226-integrated R209 V25 mini-100 row data and the R228 public leaderboard snapshot, perform a reproducible descriptive tail-concentration and target-frontier audit. Verify input hashes and all 100 rows; report mean/median/quantiles, top-1/5/10/20 network shares of total raw MSE, leave-one-out mean sensitivity, and any concentration statistic justified by the exact fields. Derive the official score floor under V25's current C/B and the minimum raw-MSE reduction needed to numerically match the displayed 2.1e-9 leader score at the 0.1 compute-factor floor; label this strictly as a cross-panel numerical target, not rank/comparable evidence. State limits from missing raw tensors and fixed network size/shape. No estimator run, experiment, paid/holdout data, submission or canonical edits. Save a small reproducible script/table and append-only report/receipt with hashes; recommend whether the next effort should target global accuracy, compute factor, or a measurable tail subset.",
+        "depends_on": [
+          "R228",
+          "R229"
+        ],
+        "hypothesis_id": "R209-V25-ERROR-TAIL-TARGET-FRONTIER",
+        "priority": 1,
+        "title": "Quantify V25 mini-100 error-tail concentration and target frontier"
+      },
+      "revision": 120
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T22:51:25.000Z",
+      "job": "R231",
+      "owner": "v25-error-tail-audit",
+      "payload": {},
+      "revision": 121
     }
   ],
   "jobs": [
@@ -2549,10 +2575,25 @@
         "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8"
       },
       "reason": "Read-only official AIcrowd audit of top Phase-2 submission IDs 331539 and 331308 complete. Their public leaderboard rows and View routes are visible, but anonymous detail retrieval exposed only a client-side Loading shell and no submission-specific method description, source link, artifact download, or system-description field. AIcrowd staff separately confirms RBAC protects submission-detail error fields; no bypass was attempted. Official-forum speculation about leader mechanisms was explicitly marked unvalidated and was excluded. Comparison against R209 V25/V29 and experiment history therefore yields UNKNOWN novelty for both targets and admits 0 leader-derived hypotheses rather than inventing a method. Audit SHA256 19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2. No competitor code download/run, estimator run, paid compute, submission, private/holdout access, external mutation, or canonical edit."
+    },
+    {
+      "id": "R231",
+      "title": "Quantify V25 mini-100 error-tail concentration and target frontier",
+      "owner": "v25-error-tail-audit",
+      "assigned_owner": "v25-error-tail-audit",
+      "status": "CLAIMED",
+      "priority": 1,
+      "hypothesis_id": "R209-V25-ERROR-TAIL-TARGET-FRONTIER",
+      "depends_on": [
+        "R228",
+        "R229"
+      ],
+      "attempts": [],
+      "deliverable": "Using the exact R226-integrated R209 V25 mini-100 row data and the R228 public leaderboard snapshot, perform a reproducible descriptive tail-concentration and target-frontier audit. Verify input hashes and all 100 rows; report mean/median/quantiles, top-1/5/10/20 network shares of total raw MSE, leave-one-out mean sensitivity, and any concentration statistic justified by the exact fields. Derive the official score floor under V25's current C/B and the minimum raw-MSE reduction needed to numerically match the displayed 2.1e-9 leader score at the 0.1 compute-factor floor; label this strictly as a cross-panel numerical target, not rank/comparable evidence. State limits from missing raw tensors and fixed network size/shape. No estimator run, experiment, paid/holdout data, submission or canonical edits. Save a small reproducible script/table and append-only report/receipt with hashes; recommend whether the next effort should target global accuracy, compute factor, or a measurable tail subset."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 119,
+  "revision": 121,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
