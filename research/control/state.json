@@ -483,6 +483,14 @@
       "owner": "baseline",
       "payload": {},
       "revision": 38
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T17:35:21.726055+00:00",
+      "job": "R211",
+      "owner": "method-research",
+      "payload": {},
+      "revision": 39
     }
   ],
   "jobs": [
@@ -827,14 +835,14 @@
       "depends_on": [],
       "hypothesis_id": "H185-CONTRACTION-DAG-CSE",
       "id": "R211",
-      "owner": null,
+      "owner": "method-research",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Falsify exact contraction-DAG common-subexpression elimination"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 38,
+  "revision": 39,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
