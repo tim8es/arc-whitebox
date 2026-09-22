@@ -1,0 +1,57 @@
+{
+  "schema": "arc.whitebox.r215.control_finalization.v1",
+  "job_id": "R215",
+  "branch": "research/r215-marginal-characteristic-function-20260922",
+  "purpose": "Reconcile the already completed R215 scientific artifact with the central research/control-v2 queue; no second scientific experiment.",
+  "scientific_execution": {
+    "run_id_numeric": 35781645472,
+    "control_run_id": "R215-marginal-cf-falsifier-35781645472",
+    "job_id_numeric": 106928326650,
+    "run_attempt": 1,
+    "head_sha": "7377d87d12cfcd7c6db27ba9911a2a1b969ceb0c",
+    "new_scientific_run_during_reconciliation": false
+  },
+  "scientific_receipt": {
+    "commit": "fb73acf53af31c8ce8553211d202134a20b7c1c5",
+    "path": "research/r215/R215_TERMINAL_RECEIPT.json",
+    "sha256": "025997c8d1f07664eb36a55ac01f2bf526cf829b37dddadf4837f986f17c8e2c",
+    "decision": "R215_TERMINAL_NO_GO_MARGINAL_CF_NONCLOSURE"
+  },
+  "control_finalization": {
+    "tool": "scripts/arc_control.py from main",
+    "workflow_run_id": 35782153791,
+    "workflow_job_id": 106930029916,
+    "workflow_conclusion": "success",
+    "preexisting_live_revision_observed": 63,
+    "start": {
+      "revision": 64,
+      "control_commit": "eb104bf8aa368a7652a79d6bce3bf61f2939571e",
+      "owner": "method-research",
+      "code_commit": "7377d87d12cfcd7c6db27ba9911a2a1b969ceb0c",
+      "command": "existing Actions run 35781645472: frozen cost-feasible exact-small FMCF-32 nonclosure falsifier"
+    },
+    "finish": {
+      "revision": 65,
+      "control_commit": "a20111ed8ef322c92f30aaf53e036493eaa80a2f",
+      "owner": "method-research",
+      "status": "SCIENTIFIC_REJECT",
+      "attempt_count": 1
+    },
+    "remote_verification": {
+      "status": "SCIENTIFIC_REJECT",
+      "attempt_count": 1,
+      "run_id_matches": true,
+      "receipt_url_matches": true,
+      "receipt_sha256_matches": true
+    }
+  },
+  "scope": {
+    "second_experiment_created": false,
+    "second_scientific_run_created": false,
+    "holdout": false,
+    "paid_resource": false,
+    "submission": false,
+    "public_benchmark": false,
+    "rerun": false
+  }
+}
