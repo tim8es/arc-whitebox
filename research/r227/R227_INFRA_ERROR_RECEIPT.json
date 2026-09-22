@@ -1,0 +1,54 @@
+{
+  "schema": "arc.whitebox.r227.infra_error_receipt.v1",
+  "job_id": "R227",
+  "run_id": "R227-v25-srm2-feasibility-20260923",
+  "status": "INFRA_ERROR",
+  "decision": "INFRA_ERROR_NO_EXECUTION_EVIDENCE",
+  "observed_at": "2026-09-22T22:49:07.495Z",
+  "branch": "research/r227-v25-second-regen-feasibility-20260923",
+  "frozen_commit": "6715c89debd53554cbce5691150180fbb933e503",
+  "frozen_artifacts": {
+    "protocol_path": "research/r227/R227_PROTOCOL.md",
+    "protocol_blob": "d0e26ac48da09e08953d6744a9639927bfaa63af",
+    "script_path": "scripts/r227_srm2_feasibility.py",
+    "script_blob": "8d14e413eac16573efc9d79cf2ef8420d889b113",
+    "source_audit_path": "research/r227/R227_SOURCE_AUDIT.json",
+    "source_audit_blob": "b6e74f93b4e84edb94933cc30cf63944b3266fc6",
+    "cost_proof_path": "research/r227/R227_COST_PROOF.json",
+    "cost_proof_blob": "b6933e2806cdedb13e03d8e178ee3a9f03ace818"
+  },
+  "queue_start": {
+    "revision": 106,
+    "code_commit": "6715c89debd53554cbce5691150180fbb933e503",
+    "command": "python scripts/r227_srm2_feasibility.py --v25 /tmp/estimator_v25.py --probe /tmp/g_regen_probe.py --findings /tmp/findings_log.md --claims /tmp/claims_evidence.md --out r227-feasibility.json; pinned upstream blobs must match; no mini-100 unless deployability gate passes"
+  },
+  "execution_evidence": {
+    "github_actions_query_head_sha": "6715c89debd53554cbce5691150180fbb933e503",
+    "github_actions_total_count": 0,
+    "branch_head_before_receipt": "6715c89debd53554cbce5691150180fbb933e503",
+    "expected_output_path": "r227-feasibility.json",
+    "expected_output_present_on_branch_before_receipt": false,
+    "workflow_added_for_r227": false,
+    "live_process_or_stdout_record_found": false
+  },
+  "blocker": "The queue start was published with a source-only feasibility command, but no backing executor/process or GitHub Actions workflow was launched and no feasibility output was produced. The prior session became idle after recording RUNNING, so the frozen command cannot be represented as executed.",
+  "scientific_state": {
+    "feasibility_script_executed": false,
+    "deployability_gate_evaluated_by_frozen_script": false,
+    "candidate_estimator_created": false,
+    "mini100_run_executed": false,
+    "scientific_go": null,
+    "scientific_reject": null,
+    "note": "Frozen source/cost audit remains preregistered evidence, but R227 does not convert it into a science verdict because the preregistered falsifier itself never executed."
+  },
+  "scope": {
+    "paid_compute": false,
+    "holdout": false,
+    "submission": false,
+    "estimator_run": false,
+    "mini100": false,
+    "canonical_v25_mutated": false,
+    "second_estimator_run_launched": false
+  },
+  "recovery_policy": "This attempt is closed as INFRA_ERROR. Any future execution requires an explicit repair/new checkpoint from the queue; do not silently continue this RUNNING attempt."
+}
