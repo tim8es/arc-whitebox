@@ -1,0 +1,64 @@
+name: R219 finish central control
+
+on:
+  push:
+    branches:
+      - research/r219-dependence-carrier-frontier-20260922
+    paths:
+      - 'research/r219/R219_CONTROL_FINISH_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  finish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R219 control"
+          git config user.email "arc-control@users.noreply.github.com"
+
+      - name: Publish terminal scientific reject
+        run: |
+          set -euo pipefail
+          git fetch origin 6e1bcf7b6833254ce1c2671ff7c291a32d1ee09c
+          git show 6e1bcf7b6833254ce1c2671ff7c291a32d1ee09c:research/r219/R219_TERMINAL_RECEIPT.json > /tmp/r219_receipt.json
+          RECEIPT_SHA="$(sha256sum /tmp/r219_receipt.json | awk '{print $1}')"
+          python - "$RECEIPT_SHA" <<'PY'
+          import json,sys
+          sha=sys.argv[1]
+          payload={
+            "run_id":"R219-dependence-carrier-frontier-20260922",
+            "status":"SCIENTIFIC_REJECT",
+            "reason":"Screened exactly one new dependence-aware family: one-factor Gaussian-copula conditional-independence closure 1FGC-8. Immutable-history search found no prior factor-copula lane; production cost was feasible (conservative all-in upper 5,090,519,040 FLOPs = 0.0023149000B < 0.135B), so one target-free exact-small falsifier ran. An even-parity four-Rademacher law and full independence have identical univariate marginals and all pair laws, forcing the same one-factor Gaussian-copula state, yet E[ReLU(sum Xi)] is 1/2 versus 3/4. Same-state worst-case absolute error lower bound is 1/8, far above 1e-6. Terminal representational NO-GO; no public benchmark, paid compute, holdout, submission, sweep or R215 rescue.",
+            "receipt":{
+              "url":"https://github.com/tim8es/arc-whitebox/blob/6e1bcf7b6833254ce1c2671ff7c291a32d1ee09c/research/r219/R219_TERMINAL_RECEIPT.json",
+              "sha256":sha
+            }
+          }
+          open("/tmp/r219_finish.json","w").write(json.dumps(payload,indent=2,sort_keys=True)+"\n")
+          PY
+          python scripts/arc_control.py finish R219             --owner method-research             --payload /tmp/r219_finish.json             --publish | tee /tmp/r219_control_finish.json
+
+      - name: Verify remote terminal state
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R219")
+          assert job["status"]=="SCIENTIFIC_REJECT", job
+          assert len(job["attempts"])==1, job["attempts"]
+          assert job["attempts"][0]["run_id"]=="R219-dependence-carrier-frontier-20260922"
+          assert job["receipt"]["url"].endswith("/research/r219/R219_TERMINAL_RECEIPT.json")
+          print(json.dumps({"revision":state["revision"],"status":job["status"],"receipt":job["receipt"],"attempts":job["attempts"]},indent=2,sort_keys=True))
+          PY
