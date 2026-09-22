@@ -1380,6 +1380,54 @@
         "command": "python scripts/r227_srm2_feasibility.py --v25 /tmp/estimator_v25.py --probe /tmp/g_regen_probe.py --findings /tmp/findings_log.md --claims /tmp/claims_evidence.md --out r227-feasibility.json; pinned upstream blobs must match; no mini-100 unless deployability gate passes"
       },
       "at": "2026-09-22T22:20:20.697Z"
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T22:24:30.000Z",
+      "job": "R228",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "official-leaderboard-audit",
+        "deliverable": "Using primary official sources only, verify the current ARC White-Box Phase-2 rules, metric, visible leaderboard/submissions and exact-panel comparability. Freeze a concise protocol before research; save an append-only source-cited audit and machine-readable receipt with retrieval time. State rank only if the official score/panel is exactly comparable; otherwise explain what is missing. No submission, paid compute, estimator run, or changes to canonical results.",
+        "depends_on": [],
+        "hypothesis_id": "OFFICIAL-LEADERBOARD-RANKABILITY-AUDIT",
+        "priority": 1,
+        "title": "Audit official ARC leaderboard and rank comparability"
+      },
+      "revision": 107
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T22:24:30.000Z",
+      "job": "R228",
+      "owner": "official-leaderboard-audit",
+      "payload": {},
+      "revision": 108
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T22:24:30.000Z",
+      "job": "R229",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "paired-score-decomposition",
+        "deliverable": "Read the R226-integrated exact R209 V25/V29 normalized mini-100 records and official scoring implementation. Freeze the analysis plan and input hashes first. Independently verify row alignment, then decompose adjusted-score gap into failed/time-out rows versus matched successful rows; report paired distribution, uncertainty only where justified, and available architecture/runtime associations. Use no estimator run and do not infer leaderboard rank. Save reproducible analysis script/table, append-only receipt and commit; recommend one evidence-backed next lever without modifying canonical estimators.",
+        "depends_on": [
+          "R226"
+        ],
+        "hypothesis_id": "R209-V25-V29-MINI100-PAIRED-DECOMPOSITION",
+        "priority": 1,
+        "title": "Decompose paired V25/V29 mini-100 score gap"
+      },
+      "revision": 109
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T22:24:30.000Z",
+      "job": "R229",
+      "owner": "paired-score-decomposition",
+      "payload": {},
+      "revision": 110
     }
   ],
   "jobs": [
@@ -2259,10 +2307,36 @@
       "priority": 1,
       "status": "RUNNING",
       "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure"
+    },
+    {
+      "id": "R228",
+      "title": "Audit official ARC leaderboard and rank comparability",
+      "owner": "official-leaderboard-audit",
+      "assigned_owner": "official-leaderboard-audit",
+      "status": "CLAIMED",
+      "priority": 1,
+      "hypothesis_id": "OFFICIAL-LEADERBOARD-RANKABILITY-AUDIT",
+      "depends_on": [],
+      "attempts": [],
+      "deliverable": "Using primary official sources only, verify the current ARC White-Box Phase-2 rules, metric, visible leaderboard/submissions and exact-panel comparability. Freeze a concise protocol before research; save an append-only source-cited audit and machine-readable receipt with retrieval time. State rank only if the official score/panel is exactly comparable; otherwise explain what is missing. No submission, paid compute, estimator run, or changes to canonical results."
+    },
+    {
+      "id": "R229",
+      "title": "Decompose paired V25/V29 mini-100 score gap",
+      "owner": "paired-score-decomposition",
+      "assigned_owner": "paired-score-decomposition",
+      "status": "CLAIMED",
+      "priority": 1,
+      "hypothesis_id": "R209-V25-V29-MINI100-PAIRED-DECOMPOSITION",
+      "depends_on": [
+        "R226"
+      ],
+      "attempts": [],
+      "deliverable": "Read the R226-integrated exact R209 V25/V29 normalized mini-100 records and official scoring implementation. Freeze the analysis plan and input hashes first. Independently verify row alignment, then decompose adjusted-score gap into failed/time-out rows versus matched successful rows; report paired distribution, uncertainty only where justified, and available architecture/runtime associations. Use no estimator run and do not infer leaderboard rank. Save reproducible analysis script/table, append-only receipt and commit; recommend one evidence-backed next lever without modifying canonical estimators."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 106,
+  "revision": 110,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
