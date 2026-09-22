@@ -36,7 +36,7 @@
     "next_protocol_path": "research/r217/R217_NEXT_RUNTIME_PROTOCOL.json",
     "next_protocol_sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968",
     "paired_table_path": "research/r217/R217_PAIRED_RESIDUALS.csv",
-    "paired_table_sha256": "cc26d4b83ce4d541d76b16e634927815db98b54f1da28eb830c7474285ff68f1"
+    "paired_table_sha256": "764473456f04d37b12a57ce67dc4ae39c309b8705b31359e8305d70fc1c93f1f"
   },
   "owner": "baseline-diagnosis",
   "paired_summary": {

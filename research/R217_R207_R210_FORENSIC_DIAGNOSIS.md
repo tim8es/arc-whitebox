@@ -13,7 +13,7 @@ No scientific benchmark was launched. This diagnosis reads the immutable R207 an
 - R210 Actions run/job: `35762066733` / `106862288745`; artifact `10712680276`; ZIP SHA256 `09719be2466bf43d513f52a025a60482ec9402a3455783710d3fe22e699e30f2`.
 - R210 artifact files: `R210_RECEIPT.json` `7651e4d8caccaa720f9cbfa928b2b84649dc0aeafde8057f411a5b40094698b2`; `report.json` `dc1e37f7fbc57853e05dfb91ecfe7919906391f79f44aaedeacd471fea8f9645`; `environment.txt` `a1ba544bbd863ce908d86a2610ac5e8853da57d45b4692df33874b26a7c4e4c2`; `command.txt` `7ab6ddd65c1234b715f418785228d2a09259bdae521f20ef5a7778dc1bc827d1`; `chosen_cpu.txt` `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa`.
 - Canonical per-MLP SHA256 (JSON sorted keys, compact separators): R207 `2056a1d2210d4b2f90da7b8c488548d6cf65a0910bf273b241dca68d242f564f`; R210 `d722d5ed2e5a7a3f1c383798d1f7ce9978d08e72d85c77a2c3fa54c91388f300`.
-- Paired table: `research/r217/R217_PAIRED_RESIDUALS.csv`, SHA256 `cc26d4b83ce4d541d76b16e634927815db98b54f1da28eb830c7474285ff68f1`.
+- Paired table: `research/r217/R217_PAIRED_RESIDUALS.csv`, SHA256 `764473456f04d37b12a57ce67dc4ae39c309b8705b31359e8305d70fc1c93f1f`.
 - Frozen next protocol: `research/r217/R217_NEXT_RUNTIME_PROTOCOL.json`, SHA256 `40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968`.
 
 ## Identity and environment
