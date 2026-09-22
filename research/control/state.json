@@ -1258,6 +1258,22 @@
         "command": "read-only recover published @v2-phase2 mini-100 network_id/target_sha256/dtype; verify dataset SHA/name-order; normalize R209 V25/V29 only if schema-complete; no estimator run"
       },
       "at": "2026-09-22T21:41:01.000Z"
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-22T21:49:00.000Z",
+      "job": "R225",
+      "owner": "leaderboard-audit",
+      "payload": {
+        "reason": "Independent read-only R219 audit complete. Scientific terminal proof VERIFIED within the frozen pairwise-calibrated one-factor Gaussian-copula scope: parity and independence have identical univariate/all pair laws; E[ReLU(sum Xi)] = 1/2 vs 3/4; same-state minimax absolute error lower bound = 1/8; cost arithmetic, artifact ZIP/hash contents, and protocol lineage check out. Exact flaw range: R219 protocol steps 5-6 required the executable to verify the one-factor loading implication, but scripts/r219_1fgc_falsifier.py line 60 hardcodes at_most_one_nonzero=True and line 70 feeds that boolean directly to the gate. Thus executable/protocol evidence is incomplete for that implication, although R225 independently proves it analytically, so the R219 scientific terminal conclusion is unchanged. No rerun, family extension, holdout, paid compute, submission, canonical or leaderboard mutation.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/e7590e21fb079ae9571adafb2bb584a7034f7c95/research/R225_R219_TERMINAL_PROOF_INDEPENDENT_AUDIT.json",
+          "sha256": "8967eda8542f1f95ce9d16b3d735409f940b628545ed63acd076c07741d3f8fc"
+        },
+        "run_id": "R225-r219-terminal-proof-independent-audit",
+        "status": "COMPLETE"
+      },
+      "revision": 98
     }
   ],
   "jobs": [
@@ -2042,7 +2058,16 @@
           "code_commit": "43af94b811f4bd384474f5ea7bc4440894e33817",
           "command": "read-only independent verification of frozen R219 terminal proof/artifacts: exact-small laws, ReLU expectations, minimax lower bound, one-factor Gaussian-copula scope, cost arithmetic, and source/protocol lineage; no rerun or family extension",
           "run_id": "R225-r219-terminal-proof-independent-audit",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "Independent read-only R219 audit complete. Scientific terminal proof VERIFIED within the frozen pairwise-calibrated one-factor Gaussian-copula scope: parity and independence have identical univariate/all pair laws; E[ReLU(sum Xi)] = 1/2 vs 3/4; same-state minimax absolute error lower bound = 1/8; cost arithmetic, artifact ZIP/hash contents, and protocol lineage check out. Exact flaw range: R219 protocol steps 5-6 required the executable to verify the one-factor loading implication, but scripts/r219_1fgc_falsifier.py line 60 hardcodes at_most_one_nonzero=True and line 70 feeds that boolean directly to the gate. Thus executable/protocol evidence is incomplete for that implication, although R225 independently proves it analytically, so the R219 scientific terminal conclusion is unchanged. No rerun, family extension, holdout, paid compute, submission, canonical or leaderboard mutation.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/e7590e21fb079ae9571adafb2bb584a7034f7c95/research/R225_R219_TERMINAL_PROOF_INDEPENDENT_AUDIT.json",
+              "sha256": "8967eda8542f1f95ce9d16b3d735409f940b628545ed63acd076c07741d3f8fc"
+            },
+            "run_id": "R225-r219-terminal-proof-independent-audit",
+            "status": "COMPLETE"
+          }
         }
       ],
       "deliverable": "Read-only independent audit of R219 receipt `research/r219/R219_TERMINAL_RECEIPT.json` (receipt SHA256 c8c0fd2f91d885b5ec4ec7fa56b7ff6f7c453a85900fd14f8c48ae9d97a47eb7). Recompute the even-parity four-Rademacher and independent-law marginals/pair laws, E[ReLU(sum Xi)] values, minimax error lower bound 1/8, and verify the claimed one-factor Gaussian-copula state limitation and conservative cost arithmetic against the frozen protocol/artifacts. Report exact scope and any flaw; do not rerun or widen the rejected family. Create a review receipt/commit and finish queue. No holdout, paid resource, submission or leaderboard changes.",
@@ -2051,12 +2076,17 @@
       "id": "R225",
       "owner": "leaderboard-audit",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Independently verify R219 factor-copula non-closure proof"
+      "status": "COMPLETE",
+      "title": "Independently verify R219 factor-copula non-closure proof",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/e7590e21fb079ae9571adafb2bb584a7034f7c95/research/R225_R219_TERMINAL_PROOF_INDEPENDENT_AUDIT.json",
+        "sha256": "8967eda8542f1f95ce9d16b3d735409f940b628545ed63acd076c07741d3f8fc"
+      },
+      "reason": "Independent read-only R219 audit complete. Scientific terminal proof VERIFIED within the frozen pairwise-calibrated one-factor Gaussian-copula scope: parity and independence have identical univariate/all pair laws; E[ReLU(sum Xi)] = 1/2 vs 3/4; same-state minimax absolute error lower bound = 1/8; cost arithmetic, artifact ZIP/hash contents, and protocol lineage check out. Exact flaw range: R219 protocol steps 5-6 required the executable to verify the one-factor loading implication, but scripts/r219_1fgc_falsifier.py line 60 hardcodes at_most_one_nonzero=True and line 70 feeds that boolean directly to the gate. Thus executable/protocol evidence is incomplete for that implication, although R225 independently proves it analytically, so the R219 scientific terminal conclusion is unchanged. No rerun, family extension, holdout, paid compute, submission, canonical or leaderboard mutation."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 97,
+  "revision": 98,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
