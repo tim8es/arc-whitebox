@@ -1484,6 +1484,31 @@
         "status": "COMPLETE"
       },
       "revision": 114
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-22T22:43:46.000Z",
+      "job": "R230",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "leader-method-audit",
+        "deliverable": "Read only the publicly visible official AIcrowd details and artifacts for the current top Phase-2 public submissions (start with submission IDs 331539 and 331308 from R228's snapshot). Determine whether methods/source are actually public and permitted to inspect; compare documented mechanisms against ARC experiment history and R209 V25/V29. Produce an append-only source-cited method audit, deduplication table, and one or two transferable testable hypotheses with explicit uncertainty and cost/evidence gates. Do not download/run competitor code, use private/holdout data, launch an estimator, spend money, submit, or alter canonical results. If details are unavailable, preserve exact access failure and derive no invented method claims.",
+        "depends_on": [
+          "R228"
+        ],
+        "hypothesis_id": "PUBLIC-LEADER-METHODS-TRANSFER-AUDIT",
+        "priority": 1,
+        "title": "Audit public methods of top ARC Phase-2 submissions"
+      },
+      "revision": 115
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T22:43:46.000Z",
+      "job": "R230",
+      "owner": "leader-method-audit",
+      "payload": {},
+      "revision": 116
     }
   ],
   "jobs": [
@@ -2431,10 +2456,24 @@
         "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52"
       },
       "reason": "Read-only paired decomposition of the exact R226-integrated R209 mini-100 records complete. Input SHA256 verified: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; 100/100 name/network_id/target_sha256/budget rows align. V25 succeeds 100/100; V29 succeeds 43/100 and has 57 residual_wall_time_exhausted failures. Mean adjusted score is 8.170397440117225e-9 (V25) vs 0.5270942878803214 (V29); exact V29-V25 gap 0.527094279709924 decomposes into +0.5270942807855769 from the 57 failure rows and -1.0756526879701367e-9 from the 43 common-success rows. On common successes paired MSE delta mean is +1.964733285625021e-12 with descriptive SE 3.377471593191917e-12 (20/43 lower for V29), while all 43 V29 adjusted scores are lower due to lower measured-FLOP factor. Runtime shows all 43 successes residual<0.4s (max 0.399226739) and all 57 failures >=0.4s (min 0.400863099). Per-network size association is not estimable because shape/budget are fixed and no size field exists. Raw prediction tensors are absent; no counterfactual timeout MSE, leaderboard rank, estimator run, canonical-estimator change, or submission."
+    },
+    {
+      "id": "R230",
+      "title": "Audit public methods of top ARC Phase-2 submissions",
+      "owner": "leader-method-audit",
+      "assigned_owner": "leader-method-audit",
+      "status": "CLAIMED",
+      "priority": 1,
+      "hypothesis_id": "PUBLIC-LEADER-METHODS-TRANSFER-AUDIT",
+      "depends_on": [
+        "R228"
+      ],
+      "attempts": [],
+      "deliverable": "Read only the publicly visible official AIcrowd details and artifacts for the current top Phase-2 public submissions (start with submission IDs 331539 and 331308 from R228's snapshot). Determine whether methods/source are actually public and permitted to inspect; compare documented mechanisms against ARC experiment history and R209 V25/V29. Produce an append-only source-cited method audit, deduplication table, and one or two transferable testable hypotheses with explicit uncertainty and cost/evidence gates. Do not download/run competitor code, use private/holdout data, launch an estimator, spend money, submit, or alter canonical results. If details are unavailable, preserve exact access failure and derive no invented method claims."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 114,
+  "revision": 116,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
