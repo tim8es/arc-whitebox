@@ -24,19 +24,38 @@
       "owner": "audit",
       "payload": {},
       "revision": 3
+    },
+    {
+      "revision": 4,
+      "action": "start",
+      "job": "R201",
+      "owner": "baseline",
+      "payload": {
+        "run_id": "R201-reuse-e136-35544406064-e173-35621103274",
+        "code_commit": "e4685835b8fd1faf81f7476ed363adda3934f38c",
+        "command": "python scripts/r201_reuse_v29_baseline.py --e136-zip e136-followup-v29.zip --e173-ago research/results/E173-ago.json --normalizer-commit e4685835b8fd1faf81f7476ed363adda3934f38c --output research/results/R201-v29.json --receipt research/R201_BASELINE_RECEIPT.json"
+      },
+      "at": "2026-09-22T15:21:30+00:00"
     }
   ],
   "jobs": [
     {
       "assigned_owner": "baseline",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R201-reuse-e136-35544406064-e173-35621103274",
+          "code_commit": "e4685835b8fd1faf81f7476ed363adda3934f38c",
+          "command": "python scripts/r201_reuse_v29_baseline.py --e136-zip e136-followup-v29.zip --e173-ago research/results/E173-ago.json --normalizer-commit e4685835b8fd1faf81f7476ed363adda3934f38c --output research/results/R201-v29.json --receipt research/R201_BASELINE_RECEIPT.json",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Pinned runnable parent; official per-network reports, actual FLOPs/time/failures; normalized JSON against E173 panel; code+receipt. Reuse existing complete reports if matching, otherwise bounded local evaluation. No new paid run until budget reconciled.",
       "depends_on": [],
       "hypothesis_id": "BASELINE-COMPARISON",
       "id": "R201",
       "owner": "baseline",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Сильный V29 baseline и AGO: одинаковые первые 5 сетей Phase-2 mini"
     },
     {
@@ -79,7 +98,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 3,
+  "revision": 4,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
