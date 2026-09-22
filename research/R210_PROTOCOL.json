@@ -1,0 +1,97 @@
+{
+  "schema": "arc.whitebox.r210.protocol.v1",
+  "job_id": "R210",
+  "owner": "baseline",
+  "status": "FROZEN_BEFORE_RUN",
+  "hypothesis_id": "V29-PUBLIC-JITTER-REDUCTION",
+  "parent": {
+    "r207_receipt_commit": "4ca70833a24396106a8b1c7c6e51bd3cd282d8c7",
+    "actions_run_id": 35755631386,
+    "failures": 10,
+    "official_adjusted_score": 0.19809924364613474
+  },
+  "failure_analysis": {
+    "common_failure": "residual_wall_time_exhausted",
+    "failure_indices": [
+      3,
+      4,
+      7,
+      9,
+      11,
+      12,
+      13,
+      16,
+      28,
+      40
+    ],
+    "residual_wall_time_s": [
+      0.41133040199554216,
+      0.47244559400246544,
+      0.4015334919936322,
+      0.41579813900011686,
+      0.4514815190157151,
+      0.4130422080138487,
+      0.4481072169892286,
+      0.5300859230158039,
+      0.49941320999460004,
+      0.4932891080070476
+    ],
+    "failure_residual_mean_s": 0.45365268120280006,
+    "failure_residual_median_s": 0.44979436800247186,
+    "min_over_limit_s": 0.0015334919936321745,
+    "max_over_limit_s": 0.1300859230158039,
+    "failures_within_20ms_of_limit": 4,
+    "all_failure_measured_flops": 581994796527,
+    "r207_success_only_mean_raw_mse": 2.254070645690831e-8,
+    "evidence": "Failures are scattered across the sequence; two rows successful in R205 failed in R207; all ten have the same completed estimator FLOP count. This is consistent with wall-clock scheduling/cache jitter rather than estimator arithmetic or FLOP exhaustion."
+  },
+  "frozen_mitigation": {
+    "count": 1,
+    "name": "single_cpu_affinity",
+    "exact_rule": "Before the public-50 measurement, choose min(os.sched_getaffinity(0)) and execute the unchanged whest process under taskset -c <that_cpu>. The affinity is inherited by child processes.",
+    "rationale": "R207 already fixes BLAS/OpenMP threads to one. Pinning that single-threaded process to one allowed CPU removes CPU migration/cache-affinity jitter without changing estimator inputs, code, FLOP accounting, arithmetic, limits, dataset order, or V26_STRASSEN=4.",
+    "semantic_change": false,
+    "estimator_source_change": false,
+    "v29_environment": {
+      "V26_STRASSEN": "4"
+    },
+    "forbidden_extra_mitigations": [
+      "no changed residual limit",
+      "no changed estimator code",
+      "no warm-up rerun",
+      "no changed network order",
+      "no retry-on-failure",
+      "no nice/chrt priority change",
+      "no additional thread changes"
+    ]
+  },
+  "confirmation": {
+    "attempts_allowed": 1,
+    "panel": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2 mini:first-50",
+    "n_mlps": 50,
+    "flop_budget": 2199023255552,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "max_threads": 1,
+    "command_template": "CPU=$(python -c 'import os; print(min(os.sched_getaffinity(0)))'); taskset -c \"$CPU\" whest run --estimator methods/r210/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 50 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+    "success_measurements": [
+      "per-MLP MSE",
+      "FLOPs",
+      "residual wall time",
+      "failure flags",
+      "official adjusted score"
+    ],
+    "no_blind_rerun": true
+  },
+  "source": {
+    "upstream_repo": "504aldo/whest-p2-cumulant-k3",
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "v29_git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+  },
+  "safety": {
+    "private_holdout": false,
+    "paid_resources": false,
+    "submission": false,
+    "competition_scorer": false
+  }
+}
