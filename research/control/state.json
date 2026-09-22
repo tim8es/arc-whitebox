@@ -781,6 +781,22 @@
         "reason": "Independent read-only audit verified R210 artifact ZIP, all 13 checksum-manifest entries, raw receipt/report hashes, 50-row completeness, dataset SHA, exact first-50 name/order identity against R207, 50/50 official score arithmetic, unchanged estimator/FLOP semantics and protocol->arm->Actions-head binding. CPU0 affinity worsened residual reliability: failures 10->33 and adjusted score 0.19809924364613474->0.614635961915704 on the same public-50 panel. No rerun or holdout access."
       },
       "at": "2026-09-22T20:34:01.000Z"
+    },
+    {
+      "revision": 63,
+      "action": "finish",
+      "job": "R217",
+      "owner": "baseline-diagnosis",
+      "payload": {
+        "run_id": "R217-r207-r210-paired-forensics-20260922",
+        "status": "COMPLETE",
+        "reason": "Read-only paired forensic analysis of all 50 R207/R210 rows found 37 residual increases and 13 decreases; transitions were 27 OK→FAIL, 13 OK→OK, 6 FAIL→FAIL, 4 FAIL→OK. Mean/median residual shifts were +35.250ms/+39.268ms. The pattern changes sharply at index 16: indices 0-15 were faster in R210 on average (-19.574ms; 13/16 faster), while indices 16-49 were all slower (+61.050ms mean; 34/34). Pinned V29, dataset, FLOPs, versions and thread env match, but R207 affinity was not recorded and the runs used different hosted workers/regions (westus3 vs eastus). Therefore CPU0 causal role is not established. Frozen next protocol is a same-worker balanced U,C0,C1,C1,C0,U crossover with predeclared GO/NO-GO; it was not executed.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/e8fc0364f69c12f2f94a06362b43e925ea61b365/research/R217_R207_R210_FORENSIC_RECEIPT.json",
+          "sha256": "7d805679b7f4324f67ce4ce83a9c09b9ebe9e33ed20b8b0ede6e34f9caf91583"
+        }
+      },
+      "at": "2026-09-22T20:44:00+00:00"
     }
   ],
   "jobs": [
@@ -1302,7 +1318,16 @@
           "run_id": "R217-r207-r210-paired-forensics-20260922",
           "code_commit": "aead0bf4b38bf6cbb78e80d843d19d4fa86ff4bd",
           "command": "read-only paired forensic analysis of R207 artifact 10709911534 and R210 artifact 10712680276; no scientific run",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "status": "COMPLETE",
+            "run_id": "R217-r207-r210-paired-forensics-20260922",
+            "reason": "Read-only paired forensic analysis of all 50 R207/R210 rows found 37 residual increases and 13 decreases; transitions were 27 OK→FAIL, 13 OK→OK, 6 FAIL→FAIL, 4 FAIL→OK. Mean/median residual shifts were +35.250ms/+39.268ms. The pattern changes sharply at index 16: indices 0-15 were faster in R210 on average (-19.574ms; 13/16 faster), while indices 16-49 were all slower (+61.050ms mean; 34/34). Pinned V29, dataset, FLOPs, versions and thread env match, but R207 affinity was not recorded and the runs used different hosted workers/regions (westus3 vs eastus). Therefore CPU0 causal role is not established. Frozen next protocol is a same-worker balanced U,C0,C1,C1,C0,U crossover with predeclared GO/NO-GO; it was not executed.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/e8fc0364f69c12f2f94a06362b43e925ea61b365/research/R217_R207_R210_FORENSIC_RECEIPT.json",
+              "sha256": "7d805679b7f4324f67ce4ce83a9c09b9ebe9e33ed20b8b0ede6e34f9caf91583"
+            }
+          }
         }
       ],
       "deliverable": "Read-only paired analysis of all 50 per-MLP R207 and R210 rows, environment/CPU affinity metadata and unchanged V29 source. Quantify residual shifts, identify whether pinning to CPU 0 or another measured factor explains the 10-to-33 failure increase, and freeze one falsifiable next runtime hypothesis with acceptance criteria and official-contract checks. Do not launch another scientific run in this task; preserve all evidence and commit the diagnosis/protocol.",
@@ -1311,12 +1336,17 @@
       "id": "R217",
       "owner": "baseline-diagnosis",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Explain why single-CPU affinity worsened R210 and freeze the next runtime hypothesis"
+      "status": "COMPLETE",
+      "title": "Explain why single-CPU affinity worsened R210 and freeze the next runtime hypothesis",
+      "reason": "Read-only paired forensic analysis of all 50 R207/R210 rows found 37 residual increases and 13 decreases; transitions were 27 OK→FAIL, 13 OK→OK, 6 FAIL→FAIL, 4 FAIL→OK. Mean/median residual shifts were +35.250ms/+39.268ms. The pattern changes sharply at index 16: indices 0-15 were faster in R210 on average (-19.574ms; 13/16 faster), while indices 16-49 were all slower (+61.050ms mean; 34/34). Pinned V29, dataset, FLOPs, versions and thread env match, but R207 affinity was not recorded and the runs used different hosted workers/regions (westus3 vs eastus). Therefore CPU0 causal role is not established. Frozen next protocol is a same-worker balanced U,C0,C1,C1,C0,U crossover with predeclared GO/NO-GO; it was not executed.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/e8fc0364f69c12f2f94a06362b43e925ea61b365/research/R217_R207_R210_FORENSIC_RECEIPT.json",
+        "sha256": "7d805679b7f4324f67ce4ce83a9c09b9ebe9e33ed20b8b0ede6e34f9caf91583"
+      }
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 62,
+  "revision": 63,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
