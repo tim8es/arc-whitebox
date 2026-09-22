@@ -1,0 +1,88 @@
+{
+  "schema": "arc.whitebox.r206.control_receipt.v1",
+  "task": "R206",
+  "checked_at_utc": "2026-09-22T16:35:00Z",
+  "branch": "research/r206-ta-rank-sweep-20260922",
+  "scientific_execution": {
+    "run_id": 35750632262,
+    "run_attempt": 1,
+    "executed_head": "c74bf80beea36e5b0dba087a3030f34a8aad8c5f",
+    "status": "completed",
+    "conclusion": "success",
+    "duplicate_run_started": false,
+    "duplicate_run_reason": "Existing frozen R206 sweep already completed successfully; rerun would duplicate the same job."
+  },
+  "immutable_evidence": {
+    "receipt_path": "research/r206/R206_TA_RANK_SWEEP_RECEIPT.json",
+    "receipt_git_blob_sha1": "e2effdf24d4e8622dc27828f7b9b60631ed5cd55",
+    "actions_artifact_id": 10704721529,
+    "actions_artifact_name": "r206-ta-rank-sweep-receipt",
+    "actions_artifact_zip_sha256": "1032040d771c70e397b1f90ee60a242d985c98534cfcadd2e7ec297ed619ac7f",
+    "ledger_git_blob_sha1": "040e52efe01efd7280180b7e2d72901b4c2f0532"
+  },
+  "frozen_gates": {
+    "mechanism_ratio_max": 0.42,
+    "stability_ratio_max": 1.05
+  },
+  "pareto_points": [
+    {
+      "tensor_dim": 26,
+      "rank": 8052,
+      "exact_integer_residual": 0,
+      "leaf_flops": 1030656000,
+      "leaf_ratio": 0.4799365997314453,
+      "full_flops": 13504019200,
+      "full_ratio": 6.288298964500427,
+      "runtime_seconds": 0.6920345609999998,
+      "float32_relative_error": 0.025415470076563675,
+      "float32_relative_error_ratio_to_parent": 85806.50031947184
+    },
+    {
+      "tensor_dim": 28,
+      "rank": 9847,
+      "exact_integer_residual": 0,
+      "leaf_flops": 997560182,
+      "leaf_ratio": 0.46452515851706266,
+      "full_flops": 15226343822,
+      "full_ratio": 7.090318865142763,
+      "runtime_seconds": 0.9222933319999953,
+      "float32_relative_error": 0.032898492439425504,
+      "float32_relative_error_ratio_to_parent": 111070.32423597733
+    },
+    {
+      "tensor_dim": 30,
+      "rank": 11890,
+      "exact_integer_residual": 0,
+      "leaf_flops": 1019567500,
+      "leaf_ratio": 0.47477311454713345,
+      "full_flops": 17669351000,
+      "full_ratio": 8.22793273255229,
+      "runtime_seconds": 1.088782217000002,
+      "float32_relative_error": 0.04070966654369244,
+      "float32_relative_error_ratio_to_parent": 137442.03844209336
+    },
+    {
+      "tensor_dim": 32,
+      "rank": 14197,
+      "exact_integer_residual": 0,
+      "leaf_flops": 930414592,
+      "leaf_ratio": 0.433258056640625,
+      "full_flops": 18826027008,
+      "full_ratio": 8.766551971435547,
+      "runtime_seconds": 0.9986305989999948,
+      "float32_relative_error": 0.052316842209318024,
+      "float32_relative_error_ratio_to_parent": 176629.63243348213
+    }
+  ],
+  "decision": {
+    "status": "TERMINAL_NO_GO_NO_PARETO_POINT_MEETS_COST_AND_STABILITY",
+    "exact_all_pass": true,
+    "any_leaf_gate_pass": false,
+    "any_full_cost_gate_pass": false,
+    "any_stability_gate_pass": false,
+    "full_compiler_authorized": false,
+    "holdout_used": false,
+    "paid_run_used": false,
+    "submission_attempted": false
+  }
+}
