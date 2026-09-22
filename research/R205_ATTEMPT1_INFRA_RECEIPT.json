@@ -1,0 +1,36 @@
+{
+  "schema": "arc.whitebox.r205.attempt_receipt.v1",
+  "job_id": "R205",
+  "owner": "baseline",
+  "attempt": 1,
+  "control_run_id": "R205-v29-l4-five-grid-attempt1",
+  "github_actions": {
+    "run_id": 35751007326,
+    "job_id": 106824811348,
+    "run_number": 1,
+    "run_attempt": 1,
+    "head_sha": "31ce7cee5e5e57ee232a1227bc8be0d0ac6471f6",
+    "conclusion": "failure"
+  },
+  "status": "INFRA_ERROR",
+  "science_started": false,
+  "estimator_started": false,
+  "measurement_started": false,
+  "mitigation_tested": false,
+  "exact_error": "ERROR: file:///home/runner/work/arc-whitebox/arc-whitebox does not appear to be a Python project: neither 'setup.py' nor 'pyproject.toml' found.",
+  "secondary_evidence_failure": "Because install failed before the first mkdir -p r205 step, always-run receipt/hash/upload steps also failed on missing r205 directory.",
+  "root_cause": "R205 worker branch was based on research/control-v2, which does not contain the Python packaging files present on the historical E136 experiment branch. The workflow incorrectly reused E136's 'pip install -e .' assumption.",
+  "repair": "Install exact public dependencies directly (numpy==2.4.6, flopscope==0.12.1, whestbench==0.16.1), create r205 before installation, and leave the scientific command, panel, pinned V29 source and V26_STRASSEN=4 mitigation unchanged.",
+  "command": "V26_STRASSEN=4 whest run --estimator methods/r205/estimator_v29.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 5 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+  "budget": {
+    "paid_resources": false,
+    "public_github_actions": true,
+    "holdout": false,
+    "submission": false
+  },
+  "evidence": {
+    "protocol_commit": "774c932ac1697b767e3760062183271e9dac62e4",
+    "arm_commit": "31ce7cee5e5e57ee232a1227bc8be0d0ac6471f6",
+    "workflow_path": ".github/workflows/r205-v29-timeout-mitigation.yml"
+  }
+}
