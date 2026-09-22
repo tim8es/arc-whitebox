@@ -307,6 +307,14 @@
       "owner": "independent-audit",
       "payload": {},
       "revision": 25
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-22T16:43:52.815027+00:00",
+      "job": "R209",
+      "owner": "archive-evidence",
+      "payload": {},
+      "revision": 26
     }
   ],
   "jobs": [
@@ -527,14 +535,14 @@
       "depends_on": [],
       "hypothesis_id": "EXISTING-100MLP-EVIDENCE-RECOVERY",
       "id": "R209",
-      "owner": null,
+      "owner": "archive-evidence",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Recover existing 100-MLP V25/V29 evidence without rerun"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 25,
+  "revision": 26,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
