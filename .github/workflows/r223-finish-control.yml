@@ -1,0 +1,63 @@
+name: R223 finish central control
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_CONTROL_FINISH_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  finish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git
+        run: |
+          git config user.name "ARC R223 control"
+          git config user.email "arc-control@users.noreply.github.com"
+      - name: Publish R223 terminal finish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin 64b5fa1a2fed2a3f77021534875dbc7b0e2ff27f
+          git show 64b5fa1a2fed2a3f77021534875dbc7b0e2ff27f:research/r223/R223_TERMINAL_RECEIPT.json > /tmp/r223_receipt.json
+          RECEIPT_SHA="$(sha256sum /tmp/r223_receipt.json | awk '{print $1}')"
+          python - "$RECEIPT_SHA" <<'PY'
+          import json,sys
+          sha=sys.argv[1]
+          payload={
+            "run_id":"R223-v25-isolated-improvement-20260922",
+            "status":"INFRA_ERROR",
+            "reason":"R223 froze one novel accuracy-directed V25 delta (normalized per-neuron K4->K3 feed lambda) after auditing the immutable R209 mini-100 parent. The standard public GitHub-hosted compute gate and pinned upstream V25 blob check passed, but the mandatory pre-panel byte-provenance guard failed before parent artifact download, whest validate, or any candidate mini-100 execution. Exact blocker: YAML block-scalar dedentation corrupted indentation inside the inline multiline source pattern, causing assert p.count(old)==1 to fail. A separate read-only audit also found a literal backslash-n in the candidate docstring; arithmetic patch bytes otherwise match after that docstring normalization. Frozen protocol forbids repair/retry, so no per-network candidate result exists and no scientific score claim is made.",
+            "receipt":{
+              "url":"https://github.com/tim8es/arc-whitebox/blob/64b5fa1a2fed2a3f77021534875dbc7b0e2ff27f/research/r223/R223_TERMINAL_RECEIPT.json",
+              "sha256":sha
+            }
+          }
+          open("/tmp/r223_finish.json","w").write(json.dumps(payload,indent=2,sort_keys=True)+"\n")
+          PY
+          cat /tmp/r223_finish.json
+          python scripts/arc_control.py finish R223             --owner method-research             --payload /tmp/r223_finish.json             --publish | tee /tmp/r223_control_finish.json
+      - name: Verify remote terminal state
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R223")
+          assert job["status"]=="INFRA_ERROR", job
+          assert len(job["attempts"])==1, job["attempts"]
+          assert job["attempts"][0]["run_id"]=="R223-v25-isolated-improvement-20260922"
+          print(json.dumps({"revision":state["revision"],"job":job},indent=2,sort_keys=True))
+          PY
