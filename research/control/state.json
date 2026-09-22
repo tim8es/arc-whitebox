@@ -1601,6 +1601,18 @@
         "command": "read-only deterministic analysis of research/results/R209-v25-mini100.json: verify SHA/100 rows; compute raw-MSE distribution, top-k concentration, leave-one-out sensitivity, score floor and cross-panel 2.1e-9 numerical target; no estimator, paid/private data, submission, or canonical edits"
       },
       "revision": 123
+    },
+    {
+      "revision": 124,
+      "action": "start",
+      "job": "R227",
+      "owner": "v25-optimization",
+      "payload": {
+        "run_id": "R227-v25-srm2-feasibility-repair-20260923",
+        "code_commit": "d9afae35aa7b6af1f065b27f450c89065ef6a5ef",
+        "command": "GitHub Actions .github/workflows/r227-source-feasibility.yml on standard ubuntu-24.04: fetch pinned upstream commit 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45, verify exact git blobs, run exactly once `python scripts/r227_srm2_feasibility.py --v25 r227-inputs/estimator_v25.py --probe r227-inputs/g_regen_probe.py --findings r227-inputs/findings_log.md --claims r227-inputs/claims_evidence.md --out r227-feasibility.json`; source-feasibility only, no estimator/mini-100"
+      },
+      "at": "2026-09-22T22:57:15.889Z"
     }
   ],
   "jobs": [
@@ -2477,6 +2489,12 @@
             "run_id": "R227-v25-srm2-feasibility-20260923",
             "status": "INFRA_ERROR"
           }
+        },
+        {
+          "run_id": "R227-v25-srm2-feasibility-repair-20260923",
+          "code_commit": "d9afae35aa7b6af1f065b27f450c89065ef6a5ef",
+          "command": "GitHub Actions .github/workflows/r227-source-feasibility.yml on standard ubuntu-24.04: fetch pinned upstream commit 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45, verify exact git blobs, run exactly once `python scripts/r227_srm2_feasibility.py --v25 r227-inputs/estimator_v25.py --probe r227-inputs/g_regen_probe.py --findings r227-inputs/findings_log.md --claims r227-inputs/claims_evidence.md --out r227-feasibility.json`; source-feasibility only, no estimator/mini-100",
+          "status": "RUNNING"
         }
       ],
       "deliverable": "Read current `AGENTS.md`, `research/RESEARCH_PROCESS.md`, immutable history and R224's normalized per-network V25 mini-100 records. Choose exactly one untried algorithm-level change aimed at lowering official adjusted score on this same public development panel; explicitly exclude R223's K4-to-K3 per-neuron feed-lambda patch, R219's factor-copula family, and all previously falsified mechanisms. Freeze parent/source/config/falsifier, predicted cost and GO/NO-GO before execution. Run at most one bounded same-panel candidate evaluation using verified free/existing compute only; keep canonical V25 unchanged. Retain every network row/failure, compare official adjusted score and measured FLOPs, create artifact/receipt/commit. If no distinct feasible candidate exists, finish with a scoped terminal NO-GO. No paid resource, holdout or submission.",
@@ -2487,7 +2505,7 @@
       "id": "R227",
       "owner": "v25-optimization",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure",
       "receipt": {
         "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json",
@@ -2622,7 +2640,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 123,
+  "revision": 124,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
