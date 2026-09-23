@@ -52,7 +52,7 @@
     "nominal_flops_ratio": 0.8561806219967638,
     "conservative_overhead_reserve_units": 10,
     "conservative_candidate_units": 331.4644291312434,
-    "conservative_flops_ratio": 0.8828138390617702,
+    "conservative_flops_ratio": 0.8828118016350895,
     "pass_rule": "conservative candidate ratio <=0.9 parent",
     "pass": true
   },
