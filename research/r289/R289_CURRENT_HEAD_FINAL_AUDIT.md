@@ -1,6 +1,6 @@
-# R289 — final independent current-head audit of PR #35
+# R289 - final independent current-head audit of PR #35
 
-Status: COMPLETE — all inherited false-PASS inputs reject on the current production analyzer.
+Status: COMPLETE - all inherited false-PASS inputs reject on the current production analyzer.
 Owner: `preflight-current-head-final-audit`
 Run ID: `R289-pr35-current-head-final-audit-20260923`
 
