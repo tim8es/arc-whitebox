@@ -1,0 +1,62 @@
+{
+  "schema": "arc.whitebox.r251.parent_gate_runtime_blocker.v1",
+  "run_id": "R251-global-accuracy-full-history-method-20260923",
+  "stage": "UNCHANGED_PARENT_PREREQUISITE",
+  "disposition": "INCONCLUSIVE_STOP_BEFORE_PARENT",
+  "parent_executed": false,
+  "candidate_estimator_constructed": false,
+  "candidate_falsifier_executed": false,
+  "public_actions_executed": false,
+  "required_runtime": {
+    "python": "3.11.16 (R209 development provenance)",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1"
+  },
+  "observed_runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "flopscope": null,
+    "whestbench": null,
+    "python3_11_available": false
+  },
+  "official_wheels": {
+    "flopscope": {
+      "filename": "flopscope-0.12.1-py3-none-any.whl",
+      "sha256": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582",
+      "source_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+      "pypi": "https://pypi.org/project/flopscope/0.12.1/"
+    },
+    "whestbench": {
+      "filename": "whestbench-0.16.1-py3-none-any.whl",
+      "sha256": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e",
+      "source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+      "pypi": "https://pypi.org/project/whestbench/0.16.1/"
+    },
+    "numpy": {
+      "filename": "numpy-2.4.6-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "a7830bab239b79cda9c08c2da014761cafb48da6150e1da17ac06283f43b6089",
+      "pypi": "https://pypi.org/project/numpy/2.4.6/"
+    }
+  },
+  "install_attempt": {
+    "command": "python -m pip install --target /mnt/data/r251_runtime/site --no-deps https://files.pythonhosted.org/.../flopscope-0.12.1-py3-none-any.whl",
+    "result": "FAILED_BEFORE_INSTALL",
+    "exact_error_class": "pip NewConnectionError / urllib3 HTTPSConnectionPool",
+    "exact_error_excerpt": "Failed to establish a new connection: [Errno -3] Temporary failure in name resolution",
+    "retries_exhausted": true,
+    "files_installed": false
+  },
+  "frozen_fixture": {
+    "manifest": "research/r251/R251_FIXTURE_MANIFEST.json",
+    "dense_concat_sha256": "3b94abf468e6d829c5caf55096cbb13946a3ed042a92815eb718c5c8c501ff1a",
+    "exact_mean_truth_sha256": "8e326c2c124ac70b41afb64ada24317430bb18c0a459428044094b1d954b0876"
+  },
+  "frozen_candidate": {
+    "spec": "research/r251/R251_GFNP_SPEC.json",
+    "id": "V25-GFNP-GAUSSIAN-FIXED-POINT-NULL-PROJECTION",
+    "estimator_file_created": false
+  },
+  "stop_rule_applied": "The frozen protocol requires the unchanged production-shape parent gate before candidate construction. Exact pinned runtime could not be established locally; Actions/fallback runtime/retry are not permitted for this gate. Stop INCONCLUSIVE without scientific interpretation.",
+  "prohibited_actions_performed": false
+}
