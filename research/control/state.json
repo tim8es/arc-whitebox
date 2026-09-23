@@ -4039,6 +4039,22 @@
         "run_id": "R265-theory-screen-20260923"
       },
       "revision": 301
+    },
+    {
+      "revision": 302,
+      "action": "finish",
+      "job": "R263",
+      "owner": "leaderboard-refresh-arc",
+      "payload": {
+        "run_id": "R263-leaderboard-refresh-20260923",
+        "status": "COMPLETE",
+        "reason": "Fresh read-only official Phase-2 leaderboard/rules audit completed. Visible leader remains J2W at displayed adjusted score 2.1e-9; Phase-2 submissions close 2026-10-17 23:59 UTC. Official metric and mean-over-MLP aggregation match R209 V25, but the evaluated split does not: R209 is public mini:all-100 development, while current online visible Phase-2 scoring is 50 public MLPs with 50 sealed for final full-100 evaluation. Therefore R209 vs visible leaderboard is NOT_COMPARABLE; no numeric gap or rank/place is claimed. No estimator/Actions/paid/private/holdout/full/submission/leaderboard/canonical mutation occurred.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
+          "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73"
+        }
+      },
+      "at": "2026-09-23T12:10:18.589Z"
     }
   ],
   "jobs": [
@@ -6368,7 +6384,16 @@
           "code_commit": "fbb17a40760fc6630fda08f1d87533b298917324",
           "command": "read-only desk audit of official AIcrowd/ARC Phase-2 leaderboard/rules plus existing R209 evidence; no estimator/Actions/private/holdout/full/submission",
           "run_id": "R263-leaderboard-refresh-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R263-leaderboard-refresh-20260923",
+            "status": "COMPLETE",
+            "reason": "Fresh read-only official Phase-2 leaderboard/rules audit completed. Visible leader remains J2W at displayed adjusted score 2.1e-9; Phase-2 submissions close 2026-10-17 23:59 UTC. Official metric and mean-over-MLP aggregation match R209 V25, but the evaluated split does not: R209 is public mini:all-100 development, while current online visible Phase-2 scoring is 50 public MLPs with 50 sealed for final full-100 evaluation. Therefore R209 vs visible leaderboard is NOT_COMPARABLE; no numeric gap or rank/place is claimed. No estimator/Actions/paid/private/holdout/full/submission/leaderboard/canonical mutation occurred.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
+              "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73"
+            }
+          }
         }
       ],
       "deliverable": "Update the last verified leaderboard audit (R241) using only official AIcrowd/ARC primary sources. Record access time in UTC and Moscow time, visible Phase-2 standings/metric/deadline, source URLs and the strongest displayed score. Compare with R209 V25 mini-100 only if the official metric, split and aggregation are demonstrably aligned; otherwise state precisely why rank is UNKNOWN/NOT_COMPARABLE. Save an append-only report and receipt with source snapshots/hashes and commit, then finish R263. No estimator run, Actions, paid compute, private/holdout/full data, submission or leaderboard mutation.",
@@ -6377,8 +6402,13 @@
       "id": "R263",
       "owner": "leaderboard-refresh-arc",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Refresh the official Phase-2 leaderboard snapshot"
+      "status": "COMPLETE",
+      "title": "Refresh the official Phase-2 leaderboard snapshot",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
+        "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73"
+      },
+      "reason": "Fresh read-only official Phase-2 leaderboard/rules audit completed. Visible leader remains J2W at displayed adjusted score 2.1e-9; Phase-2 submissions close 2026-10-17 23:59 UTC. Official metric and mean-over-MLP aggregation match R209 V25, but the evaluated split does not: R209 is public mini:all-100 development, while current online visible Phase-2 scoring is 50 public MLPs with 50 sealed for final full-100 evaluation. Therefore R209 vs visible leaderboard is NOT_COMPARABLE; no numeric gap or rank/place is claimed. No estimator/Actions/paid/private/holdout/full/submission/leaderboard/canonical mutation occurred."
     },
     {
       "assigned_owner": "leader-method-forensics",
@@ -6468,7 +6498,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 301,
+  "revision": 302,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
