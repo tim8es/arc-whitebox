@@ -2025,6 +2025,23 @@
         "status": "INCONCLUSIVE"
       },
       "revision": 156
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T00:59:22.647725+00:00",
+      "job": "R238",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "global-accuracy-research",
+        "deliverable": "Read the full immutable experiment ledger, AGENTS/RESEARCH_PROCESS, and R227/R231/R232 receipts. Choose exactly one genuinely untested estimator family targeting aggregate raw-MSE improvement, not tail-only tuning. Explicitly exclude DRRE/Richardson from R232 and every rejected descendant already listed in R232/R233/R227. Before any candidate run, freeze math, source identities, exact-small target-free truth/falsifier, production FLOP bound, and GO/NO-GO. Because R232 failed in the first high-rank V25 C_pre SymmetryError before producing an MSE, prove the unmodified pinned V25 parent executes on the proposed fixture as a prerequisite inside the same single free Actions run; if that base-executability gate fails, stop terminal INCONCLUSIVE without candidate execution and do not resize/rescue the fixture. If base and falsifier/cost gates pass, at most one candidate falsifier and at most one bounded same-panel mini-100, only when authorized by the frozen gates. Preserve canonical V25; no paid compute, holdout/private data, submission, or repeat of R232 DRRE. Save all protocols, artifacts, hashes, per-row evidence when applicable, receipt, and queue finish.",
+        "depends_on": [
+          "R231"
+        ],
+        "hypothesis_id": "GLOBAL-ACCURACY-POST-DRRE-EXECUTION-FAILURE",
+        "priority": 1,
+        "title": "Find a distinct global-accuracy method after the DRRE execution no-go"
+      },
+      "revision": 157
     }
   ],
   "jobs": [
@@ -3284,10 +3301,24 @@
       "priority": 1,
       "status": "RUNNING",
       "title": "Harden R218 postflight verifier using R236 findings"
+    },
+    {
+      "assigned_owner": "global-accuracy-research",
+      "attempts": [],
+      "deliverable": "Read the full immutable experiment ledger, AGENTS/RESEARCH_PROCESS, and R227/R231/R232 receipts. Choose exactly one genuinely untested estimator family targeting aggregate raw-MSE improvement, not tail-only tuning. Explicitly exclude DRRE/Richardson from R232 and every rejected descendant already listed in R232/R233/R227. Before any candidate run, freeze math, source identities, exact-small target-free truth/falsifier, production FLOP bound, and GO/NO-GO. Because R232 failed in the first high-rank V25 C_pre SymmetryError before producing an MSE, prove the unmodified pinned V25 parent executes on the proposed fixture as a prerequisite inside the same single free Actions run; if that base-executability gate fails, stop terminal INCONCLUSIVE without candidate execution and do not resize/rescue the fixture. If base and falsifier/cost gates pass, at most one candidate falsifier and at most one bounded same-panel mini-100, only when authorized by the frozen gates. Preserve canonical V25; no paid compute, holdout/private data, submission, or repeat of R232 DRRE. Save all protocols, artifacts, hashes, per-row evidence when applicable, receipt, and queue finish.",
+      "depends_on": [
+        "R231"
+      ],
+      "hypothesis_id": "GLOBAL-ACCURACY-POST-DRRE-EXECUTION-FAILURE",
+      "id": "R238",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Find a distinct global-accuracy method after the DRRE execution no-go"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 156,
+  "revision": 157,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
