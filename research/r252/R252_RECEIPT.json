@@ -1,7 +1,7 @@
 {
   "candidate_constructed": false,
   "candidate_id": "V25-D21-CWG",
-  "conclusion": "The sole authorized standard public-repository Actions workflow stopped before any scientific step because of a version-reporting assertion bug after exact package wheel hashes had passed. No repair/retry is allowed; R252 is terminal INFRA_ERROR and makes no scientific claim about V25-D21-CWG.",
+  "conclusion": "The sole authorized standard public-repository Actions workflow stopped before any scientific step because of a version-reporting assertion bug after exact package wheel hashes had passed. Later same-attempt control commits froze a different CFSP4 method/fixture after dispatch, creating protocol ambiguity; no second workflow exists and none is permitted. R252 is terminal INFRA_ERROR and makes no scientific claim.",
   "frozen_fixture": {
     "depth": 16,
     "executed_in_workflow": false,
@@ -39,10 +39,10 @@
     "workflow_trigger_commit": "c00cf0b98016c6fa81c203a6613ce811f585f0c2"
   },
   "report": {
-    "blob": "d1af57b89bff3647e41bd96f3974caf1d40bf24c",
-    "commit": "758d669654fa5816f8a18c15e049029e9bd2faed",
     "path": "research/r252/R252_REPORT.md",
-    "sha256": "983f70272a710e6bd8b11f5401d80dcdafd59991cf89ffee71982fe5da543a1a"
+    "commit": "45998760467aef87f43e84706d9b9d0e0a6cb988",
+    "blob": "67097840e2ee35848377767d31fff6e06426a573",
+    "sha256": "693f41097a04f396cceec0e3dd7b99a5224e191a8db9b35cb2bc9ff932134e5a"
   },
   "run_id": "R252-one-shot-actions-global-accuracy-20260923",
   "safety": {
@@ -84,5 +84,18 @@
     "pinned_wheels_manifest_sha256": "c46ce7622f09008b4ab5de09437ce1d608076a1667184ec7e317f9fda6b73f5c",
     "runtime_versions_sha256": "b3b81e2c024683276fe6ff697cb8f98890bcbb559a30001201bbb2591d66c8a5",
     "workflow_receipt_sha256": "37e6ddd91136c280c60375490885cba35f824372c3add845c5c85e4ac9a4e63a"
+  },
+  "protocol_ambiguity": {
+    "detected": true,
+    "queue_revision_unchanged": 240,
+    "second_actions_workflow_detected": false,
+    "later_control_commits": [
+      "f46c9c8d49c129c29d4e74df1cfa778d10af3465",
+      "4fc054bf8fb0c087a7edeb32f73bd1f54f2656f8",
+      "e3e82a3542d414296eac3c8aa1636f7c4fb3638c",
+      "63a2f49313364dcae7f0a975bf0773800b0553f2"
+    ],
+    "later_method": "CFSP4",
+    "disposition": "Do not execute the later method/fixture: the sole authorized R252 workflow has already been consumed and R252 permits no second method or retry."
   }
 }
