@@ -6096,10 +6096,31 @@
         "R260"
       ],
       "assigned_owner": "r260-independent-audit-e178-guard",
-      "owner": null,
-      "status": "QUEUED",
-      "attempts": [],
-      "deliverable": "Independently read the frozen R260 protocol plus its committed report/receipt. Verify report/receipt identity, source/runtime/fixture/artifact hash claims from available evidence; independently recompute parent/candidate final and all-layer MSE ratios and evaluate every frozen target-free gate. Reconcile workflow success with the scientific rejection and verify validation/public mini-100 was skipped. Produce an isolated R262 audit report and receipt with evidence links, exact calculations, hashes and any discrepancy; then finish this queue job. No reruns, Actions, R209/public/holdout/private/full data, paid resources, method proposals/tuning, submission, leaderboard/canonical changes, or edits to R260 artifacts. If repository write is unavailable, return the precise blocker and calculations without claiming completion."
+      "owner": "r260-independent-audit-e178-guard",
+      "status": "COMPLETE",
+      "attempts": [
+        {
+          "code_commit": "2e23849be9448f58edbca827e578e551013a8460",
+          "command": "read-only independent audit of committed R260 protocol/report/receipt/artifact manifest; recompute frozen target-free gates; no rerun/Actions/public data",
+          "run_id": "R262-r260-independent-audit-20260923",
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "Independent read-only audit verified R260 artifact integrity and recomputed every frozen target-free gate. Final ratio 1.0003220117801912 >0.95 and all-layer ratio 1.0000406003104108 >0.98 are the only failures; 13 improved layers, max degradation 1.0003220117801912, FLOP ratio 1.0, residual 0.31171112699985315 <=0.3453375111489872, finite/shape/symmetry/source gates pass. GitHub workflow success is consistent with preserved terminal evidence while science is SCIENTIFIC_REJECT_TARGET_FREE. Validation/R209 identity/public mini-100 were skipped as required. No rerun or prohibited access.",
+            "receipt": {
+              "sha256": "753ab8f90c42fb5c6f6748de723877e6a2e5e17ac4f23a23e63b579f1e187402",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/d6c29031c8c7c751602ffe34e8eff538d237137a/research/r262/R262_RECEIPT.json"
+            },
+            "run_id": "R262-r260-independent-audit-20260923",
+            "status": "COMPLETE"
+          }
+        }
+      ],
+      "deliverable": "Independently read the frozen R260 protocol plus its committed report/receipt. Verify report/receipt identity, source/runtime/fixture/artifact hash claims from available evidence; independently recompute parent/candidate final and all-layer MSE ratios and evaluate every frozen target-free gate. Reconcile workflow success with the scientific rejection and verify validation/public mini-100 was skipped. Produce an isolated R262 audit report and receipt with evidence links, exact calculations, hashes and any discrepancy; then finish this queue job. No reruns, Actions, R209/public/holdout/private/full data, paid resources, method proposals/tuning, submission, leaderboard/canonical changes, or edits to R260 artifacts. If repository write is unavailable, return the precise blocker and calculations without claiming completion.",
+      "reason": "Independent read-only audit verified R260 artifact integrity and recomputed every frozen target-free gate. Final ratio 1.0003220117801912 >0.95 and all-layer ratio 1.0000406003104108 >0.98 are the only failures; 13 improved layers, max degradation 1.0003220117801912, FLOP ratio 1.0, residual 0.31171112699985315 <=0.3453375111489872, finite/shape/symmetry/source gates pass. GitHub workflow success is consistent with preserved terminal evidence while science is SCIENTIFIC_REJECT_TARGET_FREE. Validation/R209 identity/public mini-100 were skipped as required. No rerun or prohibited access.",
+      "receipt": {
+        "sha256": "753ab8f90c42fb5c6f6748de723877e6a2e5e17ac4f23a23e63b579f1e187402",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/d6c29031c8c7c751602ffe34e8eff538d237137a/research/r262/R262_RECEIPT.json"
+      }
     }
   ],
   "policy_version": "research-process-v2",
