@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "id": "R287",
+  "run_id": "R287-free-runner-audit-20260923",
+  "owner": "phase2-free-runner-audit",
+  "status": "WAITING_INPUT",
+  "verdict": "PUBLIC_STANDARD_RUNNER_COMPUTE_IS_ZERO_COST_BUT_TOTAL_DURABLE_CAPTURE_COST_NOT_PROVEN",
+  "branch": "research/r287-free-runner-audit-20260923",
+  "protocol": {
+    "commit": "50761f8373c8a5340e19ba2c0422b4aae721863e",
+    "path": "research/r287/R287_PROTOCOL.md",
+    "git_blob_sha1": "5aafbbf0af8eb067c939ac2e2c21d8eb618ddf9f",
+    "sha256": "b203141e18116716d119c4ce268f4f3880fca3362fe64dc6e08726ce6706c887"
+  },
+  "report": {
+    "commit": "dc56fe509f37e8f2e4a7774610142f7763148b9f",
+    "path": "research/r287/R287_REPORT.md",
+    "git_blob_sha1": "42f7057a9bb31c66605d998889ab76aca63eca05",
+    "sha256": "08a6aee9c4a28edc0b18a740ef4ecf80ef653b3ad6887277af05e8c9f0682edc"
+  },
+  "project_inputs": {
+    "r278_receipt_commit": "83dfbe710cad5fbb1cab6e5b6fce0ccd06d47966",
+    "r278_receipt_blob_sha1": "1568273d596bd2510c8a3c3520db6da18d2918b0",
+    "r282_receipt_commit": "4575900a2f963904fe24c70427b0d1182b97163a",
+    "r282_receipt_blob_sha1": "48a29e486405693a993fcc429a3fd9c80d28da5e"
+  },
+  "repository_facts": {
+    "repository": "tim8es/arc-whitebox",
+    "visibility": "public",
+    "private": false,
+    "r209": {
+      "actions_run_id": 35544406064,
+      "head_sha": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+      "workflow_blob_sha1": "4dea7107d9c7677659898e661b6ac5c306c68f7b",
+      "job_id": 106167659234,
+      "job_label": "ubuntu-latest",
+      "runner_group_name": "GitHub Actions",
+      "runner_name": "GitHub Actions 1000004666",
+      "timeout_minutes": 330,
+      "observed_start": "2026-09-20T23:22:09Z",
+      "observed_end": "2026-09-21T00:26:31Z",
+      "python_setup": "actions/setup-python@v5 python-version 3.11",
+      "observed_python": "3.11.16",
+      "whestbench": "0.16.1",
+      "flopscope": "0.12.1+np2.4.6",
+      "numpy": "2.4.6",
+      "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+      "split": "mini",
+      "streaming": true,
+      "n_mlps": 100,
+      "runner_mode": "local"
+    },
+    "r223": {
+      "actions_run_id": 35810427656,
+      "head_sha": "09efbb920313850a4727bd34db9088a46227ce5f",
+      "workflow_blob_sha1": "d24e3f63e8ce447188868846e9b3e4ef755b395e",
+      "job_id": 107020553482,
+      "job_label": "ubuntu-24.04",
+      "runner_group_name": "GitHub Actions",
+      "runner_name": "GitHub Actions 1000005130",
+      "timeout_minutes": 100,
+      "observed_start": "2026-09-23T02:27:32Z",
+      "observed_end": "2026-09-23T03:26:19Z",
+      "explicit_packages": [
+        "numpy==2.4.6",
+        "whestbench==0.16.1",
+        "flopscope==0.12.1"
+      ],
+      "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+      "split": "mini",
+      "streaming": true,
+      "n_mlps": 100,
+      "runner_mode": "local"
+    }
+  },
+  "official_github_sources": [
+    {
+      "title": "GitHub Actions billing",
+      "url": "https://docs.github.com/en/billing/concepts/product-billing/github-actions",
+      "finding": "Standard GitHub-hosted runners are free for public repositories; larger runners are charged; artifact storage has plan-dependent included allowance and billed overage."
+    },
+    {
+      "title": "GitHub-hosted runners reference",
+      "url": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+      "finding": "Public standard ubuntu-latest/ubuntu-24.04: 4 CPU, 16 GB RAM, 14 GB SSD; use is free and unlimited on public repositories."
+    },
+    {
+      "title": "Workflow syntax",
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+      "finding": "jobs.<job_id>.timeout-minutes defaults to 360 minutes; runner execution limit can cap earlier."
+    },
+    {
+      "title": "Product usage included with each plan",
+      "url": "https://docs.github.com/en/billing/reference/product-usage-included",
+      "finding": "Actions artifact storage allowance is plan-dependent and separate from public standard-runner minute pricing."
+    }
+  ],
+  "resource_assessment": {
+    "public_standard_runner_compute_incremental_cost_usd": 0,
+    "runner_cpu": 4,
+    "runner_ram_gb": 16,
+    "runner_ssd_gb": 14,
+    "whest_participant_memory_limit_mb": 8192,
+    "whest_predict_wall_limit_s": 120,
+    "whest_residual_wall_limit_s": 0.4,
+    "capture_residual_only_raw_bytes": 409600,
+    "capture_prediction_plus_target_raw_bytes": 819200,
+    "feasibility": "SUPPORTED by documented runner resources and successful same-panel historical runs"
+  },
+  "missing_input": {
+    "exact_fact": "Immediately before execution, prove that owner tim8es has at least 1 MiB of remaining included shared GitHub Actions artifact/GitHub Packages storage allowance, with no metered storage overage already active for that pool.",
+    "why_needed": "Public standard-runner minutes are free, but durable Actions artifact storage is subject to plan/account allowance and possible overage billing or blocking. Public repository metadata does not expose the current account-wide storage billing state.",
+    "acceptable_evidence": "Current GitHub billing/usage dashboard evidence showing remaining included shared Actions artifact/GitHub Packages storage >= 1 MiB. No payment-method details are required."
+  },
+  "preflight_if_resolved": {
+    "runner_label": "ubuntu-24.04 standard GitHub-hosted",
+    "python": "3.11 via actions/setup-python@v5",
+    "numpy": "2.4.6",
+    "whestbench": "0.16.1",
+    "flopscope": "0.12.1",
+    "v25_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "dataset": "public v2-phase2 mini, streaming, 100 networks",
+    "runner_mode": "local",
+    "capture_seam": "WhestBench evaluate_estimator after failure-zeroing and pred_np/final_pred/final_target binding, before final_layer_mse aggregation",
+    "authorized_to_execute": false
+  },
+  "accounting": {
+    "actions_triggered": 0,
+    "workflow_edits": 0,
+    "packages_installed": 0,
+    "datasets_downloaded": 0,
+    "paid_resources_started": 0,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false
+  }
+}
