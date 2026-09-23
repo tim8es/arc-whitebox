@@ -1,0 +1,100 @@
+{
+  "schema": "arc.whitebox.r237.terminal_receipt.v1",
+  "job": "R237",
+  "hypothesis_id": "R218-R234-VERIFIER-HARDENING",
+  "owner": "verifier-hardening",
+  "run_id": "R237-r234-verifier-hardening-20260923",
+  "status": "COMPLETE",
+  "verdict": "PASS",
+  "conclusion": "R237 closes the seven R236 verifier-hardening defects at the tooling level. A coordinator-performed fresh offline unittest run used the exact current research/control-v2 verifier and test file bodies materialized at their expected relative paths in an isolated local workspace. git hash-object matched the current Git blobs exactly; all seven named D1-D7 synthetic fail-closed tests passed with exit 0 and OK. This is not a full-checkout execution claim and is not an R218 scientific or causal verdict. R220 remains the authoritative independent postflight.",
+  "queue": {
+    "start_revision": 154,
+    "start_code_commit": "ea6ef5ba92713e0cd9c7b22b550fb7f859bf7d45",
+    "observed_pre_receipt_revision": 161,
+    "observed_pre_receipt_head": "446b592ed1ad0056a9bd6a27667dcc715b5329b5"
+  },
+  "hardened_artifacts": {
+    "verifier": {
+      "path": "research/r234/r234_verify_r218.py",
+      "commit": "9e260d25d2f4ead1cbba1845de07e13aa6d7b9b2",
+      "git_blob": "c5bdb49977550ff682b73c151807d9aeb8d18e98",
+      "sha256": "d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c"
+    },
+    "checklist": {
+      "path": "research/r234/R234_VERIFIER_CHECKLIST.json",
+      "commit": "0309c6c1c6aa0905cbfbcc4e6fa9f01b69e45302",
+      "git_blob": "a17bdb292273049b292a52163dc1ee1fed7f7064",
+      "sha256": "f811564789b439f5b5df9ed72df577f5a51748d8e8432cf7b4c85399ce2b475a"
+    },
+    "regression_suite": {
+      "path": "research/r237/test_r234_verifier_hardening.py",
+      "commit": "a1b7179a011eed858a8a14edeffa33073ba695eb",
+      "git_blob": "6e31aa9e48f55e6bbe23dc83f5e819b509096d72",
+      "sha256": "f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b"
+    },
+    "earlier_regression_record": {
+      "path": "research/r237/R237_SYNTHETIC_REGRESSION_RESULT.json",
+      "commit": "546176a78f02e3459ba1edd4270fbbce5017ba76",
+      "git_blob": "c2ee228539c537ef2ecae182262c4c634ab58c94",
+      "sha256": "65046b2149749bb595d4f61eb4de245fcecd3f68079be039b2791ee625d9e9a3"
+    },
+    "report": {
+      "path": "research/r237/R237_HARDENING_REPORT.md",
+      "commit": "65c0f83ba0b40658c72aec4379073dbdac639f1b",
+      "git_blob": "9428b54d39ba050e8732ec804b30ae256262d114",
+      "sha256": "35e29e5f9d58ca5f847c261aef1dd510bd7359dd7f528cada70c3dcebebdf82c"
+    }
+  },
+  "fresh_regression": {
+    "evidence_source": "coordinator_independent_fresh_regression",
+    "full_checkout_claimed": false,
+    "method": "Exact current research/control-v2 GitHub file bodies for the hardened verifier and regression test were materialized in the exact expected relative paths in an isolated local workspace. The suite imports only that verifier plus Python stdlib and creates only temporary synthetic fixtures.",
+    "git_hash_object_verified": {
+      "research/r234/r234_verify_r218.py": "c5bdb49977550ff682b73c151807d9aeb8d18e98",
+      "research/r237/test_r234_verifier_hardening.py": "6e31aa9e48f55e6bbe23dc83f5e819b509096d72"
+    },
+    "sha256_verified": {
+      "research/r234/r234_verify_r218.py": "d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c",
+      "research/r237/test_r234_verifier_hardening.py": "f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b"
+    },
+    "exact_command": "python -m unittest test_r234_verifier_hardening.py -v",
+    "exit_code": 0,
+    "result": "OK",
+    "tests_run": 7,
+    "elapsed_s": 0.091,
+    "named_tests": [
+      "test_d1_attempt2_rejected_even_when_matching",
+      "test_d2_artifact_and_source_binding_fail_closed",
+      "test_d3_exact_panel_and_prelaunch_pins",
+      "test_d4_manifest_must_be_complete_and_nonempty",
+      "test_d5_exact_preflight_keys_and_versions",
+      "test_d6_dataset_path_and_max_threads",
+      "test_d7_full_mandatory_telemetry"
+    ],
+    "cleanup": "Temporary files and pycache removed; coordinator reported clean workspace after the run."
+  },
+  "r236_defect_closure": {
+    "R236-D1": true,
+    "R236-D2": true,
+    "R236-D3": true,
+    "R236-D4": true,
+    "R236-D5": true,
+    "R236-D6": true,
+    "R236-D7": true
+  },
+  "scientific_contract_preserved": {
+    "r217_thresholds_changed": false,
+    "r218_workflow_or_executor_changed_by_r237": false,
+    "r220_authority_preserved": true
+  },
+  "scope": {
+    "r218_artifact_inspected_or_used": false,
+    "actions_triggered": false,
+    "estimator_or_science_run": false,
+    "paid_compute": false,
+    "private_or_holdout": false,
+    "submission": false,
+    "canonical_code_touched": false,
+    "full_checkout_execution_claimed": false
+  }
+}
