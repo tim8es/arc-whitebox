@@ -1,0 +1,115 @@
+{
+  "schema": "arc.whitebox.r238.actions_evidence.v1",
+  "job": "R238",
+  "run_id": "R238-v25-rsrf-exact-small-20260923",
+  "family": "RSRF-V25 recycled-start range finder",
+  "queue_start": {
+    "revision": 166,
+    "commit": "0dc2f1ca005765e11d9af4594a07c4d48171adfb",
+    "frozen_code_commit": "12c595f3dec66e4616f76ca688b1f5339b5bdf24"
+  },
+  "actions": {
+    "run_id": 35808859764,
+    "job_id": 107015629065,
+    "run_attempt": 1,
+    "workflow": ".github/workflows/r238-rsrf.yml",
+    "workflow_name": "R238 RSRF exact-small and conditional mini100",
+    "head_sha": "37610aeb8f93ab6975d4fef996ebf6f20a81367f",
+    "conclusion": "success",
+    "artifact": {
+      "id": 10728444220,
+      "name": "r238-v25-rsrf",
+      "github_digest": "sha256:761783a92ac967758dbcee9a6d9fadb146280d89fa6f782cfcbc9a927083ef2a",
+      "independently_downloaded_zip_sha256": "761783a92ac967758dbcee9a6d9fadb146280d89fa6f782cfcbc9a927083ef2a",
+      "size_in_bytes": 38735
+    }
+  },
+  "runtime": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1+np2.4.6",
+    "whestbench": "0.16.1",
+    "github_run_id": "35808859764",
+    "github_run_attempt": "1",
+    "github_job": "rsrf",
+    "github_sha": "37610aeb8f93ab6975d4fef996ebf6f20a81367f",
+    "runner_name": "GitHub Actions 1000005118",
+    "runner_os": "Linux",
+    "runner_arch": "X64"
+  },
+  "frozen_git_blobs_observed_in_run": {
+    "script": "17b6cd77afeca3387bb6f06c3577194f1dae6f0c",
+    "protocol": "757e3f67741b9e05b709a247eae5c9a921d787e6",
+    "cost": "69d97130cf2fc4f819df4abc4dab07569fde2803",
+    "novelty": "17ad024f8458963c743c818ce677e14dd2eccc7a",
+    "workflow": "adae8a650a0f2c9c05c0b4354258e55f6e90a7db",
+    "trigger": "e241dd4b7b161d81bd2b76cf3e59bbcabb7b623f"
+  },
+  "pinned_parent": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "downloaded_sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "prerequisite_result": {
+    "decision": "R238_BASE_INCONCLUSIVE",
+    "falsifier_exit_code": 20,
+    "base_executable": false,
+    "candidate_constructed": false,
+    "candidate_file_exists": false,
+    "candidate_executed": false,
+    "validate_executed": false,
+    "mini100_authorized": false,
+    "mini100_executed": false,
+    "mini100_report_exists": false,
+    "failing_stage": "first unchanged pinned V25 synthetic fixture",
+    "error_type": "SymmetryError",
+    "error_message": "Tensor not symmetric along axes (0, 1): max deviation = nan (tolerance: atol=1e-06, rtol=1e-05).",
+    "traceback_terminal_site": "r238-estimator-v25.py:929 C = flops.as_symmetric(C, symmetry=(0, 1))",
+    "fixture": {
+      "width": 12,
+      "depth": 10,
+      "seeds": [
+        238120,
+        238121,
+        238122,
+        238123
+      ],
+      "age_old": 4,
+      "r_old": 8,
+      "age_old2": 7,
+      "r_old2": 6,
+      "qpass2": 2,
+      "first_scale": 0.5,
+      "later_scale_factor": 0.65
+    }
+  },
+  "artifact_internal_sha256_manifest": {
+    "r238-estimator-v25.py": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+    "r238-rsrf-falsifier.json": "e69e6058ac898366fb24ad5d1e833aecd02e6e5ad6a5ad72295326c5effa3208",
+    "r238_evidence/actions-disposition.json": "d556eaf15f6a33634e754d144f82f705550037c6cc7c1f40e31413cb29704575",
+    "r238_evidence/falsifier.exit-code.txt": "5378796307535df3ec8d8b15a2e2dc5641419c3d3060cfe32238c0fa973f7aa3",
+    "r238_evidence/falsifier.stdout.log": "4ed8dbdf7c42171008ab417b69166d0608da6541ec8ad458941bfa5bfb83351b",
+    "r238_evidence/frozen-files.txt": "880afa5ed81030adc056fef91bde1aeec1b46baaf5d5631356f0a5d2ad331993",
+    "r238_evidence/runtime.txt": "ab149626b5e498b766857d076a24476fe399f6375a6431c98f64d386931f1db4",
+    "r238_evidence/v25-git-blob.txt": "c24ca56bc582abe4a94f50afba297d877539cf9e92fe742870017b7ae69f3339",
+    "r238_evidence/v25-sha256.txt": "15d89da0383aae06a936837d78d6c689330f2d501147554fc6c1f36162a04684"
+  },
+  "protocol_disposition": {
+    "terminal_status": "INCONCLUSIVE",
+    "reason": "Frozen base-executability prerequisite failed before candidate construction. Protocol forbids resizing, seed/scale changes, candidate execution, retry/rescue, or mini100.",
+    "rsrf_accuracy_measured": false,
+    "rsrf_scientifically_falsified": false
+  },
+  "scope": {
+    "actions_runs_used": 1,
+    "retries_or_reruns": 0,
+    "paid_compute": false,
+    "benchmark_or_public_data_used": false,
+    "mini100": false,
+    "private_or_holdout": false,
+    "submission": false,
+    "canonical_v25_edit": false,
+    "candidate_constructed": false
+  }
+}
