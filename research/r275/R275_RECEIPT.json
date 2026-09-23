@@ -1,0 +1,70 @@
+{
+  "schema": "arc.whitebox.r275.workflow-preflight-integration-receipt.v1",
+  "job": "R275",
+  "run_id": "R275-main-preflight-integration-20260923",
+  "status": "COMPLETE",
+  "owner": "workflow-preflight-integration",
+  "main_base": "b5b988f8ec49a5ec473d59fcbfdfaf8c4350c850",
+  "source_r274_tip": "0c27b505c120a336116bdee8c5dcad2210aa3f73",
+  "source_branch_divergence": {
+    "ahead_by": 426,
+    "behind_by": 1,
+    "direct_pr_rejected": true
+  },
+  "integration": {
+    "branch": "research/r275-workflow-preflight-integration-20260923",
+    "implementation_commit": "128e412673f2d495b999625a4fcc8b171c50691d",
+    "pre_evidence_diff_ahead_by": 1,
+    "pre_evidence_diff_behind_by": 0,
+    "pre_evidence_files": [
+      "docs/workflow-preflight.md",
+      "scripts/arc_workflow_preflight.py",
+      "tests/test_arc_workflow_preflight.py"
+    ]
+  },
+  "files": {
+    "scripts/arc_workflow_preflight.py": {
+      "git_blob_sha1": "a654fa1e15bfa8f9c2bfaa39073ecdf044a74a12",
+      "sha256": "8d002d9f98ce717d2f84757bb2efea9f5b2c4660fb097b230bcc199d6c310cdf"
+    },
+    "tests/test_arc_workflow_preflight.py": {
+      "git_blob_sha1": "a5c4cc5801d30af3ffcdcb9b53c0d5cc932593fb",
+      "sha256": "041102f9622deb96eb2fd886aca771de0dd0553ad6efbf626ea6d39a3449a5e8"
+    },
+    "docs/workflow-preflight.md": {
+      "git_blob_sha1": "81d37a3759c0fc67b6bc8705e05a74e01877d4bd",
+      "sha256": "1b1118309f616c7e0d977d2c0da3e6073b99de2fc16459f7d338cef1d9c2a3ba"
+    }
+  },
+  "offline_test": {
+    "command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
+    "return_code": 0,
+    "tests": 10,
+    "passed": 10,
+    "verbose_output_sha256": "49d62a48aa3753688382c26f6b51a6b55f7e70d5e0e5853f5d8c49a778f92f98"
+  },
+  "pull_request": {
+    "number": 35,
+    "url": "https://github.com/tim8es/arc-whitebox/pull/35",
+    "base": "main",
+    "head": "research/r275-workflow-preflight-integration-20260923",
+    "state": "open",
+    "mergeable": true,
+    "merged": false
+  },
+  "report": {
+    "path": "research/r275/R275_WORKFLOW_PREFLIGHT_INTEGRATION_REPORT.md",
+    "git_blob_sha1": "85faa56670745b4f43b427d338b738085e0a3a9e",
+    "sha256": "0331cb3cc68f0a72ce0fba22995469b2b28bf5c36fb01bf6be07a16959219a4d"
+  },
+  "safety": {
+    "actions_triggered": false,
+    "fixture_executed": false,
+    "estimator_or_science_run": false,
+    "competition_data_accessed": false,
+    "budget_spent": false,
+    "workflows_changed": false,
+    "historical_evidence_changed": false,
+    "pr_merged": false
+  }
+}
