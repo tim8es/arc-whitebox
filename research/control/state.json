@@ -3780,6 +3780,14 @@
         "reason": "Bind unstarted R262 to an existing ARC verifier session; the queued task has no claim, start, branch or attempt, so no execution is being transferred."
       },
       "revision": 281
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T10:02:00+00:00",
+      "job": "R261",
+      "owner": "orthogonal-method-research-guard-responsive",
+      "payload": {},
+      "revision": 282
     }
   ],
   "jobs": [
@@ -6038,9 +6046,9 @@
       ],
       "hypothesis_id": "R261-ORTHOGONAL-V25-ACCURACY-METHOD",
       "id": "R261",
-      "owner": null,
+      "owner": "orthogonal-method-research-guard-responsive",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Find one orthogonal accuracy-first V25 method after BPK2K rejection"
     },
     {
@@ -6059,7 +6067,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 281,
+  "revision": 282,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
