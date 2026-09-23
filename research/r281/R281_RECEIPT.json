@@ -1,0 +1,67 @@
+{
+  "schema": "arc.whitebox.r281.workflow-preflight-integration-fix-receipt.v1",
+  "job": "R281",
+  "owner": "workflow-preflight-integration-fix",
+  "run_id": "R281-pr35-preflight-failclosed-fix-20260923",
+  "status": "COMPLETE",
+  "dependency": {
+    "job": "R277",
+    "status": "COMPLETE",
+    "receipt_commit": "2ffac1885bdd2424b5e3dbf8519cd8159e23962e",
+    "receipt_sha256": "97b2446a66bb00a38837f5cf0a5083ce2b61dcca668ca03969f0321743b86058"
+  },
+  "pull_request": {
+    "number": 35,
+    "url": "https://github.com/tim8es/arc-whitebox/pull/35",
+    "branch": "research/r275-workflow-preflight-integration-20260923",
+    "state": "open",
+    "merged": false
+  },
+  "commits": {
+    "regression_tests_first": "65634dfedfa3d46be785d2b07ba3997b292be16e",
+    "production_fix": "886cebdface628cc49165f145c8afcd0476ff4ff",
+    "regression_fixture_correction": "579c2d3c38c1489b8d9287d4fed63486002624a6"
+  },
+  "closed_findings": {
+    "F1": "fetch-depth: 0 must be under the real actions/checkout step's with: block",
+    "F2": "clear/pop/direct unknown methods and helper mutation of tracked manifest fail closed",
+    "F3": "json.loads is bound to exact runtime-manifest read_text path and unsupported accesses such as get() fail closed"
+  },
+  "files": {
+    "scripts/arc_workflow_preflight.py": {
+      "git_blob_sha1": "f9b01ba259cd57bd1692fbfc904585b05f561000",
+      "sha256": "1f73f557d943dc6b4fb4d42b2a5935f1d627082b292d8465f5018794dc8a38ce"
+    },
+    "tests/test_arc_workflow_preflight.py": {
+      "git_blob_sha1": "c94c6e7521a612d496f544eec19c863bc05bbb73"
+    },
+    "docs/workflow-preflight.md": {
+      "git_blob_sha1": "d2dcd678cc97ac1ed33f41b78ea128c90055d815"
+    }
+  },
+  "offline_verification": {
+    "exact_production_blob_verified": true,
+    "compatibility_passed": 10,
+    "compatibility_total": 10,
+    "r281_regressions_passed": 6,
+    "r281_regressions_total": 6,
+    "total_passed": 16,
+    "total": 16,
+    "contract_output_sha256": "d8b5331ce601706d133f7133b97a376d736350df9517b2d166bd76ec296cb726",
+    "actions": false
+  },
+  "note": "Initial local regression execution exposed literal escaped-newline defects in three new synthetic mutation fixtures; corrected append-only in commit 579c2d3c38c1489b8d9287d4fed63486002624a6 before final verification.",
+  "safety": {
+    "actions_triggered": false,
+    "pr_merged": false,
+    "workflows_changed": false,
+    "fixture_executed": false,
+    "estimator_or_science_run": false,
+    "paid_resources_used": false,
+    "private_or_competition_data_accessed": false,
+    "historical_receipts_rewritten": false
+  },
+  "report": {
+    "path": "research/r281/R281_WORKFLOW_PREFLIGHT_INTEGRATION_FIX_REPORT.md"
+  }
+}
