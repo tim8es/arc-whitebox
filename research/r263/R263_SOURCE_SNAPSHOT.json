@@ -1,0 +1,216 @@
+{
+  "schema": "arc.whitebox.r263.source_snapshot.v1",
+  "task": "R263",
+  "owner": "leaderboard-refresh-arc",
+  "checked_at": {
+    "utc": "2026-09-23T12:05:34Z",
+    "moscow": "2026-09-23T15:05:34+03:00"
+  },
+  "scope": "Read-only public primary-source audit; no estimator, benchmark, Actions, paid compute, private/holdout/full data access, submission, leaderboard or canonical mutation.",
+  "sources": {
+    "leaderboard": {
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+      "source": "official AIcrowd rendered leaderboard, crawled today",
+      "columns": [
+        "rank",
+        "participant",
+        "adjusted_score",
+        "final_layer_mse",
+        "compute_utilisation",
+        "mlps_failed",
+        "entries",
+        "last_submission"
+      ],
+      "standings": [
+        {
+          "rank": "01",
+          "participant": "J2W",
+          "adjusted_score": "0.0000000021",
+          "final_layer_mse": "0.0000000164",
+          "compute_utilisation": "0.1306572576",
+          "mlps_failed": "0.0000000000",
+          "entries": 312,
+          "last_submission": "Sat, 19 Sep 2026 00:05"
+        },
+        {
+          "rank": "02",
+          "participant": "suliman_tadros",
+          "adjusted_score": "0.0000000022",
+          "final_layer_mse": "0.0000000163",
+          "compute_utilisation": "0.1375978303",
+          "mlps_failed": "0.0000000000",
+          "entries": 45,
+          "last_submission": "Wed, 23 Sep 2026 01:42"
+        },
+        {
+          "rank": "03",
+          "participant": "marius_binner",
+          "adjusted_score": "0.0000000023",
+          "final_layer_mse": "0.0000000156",
+          "compute_utilisation": "0.1474118618",
+          "mlps_failed": "0.0000000000",
+          "entries": 158,
+          "last_submission": "Wed, 23 Sep 2026 06:46"
+        },
+        {
+          "rank": "04",
+          "participant": "a_s6",
+          "adjusted_score": "0.0000000025",
+          "final_layer_mse": "0.0000000200",
+          "compute_utilisation": "0.1258033415",
+          "mlps_failed": "0.0000000000",
+          "entries": 106,
+          "last_submission": "Mon, 21 Sep 2026 13:55"
+        },
+        {
+          "rank": "05",
+          "participant": "Puffi",
+          "adjusted_score": "0.0000000028",
+          "final_layer_mse": "0.0000000194",
+          "compute_utilisation": "0.1456939183",
+          "mlps_failed": "0.0000000000",
+          "entries": 78,
+          "last_submission": "Tue, 8 Sep 2026 14:09"
+        },
+        {
+          "rank": "05",
+          "participant": "reds",
+          "adjusted_score": "0.0000000028",
+          "final_layer_mse": "0.0000000173",
+          "compute_utilisation": "0.1623309082",
+          "mlps_failed": "0.0000000000",
+          "entries": 59,
+          "last_submission": "Mon, 21 Sep 2026 08:47"
+        },
+        {
+          "rank": "07",
+          "participant": "oqaris",
+          "adjusted_score": "0.0000000031",
+          "final_layer_mse": "0.0000000215",
+          "compute_utilisation": "0.1459882369",
+          "mlps_failed": "0.0000000000",
+          "entries": 93,
+          "last_submission": "Mon, 14 Sep 2026 05:56"
+        },
+        {
+          "rank": "07",
+          "participant": "ben3",
+          "adjusted_score": "0.0000000031",
+          "final_layer_mse": "0.0000000168",
+          "compute_utilisation": "0.1838821710",
+          "mlps_failed": "0.0000000000",
+          "entries": 23,
+          "last_submission": "Tue, 22 Sep 2026 19:38"
+        },
+        {
+          "rank": "09",
+          "participant": "mliston",
+          "adjusted_score": "0.0000000032",
+          "final_layer_mse": "0.0000000181",
+          "compute_utilisation": "0.1756230281",
+          "mlps_failed": "0.0000000000",
+          "entries": 39,
+          "last_submission": "Wed, 23 Sep 2026 10:13"
+        },
+        {
+          "rank": "10",
+          "participant": "Camaro",
+          "adjusted_score": "0.0000000033",
+          "final_layer_mse": "0.0000000190",
+          "compute_utilisation": "0.1754820884",
+          "mlps_failed": "0.0000000000",
+          "entries": 68,
+          "last_submission": "Mon, 21 Sep 2026 09:26"
+        }
+      ],
+      "strongest_displayed_score": "0.0000000021",
+      "strongest_displayed_participant": "J2W",
+      "leader_submission_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331539"
+    },
+    "phase2_announcement": {
+      "url": "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197",
+      "organizer": "mohanty / AIcrowd",
+      "deadline_utc": "2026-10-17T23:59:00Z",
+      "phase2_shape": "1024 wide x 16 deep",
+      "flop_budget_per_mlp": 2199023255552,
+      "wall_time_s": 120,
+      "residual_wall_time_s": 0.4,
+      "dataset_revision": "v2-phase2"
+    },
+    "scoring_model": {
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/concepts/scoring-model.md",
+      "git_blob_sha1": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e",
+      "metric": "adjusted_final_layer_score",
+      "aggregation": "mean across MLPs of final_layer_mse_m * max(0.1, C_m/B), with multiplier 1.0 on failed MLPs",
+      "phase2_compute": "C_m = F_m",
+      "lower_is_better": true
+    },
+    "rounds": {
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/reference/rounds.md",
+      "git_blob_sha1": "2aaf38a54b5d6ed83ce2604870dcac59e62cee59",
+      "current_round": "v2-phase2",
+      "shape": [
+        16,
+        1024
+      ],
+      "flop_budget_per_mlp": 2199023255552,
+      "graded_suite_size_documented": 100
+    },
+    "public_mini_docs": {
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/getting-started/stage-3-run-local.md",
+      "git_blob_sha1": "2bc23fd23210f513a9bfab4917dde6f4ef18c125",
+      "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+      "split": "mini",
+      "public_mini_mlps": 100
+    },
+    "online_phase2_panel_evidence": {
+      "url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+      "submission_id": 329251,
+      "round": "Phase 2",
+      "public_scored_mlps": 50,
+      "private_sealed_mlps": 50,
+      "final_full_test_mlps": 100,
+      "statement": "Current Phase-2 submission details expose public-split scores over 50 MLPs; the other 50 are sealed and the full 100-MLP score is the final result."
+    },
+    "r209_v25": {
+      "normalized_result_url": "https://github.com/tim8es/arc-whitebox/blob/research/control-v2/research/results/R209-v25-mini100.json",
+      "normalized_result_git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/e1f6dd6a6bc351b8253e255fef424b1931b37de3/research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json",
+      "receipt_sha256": "5c87e8868ce3221b01979f7360079960e8991629926a7623037662f3c4511740",
+      "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+      "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+      "split": "mini:all-100",
+      "stage": "development",
+      "networks": 100,
+      "failures": 0,
+      "adjusted_final_layer_score": 8.170397440117225e-9
+    },
+    "prior_r241": {
+      "checked_at_utc": "2026-09-23T03:31:44Z",
+      "report_sha256": "62bc2866abca422fdad2eff0b414b4ab89c32bc0534e5098e9b943c24c34baee",
+      "receipt_sha256": "7562d0846b9f7b342a9eb132e76c3fc633acb78204bb1d43ed43a51d61de3c04",
+      "prior_leader": "J2W",
+      "prior_leader_score_display": "0.0000000021",
+      "prior_leader_entries": 310
+    }
+  },
+  "delta_vs_r241": {
+    "leader_and_displayed_score_unchanged": true,
+    "leader_entries": {
+      "from": 310,
+      "to": 312
+    },
+    "note": "Leaderboard activity continued; the top displayed participant and rounded score did not change."
+  },
+  "comparability": {
+    "metric_match": true,
+    "aggregation_rule_match": true,
+    "split_match": false,
+    "r209_panel": "public development mini:all-100",
+    "visible_online_phase2_panel": "50 public MLPs; 50 additional MLPs sealed for final full-100 evaluation",
+    "decision": "NOT_COMPARABLE",
+    "numeric_gap_computed": false,
+    "rank_claimed": false,
+    "reason": "The task permits comparison only when split, metric and aggregation all match. The metric and mean-over-MLPs aggregation match, but the evaluated panel does not: R209 is the public 100-MLP Mini development split, while current online Phase-2 visible scores are on 50 public MLPs and the remaining 50 are sealed for final evaluation."
+  }
+}
