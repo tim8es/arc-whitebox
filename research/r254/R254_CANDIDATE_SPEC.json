@@ -1,65 +1,30 @@
 {
   "schema": "arc.r254.candidate_spec.v1",
   "status": "FROZEN_PRE_WORKFLOW",
-  "candidate_id": "V25-BR13-BALANCED-RIDER-REDUCTION",
-  "family": "fixed balanced binary reduction of the existing V25 13-feature mean-rider dot product",
-  "parent": {
-    "repository": "504aldo/whest-p2-cumulant-k3",
-    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
-    "path": "estimators/estimator_v25.py",
-    "git_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
-    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
-  },
-  "source_anchor": "delta = feats @ beta_rows[li]",
+  "candidate_id": "V25-BPK2K-BALANCED-CUMULANT-REDUCTION",
+  "family": "fixed balanced binary reduction of V25 pK-to-K moment-cumulant contribution sums",
+  "parent": {"repository":"504aldo/whest-p2-cumulant-k3","commit":"18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45","path":"estimators/estimator_v25.py","git_blob_sha1":"195373a110215256b759d7c172ba8c923c62e5cc","sha256":"c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"},
+  "source_anchor": "K = {} / for out_part, entries in PK2K_TABLE.items() / sequential acc2 contribution sum",
   "source_anchor_count_verified_pretrigger": 1,
   "formula": {
-    "parent": "sum_{k=0}^{12} feats[:,k]*beta_rows[li,k] through fnp matmul reduction",
-    "candidate": "same 13 products reduced by a frozen balanced binary tree: six adjacent pairs, three pair-pairs, then two final levels including term12",
+    "parent": "for each PK2K_TABLE output partition, sequentially accumulate the same contribution list",
+    "candidate": "construct the identical ordered contribution list and reduce it by a deterministic adjacent-pair balanced binary tree",
     "real_arithmetic_equivalence": true,
     "coefficient_change": false,
-    "feature_change": false,
-    "state_change_other_than_float32_rounding": false,
+    "moment_or_cumulant_term_change": false,
+    "rank_or_source_change": false,
     "network_specific_rule": false,
-    "target_fit": false
+    "target_fit": false,
+    "scope": "all nonlinear layers; K1/K2/K3/K4 and mixed K11/K21/K22 conversion"
   },
-  "operation_count": {
-    "per_output_parent_semantic": {"multiplies": 13, "adds": 12},
-    "per_output_candidate": {"multiplies": 13, "adds": 12},
-    "candidate_new_transcendentals": 0,
-    "candidate_new_divisions": 0,
-    "candidate_new_math_star": 0,
-    "static_flop_direction": "equal; measured FlopScope candidate<=parent remains mandatory"
-  },
-  "fixture": {
-    "manifest": "research/r254/R254_FIXTURE_MANIFEST.json",
-    "id": "R254-MONOMIAL-PATH-254001",
-    "seed": 254001,
-    "weights_concat_sha256": "199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0",
-    "truth_sha256": "58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d"
-  },
+  "operation_count": {"contribution_products":"identical to parent","sum_additions":"m-1 for m terms, identical to parent","candidate_new_transcendentals":0,"candidate_new_divisions":0,"candidate_new_math_star":0,"static_flop_direction":"equal; measured FlopScope candidate<=parent remains mandatory"},
+  "fixture": {"manifest":"research/r254/R254_FIXTURE_MANIFEST.json","id":"R254-MONOMIAL-PATH-254001","seed":254001,"weights_concat_sha256":"199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0","truth_sha256":"58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d"},
   "runtime": {
-    "runner": "ubuntu-24.04",
-    "python": "3.11.16",
-    "numpy": {"version": "2.4.6", "wheel_sha256": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93"},
-    "flopscope": {"version": "0.12.1", "wheel_sha256": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582"},
-    "whestbench": {"version": "0.16.1", "wheel_sha256": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"}
+    "runner":"ubuntu-24.04","python":"3.11.16",
+    "numpy":{"version":"2.4.6","wheel_sha256":"89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93"},
+    "flopscope":{"version":"0.12.1","wheel_sha256":"cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582"},
+    "whestbench":{"version":"0.16.1","wheel_sha256":"1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"}
   },
-  "target_free_gates": {
-    "parent_must_pass_first": true,
-    "final_mse_ratio_max": 0.95,
-    "all_layer_mse_ratio_max": 0.98,
-    "improved_layers_min": 12,
-    "max_per_layer_degradation_ratio": 1.10,
-    "candidate_flops_le_parent": true,
-    "candidate_residual_time_le_1p05_parent_plus_s": 0.005
-  },
-  "public_gates": {
-    "panel": "exact R209 mini-100",
-    "adjusted_score_max": 7.761877568111363e-9,
-    "improved_rows_min": 55,
-    "paired_gain_gt_2_descriptive_se": true,
-    "mean_flops_max": 806303721965,
-    "max_residual_wall_time_s_strict": 0.4,
-    "failures": 0
-  }
+  "target_free_gates":{"parent_must_pass_first":true,"final_mse_ratio_max":0.95,"all_layer_mse_ratio_max":0.98,"improved_layers_min":12,"max_per_layer_degradation_ratio":1.10,"candidate_flops_le_parent":true,"candidate_residual_time_le_1p05_parent_plus_s":0.005},
+  "public_gates":{"panel":"exact R209 mini-100","adjusted_score_max":7.761877568111363e-9,"improved_rows_min":55,"paired_gain_gt_2_descriptive_se":true,"mean_flops_max":806303721965,"max_residual_wall_time_s_strict":0.4,"failures":0}
 }
