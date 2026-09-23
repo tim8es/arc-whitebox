@@ -5031,6 +5031,22 @@
         "command": "python -m unittest tests/test_arc_workflow_preflight.py -v"
       },
       "at": "2026-09-23T15:52:05.237Z"
+    },
+    {
+      "revision": 377,
+      "action": "finish",
+      "job": "R282",
+      "owner": "r209-artifact-recovery",
+      "payload": {
+        "run_id": "R282-r209-artifact-recovery-20260923",
+        "status": "COMPLETE",
+        "reason": "Read-only recovery search completed across existing R209 run 35544406064 artifacts, committed R209 normalized/archive evidence, the R224 fingerprint artifact referenced by R209, and R223 attempt-6 artifact/committed result. No recoverable V25 prediction/target/residual vectors exist. Actual R209 V25 artifact is 10617855153 (e136-followup-v25, 106494 bytes, ZIP SHA256 820bf936...); R278 had mislabeled 10617318650, which is V29. Direct V25 report inspection shows 100 scalar per-MLP rows with maximum numeric vector length 16 and no 1024/16384 arrays. R224 stores target SHA256 fingerprints only, not target bytes. R223 attempt 6 stores copied parent report, candidate report and scalar paired result, again no raw vectors; attempts 1-5 had zero panel invocations. Exact gap is per-network V25 final prediction float32[1024] plus exact final target float32[1024], or equivalent signed residual. Minimal future capture is WhestBench 0.16.1 evaluate_estimator after failure zeroing and pred_np/final_pred/final_target binding, before MSE aggregation. No Actions/reruns, benchmark dataset download, paid/private/holdout/full, submission, leaderboard/canonical edits.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/4575900a2f963904fe24c70427b0d1182b97163a/research/r282/R282_RECEIPT.json",
+          "sha256": "07b3c78ac5ecb95827a48bba8443ab990bc9294f08dc7a6553a82f0bc3a9aab6"
+        }
+      },
+      "at": "2026-09-23T15:54:57.630Z"
     }
   ],
   "jobs": [
@@ -8017,7 +8033,16 @@
           "code_commit": "c2ff82968849c4672a8d58db490452e4327a09c7",
           "command": "inspect only existing public GitHub Actions artifacts/logs and committed R209/R223 material for retained V25 prediction/target/residual tensors; no Actions/reruns/dataset downloads",
           "run_id": "R282-r209-artifact-recovery-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R282-r209-artifact-recovery-20260923",
+            "status": "COMPLETE",
+            "reason": "Read-only recovery search completed across existing R209 run 35544406064 artifacts, committed R209 normalized/archive evidence, the R224 fingerprint artifact referenced by R209, and R223 attempt-6 artifact/committed result. No recoverable V25 prediction/target/residual vectors exist. Actual R209 V25 artifact is 10617855153 (e136-followup-v25, 106494 bytes, ZIP SHA256 820bf936...); R278 had mislabeled 10617318650, which is V29. Direct V25 report inspection shows 100 scalar per-MLP rows with maximum numeric vector length 16 and no 1024/16384 arrays. R224 stores target SHA256 fingerprints only, not target bytes. R223 attempt 6 stores copied parent report, candidate report and scalar paired result, again no raw vectors; attempts 1-5 had zero panel invocations. Exact gap is per-network V25 final prediction float32[1024] plus exact final target float32[1024], or equivalent signed residual. Minimal future capture is WhestBench 0.16.1 evaluate_estimator after failure zeroing and pred_np/final_pred/final_target binding, before MSE aggregation. No Actions/reruns, benchmark dataset download, paid/private/holdout/full, submission, leaderboard/canonical edits.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/4575900a2f963904fe24c70427b0d1182b97163a/research/r282/R282_RECEIPT.json",
+              "sha256": "07b3c78ac5ecb95827a48bba8443ab990bc9294f08dc7a6553a82f0bc3a9aab6"
+            }
+          }
         }
       ],
       "deliverable": "Follow R278's blocker: inspect only already-existing R209/R223 and related public GitHub Actions run artifacts/logs plus committed results for raw per-example predictions, targets, truth vectors or equivalent residual tensors needed for the R278 diagnostic. No new Actions, reruns, dataset downloads, paid resources, or private/holdout/full access. Verify provenance, run IDs, sizes, hashes and whether arrays correspond to the pinned V25/evaluator; if absent, state exact gap and a minimal future capture path. Produce append-only report/receipt and finish R282.",
@@ -8028,8 +8053,13 @@
       "id": "R282",
       "owner": "r209-artifact-recovery",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Search existing ARC run artifacts for retained V25 residual vectors"
+      "status": "COMPLETE",
+      "title": "Search existing ARC run artifacts for retained V25 residual vectors",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/4575900a2f963904fe24c70427b0d1182b97163a/research/r282/R282_RECEIPT.json",
+        "sha256": "07b3c78ac5ecb95827a48bba8443ab990bc9294f08dc7a6553a82f0bc3a9aab6"
+      },
+      "reason": "Read-only recovery search completed across existing R209 run 35544406064 artifacts, committed R209 normalized/archive evidence, the R224 fingerprint artifact referenced by R209, and R223 attempt-6 artifact/committed result. No recoverable V25 prediction/target/residual vectors exist. Actual R209 V25 artifact is 10617855153 (e136-followup-v25, 106494 bytes, ZIP SHA256 820bf936...); R278 had mislabeled 10617318650, which is V29. Direct V25 report inspection shows 100 scalar per-MLP rows with maximum numeric vector length 16 and no 1024/16384 arrays. R224 stores target SHA256 fingerprints only, not target bytes. R223 attempt 6 stores copied parent report, candidate report and scalar paired result, again no raw vectors; attempts 1-5 had zero panel invocations. Exact gap is per-network V25 final prediction float32[1024] plus exact final target float32[1024], or equivalent signed residual. Minimal future capture is WhestBench 0.16.1 evaluate_estimator after failure zeroing and pred_np/final_pred/final_target binding, before MSE aggregation. No Actions/reruns, benchmark dataset download, paid/private/holdout/full, submission, leaderboard/canonical edits."
     },
     {
       "assigned_owner": "preflight-adversarial-audit",
@@ -8073,7 +8103,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 376,
+  "revision": 377,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
