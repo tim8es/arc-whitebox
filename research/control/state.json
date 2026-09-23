@@ -2009,6 +2009,22 @@
         "run_id": "R232-v25-drre-exact-small-attempt2-20260923"
       },
       "revision": 155
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T00:58:06.815215+00:00",
+      "job": "R232",
+      "owner": "global-accuracy-research",
+      "payload": {
+        "reason": "The sole frozen exact-small falsifier reached the candidate's first high-rank V25 prediction but stopped with flopscope.errors.SymmetryError in C_pre before a complete prediction, replay, exact truth, or any MSE ratio/gate comparison was produced. Attempt 1 was separately verified as infrastructure-only and skipped science. Under the frozen R232 protocol, any failed/unevaluable mandatory gate is terminal NO-GO and a second small run/rescue is forbidden. This is therefore INCONCLUSIVE with protocol disposition R232_TERMINAL_NO_GO_DRRE; it does not claim DRRE accuracy was measured or mathematically falsified. No mini-100, paid/holdout/private/submission, or canonical V25 change.",
+        "receipt": {
+          "sha256": "d4183c402f8c77165b1c268fc402dd67d1d7bb986105b5bcebee48d046db47fd",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/d7acd05ee8b8caa71e6463f0e8dab6eb17fb829b/research/r232/R232_TERMINAL_RECEIPT_ATTEMPT2.json"
+        },
+        "run_id": "R232-v25-drre-exact-small-attempt2-20260923",
+        "status": "INCONCLUSIVE"
+      },
+      "revision": 156
     }
   ],
   "jobs": [
@@ -3078,8 +3094,17 @@
         {
           "code_commit": "92094fec2f046596fd33e8d4b751ea37747cc8b0",
           "command": "After workflow-only bootstrap repair commit 92094fec2f046596fd33e8d4b751ea37747cc8b0, update the R232 execution trigger for attempt 2 and launch exactly one standard ubuntu-24.04 Actions run of the unchanged frozen command: python scripts/r232_drre_exact_small.py --v25 r232-estimator-v25.py --out r232-drre-falsifier.json. Scientific protocol, source, seeds, ranks, gamma, gates unchanged; attempt 1 was infra-only and skipped the falsifier.",
+          "completion": {
+            "reason": "The sole frozen exact-small falsifier reached the candidate's first high-rank V25 prediction but stopped with flopscope.errors.SymmetryError in C_pre before a complete prediction, replay, exact truth, or any MSE ratio/gate comparison was produced. Attempt 1 was separately verified as infrastructure-only and skipped science. Under the frozen R232 protocol, any failed/unevaluable mandatory gate is terminal NO-GO and a second small run/rescue is forbidden. This is therefore INCONCLUSIVE with protocol disposition R232_TERMINAL_NO_GO_DRRE; it does not claim DRRE accuracy was measured or mathematically falsified. No mini-100, paid/holdout/private/submission, or canonical V25 change.",
+            "receipt": {
+              "sha256": "d4183c402f8c77165b1c268fc402dd67d1d7bb986105b5bcebee48d046db47fd",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/d7acd05ee8b8caa71e6463f0e8dab6eb17fb829b/research/r232/R232_TERMINAL_RECEIPT_ATTEMPT2.json"
+            },
+            "run_id": "R232-v25-drre-exact-small-attempt2-20260923",
+            "status": "INCONCLUSIVE"
+          },
           "run_id": "R232-v25-drre-exact-small-attempt2-20260923",
-          "status": "RUNNING"
+          "status": "INCONCLUSIVE"
         }
       ],
       "deliverable": "Continue after R227's terminal pre-science NO-GO and R231's finding that the V25 error tail is weakly concentrated. Read the complete immutable experiment ledger, current AGENTS/RESEARCH_PROCESS, and R227/R231 receipts. Identify exactly one genuinely untested global-accuracy estimator family (not per-network tail tuning, second K4 regeneration, feed-local lambda, one-factor copula, CountSketch, response-aligned D21, Walsh-coset/serializer rescue, or any renamed rejected mechanism). Freeze a mathematical specification, exact-small target-free falsifier, full production FLOP bound, and measurable GO/NO-GO before any run. Run only the small falsifier on verified free/existing compute; allow at most one same-panel mini-100 only if falsifier and cost gates pass. Preserve V25; no paid compute, holdout, or submission. If no strict novelty/feasibility, save terminal NO-GO with exact reason.",
@@ -3090,12 +3115,12 @@
       "id": "R232",
       "owner": "global-accuracy-research",
       "priority": 1,
-      "reason": "Attempt 1 is verified INFRA_ERROR before the scientific falsifier: Actions failed at editable install of the ledger repo, and the frozen scientific step was skipped. The linked attempt-1 receipt hash has been corrected to the exact file hash. Repair only the workflow bootstrap by installing pinned Phase-2 runtime dependencies instead of pip install -e .; leave protocol, DRRE hypothesis, source blobs, seeds, and gates unchanged. Record a new attempt under the same R232 job; this is not a second scientific run, because none occurred in attempt 1.",
+      "reason": "The sole frozen exact-small falsifier reached the candidate's first high-rank V25 prediction but stopped with flopscope.errors.SymmetryError in C_pre before a complete prediction, replay, exact truth, or any MSE ratio/gate comparison was produced. Attempt 1 was separately verified as infrastructure-only and skipped science. Under the frozen R232 protocol, any failed/unevaluable mandatory gate is terminal NO-GO and a second small run/rescue is forbidden. This is therefore INCONCLUSIVE with protocol disposition R232_TERMINAL_NO_GO_DRRE; it does not claim DRRE accuracy was measured or mathematically falsified. No mini-100, paid/holdout/private/submission, or canonical V25 change.",
       "receipt": {
-        "sha256": "d5a478879ea577816be8cd6660ca5af8faf353d285c140672719a95f4d2ea166",
-        "url": "https://github.com/tim8es/arc-whitebox/blob/c5d2c3a925f250773eb8341dbfdbc5b1c4ef0407/research/r232/R232_INFRA_ERROR_RECEIPT_ATTEMPT1.json"
+        "sha256": "d4183c402f8c77165b1c268fc402dd67d1d7bb986105b5bcebee48d046db47fd",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/d7acd05ee8b8caa71e6463f0e8dab6eb17fb829b/research/r232/R232_TERMINAL_RECEIPT_ATTEMPT2.json"
       },
-      "status": "RUNNING",
+      "status": "INCONCLUSIVE",
       "title": "Find one novel global-accuracy estimator hypothesis"
     },
     {
@@ -3262,7 +3287,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 155,
+  "revision": 156,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
