@@ -2757,6 +2757,18 @@
       "owner": "official-rules-audit",
       "payload": {},
       "at": "2026-09-23T05:07:48.812Z"
+    },
+    {
+      "revision": 213,
+      "action": "start",
+      "job": "R245",
+      "owner": "official-rules-audit",
+      "payload": {
+        "run_id": "R245-r244-static-official-metering-audit-20260923",
+        "code_commit": "1e9053b4d2944c77530043592c652c8e61dfefcf",
+        "command": "read-only static audit of frozen R244 MP-R16 protocol/estimator/workflow against official Phase-2 allowed-code, scoring, and flopscope metering rules; inspect math.sqrt, scalar division, and numeric operations; no R244 artifact/output review or execution"
+      },
+      "at": "2026-09-23T05:08:06.657Z"
     }
   ],
   "jobs": [
@@ -4390,8 +4402,15 @@
       "title": "Independent static rules audit of R244 candidate and metered operations",
       "id": "R245",
       "owner": "official-rules-audit",
-      "status": "CLAIMED",
-      "attempts": []
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R245-r244-static-official-metering-audit-20260923",
+          "code_commit": "1e9053b4d2944c77530043592c652c8e61dfefcf",
+          "command": "read-only static audit of frozen R244 MP-R16 protocol/estimator/workflow against official Phase-2 allowed-code, scoring, and flopscope metering rules; inspect math.sqrt, scalar division, and numeric operations; no R244 artifact/output review or execution",
+          "status": "RUNNING"
+        }
+      ]
     },
     {
       "assigned_owner": "baseline-score-diagnostic",
@@ -4446,7 +4465,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 212,
+  "revision": 213,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
