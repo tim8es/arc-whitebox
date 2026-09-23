@@ -2925,6 +2925,23 @@
         "title": "Resolve official Phase-2 metering eligibility of Python scalar arithmetic"
       },
       "at": "2026-09-23 05:43:33+00:00"
+    },
+    {
+      "revision": 225,
+      "action": "finish",
+      "job": "R248",
+      "owner": "method-research-recovery",
+      "payload": {
+        "run_id": "R248-post-r247-distinct-method-research-20260923",
+        "status": "SCIENTIFIC_REJECT",
+        "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
+        "reason": "R248 DEVELOPMENT NO-GO before estimator/public measurement. Distinct candidate V25-KRON1-YOUNG-TRANSPORT passed frozen novelty/static-cost/source-contract gates (conservative FLOP ratio 0.886473932833993 <=0.9), but the target-free oracle rank-1 Kronecker transport falsifier failed decisively: exact-Kronecker control RRMS 4.812580056623063e-16 PASS; 8/8 finite deterministic realistic cases; mean transported A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Per protocol no estimator, validation, benchmark, public mini-100 or Actions was run. No R223/R244 candidate artifact/output read, paid/private/holdout/submission/leaderboard/canonical edit, retry or second mechanism.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/ba0140b50588194b0a24b5005e4ba0fd9d32a6cd/research/r248/R248_RECEIPT.json",
+          "sha256": "9430fd30c2e4baf587581681968136b9a1a69d9625cdeea6093070ef5f0068e5"
+        }
+      },
+      "at": "2026-09-23T05:49:54.862Z"
     }
   ],
   "jobs": [
@@ -4676,15 +4693,30 @@
       "title": "Find and test a distinct metered V25 FLOPs-reduction method after R247 rejection",
       "id": "R248",
       "owner": "method-research-recovery",
-      "status": "RUNNING",
+      "status": "SCIENTIFIC_REJECT",
       "attempts": [
         {
           "run_id": "R248-post-r247-distinct-method-research-20260923",
           "code_commit": "c32aeea0c0ae4e739b1b6f723fc7548ca63cdb24",
           "command": "protocol/history research only: read AGENTS/RESEARCH_PROCESS/history plus R209/R246/R247/R245 allowed evidence; select and freeze exactly one distinct network-agnostic V25 FLOPs-reduction method, exact R209 public mini-100 panel, target-free falsifier, metered-source compliance and scientific/cost/failure gates before any estimator/benchmark/Actions execution",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT",
+          "completion": {
+            "run_id": "R248-post-r247-distinct-method-research-20260923",
+            "status": "SCIENTIFIC_REJECT",
+            "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
+            "reason": "R248 DEVELOPMENT NO-GO before estimator/public measurement. Distinct candidate V25-KRON1-YOUNG-TRANSPORT passed frozen novelty/static-cost/source-contract gates (conservative FLOP ratio 0.886473932833993 <=0.9), but the target-free oracle rank-1 Kronecker transport falsifier failed decisively: exact-Kronecker control RRMS 4.812580056623063e-16 PASS; 8/8 finite deterministic realistic cases; mean transported A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Per protocol no estimator, validation, benchmark, public mini-100 or Actions was run. No R223/R244 candidate artifact/output read, paid/private/holdout/submission/leaderboard/canonical edit, retry or second mechanism.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/ba0140b50588194b0a24b5005e4ba0fd9d32a6cd/research/r248/R248_RECEIPT.json",
+              "sha256": "9430fd30c2e4baf587581681968136b9a1a69d9625cdeea6093070ef5f0068e5"
+            }
+          }
         }
-      ]
+      ],
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/ba0140b50588194b0a24b5005e4ba0fd9d32a6cd/research/r248/R248_RECEIPT.json",
+        "sha256": "9430fd30c2e4baf587581681968136b9a1a69d9625cdeea6093070ef5f0068e5"
+      },
+      "reason": "R248 DEVELOPMENT NO-GO before estimator/public measurement. Distinct candidate V25-KRON1-YOUNG-TRANSPORT passed frozen novelty/static-cost/source-contract gates (conservative FLOP ratio 0.886473932833993 <=0.9), but the target-free oracle rank-1 Kronecker transport falsifier failed decisively: exact-Kronecker control RRMS 4.812580056623063e-16 PASS; 8/8 finite deterministic realistic cases; mean transported A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Per protocol no estimator, validation, benchmark, public mini-100 or Actions was run. No R223/R244 candidate artifact/output read, paid/private/holdout/submission/leaderboard/canonical edit, retry or second mechanism."
     },
     {
       "assigned_owner": "phase2-scalar-compliance-research",
@@ -4702,7 +4734,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 224,
+  "revision": 225,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
