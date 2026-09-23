@@ -5290,6 +5290,14 @@
         "status": "COMPLETE"
       },
       "revision": 394
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T17:17:01.207Z",
+      "job": "R285",
+      "owner": "preflight-r283-remediation-responsive",
+      "payload": {},
+      "revision": 395
     }
   ],
   "jobs": [
@@ -8397,9 +8405,9 @@
       ],
       "hypothesis_id": "R283-PREFLIGHT-FAIL-CLOSED-REMEDIATION-20260923",
       "id": "R285",
-      "owner": null,
+      "owner": "preflight-r283-remediation-responsive",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Close the remaining R283 false-PASS classes in PR #35"
     },
     {
@@ -8512,7 +8520,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 394,
+  "revision": 395,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
