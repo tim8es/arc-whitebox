@@ -3265,6 +3265,27 @@
         }
       },
       "at": "2026-09-23T07:36:00+00:00"
+    },
+    {
+      "revision": 247,
+      "action": "enqueue",
+      "job": "R254",
+      "owner": "coordinator",
+      "payload": {
+        "title": "One-shot global-accuracy method with deterministic target-free truth",
+        "hypothesis_id": "R254-ONE-SHOT-GLOBAL-ACCURACY-NOVEL-METHOD",
+        "priority": 1,
+        "deliverable": "Select exactly one history-deduplicated global-accuracy hypothesis; freeze protocol/spec/source and deterministic production-shape target-free fixture before one standard ubuntu-24.04 Actions run. Run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; only on parent PASS run the frozen candidate and target-free exact-truth/cost/source gates; only if all pass may the same workflow run exact public R209 mini-100 with frozen score/improvement/SE/FLOP/residual gates. Pin Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 with official wheel hashes and corrected distribution-metadata version checks. No retry, paid/private/holdout, submission, leaderboard/canonical edits, R223/R244 outputs/artifacts, R252 workflow edits, per-network tuning or gate relaxation.",
+        "depends_on": [
+          "R231",
+          "R239",
+          "R245",
+          "R249",
+          "R253"
+        ],
+        "assigned_owner": "one-shot-accuracy-research"
+      },
+      "at": "2026-09-23T07:41:00+00:00"
     }
   ],
   "jobs": [
@@ -5229,10 +5250,28 @@
         "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json",
         "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244"
       }
+    },
+    {
+      "title": "One-shot global-accuracy method with deterministic target-free truth",
+      "hypothesis_id": "R254-ONE-SHOT-GLOBAL-ACCURACY-NOVEL-METHOD",
+      "priority": 1,
+      "deliverable": "Select exactly one history-deduplicated global-accuracy hypothesis; freeze protocol/spec/source and deterministic production-shape target-free fixture before one standard ubuntu-24.04 Actions run. Run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; only on parent PASS run the frozen candidate and target-free exact-truth/cost/source gates; only if all pass may the same workflow run exact public R209 mini-100 with frozen score/improvement/SE/FLOP/residual gates. Pin Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 with official wheel hashes and corrected distribution-metadata version checks. No retry, paid/private/holdout, submission, leaderboard/canonical edits, R223/R244 outputs/artifacts, R252 workflow edits, per-network tuning or gate relaxation.",
+      "depends_on": [
+        "R231",
+        "R239",
+        "R245",
+        "R249",
+        "R253"
+      ],
+      "assigned_owner": "one-shot-accuracy-research",
+      "id": "R254",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 246,
+  "revision": 247,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
