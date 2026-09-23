@@ -157,8 +157,9 @@ def main() -> int:
     for path in EXPECTED_OUTPUTS:
         require(path in text, f"output allowlist member absent from workflow: {path}")
     for broad in ("research/captures/r293/", "research/captures/", "research/"):
-        # Directory names may occur in mkdir/copy paths, but never as a git-add target.
-        require(f"git add {broad}" not in text, f"broad git add target forbidden: {broad}")
+        # Directory names may occur in mkdir/copy paths, but never as the complete git-add target.
+        pattern = re.compile(r"(?m)^\\s*git add\\s+" + re.escape(broad) + r"\\s*$")
+        require(pattern.search(text) is None, f"broad git add target forbidden: {broad}")
 
     print(json.dumps({
         "status": "PASS",
