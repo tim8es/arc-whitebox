@@ -4319,6 +4319,22 @@
         }
       },
       "revision": 322
+    },
+    {
+      "revision": 323,
+      "action": "finish",
+      "job": "R268",
+      "owner": "coordinator",
+      "payload": {
+        "run_id": "R268-r261-reconciliation-audit-20260923",
+        "status": "COMPLETE",
+        "reason": "R268 independently verified that R261's scientific NO-GO and current state projection agree with finish event revision 289; the original receipt/report blob mismatch and missing source/receipt fields in revisions 288-289 are accurately preserved in the append-only reconciliation note. Source commit dff3dd65... is reconstructed from R209, not present in the start event. Audit artifacts committed on the isolated R268 branch. Also synchronized STATUS.md: R265 is SCIENTIFIC_REJECT per state/event revision 305, not RUNNING. No science, Actions, data access, paid compute, or submission.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/c38830893baf4aa927c43e07e2e488f68b929644/research/r268/R268_RECEIPT.json",
+          "sha256": "8c2a17c58361a9c0a22f2686eb1ffba9fc133c950c3506a0aa5ccee2eabf9a3a"
+        }
+      },
+      "at": "2026-09-23T12:55:56+00:00"
     }
   ],
   "jobs": [
@@ -6823,7 +6839,16 @@
           "code_commit": "fe8472fb3d0d9b6da67d20558ef8e73d21443b4c",
           "command": "read-only independent audit of R261 queue events, original receipt/report blob mismatch and current control projection; create audit report/receipt",
           "run_id": "R268-r261-reconciliation-audit-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R268-r261-reconciliation-audit-20260923",
+            "status": "COMPLETE",
+            "reason": "R268 independently verified that R261's scientific NO-GO and current state projection agree with finish event revision 289; the original receipt/report blob mismatch and missing source/receipt fields in revisions 288-289 are accurately preserved in the append-only reconciliation note. Source commit dff3dd65... is reconstructed from R209, not present in the start event. Audit artifacts committed on the isolated R268 branch. Also synchronized STATUS.md: R265 is SCIENTIFIC_REJECT per state/event revision 305, not RUNNING. No science, Actions, data access, paid compute, or submission.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/c38830893baf4aa927c43e07e2e488f68b929644/research/r268/R268_RECEIPT.json",
+              "sha256": "8c2a17c58361a9c0a22f2686eb1ffba9fc133c950c3506a0aa5ccee2eabf9a3a"
+            }
+          }
         }
       ],
       "deliverable": "Read the append-only queue events through R261 finish, the original R261 report/receipt, the coordinator reconciliation note, and current state.json/STATUS. Independently verify receipt/report blob mismatch handling, source commit provenance, reconstructed attempt projection, and consistency of current job status with append-only history. Preserve original history; report any remaining discrepancy without editing R261 artifacts/state. Save an isolated audit report and receipt with hashes/commit and finish R268. No Actions, science, public/holdout, paid resources, submission, or leaderboard/canonical changes.",
@@ -6834,8 +6859,13 @@
       "id": "R268",
       "owner": "coordinator",
       "priority": 2,
-      "status": "RUNNING",
-      "title": "Independently verify the R261 control reconciliation"
+      "status": "COMPLETE",
+      "title": "Independently verify the R261 control reconciliation",
+      "reason": "R268 independently verified that R261's scientific NO-GO and current state projection agree with finish event revision 289; the original receipt/report blob mismatch and missing source/receipt fields in revisions 288-289 are accurately preserved in the append-only reconciliation note. Source commit dff3dd65... is reconstructed from R209, not present in the start event. Audit artifacts committed on the isolated R268 branch. Also synchronized STATUS.md: R265 is SCIENTIFIC_REJECT per state/event revision 305, not RUNNING. No science, Actions, data access, paid compute, or submission.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/c38830893baf4aa927c43e07e2e488f68b929644/research/r268/R268_RECEIPT.json",
+        "sha256": "8c2a17c58361a9c0a22f2686eb1ffba9fc133c950c3506a0aa5ccee2eabf9a3a"
+      }
     },
     {
       "assigned_owner": "multilevel-debiasing-scout",
@@ -6909,7 +6939,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 322,
+  "revision": 323,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
