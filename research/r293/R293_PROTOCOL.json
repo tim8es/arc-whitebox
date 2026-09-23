@@ -49,7 +49,10 @@
     "r294_patch_blob_sha1": "65abb2e2040e44a7965f5123acd17bb838891532",
     "r294_patch_sha256": "bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3",
     "r294_patched_scoring_blob_sha1": "8493b7ff28110fb13f467400b6895c56bd7550bb",
-    "active_integration_patch": "r294_patch_path"
+    "active_integration_patch": "r294_patch_path",
+    "r294_apply_checker_path": "scripts/r294_patch_apply_check.py",
+    "r294_apply_checker_blob_sha1": "547ec661b8cf0548ee080acca2f32f9eeef4537c",
+    "r294_apply_checker_sha256": "98479a811d8f36b6afb98ebc495a00b3a3727c438a90bea47e7b1cb69cef625d"
   },
   "meter": {
     "flopscope_source_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
