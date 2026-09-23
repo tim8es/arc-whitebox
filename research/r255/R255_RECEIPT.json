@@ -1,0 +1,144 @@
+{
+  "schema": "arc.whitebox.r255.receipt.v1",
+  "job": "R255",
+  "run_id": "R255-r254-independent-postflight-20260923",
+  "owner": "r254-independent-verifier",
+  "mode": "read-only/postflight",
+  "status": "COMPLETE",
+  "subject_job": "R254",
+  "verdict": "R254_CONFIRMED_INFRA_ERROR_SCIENCE_UNEVALUATED",
+  "conclusion": "Independent postflight confirms one GitHub Actions run/job with workflow conclusion success, but target-free subprocess exit 1 on BudgetContext.summary() string-vs-mapping mismatch before R254_TARGET_FREE_RESULT.json. Parent and candidate each executed once; persisted parent/candidate scientific measurements are 0/0. Validation, public identity, public mini-100 and public gates were skipped. R254 remains terminal INFRA_ERROR; no scientific numeric claim is recoverable from ephemeral process memory.",
+  "control": {
+    "assignment_revision": 252,
+    "claim_revision": 253,
+    "claim_commit": "b5887ca4a6a363513c2f4283f81502fb2b3cdd65",
+    "start_revision": 254,
+    "start_commit": "401e24e5d9e8704a4c58c08a51c59497b4a884e9",
+    "dependencies": {
+      "R249": "COMPLETE",
+      "R253": "COMPLETE"
+    }
+  },
+  "immutable_subject": {
+    "branch": "research/r254-balanced-rider-reduction-20260923",
+    "receipt_commit": "9a97e04bf0563e593c7fa9d6437410227d30dc1c",
+    "receipt_git_blob": "7a5fc131fa8221bf642225208a5a49ad972b4663",
+    "receipt_sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488",
+    "report_commit": "1930a284ace35fd14c8351aa21d4a15abaaa8191",
+    "report_git_blob": "24f4f0e9f68b137006383f5141e0e680ec492d0a",
+    "github_run_id": 35834163527,
+    "github_job_id": 107093511576,
+    "github_run_attempt": 1,
+    "workflow_head": "ff40219e132ce208428b7acfb1a03a79cd535be7",
+    "workflow_path": ".github/workflows/r254-one-shot.yml",
+    "workflow_blob": "649e7b9184e0d8521636fd1af23fb9e4359b3a64",
+    "artifact_id": 10737609819,
+    "artifact_name": "r254-one-shot-evidence",
+    "artifact_zip_sha256": "9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7"
+  },
+  "workflow_vs_research": {
+    "branch_actions_runs_observed": 1,
+    "github_workflow_conclusion": "success",
+    "github_job_conclusion": "success",
+    "target_free_subprocess_exit": 1,
+    "wrapper_behavior": "records subprocess failure/go=false then exits 0 so receipt/hash/artifact steps run",
+    "workflow_receipt_decision": "INFRA_ERROR_BEFORE_TARGET_FREE_RESULT",
+    "target_free_result_written": false,
+    "research_status": "INFRA_ERROR",
+    "scientific_status": "UNEVALUATED"
+  },
+  "type_mismatch": {
+    "harness_path": "research/r254/r254_one_shot.py",
+    "harness_blob": "52f1885fcb4fc3cfb99a0ad2fc6b8517187605d9",
+    "summary_capture_line": 78,
+    "failing_gate_line": 148,
+    "failing_expression": "p.get(\"budget_summary\", {}).get(\"residual_wall_time_s\", 0.0)",
+    "exception_type": "AttributeError",
+    "exception_message": "'str' object has no attribute 'get'",
+    "target_free_stderr_sha256": "f0cdc771a5aee2138284e809fbbc5c2e769698bd31ddda1907bafc0b50b2a386",
+    "flopscope_release_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+    "flopscope_budget_source_blob": "93349b139b3a08bdd67a7bc37b1b446c681c835c",
+    "contract": {
+      "summary_dict": "dict",
+      "summary": "str"
+    },
+    "classification": "harness telemetry/API type mismatch"
+  },
+  "frozen_source_hashes": {
+    "protocol_blob": "ad7a12dea1895d703af53dcef2828370bb4448da",
+    "candidate_spec_blob": "6bffbdfd113bba80cc72cd375cdc44138f9c0845",
+    "fixture_manifest_blob": "5a6eb7bbfc07bf9e6609ee6cfbb2b2ea9e17ebf8",
+    "novelty_formula_audit_blob": "16220bd884bc27a44f8e9fa3fc25a37d43d12312",
+    "fixture_generator_blob": "141466b6c4aae6cc61fe086860dc0766a08d6968",
+    "one_shot_harness_blob": "52f1885fcb4fc3cfb99a0ad2fc6b8517187605d9",
+    "workflow_blob": "649e7b9184e0d8521636fd1af23fb9e4359b3a64",
+    "parent_git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "parent_source_sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+    "generated_candidate_source_sha256": "55cc395d69309dcb13c38ae3b91032dd4b8d0d6b6caf5eb09f0dad03328723e0"
+  },
+  "fixture": {
+    "fixture_id": "R254-MONOMIAL-PATH-254001",
+    "seed": 254001,
+    "weights_concat_sha256": "199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0",
+    "truth_sha256": "58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d",
+    "runtime_manifest_sha256": "4c14e8b3907907c73d061a9d46575d0847971aa8fda3ef642826c7118b33e105",
+    "independent_replay_pass": true,
+    "all_16_layer_hashes_match_frozen_manifest": true
+  },
+  "artifact_integrity": {
+    "zip_digest_independently_matched": true,
+    "artifact_files": 16,
+    "hash_map_entries": 15,
+    "hash_map_mismatches": 0,
+    "workflow_receipt_sha256": "42fe988f6ce8f011d1f59e7ff4b582c94a0a554caf79dd2effcb50ad60bbb922",
+    "runtime_versions_sha256": "e9f9d943b5aa2ac563ce1c62fa685a99c482c1dc406e380709eb9fe8d835eda7",
+    "target_free_stdout_empty": true
+  },
+  "accounting": {
+    "parent_executions": 1,
+    "candidate_constructions": 1,
+    "candidate_executions": 1,
+    "persisted_parent_scientific_measurements": 0,
+    "persisted_candidate_scientific_measurements": 0,
+    "persisted_public_measurements": 0,
+    "persisted_parent_candidate_mse_ratio": null,
+    "persisted_parent_candidate_flop_ratio": null,
+    "persisted_target_free_gate_verdict": null,
+    "ephemeral_numeric_values_promoted": false
+  },
+  "downstream": {
+    "validation_executed": false,
+    "public_identity_executed": false,
+    "public_mini100_executed": false,
+    "public_gate_executed": false,
+    "github_steps_9_to_12": "skipped",
+    "corresponding_artifact_files_present": false
+  },
+  "report": {
+    "path": "research/r255/R255_R254_INDEPENDENT_POSTFLIGHT.md",
+    "commit": "9f37db99c81409d2bcbd64e5f5b3295f2ab7f81f",
+    "git_blob": "b9c8c9ba4a5819cefb9381169aecc0f96cd71331",
+    "sha256": "789adb2bb4d2b2fb8d810009d7d62b3e424641ae548db88d63d5897e1a32bfe4"
+  },
+  "source_links": {
+    "run": "https://github.com/tim8es/arc-whitebox/actions/runs/35834163527",
+    "job": "https://github.com/tim8es/arc-whitebox/actions/runs/35834163527/job/107093511576",
+    "artifact": "https://github.com/tim8es/arc-whitebox/actions/runs/35834163527/artifacts/10737609819",
+    "workflow": "https://github.com/tim8es/arc-whitebox/blob/ff40219e132ce208428b7acfb1a03a79cd535be7/.github/workflows/r254-one-shot.yml",
+    "harness": "https://github.com/tim8es/arc-whitebox/blob/ff40219e132ce208428b7acfb1a03a79cd535be7/research/r254/r254_one_shot.py",
+    "fixture_manifest": "https://github.com/tim8es/arc-whitebox/blob/ff40219e132ce208428b7acfb1a03a79cd535be7/research/r254/R254_FIXTURE_MANIFEST.json",
+    "r254_receipt": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json",
+    "flopscope_release": "https://github.com/AIcrowd/flopscope/commit/b599f015b0bc005b1edb6d7a1b10e0814675e693",
+    "flopscope_budget_source": "https://github.com/AIcrowd/flopscope/blob/b599f015b0bc005b1edb6d7a1b10e0814675e693/flopscope-client/src/flopscope/_budget.py"
+  },
+  "prohibited_actions": {
+    "r254_modified": false,
+    "r256_modified": false,
+    "actions_triggered": false,
+    "workflow_or_science_run": false,
+    "public_or_mini100_run": false,
+    "private_or_holdout": false,
+    "leaderboard_or_submission": false,
+    "canonical_files_modified": false
+  }
+}
