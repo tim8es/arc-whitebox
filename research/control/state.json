@@ -2631,6 +2631,23 @@
         "title": "Independent static rules audit of R244 candidate and metered operations"
       },
       "revision": 203
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T04:33:30Z",
+      "job": "R242",
+      "owner": "independent-v25-audit",
+      "payload": {
+        "run_id": "R242-r223-attempt6-normalize-registry-20260923",
+        "status": "COMPLETE",
+        "verdict": "R223_SCIENTIFIC_REJECT_PRESERVED",
+        "reason": "R242 normalized the independently verified R223 attempt-6 candidate artifact into research/results/R223-v25-local-feed-mini100.json with all 100 rows, exact same-panel metadata and zero failures preserved. Artifact-row projection SHA256 113528ea2ed6fa59564099f29295ce94adca4be4f47910e765e39dfc716cf292 matches the committed record exactly; network IDs/target hashes match the R240-authenticated R209 V25 parent with 0 mismatches. Registry check passes with 7 normalized results. Same-panel compare vs R209-v25-mini100: score ratio 1.000088009595381, paired gain -7.190733728024271e-13, SE 1.4922201293529363e-12, 50/100 improved. R223 SCIENTIFIC_REJECT/DEVELOPMENT NO-GO is preserved. No estimator/benchmark/Actions/retry/repair/candidate/canonical/paid/private/holdout/submission/leaderboard action occurred.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json",
+          "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200"
+        }
+      },
+      "revision": 204
     }
   ],
   "jobs": [
@@ -4168,7 +4185,17 @@
           "code_commit": "c8a2fb1da44b7cb28913c605095ccc847c8e4b5d",
           "command": "normalize immutable R223 attempt-6 artifact 10730459690 against R240 receipt into research/results; run registry check/compare and regenerate STATUS only; no estimator/benchmark/Actions/retry/repair/candidate/canonical edits",
           "run_id": "R242-r223-attempt6-normalize-registry-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R242-r223-attempt6-normalize-registry-20260923",
+            "status": "COMPLETE",
+            "verdict": "R223_SCIENTIFIC_REJECT_PRESERVED",
+            "reason": "R242 normalized the independently verified R223 attempt-6 candidate artifact into research/results/R223-v25-local-feed-mini100.json with all 100 rows, exact same-panel metadata and zero failures preserved. Artifact-row projection SHA256 113528ea2ed6fa59564099f29295ce94adca4be4f47910e765e39dfc716cf292 matches the committed record exactly; network IDs/target hashes match the R240-authenticated R209 V25 parent with 0 mismatches. Registry check passes with 7 normalized results. Same-panel compare vs R209-v25-mini100: score ratio 1.000088009595381, paired gain -7.190733728024271e-13, SE 1.4922201293529363e-12, 50/100 improved. R223 SCIENTIFIC_REJECT/DEVELOPMENT NO-GO is preserved. No estimator/benchmark/Actions/retry/repair/candidate/canonical/paid/private/holdout/submission/leaderboard action occurred.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json",
+              "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200"
+            }
+          }
         }
       ],
       "deliverable": "Use only immutable R223 attempt-6 artifact 10730459690 and R240 independent postflight receipt. Independently extract/verify all 100 candidate rows and panel identity, create a schema-valid normalized research/results record against R209 V25, preserve all rows/failures and the SCIENTIFIC_REJECT verdict, run registry check/compare and regenerate STATUS. Commit a durable integration receipt with hashes. No estimator/benchmark/Actions run, no retry/repair, no candidate or canonical edits, no paid compute, private/holdout data, submission, or leaderboard change. Refresh control head before every write and preserve concurrent events.",
@@ -4177,8 +4204,14 @@
       "id": "R242",
       "owner": "independent-v25-audit",
       "priority": 2,
-      "status": "RUNNING",
-      "title": "Normalize verified R223 V25-LF mini-100 result into the shared registry"
+      "status": "COMPLETE",
+      "title": "Normalize verified R223 V25-LF mini-100 result into the shared registry",
+      "reason": "R242 normalized the independently verified R223 attempt-6 candidate artifact into research/results/R223-v25-local-feed-mini100.json with all 100 rows, exact same-panel metadata and zero failures preserved. Artifact-row projection SHA256 113528ea2ed6fa59564099f29295ce94adca4be4f47910e765e39dfc716cf292 matches the committed record exactly; network IDs/target hashes match the R240-authenticated R209 V25 parent with 0 mismatches. Registry check passes with 7 normalized results. Same-panel compare vs R209-v25-mini100: score ratio 1.000088009595381, paired gain -7.190733728024271e-13, SE 1.4922201293529363e-12, 50/100 improved. R223 SCIENTIFIC_REJECT/DEVELOPMENT NO-GO is preserved. No estimator/benchmark/Actions/retry/repair/candidate/canonical/paid/private/holdout/submission/leaderboard action occurred.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json",
+        "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200"
+      },
+      "verdict": "R223_SCIENTIFIC_REJECT_PRESERVED"
     },
     {
       "assigned_owner": "registry-independent-audit",
@@ -4234,7 +4267,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 203,
+  "revision": 204,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
