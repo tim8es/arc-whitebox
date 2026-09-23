@@ -32,7 +32,7 @@ BANNED = (
     "personal access token",
     "gh auth",
 )
-R291_FILES = {
+FROZEN_FILES = {
     "research/r291/r291_capture_harness.py": {
         "blob": "3e438c0f6b87ab2fa90c1fc71bbf3cfea1e9052d",
         "sha256": "28526a56505beaa94183ea590810949a3a856639d3f6fa63d8869ddad419ad3e",
@@ -44,6 +44,10 @@ R291_FILES = {
     "research/r291/R291_EXPECTED_PUBLIC_MINI100.json": {
         "blob": "caf813cd5eab771108f105fe050fd6631b298733",
         "sha256": "ebeb221b71cf3842e807d5cf28b8c38493e53032c8e1fa897b7f5bef6b1be720",
+    },
+    "research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch": {
+        "blob": "65abb2e2040e44a7965f5123acd17bb838891532",
+        "sha256": "bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3",
     },
 }
 
@@ -140,6 +144,25 @@ def main() -> int:
     ):
         require(value in text, f"frozen source identity missing from workflow: {value}")
 
+    evaluator = protocol["evaluator"]
+    require(evaluator["active_integration_patch"] == "r294_patch_path",
+            "protocol must select the R294 patch as active")
+    for value in (
+        evaluator["r294_patch_path"],
+        evaluator["r294_patch_blob_sha1"],
+        evaluator["r294_patch_sha256"],
+        evaluator["r294_patched_scoring_blob_sha1"],
+    ):
+        require(value in text, f"active R294 patch identity missing from workflow: {value}")
+    require("python scripts/r294_patch_apply_check.py" in text,
+            "workflow must run the real R294 git-apply checker")
+    require("--old-patch research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch" in text,
+            "workflow must prove historical R291 patch rejection")
+    require("git -C \"$PATCH_ROOT\" apply --check" in text,
+            "workflow must run git apply --check against the staged evaluator source")
+    require("$GITHUB_WORKSPACE/research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch" in text,
+            "workflow must apply only the corrected R294 patch")
+
     require(protocol["dispatch"]["trigger"] == "workflow_dispatch only", "protocol trigger drift")
     require(protocol["dispatch"]["required_ref"] == "refs/heads/main", "protocol ref drift")
     require(protocol["dispatch"]["result_branch"] == EXPECTED_RESULT_BRANCH, "protocol branch drift")
@@ -149,10 +172,10 @@ def main() -> int:
     require(all(value is False for value in protocol["authorization"].values()),
             "R293 protocol must not authorize merge/run/benchmark/result-branch creation")
 
-    for rel, expected in R291_FILES.items():
+    for rel, expected in FROZEN_FILES.items():
         data = (root / rel).read_bytes()
-        require(git_blob_sha1(data) == expected["blob"], f"R291 blob drift: {rel}")
-        require(hashlib.sha256(data).hexdigest() == expected["sha256"], f"R291 SHA256 drift: {rel}")
+        require(git_blob_sha1(data) == expected["blob"], f"frozen artifact blob drift: {rel}")
+        require(hashlib.sha256(data).hexdigest() == expected["sha256"], f"frozen artifact SHA256 drift: {rel}")
 
     for path in EXPECTED_OUTPUTS:
         require(path in text, f"output allowlist member absent from workflow: {path}")
@@ -168,7 +191,7 @@ def main() -> int:
         "jobs": sorted(jobs),
         "result_branch": EXPECTED_RESULT_BRANCH,
         "output_allowlist": EXPECTED_OUTPUTS,
-        "r291_artifacts_verified": sorted(R291_FILES),
+        "frozen_artifacts_verified": sorted(FROZEN_FILES),
     }, indent=2, sort_keys=True))
     return 0
 
