@@ -5183,6 +5183,18 @@
       "owner": "residual-capture-protocol",
       "payload": {},
       "revision": 386
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T16:40:10+00:00",
+      "job": "R288",
+      "owner": "residual-capture-protocol",
+      "payload": {
+        "code_commit": "406d1574b4483e7c0c939949c6f46a9e7940d7e4",
+        "command": "docs/source-only specification of minimal auditable runner-side V25 public mini:all-100 residual capture artifact; preserve R278 frozen split/global fit and R284 metering boundary; no estimator/workflow edits, run, Actions, dataset download, paid/private/holdout/full/submission/leaderboard/canonical changes",
+        "run_id": "R288-v25-residual-capture-protocol-20260923"
+      },
+      "revision": 387
     }
   ],
   "jobs": [
@@ -8326,7 +8338,14 @@
     },
     {
       "assigned_owner": "residual-capture-protocol",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "406d1574b4483e7c0c939949c6f46a9e7940d7e4",
+          "command": "docs/source-only specification of minimal auditable runner-side V25 public mini:all-100 residual capture artifact; preserve R278 frozen split/global fit and R284 metering boundary; no estimator/workflow edits, run, Actions, dataset download, paid/private/holdout/full/submission/leaderboard/canonical changes",
+          "run_id": "R288-v25-residual-capture-protocol-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Use R278's already-frozen network split/global fit rule, R282's exact missing-data finding, and R284's allowed-with-conditions ruling. Specify only the minimal runner-side capture contract for one future public mini:all-100 V25 run: exact per-network prediction/target/residual dtype/shape, identity and target-hash metadata, evaluator/source versions, failure-zeroing semantics, artifact integrity, storage-size bound, and how capture leaves official score/FLOP accounting unchanged. Do not change code/workflows, run/download data, trigger Actions, spend money, or alter the frozen split/fit rule. Cite exact WhestBench source seam and save a concise append-only protocol/report+receipt with hashes/commit; finish R288.",
       "depends_on": [
         "R282",
@@ -8336,12 +8355,12 @@
       "id": "R288",
       "owner": "residual-capture-protocol",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Specify a minimal auditable residual-capture artifact for V25"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 386,
+  "revision": 387,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
