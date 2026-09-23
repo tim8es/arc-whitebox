@@ -1,0 +1,107 @@
+{
+  "schema": "arc.whitebox.r288.capture_protocol.receipt.v1",
+  "id": "R288",
+  "run_id": "R288-v25-residual-capture-protocol-20260923",
+  "owner": "residual-capture-protocol",
+  "status": "COMPLETE",
+  "verdict": "PROTOCOL_READY_NO_EXECUTION",
+  "branch": "research/r288-v25-residual-capture-protocol",
+  "report": {
+    "commit": "f80473aa6c2885e89229fc7ee8e88ce688e9e7b2",
+    "path": "research/r288/R288_CAPTURE_PROTOCOL_REPORT.md",
+    "git_blob_sha1": "3b0d21fab8b668e22ae4d08022bfbf27452c8cb5",
+    "sha256": "f32bdffbe612af788dc32ec9e911f00c58f33c2192f7b590b5522f404b9a8263"
+  },
+  "inherited_evidence": {
+    "r278_receipt_sha256": "3294904ef96c263f3562c7b34de98d0379c56207a424ab5ac91a649b27dfbd81",
+    "r282_receipt_sha256": "07b3c78ac5ecb95827a48bba8443ab990bc9294f08dc7a6553a82f0bc3a9aab6",
+    "r284_receipt_sha256": "65a6bd083657d6d07fa7dd340731bbb36733e14341f174768ec57ff3f832c81b",
+    "r224_receipt_sha256": "7a9fed3e02fbaf2e5d0ce95f2939e8f0605d04ebbffb793220d3789907c9a330"
+  },
+  "frozen_rule": {
+    "split": "sort decimal network_id strings lexicographically; first 50 FIT, last 50 EVAL",
+    "fit": "d = mean_FIT(target_final - v25_pred_final)",
+    "eval": "pred_corrected = pred + d on EVAL only",
+    "per_network_tuning": false
+  },
+  "pinned_future_run": {
+    "v25_source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "v25_source_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "python": "3.11.16",
+    "whestbench": "0.16.1",
+    "whestbench_tag_object": "66526b4c80d9aea6af981c7a0f92e9ec76c57238",
+    "whestbench_source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "scoring_py_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "flopscope": "0.12.1",
+    "numpy": "2.4.6",
+    "dataset_repo": "aicrowd/arc-whestbench-public-2026",
+    "dataset_revision": "v2-phase2",
+    "dataset_split": "mini",
+    "rows": 100,
+    "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce"
+  },
+  "capture_contract": {
+    "vector_dtype": "<f4",
+    "vector_shape": [
+      1024
+    ],
+    "arrays_per_network": [
+      "final_pred",
+      "final_target",
+      "residual_target_minus_pred"
+    ],
+    "rows": 100,
+    "main_seam": "scoring.py after lines 943/946/947 and before line 948",
+    "exception_seam": "scoring.py after zeroing/materialization lines 793/816/817 and before line 819",
+    "scored_prediction_only": true,
+    "failure_rows_retained": true,
+    "required_identity": [
+      "scorer_mlp_index",
+      "mlp_name",
+      "network_id",
+      "split_role",
+      "r224_target_all_sha256_expected",
+      "r224_target_all_sha256_observed"
+    ],
+    "required_hashes": [
+      "final_pred_sha256",
+      "final_target_sha256",
+      "residual_sha256",
+      "record_payload_sha256"
+    ],
+    "required_failure_fields": [
+      "budget_exhausted",
+      "time_exhausted",
+      "residual_wall_time_exhausted",
+      "combined_budget_exhausted",
+      "error_code",
+      "flops_used",
+      "effective_compute"
+    ],
+    "raw_payload_bytes": 1228800,
+    "manifest_max_bytes": 131072,
+    "sha256sums_max_bytes": 4096,
+    "uncompressed_protocol_content_max_bytes": 1363968
+  },
+  "official_sources": {
+    "whestbench_scoring_url": "https://github.com/AIcrowd/whestbench/blob/4d08668b485c8a7d25a105c3c00d2f4fc2538f18/src/whestbench/scoring.py",
+    "starterkit_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "starterkit_allowed_code_blob": "525276e8e5bc7f6a7dd54e876140ab0df514be32",
+    "starterkit_estimator_contract_blob": "43c1494420b46aad4bc1dbbab83528eca6b89668",
+    "starterkit_code_patterns_blob": "2d1aa532af6f160fd0942da34f78595216a596de"
+  },
+  "metering_boundary": "Capture is evaluator-side after participant BudgetContext. It must not mutate scorer values or perform participant computation. Any future correction application is a separate estimator run and must be metered inside predict() through FlopScope.",
+  "accounting": {
+    "estimator_changes": 0,
+    "workflow_changes": 0,
+    "estimator_runs": 0,
+    "actions_runs": 0,
+    "dataset_downloads": 0,
+    "paid_resources": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false
+  }
+}
