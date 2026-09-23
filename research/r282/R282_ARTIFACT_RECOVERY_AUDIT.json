@@ -1,0 +1,230 @@
+{
+  "schema": "arc.whitebox.r282.artifact_recovery.v1",
+  "job": "R282",
+  "owner": "r209-artifact-recovery",
+  "run_id": "R282-r209-artifact-recovery-20260923",
+  "verdict": "NO_RECOVERABLE_RAW_V25_RESIDUAL_VECTORS_IN_EXISTING_EVIDENCE",
+  "r278_correction": {
+    "r278_receipt_commit": "83dfbe710cad5fbb1cab6e5b6fce0ccd06d47966",
+    "r278_receipt_blob_sha1": "1568273d596bd2510c8a3c3520db6da18d2918b0",
+    "issue": "R278 labelled artifact 10617318650 as retained R209/V25 evidence. Existing R209 audit and live Actions metadata show 10617318650 is e136-followup-v29, not V25.",
+    "actual_v25_artifact_id": 10617855153,
+    "consequence": "The artifact identity in R278 was wrong, but the no-raw-vector conclusion still holds after direct inspection of the actual V25 artifact."
+  },
+  "r209": {
+    "normalized": {
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "size_bytes": 50981,
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+      "source_run_id": 35544406064,
+      "source_head_sha": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+      "evaluator": "whestbench 0.16.1",
+      "meter": "flopscope 0.12.1+np2.4.6",
+      "panel": "public v2-phase2 mini:all-100",
+      "raw_prediction_tensors_archived": false,
+      "retained_target_information": "per-network SHA256 of raw float32 all_layer_means plus shape/dtype/network_id; target bytes absent"
+    },
+    "archive_audit": {
+      "path": "research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json",
+      "commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+      "git_blob_sha1": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+      "explicit_raw_prediction_vectors_archived": false
+    },
+    "run_35544406064": {
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "head_sha": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+      "workflow": ".github/workflows/e136-public-k3-followup.yml",
+      "workflow_blob_sha1": "4dea7107d9c7677659898e661b6ac5c306c68f7b",
+      "v25_job_id": 106167659234,
+      "v25_artifact": {
+        "id": 10617855153,
+        "name": "e136-followup-v25",
+        "size_bytes": 106494,
+        "zip_sha256": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08",
+        "report_json_size_bytes": 1015117,
+        "report_json_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+        "files": [
+          [
+            "environment.txt",
+            114,
+            "13d60bf5de4ac31310c76a0d2526a7b8ac1e66f9e983f30057e693213529fbf2"
+          ],
+          [
+            "report.json",
+            1015117,
+            "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3"
+          ],
+          [
+            "run.exit",
+            2,
+            "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+          ],
+          [
+            "run.stderr",
+            1467,
+            "43575a4114bc947e715568aae334ed0a8b86643d4d1c8f75ce6024a9c2fb5286"
+          ],
+          [
+            "sha256.json",
+            698,
+            "3c9811586583ca122be5cdf726ce717f19b627a743fa35a978a2e2b1b1d7d4e5"
+          ],
+          [
+            "validate.exit",
+            2,
+            "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+          ],
+          [
+            "validate.json",
+            174,
+            "4d507d2cf7a511d4b444f275e3a879aa0db9ed06ddabbe5e433ad767936ad311"
+          ],
+          [
+            "validate.stderr",
+            1588,
+            "8d8e4f289f375ffe276a714cb3a0e312198ae76266a8f6f1d2983021f0ecef11"
+          ],
+          [
+            "whest_version.json",
+            122,
+            "c47add2684b095c56ea2a6f951f10098560476094435b1c8159a1fef45ccb29a"
+          ]
+        ],
+        "vector_scan": {
+          "per_mlp_records": 100,
+          "largest_numeric_vector_length": 16,
+          "length_1024_arrays": 0,
+          "length_16384_arrays": 0,
+          "prediction_target_truth_residual_tensor_fields": 0,
+          "conclusion": "Only scalar metrics/timings/breakdowns and per-layer MSE length 16 are retained."
+        }
+      },
+      "summary_artifact": {
+        "id": 10617372279,
+        "name": "e136-followup-summary",
+        "size_bytes": 1681,
+        "zip_sha256": "96d22843e17f5f47b31728e80a0d5e4d4bfa25ac150da2181b3897082cb4f039",
+        "contents": "runtime receipt only; no vectors"
+      },
+      "v29_artifact_for_disambiguation": {
+        "id": 10617318650,
+        "name": "e136-followup-v29",
+        "size_bytes": 102407,
+        "zip_sha256": "32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681"
+      }
+    }
+  },
+  "r224_fingerprint_artifact_referenced_by_r209": {
+    "run_id": 35788780990,
+    "head_sha": "bbf4c7f7bdb31d07cc222f9e9a5b05229d9364c5",
+    "artifact_id": 10720913493,
+    "name": "r224-mini100-fingerprints",
+    "size_bytes": 9297,
+    "zip_sha256": "28feb5da04d3508b86a8b7afddc39a35f9a57a61bad76c0f63fbf3a2ee6de686",
+    "fingerprint_json": {
+      "filename": "R224_MINI100_FINGERPRINTS.json",
+      "size_bytes": 36337,
+      "sha256": "ae0b3659568cc1297aeac89f6babf9f2df2b2752d0216e638141ec6411f629a4",
+      "records": 100,
+      "record_fields": [
+        "mlp_id",
+        "mlp_index",
+        "mlp_name",
+        "mlp_seed",
+        "network_id",
+        "target_dtype",
+        "target_sha256",
+        "target_shape"
+      ],
+      "target_shape": [
+        16,
+        1024
+      ],
+      "target_dtype": "float32",
+      "target_bytes_present": false
+    }
+  },
+  "r223": {
+    "normalized": {
+      "path": "research/results/R223-v25-local-feed-mini100.json",
+      "git_blob_sha1": "c8b617c43ff1145977c38e7e1cca6d23985ec392",
+      "size_bytes": 33401,
+      "sha256": "3c8633826ac2efb74db73ba7f5640ec34f0ebb8c91c517f0cf418b6794184587",
+      "source_run_id": 35810427656,
+      "source_artifact_id": 10730459690
+    },
+    "attempt6": {
+      "run_id": 35810427656,
+      "queue_run_id": "R223-v25-local-feed-attempt6-20260923",
+      "head_sha": "09efbb920313850a4727bd34db9088a46227ce5f",
+      "workflow_blob_sha1": "d24e3f63e8ce447188868846e9b3e4ef755b395e",
+      "artifact": {
+        "id": 10730459690,
+        "name": "r223-v25-local-feed-mini100-attempt6",
+        "size_bytes": 261400,
+        "zip_sha256": "f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00",
+        "parent_report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+        "candidate_report_sha256": "72821cf9117b484b2cc4fe4affa21e08ece737e86813508d9c1c6d01b02f6710",
+        "paired_result_sha256": "52c5da262f442d3a499c2c77885abc91f81d596e10703c1ac582192ffc8dda65",
+        "vector_scan": {
+          "parent_report_max_numeric_vector_length": 16,
+          "candidate_report_max_numeric_vector_length": 16,
+          "length_1024_arrays": 0,
+          "length_16384_arrays": 0,
+          "prediction_target_truth_residual_tensor_fields": 0,
+          "paired_result_contains_only_scalar_per_network_metrics": true
+        }
+      },
+      "provenance_note": "Workflow copies the exact R209 report.json into parent-report.json, runs candidate with --format json, builds scalar paired result, hashes and uploads those files; it contains no runner instrumentation for raw vectors."
+    },
+    "earlier_attempts": {
+      "attempts_1_to_5_panel_invocations": 0,
+      "basis": "R240 receipt gate11 and control history: attempts 1-5 stopped before candidate mini-100 panel invocation.",
+      "consequence": "They cannot contain candidate prediction/target vectors from the 100-row panel."
+    }
+  },
+  "exact_gap": {
+    "available": [
+      "100 stable names/network_ids",
+      "per-network raw final MSE and adjusted score",
+      "per-layer MSE length 16",
+      "FLOPs/failure/timing data",
+      "per-network SHA256 of raw float32 all_layer_means target bytes"
+    ],
+    "missing": [
+      "V25 final prediction bytes for each network: float32[1024]",
+      "exact target final-layer bytes for each network: float32[1024] (or full float32[16,1024])",
+      "equivalent signed residual vector target_final - prediction_final for each network"
+    ],
+    "why_hashes_are_insufficient": "Target SHA256 fingerprints authenticate bytes but are one-way digests and cannot reconstruct the signed coordinate-wise residual direction."
+  },
+  "minimal_future_capture": {
+    "whestbench_version": "0.16.1",
+    "source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "scoring_py_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "point": "evaluate_estimator(), after all failure-zeroing and after pred_np materialization / final_pred = pred_np[-1] / final_target = data.final_targets[i], before final_layer_mse aggregation",
+    "capture": [
+      "mlp_index",
+      "mlp_name",
+      "failure flags",
+      "flops_used",
+      "final_pred float32[1024]",
+      "final_target float32[1024]",
+      "shape/dtype/SHA256 for both"
+    ],
+    "reason": "This captures exactly the vectors actually entering the scorer after failure semantics, outside the participant predict BudgetContext, without changing estimator FLOP accounting."
+  },
+  "scope": {
+    "actions_triggered": 0,
+    "workflow_reruns": 0,
+    "benchmark_dataset_downloads": 0,
+    "paid_compute": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false
+  }
+}
