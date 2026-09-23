@@ -5574,23 +5574,31 @@
       "revision": 415
     },
     {
-      "revision": 416,
       "action": "enqueue",
+      "at": "2026-09-23T21:10:55.971Z",
       "job": "R293",
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "v25-capture-workflow-prep-r268",
+        "deliverable": "Prepare, on a clean isolated branch and as a review PR only, the minimal manual one-shot workflow needed to run the frozen R278/R288 public mini:all-100 V25 residual-capture diagnostic using the R291 evaluator-side patch. Pin the exact V25/evaluator/meter/dependency versions and verify the frozen 50/50 split, capture manifest and output hashes. Use a standard public GitHub-hosted runner; scope `contents: write` only to the single persistence job, only allow workflow_dispatch from main, do not add pull_request triggers or secrets, do not use upload-artifact/LFS/PAT, and persist output only to a dedicated pre-existing unprotected research branch via GITHUB_TOKEN. Add offline/static safety checks for workflow scope, target branch and file allowlist. Do not merge the PR, pre-create the result branch, trigger Actions, download/install benchmark data, run the benchmark, or spend money. Preserve estimator/scorer semantics and R291 artifacts. Append report/receipt with branch/PR, exact commits/hashes, risks and next gates; finish R293. Do not mark the scientific diagnostic complete.",
         "depends_on": [
           "R288",
           "R290",
           "R291"
         ],
-        "deliverable": "Prepare, on a clean isolated branch and as a review PR only, the minimal manual one-shot workflow needed to run the frozen R278/R288 public mini:all-100 V25 residual-capture diagnostic using the R291 evaluator-side patch. Pin the exact V25/evaluator/meter/dependency versions and verify the frozen 50/50 split, capture manifest and output hashes. Use a standard public GitHub-hosted runner; scope `contents: write` only to the single persistence job, only allow workflow_dispatch from main, do not add pull_request triggers or secrets, do not use upload-artifact/LFS/PAT, and persist output only to a dedicated pre-existing unprotected research branch via GITHUB_TOKEN. Add offline/static safety checks for workflow scope, target branch and file allowlist. Do not merge the PR, pre-create the result branch, trigger Actions, download/install benchmark data, run the benchmark, or spend money. Preserve estimator/scorer semantics and R291 artifacts. Append report/receipt with branch/PR, exact commits/hashes, risks and next gates; finish R293. Do not mark the scientific diagnostic complete.",
         "hypothesis_id": "V25-ONE-SHOT-CAPTURE-WORKFLOW-PREP-20260924",
         "priority": 1,
         "title": "Prepare a safe manual workflow for the V25 residual capture run"
       },
-      "at": "2026-09-23T21:10:55.971Z"
+      "revision": 416
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-24T00:06:00+00:00",
+      "job": "R293",
+      "owner": "v25-capture-workflow-prep-r268",
+      "payload": {},
+      "revision": 417
     }
   ],
   "jobs": [
@@ -8964,23 +8972,23 @@
     },
     {
       "assigned_owner": "v25-capture-workflow-prep-r268",
+      "attempts": [],
+      "deliverable": "Prepare, on a clean isolated branch and as a review PR only, the minimal manual one-shot workflow needed to run the frozen R278/R288 public mini:all-100 V25 residual-capture diagnostic using the R291 evaluator-side patch. Pin the exact V25/evaluator/meter/dependency versions and verify the frozen 50/50 split, capture manifest and output hashes. Use a standard public GitHub-hosted runner; scope `contents: write` only to the single persistence job, only allow workflow_dispatch from main, do not add pull_request triggers or secrets, do not use upload-artifact/LFS/PAT, and persist output only to a dedicated pre-existing unprotected research branch via GITHUB_TOKEN. Add offline/static safety checks for workflow scope, target branch and file allowlist. Do not merge the PR, pre-create the result branch, trigger Actions, download/install benchmark data, run the benchmark, or spend money. Preserve estimator/scorer semantics and R291 artifacts. Append report/receipt with branch/PR, exact commits/hashes, risks and next gates; finish R293. Do not mark the scientific diagnostic complete.",
       "depends_on": [
         "R288",
         "R290",
         "R291"
       ],
-      "deliverable": "Prepare, on a clean isolated branch and as a review PR only, the minimal manual one-shot workflow needed to run the frozen R278/R288 public mini:all-100 V25 residual-capture diagnostic using the R291 evaluator-side patch. Pin the exact V25/evaluator/meter/dependency versions and verify the frozen 50/50 split, capture manifest and output hashes. Use a standard public GitHub-hosted runner; scope `contents: write` only to the single persistence job, only allow workflow_dispatch from main, do not add pull_request triggers or secrets, do not use upload-artifact/LFS/PAT, and persist output only to a dedicated pre-existing unprotected research branch via GITHUB_TOKEN. Add offline/static safety checks for workflow scope, target branch and file allowlist. Do not merge the PR, pre-create the result branch, trigger Actions, download/install benchmark data, run the benchmark, or spend money. Preserve estimator/scorer semantics and R291 artifacts. Append report/receipt with branch/PR, exact commits/hashes, risks and next gates; finish R293. Do not mark the scientific diagnostic complete.",
       "hypothesis_id": "V25-ONE-SHOT-CAPTURE-WORKFLOW-PREP-20260924",
-      "priority": 1,
-      "title": "Prepare a safe manual workflow for the V25 residual capture run",
       "id": "R293",
-      "owner": null,
-      "status": "QUEUED",
-      "attempts": []
+      "owner": "v25-capture-workflow-prep-r268",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Prepare a safe manual workflow for the V25 residual capture run"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 416,
+  "revision": 417,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
