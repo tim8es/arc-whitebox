@@ -2789,6 +2789,19 @@
         "command": "protocol/history preparation only: deduplicate prior mechanisms; freeze exactly one network-agnostic V25 candidate/config, exact public mini100 panel, target-free falsifier and scientific/cost/failure gates before any measurement; no candidate/benchmark/Actions execution before frozen gates"
       },
       "revision": 215
+    },
+    {
+      "revision": 216,
+      "action": "finish",
+      "job": "R245",
+      "owner": "official-rules-audit",
+      "payload": {
+        "status": "COMPLETE",
+        "reason": "R245 static audit COMPLETE with STATIC COMPLIANCE NO-GO for frozen R244 MP-R16. Confirmed violation: estimator line 945 computes output-affecting u0 normalization with CPython math.sqrt(float(n)) outside FlopScope; official Phase-2 allowed-code summary limits stdlib math to control/bookkeeping/loading, says meaningful unmetered computation is disqualifiable, and documents fnp.sqrt as billed. Python-scalar divisions/coefficient arithmetic are confirmed unmetered but recorded as standalone eligibility UNKNOWN because FlopScope v0.12.1 itself demonstrates fnp.sqrt(2 / width). Confirmed covered paths: fnp-array operators and fnp sum/mean/sqrt/power/clip/einsum/qr are metered; no float/bool/int materialization of fnp values; no prohibited numerical library/FFI/concurrency imports in grader path. Workflow pins whestbench 0.16.1/flopscope 0.12.1; official starter-kit documents live grader 0.16.0/0.12.0 and only full/full_like non-scalar pricing changed in 0.12.1; R244 uses neither. Audit did not inspect R244 artifact/output or execute anything. Report commit 265090b3b83adc2d854826df8d30a973453ffe8b SHA256 9626fad07674a0e5025cbc18e8c4b5a1be4c04358881ff80c8170acf4d0c2157; receipt commit 941db3239e675571ccf78138cc9cbc21baab1b45 SHA256 00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9. Next: future distinct candidate must preregister a source compliance gate using metered fnp.sqrt for output-affecting sqrt/transcendental work and seek organizer clarification before relying on nontrivial free Python-scalar arithmetic.",
+        "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
+        "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9"
+      },
+      "at": "2026-09-23T05:13:28.106Z"
     }
   ],
   "jobs": [
@@ -4422,15 +4435,18 @@
       "title": "Independent static rules audit of R244 candidate and metered operations",
       "id": "R245",
       "owner": "official-rules-audit",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "attempts": [
         {
           "run_id": "R245-r244-static-official-metering-audit-20260923",
           "code_commit": "1e9053b4d2944c77530043592c652c8e61dfefcf",
           "command": "read-only static audit of frozen R244 MP-R16 protocol/estimator/workflow against official Phase-2 allowed-code, scoring, and flopscope metering rules; inspect math.sqrt, scalar division, and numeric operations; no R244 artifact/output review or execution",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
-      ]
+      ],
+      "reason": "R245 static audit COMPLETE with STATIC COMPLIANCE NO-GO for frozen R244 MP-R16. Confirmed violation: estimator line 945 computes output-affecting u0 normalization with CPython math.sqrt(float(n)) outside FlopScope; official Phase-2 allowed-code summary limits stdlib math to control/bookkeeping/loading, says meaningful unmetered computation is disqualifiable, and documents fnp.sqrt as billed. Python-scalar divisions/coefficient arithmetic are confirmed unmetered but recorded as standalone eligibility UNKNOWN because FlopScope v0.12.1 itself demonstrates fnp.sqrt(2 / width). Confirmed covered paths: fnp-array operators and fnp sum/mean/sqrt/power/clip/einsum/qr are metered; no float/bool/int materialization of fnp values; no prohibited numerical library/FFI/concurrency imports in grader path. Workflow pins whestbench 0.16.1/flopscope 0.12.1; official starter-kit documents live grader 0.16.0/0.12.0 and only full/full_like non-scalar pricing changed in 0.12.1; R244 uses neither. Audit did not inspect R244 artifact/output or execute anything. Report commit 265090b3b83adc2d854826df8d30a973453ffe8b SHA256 9626fad07674a0e5025cbc18e8c4b5a1be4c04358881ff80c8170acf4d0c2157; receipt commit 941db3239e675571ccf78138cc9cbc21baab1b45 SHA256 00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9. Next: future distinct candidate must preregister a source compliance gate using metered fnp.sqrt for output-affecting sqrt/transcendental work and seek organizer clarification before relying on nontrivial free Python-scalar arithmetic.",
+      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
+      "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9"
     },
     {
       "assigned_owner": "baseline-score-diagnostic",
@@ -4492,7 +4508,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 215,
+  "revision": 216,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
