@@ -1,0 +1,94 @@
+{
+  "schema": "arc.whitebox.r249.phase2_scalar_metering_eligibility.v1",
+  "job_id": "R249",
+  "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
+  "owner": "phase2-scalar-compliance-independent-audit",
+  "status": "COMPLETE",
+  "mode": "SOURCE_ONLY_OFFICIAL_PRIMARY_SOURCES",
+  "queue": {
+    "transfer_revision": 229,
+    "claim_revision": 230,
+    "start_revision": 231,
+    "start_commit": "65efa803eb55f4fe1110052c50860d93f4968ec0"
+  },
+  "report": {
+    "path": "research/r249/R249_SCALAR_METERING_ELIGIBILITY.md",
+    "commit": "af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2",
+    "git_blob_sha1": "9c21baf139af0425a823c4c1a6d97c0b6937e822",
+    "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175",
+    "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md"
+  },
+  "context_only": {
+    "r245_receipt_commit": "941db3239e675571ccf78138cc9cbc21baab1b45",
+    "note": "R245 was read for context only; classifications were re-derived from official primary sources."
+  },
+  "primary_sources": {
+    "official_phase2_launch": {
+      "published": "2026-08-23",
+      "url": "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197"
+    },
+    "challenge_rules": {
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/challenge_rules",
+      "accessed": "2026-09-23",
+      "immutable_public_hash_available": false
+    },
+    "evaluator_version_clarification": {
+      "published": "2026-08-27",
+      "url": "https://discourse.aicrowd.com/t/shipped-covariance-propagation-example-trips-the-phase-2-residual-cap-locally-0-16-0-but-grades-fine-what-happens-when-the-evaluator-upgrades/18202/2",
+      "documented_live_versions": {
+        "whestbench": "0.16.0",
+        "flopscope_server": "0.12.0",
+        "flopscope_client": "0.12.0"
+      }
+    },
+    "starterkit": {
+      "repository": "AIcrowd/whest-starterkit",
+      "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "main_head_at_audit": true,
+      "files": {
+        "allowed_code": "525276e8e5bc7f6a7dd54e876140ab0df514be32",
+        "code_patterns": "2d1aa532af6f160fd0942da34f78595216a596de",
+        "flopscope_primer": "7c1478581347f362f691aa1b8023d8edcd44874d",
+        "performance_tips": "73a73abcf02ba367a9af681bf4bd4e0325b6c337",
+        "pyproject": "2c1d562a2073046d6912868184b52c8c593d23c5"
+      }
+    },
+    "flopscope": {
+      "v0_12_0_commit": "2b8682e354379c50bc24145675356b8bb87fe6b3",
+      "v0_12_1_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+      "readme_blob_both": "3d10edb5d6456ff7eef9c1e0f9c6f1d3d2ff8fb0",
+      "remote_array_blob_both": "5613e824b0bba847668ee1753256ceab9089e99d"
+    }
+  },
+  "classifications": {
+    "fnp_ndarray_operators": "CONFIRMED_ALLOWED",
+    "fnp_numerical_primitives": "CONFIRMED_ALLOWED",
+    "trivial_shape_derived_scalar_preparation": "CONFIRMED_ALLOWED_NARROW_SCOPE",
+    "output_affecting_math_star": "CONFIRMED_PROHIBITED",
+    "general_output_affecting_python_scalar_coefficient_arithmetic": "UNKNOWN",
+    "control_bookkeeping_loading": "CONFIRMED_ALLOWED"
+  },
+  "focal_example": {
+    "expression": "fnp.sqrt(2 / width)",
+    "metering": "Python computes 2/width before dispatch; FlopScope meters sqrt, not the prior CPython division.",
+    "eligibility": "The exact trivial shape-derived pattern is published in official starter-kit/FlopScope examples, so it is allowed narrowly. This does not establish a blanket exemption for arbitrary Python scalar coefficient computation."
+  },
+  "limits": [
+    "No published first-party source audited here defines a mechanical or de-minimis threshold for arbitrary Python scalar coefficient arithmetic.",
+    "FlopScope metering documentation/source determines what is billed, not by itself what is competition-eligible.",
+    "The dynamic current Challenge Rules page exposes no immutable public content hash in retrieved HTML."
+  ],
+  "prohibited_actions": {
+    "organizer_contact": false,
+    "estimator_run": false,
+    "benchmark_run": false,
+    "actions_run": false,
+    "private_or_holdout_access": false,
+    "paid_compute": false,
+    "r223_outputs_or_artifacts_read": false,
+    "r244_outputs_or_artifacts_read": false,
+    "submission": false,
+    "leaderboard_action": false,
+    "canonical_edit": false
+  }
+}
