@@ -2802,6 +2802,23 @@
         "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9"
       },
       "at": "2026-09-23T05:13:28.106Z"
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T05:24:00Z",
+      "job": "R247",
+      "owner": "network-agnostic-efficiency-research",
+      "payload": {
+        "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
+        "status": "SCIENTIFIC_REJECT",
+        "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
+        "reason": "DEVELOPMENT NO-GO before public measurement. History-deduplicated candidate V25-NM24-YOUNG-D21-RIGHT-SPARSIFY passed the static >=10% FLOP-reduction planning gate (conservative candidate/parent ratio 0.8828118016350895) but failed the frozen target-free D21 fidelity falsifier decisively: 8/8 finite deterministic cases, identity control exact, but mean D21 RRMS 0.37184426509568913 vs <=0.012 and max 0.38016503271515556; every case exceeded the <=0.015 gate. Protocol therefore forbids estimator implementation/public mini-100/Actions. No R223/R244 candidate output/artifact read; no per-network tuning, benchmark, Actions, paid/private/holdout, retry, submission, leaderboard or canonical V25 mutation.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/10373eceef73c83593d0b4fe052e4c833511daaf/research/r247/R247_RECEIPT.json",
+          "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8"
+        }
+      },
+      "revision": 217
     }
   ],
   "jobs": [
@@ -4496,19 +4513,35 @@
       "title": "Test one network-agnostic V25 simplification for a score-improving FLOPs cut",
       "id": "R247",
       "owner": "network-agnostic-efficiency-research",
-      "status": "RUNNING",
+      "status": "SCIENTIFIC_REJECT",
       "attempts": [
         {
           "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
           "code_commit": "afad944fffa3568a92a315db0ba11ffd312f55c3",
           "command": "protocol/history preparation only: deduplicate prior mechanisms; freeze exactly one network-agnostic V25 candidate/config, exact public mini100 panel, target-free falsifier and scientific/cost/failure gates before any measurement; no candidate/benchmark/Actions execution before frozen gates",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT",
+          "completion": {
+            "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
+            "status": "SCIENTIFIC_REJECT",
+            "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
+            "reason": "DEVELOPMENT NO-GO before public measurement. History-deduplicated candidate V25-NM24-YOUNG-D21-RIGHT-SPARSIFY passed the static >=10% FLOP-reduction planning gate (conservative candidate/parent ratio 0.8828118016350895) but failed the frozen target-free D21 fidelity falsifier decisively: 8/8 finite deterministic cases, identity control exact, but mean D21 RRMS 0.37184426509568913 vs <=0.012 and max 0.38016503271515556; every case exceeded the <=0.015 gate. Protocol therefore forbids estimator implementation/public mini-100/Actions. No R223/R244 candidate output/artifact read; no per-network tuning, benchmark, Actions, paid/private/holdout, retry, submission, leaderboard or canonical V25 mutation.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/10373eceef73c83593d0b4fe052e4c833511daaf/research/r247/R247_RECEIPT.json",
+              "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8"
+            }
+          }
         }
-      ]
+      ],
+      "reason": "DEVELOPMENT NO-GO before public measurement. History-deduplicated candidate V25-NM24-YOUNG-D21-RIGHT-SPARSIFY passed the static >=10% FLOP-reduction planning gate (conservative candidate/parent ratio 0.8828118016350895) but failed the frozen target-free D21 fidelity falsifier decisively: 8/8 finite deterministic cases, identity control exact, but mean D21 RRMS 0.37184426509568913 vs <=0.012 and max 0.38016503271515556; every case exceeded the <=0.015 gate. Protocol therefore forbids estimator implementation/public mini-100/Actions. No R223/R244 candidate output/artifact read; no per-network tuning, benchmark, Actions, paid/private/holdout, retry, submission, leaderboard or canonical V25 mutation.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/10373eceef73c83593d0b4fe052e4c833511daaf/research/r247/R247_RECEIPT.json",
+        "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8"
+      },
+      "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 216,
+  "revision": 217,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
