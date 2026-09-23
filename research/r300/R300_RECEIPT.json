@@ -1,0 +1,101 @@
+{
+  "schema": "arc.whitebox.r300.binary32_energy_consistency.receipt.v1",
+  "task": "R300",
+  "owner": "r300-binary32-energy-consistency-fix-r269",
+  "run_id": "R300-binary32-energy-consistency-fix-20260924",
+  "status": "COMPLETE",
+  "decision": "BINARY32_CONSISTENCY_FIX_PREPARED_DELTA_TESTED_NO_REAL_CAPTURE",
+  "control": {
+    "claim": {
+      "revision": 442,
+      "commit": "85a6af9b3ec125a56a12463c2c9b7303a563ed70"
+    },
+    "start": {
+      "revision": 443,
+      "commit": "65f920c7bd1aa9d389a285f621eff546545c178e"
+    }
+  },
+  "ancestry": {
+    "branch": "research/r300-binary32-energy-consistency-fix-20260924",
+    "base_r299_receipt_commit": "436514b36846c0e96a5e287fe07cbef8ed327507",
+    "r299_analyzer_blob_sha1": "d8469b233f458dbe7813babdcfe21a82016664e1",
+    "r299_receipt_blob_sha1": "cc2eb44635f54ae315d2a03ac2d8eb0c117b601f",
+    "r298_receipt_commit": "6f1e96d07cbb22c243c76d19a49ff8b4e7dd19fb",
+    "historical_r298_r299_modified": false
+  },
+  "arithmetic": {
+    "baseline_energy": "B_k = math.fsum(stored_binary32_residual[i][k]**2 for EVAL i)",
+    "corrected_path": "pred_corr=binary32(pred+d); corrected_residual=binary32(target-pred_corr)",
+    "corrected_energy": "C_k = math.fsum(corrected_residual[i][k]**2 for EVAL i)",
+    "forbidden_substitute": "binary32(stored_residual-d)",
+    "aggregate_guard": "coordinate sum_C must be math.isclose to R298 corrected-residual energy with rel_tol=1e-15, abs_tol=0",
+    "unchanged_semantics": [
+      "B_k==0 => explained null",
+      "zero-energy C retained in weighted global numerator",
+      "finite-coordinate count",
+      "negative-explained count",
+      "Hyndman-Fan type 7 p10/p25/p50/p75/p90",
+      "no tuning"
+    ]
+  },
+  "artifacts": {
+    "analyzer": {
+      "path": "research/r300/r300_capture_analyzer.py",
+      "commit": "c6bd5538e2dcc5832a5fd641d6b128b7ad30f047",
+      "blob_sha1": "2b99b8aefbe016092a3d01ea69a9609170cd2bd1",
+      "sha256": "a4c0808535f5a3a7d14a27a5fbc7d26d25400e74b0b238edb22e017677365315"
+    },
+    "selfcheck": {
+      "path": "research/r300/r300_capture_analyzer_selfcheck.py",
+      "commit": "e1749ed6314de15aac380f9bb06148e7e025b406",
+      "blob_sha1": "8a80ec16952117a0cdd730a61ae0c9c431b4c7df",
+      "sha256": "d2054223b7876912fc7d3c842f9f15fa1876ad71180e68cf297dd345ea2a45b6",
+      "substantive_checks": 21
+    },
+    "report": {
+      "path": "research/r300/R300_REPORT.md",
+      "commit": "dbc12add1b0b376431eaf62b6156efdb695ecd5c",
+      "blob_sha1": "e053533381fd7e7b60fc461701aa15af22548bb4",
+      "sha256": "908593a17e94f3206a53c803f6688426f25a446e165c9a49fcd04a36f05b72d0"
+    }
+  },
+  "tests": {
+    "committed_full_selfcheck": {
+      "status": "NOT_RUN",
+      "reason": "No repository checkout/command runner is available in this session; task forbids cloning/downloading to materialize one. GitHub Actions are prohibited."
+    },
+    "local_delta_semantics": {
+      "status": "PASS",
+      "checks": 2,
+      "counterexample": {
+        "pred": 1,
+        "target": 1,
+        "d_binary32": 9.99999993922529e-9,
+        "baseline_residual": 0,
+        "old_r_minus_d": -9.99999993922529e-9,
+        "r298_corrected_residual": 0
+      },
+      "aggregate_consistency": {
+        "rows": 50,
+        "width": 1024,
+        "coordinate_sum_C": 156.98132407423532,
+        "direct_r298_corrected_energy": 156.98132407423532,
+        "corrected_mse_derived_energy": 156.98132407423532
+      }
+    }
+  },
+  "accounting": {
+    "actions_runs": 0,
+    "benchmarks_or_estimator_runs": 0,
+    "data_or_dependency_downloads": 0,
+    "dependency_installs": 0,
+    "leaderboard_or_canonical_edits": 0,
+    "paid_resources": false,
+    "pr36_edits": 0,
+    "private_holdout_full_access": 0,
+    "real_capture_vectors_inspected": 0,
+    "submissions": 0,
+    "r296_claimed": false
+  },
+  "reason": "Append-only R300 supplement replaces R299 coordinate C arithmetic with the exact frozen R298 binary32 corrected-residual path before any real capture is inspected. Required counterexample and aggregate consistency delta semantics pass; full committed integration selfcheck remains unexecuted only because no existing repo-capable runner is available and materializing one is prohibited."
+}
