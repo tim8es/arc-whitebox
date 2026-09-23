@@ -1,0 +1,69 @@
+{
+  "schema": "arc.whitebox.r251.novelty_audit.v1",
+  "history": {
+    "path": "research/history.json",
+    "git_blob_sha1": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "experiment_ids": 194
+  },
+  "legacy": {
+    "path": "research/legacy-ledger.csv",
+    "git_blob_sha1": "040e52efe01efd7280180b7e2d72901b4c2f0532"
+  },
+  "candidate": "V25-GFNP-GAUSSIAN-FIXED-POINT-NULL-PROJECTION",
+  "absent_exact_family_terms": {
+    "gaussian fixed point": 0,
+    "fixed-point null": 0,
+    "constraint projection": 0,
+    "projected correction": 0,
+    "positive diagonal": 0,
+    "scale-equivariance": 0
+  },
+  "adjacent_not_same": [
+    {
+      "id": "E092",
+      "family": "target-trained post-hoc residual ridge calibrator on covariance propagation",
+      "distinction": "GFNP fits no target and adds no feature/learner; it analytically projects the already-existing V25 rider onto an exact Gaussian-null identity."
+    },
+    {
+      "id": "R232",
+      "family": "DRRE/Richardson dual-resolution extrapolation",
+      "excluded": true
+    },
+    {
+      "id": "R238",
+      "family": "RSRF recycled-start range finder",
+      "excluded": true
+    },
+    {
+      "id": "R247",
+      "family": "2:4 D21 right-factor sparsity",
+      "excluded": true
+    },
+    {
+      "id": "R248",
+      "family": "rank-1 Kronecker transport",
+      "excluded": true
+    },
+    {
+      "id": "R250",
+      "family": "LEG2-R1 Young A/P",
+      "excluded": true
+    },
+    {
+      "id": "R244",
+      "family": "MP-R16",
+      "excluded": true
+    },
+    {
+      "id": "R223",
+      "family": "V25-LF",
+      "excluded": true
+    }
+  ],
+  "leader_method": {
+    "source": "R230",
+    "conclusion": "NO_PUBLIC_METHOD_EVIDENCE_FOR_TARGET_SUBMISSIONS",
+    "leader_derived_hypotheses_used": 0
+  },
+  "conclusion": "GFNP is treated as a distinct analytic invariant-constrained correction hypothesis, not a rescue/reparameterization of any closed fitted-calibrator, transport, compression, sampling, or low-rank family."
+}
