@@ -1,0 +1,142 @@
+{
+  "schema": "arc.whitebox.r243.registry_audit_receipt.v1",
+  "job_id": "R243",
+  "owner": "registry-independent-audit",
+  "run_id": "R243-registry-audit-20260923",
+  "status": "COMPLETE",
+  "verdict": "PASS",
+  "conclusion": "Independent offline audit confirms the R242 normalized R223 V25-LF mini-100 registry record is row-for-row consistent with immutable artifact 10730459690, authenticated R209 panel identity, R240 postflight evidence, the R242 integration receipt, and preserved R223 SCIENTIFIC_REJECT status. This is registry-integrity evidence only.",
+  "frozen_prep": {
+    "checklist_path": "research/r243/R243_PREP_CHECKLIST.json",
+    "checklist_commit": "bb646a9ff9ccdf21bbc760ab8260b9994c7559e4",
+    "verifier_path": "research/r243/r243_verify_r223_registry.py",
+    "verifier_prep_commit": "b2400ae0d3cc18b7aebe35963cdfccdd9aff357a"
+  },
+  "sources": {
+    "artifact": {
+      "id": 10730459690,
+      "name": "r223-v25-local-feed-mini100-attempt6",
+      "zip_sha256": "f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00",
+      "manifest_sha256": "4cfa68492df10aa860dd2aa701cf87a33c63f9c0beac470802bc24082f10da5b",
+      "manifest_entries": 23,
+      "candidate_report_sha256": "72821cf9117b484b2cc4fe4affa21e08ece737e86813508d9c1c6d01b02f6710",
+      "owner_result_sha256": "52c5da262f442d3a499c2c77885abc91f81d596e10703c1ac582192ffc8dda65"
+    },
+    "r240": {
+      "path": "research/r240/R240_RECEIPT.json",
+      "commit": "3b99fcaea2ef29b050612610ff04a8fc7a6886cd",
+      "git_blob": "f9f19b6313a5b302e2f1d6a40014a5d55ef5494a",
+      "sha256": "e75ec5e2641df59887cf38520e9d9f3a449731fa5fcac481398433c4c4ac8bbd"
+    },
+    "r242": {
+      "path": "research/r242/R242_INTEGRATION_RECEIPT.json",
+      "commit": "b55b9ab2e3dd7ff58ea405704e8f63e86112d48d",
+      "git_blob": "ba7fb51a5b82009514797da85c3d517c2c3185fe",
+      "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200"
+    },
+    "normalized": {
+      "path": "research/results/R223-v25-local-feed-mini100.json",
+      "commit": "b55b9ab2e3dd7ff58ea405704e8f63e86112d48d",
+      "git_blob": "c8b617c43ff1145977c38e7e1cca6d23985ec392",
+      "sha256": "3c8633826ac2efb74db73ba7f5640ec34f0ebb8c91c517f0cf418b6794184587"
+    },
+    "parent": {
+      "id": "R209-v25-mini100",
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    }
+  },
+  "artifact_integrity": {
+    "zip_digest_matches": true,
+    "manifest_files": 23,
+    "actual_files_excluding_manifest": 23,
+    "missing": 0,
+    "extra": 0,
+    "hash_mismatches": 0
+  },
+  "row_audit": {
+    "rows_checked": 100,
+    "exact_name_order_mismatches": 0,
+    "network_id_mismatches": 0,
+    "target_sha256_mismatches": 0,
+    "final_mse_flops_status_adjusted_score_mismatches": 0,
+    "failure_reason_mismatches": 0,
+    "score_formula_mismatches": 0,
+    "artifact_owner_crosscheck_mismatches": 0,
+    "artifact_and_normalized_ieee754_projection_sha256": "f89ac0172aec3a8e37c0553e5f20bbddbba6bc39c6e153c570725c653ce593f1"
+  },
+  "panel_audit": {
+    "exact_vs_R209_parent": true,
+    "count": 100,
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dtype": "float32",
+    "evaluator": "whestbench 0.16.1",
+    "meter": "flopscope 0.12.1+np2.4.6",
+    "shape": [
+      16,
+      1024
+    ],
+    "split": "mini:all-100",
+    "stage": "development",
+    "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1"
+  },
+  "recomputed": {
+    "artifact_rows": 100,
+    "failures": 0,
+    "mean_raw_mse": 2.2284993050902814e-8,
+    "mean_adjusted_score": 8.171116513490029e-9,
+    "mean_measured_flops": 806303829485,
+    "normalized_rows": 100,
+    "normalized_failures": 0,
+    "normalized_mean_raw_mse": 2.2284993050902814e-8,
+    "normalized_mean_adjusted_score": 8.171116513490032e-9,
+    "normalized_mean_measured_flops": 806303829485,
+    "note": "The 3e-24 mean-score difference is floating summation representation/order only; every per-row score is bit-identical under the audit projection."
+  },
+  "linkage_and_status": {
+    "parent_id_exact": true,
+    "parent_id": "R209-v25-mini100",
+    "r242_receipt_digest_exact": true,
+    "r242_normalized_blob_exact": true,
+    "r242_normalized_sha256_exact": true,
+    "r242_artifact_projection_claim_exact": true,
+    "r242_committed_projection_claim_exact": true,
+    "r242_identity_mismatches_claim_zero": true,
+    "r242_score_mismatches_claim_zero": true,
+    "r242_panel_exact_claim_true": true,
+    "normalized_development_verdict": "SCIENTIFIC_REJECT",
+    "normalized_development_decision": "R223_SCIENTIFIC_REJECT_DROP_V25_LOCAL_FEED",
+    "authoritative_R223_status": "SCIENTIFIC_REJECT",
+    "r240_verdict": "R240_INDEPENDENT_DEVELOPMENT_NO_GO",
+    "preserved_scientific_reject": true
+  },
+  "status_audit": {
+    "refreshed": true,
+    "candidate_row_present": true,
+    "candidate_rows": 100,
+    "candidate_failures": 0,
+    "displayed_adjusted_score": "8.1711165e-09",
+    "comparison_vs_R209_present": true,
+    "displayed_ratio": "1.000088",
+    "displayed_improved_networks": "50/100",
+    "R242_marked_COMPLETE": true
+  },
+  "report": {
+    "path": "research/r243/R243_AUDIT_REPORT.md",
+    "commit": "6d2cd7b08a786f199504e164e1b145f3c205b4d5",
+    "git_blob": "edf4861b1396040d739012b90d6f2358f8c0e8d7",
+    "sha256": "5c09899b52def4d6e6616e34571748e1112cb6d1ac50d01cfa518b0307ac30b4"
+  },
+  "scope": {
+    "actions_triggered": false,
+    "estimator_or_benchmark_run": false,
+    "retry_or_repair": false,
+    "paid_compute": false,
+    "holdout_or_private": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "r242_record_edited": false,
+    "candidate_or_canonical_edit": false
+  }
+}
