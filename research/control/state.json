@@ -4592,6 +4592,14 @@
       "owner": "workflow-preflight-integration",
       "payload": {},
       "at": "2026-09-23T15:02:32.658Z"
+    },
+    {
+      "revision": 343,
+      "action": "claim",
+      "job": "R276",
+      "owner": "v25-accuracy-research",
+      "payload": {},
+      "at": "2026-09-23T15:03:01.039Z"
     }
   ],
   "jobs": [
@@ -7353,8 +7361,8 @@
     {
       "id": "R276",
       "assigned_owner": "v25-accuracy-research",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "v25-accuracy-research",
+      "status": "CLAIMED",
       "attempts": [],
       "title": "Test one distinct global V25 accuracy improvement",
       "hypothesis_id": "V25-GLOBAL-ACCURACY-EXPLORATION-20260923",
@@ -7367,7 +7375,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 342,
+  "revision": 343,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
