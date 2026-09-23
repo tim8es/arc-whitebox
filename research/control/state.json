@@ -5480,6 +5480,23 @@
         "to_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b"
       },
       "revision": 408
+    },
+    {
+      "revision": 409,
+      "action": "dependency_update",
+      "job": "R290",
+      "owner": "coordinator",
+      "at": "2026-09-23T20:59:11.880Z",
+      "payload": {
+        "from_depends_on": [
+          "R287",
+          "R288"
+        ],
+        "to_depends_on": [
+          "R288"
+        ],
+        "reason": "R287's docs audit is complete with WAITING_INPUT because account-specific storage allowance is unknown; its durable receipt is present. R290's purpose is specifically to investigate an alternative persistence path, so R287 is context rather than a prerequisite. R290 had no claim, start, attempt, branch, run, or artifact. R287's status and evidence remain unchanged."
+      }
     }
   ],
   "jobs": [
@@ -8762,7 +8779,6 @@
       "attempts": [],
       "deliverable": "Using first-party GitHub Actions docs and this public repository's settings/workflow patterns, determine whether the planned ~1.36 MB residual capture can be saved to a dedicated research branch by a narrowly permissioned GITHUB_TOKEN commit, avoiding upload-artifact storage that R287 could not verify as quota-free. Inspect workflow token permissions, branch/rule constraints, effects on downstream workflow triggers, and repository storage policy. Read-only/docs-only; do not trigger Actions, write a commit, upload artifact, install/download data, or spend money. State exact remaining account-owner inputs if zero-cost still cannot be guaranteed; cite sources, append report/receipt and finish R290.",
       "depends_on": [
-        "R287",
         "R288"
       ],
       "hypothesis_id": "V25-CAPTURE-OUTPUT-PERSISTENCE-20260923",
@@ -8810,7 +8826,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 408,
+  "revision": 409,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
