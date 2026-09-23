@@ -5407,6 +5407,18 @@
       "owner": "preflight-current-head-final-audit",
       "payload": {},
       "revision": 403
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T17:50:45.844Z",
+      "job": "R289",
+      "owner": "preflight-current-head-final-audit",
+      "payload": {
+        "code_commit": "7a65d58a559dce27f709374a0fbaea6726aa3b43",
+        "command": "offline read-only synthetic replay of all R277/R283/R286 false-PASS inputs against exact current PR #35 production analyzer bytes on head 7a65d58a559dce27f709374a0fbaea6726aa3b43; includes whitespace ancestry, conditional/rebound/no-write generator, nested run-block fake checkout, alias/dynamic subscript, deletion/early-return, comment/string decoys; no PR edits/comments/review/merge, Actions, estimator, benchmark, or data",
+        "run_id": "R289-pr35-current-head-final-audit-20260923"
+      },
+      "revision": 404
     }
   ],
   "jobs": [
@@ -8650,7 +8662,14 @@
     },
     {
       "assigned_owner": "preflight-current-head-final-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "7a65d58a559dce27f709374a0fbaea6726aa3b43",
+          "command": "offline read-only synthetic replay of all R277/R283/R286 false-PASS inputs against exact current PR #35 production analyzer bytes on head 7a65d58a559dce27f709374a0fbaea6726aa3b43; includes whitespace ancestry, conditional/rebound/no-write generator, nested run-block fake checkout, alias/dynamic subscript, deletion/early-return, comment/string decoys; no PR edits/comments/review/merge, Actions, estimator, benchmark, or data",
+          "run_id": "R289-pr35-current-head-final-audit-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independently audit the current PR #35 head after R285 (initial expected head 7a65d58a559dce27f709374a0fbaea6726aa3b43; refresh it before start). R286 pinned the prior 05733f head, so do not reuse it as current proof. Replay all R277/R283/R286 false-PASS inputs against exact current production bytes, including the whitespace, conditional generator, alias/dynamic subscript, nested run-block fake checkout, deletion and early-return cases. Read-only/offline only; no PR edits/comments/merge, Actions, estimator or benchmark data. Report exact head/blob, rejection matrix, any remaining counterexample and receipt/hash; finish R289.",
       "depends_on": [
         "R285",
@@ -8660,7 +8679,7 @@
       "id": "R289",
       "owner": "preflight-current-head-final-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Adversarially verify the latest PR #35 head after R285"
     },
     {
@@ -8701,7 +8720,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 403,
+  "revision": 404,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
