@@ -1,0 +1,82 @@
+{
+  "schema": "arc.whitebox.r268.control_audit.receipt.v1",
+  "job": "R268",
+  "owner": "r261-control-audit",
+  "audit_status": "AUDIT_COMPLETE_CONTROL_FINISH_BLOCKED",
+  "audited_control": {
+    "branch": "research/control-v2",
+    "commit": "829887822daf04f5d88ed43c9568d24a4a5e3407",
+    "revision": 300,
+    "state": {
+      "path": "research/control/state.json",
+      "git_blob_sha1": "2082543be6bcea905d073fff842b6e6a8f7b916a",
+      "sha256": "582d85cba96d709abf3bcbcc39ad7b4ad70ce9ce0c60447cae976e7bf1f66fa0"
+    },
+    "status": {
+      "path": "research/control/STATUS.md",
+      "git_blob_sha1": "f9943b5d26ade36da636c94c80dd68460ee45978",
+      "sha256": "9af6a4db93f40a458a081fe9131e185f650800bbb1f217f789544d68362051f2"
+    }
+  },
+  "r261_original": {
+    "report": {
+      "commit": "933d259ec33c37c88f98df8c214935d02d8b60ca",
+      "path": "research/r261/R261_TARGET_FREE_NO_GO.md",
+      "git_blob_sha1": "835eee8021cfc8760c50c1b6978dcdabf2e52a2e",
+      "sha256": "34d49ef5f716863e20a752f76c8bebe6c820b4d4db83045511b995f981998509"
+    },
+    "receipt": {
+      "commit": "c7d0e98a413c0e4fc4e462d7aa65d8eeaae42f66",
+      "path": "research/r261/R261_RECEIPT.json",
+      "git_blob_sha1": "47b0d745cd31e8707256f0f7183d0d0212d9442e",
+      "sha256": "dabaa077c1eb70a4f5cf89355e8e262bf555e2ce1f23ac308de457b588885e8e",
+      "declared_report_git_blob_sha1": "84df1b3ecbc86c4564a0c29148e49cf57a9a4528",
+      "declared_report_blob_matches_actual": false
+    }
+  },
+  "reconciliation": {
+    "note_commit": "9dfb89faeb33617da2f5ca91d32fa776426e228b",
+    "note_path": "research/r261/R261_COORDINATOR_RECONCILIATION.json",
+    "note_git_blob_sha1": "5cce867616e893cce4859e26c832fd94e826f153",
+    "note_sha256": "ceb4aa86da2ac1cd23ecea0bac0d6f4c68668d8d91c103ae39a39af8d155b5c2",
+    "projection_commit": "dd9263eda28e97c15820da62bd4b03c613a29c18",
+    "reconciled_source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "immutable_start_revision": 288,
+    "immutable_finish_revision": 289,
+    "start_missing_code_commit": true,
+    "finish_missing_receipt_sha256": true,
+    "projection_has_append_only_reconcile_event": false
+  },
+  "findings": {
+    "report_blob_mismatch_handled_and_preserved": true,
+    "source_commit_provenance_supported_by_r209_code_commit": true,
+    "current_r261_terminal_status_matches_finish_event": true,
+    "current_state_and_status_match_for_r261": true,
+    "remaining_r261_discrepancy": "Reconstructed attempt/provenance/receipt projection was written directly to state.json without a reconciliation event or revision increment, so events[] alone cannot reproduce the current projection.",
+    "remaining_r268_blocker": "R268 depends_on R261, but current arc_control.py claim gate requires dependency status == COMPLETE; R261 is SCIENTIFIC_REJECT. Claim/start/finish cannot be validly published without changing dependency semantics/job metadata or rewriting R261."
+  },
+  "audit_artifact": {
+    "branch": "research/r268-r261-control-audit",
+    "report_commit": "8ae44939efbc8b657733348764843cefbf66825b",
+    "report_path": "research/r268/R268_R261_CONTROL_AUDIT.md",
+    "report_git_blob_sha1": "54a52a3928a192b332a646f34261d6bedb532efb",
+    "report_sha256": "1ed206cb3ca11b2b4e4001c6532ffefbdd7793aec219086ad5dd7c1e8f0997d6"
+  },
+  "queue_publish": {
+    "claim_published": false,
+    "start_published": false,
+    "finish_published": false,
+    "reason": "Blocked by exact dependency gate: R261 terminal status is SCIENTIFIC_REJECT, not COMPLETE."
+  },
+  "safety": {
+    "actions_runs": 0,
+    "science_runs": 0,
+    "public_accesses": 0,
+    "holdout_private_accesses": 0,
+    "paid_resources": false,
+    "submission": false,
+    "leaderboard_changes": false,
+    "canonical_changes": false,
+    "r261_history_or_artifact_edits": false
+  }
+}
