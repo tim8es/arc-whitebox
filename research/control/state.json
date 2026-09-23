@@ -4977,6 +4977,20 @@
         "command": "inspect only existing public GitHub Actions artifacts/logs and committed R209/R223 material for retained V25 prediction/target/residual tensors; no Actions/reruns/dataset downloads"
       },
       "at": "2026-09-23T15:48:10.208Z"
+    },
+    {
+      "action": "reassign",
+      "at": "2026-09-23T15:49:15Z",
+      "job": "R284",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "residual-correction-rules-audit",
+        "from_session": "6ab3a7fe-d4d4-83eb-b706-88dd77430353",
+        "reason": "R284 remains QUEUED with owner null and attempts empty. The original target session stayed idle and read_thread shows no R284 user turn, so the delivery failed and no claim/start/branch/run/artifact exists. Reassign the same unstarted job to a previously responsive ARC session; no duplicate execution is possible.",
+        "to_assigned_owner": "residual-correction-rules-audit-responsive",
+        "to_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b"
+      },
+      "revision": 372
     }
   ],
   "jobs": [
@@ -7992,7 +8006,7 @@
       "title": "Adversarially test PR #35 beyond the known false-PASS cases"
     },
     {
-      "assigned_owner": "residual-correction-rules-audit",
+      "assigned_owner": "residual-correction-rules-audit-responsive",
       "attempts": [],
       "deliverable": "Use first-party AIcrowd/ARC allowed-code rules, official evaluator/starterkit source, and R276/R278 artifacts to determine whether an estimator may embed one fixed output-space residual direction and coefficient fitted offline from public development mini networks, then apply it globally to unseen inputs/networks. Separate permitted public development use from leakage of evaluation-network targets, package-time constants, and metered runtime computation. Cite exact official sources and state any ambiguity as UNKNOWN; no organizer contact, estimator implementation/run, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard/canonical edits. Save one concise research artifact/receipt with hashes/commit and finish R284.",
       "depends_on": [],
@@ -8005,7 +8019,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 371,
+  "revision": 372,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
