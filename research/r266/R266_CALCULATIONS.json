@@ -1,0 +1,3644 @@
+{
+  "schema": "arc.whitebox.r266.calculations.v1",
+  "task": "R266",
+  "owner": "score-gap-analysis",
+  "run_id": "R266-score-gap-analysis-20260923",
+  "verdict": "NOT_COMPARABLE",
+  "strict_official_gap": null,
+  "competition_rank": null,
+  "official_formula": {
+    "per_mlp": "final_mse_m * max(0.1, measured_flops_m / B); failed MLP multiplier = 1.0",
+    "aggregation": "mean across MLPs",
+    "B": 2199023255552,
+    "cost_floor_factor": 0.1,
+    "phase2_compute": "C_m = F_m"
+  },
+  "r263": {
+    "control_finish_revision": 302,
+    "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
+    "receipt_sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73",
+    "snapshot_sha256": "6cbb8ce69ad4330cc624e78209a49a1b333e3845daf8def1fd2a462d6ff49646",
+    "checked_at_utc": "2026-09-23T12:05:34Z",
+    "checked_at_moscow": "2026-09-23T15:05:34+03:00",
+    "visible_leader": "J2W",
+    "displayed_adjusted_score": "0.0000000021",
+    "metric_match": true,
+    "aggregation_match": true,
+    "split_match": false,
+    "r209_panel": "public development mini:all-100",
+    "online_visible_panel": "50 public MLPs; 50 additional sealed; full 100 is final evaluation",
+    "reason": "Panel/split mismatch means no exact official gap or rank can be computed. The displayed leaderboard value is also rounded."
+  },
+  "normalized_inputs": [
+    {
+      "id": "R209-v25-mini100",
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "code_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+      "attempt_id": "35544406064",
+      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/e1f6dd6a6bc351b8253e255fef424b1931b37de3/research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json",
+      "evidence_level": "R209_ACTIONS_PLUS_R224_PUBLISHED_DATASET_FINGERPRINTS",
+      "panel": {
+        "count": 100,
+        "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+        "dtype": "float32",
+        "evaluator": "whestbench 0.16.1",
+        "meter": "flopscope 0.12.1+np2.4.6",
+        "revision": "v2-phase2; metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1; all_layer_means raw SHA256 per network",
+        "shape": [
+          16,
+          1024
+        ],
+        "split": "mini:all-100",
+        "stage": "development"
+      },
+      "per_network": [
+        {
+          "name": "logan-fitzgerald",
+          "network_id": "6319981554997072999",
+          "target_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.290469680588103e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.398338779926109e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "william-graves",
+          "network_id": "2392109381927064353",
+          "target_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.084175143579614e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.641929985289522e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "raymond-barnes",
+          "network_id": "4030325997523501402",
+          "target_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.610782878775808e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.572813507472489e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "steven-rice",
+          "network_id": "6959524404880716684",
+          "target_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.49841693999997e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.16080752059489e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sarah-kelley",
+          "network_id": "3958198382245770826",
+          "target_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2046663161745528e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.08372831862656e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "christopher-morales",
+          "network_id": "7846555140217393207",
+          "target_sha256": "1dedfc1aabb61c8a578f2a91059b26ba4c68c7efe1095d46cd731e50c0d6e311",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.960636986098052e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.188959440614323e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "cheryl-graham",
+          "network_id": "6455969887580159404",
+          "target_sha256": "bd4df7a96ed021c89e26464cfbcb734a2ee2075fdb7f9cb216aba631371ee7e6",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.0817978452214447e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.633213276589084e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "renee-park",
+          "network_id": "3642947882172421415",
+          "target_sha256": "eca85716a43ebce6b8cb41f3950e3eab1e186b41b9fb19afa117c49910ad7803",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4277749588463848e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.901788466624862e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "justin-johnson",
+          "network_id": "1231855977102813932",
+          "target_sha256": "5752ff4f59f5f6f7172117a06b4dafa83fefaa27e88977cc7b8503b5df97b65d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3329354448264894e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.554045654217004e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "christina-lopez",
+          "network_id": "2704129700552098135",
+          "target_sha256": "f178769226c1630ee8564ab45329ec3d241a6bf63d84c29f1b54ab2ec3b71805",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.527135478658238e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.266108201481707e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "randy-murray",
+          "network_id": "2106691863424732350",
+          "target_sha256": "5bfc3630831da9c1f4e903c4af0559d2247ef4959528b1c5f9dc1016813079da",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2792757903289385e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.357294760239438e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "john-koch",
+          "network_id": "7223822770173254400",
+          "target_sha256": "83693ba40d4d28ec44a9450e4ccb176c48c69de1c02dae3c98ce2d861e0dec5d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.286207845259014e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.382712143511188e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "susan-butler",
+          "network_id": "996126425053749872",
+          "target_sha256": "fa549e11b6cc5199c699e81a2cc810871dc7aa786f906aa579ff6021d27b87c1",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1024492369292602e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.708934594932255e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "crystal-gonzales",
+          "network_id": "8412308475179182746",
+          "target_sha256": "4854a290abb533bbdcf4fb7730b6748e0e0b522ffdeae8a4ca3fa99dd217ff2b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.156363798633265e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.906620143096858e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "troy-richardson",
+          "network_id": "3448660450172082933",
+          "target_sha256": "bede3e842a6e9d216062c411d49188baffd3d10ea32751a1124bbd3cbe302b8d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.418746447574449e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.868684122575815e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sharon-whitehead",
+          "network_id": "944045338291930753",
+          "target_sha256": "15f1f91886ddd3c6ebfee30327ff5d919d691a4eecb09b5fc109acc874c117d3",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4181140645396226e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.86636539859961e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "adam-morrison",
+          "network_id": "3786732390200298364",
+          "target_sha256": "f9490b29537c33c5ed30f810b8704637adecba1bac17a6edbdf302aefb191d00",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7482937764157214e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.410372311676118e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "william-simmons",
+          "network_id": "834438545481244494",
+          "target_sha256": "97a1b988dec4e58c6283b735f5cea37cbe6e2af732b7289c9f7d758924f45aed",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9689935015776427e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.219599814775172e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "william-bryant",
+          "network_id": "2176353874128788411",
+          "target_sha256": "884147c379c3a9acab0225e74309f27cf09ed4302b1cdbea28a523e69c18cd9b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2941229360640136e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.41173397017741e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "angela-hancock",
+          "network_id": "8262064847276688196",
+          "target_sha256": "d13fb7ce7da78370bc10f66d21e6f182691f9668a8f101d61b90fbd182a73a17",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.894277623648577e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.9456432283134885e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "lisa-aguirre",
+          "network_id": "7926735209001626063",
+          "target_sha256": "a239eb56b9cbdf2c8fb997b63b66f5a6d8e4894bfdf25f5a50c91ffaf911ca74",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3651058000950798e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.672002920582928e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "marissa-perez",
+          "network_id": "6127855443806155466",
+          "target_sha256": "36a526a0cbb238068affa00266a7858faf86e2233d263955c07e22d9f748c415",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5458252395083036e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.334636916209923e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "matthew-cruz",
+          "network_id": "9076486323495801462",
+          "target_sha256": "56401bf34f4cd882a1b6812855c77838742ba4443bec7df9e73da306827ba75e",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2759820694773225e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.345217855754383e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "dana-parker",
+          "network_id": "4238367645243012349",
+          "target_sha256": "364296baa626d306f657ba27bc68fcb64d8ce9b2114dfac2b5c90d1192439881",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.0802696454325087e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.627609910755575e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "justin-thomas",
+          "network_id": "3687427835061578571",
+          "target_sha256": "59c85090a2b952ae6ef5cc654bfb4a7f6c1af0d93949547e8245049c0ea87eca",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3586405717423986e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.648297224561027e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jose-booker",
+          "network_id": "6591564818157006431",
+          "target_sha256": "29c11c39c0774f3014817120cbf88e829de5f9397cbbdd0a6466d7449f461015",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.255096731573758e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.268638739805409e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jennifer-best",
+          "network_id": "3478610531759830282",
+          "target_sha256": "5542b9129a81f9a5b5207a8b7187d20115154da5f8644f457f4c758e3bb80950",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.649932540066402e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.71636141008142e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "lisa-dean",
+          "network_id": "2763505389249373930",
+          "target_sha256": "02be51a0c668306a838807cb8fa3922e51f049352a65e5182f0385bace0de621",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7422475906414547e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.388203095951934e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "terri-salazar",
+          "network_id": "1023494082822387594",
+          "target_sha256": "6ba755b6d3c664eb3e057e7e43e0b8a7fe992cfd18e7591d86fb9b32870b3887",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.298442680626067e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.427572939181162e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "monica-duncan",
+          "network_id": "796435967347525644",
+          "target_sha256": "c18bd5a207be92ae584aab94f4c9fda557a5d8bc51ec1a05e96737912fe976d3",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9075741874985397e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.994397005221041e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "katherine-allen",
+          "network_id": "3695113754369497827",
+          "target_sha256": "4c1ce8ecde2b26317ae242f0a3af865677506a30626e5ec69c475a5ce4917d1c",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2973807745074737e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.423679306616625e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "stephanie-fowler",
+          "network_id": "8052006587265362085",
+          "target_sha256": "56aad1b4c6aa9d184be5c1a07cce75fec82030d51631a018ecfa5beb37f5fa38",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7631585080835066e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.464876002983092e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "nathan-valdez",
+          "network_id": "5916827073025923411",
+          "target_sha256": "88100654a95b5fd3d66e8a7667c116f9d33339a60116afd81036d172533996d0",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.257155173879255e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.276186316613349e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "mark-sweeney",
+          "network_id": "420371704280610938",
+          "target_sha256": "6430f5e64c91ceecbe7714cedeb078f6c4d4fca044ffe15469e54787255b9084",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.581099600718062e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.46397546986804e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "rachel-warren",
+          "network_id": "8920457781230169818",
+          "target_sha256": "9a0f2ba7bb28224b911fa45bad3038ccbcdd564ab9bda3ee909ee4d51ba6dacd",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.766531004283479e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 1.0143886564425604e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "cory-clarke",
+          "network_id": "2711634248630657917",
+          "target_sha256": "c38c0e9e6e328bc9ebc50e6d6a34f8aad6ce2f76d6e3fe5d580e01243156e26e",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.861267584502002e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.824607139409497e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "patricia-cochran",
+          "network_id": "4049013147162560479",
+          "target_sha256": "3a12cc823cec3db7b896b704d56f51353029bd9025e06c873eef457d638965db",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1675646166841034e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.947689564534954e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "paige-miller",
+          "network_id": "3703256763869420164",
+          "target_sha256": "dc4f6133cdae0af9bf692f50d0579e217c04451fbbd6a54616a5579c59d30c8c",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.8312864941426596e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 1.0381321945608135e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "daniel-smith",
+          "network_id": "2787599716161986387",
+          "target_sha256": "f7bef65e375895d4c235f8f5f1ff3fe10b77b005802052292c787585bd393a9b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.377494467964425e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.717427765399922e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "rebecca-jackson",
+          "network_id": "9077028007935113016",
+          "target_sha256": "704c66277f8f4d1664d846b2212963ef39b597d3c0c59f91f2a4fc4a66f65e46",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4223508532372762e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.881900197913224e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sylvia-stanley",
+          "network_id": "8509454987965736357",
+          "target_sha256": "c19454fc2c5d601ce45e0eee52f0c097113c3f90a2c5fe718a20bead2ac1f673",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.691223777162577e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.867761710515386e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "john-lee",
+          "network_id": "4534372957096958739",
+          "target_sha256": "f9e9c1fa4834089766a6963dc10002745d2124f2bb011077c579c620c4fc5b9d",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.92791471675946e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.068978501384897e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "crystal-carrillo",
+          "network_id": "4977787987958539383",
+          "target_sha256": "3ae9032fbc7fd467dabf63f3efbb6c03631104620500d258d66d3c919ca15c2b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.115315922424088e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.756112160597555e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "renee-garcia",
+          "network_id": "2457771942486756887",
+          "target_sha256": "b2c6ef3a1e9f575944720b48902dae6b26406b96b58b33a3044cbf8923590ce9",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3957785089123718e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.784468849352395e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "anita-collier",
+          "network_id": "8005359733654539502",
+          "target_sha256": "5ed3a2684fa49197d6ebe17684b4ea03675684923c9ab689fc40ce7bcf9f8c09",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2908977825863985e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.399908477898764e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "tina-webb",
+          "network_id": "3197215999203804376",
+          "target_sha256": "4556b9460c2a68b2b44a1b3b0bf7f228a9e7e6b30793f8512013ac8c3d281fc6",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7672274310598368e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.479795298319877e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "lisa-mitchell",
+          "network_id": "2621221337532183241",
+          "target_sha256": "8eb3cfd3bd7500ba0e565cce7b42647137f0f802fa87b5cf11a40a0c3fa293bb",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3308610153094378e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.5464394579827e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "douglas-kelly",
+          "network_id": "1876000384391229791",
+          "target_sha256": "e7e276e55667cc175301cc5a865679be7f8b6cec5cc460935d417c6f3d86f4db",
+          "budget_flops": 2199023255552,
+          "final_mse": 3.028865336318631e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 1.1105773382971547e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "maria-calderon",
+          "network_id": "3276298747013761189",
+          "target_sha256": "8ed535d3c8c3acc643fc667450b72b3fbfa9ee4144670617a94079efd4f0c382",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3970414986251853e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.789099784035208e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jay-harris",
+          "network_id": "4470491132045783488",
+          "target_sha256": "b5c8c2e1d8e60257e4b3039020132f7f7c74923d2665bf7f6c64301e8c579f3c",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.775253721802983e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.5092248556628134e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "robyn-davis",
+          "network_id": "1972264219902224093",
+          "target_sha256": "350ad6ab1d209bccdb416b59e25a0588ef080bce2aa8b54d2c0c59c61fab729c",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.6693341819973284e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.120855524149395e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "daniel-vasquez",
+          "network_id": "2096587585286866638",
+          "target_sha256": "31785522842a3f5bfd079033dc74d77da1b758eb738e31ca883aab5309211ab4",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.060857084984491e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.556430946628714e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "richard-davis",
+          "network_id": "6516760550695168709",
+          "target_sha256": "ad34b89a2822f75eb35543a7a3d2ef9a389c01a6c7754e12fff00d7df6cc43de",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3916976843452176e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.769505915109316e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "darryl-lewis",
+          "network_id": "2599332908236606914",
+          "target_sha256": "7debc8b94181d079ba2f20ebd85a6c6055f755b236949ccca4acc363feaffc59",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.914941805125636e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.0214114421977505e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "james-parsons",
+          "network_id": "2633982697218239142",
+          "target_sha256": "a1996a2e2c23b64781bf8fffc7d2a491217f5a572fc447925d9c6dbea1249eec",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4756007022119775e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.077148480594975e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "victor-short",
+          "network_id": "3088209523042816135",
+          "target_sha256": "8bfb2b68452b03f0e0b07ec399ddd706198578d50fa8b6dadd4e483ae6aceb55",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4231052719869695e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.88466638351068e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "katherine-singh",
+          "network_id": "6838115367257519733",
+          "target_sha256": "aafcfa55448a6c792dcbe9d4b84d39755286c16259203a168c7fac2cd223aa27",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.4371615009167726e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 5.269560766710126e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "gregory-wilson",
+          "network_id": "7580473291617765187",
+          "target_sha256": "8f789f34613f464917a9b71906c71e7c1b0b6e4f6efa8802a47c654be4e3c9b6",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1275180728252963e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.800853112106962e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "daniel-graves",
+          "network_id": "6256191955956926982",
+          "target_sha256": "d0279f1b2ed46e5bea06ca8889553bf82af583fb6871b1352935dca8af54ae12",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7138331642740923e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.2840174868199655e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "amy-fields",
+          "network_id": "1202559381807847992",
+          "target_sha256": "359e37dc7d765f0d169e97916af3455f942b50bb32c670420d9d7df22656e843",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.397501930317958e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.790788023514512e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "erica-whitaker",
+          "network_id": "7850441526471123853",
+          "target_sha256": "35789402945d10752ffd401243bcc674fb42a192ca6b606aa476022adc23cb09",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2979557812163875e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.425787651984876e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "mallory-morales",
+          "network_id": "7713237186030878987",
+          "target_sha256": "e80975fb211bcf2fdbd00a5b1371b8dd4bee6723b6c18a9f7b3f878e911bd641",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.176359359395974e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.979936762305155e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "walter-moore",
+          "network_id": "1846860118540496368",
+          "target_sha256": "8813ded25511f2b3704565af6f9537175b632cbe7b544a5242b59cf3fb39e3c6",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.378718022555404e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.721914105497703e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "dillon-taylor",
+          "network_id": "1399957212469161720",
+          "target_sha256": "acb4d6de824ce2bb173fb1407998662f09bb5a4a5c9367c6be50141092f17287",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.719683950796025e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.305470242888581e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "diane-jones",
+          "network_id": "379099306488066524",
+          "target_sha256": "f39af2cc5ed93f648e47eeb3c62100c9cc6e8b11fbcc96a9e5b4cdefb940134a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.442382474043825e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.955349036494322e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "brandon-king",
+          "network_id": "4758217560929263782",
+          "target_sha256": "01038364428cf3cc3a0cc6dfccf5e8380aa5c976b7bdf3cd5dadd569a7456d40",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2940129795756548e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.411330798789412e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "samuel-simon",
+          "network_id": "8384567043090176381",
+          "target_sha256": "7b1fb326283656749692558bece4de141f41cb4630fd62c6ae950c5bc529520d",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7265614715711308e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.330687668783732e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "marie-paul",
+          "network_id": "2474931402529981222",
+          "target_sha256": "8865ba3d55bd68e1386ac72c93f8866eed7184855396fdb6232a1f146eb20c24",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.761350614832736e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 1.012489191630255e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "barbara-walls",
+          "network_id": "7508821215085830111",
+          "target_sha256": "500303650e166c0c9f2aa520463585dee271dae27026b8faa60f78102ddcc6cc",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2261648524590782e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.162555815240102e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "deborah-harris",
+          "network_id": "7407377602205352667",
+          "target_sha256": "bb1fbc618dace33512e327ae5ef1823f9dd2285e6e5c563f27f86f913a5f785b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1699335661651276e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.956375660868288e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "daniel-smith-2",
+          "network_id": "2866660226654851759",
+          "target_sha256": "70de7edbe3b267dcce527997973e55dfca9d35f9fb7394025d6a458fd229fb35",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9176130905407263e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.031206097016339e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "mary-garrett",
+          "network_id": "8915800854652069828",
+          "target_sha256": "65f55370857f9258123bd511b037011ea385e1039d07c770c7609fa151b245fa",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.982928488075686e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.270694460775556e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sandra-powell",
+          "network_id": "5937758525897362098",
+          "target_sha256": "e6d0080647fb1f16a87fbd0a7e25497cf4fc3384d02124aec52c993265cc562f",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9883477975213282e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.290565143659283e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "victor-garrett",
+          "network_id": "8439345745453955992",
+          "target_sha256": "31f6fb8a2f3a78be1006691213c360eac038c5f6f05e5405cf31a069daf55193",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.837389345700103e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 1.0403698934632436e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "steven-montgomery",
+          "network_id": "2009240036358336991",
+          "target_sha256": "bffb01eb8f0dd16bb32567d4cdff131bf9659087ae7947ead31a50242fc4c531",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1409814365824786e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.850218485029587e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jennifer-perez",
+          "network_id": "3567951564090217873",
+          "target_sha256": "d9be5a2688d06e40deef2fe68e6ffc1ec898e9c77b102a67ee55eba1b7e50cdf",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.8918395738865e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.936703765792867e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "scott-young",
+          "network_id": "5322187042263020144",
+          "target_sha256": "f9e78522cb222de36c3afb30939d481ce9da5d380fd7f3f02ea3001df650698f",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5182886886909728e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.23367016491234e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "debra-jones",
+          "network_id": "8995904922783675230",
+          "target_sha256": "3733881d409a94dc67e6e479940b2dcc14a66733776340a0978d959dd207f809",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1553917761707453e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.903056081973883e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "george-chase",
+          "network_id": "5495818927611162469",
+          "target_sha256": "ea4206452598cb900a4c8965c656918a115a596b7dfc5c7f7a1f967bc231298f",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5721387686417074e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.431119281390605e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "troy-welch",
+          "network_id": "5635285983559139555",
+          "target_sha256": "86b86c9958f0824159c0df3c74ac85b710f82e49633c57cdcbabc51797caff77",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7462550516711417e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.402897032160694e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jacob-adams",
+          "network_id": "3515154164765914809",
+          "target_sha256": "d11adb5ee9963dc4444b4792cba9263ded77e7235e549255ce826342e1ce5c91",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.053855396866311e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.530758243188796e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "courtney-baker",
+          "network_id": "189314070552559745",
+          "target_sha256": "c7bf9bd4631c0409baf6e916c746232669edc90ef85cc5f2056ac8d4f691f652",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7664437024222934e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.476921643774086e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "pamela-carr",
+          "network_id": "6158616676286068120",
+          "target_sha256": "06824dc39adf4bf89930f7ddff6a7cfb06a39f09cd2b414765d12014ff9c20c4",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7690597431396782e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.486513735908236e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "denise-smith",
+          "network_id": "5783865521103757372",
+          "target_sha256": "4a178e8e537c913d9690a1cc163eb65f5c48e0d2971210d78c71bff25785b3fa",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.404038212944215e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.814754250320256e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "michelle-taylor",
+          "network_id": "1513056364632441852",
+          "target_sha256": "24c447ecffce18d69e3af4d8b9f68de0b882f50e1a92ec4265c8d1ed48f1db3f",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.6120513751948238e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.577464633291051e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "ashley-williams",
+          "network_id": "5008846919609497772",
+          "target_sha256": "fb04cd2e9293162b111e1b762a0f6a1e2a345da15f6230fb6ce81a9307d132db",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9791940530922147e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.257001614103713e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "judith-maxwell",
+          "network_id": "7552522903653607488",
+          "target_sha256": "347f93fdb529d6a9fefa7c3fc2f2fd10fa355d0e5436d37332f0b6b75213512a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.0270789491405594e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.4325785199513754e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "travis-reed",
+          "network_id": "6991373316760258100",
+          "target_sha256": "69d0b47c49a0d7a9c7eb51a5dd98c2cd93b2179323efcd59c01274368b24694d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3226551348898283e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.516351409083599e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "heather-strickland",
+          "network_id": "4126904310431152331",
+          "target_sha256": "c48f38818f6dcfb03a0b9b573ded71a2017b6311a0afe526aabc1cc853058c57",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4635188111687967e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.032848477437223e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "kyle-petersen",
+          "network_id": "4421956426608759848",
+          "target_sha256": "87be179b52cba9cd713570cf58456ecdfbcafba679cfd9718622fb729b7920f9",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2199747817808202e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.139859024678636e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "rachel-kelley",
+          "network_id": "5451601564174840496",
+          "target_sha256": "76da891438d5404d1c5f33b3c9b842ad7bc793d0f9bfa3d97c4f3aa8a3b6efd3",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.9562103875946377e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 1.0839373491895238e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "robert-patrick",
+          "network_id": "7649872791877645292",
+          "target_sha256": "9550998b285af76d0999ac71d3c98698194dd95cdffa383d9107f9fcbc2edb1e",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1599023014573504e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.919594576132253e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "james-perez",
+          "network_id": "4058513975018849492",
+          "target_sha256": "5ddc87ab888496423c77509a34dd270bdeab52cf48809924fda8923b11c662cc",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4790121955220457e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.08965721485425e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "nathan-moore",
+          "network_id": "7807267696492052470",
+          "target_sha256": "4ab085900ecda3c008f68a6fc603908df189638a36e1abdae509a28c6c00e13a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.657565012498253e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.744346975554905e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "gregory-harrison",
+          "network_id": "5678711027797573345",
+          "target_sha256": "fb164679fdbd08f9528afbed32e9bd516060446328215ed5d0a1720b75351714",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.756931133911621e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 6.442042433760107e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "mark-snyder",
+          "network_id": "3109974749458014971",
+          "target_sha256": "6a83c6642a00c2b50d87dfd3865708f6d5b2231cd0727fad57231d9f4352d18a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5385713087189288e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 9.308039328487363e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "kathleen-mueller",
+          "network_id": "2405080982703051941",
+          "target_sha256": "b845fff7cb78f640cb9d459348014863c23d85d51d20771e4f9985256e6c2d2d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4071637128031398e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.826214348174562e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "michelle-kramer",
+          "network_id": "1026162449252698879",
+          "target_sha256": "82d69ce049a162abd35ed08818f2a22cea9f0067426b53b88ff373244ecb7032",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9415582031001577e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 7.119004319844565e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "elizabeth-hughes",
+          "network_id": "8915680942698473024",
+          "target_sha256": "4cd7860eb6d194b7a55d340a25a147b616266d4a9a41a951f05332903378bdd5",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.229639939343997e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.175297724550917e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "kelsey-gonzalez",
+          "network_id": "998801302670386654",
+          "target_sha256": "dd2bc4637d80b652e51c94d5120e9364e1e7fbadda9d59e38610853c1e728673",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4196536330123308e-8,
+          "measured_flops": 806303721965,
+          "official_adjusted_score": 8.872010449358534e-9,
+          "status": "ok",
+          "failure_reasons": []
+        }
+      ]
+    },
+    {
+      "id": "R209-v29-mini100",
+      "path": "research/results/R209-v29-mini100.json",
+      "git_blob_sha1": "1c5d779ef7d6b0d85963c1db7bc4e91887a7086c",
+      "code_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+      "attempt_id": "35544406064",
+      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/e1f6dd6a6bc351b8253e255fef424b1931b37de3/research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json",
+      "evidence_level": "R209_ACTIONS_PLUS_R224_PUBLISHED_DATASET_FINGERPRINTS",
+      "panel": {
+        "count": 100,
+        "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+        "dtype": "float32",
+        "evaluator": "whestbench 0.16.1",
+        "meter": "flopscope 0.12.1+np2.4.6",
+        "revision": "v2-phase2; metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1; all_layer_means raw SHA256 per network",
+        "shape": [
+          16,
+          1024
+        ],
+        "split": "mini:all-100",
+        "stage": "development"
+      },
+      "per_network": [
+        {
+          "name": "logan-fitzgerald",
+          "network_id": "6319981554997072999",
+          "target_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2902616692022093e-8,
+          "measured_flops": 587262754287,
+          "official_adjusted_score": 6.116285366686641e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "william-graves",
+          "network_id": "2392109381927064353",
+          "target_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.123910665512085,
+          "measured_flops": 558473140719,
+          "official_adjusted_score": 1.123910665512085,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "raymond-barnes",
+          "network_id": "4030325997523501402",
+          "target_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.609719729207427e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.5910890486145704e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "steven-rice",
+          "network_id": "6959524404880716684",
+          "target_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4999200931574705e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.313779891385445e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sarah-kelley",
+          "network_id": "3958198382245770826",
+          "target_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.206217786238085e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.572007494516947e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "christopher-morales",
+          "network_id": "7846555140217393207",
+          "target_sha256": "1dedfc1aabb61c8a578f2a91059b26ba4c68c7efe1095d46cd731e50c0d6e311",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9591336553048677e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.947973621739747e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "cheryl-graham",
+          "network_id": "6455969887580159404",
+          "target_sha256": "bd4df7a96ed021c89e26464cfbcb734a2ee2075fdb7f9cb216aba631371ee7e6",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.68305504322052,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.68305504322052,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "renee-park",
+          "network_id": "3642947882172421415",
+          "target_sha256": "eca85716a43ebce6b8cb41f3950e3eab1e186b41b9fb19afa117c49910ad7803",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.0328001976013184,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.0328001976013184,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "justin-johnson",
+          "network_id": "1231855977102813932",
+          "target_sha256": "5752ff4f59f5f6f7172117a06b4dafa83fefaa27e88977cc7b8503b5df97b65d",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.7100355625152588,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.7100355625152588,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "christina-lopez",
+          "network_id": "2704129700552098135",
+          "target_sha256": "f178769226c1630ee8564ab45329ec3d241a6bf63d84c29f1b54ab2ec3b71805",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.080543041229248,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.080543041229248,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "randy-murray",
+          "network_id": "2106691863424732350",
+          "target_sha256": "5bfc3630831da9c1f4e903c4af0559d2247ef4959528b1c5f9dc1016813079da",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9928691983222961,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9928691983222961,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "john-koch",
+          "network_id": "7223822770173254400",
+          "target_sha256": "83693ba40d4d28ec44a9450e4ccb176c48c69de1c02dae3c98ce2d861e0dec5d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2898783313962667e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.783299955091126e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "susan-butler",
+          "network_id": "996126425053749872",
+          "target_sha256": "fa549e11b6cc5199c699e81a2cc810871dc7aa786f906aa579ff6021d27b87c1",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1004170847049863e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.304798017037032e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "crystal-gonzales",
+          "network_id": "8412308475179182746",
+          "target_sha256": "4854a290abb533bbdcf4fb7730b6748e0e0b522ffdeae8a4ca3fa99dd217ff2b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1573024255872042e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.448467217648608e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "troy-richardson",
+          "network_id": "3448660450172082933",
+          "target_sha256": "bede3e842a6e9d216062c411d49188baffd3d10ea32751a1124bbd3cbe302b8d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.418477507148964e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.108089092207349e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sharon-whitehead",
+          "network_id": "944045338291930753",
+          "target_sha256": "15f1f91886ddd3c6ebfee30327ff5d919d691a4eecb09b5fc109acc874c117d3",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9540899991989136,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9540899991989136,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "adam-morrison",
+          "network_id": "3786732390200298364",
+          "target_sha256": "f9490b29537c33c5ed30f810b8704637adecba1bac17a6edbdf302aefb191d00",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.749461553401943e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.4184272956781095e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "william-simmons",
+          "network_id": "834438545481244494",
+          "target_sha256": "97a1b988dec4e58c6283b735f5cea37cbe6e2af732b7289c9f7d758924f45aed",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.6225106716156006,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.6225106716156006,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "william-bryant",
+          "network_id": "2176353874128788411",
+          "target_sha256": "884147c379c3a9acab0225e74309f27cf09ed4302b1cdbea28a523e69c18cd9b",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.5993338227272034,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.5993338227272034,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "angela-hancock",
+          "network_id": "8262064847276688196",
+          "target_sha256": "d13fb7ce7da78370bc10f66d21e6f182691f9668a8f101d61b90fbd182a73a17",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.8714466691017151,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.8714466691017151,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "lisa-aguirre",
+          "network_id": "7926735209001626063",
+          "target_sha256": "a239eb56b9cbdf2c8fb997b63b66f5a6d8e4894bfdf25f5a50c91ffaf911ca74",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.5673137903213501,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.5673137903213501,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "marissa-perez",
+          "network_id": "6127855443806155466",
+          "target_sha256": "36a526a0cbb238068affa00266a7858faf86e2233d263955c07e22d9f748c415",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5459257813054137e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.429971520675068e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "matthew-cruz",
+          "network_id": "9076486323495801462",
+          "target_sha256": "56401bf34f4cd882a1b6812855c77838742ba4443bec7df9e73da306827ba75e",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.422933578491211,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.422933578491211,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "dana-parker",
+          "network_id": "4238367645243012349",
+          "target_sha256": "364296baa626d306f657ba27bc68fcb64d8ce9b2114dfac2b5c90d1192439881",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.080405003823671e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.254255652023419e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "justin-thomas",
+          "network_id": "3687427835061578571",
+          "target_sha256": "59c85090a2b952ae6ef5cc654bfb4a7f6c1af0d93949547e8245049c0ea87eca",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9563151597976685,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9563151597976685,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "jose-booker",
+          "network_id": "6591564818157006431",
+          "target_sha256": "29c11c39c0774f3014817120cbf88e829de5f9397cbbdd0a6466d7449f461015",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.254415676361532e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.6937357330720736e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jennifer-best",
+          "network_id": "3478610531759830282",
+          "target_sha256": "5542b9129a81f9a5b5207a8b7187d20115154da5f8644f457f4c758e3bb80950",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.0742816925048828,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.0742816925048828,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "lisa-dean",
+          "network_id": "2763505389249373930",
+          "target_sha256": "02be51a0c668306a838807cb8fa3922e51f049352a65e5182f0385bace0de621",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9184470772743225,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9184470772743225,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "terri-salazar",
+          "network_id": "1023494082822387594",
+          "target_sha256": "6ba755b6d3c664eb3e057e7e43e0b8a7fe992cfd18e7591d86fb9b32870b3887",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.1146550178527832,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.1146550178527832,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "monica-duncan",
+          "network_id": "796435967347525644",
+          "target_sha256": "c18bd5a207be92ae584aab94f4c9fda557a5d8bc51ec1a05e96737912fe976d3",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.203453779220581,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.203453779220581,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "katherine-allen",
+          "network_id": "3695113754369497827",
+          "target_sha256": "4c1ce8ecde2b26317ae242f0a3af865677506a30626e5ec69c475a5ce4917d1c",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.6293458938598633,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.6293458938598633,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "stephanie-fowler",
+          "network_id": "8052006587265362085",
+          "target_sha256": "56aad1b4c6aa9d184be5c1a07cce75fec82030d51631a018ecfa5beb37f5fa38",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.7221461534500122,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.7221461534500122,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "nathan-valdez",
+          "network_id": "5916827073025923411",
+          "target_sha256": "88100654a95b5fd3d66e8a7667c116f9d33339a60116afd81036d172533996d0",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.7439994812011719,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.7439994812011719,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "mark-sweeney",
+          "network_id": "420371704280610938",
+          "target_sha256": "6430f5e64c91ceecbe7714cedeb078f6c4d4fca044ffe15469e54787255b9084",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.1518570184707642,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.1518570184707642,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "rachel-warren",
+          "network_id": "8920457781230169818",
+          "target_sha256": "9a0f2ba7bb28224b911fa45bad3038ccbcdd564ab9bda3ee909ee4d51ba6dacd",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.0958056449890137,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.0958056449890137,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "cory-clarke",
+          "network_id": "2711634248630657917",
+          "target_sha256": "c38c0e9e6e328bc9ebc50e6d6a34f8aad6ce2f76d6e3fe5d580e01243156e26e",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.8600340823127226e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.697688465460044e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "patricia-cochran",
+          "network_id": "4049013147162560479",
+          "target_sha256": "3a12cc823cec3db7b896b704d56f51353029bd9025e06c873eef457d638965db",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1674754435707655e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.474160117415732e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "paige-miller",
+          "network_id": "3703256763869420164",
+          "target_sha256": "dc4f6133cdae0af9bf692f50d0579e217c04451fbbd6a54616a5579c59d30c8c",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9797748327255249,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9797748327255249,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "daniel-smith",
+          "network_id": "2787599716161986387",
+          "target_sha256": "f7bef65e375895d4c235f8f5f1ff3fe10b77b005802052292c787585bd393a9b",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9675838947296143,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9675838947296143,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "rebecca-jackson",
+          "network_id": "9077028007935113016",
+          "target_sha256": "704c66277f8f4d1664d846b2212963ef39b597d3c0c59f91f2a4fc4a66f65e46",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.2781486511230469,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.2781486511230469,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "sylvia-stanley",
+          "network_id": "8509454987965736357",
+          "target_sha256": "c19454fc2c5d601ce45e0eee52f0c097113c3f90a2c5fe718a20bead2ac1f673",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.3028895854949951,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.3028895854949951,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "john-lee",
+          "network_id": "4534372957096958739",
+          "target_sha256": "f9e9c1fa4834089766a6963dc10002745d2124f2bb011077c579c620c4fc5b9d",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.8439479470252991,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.8439479470252991,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "crystal-carrillo",
+          "network_id": "4977787987958539383",
+          "target_sha256": "3ae9032fbc7fd467dabf63f3efbb6c03631104620500d258d66d3c919ca15c2b",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9644876718521118,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9644876718521118,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "renee-garcia",
+          "network_id": "2457771942486756887",
+          "target_sha256": "b2c6ef3a1e9f575944720b48902dae6b26406b96b58b33a3044cbf8923590ce9",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.6110778450965881,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.6110778450965881,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "anita-collier",
+          "network_id": "8005359733654539502",
+          "target_sha256": "5ed3a2684fa49197d6ebe17684b4ea03675684923c9ab689fc40ce7bcf9f8c09",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.290025946649621e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.783672771094662e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "tina-webb",
+          "network_id": "3197215999203804376",
+          "target_sha256": "4556b9460c2a68b2b44a1b3b0bf7f228a9e7e6b30793f8512013ac8c3d281fc6",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.149457573890686,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.149457573890686,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "lisa-mitchell",
+          "network_id": "2621221337532183241",
+          "target_sha256": "8eb3cfd3bd7500ba0e565cce7b42647137f0f802fa87b5cf11a40a0c3fa293bb",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.0140492916107178,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.0140492916107178,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "douglas-kelly",
+          "network_id": "1876000384391229791",
+          "target_sha256": "e7e276e55667cc175301cc5a865679be7f8b6cec5cc460935d417c6f3d86f4db",
+          "budget_flops": 2199023255552,
+          "final_mse": 3.032873507891054e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 7.65980313516844e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "maria-calderon",
+          "network_id": "3276298747013761189",
+          "target_sha256": "8ed535d3c8c3acc643fc667450b72b3fbfa9ee4144670617a94079efd4f0c382",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3990024189401993e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.058902951957501e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jay-harris",
+          "network_id": "4470491132045783488",
+          "target_sha256": "b5c8c2e1d8e60257e4b3039020132f7f7c74923d2665bf7f6c64301e8c579f3c",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.775422475702726e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.483994011043591e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "robyn-davis",
+          "network_id": "1972264219902224093",
+          "target_sha256": "350ad6ab1d209bccdb416b59e25a0588ef080bce2aa8b54d2c0c59c61fab729c",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.6412724852561951,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.6412724852561951,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "daniel-vasquez",
+          "network_id": "2096587585286866638",
+          "target_sha256": "31785522842a3f5bfd079033dc74d77da1b758eb738e31ca883aab5309211ab4",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.060649251234281e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.204360667867932e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "richard-davis",
+          "network_id": "6516760550695168709",
+          "target_sha256": "ad34b89a2822f75eb35543a7a3d2ef9a389c01a6c7754e12fff00d7df6cc43de",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9374372959136963,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9374372959136963,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "darryl-lewis",
+          "network_id": "2599332908236606914",
+          "target_sha256": "7debc8b94181d079ba2f20ebd85a6c6055f755b236949ccca4acc363feaffc59",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.916129654944143e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.839363033157398e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "james-parsons",
+          "network_id": "2633982697218239142",
+          "target_sha256": "a1996a2e2c23b64781bf8fffc7d2a491217f5a572fc447925d9c6dbea1249eec",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4712116797331873e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.241274132546215e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "victor-short",
+          "network_id": "3088209523042816135",
+          "target_sha256": "8bfb2b68452b03f0e0b07ec399ddd706198578d50fa8b6dadd4e483ae6aceb55",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4231972872712504e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.120009334342055e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "katherine-singh",
+          "network_id": "6838115367257519733",
+          "target_sha256": "aafcfa55448a6c792dcbe9d4b84d39755286c16259203a168c7fac2cd223aa27",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.438677088572149e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 3.633512325808415e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "gregory-wilson",
+          "network_id": "7580473291617765187",
+          "target_sha256": "8f789f34613f464917a9b71906c71e7c1b0b6e4f6efa8802a47c654be4e3c9b6",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.691040575504303,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.691040575504303,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "daniel-graves",
+          "network_id": "6256191955956926982",
+          "target_sha256": "d0279f1b2ed46e5bea06ca8889553bf82af583fb6871b1352935dca8af54ae12",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9390746355056763,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9390746355056763,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "amy-fields",
+          "network_id": "1202559381807847992",
+          "target_sha256": "359e37dc7d765f0d169e97916af3455f942b50bb32c670420d9d7df22656e843",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.1209683418273926,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.1209683418273926,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "erica-whitaker",
+          "network_id": "7850441526471123853",
+          "target_sha256": "35789402945d10752ffd401243bcc674fb42a192ca6b606aa476022adc23cb09",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.5836855173110962,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.5836855173110962,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "mallory-morales",
+          "network_id": "7713237186030878987",
+          "target_sha256": "e80975fb211bcf2fdbd00a5b1371b8dd4bee6723b6c18a9f7b3f878e911bd641",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.177138469505735e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.4985649849973545e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "walter-moore",
+          "network_id": "1846860118540496368",
+          "target_sha256": "8813ded25511f2b3704565af6f9537175b632cbe7b544a5242b59cf3fb39e3c6",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3795964310124873e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.009891330871763e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "dillon-taylor",
+          "network_id": "1399957212469161720",
+          "target_sha256": "acb4d6de824ce2bb173fb1407998662f09bb5a4a5c9367c6be50141092f17287",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7189588419341817e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.341389870832006e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "diane-jones",
+          "network_id": "379099306488066524",
+          "target_sha256": "f39af2cc5ed93f648e47eeb3c62100c9cc6e8b11fbcc96a9e5b4cdefb940134a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4420131694569136e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.167530588684417e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "brandon-king",
+          "network_id": "4758217560929263782",
+          "target_sha256": "01038364428cf3cc3a0cc6dfccf5e8380aa5c976b7bdf3cd5dadd569a7456d40",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2966533563817393e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.800410908610798e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "samuel-simon",
+          "network_id": "8384567043090176381",
+          "target_sha256": "7b1fb326283656749692558bece4de141f41cb4630fd62c6ae950c5bc529520d",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7264609297740208e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.36033708897559e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "marie-paul",
+          "network_id": "2474931402529981222",
+          "target_sha256": "8865ba3d55bd68e1386ac72c93f8866eed7184855396fdb6232a1f146eb20c24",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.8982544541358948,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.8982544541358948,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "barbara-walls",
+          "network_id": "7508821215085830111",
+          "target_sha256": "500303650e166c0c9f2aa520463585dee271dae27026b8faa60f78102ddcc6cc",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.8629869222640991,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.8629869222640991,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "deborah-harris",
+          "network_id": "7407377602205352667",
+          "target_sha256": "bb1fbc618dace33512e327ae5ef1823f9dd2285e6e5c563f27f86f913a5f785b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.166306956041808e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.471208993864279e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "daniel-smith-2",
+          "network_id": "2866660226654851759",
+          "target_sha256": "70de7edbe3b267dcce527997973e55dfca9d35f9fb7394025d6a458fd229fb35",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.6226794123649597,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.6226794123649597,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "mary-garrett",
+          "network_id": "8915800854652069828",
+          "target_sha256": "65f55370857f9258123bd511b037011ea385e1039d07c770c7609fa151b245fa",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9157326817512512,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9157326817512512,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "sandra-powell",
+          "network_id": "5937758525897362098",
+          "target_sha256": "e6d0080647fb1f16a87fbd0a7e25497cf4fc3384d02124aec52c993265cc562f",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.8179448843002319,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.8179448843002319,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "victor-garrett",
+          "network_id": "8439345745453955992",
+          "target_sha256": "31f6fb8a2f3a78be1006691213c360eac038c5f6f05e5405cf31a069daf55193",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.8396303974886905e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 7.171749749803547e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "steven-montgomery",
+          "network_id": "2009240036358336991",
+          "target_sha256": "bffb01eb8f0dd16bb32567d4cdff131bf9659087ae7947ead31a50242fc4c531",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.142230215440577e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.41040095400963e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jennifer-perez",
+          "network_id": "3567951564090217873",
+          "target_sha256": "d9be5a2688d06e40deef2fe68e6ffc1ec898e9c77b102a67ee55eba1b7e50cdf",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.6938416957855225,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.6938416957855225,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "scott-young",
+          "network_id": "5322187042263020144",
+          "target_sha256": "f9e78522cb222de36c3afb30939d481ce9da5d380fd7f3f02ea3001df650698f",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.4825083017349243,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.4825083017349243,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "debra-jones",
+          "network_id": "8995904922783675230",
+          "target_sha256": "3733881d409a94dc67e6e479940b2dcc14a66733776340a0978d959dd207f809",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.163078249850514e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.463054597137128e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "george-chase",
+          "network_id": "5495818927611162469",
+          "target_sha256": "ea4206452598cb900a4c8965c656918a115a596b7dfc5c7f7a1f967bc231298f",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.902672529220581,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.902672529220581,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "troy-welch",
+          "network_id": "5635285983559139555",
+          "target_sha256": "86b86c9958f0824159c0df3c74ac85b710f82e49633c57cdcbabc51797caff77",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.8202334642410278,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.8202334642410278,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "jacob-adams",
+          "network_id": "3515154164765914809",
+          "target_sha256": "d11adb5ee9963dc4444b4792cba9263ded77e7235e549255ce826342e1ce5c91",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.7529261112213135,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.7529261112213135,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "courtney-baker",
+          "network_id": "189314070552559745",
+          "target_sha256": "c7bf9bd4631c0409baf6e916c746232669edc90ef85cc5f2056ac8d4f691f652",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.763812207400406e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.454671202390058e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "pamela-carr",
+          "network_id": "6158616676286068120",
+          "target_sha256": "06824dc39adf4bf89930f7ddff6a7cfb06a39f09cd2b414765d12014ff9c20c4",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7661585971495697e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.460597227168279e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "denise-smith",
+          "network_id": "5783865521103757372",
+          "target_sha256": "4a178e8e537c913d9690a1cc163eb65f5c48e0d2971210d78c71bff25785b3fa",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.8041244149208069,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.8041244149208069,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "michelle-taylor",
+          "network_id": "1513056364632441852",
+          "target_sha256": "24c447ecffce18d69e3af4d8b9f68de0b882f50e1a92ec4265c8d1ed48f1db3f",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.610679139536387e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.593512128319859e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "ashley-williams",
+          "network_id": "5008846919609497772",
+          "target_sha256": "fb04cd2e9293162b111e1b762a0f6a1e2a345da15f6230fb6ce81a9307d132db",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.978112607048388e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 4.995906723363994e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "judith-maxwell",
+          "network_id": "7552522903653607488",
+          "target_sha256": "347f93fdb529d6a9fefa7c3fc2f2fd10fa355d0e5436d37332f0b6b75213512a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.0289188995548102e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.124222723887731e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "travis-reed",
+          "network_id": "6991373316760258100",
+          "target_sha256": "69d0b47c49a0d7a9c7eb51a5dd98c2cd93b2179323efcd59c01274368b24694d",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9014315605163574,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9014315605163574,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "heather-strickland",
+          "network_id": "4126904310431152331",
+          "target_sha256": "c48f38818f6dcfb03a0b9b573ded71a2017b6311a0afe526aabc1cc853058c57",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4641234830369285e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.223372234845758e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "kyle-petersen",
+          "network_id": "4421956426608759848",
+          "target_sha256": "87be179b52cba9cd713570cf58456ecdfbcafba679cfd9718622fb729b7920f9",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.215410965789033e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.5952257215097e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "rachel-kelley",
+          "network_id": "5451601564174840496",
+          "target_sha256": "76da891438d5404d1c5f33b3c9b842ad7bc793d0f9bfa3d97c4f3aa8a3b6efd3",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.0279104709625244,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.0279104709625244,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "robert-patrick",
+          "network_id": "7649872791877645292",
+          "target_sha256": "9550998b285af76d0999ac71d3c98698194dd95cdffa383d9107f9fcbc2edb1e",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.1700284481048584,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.1700284481048584,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "james-perez",
+          "network_id": "4058513975018849492",
+          "target_sha256": "5ddc87ab888496423c77509a34dd270bdeab52cf48809924fda8923b11c662cc",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4804634790598357e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 6.264640409215462e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "nathan-moore",
+          "network_id": "7807267696492052470",
+          "target_sha256": "4ab085900ecda3c008f68a6fc603908df189638a36e1abdae509a28c6c00e13a",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.8033007383346558,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.8033007383346558,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "gregory-harrison",
+          "network_id": "5678711027797573345",
+          "target_sha256": "fb164679fdbd08f9528afbed32e9bd516060446328215ed5d0a1720b75351714",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.2727339267730713,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.2727339267730713,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "mark-snyder",
+          "network_id": "3109974749458014971",
+          "target_sha256": "6a83c6642a00c2b50d87dfd3865708f6d5b2231cd0727fad57231d9f4352d18a",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.9224225282669067,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.9224225282669067,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "kathleen-mueller",
+          "network_id": "2405080982703051941",
+          "target_sha256": "b845fff7cb78f640cb9d459348014863c23d85d51d20771e4f9985256e6c2d2d",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.7443828582763672,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.7443828582763672,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "michelle-kramer",
+          "network_id": "1026162449252698879",
+          "target_sha256": "82d69ce049a162abd35ed08818f2a22cea9f0067426b53b88ff373244ecb7032",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.1371904611587524,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 1.1371904611587524,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        },
+        {
+          "name": "elizabeth-hughes",
+          "network_id": "8915680942698473024",
+          "target_sha256": "4cd7860eb6d194b7a55d340a25a147b616266d4a9a41a951f05332903378bdd5",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2306371860736363e-8,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 5.633680952026013e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "kelsey-gonzalez",
+          "network_id": "998801302670386654",
+          "target_sha256": "dd2bc4637d80b652e51c94d5120e9364e1e7fbadda9d59e38610853c1e728673",
+          "budget_flops": 2199023255552,
+          "final_mse": 0.8600773811340332,
+          "measured_flops": 555383704047,
+          "official_adjusted_score": 0.8600773811340332,
+          "status": "failed",
+          "failure_reasons": [
+            "residual_wall_time_exhausted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R223-v25-local-feed-mini100",
+      "path": "research/results/R223-v25-local-feed-mini100.json",
+      "git_blob_sha1": "c8b617c43ff1145977c38e7e1cca6d23985ec392",
+      "code_commit": "bcf4b1a94c22b9d5e7cfce482de7f7b5d134c1dc",
+      "attempt_id": "35810427656",
+      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/3b99fcaea2ef29b050612610ff04a8fc7a6886cd/research/r240/R240_RECEIPT.json",
+      "evidence_level": "R223_ATTEMPT6_PLUS_R240_INDEPENDENT_POSTFLIGHT",
+      "panel": {
+        "count": 100,
+        "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+        "dtype": "float32",
+        "evaluator": "whestbench 0.16.1",
+        "meter": "flopscope 0.12.1+np2.4.6",
+        "revision": "v2-phase2; metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1; all_layer_means raw SHA256 per network",
+        "shape": [
+          16,
+          1024
+        ],
+        "split": "mini:all-100",
+        "stage": "development"
+      },
+      "per_network": [
+        {
+          "name": "logan-fitzgerald",
+          "network_id": "6319981554997072999",
+          "target_sha256": "713d7f4b5f8dc36c53763046e57b25793c4d44e8d93f82174589be132e45af82",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.294584078299522e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.413425936888477e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "william-graves",
+          "network_id": "2392109381927064353",
+          "target_sha256": "94aceb2899414d669f70fc28116ea77c1709d65c1264892ed7e68b0add73cfc4",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.08603516682615e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.648751049838692e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "raymond-barnes",
+          "network_id": "4030325997523501402",
+          "target_sha256": "5f0c2d71ebe42446124e2bc481f966b7836e4295c1a6e30ba49bc49c53edcd34",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.6129907126914986e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.58091012786051e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "steven-rice",
+          "network_id": "6959524404880716684",
+          "target_sha256": "c119d75f202a5aff3182f13653924915626797844fcc3e48a3df3886e8410d1b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5004879944390268e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.168402564216444e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sarah-kelley",
+          "network_id": "3958198382245770826",
+          "target_sha256": "aceb6cb1873b1b5ad81156a61a30f78139d3824a10670fba990052d5884e93a9",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2140469013720576e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.118124675255276e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "christopher-morales",
+          "network_id": "7846555140217393207",
+          "target_sha256": "1dedfc1aabb61c8a578f2a91059b26ba4c68c7efe1095d46cd731e50c0d6e311",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9605586487614346e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.188673164029214e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "cheryl-graham",
+          "network_id": "6455969887580159404",
+          "target_sha256": "bd4df7a96ed021c89e26464cfbcb734a2ee2075fdb7f9cb216aba631371ee7e6",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.077410954370862e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.617129121732952e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "renee-park",
+          "network_id": "3642947882172421415",
+          "target_sha256": "eca85716a43ebce6b8cb41f3950e3eab1e186b41b9fb19afa117c49910ad7803",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4329896319841282e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.920910010447657e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "justin-johnson",
+          "network_id": "1231855977102813932",
+          "target_sha256": "5752ff4f59f5f6f7172117a06b4dafa83fefaa27e88977cc7b8503b5df97b65d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3290500195116692e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.539800318405346e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "christina-lopez",
+          "network_id": "2704129700552098135",
+          "target_sha256": "f178769226c1630ee8564ab45329ec3d241a6bf63d84c29f1b54ab2ec3b71805",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5319028651438202e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.283589752383276e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "randy-murray",
+          "network_id": "2106691863424732350",
+          "target_sha256": "5bfc3630831da9c1f4e903c4af0559d2247ef4959528b1c5f9dc1016813079da",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2863162030262174e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.383110570837943e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "john-koch",
+          "network_id": "7223822770173254400",
+          "target_sha256": "83693ba40d4d28ec44a9450e4ccb176c48c69de1c02dae3c98ce2d861e0dec5d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2902966634319455e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.397705507295067e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "susan-butler",
+          "network_id": "996126425053749872",
+          "target_sha256": "fa549e11b6cc5199c699e81a2cc810871dc7aa786f906aa579ff6021d27b87c1",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1033395469771676e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.712200074069803e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "crystal-gonzales",
+          "network_id": "8412308475179182746",
+          "target_sha256": "4854a290abb533bbdcf4fb7730b6748e0e0b522ffdeae8a4ca3fa99dd217ff2b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.156580336531988e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.907415165108396e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "troy-richardson",
+          "network_id": "3448660450172082933",
+          "target_sha256": "bede3e842a6e9d216062c411d49188baffd3d10ea32751a1124bbd3cbe302b8d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.422659051148912e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.883031434733604e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sharon-whitehead",
+          "network_id": "944045338291930753",
+          "target_sha256": "15f1f91886ddd3c6ebfee30327ff5d919d691a4eecb09b5fc109acc874c117d3",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4212187810235264e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.877750475040889e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "adam-morrison",
+          "network_id": "3786732390200298364",
+          "target_sha256": "f9490b29537c33c5ed30f810b8704637adecba1bac17a6edbdf302aefb191d00",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7545069397328916e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.433154632598592e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "william-simmons",
+          "network_id": "834438545481244494",
+          "target_sha256": "97a1b988dec4e58c6283b735f5cea37cbe6e2af732b7289c9f7d758924f45aed",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9653935368069142e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.206400983579821e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "william-bryant",
+          "network_id": "2176353874128788411",
+          "target_sha256": "884147c379c3a9acab0225e74309f27cf09ed4302b1cdbea28a523e69c18cd9b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2890736417480184e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.393221120580175e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "angela-hancock",
+          "network_id": "8262064847276688196",
+          "target_sha256": "d13fb7ce7da78370bc10f66d21e6f182691f9668a8f101d61b90fbd182a73a17",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.8945833346606378e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.946765088356795e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "lisa-aguirre",
+          "network_id": "7926735209001626063",
+          "target_sha256": "a239eb56b9cbdf2c8fb997b63b66f5a6d8e4894bfdf25f5a50c91ffaf911ca74",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.359154649411721e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.650183318277474e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "marissa-perez",
+          "network_id": "6127855443806155466",
+          "target_sha256": "36a526a0cbb238068affa00266a7858faf86e2233d263955c07e22d9f748c415",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5443558371307518e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.32925038364846e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "matthew-cruz",
+          "network_id": "9076486323495801462",
+          "target_sha256": "56401bf34f4cd882a1b6812855c77838742ba4443bec7df9e73da306827ba75e",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2759056861332283e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.344938897952981e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "dana-parker",
+          "network_id": "4238367645243012349",
+          "target_sha256": "364296baa626d306f657ba27bc68fcb64d8ce9b2114dfac2b5c90d1192439881",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.0744289841445607e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.606195294603993e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "justin-thomas",
+          "network_id": "3687427835061578571",
+          "target_sha256": "59c85090a2b952ae6ef5cc654bfb4a7f6c1af0d93949547e8245049c0ea87eca",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3608027532873166e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.65622633061455e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jose-booker",
+          "network_id": "6591564818157006431",
+          "target_sha256": "29c11c39c0774f3014817120cbf88e829de5f9397cbbdd0a6466d7449f461015",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2521891906990277e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.257978921325725e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jennifer-best",
+          "network_id": "3478610531759830282",
+          "target_sha256": "5542b9129a81f9a5b5207a8b7187d20115154da5f8644f457f4c758e3bb80950",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.652447150808257e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.725582891420686e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "lisa-dean",
+          "network_id": "2763505389249373930",
+          "target_sha256": "02be51a0c668306a838807cb8fa3922e51f049352a65e5182f0385bace0de621",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7402930652110626e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.3810373963218294e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "terri-salazar",
+          "network_id": "1023494082822387594",
+          "target_sha256": "6ba755b6d3c664eb3e057e7e43e0b8a7fe992cfd18e7591d86fb9b32870b3887",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2931777365897688e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.408269380661637e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "monica-duncan",
+          "network_id": "796435967347525644",
+          "target_sha256": "c18bd5a207be92ae584aab94f4c9fda557a5d8bc51ec1a05e96737912fe976d3",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9017907249008204e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.9731920319399504e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "katherine-allen",
+          "network_id": "3695113754369497827",
+          "target_sha256": "4c1ce8ecde2b26317ae242f0a3af865677506a30626e5ec69c475a5ce4917d1c",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2987880043956466e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.428840242770051e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "stephanie-fowler",
+          "network_id": "8052006587265362085",
+          "target_sha256": "56aad1b4c6aa9d184be5c1a07cce75fec82030d51631a018ecfa5beb37f5fa38",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7607424851462383e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.456018165910554e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "nathan-valdez",
+          "network_id": "5916827073025923411",
+          "target_sha256": "88100654a95b5fd3d66e8a7667c116f9d33339a60116afd81036d172533996d0",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.255964659525489e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.271822226371232e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "mark-sweeney",
+          "network_id": "420371704280610938",
+          "target_sha256": "6430f5e64c91ceecbe7714cedeb078f6c4d4fca044ffe15469e54787255b9084",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5761375255228813e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.445782562166237e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "rachel-warren",
+          "network_id": "8920457781230169818",
+          "target_sha256": "9a0f2ba7bb28224b911fa45bad3038ccbcdd564ab9bda3ee909ee4d51ba6dacd",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.7628768606291487e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 1.0130489468432539e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "cory-clarke",
+          "network_id": "2711634248630657917",
+          "target_sha256": "c38c0e9e6e328bc9ebc50e6d6a34f8aad6ce2f76d6e3fe5d580e01243156e26e",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.8620980313244218e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.82765300340798e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "patricia-cochran",
+          "network_id": "4049013147162560479",
+          "target_sha256": "3a12cc823cec3db7b896b704d56f51353029bd9025e06c873eef457d638965db",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.164823342809541e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.937639345372425e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "paige-miller",
+          "network_id": "3703256763869420164",
+          "target_sha256": "dc4f6133cdae0af9bf692f50d0579e217c04451fbbd6a54616a5579c59d30c8c",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.828984513314481e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 1.0372882782754572e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "daniel-smith",
+          "network_id": "2787599716161986387",
+          "target_sha256": "f7bef65e375895d4c235f8f5f1ff3fe10b77b005802052292c787585bd393a9b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3729782583359338e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.70086958903316e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "rebecca-jackson",
+          "network_id": "9077028007935113016",
+          "target_sha256": "704c66277f8f4d1664d846b2212963ef39b597d3c0c59f91f2a4fc4a66f65e46",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4175072610432835e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.864141647732108e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sylvia-stanley",
+          "network_id": "8509454987965736357",
+          "target_sha256": "c19454fc2c5d601ce45e0eee52f0c097113c3f90a2c5fe718a20bead2ac1f673",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.6911632033943533e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.867540923851207e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "john-lee",
+          "network_id": "4534372957096958739",
+          "target_sha256": "f9e9c1fa4834089766a6963dc10002745d2124f2bb011077c579c620c4fc5b9d",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9290151698214686e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.073014415080741e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "crystal-carrillo",
+          "network_id": "4977787987958539383",
+          "target_sha256": "3ae9032fbc7fd467dabf63f3efbb6c03631104620500d258d66d3c919ca15c2b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1178859554993323e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.765536594577543e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "renee-garcia",
+          "network_id": "2457771942486756887",
+          "target_sha256": "b2c6ef3a1e9f575944720b48902dae6b26406b96b58b33a3044cbf8923590ce9",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3894195066986867e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.76115381514551e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "anita-collier",
+          "network_id": "8005359733654539502",
+          "target_sha256": "5ed3a2684fa49197d6ebe17684b4ea03675684923c9ab689fc40ce7bcf9f8c09",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.285336719864972e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.379519153503751e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "tina-webb",
+          "network_id": "3197215999203804376",
+          "target_sha256": "4556b9460c2a68b2b44a1b3b0bf7f228a9e7e6b30793f8512013ac8c3d281fc6",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7635496618595425e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.466311087225795e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "lisa-mitchell",
+          "network_id": "2621221337532183241",
+          "target_sha256": "8eb3cfd3bd7500ba0e565cce7b42647137f0f802fa87b5cf11a40a0c3fa293bb",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3278587946151674e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.53543251923177e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "douglas-kelly",
+          "network_id": "1876000384391229791",
+          "target_sha256": "e7e276e55667cc175301cc5a865679be7f8b6cec5cc460935d417c6f3d86f4db",
+          "budget_flops": 2199023255552,
+          "final_mse": 3.028797479487366e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 1.1105526056986396e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "maria-calderon",
+          "network_id": "3276298747013761189",
+          "target_sha256": "8ed535d3c8c3acc643fc667450b72b3fbfa9ee4144670617a94079efd4f0c382",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3945629479271702e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.780012989775823e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jay-harris",
+          "network_id": "4470491132045783488",
+          "target_sha256": "b5c8c2e1d8e60257e4b3039020132f7f7c74923d2665bf7f6c64301e8c579f3c",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7782827654855282e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.520332152459367e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "robyn-davis",
+          "network_id": "1972264219902224093",
+          "target_sha256": "350ad6ab1d209bccdb416b59e25a0588ef080bce2aa8b54d2c0c59c61fab729c",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.6781326550585618e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.153117220299231e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "daniel-vasquez",
+          "network_id": "2096587585286866638",
+          "target_sha256": "31785522842a3f5bfd079033dc74d77da1b758eb738e31ca883aab5309211ab4",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.0515793508479874e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.522413793963471e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "richard-davis",
+          "network_id": "6516760550695168709",
+          "target_sha256": "ad34b89a2822f75eb35543a7a3d2ef9a389c01a6c7754e12fff00d7df6cc43de",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3902554602273085e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.764218960226162e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "darryl-lewis",
+          "network_id": "2599332908236606914",
+          "target_sha256": "7debc8b94181d079ba2f20ebd85a6c6055f755b236949ccca4acc363feaffc59",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9152221142348935e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.0224401725770474e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "james-parsons",
+          "network_id": "2633982697218239142",
+          "target_sha256": "a1996a2e2c23b64781bf8fffc7d2a491217f5a572fc447925d9c6dbea1249eec",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.471680460303105e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.062775554437581e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "victor-short",
+          "network_id": "3088209523042816135",
+          "target_sha256": "8bfb2b68452b03f0e0b07ec399ddd706198578d50fa8b6dadd4e483ae6aceb55",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.426207501571298e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.896042343813731e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "katherine-singh",
+          "network_id": "6838115367257519733",
+          "target_sha256": "aafcfa55448a6c792dcbe9d4b84d39755286c16259203a168c7fac2cd223aa27",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.4408030324375432e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 5.282913673854599e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "gregory-wilson",
+          "network_id": "7580473291617765187",
+          "target_sha256": "8f789f34613f464917a9b71906c71e7c1b0b6e4f6efa8802a47c654be4e3c9b6",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.12742357064144e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.80050764635619e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "daniel-graves",
+          "network_id": "6256191955956926982",
+          "target_sha256": "d0279f1b2ed46e5bea06ca8889553bf82af583fb6871b1352935dca8af54ae12",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7118120254622227e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.276607525654365e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "amy-fields",
+          "network_id": "1202559381807847992",
+          "target_sha256": "359e37dc7d765f0d169e97916af3455f942b50bb32c670420d9d7df22656e843",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3964094708617267e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.786783534423798e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "erica-whitaker",
+          "network_id": "7850441526471123853",
+          "target_sha256": "35789402945d10752ffd401243bcc674fb42a192ca6b606aa476022adc23cb09",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2959824264034978e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.418553183398228e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "mallory-morales",
+          "network_id": "7713237186030878987",
+          "target_sha256": "e80975fb211bcf2fdbd00a5b1371b8dd4bee6723b6c18a9f7b3f878e911bd641",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.181414870960907e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.998474594166084e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "walter-moore",
+          "network_id": "1846860118540496368",
+          "target_sha256": "8813ded25511f2b3704565af6f9537175b632cbe7b544a5242b59cf3fb39e3c6",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3819353600629256e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.733712104023967e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "dillon-taylor",
+          "network_id": "1399957212469161720",
+          "target_sha256": "acb4d6de824ce2bb173fb1407998662f09bb5a4a5c9367c6be50141092f17287",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7263049656435214e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.32974799672112e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "diane-jones",
+          "network_id": "379099306488066524",
+          "target_sha256": "f39af2cc5ed93f648e47eeb3c62100c9cc6e8b11fbcc96a9e5b4cdefb940134a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4412909027660135e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.951347825982928e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "brandon-king",
+          "network_id": "4758217560929263782",
+          "target_sha256": "01038364428cf3cc3a0cc6dfccf5e8380aa5c976b7bdf3cd5dadd569a7456d40",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2896831097796166e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.395455823676587e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "samuel-simon",
+          "network_id": "8384567043090176381",
+          "target_sha256": "7b1fb326283656749692558bece4de141f41cb4630fd62c6ae950c5bc529520d",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.733790888636122e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.357196221113128e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "marie-paul",
+          "network_id": "2474931402529981222",
+          "target_sha256": "8865ba3d55bd68e1386ac72c93f8866eed7184855396fdb6232a1f146eb20c24",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.771888674146794e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 1.0163532592153658e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "barbara-walls",
+          "network_id": "7508821215085830111",
+          "target_sha256": "500303650e166c0c9f2aa520463585dee271dae27026b8faa60f78102ddcc6cc",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.2269391664053728e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.165396038306361e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "deborah-harris",
+          "network_id": "7407377602205352667",
+          "target_sha256": "bb1fbc618dace33512e327ae5ef1823f9dd2285e6e5c563f27f86f913a5f785b",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1695335306048946e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.954909933336416e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "daniel-smith-2",
+          "network_id": "2866660226654851759",
+          "target_sha256": "70de7edbe3b267dcce527997973e55dfca9d35f9fb7394025d6a458fd229fb35",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9211579882494334e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.044204917161627e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "mary-garrett",
+          "network_id": "8915800854652069828",
+          "target_sha256": "65f55370857f9258123bd511b037011ea385e1039d07c770c7609fa151b245fa",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9846265075784686e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.276921465554372e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "sandra-powell",
+          "network_id": "5937758525897362098",
+          "target_sha256": "e6d0080647fb1f16a87fbd0a7e25497cf4fc3384d02124aec52c993265cc562f",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9901538195199464e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.297188157932088e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "victor-garrett",
+          "network_id": "8439345745453955992",
+          "target_sha256": "31f6fb8a2f3a78be1006691213c360eac038c5f6f05e5405cf31a069daf55193",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.8390553907797766e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 1.0409809118326698e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "steven-montgomery",
+          "network_id": "2009240036358336991",
+          "target_sha256": "bffb01eb8f0dd16bb32567d4cdff131bf9659087ae7947ead31a50242fc4c531",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.140435739761415e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.848218655163635e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jennifer-perez",
+          "network_id": "3567951564090217873",
+          "target_sha256": "d9be5a2688d06e40deef2fe68e6ffc1ec898e9c77b102a67ee55eba1b7e50cdf",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.8906357368564386e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.932290647403266e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "scott-young",
+          "network_id": "5322187042263020144",
+          "target_sha256": "f9e78522cb222de36c3afb30939d481ce9da5d380fd7f3f02ea3001df650698f",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.519775321729867e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.239122352267212e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "debra-jones",
+          "network_id": "8995904922783675230",
+          "target_sha256": "3733881d409a94dc67e6e479940b2dcc14a66733776340a0978d959dd207f809",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1561099572409148e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.905690451089363e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "george-chase",
+          "network_id": "5495818927611162469",
+          "target_sha256": "ea4206452598cb900a4c8965c656918a115a596b7dfc5c7f7a1f967bc231298f",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.5684542492854234e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.41761071342561e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "troy-welch",
+          "network_id": "5635285983559139555",
+          "target_sha256": "86b86c9958f0824159c0df3c74ac85b710f82e49633c57cdcbabc51797caff77",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7419880649072184e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.3872523589991714e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "jacob-adams",
+          "network_id": "3515154164765914809",
+          "target_sha256": "d11adb5ee9963dc4444b4792cba9263ded77e7235e549255ce826342e1ce5c91",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.0578292847517332e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.545330084766197e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "courtney-baker",
+          "network_id": "189314070552559745",
+          "target_sha256": "c7bf9bd4631c0409baf6e916c746232669edc90ef85cc5f2056ac8d4f691f652",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7721397682635143e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.497807960538612e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "pamela-carr",
+          "network_id": "6158616676286068120",
+          "target_sha256": "06824dc39adf4bf89930f7ddff6a7cfb06a39f09cd2b414765d12014ff9c20c4",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7704213206570785e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.491507022691137e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "denise-smith",
+          "network_id": "5783865521103757372",
+          "target_sha256": "4a178e8e537c913d9690a1cc163eb65f5c48e0d2971210d78c71bff25785b3fa",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.405575116881664e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.820390707367153e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "michelle-taylor",
+          "network_id": "1513056364632441852",
+          "target_sha256": "24c447ecffce18d69e3af4d8b9f68de0b882f50e1a92ec4265c8d1ed48f1db3f",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.6111880657708753e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.574300460993011e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "ashley-williams",
+          "network_id": "5008846919609497772",
+          "target_sha256": "fb04cd2e9293162b111e1b762a0f6a1e2a345da15f6230fb6ce81a9307d132db",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9793066741158327e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.257415523166923e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "judith-maxwell",
+          "network_id": "7552522903653607488",
+          "target_sha256": "347f93fdb529d6a9fefa7c3fc2f2fd10fa355d0e5436d37332f0b6b75213512a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.0331501815462616e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.454840566874163e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "travis-reed",
+          "network_id": "6991373316760258100",
+          "target_sha256": "69d0b47c49a0d7a9c7eb51a5dd98c2cd93b2179323efcd59c01274368b24694d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.3230537493645897e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.517814122624969e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "heather-strickland",
+          "network_id": "4126904310431152331",
+          "target_sha256": "c48f38818f6dcfb03a0b9b573ded71a2017b6311a0afe526aabc1cc853058c57",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4650470109577327e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.038453048541544e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "kyle-petersen",
+          "network_id": "4421956426608759848",
+          "target_sha256": "87be179b52cba9cd713570cf58456ecdfbcafba679cfd9718622fb729b7920f9",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.215520922277392e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.12352938708682e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "rachel-kelley",
+          "network_id": "5451601564174840496",
+          "target_sha256": "76da891438d5404d1c5f33b3c9b842ad7bc793d0f9bfa3d97c4f3aa8a3b6efd3",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.9613133278871828e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 1.0858085609381328e-8,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "robert-patrick",
+          "network_id": "7649872791877645292",
+          "target_sha256": "9550998b285af76d0999ac71d3c98698194dd95cdffa383d9107f9fcbc2edb1e",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.1535612404477433e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.896345210626724e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "james-perez",
+          "network_id": "4058513975018849492",
+          "target_sha256": "5ddc87ab888496423c77509a34dd270bdeab52cf48809924fda8923b11c662cc",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4778332274877357e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.08533556934589e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "nathan-moore",
+          "network_id": "7807267696492052470",
+          "target_sha256": "4ab085900ecda3c008f68a6fc603908df189638a36e1abdae509a28c6c00e13a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.668562615326664e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.784672583729827e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "gregory-harrison",
+          "network_id": "5678711027797573345",
+          "target_sha256": "fb164679fdbd08f9528afbed32e9bd516060446328215ed5d0a1720b75351714",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.7570105370623423e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 6.44233443599143e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "mark-snyder",
+          "network_id": "3109974749458014971",
+          "target_sha256": "6a83c6642a00c2b50d87dfd3865708f6d5b2231cd0727fad57231d9f4352d18a",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.534335230564011e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 9.292508373630483e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "kathleen-mueller",
+          "network_id": "2405080982703051941",
+          "target_sha256": "b845fff7cb78f640cb9d459348014863c23d85d51d20771e4f9985256e6c2d2d",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.412425814668495e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.845509786241011e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "michelle-kramer",
+          "network_id": "1026162449252698879",
+          "target_sha256": "82d69ce049a162abd35ed08818f2a22cea9f0067426b53b88ff373244ecb7032",
+          "budget_flops": 2199023255552,
+          "final_mse": 1.9380985705197418e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 7.106320023601584e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "elizabeth-hughes",
+          "network_id": "8915680942698473024",
+          "target_sha256": "4cd7860eb6d194b7a55d340a25a147b616266d4a9a41a951f05332903378bdd5",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.228810558335681e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.17225776874084e-9,
+          "status": "ok",
+          "failure_reasons": []
+        },
+        {
+          "name": "kelsey-gonzalez",
+          "network_id": "998801302670386654",
+          "target_sha256": "dd2bc4637d80b652e51c94d5120e9364e1e7fbadda9d59e38610853c1e728673",
+          "budget_flops": 2199023255552,
+          "final_mse": 2.4187210456716457e-8,
+          "measured_flops": 806303829485,
+          "official_adjusted_score": 8.868592165440585e-9,
+          "status": "ok",
+          "failure_reasons": []
+        }
+      ]
+    }
+  ],
+  "derived_same_panel": {
+    "r209_v25": {
+      "rows": 100,
+      "failures": 0,
+      "mean_final_mse": 2.228303490170447e-8,
+      "mean_measured_flops": 806303721965,
+      "mean_official_adjusted_score": 8.170397440117225e-9,
+      "success_rows": 100,
+      "failure_score_contribution_to_overall_mean": 0,
+      "success_score_contribution_to_overall_mean": 8.170397440117225e-9,
+      "exact_recorded_mean_adjusted_score": 8.170397440117225e-9,
+      "mean_raw_mse": 2.228303490170447e-8,
+      "constant_measured_flops_per_row": 806303721965,
+      "cost_factor": "0.36666448157347986125387251377105712890625"
+    },
+    "r223_v25_local_feed": {
+      "rows": 100,
+      "failures": 0,
+      "mean_final_mse": 2.2284993050902814e-8,
+      "mean_measured_flops": 806303829485,
+      "mean_official_adjusted_score": 8.171116513490032e-9,
+      "success_rows": 100,
+      "failure_score_contribution_to_overall_mean": 0,
+      "success_score_contribution_to_overall_mean": 8.171116513490032e-9,
+      "exact_recorded_mean_adjusted_score": 8.171116513490032e-9,
+      "mean_raw_mse": 2.2284993050902814e-8,
+      "constant_measured_flops_per_row": 806303829485,
+      "cost_factor": "0.36666453046791502856649458408355712890625",
+      "score_ratio_to_r209_v25": "1.0000880095953810397594540342965492264755222258718",
+      "percent_worse_than_r209_v25": "0.0088009595381039759454034296549226475522225871800"
+    },
+    "r209_v29": {
+      "rows": 100,
+      "failures": 57,
+      "mean_final_mse": 0.5270942949467905,
+      "mean_measured_flops": 555733388916.12,
+      "mean_official_adjusted_score": 0.5270942878803214,
+      "success_rows": 43,
+      "failure_score_contribution_to_overall_mean": 0.5270942854881286,
+      "success_score_contribution_to_overall_mean": 2.392192892427515e-9,
+      "exact_mean_adjusted_score": 0.5270942878803214,
+      "failure_penalty_contribution_to_overall_mean": 0.5270942854881286,
+      "note": "Failure rows use multiplier 1.0; reducing FLOPs does not discount those rows while failure status persists."
+    }
+  },
+  "conditional_display_threshold_sensitivity": {
+    "warning": "Arithmetic only against the rounded displayed 2.1e-9. It is NOT an official gap, rank, or same-panel comparison.",
+    "displayed_threshold": 2.1e-9,
+    "r209_v25_current": {
+      "score": 8.170397440117225e-9,
+      "arithmetic_difference": 6.070397440117225e-9,
+      "arithmetic_ratio": "3.8906654476748690476190476190476190476190476190476",
+      "arithmetic_percent_above": "289.06654476748690476190476190476190476190476190476",
+      "required_uniform_raw_mse_scale_at_current_cost": "0.2570254403646085291",
+      "required_uniform_raw_mse_reduction_percent": "74.29745596353915"
+    },
+    "cost_only": {
+      "required_cost_factor_if_no_floor": "0.094242099842484524766484138211858689901438570148436",
+      "floor_factor": "0.1",
+      "verdict": "IMPOSSIBLE_WITH_UNCHANGED_MSE",
+      "reason": "Required factor is below the official 0.1 floor.",
+      "nominal_no_floor_required_flops": "207240569205.676946",
+      "max_integer_flops_still_at_floor": 219902325555,
+      "floor_score_with_unchanged_v25_mse": 2.228303490170447e-9,
+      "required_flop_reduction_to_max_integer_floor_percent": "72.72711019873656"
+    },
+    "scenarios": [
+      {
+        "cost_factor": "0.30",
+        "nominal_measured_flops": "659706976665.6",
+        "score_if_mse_unchanged": "6.684910470511341e-9",
+        "flop_reduction_percent": "18.18133059613527",
+        "required_raw_mse_reduction_percent": "68.58596671917183"
+      },
+      {
+        "cost_factor": "0.25",
+        "nominal_measured_flops": "549755813888.0",
+        "score_if_mse_unchanged": "5.5707587254261175e-9",
+        "flop_reduction_percent": "31.81777549677939",
+        "required_raw_mse_reduction_percent": "62.30316006300619"
+      },
+      {
+        "cost_factor": "0.20",
+        "nominal_measured_flops": "439804651110.4",
+        "score_if_mse_unchanged": "4.456606980340894e-9",
+        "flop_reduction_percent": "45.45422039742351",
+        "required_raw_mse_reduction_percent": "52.87895007875774"
+      },
+      {
+        "cost_factor": "0.15",
+        "nominal_measured_flops": "329853488332.8",
+        "score_if_mse_unchanged": "3.3424552352556705e-9",
+        "flop_reduction_percent": "59.09066529806763",
+        "required_raw_mse_reduction_percent": "37.17193343834365"
+      },
+      {
+        "cost_factor": "0.10",
+        "nominal_measured_flops": "219902325555.2",
+        "score_if_mse_unchanged": "2.228303490170447e-9",
+        "flop_reduction_percent": "72.72711019871176",
+        "required_raw_mse_reduction_percent": "5.757900157515475"
+      }
+    ],
+    "r223_reference": {
+      "required_raw_mse_reduction_percent_at_current_cost": "74.29971783497367",
+      "floor_score_if_mse_unchanged": 2.2284993050902814e-9,
+      "required_raw_mse_reduction_percent_at_floor": "5.76618107067687"
+    }
+  },
+  "failure_constraints": {
+    "rule": "For a failed MLP the cost multiplier is forced to 1.0, so FLOP reduction gives no score discount on that row.",
+    "implication": "Any sensitivity scenario assumes failures remain zero. If a cost reduction introduces failures, the scenario is invalid and must be recomputed from actual failure penalties.",
+    "existing_evidence": "R209 V29 has 57/100 failures; its failure rows contribute 0.5270942854881286 to the overall mean score, dwarfing the 2.392192892427515e-9 contribution from its 43 successful rows."
+  },
+  "limitations": [
+    "R263 proves metric/aggregation match but split mismatch; exact official gap and rank are null.",
+    "The 2.1e-9 leaderboard value is displayed/rounded, so even on a matching panel it would not support an exact unrounded gap.",
+    "Uniform-MSE scaling scenarios are sensitivity algebra, not a model performance prediction.",
+    "Nominal FLOP targets may be fractional because they express exact budget ratios; actual measured FLOPs are integers.",
+    "No new estimator, benchmark, dataset, Actions, private/holdout/full data, or submission was used."
+  ]
+}
