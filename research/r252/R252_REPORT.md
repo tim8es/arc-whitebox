@@ -58,6 +58,17 @@ This is a harness/version-reporting mismatch after the wheel hashes had already 
 
 Per the frozen one-workflow/no-retry rule, this defect is **not repaired or rerun** under R252.
 
+## Same-attempt protocol ambiguity detected after dispatch
+
+After the sole workflow had already been triggered, the authoritative `research/control-v2` branch received additional same-R252, same-owner research commits that were not queue transitions:
+
+- `f46c9c8d49c129c29d4e74df1cfa778d10af3465` — full-history novelty audit;
+- `4fc054bf8fb0c087a7edeb32f73bd1f54f2656f8` — a different frozen `CFSP4` protocol;
+- `e3e82a3542d414296eac3c8aa1636f7c4fb3638c` — a different production-shape fixture replay;
+- `63a2f49313364dcae7f0a975bf0773800b0553f2` — different fixture byte hashes.
+
+These commits preserve queue revision 240 and the same sole RUNNING attempt, but they describe a different candidate/fixture from the already-triggered D21-CWG workflow. No second R252 workflow exists in GitHub Actions at finalization time. Because the user requires exactly one method and one workflow, R252 must not continue on the later CFSP4 line. This is recorded as protocol ambiguity, not scientific evidence, and is an additional reason to terminate without retry.
+
 ## Scientific state
 
 There were **zero scientific measurements**:
