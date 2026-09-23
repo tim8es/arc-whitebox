@@ -2567,6 +2567,18 @@
       "owner": "registry-independent-audit",
       "payload": {},
       "revision": 198
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T03:51:20Z",
+      "job": "R243",
+      "owner": "registry-independent-audit",
+      "payload": {
+        "run_id": "R243-registry-audit-20260923",
+        "code_commit": "746473e48f9a6bbe19d44cae03f4fdf82d519989",
+        "command": "read-only registry audit preparation"
+      },
+      "revision": 199
     }
   ],
   "jobs": [
@@ -4118,19 +4130,26 @@
     },
     {
       "assigned_owner": "registry-independent-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R243-registry-audit-20260923",
+          "code_commit": "746473e48f9a6bbe19d44cae03f4fdf82d519989",
+          "command": "read-only registry audit preparation",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read current AGENTS/RESEARCH_PROCESS, R240 receipt, and R242 task. Prepare a small independent offline verification method without editing R242 files. After R242 is terminal and its normalized candidate record is committed, verify all 100 network IDs/order, target hashes, panel metadata, per-row MSE/FLOPs/failure statuses and official adjusted scores against immutable artifact 10730459690 and R240's independent recomputation; verify parent linkage to R209, receipt hashes, SCIENTIFIC_REJECT classification, and refreshed STATUS row. Produce a source-linked audit report and durable receipt, then finish R243. No estimator/benchmark/Actions run, no retry/repair, no paid/holdout/private data, no submission, no canonical edits. Refresh latest control head before writes; never overwrite concurrent events.",
       "depends_on": [],
       "hypothesis_id": "R223-NORMALIZED-RECORD-INTEGRITY",
       "id": "R243",
       "owner": "registry-independent-audit",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Independently verify normalized R223 candidate registry record"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 198,
+  "revision": 199,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
