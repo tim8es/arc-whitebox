@@ -1,0 +1,48 @@
+name: R223 repair central control v2
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_REPAIR_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R223 control"
+          git config user.email "arc-control@users.noreply.github.com"
+      - name: Publish infrastructure repair event
+        run: |
+          cat > /tmp/r223_repair.json <<'JSON'
+          {
+            "reason": "RESEARCH_PROCESS v2 supersedes the historical blanket no-repair rule and permits infrastructure repair under the same job. Preserve R223 attempt 1 as INFRA_ERROR with no panel measurement. Attempt 2 changes no scientific hypothesis, K4->K3 feed-local lambda formula, clamp, panel, thresholds, parent, or tuning. Repair scope is limited to the pre-panel source-provenance bootstrap: move the byte-transform verifier out of the YAML multiline block so indentation is stable, and replace the candidate docstring's literal backslash-n with an actual LF."
+          }
+          JSON
+          python scripts/arc_control.py repair R223             --owner method-research             --payload /tmp/r223_repair.json             --publish | tee /tmp/r223_repair_result.json
+      - name: Verify remote state
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R223")
+          assert job["status"]=="CLAIMED", job
+          assert len(job["attempts"])==1, job["attempts"]
+          assert job["attempts"][0]["status"]=="INFRA_ERROR", job["attempts"]
+          print(json.dumps({"revision":state["revision"],"job":job},indent=2,sort_keys=True))
+          PY
