@@ -4242,51 +4242,67 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "score-gap-independent-audit",
-        "title": "Independently verify the R266 score-gap arithmetic",
-        "hypothesis_id": "R266-SCORE-GAP-INDEPENDENT-AUDIT-20260923",
-        "priority": 2,
+        "deliverable": "Independently recompute R266 from immutable normalized R209 V25 rows and official Phase-2 scoring source. Verify mean adjusted score, cost factor, 0.1 floor, conditional raw-MSE reduction needed to match the displayed 2.1e-9, and treatment of R209 V29 failures; check arithmetic/rounding and explicitly preserve NOT_COMPARABLE because public mini:all-100 differs from 50-visible+50-sealed leaderboard evaluation. Do not claim official rank or exact gap. Produce an isolated append-only audit report/receipt with hashes/commit and finish R270. No estimator/Actions/data access/private/holdout/full/paid/submission/leaderboard/model/canonical edits.",
         "depends_on": [
           "R266"
         ],
-        "deliverable": "Independently recompute R266 from immutable normalized R209 V25 rows and official Phase-2 scoring source. Verify mean adjusted score, cost factor, 0.1 floor, conditional raw-MSE reduction needed to match the displayed 2.1e-9, and treatment of R209 V29 failures; check arithmetic/rounding and explicitly preserve NOT_COMPARABLE because public mini:all-100 differs from 50-visible+50-sealed leaderboard evaluation. Do not claim official rank or exact gap. Produce an isolated append-only audit report/receipt with hashes/commit and finish R270. No estimator/Actions/data access/private/holdout/full/paid/submission/leaderboard/model/canonical edits."
+        "hypothesis_id": "R266-SCORE-GAP-INDEPENDENT-AUDIT-20260923",
+        "priority": 2,
+        "title": "Independently verify the R266 score-gap arithmetic"
       },
       "revision": 317
     },
     {
-      "revision": 318,
       "action": "claim",
+      "at": "2026-09-23T12:21:48.350Z",
       "job": "R270",
       "owner": "score-gap-independent-audit",
       "payload": {},
-      "at": "2026-09-23T12:21:48.350Z"
+      "revision": 318
     },
     {
-      "revision": 319,
       "action": "start",
+      "at": "2026-09-23T12:22:13.274Z",
       "job": "R270",
       "owner": "score-gap-independent-audit",
       "payload": {
-        "run_id": "R270-score-gap-independent-audit-20260923",
         "code_commit": "385756cddca324a96acd6a50d0f7294ed8e825e7",
-        "command": "desk-only recomputation from immutable normalized R209 V25/V29 rows and official Phase-2 scoring source; no estimator/Actions/new data/private/holdout/full/paid/submission/leaderboard/model/canonical changes"
+        "command": "desk-only recomputation from immutable normalized R209 V25/V29 rows and official Phase-2 scoring source; no estimator/Actions/new data/private/holdout/full/paid/submission/leaderboard/model/canonical changes",
+        "run_id": "R270-score-gap-independent-audit-20260923"
       },
-      "at": "2026-09-23T12:22:13.274Z"
+      "revision": 319
     },
     {
-      "revision": 320,
       "action": "finish",
+      "at": "2026-09-23T12:26:49.310Z",
       "job": "R270",
       "owner": "score-gap-independent-audit",
       "payload": {
-        "run_id": "R270-score-gap-independent-audit-20260923",
-        "status": "COMPLETE",
         "reason": "Independent desk-only recomputation verifies R266 arithmetic from immutable normalized R209 V25/V29 rows and the official Phase-2 scoring formula. V25 mean adjusted score 8.170397440117225e-9, exact cost factor 0.36666448157347986125387251377105712890625, 0.1 floor behavior, conditional 74.29745596353915% same-cost raw-MSE reduction versus displayed 2.1e-9, and 5.757900157515475% residual MSE reduction at the floor are all correct. R209 V29 has 57 residual_wall_time_exhausted failures whose multiplier-1 penalties dominate its score. The 2.1e-9 value is display-rounded/unrounded value unknown. Strict comparison remains NOT_COMPARABLE because R209 public mini:all-100 differs from 50-visible+50-sealed evaluation; no official rank or exact gap is claimed. No estimator/Actions/competition dataset fetch/private/holdout/full/paid/submission/leaderboard/model/canonical changes.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/157629ac3639759496114d977f1ef5da25072c6a/research/r270/R270_RECEIPT.json",
-          "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4"
-        }
+          "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/157629ac3639759496114d977f1ef5da25072c6a/research/r270/R270_RECEIPT.json"
+        },
+        "run_id": "R270-score-gap-independent-audit-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T12:26:49.310Z"
+      "revision": 320
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T12:27:05.000Z",
+      "job": "R269",
+      "owner": "multilevel-debiasing-scout",
+      "payload": {
+        "reason": "Evidence-based NO_GO before execution. The only non-relabeling concrete V25 telescope is a depth-prefix Bernoulli wrapper Y0=mu15, Y1=mu16, p=1/2. It is algebraically unbiased to deterministic V25 but necessarily adds ((1-p)/p)||Y1-Y0||^2/n expected raw-MSE variance; depth-prefix rows are different neuron-layer coordinates with no committed target-free L2 correction-decay rationale. The exact C0/C16 metered split needed for a nontrivial expected-production FLOP bound is also not committed; the source's ~1.83e12 figure is approximate. A deterministic W32-D6 correction-decay/cost falsifier was frozen but not run. No prototype, public/R209, Actions/cloud, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes.",
+        "receipt": {
+          "sha256": "424ae71fb631e90cbd76db1b977b9418bd5a5b9a95ed359a53b2ce153023e696",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/6c2b78efde1f2a6fba3a0d34f802b3b7c1252119/research/r269/R269_RECEIPT.json"
+        },
+        "run_id": "R269-multilevel-theory-20260923",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 321
     }
   ],
   "jobs": [
@@ -6797,8 +6813,17 @@
         {
           "code_commit": "0a71e03fa9fa003ddad826aa9a4dcb659319e9e3",
           "command": "desk-only derivation from R265 protocol/report, full history and pinned V25 source; no execution unless all theory/cost gates pass",
+          "completion": {
+            "reason": "Evidence-based NO_GO before execution. The only non-relabeling concrete V25 telescope is a depth-prefix Bernoulli wrapper Y0=mu15, Y1=mu16, p=1/2. It is algebraically unbiased to deterministic V25 but necessarily adds ((1-p)/p)||Y1-Y0||^2/n expected raw-MSE variance; depth-prefix rows are different neuron-layer coordinates with no committed target-free L2 correction-decay rationale. The exact C0/C16 metered split needed for a nontrivial expected-production FLOP bound is also not committed; the source's ~1.83e12 figure is approximate. A deterministic W32-D6 correction-decay/cost falsifier was frozen but not run. No prototype, public/R209, Actions/cloud, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes.",
+            "receipt": {
+              "sha256": "424ae71fb631e90cbd76db1b977b9418bd5a5b9a95ed359a53b2ce153023e696",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/6c2b78efde1f2a6fba3a0d34f802b3b7c1252119/research/r269/R269_RECEIPT.json"
+            },
+            "run_id": "R269-multilevel-theory-20260923",
+            "status": "SCIENTIFIC_REJECT"
+          },
           "run_id": "R269-multilevel-theory-20260923",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Follow the sole abstractly distinct lead from R265: randomized multilevel debiasing. Read its report/protocol and full history; derive whether a concrete V25 one/two-level hierarchy can satisfy an unbiased telescoping identity using only permitted metered operations and existing model outputs, and derive a full-production FLOP upper bound before any execution. Do not reuse/relabel Richardson, local-feed, copula, K3 transport, or other closed families. Define one deterministic synthetic target-free fixture and falsifier for correction decay/variance and cost. If no concrete hierarchy, target-free rationale, or honest bound exists, publish evidence-based NO_GO before execution. If all theory/cost gates pass, freeze protocol and run at most one local synthetic falsifier; no public/R209, Actions/cloud, paid, private/holdout/full, tuning/per-network selection, submission, canonical/leaderboard changes. Preserve every attempt, artifact and receipt, finish R269, and wait for coordinator before public/cloud work.",
@@ -6809,47 +6834,52 @@
       "id": "R269",
       "owner": "multilevel-debiasing-scout",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Evidence-based NO_GO before execution. The only non-relabeling concrete V25 telescope is a depth-prefix Bernoulli wrapper Y0=mu15, Y1=mu16, p=1/2. It is algebraically unbiased to deterministic V25 but necessarily adds ((1-p)/p)||Y1-Y0||^2/n expected raw-MSE variance; depth-prefix rows are different neuron-layer coordinates with no committed target-free L2 correction-decay rationale. The exact C0/C16 metered split needed for a nontrivial expected-production FLOP bound is also not committed; the source's ~1.83e12 figure is approximate. A deterministic W32-D6 correction-decay/cost falsifier was frozen but not run. No prototype, public/R209, Actions/cloud, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes.",
+      "receipt": {
+        "sha256": "424ae71fb631e90cbd76db1b977b9418bd5a5b9a95ed359a53b2ce153023e696",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/6c2b78efde1f2a6fba3a0d34f802b3b7c1252119/research/r269/R269_RECEIPT.json"
+      },
+      "status": "SCIENTIFIC_REJECT",
       "title": "Falsify V25 multilevel-debiasing feasibility"
     },
     {
-      "id": "R270",
-      "title": "Independently verify the R266 score-gap arithmetic",
-      "priority": 2,
-      "hypothesis_id": "R266-SCORE-GAP-INDEPENDENT-AUDIT-20260923",
-      "depends_on": [
-        "R266"
-      ],
       "assigned_owner": "score-gap-independent-audit",
-      "owner": "score-gap-independent-audit",
-      "status": "COMPLETE",
       "attempts": [
         {
-          "run_id": "R270-score-gap-independent-audit-20260923",
           "code_commit": "385756cddca324a96acd6a50d0f7294ed8e825e7",
           "command": "desk-only recomputation from immutable normalized R209 V25/V29 rows and official Phase-2 scoring source; no estimator/Actions/new data/private/holdout/full/paid/submission/leaderboard/model/canonical changes",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R270-score-gap-independent-audit-20260923",
-            "status": "COMPLETE",
             "reason": "Independent desk-only recomputation verifies R266 arithmetic from immutable normalized R209 V25/V29 rows and the official Phase-2 scoring formula. V25 mean adjusted score 8.170397440117225e-9, exact cost factor 0.36666448157347986125387251377105712890625, 0.1 floor behavior, conditional 74.29745596353915% same-cost raw-MSE reduction versus displayed 2.1e-9, and 5.757900157515475% residual MSE reduction at the floor are all correct. R209 V29 has 57 residual_wall_time_exhausted failures whose multiplier-1 penalties dominate its score. The 2.1e-9 value is display-rounded/unrounded value unknown. Strict comparison remains NOT_COMPARABLE because R209 public mini:all-100 differs from 50-visible+50-sealed evaluation; no official rank or exact gap is claimed. No estimator/Actions/competition dataset fetch/private/holdout/full/paid/submission/leaderboard/model/canonical changes.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/157629ac3639759496114d977f1ef5da25072c6a/research/r270/R270_RECEIPT.json",
-              "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4"
-            }
-          }
+              "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/157629ac3639759496114d977f1ef5da25072c6a/research/r270/R270_RECEIPT.json"
+            },
+            "run_id": "R270-score-gap-independent-audit-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R270-score-gap-independent-audit-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independently recompute R266 from immutable normalized R209 V25 rows and official Phase-2 scoring source. Verify mean adjusted score, cost factor, 0.1 floor, conditional raw-MSE reduction needed to match the displayed 2.1e-9, and treatment of R209 V29 failures; check arithmetic/rounding and explicitly preserve NOT_COMPARABLE because public mini:all-100 differs from 50-visible+50-sealed leaderboard evaluation. Do not claim official rank or exact gap. Produce an isolated append-only audit report/receipt with hashes/commit and finish R270. No estimator/Actions/data access/private/holdout/full/paid/submission/leaderboard/model/canonical edits.",
+      "depends_on": [
+        "R266"
+      ],
+      "hypothesis_id": "R266-SCORE-GAP-INDEPENDENT-AUDIT-20260923",
+      "id": "R270",
+      "owner": "score-gap-independent-audit",
+      "priority": 2,
+      "reason": "Independent desk-only recomputation verifies R266 arithmetic from immutable normalized R209 V25/V29 rows and the official Phase-2 scoring formula. V25 mean adjusted score 8.170397440117225e-9, exact cost factor 0.36666448157347986125387251377105712890625, 0.1 floor behavior, conditional 74.29745596353915% same-cost raw-MSE reduction versus displayed 2.1e-9, and 5.757900157515475% residual MSE reduction at the floor are all correct. R209 V29 has 57 residual_wall_time_exhausted failures whose multiplier-1 penalties dominate its score. The 2.1e-9 value is display-rounded/unrounded value unknown. Strict comparison remains NOT_COMPARABLE because R209 public mini:all-100 differs from 50-visible+50-sealed evaluation; no official rank or exact gap is claimed. No estimator/Actions/competition dataset fetch/private/holdout/full/paid/submission/leaderboard/model/canonical changes.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/157629ac3639759496114d977f1ef5da25072c6a/research/r270/R270_RECEIPT.json",
-        "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4"
+        "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/157629ac3639759496114d977f1ef5da25072c6a/research/r270/R270_RECEIPT.json"
       },
-      "reason": "Independent desk-only recomputation verifies R266 arithmetic from immutable normalized R209 V25/V29 rows and the official Phase-2 scoring formula. V25 mean adjusted score 8.170397440117225e-9, exact cost factor 0.36666448157347986125387251377105712890625, 0.1 floor behavior, conditional 74.29745596353915% same-cost raw-MSE reduction versus displayed 2.1e-9, and 5.757900157515475% residual MSE reduction at the floor are all correct. R209 V29 has 57 residual_wall_time_exhausted failures whose multiplier-1 penalties dominate its score. The 2.1e-9 value is display-rounded/unrounded value unknown. Strict comparison remains NOT_COMPARABLE because R209 public mini:all-100 differs from 50-visible+50-sealed evaluation; no official rank or exact gap is claimed. No estimator/Actions/competition dataset fetch/private/holdout/full/paid/submission/leaderboard/model/canonical changes."
+      "status": "COMPLETE",
+      "title": "Independently verify the R266 score-gap arithmetic"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 320,
+  "revision": 321,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
