@@ -3652,6 +3652,21 @@
       "owner": "bpk2k-one-shot-run-responsive",
       "payload": {},
       "revision": 273
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T09:29:00+00:00",
+      "job": "R260",
+      "owner": "bpk2k-one-shot-run-responsive",
+      "payload": {
+        "code_commit": "47ab8c616665e6086e1b8c6f49acd937dab2d776",
+        "protocol_commit": "0b47b5ebeb965ebac01748133af57607f4dbc7b1",
+        "workflow_commit": "47ab8c616665e6086e1b8c6f49acd937dab2d776",
+        "command": "AFTER separate coordinator approval only: create exactly one commit on research/r260-bpk2k-replay-schema-one-shot-20260923 adding only research/r260/R260_RUN_ARM.json atop workflow commit 47ab8c616665e6086e1b8c6f49acd937dab2d776; that push triggers .github/workflows/r260-one-shot.yml once. Protocol commit 0b47b5ebeb965ebac01748133af57607f4dbc7b1; run_id R260-BPK2K-ONE-SHOT-20260923-A1. No trigger before coordinator inspection/approval; no rerun/second workflow.",
+        "run_id": "R260-BPK2K-ONE-SHOT-20260923-A1",
+        "trigger_status": "UNARMED_PENDING_COORDINATOR_INSPECTION"
+      },
+      "revision": 274
     }
   ],
   "jobs": [
@@ -5857,7 +5872,17 @@
     },
     {
       "assigned_owner": "bpk2k-one-shot-run-responsive",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "47ab8c616665e6086e1b8c6f49acd937dab2d776",
+          "protocol_commit": "0b47b5ebeb965ebac01748133af57607f4dbc7b1",
+          "workflow_commit": "47ab8c616665e6086e1b8c6f49acd937dab2d776",
+          "command": "AFTER separate coordinator approval only: create exactly one commit on research/r260-bpk2k-replay-schema-one-shot-20260923 adding only research/r260/R260_RUN_ARM.json atop workflow commit 47ab8c616665e6086e1b8c6f49acd937dab2d776; that push triggers .github/workflows/r260-one-shot.yml once. Protocol commit 0b47b5ebeb965ebac01748133af57607f4dbc7b1; run_id R260-BPK2K-ONE-SHOT-20260923-A1. No trigger before coordinator inspection/approval; no rerun/second workflow.",
+          "run_id": "R260-BPK2K-ONE-SHOT-20260923-A1",
+          "status": "RUNNING",
+          "trigger_status": "UNARMED_PENDING_COORDINATOR_INSPECTION"
+        }
+      ],
       "deliverable": "One distinct successor after terminal R259 INFRA_ERROR, based on R259 terminal report/receipt commit be1f8e92dbf3a2adb4d5dcd75c2ff345454ac47b. Preserve R259 protocol/science/gates and do not edit R254/R256/R257/R258 evidence. The only workflow repair is the stale fixture replay schema assertion: immutable r254_fixture.py build_manifest returns top-level replay_equal=true; top-level layer_sha256, weights_concat_sha256, truth_sha256; independent_replay contains those same three fields. Before arm, static-preflight the source and runtime manifest schema; in fixture step assert manifest present, replay_equal true, layer_sha256 has exactly 16 entries, independent_replay.layer_sha256 exactly equals it, and weights/truth hashes equal between top-level and independent_replay plus frozen hashes. No key named all_layer_hashes_equal. Keep fetch-depth:0, all source hashes, repaired R256 telemetry, exact parent and seed-254001 fixture. Create unique R260 protocol/manifest/workflow, run ID R260-BPK2K-ONE-SHOT-20260923-A1; one path-filtered arm push triggers exactly one standard/free ubuntu-24.04 workflow attempt. Publish start before trigger. Use pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 verified wheel hashes. Parent first; candidate only after exact replay and parent PASS; preserve R254 target-free gates exactly (final MSE<=0.95, all-layer<=0.98, >=12 improved layers, max per-layer degradation<=1.10, candidate FLOPs<=parent, residual<=1.05*parent+0.005, source/symmetry/finite/shape, unknown timing fail-closed). If any pre-parent/parent/candidate gate fails, stop accordingly and no public unless all target-free/source/cost GO. Same workflow may validate exact R209 mini100 and run public only after GO; frozen public gates failures=0, adjusted<=7.761877568111363e-9, >=55 improved, paired gain>2 descriptive SE, mean FLOPs<=806303721965, max residual<0.4s. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edits or history rewrites. Before arm, coordinator must inspect the committed workflow and source/manifests and separately approve. Preserve raw results/hashes, finish queue and regenerate STATUS.",
       "depends_on": [
         "R255",
@@ -5867,12 +5892,12 @@
       "id": "R260",
       "owner": "bpk2k-one-shot-run-responsive",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Run frozen BPK2K after fixture replay-schema preflight repair"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 273,
+  "revision": 274,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
