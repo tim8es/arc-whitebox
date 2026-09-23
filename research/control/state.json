@@ -5671,6 +5671,18 @@
       "owner": "v25-capture-workflow-patch-repair-r268",
       "payload": {},
       "revision": 422
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T22:44:10+00:00",
+      "job": "R294",
+      "owner": "v25-capture-workflow-patch-repair-r268",
+      "payload": {
+        "code_commit": "9b1cbb2d64c8203c9b50ddfd926bf275d983eacd",
+        "command": "offline/static repair of blocking R292 F1 in draft PR #36 only: reproduce old R291 patch git apply failure on exact WhestBench 0.16.1 scoring blob 9cf7653a0267c4d048617c9045ac8be127f3c8bf; create append-only R294 corrected patch; update workflow/protocol/preflight pins; add real local git apply --check/apply semantic check; no historical R291 edits, merge, Actions/benchmark, estimator/data/dependency downloads, result branch, paid/submission/leaderboard/canonical changes",
+        "run_id": "R294-r291-patch-format-repair-pr36-20260924"
+      },
+      "revision": 423
     }
   ],
   "jobs": [
@@ -9097,7 +9109,14 @@
     },
     {
       "assigned_owner": "v25-capture-workflow-patch-repair-r268",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "9b1cbb2d64c8203c9b50ddfd926bf275d983eacd",
+          "command": "offline/static repair of blocking R292 F1 in draft PR #36 only: reproduce old R291 patch git apply failure on exact WhestBench 0.16.1 scoring blob 9cf7653a0267c4d048617c9045ac8be127f3c8bf; create append-only R294 corrected patch; update workflow/protocol/preflight pins; add real local git apply --check/apply semantic check; no historical R291 edits, merge, Actions/benchmark, estimator/data/dependency downloads, result branch, paid/submission/leaderboard/canonical changes",
+          "run_id": "R294-r291-patch-format-repair-pr36-20260924",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Repair the blocking R292 finding in draft PR #36 only. First reproduce `git apply` failure on the exact PR/R291 patch bytes against the pinned WhestBench 0.16.1 `scoring.py` blob 9cf7653a0267c4d048617c9045ac8be127f3c8bf. Root cause is inconsistent unified-diff hunk counts; do not alter historical R291 files/receipts. Create a new append-only R294 corrected patch artifact in the PR branch, generated against that exact source; make only the hunk-count/patch-format correction unless reproduction proves another necessary change. Update the draft workflow and its preflight/protocol pins to the R294 patch hash; add a reproducible local check that applies the patch to the exact pinned source and rejects the old malformed bytes. Confirm the resulting patch changes only the three intended pre-MSE capture seams and does not alter scorer return paths/score/FLOP accounting. Run offline/static tests only. No merge, Actions, benchmark, estimator/data download, dependency install, paid resource, result branch, submission, or leaderboard/canonical edits. Keep PR #36 draft/open. Append R294 report/receipt and finish with exact commits/hashes, `git apply --check` evidence, tests, and remaining gates.",
       "depends_on": [
         "R292",
@@ -9107,12 +9126,12 @@
       "id": "R294",
       "owner": "v25-capture-workflow-patch-repair-r268",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Repair and verify the capture patch in draft PR #36"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 422,
+  "revision": 423,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
