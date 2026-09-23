@@ -3979,6 +3979,14 @@
         "deliverable": "Read the append-only queue events through R261 finish, the original R261 report/receipt, the coordinator reconciliation note, and current state.json/STATUS. Independently verify receipt/report blob mismatch handling, source commit provenance, reconstructed attempt projection, and consistency of current job status with append-only history. Preserve original history; report any remaining discrepancy without editing R261 artifacts/state. Save an isolated audit report and receipt with hashes/commit and finish R268. No Actions, science, public/holdout, paid resources, submission, or leaderboard/canonical changes."
       },
       "revision": 295
+    },
+    {
+      "revision": 296,
+      "action": "claim",
+      "job": "R263",
+      "owner": "leaderboard-refresh-arc",
+      "payload": {},
+      "at": "2026-09-23T12:01:19.406Z"
     }
   ],
   "jobs": [
@@ -6308,8 +6316,8 @@
       "hypothesis_id": "PHASE2-LEADERBOARD-SNAPSHOT-20260923",
       "depends_on": [],
       "assigned_owner": "leaderboard-refresh-arc",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "leaderboard-refresh-arc",
+      "status": "CLAIMED",
       "attempts": [],
       "deliverable": "Update the last verified leaderboard audit (R241) using only official AIcrowd/ARC primary sources. Record access time in UTC and Moscow time, visible Phase-2 standings/metric/deadline, source URLs and the strongest displayed score. Compare with R209 V25 mini-100 only if the official metric, split and aggregation are demonstrably aligned; otherwise state precisely why rank is UNKNOWN/NOT_COMPARABLE. Save an append-only report and receipt with source snapshots/hashes and commit, then finish R263. No estimator run, Actions, paid compute, private/holdout/full data, submission or leaderboard mutation."
     },
@@ -6387,7 +6395,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 295,
+  "revision": 296,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
