@@ -3445,6 +3445,24 @@
         "status": "COMPLETE"
       },
       "revision": 259
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T08:34:40Z",
+      "job": "R257",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "bpk2k-one-shot-run-responsive",
+        "deliverable": "One new, separately versioned one-shot evaluation of the unchanged R254 BPK2K candidate using only the reviewed R256 typed harness on an isolated successor branch from R256 receipt commit f1e458952f2274ca375f97125ba3d181c494ad40. Before any run, freeze R257 protocol, workflow, source hashes, one unique run ID, and exact gates; publish start on latest control head. Use pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1 and WhestBench 0.16.1 with the already verified wheel digests; standard free ubuntu-24.04 runner only. In exactly one workflow/attempt, run unchanged pinned V25 parent first on R254-MONOMIAL-PATH-254001 (seed 254001, exact existing weight/truth hashes); only after parent PASS run the unchanged BPK2K candidate. Preserve all frozen R254 target-free gates: final MSE ratio <=0.95, all-layer <=0.98, >=12 improved layers, max per-layer degradation <=1.10, candidate FLOPs <= parent, candidate residual <=1.05*parent+0.005; metered fnp/source compliance unchanged. Parent/infra failure => accurate terminal status, no candidate/public. Candidate target-free gate failure => SCIENTIFIC_REJECT for this configuration, skip public. Only if every target-free/source/cost gate passes, validate exact R209 mini-100 row/order/network/target hashes and run exact public mini-100 within the same workflow; require failures=0, adjusted score <=7.761877568111363e-9, >=55/100 improved, paired gain >2 descriptive SE, mean FLOPs <=806303721965, max residual <0.4s. Save raw per-network evidence/artifact hashes, report/receipt, finish queue and regenerate STATUS. No retries/second workflow, method/seed/threshold tuning, paid/private/holdout/full data, R223/R244 output access, submission, leaderboard/canonical edits or claims of official rank. Do not modify R254 historical artifacts.",
+        "depends_on": [
+          "R255",
+          "R256"
+        ],
+        "hypothesis_id": "R257-BPK2K-REPAIRED-HARNESS-ONE-SHOT",
+        "priority": 1,
+        "title": "Evaluate repaired BPK2K on frozen target-free then public R209 gates"
+      },
+      "revision": 260
     }
   ],
   "jobs": [
@@ -5491,8 +5509,6 @@
         {
           "code_commit": "bd37001bcb9cda9da75232542db4d2897270f8fc",
           "command": "offline/static-only repair on isolated branch from exact R254 execution head ff40219e132ce208428b7acfb1a03a79cd535be7: preserve BPK2K math, V25 parent, fixture/seed/hashes, gates and meter semantics; replace BudgetContext.summary string misuse with supported typed residual-wall-time source; add and run exactly one small offline regression test for real contract + fail-closed unknown timing; no Actions/workflow, benchmark/science, R209/public, private/holdout, submission, canonical/leaderboard",
-          "run_id": "R256-r254-harness-static-repair-20260923",
-          "status": "COMPLETE",
           "completion": {
             "reason": "R256 offline/static harness repair COMPLETE on isolated branch research/r256-r254-harness-telemetry-repair-20260923 based directly on exact R254 execution head ff40219e132ce208428b7acfb1a03a79cd535be7. Primary FlopScope 0.12.1 source confirms BudgetContext.summary()->str, summary_dict()->dict and residual_wall_time_s->float|None; R256 uses the supported typed residual_wall_time_s property and fails closed on None/invalid/nonfinite/negative values without coercing unknown timing to zero. BPK2K formula blocks, pinned V25 parent, fixture seed/hashes, BUDGET, all MSE/FLOP gates, target-free candidate<=1.05*parent+0.005 gate, frozen workflow and public residual limit 0.4s remain unchanged. Exactly one small offline regression script ran and passed (R256_OFFLINE_REGRESSION_PASS); no harness/science/benchmark/Actions/R209/public/private/holdout/submission/canonical/leaderboard action occurred. Patch commit 625992a673a9b1ceee136a2b8b4b27da378a824d; sealed report/receipt commit f1e458952f2274ca375f97125ba3d181c494ad40. R257 is NOT authorized or started.",
             "receipt": {
@@ -5501,7 +5517,9 @@
             },
             "run_id": "R256-r254-harness-static-repair-20260923",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "R256-r254-harness-static-repair-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Static-only diagnosis and minimal harness repair in a new isolated branch based on the exact R254 candidate commit. Confirm the pinned BudgetContext.summary() contract from source/runtime; preserve candidate math, fixture bytes/seed, parent, thresholds, FLOP/meter gates and public gates exactly. Replace the incorrect string-as-mapping access with a supported typed source for residual-wall-time evidence; do not coerce unknown values to zero or weaken the 0.4s gate. Add one small offline regression check for the observed contract, run only that check, and produce a report/receipt with before/after hashes and commit. No Actions/workflow trigger, benchmark/science, public identity/data access, rerun, submission, canonical edit or R254 history rewrite. If a safe measured residual-time source cannot be established, stop with the exact blocker.",
@@ -5513,17 +5531,32 @@
       "id": "R256",
       "owner": "r254-harness-repair-responsive",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Repair and test R254 telemetry boundary offline",
       "reason": "R256 offline/static harness repair COMPLETE on isolated branch research/r256-r254-harness-telemetry-repair-20260923 based directly on exact R254 execution head ff40219e132ce208428b7acfb1a03a79cd535be7. Primary FlopScope 0.12.1 source confirms BudgetContext.summary()->str, summary_dict()->dict and residual_wall_time_s->float|None; R256 uses the supported typed residual_wall_time_s property and fails closed on None/invalid/nonfinite/negative values without coercing unknown timing to zero. BPK2K formula blocks, pinned V25 parent, fixture seed/hashes, BUDGET, all MSE/FLOP gates, target-free candidate<=1.05*parent+0.005 gate, frozen workflow and public residual limit 0.4s remain unchanged. Exactly one small offline regression script ran and passed (R256_OFFLINE_REGRESSION_PASS); no harness/science/benchmark/Actions/R209/public/private/holdout/submission/canonical/leaderboard action occurred. Patch commit 625992a673a9b1ceee136a2b8b4b27da378a824d; sealed report/receipt commit f1e458952f2274ca375f97125ba3d181c494ad40. R257 is NOT authorized or started.",
       "receipt": {
         "sha256": "e33833cc18dae221ab2b5dcd0fd2bedc5203e7e67c8169c55e459d182e63582d",
         "url": "https://github.com/tim8es/arc-whitebox/blob/f1e458952f2274ca375f97125ba3d181c494ad40/research/r256/R256_RECEIPT.json"
-      }
+      },
+      "status": "COMPLETE",
+      "title": "Repair and test R254 telemetry boundary offline"
+    },
+    {
+      "assigned_owner": "bpk2k-one-shot-run-responsive",
+      "attempts": [],
+      "deliverable": "One new, separately versioned one-shot evaluation of the unchanged R254 BPK2K candidate using only the reviewed R256 typed harness on an isolated successor branch from R256 receipt commit f1e458952f2274ca375f97125ba3d181c494ad40. Before any run, freeze R257 protocol, workflow, source hashes, one unique run ID, and exact gates; publish start on latest control head. Use pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1 and WhestBench 0.16.1 with the already verified wheel digests; standard free ubuntu-24.04 runner only. In exactly one workflow/attempt, run unchanged pinned V25 parent first on R254-MONOMIAL-PATH-254001 (seed 254001, exact existing weight/truth hashes); only after parent PASS run the unchanged BPK2K candidate. Preserve all frozen R254 target-free gates: final MSE ratio <=0.95, all-layer <=0.98, >=12 improved layers, max per-layer degradation <=1.10, candidate FLOPs <= parent, candidate residual <=1.05*parent+0.005; metered fnp/source compliance unchanged. Parent/infra failure => accurate terminal status, no candidate/public. Candidate target-free gate failure => SCIENTIFIC_REJECT for this configuration, skip public. Only if every target-free/source/cost gate passes, validate exact R209 mini-100 row/order/network/target hashes and run exact public mini-100 within the same workflow; require failures=0, adjusted score <=7.761877568111363e-9, >=55/100 improved, paired gain >2 descriptive SE, mean FLOPs <=806303721965, max residual <0.4s. Save raw per-network evidence/artifact hashes, report/receipt, finish queue and regenerate STATUS. No retries/second workflow, method/seed/threshold tuning, paid/private/holdout/full data, R223/R244 output access, submission, leaderboard/canonical edits or claims of official rank. Do not modify R254 historical artifacts.",
+      "depends_on": [
+        "R255",
+        "R256"
+      ],
+      "hypothesis_id": "R257-BPK2K-REPAIRED-HARNESS-ONE-SHOT",
+      "id": "R257",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Evaluate repaired BPK2K on frozen target-free then public R209 gates"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 259,
+  "revision": 260,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
