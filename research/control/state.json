@@ -2078,6 +2078,18 @@
       "owner": "postflight-audit",
       "payload": {},
       "revision": 160
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T01:22:00.000Z",
+      "job": "R220",
+      "owner": "postflight-audit",
+      "payload": {
+        "run_id": "R220-r218-independent-postflight-20260923",
+        "code_commit": "41a434a870b26166485c4e9503c2782ace5df95f",
+        "command": "first run the R237 offline synthetic fail-closed suite fresh and require PASS; only then independently audit immutable R218 Actions run 35783866968/job 106935773981/attempt 1/artifact 10726329197, verify ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, provenance/manifest/R236 D1-D7, recompute frozen R217 six-block thresholds; no Actions rerun, estimator, holdout/private data, submission, or canonical edits"
+      },
+      "revision": 161
     }
   ],
   "jobs": [
@@ -2741,7 +2753,14 @@
     },
     {
       "assigned_owner": "postflight-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R220-r218-independent-postflight-20260923",
+          "code_commit": "41a434a870b26166485c4e9503c2782ace5df95f",
+          "command": "first run the R237 offline synthetic fail-closed suite fresh and require PASS; only then independently audit immutable R218 Actions run 35783866968/job 106935773981/attempt 1/artifact 10726329197, verify ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, provenance/manifest/R236 D1-D7, recompute frozen R217 six-block thresholds; no Actions rerun, estimator, holdout/private data, submission, or canonical edits",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "After R218 completes, independently verify its immutable artifact, all six blocks and same-worker/CPU gates, recompute per-MLP C0/C1/U residual summaries, failure differences and official adjusted scores, and apply R217's predeclared thresholds exactly. Confirm or reject the causal interpretation within the protocol's limits; preserve missing telemetry or deviations. Create audit receipt/commit and finish the job. No rerun, holdout, paid run or submission.",
       "depends_on": [
         "R218"
@@ -2750,7 +2769,7 @@
       "id": "R220",
       "owner": "postflight-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Independently audit the same-worker R210 crossover evidence"
     },
     {
@@ -3372,7 +3391,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 160,
+  "revision": 161,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
