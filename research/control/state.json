@@ -4480,6 +4480,22 @@
         "command": "desk-only quantitative audit of immutable research/results/R209-v25-mini100.json against pinned official Phase-2 scoring formula; descriptive development evidence only"
       },
       "at": "2026-09-23T13:21:55.082Z"
+    },
+    {
+      "revision": 335,
+      "action": "finish",
+      "job": "R273",
+      "owner": "score-gap-independent-audit",
+      "payload": {
+        "run_id": "R273-v25-error-concentration-20260923",
+        "status": "COMPLETE",
+        "reason": "Independent descriptive audit of immutable R209 V25 mini:all-100 rows completed. All 100/100 rows exactly reproduce official_adjusted_score from final_mse * max(0.1, measured_flops/budget_flops); 0 failures. Adjusted score mean 8.170397440117225e-9, sample SD 1.1587653552315885e-9, SE 1.1587653552315885e-10. Worst 10% contribute 12.4724509073% and worst 25% contribute 29.3130672490% of total score; largest row contributes 1.3592696640%. Measured FLOPs and budget are constant across all rows, so cost-factor variation contributes zero to cross-network dispersion and all score dispersion is scaled MSE dispersion. Development evidence is BROAD_BASED_NOT_OUTLIER_DOMINATED; global research should target broad MSE reduction under one fixed method/configuration, not per-network selection. No leaderboard comparison/rank, estimator, Actions, new data, paid/private/holdout/full, tuning, submission, model/leaderboard/canonical edits.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/3e5ecf637461175a1c2e721f199861655d73e105/research/r273/R273_RECEIPT.json",
+          "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e"
+        }
+      },
+      "at": "2026-09-23T13:25:08.722Z"
     }
   ],
   "jobs": [
@@ -7160,7 +7176,16 @@
           "run_id": "R273-v25-error-concentration-20260923",
           "code_commit": "fa2389f25bbb388550278ddef4a10a7ab5a7b714",
           "command": "desk-only quantitative audit of immutable research/results/R209-v25-mini100.json against pinned official Phase-2 scoring formula; descriptive development evidence only",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R273-v25-error-concentration-20260923",
+            "status": "COMPLETE",
+            "reason": "Independent descriptive audit of immutable R209 V25 mini:all-100 rows completed. All 100/100 rows exactly reproduce official_adjusted_score from final_mse * max(0.1, measured_flops/budget_flops); 0 failures. Adjusted score mean 8.170397440117225e-9, sample SD 1.1587653552315885e-9, SE 1.1587653552315885e-10. Worst 10% contribute 12.4724509073% and worst 25% contribute 29.3130672490% of total score; largest row contributes 1.3592696640%. Measured FLOPs and budget are constant across all rows, so cost-factor variation contributes zero to cross-network dispersion and all score dispersion is scaled MSE dispersion. Development evidence is BROAD_BASED_NOT_OUTLIER_DOMINATED; global research should target broad MSE reduction under one fixed method/configuration, not per-network selection. No leaderboard comparison/rank, estimator, Actions, new data, paid/private/holdout/full, tuning, submission, model/leaderboard/canonical edits.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/3e5ecf637461175a1c2e721f199861655d73e105/research/r273/R273_RECEIPT.json",
+              "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e"
+            }
+          }
         }
       ],
       "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits.",
@@ -7172,12 +7197,17 @@
       "id": "R273",
       "owner": "score-gap-independent-audit",
       "priority": 2,
-      "status": "RUNNING",
-      "title": "Measure whether R209 V25 error is broad-based or concentrated"
+      "status": "COMPLETE",
+      "title": "Measure whether R209 V25 error is broad-based or concentrated",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/3e5ecf637461175a1c2e721f199861655d73e105/research/r273/R273_RECEIPT.json",
+        "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e"
+      },
+      "reason": "Independent descriptive audit of immutable R209 V25 mini:all-100 rows completed. All 100/100 rows exactly reproduce official_adjusted_score from final_mse * max(0.1, measured_flops/budget_flops); 0 failures. Adjusted score mean 8.170397440117225e-9, sample SD 1.1587653552315885e-9, SE 1.1587653552315885e-10. Worst 10% contribute 12.4724509073% and worst 25% contribute 29.3130672490% of total score; largest row contributes 1.3592696640%. Measured FLOPs and budget are constant across all rows, so cost-factor variation contributes zero to cross-network dispersion and all score dispersion is scaled MSE dispersion. Development evidence is BROAD_BASED_NOT_OUTLIER_DOMINATED; global research should target broad MSE reduction under one fixed method/configuration, not per-network selection. No leaderboard comparison/rank, estimator, Actions, new data, paid/private/holdout/full, tuning, submission, model/leaderboard/canonical edits."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 334,
+  "revision": 335,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
