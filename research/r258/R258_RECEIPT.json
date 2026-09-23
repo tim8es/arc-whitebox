@@ -1,0 +1,103 @@
+{
+  "schema": "arc.whitebox.r258.receipt.v1",
+  "job": "R258",
+  "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1",
+  "owner": "bpk2k-one-shot-run-responsive",
+  "status": "INFRA_ERROR",
+  "scientific_status": "UNEVALUATED",
+  "verdict": "TERMINAL_INFRA_ERROR_FIXTURE_RUNTIME_MANIFEST_FILENAME_MISMATCH",
+  "frozen": {
+    "base_r257_terminal_commit": "c4b46ecacba1876613a6e11b678399d0b1fd83ba",
+    "r257_receipt_sha256": "4b28cfb1f912afc9cae0b98484b711ee8dde5145e5d0753b2977eadd21093cc1",
+    "r257_protocol_commit": "b63936a38bc0e3a6394b00f2ef1d484311aff9e4",
+    "protocol_commit": "f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33",
+    "protocol_blob": "f6c268f5d508816d16a884d16b19c02e042e0ad7",
+    "manifest_blob": "d5fbe0afa3e2ae9e6530775563832dca9c1381e7",
+    "workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
+    "workflow_blob": "d6ac9965c19bbbaeb5c6a6598b5e01d08929805f",
+    "arm_commit": "1d4998148c7a3e374002c00fdebddcf713e95daa",
+    "only_infrastructure_change_from_r257": "actions/checkout@v4 fetch-depth: 0"
+  },
+  "execution": {
+    "github_run_id": 35840156117,
+    "github_job_id": 107113033506,
+    "github_run_attempt": 1,
+    "head_sha": "1d4998148c7a3e374002c00fdebddcf713e95daa",
+    "workflow_conclusion": "failure",
+    "workflow_runs_observed": 1,
+    "retry": false,
+    "second_workflow": false,
+    "artifact_id": 10740674582,
+    "artifact_name": "r258-one-shot-evidence",
+    "artifact_size_bytes": 26600,
+    "artifact_zip_sha256": "4109b2e0c6cd5e7380bf60dcf1a5efe621af9df9bbe5dee6d142410efdb6ec9f"
+  },
+  "passed_pre_science": {
+    "full_history_checkout": true,
+    "protocol_ancestry_guard": true,
+    "post_protocol_changed_paths": [
+      ".github/workflows/r258-one-shot.yml",
+      "research/r258/R258_RUN_ARM.json"
+    ],
+    "source_git_blob_checks": true,
+    "source_sha256_checks": true,
+    "runtime": {
+      "python": "3.11.16",
+      "numpy": "2.4.6",
+      "flopscope": "0.12.1",
+      "whestbench": "0.16.1"
+    },
+    "pinned_wheel_hashes": true,
+    "parent_download_hash": true,
+    "fixture_generation": true,
+    "fixture_replay_equal": true,
+    "fixture_seed": 254001,
+    "fixture_weights_sha256": "199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0",
+    "fixture_truth_sha256": "58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d",
+    "fixture_all_16_layer_hashes_match": true
+  },
+  "failure": {
+    "stage": "Reconstruct and independently replay exact frozen fixture",
+    "generated_path": "r258_artifacts/fixture/R254_FIXTURE_RUNTIME_MANIFEST.json",
+    "attempted_path": "r258_artifacts/fixture/R254_RUNTIME_FIXTURE_MANIFEST.json",
+    "exception_type": "FileNotFoundError",
+    "exit_code": 1,
+    "classification": "workflow/bootstrap fixture-manifest filename mismatch",
+    "note": "fixture generator completed and retained exact replay evidence before the workflow-side filename assertion failed"
+  },
+  "accounting": {
+    "parent_source_fetched_and_verified": true,
+    "parent_executions": 0,
+    "candidate_constructions": 0,
+    "candidate_executions": 0,
+    "target_free_result_present": false,
+    "target_free_measurements": 0,
+    "validation_executed": false,
+    "public_identity_accessed": false,
+    "public_mini100_executed": false,
+    "public_measurements": 0,
+    "public_per_network_evidence_present": false,
+    "public_gate_executed": false
+  },
+  "artifact_evidence": {
+    "file_count": 14,
+    "hash_map_entries": 13,
+    "hash_map_mismatches": 0,
+    "workflow_receipt_sha256": "c80b9da36450243ba7706bfd23c9b6bb9448f29ac99f308259110f895ede64c0",
+    "workflow_receipt_decision": "INFRA_ERROR_BEFORE_TARGET_FREE_RESULT",
+    "runtime_versions_sha256": "e9f9d943b5aa2ac563ce1c62fa685a99c482c1dc406e380709eb9fe8d835eda7",
+    "runtime_fixture_manifest_sha256": "4c14e8b3907907c73d061a9d46575d0847971aa8fda3ef642826c7118b33e105",
+    "parent_source_sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "safety": {
+    "tuning": false,
+    "paid_or_larger_runner": false,
+    "private_or_holdout_or_full": false,
+    "r223_r244_outputs_or_artifacts": false,
+    "submission": false,
+    "leaderboard_or_canonical_edit": false,
+    "r254_history_edit": false,
+    "r257_history_edit": false,
+    "scientific_numeric_claims": false
+  }
+}
