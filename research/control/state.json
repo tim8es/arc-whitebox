@@ -5019,6 +5019,18 @@
       "owner": "workflow-preflight-integration-fix",
       "payload": {},
       "at": "2026-09-23T15:51:27.345Z"
+    },
+    {
+      "revision": 376,
+      "action": "start",
+      "job": "R281",
+      "owner": "workflow-preflight-integration-fix",
+      "payload": {
+        "run_id": "R281-pr35-preflight-failclosed-fix-20260923",
+        "code_commit": "e054a32d7d3bdac98408392b09f467e174c2565b",
+        "command": "python -m unittest tests/test_arc_workflow_preflight.py -v"
+      },
+      "at": "2026-09-23T15:52:05.237Z"
     }
   ],
   "jobs": [
@@ -7979,7 +7991,14 @@
     },
     {
       "assigned_owner": "workflow-preflight-integration-fix",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R281-pr35-preflight-failclosed-fix-20260923",
+          "code_commit": "e054a32d7d3bdac98408392b09f467e174c2565b",
+          "command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Continue PR #35 from its current clean integration branch/head. Read R277 report+receipt and reproduce each finding before changing code: (1) accept fetch-depth:0 only under the `with:` of an actual actions/checkout step, not env/other fields; (2) fail closed or correctly recompute schema after destructive/unknown manifest mutations such as clear/pop/helper mutation; (3) tie json.loads binding to the exact manifest path and fail closed on unsupported accesses such as d.get('ghost') rather than silently missing them. Add minimal focused regressions, keep stdlib-only, run focused offline tests and compatibility tests, inspect exact PR diff. Update existing PR #35, do not merge or trigger Actions. Append R281 report/receipt with hashes/commit and finish R281; preserve all attempts and report if a case cannot be safely fixed.",
       "depends_on": [
         "R277"
@@ -7988,7 +8007,7 @@
       "id": "R281",
       "owner": "workflow-preflight-integration-fix",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Fix the three R277 false-PASS findings in PR #35"
     },
     {
@@ -8054,7 +8073,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 375,
+  "revision": 376,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
