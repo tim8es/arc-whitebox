@@ -13,13 +13,11 @@ the workflow, fixture generator, estimator, or competition data.
 
 It fails closed when it cannot prove the supported contracts:
 
-- every `git merge-base --is-ancestor` guard has a preceding
-  `actions/checkout` whose own `with:` block contains `fetch-depth: 0` in the same job;
+- ancestry guards are recognized with supported shell whitespace/line continuations, and every guard has a preceding structural workflow step using `actions/checkout` whose own `with:` mapping contains `fetch-depth: 0` in the same job; block-scalar/comment text cannot supply checkout metadata;
 - runtime-manifest filenames referenced by the workflow match the generator output;
-- the generator manifest object uses only statically modeled mutations before serialization;
-- `json.loads` reads the exact runtime-manifest path, and workflow manifest accesses use
-  statically verifiable bracket-key paths present in the object traced to the generator's
-  `json.dumps(...)` runtime-manifest write.
+- the generator manifest object uses only statically modeled assignments/updates before serialization; unsupported control flow, deletion, mutation, helper flow, or write reachability fails closed;
+- `json.loads` reads the exact runtime-manifest path from a supported `run: |` Python verifier slice, and AST-parsed manifest accesses exclude comments/string literals, require literal bracket-key paths, and reject aliasing, dynamic subscripts, method calls, helper passing, or other unmodeled uses;
+- every asserted key path is present in the object traced to the generator's `json.dumps(...)` runtime-manifest write.
 
 Run the focused regression suite with:
 
