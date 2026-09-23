@@ -4259,6 +4259,18 @@
       "owner": "score-gap-independent-audit",
       "payload": {},
       "at": "2026-09-23T12:21:48.350Z"
+    },
+    {
+      "revision": 319,
+      "action": "start",
+      "job": "R270",
+      "owner": "score-gap-independent-audit",
+      "payload": {
+        "run_id": "R270-score-gap-independent-audit-20260923",
+        "code_commit": "385756cddca324a96acd6a50d0f7294ed8e825e7",
+        "command": "desk-only recomputation from immutable normalized R209 V25/V29 rows and official Phase-2 scoring source; no estimator/Actions/new data/private/holdout/full/paid/submission/leaderboard/model/canonical changes"
+      },
+      "at": "2026-09-23T12:22:13.274Z"
     }
   ],
   "jobs": [
@@ -6794,13 +6806,20 @@
       ],
       "assigned_owner": "score-gap-independent-audit",
       "owner": "score-gap-independent-audit",
-      "status": "CLAIMED",
-      "attempts": [],
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R270-score-gap-independent-audit-20260923",
+          "code_commit": "385756cddca324a96acd6a50d0f7294ed8e825e7",
+          "command": "desk-only recomputation from immutable normalized R209 V25/V29 rows and official Phase-2 scoring source; no estimator/Actions/new data/private/holdout/full/paid/submission/leaderboard/model/canonical changes",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independently recompute R266 from immutable normalized R209 V25 rows and official Phase-2 scoring source. Verify mean adjusted score, cost factor, 0.1 floor, conditional raw-MSE reduction needed to match the displayed 2.1e-9, and treatment of R209 V29 failures; check arithmetic/rounding and explicitly preserve NOT_COMPARABLE because public mini:all-100 differs from 50-visible+50-sealed leaderboard evaluation. Do not claim official rank or exact gap. Produce an isolated append-only audit report/receipt with hashes/commit and finish R270. No estimator/Actions/data access/private/holdout/full/paid/submission/leaderboard/model/canonical edits."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 318,
+  "revision": 319,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
