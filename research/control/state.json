@@ -5965,6 +5965,23 @@
         "run_id": "R300-binary32-energy-consistency-fix-20260924"
       },
       "revision": 443
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T23:59:00.000Z",
+      "job": "R300",
+      "owner": "r300-binary32-energy-consistency-fix-r269",
+      "payload": {
+        "decision": "BINARY32_CONSISTENCY_FIX_PREPARED_DELTA_TESTED_NO_REAL_CAPTURE",
+        "reason": "Append-only R300 supplement replaces R299 coordinate C arithmetic with the exact frozen R298 binary32 corrected-residual path before any real capture is inspected. The required p=target=1,d≈1e-8 counterexample and a 50x1024 aggregate corrected-energy consistency check both passed in the available local numerical scratch runtime. The committed 21-check integration self-check is present but unexecuted because this session has no repository checkout/command runner and cloning/downloading to materialize one is prohibited. Historical R298/R299 artifacts and PR #36 were untouched; no real vectors, benchmark/estimator, Actions, downloads/installs, paid/private/holdout/full access, submission, leaderboard/canonical edit, or R296 claim occurred.",
+        "receipt": {
+          "sha256": "87f8eaf7819749fbb2fb1a7a30719bb68e3ec7177ce7a8e61df05aeb8f7666de",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/813756ced282c780ac28f6da1e4228d8bc9c50b8/research/r300/R300_RECEIPT.json"
+        },
+        "run_id": "R300-binary32-energy-consistency-fix-20260924",
+        "status": "COMPLETE"
+      },
+      "revision": 444
     }
   ],
   "jobs": [
@@ -9565,19 +9582,34 @@
       "title": "Align coordinate-energy math with the frozen corrected-MSE arithmetic",
       "id": "R300",
       "owner": "r300-binary32-energy-consistency-fix-r269",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "attempts": [
         {
           "code_commit": "85a6af9b3ec125a56a12463c2c9b7303a563ed70",
           "command": "stdlib-only append-only R300 analyzer supplement: align coordinate C_k with exact R298 binary32 corrected-residual path pred_corr=f32(pred+d), residual_corr=f32(target-pred_corr); synthetic p=target=1,d≈1e-8 regression plus aggregate consistency test only; no historical R298/R299 edits, PR #36, real vectors, benchmark/estimator, Actions, downloads/installs, paid/private/holdout/full/submission/leaderboard/canonical changes",
           "run_id": "R300-binary32-energy-consistency-fix-20260924",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "decision": "BINARY32_CONSISTENCY_FIX_PREPARED_DELTA_TESTED_NO_REAL_CAPTURE",
+            "reason": "Append-only R300 supplement replaces R299 coordinate C arithmetic with the exact frozen R298 binary32 corrected-residual path before any real capture is inspected. The required p=target=1,d≈1e-8 counterexample and a 50x1024 aggregate corrected-energy consistency check both passed in the available local numerical scratch runtime. The committed 21-check integration self-check is present but unexecuted because this session has no repository checkout/command runner and cloning/downloading to materialize one is prohibited. Historical R298/R299 artifacts and PR #36 were untouched; no real vectors, benchmark/estimator, Actions, downloads/installs, paid/private/holdout/full access, submission, leaderboard/canonical edit, or R296 claim occurred.",
+            "receipt": {
+              "sha256": "87f8eaf7819749fbb2fb1a7a30719bb68e3ec7177ce7a8e61df05aeb8f7666de",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/813756ced282c780ac28f6da1e4228d8bc9c50b8/research/r300/R300_RECEIPT.json"
+            },
+            "run_id": "R300-binary32-energy-consistency-fix-20260924",
+            "status": "COMPLETE"
+          }
         }
-      ]
+      ],
+      "reason": "Append-only R300 supplement replaces R299 coordinate C arithmetic with the exact frozen R298 binary32 corrected-residual path before any real capture is inspected. The required p=target=1,d≈1e-8 counterexample and a 50x1024 aggregate corrected-energy consistency check both passed in the available local numerical scratch runtime. The committed 21-check integration self-check is present but unexecuted because this session has no repository checkout/command runner and cloning/downloading to materialize one is prohibited. Historical R298/R299 artifacts and PR #36 were untouched; no real vectors, benchmark/estimator, Actions, downloads/installs, paid/private/holdout/full access, submission, leaderboard/canonical edit, or R296 claim occurred.",
+      "receipt": {
+        "sha256": "87f8eaf7819749fbb2fb1a7a30719bb68e3ec7177ce7a8e61df05aeb8f7666de",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/813756ced282c780ac28f6da1e4228d8bc9c50b8/research/r300/R300_RECEIPT.json"
+      }
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 443,
+  "revision": 444,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
