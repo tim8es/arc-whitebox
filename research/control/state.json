@@ -5298,6 +5298,18 @@
       "owner": "preflight-r283-remediation-responsive",
       "payload": {},
       "revision": 395
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T17:17:17.604Z",
+      "job": "R285",
+      "owner": "preflight-r283-remediation-responsive",
+      "payload": {
+        "code_commit": "05733f3bfa6730124c4601a918bcc6d401719e09",
+        "command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
+        "run_id": "R285-pr35-r283-remediation-20260923"
+      },
+      "revision": 396
     }
   ],
   "jobs": [
@@ -8397,7 +8409,14 @@
     },
     {
       "assigned_owner": "preflight-r283-remediation-responsive",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "05733f3bfa6730124c4601a918bcc6d401719e09",
+          "command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
+          "run_id": "R285-pr35-r283-remediation-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Continue existing PR #35 from current head 05733f3bfa6730124c4601a918bcc6d401719e09. Read R281/R283 receipts and reproduce all four R283 additional counterexamples against the post-R281 production blob before editing: YAML run-block/comment text masquerading as checkout metadata; equivalent ancestry-command whitespace bypass; comments/string literals manufacturing bracket-key evidence around unsupported real accesses; skipped if/del/conditional-return/helper control flow or no-manifest-write paths. Add focused regression tests first; minimally harden or fail closed wherever static proof is unsupported. Keep standard-library/offline scope, run focused + compatibility tests against byte-exact code, update PR #35 but do not merge or trigger Actions. Append R285 report/receipt with hashes/commit and finish. If any counterexample is not reproducible on current head, record that instead of changing unrelated logic.",
       "depends_on": [
         "R281",
@@ -8407,7 +8426,7 @@
       "id": "R285",
       "owner": "preflight-r283-remediation-responsive",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Close the remaining R283 false-PASS classes in PR #35"
     },
     {
@@ -8520,7 +8539,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 395,
+  "revision": 396,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
