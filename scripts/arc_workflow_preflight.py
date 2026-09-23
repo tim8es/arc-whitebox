@@ -26,111 +26,6 @@ class PreflightError(ValueError):
     pass
 
 
-def _indent(line: str) -> int:
-    return len(line) - len(line.lstrip())
-
-
-def _job_blocks(workflow: str) -> list[tuple[str, str]]:
-    lines = workflow.splitlines()
-    jobs_indexes = [
-        i for i, line in enumerate(lines)
-        if re.match(r"^\s*jobs:\s*(?:#.*)?$", line)
-    ]
-    if len(jobs_indexes) != 1:
-        raise PreflightError("cannot statically identify one jobs: mapping")
-    jobs_index = jobs_indexes[0]
-    jobs_indent = _indent(lines[jobs_index])
-    job_indent = None
-    for line in lines[jobs_index + 1:]:
-        stripped = line.strip()
-        if not stripped or stripped.startswith("#"):
-            continue
-        indent = _indent(line)
-        if indent <= jobs_indent:
-            break
-        if re.match(r"^\s*[A-Za-z0-9_.-]+:\s*(?:#.*)?$", line):
-            job_indent = indent
-            break
-    if job_indent is None:
-        raise PreflightError("cannot statically identify workflow jobs")
-    starts: list[tuple[int, str]] = []
-    for i in range(jobs_index + 1, len(lines)):
-        line = lines[i]
-        stripped = line.strip()
-        if stripped and _indent(line) <= jobs_indent:
-            break
-        match = re.match(r"^\s*([A-Za-z0-9_.-]+):\s*(?:#.*)?$", line)
-        if match and _indent(line) == job_indent:
-            starts.append((i, match.group(1)))
-    if not starts:
-        raise PreflightError("cannot statically identify workflow jobs")
-    end = len(lines)
-    for i in range(starts[-1][0] + 1, len(lines)):
-        if lines[i].strip() and _indent(lines[i]) <= jobs_indent:
-            end = i
-            break
-    blocks: list[tuple[str, str]] = []
-    for pos, (start, name) in enumerate(starts):
-        stop = starts[pos + 1][0] if pos + 1 < len(starts) else end
-        blocks.append((name, "\n".join(lines[start:stop])))
-    return blocks
-
-
-def _checkout_steps(job_block: str) -> list[tuple[int, list[str]]]:
-    lines = job_block.splitlines()
-    steps: list[tuple[int, list[str]]] = []
-    for i, line in enumerate(lines):
-        if not re.search(r"\buses:\s*actions/checkout@v\d+\s*$", line):
-            continue
-        indent = _indent(line)
-        block = [line]
-        for following in lines[i + 1:]:
-            if following.lstrip().startswith("- ") and _indent(following) == indent:
-                break
-            block.append(following)
-        steps.append((i, block))
-    return steps
-
-
-def require_full_history_for_ancestry(workflow: str) -> None:
-    total_guards = workflow.count("git merge-base --is-ancestor")
-    if total_guards == 0:
-        return
-    jobs = _job_blocks(workflow)
-    mapped_guards = 0
-    for job_name, block in jobs:
-        guard_count = block.count("git merge-base --is-ancestor")
-        mapped_guards += guard_count
-        if guard_count == 0:
-            continue
-        checkouts = _checkout_steps(block)
-        if not checkouts:
-            raise PreflightError(
-                f"job {job_name!r} has ancestry guard but no actions/checkout step"
-            )
-        job_lines = block.splitlines()
-        guard_indexes = [
-            i for i, line in enumerate(job_lines)
-            if "git merge-base --is-ancestor" in line
-        ]
-        for guard_index in guard_indexes:
-            prior = [(index, step) for index, step in checkouts if index < guard_index]
-            if not prior:
-                raise PreflightError(
-                    f"job {job_name!r} ancestry guard has no preceding actions/checkout in the same job"
-                )
-            _, active_checkout = prior[-1]
-            if not any(
-                re.search(r"^\s*fetch-depth:\s*0\s*(?:#.*)?$", line)
-                for line in active_checkout
-            ):
-                raise PreflightError(
-                    f"job {job_name!r} ancestry guard requires a preceding actions/checkout with fetch-depth: 0 in the same job"
-                )
-    if mapped_guards != total_guards:
-        raise PreflightError("ancestry guard could not be mapped unambiguously to a workflow job")
-
-
 SchemaPath: TypeAlias = tuple[str, ...]
 Schema: TypeAlias = frozenset[SchemaPath]
 _SCALAR = object()
@@ -308,13 +203,117 @@ def generator_contract(source: str, filename: str = "<fixture-generator>") -> tu
     tree = ast.parse(source, filename=filename)
     return _GeneratorResolver(tree, filename).contract()
 
-_RUNTIME_MANIFEST_RE = re.compile(
-    r"\bR[A-Z0-9_]*RUNTIME[A-Z0-9_]*MANIFEST\.json\b"
-)
+
+_RUNTIME_MANIFEST_RE = re.compile(r"\bR[A-Z0-9_]*RUNTIME[A-Z0-9_]*MANIFEST\.json\b")
 
 
 def workflow_runtime_manifest_names(workflow: str) -> set[str]:
     return set(_RUNTIME_MANIFEST_RE.findall(workflow))
+
+
+def _indent(line: str) -> int:
+    return len(line) - len(line.lstrip())
+
+
+def _job_blocks(workflow: str) -> list[tuple[str, str]]:
+    lines = workflow.splitlines()
+    jobs_indexes = [
+        i for i, line in enumerate(lines)
+        if re.match(r"^\s*jobs:\s*(?:#.*)?$", line)
+    ]
+    if len(jobs_indexes) != 1:
+        raise PreflightError("cannot statically identify one jobs: mapping")
+    jobs_index = jobs_indexes[0]
+    jobs_indent = _indent(lines[jobs_index])
+    job_indent = None
+    for line in lines[jobs_index + 1:]:
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        indent = _indent(line)
+        if indent <= jobs_indent:
+            break
+        if re.match(r"^\s*[A-Za-z0-9_.-]+:\s*(?:#.*)?$", line):
+            job_indent = indent
+            break
+    if job_indent is None:
+        raise PreflightError("cannot statically identify workflow jobs")
+    starts: list[tuple[int, str]] = []
+    for i in range(jobs_index + 1, len(lines)):
+        line = lines[i]
+        stripped = line.strip()
+        if stripped and _indent(line) <= jobs_indent:
+            break
+        match = re.match(r"^\s*([A-Za-z0-9_.-]+):\s*(?:#.*)?$", line)
+        if match and _indent(line) == job_indent:
+            starts.append((i, match.group(1)))
+    if not starts:
+        raise PreflightError("cannot statically identify workflow jobs")
+    end = len(lines)
+    for i in range(starts[-1][0] + 1, len(lines)):
+        if lines[i].strip() and _indent(lines[i]) <= jobs_indent:
+            end = i
+            break
+    blocks: list[tuple[str, str]] = []
+    for pos, (start, name) in enumerate(starts):
+        stop = starts[pos + 1][0] if pos + 1 < len(starts) else end
+        blocks.append((name, "\n".join(lines[start:stop])))
+    return blocks
+
+
+def _checkout_steps(job_block: str) -> list[tuple[int, list[str]]]:
+    lines = job_block.splitlines()
+    steps: list[tuple[int, list[str]]] = []
+    for i, line in enumerate(lines):
+        if not re.search(r"\buses:\s*actions/checkout@v\d+\s*$", line):
+            continue
+        indent = _indent(line)
+        block = [line]
+        for following in lines[i + 1:]:
+            if following.lstrip().startswith("- ") and _indent(following) == indent:
+                break
+            block.append(following)
+        steps.append((i, block))
+    return steps
+
+
+def require_full_history_for_ancestry(workflow: str) -> None:
+    total_guards = workflow.count("git merge-base --is-ancestor")
+    if total_guards == 0:
+        return
+    jobs = _job_blocks(workflow)
+    mapped_guards = 0
+    for job_name, block in jobs:
+        guard_count = block.count("git merge-base --is-ancestor")
+        mapped_guards += guard_count
+        if guard_count == 0:
+            continue
+        checkouts = _checkout_steps(block)
+        if not checkouts:
+            raise PreflightError(
+                f"job {job_name!r} has ancestry guard but no actions/checkout step"
+            )
+        job_lines = block.splitlines()
+        guard_indexes = [
+            i for i, line in enumerate(job_lines)
+            if "git merge-base --is-ancestor" in line
+        ]
+        for guard_index in guard_indexes:
+            prior = [(index, step) for index, step in checkouts if index < guard_index]
+            if not prior:
+                raise PreflightError(
+                    f"job {job_name!r} ancestry guard has no preceding actions/checkout in the same job"
+                )
+            _, active_checkout = prior[-1]
+            if not any(
+                re.search(r"^\s*fetch-depth:\s*0\s*(?:#.*)?$", line)
+                for line in active_checkout
+            ):
+                raise PreflightError(
+                    f"job {job_name!r} ancestry guard requires a preceding actions/checkout with fetch-depth: 0 in the same job"
+                )
+    if mapped_guards != total_guards:
+        raise PreflightError("ancestry guard could not be mapped unambiguously to a workflow job")
 
 
 def _step_blocks(job_name: str, job_block: str) -> list[str]:
