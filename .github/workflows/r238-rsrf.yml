@@ -1,0 +1,208 @@
+name: R238 RSRF exact-small and conditional mini100
+
+on:
+  push:
+    branches:
+      - research/control-v2
+    paths:
+      - research/r238/R238_EXECUTE_TRIGGER.txt
+
+jobs:
+  rsrf:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    permissions:
+      contents: read
+    env:
+      UPSTREAM_COMMIT: 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+      EXPECTED_V25_BLOB: 195373a110215256b759d7c172ba8c923c62e5cc
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned Phase-2 runtime stack
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "numpy==2.4.6" "flopscope==0.12.1" "whestbench==0.16.1"
+
+      - name: Verify frozen R238 files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p r238_evidence
+          {
+            echo "SCRIPT_BLOB=$(git hash-object scripts/r238_rsrf_exact_small.py)"
+            echo "PROTOCOL_BLOB=$(git hash-object research/r238/R238_PROTOCOL.md)"
+            echo "COST_BLOB=$(git hash-object research/r238/R238_COST_PROOF.json)"
+            echo "NOVELTY_BLOB=$(git hash-object research/r238/R238_NOVELTY_AUDIT.json)"
+            echo "WORKFLOW_BLOB=$(git hash-object .github/workflows/r238-rsrf.yml)"
+            echo "TRIGGER_BLOB=$(git hash-object research/r238/R238_EXECUTE_TRIGGER.txt)"
+          } | tee r238_evidence/frozen-files.txt
+
+      - name: Fetch and verify pinned V25
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/$UPSTREAM_COMMIT/estimators/estimator_v25.py" -o r238-estimator-v25.py
+          actual="$(git hash-object r238-estimator-v25.py)"
+          printf "%s\n" "$actual" > r238_evidence/v25-git-blob.txt
+          test "$actual" = "$EXPECTED_V25_BLOB"
+          sha256sum r238-estimator-v25.py > r238_evidence/v25-sha256.txt
+
+      - name: Record runtime and Actions identity
+        shell: bash
+        run: |
+          python - <<'PY' > r238_evidence/runtime.txt
+          import os, platform
+          from importlib.metadata import version
+          import numpy, flopscope
+          print("python=" + platform.python_version())
+          print("numpy=" + numpy.__version__)
+          print("flopscope=" + flopscope.__version__)
+          print("whestbench=" + version("whestbench"))
+          for k in ["GITHUB_RUN_ID","GITHUB_RUN_ATTEMPT","GITHUB_JOB","GITHUB_SHA","RUNNER_NAME","RUNNER_OS","RUNNER_ARCH"]:
+              print(k + "=" + os.environ.get(k,""))
+          PY
+          cat r238_evidence/runtime.txt
+
+      - name: Run frozen base prerequisite and RSRF falsifier
+        id: falsifier
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python scripts/r238_rsrf_exact_small.py \
+            --v25 r238-estimator-v25.py \
+            --candidate-out r238-candidate-v25.py \
+            --out r238-rsrf-falsifier.json \
+            2>&1 | tee r238_evidence/falsifier.stdout.log
+          code=${PIPESTATUS[0]}
+          printf "%s\n" "$code" > r238_evidence/falsifier.exit-code.txt
+          exit "$code"
+
+      - name: Read frozen falsifier decision
+        id: gate
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, pathlib
+          p=pathlib.Path("r238-rsrf-falsifier.json")
+          if not p.exists():
+              print("decision=MISSING")
+              print("go=false")
+          else:
+              d=json.loads(p.read_text())
+              decision=d.get("decision","MISSING")
+              print("decision="+decision)
+              print("go="+("true" if decision=="R238_SMALL_GO_RSRF" else "false"))
+          PY
+
+      - name: Validate frozen candidate only after small GO
+        id: validate
+        if: steps.gate.outputs.go == 'true'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          whest validate --estimator r238-candidate-v25.py --json > r238_evidence/validate.json 2> r238_evidence/validate.stderr
+          code=$?
+          printf "%s\n" "$code" > r238_evidence/validate.exit-code.txt
+          exit "$code"
+
+      - name: Run exactly one public mini100 candidate only after all gates
+        id: mini
+        if: steps.gate.outputs.go == 'true' && steps.validate.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          whest run \
+            --estimator r238-candidate-v25.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --streaming \
+            --n-mlps 100 \
+            --runner local \
+            --flop-budget 2199023255552 \
+            --wall-time-limit 120 \
+            --residual-wall-time-limit 0.4 \
+            --max-threads 1 \
+            --format json \
+            > r238_evidence/mini100-report.json 2> r238_evidence/mini100.stderr
+          code=$?
+          printf "%s\n" "$code" > r238_evidence/mini100.exit-code.txt
+          exit "$code"
+
+      - name: Record conditional execution disposition
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          def read_int(path):
+              p=pathlib.Path(path)
+              try: return int(p.read_text().strip())
+              except Exception: return None
+          f=pathlib.Path("r238-rsrf-falsifier.json")
+          fals=json.loads(f.read_text()) if f.exists() else {}
+          out={
+            "schema":"arc.whitebox.r238.actions_disposition.v1",
+            "decision":fals.get("decision"),
+            "base_executable":fals.get("base_executable"),
+            "small_scientific_go":fals.get("scientific_go",False),
+            "falsifier_exit":read_int("r238_evidence/falsifier.exit-code.txt"),
+            "validate_exit":read_int("r238_evidence/validate.exit-code.txt"),
+            "mini100_exit":read_int("r238_evidence/mini100.exit-code.txt"),
+            "candidate_file_exists":pathlib.Path("r238-candidate-v25.py").exists(),
+            "mini100_report_exists":pathlib.Path("r238_evidence/mini100-report.json").exists(),
+          }
+          pathlib.Path("r238_evidence/actions-disposition.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          print(json.dumps(out,sort_keys=True))
+          PY
+
+      - name: Hash immutable R238 evidence
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib
+          root=pathlib.Path("r238_evidence")
+          extra=[pathlib.Path("r238-rsrf-falsifier.json"),pathlib.Path("r238-candidate-v25.py"),pathlib.Path("r238-estimator-v25.py")]
+          out={}
+          for p in sorted(root.rglob("*")):
+              if p.is_file() and p.name!="sha256.json":
+                  out[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
+          for p in extra:
+              if p.is_file():
+                  out[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/"sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+
+      - name: Upload immutable R238 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r238-v25-rsrf
+          path: |
+            r238_evidence/
+            r238-rsrf-falsifier.json
+            r238-candidate-v25.py
+            r238-estimator-v25.py
+            research/r238/R238_PROTOCOL.md
+            research/r238/R238_COST_PROOF.json
+            research/r238/R238_NOVELTY_AUDIT.json
+            research/r238/R238_EXECUTE_TRIGGER.txt
+            scripts/r238_rsrf_exact_small.py
+          if-no-files-found: warn
+          retention-days: 90
