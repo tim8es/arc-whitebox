@@ -1,0 +1,64 @@
+{
+  "schema": "arc.whitebox.r232.infra_error_receipt.v1",
+  "job_id": "R232",
+  "attempt_id": "R232-v25-drre-exact-small-20260923",
+  "status": "INFRA_ERROR",
+  "decision": "NO_SCIENTIFIC_MEASUREMENT",
+  "branch": "research/r232-v25-dual-resolution-richardson-20260923",
+  "protocol_commit": "549868a14c7187936a450a060f8a77865f5bcde7",
+  "executor_commit": "b089631df4189e64b765abbd80092ab69945f6aa",
+  "queue_start_commit": "9cec083b09780edfebcf9e22478c1e159b6b0567",
+  "trigger_commit": "270817363b2f965e557fc7a6bf5698756a158526",
+  "execution": {
+    "github_run_id": 35802437447,
+    "github_job_id": 106995587400,
+    "run_attempt": 1,
+    "event": "push",
+    "head_sha": "270817363b2f965e557fc7a6bf5698756a158526",
+    "conclusion": "failure",
+    "runner": {
+      "os": "Ubuntu 24.04.5 LTS",
+      "image": "ubuntu-24.04",
+      "image_version": "20260920.314.1",
+      "runner_version": "2.337.0",
+      "region": "westus3"
+    },
+    "failed_step": "Install pinned project stack",
+    "scientific_falsifier_step": "skipped",
+    "artifact": {
+      "name": "r232-drre-exact-small",
+      "id": 10726331456,
+      "size_bytes": 10227,
+      "zip_sha256": "338c442b0e8d242be1f4b6c017fceb9551fc73276d6ac828122cc27eac9d1c6b",
+      "expires_at": "2026-12-22T00:31:28Z"
+    }
+  },
+  "root_cause": {
+    "command": "python -m pip install -e .",
+    "error": "file:///home/runner/work/arc-whitebox/arc-whitebox does not appear to be a Python project: neither setup.py nor pyproject.toml found.",
+    "classification": "workflow bootstrap error before candidate execution",
+    "scientific_configuration_changed": false
+  },
+  "repair_scope": {
+    "permitted_by_process": "Infrastructure failures may be repaired under the same job with a new recorded attempt.",
+    "planned_change": "Replace erroneous editable-install of the ledger repository with pinned Phase-2 runtime dependencies only; leave protocol, falsifier code, seeds, ranks, gamma and gates unchanged.",
+    "second_scientific_run": false
+  },
+  "frozen_blobs": {
+    "protocol": "6c75bb19781eac65838c7997933627abeef32ee0",
+    "cost": "2fd4ee0f5bec93824ccdaa4c9208ecd41b076558",
+    "novelty": "992ec3760fc0838ad26ec2702cef585c996c0632",
+    "falsifier_script": "c3339f4ffb773570dfda36635bebb7a447ce567d",
+    "workflow_attempt1": "44ef33f76d43117b52cdb25c6d1dd91a691a3191"
+  },
+  "scope": {
+    "estimator_run": false,
+    "exact_small_science": false,
+    "mini100": false,
+    "paid_compute": false,
+    "holdout": false,
+    "private_data": false,
+    "submission": false,
+    "canonical_v25_mutated": false
+  }
+}
