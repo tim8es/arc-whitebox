@@ -1817,9 +1817,9 @@
       "job": "R235",
       "owner": "v25-compute-audit",
       "payload": {
-        "run_id": "R235-v25-material-exact-second-pass-20260923",
         "code_commit": "f87e3aa194589d4734ae4a4a72e231d4707737bb",
-        "command": "read-only audit pinned V25 dominant counted-FLOP operators under frozen R235 protocol; screened direction WEIGHTED-ALIAS-GRAM has exact ideal saving upper bound 0.6364005528208066% < 1.0%, therefore no micro-fixture or mini-100 execution is authorized"
+        "command": "read-only audit pinned V25 dominant counted-FLOP operators under frozen R235 protocol; screened direction WEIGHTED-ALIAS-GRAM has exact ideal saving upper bound 0.6364005528208066% < 1.0%, therefore no micro-fixture or mini-100 execution is authorized",
+        "run_id": "R235-v25-material-exact-second-pass-20260923"
       },
       "revision": 140
     },
@@ -1831,13 +1831,23 @@
       "payload": {
         "reason": "R235 terminal PRE-FIXTURE NO-GO. After excluding R233 ONEHOT-WICK-ROW-SELECT, the strongest distinct algebraically exact V25 ledger direction is WEIGHTED-ALIAS-GRAM on the shared-basis join/tier-2 weighted Grams. Exact source scheduling gives 10 joins + 7 tier-2 moves, two grams/event = 34 eligible (384x1024)@(1024x384) products. Even granting ideal failure-free 0.5x same-object alias pricing at every site, maximum saving is 5,131,321,344 FLOPs/MLP = 0.6364005528208066% of pinned V25 806,303,721,965 FLOPs, below the frozen >=1.0% gate (8,063,037,219.65 FLOPs) by 1.5713x. F77 further records representative-scale SymmetryError for the weighted alias form; F79 Strassen is material but changes float32 summation order and is excluded by the exact-output contract. The dominant ~180u hub+young core is nonsymmetric/distinct-operand and has no alias/symmetry reuse that lowers counted scalar arithmetic. Because the production upper bound failed before execution, the frozen micro-fixture was not run and mini-100 was not authorized. No estimator run, paid/private/holdout data, submission, retry, canonical estimator/result edit, or rescue candidate.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/8e842db9d582de576fcdd6d7791734b22b9b5b69/research/r235/R235_TERMINAL_RECEIPT.json",
-          "sha256": "903b3c78631d74bddbaa5eb7e62382e19e0af6799c4a0c2f5cbbdb7c5e4d3ef8"
+          "sha256": "903b3c78631d74bddbaa5eb7e62382e19e0af6799c4a0c2f5cbbdb7c5e4d3ef8",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/8e842db9d582de576fcdd6d7791734b22b9b5b69/research/r235/R235_TERMINAL_RECEIPT.json"
         },
         "run_id": "R235-v25-material-exact-second-pass-20260923",
         "status": "SCIENTIFIC_REJECT"
       },
       "revision": 141
+    },
+    {
+      "action": "reconcile",
+      "at": "2026-09-23T00:28:27Z",
+      "job": "R235",
+      "owner": "coordinator",
+      "payload": {
+        "reason": "Align R235 job terminal state to its preserved finish event and last attempt result SCIENTIFIC_REJECT. Preserve receipt/reason/attempt history; do not rerun any work."
+      },
+      "revision": 142
     }
   ],
   "jobs": [
@@ -2973,19 +2983,19 @@
       "assigned_owner": "v25-compute-audit",
       "attempts": [
         {
-          "run_id": "R235-v25-material-exact-second-pass-20260923",
           "code_commit": "f87e3aa194589d4734ae4a4a72e231d4707737bb",
           "command": "read-only audit pinned V25 dominant counted-FLOP operators under frozen R235 protocol; screened direction WEIGHTED-ALIAS-GRAM has exact ideal saving upper bound 0.6364005528208066% < 1.0%, therefore no micro-fixture or mini-100 execution is authorized",
-          "status": "SCIENTIFIC_REJECT",
           "completion": {
             "reason": "R235 terminal PRE-FIXTURE NO-GO. After excluding R233 ONEHOT-WICK-ROW-SELECT, the strongest distinct algebraically exact V25 ledger direction is WEIGHTED-ALIAS-GRAM on the shared-basis join/tier-2 weighted Grams. Exact source scheduling gives 10 joins + 7 tier-2 moves, two grams/event = 34 eligible (384x1024)@(1024x384) products. Even granting ideal failure-free 0.5x same-object alias pricing at every site, maximum saving is 5,131,321,344 FLOPs/MLP = 0.6364005528208066% of pinned V25 806,303,721,965 FLOPs, below the frozen >=1.0% gate (8,063,037,219.65 FLOPs) by 1.5713x. F77 further records representative-scale SymmetryError for the weighted alias form; F79 Strassen is material but changes float32 summation order and is excluded by the exact-output contract. The dominant ~180u hub+young core is nonsymmetric/distinct-operand and has no alias/symmetry reuse that lowers counted scalar arithmetic. Because the production upper bound failed before execution, the frozen micro-fixture was not run and mini-100 was not authorized. No estimator run, paid/private/holdout data, submission, retry, canonical estimator/result edit, or rescue candidate.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/8e842db9d582de576fcdd6d7791734b22b9b5b69/research/r235/R235_TERMINAL_RECEIPT.json",
-              "sha256": "903b3c78631d74bddbaa5eb7e62382e19e0af6799c4a0c2f5cbbdb7c5e4d3ef8"
+              "sha256": "903b3c78631d74bddbaa5eb7e62382e19e0af6799c4a0c2f5cbbdb7c5e4d3ef8",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/8e842db9d582de576fcdd6d7791734b22b9b5b69/research/r235/R235_TERMINAL_RECEIPT.json"
             },
             "run_id": "R235-v25-material-exact-second-pass-20260923",
             "status": "SCIENTIFIC_REJECT"
-          }
+          },
+          "run_id": "R235-v25-material-exact-second-pass-20260923",
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Continue the compute-efficiency lane after terminal R233, but exclude its ONEHOT-WICK-ROW-SELECT (only 0.0077833% full-V25 FLOPs). Audit the pinned public V25 source and operator-level counted-FLOP profile for at most one distinct output-preserving contraction/reuse optimization that can save at least 1.0% of full per-MLP FLOPs. First freeze exact source identities, math/equivalence fixture, counted-FLOP derivation, production savings bound, and GO/NO-GO. Run only one isolated free micro-fixture. A bounded public mini-100 is allowed only if exact equivalence and >=1.0% production savings both pass; keep canonical V25 untouched. If no eligible path exists, record terminal NO-GO with the dominant operators and upper bounds. No paid compute, private/holdout data, submission, or repeat run.",
@@ -2996,17 +3006,17 @@
       "id": "R235",
       "owner": "v25-compute-audit",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Audit dominant V25 contractions for material exact FLOP savings",
+      "reason": "R235 terminal PRE-FIXTURE NO-GO. After excluding R233 ONEHOT-WICK-ROW-SELECT, the strongest distinct algebraically exact V25 ledger direction is WEIGHTED-ALIAS-GRAM on the shared-basis join/tier-2 weighted Grams. Exact source scheduling gives 10 joins + 7 tier-2 moves, two grams/event = 34 eligible (384x1024)@(1024x384) products. Even granting ideal failure-free 0.5x same-object alias pricing at every site, maximum saving is 5,131,321,344 FLOPs/MLP = 0.6364005528208066% of pinned V25 806,303,721,965 FLOPs, below the frozen >=1.0% gate (8,063,037,219.65 FLOPs) by 1.5713x. F77 further records representative-scale SymmetryError for the weighted alias form; F79 Strassen is material but changes float32 summation order and is excluded by the exact-output contract. The dominant ~180u hub+young core is nonsymmetric/distinct-operand and has no alias/symmetry reuse that lowers counted scalar arithmetic. Because the production upper bound failed before execution, the frozen micro-fixture was not run and mini-100 was not authorized. No estimator run, paid/private/holdout data, submission, retry, canonical estimator/result edit, or rescue candidate.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/8e842db9d582de576fcdd6d7791734b22b9b5b69/research/r235/R235_TERMINAL_RECEIPT.json",
-        "sha256": "903b3c78631d74bddbaa5eb7e62382e19e0af6799c4a0c2f5cbbdb7c5e4d3ef8"
+        "sha256": "903b3c78631d74bddbaa5eb7e62382e19e0af6799c4a0c2f5cbbdb7c5e4d3ef8",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/8e842db9d582de576fcdd6d7791734b22b9b5b69/research/r235/R235_TERMINAL_RECEIPT.json"
       },
-      "reason": "R235 terminal PRE-FIXTURE NO-GO. After excluding R233 ONEHOT-WICK-ROW-SELECT, the strongest distinct algebraically exact V25 ledger direction is WEIGHTED-ALIAS-GRAM on the shared-basis join/tier-2 weighted Grams. Exact source scheduling gives 10 joins + 7 tier-2 moves, two grams/event = 34 eligible (384x1024)@(1024x384) products. Even granting ideal failure-free 0.5x same-object alias pricing at every site, maximum saving is 5,131,321,344 FLOPs/MLP = 0.6364005528208066% of pinned V25 806,303,721,965 FLOPs, below the frozen >=1.0% gate (8,063,037,219.65 FLOPs) by 1.5713x. F77 further records representative-scale SymmetryError for the weighted alias form; F79 Strassen is material but changes float32 summation order and is excluded by the exact-output contract. The dominant ~180u hub+young core is nonsymmetric/distinct-operand and has no alias/symmetry reuse that lowers counted scalar arithmetic. Because the production upper bound failed before execution, the frozen micro-fixture was not run and mini-100 was not authorized. No estimator run, paid/private/holdout data, submission, retry, canonical estimator/result edit, or rescue candidate."
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Audit dominant V25 contractions for material exact FLOP savings"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 141,
+  "revision": 142,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
