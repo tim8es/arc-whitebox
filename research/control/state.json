@@ -4808,20 +4808,37 @@
       "revision": 359
     },
     {
-      "revision": 360,
       "action": "finish",
+      "at": "2026-09-23T15:36:00+00:00",
       "job": "R279",
       "owner": "phase2-public-panel-audit",
       "payload": {
-        "run_id": "R279-phase2-public-panel-audit-20260923",
-        "status": "COMPLETE",
         "reason": "Independent metadata/docs-only audit completed. No first-party documented path currently exposes the exact online Phase-2 visible-50 panel for local reproduction without submission or sealed/private/full-test access. AIcrowd public submission pages expose 50 public mlp_index/mlp_name rows and scores but no network_id, mlp_seed, weights, ground-truth tensors or target fingerprints; Hugging Face v2-phase2 publishes only separate mini=100 and full=1000 splits and no visible50 selector/manifest. The exact grader pair is public and locally identifiable (whestbench 0.16.0 + flopscope[server] 0.12.0), so versions are not the blocker. Minimum missing artifact is an official immutable visible-50 manifest mapping each online row to a public dataset row/revision or mlp_seed plus target_sha256; if those rows are not already public, an immutable visible50 dataset artifact with weights and baked ground truth is additionally required. No benchmark data download, estimator/benchmark run, Actions, submission, paid resource, sealed/private/full-test access, leaderboard/canonical/model edit.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/4dfa44fbd31d463120888f6b6d832d31c931d4a3/research/r279/R279_RECEIPT.json",
-          "sha256": "99e2365dcb2feea9ed7fb30abac9bdc7e720241b5ee856e428e826735b9d8a57"
-        }
+          "sha256": "99e2365dcb2feea9ed7fb30abac9bdc7e720241b5ee856e428e826735b9d8a57",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/4dfa44fbd31d463120888f6b6d832d31c931d4a3/research/r279/R279_RECEIPT.json"
+        },
+        "run_id": "R279-phase2-public-panel-audit-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T15:36:00+00:00"
+      "revision": 360
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T15:31:00+00:00",
+      "job": "R280",
+      "owner": "public-methods-leaderboard-scan",
+      "payload": {
+        "decision": "STANDINGS_CHANGED__NO_CHANGE_TOP_TIER_PUBLIC_METHOD_EVIDENCE",
+        "reason": "Fresh official Phase-2 standings refresh completed: J2W remains #1 at 2.1e-9; suliman_tadros is #2 at 2.2e-9 and marius_binner #3 at 2.3e-9. Bounded primary-source scan found no newly disclosed reproducible Phase-2 method for the current top non-J2W rows. Existing reproducible 504aldo K3 disclosure predates R264 and is currently rank 47 at 5.4e-9. Verdict STANDINGS_CHANGED / NO_CHANGE_TOP_TIER_PUBLIC_METHOD_EVIDENCE. No submission, Actions, paid compute, private/holdout access, leaderboard or canonical edits.",
+        "receipt": {
+          "sha256": "7a9c225d5f2cfe89cb691dfe33fb87df4b0a9e0a4135763ff0d1f06f6e4b35de",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/83deeeadb25a815331d1c9d64b3f6c9d2bad946c/research/r280/R280_RECEIPT.json"
+        },
+        "run_id": "R280-public-methods-refresh-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 361
     }
   ],
   "jobs": [
@@ -7686,17 +7703,17 @@
         {
           "code_commit": "6596e75b2ccde129653c5e4b2d42b4564f93f33f",
           "command": "metadata/docs-only audit of official AIcrowd/whestbench/Hugging Face sources for exact Phase-2 visible-50 local reproducibility; no benchmark data download, estimator/benchmark run, Actions, submission, sealed/private/full access",
-          "run_id": "R279-phase2-public-panel-audit-20260923",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R279-phase2-public-panel-audit-20260923",
-            "status": "COMPLETE",
             "reason": "Independent metadata/docs-only audit completed. No first-party documented path currently exposes the exact online Phase-2 visible-50 panel for local reproduction without submission or sealed/private/full-test access. AIcrowd public submission pages expose 50 public mlp_index/mlp_name rows and scores but no network_id, mlp_seed, weights, ground-truth tensors or target fingerprints; Hugging Face v2-phase2 publishes only separate mini=100 and full=1000 splits and no visible50 selector/manifest. The exact grader pair is public and locally identifiable (whestbench 0.16.0 + flopscope[server] 0.12.0), so versions are not the blocker. Minimum missing artifact is an official immutable visible-50 manifest mapping each online row to a public dataset row/revision or mlp_seed plus target_sha256; if those rows are not already public, an immutable visible50 dataset artifact with weights and baked ground truth is additionally required. No benchmark data download, estimator/benchmark run, Actions, submission, paid resource, sealed/private/full-test access, leaderboard/canonical/model edit.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/4dfa44fbd31d463120888f6b6d832d31c931d4a3/research/r279/R279_RECEIPT.json",
-              "sha256": "99e2365dcb2feea9ed7fb30abac9bdc7e720241b5ee856e428e826735b9d8a57"
-            }
-          }
+              "sha256": "99e2365dcb2feea9ed7fb30abac9bdc7e720241b5ee856e428e826735b9d8a57",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/4dfa44fbd31d463120888f6b6d832d31c931d4a3/research/r279/R279_RECEIPT.json"
+            },
+            "run_id": "R279-phase2-public-panel-audit-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R279-phase2-public-panel-audit-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Using only official AIcrowd/whestbench/Hugging Face first-party docs and public metadata, independently investigate whether the exact online Phase-2 visible-50 MLP panel, stable identities/target fingerprints, and official grader/meter versions can be reproduced locally without a competition submission or sealed/private/full data. Start from R271's NOT_COMPARABLE finding (0/50 label overlap; missing network IDs/fingerprints; evaluator-version mismatch), identify exact endpoints/artifacts/permissions and any remaining gap. Do not download/run benchmark data or submit. Produce one concise cited report with a concrete yes/no pathway, hashes/commit, and finish R279.",
@@ -7707,13 +7724,13 @@
       "id": "R279",
       "owner": "phase2-public-panel-audit",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Find a compliant local path to the official visible-50 panel",
+      "reason": "Independent metadata/docs-only audit completed. No first-party documented path currently exposes the exact online Phase-2 visible-50 panel for local reproduction without submission or sealed/private/full-test access. AIcrowd public submission pages expose 50 public mlp_index/mlp_name rows and scores but no network_id, mlp_seed, weights, ground-truth tensors or target fingerprints; Hugging Face v2-phase2 publishes only separate mini=100 and full=1000 splits and no visible50 selector/manifest. The exact grader pair is public and locally identifiable (whestbench 0.16.0 + flopscope[server] 0.12.0), so versions are not the blocker. Minimum missing artifact is an official immutable visible-50 manifest mapping each online row to a public dataset row/revision or mlp_seed plus target_sha256; if those rows are not already public, an immutable visible50 dataset artifact with weights and baked ground truth is additionally required. No benchmark data download, estimator/benchmark run, Actions, submission, paid resource, sealed/private/full-test access, leaderboard/canonical/model edit.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/4dfa44fbd31d463120888f6b6d832d31c931d4a3/research/r279/R279_RECEIPT.json",
-        "sha256": "99e2365dcb2feea9ed7fb30abac9bdc7e720241b5ee856e428e826735b9d8a57"
+        "sha256": "99e2365dcb2feea9ed7fb30abac9bdc7e720241b5ee856e428e826735b9d8a57",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/4dfa44fbd31d463120888f6b6d832d31c931d4a3/research/r279/R279_RECEIPT.json"
       },
-      "reason": "Independent metadata/docs-only audit completed. No first-party documented path currently exposes the exact online Phase-2 visible-50 panel for local reproduction without submission or sealed/private/full-test access. AIcrowd public submission pages expose 50 public mlp_index/mlp_name rows and scores but no network_id, mlp_seed, weights, ground-truth tensors or target fingerprints; Hugging Face v2-phase2 publishes only separate mini=100 and full=1000 splits and no visible50 selector/manifest. The exact grader pair is public and locally identifiable (whestbench 0.16.0 + flopscope[server] 0.12.0), so versions are not the blocker. Minimum missing artifact is an official immutable visible-50 manifest mapping each online row to a public dataset row/revision or mlp_seed plus target_sha256; if those rows are not already public, an immutable visible50 dataset artifact with weights and baked ground truth is additionally required. No benchmark data download, estimator/benchmark run, Actions, submission, paid resource, sealed/private/full-test access, leaderboard/canonical/model edit."
+      "status": "COMPLETE",
+      "title": "Find a compliant local path to the official visible-50 panel"
     },
     {
       "assigned_owner": "public-methods-leaderboard-scan",
@@ -7721,8 +7738,18 @@
         {
           "code_commit": "591a84a652d7cc28db0d1087a4b5e93f93c59cfc",
           "command": "read-only official Phase-2 standings refresh and primary-source public method disclosure scan beyond J2W; no submission/paid/Actions/private/holdout data or leaderboard/canonical edits",
+          "completion": {
+            "decision": "STANDINGS_CHANGED__NO_CHANGE_TOP_TIER_PUBLIC_METHOD_EVIDENCE",
+            "reason": "Fresh official Phase-2 standings refresh completed: J2W remains #1 at 2.1e-9; suliman_tadros is #2 at 2.2e-9 and marius_binner #3 at 2.3e-9. Bounded primary-source scan found no newly disclosed reproducible Phase-2 method for the current top non-J2W rows. Existing reproducible 504aldo K3 disclosure predates R264 and is currently rank 47 at 5.4e-9. Verdict STANDINGS_CHANGED / NO_CHANGE_TOP_TIER_PUBLIC_METHOD_EVIDENCE. No submission, Actions, paid compute, private/holdout access, leaderboard or canonical edits.",
+            "receipt": {
+              "sha256": "7a9c225d5f2cfe89cb691dfe33fb87df4b0a9e0a4135763ff0d1f06f6e4b35de",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/83deeeadb25a815331d1c9d64b3f6c9d2bad946c/research/r280/R280_RECEIPT.json"
+            },
+            "run_id": "R280-public-methods-refresh-20260923",
+            "status": "COMPLETE"
+          },
           "run_id": "R280-public-methods-refresh-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Refresh the official ARC Phase-2 visible leaderboard at a precise UTC/MSK timestamp and inspect primary public artifacts/forum disclosures for the next strongest visible entries and any newly disclosed reproducible method beyond the J2W page already found opaque in R264. Separate directly observed ranks/scores from method evidence and inference; do not attribute any row to our team without verified team/submission identity. If no new method evidence, report no-change. Save a short cited append-only report/receipt with source snapshots/hashes/commit and finish R280. No submission, private/holdout access, paid run, Actions, or leaderboard/canonical edits.",
@@ -7734,12 +7761,17 @@
       "id": "R280",
       "owner": "public-methods-leaderboard-scan",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "Fresh official Phase-2 standings refresh completed: J2W remains #1 at 2.1e-9; suliman_tadros is #2 at 2.2e-9 and marius_binner #3 at 2.3e-9. Bounded primary-source scan found no newly disclosed reproducible Phase-2 method for the current top non-J2W rows. Existing reproducible 504aldo K3 disclosure predates R264 and is currently rank 47 at 5.4e-9. Verdict STANDINGS_CHANGED / NO_CHANGE_TOP_TIER_PUBLIC_METHOD_EVIDENCE. No submission, Actions, paid compute, private/holdout access, leaderboard or canonical edits.",
+      "receipt": {
+        "sha256": "7a9c225d5f2cfe89cb691dfe33fb87df4b0a9e0a4135763ff0d1f06f6e4b35de",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/83deeeadb25a815331d1c9d64b3f6c9d2bad946c/research/r280/R280_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Refresh visible standings and scan public methods beyond J2W"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 360,
+  "revision": 361,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
