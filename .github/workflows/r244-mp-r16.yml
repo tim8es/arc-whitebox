@@ -1,0 +1,178 @@
+name: R244 MP-R16 one-shot development
+
+on:
+  push:
+    branches:
+      - research/r244-marginal-preserving-rres-20260923
+    paths:
+      - 'research/r244/R244_RUN_ARM.json'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r244_one_shot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    env:
+      PYTHONHASHSEED: "0"
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify frozen arm, blobs, and free standard compute
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p r244_evidence
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          arm=json.loads(Path("research/r244/R244_RUN_ARM.json").read_text())
+          assert arm=={
+            "idempotency_key":"ARC-R244-MP-R16-20260923",
+            "execute_once":True,
+            "panel":"public-v2-phase2-mini-100",
+            "candidate":"marginal-preserving-rres-r16",
+            "candidate_panel_invocations":1
+          },arm
+          changed=subprocess.check_output(["git","diff","--name-only","HEAD^","HEAD"],text=True).splitlines()
+          assert changed==["research/r244/R244_RUN_ARM.json"],changed
+          frozen={
+            "research/r244/R244_PROTOCOL.md":"0cd8e63fb4184a816e653b7507bf8ba9b1bb10e7",
+            "methods/r244_estimator_v25_marginal_rres.py":"d034aee83c766d6eb613b71a1a22c30241cd172a",
+            "scripts/r244_falsifier.py":"24b3d33eb4d5e48f2f95d0d6dfc22a607e8a2478",
+            "scripts/r244_compare_panel.py":"ecc29429f49c8672cad6848d798306672a289215",
+            "research/results/R209-v25-mini100.json":"0183d0570f7c9965e00e8553ffc003c313865232"
+          }
+          for path,sha in frozen.items():
+              got=subprocess.check_output(["git","rev-parse",f"HEAD:{path}"],text=True).strip()
+              assert got==sha,(path,got,sha)
+          PY
+          private="$(gh api repos/${GITHUB_REPOSITORY} --jq '.private')"
+          visibility="$(gh api repos/${GITHUB_REPOSITORY} --jq '.visibility')"
+          test "$private" = "false"
+          test "$visibility" = "public"
+          cat > r244_evidence/compute_gate.json <<JSON
+          {
+            "repository":"${GITHUB_REPOSITORY}",
+            "private":$private,
+            "visibility":"$visibility",
+            "runs_on":"ubuntu-24.04",
+            "larger_runner_requested":false,
+            "runner_name":"${RUNNER_NAME}",
+            "runner_os":"${RUNNER_OS}",
+            "runner_arch":"${RUNNER_ARCH}",
+            "verified_free_standard_compute":true
+          }
+          JSON
+
+      - name: Install pinned R209-compatible toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install "numpy==2.4.6" "whestbench==0.16.1" "flopscope==0.12.1"
+          whest version --json > r244_evidence/whest_version.json
+          python - <<'PY' > r244_evidence/environment.txt
+          import importlib.metadata as md, platform, numpy
+          print("python",platform.python_version())
+          print("numpy",numpy.__version__)
+          print("flopscope",md.version("flopscope"))
+          print("whestbench",md.version("whestbench"))
+          assert numpy.__version__=="2.4.6"
+          assert md.version("flopscope")=="0.12.1"
+          assert md.version("whestbench")=="0.16.1"
+          PY
+
+      - name: Verify pinned V25 and run frozen exact-small falsifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q https://github.com/504aldo/whest-p2-cumulant-k3.git /tmp/v25up
+          git -C /tmp/v25up checkout -q 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+          test "$(git -C /tmp/v25up rev-parse HEAD)" = "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45"
+          test "$(git -C /tmp/v25up hash-object estimators/estimator_v25.py)" = "195373a110215256b759d7c172ba8c923c62e5cc"
+          python scripts/r244_falsifier.py             /tmp/v25up/estimators/estimator_v25.py             methods/r244_estimator_v25_marginal_rres.py             r244_evidence/falsifier.json             > r244_evidence/falsifier.stdout
+
+      - name: Download immutable R209 V25 parent artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL             -H "Authorization: Bearer ${GH_TOKEN}"             -H "Accept: application/vnd.github+json"             "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10617855153/zip"             -o /tmp/r209-v25.zip
+          echo "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08  /tmp/r209-v25.zip" | sha256sum -c -
+          mkdir -p /tmp/r209-v25
+          unzip -q /tmp/r209-v25.zip -d /tmp/r209-v25
+          echo "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3  /tmp/r209-v25/report.json" | sha256sum -c -
+          cp /tmp/r209-v25/report.json r244_evidence/parent-report.json
+
+      - name: Validate frozen R244 candidate
+        shell: bash
+        run: |
+          set +e
+          whest validate             --estimator methods/r244_estimator_v25_marginal_rres.py             --json > r244_evidence/validate.json             2> r244_evidence/validate.stderr
+          code=$?
+          echo "$code" > r244_evidence/validate.exit
+          test "$code" = "0"
+
+      - name: Run sole public mini-100 R244 candidate panel
+        shell: bash
+        run: |
+          set +e
+          whest run             --estimator methods/r244_estimator_v25_marginal_rres.py             --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2             --split mini             --streaming             --n-mlps 100             --runner local             --flop-budget 2199023255552             --wall-time-limit 120             --residual-wall-time-limit 0.4             --max-threads 1             --format json             > r244_evidence/candidate-report.json             2> r244_evidence/run.stderr
+          code=$?
+          echo "$code" > r244_evidence/run.exit
+          test "$code" = "0"
+
+      - name: Compare all 100 rows to immutable R209 V25
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/r244_compare_panel.py             r244_evidence/parent-report.json             r244_evidence/candidate-report.json             research/results/R209-v25-mini100.json             r244_evidence/R244_RESULT.json             > r244_evidence/compare.stdout
+
+      - name: Hash immutable evidence
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          out={}
+          for p in sorted(Path("r244_evidence").glob("*")):
+              if p.is_file(): out[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          for p in [
+            Path("research/r244/R244_PROTOCOL.md"),
+            Path("research/r244/R244_RUN_ARM.json"),
+            Path("methods/r244_estimator_v25_marginal_rres.py"),
+            Path("scripts/r244_falsifier.py"),
+            Path("scripts/r244_compare_panel.py"),
+            Path("research/results/R209-v25-mini100.json")
+          ]:
+              if p.is_file(): out[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
+          Path("r244_evidence/sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+
+      - name: Upload R244 immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r244-mp-r16-mini100
+          path: |
+            r244_evidence/
+            research/r244/R244_PROTOCOL.md
+            research/r244/R244_RUN_ARM.json
+            methods/r244_estimator_v25_marginal_rres.py
+            scripts/r244_falsifier.py
+            scripts/r244_compare_panel.py
+          if-no-files-found: error
+          retention-days: 90
