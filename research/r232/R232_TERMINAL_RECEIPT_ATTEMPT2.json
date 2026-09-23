@@ -1,0 +1,74 @@
+{
+  "artifact": {
+    "id": 10727365072,
+    "name": "r232-drre-exact-small",
+    "sha256": "fd8d0afe6f48eab3e4f3b9bf9c4d6e947f599497911016ea59bf1daed94383ca",
+    "size_bytes": 12188,
+    "url": "https://github.com/tim8es/arc-whitebox/actions/runs/35803857969/artifacts/10727365072"
+  },
+  "attempt_id": "R232-v25-drre-exact-small-attempt2-20260923",
+  "conclusion": "The one frozen exact-small falsifier was launched after the infrastructure-only repair. It verified the pinned workflow files, runtime, and upstream V25 blob, then stopped during the first high-resolution V25 prediction with flopscope.errors.SymmetryError in the C_pre einsum. No low-resolution prediction, deterministic replay, exact Gaussian truth, MSE ratio, or scientific gate comparison completed. The frozen protocol terminates on any failed or unevaluable mandatory gate and forbids a second small run/rescue; therefore this exact DRRE-V25 attempt is closed as terminal NO-GO for the frozen test, without claiming that DRRE accuracy was measured or mathematically falsified.",
+  "error": {
+    "exact_truth_constructed": false,
+    "message": "Tensor not symmetric along axes (0, 1): max deviation = inf (tolerance: atol=1e-06, rtol=1e-05).",
+    "mse_ratio": null,
+    "point": "V25 predict -> C_pre = fnp.einsum('ij,ia,jb->ab', C, w32, w32)",
+    "reached_fixture": "first deterministic fixture, high rank r=7",
+    "type": "flopscope.errors.SymmetryError"
+  },
+  "execution": {
+    "completed_before_failure": [
+      "Install pinned Phase-2 runtime stack",
+      "Verify frozen R232 files",
+      "Fetch and verify pinned V25",
+      "Runtime versions"
+    ],
+    "conclusion": "failure",
+    "event": "push",
+    "failed_step": "Run exactly one frozen R232 falsifier",
+    "head_sha": "b6f7b4692563a1520ef4992201cfbe027a04226c",
+    "job_id": 107000109847,
+    "run_attempt": 1,
+    "run_id": 35803857969,
+    "runner_image": "ubuntu-24.04"
+  },
+  "frozen_blobs": {
+    "cost_proof": "2fd4ee0f5bec93824ccdaa4c9208ecd41b076558",
+    "estimator_script": "c3339f4ffb773570dfda36635bebb7a447ce567d",
+    "novelty_audit": "992ec3760fc0838ad26ec2702cef585c996c0632",
+    "protocol": "6c75bb19781eac65838c7997933627abeef32ee0",
+    "upstream_v25_git_blob": "195373a110215256b759d7c172ba8c923c62e5cc"
+  },
+  "job_id": "R232",
+  "next_step": "Do not retry or alter DRRE. Start a distinct hypothesis in a later job; preserve this failure and its limitation.",
+  "pinned_versions": {
+    "flopscope": "0.12.1+np2.4.6",
+    "numpy": "2.4.6",
+    "python": "3.11.16",
+    "whestbench": "0.16.1"
+  },
+  "protocol_disposition": "R232_TERMINAL_NO_GO_DRRE",
+  "queue_status": "INCONCLUSIVE",
+  "schema": "arc.whitebox.r232.terminal_receipt.v1",
+  "scientific_result": "UNEVALUABLE_NO_MSE_COMPARISON",
+  "scope": {
+    "canonical_v25_mutated": false,
+    "estimator_full_or_mini100": false,
+    "holdout_or_private": false,
+    "paid_compute": false,
+    "protocol_or_falsifier_changed": false,
+    "second_scientific_run": false,
+    "submission": false
+  },
+  "workflow_repair": {
+    "attempt1_run": 35802437447,
+    "changed_only": ".github/workflows/r232-drre-exact-small.yml",
+    "dependencies": [
+      "numpy==2.4.6",
+      "flopscope==0.12.1",
+      "whestbench==0.16.1"
+    ],
+    "frozen_protocol_and_falsifier_unchanged": true,
+    "repair_commit": "92094fec2f046596fd33e8d4b751ea37747cc8b0"
+  }
+}
