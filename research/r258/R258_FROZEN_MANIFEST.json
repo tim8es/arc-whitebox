@@ -1,0 +1,131 @@
+{
+  "schema": "arc.whitebox.r258.frozen_manifest.v1",
+  "job": "R258",
+  "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1",
+  "owner": "bpk2k-one-shot-run-responsive",
+  "base_r257_terminal_commit": "c4b46ecacba1876613a6e11b678399d0b1fd83ba",
+  "r257_terminal_receipt_sha256": "4b28cfb1f912afc9cae0b98484b711ee8dde5145e5d0753b2977eadd21093cc1",
+  "r257_protocol_commit": "b63936a38bc0e3a6394b00f2ef1d484311aff9e4",
+  "candidate_id": "V25-BPK2K-BALANCED-CUMULANT-REDUCTION",
+  "branch": "research/r258-bpk2k-full-history-one-shot-20260923",
+  "only_infrastructure_change": "actions/checkout@v4 with fetch-depth: 0",
+  "runtime": {
+    "runner": "ubuntu-24.04",
+    "python": "3.11.16",
+    "numpy": {
+      "version": "2.4.6",
+      "wheel_sha256": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93"
+    },
+    "flopscope": {
+      "version": "0.12.1",
+      "wheel_sha256": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582"
+    },
+    "whestbench": {
+      "version": "0.16.1",
+      "wheel_sha256": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"
+    }
+  },
+  "frozen_sources": {
+    "repaired_harness": {
+      "path": "research/r256/r254_one_shot_repaired.py",
+      "blob": "ca0eb5b53d86c4fa708c2b1cb4ed34a8146494ca",
+      "sha256": "6b6b77d3bd539acfcab535e8b4727e67a45e512aacfdc2d7369b5fbd9acb5cfd"
+    },
+    "timing_helper": {
+      "path": "research/r256/r256_timing.py",
+      "blob": "ea26de92d74ea6b4432e1f89301a7d55c9e52ae2",
+      "sha256": "dd7ea8de33d7810ad22087592ab0f744dcfec94903de13472d0a0c1dbb619cc6"
+    },
+    "fixture_source": {
+      "path": "research/r254/r254_fixture.py",
+      "blob": "141466b6c4aae6cc61fe086860dc0766a08d6968",
+      "sha256": "956581ca8301e72ae13e999eabc79b433cc584ac37c93f2e004278b0468baee1"
+    },
+    "fixture_manifest": {
+      "path": "research/r254/R254_FIXTURE_MANIFEST.json",
+      "blob": "5a6eb7bbfc07bf9e6609ee6cfbb2b2ea9e17ebf8",
+      "sha256": "4d9cef9c3095c62106f7d972301d177762135e2eaa008565e871e17fa23019c3"
+    },
+    "candidate_spec": {
+      "path": "research/r254/R254_CANDIDATE_SPEC.json",
+      "blob": "6bffbdfd113bba80cc72cd375cdc44138f9c0845",
+      "sha256": "4c91c83762a6d39d6a737d64a39818b2cf97edca788978dfefd4be85706ee12b"
+    },
+    "public_identity": {
+      "path": "research/r254/r254_public_identity.py",
+      "blob": "b36a9b9068f0505a26d54e0af9d5fdad86e03d0b",
+      "sha256": "916baafc5c4411da06d7f5834119b9134ebfd74a38f01914fc7de855791a532b"
+    },
+    "public_gate": {
+      "path": "research/r254/r254_public_gate.py",
+      "blob": "77af30cb5b3eb00b70ab4f728c846d68bb11e738",
+      "sha256": "b3f25469780e5dccca80aaf9a312e68a71d30c95b9a284c6f977a3f6d244ce2b"
+    },
+    "r209": {
+      "path": "research/results/R209-v25-mini100.json",
+      "blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    }
+  },
+  "parent": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "path": "estimators/estimator_v25.py",
+    "git_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "fixture": {
+    "id": "R254-MONOMIAL-PATH-254001",
+    "seed": 254001,
+    "width": 1024,
+    "depth": 16,
+    "weights_concat_sha256": "199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0",
+    "truth_sha256": "58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d"
+  },
+  "target_free_gates": {
+    "parent_must_pass_first": true,
+    "final_mse_ratio_max": 0.95,
+    "all_layer_mse_ratio_max": 0.98,
+    "improved_layers_min": 12,
+    "max_per_layer_degradation_ratio": 1.1,
+    "candidate_flops_le_parent": true,
+    "candidate_residual_time_formula": "candidate <= 1.05*parent + 0.005",
+    "unknown_or_invalid_residual_timing": "FAIL_CLOSED"
+  },
+  "public_identity": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "split": "mini",
+    "rows": 100,
+    "dtype": "float32",
+    "shape": [
+      16,
+      1024
+    ],
+    "metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "access_condition": "ONLY_AFTER_TARGET_FREE_AND_VALIDATE_GO"
+  },
+  "public_gates": {
+    "failures": 0,
+    "adjusted_score_max": 7.761877568111363e-9,
+    "improved_rows_min": 55,
+    "paired_gain_gt_2_descriptive_se": true,
+    "mean_flops_max": 806303721965,
+    "max_residual_wall_time_s_strict": 0.4
+  },
+  "execution_policy": {
+    "actions_workflows_authorized": 1,
+    "workflow_attempts_authorized": 1,
+    "retry": false,
+    "second_workflow": false,
+    "tuning": false,
+    "paid": false,
+    "private": false,
+    "holdout": false,
+    "full": false,
+    "submission": false,
+    "r223_r244_artifact_access": false,
+    "leaderboard_or_canonical_edit": false,
+    "r254_history_edit": false,
+    "r257_history_edit": false
+  }
+}
