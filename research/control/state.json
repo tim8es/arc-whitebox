@@ -2090,6 +2090,23 @@
         "command": "first run the R237 offline synthetic fail-closed suite fresh and require PASS; only then independently audit immutable R218 Actions run 35783866968/job 106935773981/attempt 1/artifact 10726329197, verify ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, provenance/manifest/R236 D1-D7, recompute frozen R217 six-block thresholds; no Actions rerun, estimator, holdout/private data, submission, or canonical edits"
       },
       "revision": 161
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T01:41:05.000Z",
+      "job": "R237",
+      "owner": "verifier-hardening",
+      "payload": {
+        "reason": "R237 verifier-hardening terminal PASS. The hardened R234 verifier/checklist close R236 D1-D7, and a coordinator-performed fresh offline regression materialized the exact current control-v2 verifier/test file bodies at their expected relative paths in an isolated workspace (not a full-checkout claim). git hash-object matched verifier blob c5bdb49977550ff682b73c151807d9aeb8d18e98 and test blob 6e31aa9e48f55e6bbe23dc83f5e819b509096d72; SHA256s d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c and f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b. Exact command `python -m unittest test_r234_verifier_hardening.py -v` ran all seven named D1-D7 synthetic tests, exit 0, OK (0.091s). The suite uses only the hardened verifier, Python stdlib and temporary synthetic fixtures. No R218 artifact, Actions, estimator/science, paid compute, holdout/private data, submission, canonical code, or R217/R218 threshold/workflow changes were involved. This is a tooling-hardening verdict only; R220 remains authoritative for R218 postflight.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b495d12d4fc926882a7162701beb88172c7500bc/research/r237/R237_TERMINAL_RECEIPT.json",
+          "sha256": "ec72d236fdbf7f1c09fe09fc5507a09a5aa38552b3b2e141a64977b565cb6c3d"
+        },
+        "run_id": "R237-r234-verifier-hardening-20260923",
+        "status": "COMPLETE",
+        "verdict": "PASS"
+      },
+      "revision": 162
     }
   ],
   "jobs": [
@@ -3361,7 +3378,17 @@
           "code_commit": "ea6ef5ba92713e0cd9c7b22b550fb7f859bf7d45",
           "command": "harden research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json for R236 D1-D7; add offline synthetic fail-closed regressions only; preserve R217 thresholds/R218 workflow-executor-run/R220 ownership; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical estimator",
           "run_id": "R237-r234-verifier-hardening-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "R237 verifier-hardening terminal PASS. The hardened R234 verifier/checklist close R236 D1-D7, and a coordinator-performed fresh offline regression materialized the exact current control-v2 verifier/test file bodies at their expected relative paths in an isolated workspace (not a full-checkout claim). git hash-object matched verifier blob c5bdb49977550ff682b73c151807d9aeb8d18e98 and test blob 6e31aa9e48f55e6bbe23dc83f5e819b509096d72; SHA256s d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c and f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b. Exact command `python -m unittest test_r234_verifier_hardening.py -v` ran all seven named D1-D7 synthetic tests, exit 0, OK (0.091s). The suite uses only the hardened verifier, Python stdlib and temporary synthetic fixtures. No R218 artifact, Actions, estimator/science, paid compute, holdout/private data, submission, canonical code, or R217/R218 threshold/workflow changes were involved. This is a tooling-hardening verdict only; R220 remains authoritative for R218 postflight.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/b495d12d4fc926882a7162701beb88172c7500bc/research/r237/R237_TERMINAL_RECEIPT.json",
+              "sha256": "ec72d236fdbf7f1c09fe09fc5507a09a5aa38552b3b2e141a64977b565cb6c3d"
+            },
+            "run_id": "R237-r234-verifier-hardening-20260923",
+            "status": "COMPLETE",
+            "verdict": "PASS"
+          }
         }
       ],
       "deliverable": "Implement a fail-closed hardening pass for research/r234/r234_verify_r218.py and its checklist based on the seven confirmed R236 defects. Preserve frozen R217 thresholds, R218 source/workflow, and no-retry policy. Require run_attempt==1; cryptographically bind the supplied local artifact directory to the independently inspected Actions run/job and artifact ID/name/digest; verify run head/arm ancestry and workflow/executor blobs; pin expected-panel and prelaunch files to exact frozen blobs; require nonempty complete manifest coverage for every consumed artifact file; enforce the exact preflight gate-name set and independent version/environment evidence; verify dataset path and max_threads where exposed; require all mandatory taskset/proc/worker-region telemetry. Add synthetic offline regressions that fail if any R236 defect reopens. Do not read/use the still-running R218 artifact, do not change R218 or R217, do not trigger Actions, and run no estimator/science/paid/holdout/private/submission. Produce reviewable code/tests, a source-linked report and durable receipt; R220 remains the postflight owner after R218 completes.",
@@ -3372,8 +3399,14 @@
       "id": "R237",
       "owner": "verifier-hardening",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Harden R218 postflight verifier using R236 findings"
+      "status": "COMPLETE",
+      "title": "Harden R218 postflight verifier using R236 findings",
+      "reason": "R237 verifier-hardening terminal PASS. The hardened R234 verifier/checklist close R236 D1-D7, and a coordinator-performed fresh offline regression materialized the exact current control-v2 verifier/test file bodies at their expected relative paths in an isolated workspace (not a full-checkout claim). git hash-object matched verifier blob c5bdb49977550ff682b73c151807d9aeb8d18e98 and test blob 6e31aa9e48f55e6bbe23dc83f5e819b509096d72; SHA256s d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c and f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b. Exact command `python -m unittest test_r234_verifier_hardening.py -v` ran all seven named D1-D7 synthetic tests, exit 0, OK (0.091s). The suite uses only the hardened verifier, Python stdlib and temporary synthetic fixtures. No R218 artifact, Actions, estimator/science, paid compute, holdout/private data, submission, canonical code, or R217/R218 threshold/workflow changes were involved. This is a tooling-hardening verdict only; R220 remains authoritative for R218 postflight.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/b495d12d4fc926882a7162701beb88172c7500bc/research/r237/R237_TERMINAL_RECEIPT.json",
+        "sha256": "ec72d236fdbf7f1c09fe09fc5507a09a5aa38552b3b2e141a64977b565cb6c3d"
+      },
+      "verdict": "PASS"
     },
     {
       "assigned_owner": "global-accuracy-research",
@@ -3391,7 +3424,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 161,
+  "revision": 162,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
