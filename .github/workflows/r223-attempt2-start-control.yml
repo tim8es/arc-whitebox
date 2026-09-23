@@ -1,0 +1,52 @@
+name: R223 attempt 2 start central control
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_ATTEMPT2_START_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  start:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R223 control"
+          git config user.email "arc-control@users.noreply.github.com"
+      - name: Publish attempt-2 start
+        run: |
+          cat > /tmp/r223_attempt2_start.json <<'JSON'
+          {
+            "run_id": "R223-v25-local-feed-attempt2-20260923",
+            "code_commit": "9010ee7ae0a4e166c8a976b96b1e4a6a512a9590",
+            "command": "whest run --estimator methods/r223_estimator_v25_local_feed.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 100 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json"
+          }
+          JSON
+          python scripts/arc_control.py start R223             --owner method-research             --payload /tmp/r223_attempt2_start.json             --publish | tee /tmp/r223_attempt2_start_result.json
+      - name: Verify remote attempt history
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R223")
+          assert job["status"]=="RUNNING", job
+          assert len(job["attempts"])==2, job["attempts"]
+          assert job["attempts"][0]["status"]=="INFRA_ERROR", job["attempts"]
+          assert job["attempts"][1]["run_id"]=="R223-v25-local-feed-attempt2-20260923"
+          assert job["attempts"][1]["status"]=="RUNNING"
+          print(json.dumps({"revision":state["revision"],"attempts":job["attempts"]},indent=2,sort_keys=True))
+          PY
