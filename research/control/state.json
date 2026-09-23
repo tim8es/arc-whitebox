@@ -5399,6 +5399,14 @@
         "run_id": "R291-v25-capture-harness-preparation-20260923"
       },
       "revision": 402
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T17:50:04.227Z",
+      "job": "R289",
+      "owner": "preflight-current-head-final-audit",
+      "payload": {},
+      "revision": 403
     }
   ],
   "jobs": [
@@ -8650,9 +8658,9 @@
       ],
       "hypothesis_id": "PR35-R285-CURRENT-HEAD-VERIFICATION-20260923",
       "id": "R289",
-      "owner": null,
+      "owner": "preflight-current-head-final-audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Adversarially verify the latest PR #35 head after R285"
     },
     {
@@ -8693,7 +8701,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 402,
+  "revision": 403,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
