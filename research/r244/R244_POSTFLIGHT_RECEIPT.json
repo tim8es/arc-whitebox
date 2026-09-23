@@ -1,0 +1,163 @@
+{
+  "schema": "arc.whitebox.r244.mp_r16_postflight_receipt.v1",
+  "job": "R244",
+  "owner": "alternative-method-research",
+  "status": "DEVELOPMENT_NO_GO",
+  "decision": "R244_DEVELOPMENT_NO_GO_MP_R16",
+  "development_go": false,
+  "scope": "development-only public Phase-2 mini-100; no private/holdout/submission/leaderboard mutation",
+  "frozen_candidate": {
+    "name": "marginal-preserving Rres factorization (MP-R16)",
+    "branch": "research/r244-marginal-preserving-rres-20260923",
+    "head_sha": "f8548d77bdc27b643734f0ce1e9bc6fb243fb56a",
+    "protocol_sha256": "963b12b66df5a1b3f60d4e7ce8186b25ba0381f4e99e5c777236e051a0043d5e",
+    "protocol_git_blob": "0cd8e63fb4184a816e653b7507bf8ba9b1bb10e7",
+    "run_arm_sha256": "fd91d4f66bb9ab5e4616dbd17655e4095a0fb27c3aba627b52522dfb144e7c3a",
+    "estimator_sha256": "7987d43f6eb79bee50805bf1474d43e0a09a29737b86e3aab22b34ca97385859",
+    "estimator_git_blob": "d034aee83c766d6eb613b71a1a22c30241cd172a",
+    "falsifier_sha256": "a97414c23cd07a88e1679b14e963efd0686c19044d99b8ab53a32140c16bb277",
+    "compare_script_sha256": "5394cba72f1158c7572537363c9096318365396b5dc57b3b679de35524582b4a"
+  },
+  "sole_actions_attempt": {
+    "run_id": 35816971984,
+    "job_id": 107040461290,
+    "attempt": 1,
+    "conclusion": "success",
+    "artifact_id": 10732583892,
+    "artifact_name": "r244-mp-r16-mini100",
+    "artifact_zip_sha256": "885cd1767f82dcc933dae0daace593e722fa55c303d20acd3f935702fd159c30",
+    "candidate_panel_command_occurrences_in_job_log": 1,
+    "validate_command_occurrences_in_job_log": 1,
+    "free_standard_compute": {
+      "repository_public": true,
+      "runs_on": "ubuntu-24.04",
+      "larger_runner_requested": false,
+      "verified_free_standard_compute": true
+    }
+  },
+  "artifact_verification": {
+    "manifest_sha256": "53c818c181e33bcddd0510891571df0fcd2a214b249080ff521bc7b2ab9503a7",
+    "manifest_entries": 20,
+    "manifest_artifact_entries_verified": 19,
+    "external_r209_entry_verified_separately": true,
+    "manifest_mismatches": 0,
+    "result_sha256": "b399051c62963f1388fe75bfc6cdb3ceb9aa9e82926a5d6d695b65bbf7584026",
+    "candidate_report_sha256": "1e824a2af7864be090b894e0b6c0029742543d4a6d45370f954efe910ebb6203",
+    "parent_report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+    "r209_normalized_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "exact_row_count": 100,
+    "exact_network_name_id_target_order": true,
+    "ordered_name_id_target_sequence_sha256": "2ff5fcdf2596bae7c356817ac6362eabfe15f728396c11ef15f7c82730038c66",
+    "names_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "all_100_paired_rows_preserved_in_artifact_result": true
+  },
+  "preregistered_pre_panel_gates": {
+    "novelty_and_static_feasibility": "PASS_BEFORE_RUN",
+    "exact_small_falsifier_go": true,
+    "exact_small_metrics": {
+      "exact_center_max": 5.551115123125783e-16,
+      "exact_marginal_max": 1.1858269899365313e-15,
+      "exact_reconstruction_max": 5.329070518200751e-15,
+      "full_rank_marginal_max": 6.869504964868156e-16
+    },
+    "source_guard_single_scientific_replacement_and_R_RES_16": true,
+    "pinned_toolchain": {
+      "numpy": "2.4.6",
+      "whestbench": "0.16.1",
+      "flopscope": "0.12.1"
+    },
+    "validate_exit": 0,
+    "candidate_run_exit": 0
+  },
+  "independent_official_score_recomputation": {
+    "formula_for_successful_rows": "final_mse * max(0.1, measured_flops / 2**41)",
+    "candidate_max_abs_recomputed_vs_reported": 0,
+    "parent_max_abs_recomputed_vs_reported": 0,
+    "candidate": {
+      "failures": 0,
+      "mean_raw_mse": 2.244539880180696e-8,
+      "mean_official_adjusted_score": 8.228579159111482e-9,
+      "mean_flops": 806171326730,
+      "max_residual_wall_time_s": 0.1557243770051855
+    },
+    "parent_r209_v25": {
+      "failures": 0,
+      "mean_raw_mse": 2.228303490170447e-8,
+      "mean_official_adjusted_score": 8.170397440117226e-9,
+      "mean_flops": 806303721965
+    },
+    "ratios_candidate_over_parent": {
+      "raw_mse": 1.0072864356591782,
+      "official_adjusted_score": 1.0071210390217469
+    },
+    "paired_parent_minus_candidate": {
+      "improved_networks": 40,
+      "mean": -5.818171899425493e-11,
+      "descriptive_se": 1.6577006096567126e-11,
+      "mean_over_se": -3.5097844963876548
+    }
+  },
+  "frozen_scientific_gates": {
+    "exact_100_name_order_target_hash_identity": {
+      "pass": true
+    },
+    "candidate_failures_eq_0": {
+      "pass": true,
+      "observed": 0
+    },
+    "candidate_mean_raw_mse_lt_parent": {
+      "pass": false,
+      "candidate": 2.244539880180696e-8,
+      "parent": 2.228303490170447e-8
+    },
+    "candidate_mean_adjusted_le_0p995_parent": {
+      "pass": false,
+      "candidate": 8.228579159111482e-9,
+      "threshold": 8.129545452916641e-9
+    },
+    "improves_adjusted_at_least_55_of_100": {
+      "pass": false,
+      "observed": 40
+    },
+    "paired_mean_parent_minus_candidate_gt_2se": {
+      "pass": false,
+      "mean": -5.818171899425493e-11,
+      "two_se": 3.315401219313425e-11
+    },
+    "mean_flops_le_parent_plus_0p001_times_budget": {
+      "pass": true,
+      "candidate": 806171326730,
+      "threshold": 808502745220.552
+    },
+    "max_residual_lt_0p4": {
+      "pass": true,
+      "observed": 0.1557243770051855
+    },
+    "source_config_toolchain_panel_provenance_exact": {
+      "pass": true
+    },
+    "exactly_one_public_mini100_candidate_panel_invocation": {
+      "pass": true,
+      "observed": 1
+    }
+  },
+  "interpretation": "Actions success is execution success only. MP-R16 fails the frozen accuracy gates: mean raw MSE and mean official adjusted score are both worse than R209 V25, only 40/100 networks improve, and the paired mean parent-minus-candidate delta is negative. Therefore the preregistered result is DEVELOPMENT NO-GO with no rescue or rerun.",
+  "next_step": "R245 may now begin its independent read-only static official-rules/compliance audit of the frozen R244 source/workflow. Do not rerun or modify the R244 candidate.",
+  "sources": {
+    "actions_run": "https://github.com/tim8es/arc-whitebox/actions/runs/35816971984",
+    "artifact": "https://github.com/tim8es/arc-whitebox/actions/runs/35816971984/artifacts/10732583892",
+    "frozen_head": "https://github.com/tim8es/arc-whitebox/commit/f8548d77bdc27b643734f0ce1e9bc6fb243fb56a",
+    "frozen_protocol": "https://github.com/tim8es/arc-whitebox/blob/f8548d77bdc27b643734f0ce1e9bc6fb243fb56a/research/r244/R244_PROTOCOL.md",
+    "r209_normalized_parent": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/results/R209-v25-mini100.json"
+  },
+  "prohibitions_observed": {
+    "second_run_or_retry": false,
+    "paid_compute": false,
+    "private_or_holdout": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "canonical_v25_edit": false,
+    "gate_relaxation": false
+  }
+}
