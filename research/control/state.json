@@ -2107,6 +2107,23 @@
         "verdict": "PASS"
       },
       "revision": 162
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T01:44:00.000Z",
+      "job": "R220",
+      "owner": "postflight-audit",
+      "payload": {
+        "run_id": "R220-r218-independent-postflight-20260923",
+        "status": "INCONCLUSIVE",
+        "verdict": "PROTOCOL_INVALID",
+        "reason": "Independent R220 postflight finished fail-closed. A fresh exact R237 offline hardening suite passed 7/7 tests (exit 0) before R218 evidence inspection. Independently validated Actions run 35783866968, sole job 106935773981, run_attempt=1, head c8cb97dcd1383f4a1d741c5a36ba816deec452eb, artifact 10726329197, downloaded ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, head->executor ancestry, frozen workflow/executor/panel/prelaunch/protocol/estimator hashes, worker/region telemetry, and complete manifest 84/84 with zero mismatches. R236 D1-D5 and D7 PASS. D6 FAILS exactly because all six immutable raw block reports omit run_config.max_threads; commands/workflow/thread env request one thread, but the frozen R237 per-block report gate may not be relaxed or substituted. Hardened verifier: 289 gates, 283 pass, exactly six failures block_01_max_threads through block_06_max_threads; external Actions/artifact/source provenance passes. Independently recomputed 300 rows and frozen R217 metrics: median C0-C1=0.04774312494998867s PASS, CPU0 slower 32/50 FAIL, failure difference 52-37=15 PASS. Threshold-only branch would be NO_GO_CPU0_SPECIFIC, but any required contract/provenance gate failure takes precedence, so final independent verdict is PROTOCOL_INVALID / INCONCLUSIVE and no causal GO/NO-GO is ratified. No Actions rerun, estimator, holdout/private data, submission, canonical edit, rescue, or gate relaxation.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/0f31ac4aaa4ad638188fe521d451f0728fb152b1/research/r220/R220_RECEIPT.json",
+          "sha256": "ccdf890b7e0f59fe5e0aba8f4ff4630de7dfa53e198149d0de132cb0fcc315b5"
+        }
+      },
+      "revision": 163
     }
   ],
   "jobs": [
@@ -2775,7 +2792,17 @@
           "run_id": "R220-r218-independent-postflight-20260923",
           "code_commit": "41a434a870b26166485c4e9503c2782ace5df95f",
           "command": "first run the R237 offline synthetic fail-closed suite fresh and require PASS; only then independently audit immutable R218 Actions run 35783866968/job 106935773981/attempt 1/artifact 10726329197, verify ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, provenance/manifest/R236 D1-D7, recompute frozen R217 six-block thresholds; no Actions rerun, estimator, holdout/private data, submission, or canonical edits",
-          "status": "RUNNING"
+          "status": "INCONCLUSIVE",
+          "completion": {
+            "run_id": "R220-r218-independent-postflight-20260923",
+            "status": "INCONCLUSIVE",
+            "verdict": "PROTOCOL_INVALID",
+            "reason": "Independent R220 postflight finished fail-closed. A fresh exact R237 offline hardening suite passed 7/7 tests (exit 0) before R218 evidence inspection. Independently validated Actions run 35783866968, sole job 106935773981, run_attempt=1, head c8cb97dcd1383f4a1d741c5a36ba816deec452eb, artifact 10726329197, downloaded ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, head->executor ancestry, frozen workflow/executor/panel/prelaunch/protocol/estimator hashes, worker/region telemetry, and complete manifest 84/84 with zero mismatches. R236 D1-D5 and D7 PASS. D6 FAILS exactly because all six immutable raw block reports omit run_config.max_threads; commands/workflow/thread env request one thread, but the frozen R237 per-block report gate may not be relaxed or substituted. Hardened verifier: 289 gates, 283 pass, exactly six failures block_01_max_threads through block_06_max_threads; external Actions/artifact/source provenance passes. Independently recomputed 300 rows and frozen R217 metrics: median C0-C1=0.04774312494998867s PASS, CPU0 slower 32/50 FAIL, failure difference 52-37=15 PASS. Threshold-only branch would be NO_GO_CPU0_SPECIFIC, but any required contract/provenance gate failure takes precedence, so final independent verdict is PROTOCOL_INVALID / INCONCLUSIVE and no causal GO/NO-GO is ratified. No Actions rerun, estimator, holdout/private data, submission, canonical edit, rescue, or gate relaxation.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/0f31ac4aaa4ad638188fe521d451f0728fb152b1/research/r220/R220_RECEIPT.json",
+              "sha256": "ccdf890b7e0f59fe5e0aba8f4ff4630de7dfa53e198149d0de132cb0fcc315b5"
+            }
+          }
         }
       ],
       "deliverable": "After R218 completes, independently verify its immutable artifact, all six blocks and same-worker/CPU gates, recompute per-MLP C0/C1/U residual summaries, failure differences and official adjusted scores, and apply R217's predeclared thresholds exactly. Confirm or reject the causal interpretation within the protocol's limits; preserve missing telemetry or deviations. Create audit receipt/commit and finish the job. No rerun, holdout, paid run or submission.",
@@ -2786,8 +2813,13 @@
       "id": "R220",
       "owner": "postflight-audit",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Independently audit the same-worker R210 crossover evidence"
+      "status": "INCONCLUSIVE",
+      "title": "Independently audit the same-worker R210 crossover evidence",
+      "reason": "Independent R220 postflight finished fail-closed. A fresh exact R237 offline hardening suite passed 7/7 tests (exit 0) before R218 evidence inspection. Independently validated Actions run 35783866968, sole job 106935773981, run_attempt=1, head c8cb97dcd1383f4a1d741c5a36ba816deec452eb, artifact 10726329197, downloaded ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, head->executor ancestry, frozen workflow/executor/panel/prelaunch/protocol/estimator hashes, worker/region telemetry, and complete manifest 84/84 with zero mismatches. R236 D1-D5 and D7 PASS. D6 FAILS exactly because all six immutable raw block reports omit run_config.max_threads; commands/workflow/thread env request one thread, but the frozen R237 per-block report gate may not be relaxed or substituted. Hardened verifier: 289 gates, 283 pass, exactly six failures block_01_max_threads through block_06_max_threads; external Actions/artifact/source provenance passes. Independently recomputed 300 rows and frozen R217 metrics: median C0-C1=0.04774312494998867s PASS, CPU0 slower 32/50 FAIL, failure difference 52-37=15 PASS. Threshold-only branch would be NO_GO_CPU0_SPECIFIC, but any required contract/provenance gate failure takes precedence, so final independent verdict is PROTOCOL_INVALID / INCONCLUSIVE and no causal GO/NO-GO is ratified. No Actions rerun, estimator, holdout/private data, submission, canonical edit, rescue, or gate relaxation.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/0f31ac4aaa4ad638188fe521d451f0728fb152b1/research/r220/R220_RECEIPT.json",
+        "sha256": "ccdf890b7e0f59fe5e0aba8f4ff4630de7dfa53e198149d0de132cb0fcc315b5"
+      }
     },
     {
       "assigned_owner": "leaderboard-audit",
@@ -3424,7 +3456,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 162,
+  "revision": 163,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
