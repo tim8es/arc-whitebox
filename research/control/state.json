@@ -2146,6 +2146,18 @@
         "run_id": "R223-v25-local-feed-attempt2-20260923"
       },
       "revision": 165
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T02:03:31.000Z",
+      "job": "R238",
+      "owner": "global-accuracy-research",
+      "payload": {
+        "run_id": "R238-v25-rsrf-exact-small-20260923",
+        "code_commit": "12c595f3dec66e4616f76ca688b1f5339b5bdf24",
+        "command": "python scripts/r238_rsrf_exact_small.py --v25 r238-estimator-v25.py --candidate-out r238-candidate-v25.py --out r238-rsrf-falsifier.json"
+      },
+      "revision": 166
     }
   ],
   "jobs": [
@@ -3470,7 +3482,14 @@
     },
     {
       "assigned_owner": "global-accuracy-research",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R238-v25-rsrf-exact-small-20260923",
+          "code_commit": "12c595f3dec66e4616f76ca688b1f5339b5bdf24",
+          "command": "python scripts/r238_rsrf_exact_small.py --v25 r238-estimator-v25.py --candidate-out r238-candidate-v25.py --out r238-rsrf-falsifier.json",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read the full immutable experiment ledger, AGENTS/RESEARCH_PROCESS, and R227/R231/R232 receipts. Choose exactly one genuinely untested estimator family targeting aggregate raw-MSE improvement, not tail-only tuning. Explicitly exclude DRRE/Richardson from R232 and every rejected descendant already listed in R232/R233/R227. Before any candidate run, freeze math, source identities, exact-small target-free truth/falsifier, production FLOP bound, and GO/NO-GO. Because R232 failed in the first high-rank V25 C_pre SymmetryError before producing an MSE, prove the unmodified pinned V25 parent executes on the proposed fixture as a prerequisite inside the same single free Actions run; if that base-executability gate fails, stop terminal INCONCLUSIVE without candidate execution and do not resize/rescue the fixture. If base and falsifier/cost gates pass, at most one candidate falsifier and at most one bounded same-panel mini-100, only when authorized by the frozen gates. Preserve canonical V25; no paid compute, holdout/private data, submission, or repeat of R232 DRRE. Save all protocols, artifacts, hashes, per-row evidence when applicable, receipt, and queue finish.",
       "depends_on": [
         "R231"
@@ -3479,12 +3498,12 @@
       "id": "R238",
       "owner": "global-accuracy-research",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Find a distinct global-accuracy method after the DRRE execution no-go"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 165,
+  "revision": 166,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
