@@ -4734,6 +4734,18 @@
       "owner": "phase2-public-panel-audit",
       "payload": {},
       "at": "2026-09-23T15:23:00+00:00"
+    },
+    {
+      "revision": 353,
+      "action": "start",
+      "job": "R279",
+      "owner": "phase2-public-panel-audit",
+      "payload": {
+        "run_id": "R279-phase2-public-panel-audit-20260923",
+        "code_commit": "6596e75b2ccde129653c5e4b2d42b4564f93f33f",
+        "command": "metadata/docs-only audit of official AIcrowd/whestbench/Hugging Face sources for exact Phase-2 visible-50 local reproducibility; no benchmark data download, estimator/benchmark run, Actions, submission, sealed/private/full access"
+      },
+      "at": "2026-09-23T15:24:00+00:00"
     }
   ],
   "jobs": [
@@ -7582,8 +7594,15 @@
       "id": "R279",
       "assigned_owner": "phase2-public-panel-audit",
       "owner": "phase2-public-panel-audit",
-      "status": "CLAIMED",
-      "attempts": [],
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R279-phase2-public-panel-audit-20260923",
+          "code_commit": "6596e75b2ccde129653c5e4b2d42b4564f93f33f",
+          "command": "metadata/docs-only audit of official AIcrowd/whestbench/Hugging Face sources for exact Phase-2 visible-50 local reproducibility; no benchmark data download, estimator/benchmark run, Actions, submission, sealed/private/full access",
+          "status": "RUNNING"
+        }
+      ],
       "title": "Find a compliant local path to the official visible-50 panel",
       "hypothesis_id": "PHASE2-VISIBLE50-REPRODUCTION-PATH-20260923",
       "priority": 1,
@@ -7609,7 +7628,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 352,
+  "revision": 353,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
