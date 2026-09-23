@@ -2464,6 +2464,23 @@
         "status": "COMPLETE"
       },
       "revision": 190
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T03:35:51Z",
+      "job": "R240",
+      "owner": "independent-v25-audit",
+      "payload": {
+        "run_id": "R240-r223-attempt6-independent-postflight-20260923",
+        "status": "COMPLETE",
+        "verdict": "R240_INDEPENDENT_DEVELOPMENT_NO_GO",
+        "reason": "Independent R223 attempt-6 postflight complete. Actions run 35810427656/job 107020553482/attempt 1/head 09efbb920313850a4727bd34db9088a46227ce5f completed success; artifact 10730459690 ZIP SHA256 f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00 matched GitHub digest. Manifest is exact (23 entries/23 files, no missing/extra/hash mismatches), frozen blobs/provenance/runtime/validate/run gates pass, and all 100 parent rows bind to normalized R209. Independent canonical whestbench score recomputation found candidate 0 failures, mean raw MSE 2.2284993050902814e-8, adjusted 8.171116513490029e-9, C/B 0.36666453046791503, max residual 0.19380312699274782s; 50/100 rows improved; paired parent-candidate delta mean -7.190733728024271e-13, SE 1.4922201293529365e-12. Frozen gates 1,2,3,8,9,10,11 PASS and 4,5,6,7 FAIL, so independent DEVELOPMENT NO-GO. Attempts 1-5 panel steps were skipped; attempt 6 was the sole candidate panel invocation. Same-exposed-panel development claim only; no leaderboard/holdout/submission claim. R240 did not modify R223 state/files or run Actions/estimator/benchmark.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/3b99fcaea2ef29b050612610ff04a8fc7a6886cd/research/r240/R240_RECEIPT.json",
+          "sha256": "e75ec5e2641df59887cf38520e9d9f3a449731fa5fcac481398433c4c4ac8bbd"
+        }
+      },
+      "revision": 191
     }
   ],
   "jobs": [
@@ -3925,7 +3942,17 @@
           "code_commit": "079da7f8a617e50b87ed1e35687b378312413362",
           "command": "prepare independent offline verifier/checklist/self-check from frozen R223 attempt-6 protocol/workflow/source/comparator; no in-progress artifact inspection; postflight only after R223 terminal",
           "run_id": "R240-r223-attempt6-independent-postflight-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R240-r223-attempt6-independent-postflight-20260923",
+            "status": "COMPLETE",
+            "verdict": "R240_INDEPENDENT_DEVELOPMENT_NO_GO",
+            "reason": "Independent R223 attempt-6 postflight complete. Actions run 35810427656/job 107020553482/attempt 1/head 09efbb920313850a4727bd34db9088a46227ce5f completed success; artifact 10730459690 ZIP SHA256 f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00 matched GitHub digest. Manifest is exact (23 entries/23 files, no missing/extra/hash mismatches), frozen blobs/provenance/runtime/validate/run gates pass, and all 100 parent rows bind to normalized R209. Independent canonical whestbench score recomputation found candidate 0 failures, mean raw MSE 2.2284993050902814e-8, adjusted 8.171116513490029e-9, C/B 0.36666453046791503, max residual 0.19380312699274782s; 50/100 rows improved; paired parent-candidate delta mean -7.190733728024271e-13, SE 1.4922201293529365e-12. Frozen gates 1,2,3,8,9,10,11 PASS and 4,5,6,7 FAIL, so independent DEVELOPMENT NO-GO. Attempts 1-5 panel steps were skipped; attempt 6 was the sole candidate panel invocation. Same-exposed-panel development claim only; no leaderboard/holdout/submission claim. R240 did not modify R223 state/files or run Actions/estimator/benchmark.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/3b99fcaea2ef29b050612610ff04a8fc7a6886cd/research/r240/R240_RECEIPT.json",
+              "sha256": "e75ec5e2641df59887cf38520e9d9f3a449731fa5fcac481398433c4c4ac8bbd"
+            }
+          }
         }
       ],
       "deliverable": "Prepare an independent offline verifier/checklist from the frozen R223 attempt-6 protocol, workflow, candidate source and comparator, without inspecting the in-progress R223 artifact or changing R223 files. Add a small synthetic self-check for row identity, official adjusted-score recomputation, failures, thresholds and manifest binding. Record queue start before preparation. Once R223 is terminal and its immutable artifact is available, independently verify ZIP digest/manifest and all 100 paired rows; recompute raw MSE, measured FLOPs, runtime/failures and adjusted score against the frozen R209 parent; apply every preregistered gate without loosening it. Produce a report and receipt with hashes, distinct development-vs-competition claims, and finish R240. No Actions run, estimator/benchmark execution, retries/rescue, paid compute, holdout/private data, submission, or edits to R223 candidate/protocol/workflow/canonical V25.",
@@ -3933,8 +3960,14 @@
       "id": "R240",
       "owner": "independent-v25-audit",
       "priority": 2,
-      "status": "RUNNING",
-      "title": "Prepare and run independent postflight for R223 attempt 6"
+      "status": "COMPLETE",
+      "title": "Prepare and run independent postflight for R223 attempt 6",
+      "reason": "Independent R223 attempt-6 postflight complete. Actions run 35810427656/job 107020553482/attempt 1/head 09efbb920313850a4727bd34db9088a46227ce5f completed success; artifact 10730459690 ZIP SHA256 f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00 matched GitHub digest. Manifest is exact (23 entries/23 files, no missing/extra/hash mismatches), frozen blobs/provenance/runtime/validate/run gates pass, and all 100 parent rows bind to normalized R209. Independent canonical whestbench score recomputation found candidate 0 failures, mean raw MSE 2.2284993050902814e-8, adjusted 8.171116513490029e-9, C/B 0.36666453046791503, max residual 0.19380312699274782s; 50/100 rows improved; paired parent-candidate delta mean -7.190733728024271e-13, SE 1.4922201293529365e-12. Frozen gates 1,2,3,8,9,10,11 PASS and 4,5,6,7 FAIL, so independent DEVELOPMENT NO-GO. Attempts 1-5 panel steps were skipped; attempt 6 was the sole candidate panel invocation. Same-exposed-panel development claim only; no leaderboard/holdout/submission claim. R240 did not modify R223 state/files or run Actions/estimator/benchmark.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/3b99fcaea2ef29b050612610ff04a8fc7a6886cd/research/r240/R240_RECEIPT.json",
+        "sha256": "e75ec5e2641df59887cf38520e9d9f3a449731fa5fcac481398433c4c4ac8bbd"
+      },
+      "verdict": "R240_INDEPENDENT_DEVELOPMENT_NO_GO"
     },
     {
       "assigned_owner": "coordinator",
@@ -3971,7 +4004,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 190,
+  "revision": 191,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
