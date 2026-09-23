@@ -1,0 +1,117 @@
+{
+  "schema": "arc.whitebox.r247.receipt.v1",
+  "job_id": "R247",
+  "owner": "network-agnostic-efficiency-research",
+  "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
+  "status": "SCIENTIFIC_REJECT",
+  "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
+  "hypothesis": "H-R246: one network-agnostic V25 simplification can reduce FLOPs >=10% while raw-MSE degradation stays strictly below 11.111111111111116%.",
+  "tested_configuration": "V25-NM24-YOUNG-D21-RIGHT-SPARSIFY",
+  "conclusion": "Static cost gate passed, but the frozen target-free D21 fidelity falsifier failed decisively (mean RRMS 0.37184426509568913 vs <=0.012; max 0.38016503271515556; all 8 cases >0.015). Per protocol, stop before estimator implementation/public mini-100/Actions. DEVELOPMENT NO-GO for this configuration.",
+  "provenance": {
+    "parent_v25_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "r209_record": {
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    },
+    "r209_source_receipt": {
+      "path": "research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json",
+      "commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+      "sha256": "5c87e8868ce3221b01979f7360079960e8991629926a7623037662f3c4511740"
+    },
+    "r246_receipt": {
+      "path": "research/r246/R246_RECEIPT.json",
+      "commit": "ba36152744f344ca7023aa807c8d1ab667baea04",
+      "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4"
+    },
+    "history": {
+      "project_history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+      "upstream_findings_blob": "09cf41e8826052ceb83109115cae688c03baaaca"
+    }
+  },
+  "frozen_artifacts": {
+    "candidate_spec": {
+      "path": "research/r247/R247_CANDIDATE_SPEC.json",
+      "commit": "9b947cee0025732697b2636e02138338eff4ee4c",
+      "git_blob": "b52dafbc77714276de5dbd14332426f3c664df47"
+    },
+    "falsifier": {
+      "path": "scripts/r247_nm24_falsifier.py",
+      "commit": "b1212fd03f16a8d729e1c2bcff5b4ddbb2d77476",
+      "git_blob": "426f96d271f95cfccab968cf232861b595c81bdb"
+    },
+    "protocol": {
+      "path": "research/r247/R247_PROTOCOL.json",
+      "commit": "b4bfefe38fe5f923559a40146d42a67824b4a32c",
+      "git_blob": "112c6716ec45a445bbe493ff2942210f9d423d88"
+    },
+    "falsifier_result": {
+      "path": "research/r247/R247_FALSIFIER_RESULT.json",
+      "commit": "cd19501f0133ecf1ca640441db1d670e1baab961",
+      "git_blob": "e8bd5d527f1bb20617b37a3879fefdbdc1a13e49"
+    },
+    "report": {
+      "path": "research/r247/R247_REPORT.md",
+      "commit": "59d225988db4ced15efec095942cd263fd41c238"
+    }
+  },
+  "history_dedup": {
+    "r223_v25_lf_excluded": true,
+    "r244_mp_r16_excluded": true,
+    "rank_age_tiers_excluded": true,
+    "source_drop_window_excluded": true,
+    "memoryless_slice_excluded": true,
+    "hub_column_cap_cp_excluded": true,
+    "randomized_hadamard_estimation_excluded": true,
+    "fwht_structured_projection_excluded": true,
+    "strassen_excluded": true,
+    "precision_change_excluded": true,
+    "candidate_distinction": "2:4 magnitude sparsification of contraction right factors; no rank projection, source removal, random probing, or lambda/feed change."
+  },
+  "static_cost": {
+    "parent_mean_flops": 806303721965,
+    "required_max_mean_flops": 725673349768.5,
+    "nominal_saved_units": 54,
+    "conservative_overhead_reserve_units": 10,
+    "conservative_candidate_parent_ratio": 0.8828118016350895,
+    "gate_pass": true,
+    "measured": false
+  },
+  "falsifier": {
+    "target_free": true,
+    "public_dataset_opened": false,
+    "targets_opened": false,
+    "cases": 8,
+    "finite_cases": 8,
+    "deterministic_cases": 8,
+    "identity_rrms_max": 0,
+    "mean_d21_rrms": 0.37184426509568913,
+    "max_d21_rrms": 0.38016503271515556,
+    "each_gate_max": 0.015,
+    "mean_gate_max": 0.012,
+    "each_gate_pass": false,
+    "mean_gate_pass": false,
+    "go": false,
+    "canonical_without_self_hash_sha256": "2b47e01b509039ce4f7c1f9be7c24cf23a94c68aff3a17b5bfd2a3ff6dafdcfd"
+  },
+  "public_science": {
+    "estimator_implemented": false,
+    "validation_run": false,
+    "public_mini100_run": false,
+    "actions_run": false,
+    "reason": "Forbidden after falsifier NO-GO; public scientific gates therefore unmeasured."
+  },
+  "scope": {
+    "read_R223_candidate_output_or_artifact": false,
+    "read_R244_candidate_output_or_artifact": false,
+    "per_network_tuning": false,
+    "canonical_v25_edited": false,
+    "paid_compute": false,
+    "private_holdout": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "retry": false,
+    "second_mechanism": false
+  }
+}
