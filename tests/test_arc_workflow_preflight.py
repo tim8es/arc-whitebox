@@ -184,5 +184,71 @@ class WorkflowPreflightTests(unittest.TestCase):
             p.check_contract(hardened_workflow(step), HARDENED_GENERATOR)
 
 
+    def test_checkout_env_fetch_depth_does_not_satisfy_checkout_input(self):
+        wf = """jobs:
+  verify:
+    steps:
+      - uses: actions/checkout@v4
+        env:
+          fetch-depth: 0
+      - run: |
+          git merge-base --is-ancestor "$PROTOCOL_COMMIT" HEAD
+      - run: |
+          p=pathlib.Path("artifacts/R254_FIXTURE_RUNTIME_MANIFEST.json")
+          d=json.loads(p.read_text())
+          assert d["seed"] == 254001
+"""
+        with self.assertRaisesRegex(p.PreflightError, "checkout.*with.*fetch-depth"):
+            p.check_contract(wf, HARDENED_GENERATOR)
+
+    def test_manifest_clear_fails_closed(self):
+        generator = HARDENED_GENERATOR.replace(
+            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})',
+            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})\\n    m.clear()',
+        )
+        with self.assertRaisesRegex(p.PreflightError, "unsupported manifest mutation.*clear"):
+            p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
+
+    def test_manifest_pop_fails_closed(self):
+        generator = HARDENED_GENERATOR.replace(
+            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})',
+            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})\\n    m.pop("seed")',
+        )
+        with self.assertRaisesRegex(p.PreflightError, "unsupported manifest mutation.*pop"):
+            p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
+
+    def test_unknown_manifest_mutation_helper_fails_closed(self):
+        generator = HARDENED_GENERATOR.replace(
+            "def main():",
+            'def mutate_manifest(value):\\n    value.pop("seed")\\n\\ndef main():',
+        ).replace(
+            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})',
+            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})\\n    mutate_manifest(m)',
+        )
+        with self.assertRaisesRegex(p.PreflightError, "unsupported manifest mutation.*mutate_manifest"):
+            p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
+
+    def test_json_loads_must_read_exact_manifest_path(self):
+        step = """      - run: |
+          p=pathlib.Path("artifacts/R254_FIXTURE_RUNTIME_MANIFEST.json")
+          other=pathlib.Path("artifacts/other.json")
+          d=json.loads(other.read_text() + ("" if p else ""))
+          assert d["seed"] == 254001
+"""
+        with self.assertRaisesRegex(p.PreflightError, "exact runtime manifest path"):
+            p.check_contract(hardened_workflow(step), HARDENED_GENERATOR)
+
+    def test_get_access_is_not_silently_ignored(self):
+        step = """      - run: |
+          p=pathlib.Path("artifacts/R254_FIXTURE_RUNTIME_MANIFEST.json")
+          d=json.loads(p.read_text())
+          assert d["seed"] == 254001
+          assert d.get("ghost") is None
+"""
+        with self.assertRaisesRegex(p.PreflightError, "unsupported manifest access.*get"):
+            p.check_contract(hardened_workflow(step), HARDENED_GENERATOR)
+
+
+
 if __name__ == "__main__":
     unittest.main()
