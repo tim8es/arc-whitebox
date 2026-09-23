@@ -3286,6 +3286,14 @@
         "assigned_owner": "one-shot-accuracy-research"
       },
       "at": "2026-09-23T07:41:00+00:00"
+    },
+    {
+      "revision": 248,
+      "action": "claim",
+      "job": "R254",
+      "owner": "one-shot-accuracy-research",
+      "payload": {},
+      "at": "2026-09-23T07:42:00+00:00"
     }
   ],
   "jobs": [
@@ -5265,13 +5273,13 @@
       ],
       "assigned_owner": "one-shot-accuracy-research",
       "id": "R254",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "one-shot-accuracy-research",
+      "status": "CLAIMED",
       "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 247,
+  "revision": 248,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
