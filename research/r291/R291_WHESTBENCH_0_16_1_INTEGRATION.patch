@@ -1,0 +1,66 @@
+diff --git a/src/whestbench/scoring.py b/src/whestbench/scoring.py
+index 9cf7653..R291CAP 100644
+--- a/src/whestbench/scoring.py
++++ b/src/whestbench/scoring.py
+@@ -681,6 +681,15 @@ def evaluate_estimator(
+     When ``fail_fast`` is True, unexpected predict-time exceptions are re-raised
+     instead of being recorded and skipped.
+     """
++    # R291 capture is an evaluator-side research sidecar. When disabled, this
++    # block is inert. When enabled, all capture failures are contained inside
++    # the sidecar and cannot alter scorer control flow or returned values.
++    r291_capture = None
++    if __import__("os").environ.get("R291_CAPTURE_DIR"):
++        try:
++            from r291_capture_harness import capture_from_env_best_effort
++            r291_capture = capture_from_env_best_effort()
++        except Exception:
++            r291_capture = None
++
+     spec = data.spec
+     per_mlp: List[Dict[str, Any]] = []
+     primary_scores: List[float] = []
+@@ -816,6 +825,22 @@ def evaluate_estimator(
+             pred_np = fnp.asarray(predictions, dtype=fnp.float32)
+             final_target = data.final_targets[i]
+             all_target = data.all_layer_targets[i]
++            if r291_capture is not None:
++                r291_capture.safe_capture(
++                    scorer_mlp_index=i,
++                    mlp_name=data.mlps[i].name,
++                    final_pred=pred_np[-1],
++                    final_target=final_target,
++                    all_target=all_target,
++                    budget_exhausted=False,
++                    time_exhausted=False,
++                    residual_wall_time_exhausted=False,
++                    combined_budget_exhausted=False,
++                    error_code=error_code,
++                    flops_used=0,
++                    effective_compute=0.0,
++                )
+             final_layer_mse_fail = float(fnp.mean((pred_np[-1] - final_target) ** 2))
+             all_layers_mse_fail = float(fnp.mean((pred_np - all_target) ** 2))
+             per_layer_mse_fail = [float(x) for x in fnp.mean((pred_np - all_target) ** 2, axis=1)]
+@@ -945,6 +970,22 @@ def evaluate_estimator(
+         # Primary score: final layer MSE
+         final_pred = pred_np[-1]
+         final_target = data.final_targets[i]
++        if r291_capture is not None:
++            r291_capture.safe_capture(
++                scorer_mlp_index=i,
++                mlp_name=data.mlps[i].name,
++                final_pred=final_pred,
++                final_target=final_target,
++                all_target=data.all_layer_targets[i],
++                budget_exhausted=budget_exhausted,
++                time_exhausted=time_exhausted,
++                residual_wall_time_exhausted=residual_wall_time_exhausted,
++                combined_budget_exhausted=combined_budget_exhausted,
++                error_code=None,
++                flops_used=flops_used,
++                effective_compute=effective_compute,
++            )
+         final_layer_mse = float(fnp.mean((final_pred - final_target) ** 2))
+ 
+         # Secondary score: all layers MSE
