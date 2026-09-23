@@ -4549,6 +4549,41 @@
         }
       },
       "at": "2026-09-23T13:52:43.888Z"
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T15:00:02Z",
+      "job": "R275",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "workflow-preflight-integration",
+        "title": "Integrate and operationalize the hardened workflow preflight",
+        "hypothesis_id": "R274-MAIN-INTEGRATION-20260923",
+        "priority": 1,
+        "depends_on": [
+          "R274"
+        ],
+        "deliverable": "Start from current main, not the historical R274 branch tip. Inspect R272/R274 implementation commits and compare against main; the existing R274 branch diverges and a direct PR would include hundreds of unrelated commits. Build a clean integration branch containing only the minimum preflight script/tests (and a short invocation doc if needed). Run focused offline R272/R274 tests on that clean branch; verify the diff is limited to intended files; open a reviewable PR to main only if clean and green. Do not merge, trigger Actions, execute fixtures/estimators, or edit historical evidence. If safe integration cannot be completed, report exact blocker and smallest next step. Publish claim/start/finish R275 and append report/receipt with hashes/commit."
+      },
+      "revision": 340
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T15:00:02Z",
+      "job": "R276",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "v25-accuracy-research",
+        "title": "Test one distinct global V25 accuracy improvement",
+        "hypothesis_id": "V25-GLOBAL-ACCURACY-EXPLORATION-20260923",
+        "priority": 1,
+        "depends_on": [
+          "R209",
+          "R273"
+        ],
+        "deliverable": "Use pinned V25 source and immutable R209 public mini:all-100 only as development evidence. Read current AGENTS.md, research/RESEARCH_PROCESS.md, STATUS, live queue and full relevant history; choose one concrete accuracy-improvement hypothesis not equivalent to a closed/rejected experiment, freeze a small bounded protocol, and implement/test it with existing/free local resources. Compare candidate with V25 on the same 100 networks and exact evaluator/meter versions; record every attempt, per-network adjusted score, raw MSE, measured FLOPs, failures and paired uncertainty. Keep one fixed global method/configuration (no per-network selection); do not claim leaderboard rank because R209 is not comparable to the visible 50. No new paid resources, private/holdout/full data, competition submission or leaderboard/canonical edits. If the chosen method fails, preserve the negative result and recommend the next scientifically distinct test. Claim/start/finish R276 and append report, normalized result if valid, and receipt with hashes/commit."
+      },
+      "revision": 341
     }
   ],
   "jobs": [
@@ -7292,10 +7327,39 @@
         "sha256": "502f112fe9e5da4815fad1e758098f2c66a7fe5a880cec75dd14748cdfcc4551"
       },
       "reason": "Hardened the R272 offline preflight against all three independently reviewed false-PASS boundaries. Manifest schema is now traced only from the object actually serialized by json.dumps into the runtime manifest; unrelated dictionaries cannot legalize keys. Each git merge-base ancestry guard now requires the latest preceding full-history checkout in the same workflow job. Step analysis now includes unnamed - run: items and fails closed when a runtime-manifest read has no statically traceable json.loads binding or no extracted key paths. Focused R274 tests passed 6/6 and R272 compatibility tests passed 4/4 on the exact committed bytes. No workflows/history/R272 durable artifacts/historical receipts/results, Actions/science, competition data, budget, submission, leaderboard or canonical files were changed."
+    },
+    {
+      "id": "R275",
+      "assigned_owner": "workflow-preflight-integration",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": [],
+      "title": "Integrate and operationalize the hardened workflow preflight",
+      "hypothesis_id": "R274-MAIN-INTEGRATION-20260923",
+      "priority": 1,
+      "depends_on": [
+        "R274"
+      ],
+      "deliverable": "Start from current main, not the historical R274 branch tip. Inspect R272/R274 implementation commits and compare against main; the existing R274 branch diverges and a direct PR would include hundreds of unrelated commits. Build a clean integration branch containing only the minimum preflight script/tests (and a short invocation doc if needed). Run focused offline R272/R274 tests on that clean branch; verify the diff is limited to intended files; open a reviewable PR to main only if clean and green. Do not merge, trigger Actions, execute fixtures/estimators, or edit historical evidence. If safe integration cannot be completed, report exact blocker and smallest next step. Publish claim/start/finish R275 and append report/receipt with hashes/commit."
+    },
+    {
+      "id": "R276",
+      "assigned_owner": "v25-accuracy-research",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": [],
+      "title": "Test one distinct global V25 accuracy improvement",
+      "hypothesis_id": "V25-GLOBAL-ACCURACY-EXPLORATION-20260923",
+      "priority": 1,
+      "depends_on": [
+        "R209",
+        "R273"
+      ],
+      "deliverable": "Use pinned V25 source and immutable R209 public mini:all-100 only as development evidence. Read current AGENTS.md, research/RESEARCH_PROCESS.md, STATUS, live queue and full relevant history; choose one concrete accuracy-improvement hypothesis not equivalent to a closed/rejected experiment, freeze a small bounded protocol, and implement/test it with existing/free local resources. Compare candidate with V25 on the same 100 networks and exact evaluator/meter versions; record every attempt, per-network adjusted score, raw MSE, measured FLOPs, failures and paired uncertainty. Keep one fixed global method/configuration (no per-network selection); do not claim leaderboard rank because R209 is not comparable to the visible 50. No new paid resources, private/holdout/full data, competition submission or leaderboard/canonical edits. If the chosen method fails, preserve the negative result and recommend the next scientifically distinct test. Claim/start/finish R276 and append report, normalized result if valid, and receipt with hashes/commit."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 339,
+  "revision": 341,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
