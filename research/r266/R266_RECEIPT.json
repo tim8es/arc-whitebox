@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "R266",
+  "run_id": "R266-score-gap-analysis-20260923",
+  "owner": "score-gap-analysis",
+  "status": "COMPLETE",
+  "verdict": "NOT_COMPARABLE",
+  "branch": "research/r266-score-gap-analysis-20260923",
+  "protocol": {
+    "commit": "248d0d7672f8d939cd4d35c2fd3ce716369055d7",
+    "path": "research/r266/R266_PROTOCOL.md"
+  },
+  "r263_dependency": {
+    "control_finish_revision": 302,
+    "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
+    "receipt_sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73",
+    "source_snapshot_sha256": "6cbb8ce69ad4330cc624e78209a49a1b333e3845daf8def1fd2a462d6ff49646",
+    "metric_match": true,
+    "aggregation_match": true,
+    "split_match": false,
+    "decision": "NOT_COMPARABLE"
+  },
+  "normalized_inputs": [
+    {
+      "id": "R209-v25-mini100",
+      "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "rows": 100,
+      "failures": 0
+    },
+    {
+      "id": "R209-v29-mini100",
+      "git_blob_sha1": "1c5d779ef7d6b0d85963c1db7bc4e91887a7086c",
+      "rows": 100,
+      "failures": 57
+    },
+    {
+      "id": "R223-v25-local-feed-mini100",
+      "git_blob_sha1": "c8b617c43ff1145977c38e7e1cca6d23985ec392",
+      "rows": 100,
+      "failures": 0
+    }
+  ],
+  "official_formula": {
+    "formula": "mean_m(final_mse_m * max(0.1, measured_flops_m/B)); failure multiplier=1.0",
+    "B": 2199023255552,
+    "cost_floor": 0.1
+  },
+  "strict_result": {
+    "official_gap": null,
+    "competition_rank": null,
+    "reason": "R209 is public development mini:all-100; R263 verifies current visible online Phase-2 scoring is 50 public MLPs with 50 additional sealed. The displayed leader score is also rounded."
+  },
+  "conditional_display_threshold_sensitivity": {
+    "warning": "Arithmetic against rounded displayed 2.1e-9 only; not an official gap/rank or same-panel result.",
+    "r209_v25_score": 8.170397440117225e-9,
+    "displayed_threshold": 2.1e-9,
+    "current_cost_factor": "0.36666448157347986125387251377105712890625",
+    "current_cost_required_raw_mse_reduction_percent": "74.29745596353915",
+    "cost_only_required_factor_without_floor": "0.094242099842484524766484138211858689901438570148436",
+    "cost_only_verdict": "IMPOSSIBLE_BECAUSE_REQUIRED_FACTOR_BELOW_0.1_FLOOR",
+    "floor_score_with_unchanged_mse": 2.228303490170447e-9,
+    "floor_required_raw_mse_reduction_percent": "5.757900157515475",
+    "max_integer_flops_at_floor": 219902325555
+  },
+  "failures": {
+    "r209_v29_failed_rows": 57,
+    "failure_penalty_contribution_to_mean": 0.5270942854881286,
+    "successful_rows_contribution_to_mean": 2.392192892427515e-9,
+    "rule": "Failed rows use multiplier 1.0, so FLOP reduction does not discount them while failed."
+  },
+  "artifacts": {
+    "evidence_commit": "56f7c97131ea147e6442b221e310d30e70ac0755",
+    "report": {
+      "path": "research/r266/R266_SCORE_GAP_ANALYSIS.md",
+      "git_blob_sha1": "0c0c193244738b4adf4c6369589e8bdcaa28d5ef",
+      "sha256": "3beb6cb1a3f4ff542fb1ffbef2387c996e8c70d91fe2419e9086230cef8d2ecb"
+    },
+    "calculations": {
+      "path": "research/r266/R266_CALCULATIONS.json",
+      "git_blob_sha1": "8b5ee19cd40ade790a82e5d7e0f1a7ba94ef89da",
+      "sha256": "9d9d91489b81738d2949f6df5046a6d8b0bc8ec66c26aa80d01c47c5c89e17c6"
+    }
+  },
+  "no_actions": [
+    "No estimator or benchmark rerun",
+    "No GitHub Actions workflow",
+    "No new dataset access",
+    "No paid/private/holdout/full access",
+    "No submission",
+    "No model edit",
+    "No leaderboard edit",
+    "No canonical-result mutation"
+  ]
+}
