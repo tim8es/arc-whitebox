@@ -1347,39 +1347,39 @@
       "job": "R226",
       "owner": "results-integration",
       "payload": {
-        "run_id": "R226-r224-normalized-mini100-registry-integration",
         "code_commit": "42b5b658ee4cb3950e88a697416c8fb09fcf2f37",
-        "command": "integrate exact R224 normalized R209 V25/V29 mini-100 records into latest research/control-v2; regenerate STATUS via arc_control report; run check and compare; preserve concurrent queue events; no estimator run or leaderboard-rank claim"
+        "command": "integrate exact R224 normalized R209 V25/V29 mini-100 records into latest research/control-v2; regenerate STATUS via arc_control report; run check and compare; preserve concurrent queue events; no estimator run or leaderboard-rank claim",
+        "run_id": "R226-r224-normalized-mini100-registry-integration"
       },
       "revision": 104
     },
     {
-      "revision": 105,
       "action": "finish",
+      "at": "2026-09-22T22:23:00.000Z",
       "job": "R226",
       "owner": "results-integration",
       "payload": {
         "reason": "Integrated exact R224-normalized R209 V25/V29 mini-100 records from commit 8fb0afb77ae834d88bae29557a41356d4d98401f into latest research/control-v2 without estimator execution. Integration commit 20fafab5471e6ed227562c651179dd2ef331ea22 changes only research/results/R209-v25-mini100.json, research/results/R209-v29-mini100.json, and regenerated research/control/STATUS.md. SHA256: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; STATUS a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2. Validation: PASS 6 normalized results, 27 jobs, 194 history entries; V29/V25 score_ratio 64512686.407671124, improved_networks 43/100, paired_gain_mean -0.5270942797099241, paired_gain_se 0.04886972545240127; V29 preserves 57 residual_wall_time_exhausted failures and raw prediction tensors remain absent. Non-force fast-forward from refreshed head; no queue events lost. No estimator run, holdout, paid compute, submission, or leaderboard-rank claim.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/control/STATUS.md",
-          "sha256": "a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2"
+          "sha256": "a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/control/STATUS.md"
         },
         "run_id": "R226-r224-normalized-mini100-registry-integration",
         "status": "COMPLETE"
       },
-      "at": "2026-09-22T22:23:00.000Z"
+      "revision": 105
     },
     {
-      "revision": 106,
       "action": "start",
+      "at": "2026-09-22T22:20:20.697Z",
       "job": "R227",
       "owner": "v25-optimization",
       "payload": {
-        "run_id": "R227-v25-srm2-feasibility-20260923",
         "code_commit": "6715c89debd53554cbce5691150180fbb933e503",
-        "command": "python scripts/r227_srm2_feasibility.py --v25 /tmp/estimator_v25.py --probe /tmp/g_regen_probe.py --findings /tmp/findings_log.md --claims /tmp/claims_evidence.md --out r227-feasibility.json; pinned upstream blobs must match; no mini-100 unless deployability gate passes"
+        "command": "python scripts/r227_srm2_feasibility.py --v25 /tmp/estimator_v25.py --probe /tmp/g_regen_probe.py --findings /tmp/findings_log.md --claims /tmp/claims_evidence.md --out r227-feasibility.json; pinned upstream blobs must match; no mini-100 unless deployability gate passes",
+        "run_id": "R227-v25-srm2-feasibility-20260923"
       },
-      "at": "2026-09-22T22:20:20.697Z"
+      "revision": 106
     },
     {
       "action": "enqueue",
@@ -1435,9 +1435,9 @@
       "job": "R228",
       "owner": "official-leaderboard-audit",
       "payload": {
-        "run_id": "R228-official-leaderboard-audit-20260923",
         "code_commit": "e47da3c92416e374435fba8313ed7606b5a72227",
-        "command": "read-only primary-official-source audit of ARC White-Box Phase-2 scoring, visible leaderboard/submissions, exact evaluation panel, and R209 mini-100 rankability; no estimator run, paid compute, submission, external mutation, or canonical-result changes"
+        "command": "read-only primary-official-source audit of ARC White-Box Phase-2 scoring, visible leaderboard/submissions, exact evaluation panel, and R209 mini-100 rankability; no estimator run, paid compute, submission, external mutation, or canonical-result changes",
+        "run_id": "R228-official-leaderboard-audit-20260923"
       },
       "revision": 111
     },
@@ -1449,8 +1449,8 @@
       "payload": {
         "reason": "Primary-official-source Phase-2 leaderboard audit complete. Official metric is mean per-MLP final-layer MSE times max(0.1,C/B), with C=F, B=2**41 and failure multiplier 1.0. The live public leaderboard exposes 50-participant rows scored on a 50-public-MLP grader split; official submission detail states final ranking uses all 100 grader MLPs with a distinct 50-private split still sealed. R209 V25/V29 are local v2-phase2 mini:all-100 development results, not that grader public-50 panel; their evaluator/meter is whestbench 0.16.1/flopscope 0.12.1 versus the documented grader pair 0.16.0/0.12.0, and no official submission exists for the R209 artifact. Therefore R209 is NOT_RANKABLE_FROM_R209_MINI100 and no leaderboard rank is claimed. Audit SHA256 da5ecc4ac5549a8703e6bb3c925a19cce48e57b732229cfa8ae8f221613e651f. No estimator run, paid compute, submission, private access, external mutation, or canonical-result change.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT_RECEIPT.json",
-          "sha256": "d9d244d2ff7352e113af4d8cbb956dc379b4e6cfaf0357444fce77695ed8bdc5"
+          "sha256": "d9d244d2ff7352e113af4d8cbb956dc379b4e6cfaf0357444fce77695ed8bdc5",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT_RECEIPT.json"
         },
         "run_id": "R228-official-leaderboard-audit-20260923",
         "status": "COMPLETE"
@@ -1463,9 +1463,9 @@
       "job": "R229",
       "owner": "paired-score-decomposition",
       "payload": {
-        "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
         "code_commit": "2c18ac98e2ab948eac8f4054f6c7d1ee05ef4280",
-        "command": "read-only paired decomposition of R209 normalized mini-100 records; preserve exact row IDs, separate timeout penalty from matched-success MSE, no estimator run"
+        "command": "read-only paired decomposition of R209 normalized mini-100 records; preserve exact row IDs, separate timeout penalty from matched-success MSE, no estimator run",
+        "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b"
       },
       "revision": 113
     },
@@ -1477,8 +1477,8 @@
       "payload": {
         "reason": "Read-only paired decomposition of the exact R226-integrated R209 mini-100 records complete. Input SHA256 verified: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; 100/100 name/network_id/target_sha256/budget rows align. V25 succeeds 100/100; V29 succeeds 43/100 and has 57 residual_wall_time_exhausted failures. Mean adjusted score is 8.170397440117225e-9 (V25) vs 0.5270942878803214 (V29); exact V29-V25 gap 0.527094279709924 decomposes into +0.5270942807855769 from the 57 failure rows and -1.0756526879701367e-9 from the 43 common-success rows. On common successes paired MSE delta mean is +1.964733285625021e-12 with descriptive SE 3.377471593191917e-12 (20/43 lower for V29), while all 43 V29 adjusted scores are lower due to lower measured-FLOP factor. Runtime shows all 43 successes residual<0.4s (max 0.399226739) and all 57 failures >=0.4s (min 0.400863099). Per-network size association is not estimable because shape/budget are fixed and no size field exists. Raw prediction tensors are absent; no counterfactual timeout MSE, leaderboard rank, estimator run, canonical-estimator change, or submission.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/8e97c274ed79edf14cf795060f58dcec7237e5da/research/r229/R229_PAIRED_DECOMPOSITION_RECEIPT.json",
-          "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52"
+          "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/8e97c274ed79edf14cf795060f58dcec7237e5da/research/r229/R229_PAIRED_DECOMPOSITION_RECEIPT.json"
         },
         "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
         "status": "COMPLETE"
@@ -1516,9 +1516,9 @@
       "job": "R230",
       "owner": "leader-method-audit",
       "payload": {
-        "run_id": "R230-public-leader-method-audit-20260923",
         "code_commit": "f55de5498921bd57b68e88f7ed179e6c13c15ce7",
-        "command": "read-only official AIcrowd audit of public submission details 331539 and 331308; verify public method/source visibility before comparison; no competitor-code download/run, private data, estimator run, paid compute, submission, or canonical edits"
+        "command": "read-only official AIcrowd audit of public submission details 331539 and 331308; verify public method/source visibility before comparison; no competitor-code download/run, private data, estimator run, paid compute, submission, or canonical edits",
+        "run_id": "R230-public-leader-method-audit-20260923"
       },
       "revision": 117
     },
@@ -1530,8 +1530,8 @@
       "payload": {
         "reason": "Read-only official AIcrowd audit of top Phase-2 submission IDs 331539 and 331308 complete. Their public leaderboard rows and View routes are visible, but anonymous detail retrieval exposed only a client-side Loading shell and no submission-specific method description, source link, artifact download, or system-description field. AIcrowd staff separately confirms RBAC protects submission-detail error fields; no bypass was attempted. Official-forum speculation about leader mechanisms was explicitly marked unvalidated and was excluded. Comparison against R209 V25/V29 and experiment history therefore yields UNKNOWN novelty for both targets and admits 0 leader-derived hypotheses rather than inventing a method. Audit SHA256 19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2. No competitor code download/run, estimator run, paid compute, submission, private/holdout access, external mutation, or canonical edit.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/12d5e6260b99ba822ad86644b74932844f43d903/research/R230_PUBLIC_LEADER_METHOD_AUDIT_RECEIPT.json",
-          "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8"
+          "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/12d5e6260b99ba822ad86644b74932844f43d903/research/R230_PUBLIC_LEADER_METHOD_AUDIT_RECEIPT.json"
         },
         "run_id": "R230-public-leader-method-audit-20260923",
         "status": "COMPLETE"
@@ -1539,20 +1539,20 @@
       "revision": 118
     },
     {
-      "revision": 119,
       "action": "finish",
+      "at": "2026-09-22T22:49:41.323Z",
       "job": "R227",
       "owner": "v25-optimization",
       "payload": {
         "reason": "R227 frozen feasibility attempt never executed: Actions query for code commit 6715c89debd53554cbce5691150180fbb933e503 returned 0 runs; branch tree contained protocol/source/cost/script only and no r227-feasibility.json; no live process/stdout evidence existed after the RUNNING checkpoint. Durable receipt commit 56ad738fca269e3ad92a9e9a1ac2801f757fde56 records the no-executor blocker. No estimator or mini-100 run, paid compute, holdout, submission, or canonical V25 mutation occurred.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json",
-          "sha256": "779003b529981c331e755441d457067823cdae6870c7b452f0c7aad159bd89ba"
+          "sha256": "779003b529981c331e755441d457067823cdae6870c7b452f0c7aad159bd89ba",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json"
         },
         "run_id": "R227-v25-srm2-feasibility-20260923",
         "status": "INFRA_ERROR"
       },
-      "at": "2026-09-22T22:49:41.323Z"
+      "revision": 119
     },
     {
       "action": "enqueue",
@@ -1596,39 +1596,39 @@
       "job": "R231",
       "owner": "v25-error-tail-audit",
       "payload": {
-        "run_id": "R231-v25-error-tail-audit-20260923",
         "code_commit": "5d41ec95d7efebeb5377f2e592076c2363a999e6",
-        "command": "read-only deterministic analysis of research/results/R209-v25-mini100.json: verify SHA/100 rows; compute raw-MSE distribution, top-k concentration, leave-one-out sensitivity, score floor and cross-panel 2.1e-9 numerical target; no estimator, paid/private data, submission, or canonical edits"
+        "command": "read-only deterministic analysis of research/results/R209-v25-mini100.json: verify SHA/100 rows; compute raw-MSE distribution, top-k concentration, leave-one-out sensitivity, score floor and cross-panel 2.1e-9 numerical target; no estimator, paid/private data, submission, or canonical edits",
+        "run_id": "R231-v25-error-tail-audit-20260923"
       },
       "revision": 123
     },
     {
-      "revision": 124,
       "action": "start",
+      "at": "2026-09-22T22:57:15.889Z",
       "job": "R227",
       "owner": "v25-optimization",
       "payload": {
-        "run_id": "R227-v25-srm2-feasibility-repair-20260923",
         "code_commit": "d9afae35aa7b6af1f065b27f450c89065ef6a5ef",
-        "command": "GitHub Actions .github/workflows/r227-source-feasibility.yml on standard ubuntu-24.04: fetch pinned upstream commit 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45, verify exact git blobs, run exactly once `python scripts/r227_srm2_feasibility.py --v25 r227-inputs/estimator_v25.py --probe r227-inputs/g_regen_probe.py --findings r227-inputs/findings_log.md --claims r227-inputs/claims_evidence.md --out r227-feasibility.json`; source-feasibility only, no estimator/mini-100"
+        "command": "GitHub Actions .github/workflows/r227-source-feasibility.yml on standard ubuntu-24.04: fetch pinned upstream commit 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45, verify exact git blobs, run exactly once `python scripts/r227_srm2_feasibility.py --v25 r227-inputs/estimator_v25.py --probe r227-inputs/g_regen_probe.py --findings r227-inputs/findings_log.md --claims r227-inputs/claims_evidence.md --out r227-feasibility.json`; source-feasibility only, no estimator/mini-100",
+        "run_id": "R227-v25-srm2-feasibility-repair-20260923"
       },
-      "at": "2026-09-22T22:57:15.889Z"
+      "revision": 124
     },
     {
-      "revision": 125,
       "action": "finish",
+      "at": "2026-09-22T23:00:09.326Z",
       "job": "R227",
       "owner": "v25-optimization",
       "payload": {
         "reason": "Frozen R227 V25-SRM2 source/deployability falsifier executed exactly once on free standard ubuntu-24.04 GitHub Actions for this public repository (run 35795094121, job 106972445213, exit 0). All pinned upstream git blobs matched. The gate is terminal PRE-SCIENCE NO-GO: published evidence obtains extra regeneration coefficients by dense augmented-chain G_off least-squares/xregen fitting; pinned V25 contains no deployable multi-mode runtime rule/table, and a literal dense extra mode is score-worse even granting the full 1.1% oracle raw gain (optimistic adjusted ratio 1.0258769953309217). Artifact 10723657950 preserves stdout, exit code, input identities, execution receipt and feasibility JSON, zip SHA256 a15c149a8598aacdb40313c6e125aecca9cea8bf7fa1fc2d86e455855d3f2f65. No estimator/mini-100 run, paid runner, holdout, submission, protocol/parent change, rescue or canonical mutation.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/0989fa6f7153bf007f7e7500c59f506e59eb7950/research/r227/R227_TERMINAL_RECEIPT.json",
-          "sha256": "f2d378346dafb2141b46abee31931e95aabec7fd880b9e369003d3f5f048de3b"
+          "sha256": "f2d378346dafb2141b46abee31931e95aabec7fd880b9e369003d3f5f048de3b",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/0989fa6f7153bf007f7e7500c59f506e59eb7950/research/r227/R227_TERMINAL_RECEIPT.json"
         },
         "run_id": "R227-v25-srm2-feasibility-repair-20260923",
         "status": "SCIENTIFIC_REJECT"
       },
-      "at": "2026-09-22T23:00:09.326Z"
+      "revision": 125
     },
     {
       "action": "finish",
@@ -1638,8 +1638,8 @@
       "payload": {
         "reason": "R231 read-only V25 mini-100 tail/frontier audit complete on exact input SHA256 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742. Verified 100/100 unique rows, fixed [16,1024] shape, B=2**41, 0 failures, exact stored-score recomputation. Mean raw MSE 2.228303490170447e-8; median 2.2776289299031305e-8. Top-1/5/10/20 raw-MSE shares are 1.3593%/6.4714%/12.4725%/23.8474%; Gini 0.0797813; max leave-one-out mean shift 0.362899%. With observed raw MSE fixed, factor-floor score is 2.228303490170447e-9, so compute reduction alone cannot reach the cross-panel numerical orientation 2.1e-9. At factor 0.1, required mean raw MSE is 2.1e-8, a 5.757900157515477% reduction from V25. This is not an exact-panel comparison or rank. Recommendation: prioritize global accuracy; tail-only evidence is weakly concentrated. No estimator run, paid/private/holdout data, submission, raw-tensor inference, canonical edit, or rank claim.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json",
-          "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff"
+          "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json"
         },
         "run_id": "R231-v25-error-tail-audit-20260923",
         "status": "COMPLETE"
@@ -1726,9 +1726,9 @@
       "job": "R234",
       "owner": "postflight-preflight",
       "payload": {
-        "run_id": "R234-r218-postflight-verifier-prep-20260923",
         "code_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
-        "command": "read-only inspect frozen R217 protocol and R218 workflow/executor/schema; prepare independent offline artifact verifier/checklist only; do not run estimator, poll/alter R218, access holdout, or claim R220"
+        "command": "read-only inspect frozen R217 protocol and R218 workflow/executor/schema; prepare independent offline artifact verifier/checklist only; do not run estimator, poll/alter R218, access holdout, or claim R220",
+        "run_id": "R234-r218-postflight-verifier-prep-20260923"
       },
       "revision": 133
     },
@@ -1740,8 +1740,8 @@
       "payload": {
         "reason": "R234 protocol/tooling prep complete without inspecting the in-progress R218 artifact or running any estimator. Independently pinned R217 frozen protocol (SHA256 40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968), R218 executor/workflow/expected-panel/prelaunch/arm sources, and the exact predeclared verdict: GO only if all contract/provenance gates pass plus primary median C0-C1 >=20 ms, CPU0 slower on >=35/50 MLPs, and C0-C1 failure difference >=10; any gate failure => PROTOCOL_INVALID. Prepared research/r234/r234_verify_r218.py to verify artifact hashes, all six raw block reports/300 rows, exact panel/order/FLOPs, budget/limits, per-block CPU affinity and stable worker telemetry, recompute U/C0/C1 paired means, primary delta, failure difference and owner-summary consistency. Prepared R234_VERIFIER_CHECKLIST.json with mandatory external R220 gates for single-job Actions provenance and estimator source SHA, since those cannot be proved from the artifact alone. R218 remains RUNNING; R220 remains QUEUED/unclaimed. No estimator, holdout, submission, retry/rescue, R218 mutation, or R220 claim/start.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/2a0e68fed7e66e4e4952a97103df880b1cb223bf/research/r234/R234_PREP_RECEIPT.json",
-          "sha256": "c90cf7dc64badf1330adc51753356769659cbb713957ced7e583d35d711aae84"
+          "sha256": "c90cf7dc64badf1330adc51753356769659cbb713957ced7e583d35d711aae84",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/2a0e68fed7e66e4e4952a97103df880b1cb223bf/research/r234/R234_PREP_RECEIPT.json"
         },
         "run_id": "R234-r218-postflight-verifier-prep-20260923",
         "status": "COMPLETE"
@@ -1754,9 +1754,9 @@
       "job": "R233",
       "owner": "v25-compute-audit",
       "payload": {
-        "run_id": "R233-v25-onehot-wick-cse-20260923",
         "code_commit": "48a9ccb3eaeca34a21e7dab636ab10935629e17b",
-        "command": "one isolated flopscope 0.12.1 micro-fixture for frozen ONEHOT-WICK-ROW-SELECT on pinned estimator_v25.py blob 195373a110215256b759d7c172ba8c923c62e5cc; prove bitwise identity and counted-FLOP delta only; no estimator/mini-100 unless identity+count+0.1%-materiality gates pass"
+        "command": "one isolated flopscope 0.12.1 micro-fixture for frozen ONEHOT-WICK-ROW-SELECT on pinned estimator_v25.py blob 195373a110215256b759d7c172ba8c923c62e5cc; prove bitwise identity and counted-FLOP delta only; no estimator/mini-100 unless identity+count+0.1%-materiality gates pass",
+        "run_id": "R233-v25-onehot-wick-cse-20260923"
       },
       "revision": 135
     },
@@ -1768,13 +1768,23 @@
       "payload": {
         "reason": "R233 source-level V25 counted-FLOP audit is terminal PRE-MINI NO-GO on the frozen materiality gate. Exact pinned V25 source audit found ONEHOT-WICK-ROW-SELECT: replace dense SL2/SR2/SL1 @ WT transforms by exact row selection plus scalar multiply because every coefficient row has one nonzero. Exactly one isolated free ubuntu-24.04 micro-fixture (Actions run 35799879085, job 106987553512) passed bitwise identity for WL1/WL2/WR2 in modes 0 and 1 and matched the preregistered flopscope 0.12.1 cost model exactly (mode0 5248->592; mode1 38704->4304). Production projection saves 62,756,864 FLOPs/MLP = 0.007783278470680822% of pinned V25 806,303,721,965 FLOPs, versus frozen meaningful threshold 806,303,722 FLOPs/MLP (0.1%); therefore meaningful GO fails by ~12.85x and mini-100 is not authorized. No estimator/full/mini run, paid/private/holdout data, submission, canonical estimator/result edit, R232 overlap, or rescue optimization.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/027f0c517ec55a27fffc0878b043e3216c021344/research/r233/R233_TERMINAL_RECEIPT.json",
-          "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62"
+          "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/027f0c517ec55a27fffc0878b043e3216c021344/research/r233/R233_TERMINAL_RECEIPT.json"
         },
         "run_id": "R233-v25-onehot-wick-cse-20260923",
         "status": "SCIENTIFIC_REJECT"
       },
       "revision": 136
+    },
+    {
+      "action": "reconcile",
+      "at": "2026-09-23T00:14:33Z",
+      "job": "R233",
+      "owner": "coordinator",
+      "payload": {
+        "reason": "Align R233 queue job terminal state with its preserved finish event and attempt result SCIENTIFIC_REJECT. Preserve original receipt, reason, attempt, and all history; no scientific work or score was changed or rerun."
+      },
+      "revision": 137
     }
   ],
   "jobs": [
@@ -2603,19 +2613,19 @@
       "assigned_owner": "results-integration",
       "attempts": [
         {
-          "run_id": "R226-r224-normalized-mini100-registry-integration",
           "code_commit": "42b5b658ee4cb3950e88a697416c8fb09fcf2f37",
           "command": "integrate exact R224 normalized R209 V25/V29 mini-100 records into latest research/control-v2; regenerate STATUS via arc_control report; run check and compare; preserve concurrent queue events; no estimator run or leaderboard-rank claim",
-          "status": "COMPLETE",
           "completion": {
             "reason": "Integrated exact R224-normalized R209 V25/V29 mini-100 records from commit 8fb0afb77ae834d88bae29557a41356d4d98401f into latest research/control-v2 without estimator execution. Integration commit 20fafab5471e6ed227562c651179dd2ef331ea22 changes only research/results/R209-v25-mini100.json, research/results/R209-v29-mini100.json, and regenerated research/control/STATUS.md. SHA256: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; STATUS a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2. Validation: PASS 6 normalized results, 27 jobs, 194 history entries; V29/V25 score_ratio 64512686.407671124, improved_networks 43/100, paired_gain_mean -0.5270942797099241, paired_gain_se 0.04886972545240127; V29 preserves 57 residual_wall_time_exhausted failures and raw prediction tensors remain absent. Non-force fast-forward from refreshed head; no queue events lost. No estimator run, holdout, paid compute, submission, or leaderboard-rank claim.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/control/STATUS.md",
-              "sha256": "a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2"
+              "sha256": "a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/control/STATUS.md"
             },
             "run_id": "R226-r224-normalized-mini100-registry-integration",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "R226-r224-normalized-mini100-registry-integration",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Use R224's schema-valid V25/V29 mini-100 records and receipt, without rerunning the estimator. Integrate the two exact result JSON files into the authoritative `research/control-v2` `research/results/` registry, verify `arc_control.py check`, `compare`, and regenerated `STATUS.md`. Preserve V29's 57 failed rows and raw-tensor limitation. Refresh from the latest control head before writing; publish a non-force commit with only normalized records/overview so concurrent queue events are not lost. Provide commit, hashes, comparison, and finish receipt. No holdout, paid compute, submission or leaderboard claim.",
@@ -2626,46 +2636,46 @@
       "id": "R226",
       "owner": "results-integration",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Integrate verified R209 V25/V29 mini-100 records into shared registry",
+      "reason": "Integrated exact R224-normalized R209 V25/V29 mini-100 records from commit 8fb0afb77ae834d88bae29557a41356d4d98401f into latest research/control-v2 without estimator execution. Integration commit 20fafab5471e6ed227562c651179dd2ef331ea22 changes only research/results/R209-v25-mini100.json, research/results/R209-v29-mini100.json, and regenerated research/control/STATUS.md. SHA256: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; STATUS a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2. Validation: PASS 6 normalized results, 27 jobs, 194 history entries; V29/V25 score_ratio 64512686.407671124, improved_networks 43/100, paired_gain_mean -0.5270942797099241, paired_gain_se 0.04886972545240127; V29 preserves 57 residual_wall_time_exhausted failures and raw prediction tensors remain absent. Non-force fast-forward from refreshed head; no queue events lost. No estimator run, holdout, paid compute, submission, or leaderboard-rank claim.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/control/STATUS.md",
-        "sha256": "a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2"
+        "sha256": "a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/control/STATUS.md"
       },
-      "reason": "Integrated exact R224-normalized R209 V25/V29 mini-100 records from commit 8fb0afb77ae834d88bae29557a41356d4d98401f into latest research/control-v2 without estimator execution. Integration commit 20fafab5471e6ed227562c651179dd2ef331ea22 changes only research/results/R209-v25-mini100.json, research/results/R209-v29-mini100.json, and regenerated research/control/STATUS.md. SHA256: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; STATUS a5dcf6d616cd4094392d807b8c5f2f9f86e2343e1d93edb808a9122913114bf2. Validation: PASS 6 normalized results, 27 jobs, 194 history entries; V29/V25 score_ratio 64512686.407671124, improved_networks 43/100, paired_gain_mean -0.5270942797099241, paired_gain_se 0.04886972545240127; V29 preserves 57 residual_wall_time_exhausted failures and raw prediction tensors remain absent. Non-force fast-forward from refreshed head; no queue events lost. No estimator run, holdout, paid compute, submission, or leaderboard-rank claim."
+      "status": "COMPLETE",
+      "title": "Integrate verified R209 V25/V29 mini-100 records into shared registry"
     },
     {
       "assigned_owner": "v25-optimization",
       "attempts": [
         {
-          "run_id": "R227-v25-srm2-feasibility-20260923",
           "code_commit": "6715c89debd53554cbce5691150180fbb933e503",
           "command": "python scripts/r227_srm2_feasibility.py --v25 /tmp/estimator_v25.py --probe /tmp/g_regen_probe.py --findings /tmp/findings_log.md --claims /tmp/claims_evidence.md --out r227-feasibility.json; pinned upstream blobs must match; no mini-100 unless deployability gate passes",
-          "status": "INFRA_ERROR",
           "completion": {
             "reason": "R227 frozen feasibility attempt never executed: Actions query for code commit 6715c89debd53554cbce5691150180fbb933e503 returned 0 runs; branch tree contained protocol/source/cost/script only and no r227-feasibility.json; no live process/stdout evidence existed after the RUNNING checkpoint. Durable receipt commit 56ad738fca269e3ad92a9e9a1ac2801f757fde56 records the no-executor blocker. No estimator or mini-100 run, paid compute, holdout, submission, or canonical V25 mutation occurred.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json",
-              "sha256": "779003b529981c331e755441d457067823cdae6870c7b452f0c7aad159bd89ba"
+              "sha256": "779003b529981c331e755441d457067823cdae6870c7b452f0c7aad159bd89ba",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/56ad738fca269e3ad92a9e9a1ac2801f757fde56/research/r227/R227_INFRA_ERROR_RECEIPT.json"
             },
             "run_id": "R227-v25-srm2-feasibility-20260923",
             "status": "INFRA_ERROR"
-          }
+          },
+          "run_id": "R227-v25-srm2-feasibility-20260923",
+          "status": "INFRA_ERROR"
         },
         {
-          "run_id": "R227-v25-srm2-feasibility-repair-20260923",
           "code_commit": "d9afae35aa7b6af1f065b27f450c89065ef6a5ef",
           "command": "GitHub Actions .github/workflows/r227-source-feasibility.yml on standard ubuntu-24.04: fetch pinned upstream commit 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45, verify exact git blobs, run exactly once `python scripts/r227_srm2_feasibility.py --v25 r227-inputs/estimator_v25.py --probe r227-inputs/g_regen_probe.py --findings r227-inputs/findings_log.md --claims r227-inputs/claims_evidence.md --out r227-feasibility.json`; source-feasibility only, no estimator/mini-100",
-          "status": "SCIENTIFIC_REJECT",
           "completion": {
             "reason": "Frozen R227 V25-SRM2 source/deployability falsifier executed exactly once on free standard ubuntu-24.04 GitHub Actions for this public repository (run 35795094121, job 106972445213, exit 0). All pinned upstream git blobs matched. The gate is terminal PRE-SCIENCE NO-GO: published evidence obtains extra regeneration coefficients by dense augmented-chain G_off least-squares/xregen fitting; pinned V25 contains no deployable multi-mode runtime rule/table, and a literal dense extra mode is score-worse even granting the full 1.1% oracle raw gain (optimistic adjusted ratio 1.0258769953309217). Artifact 10723657950 preserves stdout, exit code, input identities, execution receipt and feasibility JSON, zip SHA256 a15c149a8598aacdb40313c6e125aecca9cea8bf7fa1fc2d86e455855d3f2f65. No estimator/mini-100 run, paid runner, holdout, submission, protocol/parent change, rescue or canonical mutation.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/0989fa6f7153bf007f7e7500c59f506e59eb7950/research/r227/R227_TERMINAL_RECEIPT.json",
-              "sha256": "f2d378346dafb2141b46abee31931e95aabec7fd880b9e369003d3f5f048de3b"
+              "sha256": "f2d378346dafb2141b46abee31931e95aabec7fd880b9e369003d3f5f048de3b",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/0989fa6f7153bf007f7e7500c59f506e59eb7950/research/r227/R227_TERMINAL_RECEIPT.json"
             },
             "run_id": "R227-v25-srm2-feasibility-repair-20260923",
             "status": "SCIENTIFIC_REJECT"
-          }
+          },
+          "run_id": "R227-v25-srm2-feasibility-repair-20260923",
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Read current `AGENTS.md`, `research/RESEARCH_PROCESS.md`, immutable history and R224's normalized per-network V25 mini-100 records. Choose exactly one untried algorithm-level change aimed at lowering official adjusted score on this same public development panel; explicitly exclude R223's K4-to-K3 per-neuron feed-lambda patch, R219's factor-copula family, and all previously falsified mechanisms. Freeze parent/source/config/falsifier, predicted cost and GO/NO-GO before execution. Run at most one bounded same-panel candidate evaluation using verified free/existing compute only; keep canonical V25 unchanged. Retain every network row/failure, compare official adjusted score and measured FLOPs, create artifact/receipt/commit. If no distinct feasible candidate exists, finish with a scoped terminal NO-GO. No paid resource, holdout or submission.",
@@ -2676,239 +2686,239 @@
       "id": "R227",
       "owner": "v25-optimization",
       "priority": 1,
-      "status": "SCIENTIFIC_REJECT",
-      "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure",
+      "reason": "Frozen R227 V25-SRM2 source/deployability falsifier executed exactly once on free standard ubuntu-24.04 GitHub Actions for this public repository (run 35795094121, job 106972445213, exit 0). All pinned upstream git blobs matched. The gate is terminal PRE-SCIENCE NO-GO: published evidence obtains extra regeneration coefficients by dense augmented-chain G_off least-squares/xregen fitting; pinned V25 contains no deployable multi-mode runtime rule/table, and a literal dense extra mode is score-worse even granting the full 1.1% oracle raw gain (optimistic adjusted ratio 1.0258769953309217). Artifact 10723657950 preserves stdout, exit code, input identities, execution receipt and feasibility JSON, zip SHA256 a15c149a8598aacdb40313c6e125aecca9cea8bf7fa1fc2d86e455855d3f2f65. No estimator/mini-100 run, paid runner, holdout, submission, protocol/parent change, rescue or canonical mutation.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/0989fa6f7153bf007f7e7500c59f506e59eb7950/research/r227/R227_TERMINAL_RECEIPT.json",
-        "sha256": "f2d378346dafb2141b46abee31931e95aabec7fd880b9e369003d3f5f048de3b"
+        "sha256": "f2d378346dafb2141b46abee31931e95aabec7fd880b9e369003d3f5f048de3b",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/0989fa6f7153bf007f7e7500c59f506e59eb7950/research/r227/R227_TERMINAL_RECEIPT.json"
       },
-      "reason": "Frozen R227 V25-SRM2 source/deployability falsifier executed exactly once on free standard ubuntu-24.04 GitHub Actions for this public repository (run 35795094121, job 106972445213, exit 0). All pinned upstream git blobs matched. The gate is terminal PRE-SCIENCE NO-GO: published evidence obtains extra regeneration coefficients by dense augmented-chain G_off least-squares/xregen fitting; pinned V25 contains no deployable multi-mode runtime rule/table, and a literal dense extra mode is score-worse even granting the full 1.1% oracle raw gain (optimistic adjusted ratio 1.0258769953309217). Artifact 10723657950 preserves stdout, exit code, input identities, execution receipt and feasibility JSON, zip SHA256 a15c149a8598aacdb40313c6e125aecca9cea8bf7fa1fc2d86e455855d3f2f65. No estimator/mini-100 run, paid runner, holdout, submission, protocol/parent change, rescue or canonical mutation."
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Test one novel V25 mini-100 score improvement after R223 infrastructure failure"
     },
     {
-      "id": "R228",
-      "title": "Audit official ARC leaderboard and rank comparability",
-      "owner": "official-leaderboard-audit",
       "assigned_owner": "official-leaderboard-audit",
-      "status": "COMPLETE",
-      "priority": 1,
-      "hypothesis_id": "OFFICIAL-LEADERBOARD-RANKABILITY-AUDIT",
-      "depends_on": [],
       "attempts": [
         {
-          "run_id": "R228-official-leaderboard-audit-20260923",
           "code_commit": "e47da3c92416e374435fba8313ed7606b5a72227",
           "command": "read-only primary-official-source audit of ARC White-Box Phase-2 scoring, visible leaderboard/submissions, exact evaluation panel, and R209 mini-100 rankability; no estimator run, paid compute, submission, external mutation, or canonical-result changes",
-          "status": "COMPLETE",
           "completion": {
             "reason": "Primary-official-source Phase-2 leaderboard audit complete. Official metric is mean per-MLP final-layer MSE times max(0.1,C/B), with C=F, B=2**41 and failure multiplier 1.0. The live public leaderboard exposes 50-participant rows scored on a 50-public-MLP grader split; official submission detail states final ranking uses all 100 grader MLPs with a distinct 50-private split still sealed. R209 V25/V29 are local v2-phase2 mini:all-100 development results, not that grader public-50 panel; their evaluator/meter is whestbench 0.16.1/flopscope 0.12.1 versus the documented grader pair 0.16.0/0.12.0, and no official submission exists for the R209 artifact. Therefore R209 is NOT_RANKABLE_FROM_R209_MINI100 and no leaderboard rank is claimed. Audit SHA256 da5ecc4ac5549a8703e6bb3c925a19cce48e57b732229cfa8ae8f221613e651f. No estimator run, paid compute, submission, private access, external mutation, or canonical-result change.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT_RECEIPT.json",
-              "sha256": "d9d244d2ff7352e113af4d8cbb956dc379b4e6cfaf0357444fce77695ed8bdc5"
+              "sha256": "d9d244d2ff7352e113af4d8cbb956dc379b4e6cfaf0357444fce77695ed8bdc5",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT_RECEIPT.json"
             },
             "run_id": "R228-official-leaderboard-audit-20260923",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "R228-official-leaderboard-audit-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Using primary official sources only, verify the current ARC White-Box Phase-2 rules, metric, visible leaderboard/submissions and exact-panel comparability. Freeze a concise protocol before research; save an append-only source-cited audit and machine-readable receipt with retrieval time. State rank only if the official score/panel is exactly comparable; otherwise explain what is missing. No submission, paid compute, estimator run, or changes to canonical results.",
+      "depends_on": [],
+      "hypothesis_id": "OFFICIAL-LEADERBOARD-RANKABILITY-AUDIT",
+      "id": "R228",
+      "owner": "official-leaderboard-audit",
+      "priority": 1,
+      "reason": "Primary-official-source Phase-2 leaderboard audit complete. Official metric is mean per-MLP final-layer MSE times max(0.1,C/B), with C=F, B=2**41 and failure multiplier 1.0. The live public leaderboard exposes 50-participant rows scored on a 50-public-MLP grader split; official submission detail states final ranking uses all 100 grader MLPs with a distinct 50-private split still sealed. R209 V25/V29 are local v2-phase2 mini:all-100 development results, not that grader public-50 panel; their evaluator/meter is whestbench 0.16.1/flopscope 0.12.1 versus the documented grader pair 0.16.0/0.12.0, and no official submission exists for the R209 artifact. Therefore R209 is NOT_RANKABLE_FROM_R209_MINI100 and no leaderboard rank is claimed. Audit SHA256 da5ecc4ac5549a8703e6bb3c925a19cce48e57b732229cfa8ae8f221613e651f. No estimator run, paid compute, submission, private access, external mutation, or canonical-result change.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT_RECEIPT.json",
-        "sha256": "d9d244d2ff7352e113af4d8cbb956dc379b4e6cfaf0357444fce77695ed8bdc5"
+        "sha256": "d9d244d2ff7352e113af4d8cbb956dc379b4e6cfaf0357444fce77695ed8bdc5",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/2a1924e9d266000f4e9fcdde5979b789dfad8340/research/R228_OFFICIAL_LEADERBOARD_AUDIT_RECEIPT.json"
       },
-      "reason": "Primary-official-source Phase-2 leaderboard audit complete. Official metric is mean per-MLP final-layer MSE times max(0.1,C/B), with C=F, B=2**41 and failure multiplier 1.0. The live public leaderboard exposes 50-participant rows scored on a 50-public-MLP grader split; official submission detail states final ranking uses all 100 grader MLPs with a distinct 50-private split still sealed. R209 V25/V29 are local v2-phase2 mini:all-100 development results, not that grader public-50 panel; their evaluator/meter is whestbench 0.16.1/flopscope 0.12.1 versus the documented grader pair 0.16.0/0.12.0, and no official submission exists for the R209 artifact. Therefore R209 is NOT_RANKABLE_FROM_R209_MINI100 and no leaderboard rank is claimed. Audit SHA256 da5ecc4ac5549a8703e6bb3c925a19cce48e57b732229cfa8ae8f221613e651f. No estimator run, paid compute, submission, private access, external mutation, or canonical-result change."
+      "status": "COMPLETE",
+      "title": "Audit official ARC leaderboard and rank comparability"
     },
     {
-      "id": "R229",
-      "title": "Decompose paired V25/V29 mini-100 score gap",
-      "owner": "paired-score-decomposition",
       "assigned_owner": "paired-score-decomposition",
-      "status": "COMPLETE",
-      "priority": 1,
-      "hypothesis_id": "R209-V25-V29-MINI100-PAIRED-DECOMPOSITION",
-      "depends_on": [
-        "R226"
-      ],
       "attempts": [
         {
-          "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
           "code_commit": "2c18ac98e2ab948eac8f4054f6c7d1ee05ef4280",
           "command": "read-only paired decomposition of R209 normalized mini-100 records; preserve exact row IDs, separate timeout penalty from matched-success MSE, no estimator run",
-          "status": "COMPLETE",
           "completion": {
             "reason": "Read-only paired decomposition of the exact R226-integrated R209 mini-100 records complete. Input SHA256 verified: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; 100/100 name/network_id/target_sha256/budget rows align. V25 succeeds 100/100; V29 succeeds 43/100 and has 57 residual_wall_time_exhausted failures. Mean adjusted score is 8.170397440117225e-9 (V25) vs 0.5270942878803214 (V29); exact V29-V25 gap 0.527094279709924 decomposes into +0.5270942807855769 from the 57 failure rows and -1.0756526879701367e-9 from the 43 common-success rows. On common successes paired MSE delta mean is +1.964733285625021e-12 with descriptive SE 3.377471593191917e-12 (20/43 lower for V29), while all 43 V29 adjusted scores are lower due to lower measured-FLOP factor. Runtime shows all 43 successes residual<0.4s (max 0.399226739) and all 57 failures >=0.4s (min 0.400863099). Per-network size association is not estimable because shape/budget are fixed and no size field exists. Raw prediction tensors are absent; no counterfactual timeout MSE, leaderboard rank, estimator run, canonical-estimator change, or submission.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/8e97c274ed79edf14cf795060f58dcec7237e5da/research/r229/R229_PAIRED_DECOMPOSITION_RECEIPT.json",
-              "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52"
+              "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/8e97c274ed79edf14cf795060f58dcec7237e5da/research/r229/R229_PAIRED_DECOMPOSITION_RECEIPT.json"
             },
             "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "01a0cb40-5d7e-7203-b005-95e2d388311b",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read the R226-integrated exact R209 V25/V29 normalized mini-100 records and official scoring implementation. Freeze the analysis plan and input hashes first. Independently verify row alignment, then decompose adjusted-score gap into failed/time-out rows versus matched successful rows; report paired distribution, uncertainty only where justified, and available architecture/runtime associations. Use no estimator run and do not infer leaderboard rank. Save reproducible analysis script/table, append-only receipt and commit; recommend one evidence-backed next lever without modifying canonical estimators.",
+      "depends_on": [
+        "R226"
+      ],
+      "hypothesis_id": "R209-V25-V29-MINI100-PAIRED-DECOMPOSITION",
+      "id": "R229",
+      "owner": "paired-score-decomposition",
+      "priority": 1,
+      "reason": "Read-only paired decomposition of the exact R226-integrated R209 mini-100 records complete. Input SHA256 verified: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; 100/100 name/network_id/target_sha256/budget rows align. V25 succeeds 100/100; V29 succeeds 43/100 and has 57 residual_wall_time_exhausted failures. Mean adjusted score is 8.170397440117225e-9 (V25) vs 0.5270942878803214 (V29); exact V29-V25 gap 0.527094279709924 decomposes into +0.5270942807855769 from the 57 failure rows and -1.0756526879701367e-9 from the 43 common-success rows. On common successes paired MSE delta mean is +1.964733285625021e-12 with descriptive SE 3.377471593191917e-12 (20/43 lower for V29), while all 43 V29 adjusted scores are lower due to lower measured-FLOP factor. Runtime shows all 43 successes residual<0.4s (max 0.399226739) and all 57 failures >=0.4s (min 0.400863099). Per-network size association is not estimable because shape/budget are fixed and no size field exists. Raw prediction tensors are absent; no counterfactual timeout MSE, leaderboard rank, estimator run, canonical-estimator change, or submission.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/8e97c274ed79edf14cf795060f58dcec7237e5da/research/r229/R229_PAIRED_DECOMPOSITION_RECEIPT.json",
-        "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52"
+        "sha256": "acd2bf7f8854566619cc25572d5dc501ab135be31ab694c2b46d15ee48b02a52",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/8e97c274ed79edf14cf795060f58dcec7237e5da/research/r229/R229_PAIRED_DECOMPOSITION_RECEIPT.json"
       },
-      "reason": "Read-only paired decomposition of the exact R226-integrated R209 mini-100 records complete. Input SHA256 verified: V25 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742; V29 1c22e2a951b4a3f7647421fe50090d7172c29a05b7f64426055d042d0af20751; 100/100 name/network_id/target_sha256/budget rows align. V25 succeeds 100/100; V29 succeeds 43/100 and has 57 residual_wall_time_exhausted failures. Mean adjusted score is 8.170397440117225e-9 (V25) vs 0.5270942878803214 (V29); exact V29-V25 gap 0.527094279709924 decomposes into +0.5270942807855769 from the 57 failure rows and -1.0756526879701367e-9 from the 43 common-success rows. On common successes paired MSE delta mean is +1.964733285625021e-12 with descriptive SE 3.377471593191917e-12 (20/43 lower for V29), while all 43 V29 adjusted scores are lower due to lower measured-FLOP factor. Runtime shows all 43 successes residual<0.4s (max 0.399226739) and all 57 failures >=0.4s (min 0.400863099). Per-network size association is not estimable because shape/budget are fixed and no size field exists. Raw prediction tensors are absent; no counterfactual timeout MSE, leaderboard rank, estimator run, canonical-estimator change, or submission."
+      "status": "COMPLETE",
+      "title": "Decompose paired V25/V29 mini-100 score gap"
     },
     {
-      "id": "R230",
-      "title": "Audit public methods of top ARC Phase-2 submissions",
-      "owner": "leader-method-audit",
       "assigned_owner": "leader-method-audit",
-      "status": "COMPLETE",
-      "priority": 1,
-      "hypothesis_id": "PUBLIC-LEADER-METHODS-TRANSFER-AUDIT",
-      "depends_on": [
-        "R228"
-      ],
       "attempts": [
         {
-          "run_id": "R230-public-leader-method-audit-20260923",
           "code_commit": "f55de5498921bd57b68e88f7ed179e6c13c15ce7",
           "command": "read-only official AIcrowd audit of public submission details 331539 and 331308; verify public method/source visibility before comparison; no competitor-code download/run, private data, estimator run, paid compute, submission, or canonical edits",
-          "status": "COMPLETE",
           "completion": {
             "reason": "Read-only official AIcrowd audit of top Phase-2 submission IDs 331539 and 331308 complete. Their public leaderboard rows and View routes are visible, but anonymous detail retrieval exposed only a client-side Loading shell and no submission-specific method description, source link, artifact download, or system-description field. AIcrowd staff separately confirms RBAC protects submission-detail error fields; no bypass was attempted. Official-forum speculation about leader mechanisms was explicitly marked unvalidated and was excluded. Comparison against R209 V25/V29 and experiment history therefore yields UNKNOWN novelty for both targets and admits 0 leader-derived hypotheses rather than inventing a method. Audit SHA256 19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2. No competitor code download/run, estimator run, paid compute, submission, private/holdout access, external mutation, or canonical edit.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/12d5e6260b99ba822ad86644b74932844f43d903/research/R230_PUBLIC_LEADER_METHOD_AUDIT_RECEIPT.json",
-              "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8"
+              "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/12d5e6260b99ba822ad86644b74932844f43d903/research/R230_PUBLIC_LEADER_METHOD_AUDIT_RECEIPT.json"
             },
             "run_id": "R230-public-leader-method-audit-20260923",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "R230-public-leader-method-audit-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read only the publicly visible official AIcrowd details and artifacts for the current top Phase-2 public submissions (start with submission IDs 331539 and 331308 from R228's snapshot). Determine whether methods/source are actually public and permitted to inspect; compare documented mechanisms against ARC experiment history and R209 V25/V29. Produce an append-only source-cited method audit, deduplication table, and one or two transferable testable hypotheses with explicit uncertainty and cost/evidence gates. Do not download/run competitor code, use private/holdout data, launch an estimator, spend money, submit, or alter canonical results. If details are unavailable, preserve exact access failure and derive no invented method claims.",
+      "depends_on": [
+        "R228"
+      ],
+      "hypothesis_id": "PUBLIC-LEADER-METHODS-TRANSFER-AUDIT",
+      "id": "R230",
+      "owner": "leader-method-audit",
+      "priority": 1,
+      "reason": "Read-only official AIcrowd audit of top Phase-2 submission IDs 331539 and 331308 complete. Their public leaderboard rows and View routes are visible, but anonymous detail retrieval exposed only a client-side Loading shell and no submission-specific method description, source link, artifact download, or system-description field. AIcrowd staff separately confirms RBAC protects submission-detail error fields; no bypass was attempted. Official-forum speculation about leader mechanisms was explicitly marked unvalidated and was excluded. Comparison against R209 V25/V29 and experiment history therefore yields UNKNOWN novelty for both targets and admits 0 leader-derived hypotheses rather than inventing a method. Audit SHA256 19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2. No competitor code download/run, estimator run, paid compute, submission, private/holdout access, external mutation, or canonical edit.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/12d5e6260b99ba822ad86644b74932844f43d903/research/R230_PUBLIC_LEADER_METHOD_AUDIT_RECEIPT.json",
-        "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8"
+        "sha256": "758c044eac681ea7756702662a267ef240b3f181d9fe33367cefc27f498cbec8",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/12d5e6260b99ba822ad86644b74932844f43d903/research/R230_PUBLIC_LEADER_METHOD_AUDIT_RECEIPT.json"
       },
-      "reason": "Read-only official AIcrowd audit of top Phase-2 submission IDs 331539 and 331308 complete. Their public leaderboard rows and View routes are visible, but anonymous detail retrieval exposed only a client-side Loading shell and no submission-specific method description, source link, artifact download, or system-description field. AIcrowd staff separately confirms RBAC protects submission-detail error fields; no bypass was attempted. Official-forum speculation about leader mechanisms was explicitly marked unvalidated and was excluded. Comparison against R209 V25/V29 and experiment history therefore yields UNKNOWN novelty for both targets and admits 0 leader-derived hypotheses rather than inventing a method. Audit SHA256 19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2. No competitor code download/run, estimator run, paid compute, submission, private/holdout access, external mutation, or canonical edit."
+      "status": "COMPLETE",
+      "title": "Audit public methods of top ARC Phase-2 submissions"
     },
     {
-      "id": "R231",
-      "title": "Quantify V25 mini-100 error-tail concentration and target frontier",
-      "owner": "v25-error-tail-audit",
       "assigned_owner": "v25-error-tail-audit",
-      "status": "COMPLETE",
-      "priority": 1,
-      "hypothesis_id": "R209-V25-ERROR-TAIL-TARGET-FRONTIER",
+      "attempts": [
+        {
+          "code_commit": "5d41ec95d7efebeb5377f2e592076c2363a999e6",
+          "command": "read-only deterministic analysis of research/results/R209-v25-mini100.json: verify SHA/100 rows; compute raw-MSE distribution, top-k concentration, leave-one-out sensitivity, score floor and cross-panel 2.1e-9 numerical target; no estimator, paid/private data, submission, or canonical edits",
+          "completion": {
+            "reason": "R231 read-only V25 mini-100 tail/frontier audit complete on exact input SHA256 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742. Verified 100/100 unique rows, fixed [16,1024] shape, B=2**41, 0 failures, exact stored-score recomputation. Mean raw MSE 2.228303490170447e-8; median 2.2776289299031305e-8. Top-1/5/10/20 raw-MSE shares are 1.3593%/6.4714%/12.4725%/23.8474%; Gini 0.0797813; max leave-one-out mean shift 0.362899%. With observed raw MSE fixed, factor-floor score is 2.228303490170447e-9, so compute reduction alone cannot reach the cross-panel numerical orientation 2.1e-9. At factor 0.1, required mean raw MSE is 2.1e-8, a 5.757900157515477% reduction from V25. This is not an exact-panel comparison or rank. Recommendation: prioritize global accuracy; tail-only evidence is weakly concentrated. No estimator run, paid/private/holdout data, submission, raw-tensor inference, canonical edit, or rank claim.",
+            "receipt": {
+              "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json"
+            },
+            "run_id": "R231-v25-error-tail-audit-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R231-v25-error-tail-audit-20260923",
+          "status": "COMPLETE"
+        }
+      ],
+      "deliverable": "Using the exact R226-integrated R209 V25 mini-100 row data and the R228 public leaderboard snapshot, perform a reproducible descriptive tail-concentration and target-frontier audit. Verify input hashes and all 100 rows; report mean/median/quantiles, top-1/5/10/20 network shares of total raw MSE, leave-one-out mean sensitivity, and any concentration statistic justified by the exact fields. Derive the official score floor under V25's current C/B and the minimum raw-MSE reduction needed to numerically match the displayed 2.1e-9 leader score at the 0.1 compute-factor floor; label this strictly as a cross-panel numerical target, not rank/comparable evidence. State limits from missing raw tensors and fixed network size/shape. No estimator run, experiment, paid/holdout data, submission or canonical edits. Save a small reproducible script/table and append-only report/receipt with hashes; recommend whether the next effort should target global accuracy, compute factor, or a measurable tail subset.",
       "depends_on": [
         "R228",
         "R229"
       ],
-      "attempts": [
-        {
-          "run_id": "R231-v25-error-tail-audit-20260923",
-          "code_commit": "5d41ec95d7efebeb5377f2e592076c2363a999e6",
-          "command": "read-only deterministic analysis of research/results/R209-v25-mini100.json: verify SHA/100 rows; compute raw-MSE distribution, top-k concentration, leave-one-out sensitivity, score floor and cross-panel 2.1e-9 numerical target; no estimator, paid/private data, submission, or canonical edits",
-          "status": "COMPLETE",
-          "completion": {
-            "reason": "R231 read-only V25 mini-100 tail/frontier audit complete on exact input SHA256 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742. Verified 100/100 unique rows, fixed [16,1024] shape, B=2**41, 0 failures, exact stored-score recomputation. Mean raw MSE 2.228303490170447e-8; median 2.2776289299031305e-8. Top-1/5/10/20 raw-MSE shares are 1.3593%/6.4714%/12.4725%/23.8474%; Gini 0.0797813; max leave-one-out mean shift 0.362899%. With observed raw MSE fixed, factor-floor score is 2.228303490170447e-9, so compute reduction alone cannot reach the cross-panel numerical orientation 2.1e-9. At factor 0.1, required mean raw MSE is 2.1e-8, a 5.757900157515477% reduction from V25. This is not an exact-panel comparison or rank. Recommendation: prioritize global accuracy; tail-only evidence is weakly concentrated. No estimator run, paid/private/holdout data, submission, raw-tensor inference, canonical edit, or rank claim.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json",
-              "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff"
-            },
-            "run_id": "R231-v25-error-tail-audit-20260923",
-            "status": "COMPLETE"
-          }
-        }
-      ],
-      "deliverable": "Using the exact R226-integrated R209 V25 mini-100 row data and the R228 public leaderboard snapshot, perform a reproducible descriptive tail-concentration and target-frontier audit. Verify input hashes and all 100 rows; report mean/median/quantiles, top-1/5/10/20 network shares of total raw MSE, leave-one-out mean sensitivity, and any concentration statistic justified by the exact fields. Derive the official score floor under V25's current C/B and the minimum raw-MSE reduction needed to numerically match the displayed 2.1e-9 leader score at the 0.1 compute-factor floor; label this strictly as a cross-panel numerical target, not rank/comparable evidence. State limits from missing raw tensors and fixed network size/shape. No estimator run, experiment, paid/holdout data, submission or canonical edits. Save a small reproducible script/table and append-only report/receipt with hashes; recommend whether the next effort should target global accuracy, compute factor, or a measurable tail subset.",
+      "hypothesis_id": "R209-V25-ERROR-TAIL-TARGET-FRONTIER",
+      "id": "R231",
+      "owner": "v25-error-tail-audit",
+      "priority": 1,
+      "reason": "R231 read-only V25 mini-100 tail/frontier audit complete on exact input SHA256 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742. Verified 100/100 unique rows, fixed [16,1024] shape, B=2**41, 0 failures, exact stored-score recomputation. Mean raw MSE 2.228303490170447e-8; median 2.2776289299031305e-8. Top-1/5/10/20 raw-MSE shares are 1.3593%/6.4714%/12.4725%/23.8474%; Gini 0.0797813; max leave-one-out mean shift 0.362899%. With observed raw MSE fixed, factor-floor score is 2.228303490170447e-9, so compute reduction alone cannot reach the cross-panel numerical orientation 2.1e-9. At factor 0.1, required mean raw MSE is 2.1e-8, a 5.757900157515477% reduction from V25. This is not an exact-panel comparison or rank. Recommendation: prioritize global accuracy; tail-only evidence is weakly concentrated. No estimator run, paid/private/holdout data, submission, raw-tensor inference, canonical edit, or rank claim.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json",
-        "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff"
+        "sha256": "3fd15fce2adcd8c1a3e1cad97f3469efa0c3efbb7229e0a524c103a3050970ff",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json"
       },
-      "reason": "R231 read-only V25 mini-100 tail/frontier audit complete on exact input SHA256 f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742. Verified 100/100 unique rows, fixed [16,1024] shape, B=2**41, 0 failures, exact stored-score recomputation. Mean raw MSE 2.228303490170447e-8; median 2.2776289299031305e-8. Top-1/5/10/20 raw-MSE shares are 1.3593%/6.4714%/12.4725%/23.8474%; Gini 0.0797813; max leave-one-out mean shift 0.362899%. With observed raw MSE fixed, factor-floor score is 2.228303490170447e-9, so compute reduction alone cannot reach the cross-panel numerical orientation 2.1e-9. At factor 0.1, required mean raw MSE is 2.1e-8, a 5.757900157515477% reduction from V25. This is not an exact-panel comparison or rank. Recommendation: prioritize global accuracy; tail-only evidence is weakly concentrated. No estimator run, paid/private/holdout data, submission, raw-tensor inference, canonical edit, or rank claim."
+      "status": "COMPLETE",
+      "title": "Quantify V25 mini-100 error-tail concentration and target frontier"
     },
     {
-      "id": "R232",
-      "title": "Find one novel global-accuracy estimator hypothesis",
-      "owner": "global-accuracy-research",
       "assigned_owner": "global-accuracy-research",
-      "status": "CLAIMED",
-      "priority": 1,
-      "hypothesis_id": "GLOBAL-ACCURACY-POST-R227-R231",
+      "attempts": [],
+      "deliverable": "Continue after R227's terminal pre-science NO-GO and R231's finding that the V25 error tail is weakly concentrated. Read the complete immutable experiment ledger, current AGENTS/RESEARCH_PROCESS, and R227/R231 receipts. Identify exactly one genuinely untested global-accuracy estimator family (not per-network tail tuning, second K4 regeneration, feed-local lambda, one-factor copula, CountSketch, response-aligned D21, Walsh-coset/serializer rescue, or any renamed rejected mechanism). Freeze a mathematical specification, exact-small target-free falsifier, full production FLOP bound, and measurable GO/NO-GO before any run. Run only the small falsifier on verified free/existing compute; allow at most one same-panel mini-100 only if falsifier and cost gates pass. Preserve V25; no paid compute, holdout, or submission. If no strict novelty/feasibility, save terminal NO-GO with exact reason.",
       "depends_on": [
         "R231"
       ],
-      "attempts": [],
-      "deliverable": "Continue after R227's terminal pre-science NO-GO and R231's finding that the V25 error tail is weakly concentrated. Read the complete immutable experiment ledger, current AGENTS/RESEARCH_PROCESS, and R227/R231 receipts. Identify exactly one genuinely untested global-accuracy estimator family (not per-network tail tuning, second K4 regeneration, feed-local lambda, one-factor copula, CountSketch, response-aligned D21, Walsh-coset/serializer rescue, or any renamed rejected mechanism). Freeze a mathematical specification, exact-small target-free falsifier, full production FLOP bound, and measurable GO/NO-GO before any run. Run only the small falsifier on verified free/existing compute; allow at most one same-panel mini-100 only if falsifier and cost gates pass. Preserve V25; no paid compute, holdout, or submission. If no strict novelty/feasibility, save terminal NO-GO with exact reason."
+      "hypothesis_id": "GLOBAL-ACCURACY-POST-R227-R231",
+      "id": "R232",
+      "owner": "global-accuracy-research",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Find one novel global-accuracy estimator hypothesis"
     },
     {
-      "id": "R233",
-      "title": "Find output-preserving V25 FLOP reductions",
-      "owner": "v25-compute-audit",
       "assigned_owner": "v25-compute-audit",
-      "status": "COMPLETE",
-      "priority": 1,
-      "hypothesis_id": "V25-OUTPUT-PRESERVING-COST-REDUCTION",
+      "attempts": [
+        {
+          "code_commit": "48a9ccb3eaeca34a21e7dab636ab10935629e17b",
+          "command": "one isolated flopscope 0.12.1 micro-fixture for frozen ONEHOT-WICK-ROW-SELECT on pinned estimator_v25.py blob 195373a110215256b759d7c172ba8c923c62e5cc; prove bitwise identity and counted-FLOP delta only; no estimator/mini-100 unless identity+count+0.1%-materiality gates pass",
+          "completion": {
+            "reason": "R233 source-level V25 counted-FLOP audit is terminal PRE-MINI NO-GO on the frozen materiality gate. Exact pinned V25 source audit found ONEHOT-WICK-ROW-SELECT: replace dense SL2/SR2/SL1 @ WT transforms by exact row selection plus scalar multiply because every coefficient row has one nonzero. Exactly one isolated free ubuntu-24.04 micro-fixture (Actions run 35799879085, job 106987553512) passed bitwise identity for WL1/WL2/WR2 in modes 0 and 1 and matched the preregistered flopscope 0.12.1 cost model exactly (mode0 5248->592; mode1 38704->4304). Production projection saves 62,756,864 FLOPs/MLP = 0.007783278470680822% of pinned V25 806,303,721,965 FLOPs, versus frozen meaningful threshold 806,303,722 FLOPs/MLP (0.1%); therefore meaningful GO fails by ~12.85x and mini-100 is not authorized. No estimator/full/mini run, paid/private/holdout data, submission, canonical estimator/result edit, R232 overlap, or rescue optimization.",
+            "receipt": {
+              "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/027f0c517ec55a27fffc0878b043e3216c021344/research/r233/R233_TERMINAL_RECEIPT.json"
+            },
+            "run_id": "R233-v25-onehot-wick-cse-20260923",
+            "status": "SCIENTIFIC_REJECT"
+          },
+          "run_id": "R233-v25-onehot-wick-cse-20260923",
+          "status": "SCIENTIFIC_REJECT"
+        }
+      ],
+      "deliverable": "Perform a source-level cost audit of pinned public V25 using R226 records and R231 compute/score floor. Search for one algebraically equivalent/common-subexpression or memory-layout change that provably preserves estimator outputs while reducing counted FLOPs/runtime; distinguish true FLOP savings from wall-clock-only changes. Freeze exact identity/equivalence fixture, cost proof and a meaningful score/runtime gate first. Do not overlap with R232's estimator-family search. No canonical edits, no full estimator run initially; one isolated micro-fixture is allowed. Only authorize one bounded public mini-100 candidate if exact equivalence and a credible cost reduction are both demonstrated on free compute. If savings cannot approach a meaningful frontier, terminal NO-GO with evidence.",
       "depends_on": [
         "R226",
         "R231"
       ],
-      "attempts": [
-        {
-          "run_id": "R233-v25-onehot-wick-cse-20260923",
-          "code_commit": "48a9ccb3eaeca34a21e7dab636ab10935629e17b",
-          "command": "one isolated flopscope 0.12.1 micro-fixture for frozen ONEHOT-WICK-ROW-SELECT on pinned estimator_v25.py blob 195373a110215256b759d7c172ba8c923c62e5cc; prove bitwise identity and counted-FLOP delta only; no estimator/mini-100 unless identity+count+0.1%-materiality gates pass",
-          "status": "SCIENTIFIC_REJECT",
-          "completion": {
-            "reason": "R233 source-level V25 counted-FLOP audit is terminal PRE-MINI NO-GO on the frozen materiality gate. Exact pinned V25 source audit found ONEHOT-WICK-ROW-SELECT: replace dense SL2/SR2/SL1 @ WT transforms by exact row selection plus scalar multiply because every coefficient row has one nonzero. Exactly one isolated free ubuntu-24.04 micro-fixture (Actions run 35799879085, job 106987553512) passed bitwise identity for WL1/WL2/WR2 in modes 0 and 1 and matched the preregistered flopscope 0.12.1 cost model exactly (mode0 5248->592; mode1 38704->4304). Production projection saves 62,756,864 FLOPs/MLP = 0.007783278470680822% of pinned V25 806,303,721,965 FLOPs, versus frozen meaningful threshold 806,303,722 FLOPs/MLP (0.1%); therefore meaningful GO fails by ~12.85x and mini-100 is not authorized. No estimator/full/mini run, paid/private/holdout data, submission, canonical estimator/result edit, R232 overlap, or rescue optimization.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/027f0c517ec55a27fffc0878b043e3216c021344/research/r233/R233_TERMINAL_RECEIPT.json",
-              "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62"
-            },
-            "run_id": "R233-v25-onehot-wick-cse-20260923",
-            "status": "SCIENTIFIC_REJECT"
-          }
-        }
-      ],
-      "deliverable": "Perform a source-level cost audit of pinned public V25 using R226 records and R231 compute/score floor. Search for one algebraically equivalent/common-subexpression or memory-layout change that provably preserves estimator outputs while reducing counted FLOPs/runtime; distinguish true FLOP savings from wall-clock-only changes. Freeze exact identity/equivalence fixture, cost proof and a meaningful score/runtime gate first. Do not overlap with R232's estimator-family search. No canonical edits, no full estimator run initially; one isolated micro-fixture is allowed. Only authorize one bounded public mini-100 candidate if exact equivalence and a credible cost reduction are both demonstrated on free compute. If savings cannot approach a meaningful frontier, terminal NO-GO with evidence.",
+      "hypothesis_id": "V25-OUTPUT-PRESERVING-COST-REDUCTION",
+      "id": "R233",
+      "owner": "v25-compute-audit",
+      "priority": 1,
+      "reason": "R233 source-level V25 counted-FLOP audit is terminal PRE-MINI NO-GO on the frozen materiality gate. Exact pinned V25 source audit found ONEHOT-WICK-ROW-SELECT: replace dense SL2/SR2/SL1 @ WT transforms by exact row selection plus scalar multiply because every coefficient row has one nonzero. Exactly one isolated free ubuntu-24.04 micro-fixture (Actions run 35799879085, job 106987553512) passed bitwise identity for WL1/WL2/WR2 in modes 0 and 1 and matched the preregistered flopscope 0.12.1 cost model exactly (mode0 5248->592; mode1 38704->4304). Production projection saves 62,756,864 FLOPs/MLP = 0.007783278470680822% of pinned V25 806,303,721,965 FLOPs, versus frozen meaningful threshold 806,303,722 FLOPs/MLP (0.1%); therefore meaningful GO fails by ~12.85x and mini-100 is not authorized. No estimator/full/mini run, paid/private/holdout data, submission, canonical estimator/result edit, R232 overlap, or rescue optimization.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/027f0c517ec55a27fffc0878b043e3216c021344/research/r233/R233_TERMINAL_RECEIPT.json",
-        "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62"
+        "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/027f0c517ec55a27fffc0878b043e3216c021344/research/r233/R233_TERMINAL_RECEIPT.json"
       },
-      "reason": "R233 source-level V25 counted-FLOP audit is terminal PRE-MINI NO-GO on the frozen materiality gate. Exact pinned V25 source audit found ONEHOT-WICK-ROW-SELECT: replace dense SL2/SR2/SL1 @ WT transforms by exact row selection plus scalar multiply because every coefficient row has one nonzero. Exactly one isolated free ubuntu-24.04 micro-fixture (Actions run 35799879085, job 106987553512) passed bitwise identity for WL1/WL2/WR2 in modes 0 and 1 and matched the preregistered flopscope 0.12.1 cost model exactly (mode0 5248->592; mode1 38704->4304). Production projection saves 62,756,864 FLOPs/MLP = 0.007783278470680822% of pinned V25 806,303,721,965 FLOPs, versus frozen meaningful threshold 806,303,722 FLOPs/MLP (0.1%); therefore meaningful GO fails by ~12.85x and mini-100 is not authorized. No estimator/full/mini run, paid/private/holdout data, submission, canonical estimator/result edit, R232 overlap, or rescue optimization."
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Find output-preserving V25 FLOP reductions"
     },
     {
-      "id": "R234",
-      "title": "Prepare independent R218 crossover postflight verifier",
-      "owner": "postflight-preflight",
       "assigned_owner": "postflight-preflight",
-      "status": "COMPLETE",
-      "priority": 1,
-      "hypothesis_id": "R218-POSTFLIGHT-VERIFIER-PREP",
-      "depends_on": [],
       "attempts": [
         {
-          "run_id": "R234-r218-postflight-verifier-prep-20260923",
           "code_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
           "command": "read-only inspect frozen R217 protocol and R218 workflow/executor/schema; prepare independent offline artifact verifier/checklist only; do not run estimator, poll/alter R218, access holdout, or claim R220",
-          "status": "COMPLETE",
           "completion": {
             "reason": "R234 protocol/tooling prep complete without inspecting the in-progress R218 artifact or running any estimator. Independently pinned R217 frozen protocol (SHA256 40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968), R218 executor/workflow/expected-panel/prelaunch/arm sources, and the exact predeclared verdict: GO only if all contract/provenance gates pass plus primary median C0-C1 >=20 ms, CPU0 slower on >=35/50 MLPs, and C0-C1 failure difference >=10; any gate failure => PROTOCOL_INVALID. Prepared research/r234/r234_verify_r218.py to verify artifact hashes, all six raw block reports/300 rows, exact panel/order/FLOPs, budget/limits, per-block CPU affinity and stable worker telemetry, recompute U/C0/C1 paired means, primary delta, failure difference and owner-summary consistency. Prepared R234_VERIFIER_CHECKLIST.json with mandatory external R220 gates for single-job Actions provenance and estimator source SHA, since those cannot be proved from the artifact alone. R218 remains RUNNING; R220 remains QUEUED/unclaimed. No estimator, holdout, submission, retry/rescue, R218 mutation, or R220 claim/start.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/2a0e68fed7e66e4e4952a97103df880b1cb223bf/research/r234/R234_PREP_RECEIPT.json",
-              "sha256": "c90cf7dc64badf1330adc51753356769659cbb713957ced7e583d35d711aae84"
+              "sha256": "c90cf7dc64badf1330adc51753356769659cbb713957ced7e583d35d711aae84",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/2a0e68fed7e66e4e4952a97103df880b1cb223bf/research/r234/R234_PREP_RECEIPT.json"
             },
             "run_id": "R234-r218-postflight-verifier-prep-20260923",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "R234-r218-postflight-verifier-prep-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "While the frozen R218 Actions run is still executing, independently inspect R217's frozen thresholds, R218 workflow and output schema. Prepare a small reproducible postflight verifier/checklist that will validate the six blocks, all 300 rows, same worker/allowed CPU gates, panel/order/FLOPs, per-MLP C0/C1/U means, primary delta and failure difference, then apply the predeclared GO/NO-GO exactly. Protocol/tooling prep only now: do not wait-poll repeatedly, inspect hidden data, rerun or alter the experiment. Commit the verifier/receipt; when R218 completes, use this prepared work for R220 (the queued postflight audit) without duplicating the scientific run.",
+      "depends_on": [],
+      "hypothesis_id": "R218-POSTFLIGHT-VERIFIER-PREP",
+      "id": "R234",
+      "owner": "postflight-preflight",
+      "priority": 1,
+      "reason": "R234 protocol/tooling prep complete without inspecting the in-progress R218 artifact or running any estimator. Independently pinned R217 frozen protocol (SHA256 40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968), R218 executor/workflow/expected-panel/prelaunch/arm sources, and the exact predeclared verdict: GO only if all contract/provenance gates pass plus primary median C0-C1 >=20 ms, CPU0 slower on >=35/50 MLPs, and C0-C1 failure difference >=10; any gate failure => PROTOCOL_INVALID. Prepared research/r234/r234_verify_r218.py to verify artifact hashes, all six raw block reports/300 rows, exact panel/order/FLOPs, budget/limits, per-block CPU affinity and stable worker telemetry, recompute U/C0/C1 paired means, primary delta, failure difference and owner-summary consistency. Prepared R234_VERIFIER_CHECKLIST.json with mandatory external R220 gates for single-job Actions provenance and estimator source SHA, since those cannot be proved from the artifact alone. R218 remains RUNNING; R220 remains QUEUED/unclaimed. No estimator, holdout, submission, retry/rescue, R218 mutation, or R220 claim/start.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/2a0e68fed7e66e4e4952a97103df880b1cb223bf/research/r234/R234_PREP_RECEIPT.json",
-        "sha256": "c90cf7dc64badf1330adc51753356769659cbb713957ced7e583d35d711aae84"
+        "sha256": "c90cf7dc64badf1330adc51753356769659cbb713957ced7e583d35d711aae84",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/2a0e68fed7e66e4e4952a97103df880b1cb223bf/research/r234/R234_PREP_RECEIPT.json"
       },
-      "reason": "R234 protocol/tooling prep complete without inspecting the in-progress R218 artifact or running any estimator. Independently pinned R217 frozen protocol (SHA256 40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968), R218 executor/workflow/expected-panel/prelaunch/arm sources, and the exact predeclared verdict: GO only if all contract/provenance gates pass plus primary median C0-C1 >=20 ms, CPU0 slower on >=35/50 MLPs, and C0-C1 failure difference >=10; any gate failure => PROTOCOL_INVALID. Prepared research/r234/r234_verify_r218.py to verify artifact hashes, all six raw block reports/300 rows, exact panel/order/FLOPs, budget/limits, per-block CPU affinity and stable worker telemetry, recompute U/C0/C1 paired means, primary delta, failure difference and owner-summary consistency. Prepared R234_VERIFIER_CHECKLIST.json with mandatory external R220 gates for single-job Actions provenance and estimator source SHA, since those cannot be proved from the artifact alone. R218 remains RUNNING; R220 remains QUEUED/unclaimed. No estimator, holdout, submission, retry/rescue, R218 mutation, or R220 claim/start."
+      "status": "COMPLETE",
+      "title": "Prepare independent R218 crossover postflight verifier"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 136,
+  "revision": 137,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
