@@ -4097,16 +4097,16 @@
       "revision": 305
     },
     {
-      "revision": 306,
       "action": "start",
+      "at": "2026-09-23T12:15:00+00:00",
       "job": "R266",
       "owner": "score-gap-analysis",
       "payload": {
-        "run_id": "R266-score-gap-analysis-20260923",
         "code_commit": "248d0d7672f8d939cd4d35c2fd3ce716369055d7",
-        "command": "read-only arithmetic analysis of completed R263 snapshot plus existing normalized R209/R223 rows; no estimator/Actions/new data access/private/holdout/full/submission/model/leaderboard edits"
+        "command": "read-only arithmetic analysis of completed R263 snapshot plus existing normalized R209/R223 rows; no estimator/Actions/new data access/private/holdout/full/submission/model/leaderboard edits",
+        "run_id": "R266-score-gap-analysis-20260923"
       },
-      "at": "2026-09-23T12:15:00+00:00"
+      "revision": 306
     },
     {
       "action": "reassign",
@@ -4189,31 +4189,39 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "multilevel-debiasing-scout",
-        "title": "Falsify V25 multilevel-debiasing feasibility",
-        "hypothesis_id": "V25-MULTILEVEL-DEBIASING-FEASIBILITY-20260923",
-        "priority": 1,
+        "deliverable": "Follow the sole abstractly distinct lead from R265: randomized multilevel debiasing. Read its report/protocol and full history; derive whether a concrete V25 one/two-level hierarchy can satisfy an unbiased telescoping identity using only permitted metered operations and existing model outputs, and derive a full-production FLOP upper bound before any execution. Do not reuse/relabel Richardson, local-feed, copula, K3 transport, or other closed families. Define one deterministic synthetic target-free fixture and falsifier for correction decay/variance and cost. If no concrete hierarchy, target-free rationale, or honest bound exists, publish evidence-based NO_GO before execution. If all theory/cost gates pass, freeze protocol and run at most one local synthetic falsifier; no public/R209, Actions/cloud, paid, private/holdout/full, tuning/per-network selection, submission, canonical/leaderboard changes. Preserve every attempt, artifact and receipt, finish R269, and wait for coordinator before public/cloud work.",
         "depends_on": [
           "R265"
         ],
-        "deliverable": "Follow the sole abstractly distinct lead from R265: randomized multilevel debiasing. Read its report/protocol and full history; derive whether a concrete V25 one/two-level hierarchy can satisfy an unbiased telescoping identity using only permitted metered operations and existing model outputs, and derive a full-production FLOP upper bound before any execution. Do not reuse/relabel Richardson, local-feed, copula, K3 transport, or other closed families. Define one deterministic synthetic target-free fixture and falsifier for correction decay/variance and cost. If no concrete hierarchy, target-free rationale, or honest bound exists, publish evidence-based NO_GO before execution. If all theory/cost gates pass, freeze protocol and run at most one local synthetic falsifier; no public/R209, Actions/cloud, paid, private/holdout/full, tuning/per-network selection, submission, canonical/leaderboard changes. Preserve every attempt, artifact and receipt, finish R269, and wait for coordinator before public/cloud work."
+        "hypothesis_id": "V25-MULTILEVEL-DEBIASING-FEASIBILITY-20260923",
+        "priority": 1,
+        "title": "Falsify V25 multilevel-debiasing feasibility"
       },
       "revision": 313
     },
     {
-      "revision": 314,
       "action": "finish",
+      "at": "2026-09-23T12:20:00+00:00",
       "job": "R266",
       "owner": "score-gap-analysis",
       "payload": {
-        "run_id": "R266-score-gap-analysis-20260923",
-        "status": "COMPLETE",
         "reason": "Desk-only R266 analysis completed from completed R263 plus existing normalized R209/R223 rows. Strict official comparison is NOT_COMPARABLE: metric and aggregation match, but R209 is public development mini:all-100 while current visible online Phase-2 scoring is 50 public MLPs with 50 additional sealed; the displayed 2.1e-9 is also rounded. Therefore no exact official gap or competition rank is claimed. Conditional arithmetic only: R209 V25 at current cost factor 0.36666448157347986 would require 74.29745596% uniform raw-MSE reduction to reach displayed 2.1e-9; cost-only would require factor 0.09424210 below the 0.1 floor and is impossible; at the floor an additional 5.75790016% raw-MSE reduction remains. Failure multiplier semantics were preserved; R209 V29's 57 failures dominate its score. No rerun, Actions, new dataset access, paid/private/holdout/full, submission, model, leaderboard or canonical edit.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/94afd42db902d7dcaa7b6aa4f9a142d04120e971/research/r266/R266_RECEIPT.json",
-          "sha256": "795bb53fabc907f367a98aaf605bc7304a916eced234e854d16dd1fa552a604c"
-        }
+          "sha256": "795bb53fabc907f367a98aaf605bc7304a916eced234e854d16dd1fa552a604c",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/94afd42db902d7dcaa7b6aa4f9a142d04120e971/research/r266/R266_RECEIPT.json"
+        },
+        "run_id": "R266-score-gap-analysis-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T12:20:00+00:00"
+      "revision": 314
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T12:18:42.000Z",
+      "job": "R269",
+      "owner": "multilevel-debiasing-scout",
+      "payload": {},
+      "revision": 315
     }
   ],
   "jobs": [
@@ -6641,19 +6649,19 @@
       "assigned_owner": "score-gap-analysis",
       "attempts": [
         {
-          "run_id": "R266-score-gap-analysis-20260923",
           "code_commit": "248d0d7672f8d939cd4d35c2fd3ce716369055d7",
           "command": "read-only arithmetic analysis of completed R263 snapshot plus existing normalized R209/R223 rows; no estimator/Actions/new data access/private/holdout/full/submission/model/leaderboard edits",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R266-score-gap-analysis-20260923",
-            "status": "COMPLETE",
             "reason": "Desk-only R266 analysis completed from completed R263 plus existing normalized R209/R223 rows. Strict official comparison is NOT_COMPARABLE: metric and aggregation match, but R209 is public development mini:all-100 while current visible online Phase-2 scoring is 50 public MLPs with 50 additional sealed; the displayed 2.1e-9 is also rounded. Therefore no exact official gap or competition rank is claimed. Conditional arithmetic only: R209 V25 at current cost factor 0.36666448157347986 would require 74.29745596% uniform raw-MSE reduction to reach displayed 2.1e-9; cost-only would require factor 0.09424210 below the 0.1 floor and is impossible; at the floor an additional 5.75790016% raw-MSE reduction remains. Failure multiplier semantics were preserved; R209 V29's 57 failures dominate its score. No rerun, Actions, new dataset access, paid/private/holdout/full, submission, model, leaderboard or canonical edit.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/94afd42db902d7dcaa7b6aa4f9a142d04120e971/research/r266/R266_RECEIPT.json",
-              "sha256": "795bb53fabc907f367a98aaf605bc7304a916eced234e854d16dd1fa552a604c"
-            }
-          }
+              "sha256": "795bb53fabc907f367a98aaf605bc7304a916eced234e854d16dd1fa552a604c",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/94afd42db902d7dcaa7b6aa4f9a142d04120e971/research/r266/R266_RECEIPT.json"
+            },
+            "run_id": "R266-score-gap-analysis-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R266-score-gap-analysis-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Using the completed R263 official snapshot and existing normalized R209/R223 records only, calculate the exact official adjusted-score gap when comparison is valid, and the required raw-MSE improvement versus cost reduction under the official score formula and cost-floor. Include failure-penalty semantics, explicit comparable/not-comparable decision, and scenarios for matching the visible leader; do not claim a competition rank from mini-100. Preserve row-level inputs and reproducible calculations in an append-only report/receipt with hashes/commit; finish R266. No reruns, Actions, new data access, paid/private/holdout/full, submission, or model/leaderboard edits.",
@@ -6665,13 +6673,13 @@
       "id": "R266",
       "owner": "score-gap-analysis",
       "priority": 2,
-      "status": "COMPLETE",
-      "title": "Quantify the remaining score gap and required improvement",
+      "reason": "Desk-only R266 analysis completed from completed R263 plus existing normalized R209/R223 rows. Strict official comparison is NOT_COMPARABLE: metric and aggregation match, but R209 is public development mini:all-100 while current visible online Phase-2 scoring is 50 public MLPs with 50 additional sealed; the displayed 2.1e-9 is also rounded. Therefore no exact official gap or competition rank is claimed. Conditional arithmetic only: R209 V25 at current cost factor 0.36666448157347986 would require 74.29745596% uniform raw-MSE reduction to reach displayed 2.1e-9; cost-only would require factor 0.09424210 below the 0.1 floor and is impossible; at the floor an additional 5.75790016% raw-MSE reduction remains. Failure multiplier semantics were preserved; R209 V29's 57 failures dominate its score. No rerun, Actions, new dataset access, paid/private/holdout/full, submission, model, leaderboard or canonical edit.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/94afd42db902d7dcaa7b6aa4f9a142d04120e971/research/r266/R266_RECEIPT.json",
-        "sha256": "795bb53fabc907f367a98aaf605bc7304a916eced234e854d16dd1fa552a604c"
+        "sha256": "795bb53fabc907f367a98aaf605bc7304a916eced234e854d16dd1fa552a604c",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/94afd42db902d7dcaa7b6aa4f9a142d04120e971/research/r266/R266_RECEIPT.json"
       },
-      "reason": "Desk-only R266 analysis completed from completed R263 plus existing normalized R209/R223 rows. Strict official comparison is NOT_COMPARABLE: metric and aggregation match, but R209 is public development mini:all-100 while current visible online Phase-2 scoring is 50 public MLPs with 50 additional sealed; the displayed 2.1e-9 is also rounded. Therefore no exact official gap or competition rank is claimed. Conditional arithmetic only: R209 V25 at current cost factor 0.36666448157347986 would require 74.29745596% uniform raw-MSE reduction to reach displayed 2.1e-9; cost-only would require factor 0.09424210 below the 0.1 floor and is impossible; at the floor an additional 5.75790016% raw-MSE reduction remains. Failure multiplier semantics were preserved; R209 V29's 57 failures dominate its score. No rerun, Actions, new dataset access, paid/private/holdout/full, submission, model, leaderboard or canonical edit."
+      "status": "COMPLETE",
+      "title": "Quantify the remaining score gap and required improvement"
     },
     {
       "assigned_owner": "coordinator",
@@ -6719,22 +6727,22 @@
       "title": "Independently verify the R261 control reconciliation"
     },
     {
-      "id": "R269",
-      "title": "Falsify V25 multilevel-debiasing feasibility",
-      "priority": 1,
-      "hypothesis_id": "V25-MULTILEVEL-DEBIASING-FEASIBILITY-20260923",
+      "assigned_owner": "multilevel-debiasing-scout",
+      "attempts": [],
+      "deliverable": "Follow the sole abstractly distinct lead from R265: randomized multilevel debiasing. Read its report/protocol and full history; derive whether a concrete V25 one/two-level hierarchy can satisfy an unbiased telescoping identity using only permitted metered operations and existing model outputs, and derive a full-production FLOP upper bound before any execution. Do not reuse/relabel Richardson, local-feed, copula, K3 transport, or other closed families. Define one deterministic synthetic target-free fixture and falsifier for correction decay/variance and cost. If no concrete hierarchy, target-free rationale, or honest bound exists, publish evidence-based NO_GO before execution. If all theory/cost gates pass, freeze protocol and run at most one local synthetic falsifier; no public/R209, Actions/cloud, paid, private/holdout/full, tuning/per-network selection, submission, canonical/leaderboard changes. Preserve every attempt, artifact and receipt, finish R269, and wait for coordinator before public/cloud work.",
       "depends_on": [
         "R265"
       ],
-      "assigned_owner": "multilevel-debiasing-scout",
-      "owner": null,
-      "status": "QUEUED",
-      "attempts": [],
-      "deliverable": "Follow the sole abstractly distinct lead from R265: randomized multilevel debiasing. Read its report/protocol and full history; derive whether a concrete V25 one/two-level hierarchy can satisfy an unbiased telescoping identity using only permitted metered operations and existing model outputs, and derive a full-production FLOP upper bound before any execution. Do not reuse/relabel Richardson, local-feed, copula, K3 transport, or other closed families. Define one deterministic synthetic target-free fixture and falsifier for correction decay/variance and cost. If no concrete hierarchy, target-free rationale, or honest bound exists, publish evidence-based NO_GO before execution. If all theory/cost gates pass, freeze protocol and run at most one local synthetic falsifier; no public/R209, Actions/cloud, paid, private/holdout/full, tuning/per-network selection, submission, canonical/leaderboard changes. Preserve every attempt, artifact and receipt, finish R269, and wait for coordinator before public/cloud work."
+      "hypothesis_id": "V25-MULTILEVEL-DEBIASING-FEASIBILITY-20260923",
+      "id": "R269",
+      "owner": "multilevel-debiasing-scout",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Falsify V25 multilevel-debiasing feasibility"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 314,
+  "revision": 315,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
