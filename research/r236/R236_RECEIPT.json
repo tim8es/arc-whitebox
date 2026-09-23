@@ -1,0 +1,170 @@
+{
+  "schema": "arc.whitebox.r236.independent_verifier_audit.v1",
+  "job": "R236",
+  "hypothesis_id": "R218-POSTFLIGHT-VERIFIER-FAIL-CLOSED",
+  "owner": "independent-verifier-audit",
+  "run_id": "R236-r234-verifier-independent-audit-20260923",
+  "status": "DEFECT",
+  "verdict": "DEFECT",
+  "conclusion": "R234 preserves R217 metric definitions and thresholds and correctly withholds final GO/NO-GO without external Actions evidence, but the prepared verifier/checklist are not fail-closed on provenance/integrity. Seven concrete defects were identified; four fail-open predicates were confirmed by a small offline synthetic check. R220 remains authoritative and must close these gaps before causal interpretation.",
+  "queue": {
+    "assigned_revision": 144,
+    "observed_prestart_revision": 145,
+    "start_revision": 146,
+    "start_commit": "00df32310a1d5b1ead1a4b4c18a726161aa4c4b3",
+    "start_code_commit": "9cec083b09780edfebcf9e22478c1e159b6b0567"
+  },
+  "audited_sources": {
+    "r234_verifier": {
+      "path": "research/r234/r234_verify_r218.py",
+      "git_blob": "772843d4bc2b5929e851e621f33dd25a38cd5319",
+      "latest_commit": "0a4ddaa499199c88213eb2b13336d2649bff5ef8"
+    },
+    "r234_checklist": {
+      "path": "research/r234/R234_VERIFIER_CHECKLIST.json",
+      "git_blob": "610c71426f262c08a4c7390f9bb089aacb0c62da",
+      "latest_commit": "5dc06399db5a59ce63646f6a9eff023450310075"
+    },
+    "r217_protocol": {
+      "commit": "e8fc0364f69c12f2f94a06362b43e925ea61b365",
+      "path": "research/r217/R217_NEXT_RUNTIME_PROTOCOL.json",
+      "git_blob": "a940706931d280fe2a720836d9db248146862270",
+      "sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968"
+    },
+    "r218_workflow": {
+      "commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "path": ".github/workflows/r218-affinity-crossover.yml",
+      "git_blob": "d1fa366b1056d09f829a9620eda81034584147af"
+    },
+    "r218_executor": {
+      "commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "path": "scripts/r218_run_crossover.py",
+      "git_blob": "456364bd0558eb98d41a4f9cd0512484fe972d20"
+    },
+    "r218_expected_panel": {
+      "commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "path": "research/r218/R218_EXPECTED_PANEL.json",
+      "git_blob": "8669ffff7408c4f251c700ca0d5f9fc24db5c8f0"
+    },
+    "r218_prelaunch": {
+      "commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "path": "research/r218/R218_PRELAUNCH_GATE.json",
+      "git_blob": "fe0745d3d0265b7afb8d952530998c6b0f942aa3"
+    },
+    "r218_arm": {
+      "head_commit": "c8cb97dcd1383f4a1d741c5a36ba816deec452eb",
+      "path": "research/R218_RUN_ARM.json",
+      "git_blob": "542f8f80cee29c83b4f9648a1c56f49ae9b9262a",
+      "executor_parent_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "compare_fact": "arm head is one commit ahead and adds only research/R218_RUN_ARM.json"
+    }
+  },
+  "correct_behavior_verified": {
+    "metric_drift": false,
+    "threshold_drift": false,
+    "block_sequence_exact": true,
+    "exact_300_row_design": true,
+    "primary_delta_formula_exact": true,
+    "cpu0_slower_count_formula_exact": true,
+    "failure_difference_formula_exact": true,
+    "thresholds_exact": {
+      "primary_delta_s_min": 0.02,
+      "cpu0_slower_count_min": 35,
+      "failure_difference_min": 10
+    },
+    "missing_actions_evidence_withholds_final_verdict": true
+  },
+  "defects": [
+    {
+      "id": "R236-D1",
+      "severity": "HIGH",
+      "defect": "External Actions predicate accepts matching run_attempt values other than 1.",
+      "impact": "A rerun attempt can satisfy external_actions_same_job_provenance despite R217 one-job/no-retry policy and R218 arm attempt=1/attempts_allowed=1."
+    },
+    {
+      "id": "R236-D2",
+      "severity": "HIGH",
+      "defect": "No cryptographic binding between artifact-dir and independently inspected Actions artifact/run; external schema omits artifact ID/name/digest and checkout head/workflow/executor blob proof.",
+      "impact": "A substituted local artifact can self-report the inspected run ID/attempt, while executor_commit is only a supplied JSON string."
+    },
+    {
+      "id": "R236-D3",
+      "severity": "HIGH",
+      "defect": "Expected-panel file is not pinned to frozen blob/SHA in verifier.",
+      "impact": "A paired modified expected-panel and matching reports can redefine expected names/FLOPs while dataset/source hash/50-index gates still pass."
+    },
+    {
+      "id": "R236-D4",
+      "severity": "HIGH",
+      "defect": "sha256.json completeness is not enforced; an empty manifest passes artifact_manifest.",
+      "impact": "Files consumed by verifier need not be manifest-covered, defeating the intended local integrity gate absent independent artifact digest binding."
+    },
+    {
+      "id": "R236-D5",
+      "severity": "MEDIUM",
+      "defect": "Frozen prelaunch blob and exact required preflight gate names are not enforced; version evidence is partly trusted through owner booleans.",
+      "impact": "Incomplete or drifted preflight metadata can pass relevant predicates."
+    },
+    {
+      "id": "R236-D6",
+      "severity": "MEDIUM",
+      "defect": "Per-block dataset path is not checked although pinned executor/checklist require dataset SHA/path.",
+      "impact": "Dataset path drift is not independently rejected by R234 verifier."
+    },
+    {
+      "id": "R236-D7",
+      "severity": "MEDIUM",
+      "defect": "Mandatory telemetry files and worker-region evidence are not all required.",
+      "impact": "Missing /proc/taskset/worker-region instrumentation can coexist with artifact_contract_ok."
+    }
+  ],
+  "synthetic_check": {
+    "script": {
+      "path": "research/r236/r236_fail_closed_synthetic.py",
+      "commit": "7534164e2e7d6fbfb2d5dff4e508cb115f46a0a4",
+      "git_blob": "34ddcea39a6a56f1598c38a4f10362d9b7077ab7",
+      "sha256": "a6dea357651a379143b6c4e0807f345e7439f8dd5fde79055afd82267ea412f0"
+    },
+    "result": {
+      "path": "research/r236/R236_SYNTHETIC_FAIL_CLOSED_RESULT.json",
+      "commit": "feb3ee2a7b37d5cb189581c55d66b053bd432b9f",
+      "git_blob": "2a00397129b7392547aadbd9dcff0944a5e1e529",
+      "sha256": "b8a669b2a9dee143281e4be89a0d69dd86a8851d2c5b4bbb2a647115278dd5b0"
+    },
+    "cases": {
+      "empty_manifest_gate_passes": true,
+      "unpinned_expected_panel_predicates_pass": true,
+      "actions_run_attempt_2_predicate_passes": true,
+      "incomplete_preflight_gate_map_predicate_passes": true
+    },
+    "r218_artifact_used": false,
+    "actions_triggered": false
+  },
+  "report": {
+    "path": "research/r236/R236_INDEPENDENT_VERIFIER_AUDIT.md",
+    "commit": "105bfa2aecf60e351f72b8dc7ed9804e4c904a98",
+    "git_blob": "a1f1ea843df3bc492cd81e80ae08ce908ef3a6d4",
+    "sha256": "bb1d9e3d00022c4232ec9fa1480ccde3622ebcc8cdc3bb6a2ccf793994cf6a86"
+  },
+  "required_before_r220_causal_verdict": [
+    "Require run_attempt == 1 and arm attempt/attempts_allowed == 1.",
+    "Bind artifact-dir to Actions artifact ID/name/digest and inspected run/job.",
+    "Verify Actions checkout head/arm ancestry and workflow/executor blobs at that head.",
+    "Pin exact expected-panel and prelaunch blobs/hashes.",
+    "Require manifest coverage for every consumed artifact file.",
+    "Require exact preflight gate-name set and stronger independent environment/version evidence.",
+    "Require dataset path/max_threads where schema exposes them and all mandatory telemetry."
+  ],
+  "scope": {
+    "inspected_r218_artifact": false,
+    "interpreted_r218_outcome": false,
+    "private_or_holdout": false,
+    "modified_r218": false,
+    "actions_triggered": false,
+    "estimator_or_science_run": false,
+    "paid_compute": false,
+    "submission": false,
+    "canonical_edits": false,
+    "r220_claimed_or_started": false
+  }
+}
