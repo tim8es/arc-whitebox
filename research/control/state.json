@@ -5064,6 +5064,22 @@
         "status": "COMPLETE"
       },
       "revision": 378
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T15:58:38.953Z",
+      "job": "R283",
+      "owner": "preflight-adversarial-audit",
+      "payload": {
+        "reason": "Adversarial offline audit complete: FAIL_CLOSED_CONTRACT_NOT_MET. R277 F1-F3 were reproduced as executable false PASS cases on the unchanged PR #35 analyzer blob a654fa1e15bfa8f9c2bfaa39073ecdf044a74a12. R283 additionally found four silent-PASS classes: YAML run-block/comment text can masquerade as checkout metadata; semantically equivalent ancestry guard formatting (e.g. double whitespace) bypasses exact-substring detection; comments/string literals can manufacture bracket-key evidence that masks unsupported real accesses; and generator if/del/conditional-return/helper control flow is silently skipped, including a path that writes no manifest. Main harness: 18 probes, 14/14 adversarial cases returned PASS; normalized evidence SHA256 4ab1b3a9254a2ebfa6045730cb48106f5f99253b6bce162f06cc045fa7563fd5. PR head moved mid-audit from e054a32d7d3bdac98408392b09f467e174c2565b to 65634dfedfa3d46be785d2b07ba3997b292be16e by a test-only commit; analyzer/docs stayed byte-identical. Current head adds six expected-rejection tests for R277 cases, but their exact analyzer inputs all still return PASS because production code is unchanged. Fix scope is limited to analyzer/tests/docs plus future append-only evidence; no workflows/historical evidence/fixtures/estimators/benchmark/canonical changes. No PR edit/review/comment/merge, Actions, fixture, estimator, public benchmark data or paid resource.",
+        "receipt": {
+          "sha256": "fb1002ca8e67d4d1cc791443a70559a4037ae0bba260d3121050746839952180",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/55ee4876459d338de136fa4be253e0c089c69697/research/r283/R283_RECEIPT.json"
+        },
+        "run_id": "R283-pr35-adversarial-synthetic-audit-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 379
     }
   ],
   "jobs": [
@@ -8084,8 +8100,17 @@
         {
           "code_commit": "e054a32d7d3bdac98408392b09f467e174c2565b",
           "command": "offline focused adversarial checks of PR #35 analyzer on small synthetic workflow/generator strings; reproduce R277 F1-F3 and probe additional unsupported YAML/Python dataflow false-PASS paths; no PR edits/comments/review/merge, Actions, fixtures, estimator, or public benchmark data",
+          "completion": {
+            "reason": "Adversarial offline audit complete: FAIL_CLOSED_CONTRACT_NOT_MET. R277 F1-F3 were reproduced as executable false PASS cases on the unchanged PR #35 analyzer blob a654fa1e15bfa8f9c2bfaa39073ecdf044a74a12. R283 additionally found four silent-PASS classes: YAML run-block/comment text can masquerade as checkout metadata; semantically equivalent ancestry guard formatting (e.g. double whitespace) bypasses exact-substring detection; comments/string literals can manufacture bracket-key evidence that masks unsupported real accesses; and generator if/del/conditional-return/helper control flow is silently skipped, including a path that writes no manifest. Main harness: 18 probes, 14/14 adversarial cases returned PASS; normalized evidence SHA256 4ab1b3a9254a2ebfa6045730cb48106f5f99253b6bce162f06cc045fa7563fd5. PR head moved mid-audit from e054a32d7d3bdac98408392b09f467e174c2565b to 65634dfedfa3d46be785d2b07ba3997b292be16e by a test-only commit; analyzer/docs stayed byte-identical. Current head adds six expected-rejection tests for R277 cases, but their exact analyzer inputs all still return PASS because production code is unchanged. Fix scope is limited to analyzer/tests/docs plus future append-only evidence; no workflows/historical evidence/fixtures/estimators/benchmark/canonical changes. No PR edit/review/comment/merge, Actions, fixture, estimator, public benchmark data or paid resource.",
+            "receipt": {
+              "sha256": "fb1002ca8e67d4d1cc791443a70559a4037ae0bba260d3121050746839952180",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/55ee4876459d338de136fa4be253e0c089c69697/research/r283/R283_RECEIPT.json"
+            },
+            "run_id": "R283-pr35-adversarial-synthetic-audit-20260923",
+            "status": "COMPLETE"
+          },
           "run_id": "R283-pr35-adversarial-synthetic-audit-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independently inspect PR #35 current head plus R277 findings. Using only small synthetic workflow/generator strings and offline tests, reproduce the three reported fail-open cases and probe for additional ways unsupported YAML/Python dataflow can produce a false PASS. Do not edit PR #35, create a PR review/comment, trigger Actions, execute fixtures/estimators, or access competition data. Report exact minimal counterexamples, affected functions/lines and the smallest safe fail-closed behavior in an append-only report/receipt with hashes/commit; finish R283.",
@@ -8096,7 +8121,12 @@
       "id": "R283",
       "owner": "preflight-adversarial-audit",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "Adversarial offline audit complete: FAIL_CLOSED_CONTRACT_NOT_MET. R277 F1-F3 were reproduced as executable false PASS cases on the unchanged PR #35 analyzer blob a654fa1e15bfa8f9c2bfaa39073ecdf044a74a12. R283 additionally found four silent-PASS classes: YAML run-block/comment text can masquerade as checkout metadata; semantically equivalent ancestry guard formatting (e.g. double whitespace) bypasses exact-substring detection; comments/string literals can manufacture bracket-key evidence that masks unsupported real accesses; and generator if/del/conditional-return/helper control flow is silently skipped, including a path that writes no manifest. Main harness: 18 probes, 14/14 adversarial cases returned PASS; normalized evidence SHA256 4ab1b3a9254a2ebfa6045730cb48106f5f99253b6bce162f06cc045fa7563fd5. PR head moved mid-audit from e054a32d7d3bdac98408392b09f467e174c2565b to 65634dfedfa3d46be785d2b07ba3997b292be16e by a test-only commit; analyzer/docs stayed byte-identical. Current head adds six expected-rejection tests for R277 cases, but their exact analyzer inputs all still return PASS because production code is unchanged. Fix scope is limited to analyzer/tests/docs plus future append-only evidence; no workflows/historical evidence/fixtures/estimators/benchmark/canonical changes. No PR edit/review/comment/merge, Actions, fixture, estimator, public benchmark data or paid resource.",
+      "receipt": {
+        "sha256": "fb1002ca8e67d4d1cc791443a70559a4037ae0bba260d3121050746839952180",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/55ee4876459d338de136fa4be253e0c089c69697/research/r283/R283_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Adversarially test PR #35 beyond the known false-PASS cases"
     },
     {
@@ -8135,7 +8165,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 378,
+  "revision": 379,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
