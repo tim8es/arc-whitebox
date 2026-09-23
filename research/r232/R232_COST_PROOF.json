@@ -1,0 +1,18 @@
+{
+  "schema": "arc.whitebox.r232.drre_cost.v1",
+  "job_id": "R232",
+  "family": "dual-resolution Richardson debiasing",
+  "budget": 2199023255552,
+  "parent_high_flops": 806303721965,
+  "low_pass_conservative_upper": 806303721965,
+  "output_elements": 16384,
+  "combine_flops": 49152,
+  "all_in_upper": 1612607493082,
+  "utilization_upper": 0.7333289854987015,
+  "parent_utilization": 0.36666448157347986,
+  "raw_mse_break_even_ratio": 0.49999998476008567,
+  "frozen_small_gate_ratio": 0.45,
+  "projected_adjusted_ratio_at_small_gate": 0.900000027431846,
+  "under_budget": true,
+  "note": "Low R_OLD2=192 is conservatively charged the full shipped R_OLD2=224 pass cost; no pass-sharing credit."
+}

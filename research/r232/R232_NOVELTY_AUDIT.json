@@ -1,0 +1,43 @@
+{
+  "schema": "arc.whitebox.r232.novelty_audit.v1",
+  "job_id": "R232",
+  "ledger": {
+    "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "experiment_ids": 194,
+    "legacy_ledger_blob": "040e52efe01efd7280180b7e2d72901b4c2f0532"
+  },
+  "searched_absent_terms": [
+    "richardson",
+    "extrapolat",
+    "multilevel",
+    "romberg",
+    "jackknife",
+    "two-rank",
+    "rank extrap",
+    "debiased",
+    "russian roulette",
+    "mlmc"
+  ],
+  "family": "dual-resolution Richardson debiasing",
+  "distinction": "Combines two complete deterministic V25 resolution outputs with a fixed signed Richardson coefficient; it neither chooses a rank nor learns a residual/blend coefficient.",
+  "adjacent_but_not_same": [
+    "E002 adaptive learned/fixed analytic-sampling blend",
+    "V24/V25 single-rank ladders",
+    "E009 future-aware basis",
+    "E022 oversampled basis"
+  ],
+  "forbidden_families_explicitly_excluded": [
+    "R227 second K4 regeneration",
+    "R223 feed-local lambda",
+    "R219 copula",
+    "E137 CountSketch",
+    "E142/E147 response-aligned D21/K3",
+    "E124 Walsh-coset",
+    "tail-only tuning",
+    "E033 source-Hutchinson",
+    "E148 TT-K3",
+    "E140 SMV-K3",
+    "E019/E112 final scalar closures"
+  ],
+  "strict_novelty_pass": true
+}
