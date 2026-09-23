@@ -3757,13 +3757,13 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "r260-independent-audit",
-        "title": "Independently audit R260 target-free evidence",
-        "hypothesis_id": "R260-INDEPENDENT-EVIDENCE-AUDIT",
-        "priority": 2,
+        "deliverable": "Independently read the frozen R260 protocol plus its committed report/receipt. Verify report/receipt identity, source/runtime/fixture/artifact hash claims from available evidence; independently recompute parent/candidate final and all-layer MSE ratios and evaluate every frozen target-free gate. Reconcile workflow success with the scientific rejection and verify validation/public mini-100 was skipped. Produce an isolated R262 audit report and receipt with evidence links, exact calculations, hashes and any discrepancy; then finish this queue job. No reruns, Actions, R209/public/holdout/private/full data, paid resources, method proposals/tuning, submission, leaderboard/canonical changes, or edits to R260 artifacts. If repository write is unavailable, return the precise blocker and calculations without claiming completion.",
         "depends_on": [
           "R260"
         ],
-        "deliverable": "Independently read the frozen R260 protocol plus its committed report/receipt. Verify report/receipt identity, source/runtime/fixture/artifact hash claims from available evidence; independently recompute parent/candidate final and all-layer MSE ratios and evaluate every frozen target-free gate. Reconcile workflow success with the scientific rejection and verify validation/public mini-100 was skipped. Produce an isolated R262 audit report and receipt with evidence links, exact calculations, hashes and any discrepancy; then finish this queue job. No reruns, Actions, R209/public/holdout/private/full data, paid resources, method proposals/tuning, submission, leaderboard/canonical changes, or edits to R260 artifacts. If repository write is unavailable, return the precise blocker and calculations without claiming completion."
+        "hypothesis_id": "R260-INDEPENDENT-EVIDENCE-AUDIT",
+        "priority": 2,
+        "title": "Independently audit R260 target-free evidence"
       },
       "revision": 280
     },
@@ -3775,9 +3775,9 @@
       "payload": {
         "from_assigned_owner": "r260-independent-audit",
         "from_session": null,
+        "reason": "Bind unstarted R262 to an existing ARC verifier session; the queued task has no claim, start, branch or attempt, so no execution is being transferred.",
         "to_assigned_owner": "r260-independent-audit-e178-guard",
-        "to_session": "6ab172ee-7a30-83ed-b295-d8d706a87d87",
-        "reason": "Bind unstarted R262 to an existing ARC verifier session; the queued task has no claim, start, branch or attempt, so no execution is being transferred."
+        "to_session": "6ab172ee-7a30-83ed-b295-d8d706a87d87"
       },
       "revision": 281
     },
@@ -3833,9 +3833,9 @@
       "payload": {
         "from_assigned_owner": "orthogonal-method-research-guard-responsive",
         "from_session": "6ab11f5a-a344-83eb-86f7-468821093e80",
+        "reason": "Previous recipient remained idle and claim-only for 25 minutes. Current checks show no start, attempts, R261 branch, run, or artifact. Stand-down message sent; transfer the same unstarted job, no duplicate execution.",
         "to_assigned_owner": "orthogonal-method-research-e178-guard",
-        "to_session": "6ab172ee-7a30-83ed-b295-d8d706a87d87",
-        "reason": "Previous recipient remained idle and claim-only for 25 minutes. Current checks show no start, attempts, R261 branch, run, or artifact. Stand-down message sent; transfer the same unstarted job, no duplicate execution."
+        "to_session": "6ab172ee-7a30-83ed-b295-d8d706a87d87"
       },
       "revision": 286
     },
@@ -3845,8 +3845,8 @@
       "job": "R261",
       "owner": "orthogonal-method-research-e178-guard",
       "payload": {
-        "transferred_unstarted_job": true,
-        "prior_owner_stood_down": true
+        "prior_owner_stood_down": true,
+        "transferred_unstarted_job": true
       },
       "revision": 287
     },
@@ -3867,14 +3867,14 @@
       "job": "R261",
       "owner": "orthogonal-method-research-e178-guard",
       "payload": {
-        "status": "SCIENTIFIC_REJECT",
         "decision": "EVIDENCE_BASED_NO_GO_BEFORE_EXECUTION",
         "reason": "Bounded source/evidence review found no orthogonal V25 candidate with target-free rationale sufficient to justify a production-shape execution. The concrete orthogonal lever considered, disabling the existing online mean-correction rider, is itself public-fitted and has no committed target-free evidence for the required >=5% final and >=2% all-layer MSE gains; executing it would be speculative method fishing. No candidate execution or public access occurred.",
         "receipt": {
           "commit": "c7d0e98a413c0e4fc4e462d7aa65d8eeaae42f66",
           "url": "https://github.com/tim8es/arc-whitebox/blob/c7d0e98a413c0e4fc4e462d7aa65d8eeaae42f66/research/r261/R261_RECEIPT.json"
         },
-        "run_id": "R261-local-target-free-20260923"
+        "run_id": "R261-local-target-free-20260923",
+        "status": "SCIENTIFIC_REJECT"
       },
       "revision": 289
     },
@@ -3885,11 +3885,11 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "leaderboard-refresh-arc",
-        "title": "Refresh the official Phase-2 leaderboard snapshot",
+        "deliverable": "Update the last verified leaderboard audit (R241) using only official AIcrowd/ARC primary sources. Record access time in UTC and Moscow time, visible Phase-2 standings/metric/deadline, source URLs and the strongest displayed score. Compare with R209 V25 mini-100 only if the official metric, split and aggregation are demonstrably aligned; otherwise state precisely why rank is UNKNOWN/NOT_COMPARABLE. Save an append-only report and receipt with source snapshots/hashes and commit, then finish R263. No estimator run, Actions, paid compute, private/holdout/full data, submission or leaderboard mutation.",
+        "depends_on": [],
         "hypothesis_id": "PHASE2-LEADERBOARD-SNAPSHOT-20260923",
         "priority": 1,
-        "depends_on": [],
-        "deliverable": "Update the last verified leaderboard audit (R241) using only official AIcrowd/ARC primary sources. Record access time in UTC and Moscow time, visible Phase-2 standings/metric/deadline, source URLs and the strongest displayed score. Compare with R209 V25 mini-100 only if the official metric, split and aggregation are demonstrably aligned; otherwise state precisely why rank is UNKNOWN/NOT_COMPARABLE. Save an append-only report and receipt with source snapshots/hashes and commit, then finish R263. No estimator run, Actions, paid compute, private/holdout/full data, submission or leaderboard mutation."
+        "title": "Refresh the official Phase-2 leaderboard snapshot"
       },
       "revision": 290
     },
@@ -3900,11 +3900,11 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "leader-method-forensics",
-        "title": "Forensic delta of the current public leader method",
+        "deliverable": "Read the prior public-leader audit R230 and leaderboard snapshot R241. Inspect primary/public artifacts for the currently strongest visible Phase-2 entry and report only verifiable method/code changes or disclosures since R230; compare those against the pinned V25 source and cite exact source commits/locations. Separate observed implementation from inference; if no new public evidence exists, record a no-change result instead of inventing a method. Deliver a concise append-only report and receipt with hashes/commit; finish R264. No estimator/benchmark/Actions run, no private/holdout, submission or leaderboard/canonical edits.",
+        "depends_on": [],
         "hypothesis_id": "PUBLIC-LEADER-METHOD-DELTA-20260923",
         "priority": 2,
-        "depends_on": [],
-        "deliverable": "Read the prior public-leader audit R230 and leaderboard snapshot R241. Inspect primary/public artifacts for the currently strongest visible Phase-2 entry and report only verifiable method/code changes or disclosures since R230; compare those against the pinned V25 source and cite exact source commits/locations. Separate observed implementation from inference; if no new public evidence exists, record a no-change result instead of inventing a method. Deliver a concise append-only report and receipt with hashes/commit; finish R264. No estimator/benchmark/Actions run, no private/holdout, submission or leaderboard/canonical edits."
+        "title": "Forensic delta of the current public leader method"
       },
       "revision": 291
     },
@@ -3915,13 +3915,13 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "method-theory-scout",
-        "title": "Screen one distinct accuracy-first estimator after R261",
-        "hypothesis_id": "ACCURACY-METHOD-SCREEN-AFTER-R261-20260923",
-        "priority": 1,
+        "deliverable": "Read current full research/history.json, AGENTS.md, RESEARCH_PROCESS.md, R261 report/receipt and current best compatible normalized records. Independently choose at most one genuinely new accuracy-first estimator family not equivalent to any tested/closed family; ground math in primary sources and document a full-history novelty check. Do not force a candidate: if no plausible, budget-feasible mechanism survives, publish an evidence-based NO_GO. If a candidate survives, freeze source/math, exact deterministic target-free synthetic fixture, parent/comparator, metered path, full production FLOP bound and one falsifier before coding; implement one isolated prototype and run at most one local synthetic falsifier. No public/R209, Actions, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes. Save artifacts, hashes and commit; finish R265 and wait for coordinator before any public/cloud work.",
         "depends_on": [
           "R261"
         ],
-        "deliverable": "Read current full research/history.json, AGENTS.md, RESEARCH_PROCESS.md, R261 report/receipt and current best compatible normalized records. Independently choose at most one genuinely new accuracy-first estimator family not equivalent to any tested/closed family; ground math in primary sources and document a full-history novelty check. Do not force a candidate: if no plausible, budget-feasible mechanism survives, publish an evidence-based NO_GO. If a candidate survives, freeze source/math, exact deterministic target-free synthetic fixture, parent/comparator, metered path, full production FLOP bound and one falsifier before coding; implement one isolated prototype and run at most one local synthetic falsifier. No public/R209, Actions, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes. Save artifacts, hashes and commit; finish R265 and wait for coordinator before any public/cloud work."
+        "hypothesis_id": "ACCURACY-METHOD-SCREEN-AFTER-R261-20260923",
+        "priority": 1,
+        "title": "Screen one distinct accuracy-first estimator after R261"
       },
       "revision": 292
     },
@@ -3932,14 +3932,14 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "score-gap-analysis",
-        "title": "Quantify the remaining score gap and required improvement",
-        "hypothesis_id": "R209-LEADER-GAP-SENSITIVITY-20260923",
-        "priority": 2,
+        "deliverable": "Using the completed R263 official snapshot and existing normalized R209/R223 records only, calculate the exact official adjusted-score gap when comparison is valid, and the required raw-MSE improvement versus cost reduction under the official score formula and cost-floor. Include failure-penalty semantics, explicit comparable/not-comparable decision, and scenarios for matching the visible leader; do not claim a competition rank from mini-100. Preserve row-level inputs and reproducible calculations in an append-only report/receipt with hashes/commit; finish R266. No reruns, Actions, new data access, paid/private/holdout/full, submission, or model/leaderboard edits.",
         "depends_on": [
           "R263",
           "R209"
         ],
-        "deliverable": "Using the completed R263 official snapshot and existing normalized R209/R223 records only, calculate the exact official adjusted-score gap when comparison is valid, and the required raw-MSE improvement versus cost reduction under the official score formula and cost-floor. Include failure-penalty semantics, explicit comparable/not-comparable decision, and scenarios for matching the visible leader; do not claim a competition rank from mini-100. Preserve row-level inputs and reproducible calculations in an append-only report/receipt with hashes/commit; finish R266. No reruns, Actions, new data access, paid/private/holdout/full, submission, or model/leaderboard edits."
+        "hypothesis_id": "R209-LEADER-GAP-SENSITIVITY-20260923",
+        "priority": 2,
+        "title": "Quantify the remaining score gap and required improvement"
       },
       "revision": 293
     },
@@ -3950,16 +3950,16 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "workflow-failure-postmortem",
-        "title": "Postmortem the R257-R260 execution failures",
-        "hypothesis_id": "R257-R260-INFRA-POSTMORTEM-20260923",
-        "priority": 2,
+        "deliverable": "Independently trace the immutable R257/R258/R259 infra receipts and the R260 successful target-free run. Build a short cause/effect timeline for the repeated shallow-history, manifest-path and schema-contract failures; distinguish verified facts from inference and quantify work that never reached science. Recommend the smallest offline preflight that would have caught these exact errors. Add/run one minimal offline check only if it is small and reusable; do not edit historical workflows or receipts, trigger Actions, rerun science, or access public/holdout/private data. Commit an append-only report/receipt and any narrowly scoped check, finish R267.",
         "depends_on": [
           "R257",
           "R258",
           "R259",
           "R260"
         ],
-        "deliverable": "Independently trace the immutable R257/R258/R259 infra receipts and the R260 successful target-free run. Build a short cause/effect timeline for the repeated shallow-history, manifest-path and schema-contract failures; distinguish verified facts from inference and quantify work that never reached science. Recommend the smallest offline preflight that would have caught these exact errors. Add/run one minimal offline check only if it is small and reusable; do not edit historical workflows or receipts, trigger Actions, rerun science, or access public/holdout/private data. Commit an append-only report/receipt and any narrowly scoped check, finish R267."
+        "hypothesis_id": "R257-R260-INFRA-POSTMORTEM-20260923",
+        "priority": 2,
+        "title": "Postmortem the R257-R260 execution failures"
       },
       "revision": 294
     },
@@ -3970,35 +3970,43 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "r261-control-audit",
-        "title": "Independently verify the R261 control reconciliation",
-        "hypothesis_id": "R261-CONTROL-RECONCILIATION-AUDIT-20260923",
-        "priority": 2,
+        "deliverable": "Read the append-only queue events through R261 finish, the original R261 report/receipt, the coordinator reconciliation note, and current state.json/STATUS. Independently verify receipt/report blob mismatch handling, source commit provenance, reconstructed attempt projection, and consistency of current job status with append-only history. Preserve original history; report any remaining discrepancy without editing R261 artifacts/state. Save an isolated audit report and receipt with hashes/commit and finish R268. No Actions, science, public/holdout, paid resources, submission, or leaderboard/canonical changes.",
         "depends_on": [
           "R261"
         ],
-        "deliverable": "Read the append-only queue events through R261 finish, the original R261 report/receipt, the coordinator reconciliation note, and current state.json/STATUS. Independently verify receipt/report blob mismatch handling, source commit provenance, reconstructed attempt projection, and consistency of current job status with append-only history. Preserve original history; report any remaining discrepancy without editing R261 artifacts/state. Save an isolated audit report and receipt with hashes/commit and finish R268. No Actions, science, public/holdout, paid resources, submission, or leaderboard/canonical changes."
+        "hypothesis_id": "R261-CONTROL-RECONCILIATION-AUDIT-20260923",
+        "priority": 2,
+        "title": "Independently verify the R261 control reconciliation"
       },
       "revision": 295
     },
     {
-      "revision": 296,
       "action": "claim",
+      "at": "2026-09-23T12:01:19.406Z",
       "job": "R263",
       "owner": "leaderboard-refresh-arc",
       "payload": {},
-      "at": "2026-09-23T12:01:19.406Z"
+      "revision": 296
     },
     {
-      "revision": 297,
       "action": "start",
+      "at": "2026-09-23T12:01:54.518Z",
       "job": "R263",
       "owner": "leaderboard-refresh-arc",
       "payload": {
-        "run_id": "R263-leaderboard-refresh-20260923",
         "code_commit": "fbb17a40760fc6630fda08f1d87533b298917324",
-        "command": "read-only desk audit of official AIcrowd/ARC Phase-2 leaderboard/rules plus existing R209 evidence; no estimator/Actions/private/holdout/full/submission"
+        "command": "read-only desk audit of official AIcrowd/ARC Phase-2 leaderboard/rules plus existing R209 evidence; no estimator/Actions/private/holdout/full/submission",
+        "run_id": "R263-leaderboard-refresh-20260923"
       },
-      "at": "2026-09-23T12:01:54.518Z"
+      "revision": 297
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T12:03:00.266Z",
+      "job": "R264",
+      "owner": "leader-method-forensics",
+      "payload": {},
+      "revision": 298
     }
   ],
   "jobs": [
@@ -6251,22 +6259,22 @@
       "assigned_owner": "orthogonal-method-research-e178-guard",
       "attempts": [
         {
-          "command": "bounded local target-free orthogonal V25 method search; no Actions/public/paid/holdout/submission; no R260 edits",
-          "run_id": "R261-local-target-free-20260923",
           "code_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
-          "status": "SCIENTIFIC_REJECT",
+          "command": "bounded local target-free orthogonal V25 method search; no Actions/public/paid/holdout/submission; no R260 edits",
           "completion": {
-            "status": "SCIENTIFIC_REJECT",
             "decision": "EVIDENCE_BASED_NO_GO_BEFORE_EXECUTION",
+            "finish_event_revision": 289,
             "reason": "Bounded source/evidence review found no orthogonal V25 candidate with target-free rationale sufficient to justify a production-shape execution. The concrete orthogonal lever considered, disabling the existing online mean-correction rider, is itself public-fitted and has no committed target-free evidence for the required >=5% final and >=2% all-layer MSE gains; executing it would be speculative method fishing. No candidate execution or public access occurred. Coordinator reconciled the stale projection from the append-only events. Agent receipt/report blob mismatch and missing start/finish fields are preserved and documented in the coordinator reconciliation note; no candidate was executed.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/9dfb89faeb33617da2f5ca91d32fa776426e228b/research/r261/R261_COORDINATOR_RECONCILIATION.json",
-              "sha256": "ceb4aa86da2ac1cd23ecea0bac0d6f4c68668d8d91c103ae39a39af8d155b5c2"
+              "sha256": "ceb4aa86da2ac1cd23ecea0bac0d6f4c68668d8d91c103ae39a39af8d155b5c2",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/9dfb89faeb33617da2f5ca91d32fa776426e228b/research/r261/R261_COORDINATOR_RECONCILIATION.json"
             },
             "run_id": "R261-local-target-free-20260923",
             "source_event_revision": 288,
-            "finish_event_revision": 289
-          }
+            "status": "SCIENTIFIC_REJECT"
+          },
+          "run_id": "R261-local-target-free-20260923",
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Read the complete current research/history.json, AGENTS.md, RESEARCH_PROCESS.md, R209 normalized records, and R260 terminal report/receipt. Select exactly one genuinely orthogonal accuracy-first method not equivalent to BPK2K summation-order reassociation and deduplicated against every prior family/assumption in history. Ground any algorithm claim in primary sources. Freeze math, source/meter path, cost bound, seed/fixture, immediate parent plus strongest compatible comparator, and one discriminating target-free falsifier before implementation. If and only if a feasible falsifier exists, build one minimal isolated prototype and one offline regression check; run at most one local synthetic target-free test (no Actions). Log full per-layer error, measured FLOPs/time, hashes and exact outcome; no seed/network tuning or cherry-picking. If no novel, plausibly useful, budget-feasible method remains, commit a durable terminal NO_GO with the evidence. Produce report, receipt, test/source hashes and commit; finish this queue job. No R209/public data, Actions/workflow, private/holdout/full, paid resources, submission, leaderboard/canonical edits, or R260 method/gate rewrite. Stop after local result and wait for coordinator before any public or cloud run.",
@@ -6278,31 +6286,20 @@
       "id": "R261",
       "owner": "orthogonal-method-research-e178-guard",
       "priority": 1,
-      "status": "SCIENTIFIC_REJECT",
-      "title": "Find one orthogonal accuracy-first V25 method after BPK2K rejection",
       "reason": "Bounded source/evidence review found no orthogonal V25 candidate with target-free rationale sufficient to justify a production-shape execution. The concrete orthogonal lever considered, disabling the existing online mean-correction rider, is itself public-fitted and has no committed target-free evidence for the required >=5% final and >=2% all-layer MSE gains; executing it would be speculative method fishing. No candidate execution or public access occurred. Coordinator reconciled the stale projection from the append-only events. Agent receipt/report blob mismatch and missing start/finish fields are preserved and documented in the coordinator reconciliation note; no candidate was executed.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/9dfb89faeb33617da2f5ca91d32fa776426e228b/research/r261/R261_COORDINATOR_RECONCILIATION.json",
-        "sha256": "ceb4aa86da2ac1cd23ecea0bac0d6f4c68668d8d91c103ae39a39af8d155b5c2"
-      }
+        "sha256": "ceb4aa86da2ac1cd23ecea0bac0d6f4c68668d8d91c103ae39a39af8d155b5c2",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/9dfb89faeb33617da2f5ca91d32fa776426e228b/research/r261/R261_COORDINATOR_RECONCILIATION.json"
+      },
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Find one orthogonal accuracy-first V25 method after BPK2K rejection"
     },
     {
-      "id": "R262",
-      "title": "Independently audit R260 target-free evidence",
-      "priority": 2,
-      "hypothesis_id": "R260-INDEPENDENT-EVIDENCE-AUDIT",
-      "depends_on": [
-        "R260"
-      ],
       "assigned_owner": "r260-independent-audit-e178-guard",
-      "owner": "r260-independent-audit-e178-guard",
-      "status": "COMPLETE",
       "attempts": [
         {
           "code_commit": "2e23849be9448f58edbca827e578e551013a8460",
           "command": "read-only independent audit of committed R260 protocol/report/receipt/artifact manifest; recompute frozen target-free gates; no rerun/Actions/public data",
-          "run_id": "R262-r260-independent-audit-20260923",
-          "status": "COMPLETE",
           "completion": {
             "reason": "Independent read-only audit verified R260 artifact integrity and recomputed every frozen target-free gate. Final ratio 1.0003220117801912 >0.95 and all-layer ratio 1.0000406003104108 >0.98 are the only failures; 13 improved layers, max degradation 1.0003220117801912, FLOP ratio 1.0, residual 0.31171112699985315 <=0.3453375111489872, finite/shape/symmetry/source gates pass. GitHub workflow success is consistent with preserved terminal evidence while science is SCIENTIFIC_REJECT_TARGET_FREE. Validation/R209 identity/public mini-100 were skipped as required. No rerun or prohibited access.",
             "receipt": {
@@ -6311,110 +6308,121 @@
             },
             "run_id": "R262-r260-independent-audit-20260923",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "R262-r260-independent-audit-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independently read the frozen R260 protocol plus its committed report/receipt. Verify report/receipt identity, source/runtime/fixture/artifact hash claims from available evidence; independently recompute parent/candidate final and all-layer MSE ratios and evaluate every frozen target-free gate. Reconcile workflow success with the scientific rejection and verify validation/public mini-100 was skipped. Produce an isolated R262 audit report and receipt with evidence links, exact calculations, hashes and any discrepancy; then finish this queue job. No reruns, Actions, R209/public/holdout/private/full data, paid resources, method proposals/tuning, submission, leaderboard/canonical changes, or edits to R260 artifacts. If repository write is unavailable, return the precise blocker and calculations without claiming completion.",
+      "depends_on": [
+        "R260"
+      ],
+      "hypothesis_id": "R260-INDEPENDENT-EVIDENCE-AUDIT",
+      "id": "R262",
+      "owner": "r260-independent-audit-e178-guard",
+      "priority": 2,
       "reason": "Independent read-only audit verified R260 artifact integrity and recomputed every frozen target-free gate. Final ratio 1.0003220117801912 >0.95 and all-layer ratio 1.0000406003104108 >0.98 are the only failures; 13 improved layers, max degradation 1.0003220117801912, FLOP ratio 1.0, residual 0.31171112699985315 <=0.3453375111489872, finite/shape/symmetry/source gates pass. GitHub workflow success is consistent with preserved terminal evidence while science is SCIENTIFIC_REJECT_TARGET_FREE. Validation/R209 identity/public mini-100 were skipped as required. No rerun or prohibited access.",
       "receipt": {
         "sha256": "753ab8f90c42fb5c6f6748de723877e6a2e5e17ac4f23a23e63b579f1e187402",
         "url": "https://github.com/tim8es/arc-whitebox/blob/d6c29031c8c7c751602ffe34e8eff538d237137a/research/r262/R262_RECEIPT.json"
-      }
+      },
+      "status": "COMPLETE",
+      "title": "Independently audit R260 target-free evidence"
     },
     {
-      "id": "R263",
-      "title": "Refresh the official Phase-2 leaderboard snapshot",
-      "priority": 1,
-      "hypothesis_id": "PHASE2-LEADERBOARD-SNAPSHOT-20260923",
-      "depends_on": [],
       "assigned_owner": "leaderboard-refresh-arc",
-      "owner": "leaderboard-refresh-arc",
-      "status": "RUNNING",
       "attempts": [
         {
-          "run_id": "R263-leaderboard-refresh-20260923",
           "code_commit": "fbb17a40760fc6630fda08f1d87533b298917324",
           "command": "read-only desk audit of official AIcrowd/ARC Phase-2 leaderboard/rules plus existing R209 evidence; no estimator/Actions/private/holdout/full/submission",
+          "run_id": "R263-leaderboard-refresh-20260923",
           "status": "RUNNING"
         }
       ],
-      "deliverable": "Update the last verified leaderboard audit (R241) using only official AIcrowd/ARC primary sources. Record access time in UTC and Moscow time, visible Phase-2 standings/metric/deadline, source URLs and the strongest displayed score. Compare with R209 V25 mini-100 only if the official metric, split and aggregation are demonstrably aligned; otherwise state precisely why rank is UNKNOWN/NOT_COMPARABLE. Save an append-only report and receipt with source snapshots/hashes and commit, then finish R263. No estimator run, Actions, paid compute, private/holdout/full data, submission or leaderboard mutation."
-    },
-    {
-      "id": "R264",
-      "title": "Forensic delta of the current public leader method",
-      "priority": 2,
-      "hypothesis_id": "PUBLIC-LEADER-METHOD-DELTA-20260923",
+      "deliverable": "Update the last verified leaderboard audit (R241) using only official AIcrowd/ARC primary sources. Record access time in UTC and Moscow time, visible Phase-2 standings/metric/deadline, source URLs and the strongest displayed score. Compare with R209 V25 mini-100 only if the official metric, split and aggregation are demonstrably aligned; otherwise state precisely why rank is UNKNOWN/NOT_COMPARABLE. Save an append-only report and receipt with source snapshots/hashes and commit, then finish R263. No estimator run, Actions, paid compute, private/holdout/full data, submission or leaderboard mutation.",
       "depends_on": [],
-      "assigned_owner": "leader-method-forensics",
-      "owner": null,
-      "status": "QUEUED",
-      "attempts": [],
-      "deliverable": "Read the prior public-leader audit R230 and leaderboard snapshot R241. Inspect primary/public artifacts for the currently strongest visible Phase-2 entry and report only verifiable method/code changes or disclosures since R230; compare those against the pinned V25 source and cite exact source commits/locations. Separate observed implementation from inference; if no new public evidence exists, record a no-change result instead of inventing a method. Deliver a concise append-only report and receipt with hashes/commit; finish R264. No estimator/benchmark/Actions run, no private/holdout, submission or leaderboard/canonical edits."
+      "hypothesis_id": "PHASE2-LEADERBOARD-SNAPSHOT-20260923",
+      "id": "R263",
+      "owner": "leaderboard-refresh-arc",
+      "priority": 1,
+      "status": "RUNNING",
+      "title": "Refresh the official Phase-2 leaderboard snapshot"
     },
     {
-      "id": "R265",
-      "title": "Screen one distinct accuracy-first estimator after R261",
-      "priority": 1,
-      "hypothesis_id": "ACCURACY-METHOD-SCREEN-AFTER-R261-20260923",
+      "assigned_owner": "leader-method-forensics",
+      "attempts": [],
+      "deliverable": "Read the prior public-leader audit R230 and leaderboard snapshot R241. Inspect primary/public artifacts for the currently strongest visible Phase-2 entry and report only verifiable method/code changes or disclosures since R230; compare those against the pinned V25 source and cite exact source commits/locations. Separate observed implementation from inference; if no new public evidence exists, record a no-change result instead of inventing a method. Deliver a concise append-only report and receipt with hashes/commit; finish R264. No estimator/benchmark/Actions run, no private/holdout, submission or leaderboard/canonical edits.",
+      "depends_on": [],
+      "hypothesis_id": "PUBLIC-LEADER-METHOD-DELTA-20260923",
+      "id": "R264",
+      "owner": "leader-method-forensics",
+      "priority": 2,
+      "status": "CLAIMED",
+      "title": "Forensic delta of the current public leader method"
+    },
+    {
+      "assigned_owner": "method-theory-scout",
+      "attempts": [],
+      "deliverable": "Read current full research/history.json, AGENTS.md, RESEARCH_PROCESS.md, R261 report/receipt and current best compatible normalized records. Independently choose at most one genuinely new accuracy-first estimator family not equivalent to any tested/closed family; ground math in primary sources and document a full-history novelty check. Do not force a candidate: if no plausible, budget-feasible mechanism survives, publish an evidence-based NO_GO. If a candidate survives, freeze source/math, exact deterministic target-free synthetic fixture, parent/comparator, metered path, full production FLOP bound and one falsifier before coding; implement one isolated prototype and run at most one local synthetic falsifier. No public/R209, Actions, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes. Save artifacts, hashes and commit; finish R265 and wait for coordinator before any public/cloud work.",
       "depends_on": [
         "R261"
       ],
-      "assigned_owner": "method-theory-scout",
+      "hypothesis_id": "ACCURACY-METHOD-SCREEN-AFTER-R261-20260923",
+      "id": "R265",
       "owner": null,
+      "priority": 1,
       "status": "QUEUED",
-      "attempts": [],
-      "deliverable": "Read current full research/history.json, AGENTS.md, RESEARCH_PROCESS.md, R261 report/receipt and current best compatible normalized records. Independently choose at most one genuinely new accuracy-first estimator family not equivalent to any tested/closed family; ground math in primary sources and document a full-history novelty check. Do not force a candidate: if no plausible, budget-feasible mechanism survives, publish an evidence-based NO_GO. If a candidate survives, freeze source/math, exact deterministic target-free synthetic fixture, parent/comparator, metered path, full production FLOP bound and one falsifier before coding; implement one isolated prototype and run at most one local synthetic falsifier. No public/R209, Actions, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes. Save artifacts, hashes and commit; finish R265 and wait for coordinator before any public/cloud work."
+      "title": "Screen one distinct accuracy-first estimator after R261"
     },
     {
-      "id": "R266",
-      "title": "Quantify the remaining score gap and required improvement",
-      "priority": 2,
-      "hypothesis_id": "R209-LEADER-GAP-SENSITIVITY-20260923",
+      "assigned_owner": "score-gap-analysis",
+      "attempts": [],
+      "deliverable": "Using the completed R263 official snapshot and existing normalized R209/R223 records only, calculate the exact official adjusted-score gap when comparison is valid, and the required raw-MSE improvement versus cost reduction under the official score formula and cost-floor. Include failure-penalty semantics, explicit comparable/not-comparable decision, and scenarios for matching the visible leader; do not claim a competition rank from mini-100. Preserve row-level inputs and reproducible calculations in an append-only report/receipt with hashes/commit; finish R266. No reruns, Actions, new data access, paid/private/holdout/full, submission, or model/leaderboard edits.",
       "depends_on": [
         "R263",
         "R209"
       ],
-      "assigned_owner": "score-gap-analysis",
+      "hypothesis_id": "R209-LEADER-GAP-SENSITIVITY-20260923",
+      "id": "R266",
       "owner": null,
+      "priority": 2,
       "status": "QUEUED",
-      "attempts": [],
-      "deliverable": "Using the completed R263 official snapshot and existing normalized R209/R223 records only, calculate the exact official adjusted-score gap when comparison is valid, and the required raw-MSE improvement versus cost reduction under the official score formula and cost-floor. Include failure-penalty semantics, explicit comparable/not-comparable decision, and scenarios for matching the visible leader; do not claim a competition rank from mini-100. Preserve row-level inputs and reproducible calculations in an append-only report/receipt with hashes/commit; finish R266. No reruns, Actions, new data access, paid/private/holdout/full, submission, or model/leaderboard edits."
+      "title": "Quantify the remaining score gap and required improvement"
     },
     {
-      "id": "R267",
-      "title": "Postmortem the R257-R260 execution failures",
-      "priority": 2,
-      "hypothesis_id": "R257-R260-INFRA-POSTMORTEM-20260923",
+      "assigned_owner": "workflow-failure-postmortem",
+      "attempts": [],
+      "deliverable": "Independently trace the immutable R257/R258/R259 infra receipts and the R260 successful target-free run. Build a short cause/effect timeline for the repeated shallow-history, manifest-path and schema-contract failures; distinguish verified facts from inference and quantify work that never reached science. Recommend the smallest offline preflight that would have caught these exact errors. Add/run one minimal offline check only if it is small and reusable; do not edit historical workflows or receipts, trigger Actions, rerun science, or access public/holdout/private data. Commit an append-only report/receipt and any narrowly scoped check, finish R267.",
       "depends_on": [
         "R257",
         "R258",
         "R259",
         "R260"
       ],
-      "assigned_owner": "workflow-failure-postmortem",
+      "hypothesis_id": "R257-R260-INFRA-POSTMORTEM-20260923",
+      "id": "R267",
       "owner": null,
+      "priority": 2,
       "status": "QUEUED",
-      "attempts": [],
-      "deliverable": "Independently trace the immutable R257/R258/R259 infra receipts and the R260 successful target-free run. Build a short cause/effect timeline for the repeated shallow-history, manifest-path and schema-contract failures; distinguish verified facts from inference and quantify work that never reached science. Recommend the smallest offline preflight that would have caught these exact errors. Add/run one minimal offline check only if it is small and reusable; do not edit historical workflows or receipts, trigger Actions, rerun science, or access public/holdout/private data. Commit an append-only report/receipt and any narrowly scoped check, finish R267."
+      "title": "Postmortem the R257-R260 execution failures"
     },
     {
-      "id": "R268",
-      "title": "Independently verify the R261 control reconciliation",
-      "priority": 2,
-      "hypothesis_id": "R261-CONTROL-RECONCILIATION-AUDIT-20260923",
+      "assigned_owner": "r261-control-audit",
+      "attempts": [],
+      "deliverable": "Read the append-only queue events through R261 finish, the original R261 report/receipt, the coordinator reconciliation note, and current state.json/STATUS. Independently verify receipt/report blob mismatch handling, source commit provenance, reconstructed attempt projection, and consistency of current job status with append-only history. Preserve original history; report any remaining discrepancy without editing R261 artifacts/state. Save an isolated audit report and receipt with hashes/commit and finish R268. No Actions, science, public/holdout, paid resources, submission, or leaderboard/canonical changes.",
       "depends_on": [
         "R261"
       ],
-      "assigned_owner": "r261-control-audit",
+      "hypothesis_id": "R261-CONTROL-RECONCILIATION-AUDIT-20260923",
+      "id": "R268",
       "owner": null,
+      "priority": 2,
       "status": "QUEUED",
-      "attempts": [],
-      "deliverable": "Read the append-only queue events through R261 finish, the original R261 report/receipt, the coordinator reconciliation note, and current state.json/STATUS. Independently verify receipt/report blob mismatch handling, source commit provenance, reconstructed attempt projection, and consistency of current job status with append-only history. Preserve original history; report any remaining discrepancy without editing R261 artifacts/state. Save an isolated audit report and receipt with hashes/commit and finish R268. No Actions, science, public/holdout, paid resources, submission, or leaderboard/canonical changes."
+      "title": "Independently verify the R261 control reconciliation"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 297,
+  "revision": 298,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
