@@ -4726,6 +4726,14 @@
         "deliverable": "Refresh the official ARC Phase-2 visible leaderboard at a precise UTC/MSK timestamp and inspect primary public artifacts/forum disclosures for the next strongest visible entries and any newly disclosed reproducible method beyond the J2W page already found opaque in R264. Separate directly observed ranks/scores from method evidence and inference; do not attribute any row to our team without verified team/submission identity. If no new method evidence, report no-change. Save a short cited append-only report/receipt with source snapshots/hashes/commit and finish R280. No submission, private/holdout access, paid run, Actions, or leaderboard/canonical edits."
       },
       "revision": 351
+    },
+    {
+      "revision": 352,
+      "action": "claim",
+      "job": "R279",
+      "owner": "phase2-public-panel-audit",
+      "payload": {},
+      "at": "2026-09-23T15:23:00+00:00"
     }
   ],
   "jobs": [
@@ -7573,8 +7581,8 @@
     {
       "id": "R279",
       "assigned_owner": "phase2-public-panel-audit",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "phase2-public-panel-audit",
+      "status": "CLAIMED",
       "attempts": [],
       "title": "Find a compliant local path to the official visible-50 panel",
       "hypothesis_id": "PHASE2-VISIBLE50-REPRODUCTION-PATH-20260923",
@@ -7601,7 +7609,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 351,
+  "revision": 352,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
