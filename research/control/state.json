@@ -5482,21 +5482,29 @@
       "revision": 408
     },
     {
-      "revision": 409,
       "action": "dependency_update",
+      "at": "2026-09-23T20:59:11.880Z",
       "job": "R290",
       "owner": "coordinator",
-      "at": "2026-09-23T20:59:11.880Z",
       "payload": {
         "from_depends_on": [
           "R287",
           "R288"
         ],
+        "reason": "R287's docs audit is complete with WAITING_INPUT because account-specific storage allowance is unknown; its durable receipt is present. R290's purpose is specifically to investigate an alternative persistence path, so R287 is context rather than a prerequisite. R290 had no claim, start, attempt, branch, run, or artifact. R287's status and evidence remain unchanged.",
         "to_depends_on": [
           "R288"
-        ],
-        "reason": "R287's docs audit is complete with WAITING_INPUT because account-specific storage allowance is unknown; its durable receipt is present. R290's purpose is specifically to investigate an alternative persistence path, so R287 is context rather than a prerequisite. R290 had no claim, start, attempt, branch, run, or artifact. R287's status and evidence remain unchanged."
-      }
+        ]
+      },
+      "revision": 409
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T20:52:00+00:00",
+      "job": "R290",
+      "owner": "gha-result-persistence-audit-r291-session",
+      "payload": {},
+      "revision": 410
     }
   ],
   "jobs": [
@@ -8783,9 +8791,9 @@
       ],
       "hypothesis_id": "V25-CAPTURE-OUTPUT-PERSISTENCE-20260923",
       "id": "R290",
-      "owner": null,
+      "owner": "gha-result-persistence-audit-r291-session",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Verify a no-artifact-storage way to preserve the residual capture result"
     },
     {
@@ -8826,7 +8834,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 409,
+  "revision": 410,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
