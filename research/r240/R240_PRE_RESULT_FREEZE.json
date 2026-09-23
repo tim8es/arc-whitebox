@@ -1,0 +1,130 @@
+{
+  "schema": "arc.whitebox.r240.pre_result_freeze.v1",
+  "job": "R240",
+  "run_id": "R240-r223-attempt6-independent-postflight-20260923",
+  "queue": {
+    "claim_revision": 185,
+    "claim_commit": "079da7f8a617e50b87ed1e35687b378312413362",
+    "start_revision": 186,
+    "start_commit": "07e1bda5ed894103909a00beea925b5cc511e0f4"
+  },
+  "r223_attempt6": {
+    "queue_run_id": "R223-v25-local-feed-attempt6-20260923",
+    "code_commit": "bcf4b1a94c22b9d5e7cfce482de7f7b5d134c1dc",
+    "actions_run_id": 35810427656,
+    "actions_job_id": 107020553482,
+    "actions_run_attempt": 1,
+    "actions_head_sha": "09efbb920313850a4727bd34db9088a46227ce5f",
+    "status_at_freeze": "in_progress",
+    "artifact_inspected": false
+  },
+  "frozen_r223_sources": {
+    "protocol": {
+      "blob": "1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+      "sha256": "c33a800b0d109a9679bebc690070fb781c333654164e9d02110a021f3aea3f32"
+    },
+    "workflow": {
+      "blob": "d24e3f63e8ce447188868846e9b3e4ef755b395e",
+      "sha256": "1d75b07440297db81d781d03ec6620a41a44acde94b6d38b7dbc9d5a0a491f6f"
+    },
+    "candidate": {
+      "blob": "eb95d4ae46a031be5131eef8dd0909f2061b8749",
+      "sha256": "a62f2d2e580c38a77741c5316a8a88b8a52b97d676ecd4a38639ca2c6e5c422b"
+    },
+    "transform_verifier": {
+      "blob": "961e5afb052e2cfdc15e1284de49e57ba1514a73",
+      "sha256": "aaf1e39345915b3b5f80e04b1fbfb934a6fe21ce073d7614f02458b381c14418"
+    },
+    "owner_comparator": {
+      "blob": "fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0",
+      "sha256": "cfbd8c2d8a9e9821a1e501be4ba6323d1204e7783f8557d2f0a3bbf0c4f8642c"
+    },
+    "attempt6_patch": {
+      "blob": "acdf3b788dfdf635533a23a9cf3d282a35241586",
+      "sha256": "b3342bd5a55b9df261edc9f952d57a0c7d20f9398e779828d559dfbb7ee38cb3"
+    }
+  },
+  "frozen_parent": {
+    "path": "research/results/R209-v25-mini100.json",
+    "blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "parent_report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+    "count": 100,
+    "failures": 0,
+    "mean_mse": 2.228303490170447e-8,
+    "mean_adjusted": 8.170397440117225e-9,
+    "mean_flops": 806303721965,
+    "mean_c_over_b": 0.36666448157347986,
+    "max_residual_s": 0.19043814401743475
+  },
+  "canonical_scoring": {
+    "whestbench_version": "0.16.1",
+    "source_commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+    "failure_predicate": "bool(error_code) OR budget_exhausted OR time_exhausted OR residual_wall_time_exhausted OR combined_budget_exhausted",
+    "formula": "final_layer_mse * (1.0 if failed else max(0.1,effective_compute/2**41))"
+  },
+  "r240_tooling": {
+    "verifier": {
+      "path": "research/r240/r240_verify_r223_attempt6.py",
+      "commit": "7dddfad12ad5720751225bc8d6127e10cd40a81e",
+      "blob": "eb15b02152f67e87cd9a7bb3fc31ccd0930d67ff",
+      "sha256": "f1f36b9dab560c815d363a4002a7e4f2a50ca3ae1a0b6ed8eac24864d7d14222"
+    },
+    "checklist": {
+      "path": "research/r240/R240_CHECKLIST.json",
+      "commit": "9131534ed843dfad8208a062e9b2149b9c1aa016",
+      "blob": "397ee787bde7a3ea80a74ee8bf9aa956fad2b18e",
+      "sha256": "53f6dff4ad2db606c1c33aa44bbcbb4af4c08ca49ad08b172e02173810c42222"
+    },
+    "selfcheck": {
+      "path": "research/r240/r240_selfcheck.py",
+      "commit": "779e66a7e45e52beb9bfdb53aad7b34c457cefd7",
+      "blob": "df5bfd9f60822fb37a1c615b719317df0e5487a2",
+      "sha256": "bfb1566e3a812b6f9fb7dc1c75fd88d446f1256133a8aff9be5a054dc24a7d0b"
+    },
+    "selfcheck_result": {
+      "path": "research/r240/R240_SELFCHECK_RESULT.json",
+      "commit": "84d0f27141f9719eb1834baaab55f0dbf5437f25",
+      "blob": "b3bc44f2e2940d3968c86830c8527bae78c943e2",
+      "sha256": "9df28ebe4dd5221f429244a3f26f66ae5076b2119a767d3fb64e866d81a9dc9d",
+      "pass": true
+    }
+  },
+  "prior_attempt_panel_steps": {
+    "attempt1": {
+      "job_id": 106945213303,
+      "panel_step": "skipped"
+    },
+    "attempt2": {
+      "job_id": 107015529687,
+      "panel_step": "skipped"
+    },
+    "attempt3": {
+      "job_id": 107016834321,
+      "panel_step": "skipped"
+    },
+    "attempt4": {
+      "job_id": 107018738567,
+      "panel_step": "skipped"
+    },
+    "attempt5": {
+      "job_id": 107019699350,
+      "panel_step": "skipped"
+    },
+    "attempt6": {
+      "job_id": 107020553482,
+      "panel_step": "in_progress"
+    }
+  },
+  "frozen_gate_logic_changed_after_result": false,
+  "scope": {
+    "in_progress_artifact_read": false,
+    "r223_data_executed": false,
+    "actions_triggered": false,
+    "estimator_or_benchmark_run": false,
+    "r223_files_modified": false,
+    "paid_compute": false,
+    "holdout_private": false,
+    "submission": false
+  }
+}
