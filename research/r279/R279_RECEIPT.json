@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "R279",
+  "hypothesis_id": "PHASE2-VISIBLE50-REPRODUCTION-PATH-20260923",
+  "owner": "phase2-public-panel-audit",
+  "run_id": "R279-phase2-public-panel-audit-20260923",
+  "status": "COMPLETE",
+  "verdict": "NO_PUBLIC_LOCAL_VISIBLE50_PATH",
+  "control": {
+    "assigned_revision": 351,
+    "claim_revision": 352,
+    "start_revision": 353,
+    "requested_control_head": "2ca6613bcc46bad110548b371f1819c5f98d545e",
+    "claim_commit": "87305b1aa6aa65ae969b1c944c3baeb3a4a87756",
+    "start_commit": "9cd665c6f21b4c1694f82ec449053f715aa0d928",
+    "code_commit": "6596e75b2ccde129653c5e4b2d42b4564f93f33f"
+  },
+  "artifacts": {
+    "protocol": {
+      "path": "research/r279/R279_PROTOCOL.md",
+      "commit": "6596e75b2ccde129653c5e4b2d42b4564f93f33f"
+    },
+    "report": {
+      "path": "research/r279/R279_VISIBLE50_PUBLIC_PATH_AUDIT.md",
+      "commit": "546a2f078fe82a77616aaa704b2b662cae8c2cb6",
+      "git_blob_sha1": "186c1d34122afefe7bff10fac72ad7dd1ebe6e4a",
+      "sha256": "fa485cf38d599da01efdda234cab27f0200fe0632073f4c868805ea1414bf36e"
+    }
+  },
+  "dependency": {
+    "r271_receipt_url": "https://github.com/tim8es/arc-whitebox/blob/772f010042a818ba641b64be58db55a78344217f/research/r271/R271_RECEIPT.json",
+    "r271_receipt_sha256": "fc0229b90aa1f69b30aa2a71672a271e1ac3ba43516190366cdef2247695a91c",
+    "start_point": "NOT_COMPARABLE: 0/50 stable-label overlap with R209; online network IDs/target fingerprints absent; R209 evaluator/meter versions differ."
+  },
+  "findings": {
+    "exact_visible50_local_path_without_submission": false,
+    "exact_grader_version_public": true,
+    "exact_meter_version_public": true,
+    "official_grader": "whestbench 0.16.0",
+    "official_meter": "flopscope[server] 0.12.0",
+    "current_starterkit_pair": "whestbench >=0.16.1,<0.17.0; flopscope >=0.12.1,<0.13.0",
+    "aicrowd_visible_public_rows": 50,
+    "aicrowd_private_sealed_rows": 50,
+    "aicrowd_public_ledger_has_mlp_index": true,
+    "aicrowd_public_ledger_has_mlp_name": true,
+    "aicrowd_public_ledger_has_network_id": false,
+    "aicrowd_public_ledger_has_mlp_seed": false,
+    "aicrowd_public_ledger_has_target_fingerprint": false,
+    "aicrowd_public_ledger_has_weights": false,
+    "hf_v2_phase2_splits": [
+      "mini:100",
+      "full:1000"
+    ],
+    "hf_visible50_split_published": false,
+    "hf_mlp_name_is_derived_from_mlp_seed": true,
+    "hf_mlp_seed_public_for_published_rows": true
+  },
+  "permissions": {
+    "aicrowd_public_submission_page": "public web read; exposes public-score ledger only",
+    "aicrowd_rest_api": "Authorization: Token <api_key>; first-party client documents identity/eligibility/upload/create and own-submission status, not grader-dataset retrieval",
+    "aicrowd_private50": "sealed until results release",
+    "huggingface_public_release": "public repository, CC-BY-4.0; no visible50 split/config documented",
+    "github_sources": "public source/release metadata"
+  },
+  "source_provenance": {
+    "starterkit_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "starterkit_pyproject_blob_sha1": "2c1d562a2073046d6912868184b52c8c593d23c5",
+    "starterkit_score_report_fields_blob_sha1": "4656a892bfeea52a233b900f6d698db8524936fc",
+    "starterkit_use_evaluation_datasets_blob_sha1": "53af1ead77023bb2c4c27fa2a64b494a4f46aa26",
+    "starterkit_stage5_package_blob_sha1": "1b4009b6c7ae7db0a49a7ff82f9ecd653bba79eb",
+    "whestbench_v0_16_0_pyproject_blob_sha1": "f1c4c3af8b355c9a4249f6db959cdaff083394c4",
+    "whestbench_v0_16_0_aicrowd_client_blob_sha1": "000750d57a7720c336e751f89efc7bc05ae78fa5",
+    "flopscope_v0_12_0_pyproject_blob_sha1": "abffcea12208ada091bceaca2e4c945b6b9d54a0",
+    "hf_metadata_visible_commit_short": "aa99830",
+    "hf_revision": "v2-phase2",
+    "aicrowd_submission_detail": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251"
+  },
+  "minimum_missing_artifact": "Official immutable visible-50 manifest mapping every online mlp_index/mlp_name to a public dataset row/revision or mlp_seed plus target_sha256 (or equivalent target fingerprint). If those rows are not already in a public HF revision, an immutable public visible50 dataset artifact with the exact weights and baked ground truth is additionally required. Grader/meter versions are already public and are not the blocker.",
+  "constraints": [
+    "metadata/docs only",
+    "no benchmark data download",
+    "no estimator or benchmark execution",
+    "no GitHub Actions",
+    "no competition submission",
+    "no sealed/private/full-test access",
+    "no paid resource",
+    "no leaderboard/canonical/model edit"
+  ]
+}
