@@ -4107,6 +4107,80 @@
         "command": "read-only arithmetic analysis of completed R263 snapshot plus existing normalized R209/R223 rows; no estimator/Actions/new data access/private/holdout/full/submission/model/leaderboard edits"
       },
       "at": "2026-09-23T12:15:00+00:00"
+    },
+    {
+      "action": "reassign",
+      "at": "2026-09-23T12:14:09Z",
+      "job": "R267",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "workflow-failure-postmortem",
+        "from_session": "6ab3a7f3-d754-83eb-be50-bbf1a4f90187",
+        "reason": "No live queue claim/start/attempt or branch exists. ChatGPT session remains idle; follow-up for R267 produced no reply, and R268 follow-up was rate-limited. Transfer same unstarted job to active coordinator; no execution exists to duplicate.",
+        "to_assigned_owner": "coordinator",
+        "to_session": "01a07754-f5e9-7692-869e-4e0eca88a3c9"
+      },
+      "revision": 307
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T12:14:09Z",
+      "job": "R267",
+      "owner": "coordinator",
+      "payload": {
+        "coordinator_takeover": true,
+        "prior_execution_absent": true
+      },
+      "revision": 308
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T12:14:09Z",
+      "job": "R267",
+      "owner": "coordinator",
+      "payload": {
+        "code_commit": "fe8472fb3d0d9b6da67d20558ef8e73d21443b4c",
+        "command": "read-only audit of immutable R257-R260 receipts/workflow failures; create append-only postmortem report/receipt and one small offline guard only if useful; no Actions/science",
+        "run_id": "R267-workflow-postmortem-20260923"
+      },
+      "revision": 309
+    },
+    {
+      "action": "reassign",
+      "at": "2026-09-23T12:14:09Z",
+      "job": "R268",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "r261-control-audit",
+        "from_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b",
+        "reason": "No live queue claim/start/attempt or branch exists. ChatGPT session remains idle; follow-up for R267 produced no reply, and R268 follow-up was rate-limited. Transfer same unstarted job to active coordinator; no execution exists to duplicate.",
+        "to_assigned_owner": "coordinator",
+        "to_session": "01a07754-f5e9-7692-869e-4e0eca88a3c9"
+      },
+      "revision": 310
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T12:14:09Z",
+      "job": "R268",
+      "owner": "coordinator",
+      "payload": {
+        "coordinator_takeover": true,
+        "prior_execution_absent": true
+      },
+      "revision": 311
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T12:14:09Z",
+      "job": "R268",
+      "owner": "coordinator",
+      "payload": {
+        "code_commit": "fe8472fb3d0d9b6da67d20558ef8e73d21443b4c",
+        "command": "read-only independent audit of R261 queue events, original receipt/report blob mismatch and current control projection; create audit report/receipt",
+        "run_id": "R268-r261-reconciliation-audit-20260923"
+      },
+      "revision": 312
     }
   ],
   "jobs": [
@@ -6553,8 +6627,15 @@
       "title": "Quantify the remaining score gap and required improvement"
     },
     {
-      "assigned_owner": "workflow-failure-postmortem",
-      "attempts": [],
+      "assigned_owner": "coordinator",
+      "attempts": [
+        {
+          "code_commit": "fe8472fb3d0d9b6da67d20558ef8e73d21443b4c",
+          "command": "read-only audit of immutable R257-R260 receipts/workflow failures; create append-only postmortem report/receipt and one small offline guard only if useful; no Actions/science",
+          "run_id": "R267-workflow-postmortem-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independently trace the immutable R257/R258/R259 infra receipts and the R260 successful target-free run. Build a short cause/effect timeline for the repeated shallow-history, manifest-path and schema-contract failures; distinguish verified facts from inference and quantify work that never reached science. Recommend the smallest offline preflight that would have caught these exact errors. Add/run one minimal offline check only if it is small and reusable; do not edit historical workflows or receipts, trigger Actions, rerun science, or access public/holdout/private data. Commit an append-only report/receipt and any narrowly scoped check, finish R267.",
       "depends_on": [
         "R257",
@@ -6564,28 +6645,35 @@
       ],
       "hypothesis_id": "R257-R260-INFRA-POSTMORTEM-20260923",
       "id": "R267",
-      "owner": null,
+      "owner": "coordinator",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "RUNNING",
       "title": "Postmortem the R257-R260 execution failures"
     },
     {
-      "assigned_owner": "r261-control-audit",
-      "attempts": [],
+      "assigned_owner": "coordinator",
+      "attempts": [
+        {
+          "code_commit": "fe8472fb3d0d9b6da67d20558ef8e73d21443b4c",
+          "command": "read-only independent audit of R261 queue events, original receipt/report blob mismatch and current control projection; create audit report/receipt",
+          "run_id": "R268-r261-reconciliation-audit-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read the append-only queue events through R261 finish, the original R261 report/receipt, the coordinator reconciliation note, and current state.json/STATUS. Independently verify receipt/report blob mismatch handling, source commit provenance, reconstructed attempt projection, and consistency of current job status with append-only history. Preserve original history; report any remaining discrepancy without editing R261 artifacts/state. Save an isolated audit report and receipt with hashes/commit and finish R268. No Actions, science, public/holdout, paid resources, submission, or leaderboard/canonical changes.",
       "depends_on": [
         "R261"
       ],
       "hypothesis_id": "R261-CONTROL-RECONCILIATION-AUDIT-20260923",
       "id": "R268",
-      "owner": null,
+      "owner": "coordinator",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "RUNNING",
       "title": "Independently verify the R261 control reconciliation"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 306,
+  "revision": 312,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
