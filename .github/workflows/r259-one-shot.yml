@@ -1,0 +1,292 @@
+name: R259 repaired BPK2K one-shot
+
+on:
+  push:
+    branches:
+      - research/r259-bpk2k-fixture-path-one-shot-20260923
+    paths:
+      - research/r259/R259_RUN_ARM.json
+
+jobs:
+  r259:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+      R259_RUN_ID: "R259-BPK2K-ONE-SHOT-20260923-A1"
+      R259_PROTOCOL_COMMIT: "13a44d9cd19ecafc769c9eb8968cfd6ed5cd7a98"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Initialize immutable evidence
+        if: always()
+        run: |
+          mkdir -p r259_artifacts
+          printf '%s\n' "$GITHUB_SHA" > r259_artifacts/workflow_head_sha.txt
+          printf '%s\n' "$GITHUB_RUN_ID" > r259_artifacts/github_run_id.txt
+          printf '%s\n' "$GITHUB_RUN_ATTEMPT" > r259_artifacts/github_run_attempt.txt
+          printf '%s\n' "$RUNNER_OS" > r259_artifacts/runner_os.txt
+          printf '%s\n' "$ImageOS" > r259_artifacts/image_os.txt
+
+      - name: Verify frozen ancestry and source identities
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor "$R259_PROTOCOL_COMMIT" HEAD
+          mapfile -t changed < <(git diff --name-only "$R259_PROTOCOL_COMMIT"..HEAD)
+          printf '%s\n' "${changed[@]}" > r259_artifacts/post_protocol_changed_paths.txt
+          test "${#changed[@]}" -eq 2
+          test "${changed[0]}" = ".github/workflows/r259-one-shot.yml"
+          test "${changed[1]}" = "research/r259/R259_RUN_ARM.json"
+
+          test "$(git hash-object research/r256/r254_one_shot_repaired.py)" = "ca0eb5b53d86c4fa708c2b1cb4ed34a8146494ca"
+          test "$(git hash-object research/r256/r256_timing.py)" = "ea26de92d74ea6b4432e1f89301a7d55c9e52ae2"
+          test "$(git hash-object research/r254/r254_fixture.py)" = "141466b6c4aae6cc61fe086860dc0766a08d6968"
+          test "$(git hash-object research/r254/R254_FIXTURE_MANIFEST.json)" = "5a6eb7bbfc07bf9e6609ee6cfbb2b2ea9e17ebf8"
+          test "$(git hash-object research/r254/R254_CANDIDATE_SPEC.json)" = "6bffbdfd113bba80cc72cd375cdc44138f9c0845"
+          test "$(git hash-object research/r254/r254_public_identity.py)" = "b36a9b9068f0505a26d54e0af9d5fdad86e03d0b"
+          test "$(git hash-object research/r254/r254_public_gate.py)" = "77af30cb5b3eb00b70ab4f728c846d68bb11e738"
+          test "$(git hash-object research/results/R209-v25-mini100.json)" = "0183d0570f7c9965e00e8553ffc003c313865232"
+
+          echo "6b6b77d3bd539acfcab535e8b4727e67a45e512aacfdc2d7369b5fbd9acb5cfd  research/r256/r254_one_shot_repaired.py" | sha256sum -c -
+          echo "dd7ea8de33d7810ad22087592ab0f744dcfec94903de13472d0a0c1dbb619cc6  research/r256/r256_timing.py" | sha256sum -c -
+          echo "956581ca8301e72ae13e999eabc79b433cc584ac37c93f2e004278b0468baee1  research/r254/r254_fixture.py" | sha256sum -c -
+          echo "4d9cef9c3095c62106f7d972301d177762135e2eaa008565e871e17fa23019c3  research/r254/R254_FIXTURE_MANIFEST.json" | sha256sum -c -
+          echo "4c91c83762a6d39d6a737d64a39818b2cf97edca788978dfefd4be85706ee12b  research/r254/R254_CANDIDATE_SPEC.json" | sha256sum -c -
+          echo "916baafc5c4411da06d7f5834119b9134ebfd74a38f01914fc7de855791a532b  research/r254/r254_public_identity.py" | sha256sum -c -
+          echo "b3f25469780e5dccca80aaf9a312e68a71d30c95b9a284c6f977a3f6d244ce2b  research/r254/r254_public_gate.py" | sha256sum -c -
+          echo "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742  research/results/R209-v25-mini100.json" | sha256sum -c -
+
+          sha256sum             research/r259/R259_PROTOCOL.md             research/r259/R259_FROZEN_MANIFEST.json             research/r256/r254_one_shot_repaired.py             research/r256/r256_timing.py             research/r254/r254_fixture.py             research/r254/R254_FIXTURE_MANIFEST.json             research/r254/R254_CANDIDATE_SPEC.json             research/r254/r254_public_identity.py             research/r254/r254_public_gate.py             research/results/R209-v25-mini100.json             > r259_artifacts/frozen_sources.sha256
+
+      - name: Static preflight fixture-manifest filename contract
+        run: |
+          set -euo pipefail
+          python3 research/r259/r259_fixture_path_preflight.py             > r259_artifacts/fixture_path_preflight.stdout             2> r259_artifacts/fixture_path_preflight.stderr
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.16"
+
+      - name: Verify pinned wheels and runtime versions
+        run: |
+          set -euo pipefail
+          test "$(python -c 'import platform; print(platform.python_version())')" = "3.11.16"
+          python -m pip download --no-deps --only-binary=:all:             numpy==2.4.6 flopscope==0.12.1 whestbench==0.16.1 -d r259_wheels
+          echo "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93  r259_wheels/numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl" | sha256sum -c -
+          echo "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582  r259_wheels/flopscope-0.12.1-py3-none-any.whl" | sha256sum -c -
+          echo "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e  r259_wheels/whestbench-0.16.1-py3-none-any.whl" | sha256sum -c -
+          sha256sum r259_wheels/* > r259_artifacts/pinned_wheels.sha256
+          python -m pip install             r259_wheels/numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl             r259_wheels/flopscope-0.12.1-py3-none-any.whl             r259_wheels/whestbench-0.16.1-py3-none-any.whl
+          python - <<'PY' > r259_artifacts/runtime_versions.json
+          import json, platform
+          from importlib.metadata import version
+          raw_flop=version("flopscope")
+          got={"python":platform.python_version(),"numpy":version("numpy"),
+               "flopscope_raw":raw_flop,"flopscope_normalized":raw_flop.split("+",1)[0],
+               "whestbench":version("whestbench")}
+          print(json.dumps(got,sort_keys=True))
+          assert got["python"]=="3.11.16"
+          assert got["numpy"]=="2.4.6"
+          assert got["flopscope_normalized"]=="0.12.1"
+          assert got["whestbench"]=="0.16.1"
+          PY
+
+      - name: Fetch and verify byte-identical pinned V25 parent
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3             "https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v25.py"             -o r259_artifacts/R259_PARENT_V25.py
+          python - <<'PY'
+          import hashlib, pathlib
+          p=pathlib.Path("r259_artifacts/R259_PARENT_V25.py"); b=p.read_bytes()
+          sha=hashlib.sha256(b).hexdigest()
+          git=hashlib.sha1(f"blob {len(b)}\0".encode()+b).hexdigest()
+          print("sha256",sha); print("git_blob_sha1",git)
+          assert sha=="c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+          assert git=="195373a110215256b759d7c172ba8c923c62e5cc"
+          PY
+
+      - name: Reconstruct and independently replay exact frozen fixture
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/r254 python research/r254/r254_fixture.py             --out-dir r259_artifacts/fixture > r259_artifacts/fixture.stdout
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path("r259_artifacts/fixture/R254_FIXTURE_RUNTIME_MANIFEST.json")
+          d=json.loads(p.read_text())
+          assert d["seed"]==254001
+          assert d["weights_concat_sha256"]=="199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0"
+          assert d["truth_sha256"]=="58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d"
+          assert d["independent_replay"]["all_layer_hashes_equal"] is True
+          PY
+
+      - name: Unchanged V25 parent first, then unchanged BPK2K only on parent PASS
+        id: targetfree
+        shell: bash
+        run: |
+          set +e
+          PYTHONPATH=research/r254:research/r256             python research/r256/r254_one_shot_repaired.py               --parent r259_artifacts/R259_PARENT_V25.py               --out-dir r259_artifacts               > r259_artifacts/target_free.stdout 2> r259_artifacts/target_free.stderr
+          code=$?
+          echo "$code" > r259_artifacts/target_free.exit
+          if [ -f r259_artifacts/R254_TARGET_FREE_RESULT.json ]; then
+            cp r259_artifacts/R254_TARGET_FREE_RESULT.json r259_artifacts/R259_TARGET_FREE_RESULT.json
+          fi
+          if [ -f r259_artifacts/R254_CANDIDATE_SOURCE.py ]; then
+            cp r259_artifacts/R254_CANDIDATE_SOURCE.py r259_artifacts/R259_CANDIDATE_SOURCE.py
+          fi
+          if [ "$code" -eq 0 ]; then echo "go=true" >> "$GITHUB_OUTPUT"; else echo "go=false" >> "$GITHUB_OUTPUT"; fi
+          exit 0
+
+      - name: Validate candidate only after target-free GO
+        id: validate
+        if: steps.targetfree.outputs.go == 'true'
+        shell: bash
+        run: |
+          set +e
+          whest validate --estimator r259_artifacts/R259_CANDIDATE_SOURCE.py --json             > r259_artifacts/validate.json 2> r259_artifacts/validate.stderr
+          code=$?
+          echo "$code" > r259_artifacts/validate.exit
+          if [ "$code" -eq 0 ]; then echo "go=true" >> "$GITHUB_OUTPUT"; else echo "go=false" >> "$GITHUB_OUTPUT"; fi
+          exit 0
+
+      - name: Verify exact R209 mini-100 row order network and target hashes
+        id: identity
+        if: steps.targetfree.outputs.go == 'true' && steps.validate.outputs.go == 'true'
+        shell: bash
+        run: |
+          set +e
+          python research/r254/r254_public_identity.py             --r209 research/results/R209-v25-mini100.json             --out r259_artifacts/R259_PUBLIC_IDENTITY.json             > r259_artifacts/public_identity.stdout 2> r259_artifacts/public_identity.stderr
+          code=$?
+          echo "$code" > r259_artifacts/public_identity.exit
+          if [ "$code" -eq 0 ]; then echo "go=true" >> "$GITHUB_OUTPUT"; else echo "go=false" >> "$GITHUB_OUTPUT"; fi
+          exit 0
+
+      - name: Exact public R209 mini-100 candidate run
+        id: public
+        if: steps.identity.outputs.go == 'true'
+        shell: bash
+        run: |
+          set +e
+          whest run             --estimator r259_artifacts/R259_CANDIDATE_SOURCE.py             --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2             --split mini --streaming --n-mlps 100 --runner local             --flop-budget 2199023255552 --wall-time-limit 120             --residual-wall-time-limit 0.4 --max-threads 1 --format json             > r259_artifacts/public_report.json 2> r259_artifacts/public.stderr
+          code=$?
+          echo "$code" > r259_artifacts/public.exit
+          if [ "$code" -eq 0 ]; then echo "go=true" >> "$GITHUB_OUTPUT"; else echo "go=false" >> "$GITHUB_OUTPUT"; fi
+          exit 0
+
+      - name: Preserve raw per-network public evidence
+        if: steps.public.outputs.go == 'true'
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          root=pathlib.Path("r259_artifacts")
+          report=json.loads((root/"public_report.json").read_text())
+          rows=report["results"]["per_mlp"]
+          if len(rows)!=100:
+              raise SystemExit(f"expected 100 per-network rows, got {len(rows)}")
+          (root/"R259_PUBLIC_PER_NETWORK.json").write_text(
+              json.dumps(rows,indent=2,sort_keys=True,allow_nan=False)+"\n"
+          )
+          PY
+
+      - name: Apply unchanged frozen public gates
+        if: steps.public.outputs.go == 'true'
+        shell: bash
+        run: |
+          set +e
+          python research/r254/r254_public_gate.py             --candidate-report r259_artifacts/public_report.json             --r209 research/results/R209-v25-mini100.json             --identity r259_artifacts/R259_PUBLIC_IDENTITY.json             --out r259_artifacts/R259_PUBLIC_GATE.json             > r259_artifacts/public_gate.stdout 2> r259_artifacts/public_gate.stderr
+          echo "$?" > r259_artifacts/public_gate.exit
+          exit 0
+
+      - name: Build immutable R259 research receipt and file hashes
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib,json,os,pathlib
+          root=pathlib.Path("r259_artifacts"); root.mkdir(exist_ok=True)
+          def ri(name):
+              try:return int((root/name).read_text().strip())
+              except:return None
+          def rj(name):
+              try:return json.loads((root/name).read_text())
+              except:return None
+          tf=rj("R259_TARGET_FREE_RESULT.json")
+          ident=rj("R259_PUBLIC_IDENTITY.json")
+          pg=rj("R259_PUBLIC_GATE.json")
+          public_report=rj("public_report.json")
+          tfe=ri("target_free.exit"); ve=ri("validate.exit"); ie=ri("public_identity.exit")
+          pe=ri("public.exit"); pge=ri("public_gate.exit")
+          if tf is None:
+              decision="INFRA_ERROR_BEFORE_TARGET_FREE_RESULT"
+          elif not tf.get("parent_go",False):
+              decision="INCONCLUSIVE_PARENT_GATE"
+          elif not tf.get("candidate_go",False):
+              decision="SCIENTIFIC_REJECT_TARGET_FREE"
+          elif ve not in (0,None):
+              decision="INCONCLUSIVE_VALIDATION"
+          elif ie not in (0,None):
+              decision="INCONCLUSIVE_PUBLIC_IDENTITY"
+          elif pe not in (0,None):
+              decision="INCONCLUSIVE_PUBLIC_RUN"
+          elif pg is not None and pg.get("go"):
+              decision="PUBLIC_DEVELOPMENT_GO"
+          elif pg is not None:
+              decision="SCIENTIFIC_REJECT_PUBLIC_GATES"
+          else:
+              decision="INFRA_ERROR_AFTER_TARGET_FREE_GO"
+          receipt={
+            "schema":"arc.r259.workflow_receipt.v1",
+            "job_id":"R259",
+            "run_id":os.environ["R259_RUN_ID"],
+            "protocol_commit":os.environ["R259_PROTOCOL_COMMIT"],
+            "candidate_id":"V25-BPK2K-BALANCED-CUMULANT-REDUCTION",
+            "github_run_id":os.environ.get("GITHUB_RUN_ID"),
+            "github_run_attempt":os.environ.get("GITHUB_RUN_ATTEMPT"),
+            "github_sha":os.environ.get("GITHUB_SHA"),
+            "runner_os":os.environ.get("RUNNER_OS"),
+            "image_os":os.environ.get("ImageOS"),
+            "target_free_exit":tfe,
+            "validate_exit":ve,
+            "public_identity_exit":ie,
+            "public_exit":pe,
+            "public_gate_exit":pge,
+            "decision":decision,
+            "target_free":tf,
+            "public_identity":ident,
+            "public_gate":pg,
+            "public_report_present":public_report is not None,
+            "safety":{
+              "authorized_workflow_count":1,"authorized_attempt_count":1,
+              "retry":False,"second_workflow":False,"tuning":False,
+              "paid_or_larger_runner":False,"private_or_holdout_or_full":False,
+              "r223_r244_outputs_or_artifacts":False,"submission":False,
+              "leaderboard_or_canonical_edit":False,"r254_history_edit":False
+            }
+          }
+          (root/"R259_WORKFLOW_RECEIPT.json").write_text(
+              json.dumps(receipt,indent=2,sort_keys=True,allow_nan=False)+"\n"
+          )
+          hashes={}
+          for p in sorted(root.rglob("*")):
+              if p.is_file() and p.name!="R259_ARTIFACT_HASHES.json":
+                  hashes[str(p.relative_to(root))]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/"R259_ARTIFACT_HASHES.json").write_text(
+              json.dumps(hashes,indent=2,sort_keys=True)+"\n"
+          )
+          print(json.dumps({"decision":decision,"hashes":hashes},indent=2,sort_keys=True))
+          PY
+
+      - name: Upload sole R259 evidence artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r259-one-shot-evidence
+          path: r259_artifacts/
+          if-no-files-found: error
