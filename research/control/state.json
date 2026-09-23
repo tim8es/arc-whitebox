@@ -3047,6 +3047,27 @@
         }
       },
       "at": "2026-09-23T06:26:00+00:00"
+    },
+    {
+      "revision": 234,
+      "action": "enqueue",
+      "job": "R251",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "global-accuracy-method-research",
+        "deliverable": "Accuracy-first, full-history-deduplicated global-accuracy research motivated by R231. Read complete history plus R231/R232/R238/R239/R245/R249/R250 evidence. Choose exactly one genuinely new global-accuracy estimator hypothesis, excluding DRRE/R232 descendants, RSRF/R238 descendants, R247 2:4 D21 sparsity, R248 rank-1 Kronecker transport, R250 LEG2-R1, R244 MP-R16, R223 V25-LF, and all closed/rejected history; no per-network tuning or invented leader method. Freeze math/source, deterministic target-free fixtures+byte hashes, seeds, diagnostics, falsifier gates, FLOP/time bounds and stop rules before measurement. First execute unchanged parent on the same production-configuration synthetic fixture and save exact fixture hashes plus per-layer finite/max-abs/symmetry checkpoints. Parent failure => terminal INCONCLUSIVE with forensic trace, no candidate construction/rescale/reseed/retry. Parent pass => run only the single frozen target-free candidate falsifier; every output-affecting numerical op through metered fnp, no math.* or unresolved unmetered scalar arithmetic. Any gate failure => durable NO-GO, no estimator/benchmark/Actions/second method. Only if all frozen target-free/source/cost gates pass: at most one verified-free standard Actions workflow on exactly public R209 mini-100, no retry; gates zero failures, exact row/hash identity, mean adjusted <=0.95*R209, >=55/100 better, paired gain >2 descriptive SE, mean FLOPs <=R209, max residual <0.4s. No official-rank/same-panel inference, paid/private/holdout, R223/R244 outputs/artifacts, submission/leaderboard mutation, canonical V25 edit, or gate relaxation.",
+        "depends_on": [
+          "R231",
+          "R239",
+          "R245",
+          "R249",
+          "R250"
+        ],
+        "hypothesis_id": "GLOBAL-ACCURACY-POST-R231-FULL-HISTORY-METHOD",
+        "priority": 1,
+        "title": "Test one new global-accuracy estimator after full-history deduplication"
+      },
+      "at": "2026-09-23T06:31:00+00:00"
     }
   ],
   "jobs": [
@@ -4896,10 +4917,28 @@
         "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026"
       },
       "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
+    },
+    {
+      "assigned_owner": "global-accuracy-method-research",
+      "attempts": [],
+      "deliverable": "Accuracy-first, full-history-deduplicated global-accuracy research motivated by R231. Read complete history plus R231/R232/R238/R239/R245/R249/R250 evidence. Choose exactly one genuinely new global-accuracy estimator hypothesis, excluding DRRE/R232 descendants, RSRF/R238 descendants, R247 2:4 D21 sparsity, R248 rank-1 Kronecker transport, R250 LEG2-R1, R244 MP-R16, R223 V25-LF, and all closed/rejected history; no per-network tuning or invented leader method. Freeze math/source, deterministic target-free fixtures+byte hashes, seeds, diagnostics, falsifier gates, FLOP/time bounds and stop rules before measurement. First execute unchanged parent on the same production-configuration synthetic fixture and save exact fixture hashes plus per-layer finite/max-abs/symmetry checkpoints. Parent failure => terminal INCONCLUSIVE with forensic trace, no candidate construction/rescale/reseed/retry. Parent pass => run only the single frozen target-free candidate falsifier; every output-affecting numerical op through metered fnp, no math.* or unresolved unmetered scalar arithmetic. Any gate failure => durable NO-GO, no estimator/benchmark/Actions/second method. Only if all frozen target-free/source/cost gates pass: at most one verified-free standard Actions workflow on exactly public R209 mini-100, no retry; gates zero failures, exact row/hash identity, mean adjusted <=0.95*R209, >=55/100 better, paired gain >2 descriptive SE, mean FLOPs <=R209, max residual <0.4s. No official-rank/same-panel inference, paid/private/holdout, R223/R244 outputs/artifacts, submission/leaderboard mutation, canonical V25 edit, or gate relaxation.",
+      "depends_on": [
+        "R231",
+        "R239",
+        "R245",
+        "R249",
+        "R250"
+      ],
+      "hypothesis_id": "GLOBAL-ACCURACY-POST-R231-FULL-HISTORY-METHOD",
+      "id": "R251",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Test one new global-accuracy estimator after full-history deduplication"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 233,
+  "revision": 234,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
