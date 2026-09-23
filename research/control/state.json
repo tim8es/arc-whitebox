@@ -4398,6 +4398,18 @@
         "run_id": "R271-visible50-identity-reconciliation-20260923"
       },
       "revision": 328
+    },
+    {
+      "revision": 329,
+      "action": "start",
+      "job": "R272",
+      "owner": "workflow-preflight-guard",
+      "payload": {
+        "run_id": "R272-offline-workflow-preflight-20260923",
+        "code_commit": "afc0e19c9d3892ac1fe331f5c5105e4392579872",
+        "command": "python -m unittest discover -s tests -p 'test_r272_workflow_preflight.py' -v"
+      },
+      "at": "2026-09-23T13:09:21.677Z"
     }
   ],
   "jobs": [
@@ -7024,7 +7036,14 @@
     },
     {
       "assigned_owner": "workflow-preflight-guard",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R272-offline-workflow-preflight-20260923",
+          "code_commit": "afc0e19c9d3892ac1fe331f5c5105e4392579872",
+          "command": "python -m unittest discover -s tests -p 'test_r272_workflow_preflight.py' -v",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Use R267 postmortem plus the actual R257-R260 workflow/fixture sources to identify the smallest useful reusable offline guard for the three verified failures: missing full-history protocol ancestry, fixture-manifest filename mismatch, and nonexistent replay-schema field. Inspect existing helpers first. If one small guard/test can catch all applicable failures without editing historical artifacts or live Actions workflows, implement it on an isolated branch and run only the local offline check; otherwise publish a concise evidence-based no-change report explaining why. Save report/receipt with hashes and commit; claim/start/finish R272 on the live control branch. Do not trigger Actions, run scientific estimators, access competition data, spend money, or edit old receipts/results.",
       "depends_on": [
         "R267"
@@ -7033,12 +7052,12 @@
       "id": "R272",
       "owner": "workflow-preflight-guard",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Add an offline preflight for the R257-R259 failure modes"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 328,
+  "revision": 329,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
