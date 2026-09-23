@@ -3015,6 +3015,22 @@
         "command": "source-only independent audit of official Phase-2 Allowed Code/code-patterns/Challenge Rules/FlopScope docs+source with R245 as context only; classify fnp array ops, fnp primitives, shape-derived scalars, math.*, Python scalar coefficient/division, and control/bookkeeping; no organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 outputs/artifacts, submission/leaderboard, or canonical edits"
       },
       "at": "2026-09-23T06:00:32+00:00"
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T06:18:00+00:00",
+      "job": "R250",
+      "owner": "post-r248-next-method-research",
+      "payload": {
+        "run_id": "R250-post-r248-next-method-research-20260923",
+        "status": "SCIENTIFIC_REJECT",
+        "reason": "R250 DEVELOPMENT NO-GO before estimator/public measurement. Single frozen candidate V25-LEG2-R1-YOUNG-AP passed history-novelty/source/static-cost preflight (conservative FLOP ratio 0.8774850653457754 <=0.9) but failed the target-free structural fidelity gate decisively: exact rank-1 control PASS (max control RRMS 4.421498507036677e-16), deterministic replay PASS, 8/8 finite; max A/P reconstruction RRMS 0.9999977498858067 vs <=0.015, max D21-core RRMS 1.0024907470453626 vs <=0.015, mean D21-core RRMS 0.9997770493726187 vs <=0.012. Per frozen protocol no estimator, benchmark, public mini-100, Actions, retry or second method. No R223/R244 candidate outputs/artifacts, paid/private/holdout/submission/leaderboard/canonical V25 edit.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/cc18c09a8ddf19e100a2d1757d4091d47fb33b5c/research/r250/R250_RECEIPT.json",
+          "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026"
+        }
+      },
+      "revision": 232
     }
   ],
   "jobs": [
@@ -4825,19 +4841,35 @@
       "title": "Test one distinct metered V25 score-improvement method after R248 rejection",
       "id": "R250",
       "owner": "post-r248-next-method-research",
-      "status": "RUNNING",
+      "status": "SCIENTIFIC_REJECT",
       "attempts": [
         {
           "run_id": "R250-post-r248-next-method-research-20260923",
           "code_commit": "99f35592913f59360b7f5c3e9645af6ee529b9f9",
           "command": "protocol/history preparation only: read AGENTS/RESEARCH_PROCESS/full history and allowed R209/R245/R246/R248 evidence; freeze exactly one distinct V25 candidate, source/math, analytical all-in cost, target-free falsifier, exact R209 mini-100 panel and immutable gates before any estimator/benchmark/Actions execution",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT",
+          "completion": {
+            "run_id": "R250-post-r248-next-method-research-20260923",
+            "status": "SCIENTIFIC_REJECT",
+            "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
+            "reason": "R250 DEVELOPMENT NO-GO before estimator/public measurement. Single frozen candidate V25-LEG2-R1-YOUNG-AP passed history-novelty/source/static-cost preflight (conservative FLOP ratio 0.8774850653457754 <=0.9) but failed the target-free structural fidelity gate decisively: exact rank-1 control PASS (max control RRMS 4.421498507036677e-16), deterministic replay PASS, 8/8 finite; max A/P reconstruction RRMS 0.9999977498858067 vs <=0.015, max D21-core RRMS 1.0024907470453626 vs <=0.015, mean D21-core RRMS 0.9997770493726187 vs <=0.012. Per frozen protocol no estimator, benchmark, public mini-100, Actions, retry or second method. No R223/R244 candidate outputs/artifacts, paid/private/holdout/submission/leaderboard/canonical V25 edit.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/cc18c09a8ddf19e100a2d1757d4091d47fb33b5c/research/r250/R250_RECEIPT.json",
+              "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026"
+            }
+          }
         }
-      ]
+      ],
+      "reason": "R250 DEVELOPMENT NO-GO before estimator/public measurement. Single frozen candidate V25-LEG2-R1-YOUNG-AP passed history-novelty/source/static-cost preflight (conservative FLOP ratio 0.8774850653457754 <=0.9) but failed the target-free structural fidelity gate decisively: exact rank-1 control PASS (max control RRMS 4.421498507036677e-16), deterministic replay PASS, 8/8 finite; max A/P reconstruction RRMS 0.9999977498858067 vs <=0.015, max D21-core RRMS 1.0024907470453626 vs <=0.015, mean D21-core RRMS 0.9997770493726187 vs <=0.012. Per frozen protocol no estimator, benchmark, public mini-100, Actions, retry or second method. No R223/R244 candidate outputs/artifacts, paid/private/holdout/submission/leaderboard/canonical V25 edit.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/cc18c09a8ddf19e100a2d1757d4091d47fb33b5c/research/r250/R250_RECEIPT.json",
+        "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026"
+      },
+      "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 231,
+  "revision": 232,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
