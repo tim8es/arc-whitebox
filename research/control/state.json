@@ -2732,6 +2732,23 @@
         }
       },
       "revision": 210
+    },
+    {
+      "revision": 211,
+      "action": "enqueue",
+      "job": "R247",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "network-agnostic-efficiency-research",
+        "deliverable": "Read current AGENTS/RESEARCH_PROCESS and full history, plus only the immutable R209 V25 mini-100 record, its source receipt, and the R246 diagnostic/receipt. Pursue H-R246: one network-agnostic V25 simplification targeting >=10% lower measured FLOPs while limiting raw-MSE degradation to <11.111111111111116%, so official adjusted score improves above the 0.1 cost floor. Select exactly one mechanism not materially similar to R223 V25-LF, R244 MP-R16, or prior rejected/history-covered methods; no per-network selection or tuning. Freeze candidate source/config, exact panel, target-free falsifier, official score/cost/failure gates, and one-shot execution plan before any measurement. If static and cheap falsifier gates pass, use at most one verified-free standard Actions workflow with validation and exactly one public mini-100 panel; no retry/second run, including infrastructure failures. Scientific GO additionally requires exact row/hash identity, 0 failures, mean adjusted <=0.995*R209, >=55/100 improved, paired parent-candidate gain >2 descriptive SE, mean FLOPs <=0.9*R209 and max residual <0.4s. Otherwise preserve DEVELOPMENT NO-GO/INFRA_ERROR precisely. Commit per-network evidence, hashes, report and receipt. No R223/R244 candidate artifacts or outputs, paid compute, private/holdout, submission, leaderboard mutation, canonical V25 edits, or gate relaxation.",
+        "depends_on": [
+          "R246"
+        ],
+        "hypothesis_id": "H-R246-NETWORK-AGNOSTIC-FLOP-REDUCTION",
+        "priority": 1,
+        "title": "Test one network-agnostic V25 simplification for a score-improving FLOPs cut"
+      },
+      "at": "2026-09-23 05:05:48+00:00"
     }
   ],
   "jobs": [
@@ -4404,10 +4421,24 @@
         "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4"
       },
       "verdict": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "assigned_owner": "network-agnostic-efficiency-research",
+      "deliverable": "Read current AGENTS/RESEARCH_PROCESS and full history, plus only the immutable R209 V25 mini-100 record, its source receipt, and the R246 diagnostic/receipt. Pursue H-R246: one network-agnostic V25 simplification targeting >=10% lower measured FLOPs while limiting raw-MSE degradation to <11.111111111111116%, so official adjusted score improves above the 0.1 cost floor. Select exactly one mechanism not materially similar to R223 V25-LF, R244 MP-R16, or prior rejected/history-covered methods; no per-network selection or tuning. Freeze candidate source/config, exact panel, target-free falsifier, official score/cost/failure gates, and one-shot execution plan before any measurement. If static and cheap falsifier gates pass, use at most one verified-free standard Actions workflow with validation and exactly one public mini-100 panel; no retry/second run, including infrastructure failures. Scientific GO additionally requires exact row/hash identity, 0 failures, mean adjusted <=0.995*R209, >=55/100 improved, paired parent-candidate gain >2 descriptive SE, mean FLOPs <=0.9*R209 and max residual <0.4s. Otherwise preserve DEVELOPMENT NO-GO/INFRA_ERROR precisely. Commit per-network evidence, hashes, report and receipt. No R223/R244 candidate artifacts or outputs, paid compute, private/holdout, submission, leaderboard mutation, canonical V25 edits, or gate relaxation.",
+      "depends_on": [
+        "R246"
+      ],
+      "hypothesis_id": "H-R246-NETWORK-AGNOSTIC-FLOP-REDUCTION",
+      "priority": 1,
+      "title": "Test one network-agnostic V25 simplification for a score-improving FLOPs cut",
+      "id": "R247",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 210,
+  "revision": 211,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
