@@ -1,0 +1,104 @@
+{
+  "schema": "arc.whitebox.r278.instrumentation_audit.v1",
+  "job": "R278",
+  "run_id": "R278-global-residual-direction-20260923",
+  "frozen_protocol_commit": "9abb05944f7f37c60017a0a68e0a8e319c74ff26",
+  "retained_r209_artifact": {
+    "source_actions_artifact_id": 10617318650,
+    "local_zip_sha256": "32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681",
+    "report_json_sha256": "76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b",
+    "environment_txt_sha256": "13d60bf5de4ac31310c76a0d2526a7b8ac1e66f9e983f30057e693213529fbf2",
+    "whest_version_json_sha256": "c47add2684b095c56ea2a6f951f10098560476094435b1c8159a1fef45ccb29a",
+    "per_mlp_count": 100,
+    "per_mlp_keys": [
+      "adjusted_final_layer_score",
+      "all_layers_mse",
+      "breakdowns",
+      "budget_exhausted",
+      "combined_budget_exhausted",
+      "effective_compute",
+      "final_layer_mse",
+      "flops_used",
+      "flopscope_backend_time_s",
+      "flopscope_overhead_time_s",
+      "mlp_index",
+      "mlp_name",
+      "per_layer_mse",
+      "residual_wall_time_exhausted",
+      "residual_wall_time_s",
+      "time_exhausted",
+      "traceback",
+      "wall_time_s"
+    ],
+    "raw_vector_fields_present": false,
+    "searched_key_tokens": [
+      "prediction",
+      "predictions",
+      "target",
+      "targets",
+      "truth",
+      "vector"
+    ],
+    "environment": {
+      "python": "3.11.16",
+      "flopscope": "0.12.1+np2.4.6",
+      "whestbench": "0.16.1"
+    }
+  },
+  "pinned_v25": {
+    "source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "source_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc"
+  },
+  "official_runner_source": {
+    "repository": "AIcrowd/whestbench",
+    "tag": "v0.16.1",
+    "annotated_tag_sha": "66526b4c80d9aea6af981c7a0f92e9ec76c57238",
+    "commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "scoring_py_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "runner_py_blob_sha1": "75636c28fa3eabc6047e1c981f34b6a0501ba8f3",
+    "dataset_py_blob_sha1": "eefa68a335f4031d82a931660be25aa44dc0bbe2",
+    "instrumentation_point": [
+      "evaluate_estimator(): after budget/time/residual/combined failure zeroing",
+      "pred_np = fnp.asarray(predictions, dtype=fnp.float32)",
+      "final_pred = pred_np[-1]",
+      "final_target = data.final_targets[i]",
+      "capture final_pred/final_target before final_layer_mse computation"
+    ],
+    "why_faithful": "At this point the exact scored post-failure prediction and exact baked target are both materialized. The participant predict BudgetContext has already closed, so a runner-side diagnostic callback/file write does not alter participant FLOP accounting. Failure flags and flops_used are already known.",
+    "network_id_binding": "Before any residual fit, require exact 100-row mlp_name identity/order against immutable R209 normalized rows, then map each unique mlp_name to its frozen R209 network_id. Abort on any mismatch."
+  },
+  "frozen_split_rule": {
+    "key": "network_id decimal string",
+    "ordering": "ascending lexicographic",
+    "fit": "first 50",
+    "eval": "last 50",
+    "prediction_target_independent": true
+  },
+  "frozen_fit_rule": "d = mean_FIT(target_final - v25_pred_final); EVAL correction = pred + d; no per-network scalar/sign/selector/normalization",
+  "local_execution_preflight": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "python3_11_available": false,
+    "whestbench_installed": false,
+    "flopscope_installed": false,
+    "datasets_installed": false,
+    "local_hf_mini_cache_found": false,
+    "pip_download_command": "python -m pip download --no-deps whestbench==0.16.1 flopscope==0.12.1 -d /mnt/data/pkgs",
+    "pip_download_result": "FAILED before download after DNS retries: Temporary failure in name resolution",
+    "public_prepared_mini": {
+      "rows": 100,
+      "shards": 14,
+      "prepared_size_bytes": 6934650690,
+      "download_size_bytes": 7025862410,
+      "local_bytes_present": false
+    }
+  },
+  "disposition": {
+    "diagnostic_executed": false,
+    "reason": "Pinned evaluator/meter/Python environment and public mini dataset bytes are not available in the existing local runtime. Running under Python 3.13/NumPy 2.3.5 without WhestBench/FlopScope or substituting regenerated/synthetic truth would not be the requested faithful pinned mini:all-100 diagnostic.",
+    "exact_blocker": "No locally executable pinned Python 3.11.16 + whestbench 0.16.1 + flopscope 0.12.1+np2.4.6 environment and no local copy/cache of the 100-row public mini dataset. Network package retrieval from the local runtime fails DNS. Raw vectors are absent from the retained R209 artifact.",
+    "actions_runs": 0,
+    "paid_compute": false,
+    "private_holdout_full_accesses": 0
+  }
+}
