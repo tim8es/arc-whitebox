@@ -1,0 +1,16 @@
+{
+  "schema": "arc.whitebox.r252.fixture_replay_failure.v1",
+  "fixture_id": "R252-PRODUCTION-SHAPE-TWOTAP-POSITIVE-MIX-252001",
+  "workflow_run_id": 35830986191,
+  "expected_weight_concat_sha256": "de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e",
+  "weight_hashes_verified_before_failure": true,
+  "expected_truth_sha256": "623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450",
+  "observed_truth_sha256": null,
+  "truth_bytes_retained": false,
+  "replay_json_retained": false,
+  "exception": "RuntimeError: truth hash mismatch",
+  "parent_executed": false,
+  "candidate_constructed": false,
+  "no_retry": true,
+  "forensic_limit": "The sole run did not retain the computed failing truth digest; no second execution is permitted to recover it."
+}
