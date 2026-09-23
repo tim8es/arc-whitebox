@@ -3667,6 +3667,28 @@
         "trigger_status": "UNARMED_PENDING_COORDINATOR_INSPECTION"
       },
       "revision": 274
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T09:38:00+00:00",
+      "job": "R260",
+      "owner": "bpk2k-one-shot-run-responsive",
+      "payload": {
+        "reason": "R260 terminal SCIENTIFIC_REJECT on the frozen target-free gate. Coordinator-approved arm commit ed4ffbe1029d08cdc48648dc7a2877df308bba3d triggered exactly one Actions run 35843525739/job 107124034819/attempt 1; GitHub workflow conclusion was success because terminal evidence was preserved. Artifact 10741778766 ZIP SHA256 5f5522220664c028bef19906d66213826061bd85758ca63e01934f59aef9e22d; all 26 mapped artifact hashes recomputed with zero mismatches. Full-history/source/runtime/wheel/parent-source/fixture-schema preflights passed. Unchanged V25 parent passed and unchanged BPK2K executed exactly once. Frozen target-free failures are exactly final_mse_ratio=1.0003220117801912 >0.95 and all_layer_mse_ratio=1.0000406003104105 >0.98. Other gates passed: improved_layers=13>=12, max per-layer degradation=1.0003220117801912<=1.10, FLOP ratio=1.0, candidate residual 0.31171112699985315 <= 1.05*0.32413096299903543+0.005 = 0.3453375111489872, finite/shape/symmetry/source checks. Candidate final MSE 0.06574015420536944 versus parent 0.06571899191579027; all-layer MSE 0.032379599124054775 versus parent 0.032378284555651254. Per frozen protocol validation/R209 identity/public mini-100/public gates were skipped. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edit, or history rewrite. Sealed report/receipt commit 5b2be00dc92ff4d0ced32bfaf67f6a691cadd967.",
+        "receipt": {
+          "sha256": "71d2f4e8acb2435f00ac350bfe394a75f5f631f604ded96a4c72b7d8d8bdde9f",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/5b2be00dc92ff4d0ced32bfaf67f6a691cadd967/research/r260/R260_RECEIPT.json"
+        },
+        "run_id": "R260-BPK2K-ONE-SHOT-20260923-A1",
+        "github_run_id": 35843525739,
+        "github_job_id": 107124034819,
+        "artifact_id": 10741778766,
+        "artifact_zip_sha256": "5f5522220664c028bef19906d66213826061bd85758ca63e01934f59aef9e22d",
+        "workflow_conclusion": "success",
+        "decision": "SCIENTIFIC_REJECT_TARGET_FREE",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 275
     }
   ],
   "jobs": [
@@ -5879,8 +5901,23 @@
           "workflow_commit": "47ab8c616665e6086e1b8c6f49acd937dab2d776",
           "command": "AFTER separate coordinator approval only: create exactly one commit on research/r260-bpk2k-replay-schema-one-shot-20260923 adding only research/r260/R260_RUN_ARM.json atop workflow commit 47ab8c616665e6086e1b8c6f49acd937dab2d776; that push triggers .github/workflows/r260-one-shot.yml once. Protocol commit 0b47b5ebeb965ebac01748133af57607f4dbc7b1; run_id R260-BPK2K-ONE-SHOT-20260923-A1. No trigger before coordinator inspection/approval; no rerun/second workflow.",
           "run_id": "R260-BPK2K-ONE-SHOT-20260923-A1",
-          "status": "RUNNING",
-          "trigger_status": "UNARMED_PENDING_COORDINATOR_INSPECTION"
+          "status": "SCIENTIFIC_REJECT",
+          "trigger_status": "EXECUTED_TERMINAL_NO_RETRY",
+          "completion": {
+            "reason": "R260 terminal SCIENTIFIC_REJECT on the frozen target-free gate. Coordinator-approved arm commit ed4ffbe1029d08cdc48648dc7a2877df308bba3d triggered exactly one Actions run 35843525739/job 107124034819/attempt 1; GitHub workflow conclusion was success because terminal evidence was preserved. Artifact 10741778766 ZIP SHA256 5f5522220664c028bef19906d66213826061bd85758ca63e01934f59aef9e22d; all 26 mapped artifact hashes recomputed with zero mismatches. Full-history/source/runtime/wheel/parent-source/fixture-schema preflights passed. Unchanged V25 parent passed and unchanged BPK2K executed exactly once. Frozen target-free failures are exactly final_mse_ratio=1.0003220117801912 >0.95 and all_layer_mse_ratio=1.0000406003104105 >0.98. Other gates passed: improved_layers=13>=12, max per-layer degradation=1.0003220117801912<=1.10, FLOP ratio=1.0, candidate residual 0.31171112699985315 <= 1.05*0.32413096299903543+0.005 = 0.3453375111489872, finite/shape/symmetry/source checks. Candidate final MSE 0.06574015420536944 versus parent 0.06571899191579027; all-layer MSE 0.032379599124054775 versus parent 0.032378284555651254. Per frozen protocol validation/R209 identity/public mini-100/public gates were skipped. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edit, or history rewrite. Sealed report/receipt commit 5b2be00dc92ff4d0ced32bfaf67f6a691cadd967.",
+            "receipt": {
+              "sha256": "71d2f4e8acb2435f00ac350bfe394a75f5f631f604ded96a4c72b7d8d8bdde9f",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/5b2be00dc92ff4d0ced32bfaf67f6a691cadd967/research/r260/R260_RECEIPT.json"
+            },
+            "run_id": "R260-BPK2K-ONE-SHOT-20260923-A1",
+            "github_run_id": 35843525739,
+            "github_job_id": 107124034819,
+            "artifact_id": 10741778766,
+            "artifact_zip_sha256": "5f5522220664c028bef19906d66213826061bd85758ca63e01934f59aef9e22d",
+            "workflow_conclusion": "success",
+            "decision": "SCIENTIFIC_REJECT_TARGET_FREE",
+            "status": "SCIENTIFIC_REJECT"
+          }
         }
       ],
       "deliverable": "One distinct successor after terminal R259 INFRA_ERROR, based on R259 terminal report/receipt commit be1f8e92dbf3a2adb4d5dcd75c2ff345454ac47b. Preserve R259 protocol/science/gates and do not edit R254/R256/R257/R258 evidence. The only workflow repair is the stale fixture replay schema assertion: immutable r254_fixture.py build_manifest returns top-level replay_equal=true; top-level layer_sha256, weights_concat_sha256, truth_sha256; independent_replay contains those same three fields. Before arm, static-preflight the source and runtime manifest schema; in fixture step assert manifest present, replay_equal true, layer_sha256 has exactly 16 entries, independent_replay.layer_sha256 exactly equals it, and weights/truth hashes equal between top-level and independent_replay plus frozen hashes. No key named all_layer_hashes_equal. Keep fetch-depth:0, all source hashes, repaired R256 telemetry, exact parent and seed-254001 fixture. Create unique R260 protocol/manifest/workflow, run ID R260-BPK2K-ONE-SHOT-20260923-A1; one path-filtered arm push triggers exactly one standard/free ubuntu-24.04 workflow attempt. Publish start before trigger. Use pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 verified wheel hashes. Parent first; candidate only after exact replay and parent PASS; preserve R254 target-free gates exactly (final MSE<=0.95, all-layer<=0.98, >=12 improved layers, max per-layer degradation<=1.10, candidate FLOPs<=parent, residual<=1.05*parent+0.005, source/symmetry/finite/shape, unknown timing fail-closed). If any pre-parent/parent/candidate gate fails, stop accordingly and no public unless all target-free/source/cost GO. Same workflow may validate exact R209 mini100 and run public only after GO; frozen public gates failures=0, adjusted<=7.761877568111363e-9, >=55 improved, paired gain>2 descriptive SE, mean FLOPs<=806303721965, max residual<0.4s. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edits or history rewrites. Before arm, coordinator must inspect the committed workflow and source/manifests and separately approve. Preserve raw results/hashes, finish queue and regenerate STATUS.",
@@ -5892,12 +5929,17 @@
       "id": "R260",
       "owner": "bpk2k-one-shot-run-responsive",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Run frozen BPK2K after fixture replay-schema preflight repair"
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Run frozen BPK2K after fixture replay-schema preflight repair",
+      "reason": "R260 terminal SCIENTIFIC_REJECT on the frozen target-free gate. Coordinator-approved arm commit ed4ffbe1029d08cdc48648dc7a2877df308bba3d triggered exactly one Actions run 35843525739/job 107124034819/attempt 1; GitHub workflow conclusion was success because terminal evidence was preserved. Artifact 10741778766 ZIP SHA256 5f5522220664c028bef19906d66213826061bd85758ca63e01934f59aef9e22d; all 26 mapped artifact hashes recomputed with zero mismatches. Full-history/source/runtime/wheel/parent-source/fixture-schema preflights passed. Unchanged V25 parent passed and unchanged BPK2K executed exactly once. Frozen target-free failures are exactly final_mse_ratio=1.0003220117801912 >0.95 and all_layer_mse_ratio=1.0000406003104105 >0.98. Other gates passed: improved_layers=13>=12, max per-layer degradation=1.0003220117801912<=1.10, FLOP ratio=1.0, candidate residual 0.31171112699985315 <= 1.05*0.32413096299903543+0.005 = 0.3453375111489872, finite/shape/symmetry/source checks. Candidate final MSE 0.06574015420536944 versus parent 0.06571899191579027; all-layer MSE 0.032379599124054775 versus parent 0.032378284555651254. Per frozen protocol validation/R209 identity/public mini-100/public gates were skipped. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edit, or history rewrite. Sealed report/receipt commit 5b2be00dc92ff4d0ced32bfaf67f6a691cadd967.",
+      "receipt": {
+        "sha256": "71d2f4e8acb2435f00ac350bfe394a75f5f631f604ded96a4c72b7d8d8bdde9f",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/5b2be00dc92ff4d0ced32bfaf67f6a691cadd967/research/r260/R260_RECEIPT.json"
+      }
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 274,
+  "revision": 275,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
