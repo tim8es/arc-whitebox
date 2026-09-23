@@ -1,0 +1,57 @@
+{
+  "schema": "arc.whitebox.r247.protocol.v1",
+  "job_id": "R247",
+  "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
+  "status": "FROZEN_PRE_MEASUREMENT",
+  "parent": {
+    "estimator_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "record_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "source_receipt_sha256": "5c87e8868ce3221b01979f7360079960e8991629926a7623037662f3c4511740"
+  },
+  "candidate": {
+    "id": "V25-NM24-YOUNG-D21-RIGHT-SPARSIFY",
+    "spec_path": "research/r247/R247_CANDIDATE_SPEC.json",
+    "spec_git_blob": "b52dafbc77714276de5dbd14332426f3c664df47",
+    "spec_commit": "9b947cee0025732697b2636e02138338eff4ee4c"
+  },
+  "falsifier": {
+    "path": "scripts/r247_nm24_falsifier.py",
+    "git_blob": "426f96d271f95cfccab968cf232861b595c81bdb",
+    "commit": "b1212fd03f16a8d729e1c2bcff5b4ddbb2d77476",
+    "command": "python scripts/r247_nm24_falsifier.py --output research/r247/R247_FALSIFIER_RESULT.json",
+    "target_free": true
+  },
+  "static_gate": {
+    "novelty_pass": true,
+    "cost_pass": true,
+    "conservative_parent_flops_ratio": 0.8828118016350895
+  },
+  "falsifier_gate": "GO iff 8/8 deterministic finite cases, identity RRMS <=1e-14, every candidate D21 RRMS <=0.015 and mean <=0.012.",
+  "public_measurement_gate": "No estimator implementation, workflow, validation, public mini-100 access, or Actions launch unless the frozen target-free falsifier is GO.",
+  "scientific_go": [
+    "exact R209 panel IDs/order/network_id/target_sha256 and metadata",
+    "0 failures",
+    "mean adjusted <=8.12954545291664e-9",
+    "at least 55/100 rows improve official adjusted score",
+    "paired parent-minus-candidate gain >2 descriptive SE",
+    "mean FLOPs <=725673349768.5",
+    "max residual <0.4s",
+    "mean raw MSE degradation <11.111111111111116%"
+  ],
+  "one_shot_policy": {
+    "actions_workflows_max": 1,
+    "retry": false,
+    "second_run": false,
+    "infra_error_terminal": true
+  },
+  "scope": {
+    "read_R223_candidate": false,
+    "read_R244_candidate": false,
+    "per_network_tuning": false,
+    "paid": false,
+    "private_holdout": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "canonical_v25_edit": false
+  }
+}
