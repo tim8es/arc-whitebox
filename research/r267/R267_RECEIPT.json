@@ -1,0 +1,50 @@
+{
+  "schema": "arc.whitebox.r267.postmortem-receipt.v1",
+  "job": "R267",
+  "run_id": "R267-workflow-postmortem-20260923",
+  "status": "COMPLETE",
+  "findings": {
+    "actions_runs": 4,
+    "one_attempt_per_job": true,
+    "infra_failures_before_science": 3,
+    "parent_and_candidate_executions_R257_R258_R259": 0,
+    "target_free_candidate_executions_R260": 1,
+    "public_mini100_runs": 0,
+    "R260_decision": "SCIENTIFIC_REJECT_TARGET_FREE",
+    "workflow_or_science_reruns": 0,
+    "offline_code_change": "NONE"
+  },
+  "sources": [
+    {
+      "job": "R257",
+      "report": "https://github.com/tim8es/arc-whitebox/blob/c4b46ecacba1876613a6e11b678399d0b1fd83ba/research/r257/R257_TERMINAL_REPORT.md",
+      "report_blob": "a48369e705877106c84ca0bc847c44caac2cf2b6",
+      "receipt_blob": "e0c23fdeca7af2e1f92b43ca6ecf18f97ae51ca5"
+    },
+    {
+      "job": "R258",
+      "report": "https://github.com/tim8es/arc-whitebox/blob/d99a52d0d3cf0f1c946de78173588bc258e74b54/research/r258/R258_TERMINAL_REPORT.md",
+      "report_blob": "eb61ee742e9bee49508ac2499fc50bf7212e7251",
+      "receipt_blob": "0d58d30bf9e36a12f8db1d5b58f5a1f99500abb0"
+    },
+    {
+      "job": "R259",
+      "report": "https://github.com/tim8es/arc-whitebox/blob/be1f8e92dbf3a2adb4d5dcd75c2ff345454ac47b/research/r259/R259_TERMINAL_REPORT.md",
+      "report_blob": "670bc6f6fdef722d731bb7b030361a8bea229da4",
+      "receipt_blob": "ac3d261860aab90698d1a9573f9439367ccbed43"
+    },
+    {
+      "job": "R260",
+      "report": "https://github.com/tim8es/arc-whitebox/blob/5b2be00dc92ff4d0ced32bfaf67f6a691cadd967/research/r260/R260_TERMINAL_REPORT.md",
+      "report_blob": "16fc2f81b99d0c85b74cdf89d053d51beecfd175",
+      "receipt_blob": "6aa4d9827a068fd14c2e516c148d4e8018a1caf7"
+    }
+  ],
+  "recommendation": "future_workflow_preflight_only; no historical workflow or artifact changed",
+  "report": {
+    "path": "research/r267/R267_WORKFLOW_POSTMORTEM.md",
+    "git_blob_sha1": "92e151ffb6610bf4ca1f4b24d0565b4cbe558de9",
+    "sha256": "c659fd28360acf43f0b65037ed88ed2546263612b5e21e5a4c0e9982b66e46a7",
+    "url": "https://github.com/tim8es/arc-whitebox/blob/research/r267-workflow-postmortem-20260923/research/r267/R267_WORKFLOW_POSTMORTEM.md"
+  }
+}
