@@ -1,0 +1,16 @@
+{
+  "schema": "arc.whitebox.r258.run_arm.v1",
+  "job": "R258",
+  "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1",
+  "protocol_commit": "f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33",
+  "workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
+  "trigger_authorization": "EXACTLY_ONE_PUSH_TRIGGER",
+  "authorized_workflow_path": ".github/workflows/r258-one-shot.yml",
+  "authorized_runner": "ubuntu-24.04",
+  "authorized_attempts": 1,
+  "retry": false,
+  "second_workflow": false,
+  "checkout_fetch_depth": 0,
+  "public_access_condition": "ONLY_AFTER_TARGET_FREE_AND_VALIDATE_GO",
+  "submission": false
+}
