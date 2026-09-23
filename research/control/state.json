@@ -3796,6 +3796,18 @@
       "owner": "r260-independent-audit-e178-guard",
       "payload": {},
       "revision": 283
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T10:19:00+00:00",
+      "job": "R262",
+      "owner": "r260-independent-audit-e178-guard",
+      "payload": {
+        "code_commit": "2e23849be9448f58edbca827e578e551013a8460",
+        "command": "read-only independent audit of committed R260 protocol/report/receipt/artifact manifest; recompute frozen target-free gates; no rerun/Actions/public data",
+        "run_id": "R262-r260-independent-audit-20260923"
+      },
+      "revision": 284
     }
   ],
   "jobs": [
@@ -6075,7 +6087,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 283,
+  "revision": 284,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
