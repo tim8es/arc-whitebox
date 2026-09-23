@@ -1,0 +1,122 @@
+{
+  "schema": "arc.whitebox.r292.capture_harness_independent_audit.v1",
+  "id": "R292",
+  "run_id": "R292-r291-capture-harness-independent-audit-20260924",
+  "owner": "capture-harness-independent-audit-r267",
+  "status": "COMPLETE",
+  "verdict": "FINDINGS_NOT_PASS",
+  "branch": "research/r292-capture-harness-independent-audit",
+  "audited_r291_receipt_commit": "54658e100314f398007e6ed7525550cc5db6706c",
+  "report": {
+    "commit": "660232b78410412c253286701190d831135370a1",
+    "path": "research/r292/R292_CAPTURE_HARNESS_INDEPENDENT_AUDIT_REPORT.md",
+    "git_blob_sha1": "925a1d41c917f043e84a9c8a372fcd6199119ed0",
+    "sha256": "424d37a4139421e46ce4c89df955b60014d153a8d3a55737d27f284527f5d757"
+  },
+  "exact_artifacts": {
+    "harness": {
+      "git_blob_sha1": "3e438c0f6b87ab2fa90c1fc71bbf3cfea1e9052d",
+      "sha256": "28526a56505beaa94183ea590810949a3a856639d3f6fa63d8869ddad419ad3e",
+      "bytes": 16789
+    },
+    "selfcheck": {
+      "git_blob_sha1": "265688d5bd80dc05a0469cfdc3e6239ae5d3921d",
+      "sha256": "6a6c9d16c6cc06eaeaa003e9b91c222e242c2abc9caaf766451fc4e8f6f1088f",
+      "bytes": 5641
+    },
+    "integration_patch": {
+      "git_blob_sha1": "a3d909540fc079908fcca9987c5cdb0252a1da8c",
+      "sha256": "20ff649b9c5eec3711b223496ee3eaef0d657cc4252de8690a20dc21557e464e",
+      "bytes": 3080
+    },
+    "expected_panel": {
+      "git_blob_sha1": "caf813cd5eab771108f105fe050fd6631b298733",
+      "sha256": "ebeb221b71cf3842e807d5cf28b8c38493e53032c8e1fa897b7f5bef6b1be720",
+      "rows": 100,
+      "r224_source_blob_sha1": "9ecde34282c3fbef51ff3b11d4ec439012b3c52d"
+    }
+  },
+  "pinned_sources": {
+    "r288_receipt_sha256": "b3c6795d03996b79ffd1bc7d2766bec337e034b1f9a57eecc744de8b762b8f10",
+    "r288_protocol_report_blob_sha1": "3b0d21fab8b668e22ae4d08022bfbf27452c8cb5",
+    "whestbench_version": "0.16.1",
+    "whestbench_source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "whestbench_scoring_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "flopscope_version": "0.12.1",
+    "flopscope_source_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+    "flopscope_cost_model_blob_sha1": "fee260eb5b65bf74f353a154e4fe0aac53762793"
+  },
+  "finding": {
+    "id": "F1",
+    "severity": "BLOCKING_FOR_EXACT_PATCH_USE",
+    "summary": "The exact committed R291 integration patch is a corrupt unified diff and cannot be parsed/applied by git apply.",
+    "git_apply_error": "error: corrupt patch at line 23",
+    "hunks": [
+      {
+        "header": "@@ -681,6 +681,15 @@",
+        "declared_old": 6,
+        "declared_new": 15,
+        "actual_old": 6,
+        "actual_new": 17,
+        "added": 11
+      },
+      {
+        "header": "@@ -816,6 +825,22 @@",
+        "declared_old": 6,
+        "declared_new": 22,
+        "actual_old": 6,
+        "actual_new": 21,
+        "added": 15
+      },
+      {
+        "header": "@@ -945,6 +970,22 @@",
+        "declared_old": 6,
+        "declared_new": 22,
+        "actual_old": 6,
+        "actual_new": 21,
+        "added": 15
+      }
+    ],
+    "selfcheck_gap": "The committed self-check performs textual patch checks only and does not parse or apply the unified diff."
+  },
+  "verified_nonfinding_checks": {
+    "official_scoring_blob_exact": true,
+    "intended_generic_exception_pre_mse_seam_correct": true,
+    "intended_common_pre_mse_seam_correct": true,
+    "failure_zeroing_classes_covered_by_intended_calls": true,
+    "residual_sign_target_minus_pred": true,
+    "vector_dtype_shape_contract": true,
+    "r224_rows_compared": 100,
+    "r224_row_mismatches": 0,
+    "frozen_split_fit_count": 50,
+    "frozen_split_eval_count": 50,
+    "raw_payload_bytes": 1228800,
+    "uncompressed_protocol_content_max_bytes": 1363968,
+    "fail_isolated_capture_errors": true,
+    "intended_scorer_inputs_outputs_unchanged": true,
+    "intended_flop_accounting_unchanged": true
+  },
+  "selfcheck_replay": {
+    "result": "PASS",
+    "passed": 16,
+    "total": 16,
+    "stdout_sha256": "41cbc638fdac1c8be245f2c120c08cb1e0e7e23d320e48f3782089e35b7d8e8d",
+    "note": "Exact committed harness/self-check/patch bytes were used; no WhestBench, FlopScope, NumPy, V25, dataset, benchmark, or Actions execution occurred."
+  },
+  "accounting": {
+    "harness_edits": 0,
+    "integration_patch_edits": 0,
+    "workflow_edits": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "actions_runs": 0,
+    "dataset_downloads": 0,
+    "dependency_installs": 0,
+    "capture_artifacts_uploaded": 0,
+    "paid_resources": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false
+  }
+}
