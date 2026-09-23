@@ -6122,6 +6122,18 @@
             
                   },
             "revision": 437
+          },
+      {
+            "action": "start",
+            "at": "2026-09-23T23:36:08.139Z",
+            "job": "R299",
+            "owner": "r298-coordinate-energy-analysis-r269",
+            "payload": {
+                    "code_commit": "e1f45060e8cd0a790eb71332af1f7307e8255c59",
+                    "command": "stdlib-only offline R298 analyzer supplement for frozen R278 EVAL coordinate residual-energy diagnostics; synthetic zero-energy/negative-explained tests only; no PR #36, real vectors, benchmark, Actions, downloads/installs, paid/private/holdout/full/submission/leaderboard/canonical changes",
+                    "run_id": "R299-coordinate-energy-analysis-20260924"
+                  },
+            "revision": 438
           }
     ],
   "jobs": [
@@ -9734,7 +9746,12 @@
       {
             "assigned_owner": "r298-coordinate-energy-analysis-r269",
             "attempts": [
-            
+                    {
+                              "code_commit": "e1f45060e8cd0a790eb71332af1f7307e8255c59",
+                              "command": "stdlib-only offline R298 analyzer supplement for frozen R278 EVAL coordinate residual-energy diagnostics; synthetic zero-energy/negative-explained tests only; no PR #36, real vectors, benchmark, Actions, downloads/installs, paid/private/holdout/full/submission/leaderboard/canonical changes",
+                              "run_id": "R299-coordinate-energy-analysis-20260924",
+                              "status": "RUNNING"
+                            }
                   ],
             "deliverable": "Complete the missing R278 diagnostic required by `R278_PROTOCOL.md`: for the fixed global FIT vector d, compute EVAL coordinate-wise residual energy explained and its global/central-quantile summaries in the offline capture analyzer. Define per coordinate B_k=sum_i r_ik^2, C_k=sum_i(r_ik-d_k)^2, explained_k=1-C_k/B_k (explicitly handle B_k=0); also report the energy-weighted global 1-sum_k C_k/sum_k B_k, finite-coordinate count, and frozen central quantiles (e.g. p10/p25/p50/p75/p90 with a named deterministic quantile convention). Freeze the formula/convention before real vectors are inspected. Preserve R278 split, d rule, thresholds, binary32 arithmetic supplement, and R298 historical artifacts/receipts; no per-coordinate or per-network fitting/tuning. Add small synthetic tests including zero-energy and negative explained coordinates; only synthetic data. Keep OFFLINE_DIAGNOSTIC_ONLY label, no official adjusted score or leaderboard rank. Do not modify PR #36, inspect real capture vectors, run estimator/benchmark/Actions, download/install deps/data, spend money, or access holdout/private/full/submission. Append R299 supplement/report/receipt on isolated branch and finish with exact hashes/tests.",
             "depends_on": [
@@ -9745,12 +9762,12 @@
             "id": "R299",
             "owner": "r298-coordinate-energy-analysis-r269",
             "priority": 2,
-            "status": "CLAIMED",
+            "status": "RUNNING",
             "title": "Add the frozen coordinate-wise residual-energy diagnostic"
           }
     ],
   "policy_version": "research-process-v2",
-  "revision": 437,
+  "revision": 438,
   "schema_version": 2,
   "spending": {
       "cap_usd": 100,
