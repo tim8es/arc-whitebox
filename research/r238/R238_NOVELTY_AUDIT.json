@@ -1,0 +1,78 @@
+{
+  "schema": "arc.whitebox.r238.novelty_audit.v1",
+  "job_id": "R238",
+  "ledger": {
+    "history_path": "research/history.json",
+    "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "experiment_ids": 194,
+    "legacy_path": "research/legacy-ledger.csv",
+    "legacy_blob": "040e52efe01efd7280180b7e2d72901b4c2f0532",
+    "read_scope": "full history JSON parsed plus full legacy ledger"
+  },
+  "family": "RSRF-V25 recycled-start range finder",
+  "mechanism": "At each V25 tier-1 shared-basis rebuild after the first, keep rank R_OLD and exactly one weighted-Gram application, but initialize the block with Omega = W_slice + Qp, where Qp is the transported previous old-source basis. The first join remains canonical V25. No fitting, target use, oversampling, extra Gram pass, response projection, or second estimator pass.",
+  "searched_absent_terms": [
+    "subspace recycling",
+    "recycled basis",
+    "warm-start",
+    "warm start",
+    "incremental svd",
+    "incremental basis",
+    "rank-one update",
+    "rank one update",
+    "pivoted cholesky",
+    "qrcp",
+    "column pivot",
+    "maxvol",
+    "nystrom",
+    "nyström",
+    "interpolative decomposition",
+    "cur decomposition",
+    "frequent directions",
+    "merge-and-truncate",
+    "merge and truncate",
+    "residual augmentation",
+    "joiner residual",
+    "orthogonal complement"
+  ],
+  "all_searched_term_counts_zero": true,
+  "adjacent_but_distinct": [
+    {
+      "item": "V21/V25 shared basis",
+      "distinction": "Canonical V25 starts every tier-1 rebuild only from a fresh layer-weight slice; RSRF injects the transported prior basis into the same-width start block."
+    },
+    {
+      "item": "E022 oversampled spectral shared-basis rebuild",
+      "distinction": "E022 widens the sketch to R_OLD+16 and performs an eigentruncation. RSRF keeps exactly R_OLD columns, no eigentruncation, and no oversampling."
+    },
+    {
+      "item": "V21_QPASS / q2",
+      "distinction": "QPASS changes the number of G applications. RSRF keeps one G application and changes only the initial block."
+    },
+    {
+      "item": "E094 source-axis joint compression",
+      "distinction": "E094 factorizes across source index and was gated on source-axis numerical rank. RSRF does not compress the source axis; it changes the spatial range-finder start."
+    },
+    {
+      "item": "E142/E147 response-aligned D21/K3",
+      "distinction": "RSRF is target/response agnostic and uses no downstream observable or response direction."
+    }
+  ],
+  "explicit_exclusions": [
+    "R232 DRRE / Richardson / rank extrapolation and descendants",
+    "R227 second-K4 regeneration and descendants",
+    "R223 feed-local lambda",
+    "R219 copula",
+    "E137 CountSketch",
+    "E142/E147 response-aligned D21/K3",
+    "E124 Walsh/coset",
+    "tail-only tuning",
+    "E033 source-Hutchinson",
+    "E148 TT-K3",
+    "E140 SMV-K3",
+    "E019/E112 final scalar closures",
+    "E022 oversampled basis",
+    "QPASS2/power-iteration rescue"
+  ],
+  "strict_novelty_pass": true
+}
