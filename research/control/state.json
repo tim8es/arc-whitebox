@@ -5175,6 +5175,14 @@
       "owner": "r281-independent-current-head-audit",
       "payload": {},
       "revision": 385
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T16:40:00+00:00",
+      "job": "R288",
+      "owner": "residual-capture-protocol",
+      "payload": {},
+      "revision": 386
     }
   ],
   "jobs": [
@@ -8326,14 +8334,14 @@
       ],
       "hypothesis_id": "V25-RESIDUAL-CAPTURE-CONTRACT-20260923",
       "id": "R288",
-      "owner": null,
+      "owner": "residual-capture-protocol",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Specify a minimal auditable residual-capture artifact for V25"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 385,
+  "revision": 386,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
