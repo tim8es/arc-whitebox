@@ -5702,6 +5702,14 @@
         "title": "Independently audit PR #36 workflow permission and persistence safety"
       },
       "at": "2026-09-23T22:47:36.216Z"
+    },
+    {
+      "revision": 425,
+      "action": "claim",
+      "job": "R295",
+      "owner": "r293-workflow-security-audit-r269",
+      "payload": {},
+      "at": "2026-09-23T22:48:00.000Z"
     }
   ],
   "jobs": [
@@ -9160,13 +9168,13 @@
       "priority": 1,
       "title": "Independently audit PR #36 workflow permission and persistence safety",
       "id": "R295",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "r293-workflow-security-audit-r269",
+      "status": "CLAIMED",
       "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 424,
+  "revision": 425,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
