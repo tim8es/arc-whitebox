@@ -3200,6 +3200,55 @@
         "command": "read-only/postflight audit only: verify immutable GitHub metadata/logs/artifacts for R252 runs 35830273198 and 35830986191; write source-linked incident report + JSON erratum; append terminal_evidence_correction preserving original finish; regenerate STATUS.md; no workflow trigger/edit/rerun or science"
       },
       "at": "2026-09-23T07:29:02+00:00"
+    },
+    {
+      "revision": 245,
+      "action": "terminal_evidence_correction",
+      "job": "R252",
+      "owner": "r252-actions-accounting-audit",
+      "payload": {
+        "original_finish_revision": 241,
+        "original_finish_preserved": true,
+        "status": "INFRA_ERROR",
+        "verdict": "TWO_DISTINCT_ACTIONS_RUNS_PRE_SCIENCE_ONE_RUN_AUTHORIZATION_VIOLATED",
+        "reason": "R252 terminal evidence corrected by R253 postflight: status remains INFRA_ERROR and the original revision-241 finish event is preserved. Immutable GitHub evidence shows one queue attempt but two distinct push-triggered R252 Actions runs under an authorization for exactly one run/no retry. Run 35830273198/job 107081017265 used D21-CWG via .github/workflows/r252-one-shot.yml and failed before fixture/science because its exact runtime string check observed FlopScope 0.12.1+np2.4.6 and WhestBench unknown after all three pinned wheel digests passed. Run 35830986191/job 107083271578 used CFSP4 via .github/workflows/r252-cfsp4-one-shot.yml, passed pinned core/runtime/V25 and all 16 fixture weight hashes, then failed the frozen truth-byte check before parent. Parent measurements=0, candidate measurements=0, public measurements=0 across both runs. The second dispatch exceeded the one-run authorization. GitHub run/commit actor is tim8es; session/agent attribution is UNKNOWN.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/d4a58774da9569e581aa239669a3406f9a2f1ff9/research/r253/R253_R252_TERMINAL_EVIDENCE_ERRATUM.json",
+          "sha256": "680db7fcda71b5604006cd1aa26c00a44bc0bbb0c39553aa83b2b7e4d0c38313"
+        },
+        "queue_attempts": 1,
+        "actions_runs_authorized": 1,
+        "actions_runs_observed": 2,
+        "unauthorized_duplicate_dispatch": true,
+        "scientific_measurements": {
+          "parent": 0,
+          "candidate": 0,
+          "public": 0
+        },
+        "runs": [
+          {
+            "github_run_id": 35830273198,
+            "job_id": 107081017265,
+            "workflow": ".github/workflows/r252-one-shot.yml",
+            "method": "V25-D21-CWG",
+            "artifact_id": 10736967637,
+            "artifact_zip_sha256": "4ecd1ed42f28a4b02caccd70dce9570a0738d7cb2b4f3976207fdd31f98bb989",
+            "failure": "runtime-version-string check before fixture/science"
+          },
+          {
+            "github_run_id": 35830986191,
+            "job_id": 107083271578,
+            "workflow": ".github/workflows/r252-cfsp4-one-shot.yml",
+            "method": "V25-CFSP4",
+            "artifact_id": 10736403843,
+            "artifact_zip_sha256": "10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e",
+            "failure": "fixture truth-byte identity before parent"
+          }
+        ],
+        "github_actor": "tim8es",
+        "session_or_agent_attribution": "UNKNOWN"
+      },
+      "at": "2026-09-23T07:33:00+00:00"
     }
   ],
   "jobs": [
@@ -5123,10 +5172,10 @@
           }
         }
       ],
-      "reason": "R252 terminal INFRA_ERROR before parent science. The sole authorized standard ubuntu-24.04 Actions run 35830986191/job 107083271578 attempt 1 verified exact Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 core wheel hashes, frozen repo blobs, pinned V25 blob/SHA, and all 16 fixture weight hashes plus concatenated weight SHA256 de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e. It then failed at the frozen fixture truth-byte check with RuntimeError: truth hash mismatch against expected SHA256 623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450. The generator did not retain the observed failing truth digest/bytes, so the numerical cause is unknown. Parent executions=0, candidate constructed=false, candidate executions=0, public access/runs=0. Artifact 10736403843 ZIP SHA256 10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e. Per one-run/no-retry rule there is no repair/rerun and no scientific conclusion.",
+      "reason": "R252 terminal evidence corrected by R253 postflight: status remains INFRA_ERROR and the original revision-241 finish event is preserved. Immutable GitHub evidence shows one queue attempt but two distinct push-triggered R252 Actions runs under an authorization for exactly one run/no retry. Run 35830273198/job 107081017265 used D21-CWG via .github/workflows/r252-one-shot.yml and failed before fixture/science because its exact runtime string check observed FlopScope 0.12.1+np2.4.6 and WhestBench unknown after all three pinned wheel digests passed. Run 35830986191/job 107083271578 used CFSP4 via .github/workflows/r252-cfsp4-one-shot.yml, passed pinned core/runtime/V25 and all 16 fixture weight hashes, then failed the frozen truth-byte check before parent. Parent measurements=0, candidate measurements=0, public measurements=0 across both runs. The second dispatch exceeded the one-run authorization. GitHub run/commit actor is tim8es; session/agent attribution is UNKNOWN.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/cd67198c19f6b969e9f6622872d96ffdd5f2cbbc/research/r252/R252_RECEIPT.json",
-        "sha256": "07c4080b498d3e19ac48f6641f99219613d57e1eedbf01b7d2e5634bffd46758"
+        "url": "https://github.com/tim8es/arc-whitebox/blob/d4a58774da9569e581aa239669a3406f9a2f1ff9/research/r253/R253_R252_TERMINAL_EVIDENCE_ERRATUM.json",
+        "sha256": "680db7fcda71b5604006cd1aa26c00a44bc0bbb0c39553aa83b2b7e4d0c38313"
       }
     },
     {
@@ -5153,7 +5202,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 244,
+  "revision": 245,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
