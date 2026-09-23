@@ -4041,20 +4041,36 @@
       "revision": 301
     },
     {
-      "revision": 302,
       "action": "finish",
+      "at": "2026-09-23T12:10:18.589Z",
       "job": "R263",
       "owner": "leaderboard-refresh-arc",
       "payload": {
-        "run_id": "R263-leaderboard-refresh-20260923",
-        "status": "COMPLETE",
         "reason": "Fresh read-only official Phase-2 leaderboard/rules audit completed. Visible leader remains J2W at displayed adjusted score 2.1e-9; Phase-2 submissions close 2026-10-17 23:59 UTC. Official metric and mean-over-MLP aggregation match R209 V25, but the evaluated split does not: R209 is public mini:all-100 development, while current online visible Phase-2 scoring is 50 public MLPs with 50 sealed for final full-100 evaluation. Therefore R209 vs visible leaderboard is NOT_COMPARABLE; no numeric gap or rank/place is claimed. No estimator/Actions/paid/private/holdout/full/submission/leaderboard/canonical mutation occurred.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
-          "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73"
-        }
+          "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json"
+        },
+        "run_id": "R263-leaderboard-refresh-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T12:10:18.589Z"
+      "revision": 302
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T12:11:09.280Z",
+      "job": "R264",
+      "owner": "leader-method-forensics",
+      "payload": {
+        "reason": "Read-only public-primary-source forensic delta complete. The strongest visible Phase-2 row remains J2W/#331539 with the same displayed adjusted score 2.1e-9, final-layer MSE 1.64e-8, compute utilisation 0.1306572576, zero failures and last-submission timestamp 2026-09-19 00:05 UTC recorded by R230/R241; only Entries changed 310->312, which is telemetry and not method evidence. The #331539 public page still exposes only a generic Loading/share shell with no method/source/artifact, so no J2W mechanism is attributed. V25 is pinned to dff3dd65e9d2210e02418cca99e05556f6bf2c75 / methods/public_504aldo/estimator_v25.py with exact line ranges, but a method delta against J2W is NOT_COMPUTABLE. Verdict NO_CHANGE_PUBLIC_METHOD_EVIDENCE. Report SHA256 750e3dd101e8b1553733f963e959cbfb479fd441588c043288359be3ac86fcbd; receipt SHA256 2f054f6e0b6fa38708098669929fcddc46151db943e27c5cee144db254e6cde3. No estimator/benchmark/Actions run, competitor code execution/download, private/holdout/full data, paid compute, submission, leaderboard or canonical edit.",
+        "receipt": {
+          "sha256": "2f054f6e0b6fa38708098669929fcddc46151db943e27c5cee144db254e6cde3",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/af21926a07a3cf7d1ec3c2b43ea1548f0ef69c2f/research/r264/R264_RECEIPT.json"
+        },
+        "run_id": "R264-leader-method-forensics-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 303
     }
   ],
   "jobs": [
@@ -6383,17 +6399,17 @@
         {
           "code_commit": "fbb17a40760fc6630fda08f1d87533b298917324",
           "command": "read-only desk audit of official AIcrowd/ARC Phase-2 leaderboard/rules plus existing R209 evidence; no estimator/Actions/private/holdout/full/submission",
-          "run_id": "R263-leaderboard-refresh-20260923",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R263-leaderboard-refresh-20260923",
-            "status": "COMPLETE",
             "reason": "Fresh read-only official Phase-2 leaderboard/rules audit completed. Visible leader remains J2W at displayed adjusted score 2.1e-9; Phase-2 submissions close 2026-10-17 23:59 UTC. Official metric and mean-over-MLP aggregation match R209 V25, but the evaluated split does not: R209 is public mini:all-100 development, while current online visible Phase-2 scoring is 50 public MLPs with 50 sealed for final full-100 evaluation. Therefore R209 vs visible leaderboard is NOT_COMPARABLE; no numeric gap or rank/place is claimed. No estimator/Actions/paid/private/holdout/full/submission/leaderboard/canonical mutation occurred.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
-              "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73"
-            }
-          }
+              "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json"
+            },
+            "run_id": "R263-leaderboard-refresh-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R263-leaderboard-refresh-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Update the last verified leaderboard audit (R241) using only official AIcrowd/ARC primary sources. Record access time in UTC and Moscow time, visible Phase-2 standings/metric/deadline, source URLs and the strongest displayed score. Compare with R209 V25 mini-100 only if the official metric, split and aggregation are demonstrably aligned; otherwise state precisely why rank is UNKNOWN/NOT_COMPARABLE. Save an append-only report and receipt with source snapshots/hashes and commit, then finish R263. No estimator run, Actions, paid compute, private/holdout/full data, submission or leaderboard mutation.",
@@ -6402,13 +6418,13 @@
       "id": "R263",
       "owner": "leaderboard-refresh-arc",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Refresh the official Phase-2 leaderboard snapshot",
+      "reason": "Fresh read-only official Phase-2 leaderboard/rules audit completed. Visible leader remains J2W at displayed adjusted score 2.1e-9; Phase-2 submissions close 2026-10-17 23:59 UTC. Official metric and mean-over-MLP aggregation match R209 V25, but the evaluated split does not: R209 is public mini:all-100 development, while current online visible Phase-2 scoring is 50 public MLPs with 50 sealed for final full-100 evaluation. Therefore R209 vs visible leaderboard is NOT_COMPARABLE; no numeric gap or rank/place is claimed. No estimator/Actions/paid/private/holdout/full/submission/leaderboard/canonical mutation occurred.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
-        "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73"
+        "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json"
       },
-      "reason": "Fresh read-only official Phase-2 leaderboard/rules audit completed. Visible leader remains J2W at displayed adjusted score 2.1e-9; Phase-2 submissions close 2026-10-17 23:59 UTC. Official metric and mean-over-MLP aggregation match R209 V25, but the evaluated split does not: R209 is public mini:all-100 development, while current online visible Phase-2 scoring is 50 public MLPs with 50 sealed for final full-100 evaluation. Therefore R209 vs visible leaderboard is NOT_COMPARABLE; no numeric gap or rank/place is claimed. No estimator/Actions/paid/private/holdout/full/submission/leaderboard/canonical mutation occurred."
+      "status": "COMPLETE",
+      "title": "Refresh the official Phase-2 leaderboard snapshot"
     },
     {
       "assigned_owner": "leader-method-forensics",
@@ -6416,8 +6432,17 @@
         {
           "code_commit": "f70cd8e08269b29c6bd1c2c7a4e2c5396f1a2009",
           "command": "read-only forensic delta of public primary artifacts for current strongest visible Phase-2 entry; compare against R230/R241 and V25@dff3dd65e9d2210e02418cca99e05556f6bf2c75; no estimator/benchmark/Actions/private/holdout/submission/canonical edits",
+          "completion": {
+            "reason": "Read-only public-primary-source forensic delta complete. The strongest visible Phase-2 row remains J2W/#331539 with the same displayed adjusted score 2.1e-9, final-layer MSE 1.64e-8, compute utilisation 0.1306572576, zero failures and last-submission timestamp 2026-09-19 00:05 UTC recorded by R230/R241; only Entries changed 310->312, which is telemetry and not method evidence. The #331539 public page still exposes only a generic Loading/share shell with no method/source/artifact, so no J2W mechanism is attributed. V25 is pinned to dff3dd65e9d2210e02418cca99e05556f6bf2c75 / methods/public_504aldo/estimator_v25.py with exact line ranges, but a method delta against J2W is NOT_COMPUTABLE. Verdict NO_CHANGE_PUBLIC_METHOD_EVIDENCE. Report SHA256 750e3dd101e8b1553733f963e959cbfb479fd441588c043288359be3ac86fcbd; receipt SHA256 2f054f6e0b6fa38708098669929fcddc46151db943e27c5cee144db254e6cde3. No estimator/benchmark/Actions run, competitor code execution/download, private/holdout/full data, paid compute, submission, leaderboard or canonical edit.",
+            "receipt": {
+              "sha256": "2f054f6e0b6fa38708098669929fcddc46151db943e27c5cee144db254e6cde3",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/af21926a07a3cf7d1ec3c2b43ea1548f0ef69c2f/research/r264/R264_RECEIPT.json"
+            },
+            "run_id": "R264-leader-method-forensics-20260923",
+            "status": "COMPLETE"
+          },
           "run_id": "R264-leader-method-forensics-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read the prior public-leader audit R230 and leaderboard snapshot R241. Inspect primary/public artifacts for the currently strongest visible Phase-2 entry and report only verifiable method/code changes or disclosures since R230; compare those against the pinned V25 source and cite exact source commits/locations. Separate observed implementation from inference; if no new public evidence exists, record a no-change result instead of inventing a method. Deliver a concise append-only report and receipt with hashes/commit; finish R264. No estimator/benchmark/Actions run, no private/holdout, submission or leaderboard/canonical edits.",
@@ -6426,7 +6451,12 @@
       "id": "R264",
       "owner": "leader-method-forensics",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "Read-only public-primary-source forensic delta complete. The strongest visible Phase-2 row remains J2W/#331539 with the same displayed adjusted score 2.1e-9, final-layer MSE 1.64e-8, compute utilisation 0.1306572576, zero failures and last-submission timestamp 2026-09-19 00:05 UTC recorded by R230/R241; only Entries changed 310->312, which is telemetry and not method evidence. The #331539 public page still exposes only a generic Loading/share shell with no method/source/artifact, so no J2W mechanism is attributed. V25 is pinned to dff3dd65e9d2210e02418cca99e05556f6bf2c75 / methods/public_504aldo/estimator_v25.py with exact line ranges, but a method delta against J2W is NOT_COMPUTABLE. Verdict NO_CHANGE_PUBLIC_METHOD_EVIDENCE. Report SHA256 750e3dd101e8b1553733f963e959cbfb479fd441588c043288359be3ac86fcbd; receipt SHA256 2f054f6e0b6fa38708098669929fcddc46151db943e27c5cee144db254e6cde3. No estimator/benchmark/Actions run, competitor code execution/download, private/holdout/full data, paid compute, submission, leaderboard or canonical edit.",
+      "receipt": {
+        "sha256": "2f054f6e0b6fa38708098669929fcddc46151db943e27c5cee144db254e6cde3",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/af21926a07a3cf7d1ec3c2b43ea1548f0ef69c2f/research/r264/R264_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Forensic delta of the current public leader method"
     },
     {
@@ -6498,7 +6528,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 302,
+  "revision": 303,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
