@@ -4335,6 +4335,41 @@
         }
       },
       "at": "2026-09-23T12:55:56+00:00"
+    },
+    {
+      "revision": 324,
+      "action": "enqueue",
+      "job": "R271",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "leader-method-forensics",
+        "title": "Map R209 V25 onto the official visible Phase-2 50",
+        "hypothesis_id": "VISIBLE50-IDENTITY-RECONCILIATION-20260923",
+        "priority": 1,
+        "depends_on": [
+          "R263",
+          "R270"
+        ],
+        "deliverable": "Read the immutable R209 V25 normalized 100-network record, R263 official leaderboard snapshot, R270 independent score audit, and official public Phase-2 primary pages. Determine whether the exact 50 visible scored MLP identities are present in R209 with matching evaluator/metric/versions. Compute V25 adjusted score on exactly that same 50 only if identity and aggregation are proven; otherwise state NOT_COMPARABLE and name the minimum missing public artifact. Preserve unknowns; do not infer the panel from row order or displayed rounded score. Append report+receipt with source URLs, row IDs, formulas, hashes and commit; finish R271. Read-only only: no estimator, dataset download, Actions, paid compute, private/holdout/full access, submission, leaderboard mutation or canonical edits."
+      },
+      "at": "2026-09-23T13:04:20+00:00"
+    },
+    {
+      "revision": 325,
+      "action": "enqueue",
+      "job": "R272",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "workflow-preflight-guard",
+        "title": "Add an offline preflight for the R257-R259 failure modes",
+        "hypothesis_id": "R257-R259-OFFLINE-PREFLIGHT-20260923",
+        "priority": 2,
+        "depends_on": [
+          "R267"
+        ],
+        "deliverable": "Use R267 postmortem plus the actual R257-R260 workflow/fixture sources to identify the smallest useful reusable offline guard for the three verified failures: missing full-history protocol ancestry, fixture-manifest filename mismatch, and nonexistent replay-schema field. Inspect existing helpers first. If one small guard/test can catch all applicable failures without editing historical artifacts or live Actions workflows, implement it on an isolated branch and run only the local offline check; otherwise publish a concise evidence-based no-change report explaining why. Save report/receipt with hashes and commit; claim/start/finish R272 on the live control branch. Do not trigger Actions, run scientific estimators, access competition data, spend money, or edit old receipts/results."
+      },
+      "at": "2026-09-23T13:04:21+00:00"
     }
   ],
   "jobs": [
@@ -6936,10 +6971,39 @@
       },
       "status": "COMPLETE",
       "title": "Independently verify the R266 score-gap arithmetic"
+    },
+    {
+      "assigned_owner": "leader-method-forensics",
+      "title": "Map R209 V25 onto the official visible Phase-2 50",
+      "hypothesis_id": "VISIBLE50-IDENTITY-RECONCILIATION-20260923",
+      "priority": 1,
+      "depends_on": [
+        "R263",
+        "R270"
+      ],
+      "deliverable": "Read the immutable R209 V25 normalized 100-network record, R263 official leaderboard snapshot, R270 independent score audit, and official public Phase-2 primary pages. Determine whether the exact 50 visible scored MLP identities are present in R209 with matching evaluator/metric/versions. Compute V25 adjusted score on exactly that same 50 only if identity and aggregation are proven; otherwise state NOT_COMPARABLE and name the minimum missing public artifact. Preserve unknowns; do not infer the panel from row order or displayed rounded score. Append report+receipt with source URLs, row IDs, formulas, hashes and commit; finish R271. Read-only only: no estimator, dataset download, Actions, paid compute, private/holdout/full access, submission, leaderboard mutation or canonical edits.",
+      "id": "R271",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
+    },
+    {
+      "assigned_owner": "workflow-preflight-guard",
+      "title": "Add an offline preflight for the R257-R259 failure modes",
+      "hypothesis_id": "R257-R259-OFFLINE-PREFLIGHT-20260923",
+      "priority": 2,
+      "depends_on": [
+        "R267"
+      ],
+      "deliverable": "Use R267 postmortem plus the actual R257-R260 workflow/fixture sources to identify the smallest useful reusable offline guard for the three verified failures: missing full-history protocol ancestry, fixture-manifest filename mismatch, and nonexistent replay-schema field. Inspect existing helpers first. If one small guard/test can catch all applicable failures without editing historical artifacts or live Actions workflows, implement it on an isolated branch and run only the local offline check; otherwise publish a concise evidence-based no-change report explaining why. Save report/receipt with hashes and commit; claim/start/finish R272 on the live control branch. Do not trigger Actions, run scientific estimators, access competition data, spend money, or edit old receipts/results.",
+      "id": "R272",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 323,
+  "revision": 325,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
