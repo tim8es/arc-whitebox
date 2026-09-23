@@ -1,0 +1,18 @@
+{
+  "schema": "arc.whitebox.r260.run_arm.v1",
+  "job": "R260",
+  "run_id": "R260-BPK2K-ONE-SHOT-20260923-A1",
+  "protocol_commit": "0b47b5ebeb965ebac01748133af57607f4dbc7b1",
+  "workflow_commit": "47ab8c616665e6086e1b8c6f49acd937dab2d776",
+  "trigger_authorization": "EXACTLY_ONE_PUSH_TRIGGER",
+  "coordinator_inspection": "PASSED",
+  "authorized_workflow_path": ".github/workflows/r260-one-shot.yml",
+  "authorized_runner": "ubuntu-24.04",
+  "authorized_attempts": 1,
+  "retry": false,
+  "second_workflow": false,
+  "checkout_fetch_depth": 0,
+  "fixture_schema_preflight": "research/r260/r260_fixture_schema_preflight.py",
+  "public_access_condition": "ONLY_AFTER_TARGET_FREE_AND_VALIDATE_GO",
+  "submission": false
+}
