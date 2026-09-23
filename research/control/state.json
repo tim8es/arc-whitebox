@@ -1985,6 +1985,18 @@
       "owner": "verifier-hardening",
       "payload": {},
       "revision": 153
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T00:46:25.000Z",
+      "job": "R237",
+      "owner": "verifier-hardening",
+      "payload": {
+        "run_id": "R237-r234-verifier-hardening-20260923",
+        "code_commit": "ea6ef5ba92713e0cd9c7b22b550fb7f859bf7d45",
+        "command": "harden research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json for R236 D1-D7; add offline synthetic fail-closed regressions only; preserve R217 thresholds/R218 workflow-executor-run/R220 ownership; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical estimator"
+      },
+      "revision": 154
     }
   ],
   "jobs": [
@@ -3211,7 +3223,14 @@
     },
     {
       "assigned_owner": "verifier-hardening",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R237-r234-verifier-hardening-20260923",
+          "code_commit": "ea6ef5ba92713e0cd9c7b22b550fb7f859bf7d45",
+          "command": "harden research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json for R236 D1-D7; add offline synthetic fail-closed regressions only; preserve R217 thresholds/R218 workflow-executor-run/R220 ownership; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical estimator",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Implement a fail-closed hardening pass for research/r234/r234_verify_r218.py and its checklist based on the seven confirmed R236 defects. Preserve frozen R217 thresholds, R218 source/workflow, and no-retry policy. Require run_attempt==1; cryptographically bind the supplied local artifact directory to the independently inspected Actions run/job and artifact ID/name/digest; verify run head/arm ancestry and workflow/executor blobs; pin expected-panel and prelaunch files to exact frozen blobs; require nonempty complete manifest coverage for every consumed artifact file; enforce the exact preflight gate-name set and independent version/environment evidence; verify dataset path and max_threads where exposed; require all mandatory taskset/proc/worker-region telemetry. Add synthetic offline regressions that fail if any R236 defect reopens. Do not read/use the still-running R218 artifact, do not change R218 or R217, do not trigger Actions, and run no estimator/science/paid/holdout/private/submission. Produce reviewable code/tests, a source-linked report and durable receipt; R220 remains the postflight owner after R218 completes.",
       "depends_on": [
         "R236"
@@ -3220,12 +3239,12 @@
       "id": "R237",
       "owner": "verifier-hardening",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Harden R218 postflight verifier using R236 findings"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 153,
+  "revision": 154,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
