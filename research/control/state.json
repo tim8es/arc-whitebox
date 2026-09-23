@@ -2153,11 +2153,27 @@
       "job": "R238",
       "owner": "global-accuracy-research",
       "payload": {
-        "run_id": "R238-v25-rsrf-exact-small-20260923",
         "code_commit": "12c595f3dec66e4616f76ca688b1f5339b5bdf24",
-        "command": "python scripts/r238_rsrf_exact_small.py --v25 r238-estimator-v25.py --candidate-out r238-candidate-v25.py --out r238-rsrf-falsifier.json"
+        "command": "python scripts/r238_rsrf_exact_small.py --v25 r238-estimator-v25.py --candidate-out r238-candidate-v25.py --out r238-rsrf-falsifier.json",
+        "run_id": "R238-v25-rsrf-exact-small-20260923"
       },
       "revision": 166
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T02:06:23.312171+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "reason": "Attempt 2 stopped before source-transform verification, parent-artifact download, whest validate, or any mini-100 panel invocation. Standard public ubuntu-24.04 compute gate passed and pip installed the pinned distributions, but an attempt-2 bootstrap assertion incorrectly required module-level whestbench.__version__ == 0.16.1. The scientific V25-LF formula, clamp, panel and gates were never exercised.",
+        "receipt": {
+          "sha256": "5eabfb77e78f9e419917c87c0853253f339cc2c1ccdeed99bfa5c64ce7f747d4",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/9f375488f40f5a55a66918622b5545a6825d5645/research/r223/R223_ATTEMPT2_INFRA_RECEIPT.json"
+        },
+        "run_id": "R223-v25-local-feed-attempt2-20260923",
+        "status": "INFRA_ERROR"
+      },
+      "revision": 167
     }
   ],
   "jobs": [
@@ -2942,8 +2958,17 @@
         {
           "code_commit": "9010ee7ae0a4e166c8a976b96b1e4a6a512a9590",
           "command": "whest run --estimator methods/r223_estimator_v25_local_feed.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 100 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "completion": {
+            "reason": "Attempt 2 stopped before source-transform verification, parent-artifact download, whest validate, or any mini-100 panel invocation. Standard public ubuntu-24.04 compute gate passed and pip installed the pinned distributions, but an attempt-2 bootstrap assertion incorrectly required module-level whestbench.__version__ == 0.16.1. The scientific V25-LF formula, clamp, panel and gates were never exercised.",
+            "receipt": {
+              "sha256": "5eabfb77e78f9e419917c87c0853253f339cc2c1ccdeed99bfa5c64ce7f747d4",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/9f375488f40f5a55a66918622b5545a6825d5645/research/r223/R223_ATTEMPT2_INFRA_RECEIPT.json"
+            },
+            "run_id": "R223-v25-local-feed-attempt2-20260923",
+            "status": "INFRA_ERROR"
+          },
           "run_id": "R223-v25-local-feed-attempt2-20260923",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR"
         }
       ],
       "deliverable": "Inspect immutable history and V25's existing per-network public mini-100 evidence, then select exactly one untried, non-duplicative algorithm-level change aimed at reducing official adjusted score (not merely FLOPs below the 0.1B floor). Freeze the parent, code/config, falsifier, gates and exact panel before execution. Run at most one bounded development test on the same public mini-100 panel using only verified free/existing compute; do not alter canonical code. Compare every network, failures, MSE/FLOPs/runtime and score to V25; retain artifacts/hashes and commit. If novelty, cost or evidence is insufficient, finish with an explicit NO-GO and why. No holdout, paid resources, submission or leaderboard claims.",
@@ -2952,12 +2977,12 @@
       "id": "R223",
       "owner": "method-research",
       "priority": 2,
-      "reason": "RESEARCH_PROCESS v2 supersedes the historical blanket no-repair rule and permits infrastructure repair under the same job. Preserve R223 attempt 1 as INFRA_ERROR with no panel measurement. Attempt 2 changes no scientific hypothesis, K4->K3 feed-local lambda formula, clamp, panel, thresholds, parent, or tuning. Repair scope is limited to the pre-panel source-provenance bootstrap: move the byte-transform verifier out of the YAML multiline block so indentation is stable, and replace the candidate docstring's literal backslash-n with an actual LF.",
+      "reason": "Attempt 2 stopped before source-transform verification, parent-artifact download, whest validate, or any mini-100 panel invocation. Standard public ubuntu-24.04 compute gate passed and pip installed the pinned distributions, but an attempt-2 bootstrap assertion incorrectly required module-level whestbench.__version__ == 0.16.1. The scientific V25-LF formula, clamp, panel and gates were never exercised.",
       "receipt": {
-        "sha256": "cdc27cf6342639249ac6d0753c428e637f74d7085ea8cf152a29c91f5ddfa4ea",
-        "url": "https://github.com/tim8es/arc-whitebox/blob/64b5fa1a2fed2a3f77021534875dbc7b0e2ff27f/research/r223/R223_TERMINAL_RECEIPT.json"
+        "sha256": "5eabfb77e78f9e419917c87c0853253f339cc2c1ccdeed99bfa5c64ce7f747d4",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/9f375488f40f5a55a66918622b5545a6825d5645/research/r223/R223_ATTEMPT2_INFRA_RECEIPT.json"
       },
-      "status": "RUNNING",
+      "status": "INFRA_ERROR",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     },
     {
@@ -3484,9 +3509,9 @@
       "assigned_owner": "global-accuracy-research",
       "attempts": [
         {
-          "run_id": "R238-v25-rsrf-exact-small-20260923",
           "code_commit": "12c595f3dec66e4616f76ca688b1f5339b5bdf24",
           "command": "python scripts/r238_rsrf_exact_small.py --v25 r238-estimator-v25.py --candidate-out r238-candidate-v25.py --out r238-rsrf-falsifier.json",
+          "run_id": "R238-v25-rsrf-exact-small-20260923",
           "status": "RUNNING"
         }
       ],
@@ -3503,7 +3528,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 166,
+  "revision": 167,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
