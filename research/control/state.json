@@ -5433,6 +5433,23 @@
         "to_session": "6ab3a7f9-fb08-83ed-ac5c-c3d500d50d1b"
       },
       "revision": 405
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T17:53:00+00:00",
+      "job": "R291",
+      "owner": "v25-capture-harness-preparation",
+      "payload": {
+        "decision": "HARNESS_PREPARED_SYNTHETICALLY_VERIFIED_NO_BENCHMARK",
+        "reason": "Prepared a minimal evaluator-side WhestBench 0.16.1 capture sidecar on isolated branch without applying it to any evaluator/workflow. Exact official scoring.py blob and both pre-MSE seams were statically verified; integration patch deletes no scorer code, changes no return path/canonical scorer state, and preserves failure-zeroing/score/FLOP boundary. Stdlib-only synthetic 100-row self-check passed 16/16 on the exact committed harness/self-check/patch bytes, including byte/hash/size invariants, 50/50 frozen split, zeroed failure row, scorer-input/output non-mutation, fail-isolated capture errors, and 1,228,800-byte payload. No benchmark/WhestBench runtime, dataset/dependency download/install, Actions, paid/private/holdout/full access, submission, artifact upload, PR #35, leaderboard or canonical edits.",
+        "receipt": {
+          "sha256": "c534f45b6928cf42a3674625d3e548c7fe38da9cc3d233ccbe6f863c7f34d8b4",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/54658e100314f398007e6ed7525550cc5db6706c/research/r291/R291_RECEIPT.json"
+        },
+        "run_id": "R291-v25-capture-harness-preparation-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 406
     }
   ],
   "jobs": [
@@ -8717,8 +8734,18 @@
         {
           "code_commit": "680f8607b97d3c2722693dbafef89edc29f84cfb",
           "command": "prepare isolated evaluator-side WhestBench 0.16.1 pre-MSE capture harness for R288 contract plus synthetic stdlib-only serialization/invariant self-check; no estimator/workflow/PR35 changes, benchmark, Actions, dataset/dependency downloads, artifact publication, paid/private/holdout/full/submission/leaderboard/canonical changes",
+          "completion": {
+            "decision": "HARNESS_PREPARED_SYNTHETICALLY_VERIFIED_NO_BENCHMARK",
+            "reason": "Prepared a minimal evaluator-side WhestBench 0.16.1 capture sidecar on isolated branch without applying it to any evaluator/workflow. Exact official scoring.py blob and both pre-MSE seams were statically verified; integration patch deletes no scorer code, changes no return path/canonical scorer state, and preserves failure-zeroing/score/FLOP boundary. Stdlib-only synthetic 100-row self-check passed 16/16 on the exact committed harness/self-check/patch bytes, including byte/hash/size invariants, 50/50 frozen split, zeroed failure row, scorer-input/output non-mutation, fail-isolated capture errors, and 1,228,800-byte payload. No benchmark/WhestBench runtime, dataset/dependency download/install, Actions, paid/private/holdout/full access, submission, artifact upload, PR #35, leaderboard or canonical edits.",
+            "receipt": {
+              "sha256": "c534f45b6928cf42a3674625d3e548c7fe38da9cc3d233ccbe6f863c7f34d8b4",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/54658e100314f398007e6ed7525550cc5db6706c/research/r291/R291_RECEIPT.json"
+            },
+            "run_id": "R291-v25-capture-harness-preparation-20260923",
+            "status": "COMPLETE"
+          },
           "run_id": "R291-v25-capture-harness-preparation-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "On a separate isolated branch, prepare the smallest evaluator-side capture harness for the R288 contract at the exact WhestBench 0.16.1 pre-MSE seam. Preserve estimator source/score/FLOP accounting, participant failure zeroing and pinned evaluator/meter; capture only public mini per-network float32[1024] prediction/target/residual plus integrity metadata, with output committed only to a dedicated research branch when a later authorized free run occurs. Add a synthetic offline test proving capture serialization and no change to scorer outputs; do not download data, install deps, trigger Actions, run the benchmark, publish/upload artifacts, or touch PR #35. If safe injection requires changing evaluator semantics or cannot be tested locally, stop with exact blocker. Append report/receipt/hashes/commit; finish R291.",
@@ -8729,12 +8756,17 @@
       "id": "R291",
       "owner": "v25-capture-harness-preparation",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "Prepared a minimal evaluator-side WhestBench 0.16.1 capture sidecar on isolated branch without applying it to any evaluator/workflow. Exact official scoring.py blob and both pre-MSE seams were statically verified; integration patch deletes no scorer code, changes no return path/canonical scorer state, and preserves failure-zeroing/score/FLOP boundary. Stdlib-only synthetic 100-row self-check passed 16/16 on the exact committed harness/self-check/patch bytes, including byte/hash/size invariants, 50/50 frozen split, zeroed failure row, scorer-input/output non-mutation, fail-isolated capture errors, and 1,228,800-byte payload. No benchmark/WhestBench runtime, dataset/dependency download/install, Actions, paid/private/holdout/full access, submission, artifact upload, PR #35, leaderboard or canonical edits.",
+      "receipt": {
+        "sha256": "c534f45b6928cf42a3674625d3e548c7fe38da9cc3d233ccbe6f863c7f34d8b4",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/54658e100314f398007e6ed7525550cc5db6706c/research/r291/R291_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Prepare a capture-only V25 harness without running the benchmark"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 405,
+  "revision": 406,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
