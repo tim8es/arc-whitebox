@@ -5505,6 +5505,18 @@
       "owner": "gha-result-persistence-audit-r291-session",
       "payload": {},
       "revision": 410
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T20:52:10+00:00",
+      "job": "R290",
+      "owner": "gha-result-persistence-audit-r291-session",
+      "payload": {
+        "code_commit": "6a5ffa3e64a853be7ee4af6a43dbec6f1e9f5a70",
+        "command": "read-only audit of first-party GitHub docs and current public repo settings/workflows/rulesets for persisting ~1.36 MB R288 capture via narrowly permissioned GITHUB_TOKEN commit to dedicated research branch without Actions artifact storage; no Actions, capture-result push, artifact upload, installs/data downloads, paid resources, private/holdout/full/submission/leaderboard/canonical changes",
+        "run_id": "R290-gha-result-persistence-audit-20260923"
+      },
+      "revision": 411
     }
   ],
   "jobs": [
@@ -8784,7 +8796,14 @@
     },
     {
       "assigned_owner": "gha-result-persistence-audit-r291-session",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "6a5ffa3e64a853be7ee4af6a43dbec6f1e9f5a70",
+          "command": "read-only audit of first-party GitHub docs and current public repo settings/workflows/rulesets for persisting ~1.36 MB R288 capture via narrowly permissioned GITHUB_TOKEN commit to dedicated research branch without Actions artifact storage; no Actions, capture-result push, artifact upload, installs/data downloads, paid resources, private/holdout/full/submission/leaderboard/canonical changes",
+          "run_id": "R290-gha-result-persistence-audit-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Using first-party GitHub Actions docs and this public repository's settings/workflow patterns, determine whether the planned ~1.36 MB residual capture can be saved to a dedicated research branch by a narrowly permissioned GITHUB_TOKEN commit, avoiding upload-artifact storage that R287 could not verify as quota-free. Inspect workflow token permissions, branch/rule constraints, effects on downstream workflow triggers, and repository storage policy. Read-only/docs-only; do not trigger Actions, write a commit, upload artifact, install/download data, or spend money. State exact remaining account-owner inputs if zero-cost still cannot be guaranteed; cite sources, append report/receipt and finish R290.",
       "depends_on": [
         "R288"
@@ -8793,7 +8812,7 @@
       "id": "R290",
       "owner": "gha-result-persistence-audit-r291-session",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Verify a no-artifact-storage way to preserve the residual capture result"
     },
     {
@@ -8834,7 +8853,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 410,
+  "revision": 411,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
