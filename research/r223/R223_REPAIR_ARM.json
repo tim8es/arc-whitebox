@@ -1,0 +1,6 @@
+{
+  "idempotency_key": "ARC-R223-INFRA-REPAIR-V2-20260923",
+  "job": "R223",
+  "execute_once": true,
+  "scientific_change": false
+}
