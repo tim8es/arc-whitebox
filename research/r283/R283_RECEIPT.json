@@ -1,0 +1,188 @@
+{
+  "schema": "arc.whitebox.r283.pr35-adversarial-audit.v1",
+  "job": "R283",
+  "hypothesis_id": "R275-PREFLIGHT-ADVERSARIAL-COVERAGE-20260923",
+  "owner": "preflight-adversarial-audit",
+  "run_id": "R283-pr35-adversarial-synthetic-audit-20260923",
+  "status": "COMPLETE",
+  "verdict": "FAIL_CLOSED_CONTRACT_NOT_MET",
+  "control": {
+    "assigned_revision": 367,
+    "assigned_head": "0d9b38be31e42eec7245e171c8813504515474a7",
+    "claim_revision": 369,
+    "claim_commit": "ed940bff4f3aca9fe43fb7370702183adef09dae",
+    "start_revision": 370,
+    "start_commit": "e98389df19d4fca38967b2433a64e0de40f201c1",
+    "start_source_commit": "e054a32d7d3bdac98408392b09f467e174c2565b"
+  },
+  "r277_receipt": {
+    "commit": "2ffac1885bdd2424b5e3dbf8519cd8159e23962e",
+    "git_blob_sha1": "8ba3ad8d832684f4ec153bf276f9f84fc61af1cb",
+    "sha256": "97b2446a66bb00a38837f5cf0a5083ce2b61dcca668ca03969f0321743b86058"
+  },
+  "pull_request": {
+    "number": 35,
+    "url": "https://github.com/tim8es/arc-whitebox/pull/35",
+    "head_at_start": "e054a32d7d3bdac98408392b09f467e174c2565b",
+    "head_at_close": "65634dfedfa3d46be785d2b07ba3997b292be16e",
+    "head_drift": {
+      "ahead_by": 1,
+      "behind_by": 0,
+      "changed_files": [
+        "tests/test_arc_workflow_preflight.py"
+      ],
+      "production_analyzer_changed": false,
+      "docs_changed": false
+    },
+    "base_sha": "b5b988f8ec49a5ec473d59fcbfdfaf8c4350c850",
+    "state_at_close": "open",
+    "merged_at_close": false,
+    "mergeable_at_close": true,
+    "mergeable_state_at_close": "unstable"
+  },
+  "reviewed_files": {
+    "scripts/arc_workflow_preflight.py": {
+      "git_blob_sha1": "a654fa1e15bfa8f9c2bfaa39073ecdf044a74a12",
+      "sha256": "8d002d9f98ce717d2f84757bb2efea9f5b2c4660fb097b230bcc199d6c310cdf",
+      "relevant_lines": [
+        "98-199",
+        "218-316",
+        "319-409",
+        "416-461"
+      ]
+    },
+    "tests/test_arc_workflow_preflight.py": {
+      "git_blob_sha1": "5cc0111b19905436207dbb86fd1d7e62ff208db2",
+      "sha256": "f790fc9ee2c914e2caed0b7d7dd46dcc931f94c2a7f257a7ea50a8f5c4264205",
+      "newly_added_expected_rejection_lines": "187-249"
+    },
+    "docs/workflow-preflight.md": {
+      "git_blob_sha1": "81d37a3759c0fc67b6bc8705e05a74e01877d4bd",
+      "sha256": "1b1118309f616c7e0d977d2c0da3e6073b99de2fc16459f7d338cef1d9c2a3ba"
+    }
+  },
+  "offline_focused_checks": {
+    "actions": false,
+    "fixture_execution": false,
+    "estimator_execution": false,
+    "public_benchmark_data": false,
+    "main_probe_count": 18,
+    "adversarial_probe_count": 14,
+    "adversarial_pass_count": 14,
+    "control_count": 4,
+    "normalized_execution_evidence_sha256": "4ab1b3a9254a2ebfa6045730cb48106f5f99253b6bce162f06cc045fa7563fd5",
+    "current_head_new_test_inputs_checked": 6,
+    "current_head_new_test_inputs_returning_PASS": 6,
+    "note": "Focused checks used small synthetic workflow/generator strings and current analyzer logic extracted from the exact reviewed analyzer blob. No workflow/fixture/estimator was executed."
+  },
+  "confirmed_r277_findings": [
+    {
+      "id": "F1",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "summary": "env.fetch-depth: 0 falsely satisfies checkout full-history requirement"
+    },
+    {
+      "id": "F2",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "summary": "clear/pop/helper mutation can remove manifest keys while stale schema is retained"
+    },
+    {
+      "id": "F3",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "summary": "mixed unsupported manifest access and non-manifest json.loads binding can silently pass"
+    }
+  ],
+  "new_findings": [
+    {
+      "id": "N1",
+      "severity": "HIGH",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "summary": "text/comment inside YAML run block can masquerade as actions/checkout metadata",
+      "lines": [
+        "scripts/arc_workflow_preflight.py:218-276"
+      ]
+    },
+    {
+      "id": "N2",
+      "severity": "HIGH",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "summary": "double-space semantically equivalent git merge-base --is-ancestor command is not detected; full_history_required becomes false",
+      "lines": [
+        "scripts/arc_workflow_preflight.py:280-316",
+        "scripts/arc_workflow_preflight.py:434-439"
+      ]
+    },
+    {
+      "id": "N3",
+      "severity": "HIGH",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "summary": "comment/string literal d[\"seed\"] can manufacture an extracted key and mask a real unsupported d.get(\"ghost\") access",
+      "lines": [
+        "scripts/arc_workflow_preflight.py:381-409"
+      ]
+    },
+    {
+      "id": "N4",
+      "severity": "HIGH",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "summary": "if/del/conditional-return/helper control flow is silently skipped in generator manifest dataflow, including paths that write no manifest",
+      "lines": [
+        "scripts/arc_workflow_preflight.py:118-139",
+        "scripts/arc_workflow_preflight.py:176-199"
+      ]
+    }
+  ],
+  "negative_controls": [
+    "valid baseline contract passes",
+    "direct unsupported subscript assignment rejects",
+    "only d.get('ghost') without bracket decoy rejects",
+    "dynamic unresolved nested schema read rejects"
+  ],
+  "exact_fix_diff_scope": {
+    "modify": [
+      "scripts/arc_workflow_preflight.py",
+      "tests/test_arc_workflow_preflight.py",
+      "docs/workflow-preflight.md"
+    ],
+    "append_only_future_evidence": true,
+    "do_not_modify": [
+      ".github/workflows/*",
+      "research/r275/*",
+      "research/r277/*",
+      "research/r283/* historical bytes",
+      "fixtures",
+      "estimators",
+      "benchmark/canonical results"
+    ],
+    "required_fix_areas": [
+      "structural YAML step/checkout/with.fetch-depth parsing; block scalars opaque",
+      "normalized or conservatively rejected ancestry command syntax",
+      "fail-closed generator control flow and manifest mutation/write reachability",
+      "exact manifest-content json.loads binding",
+      "parsed executable manifest-variable accesses excluding comments/strings and rejecting unmodeled uses"
+    ]
+  },
+  "report": {
+    "path": "research/r283/R283_PR35_ADVERSARIAL_AUDIT.md",
+    "commit": "9983f6e063264d9a1102eca3cba2b752d827ca94",
+    "git_blob_sha1": "5da1c98867eb344d4e60860986c14a3bdcd27224",
+    "sha256": "8dd37e3688cf2660e8b7d1724b4e4fb98e6a6e6e11d4ed81fa63cbad4b43bded"
+  },
+  "safety": {
+    "pr_modified": false,
+    "pr_review_or_comment_posted": false,
+    "pr_merged": false,
+    "actions_triggered": false,
+    "fixtures_executed": false,
+    "estimator_run": false,
+    "public_benchmark_data_accessed": false,
+    "paid_resource_used": false
+  }
+}
