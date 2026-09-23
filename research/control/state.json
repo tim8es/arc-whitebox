@@ -3471,6 +3471,20 @@
       "owner": "bpk2k-one-shot-run-responsive",
       "payload": {},
       "revision": 261
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T08:31:00+00:00",
+      "job": "R257",
+      "owner": "bpk2k-one-shot-run-responsive",
+      "payload": {
+        "code_commit": "187bc8f9ca459a96af1f7cf0d014bc906b278a2a",
+        "protocol_commit": "b63936a38bc0e3a6394b00f2ef1d484311aff9e4",
+        "workflow_commit": "187bc8f9ca459a96af1f7cf0d014bc906b278a2a",
+        "command": "create exactly one commit on research/r257-bpk2k-repaired-one-shot-20260923 adding only research/r257/R257_RUN_ARM.json atop workflow commit 187bc8f9ca459a96af1f7cf0d014bc906b278a2a; that single push triggers .github/workflows/r257-one-shot.yml once. Protocol commit b63936a38bc0e3a6394b00f2ef1d484311aff9e4; run_id R257-BPK2K-ONE-SHOT-20260923-A1. No rerun/second workflow.",
+        "run_id": "R257-BPK2K-ONE-SHOT-20260923-A1"
+      },
+      "revision": 262
     }
   ],
   "jobs": [
@@ -5549,7 +5563,16 @@
     },
     {
       "assigned_owner": "bpk2k-one-shot-run-responsive",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "187bc8f9ca459a96af1f7cf0d014bc906b278a2a",
+          "protocol_commit": "b63936a38bc0e3a6394b00f2ef1d484311aff9e4",
+          "workflow_commit": "187bc8f9ca459a96af1f7cf0d014bc906b278a2a",
+          "command": "create exactly one commit on research/r257-bpk2k-repaired-one-shot-20260923 adding only research/r257/R257_RUN_ARM.json atop workflow commit 187bc8f9ca459a96af1f7cf0d014bc906b278a2a; that single push triggers .github/workflows/r257-one-shot.yml once. Protocol commit b63936a38bc0e3a6394b00f2ef1d484311aff9e4; run_id R257-BPK2K-ONE-SHOT-20260923-A1. No rerun/second workflow.",
+          "run_id": "R257-BPK2K-ONE-SHOT-20260923-A1",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "One new, separately versioned one-shot evaluation of the unchanged R254 BPK2K candidate using only the reviewed R256 typed harness on an isolated successor branch from R256 receipt commit f1e458952f2274ca375f97125ba3d181c494ad40. Before any run, freeze R257 protocol, workflow, source hashes, one unique run ID, and exact gates; publish start on latest control head. Use pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1 and WhestBench 0.16.1 with the already verified wheel digests; standard free ubuntu-24.04 runner only. In exactly one workflow/attempt, run unchanged pinned V25 parent first on R254-MONOMIAL-PATH-254001 (seed 254001, exact existing weight/truth hashes); only after parent PASS run the unchanged BPK2K candidate. Preserve all frozen R254 target-free gates: final MSE ratio <=0.95, all-layer <=0.98, >=12 improved layers, max per-layer degradation <=1.10, candidate FLOPs <= parent, candidate residual <=1.05*parent+0.005; metered fnp/source compliance unchanged. Parent/infra failure => accurate terminal status, no candidate/public. Candidate target-free gate failure => SCIENTIFIC_REJECT for this configuration, skip public. Only if every target-free/source/cost gate passes, validate exact R209 mini-100 row/order/network/target hashes and run exact public mini-100 within the same workflow; require failures=0, adjusted score <=7.761877568111363e-9, >=55/100 improved, paired gain >2 descriptive SE, mean FLOPs <=806303721965, max residual <0.4s. Save raw per-network evidence/artifact hashes, report/receipt, finish queue and regenerate STATUS. No retries/second workflow, method/seed/threshold tuning, paid/private/holdout/full data, R223/R244 output access, submission, leaderboard/canonical edits or claims of official rank. Do not modify R254 historical artifacts.",
       "depends_on": [
         "R255",
@@ -5559,12 +5582,12 @@
       "id": "R257",
       "owner": "bpk2k-one-shot-run-responsive",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Evaluate repaired BPK2K on frozen target-free then public R209 gates"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 261,
+  "revision": 262,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
