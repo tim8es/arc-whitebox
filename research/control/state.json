@@ -3133,6 +3133,18 @@
       "owner": "actions-accuracy-method-research",
       "payload": {},
       "at": "2026-09-23T07:00:01+00:00"
+    },
+    {
+      "revision": 240,
+      "action": "start",
+      "job": "R252",
+      "owner": "actions-accuracy-method-research",
+      "payload": {
+        "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+        "code_commit": "26346269b3c14462057c3d508b3ff3adfaa97581",
+        "command": "protocol/history preparation only: deduplicate complete immutable history and required evidence; freeze exactly one new global-accuracy hypothesis, exact production-shape target-free fixture bytes/hashes/seeds/diagnostics, metered source contract, falsifier/cost/public gates and one-run stop rules before creating or triggering the sole standard ubuntu-24.04 Actions workflow"
+      },
+      "at": "2026-09-23T07:00:02+00:00"
     }
   ],
   "jobs": [
@@ -5037,12 +5049,19 @@
       ],
       "assigned_owner": "actions-accuracy-method-research",
       "owner": "actions-accuracy-method-research",
-      "status": "CLAIMED",
-      "attempts": []
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+          "code_commit": "26346269b3c14462057c3d508b3ff3adfaa97581",
+          "command": "protocol/history preparation only: deduplicate complete immutable history and required evidence; freeze exactly one new global-accuracy hypothesis, exact production-shape target-free fixture bytes/hashes/seeds/diagnostics, metered source contract, falsifier/cost/public gates and one-run stop rules before creating or triggering the sole standard ubuntu-24.04 Actions workflow",
+          "status": "RUNNING"
+        }
+      ]
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 239,
+  "revision": 240,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
