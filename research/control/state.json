@@ -4937,6 +4937,14 @@
         "deliverable": "Use first-party AIcrowd/ARC allowed-code rules, official evaluator/starterkit source, and R276/R278 artifacts to determine whether an estimator may embed one fixed output-space residual direction and coefficient fitted offline from public development mini networks, then apply it globally to unseen inputs/networks. Separate permitted public development use from leakage of evaluation-network targets, package-time constants, and metered runtime computation. Cite exact official sources and state any ambiguity as UNKNOWN; no organizer contact, estimator implementation/run, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard/canonical edits. Save one concise research artifact/receipt with hashes/commit and finish R284."
       },
       "revision": 367
+    },
+    {
+      "revision": 368,
+      "action": "claim",
+      "job": "R282",
+      "owner": "r209-artifact-recovery",
+      "payload": {},
+      "at": "2026-09-23T15:46:09.593Z"
     }
   ],
   "jobs": [
@@ -7912,8 +7920,8 @@
     {
       "id": "R282",
       "assigned_owner": "r209-artifact-recovery",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "r209-artifact-recovery",
+      "status": "CLAIMED",
       "attempts": [],
       "title": "Search existing ARC run artifacts for retained V25 residual vectors",
       "hypothesis_id": "R209-EXISTING-RAW-VECTOR-RECOVERY-20260923",
@@ -7951,7 +7959,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 367,
+  "revision": 368,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
