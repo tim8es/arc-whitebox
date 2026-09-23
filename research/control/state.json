@@ -5793,6 +5793,20 @@
         "title": "Prepare an offline analyzer for the frozen V25 residual capture"
       },
       "at": "2026-09-23T23:07:46.020Z"
+    },
+    {
+      "revision": 431,
+      "action": "reassign",
+      "job": "R298",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "r288-capture-analysis-prep-new-session",
+        "from_session": "6ab4554f-b1a0-83ed-83b6-0ef809381537",
+        "to_assigned_owner": "r288-capture-analysis-prep-r267",
+        "to_session": "6ab3a7f3-d754-83eb-be50-bbf1a4f90187",
+        "reason": "The original recipient received the full task and one concise nudge but remained idle; live queue still had zero claims/attempts, and read-only branch/Actions checks found no R298 branch or run. Transfer the same offline analyzer task to the previously repo-capable idle R267 session; no duplicate execution."
+      },
+      "at": "2026-09-23T23:11:49.082Z"
     }
   ],
   "jobs": [
@@ -9308,7 +9322,7 @@
       "attempts": []
     },
     {
-      "assigned_owner": "r288-capture-analysis-prep-new-session",
+      "assigned_owner": "r288-capture-analysis-prep-r267",
       "depends_on": [
         "R288",
         "R291"
@@ -9324,7 +9338,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 430,
+  "revision": 431,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
