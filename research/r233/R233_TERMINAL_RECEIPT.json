@@ -1,0 +1,195 @@
+{
+  "schema": "arc.whitebox.r233.terminal_receipt.v1",
+  "job": "R233",
+  "hypothesis_id": "V25-OUTPUT-PRESERVING-COST-REDUCTION",
+  "owner": "v25-compute-audit",
+  "run_id": "R233-v25-onehot-wick-cse-20260923",
+  "status": "TERMINAL_NO_GO_PRE_MINI_MATERIALITY",
+  "decision": "SCIENTIFIC_REJECT",
+  "conclusion": "ONEHOT-WICK-ROW-SELECT is algebraically exact and lowers counted FLOPs, but projected production saving is only 0.007783278470680822% of pinned V25, below the preregistered 0.1% materiality gate; mini-100 not authorized.",
+  "queue": {
+    "enqueue_revision": 129,
+    "claim_revision": 130,
+    "user_assignment_context_revision": 132,
+    "start_revision": 135,
+    "start_commit": "0aaaa323d58730d64593af48369abbfb449df769",
+    "start_code_commit": "48a9ccb3eaeca34a21e7dab636ab10935629e17b"
+  },
+  "source": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "path": "estimators/estimator_v25.py",
+    "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "baseline": {
+    "r209_record": "research/results/R209-v25-mini100.json",
+    "r209_record_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "counted_flops_per_mlp": 806303721965,
+    "compute_factor": 0.36666448157347986,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "phase2_budget_flops": 2199023255552,
+    "shape": [
+      16,
+      1024
+    ],
+    "failures": 0,
+    "r231_fixed_raw_floor_score": 2.228303490170447e-9
+  },
+  "candidate": {
+    "name": "ONEHOT-WICK-ROW-SELECT",
+    "exact_identity": "For each one-hot coefficient row s with s[j]=c, s @ WT = c * WT[j,:]. SR2 has c=1.",
+    "source_fact": "Pinned _term_prog gives exactly one nonzero per SL2, SR2 and SL1 row.",
+    "rewrite": [
+      "WL2 = take(WT, wl2_idx, axis=0) * sl2_coef[:,None]",
+      "WR2 = take(WT, wr2_idx, axis=0)",
+      "WL1 = take(WT, wl1_idx, axis=0) * sl1_coef[:,None]"
+    ],
+    "changes_estimator_semantics": false
+  },
+  "frozen_artifacts": {
+    "protocol": {
+      "path": "research/r233/R233_PROTOCOL.md",
+      "commit": "1eac156f43a5186f7db849162a4ba71c5fcce075",
+      "git_blob": "789b65e74f0cd99f187a7ade8f7fc5451de2c6e2"
+    },
+    "fixture_script": {
+      "path": "scripts/r233_v25_onehot_wick_fixture.py",
+      "commit": "1b18731ea62f5f11fd363c31ea2208b1e44c9fe0",
+      "git_blob": "b43a2738828c6e0a50cb5cebe097b2ae6f87e625"
+    },
+    "cost_model": {
+      "path": "research/r233/R233_COST_MODEL.json",
+      "commit": "48a9ccb3eaeca34a21e7dab636ab10935629e17b",
+      "git_blob": "31b2dda55e2ffd7692a927ddcdb10cdfdb8ec3ad"
+    },
+    "workflow": {
+      "path": ".github/workflows/r233-v25-onehot-wick-fixture.yml",
+      "commit": "cb419a5eed46c6c8efd3e162d3c3bce5127929db"
+    },
+    "trigger": {
+      "path": "research/r233/R233_EXECUTE_TRIGGER.txt",
+      "commit": "357e1302b826f9debc8e547fc1c57c384d7affff"
+    },
+    "result": {
+      "path": "research/r233/R233_RESULT.md",
+      "commit": "57420636129ec42ba3f66bd90ac4924caa6a159c",
+      "sha256": "fe2a498319f5b742b552518045191d7c00ee703deac2e6c364fffb7e19bde990"
+    }
+  },
+  "fixture_execution": {
+    "github_actions_run_id": 35799879085,
+    "github_actions_job_id": 106987553512,
+    "github_run_attempt": 1,
+    "trigger_commit": "357e1302b826f9debc8e547fc1c57c384d7affff",
+    "runner": "standard ubuntu-24.04",
+    "python": "3.11.16",
+    "flopscope": "0.12.1+np2.4.6",
+    "fixture_width": 8,
+    "conclusion": "success",
+    "identity_go": true,
+    "counted_flop_go": true,
+    "results": [
+      {
+        "mode": 0,
+        "d2_terms": 6,
+        "d1_terms": 4,
+        "baseline_flops": 5248,
+        "candidate_flops": 592,
+        "saving_flops": 4656,
+        "analytic_cost_exact": true,
+        "WL2_bitwise_equal": true,
+        "WR2_bitwise_equal": true,
+        "WL1_bitwise_equal": true
+      },
+      {
+        "mode": 1,
+        "d2_terms": 52,
+        "d1_terms": 14,
+        "baseline_flops": 38704,
+        "candidate_flops": 4304,
+        "saving_flops": 34400,
+        "analytic_cost_exact": true,
+        "WL2_bitwise_equal": true,
+        "WR2_bitwise_equal": true,
+        "WL1_bitwise_equal": true
+      }
+    ],
+    "artifact": {
+      "id": 10725706577,
+      "name": "r233-v25-onehot-wick-fixture",
+      "size_bytes": 9192,
+      "zip_sha256": "43afd7fe7d6d2896cba0b2fa5c514ec3097469b13d541d5c896b8e9ba8abf184"
+    },
+    "scope": {
+      "estimator_executed": false,
+      "mini100": false,
+      "target_data_used": false,
+      "holdout": false,
+      "submission": false,
+      "paid_runner": false
+    }
+  },
+  "production_cost_proof": {
+    "official_pricing": {
+      "matmul_float32": "M*N*(2*K-1)",
+      "gather_take_float32": "4*N",
+      "elementwise_multiply_float32": "N"
+    },
+    "wick_pair_count": 21,
+    "mode0": {
+      "d2_terms": 6,
+      "d1_terms": 4
+    },
+    "mode1": {
+      "d2_terms": 52,
+      "d1_terms": 14
+    },
+    "suite_schedule": "layer0 mode0 d2+d1; layers1..14 mode1 d2+d1; layer15 trimmed mode1 d1 only",
+    "projected_saving_flops_per_mlp": 62756864,
+    "projected_relative_reduction": 0.00007783278470680822,
+    "projected_percent_reduction": 0.007783278470680822,
+    "projected_new_counted_flops": 806240965101,
+    "projected_new_compute_factor": 0.3666359430558259,
+    "fixed_raw_projected_mean_adjusted_score": 8.169761515332299e-9,
+    "fixed_raw_absolute_score_drop": 6.359247849260651e-13
+  },
+  "gates": {
+    "identity": {
+      "threshold": "bitwise equality fixture modes 0 and 1",
+      "pass": true
+    },
+    "counted_flop": {
+      "threshold": "strict positive saving and exact analytic/model match",
+      "pass": true
+    },
+    "meaningful": {
+      "threshold_relative_v25_count": 0.001,
+      "threshold_flops_per_mlp": 806303722,
+      "projected_saving_flops_per_mlp": 62756864,
+      "pass": false,
+      "projected_saving_fraction_of_threshold": 0.07783278470680821,
+      "miss_factor": 12.84781058496723
+    },
+    "mini100_authorized": false
+  },
+  "no_go_reason": "Exact rewrite exists, but its full V25 production saving is too small to satisfy the frozen materiality gate. Protocol forbids a mini-100 and forbids substituting a rescue optimization after observing the fixture.",
+  "sources": {
+    "v25": "https://github.com/504aldo/whest-p2-cumulant-k3/blob/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v25.py",
+    "flopscope_costs": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/reference/flopscope-primer.md",
+    "r209_v25": "https://github.com/tim8es/arc-whitebox/blob/20fafab5471e6ed227562c651179dd2ef331ea22/research/results/R209-v25-mini100.json",
+    "r231": "https://github.com/tim8es/arc-whitebox/blob/f36d8011fe1cf8eadf87e0751a18ca9555f9408f/research/r231/R231_V25_ERROR_TAIL_RECEIPT.json",
+    "actions_run": "https://github.com/tim8es/arc-whitebox/actions/runs/35799879085"
+  },
+  "forbidden_and_not_performed": [
+    "canonical estimator edit",
+    "canonical result edit",
+    "full estimator run",
+    "public mini-100",
+    "paid compute",
+    "private or holdout data",
+    "submission",
+    "R232 estimator-family work",
+    "post-result rescue optimization"
+  ]
+}
