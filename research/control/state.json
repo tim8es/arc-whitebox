@@ -5310,6 +5310,22 @@
         "run_id": "R285-pr35-r283-remediation-20260923"
       },
       "revision": 396
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T17:31:50.773Z",
+      "job": "R285",
+      "owner": "preflight-r283-remediation-responsive",
+      "payload": {
+        "reason": "Confirmed residual R283 false-PASS classes were remediated on PR #35; exact committed-byte compatibility 16/16 and focused 8/8 tests pass, full suite 24/24, and exact R283 N1-N4 post-fix replay is 4/4 REJECT.",
+        "receipt": {
+          "sha256": "e4ddee4ffd75a0b94c4740bca4e39b6fd93b4ae531a8fc9ff9f1535827b0f109",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/7a65d58a559dce27f709374a0fbaea6726aa3b43/research/r285/R285_RECEIPT.json"
+        },
+        "run_id": "R285-pr35-r283-remediation-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 397
     }
   ],
   "jobs": [
@@ -8413,8 +8429,17 @@
         {
           "code_commit": "05733f3bfa6730124c4601a918bcc6d401719e09",
           "command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
+          "completion": {
+            "reason": "Confirmed residual R283 false-PASS classes were remediated on PR #35; exact committed-byte compatibility 16/16 and focused 8/8 tests pass, full suite 24/24, and exact R283 N1-N4 post-fix replay is 4/4 REJECT.",
+            "receipt": {
+              "sha256": "e4ddee4ffd75a0b94c4740bca4e39b6fd93b4ae531a8fc9ff9f1535827b0f109",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/7a65d58a559dce27f709374a0fbaea6726aa3b43/research/r285/R285_RECEIPT.json"
+            },
+            "run_id": "R285-pr35-r283-remediation-20260923",
+            "status": "COMPLETE"
+          },
           "run_id": "R285-pr35-r283-remediation-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Continue existing PR #35 from current head 05733f3bfa6730124c4601a918bcc6d401719e09. Read R281/R283 receipts and reproduce all four R283 additional counterexamples against the post-R281 production blob before editing: YAML run-block/comment text masquerading as checkout metadata; equivalent ancestry-command whitespace bypass; comments/string literals manufacturing bracket-key evidence around unsupported real accesses; skipped if/del/conditional-return/helper control flow or no-manifest-write paths. Add focused regression tests first; minimally harden or fail closed wherever static proof is unsupported. Keep standard-library/offline scope, run focused + compatibility tests against byte-exact code, update PR #35 but do not merge or trigger Actions. Append R285 report/receipt with hashes/commit and finish. If any counterexample is not reproducible on current head, record that instead of changing unrelated logic.",
@@ -8426,7 +8451,12 @@
       "id": "R285",
       "owner": "preflight-r283-remediation-responsive",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Confirmed residual R283 false-PASS classes were remediated on PR #35; exact committed-byte compatibility 16/16 and focused 8/8 tests pass, full suite 24/24, and exact R283 N1-N4 post-fix replay is 4/4 REJECT.",
+      "receipt": {
+        "sha256": "e4ddee4ffd75a0b94c4740bca4e39b6fd93b4ae531a8fc9ff9f1535827b0f109",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/7a65d58a559dce27f709374a0fbaea6726aa3b43/research/r285/R285_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Close the remaining R283 false-PASS classes in PR #35"
     },
     {
@@ -8539,7 +8569,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 396,
+  "revision": 397,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
