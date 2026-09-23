@@ -1,0 +1,104 @@
+{
+  "schema": "arc.whitebox.r235.material_exact_cost_model.v1",
+  "frozen_before_queue_start": true,
+  "candidate": "WEIGHTED-ALIAS-GRAM",
+  "exclusion": "R233 ONEHOT-WICK-ROW-SELECT",
+  "pinned_source": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "path": "estimators/estimator_v25.py",
+    "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "operator_profile_source": {
+    "path": "docs/findings_log.md",
+    "git_blob": "09cf41e8826052ceb83109115cae688c03baaaca",
+    "finding": "F77"
+  },
+  "official_cost_reference": {
+    "repository": "AIcrowd/whest-starterkit",
+    "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "path": "docs/reference/flopscope-primer.md",
+    "git_blob": "7c1478581347f362f691aa1b8023d8edcd44874d",
+    "matmul_float32": "M*N*(2*K-1)"
+  },
+  "pinned_v25": {
+    "normalized_record_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "counted_flops_per_mlp": 806303721965,
+    "width": 1024,
+    "depth": 16,
+    "budget_flops": 2199023255552
+  },
+  "dominant_operator_profile_units": {
+    "unit_flops": 2147483648,
+    "hub_nonsymmetric_contractions": 100,
+    "young_dense_transports": 80,
+    "shared_basis_contractions_approx": 30,
+    "shared_basis_formings_approx": 33,
+    "WQ_or_WDQ_approx": 27,
+    "Cpre_sandwich_already_symmetric_priced": 22.5,
+    "necessary_dense_nxn_matmuls": 16,
+    "joins_moves_qr_approx": 20,
+    "term_table_approx": 2.5
+  },
+  "candidate_math": {
+    "baseline": "F @ (d * F.T)",
+    "alias": "einsum('ia,i,ib->ab', X, d, X), X=F.T",
+    "identity": "F diag(d) F^T = X^T diag(d) X",
+    "flopscope_ideal_price_fraction": 0.5
+  },
+  "source_schedule": {
+    "AGE_OLD": 4,
+    "R_OLD": 384,
+    "AGE_OLD2": 7,
+    "R_OLD2": 224,
+    "join_layers": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "tier2_move_layers": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "grams_per_event": 2,
+    "eligible_weighted_grams": 34
+  },
+  "exact_upper_bound": {
+    "per_dense_gram_flops": 301842432,
+    "all_current_eligible_gram_flops": 10262642688,
+    "ideal_half_price_saving_flops": 5131321344,
+    "saving_fraction_of_v25": 0.0063640055282080665,
+    "saving_percent_of_v25": 0.6364005528208067,
+    "required_1pct_flops": 8063037219.65,
+    "fraction_of_required_threshold": 0.6364005528208067,
+    "miss_factor": 1.5713374156693627
+  },
+  "exclusions": {
+    "hub_and_young_core": "distinct non-symmetric operands; alias/symmetry/batching does not lower scalar multiply-add count",
+    "Cpre": "already billed at 0.75 symmetric sandwich rate",
+    "dense_16_nxn": "15 newborn W@a_b transports plus final C@w32 are required; no common result reuse",
+    "strassen": "material arithmetic saving exists upstream, but F79 states level>0 changes float32 summation order; excluded by exact-output contract"
+  },
+  "gates": {
+    "exact_source": true,
+    "candidate_distinct_from_r233": true,
+    "production_materiality_threshold_fraction": 0.01,
+    "production_materiality_pass": false,
+    "micro_fixture_authorized": false,
+    "mini100_authorized": false
+  },
+  "frozen_decision": "TERMINAL_PRE_FIXTURE_NO_GO"
+}
