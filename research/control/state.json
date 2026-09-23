@@ -3838,6 +3838,17 @@
         "reason": "Previous recipient remained idle and claim-only for 25 minutes. Current checks show no start, attempts, R261 branch, run, or artifact. Stand-down message sent; transfer the same unstarted job, no duplicate execution."
       },
       "revision": 286
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T10:53:00+00:00",
+      "job": "R261",
+      "owner": "orthogonal-method-research-e178-guard",
+      "payload": {
+        "transferred_unstarted_job": true,
+        "prior_owner_stood_down": true
+      },
+      "revision": 287
     }
   ],
   "jobs": [
@@ -6138,7 +6149,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 286,
+  "revision": 287,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
