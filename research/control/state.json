@@ -3180,6 +3180,14 @@
         "title": "Audit duplicate R252 Actions runs and correct terminal evidence"
       },
       "at": "2026-09-23T07:29:00+00:00"
+    },
+    {
+      "revision": 243,
+      "action": "claim",
+      "job": "R253",
+      "owner": "r252-actions-accounting-audit",
+      "payload": {},
+      "at": "2026-09-23T07:29:01+00:00"
     }
   ],
   "jobs": [
@@ -5120,13 +5128,13 @@
       "priority": 1,
       "title": "Audit duplicate R252 Actions runs and correct terminal evidence",
       "id": "R253",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "r252-actions-accounting-audit",
+      "status": "CLAIMED",
       "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 242,
+  "revision": 243,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
