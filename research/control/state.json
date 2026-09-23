@@ -3860,6 +3860,23 @@
         "run_id": "R261-local-target-free-20260923"
       },
       "revision": 288
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T10:58:00+00:00",
+      "job": "R261",
+      "owner": "orthogonal-method-research-e178-guard",
+      "payload": {
+        "status": "SCIENTIFIC_REJECT",
+        "decision": "EVIDENCE_BASED_NO_GO_BEFORE_EXECUTION",
+        "reason": "Bounded source/evidence review found no orthogonal V25 candidate with target-free rationale sufficient to justify a production-shape execution. The concrete orthogonal lever considered, disabling the existing online mean-correction rider, is itself public-fitted and has no committed target-free evidence for the required >=5% final and >=2% all-layer MSE gains; executing it would be speculative method fishing. No candidate execution or public access occurred.",
+        "receipt": {
+          "commit": "c7d0e98a413c0e4fc4e462d7aa65d8eeaae42f66",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/c7d0e98a413c0e4fc4e462d7aa65d8eeaae42f66/research/r261/R261_RECEIPT.json"
+        },
+        "run_id": "R261-local-target-free-20260923"
+      },
+      "revision": 289
     }
   ],
   "jobs": [
@@ -6160,7 +6177,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 288,
+  "revision": 289,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
