@@ -5217,16 +5217,16 @@
       "revision": 389
     },
     {
-      "revision": 390,
       "action": "start",
+      "at": "2026-09-23T16:42:52.791Z",
       "job": "R287",
       "owner": "phase2-free-runner-audit",
       "payload": {
-        "run_id": "R287-free-runner-audit-20260923",
         "code_commit": "50761f8373c8a5340e19ba2c0422b4aae721863e",
-        "command": "read-only audit of exact existing public GitHub-hosted runner configuration against official GitHub pricing/resources/timeout documentation and account-specific unknowns; no Actions/download/install"
+        "command": "read-only audit of exact existing public GitHub-hosted runner configuration against official GitHub pricing/resources/timeout documentation and account-specific unknowns; no Actions/download/install",
+        "run_id": "R287-free-runner-audit-20260923"
       },
-      "at": "2026-09-23T16:42:52.791Z"
+      "revision": 390
     },
     {
       "action": "reassign",
@@ -5241,6 +5241,23 @@
         "to_session": "6ab3a7f9-fb08-83ed-ac5c-c3d500d50d1b"
       },
       "revision": 391
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T16:43:00+00:00",
+      "job": "R288",
+      "owner": "residual-capture-protocol",
+      "payload": {
+        "decision": "PROTOCOL_READY_NO_EXECUTION",
+        "reason": "Minimal auditable future V25 public mini:all-100 residual-capture contract completed without execution. Contract preserves R278 lexicographic 50/50 FIT/EVAL split and global d=mean_FIT(target-pred) rule, incorporates R282's exact missing-vector finding, and preserves R284's metering boundary. It pins V25/evaluator/meter/dataset provenance; captures scored float32[1024] final_pred, final_target and target-pred residual for all 100 networks with R224 IDs/target fingerprints, per-vector/record hashes, failure flags, manifest integrity and a 1,363,968-byte uncompressed content cap. Official WhestBench main seam is after failure zeroing and final_pred/final_target binding before MSE; generic exceptions require a second pre-MSE seam because they bypass the common path. Capture is evaluator-side after participant BudgetContext and must not alter score/FLOP accounting. No estimator/workflow changes, run, Actions, dataset download, paid/private/holdout/full access, submission, leaderboard/canonical edits.",
+        "receipt": {
+          "sha256": "b3c6795d03996b79ffd1bc7d2766bec337e034b1f9a57eecc744de8b762b8f10",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/cac87b0377674d3591b69f2b09db1873e8df9747/research/r288/R288_RECEIPT.json"
+        },
+        "run_id": "R288-v25-residual-capture-protocol-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 392
     }
   ],
   "jobs": [
@@ -8379,9 +8396,9 @@
       "assigned_owner": "phase2-free-runner-audit",
       "attempts": [
         {
-          "run_id": "R287-free-runner-audit-20260923",
           "code_commit": "50761f8373c8a5340e19ba2c0422b4aae721863e",
           "command": "read-only audit of exact existing public GitHub-hosted runner configuration against official GitHub pricing/resources/timeout documentation and account-specific unknowns; no Actions/download/install",
+          "run_id": "R287-free-runner-audit-20260923",
           "status": "RUNNING"
         }
       ],
@@ -8402,8 +8419,18 @@
         {
           "code_commit": "406d1574b4483e7c0c939949c6f46a9e7940d7e4",
           "command": "docs/source-only specification of minimal auditable runner-side V25 public mini:all-100 residual capture artifact; preserve R278 frozen split/global fit and R284 metering boundary; no estimator/workflow edits, run, Actions, dataset download, paid/private/holdout/full/submission/leaderboard/canonical changes",
+          "completion": {
+            "decision": "PROTOCOL_READY_NO_EXECUTION",
+            "reason": "Minimal auditable future V25 public mini:all-100 residual-capture contract completed without execution. Contract preserves R278 lexicographic 50/50 FIT/EVAL split and global d=mean_FIT(target-pred) rule, incorporates R282's exact missing-vector finding, and preserves R284's metering boundary. It pins V25/evaluator/meter/dataset provenance; captures scored float32[1024] final_pred, final_target and target-pred residual for all 100 networks with R224 IDs/target fingerprints, per-vector/record hashes, failure flags, manifest integrity and a 1,363,968-byte uncompressed content cap. Official WhestBench main seam is after failure zeroing and final_pred/final_target binding before MSE; generic exceptions require a second pre-MSE seam because they bypass the common path. Capture is evaluator-side after participant BudgetContext and must not alter score/FLOP accounting. No estimator/workflow changes, run, Actions, dataset download, paid/private/holdout/full access, submission, leaderboard/canonical edits.",
+            "receipt": {
+              "sha256": "b3c6795d03996b79ffd1bc7d2766bec337e034b1f9a57eecc744de8b762b8f10",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/cac87b0377674d3591b69f2b09db1873e8df9747/research/r288/R288_RECEIPT.json"
+            },
+            "run_id": "R288-v25-residual-capture-protocol-20260923",
+            "status": "COMPLETE"
+          },
           "run_id": "R288-v25-residual-capture-protocol-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Use R278's already-frozen network split/global fit rule, R282's exact missing-data finding, and R284's allowed-with-conditions ruling. Specify only the minimal runner-side capture contract for one future public mini:all-100 V25 run: exact per-network prediction/target/residual dtype/shape, identity and target-hash metadata, evaluator/source versions, failure-zeroing semantics, artifact integrity, storage-size bound, and how capture leaves official score/FLOP accounting unchanged. Do not change code/workflows, run/download data, trigger Actions, spend money, or alter the frozen split/fit rule. Cite exact WhestBench source seam and save a concise append-only protocol/report+receipt with hashes/commit; finish R288.",
@@ -8415,12 +8442,17 @@
       "id": "R288",
       "owner": "residual-capture-protocol",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "Minimal auditable future V25 public mini:all-100 residual-capture contract completed without execution. Contract preserves R278 lexicographic 50/50 FIT/EVAL split and global d=mean_FIT(target-pred) rule, incorporates R282's exact missing-vector finding, and preserves R284's metering boundary. It pins V25/evaluator/meter/dataset provenance; captures scored float32[1024] final_pred, final_target and target-pred residual for all 100 networks with R224 IDs/target fingerprints, per-vector/record hashes, failure flags, manifest integrity and a 1,363,968-byte uncompressed content cap. Official WhestBench main seam is after failure zeroing and final_pred/final_target binding before MSE; generic exceptions require a second pre-MSE seam because they bypass the common path. Capture is evaluator-side after participant BudgetContext and must not alter score/FLOP accounting. No estimator/workflow changes, run, Actions, dataset download, paid/private/holdout/full access, submission, leaderboard/canonical edits.",
+      "receipt": {
+        "sha256": "b3c6795d03996b79ffd1bc7d2766bec337e034b1f9a57eecc744de8b762b8f10",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/cac87b0377674d3591b69f2b09db1873e8df9747/research/r288/R288_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Specify a minimal auditable residual-capture artifact for V25"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 391,
+  "revision": 392,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
