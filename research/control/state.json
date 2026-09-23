@@ -1865,6 +1865,14 @@
         "title": "Independently audit the R234 postflight verifier before R218 completes"
       },
       "revision": 143
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T00:29:18.005164+00:00",
+      "job": "R236",
+      "owner": "independent-verifier-audit",
+      "payload": {},
+      "revision": 144
     }
   ],
   "jobs": [
@@ -3040,14 +3048,14 @@
       ],
       "hypothesis_id": "R218-POSTFLIGHT-VERIFIER-FAIL-CLOSED",
       "id": "R236",
-      "owner": null,
+      "owner": "independent-verifier-audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Independently audit the R234 postflight verifier before R218 completes"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 143,
+  "revision": 144,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
