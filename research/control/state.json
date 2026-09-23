@@ -5419,6 +5419,20 @@
         "run_id": "R289-pr35-current-head-final-audit-20260923"
       },
       "revision": 404
+    },
+    {
+      "action": "reassign",
+      "at": "2026-09-23T17:53:43Z",
+      "job": "R290",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "gha-result-persistence-audit",
+        "from_session": "6ab3a7fc-83f4-83eb-abaa-bca887536468",
+        "reason": "R290 is still QUEUED with attempts empty. The original session's latest two turns contain only user messages, thread is idle, and no claim/start/branch/run/artifact exists. Reassign this same job to the previously responsive idle R266 session; no duplicate execution.",
+        "to_assigned_owner": "gha-result-persistence-audit-responsive",
+        "to_session": "6ab3a7f9-fb08-83ed-ac5c-c3d500d50d1b"
+      },
+      "revision": 405
     }
   ],
   "jobs": [
@@ -8683,7 +8697,7 @@
       "title": "Adversarially verify the latest PR #35 head after R285"
     },
     {
-      "assigned_owner": "gha-result-persistence-audit",
+      "assigned_owner": "gha-result-persistence-audit-responsive",
       "attempts": [],
       "deliverable": "Using first-party GitHub Actions docs and this public repository's settings/workflow patterns, determine whether the planned ~1.36 MB residual capture can be saved to a dedicated research branch by a narrowly permissioned GITHUB_TOKEN commit, avoiding upload-artifact storage that R287 could not verify as quota-free. Inspect workflow token permissions, branch/rule constraints, effects on downstream workflow triggers, and repository storage policy. Read-only/docs-only; do not trigger Actions, write a commit, upload artifact, install/download data, or spend money. State exact remaining account-owner inputs if zero-cost still cannot be guaranteed; cite sources, append report/receipt and finish R290.",
       "depends_on": [
@@ -8720,7 +8734,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 404,
+  "revision": 405,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
