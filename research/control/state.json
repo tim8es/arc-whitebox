@@ -5011,6 +5011,14 @@
         "run_id": "R284-residual-correction-rules-audit-20260923"
       },
       "revision": 374
+    },
+    {
+      "revision": 375,
+      "action": "claim",
+      "job": "R281",
+      "owner": "workflow-preflight-integration-fix",
+      "payload": {},
+      "at": "2026-09-23T15:51:27.345Z"
     }
   ],
   "jobs": [
@@ -7978,9 +7986,9 @@
       ],
       "hypothesis_id": "R277-PREFLIGHT-FAIL-CLOSED-FIX-20260923",
       "id": "R281",
-      "owner": null,
+      "owner": "workflow-preflight-integration-fix",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Fix the three R277 false-PASS findings in PR #35"
     },
     {
@@ -8046,7 +8054,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 374,
+  "revision": 375,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
