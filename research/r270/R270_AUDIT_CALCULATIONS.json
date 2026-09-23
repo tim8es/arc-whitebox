@@ -1,0 +1,114 @@
+{
+  "schema": "arc.whitebox.r270.independent_audit_calculations.v1",
+  "task": "R270",
+  "owner": "score-gap-independent-audit",
+  "run_id": "R270-score-gap-independent-audit-20260923",
+  "checked_at_utc": "2026-09-23T12:24:14.770Z",
+  "verdict": "R266_ARITHMETIC_VERIFIED_NOT_COMPARABLE",
+  "source_identity": {
+    "r209_v25": {
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232"
+    },
+    "r209_v29": {
+      "path": "research/results/R209-v29-mini100.json",
+      "git_blob_sha1": "1c5d779ef7d6b0d85963c1db7bc4e91887a7086c"
+    },
+    "official_scoring": {
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/concepts/scoring-model.md",
+      "git_blob_sha1": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e"
+    },
+    "r266_report": {
+      "git_blob_sha1": "0c0c193244738b4adf4c6369589e8bdcaa28d5ef"
+    },
+    "r266_calculations": {
+      "git_blob_sha1": "8b5ee19cd40ade790a82e5d7e0f1a7ba94ef89da"
+    },
+    "r266_receipt": {
+      "git_blob_sha1": "28d721653959746502fd5cb104045ef05f876e30",
+      "sha256_from_control": "795bb53fabc907f367a98aaf605bc7304a916eced234e854d16dd1fa552a604c"
+    }
+  },
+  "official_formula": {
+    "B": 2199023255552,
+    "floor": 0.1,
+    "successful_row": "final_mse * max(0.1, measured_flops/B)",
+    "failed_row": "predictions zeroed; multiplier forced to 1.0",
+    "aggregate": "mean across MLPs",
+    "phase2_compute": "C_m = F_m"
+  },
+  "independent_v25_recompute": {
+    "rows": 100,
+    "failures": 0,
+    "mean_raw_mse": 2.228303490170447e-8,
+    "constant_measured_flops_per_row": 806303721965,
+    "mean_measured_flops": 806303721965,
+    "exact_cost_factor_decimal": "0.36666448157347986125387251377105712890625",
+    "mean_cost_factor": 0.36666448157347986,
+    "recomputed_mean_adjusted_score": 8.170397440117225e-9,
+    "mean_recorded_official_adjusted_score": 8.170397440117225e-9,
+    "max_abs_per_row_formula_vs_recorded_score": 0
+  },
+  "conditional_display_threshold": {
+    "displayed_value": "0.0000000021",
+    "threshold_used": 2.1e-9,
+    "warning": "Conditional algebra against the displayed public value only. It is not an exact official gap and does not imply rank because the panels differ and the underlying unrounded leaderboard score is not exposed.",
+    "arithmetic_difference": "6.070397440117225e-9",
+    "arithmetic_ratio": "3.8906654476748690476190476190476190476190476190476",
+    "same_cost_required_raw_mse_scale": "0.25702544036460852909907633149071886239122787169533",
+    "same_cost_required_raw_mse_reduction_percent": "74.297455963539147090092366850928113760877212830467",
+    "cost_only_required_factor_without_floor": "0.094242099842484524766484138211858689901438570148436",
+    "cost_only_verdict": "IMPOSSIBLE_WITH_UNCHANGED_MSE_BECAUSE_REQUIRED_FACTOR_BELOW_0.1",
+    "floor_score_with_unchanged_mse": 2.228303490170447e-9,
+    "floor_required_raw_mse_reduction_percent": "5.7579001575154752335158617881413100985614298515641",
+    "max_integer_flops_still_at_floor": 219902325555
+  },
+  "display_rounding": {
+    "observed_display_precision": "0.0000000001 increments in the rendered Adjusted Score column (10 digits after decimal)",
+    "exact_hidden_score_known": false,
+    "renderer_rounding_mode_known": false,
+    "conclusion": "R266 is correct to call 2.1e-9 rounded/displayed and to avoid an exact official gap.",
+    "illustrative_only_if_standard_nearest_rounding_to_1e_10": {
+      "possible_hidden_interval": "[2.05e-9, 2.15e-9)",
+      "same_cost_required_raw_mse_reduction_percent_at_2_05e_9": "74.90942129774059596889969144971554",
+      "same_cost_required_raw_mse_reduction_percent_at_2_15e_9": "73.68549062933769821128504225214069",
+      "floor_required_raw_mse_reduction_percent_at_2_05e_9": "8.001759677574630585098817459852231",
+      "floor_required_raw_mse_reduction_percent_at_2_15e_9": "3.514040637456319881932906116430389"
+    }
+  },
+  "independent_v29_recompute": {
+    "rows": 100,
+    "successes": 43,
+    "failures": 57,
+    "failure_reason_set": [
+      "residual_wall_time_exhausted"
+    ],
+    "all_failed_rows_recorded_score_equals_raw_final_mse": true,
+    "recomputed_mean_adjusted_score": 0.5270942878803214,
+    "mean_recorded_official_adjusted_score": 0.5270942878803214,
+    "failed_rows_contribution_to_overall_mean": 0.5270942854881286,
+    "successful_rows_contribution_to_overall_mean": 2.392192892427515e-9,
+    "interpretation": "Failure rows use multiplier 1.0 and dominate the score; cheaper successful-row FLOPs do not make V29 a valid cost-only route."
+  },
+  "comparability": {
+    "r209_panel": "public development mini:all-100",
+    "visible_online_panel": "50 public visible + 50 private/sealed; full 100 final evaluation",
+    "metric_match": true,
+    "aggregation_match": true,
+    "split_match": false,
+    "strict_official_gap": null,
+    "competition_rank": null,
+    "decision": "NOT_COMPARABLE"
+  },
+  "audit_result": {
+    "r266_mean_adjusted_score": "VERIFIED",
+    "r266_cost_factor": "VERIFIED",
+    "r266_floor_semantics": "VERIFIED",
+    "r266_same_cost_raw_mse_reduction": "VERIFIED",
+    "r266_cost_only_below_floor": "VERIFIED",
+    "r266_floor_residual_mse_reduction": "VERIFIED",
+    "r266_v29_failure_treatment": "VERIFIED",
+    "r266_rounding_caveat": "VERIFIED_WITH_EXPLICIT_RENDERER_MODE_UNKNOWN",
+    "substantive_arithmetic_error_found": false
+  }
+}
