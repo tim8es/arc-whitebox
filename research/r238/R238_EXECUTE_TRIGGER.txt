@@ -1,0 +1,9 @@
+R238_EXECUTE_TRIGGER
+run_id=R238-v25-rsrf-exact-small-20260923
+frozen_code_commit=12c595f3dec66e4616f76ca688b1f5339b5bdf24
+queue_start_commit=0dc2f1ca005765e11d9af4594a07c4d48171adfb
+family=RSRF-V25
+single_actions_run=true
+base_prerequisite_first=true
+candidate_only_after_base_pass=true
+mini100_only_after_R238_SMALL_GO_RSRF=true
