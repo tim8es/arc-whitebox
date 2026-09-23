@@ -1,0 +1,74 @@
+{
+  "schema": "arc.r252.candidate_spec.v1",
+  "status": "FROZEN_PRE_WORKFLOW",
+  "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+  "candidate_id": "V25-D21-CWG",
+  "parent": {
+    "commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "patch": {
+    "old": [
+      "dA_list.append(9.0 + w2 * w2 + 9.0 * e_b * e_b)",
+      "dP_list.append(1.0 + S3c * S3c)"
+    ],
+    "new": [
+      "dA_list.append(w2 * w2 + e_b * e_b)",
+      "dP_list.append(w2 * w2 + S3c * S3c)"
+    ],
+    "anchor_count_each": 1,
+    "new_math_star": false,
+    "new_python_scalar_division": false,
+    "new_scalar_materialization": false
+  },
+  "fixture": {
+    "id": "R252-BLOCK2-252001",
+    "seed": 252001,
+    "width": 1024,
+    "depth": 16,
+    "weights_concat_sha256": "1ed998cad7f2ba4c8259f70a241913359ac49b7b0252d91a0c578539893ddfb0",
+    "truth_sha256": "0803ca4d381ad13ab0842fcd4775a3e4b1ad2f1409f517d196ac89073c479946"
+  },
+  "runtime": {
+    "runner": "ubuntu-24.04",
+    "python": "3.11.16",
+    "numpy": {
+      "version": "2.4.6",
+      "wheel_sha256": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93"
+    },
+    "flopscope": {
+      "version": "0.12.1",
+      "wheel_sha256": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582"
+    },
+    "whestbench": {
+      "version": "0.16.1",
+      "wheel_sha256": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"
+    }
+  },
+  "target_free_gates": {
+    "final_mse_ratio_max": 0.95,
+    "all_layer_mse_ratio_max": 0.98,
+    "improved_layers_min": 12,
+    "max_per_layer_degradation_ratio": 1.1,
+    "candidate_flops_le_parent": true
+  },
+  "public_gates": {
+    "adjusted_score_max": 7.761877568111363e-9,
+    "improved_rows_min": 55,
+    "paired_gain_gt_2_descriptive_se": true,
+    "mean_flops_max": 806303721965,
+    "max_residual_wall_time_s_strict": 0.4,
+    "failures": 0
+  },
+  "prohibited": {
+    "retry": true,
+    "second_workflow": true,
+    "second_method": true,
+    "paid": true,
+    "private_holdout": true,
+    "submission": true,
+    "leaderboard_mutation": true,
+    "canonical_v25_edit": true
+  }
+}
