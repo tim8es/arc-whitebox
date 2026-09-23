@@ -1,0 +1,165 @@
+{
+  "schema": "arc.whitebox.r260.receipt.v1",
+  "job": "R260",
+  "run_id": "R260-BPK2K-ONE-SHOT-20260923-A1",
+  "owner": "bpk2k-one-shot-run-responsive",
+  "status": "SCIENTIFIC_REJECT",
+  "decision": "SCIENTIFIC_REJECT_TARGET_FREE",
+  "scientific_status": "FAIL",
+  "public_status": "SKIPPED_BY_TARGET_FREE_GATE",
+  "frozen": {
+    "base_r259_terminal_commit": "be1f8e92dbf3a2adb4d5dcd75c2ff345454ac47b",
+    "r259_receipt_sha256": "dd1c5c0d9941941cb00153e076c09cb51743966f0486579de85ac70f97af1fe1",
+    "protocol_commit": "0b47b5ebeb965ebac01748133af57607f4dbc7b1",
+    "protocol_blob": "745b76fae2b57cd5b3231a731ebd3d7f7ff7b0d6",
+    "manifest_blob": "a3f169799c45d222b707167e2ebb9c93f83bcca0",
+    "preflight_blob": "de3ba61c67991172e78e4da00ee2da52a9f15174",
+    "workflow_commit": "47ab8c616665e6086e1b8c6f49acd937dab2d776",
+    "workflow_blob": "c6b33cd94fb0b1af9579f50ba2e2213d5e9250d5",
+    "arm_commit": "ed4ffbe1029d08cdc48648dc7a2877df308bba3d",
+    "arm_blob": "16be41bcbe24dbca8491f085804b7b399f814778",
+    "coordinator_inspection": "PASSED"
+  },
+  "execution": {
+    "github_run_id": 35843525739,
+    "github_job_id": 107124034819,
+    "github_run_attempt": 1,
+    "head_sha": "ed4ffbe1029d08cdc48648dc7a2877df308bba3d",
+    "workflow_conclusion": "success",
+    "workflow_runs_observed": 1,
+    "retry": false,
+    "second_workflow": false,
+    "artifact_id": 10741778766,
+    "artifact_name": "r260-one-shot-evidence",
+    "artifact_size_bytes": 142318,
+    "artifact_zip_sha256": "5f5522220664c028bef19906d66213826061bd85758ca63e01934f59aef9e22d"
+  },
+  "infrastructure": {
+    "full_history_checkout": true,
+    "protocol_ancestry_guard": true,
+    "source_hashes": true,
+    "static_fixture_schema_preflight": true,
+    "runtime_fixture_schema_preflight": true,
+    "runtime": {
+      "python": "3.11.16",
+      "numpy": "2.4.6",
+      "flopscope": "0.12.1",
+      "whestbench": "0.16.1"
+    },
+    "pinned_wheels": true,
+    "parent_source_hash": true,
+    "fixture_replay": true
+  },
+  "fixture": {
+    "seed": 254001,
+    "shape": [
+      16,
+      1024
+    ],
+    "weights_concat_sha256": "199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0",
+    "truth_sha256": "58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d",
+    "replay_equal": true,
+    "layer_hash_count": 16,
+    "replay_layer_hash_count": 16,
+    "layer_hash_arrays_equal": true
+  },
+  "parent": {
+    "go": true,
+    "failures": [],
+    "source_sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+    "prediction_sha256": "4efb2ee0f74870c04058d562edb7203ee127eed4374f9ac75a124da7094442a5",
+    "final_layer_mse": 0.06571899191579027,
+    "all_layer_mse": 0.032378284555651254,
+    "flops_used": 806303721965,
+    "residual_wall_time_s": 0.32413096299903543,
+    "finite_all_layers": true,
+    "max_symmetry_residual": 0
+  },
+  "candidate": {
+    "constructed": true,
+    "executed": true,
+    "go": false,
+    "failures": [
+      "final_mse_ratio",
+      "all_layer_mse_ratio"
+    ],
+    "source_sha256": "55cc395d69309dcb13c38ae3b91032dd4b8d0d6b6caf5eb09f0dad03328723e0",
+    "prediction_sha256": "66a4aff3842970fdeb26fe9c5d27748db000fad9a914991ee4dbdfd315480773",
+    "final_layer_mse": 0.06574015420536944,
+    "all_layer_mse": 0.032379599124054775,
+    "flops_used": 806303721965,
+    "residual_wall_time_s": 0.31171112699985315,
+    "finite_all_layers": true,
+    "max_symmetry_residual": 0
+  },
+  "gates": {
+    "final_mse_ratio": {
+      "observed": 1.0003220117801912,
+      "requirement": "<=0.95",
+      "pass": false
+    },
+    "all_layer_mse_ratio": {
+      "observed": 1.0000406003104105,
+      "requirement": "<=0.98",
+      "pass": false
+    },
+    "improved_layers": {
+      "observed": 13,
+      "requirement": ">=12",
+      "pass": true
+    },
+    "max_per_layer_degradation_ratio": {
+      "observed": 1.0003220117801912,
+      "requirement": "<=1.10",
+      "pass": true
+    },
+    "flop_ratio": {
+      "observed": 1,
+      "requirement": "<=1.0",
+      "pass": true
+    },
+    "residual_wall_time": {
+      "parent": 0.32413096299903543,
+      "candidate": 0.31171112699985315,
+      "candidate_limit": 0.3453375111489872,
+      "requirement": "candidate <= 1.05*parent + 0.005",
+      "pass": true
+    },
+    "finite_shape_symmetry_source": true
+  },
+  "descriptive_deltas": {
+    "final_mse_candidate_minus_parent": 0.000021162289579171323,
+    "final_mse_relative_increase": 0.0003220117801912,
+    "all_layer_mse_candidate_minus_parent": 0.0000013145684035209548,
+    "all_layer_mse_relative_increase": 0.0000406003104105
+  },
+  "public": {
+    "validation_executed": false,
+    "r209_identity_accessed": false,
+    "mini100_executed": false,
+    "public_measurements": 0,
+    "public_gate_executed": false,
+    "reason": "target-free candidate_go=false"
+  },
+  "evidence": {
+    "artifact_index_path": "research/r260/evidence/R260_ARTIFACT_INDEX.json",
+    "artifact_index_sha256": "03f3c351010a03d2a07d8f68e12bfa1cf8ccdedf856370ba8295bddd5d2f99a4",
+    "artifact_file_count": 27,
+    "artifact_hash_map_entries": 26,
+    "artifact_hash_mismatches": 0,
+    "workflow_receipt_sha256": "fa26f3f1b8072929bdba07783b8a7054da9cdcd768b4446b95a047832ed7b79d",
+    "target_free_result_sha256": "2125e0e0cef4830768353264fd5192c7d88128b3ee7e99ee457546e6abbdea52",
+    "artifact_hash_map_sha256": "9e2d52f360cb03dcf4f7e80df932b225265d3310d5319cf01279baacecb57879"
+  },
+  "safety": {
+    "retry": false,
+    "second_workflow": false,
+    "tuning": false,
+    "paid_or_larger_runner": false,
+    "private_or_holdout_or_full": false,
+    "r223_r244_outputs_or_artifacts": false,
+    "submission": false,
+    "leaderboard_or_canonical_edit": false,
+    "history_rewrite": false
+  }
+}
