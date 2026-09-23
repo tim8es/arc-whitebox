@@ -1,0 +1,168 @@
+{
+  "schema": "arc.whitebox.r253.r252_terminal_evidence_erratum.v1",
+  "task": "R253",
+  "subject_job": "R252",
+  "audit_mode": "read-only/postflight",
+  "authoritative_control_before_correction": {
+    "branch": "research/control-v2",
+    "revision": 241,
+    "head_at_r253_refresh": "7cbfe5659507e707f5098156a834bf88c03ed06f",
+    "r252_status": "INFRA_ERROR",
+    "queue_attempts": 1,
+    "original_finish_revision": 241,
+    "original_finish_preserved": true,
+    "projection_defect": "Revision 241 completion records only Actions run 35830986191 and describes it as the sole authorized run; it omits the earlier distinct R252 Actions run 35830273198."
+  },
+  "authorization": {
+    "actions_runs_authorized": 1,
+    "retries_authorized": false,
+    "observed_distinct_actions_runs": 2,
+    "queue_attempts": 1,
+    "accounting_conclusion": "one queue attempt produced two distinct Actions runs; the second dispatch exceeded the frozen one-run/no-retry authorization",
+    "scientific_measurements": {
+      "parent": 0,
+      "candidate": 0,
+      "public": 0
+    }
+  },
+  "runs": [
+    {
+      "github_run_id": 35830273198,
+      "job_id": 107081017265,
+      "run_attempt": 1,
+      "event": "push",
+      "branch": "research/r252-d21-sensitivity-gram-20260923",
+      "head_sha": "c00cf0b98016c6fa81c203a6613ce811f585f0c2",
+      "workflow": ".github/workflows/r252-one-shot.yml",
+      "workflow_git_blob_sha1": "ecffca31257eaf9983f9ed4a625bb3aabe2dd2f0",
+      "workflow_name": "R252 one-shot global-accuracy method",
+      "method": "V25-D21-CWG — D21-channel weighted confinement Gram",
+      "artifact": {
+        "id": 10736967637,
+        "name": "r252-one-shot-evidence",
+        "zip_sha256": "4ecd1ed42f28a4b02caccd70dce9570a0738d7cb2b4f3976207fdd31f98bb989",
+        "expired": false
+      },
+      "failure_stage": "Verify pinned wheels before science",
+      "verified_before_failure": {
+        "python": "3.11.16",
+        "wheel_sha256": {
+          "numpy-2.4.6": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93",
+          "flopscope-0.12.1": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582",
+          "whestbench-0.16.1": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"
+        }
+      },
+      "failure": {
+        "type": "runtime-version-string check",
+        "observed": {
+          "python": "3.11.16",
+          "numpy": "2.4.6",
+          "flopscope": "0.12.1+np2.4.6",
+          "whestbench": "unknown"
+        },
+        "expected_by_workflow": {
+          "python": "3.11.16",
+          "numpy": "2.4.6",
+          "flopscope": "0.12.1",
+          "whestbench": "0.16.1"
+        },
+        "exit_code": 1
+      },
+      "skipped_science": [
+        "Reconstruct frozen target-free fixture",
+        "Unchanged parent then frozen candidate",
+        "Validate candidate only after target-free GO",
+        "Exact public R209 mini-100 only after every preflight GO",
+        "Apply frozen public gates"
+      ],
+      "measurements": {
+        "parent": 0,
+        "candidate": 0,
+        "public": 0
+      }
+    },
+    {
+      "github_run_id": 35830986191,
+      "job_id": 107083271578,
+      "run_attempt": 1,
+      "event": "push",
+      "branch": "research/control-v2",
+      "head_sha": "71ecefb647bb590db14ba4b9d764652dea3d4040",
+      "workflow": ".github/workflows/r252-cfsp4-one-shot.yml",
+      "workflow_git_blob_sha1": "608ea92fd571a8eac4d6ae5aa38e806c112f2cba",
+      "workflow_name": "R252 one-shot CFSP4 parent-first research",
+      "method": "V25-CFSP4 — final Cornish-Fisher sigma-point response",
+      "artifact": {
+        "id": 10736403843,
+        "name": "r252-cfsp4-one-shot",
+        "zip_sha256": "10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e",
+        "expired": false
+      },
+      "verified_before_failure": {
+        "python": "3.11.16",
+        "numpy": "2.4.6",
+        "flopscope": "0.12.1+np2.4.6",
+        "whestbench": "0.16.1",
+        "core_wheel_hashes_passed": true,
+        "pinned_v25_identity_passed": true,
+        "fixture_all_16_weight_hashes_passed": true,
+        "fixture_dense_concat_sha256": "de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e"
+      },
+      "failure_stage": "Reconstruct and retain exact frozen fixture bytes",
+      "failure": {
+        "type": "truth-byte identity",
+        "expected_truth_sha256": "623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450",
+        "observed_truth_sha256": null,
+        "observed_truth_bytes_retained": false,
+        "exception": "RuntimeError: truth hash mismatch"
+      },
+      "skipped_science": [
+        "Run parent-first target-free R252 falsifier exactly once",
+        "Install pinned dataset reader only after target-free GO",
+        "Run exactly one public R209 mini-100 candidate panel",
+        "Verify exact public row hashes and frozen public gates"
+      ],
+      "measurements": {
+        "parent": 0,
+        "candidate": 0,
+        "public": 0
+      }
+    }
+  ],
+  "attribution": {
+    "github_run_actor": "tim8es",
+    "github_triggering_actor": "tim8es",
+    "run_head_commit_author": "tim8es",
+    "run_head_commit_committer": "tim8es",
+    "session_or_agent_attribution": "UNKNOWN",
+    "note": "GitHub run and commit metadata prove the account actor/author fields above. They do not prove which chat/session/agent initiated either repository write."
+  },
+  "preservation": {
+    "artifacts_deleted": false,
+    "logs_deleted": false,
+    "workflow_edited_by_r253": false,
+    "workflow_triggered_by_r253": false,
+    "rerun_by_r253": false,
+    "science_by_r253": false
+  },
+  "corrected_terminal_projection": {
+    "r252_status": "INFRA_ERROR",
+    "verdict": "TWO_DISTINCT_ACTIONS_RUNS_PRE_SCIENCE_ONE_RUN_AUTHORIZATION_VIOLATED",
+    "reason": "R252 remains terminal INFRA_ERROR with zero parent/candidate/public measurements. One queue attempt was authorized for exactly one standard Actions run with no retry, but immutable GitHub evidence shows two distinct push-triggered R252 workflow runs using different methods/workflows. Run 35830273198 (D21-CWG) failed in runtime version-string verification after all three pinned wheel digests passed; run 35830986191 (CFSP4) passed core runtime/wheel/V25/weight identity checks and failed at the fixture truth-byte check before parent execution. The second dispatch exceeded the frozen one-run authorization. Original revision-241 finish event is preserved; this erratum corrects only the current terminal evidence projection."
+  },
+  "source_links": {
+    "run_35830273198": "https://github.com/tim8es/arc-whitebox/actions/runs/35830273198",
+    "job_107081017265": "https://github.com/tim8es/arc-whitebox/actions/runs/35830273198/job/107081017265",
+    "artifact_10736967637": "https://github.com/tim8es/arc-whitebox/actions/runs/35830273198/artifacts/10736967637",
+    "run1_head_commit": "https://github.com/tim8es/arc-whitebox/commit/c00cf0b98016c6fa81c203a6613ce811f585f0c2",
+    "run1_workflow": "https://github.com/tim8es/arc-whitebox/blob/c00cf0b98016c6fa81c203a6613ce811f585f0c2/.github/workflows/r252-one-shot.yml",
+    "run1_protocol": "https://github.com/tim8es/arc-whitebox/blob/c00cf0b98016c6fa81c203a6613ce811f585f0c2/research/r252/R252_PROTOCOL.md",
+    "run_35830986191": "https://github.com/tim8es/arc-whitebox/actions/runs/35830986191",
+    "job_107083271578": "https://github.com/tim8es/arc-whitebox/actions/runs/35830986191/job/107083271578",
+    "artifact_10736403843": "https://github.com/tim8es/arc-whitebox/actions/runs/35830986191/artifacts/10736403843",
+    "run2_head_commit": "https://github.com/tim8es/arc-whitebox/commit/71ecefb647bb590db14ba4b9d764652dea3d4040",
+    "run2_workflow": "https://github.com/tim8es/arc-whitebox/blob/71ecefb647bb590db14ba4b9d764652dea3d4040/.github/workflows/r252-cfsp4-one-shot.yml",
+    "run2_protocol": "https://github.com/tim8es/arc-whitebox/blob/71ecefb647bb590db14ba4b9d764652dea3d4040/research/r252/R252_PROTOCOL.md",
+    "revision241_control_head": "https://github.com/tim8es/arc-whitebox/commit/7cbfe5659507e707f5098156a834bf88c03ed06f"
+  }
+}
