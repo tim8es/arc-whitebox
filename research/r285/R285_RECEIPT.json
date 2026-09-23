@@ -1,0 +1,91 @@
+{
+  "commits": {
+    "compatibility_diagnostic_fix": "3b58d9f0e9b8b279d3608b633aaccee786be44a0",
+    "docs": "5e37e3de741341202f29cecc3406d29e8cc735f1",
+    "production_fix": "7ccf984908d0341fc513410d9117b9b0f53ae591",
+    "regressions_first": "37754c23d1b0c8ef64b3f95bb657f7d0e071f86b"
+  },
+  "control": {
+    "claim_revision": 395,
+    "claim_state_commit": "452718c28a70aa74de406ef16f14fa0da1c56697",
+    "claim_status_sync_commit": "9adbb57fea408215e654cc15a86fc0335ec03a3c",
+    "start_revision": 396,
+    "start_source_commit": "05733f3bfa6730124c4601a918bcc6d401719e09",
+    "start_state_commit": "d0de97864c1b91753ce90ffd356df899ffa89236",
+    "start_status_sync_commit": "5f3f207e1cb33bb47dd7ecddcb73c1225d501150"
+  },
+  "dependencies": {
+    "R281": {
+      "receipt_sha256": "6251bc55894ffec016f6e185c4017c757d6bd80b33cc7746673ee68fe7f35de6"
+    },
+    "R283": {
+      "receipt_sha256": "fb1002ca8e67d4d1cc791443a70559a4037ae0bba260d3121050746839952180"
+    }
+  },
+  "files": {
+    "docs/workflow-preflight.md": {
+      "git_blob_sha1": "e7f59af7a6684d37ce0899b851bb3d3043661d4f"
+    },
+    "scripts/arc_workflow_preflight.py": {
+      "git_blob_sha1": "2c87bc09992228be915e117a6d3aac8a703f68ab",
+      "sha256": "946d7c79f988f0b739b8213b2423a315875a8c7c10699c21f1aa9b477a3551ac"
+    },
+    "tests/test_arc_workflow_preflight.py": {
+      "git_blob_sha1": "f1549f1c75f2566e8a347363e2807f87be31ee1f",
+      "sha256": "75020df0dd484a2859c60ab20c65453d686e30ad2662f6ce0f25fc98e06d08bc"
+    }
+  },
+  "job": "R285",
+  "offline_verification": {
+    "compatibility": "16/16 PASS",
+    "compatibility_output_sha256": "9560b38aed17edc3ceab34f1e5bbb28161765d0cc9c9cae4df4d4f72bae609de",
+    "exact_committed_bytes_verified": true,
+    "focused": "8/8 PASS",
+    "focused_output_sha256": "c430069fc21e8a40f145acee95d15ca19b39ea1a7abb7f5f5ed874b25e67bf77",
+    "full_output_sha256": "c3a54cf0506a6eb9de539cc2bc8cf18a4f5c4acfd85f3b2c2918000f00bb34dc",
+    "full_suite": "24/24 PASS",
+    "r283_n1_n4_output_sha256": "43d85be2ebc931be680d52c6c37f89611bb9b4b41b8b1962724c493309ff03ca",
+    "r283_n1_n4_postfix": "4/4 REJECT"
+  },
+  "owner": "preflight-r283-remediation-responsive",
+  "pre_edit": {
+    "analyzer_blob": "f9b01ba259cd57bd1692fbfc904585b05f561000",
+    "analyzer_sha256": "1f73f557d943dc6b4fb4d42b2a5935f1d627082b292d8465f5018794dc8a38ce",
+    "confirmed_residual_false_passes": [
+      "N1/E1 fake checkout metadata in run block",
+      "N2 whitespace-equivalent ancestry",
+      "N3/E2-E3 alias/dynamic access with lexical decoys",
+      "N4/E4-E5 skipped control flow/delete/no-write"
+    ],
+    "pr_head": "05733f3bfa6730124c4601a918bcc6d401719e09",
+    "r283_exact_matrix": {
+      "N1": "REJECT_ALREADY_CLOSED",
+      "N2": "PASS_FALSE_PASS",
+      "N3": "REJECT_ALREADY_CLOSED",
+      "N4": "PASS_FALSE_PASS"
+    }
+  },
+  "pull_request": {
+    "ahead_by": 10,
+    "behind_by": 0,
+    "head_before_evidence": "3b58d9f0e9b8b279d3608b633aaccee786be44a0",
+    "merged": false,
+    "number": 35,
+    "state": "open"
+  },
+  "report": {
+    "path": "research/r285/R285_WORKFLOW_PREFLIGHT_REMEDIATION_REPORT.md",
+    "sha256": "58a47b2b7a05ddaa8f81df44e52b3b8d2c8f4bc82f323ab83a2b6e034f5cd046"
+  },
+  "run_id": "R285-pr35-r283-remediation-20260923",
+  "safety": {
+    "actions_triggered": false,
+    "benchmark_data_accessed": false,
+    "fixture_or_estimator_executed": false,
+    "historical_receipts_rewritten": false,
+    "pr_merged": false,
+    "workflows_changed": false
+  },
+  "schema": "arc.whitebox.r285.preflight-r283-remediation.v1",
+  "status": "COMPLETE"
+}
