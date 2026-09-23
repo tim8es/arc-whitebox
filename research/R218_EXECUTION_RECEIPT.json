@@ -1,0 +1,243 @@
+{
+  "schema": "arc.whitebox.r218.execution_receipt.v1",
+  "job_id": "R218",
+  "status": "COMPLETE",
+  "scope": "exposed public first-50 runtime diagnostic; not independent quality confirmation",
+  "interpretation": {
+    "final_causal_ruling": "DEFERRED_TO_R220_AFTER_R237",
+    "owner_frozen_threshold_label": "NO_GO_CPU0_SPECIFIC",
+    "reason": "R236 found fail-open gaps in the prepared R234 verifier. R218 records immutable execution provenance and measured frozen-threshold evidence only; independent causal ruling is deferred to R220 after R237 hardening.",
+    "do_not_treat_as_quality_confirmation": true
+  },
+  "actions": {
+    "run_id": 35783866968,
+    "job_id": 106935773981,
+    "run_attempt": 1,
+    "run_conclusion": "success",
+    "head_sha": "c8cb97dcd1383f4a1d741c5a36ba816deec452eb",
+    "executor_parent_sha": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+    "artifact_id": 10726329197,
+    "artifact_name": "r218-v29-l4-affinity-crossover",
+    "artifact_zip_sha256": "c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0"
+  },
+  "source_links": {
+    "frozen_protocol": {
+      "path": "research/r217/R217_NEXT_RUNTIME_PROTOCOL.json",
+      "git_blob_sha1": "a940706931d280fe2a720836d9db248146862270",
+      "sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968"
+    },
+    "workflow": {
+      "path": ".github/workflows/r218-affinity-crossover.yml",
+      "git_blob_sha1": "d1fa366b1056d09f829a9620eda81034584147af"
+    },
+    "executor": {
+      "path": "scripts/r218_run_crossover.py",
+      "git_blob_sha1": "456364bd0558eb98d41a4f9cd0512484fe972d20"
+    },
+    "expected_panel": {
+      "path": "research/r218/R218_EXPECTED_PANEL.json",
+      "git_blob_sha1": "8669ffff7408c4f251c700ca0d5f9fc24db5c8f0",
+      "artifact_sha256": "c09fdfb867fbb20ea1bea7e7334b3592d9fb5996a02419a0488d622413dbf9b6"
+    },
+    "prelaunch": {
+      "path": "research/r218/R218_PRELAUNCH_GATE.json",
+      "git_blob_sha1": "fe0745d3d0265b7afb8d952530998c6b0f942aa3",
+      "artifact_sha256": "e7ca2c1ff2449ff4c9bd393969f63fbd7416e1d62209fa1b6a16687aae819cd9"
+    },
+    "arm": {
+      "path": "research/R218_RUN_ARM.json",
+      "git_blob_sha1": "542f8f80cee29c83b4f9648a1c56f49ae9b9262a"
+    },
+    "upstream_v29": {
+      "repository": "504aldo/whest-p2-cumulant-k3",
+      "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "path": "estimators/estimator_v29.py",
+      "git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+      "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27"
+    }
+  },
+  "artifact_integrity": {
+    "manifest_sha256": "3aa0dd49675279b61b09c1dff226b8f09cd96e889a0c6a0f8f12d0ff55eeab64",
+    "manifest_entries": 84,
+    "files_excluding_manifest": 84,
+    "manifest_missing": [],
+    "manifest_hash_mismatches": [],
+    "owner_receipt_sha256": "70ed5335436a5a49485e060309267f8a14f28e613a15bdb0842b4d317f34aad5",
+    "owner_receipt_rows": 300,
+    "per_observation_canonical_sha256": "b39a3367868e78d464527b4462eda229ae5f04532ee300aa7a27b9ed4dd88464",
+    "block_summaries_canonical_sha256": "55171271c522c69707fc6a6c3ba1713a1ea57993805664d143732d363467e385",
+    "analysis_canonical_sha256": "42b00bbaa30ef286d393d5e0b04940f096177fad5cb650d68f5ea1cdf5c9bc0c"
+  },
+  "provenance_gates": {
+    "run_attempt_eq_1": true,
+    "artifact_id_digest_bound_to_run": true,
+    "checkout_head_verified_in_job_log": true,
+    "arm_is_direct_child_of_executor": true,
+    "arm_only_adds_run_arm_file": true,
+    "single_actions_job": true,
+    "single_worker_job": true,
+    "protocol_exact": true,
+    "expected_panel_frozen_blob_bound": true,
+    "prelaunch_frozen_blob_bound": true,
+    "manifest_complete_and_nonempty": true,
+    "preflight_all_true": true,
+    "dataset_path_and_sha_all_blocks": true,
+    "panel_order_all_blocks": true,
+    "flop_vector_all_blocks": true,
+    "max_threads_one_in_frozen_command": true,
+    "cpu_affinity_telemetry_all_blocks": true,
+    "mandatory_proc_taskset_lscpu_telemetry_present": true
+  },
+  "environment": {
+    "actions_worker_id": "1afa6f87-fdc3-4e38-9eac-960fa4024f10",
+    "runner_name": "GitHub Actions 1000005102",
+    "azure_region": "westus",
+    "runner_image": "ubuntu-24.04",
+    "runner_image_version": "20260907.300.1",
+    "azure_vm_id": "85f76bce-b406-4c4a-97e1-a332022e0387",
+    "azure_vm_size": "Standard_D4ads_v5",
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "allowed_cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1",
+    "V26_STRASSEN": "4",
+    "thread_env": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "block_affinity": [
+    {
+      "block": 1,
+      "condition": "U",
+      "child_cpus": "0-3"
+    },
+    {
+      "block": 2,
+      "condition": "C0",
+      "child_cpus": "0"
+    },
+    {
+      "block": 3,
+      "condition": "C1",
+      "child_cpus": "1"
+    },
+    {
+      "block": 4,
+      "condition": "C1",
+      "child_cpus": "1"
+    },
+    {
+      "block": 5,
+      "condition": "C0",
+      "child_cpus": "0"
+    },
+    {
+      "block": 6,
+      "condition": "U",
+      "child_cpus": "0-3"
+    }
+  ],
+  "block_measured": [
+    {
+      "block": 1,
+      "condition": "U",
+      "failures": 9,
+      "official_adjusted_score": 0.1628720702327748,
+      "official_final_layer_mse": 0.16287208391810562,
+      "report_sha256": "bbea9e6b1f8d0006825e36a96079fba4c67af028b6cbf314d32161cbfc7a4442"
+    },
+    {
+      "block": 2,
+      "condition": "C0",
+      "failures": 6,
+      "official_adjusted_score": 0.11150064042404939,
+      "official_final_layer_mse": 0.11150065508152213,
+      "report_sha256": "71129876d1bf17c6bf6ec056722a4d3c3079fa7f1b06cbae3937f206ae90a448"
+    },
+    {
+      "block": 3,
+      "condition": "C1",
+      "failures": 7,
+      "official_adjusted_score": 0.1444175950747003,
+      "official_final_layer_mse": 0.14441760944421733,
+      "report_sha256": "2498003dd0b9eb178fc56ccbb47800e29436195db045cb5fa48bbbf755781911"
+    },
+    {
+      "block": 4,
+      "condition": "C1",
+      "failures": 30,
+      "official_adjusted_score": 0.5664171171507668,
+      "official_final_layer_mse": 0.5664171238596191,
+      "report_sha256": "c567977119910d2ca661813cac42b714e233b3e4a18085edb06c960c92f15ad2"
+    },
+    {
+      "block": 5,
+      "condition": "C0",
+      "failures": 46,
+      "official_adjusted_score": 0.8459754114414441,
+      "official_final_layer_mse": 0.8459754128353488,
+      "report_sha256": "b445b287317a88de2b6bd91c9ac1967d367138ce1b2e0c1d28c1afe11b0b9187"
+    },
+    {
+      "block": 6,
+      "condition": "U",
+      "failures": 10,
+      "official_adjusted_score": 0.196651051055639,
+      "official_final_layer_mse": 0.19665106433524696,
+      "report_sha256": "c9019b7a8e267abe93698db2d2e33a699f7aed10b0bb7082746d00672b175841"
+    }
+  ],
+  "condition_measured": {
+    "U": {
+      "rows": 100,
+      "failures": 19,
+      "mean_residual_s": 0.38464478557038717,
+      "mean_official_adjusted_score": 0.17976156064420692
+    },
+    "C0": {
+      "rows": 100,
+      "failures": 52,
+      "mean_residual_s": 0.44900046635207674,
+      "mean_official_adjusted_score": 0.4787380259327467
+    },
+    "C1": {
+      "rows": 100,
+      "failures": 37,
+      "mean_residual_s": 0.4163175290756317,
+      "mean_official_adjusted_score": 0.3554173561127335
+    }
+  },
+  "threshold_evidence": {
+    "primary_delta_s": 0.04774312494998867,
+    "primary_threshold_s": 0.02,
+    "primary_pass": true,
+    "cpu0_slower_count": 32,
+    "cpu0_slower_threshold": 35,
+    "cpu0_slower_pass": false,
+    "c0_failures_across_two_blocks": 52,
+    "c1_failures_across_two_blocks": 37,
+    "failure_difference": 15,
+    "failure_difference_threshold": 10,
+    "failure_difference_pass": true,
+    "thresholds_passed": 2,
+    "thresholds_total": 3
+  },
+  "safety": {
+    "rerun": false,
+    "retry": false,
+    "rescue": false,
+    "private_holdout": false,
+    "submission": false,
+    "canonical_v25_change": false
+  }
+}
