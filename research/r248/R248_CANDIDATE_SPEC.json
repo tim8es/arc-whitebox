@@ -1,0 +1,153 @@
+{
+  "schema": "arc.whitebox.r248.candidate_spec.v1",
+  "job_id": "R248",
+  "hypothesis_id": "POST-R247-DISTINCT-V25-EFFICIENCY-METHOD",
+  "candidate_id": "V25-KRON1-YOUNG-TRANSPORT",
+  "parent": {
+    "estimator_path": "methods/public_504aldo/estimator_v25.py",
+    "estimator_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "normalized_record": "research/results/R209-v25-mini100.json",
+    "normalized_record_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "normalized_record_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "mean_raw_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "mean_flops": 806303721965,
+    "failures": 0,
+    "max_residual_s": 0.19043814401743475
+  },
+  "mechanism": {
+    "name": "rank-1 Kronecker surrogate for the shared young-source transport operator",
+    "scope": "Only V25 young dense A/P transports corresponding to the dense WD @ A_st[ka:k] and WD @ P_st[ka:k] path are replaced. Young D21 right-factor contractions, old tiers, Rres/MP-R16, lambda/feed logic, D3/D21 formulas, K4 regeneration, covariance, mean correction and final-layer trim remain unchanged.",
+    "official_shape": {
+      "n": 1024,
+      "d": 32,
+      "identity": "n=d*d"
+    },
+    "production_rule": [
+      "Form WD exactly as parent V25 on the metered fnp path.",
+      "Rearrange WD without numerical arithmetic from indices (i1,i2;j1,j2) to matrix R[(i1,j1),(i2,j2)].",
+      "Use fixed fnp-array power approximation once per layer: v0=fnp.ones(n); v0=v0/fnp.sqrt(fnp.sum(v0*v0)); u=R@v0; u=u/fnp.sqrt(fnp.maximum(fnp.sum(u*u),1e-30)); v=R.T@u. No Python-scalar normalization is allowed.",
+      "Set A=reshape(u,(32,32)), B=reshape(v,(32,32)); the surrogate operator is A kron B but must not be materialized densely.",
+      "Apply A kron B to every young A/P transport by reshape plus two batched fnp.einsum/matmul contractions implementing Y=A X B^T for each transported column.",
+      "No target, network ID, score, per-network rank, threshold, seed or tuned parameter enters the rule. Off official n=1024 shape, use unchanged parent transport rather than infer a new d."
+    ]
+  },
+  "novelty_firewall": {
+    "r247": "Different operation and representation: R247 sparsified young D21 contraction right factors; R248 leaves those contractions exact and approximates the shared young transport operator with a Kronecker product.",
+    "r244": "No Rres rank-16 or marginal-preserving projection.",
+    "r223": "No lambda/feed-local change.",
+    "rank_age_tiers": "No source age/rank/tier change and no source-axis compression.",
+    "source_drop_window": "No source removal/windowing.",
+    "sketches_sampling": "No randomized contraction estimator, CountSketch, TensorSketch, FWHT, QMC or source sampling.",
+    "fast_matmul": "No Strassen/Winograd/trilinear-aggregation bilinear schedule; this changes the transport operator representation approximately.",
+    "precision": "No dtype change.",
+    "displacement": "No Toeplitz/displacement generator.",
+    "history_search": "research/history.json (194 experiments, blob 8f94f371572fedbd8c1ebd9d19cc48ca837592fb) contains no Kronecker/kron/tensor-product/HODLR/butterfly mechanism string; upstream findings_log blob 09cf41e8826052ceb83109115cae688c03baaaca contains Kronecker only in cited exchangeability-delta theory, not as a V25 transport approximation experiment."
+  },
+  "source_compliance": {
+    "rule_from_r245": "No output-affecting math.* in predict. Numerical sqrt/transcendentals must use metered fnp. Avoid nontrivial output-affecting Python-scalar arithmetic.",
+    "candidate_contract": [
+      "No math import or math.* call in the candidate path.",
+      "All normalization uses fnp.sum/fnp.sqrt/fnp.maximum and fnp-array division.",
+      "All output-affecting linear algebra uses fnp reshape/transpose/matmul/einsum.",
+      "d=32 and official n=1024 are frozen integer shape constants; no Python numerical coefficient is derived from estimator values.",
+      "If implementation requires any nontrivial output-affecting Python-scalar numerical arithmetic beyond shape/index bookkeeping, eligibility becomes UNKNOWN and R248 must stop before public measurement."
+    ]
+  },
+  "static_cost_gate": {
+    "unit_flops": 2147483648,
+    "parent_units": 375.4644291312434,
+    "anatomy_basis": "R247/F72-F73 accounting: 54 young source-pair transport units plus 54 young D21 contraction units inside 108 young dense units. This candidate touches only the 54 transport units.",
+    "parent_young_transport_units": 54,
+    "kron_apply_ratio_per_transport": 0.0625,
+    "kron_apply_units": 3.375,
+    "conservative_extra_overhead_reserve_units": 8,
+    "conservative_candidate_units": 332.8394291312434,
+    "conservative_candidate_flops": 714767231469,
+    "conservative_parent_ratio": 0.886473932833993,
+    "required_parent_ratio_max": 0.9,
+    "pass": true,
+    "note": "Planning bound only; no measured candidate FLOPs."
+  },
+  "exact_public_panel": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini:all-100",
+    "count": 100,
+    "shape": [
+      16,
+      1024
+    ],
+    "dtype": "float32",
+    "evaluator": "whestbench 0.16.1",
+    "meter": "flopscope 0.12.1+np2.4.6",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "stage": "development"
+  },
+  "falsifier": {
+    "target_free": true,
+    "method": "Oracle best rank-1 Kronecker approximation on deterministic synthetic transport operators. The oracle SVD is strictly more favorable than the frozen one-power production rule; oracle failure therefore rejects the candidate before implementation.",
+    "script": "scripts/r248_kron1_transport_falsifier.py",
+    "n": 256,
+    "d": 16,
+    "seeds": [
+      248001,
+      248002,
+      248003,
+      248004
+    ],
+    "fixture_families": [
+      "iid_column_scaled",
+      "correlated_column_scaled"
+    ],
+    "controls": [
+      "exact Kronecker reconstruction"
+    ],
+    "primary_metrics": [
+      "operator relative RMS",
+      "transported A relative RMS",
+      "transported P relative RMS"
+    ],
+    "go_iff": "exact-Kronecker control <=1e-12; all 8 realistic cases finite/deterministic; every operator/A/P relative RMS <=0.015; mean over all realistic transported A/P relative RMS <=0.012",
+    "failure_semantics": "DEVELOPMENT NO-GO before estimator implementation, benchmark or Actions"
+  },
+  "scientific_gates": {
+    "identity_hash_exact": true,
+    "failures": 0,
+    "mean_adjusted_max": 8.12954545291664e-9,
+    "mean_adjusted_rule": "candidate <= 0.995 * R209",
+    "improved_networks_min": 55,
+    "paired_gain_over_descriptive_se_strict_gt": 2,
+    "mean_flops_max": 725673349768.5,
+    "mean_flops_rule": "candidate <= 0.9 * R209",
+    "max_residual_s_strict_lt": 0.4,
+    "raw_mse_degradation_strict_lt": 0.11111111111111116
+  },
+  "execution_plan": {
+    "before_actions": [
+      "static novelty/cost/source-compliance gates PASS",
+      "target-free falsifier GO",
+      "freeze complete estimator/workflow/arm hashes",
+      "verify standard public GitHub-hosted runner is free"
+    ],
+    "actions_max_workflows": 1,
+    "workflow_contents": [
+      "whest validate",
+      "exactly one candidate public mini-100 panel"
+    ],
+    "retries": 0,
+    "second_runs": 0,
+    "no_parent_rerun": "Use immutable R209 normalized parent only."
+  },
+  "prohibited": [
+    "read R223 candidate artifact/output",
+    "read R244 candidate artifact/output",
+    "per-network tuning",
+    "gate relaxation",
+    "canonical V25 edit",
+    "paid compute",
+    "private/holdout",
+    "submission",
+    "leaderboard mutation"
+  ]
+}
