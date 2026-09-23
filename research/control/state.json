@@ -2448,6 +2448,22 @@
         "run_id": "R241-official-leaderboard-snapshot-20260923-0328Z"
       },
       "revision": 189
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T03:32:10Z",
+      "job": "R241",
+      "owner": "coordinator",
+      "payload": {
+        "reason": "Read-only official Phase-2 leaderboard refresh completed. The public leaderboard displays rank 1 J2W/#331539 at 2.1e-9 adjusted score (rounded); the R209 V25 public mini-100 result recomputes to 8.170397440117225e-9, about 3.8907x the displayed leader number. Official metric formula matches, but the leaderboard row does not expose panel/aggregation metadata, so no official rank or strict same-panel gap is claimed. Durable report and receipt preserve source URLs, timestamp, arithmetic and limitations; no estimator/benchmark/Actions run, paid/holdout/private access, submission, or leaderboard change occurred.",
+        "receipt": {
+          "sha256": "7562d0846b9f7b342a9eb132e76c3fc633acb78204bb1d43ed43a51d61de3c04",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/research/control-v2/research/r241/R241_RECEIPT.json"
+        },
+        "run_id": "R241-official-leaderboard-snapshot-20260923-0328Z",
+        "status": "COMPLETE"
+      },
+      "revision": 190
     }
   ],
   "jobs": [
@@ -3926,8 +3942,17 @@
         {
           "code_commit": "1e73f7a8086b3e8a782bcceef6eccce43175bc83",
           "command": "Read-only official AIcrowd leaderboard/scoring-source review and R209 mini-100 comparison; no estimator, benchmark, or Actions execution.",
+          "completion": {
+            "reason": "Read-only official Phase-2 leaderboard refresh completed. The public leaderboard displays rank 1 J2W/#331539 at 2.1e-9 adjusted score (rounded); the R209 V25 public mini-100 result recomputes to 8.170397440117225e-9, about 3.8907x the displayed leader number. Official metric formula matches, but the leaderboard row does not expose panel/aggregation metadata, so no official rank or strict same-panel gap is claimed. Durable report and receipt preserve source URLs, timestamp, arithmetic and limitations; no estimator/benchmark/Actions run, paid/holdout/private access, submission, or leaderboard change occurred.",
+            "receipt": {
+              "sha256": "7562d0846b9f7b342a9eb132e76c3fc633acb78204bb1d43ed43a51d61de3c04",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/research/control-v2/research/r241/R241_RECEIPT.json"
+            },
+            "run_id": "R241-official-leaderboard-snapshot-20260923-0328Z",
+            "status": "COMPLETE"
+          },
           "run_id": "R241-official-leaderboard-snapshot-20260923-0328Z",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read-only, timestamped refresh of the official Phase-2 AIcrowd leaderboard and official scoring metric; compare the visible leader score conditionally with the verified R209 V25 public mini-100 score. Record official source URLs, exact values, arithmetic, and why a rank/comparable claim is or is not supported. Save report and receipt, no estimator/benchmark/Actions run, no paid compute, no private/holdout, no submission or leaderboard mutation.",
@@ -3936,12 +3961,17 @@
       "id": "R241",
       "owner": "coordinator",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "Read-only official Phase-2 leaderboard refresh completed. The public leaderboard displays rank 1 J2W/#331539 at 2.1e-9 adjusted score (rounded); the R209 V25 public mini-100 result recomputes to 8.170397440117225e-9, about 3.8907x the displayed leader number. Official metric formula matches, but the leaderboard row does not expose panel/aggregation metadata, so no official rank or strict same-panel gap is claimed. Durable report and receipt preserve source URLs, timestamp, arithmetic and limitations; no estimator/benchmark/Actions run, paid/holdout/private access, submission, or leaderboard change occurred.",
+      "receipt": {
+        "sha256": "7562d0846b9f7b342a9eb132e76c3fc633acb78204bb1d43ed43a51d61de3c04",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/research/control-v2/research/r241/R241_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Refresh official Phase-2 leaderboard and assess score comparability"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 189,
+  "revision": 190,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
