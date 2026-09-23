@@ -1,0 +1,41 @@
+{
+  "schema": "r251-target-free-fixtures-v1",
+  "generator": {
+    "path": "scripts/r251_fixture_replay.py",
+    "commit": "38221d5fec606c3c9bfa80367292e337452a668a",
+    "blob": "3b994c2be45db599be6cc043f9a368c0fc64949e"
+  },
+  "construction": "one-latent zero-bias production-shape MLP; deterministic uint32 hash-uniform weights; exact two-ray Gaussian expectation",
+  "width": 1024,
+  "depth": 16,
+  "weight_dtype": "little-endian float32",
+  "truth_dtype": "little-endian float64",
+  "weight_scale_literal": 0.05412658773652741,
+  "inv_sqrt_2pi_literal": 0.3989422804014327,
+  "local_replay_environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "platform": "Linux x86_64"
+  },
+  "fixtures": [
+    {
+      "seed": 251001,
+      "weights_aggregate_sha256": "a8fe9b06bfb36ffd176a062d04855ac21f158ccfb2afb3f0f8786941343d4522",
+      "truth_tensor_sha256": "5238af31e84e8b58fc89323e31e30c5d73d8619c1dae4ec53466677abf2295e3",
+      "truth_shape": [
+        16,
+        1024
+      ]
+    },
+    {
+      "seed": 251002,
+      "weights_aggregate_sha256": "4fe37ac2f49c04c8bc37769a99ab49f9a77a31ccc896fef5c15435e8d1be4add",
+      "truth_tensor_sha256": "5ee74eb505999e0c9068076317158e0fc044d9dc0aa9cc1d6c8d95feaacc3d92",
+      "truth_shape": [
+        16,
+        1024
+      ]
+    }
+  ],
+  "note": "Aggregate weight hash is SHA256(concat(bytes.fromhex(per-layer SHA256))) in layer order. Generator deterministically reproduces the per-layer hashes and analytic truth bytes."
+}
