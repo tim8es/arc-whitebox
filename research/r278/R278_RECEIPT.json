@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "R278",
+  "run_id": "R278-global-residual-direction-20260923",
+  "owner": "residual-structure-diagnostic",
+  "status": "INFRA_ERROR",
+  "verdict": "BLOCKED_BEFORE_DIAGNOSTIC_EXECUTION",
+  "branch": "research/r278-residual-structure-diagnostic-20260923",
+  "protocol": {
+    "commit": "9abb05944f7f37c60017a0a68e0a8e319c74ff26",
+    "path": "research/r278/R278_PROTOCOL.md",
+    "git_blob_sha1": "0ccc6b20fb4a8ad1c62a95d98dea4681970bb97d",
+    "sha256": "469c391ef53e5c0aad0524747ec57360253f1a1f3a238baa92a9512efe780769"
+  },
+  "instrumentation_audit": {
+    "commit": "2dc9c09664dd3ca2984c1cf0f3098a6ed4988ec6",
+    "path": "research/r278/R278_INSTRUMENTATION_AUDIT.json",
+    "git_blob_sha1": "b208cc8d6d2343f7da8cd345bf8f731dea3ab01b",
+    "sha256": "30fcfb1807c8746e33e91b2a4c91524b21f921137c981f046d9caae950956192"
+  },
+  "report": {
+    "commit": "19f313e15a939648ed64b3cc3b46478b8982ad56",
+    "path": "research/r278/R278_REPORT.md",
+    "git_blob_sha1": "84a1186a70770b0480064f6d26703807b05b2f32",
+    "sha256": "e72c516fc4759b84fbc84f5291a62cb38a110655fd8e5b1dc39070eca78de951"
+  },
+  "pinned_inputs": {
+    "r209_v25_normalized_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "v25_source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "v25_source_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "r276_report_blob_sha1": "4970614c1ac789b008260d726a2bbd5272116434",
+    "r276_receipt_blob_sha1": "56f40cc6b109d769e521c9ba0cf363c7683ef5ab"
+  },
+  "retained_r209_artifact": {
+    "artifact_id": 10617318650,
+    "zip_sha256": "32c29ac79c5c59b841c88c6c274ed378daf2778a61d4344c7aa0b58f1da11681",
+    "report_json_sha256": "76c496968b9a81dc1eae91e8204969c0dfe9d7f113dd46af0c0e7df82496a78b",
+    "raw_prediction_target_vectors_present": false,
+    "per_mlp_rows": 100
+  },
+  "official_runner": {
+    "whestbench_version": "0.16.1",
+    "tag_target_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "scoring_py_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "minimal_capture_point": "evaluate_estimator after failure zeroing, after pred_np materialization and final_pred/final_target binding, before final_layer_mse computation"
+  },
+  "frozen_rule": {
+    "split": "lexicographic network_id strings; first 50 FIT, last 50 EVAL",
+    "fit": "d = mean_FIT(target_final - v25_pred_final)",
+    "eval": "pred_corrected = pred + d on EVAL only",
+    "per_network_tuning": false
+  },
+  "exact_blocker": {
+    "local_python": "3.13.5",
+    "python3_11_available": false,
+    "local_numpy": "2.3.5",
+    "whestbench_installed": false,
+    "flopscope_installed": false,
+    "datasets_installed": false,
+    "public_mini_cache_present": false,
+    "pip_retrieval": "failed before download after DNS retries: Temporary failure in name resolution",
+    "required_public_mini_prepared_bytes": 6934650690,
+    "explanation": "The requested faithful diagnostic requires the pinned Python 3.11.16 / WhestBench 0.16.1 / FlopScope 0.12.1+np2.4.6 stack plus exact public mini:all-100 bytes. Neither stack nor dataset cache exists locally, raw vectors are absent from R209, and the local runtime cannot retrieve the packages. Substituting Python 3.13/unmetered code/synthetic truth would violate the pinned-run requirement."
+  },
+  "accounting": {
+    "diagnostic_executions": 0,
+    "estimator_executions": 0,
+    "actions_runs": 0,
+    "paid_compute": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false,
+    "normalized_result_created": false
+  }
+}
