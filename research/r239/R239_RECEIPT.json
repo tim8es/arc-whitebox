@@ -1,0 +1,145 @@
+{
+  "schema": "arc.whitebox.r239.numerical_stability_audit.v1",
+  "job_id": "R239",
+  "hypothesis_id": "V25-SYNTHETIC-BASE-EXECUTABILITY-ROOT-CAUSE",
+  "owner": "numerical-stability-audit",
+  "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
+  "status": "COMPLETE",
+  "verdict": "DIAGNOSTIC_ONLY",
+  "conclusion": "R232 and R238 are not the same failure class. In flopscope 0.12.1, R232's max_deviation=inf is a hard-coded sentinel reached only after the einsum result passes np.isfinite and then fails the symmetry np.allclose check; retained evidence therefore proves a finite symmetry-validation failure, not NaN/Inf. R238 independently records real overflow warnings before V25 line 929 as_symmetric(C), where max_deviation=nan is consistent with a non-finite assembled covariance. The exact originating R238 V25 operation/layer cannot be recovered because raw fixture tensors, per-layer state, and op trace were not retained. No stronger shared root-cause claim is supported.",
+  "queue_start": {
+    "claim_revision": 181,
+    "claim_commit": "62485e00fb0b3a7ce14410e57595cc9757ba52d2",
+    "start_revision": 182,
+    "start_commit": "326f818f189e49c0fcc6cf93eaeaaa77cd3b9128",
+    "code_commit": "62485e00fb0b3a7ce14410e57595cc9757ba52d2",
+    "command": "read-only source-linked audit of R232/R238 frozen protocols, receipts, scripts, retained Actions logs/evidence, pinned V25 and flopscope 0.12.1; no execution/recreation/Actions/benchmark/candidate/source edits"
+  },
+  "governance": {
+    "agents_blob": "6d9c61537a282a7d141af316dd8be438d1015a49",
+    "research_process_blob": "bf5a4676d8f36100e2dfdde32d544a39661eba8d"
+  },
+  "r232": {
+    "protocol_blob": "6c75bb19781eac65838c7997933627abeef32ee0",
+    "script_blob": "c3339f4ffb773570dfda36635bebb7a447ce567d",
+    "workflow_blob": "6393b724c89411524cb41ece1f9b2afb5dbed4ad",
+    "terminal_receipt_blob": "c6aa858bd083c86067160325015032d9d7208343",
+    "terminal_receipt_sha256": "d4183c402f8c77165b1c268fc402dd67d1d7bb986105b5bcebee48d046db47fd",
+    "actions_run_id": 35803857969,
+    "actions_job_id": 107000109847,
+    "artifact_id": 10727365072,
+    "artifact_zip_sha256": "fd8d0afe6f48eab3e4f3b9bf9c4d6e947f599497911016ea59bf1daed94383ca",
+    "fixture": {
+      "width": 9,
+      "depth": 10,
+      "seeds": [
+        232900,
+        232901,
+        232902,
+        232903
+      ],
+      "r_old": 8,
+      "r_old2_high": 7,
+      "r_old2_low": 6,
+      "age_old": 4,
+      "age_old2": 7,
+      "first_layer": "only first two input rows live; unscaled standard normal",
+      "later_layers": "standard normal scaled by sqrt(2/9)"
+    },
+    "retained_failure": {
+      "point": "estimator_v25.py:514 C_pre = fnp.einsum('ij,ia,jb->ab', C, w32, w32)",
+      "flopscope_path": "_einsum.py -> _pointwise._validate_result_symmetry",
+      "message_max_deviation": "inf",
+      "overflow_or_nonfinite_warning_before_failure": false,
+      "interpretation": "finite result failed symmetry allclose; reported inf is sentinel, not measured tensor infinity"
+    }
+  },
+  "r238": {
+    "protocol_blob": "757e3f67741b9e05b709a247eae5c9a921d787e6",
+    "script_blob": "17b6cd77afeca3387bb6f06c3577194f1dae6f0c",
+    "workflow_blob": "adae8a650a0f2c9c05c0b4354258e55f6e90a7db",
+    "terminal_receipt_blob": "869742557a86d88ba136736954d4755fa40a19be",
+    "terminal_receipt_sha256": "361a6f9b50a8e4211df7a9cf43cbd1740932c7b21650dc2ffbbf97437e2467cd",
+    "actions_run_id": 35808859764,
+    "actions_job_id": 107015629065,
+    "artifact_id": 10728444220,
+    "artifact_zip_sha256": "761783a92ac967758dbcee9a6d9fadb146280d89fa6f782cfcbc9a927083ef2a",
+    "fixture": {
+      "width": 12,
+      "depth": 10,
+      "seeds": [
+        238120,
+        238121,
+        238122,
+        238123
+      ],
+      "r_old": 8,
+      "r_old2": 6,
+      "age_old": 4,
+      "age_old2": 7,
+      "qpass2": 2,
+      "first_layer_scale": 0.5,
+      "later_scale_factor": 0.65,
+      "first_layer": "only first two input rows live"
+    },
+    "retained_failure": {
+      "earliest_numeric_evidence": "RuntimeWarning: overflow encountered in multiply at generic flopscope counted backend, followed by NumPy einsum multiply overflow",
+      "terminal_point": "estimator_v25.py:929 C = flops.as_symmetric(C, symmetry=(0,1))",
+      "message_max_deviation": "nan",
+      "interpretation": "real numerical overflow occurred before covariance symmetry validation; exact V25 caller/layer is not retained"
+    }
+  },
+  "pinned_v25": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "path": "estimators/estimator_v25.py",
+    "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+    "relevant_source_observations": {
+      "suite_riders_gate": "n == 1024 and L == 16; false in both synthetic fixtures",
+      "confinement_gate": "R_OLD < n; true in both synthetic fixtures",
+      "variance_floor": "1e-10",
+      "wick_inverse_powers": "up to sigma^-6"
+    }
+  },
+  "flopscope_0_12_1": {
+    "source_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+    "wheel_sha256": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582",
+    "source_blobs": {
+      "pointwise": "5d8f9210ff23979ef9658897d8cd1a02127b33c4",
+      "einsum": "8075275290c1a8649dc48319c26f5f5e30b4c781",
+      "symmetric": "73c796835c586fcdb5c763bc30dd7ce4cb7277a4",
+      "budget": "f4d32d9d6a10b7292ba2e3c6fdbd8c68955248b8"
+    },
+    "key_semantics": "_validate_result_symmetry returns False immediately for non-finite results; hard-coded max_deviation=inf is raised only when a finite result fails _check_generators/allclose. Direct as_symmetric validation instead computes max(abs(data-transposed)), which can be nan for non-finite data."
+  },
+  "inference": {
+    "plausible_not_proven": "The 2-D-live, off-suite small-shape trajectories may drive approximate variances near the 1e-10 floor, amplifying sigma^-k Wick terms and later products. This cannot be established from retained evidence.",
+    "production_claim": false
+  },
+  "missing_evidence": [
+    "generated fixture weight tensors were not retained",
+    "per-layer var/sigma/W_all/PK1/PK2/C_pre/C checkpoints were not retained",
+    "no caller-resolving numeric op trace accompanies the R238 overflow warnings",
+    "R232 did not retain the failing C_pre values or numerical symmetry residual"
+  ],
+  "future_protocol_guard": "For any separately preregistered future synthetic method, require a parent-stability checkpoint that stores exact fixture tensor bytes plus SHA256 and per-layer finite/max-abs plus symmetry residual telemetry immediately before each symmetry claim; abort before candidate construction on first non-finite or over-tolerance residual. This is not authorization to rerun/rescue R232 or R238.",
+  "report": {
+    "path": "research/r239/R239_NUMERICAL_STABILITY_AUDIT.md",
+    "commit": "e3e7f9dd29f28c02a7a93f73a617b0de1b2dd8de",
+    "git_blob": "34f9b1a67dd5b323b35ae74491052778efd78d2c",
+    "sha256": "a432e6dec301c33aa8e668a2602be3015f9b3907915ff18c6c2b443f6ba195fe"
+  },
+  "scope": {
+    "code_execution": false,
+    "fixture_recreation": false,
+    "fixture_resize": false,
+    "actions_launched": false,
+    "estimator_or_benchmark_run": false,
+    "candidate_constructed": false,
+    "edits_to_r232_r238_r223_or_canonical": false,
+    "paid_compute": false,
+    "holdout_or_private": false,
+    "submission": false
+  }
+}
