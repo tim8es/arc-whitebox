@@ -1,0 +1,105 @@
+{
+  "candidate": {
+    "constructed": true,
+    "executions": 1,
+    "persisted_scientific_measurements": 0,
+    "source_sha256": "55cc395d69309dcb13c38ae3b91032dd4b8d0d6b6caf5eb09f0dad03328723e0"
+  },
+  "candidate_id": "V25-BPK2K-BALANCED-CUMULANT-REDUCTION",
+  "failure": {
+    "exception_type": "AttributeError",
+    "message": "'str' object has no attribute 'get'",
+    "point": "candidate_gate residual-wall-time extraction assumed BudgetContext.summary() was a mapping",
+    "target_free_exit": 1,
+    "target_free_result_written": false,
+    "target_free_stderr_sha256": "f0cdc771a5aee2138284e809fbbc5c2e769698bd31ddda1907bafc0b50b2a386",
+    "workflow_receipt_decision": "INFRA_ERROR_BEFORE_TARGET_FREE_RESULT",
+    "workflow_receipt_sha256": "42fe988f6ce8f011d1f59e7ff4b582c94a0a554caf79dd2effcb50ad60bbb922"
+  },
+  "fixture": {
+    "depth": 16,
+    "replay_pass": true,
+    "runtime_manifest_sha256": "4c14e8b3907907c73d061a9d46575d0847971aa8fda3ef642826c7118b33e105",
+    "seed": 254001,
+    "truth_sha256": "58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d",
+    "weights_concat_sha256": "199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0",
+    "width": 1024
+  },
+  "frozen_evidence": {
+    "candidate_spec_blob": "6bffbdfd113bba80cc72cd375cdc44138f9c0845",
+    "fixture_manifest_blob": "5a6eb7bbfc07bf9e6609ee6cfbb2b2ea9e17ebf8",
+    "novelty_formula_audit_blob": "16220bd884bc27a44f8e9fa3fc25a37d43d12312",
+    "protocol_blob": "ad7a12dea1895d703af53dcef2828370bb4448da",
+    "workflow_blob": "649e7b9184e0d8521636fd1af23fb9e4359b3a64"
+  },
+  "job_id": "R254",
+  "owner": "one-shot-accuracy-research",
+  "parent": {
+    "control_flow_parent_gate_passed": true,
+    "executions": 1,
+    "persisted_scientific_measurements": 0,
+    "source_git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "source_sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "queue": {
+    "claim_revision": 248,
+    "code_commit": "a7c4932391c09c0f6004d83b410ed643b3ca8ad2",
+    "enqueue_revision": 247,
+    "start_commit": "9c76f2575628479fa3825df2adfed8bcb62d1ca3",
+    "start_revision": 249
+  },
+  "report": {
+    "commit": "1930a284ace35fd14c8351aa21d4a15abaaa8191",
+    "git_blob": "24f4f0e9f68b137006383f5141e0e680ec492d0a",
+    "path": "research/r254/R254_TERMINAL_REPORT.md"
+  },
+  "run_id": "R254-one-shot-global-accuracy-20260923",
+  "runtime": {
+    "flopscope_normalized": "0.12.1",
+    "flopscope_raw": "0.12.1",
+    "numpy": "2.4.6",
+    "python": "3.11.16",
+    "wheel_sha256": {
+      "flopscope": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582",
+      "numpy": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93",
+      "whestbench": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"
+    },
+    "whestbench": "0.16.1"
+  },
+  "safety": {
+    "authorized_actions_runs": 1,
+    "gate_relaxation": false,
+    "leaderboard_canonical_edit": false,
+    "observed_actions_runs": 1,
+    "paid_or_larger_runner": false,
+    "private_holdout_full": false,
+    "r223_r244_outputs_artifacts": false,
+    "r252_workflow_edit": false,
+    "retry": false,
+    "second_method": false,
+    "submission": false
+  },
+  "schema": "arc.whitebox.r254.terminal_receipt.v1",
+  "scientific": {
+    "bpk2k_accuracy_evaluated": false,
+    "parent_candidate_flop_ratio": null,
+    "parent_candidate_mse_ratio": null,
+    "public_identity_executed": false,
+    "public_measurements": 0,
+    "public_mini100_executed": false,
+    "validation_executed": false
+  },
+  "status": "INFRA_ERROR",
+  "verdict": "ONE_SHOT_HARNESS_FAILURE_AFTER_PARENT_PASS_AND_CANDIDATE_EXECUTION_NO_RETRY",
+  "workflow": {
+    "artifact_id": 10737609819,
+    "artifact_name": "r254-one-shot-evidence",
+    "artifact_zip_sha256": "9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7",
+    "conclusion": "success",
+    "github_job_id": 107093511576,
+    "github_run_attempt": 1,
+    "github_run_id": 35834163527,
+    "head_sha": "ff40219e132ce208428b7acfb1a03a79cd535be7",
+    "runner": "ubuntu-24.04 standard GitHub-hosted"
+  }
+}
