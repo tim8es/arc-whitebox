@@ -4027,6 +4027,18 @@
       "owner": "method-theory-scout",
       "payload": {},
       "revision": 300
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T12:05:19.000Z",
+      "job": "R265",
+      "owner": "method-theory-scout",
+      "payload": {
+        "code_commit": "0b4406b79ba785ec716657c65ba75673dea99f92",
+        "command": "desk-only repository + primary-source screen pinned by research/r265/R265_PROTOCOL.md; no estimator execution authorized",
+        "run_id": "R265-theory-screen-20260923"
+      },
+      "revision": 301
     }
   ],
   "jobs": [
@@ -6389,7 +6401,14 @@
     },
     {
       "assigned_owner": "method-theory-scout",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "0b4406b79ba785ec716657c65ba75673dea99f92",
+          "command": "desk-only repository + primary-source screen pinned by research/r265/R265_PROTOCOL.md; no estimator execution authorized",
+          "run_id": "R265-theory-screen-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read current full research/history.json, AGENTS.md, RESEARCH_PROCESS.md, R261 report/receipt and current best compatible normalized records. Independently choose at most one genuinely new accuracy-first estimator family not equivalent to any tested/closed family; ground math in primary sources and document a full-history novelty check. Do not force a candidate: if no plausible, budget-feasible mechanism survives, publish an evidence-based NO_GO. If a candidate survives, freeze source/math, exact deterministic target-free synthetic fixture, parent/comparator, metered path, full production FLOP bound and one falsifier before coding; implement one isolated prototype and run at most one local synthetic falsifier. No public/R209, Actions, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes. Save artifacts, hashes and commit; finish R265 and wait for coordinator before any public/cloud work.",
       "depends_on": [
         "R261"
@@ -6398,7 +6417,7 @@
       "id": "R265",
       "owner": "method-theory-scout",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Screen one distinct accuracy-first estimator after R261"
     },
     {
@@ -6449,7 +6468,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 300,
+  "revision": 301,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
