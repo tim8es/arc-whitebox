@@ -1810,6 +1810,18 @@
       "owner": "v25-compute-audit",
       "payload": {},
       "revision": 139
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T00:22:05.000Z",
+      "job": "R235",
+      "owner": "v25-compute-audit",
+      "payload": {
+        "run_id": "R235-v25-material-exact-second-pass-20260923",
+        "code_commit": "f87e3aa194589d4734ae4a4a72e231d4707737bb",
+        "command": "read-only audit pinned V25 dominant counted-FLOP operators under frozen R235 protocol; screened direction WEIGHTED-ALIAS-GRAM has exact ideal saving upper bound 0.6364005528208066% < 1.0%, therefore no micro-fixture or mini-100 execution is authorized"
+      },
+      "revision": 140
     }
   ],
   "jobs": [
@@ -2943,7 +2955,14 @@
     },
     {
       "assigned_owner": "v25-compute-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R235-v25-material-exact-second-pass-20260923",
+          "code_commit": "f87e3aa194589d4734ae4a4a72e231d4707737bb",
+          "command": "read-only audit pinned V25 dominant counted-FLOP operators under frozen R235 protocol; screened direction WEIGHTED-ALIAS-GRAM has exact ideal saving upper bound 0.6364005528208066% < 1.0%, therefore no micro-fixture or mini-100 execution is authorized",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Continue the compute-efficiency lane after terminal R233, but exclude its ONEHOT-WICK-ROW-SELECT (only 0.0077833% full-V25 FLOPs). Audit the pinned public V25 source and operator-level counted-FLOP profile for at most one distinct output-preserving contraction/reuse optimization that can save at least 1.0% of full per-MLP FLOPs. First freeze exact source identities, math/equivalence fixture, counted-FLOP derivation, production savings bound, and GO/NO-GO. Run only one isolated free micro-fixture. A bounded public mini-100 is allowed only if exact equivalence and >=1.0% production savings both pass; keep canonical V25 untouched. If no eligible path exists, record terminal NO-GO with the dominant operators and upper bounds. No paid compute, private/holdout data, submission, or repeat run.",
       "depends_on": [
         "R231"
@@ -2952,12 +2971,12 @@
       "id": "R235",
       "owner": "v25-compute-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Audit dominant V25 contractions for material exact FLOP savings"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 139,
+  "revision": 140,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
