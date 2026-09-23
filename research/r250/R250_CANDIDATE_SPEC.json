@@ -1,0 +1,124 @@
+{
+  "schema": "arc.whitebox.r250.candidate_spec.v1",
+  "task": "R250",
+  "candidate_id": "V25-LEG2-R1-YOUNG-AP",
+  "frozen": true,
+  "frozen_before_measurement": true,
+  "parent": {
+    "estimator": "public V25",
+    "upstream_repo": "504aldo/whest-p2-cumulant-k3",
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "source_path": "estimators/estimator_v25.py",
+    "source_git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "r209_record_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "mean_flops": 806303721965,
+    "mean_raw_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117225e-9
+  },
+  "novelty": {
+    "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "history_experiments": 194,
+    "mechanism": "For each young source only, compress the two leg-type channels (A_s,P_s) to one shared spatial matrix H_s with two metered fnp coefficient arrays. This is a rank-1 approximation across the 2-dimensional leg-type/channel axis, not across neuron/source/spatial axes.",
+    "explicit_exclusions": [
+      "R247 V25-NM24-YOUNG-D21-RIGHT-SPARSIFY: no 2:4/N:M or entry sparsity",
+      "R248 V25-KRON1-YOUNG-TRANSPORT: no Kronecker/tensor-product approximation of WD",
+      "R244 MP-R16: no marginal-preserving remainder range finder",
+      "R223 V25-LF: no local-feed/lambda modification",
+      "E008 TensorSketch/polynomial sketch",
+      "E017/E022 quadratic/shared spatial basis",
+      "E041/E042 source reservoir/column cubature",
+      "E052/E053 old-tier spatial rank/age confinement",
+      "E062 FWHT/structured projection",
+      "E094 source-axis joint compression",
+      "E142 response-aligned old D21",
+      "E148 tensor-train K3",
+      "E181 symmetric CP carrier",
+      "E185 trilinear aggregation",
+      "E192 displacement structure"
+    ],
+    "literal_history_search_zero_terms": [
+      "leg-channel",
+      "channel-rank",
+      "channel rank",
+      "a/p pair",
+      "collinear",
+      "collinearity",
+      "joint leg",
+      "two-channel",
+      "leg type",
+      "leg-type"
+    ]
+  },
+  "math": {
+    "pair_matrix": "X_s = stack(vec(A_s), vec(P_s)) in R^{2 x n^2}",
+    "candidate": "best rank-1 channel surrogate Xhat_s = sigma_1 u_1 v_1^T; reshape v_1 to H_s, so Ahat_s=a_s H_s and Phat_s=p_s H_s",
+    "production_extraction": "Use the 2x2 Gram of the two fnp arrays and closed-form principal direction with fnp.sum/fnp.sqrt/fnp.maximum and fnp array division; coefficients remain fnp arrays and are never materialized to Python float.",
+    "downstream_collapse": "With Ahat=aH and Phat=pH, the two young dense D21 right-factor contractions LA@Ahat.T + LP@Phat.T collapse to (a*LA+p*LP)@H.T, one dense contraction instead of two. Transport likewise carries one H instead of separate A/P."
+  },
+  "source_compliance": {
+    "required": true,
+    "output_affecting_numeric_surface": "flopscope.numpy (fnp) only",
+    "forbidden": [
+      "math.* in predict",
+      "NumPy/SciPy/Torch/JAX numerical work in estimator predict",
+      "float/bool/int materialization of fnp numerical values",
+      "nontrivial output-affecting Python-scalar coefficient/division arithmetic"
+    ],
+    "allowed_contract": "shape/control/bookkeeping only in Python; numerical constants may participate only as operands of metered fnp array operations",
+    "offline_falsifier_note": "NumPy is permitted only in the target-free offline falsifier and is not candidate estimator/submission code."
+  },
+  "static_cost": {
+    "unit_definition": "2*n^3",
+    "n": 1024,
+    "parent_units": 375.4644291312434,
+    "conservative_touched_units": {
+      "young_ap_transport": 54,
+      "young_d21_right_factor_contractions": 54
+    },
+    "rank1_channel_remaining_units": {
+      "young_ap_transport": 27,
+      "young_d21_right_factor_contractions": 27
+    },
+    "reserved_overhead_units": 8,
+    "candidate_units": 329.4644291312434,
+    "candidate_flops_bound": 707519474157,
+    "candidate_parent_ratio": 0.8774850653457754,
+    "frozen_gate": "candidate_parent_ratio <= 0.9",
+    "status": "PASS_STATIC_PLANNING_BOUND"
+  },
+  "public_panel_if_authorized": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini",
+    "n_mlps": 100,
+    "shape": [
+      16,
+      1024
+    ],
+    "dtype": "float32",
+    "mlp_name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "budget_flops": 2199023255552,
+    "toolchain": {
+      "whestbench": "0.16.1",
+      "flopscope": "0.12.1+np2.4.6",
+      "numpy": "2.4.6"
+    },
+    "gates": {
+      "exact_row_hash_identity": true,
+      "failures": 0,
+      "mean_adjusted_score_max": 8.12954545291664e-9,
+      "better_rows_min": 55,
+      "paired_gain_gt_2_descriptive_se": true,
+      "mean_flops_max": 725673349768.5,
+      "max_residual_wall_time_s_lt": 0.4
+    },
+    "execution": "At most one preverified-free standard GitHub Actions workflow, no retry, only after every preregistration gate passes."
+  },
+  "stop_conditions": [
+    "Any target-free falsifier gate fails",
+    "Novelty collision with history is found",
+    "Static all-in cost ratio exceeds 0.9",
+    "Production source would require output-affecting math.* or unresolved unmetered Python scalar arithmetic",
+    "Free standard Actions cannot be verified before public execution"
+  ]
+}
