@@ -3735,6 +3735,20 @@
         "to_session": "6aa88e2f-151c-83eb-9931-9a70f40d9f39"
       },
       "revision": 278
+    },
+    {
+      "action": "reassign",
+      "at": "2026-09-23T10:01:20Z",
+      "job": "R261",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "orthogonal-method-research-guard",
+        "from_session": "6aa88e2f-151c-83eb-9931-9a70f40d9f39",
+        "reason": "Prior owner session remained idle after assignment and one follow-up; R261 has no claim/start/branch/attempt. Transfer the same queued job to another existing ARC guard with verified prior experimental evidence; no duplicate science exists.",
+        "to_assigned_owner": "orthogonal-method-research-guard-responsive",
+        "to_session": "6ab11f5a-a344-83eb-86f7-468821093e80"
+      },
+      "revision": 279
     }
   ],
   "jobs": [
@@ -5984,7 +5998,7 @@
       "title": "Run frozen BPK2K after fixture replay-schema preflight repair"
     },
     {
-      "assigned_owner": "orthogonal-method-research-guard",
+      "assigned_owner": "orthogonal-method-research-guard-responsive",
       "attempts": [],
       "deliverable": "Read the complete current research/history.json, AGENTS.md, RESEARCH_PROCESS.md, R209 normalized records, and R260 terminal report/receipt. Select exactly one genuinely orthogonal accuracy-first method not equivalent to BPK2K summation-order reassociation and deduplicated against every prior family/assumption in history. Ground any algorithm claim in primary sources. Freeze math, source/meter path, cost bound, seed/fixture, immediate parent plus strongest compatible comparator, and one discriminating target-free falsifier before implementation. If and only if a feasible falsifier exists, build one minimal isolated prototype and one offline regression check; run at most one local synthetic target-free test (no Actions). Log full per-layer error, measured FLOPs/time, hashes and exact outcome; no seed/network tuning or cherry-picking. If no novel, plausibly useful, budget-feasible method remains, commit a durable terminal NO_GO with the evidence. Produce report, receipt, test/source hashes and commit; finish this queue job. No R209/public data, Actions/workflow, private/holdout/full, paid resources, submission, leaderboard/canonical edits, or R260 method/gate rewrite. Stop after local result and wait for coordinator before any public or cloud run.",
       "depends_on": [
@@ -6000,7 +6014,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 278,
+  "revision": 279,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
