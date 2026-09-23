@@ -1,0 +1,107 @@
+{
+  "schema": "arc.whitebox.r251.global_accuracy_method.v1",
+  "job_id": "R251",
+  "run_id": "R251-global-accuracy-full-history-method-20260923",
+  "owner": "global-accuracy-method-research",
+  "status": "INCONCLUSIVE",
+  "verdict": "PARENT_GATE_NOT_EXECUTED_PINNED_RUNTIME_UNAVAILABLE",
+  "reason": "R251 preregistered one full-history-deduplicated GFNP hypothesis and one exact 1024x16 target-free fixture before measurement. The mandatory unchanged-parent gate could not be executed because the session runtime was Python 3.13.5 / NumPy 2.3.5 with flopscope and whestbench absent, python3.11 unavailable, and installation of the official pinned FlopScope 0.12.1 wheel failed before installation due outbound DNS failure. Frozen protocol forbids fallback runtime, Actions substitution, fixture changes or retry for this gate. Therefore stop INCONCLUSIVE with no scientific claim, no candidate estimator construction and no target-free candidate/public execution.",
+  "queue_start": {
+    "enqueue_revision": 234,
+    "claim_revision": 235,
+    "start_revision": 236,
+    "start_commit": "e2b1f1f8e03dde6f8215df8bdf62151c2b0075d1"
+  },
+  "history": {
+    "experiment_history_path": "research/history.json",
+    "experiment_history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "experiment_ids": 194,
+    "legacy_ledger_blob": "040e52efe01efd7280180b7e2d72901b4c2f0532",
+    "leader_method_inference": "none; R230 documents methods undisclosed"
+  },
+  "frozen_candidate": {
+    "id": "V25-GFNP-GAUSSIAN-FIXED-POINT-NULL-PROJECTION",
+    "spec": {
+      "path": "research/r251/R251_GFNP_SPEC.json",
+      "git_blob_sha1": "4468abd4a769c44ff3c527727a4fb444571db818",
+      "sha256": "59799ab604ef8537e297c4f9fe6e758e5d8b8b8d10448d41997e8110f9c07abb"
+    },
+    "estimator_file_constructed": false,
+    "candidate_falsifier_executed": false
+  },
+  "frozen_fixture": {
+    "manifest": {
+      "path": "research/r251/R251_FIXTURE_MANIFEST.json",
+      "git_blob_sha1": "7754e9612632d09d2f95f70bf7737de6e4a78399",
+      "sha256": "61fe175221df9cf0abfe5c231a04e1028471d46b915ec41e2fa575eb6f313314"
+    },
+    "replay": {
+      "path": "research/r251/r251_fixture.py",
+      "git_blob_sha1": "464a54cf1dfa273d30c728fe637f7e75ba509db8",
+      "sha256": "5fcc253b708cf72deb74f4d7fcac1f5c20d40cc395e0f8f820863c84b7745a8c"
+    },
+    "dense_concat_sha256": "3b94abf468e6d829c5caf55096cbb13946a3ed042a92815eb718c5c8c501ff1a",
+    "exact_mean_truth_sha256": "8e326c2c124ac70b41afb64ada24317430bb18c0a459428044094b1d954b0876"
+  },
+  "artifacts": {
+    "protocol": {
+      "path": "research/r251/R251_PROTOCOL.md",
+      "git_blob_sha1": "f68bbf9bb0d8871b77d0ba9aa35babe40279b712",
+      "sha256": "2438dc7fde05c8a9836d9f4f9967482282b246861d3d8e0524fefc3e82f91919"
+    },
+    "novelty_audit": {
+      "path": "research/r251/R251_NOVELTY_AUDIT.json",
+      "git_blob_sha1": "b730dc3c9b13794db12bbb337698c4a2fdffe0c1",
+      "sha256": "43e5b8979555365ccc04972d53f43cc1e46f1223b61f6c4fe264883d38fc6fc6"
+    },
+    "runtime_blocker": {
+      "path": "research/r251/R251_RUNTIME_BLOCKER.json",
+      "git_blob_sha1": "0203889b7ec22cb95d01722f536ae0444553e7c0",
+      "sha256": "f2e94cf197922d37b27629c7a2dd162d5712c946ab02510ef13da14906ff6144"
+    },
+    "report": {
+      "path": "research/r251/R251_REPORT.md",
+      "commit": "fc2a2cec650abd17eb7cfe3e40bad462d8967b86",
+      "git_blob_sha1": "a7e9bd739eefa66956c5766e02c2ecfd4788ec3a",
+      "sha256": "8119a7d053509c6f71926710c6850fda7827175736d5afdb0a56fa77e0d9e8df"
+    }
+  },
+  "parent_gate": {
+    "required": true,
+    "executed": false,
+    "scientific_measurements": 0,
+    "per_layer_checkpoints": [],
+    "note": "No fabricated parent checkpoint or MSE/FLOP result exists because runtime prerequisite failed before execution."
+  },
+  "runtime_blocker": {
+    "observed": {
+      "python": "3.13.5",
+      "numpy": "2.3.5",
+      "flopscope": null,
+      "whestbench": null,
+      "python3_11": false
+    },
+    "install_error": "Failed to establish a new connection: [Errno -3] Temporary failure in name resolution",
+    "official_flopscope_wheel_sha256": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582",
+    "official_whestbench_wheel_sha256": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"
+  },
+  "public_stage": {
+    "authorized": false,
+    "actions_run": false,
+    "mini100_run": false
+  },
+  "prohibited_actions": {
+    "retry": false,
+    "second_method": false,
+    "fixture_change": false,
+    "actions": false,
+    "estimator_benchmark": false,
+    "private_or_holdout": false,
+    "paid_compute": false,
+    "r223_or_r244_outputs_artifacts": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "canonical_v25_edit": false,
+    "gate_relaxation": false
+  }
+}
