@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import math
 import struct
 import sys
 import tempfile
@@ -227,12 +228,12 @@ def main() -> int:
             energy["weighted_global_explained_fraction"] == expected_global
         )
         q = [0.0, 10.0, 20.0, 30.0]
-        checks["type7_quantile_convention"] = (
-            a._quantile_type7(q, 0.10) == 3.0
-            and a._quantile_type7(q, 0.25) == 7.5
-            and a._quantile_type7(q, 0.50) == 15.0
-            and a._quantile_type7(q, 0.75) == 22.5
-            and a._quantile_type7(q, 0.90) == 27.0
+        checks["type7_quantile_convention"] = all(
+            math.isclose(got, expected, rel_tol=0.0, abs_tol=1e-12)
+            for got, expected in zip(
+                [a._quantile_type7(q, p) for p in (0.10, 0.25, 0.50, 0.75, 0.90)],
+                [3.0, 7.5, 15.0, 22.5, 27.0],
+            )
         )
         checks["energy_output_present"] = (
             result["coordinate_residual_energy"]["coordinate_count"] == a.WIDTH
