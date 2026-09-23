@@ -3031,6 +3031,22 @@
         }
       },
       "revision": 232
+    },
+    {
+      "revision": 233,
+      "action": "finish",
+      "job": "R249",
+      "owner": "phase2-scalar-compliance-independent-audit",
+      "payload": {
+        "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
+        "status": "COMPLETE",
+        "reason": "R249 source-only independent audit COMPLETE. Official Phase-2 sources support: ordinary fnp.ndarray operators CONFIRMED_ALLOWED and metered; fnp numerical primitives including sqrt/divide CONFIRMED_ALLOWED and metered; the exact trivial shape-derived pattern fnp.sqrt(2.0 / mlp.width) is CONFIRMED_ALLOWED only narrowly because the current official starter-kit explicitly recommends it, while the preceding Python scalar division is unmetered; output-affecting math.* numerical work is CONFIRMED_PROHIBITED because Phase 2 requires computation through FlopScope and reserves stdlib/residual Python for control/bookkeeping/plumbing; general output-affecting Python scalar coefficient/division arithmetic remains UNKNOWN as a blanket category because published primary sources define no de-minimis boundary between trivial argument shaping and meaningful unmetered computation; control/bookkeeping/loading is CONFIRMED_ALLOWED. FlopScope 0.12.0/0.12.1 README and client source are identical for the audited scalar path; live evaluator version was independently sourced from organizer clarification. Durable append-only JSON receipt: research/r249/R249_RECEIPT.json commit 2cc0a2971a32d09b72f86d7951d316619d779937 SHA256 bafacabb407083b27ab8a86a2856a24da3c885ec2024e7ecf781cd05507818c5. No organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 output/artifact inspection, submission/leaderboard, or canonical edit.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md",
+          "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175"
+        }
+      },
+      "at": "2026-09-23T06:26:00+00:00"
     }
   ],
   "jobs": [
@@ -4818,15 +4834,29 @@
       "title": "Resolve official Phase-2 metering eligibility of Python scalar arithmetic",
       "id": "R249",
       "owner": "phase2-scalar-compliance-independent-audit",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "attempts": [
         {
           "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
           "code_commit": "06a5293a52500dfb75ad1040b338f1d3591035ea",
           "command": "source-only independent audit of official Phase-2 Allowed Code/code-patterns/Challenge Rules/FlopScope docs+source with R245 as context only; classify fnp array ops, fnp primitives, shape-derived scalars, math.*, Python scalar coefficient/division, and control/bookkeeping; no organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 outputs/artifacts, submission/leaderboard, or canonical edits",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
+            "status": "COMPLETE",
+            "reason": "R249 source-only independent audit COMPLETE. Official Phase-2 sources support: ordinary fnp.ndarray operators CONFIRMED_ALLOWED and metered; fnp numerical primitives including sqrt/divide CONFIRMED_ALLOWED and metered; the exact trivial shape-derived pattern fnp.sqrt(2.0 / mlp.width) is CONFIRMED_ALLOWED only narrowly because the current official starter-kit explicitly recommends it, while the preceding Python scalar division is unmetered; output-affecting math.* numerical work is CONFIRMED_PROHIBITED because Phase 2 requires computation through FlopScope and reserves stdlib/residual Python for control/bookkeeping/plumbing; general output-affecting Python scalar coefficient/division arithmetic remains UNKNOWN as a blanket category because published primary sources define no de-minimis boundary between trivial argument shaping and meaningful unmetered computation; control/bookkeeping/loading is CONFIRMED_ALLOWED. FlopScope 0.12.0/0.12.1 README and client source are identical for the audited scalar path; live evaluator version was independently sourced from organizer clarification. Durable append-only JSON receipt: research/r249/R249_RECEIPT.json commit 2cc0a2971a32d09b72f86d7951d316619d779937 SHA256 bafacabb407083b27ab8a86a2856a24da3c885ec2024e7ecf781cd05507818c5. No organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 output/artifact inspection, submission/leaderboard, or canonical edit.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md",
+              "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175"
+            }
+          }
         }
-      ]
+      ],
+      "reason": "R249 source-only independent audit COMPLETE. Official Phase-2 sources support: ordinary fnp.ndarray operators CONFIRMED_ALLOWED and metered; fnp numerical primitives including sqrt/divide CONFIRMED_ALLOWED and metered; the exact trivial shape-derived pattern fnp.sqrt(2.0 / mlp.width) is CONFIRMED_ALLOWED only narrowly because the current official starter-kit explicitly recommends it, while the preceding Python scalar division is unmetered; output-affecting math.* numerical work is CONFIRMED_PROHIBITED because Phase 2 requires computation through FlopScope and reserves stdlib/residual Python for control/bookkeeping/plumbing; general output-affecting Python scalar coefficient/division arithmetic remains UNKNOWN as a blanket category because published primary sources define no de-minimis boundary between trivial argument shaping and meaningful unmetered computation; control/bookkeeping/loading is CONFIRMED_ALLOWED. FlopScope 0.12.0/0.12.1 README and client source are identical for the audited scalar path; live evaluator version was independently sourced from organizer clarification. Durable append-only JSON receipt: research/r249/R249_RECEIPT.json commit 2cc0a2971a32d09b72f86d7951d316619d779937 SHA256 bafacabb407083b27ab8a86a2856a24da3c885ec2024e7ecf781cd05507818c5. No organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 output/artifact inspection, submission/leaderboard, or canonical edit.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md",
+        "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175"
+      }
     },
     {
       "assigned_owner": "post-r248-next-method-research",
@@ -4869,7 +4899,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 232,
+  "revision": 233,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
