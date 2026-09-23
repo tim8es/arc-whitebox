@@ -1,0 +1,54 @@
+{
+  "schema": "arc.whitebox.r223.attempt5_infra_receipt.v1",
+  "job_id": "R223",
+  "attempt": 5,
+  "status": "INFRA_ERROR",
+  "decision": "R223_ATTEMPT5_PRE_PANEL_FROZEN_PATH_REFERENCE_FAILURE",
+  "branch": "research/r223-v25-isolated-improvement-20260922",
+  "queue": {
+    "start_revision": 176,
+    "start_control_commit": "6050bf85b84e4c1d41f15cb507449a5e15dd07f7",
+    "run_id": "R223-v25-local-feed-attempt5-20260923",
+    "code_commit": "df03e4d85d70686e381172c9066ddb90016b45d4"
+  },
+  "execution": {
+    "actions_run_id": 35810156519,
+    "actions_job_id": 107019699350,
+    "head_sha": "613cafdad0ac7a672347215f1eeda65d684ac198",
+    "github_conclusion": "failure",
+    "compute_gate_file_created": true,
+    "toolchain_install_started": false,
+    "source_transform_guard_started": false,
+    "parent_artifact_download_started": false,
+    "whest_validate_started": false,
+    "candidate_panel_run_started": false,
+    "candidate_rows": null
+  },
+  "failure": {
+    "phase": "initial frozen-blob path guard",
+    "exact_error": "fatal: path 'research/r223/R223_ATTEMPT5_PROVENANCE_PATCH.md' does not exist in HEAD",
+    "root_cause": "Attempt-5 workflow generation renamed the immutable attempt-4 provenance note path when versioning attempt labels. The actual frozen note remains research/r223/R223_ATTEMPT4_PROVENANCE_PATCH.md; attempt 5 additionally has research/r223/R223_ATTEMPT5_AUTH_PATCH.md.",
+    "scientific_interpretation": "No scientific or parent evidence path ran. V25-LF remains scientifically unevaluated."
+  },
+  "artifact": {
+    "id": 10729336771,
+    "name": "r223-v25-local-feed-mini100-attempt5",
+    "size_bytes": 34738,
+    "zip_sha256": "c43e77b47da7e06eb4b2b9c28b9b1d7d7886a055443753604596791b1377f273",
+    "expires_at": "2026-12-22T02:23:25Z"
+  },
+  "scope": {
+    "estimator_source_changed": false,
+    "formula_changed": false,
+    "clamp_changed": false,
+    "panel_changed": false,
+    "thresholds_changed": false,
+    "public_mini_candidate_run": false,
+    "parent_rerun": false,
+    "paid_or_larger_runner": false,
+    "holdout_private": false,
+    "submission": false,
+    "canonical_change": false,
+    "leaderboard_claim": false
+  }
+}
