@@ -1,0 +1,75 @@
+{
+  "schema": "arc.whitebox.r243.prep_checklist.v1",
+  "job_id": "R243",
+  "mode": "offline_read_only_prep",
+  "waiting_for": "R242 terminal normalized record and durable integration receipt",
+  "prohibition": [
+    "do_not_inspect_R242_normalized_record_before_terminal",
+    "no_actions",
+    "no_estimator",
+    "no_benchmark",
+    "no_retry_or_repair",
+    "no_paid_compute",
+    "no_holdout_or_private",
+    "no_submission",
+    "no_candidate_or_canonical_edit"
+  ],
+  "immutable_inputs": {
+    "artifact": {
+      "id": 10730459690,
+      "name": "r223-v25-local-feed-mini100-attempt6",
+      "zip_sha256": "f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00",
+      "actions_run_id": 35810427656,
+      "head_sha": "09efbb920313850a4727bd34db9088a46227ce5f"
+    },
+    "r240_receipt": {
+      "path": "research/r240/R240_RECEIPT.json",
+      "commit": "3b99fcaea2ef29b050612610ff04a8fc7a6886cd",
+      "sha256": "e75ec5e2641df59887cf38520e9d9f3a449731fa5fcac481398433c4c4ac8bbd"
+    },
+    "parent": {
+      "id": "R209-v25-mini100",
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    },
+    "artifact_candidate_report_sha256": "72821cf9117b484b2cc4fe4affa21e08ece737e86813508d9c1c6d01b02f6710",
+    "artifact_owner_result_sha256": "52c5da262f442d3a499c2c77885abc91f81d596e10703c1ac582192ffc8dda65",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "names_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce"
+  },
+  "final_gates": [
+    "R242 queue status terminal before first read of its normalized record",
+    "R242 durable receipt hash verified from committed bytes",
+    "artifact ZIP digest equals GitHub digest and R240 pinned digest",
+    "artifact sha256.json has exact nonempty coverage and zero mismatches",
+    "candidate normalized record has exactly 100 rows",
+    "all 100 names and order equal artifact candidate report and R209 parent",
+    "all 100 network_id and target_sha256 values equal immutable R209 parent",
+    "panel metadata exactly equals R209 parent panel: dataset/dtype/evaluator/meter/revision/shape/split/stage/count",
+    "per row final_mse/measured_flops/residual_wall_time_s/wall_time_s/failure status equal artifact",
+    "per row official_adjusted_score equals artifact report, owner recomputation, and final_mse*max(0.1,flops/2**41)",
+    "parent_id exactly R209-v25-mini100",
+    "candidate source binds artifact_id 10730459690, ZIP digest and dataset hash",
+    "normalized/integration receipt explicitly preserves SCIENTIFIC_REJECT, consistent with R223 terminal state and R240 DEVELOPMENT NO-GO",
+    "STATUS row reflects terminal normalized integration without changing scientific conclusion"
+  ],
+  "expected_recomputed_from_R240": {
+    "rows": 100,
+    "failures": 0,
+    "mean_raw_mse": 2.2284993050902814e-8,
+    "mean_adjusted_score": 8.171116513490029e-9,
+    "mean_effective_compute": 806303829485,
+    "mean_c_over_b": 0.36666453046791503,
+    "max_residual_s": 0.19380312699274782,
+    "paired_parent_minus_candidate_mean": -7.190733728024271e-13,
+    "paired_se": 1.4922201293529365e-12,
+    "improved_networks": 50,
+    "scientific_conclusion": "SCIENTIFIC_REJECT / same-exposed-panel DEVELOPMENT NO-GO"
+  },
+  "verifier": {
+    "path": "research/r243/r243_verify_r223_registry.py",
+    "prep_commit": "b2400ae0d3cc18b7aebe35963cdfccdd9aff357a"
+  },
+  "final_verdict_rule": "PASS only if every final gate passes; otherwise FAIL with exact mismatch. Do not repair R242 or rerun any benchmark."
+}
