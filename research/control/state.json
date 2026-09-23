@@ -3378,6 +3378,22 @@
         "run_id": "R255-r254-independent-postflight-20260923"
       },
       "revision": 254
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T08:13:30+00:00",
+      "job": "R255",
+      "owner": "r254-independent-verifier",
+      "payload": {
+        "reason": "R255 independent read-only postflight COMPLETE. Immutable run 35834163527/job 107093511576/artifact 10737609819 and ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7 were verified. GitHub workflow/job conclusion is success only because the target-free wrapper preserves failure evidence and exits 0; the real target-free subprocess exited 1. Frozen harness blob 52f1885fcb4fc3cfb99a0ad2fc6b8517187605d9 stored BudgetContext.summary() then treated it as a mapping; official FlopScope 0.12.1 source blob 93349b139b3a08bdd67a7bc37b1b446c681c835c defines summary()->str and summary_dict()->dict. Parent/candidate executions were 1/1 but persisted scientific measurements are 0/0; validation/public identity/public mini-100/public gates were skipped. R254 therefore remains terminal INFRA_ERROR with BPK2K science UNEVALUATED; no ephemeral numeric claims, workflow/science rerun, R254/R256 edit, canonical/leaderboard/submission change.",
+        "receipt": {
+          "sha256": "ffbed0c8d5a8d89e51b590cbf6ef6ae0a23d450415239816600d93e9256cae7a",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/8a541a20acf9d3dfc60cf395ecf60e20160298bf/research/r255/R255_RECEIPT.json"
+        },
+        "run_id": "R255-r254-independent-postflight-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 255
     }
   ],
   "jobs": [
@@ -5389,7 +5405,16 @@
           "code_commit": "b5887ca4a6a363513c2f4283f81502fb2b3cdd65",
           "command": "read-only postflight only: verify immutable R254 run 35834163527/job 107093511576/artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7; inspect workflow/log/source/fixture hashes, BudgetContext.summary() type mismatch, execution/persisted-measurement counts, public/mini100 absence; write append-only report+receipt; no workflow/science/canonical/leaderboard/submission edits",
           "run_id": "R255-r254-independent-postflight-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "R255 independent read-only postflight COMPLETE. Immutable run 35834163527/job 107093511576/artifact 10737609819 and ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7 were verified. GitHub workflow/job conclusion is success only because the target-free wrapper preserves failure evidence and exits 0; the real target-free subprocess exited 1. Frozen harness blob 52f1885fcb4fc3cfb99a0ad2fc6b8517187605d9 stored BudgetContext.summary() then treated it as a mapping; official FlopScope 0.12.1 source blob 93349b139b3a08bdd67a7bc37b1b446c681c835c defines summary()->str and summary_dict()->dict. Parent/candidate executions were 1/1 but persisted scientific measurements are 0/0; validation/public identity/public mini-100/public gates were skipped. R254 therefore remains terminal INFRA_ERROR with BPK2K science UNEVALUATED; no ephemeral numeric claims, workflow/science rerun, R254/R256 edit, canonical/leaderboard/submission change.",
+            "receipt": {
+              "sha256": "ffbed0c8d5a8d89e51b590cbf6ef6ae0a23d450415239816600d93e9256cae7a",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/8a541a20acf9d3dfc60cf395ecf60e20160298bf/research/r255/R255_RECEIPT.json"
+            },
+            "run_id": "R255-r254-independent-postflight-20260923",
+            "status": "COMPLETE"
+          }
         }
       ],
       "deliverable": "Read-only independent postflight of R254. Verify the single Actions run/job/artifact/ZIP digest and immutable receipt; inspect workflow steps/logs plus exact source and fixture hashes; verify the BudgetContext.summary type error and that parent/candidate measurement counts are zero, validation/public access/public mini-100 were skipped, and the status is INFRA_ERROR rather than scientific rejection or success. Create one append-only report/receipt with source URLs, exact SHAs, conclusions and commit. Do not edit R254/R256, launch/rerun Actions, run science, access private/holdout, alter canonical/leaderboard, or claim unpersisted in-memory values.",
@@ -5401,8 +5426,13 @@
       "id": "R255",
       "owner": "r254-independent-verifier",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Independently verify R254 terminal infrastructure evidence"
+      "status": "COMPLETE",
+      "title": "Independently verify R254 terminal infrastructure evidence",
+      "reason": "R255 independent read-only postflight COMPLETE. Immutable run 35834163527/job 107093511576/artifact 10737609819 and ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7 were verified. GitHub workflow/job conclusion is success only because the target-free wrapper preserves failure evidence and exits 0; the real target-free subprocess exited 1. Frozen harness blob 52f1885fcb4fc3cfb99a0ad2fc6b8517187605d9 stored BudgetContext.summary() then treated it as a mapping; official FlopScope 0.12.1 source blob 93349b139b3a08bdd67a7bc37b1b446c681c835c defines summary()->str and summary_dict()->dict. Parent/candidate executions were 1/1 but persisted scientific measurements are 0/0; validation/public identity/public mini-100/public gates were skipped. R254 therefore remains terminal INFRA_ERROR with BPK2K science UNEVALUATED; no ephemeral numeric claims, workflow/science rerun, R254/R256 edit, canonical/leaderboard/submission change.",
+      "receipt": {
+        "sha256": "ffbed0c8d5a8d89e51b590cbf6ef6ae0a23d450415239816600d93e9256cae7a",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/8a541a20acf9d3dfc60cf395ecf60e20160298bf/research/r255/R255_RECEIPT.json"
+      }
     },
     {
       "assigned_owner": "r254-harness-repair",
@@ -5421,7 +5451,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 254,
+  "revision": 255,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
