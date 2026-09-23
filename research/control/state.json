@@ -3849,6 +3849,17 @@
         "prior_owner_stood_down": true
       },
       "revision": 287
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T10:54:00+00:00",
+      "job": "R261",
+      "owner": "orthogonal-method-research-e178-guard",
+      "payload": {
+        "command": "bounded local target-free orthogonal V25 method search; no Actions/public/paid/holdout/submission; no R260 edits",
+        "run_id": "R261-local-target-free-20260923"
+      },
+      "revision": 288
     }
   ],
   "jobs": [
@@ -6149,7 +6160,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 287,
+  "revision": 288,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
