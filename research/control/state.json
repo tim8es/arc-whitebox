@@ -2648,6 +2648,23 @@
         }
       },
       "revision": 204
+    },
+    {
+      "revision": 205,
+      "action": "enqueue",
+      "job": "R246",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "baseline-score-diagnostic",
+        "deliverable": "Using only the immutable normalized R209 V25 public mini-100 record and its pinned source receipt, perform a deterministic offline diagnostic of where the baseline's official adjusted score comes from. Recompute/validate all 100 per-network scores from raw final MSE, measured FLOPs, budget, and official multiplier floor; quantify top-1/5/10/20 network contribution shares, whether the 0.1 cost floor binds, and whether aggregate score is driven mainly by error or cost. Preserve row IDs and hashes, report exact calculations and limitations, and recommend one next research question without tuning to these exposed networks. Do not inspect R223 candidate or any live R244 output/artifact, edit shared results/STATUS, modify estimator/canonical code, run estimator/benchmark/Actions, use private/holdout data, spend, submit, or mutate leaderboard. Save a source-linked report and receipt in a separate R246 path/branch, then finish the job.",
+        "depends_on": [
+          "R209"
+        ],
+        "hypothesis_id": "R209-MINI100-SCORE-CONTRIBUTION-DIAGNOSTIC",
+        "priority": 2,
+        "title": "Diagnose per-network score concentration in the immutable R209 V25 baseline"
+      },
+      "at": "2026-09-23T04:45:31Z"
     }
   ],
   "jobs": [
@@ -4264,10 +4281,24 @@
       "owner": null,
       "status": "QUEUED",
       "attempts": []
+    },
+    {
+      "assigned_owner": "baseline-score-diagnostic",
+      "deliverable": "Using only the immutable normalized R209 V25 public mini-100 record and its pinned source receipt, perform a deterministic offline diagnostic of where the baseline's official adjusted score comes from. Recompute/validate all 100 per-network scores from raw final MSE, measured FLOPs, budget, and official multiplier floor; quantify top-1/5/10/20 network contribution shares, whether the 0.1 cost floor binds, and whether aggregate score is driven mainly by error or cost. Preserve row IDs and hashes, report exact calculations and limitations, and recommend one next research question without tuning to these exposed networks. Do not inspect R223 candidate or any live R244 output/artifact, edit shared results/STATUS, modify estimator/canonical code, run estimator/benchmark/Actions, use private/holdout data, spend, submit, or mutate leaderboard. Save a source-linked report and receipt in a separate R246 path/branch, then finish the job.",
+      "depends_on": [
+        "R209"
+      ],
+      "hypothesis_id": "R209-MINI100-SCORE-CONTRIBUTION-DIAGNOSTIC",
+      "priority": 2,
+      "title": "Diagnose per-network score concentration in the immutable R209 V25 baseline",
+      "id": "R246",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 204,
+  "revision": 205,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
