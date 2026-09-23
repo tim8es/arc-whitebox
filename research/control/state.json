@@ -6127,7 +6127,26 @@
     },
     {
       "assigned_owner": "orthogonal-method-research-e178-guard",
-      "attempts": [],
+      "attempts": [
+        {
+          "command": "bounded local target-free orthogonal V25 method search; no Actions/public/paid/holdout/submission; no R260 edits",
+          "run_id": "R261-local-target-free-20260923",
+          "code_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+          "status": "SCIENTIFIC_REJECT",
+          "completion": {
+            "status": "SCIENTIFIC_REJECT",
+            "decision": "EVIDENCE_BASED_NO_GO_BEFORE_EXECUTION",
+            "reason": "Bounded source/evidence review found no orthogonal V25 candidate with target-free rationale sufficient to justify a production-shape execution. The concrete orthogonal lever considered, disabling the existing online mean-correction rider, is itself public-fitted and has no committed target-free evidence for the required >=5% final and >=2% all-layer MSE gains; executing it would be speculative method fishing. No candidate execution or public access occurred. Coordinator reconciled the stale projection from the append-only events. Agent receipt/report blob mismatch and missing start/finish fields are preserved and documented in the coordinator reconciliation note; no candidate was executed.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/9dfb89faeb33617da2f5ca91d32fa776426e228b/research/r261/R261_COORDINATOR_RECONCILIATION.json",
+              "sha256": "ceb4aa86da2ac1cd23ecea0bac0d6f4c68668d8d91c103ae39a39af8d155b5c2"
+            },
+            "run_id": "R261-local-target-free-20260923",
+            "source_event_revision": 288,
+            "finish_event_revision": 289
+          }
+        }
+      ],
       "deliverable": "Read the complete current research/history.json, AGENTS.md, RESEARCH_PROCESS.md, R209 normalized records, and R260 terminal report/receipt. Select exactly one genuinely orthogonal accuracy-first method not equivalent to BPK2K summation-order reassociation and deduplicated against every prior family/assumption in history. Ground any algorithm claim in primary sources. Freeze math, source/meter path, cost bound, seed/fixture, immediate parent plus strongest compatible comparator, and one discriminating target-free falsifier before implementation. If and only if a feasible falsifier exists, build one minimal isolated prototype and one offline regression check; run at most one local synthetic target-free test (no Actions). Log full per-layer error, measured FLOPs/time, hashes and exact outcome; no seed/network tuning or cherry-picking. If no novel, plausibly useful, budget-feasible method remains, commit a durable terminal NO_GO with the evidence. Produce report, receipt, test/source hashes and commit; finish this queue job. No R209/public data, Actions/workflow, private/holdout/full, paid resources, submission, leaderboard/canonical edits, or R260 method/gate rewrite. Stop after local result and wait for coordinator before any public or cloud run.",
       "depends_on": [
         "R255",
@@ -6135,10 +6154,15 @@
       ],
       "hypothesis_id": "R261-ORTHOGONAL-V25-ACCURACY-METHOD",
       "id": "R261",
-      "owner": null,
+      "owner": "orthogonal-method-research-e178-guard",
       "priority": 1,
-      "status": "QUEUED",
-      "title": "Find one orthogonal accuracy-first V25 method after BPK2K rejection"
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Find one orthogonal accuracy-first V25 method after BPK2K rejection",
+      "reason": "Bounded source/evidence review found no orthogonal V25 candidate with target-free rationale sufficient to justify a production-shape execution. The concrete orthogonal lever considered, disabling the existing online mean-correction rider, is itself public-fitted and has no committed target-free evidence for the required >=5% final and >=2% all-layer MSE gains; executing it would be speculative method fishing. No candidate execution or public access occurred. Coordinator reconciled the stale projection from the append-only events. Agent receipt/report blob mismatch and missing start/finish fields are preserved and documented in the coordinator reconciliation note; no candidate was executed.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/9dfb89faeb33617da2f5ca91d32fa776426e228b/research/r261/R261_COORDINATOR_RECONCILIATION.json",
+        "sha256": "ceb4aa86da2ac1cd23ecea0bac0d6f4c68668d8d91c103ae39a39af8d155b5c2"
+      }
     },
     {
       "id": "R262",
