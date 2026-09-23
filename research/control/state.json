@@ -3987,6 +3987,18 @@
       "owner": "leaderboard-refresh-arc",
       "payload": {},
       "at": "2026-09-23T12:01:19.406Z"
+    },
+    {
+      "revision": 297,
+      "action": "start",
+      "job": "R263",
+      "owner": "leaderboard-refresh-arc",
+      "payload": {
+        "run_id": "R263-leaderboard-refresh-20260923",
+        "code_commit": "fbb17a40760fc6630fda08f1d87533b298917324",
+        "command": "read-only desk audit of official AIcrowd/ARC Phase-2 leaderboard/rules plus existing R209 evidence; no estimator/Actions/private/holdout/full/submission"
+      },
+      "at": "2026-09-23T12:01:54.518Z"
     }
   ],
   "jobs": [
@@ -6317,8 +6329,15 @@
       "depends_on": [],
       "assigned_owner": "leaderboard-refresh-arc",
       "owner": "leaderboard-refresh-arc",
-      "status": "CLAIMED",
-      "attempts": [],
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R263-leaderboard-refresh-20260923",
+          "code_commit": "fbb17a40760fc6630fda08f1d87533b298917324",
+          "command": "read-only desk audit of official AIcrowd/ARC Phase-2 leaderboard/rules plus existing R209 evidence; no estimator/Actions/private/holdout/full/submission",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Update the last verified leaderboard audit (R241) using only official AIcrowd/ARC primary sources. Record access time in UTC and Moscow time, visible Phase-2 standings/metric/deadline, source URLs and the strongest displayed score. Compare with R209 V25 mini-100 only if the official metric, split and aggregation are demonstrably aligned; otherwise state precisely why rank is UNKNOWN/NOT_COMPARABLE. Save an append-only report and receipt with source snapshots/hashes and commit, then finish R263. No estimator run, Actions, paid compute, private/holdout/full data, submission or leaderboard mutation."
     },
     {
@@ -6395,7 +6414,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 296,
+  "revision": 297,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
