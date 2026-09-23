@@ -2174,6 +2174,16 @@
         "status": "INFRA_ERROR"
       },
       "revision": 167
+    },
+    {
+      "action": "repair",
+      "at": "2026-09-23T02:06:25.291479+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "reason": "Attempt 2 is preserved as a second pre-panel INFRA_ERROR. Repair only the provenance bootstrap version check: replace the non-contractual module-level whestbench.__version__ assertion with importlib.metadata distribution-version checks for whestbench==0.16.1 and flopscope==0.12.1, while retaining whest version --json evidence. No estimator source, formula, clamp, panel, thresholds, parent artifact, or scientific configuration changes."
+      },
+      "revision": 168
     }
   ],
   "jobs": [
@@ -2977,12 +2987,12 @@
       "id": "R223",
       "owner": "method-research",
       "priority": 2,
-      "reason": "Attempt 2 stopped before source-transform verification, parent-artifact download, whest validate, or any mini-100 panel invocation. Standard public ubuntu-24.04 compute gate passed and pip installed the pinned distributions, but an attempt-2 bootstrap assertion incorrectly required module-level whestbench.__version__ == 0.16.1. The scientific V25-LF formula, clamp, panel and gates were never exercised.",
+      "reason": "Attempt 2 is preserved as a second pre-panel INFRA_ERROR. Repair only the provenance bootstrap version check: replace the non-contractual module-level whestbench.__version__ assertion with importlib.metadata distribution-version checks for whestbench==0.16.1 and flopscope==0.12.1, while retaining whest version --json evidence. No estimator source, formula, clamp, panel, thresholds, parent artifact, or scientific configuration changes.",
       "receipt": {
         "sha256": "5eabfb77e78f9e419917c87c0853253f339cc2c1ccdeed99bfa5c64ce7f747d4",
         "url": "https://github.com/tim8es/arc-whitebox/blob/9f375488f40f5a55a66918622b5545a6825d5645/research/r223/R223_ATTEMPT2_INFRA_RECEIPT.json"
       },
-      "status": "INFRA_ERROR",
+      "status": "CLAIMED",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     },
     {
@@ -3528,7 +3538,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 167,
+  "revision": 168,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
