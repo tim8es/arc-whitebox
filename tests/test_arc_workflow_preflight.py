@@ -249,6 +249,120 @@ class WorkflowPreflightTests(unittest.TestCase):
             p.check_contract(hardened_workflow(step), HARDENED_GENERATOR)
 
 
+    def test_run_block_fake_checkout_metadata_fails_closed(self):
+        wf = """jobs:
+  verify:
+    steps:
+      - run: |
+          # uses: actions/checkout@v4
+            with:
+              fetch-depth: 0
+          git merge-base --is-ancestor "$P" HEAD
+      - run: |
+          import json, pathlib
+          p=pathlib.Path("R254_FIXTURE_RUNTIME_MANIFEST.json")
+          d=json.loads(p.read_text())
+          assert d["seed"] == 254001
+"""
+        with self.assertRaisesRegex(p.PreflightError, "checkout"):
+            p.check_contract(wf, HARDENED_GENERATOR)
+
+    def test_double_space_ancestry_guard_fails_closed(self):
+        wf = """jobs:
+  verify:
+    steps:
+      - run: |
+          git merge-base  --is-ancestor "$P" HEAD
+      - run: |
+          import json, pathlib
+          p=pathlib.Path("R254_FIXTURE_RUNTIME_MANIFEST.json")
+          d=json.loads(p.read_text())
+          assert d["seed"] == 254001
+"""
+        with self.assertRaisesRegex(p.PreflightError, "checkout"):
+            p.check_contract(wf, HARDENED_GENERATOR)
+
+    def test_string_decoy_cannot_mask_dynamic_manifest_subscript(self):
+        step = """      - run: |
+          p=pathlib.Path("artifacts/R254_FIXTURE_RUNTIME_MANIFEST.json")
+          d=json.loads(p.read_text())
+          print('d["seed"]')
+          key="ghost"
+          assert d[key] is True
+"""
+        with self.assertRaisesRegex(p.PreflightError, "unsupported manifest access"):
+            p.check_contract(hardened_workflow(step), HARDENED_GENERATOR)
+
+    def test_manifest_alias_access_fails_closed(self):
+        step = """      - run: |
+          p=pathlib.Path("artifacts/R254_FIXTURE_RUNTIME_MANIFEST.json")
+          d=json.loads(p.read_text())
+          assert d["seed"] == 254001
+          alias=d
+          assert alias.get("ghost") is True
+"""
+        with self.assertRaisesRegex(p.PreflightError, "unsupported manifest access"):
+            p.check_contract(hardened_workflow(step), HARDENED_GENERATOR)
+
+    def test_generator_conditional_rebind_fails_closed(self):
+        generator = r'''
+from pathlib import Path
+import json
+def main():
+    m={"seed": 1}
+    if True:
+        m={}
+    out_dir=Path(".")
+    (out_dir/"R254_FIXTURE_RUNTIME_MANIFEST.json").write_text(json.dumps(m))
+'''
+        with self.assertRaisesRegex(p.PreflightError, "unsupported generator statement.*If"):
+            p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
+
+    def test_generator_delete_fails_closed(self):
+        generator = r'''
+from pathlib import Path
+import json
+def main():
+    m={"seed": 1}
+    del m["seed"]
+    out_dir=Path(".")
+    (out_dir/"R254_FIXTURE_RUNTIME_MANIFEST.json").write_text(json.dumps(m))
+'''
+        with self.assertRaisesRegex(p.PreflightError, "unsupported generator statement.*Delete"):
+            p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
+
+    def test_generator_conditional_early_return_fails_closed(self):
+        generator = r'''
+from pathlib import Path
+import json
+def main():
+    m={"seed": 1}
+    if True:
+        return
+    out_dir=Path(".")
+    (out_dir/"R254_FIXTURE_RUNTIME_MANIFEST.json").write_text(json.dumps(m))
+'''
+        with self.assertRaisesRegex(p.PreflightError, "unsupported generator statement.*If"):
+            p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
+
+    def test_generator_helper_control_flow_fails_closed(self):
+        generator = r'''
+from pathlib import Path
+import json
+def build():
+    m={"seed": 1}
+    if True:
+        return m
+    return {}
+def main():
+    m=build()
+    out_dir=Path(".")
+    (out_dir/"R254_FIXTURE_RUNTIME_MANIFEST.json").write_text(json.dumps(m))
+'''
+        with self.assertRaisesRegex(p.PreflightError, "unsupported generator statement.*If"):
+            p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
+
+
 
 if __name__ == "__main__":
     unittest.main()
