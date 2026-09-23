@@ -1,0 +1,97 @@
+{
+  "candidate_id": "V25-KRON1-YOUNG-TRANSPORT",
+  "canonical_without_self_hash_sha256": "4a379199ec212c777c7418f177280281d97fbcd55c85a4db3623fa0a82fb2f31",
+  "cases": 8,
+  "control_max": 1e-12,
+  "control_rrms": 4.812580056623063e-16,
+  "d": 16,
+  "decision": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
+  "deterministic_replay_cases": 8,
+  "each_max": 0.015,
+  "families": [
+    "iid_column_scaled",
+    "correlated_column_scaled"
+  ],
+  "go": false,
+  "max_any_rrms": 0.9913359558380901,
+  "mean_transport_max": 0.012,
+  "mean_transport_rrms": 0.9846514161220152,
+  "n": 256,
+  "oracle": "best Frobenius rank-1 Kronecker approximation by SVD of rearranged transport operator",
+  "public_dataset_opened": false,
+  "rows": [
+    {
+      "family": "iid_column_scaled",
+      "finite": true,
+      "operator_rrms": 0.9913359558380901,
+      "seed": 248001,
+      "transport_A_rrms": 0.9909229181793516,
+      "transport_P_rrms": 0.9911932304403799
+    },
+    {
+      "family": "iid_column_scaled",
+      "finite": true,
+      "operator_rrms": 0.9908868977780729,
+      "seed": 248002,
+      "transport_A_rrms": 0.9910105026875301,
+      "transport_P_rrms": 0.9910017574566757
+    },
+    {
+      "family": "iid_column_scaled",
+      "finite": true,
+      "operator_rrms": 0.9911783174843776,
+      "seed": 248003,
+      "transport_A_rrms": 0.9907877574716295,
+      "transport_P_rrms": 0.990548727658815
+    },
+    {
+      "family": "iid_column_scaled",
+      "finite": true,
+      "operator_rrms": 0.9911737639218922,
+      "seed": 248004,
+      "transport_A_rrms": 0.9908590978588104,
+      "transport_P_rrms": 0.9908592343421391
+    },
+    {
+      "family": "correlated_column_scaled",
+      "finite": true,
+      "operator_rrms": 0.9784558996601656,
+      "seed": 248001,
+      "transport_A_rrms": 0.9748664240190613,
+      "transport_P_rrms": 0.9741356479643647
+    },
+    {
+      "family": "correlated_column_scaled",
+      "finite": true,
+      "operator_rrms": 0.9726290660609676,
+      "seed": 248002,
+      "transport_A_rrms": 0.9752253368412472,
+      "transport_P_rrms": 0.9739865412341079
+    },
+    {
+      "family": "correlated_column_scaled",
+      "finite": true,
+      "operator_rrms": 0.9794987121334074,
+      "seed": 248003,
+      "transport_A_rrms": 0.9843972845498972,
+      "transport_P_rrms": 0.9823059815930927
+    },
+    {
+      "family": "correlated_column_scaled",
+      "finite": true,
+      "operator_rrms": 0.9820746198438496,
+      "seed": 248004,
+      "transport_A_rrms": 0.9809131324445022,
+      "transport_P_rrms": 0.9814090832106396
+    }
+  ],
+  "schema": "arc.whitebox.r248.kron1_transport_falsifier_result.v1",
+  "seeds": [
+    248001,
+    248002,
+    248003,
+    248004
+  ],
+  "target_free": true,
+  "targets_opened": false
+}
