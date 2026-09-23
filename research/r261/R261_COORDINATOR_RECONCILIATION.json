@@ -1,0 +1,37 @@
+{
+  "schema": "arc.whitebox.r261.coordinator_reconciliation.v1",
+  "job": "R261",
+  "scientific_decision": "SCIENTIFIC_REJECT",
+  "basis": "EVIDENCE_BASED_NO_GO_BEFORE_EXECUTION",
+  "run_id": "R261-local-target-free-20260923",
+  "report": {
+    "commit": "933d259ec33c37c88f98df8c214935d02d8b60ca",
+    "path": "research/r261/R261_TARGET_FREE_NO_GO.md",
+    "actual_git_blob_sha1": "835eee8021cfc8760c50c1b6978dcdabf2e52a2e",
+    "receipt_declared_git_blob_sha1": "84df1b3ecbc86c4564a0c29148e49cf57a9a4528",
+    "blob_matches": false
+  },
+  "original_receipt": {
+    "commit": "c7d0e98a413c0e4fc4e462d7aa65d8eeaae42f66",
+    "path": "research/r261/R261_RECEIPT.json",
+    "git_blob_sha1": "47b0d745cd31e8707256f0f7183d0d0212d9442e",
+    "sha256": "dabaa077c1eb70a4f5cf89355e8e262bf555e2ce1f23ac308de457b588885e8e"
+  },
+  "queue_events": {
+    "start_revision": 288,
+    "finish_revision": 289,
+    "start_missing_code_commit": true,
+    "finish_missing_receipt_sha256": true
+  },
+  "reconciled_source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+  "source_commit_basis": "R209-v25-mini100 normalized record used by the report's V25 parent/source review; no candidate source was modified or executed.",
+  "candidate_executed": false,
+  "local_estimator_executions": 0,
+  "actions_runs": 0,
+  "public_accesses": 0,
+  "paid_compute": false,
+  "submission": false,
+  "r260_edits": false,
+  "canonical_edits": false,
+  "integrity_verdict": "Scientific NO_GO rationale is preserved, but the agent-authored receipt did not bind the actual report blob and the finish/start events omitted required provenance fields. This append-only coordinator note records the mismatch; original report, receipt and event history are unchanged."
+}
