@@ -4656,6 +4656,76 @@
         }
       },
       "at": "2026-09-23T15:10:53.455Z"
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T15:18:52Z",
+      "job": "R277",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "preflight-independent-review",
+        "title": "Independently review the hardened preflight PR",
+        "hypothesis_id": "R275-INDEPENDENT-REVIEW-20260923",
+        "priority": 1,
+        "depends_on": [
+          "R275"
+        ],
+        "deliverable": "Independently review PR #35 against its exact head, current main and the R257-R259 failure cases. Check the static analyzer's fail-closed behavior, whether the 10 tests actually protect the promised contract, and whether docs match CLI behavior. Do not edit code, trigger Actions, post a PR review/comment, or merge. Save a concise append-only report/receipt with exact files/lines, test evidence if safely runnable, hashes/commit; finish R277 with PASS, findings, or a precise blocker."
+      },
+      "revision": 348
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T15:18:52Z",
+      "job": "R278",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "residual-structure-diagnostic",
+        "title": "Test for a global residual direction in V25 errors",
+        "hypothesis_id": "V25-CROSS-NETWORK-RESIDUAL-STRUCTURE-20260923",
+        "priority": 1,
+        "depends_on": [
+          "R209",
+          "R273"
+        ],
+        "deliverable": "Follow the specific next-test proposal in R276/R276_RECEIPT.json: determine whether one fixed, network-agnostic output-space residual direction explains material V25 error across the central bulk. Inspect the pinned V25 source and official local runner; if raw prediction/target residual vectors are not retained, use the smallest faithful instrumentation to capture them. Freeze a deterministic network-level development split and one global fit/evaluation rule before computation; no per-network choices. Use only public mini:all-100 development networks and existing/free local compute, same pinned V25/evaluator; no Actions, new paid resources, private/holdout/full data, submission, leaderboard/canonical edits. Run at most one bounded diagnostic; report raw-vector provenance, failures, score/MSE impact only if the corrected estimator can be evaluated honestly, and distinguish exploratory from confirmatory evidence. Preserve all attempts, artifact hashes/commit, and finish R278; if instrumentation or rules make the test invalid, record the exact blocker, not a guessed result."
+      },
+      "revision": 349
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T15:18:52Z",
+      "job": "R279",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "phase2-public-panel-audit",
+        "title": "Find a compliant local path to the official visible-50 panel",
+        "hypothesis_id": "PHASE2-VISIBLE50-REPRODUCTION-PATH-20260923",
+        "priority": 1,
+        "depends_on": [
+          "R271"
+        ],
+        "deliverable": "Using only official AIcrowd/whestbench/Hugging Face first-party docs and public metadata, independently investigate whether the exact online Phase-2 visible-50 MLP panel, stable identities/target fingerprints, and official grader/meter versions can be reproduced locally without a competition submission or sealed/private/full data. Start from R271's NOT_COMPARABLE finding (0/50 label overlap; missing network IDs/fingerprints; evaluator-version mismatch), identify exact endpoints/artifacts/permissions and any remaining gap. Do not download/run benchmark data or submit. Produce one concise cited report with a concrete yes/no pathway, hashes/commit, and finish R279."
+      },
+      "revision": 350
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T15:18:52Z",
+      "job": "R280",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "public-methods-leaderboard-scan",
+        "title": "Refresh visible standings and scan public methods beyond J2W",
+        "hypothesis_id": "PHASE2-PUBLIC-METHOD-EVIDENCE-REFRESH-20260923",
+        "priority": 2,
+        "depends_on": [
+          "R263",
+          "R264"
+        ],
+        "deliverable": "Refresh the official ARC Phase-2 visible leaderboard at a precise UTC/MSK timestamp and inspect primary public artifacts/forum disclosures for the next strongest visible entries and any newly disclosed reproducible method beyond the J2W page already found opaque in R264. Separate directly observed ranks/scores from method evidence and inference; do not attribute any row to our team without verified team/submission identity. If no new method evidence, report no-change. Save a short cited append-only report/receipt with source snapshots/hashes/commit and finish R280. No submission, private/holdout access, paid run, Actions, or leaderboard/canonical edits."
+      },
+      "revision": 351
     }
   ],
   "jobs": [
@@ -7470,10 +7540,68 @@
         "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71"
       },
       "reason": "Evidence-based NO-GO before implementation. Full current history plus post-history R2xx accuracy work leaves no concrete globally applicable V25 accuracy mechanism that is both genuinely distinct and sufficiently specified to justify a bounded mini:all-100 run. R265's full-history screen left randomized multilevel debiasing as the sole abstractly distinct lead; R269 subsequently made the only non-relabeling V25 telescope concrete and closed it pre-execution because it adds raw-MSE variance, lacks a same-quantity correction-decay rationale, and lacks an exact production cost split. R273 adds that V25 error is broad-based, strengthening the requirement for a bulk-moving global mechanism but not supplying a new method. Obvious remaining moves are descendants of already represented calibration/shrinkage, K3/K4, low-rank/basis/tensor, source-age/sampling, arithmetic/reassociation or the closed multilevel lane. No estimator implementation or execution, mini-100 candidate evaluation, Actions, new data, paid/private/holdout/full, tuning/per-network selection, submission, leaderboard or canonical edit occurred. No normalized candidate result was created."
+    },
+    {
+      "id": "R277",
+      "assigned_owner": "preflight-independent-review",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": [],
+      "title": "Independently review the hardened preflight PR",
+      "hypothesis_id": "R275-INDEPENDENT-REVIEW-20260923",
+      "priority": 1,
+      "depends_on": [
+        "R275"
+      ],
+      "deliverable": "Independently review PR #35 against its exact head, current main and the R257-R259 failure cases. Check the static analyzer's fail-closed behavior, whether the 10 tests actually protect the promised contract, and whether docs match CLI behavior. Do not edit code, trigger Actions, post a PR review/comment, or merge. Save a concise append-only report/receipt with exact files/lines, test evidence if safely runnable, hashes/commit; finish R277 with PASS, findings, or a precise blocker."
+    },
+    {
+      "id": "R278",
+      "assigned_owner": "residual-structure-diagnostic",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": [],
+      "title": "Test for a global residual direction in V25 errors",
+      "hypothesis_id": "V25-CROSS-NETWORK-RESIDUAL-STRUCTURE-20260923",
+      "priority": 1,
+      "depends_on": [
+        "R209",
+        "R273"
+      ],
+      "deliverable": "Follow the specific next-test proposal in R276/R276_RECEIPT.json: determine whether one fixed, network-agnostic output-space residual direction explains material V25 error across the central bulk. Inspect the pinned V25 source and official local runner; if raw prediction/target residual vectors are not retained, use the smallest faithful instrumentation to capture them. Freeze a deterministic network-level development split and one global fit/evaluation rule before computation; no per-network choices. Use only public mini:all-100 development networks and existing/free local compute, same pinned V25/evaluator; no Actions, new paid resources, private/holdout/full data, submission, leaderboard/canonical edits. Run at most one bounded diagnostic; report raw-vector provenance, failures, score/MSE impact only if the corrected estimator can be evaluated honestly, and distinguish exploratory from confirmatory evidence. Preserve all attempts, artifact hashes/commit, and finish R278; if instrumentation or rules make the test invalid, record the exact blocker, not a guessed result."
+    },
+    {
+      "id": "R279",
+      "assigned_owner": "phase2-public-panel-audit",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": [],
+      "title": "Find a compliant local path to the official visible-50 panel",
+      "hypothesis_id": "PHASE2-VISIBLE50-REPRODUCTION-PATH-20260923",
+      "priority": 1,
+      "depends_on": [
+        "R271"
+      ],
+      "deliverable": "Using only official AIcrowd/whestbench/Hugging Face first-party docs and public metadata, independently investigate whether the exact online Phase-2 visible-50 MLP panel, stable identities/target fingerprints, and official grader/meter versions can be reproduced locally without a competition submission or sealed/private/full data. Start from R271's NOT_COMPARABLE finding (0/50 label overlap; missing network IDs/fingerprints; evaluator-version mismatch), identify exact endpoints/artifacts/permissions and any remaining gap. Do not download/run benchmark data or submit. Produce one concise cited report with a concrete yes/no pathway, hashes/commit, and finish R279."
+    },
+    {
+      "id": "R280",
+      "assigned_owner": "public-methods-leaderboard-scan",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": [],
+      "title": "Refresh visible standings and scan public methods beyond J2W",
+      "hypothesis_id": "PHASE2-PUBLIC-METHOD-EVIDENCE-REFRESH-20260923",
+      "priority": 2,
+      "depends_on": [
+        "R263",
+        "R264"
+      ],
+      "deliverable": "Refresh the official ARC Phase-2 visible leaderboard at a precise UTC/MSK timestamp and inspect primary public artifacts/forum disclosures for the next strongest visible entries and any newly disclosed reproducible method beyond the J2W page already found opaque in R264. Separate directly observed ranks/scores from method evidence and inference; do not attribute any row to our team without verified team/submission identity. If no new method evidence, report no-change. Save a short cited append-only report/receipt with source snapshots/hashes/commit and finish R280. No submission, private/holdout access, paid run, Actions, or leaderboard/canonical edits."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 347,
+  "revision": 351,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
