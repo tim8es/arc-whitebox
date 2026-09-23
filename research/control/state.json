@@ -4762,6 +4762,14 @@
       "owner": "preflight-independent-review",
       "payload": {},
       "revision": 355
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T15:26:00+00:00",
+      "job": "R280",
+      "owner": "public-methods-leaderboard-scan",
+      "payload": {},
+      "revision": 356
     }
   ],
   "jobs": [
@@ -7637,14 +7645,14 @@
       ],
       "hypothesis_id": "PHASE2-PUBLIC-METHOD-EVIDENCE-REFRESH-20260923",
       "id": "R280",
-      "owner": null,
+      "owner": "public-methods-leaderboard-scan",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Refresh visible standings and scan public methods beyond J2W"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 355,
+  "revision": 356,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
