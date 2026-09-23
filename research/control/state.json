@@ -4624,6 +4624,22 @@
         "command": "full-history novelty/feasibility screen against pinned V25 + R209/R273; implement/test only if one genuinely distinct global candidate survives frozen gates"
       },
       "at": "2026-09-23T15:06:46.499Z"
+    },
+    {
+      "revision": 346,
+      "action": "finish",
+      "job": "R276",
+      "owner": "v25-accuracy-research",
+      "payload": {
+        "run_id": "R276-v25-global-accuracy-screen-20260923",
+        "status": "SCIENTIFIC_REJECT",
+        "reason": "Evidence-based NO-GO before implementation. Full current history plus post-history R2xx accuracy work leaves no concrete globally applicable V25 accuracy mechanism that is both genuinely distinct and sufficiently specified to justify a bounded mini:all-100 run. R265's full-history screen left randomized multilevel debiasing as the sole abstractly distinct lead; R269 subsequently made the only non-relabeling V25 telescope concrete and closed it pre-execution because it adds raw-MSE variance, lacks a same-quantity correction-decay rationale, and lacks an exact production cost split. R273 adds that V25 error is broad-based, strengthening the requirement for a bulk-moving global mechanism but not supplying a new method. Obvious remaining moves are descendants of already represented calibration/shrinkage, K3/K4, low-rank/basis/tensor, source-age/sampling, arithmetic/reassociation or the closed multilevel lane. No estimator implementation or execution, mini-100 candidate evaluation, Actions, new data, paid/private/holdout/full, tuning/per-network selection, submission, leaderboard or canonical edit occurred. No normalized candidate result was created.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/a646038b5aceb5428d6583b07525f394f4820c0d/research/r276/R276_RECEIPT.json",
+          "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71"
+        }
+      },
+      "at": "2026-09-23T15:09:08.253Z"
     }
   ],
   "jobs": [
@@ -7393,13 +7409,22 @@
       "id": "R276",
       "assigned_owner": "v25-accuracy-research",
       "owner": "v25-accuracy-research",
-      "status": "RUNNING",
+      "status": "SCIENTIFIC_REJECT",
       "attempts": [
         {
           "run_id": "R276-v25-global-accuracy-screen-20260923",
           "code_commit": "4749fd4a28ecd4e717b93e76c0efc2794370229b",
           "command": "full-history novelty/feasibility screen against pinned V25 + R209/R273; implement/test only if one genuinely distinct global candidate survives frozen gates",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT",
+          "completion": {
+            "run_id": "R276-v25-global-accuracy-screen-20260923",
+            "status": "SCIENTIFIC_REJECT",
+            "reason": "Evidence-based NO-GO before implementation. Full current history plus post-history R2xx accuracy work leaves no concrete globally applicable V25 accuracy mechanism that is both genuinely distinct and sufficiently specified to justify a bounded mini:all-100 run. R265's full-history screen left randomized multilevel debiasing as the sole abstractly distinct lead; R269 subsequently made the only non-relabeling V25 telescope concrete and closed it pre-execution because it adds raw-MSE variance, lacks a same-quantity correction-decay rationale, and lacks an exact production cost split. R273 adds that V25 error is broad-based, strengthening the requirement for a bulk-moving global mechanism but not supplying a new method. Obvious remaining moves are descendants of already represented calibration/shrinkage, K3/K4, low-rank/basis/tensor, source-age/sampling, arithmetic/reassociation or the closed multilevel lane. No estimator implementation or execution, mini-100 candidate evaluation, Actions, new data, paid/private/holdout/full, tuning/per-network selection, submission, leaderboard or canonical edit occurred. No normalized candidate result was created.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/a646038b5aceb5428d6583b07525f394f4820c0d/research/r276/R276_RECEIPT.json",
+              "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71"
+            }
+          }
         }
       ],
       "title": "Test one distinct global V25 accuracy improvement",
@@ -7409,11 +7434,16 @@
         "R209",
         "R273"
       ],
-      "deliverable": "Use pinned V25 source and immutable R209 public mini:all-100 only as development evidence. Read current AGENTS.md, research/RESEARCH_PROCESS.md, STATUS, live queue and full relevant history; choose one concrete accuracy-improvement hypothesis not equivalent to a closed/rejected experiment, freeze a small bounded protocol, and implement/test it with existing/free local resources. Compare candidate with V25 on the same 100 networks and exact evaluator/meter versions; record every attempt, per-network adjusted score, raw MSE, measured FLOPs, failures and paired uncertainty. Keep one fixed global method/configuration (no per-network selection); do not claim leaderboard rank because R209 is not comparable to the visible 50. No new paid resources, private/holdout/full data, competition submission or leaderboard/canonical edits. If the chosen method fails, preserve the negative result and recommend the next scientifically distinct test. Claim/start/finish R276 and append report, normalized result if valid, and receipt with hashes/commit."
+      "deliverable": "Use pinned V25 source and immutable R209 public mini:all-100 only as development evidence. Read current AGENTS.md, research/RESEARCH_PROCESS.md, STATUS, live queue and full relevant history; choose one concrete accuracy-improvement hypothesis not equivalent to a closed/rejected experiment, freeze a small bounded protocol, and implement/test it with existing/free local resources. Compare candidate with V25 on the same 100 networks and exact evaluator/meter versions; record every attempt, per-network adjusted score, raw MSE, measured FLOPs, failures and paired uncertainty. Keep one fixed global method/configuration (no per-network selection); do not claim leaderboard rank because R209 is not comparable to the visible 50. No new paid resources, private/holdout/full data, competition submission or leaderboard/canonical edits. If the chosen method fails, preserve the negative result and recommend the next scientifically distinct test. Claim/start/finish R276 and append report, normalized result if valid, and receipt with hashes/commit.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/a646038b5aceb5428d6583b07525f394f4820c0d/research/r276/R276_RECEIPT.json",
+        "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71"
+      },
+      "reason": "Evidence-based NO-GO before implementation. Full current history plus post-history R2xx accuracy work leaves no concrete globally applicable V25 accuracy mechanism that is both genuinely distinct and sufficiently specified to justify a bounded mini:all-100 run. R265's full-history screen left randomized multilevel debiasing as the sole abstractly distinct lead; R269 subsequently made the only non-relabeling V25 telescope concrete and closed it pre-execution because it adds raw-MSE variance, lacks a same-quantity correction-decay rationale, and lacks an exact production cost split. R273 adds that V25 error is broad-based, strengthening the requirement for a bulk-moving global mechanism but not supplying a new method. Obvious remaining moves are descendants of already represented calibration/shrinkage, K3/K4, low-rank/basis/tensor, source-age/sampling, arithmetic/reassociation or the closed multilevel lane. No estimator implementation or execution, mini-100 candidate evaluation, Actions, new data, paid/private/holdout/full, tuning/per-network selection, submission, leaderboard or canonical edit occurred. No normalized candidate result was created."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 345,
+  "revision": 346,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
