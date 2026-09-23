@@ -4019,6 +4019,14 @@
         "run_id": "R264-leader-method-forensics-20260923"
       },
       "revision": 299
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T12:04:28.000Z",
+      "job": "R265",
+      "owner": "method-theory-scout",
+      "payload": {},
+      "revision": 300
     }
   ],
   "jobs": [
@@ -6388,9 +6396,9 @@
       ],
       "hypothesis_id": "ACCURACY-METHOD-SCREEN-AFTER-R261-20260923",
       "id": "R265",
-      "owner": null,
+      "owner": "method-theory-scout",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Screen one distinct accuracy-first estimator after R261"
     },
     {
@@ -6441,7 +6449,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 299,
+  "revision": 300,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
