@@ -2229,6 +2229,16 @@
         "status": "INFRA_ERROR"
       },
       "revision": 171
+    },
+    {
+      "action": "repair",
+      "at": "2026-09-23T02:14:18.583813+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "reason": "Attempt 3 is preserved as pre-panel INFRA_ERROR. Repair only source-provenance formatting: append the single terminal LF inherited from the pinned V25 blob and update the exact-transform verifier to recognize attempt-1's two non-arithmetic formatting defects (literal docstring backslash-n and missing terminal LF) before requiring full byte equality with the pinned V25->V25-LF transform. No formula, clamp, panel, thresholds, parent, ranks, source state, or tuning changes."
+      },
+      "revision": 172
     }
   ],
   "jobs": [
@@ -3047,12 +3057,12 @@
       "id": "R223",
       "owner": "method-research",
       "priority": 2,
-      "reason": "Attempt 3 stopped before parent-artifact download, validation, or any mini-100 panel invocation. Free standard compute and pinned distribution gates passed. The exact byte-transform guard verified the pinned V25 blob and attempt-1->current docstring normalization, then found one remaining provenance-only mismatch: pinned parent ends with LF while the candidate file did not. No estimator arithmetic or scientific gate was exercised.",
+      "reason": "Attempt 3 is preserved as pre-panel INFRA_ERROR. Repair only source-provenance formatting: append the single terminal LF inherited from the pinned V25 blob and update the exact-transform verifier to recognize attempt-1's two non-arithmetic formatting defects (literal docstring backslash-n and missing terminal LF) before requiring full byte equality with the pinned V25->V25-LF transform. No formula, clamp, panel, thresholds, parent, ranks, source state, or tuning changes.",
       "receipt": {
         "sha256": "fb269138973ba97fd4228086f30dc2cfda0b4fbb609e7b8175b5a2f7f90645f7",
         "url": "https://github.com/tim8es/arc-whitebox/blob/7e3126035494f85ff43db250a0b433cf75731595/research/r223/R223_ATTEMPT3_INFRA_RECEIPT.json"
       },
-      "status": "INFRA_ERROR",
+      "status": "CLAIMED",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     },
     {
@@ -3614,7 +3624,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 171,
+  "revision": 172,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
