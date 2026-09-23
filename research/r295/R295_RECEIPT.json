@@ -1,0 +1,128 @@
+{
+  "accounting": {
+    "actions_runs": 0,
+    "benchmarks_or_estimator_runs": 0,
+    "data_or_dependency_downloads": 0,
+    "paid_resources": false,
+    "pr_code_edits": 0,
+    "pr_comments_or_reviews": 0,
+    "r291_patch_format_or_content_audit": 0,
+    "result_branch_creations": 0,
+    "submissions": 0
+  },
+  "audited_snapshot": {
+    "pr": 36,
+    "pr_draft": true,
+    "pr_head_branch": "research/r293-v25-capture-workflow-prep",
+    "pr_head_commit": "114e08d49943c309fe09830af0a5e24095af9246",
+    "pr_state": "open",
+    "preflight_git_blob_sha1": "24cc8d120d7d8c3e72f45016bc83f8b391ed92f1",
+    "protocol_git_blob_sha1": "ae42019fed2ae34faaa02d8c8cf423c49750ed0d",
+    "repo_rulesets_observed": [],
+    "result_branch_observed_present": false,
+    "workflow_git_blob_sha1": "a7130bb2248fba3ad04bdd6c55348496aa8cdd9d",
+    "workflow_path": ".github/workflows/r293-v25-residual-capture.yml"
+  },
+  "decision": "SECURITY_NO_GO_BEFORE_ACTIONS",
+  "findings": [
+    {
+      "control": "concurrency/no-retry",
+      "id": "F1",
+      "severity": "BLOCKER",
+      "status": "FAIL",
+      "summary": "Fixed concurrency serializes runs but the workflow has no github.run_attempt==1 gate. GitHub supports manual re-runs with the same GITHUB_SHA/GITHUB_REF, so a failed attempt before persistence can repeat the benchmark."
+    },
+    {
+      "control": "job-level token permissions/action integrity",
+      "id": "F2",
+      "severity": "HARDENING",
+      "status": "GAP",
+      "summary": "Top-level permissions are empty and only persist has contents:write, but actions/checkout@v4 and actions/setup-python@v5 are mutable major tags in the write-token job instead of full commit SHAs."
+    },
+    {
+      "control": "checkout credentials",
+      "id": "F3",
+      "severity": "CONCERN",
+      "status": "GAP",
+      "summary": "Both checkouts set persist-credentials:false, but the final step writes GITHUB_TOKEN into origin URL via git remote set-url until runner teardown."
+    },
+    {
+      "control": "pre-created result branch/tip precondition",
+      "id": "F4",
+      "severity": "BLOCKER",
+      "status": "FAIL",
+      "summary": "Branch existence and tip==dispatch SHA are checked before push but not atomically with the ref update. If the branch is deleted after the final check, ordinary git push can recreate it; ref movement is not protected by expected-old-tip lease semantics. protected=false is also not rechecked immediately before push."
+    },
+    {
+      "control": "workflow_dispatch/main-ref confirmation",
+      "id": "P1",
+      "severity": "PASS",
+      "status": "PASS",
+      "summary": "Only workflow_dispatch is declared; both jobs require refs/heads/main plus the exact confirmation token."
+    },
+    {
+      "control": "job-level permissions",
+      "id": "P2",
+      "severity": "PASS",
+      "status": "PASS",
+      "summary": "permissions:{} at workflow level; preflight contents:read; persist contents:write; unspecified scopes none."
+    },
+    {
+      "control": "output file allowlist",
+      "id": "P3",
+      "severity": "PASS",
+      "status": "PASS",
+      "summary": "Exactly four persisted paths are checked against full worktree and staged filename sets; no broad git add."
+    },
+    {
+      "control": "exact git push target",
+      "id": "P4",
+      "severity": "PASS_WITH_F4_CAVEAT",
+      "status": "PASS",
+      "summary": "RESULT_BRANCH is fixed and the refspec is exactly HEAD:refs/heads/$RESULT_BRANCH with same-repository origin and no force push."
+    },
+    {
+      "control": "forbidden persistence/triggers",
+      "id": "P5",
+      "severity": "PASS",
+      "status": "PASS",
+      "summary": "No upload/download-artifact, LFS, PAT, actions/cache, secrets.*, push/PR/schedule/repository_dispatch/workflow_call trigger. setup-python cache is not requested. GITHUB_TOKEN push does not recursively trigger ordinary push workflows."
+    }
+  ],
+  "id": "R295",
+  "official_sources": [
+    "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow",
+    "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs",
+    "https://docs.github.com/en/actions/reference/workflows-and-actions/contexts",
+    "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency",
+    "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+    "https://docs.github.com/en/actions/tutorials/authenticate-with-github_token",
+    "https://docs.github.com/en/actions/reference/security/secure-use",
+    "https://github.com/actions/checkout/blob/main/action.yml",
+    "https://docs.github.com/en/actions/concepts/security/github_token",
+    "https://docs.github.com/en/rest/repos/rules"
+  ],
+  "owner": "r293-workflow-security-audit-r269",
+  "recheck_if_r294_changes_workflow": [
+    "PR head and workflow git blob",
+    "trigger set and both main-ref/confirmation guards",
+    "concurrency and github.run_attempt no-rerun gate",
+    "workflow/job permissions",
+    "full-SHA pinning of every action in contents:write job",
+    "checkout credential persistence and later token insertion",
+    "fixed result branch and absence of dispatch-controlled branch input",
+    "branch existence/protection/rules/tip gates and atomic expected-old-tip push semantics",
+    "four-file worktree/staged allowlists",
+    "exact remote/refspec and no branch-creation/force behavior",
+    "absence of artifact/LFS/PAT/cache/secrets/additional triggers",
+    "any step added between final branch verification and push"
+  ],
+  "report": {
+    "commit": "cb335431a65249c9266634ef4b22370e3dfe1ebd",
+    "git_blob_sha1": "92e403b2a35059ab34017095e946cbc2794a845f",
+    "path": "research/r295/R295_REPORT.md"
+  },
+  "run_id": "R295-pr36-workflow-security-audit-20260924",
+  "schema": "arc.whitebox.r295.workflow_security_audit.receipt.v1",
+  "status": "COMPLETE"
+}
