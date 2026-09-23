@@ -1,0 +1,103 @@
+{
+  "schema": "arc.whitebox.r289.current-head-final-audit.v1",
+  "job": "R289",
+  "hypothesis_id": "PR35-R285-CURRENT-HEAD-VERIFICATION-20260923",
+  "owner": "preflight-current-head-final-audit",
+  "run_id": "R289-pr35-current-head-final-audit-20260923",
+  "status": "COMPLETE",
+  "verdict": "PASS_FOR_REQUESTED_R277_R283_R286_FALSE_PASS_CORPUS",
+  "control": {
+    "assigned_revision": 400,
+    "assigned_head": "680f8607b97d3c2722693dbafef89edc29f84cfb",
+    "observed_live_revision_first_read": 405,
+    "claim_revision": 403,
+    "start_revision": 404,
+    "start_source_commit": "7a65d58a559dce27f709374a0fbaea6726aa3b43",
+    "note": "R289 was already CLAIMED/RUNNING by the assigned owner when this session read live state; no duplicate claim/start was issued."
+  },
+  "dependencies": {
+    "R285": {
+      "receipt_commit": "7a65d58a559dce27f709374a0fbaea6726aa3b43",
+      "receipt_blob_sha1": "87280693533fb1b377dd420eb286454807b0262d",
+      "receipt_sha256": "e4ddee4ffd75a0b94c4740bca4e39b6fd93b4ae531a8fc9ff9f1535827b0f109"
+    },
+    "R286": {
+      "receipt_commit": "4becb8a04d4ac6796e50e101a4984505680ae762",
+      "receipt_blob_sha1": "0f2061239d658a72ccb5bc356c2149ddb506ed96",
+      "receipt_sha256": "40bc27eb85e0f58e12bb94976661a2892ad399fdae673cc5dce110d0e0337fce"
+    }
+  },
+  "pull_request": {
+    "number": 35,
+    "state": "open",
+    "merged": false,
+    "head_sha": "7a65d58a559dce27f709374a0fbaea6726aa3b43",
+    "base_sha": "b5b988f8ec49a5ec473d59fcbfdfaf8c4350c850",
+    "mergeable": true,
+    "mergeable_state": "clean"
+  },
+  "production_analyzer": {
+    "path": "scripts/arc_workflow_preflight.py",
+    "git_blob_sha1": "2c87bc09992228be915e117a6d3aac8a703f68ab",
+    "sha256": "946d7c79f988f0b739b8213b2423a315875a8c7c10699c21f1aa9b477a3551ac"
+  },
+  "tests": {
+    "path": "tests/test_arc_workflow_preflight.py",
+    "git_blob_sha1": "f1549f1c75f2566e8a347363e2807f87be31ee1f",
+    "sha256": "75020df0dd484a2859c60ab20c65453d686e30ad2662f6ce0f25fc98e06d08bc"
+  },
+  "replay": {
+    "requested_false_pass_inputs": 17,
+    "rejected": 17,
+    "false_passes": 0,
+    "valid_control": "PASS",
+    "matrix_sha256": "2ac39bdcfaec15a7e6a80f12637d95cc75a54e940dda9a6c801b7551bd2f4ca6",
+    "covered": [
+      "R277 F1 env.fetch-depth",
+      "R277 F2 clear",
+      "R277 F2 pop",
+      "R277 F2 helper mutation",
+      "R277 F3 get",
+      "R277 F3 wrong json.loads source",
+      "R283 N1 fake checkout text",
+      "R283 N2 whitespace ancestry",
+      "R283 N3 comment decoy",
+      "R283 N3 string decoy",
+      "R283 N4 conditional rebind",
+      "R286 E1 nested fake checkout metadata",
+      "R286 E2 alias",
+      "R286 E3 dynamic subscript",
+      "R286 E4 delete",
+      "R286 E5 conditional early return/no write",
+      "R283 helper conditional control flow"
+    ]
+  },
+  "artifacts": {
+    "evidence": {
+      "path": "research/r289/R289_REPLAY_EVIDENCE.json",
+      "commit": "6bb60df68457746acbe7367783ec699202264b2e",
+      "git_blob_sha1": "3c1b835c20a2799ecf8db047c96260ad1d70e04c",
+      "sha256": "b9ed04a86b1f0bc892d44b0c76e701d1cdee9bed0c27ca99f64056171fe780bb"
+    },
+    "report": {
+      "path": "research/r289/R289_CURRENT_HEAD_FINAL_AUDIT.md",
+      "commit": "89fbaf6c74bcb1e8679d20f0d6a7aa0e112e6c65",
+      "git_blob_sha1": "ec9a461e58249bb63e29bd1bd6d87b90569a9202",
+      "sha256": "da08cad474fe1172f97cd4066267de976687aa207691158111cae23b35ae7082"
+    }
+  },
+  "conclusion": "All 17 requested inherited R277/R283/R286 false-PASS inputs reject on the exact current PR #35 production analyzer blob. No additional false-PASS was found within the requested corpus. This is a bounded corpus result, not a proof for arbitrary YAML/Python syntax.",
+  "safety": {
+    "pr_modified": false,
+    "tests_modified": false,
+    "docs_modified": false,
+    "workflow_modified": false,
+    "pr_comment_or_review": false,
+    "pr_merged": false,
+    "actions_triggered": false,
+    "workflow_or_generator_executed": false,
+    "fixture_executed": false,
+    "estimator_run": false,
+    "benchmark_or_data_access": false
+  }
+}
