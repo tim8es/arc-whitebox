@@ -4468,6 +4468,18 @@
       "owner": "score-gap-independent-audit",
       "payload": {},
       "at": "2026-09-23T13:21:29.838Z"
+    },
+    {
+      "revision": 334,
+      "action": "start",
+      "job": "R273",
+      "owner": "score-gap-independent-audit",
+      "payload": {
+        "run_id": "R273-v25-error-concentration-20260923",
+        "code_commit": "fa2389f25bbb388550278ddef4a10a7ab5a7b714",
+        "command": "desk-only quantitative audit of immutable research/results/R209-v25-mini100.json against pinned official Phase-2 scoring formula; descriptive development evidence only"
+      },
+      "at": "2026-09-23T13:21:55.082Z"
     }
   ],
   "jobs": [
@@ -7143,7 +7155,14 @@
     },
     {
       "assigned_owner": "score-gap-independent-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R273-v25-error-concentration-20260923",
+          "code_commit": "fa2389f25bbb388550278ddef4a10a7ab5a7b714",
+          "command": "desk-only quantitative audit of immutable research/results/R209-v25-mini100.json against pinned official Phase-2 scoring formula; descriptive development evidence only",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits.",
       "depends_on": [
         "R209",
@@ -7153,12 +7172,12 @@
       "id": "R273",
       "owner": "score-gap-independent-audit",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Measure whether R209 V25 error is broad-based or concentrated"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 333,
+  "revision": 334,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
