@@ -2050,6 +2050,26 @@
       "owner": "global-accuracy-research",
       "payload": {},
       "revision": 158
+    },
+    {
+      "revision": 159,
+      "action": "finish",
+      "job": "R218",
+      "owner": "baseline-diagnosis",
+      "payload": {
+        "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
+        "status": "COMPLETE",
+        "actions_run_id": 35783866968,
+        "actions_job_id": 106935773981,
+        "artifact_id": 10726329197,
+        "artifact_zip_sha256": "c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0",
+        "reason": "Single frozen R217 six-block public first-50 crossover completed in Actions run 35783866968/job 106935773981, run_attempt=1, artifact 10726329197 (ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0). Artifact manifest is complete (84/84, no mismatches); owner receipt contains and was checked against all 300 raw per-MLP observations. Block failures/scores: U1 9/0.1628720702; C0-1 6/0.1115006404; C1-1 7/0.1444175951; C1-2 30/0.5664171172; C0-2 46/0.8459754114; U2 10/0.1966510511. Frozen threshold evidence recomputed: median C0-C1 +0.04774312495s PASS, CPU0 slower 32/50 FAIL versus >=35, failure difference 52-37=15 PASS. Thus 2/3 numerical thresholds pass and the owner receipt labels NO_GO_CPU0_SPECIFIC. Because R236 found fail-open gaps in R234, R218 makes no final causal ruling; independent causal interpretation is deferred to R220 after R237. No rerun/retry/rescue, holdout/private data, submission, or canonical V25 change.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/ddb9a9537822d6002dc1eb6df191f0a1141a9427/research/R218_EXECUTION_RECEIPT.json",
+          "sha256": "74ed1238c93eff16899b42717c56c2cb81aca2b9ccfa16a64c2494a04f9046c0"
+        }
+      },
+      "at": "2026-09-23T01:08:00+00:00"
     }
   ],
   "jobs": [
@@ -2646,7 +2666,20 @@
           "code_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
           "command": "python scripts/r218_run_crossover.py --estimator methods/r218/estimator_v29.py --protocol research/r217/R217_NEXT_RUNTIME_PROTOCOL.json --expected-panel research/r218/R218_EXPECTED_PANEL.json --out r218 --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
           "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "status": "COMPLETE",
+            "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
+            "actions_run_id": 35783866968,
+            "actions_job_id": 106935773981,
+            "artifact_id": 10726329197,
+            "artifact_zip_sha256": "c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0",
+            "reason": "Single frozen R217 six-block public first-50 crossover completed in Actions run 35783866968/job 106935773981, run_attempt=1, artifact 10726329197 (ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0). Artifact manifest is complete (84/84, no mismatches); owner receipt contains and was checked against all 300 raw per-MLP observations. Block failures/scores: U1 9/0.1628720702; C0-1 6/0.1115006404; C1-1 7/0.1444175951; C1-2 30/0.5664171172; C0-2 46/0.8459754114; U2 10/0.1966510511. Frozen threshold evidence recomputed: median C0-C1 +0.04774312495s PASS, CPU0 slower 32/50 FAIL versus >=35, failure difference 52-37=15 PASS. Thus 2/3 numerical thresholds pass and the owner receipt labels NO_GO_CPU0_SPECIFIC. Because R236 found fail-open gaps in R234, R218 makes no final causal ruling; independent causal interpretation is deferred to R220 after R237. No rerun/retry/rescue, holdout/private data, submission, or canonical V25 change.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/ddb9a9537822d6002dc1eb6df191f0a1141a9427/research/R218_EXECUTION_RECEIPT.json",
+              "sha256": "74ed1238c93eff16899b42717c56c2cb81aca2b9ccfa16a64c2494a04f9046c0"
+            }
+          }
         }
       ],
       "deliverable": "Execute exactly the frozen R217 six-block U,C0,C1,C1,C0,U crossover on the same Actions worker, using the same public first-50 MLPs and unchanged V29/L4 source. Before execution verify every frozen gate (worker identity, allowed CPUs 0 and 1, versions, dataset/source hashes, order, FLOPs and thread environment); if any gate fails, stop and record protocol-invalid/INFRA_ERROR. Use only verified free/existing compute; do not incur or request new paid resources. Preserve all 300 per-MLP observations, worker/region and telemetry, failures, hashes and block scores. One six-block run only, no retry/rescue, private holdout or submission. Treat this as an exposed-panel runtime diagnostic, not a fresh independent generalization claim; publish artifact and finish queue with measured GO/NO-GO.",
@@ -2657,8 +2690,13 @@
       "id": "R218",
       "owner": "baseline-diagnosis",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Same-worker CPU-affinity crossover after R217 forensic diagnosis"
+      "status": "COMPLETE",
+      "title": "Same-worker CPU-affinity crossover after R217 forensic diagnosis",
+      "reason": "Single frozen R217 six-block public first-50 crossover completed in Actions run 35783866968/job 106935773981, run_attempt=1, artifact 10726329197 (ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0). Artifact manifest is complete (84/84, no mismatches); owner receipt contains and was checked against all 300 raw per-MLP observations. Block failures/scores: U1 9/0.1628720702; C0-1 6/0.1115006404; C1-1 7/0.1444175951; C1-2 30/0.5664171172; C0-2 46/0.8459754114; U2 10/0.1966510511. Frozen threshold evidence recomputed: median C0-C1 +0.04774312495s PASS, CPU0 slower 32/50 FAIL versus >=35, failure difference 52-37=15 PASS. Thus 2/3 numerical thresholds pass and the owner receipt labels NO_GO_CPU0_SPECIFIC. Because R236 found fail-open gaps in R234, R218 makes no final causal ruling; independent causal interpretation is deferred to R220 after R237. No rerun/retry/rescue, holdout/private data, submission, or canonical V25 change.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/ddb9a9537822d6002dc1eb6df191f0a1141a9427/research/R218_EXECUTION_RECEIPT.json",
+        "sha256": "74ed1238c93eff16899b42717c56c2cb81aca2b9ccfa16a64c2494a04f9046c0"
+      }
     },
     {
       "assigned_owner": "method-research",
@@ -3326,7 +3364,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 158,
+  "revision": 159,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
