@@ -2872,6 +2872,22 @@
         "title": "Find and test a distinct metered V25 FLOPs-reduction method after R247 rejection"
       },
       "at": "2026-09-23 05:29:28+00:00"
+    },
+    {
+      "revision": 221,
+      "action": "transfer",
+      "job": "R248",
+      "owner": "coordinator",
+      "payload": {
+        "from_owner": "post-r247-distinct-method-research",
+        "from_thread_id": "6ab16705-0e2c-83eb-b737-1d9852e1ce00",
+        "to_owner": "method-research-recovery",
+        "to_thread_id": "6aaeba8b-df58-83eb-bb70-f271dba4a9c4",
+        "reason": "Original recipient entered systemError before claim/start. Verified R248 is still QUEUED with attempts=[] and has no branch/protocol/candidate run; transfer the same job to a previously responsive existing ARC session before execution.",
+        "run_exists": false,
+        "started_attempts": 0
+      },
+      "at": "2026-09-23 05:36:12+00:00"
     }
   ],
   "jobs": [
@@ -4613,7 +4629,7 @@
       "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
     },
     {
-      "assigned_owner": "post-r247-distinct-method-research",
+      "assigned_owner": "method-research-recovery",
       "deliverable": "Read current AGENTS/RESEARCH_PROCESS and full history, plus R209 baseline, R246 diagnostic, R247 target-free NO-GO report/receipt, and R245 static-compliance report. Identify exactly one genuinely distinct network-agnostic V25 FLOPs-reduction mechanism that is not R247's V25-NM24-YOUNG-D21-RIGHT-SPARSIFY or a material descendant, not R244 MP-R16, not R223 V25-LF, and not a history-closed family. Preserve the R246 score condition: target >=10% measured FLOPs reduction while raw-MSE degradation <11.111111111111116%, with official adjusted score as objective and no per-network tuning. Freeze candidate source/config, exact public R209 mini-100 panel, target-free falsifier, cost/failure/score gates, and one-shot execution plan before measurements. Mandatory source compliance: no output-affecting math.* in predict; use metered FlopScope (fnp) for sqrt/transcendentals; do not presume nontrivial Python-scalar arithmetic is free—avoid it or stop with eligibility UNKNOWN requiring organizer clarification. Any target-free falsifier failure => durable DEVELOPMENT NO-GO and no estimator/benchmark/Actions. If all gates pass, at most one verified-free standard Actions workflow with validation and exactly one public mini-100 panel, no retry/second run. Scientific GO requires exact row/hash identity, zero failures, mean adjusted <=0.995*R209, >=55/100 improved, paired parent-candidate gain >2 descriptive SE, mean FLOPs <=0.9*R209 and max residual <0.4s. Record all evidence/hashes; no R223/R244 candidate outputs/artifacts, paid compute, private/holdout, submission, leaderboard mutation, canonical V25 edits, or gate relaxation.",
       "depends_on": [
         "R245"
@@ -4628,7 +4644,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 220,
+  "revision": 221,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
