@@ -4967,16 +4967,16 @@
       "revision": 370
     },
     {
-      "revision": 371,
       "action": "start",
+      "at": "2026-09-23T15:48:10.208Z",
       "job": "R282",
       "owner": "r209-artifact-recovery",
       "payload": {
-        "run_id": "R282-r209-artifact-recovery-20260923",
         "code_commit": "c2ff82968849c4672a8d58db490452e4327a09c7",
-        "command": "inspect only existing public GitHub Actions artifacts/logs and committed R209/R223 material for retained V25 prediction/target/residual tensors; no Actions/reruns/dataset downloads"
+        "command": "inspect only existing public GitHub Actions artifacts/logs and committed R209/R223 material for retained V25 prediction/target/residual tensors; no Actions/reruns/dataset downloads",
+        "run_id": "R282-r209-artifact-recovery-20260923"
       },
-      "at": "2026-09-23T15:48:10.208Z"
+      "revision": 371
     },
     {
       "action": "reassign",
@@ -4991,6 +4991,14 @@
         "to_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b"
       },
       "revision": 372
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T15:26:00+00:00",
+      "job": "R284",
+      "owner": "residual-correction-rules-audit-responsive",
+      "payload": {},
+      "revision": 373
     }
   ],
   "jobs": [
@@ -7967,9 +7975,9 @@
       "assigned_owner": "r209-artifact-recovery",
       "attempts": [
         {
-          "run_id": "R282-r209-artifact-recovery-20260923",
           "code_commit": "c2ff82968849c4672a8d58db490452e4327a09c7",
           "command": "inspect only existing public GitHub Actions artifacts/logs and committed R209/R223 material for retained V25 prediction/target/residual tensors; no Actions/reruns/dataset downloads",
+          "run_id": "R282-r209-artifact-recovery-20260923",
           "status": "RUNNING"
         }
       ],
@@ -8012,14 +8020,14 @@
       "depends_on": [],
       "hypothesis_id": "V25-RESIDUAL-CORRECTION-RULES-20260923",
       "id": "R284",
-      "owner": null,
+      "owner": "residual-correction-rules-audit-responsive",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Check competition-rule validity of a global residual correction"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 372,
+  "revision": 373,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
