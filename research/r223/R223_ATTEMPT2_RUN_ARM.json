@@ -1,0 +1,7 @@
+{
+  "idempotency_key": "ARC-R223-V25-LOCAL-FEED-LAMBDA-ATTEMPT2-20260923",
+  "attempt": 2,
+  "execute_once": true,
+  "panel": "public-v2-phase2-mini-100",
+  "scope": "one repaired same-panel candidate development run only"
+}
