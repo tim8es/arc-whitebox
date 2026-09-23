@@ -1,0 +1,125 @@
+{
+  "checked_at_utc": "2026-09-23T12:06:51Z",
+  "control": {
+    "assigned_revision": 291,
+    "claim_commit": "f70cd8e08269b29c6bd1c2c7a4e2c5396f1a2009",
+    "claim_revision": 298,
+    "code_commit": "f70cd8e08269b29c6bd1c2c7a4e2c5396f1a2009",
+    "start_commit": "461e80eb2151fc01a23ad7febd2c5282e4087197",
+    "start_revision": 299
+  },
+  "current_leader": {
+    "adjusted_score_display": "0.0000000021",
+    "compute_utilization_display": "0.1306572576",
+    "entries_display": 312,
+    "failed_mlps_display": "0.0000000000",
+    "final_layer_mse_display": "0.0000000164",
+    "last_submission_display": "Sat, 19 Sep 2026 00:05",
+    "method_status": "UNKNOWN_NOT_PUBLICLY_EVIDENCED",
+    "participant": "J2W",
+    "public_artifact_download_observed": false,
+    "public_method_description_observed": false,
+    "public_source_link_observed": false,
+    "rank_change_indicator": "No change",
+    "rank_display": 1,
+    "submission_id": 331539
+  },
+  "delta_from_r241": {
+    "entries": {
+      "delta": 2,
+      "r241": 310,
+      "r264": 312
+    },
+    "interpretation": "Entries count is telemetry only; it does not identify code or prove a change in the displayed best method.",
+    "method_evidence_delta": "NONE",
+    "same_adjusted_score_display": true,
+    "same_compute_utilization_display": true,
+    "same_failed_mlps": true,
+    "same_final_layer_mse_display": true,
+    "same_last_submission_display": true,
+    "same_participant": true,
+    "same_submission_id": true
+  },
+  "forbidden_and_not_performed": [
+    "estimator run",
+    "benchmark run",
+    "GitHub Actions run",
+    "competitor code download",
+    "competitor code execution",
+    "private/holdout/full data access",
+    "paid compute",
+    "competition submission",
+    "leaderboard mutation",
+    "canonical result edit"
+  ],
+  "hypothesis_id": "PUBLIC-LEADER-METHOD-DELTA-20260923",
+  "id": "R264",
+  "inference_firewall": {
+    "excluded": [
+      "algorithm inference from score/utilization telemetry",
+      "504aldo speculation about leader mechanisms",
+      "method attribution from Entries-count change"
+    ],
+    "leader_derived_hypotheses_admitted": 0,
+    "observed_j2w_implementation_facts": 0
+  },
+  "owner": "leader-method-forensics",
+  "primary_public_sources": [
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331539",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/J2W"
+  ],
+  "prior_evidence": {
+    "r230_receipt_evidence_commit": "12d5e6260b99ba822ad86644b74932844f43d903",
+    "r230_receipt_git_blob_sha1": "6e4a2a64152fa0ea9efbe2011e4e03accfa2d96d",
+    "r230_report_commit": "e87c71cab3449d99b09907b128d7ff698dcd1410",
+    "r230_report_git_blob_sha1": "98a33dddf9cc56db090a7b66fcc7577949727e96",
+    "r230_report_sha256": "19db5374f6906d15792934dd2f88c601d8d2ef1866e213a220c2610bb30e73a2",
+    "r241_receipt_git_blob_sha1": "4c208c9f1d85b3528632723739c7e8a56c456c36",
+    "r241_report_commit": "f7a2d3f2c855d639250e459e7b8b80c2f9b13d71",
+    "r241_report_git_blob_sha1": "73feb8fa6316feea935837a28ccdc694e1e0301a",
+    "r241_report_sha256": "62bc2866abca422fdad2eff0b414b4ab89c32bc0534e5098e9b943c24c34baee"
+  },
+  "report": {
+    "commit": "06c50276a305b025bf66c71d720ad6d4e1847124",
+    "git_blob_sha1": "9056729f2f481ca15b7b7c10f18f1945dd360ec3",
+    "path": "research/r264/R264_LEADER_METHOD_FORENSICS.md",
+    "sha256": "750e3dd101e8b1553733f963e959cbfb479fd441588c043288359be3ac86fcbd"
+  },
+  "run_id": "R264-leader-method-forensics-20260923",
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "submission_page": {
+    "anonymous_render": "generic Loading/share shell",
+    "method_or_source_text_exposed": false,
+    "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331539"
+  },
+  "team_page": {
+    "method_text_exposed": false,
+    "organizer": "joe_wanza",
+    "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/J2W",
+    "visible_members": 1
+  },
+  "v25_baseline": {
+    "comparison_result": "NOT_COMPUTABLE_METHOD_DELTA: J2W code/method is not publicly evidenced; telemetry is insufficient for mechanism attribution.",
+    "normalized_record": "research/results/R209-v25-mini100.json",
+    "normalized_record_git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "source_git_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "source_line_ranges": [
+      "1-15",
+      "17-34",
+      "54-67",
+      "71-82",
+      "101-110",
+      "269-272",
+      "294-299",
+      "314-322",
+      "403-410",
+      "425-436",
+      "676-697"
+    ],
+    "source_path": "methods/public_504aldo/estimator_v25.py"
+  },
+  "verdict": "NO_CHANGE_PUBLIC_METHOD_EVIDENCE"
+}
