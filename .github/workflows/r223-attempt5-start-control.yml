@@ -1,0 +1,52 @@
+name: R223 attempt 5 start central control
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_ATTEMPT5_START_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  start:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R223 control"
+          git config user.email "arc-control@users.noreply.github.com"
+      - name: Publish attempt-5 start
+        run: |
+          cat > /tmp/r223_attempt5_start.json <<'JSON'
+          {
+            "run_id": "R223-v25-local-feed-attempt5-20260923",
+            "code_commit": "df03e4d85d70686e381172c9066ddb90016b45d4",
+            "command": "whest run --estimator methods/r223_estimator_v25_local_feed.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 100 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json"
+          }
+          JSON
+          python scripts/arc_control.py start R223 --owner method-research --payload /tmp/r223_attempt5_start.json --publish
+      - name: Verify remote attempt history
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          s=json.load(open("/tmp/control.json"))
+          j=next(x for x in s["jobs"] if x["id"]=="R223")
+          assert j["status"]=="RUNNING"
+          assert len(j["attempts"])==5
+          assert [a["status"] for a in j["attempts"][:4]]==["INFRA_ERROR"]*4
+          assert j["attempts"][4]["run_id"]=="R223-v25-local-feed-attempt5-20260923"
+          assert j["attempts"][4]["status"]=="RUNNING"
+          print(json.dumps({"revision":s["revision"],"attempts":j["attempts"]},indent=2,sort_keys=True))
+          PY
