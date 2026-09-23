@@ -1932,13 +1932,24 @@
       "payload": {
         "reason": "R236 independent audit verdict DEFECT. R234 preserves the frozen R217 block order, 300-row design, metric definitions and GO thresholds exactly, and correctly withholds final GO/NO-GO without external Actions evidence. However it is not fail-closed on provenance/integrity: (D1) matching run_attempt=2 is accepted although R217/R218 allow one attempt/no retry; (D2) artifact-dir is not cryptographically bound to the inspected Actions artifact/run and external schema omits artifact ID/digest plus checkout-head/workflow/executor blob proof; (D3) expected panel is not pinned to frozen blob; (D4) empty/incomplete sha256.json passes manifest gate; (D5) prelaunch blob and exact preflight gate-name set are not enforced and version proof partly trusts owner booleans; (D6) dataset path is omitted from per-block verification; (D7) mandatory /proc/taskset/worker-region telemetry is not fully required. Offline synthetic predicates confirmed D1/D3/D4/D5 without R218 data. R218 artifact was not inspected/interpreted, no Actions triggered, no R218/private/holdout/science/submission/canonical mutation. R220 remains authoritative and must close these gaps before causal verdict.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/6313780c7975b866267612ae1e2798c5a2f3d54b/research/r236/R236_RECEIPT.json",
-          "sha256": "70fafae6934ea144ada3220bbfe7e2820b810627a755b0ad113202851c9cb378"
+          "sha256": "70fafae6934ea144ada3220bbfe7e2820b810627a755b0ad113202851c9cb378",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/6313780c7975b866267612ae1e2798c5a2f3d54b/research/r236/R236_RECEIPT.json"
         },
         "run_id": "R236-r234-verifier-independent-audit-20260923",
         "status": "DEFECT"
       },
       "revision": 149
+    },
+    {
+      "action": "reconcile",
+      "at": "2026-09-23T00:39:39Z",
+      "job": "R236",
+      "owner": "coordinator",
+      "payload": {
+        "reason": "R236 source audit is a completed task with substantive review verdict DEFECT. Normalize queue lifecycle enums to COMPLETE while preserving the original finish event, all defect findings, and receipt; explicit verdict retained as job.verdict and completion.verdict. Receipt SHA256 independently verified.",
+        "verified_receipt_sha256": "70fafae6934ea144ada3220bbfe7e2820b810627a755b0ad113202851c9cb378"
+      },
+      "revision": 150
     }
   ],
   "jobs": [
@@ -3132,17 +3143,18 @@
         {
           "code_commit": "9cec083b09780edfebcf9e22478c1e159b6b0567",
           "command": "independent read-only source audit of research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json against frozen R217 protocol and pinned R218 workflow/executor/schema; optional synthetic offline fail-closed check only; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical/R218",
-          "run_id": "R236-r234-verifier-independent-audit-20260923",
-          "status": "DEFECT",
           "completion": {
             "reason": "R236 independent audit verdict DEFECT. R234 preserves the frozen R217 block order, 300-row design, metric definitions and GO thresholds exactly, and correctly withholds final GO/NO-GO without external Actions evidence. However it is not fail-closed on provenance/integrity: (D1) matching run_attempt=2 is accepted although R217/R218 allow one attempt/no retry; (D2) artifact-dir is not cryptographically bound to the inspected Actions artifact/run and external schema omits artifact ID/digest plus checkout-head/workflow/executor blob proof; (D3) expected panel is not pinned to frozen blob; (D4) empty/incomplete sha256.json passes manifest gate; (D5) prelaunch blob and exact preflight gate-name set are not enforced and version proof partly trusts owner booleans; (D6) dataset path is omitted from per-block verification; (D7) mandatory /proc/taskset/worker-region telemetry is not fully required. Offline synthetic predicates confirmed D1/D3/D4/D5 without R218 data. R218 artifact was not inspected/interpreted, no Actions triggered, no R218/private/holdout/science/submission/canonical mutation. R220 remains authoritative and must close these gaps before causal verdict.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/6313780c7975b866267612ae1e2798c5a2f3d54b/research/r236/R236_RECEIPT.json",
-              "sha256": "70fafae6934ea144ada3220bbfe7e2820b810627a755b0ad113202851c9cb378"
+              "sha256": "70fafae6934ea144ada3220bbfe7e2820b810627a755b0ad113202851c9cb378",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/6313780c7975b866267612ae1e2798c5a2f3d54b/research/r236/R236_RECEIPT.json"
             },
             "run_id": "R236-r234-verifier-independent-audit-20260923",
-            "status": "DEFECT"
-          }
+            "status": "COMPLETE",
+            "verdict": "DEFECT"
+          },
+          "run_id": "R236-r234-verifier-independent-audit-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independently audit research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json against the frozen R217 protocol and pinned R218 workflow/executor/schema. Check for fail-open paths, omitted/misapplied provenance gates, metric/threshold drift, and false claims about what the R218 artifact proves. A small synthetic/offline check is allowed only to test verifier fail-closed behavior; do not inspect or interpret the still-running R218 artifact, query private/holdout data, alter R218, or trigger Actions. Produce a source-linked review report and durable receipt, then finish R236 with PASS, concrete defects, or INCONCLUSIVE. R220 remains the authoritative audit after R218 completes. No estimator/scientific run, paid compute, submission, or canonical edits.",
@@ -3153,17 +3165,18 @@
       "id": "R236",
       "owner": "independent-verifier-audit",
       "priority": 1,
+      "reason": "R236 independent audit verdict DEFECT. R234 preserves the frozen R217 block order, 300-row design, metric definitions and GO thresholds exactly, and correctly withholds final GO/NO-GO without external Actions evidence. However it is not fail-closed on provenance/integrity: (D1) matching run_attempt=2 is accepted although R217/R218 allow one attempt/no retry; (D2) artifact-dir is not cryptographically bound to the inspected Actions artifact/run and external schema omits artifact ID/digest plus checkout-head/workflow/executor blob proof; (D3) expected panel is not pinned to frozen blob; (D4) empty/incomplete sha256.json passes manifest gate; (D5) prelaunch blob and exact preflight gate-name set are not enforced and version proof partly trusts owner booleans; (D6) dataset path is omitted from per-block verification; (D7) mandatory /proc/taskset/worker-region telemetry is not fully required. Offline synthetic predicates confirmed D1/D3/D4/D5 without R218 data. R218 artifact was not inspected/interpreted, no Actions triggered, no R218/private/holdout/science/submission/canonical mutation. R220 remains authoritative and must close these gaps before causal verdict.",
+      "receipt": {
+        "sha256": "70fafae6934ea144ada3220bbfe7e2820b810627a755b0ad113202851c9cb378",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/6313780c7975b866267612ae1e2798c5a2f3d54b/research/r236/R236_RECEIPT.json"
+      },
       "status": "COMPLETE",
       "title": "Independently audit the R234 postflight verifier before R218 completes",
-      "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/6313780c7975b866267612ae1e2798c5a2f3d54b/research/r236/R236_RECEIPT.json",
-        "sha256": "70fafae6934ea144ada3220bbfe7e2820b810627a755b0ad113202851c9cb378"
-      },
-      "reason": "R236 independent audit verdict DEFECT. R234 preserves the frozen R217 block order, 300-row design, metric definitions and GO thresholds exactly, and correctly withholds final GO/NO-GO without external Actions evidence. However it is not fail-closed on provenance/integrity: (D1) matching run_attempt=2 is accepted although R217/R218 allow one attempt/no retry; (D2) artifact-dir is not cryptographically bound to the inspected Actions artifact/run and external schema omits artifact ID/digest plus checkout-head/workflow/executor blob proof; (D3) expected panel is not pinned to frozen blob; (D4) empty/incomplete sha256.json passes manifest gate; (D5) prelaunch blob and exact preflight gate-name set are not enforced and version proof partly trusts owner booleans; (D6) dataset path is omitted from per-block verification; (D7) mandatory /proc/taskset/worker-region telemetry is not fully required. Offline synthetic predicates confirmed D1/D3/D4/D5 without R218 data. R218 artifact was not inspected/interpreted, no Actions triggered, no R218/private/holdout/science/submission/canonical mutation. R220 remains authoritative and must close these gaps before causal verdict."
+      "verdict": "DEFECT"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 149,
+  "revision": 150,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
