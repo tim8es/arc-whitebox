@@ -1,0 +1,89 @@
+name: R232 DRRE exact-small falsifier
+
+on:
+  push:
+    branches:
+      - research/r232-v25-dual-resolution-richardson-20260923
+    paths:
+      - research/r232/R232_EXECUTE_TRIGGER.txt
+
+jobs:
+  falsifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      UPSTREAM_COMMIT: 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+      EXPECTED_V25_BLOB: 195373a110215256b759d7c172ba8c923c62e5cc
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned project stack
+        run: python -m pip install -e .
+
+      - name: Verify frozen R232 files
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "SCRIPT_BLOB=$(git hash-object scripts/r232_drre_exact_small.py)"
+          echo "PROTOCOL_BLOB=$(git hash-object research/r232/R232_PROTOCOL.md)"
+          echo "COST_BLOB=$(git hash-object research/r232/R232_COST_PROOF.json)"
+          echo "NOVELTY_BLOB=$(git hash-object research/r232/R232_NOVELTY_AUDIT.json)"
+
+      - name: Fetch and verify pinned V25
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL             "https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/${UPSTREAM_COMMIT}/estimators/estimator_v25.py"             -o r232-estimator-v25.py
+          actual="$(git hash-object r232-estimator-v25.py)"
+          printf '%s\n' "$actual" > r232-v25-git-blob.txt
+          echo "EXPECTED=$EXPECTED_V25_BLOB"
+          echo "ACTUAL=$actual"
+          test "$actual" = "$EXPECTED_V25_BLOB"
+          sha256sum r232-estimator-v25.py > r232-v25-sha256.txt
+
+      - name: Runtime versions
+        run: |
+          python - <<'PY' > r232-runtime.txt
+          import platform
+          from importlib.metadata import version
+          import numpy, flopscope
+          print("python=" + platform.python_version())
+          print("numpy=" + numpy.__version__)
+          print("flopscope=" + flopscope.__version__)
+          print("whestbench=" + version("whestbench"))
+          PY
+          cat r232-runtime.txt
+
+      - name: Run exactly one frozen R232 falsifier
+        shell: bash
+        run: |
+          set +e
+          python scripts/r232_drre_exact_small.py             --v25 r232-estimator-v25.py             --out r232-drre-falsifier.json             2>&1 | tee r232-drre-falsifier.stdout.log
+          code=${PIPESTATUS[0]}
+          printf '%s\n' "$code" > r232-drre-falsifier.exit-code.txt
+          exit "$code"
+
+      - name: Upload immutable R232 falsifier evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r232-drre-exact-small
+          path: |
+            r232-drre-falsifier.stdout.log
+            r232-drre-falsifier.exit-code.txt
+            r232-drre-falsifier.json
+            r232-v25-git-blob.txt
+            r232-v25-sha256.txt
+            r232-runtime.txt
+            research/r232/R232_PROTOCOL.md
+            research/r232/R232_COST_PROOF.json
+            research/r232/R232_NOVELTY_AUDIT.json
+            scripts/r232_drre_exact_small.py
+          if-no-files-found: warn
+          retention-days: 90
