@@ -1,0 +1,302 @@
+name: R252 one-shot CFSP4 parent-first research
+
+on:
+  push:
+    branches:
+      - research/control-v2
+    paths:
+      - research/r252/R252_EXECUTE_TRIGGER.txt
+
+permissions:
+  contents: read
+
+jobs:
+  r252:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+      UPSTREAM_COMMIT: 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+      EXPECTED_V25_BLOB: 195373a110215256b759d7c172ba8c923c62e5cc
+      EXPECTED_V25_SHA256: c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.16"
+
+      - name: Verify frozen repository inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/r252/R252_PROTOCOL.md)" = "c04cc77676429584453668ded8a81f14f326a2f4"
+          test "$(git hash-object research/r252/R252_NOVELTY_AUDIT.json)" = "636f47bb3cf733a2872f8367b86c5dba0c8b2e6a"
+          test "$(git hash-object research/r252/R252_FIXTURE_MANIFEST.json)" = "93149ac04496b34497703b8c755ff1774c899e3b"
+          test "$(git hash-object scripts/r252_fixture.py)" = "d6df8fc84fe12901af523464aa325b8289806b64"
+          test "$(git hash-object scripts/r252_cfsp4.py)" = "9638239959232b0a7f06192addd250d682c19165"
+          test "$(git hash-object scripts/r252_public_gate.py)" = "a28c43ea4b65d0f7634f9e73e5b0b3d6e0ee78f6"
+          test "$(git hash-object research/results/R209-v25-mini100.json)" = "0183d0570f7c9965e00e8553ffc003c313865232"
+          test "$(sha256sum research/results/R209-v25-mini100.json | awk '{print $1}')" = "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+          mkdir -p r252_evidence r252_inputs r252_wheels
+
+      - name: Download and verify pinned Phase-2 core wheels
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(python -c 'import platform; print(platform.python_version())')" = "3.11.16"
+          python -m pip download --disable-pip-version-check --no-input --only-binary=:all: --no-deps \
+            "numpy==2.4.6" "flopscope==0.12.1" "whestbench==0.16.1" -d r252_wheels
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          expected={
+            "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93",
+            "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582",
+            "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e",
+          }
+          found={}
+          for p in sorted(Path("r252_wheels").glob("*.whl")):
+              found[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          if set(found.values()) != expected or len(found) != 3:
+              raise SystemExit(f"wheel hash set mismatch: {found}")
+          Path("r252_evidence/core-wheel-sha256.json").write_text(json.dumps(found,indent=2,sort_keys=True)+"\n")
+          PY
+          python -m pip install --disable-pip-version-check --no-input r252_wheels/*.whl
+
+      - name: Verify pinned runtime versions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY' | tee r252_evidence/runtime.txt
+          import os, platform
+          from importlib.metadata import version
+          import numpy, flopscope
+          assert platform.python_version()=="3.11.16", platform.python_version()
+          assert numpy.__version__=="2.4.6", numpy.__version__
+          assert flopscope.__version__.startswith("0.12.1"), flopscope.__version__
+          assert version("whestbench")=="0.16.1", version("whestbench")
+          print("python="+platform.python_version())
+          print("numpy="+numpy.__version__)
+          print("flopscope="+flopscope.__version__)
+          print("whestbench="+version("whestbench"))
+          for k in ["GITHUB_RUN_ID","GITHUB_RUN_ATTEMPT","GITHUB_JOB","GITHUB_SHA","RUNNER_NAME","RUNNER_OS","RUNNER_ARCH"]:
+              print(k+"="+os.environ.get(k,""))
+          PY
+          python -m pip freeze > r252_evidence/pip-freeze.txt
+
+      - name: Fetch and verify pinned V25 parent
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://raw.githubusercontent.com/504aldo/whest-p2-cumulant-k3/$UPSTREAM_COMMIT/estimators/estimator_v25.py" -o r252_inputs/estimator_v25.py
+          test "$(git hash-object r252_inputs/estimator_v25.py)" = "$EXPECTED_V25_BLOB"
+          test "$(sha256sum r252_inputs/estimator_v25.py | awk '{print $1}')" = "$EXPECTED_V25_SHA256"
+          {
+            echo "git_blob=$(git hash-object r252_inputs/estimator_v25.py)"
+            echo "sha256=$(sha256sum r252_inputs/estimator_v25.py | awk '{print $1}')"
+          } > r252_evidence/v25-identity.txt
+
+      - name: Reconstruct and retain exact frozen fixture bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/r252_fixture.py \
+            --out-dir r252_evidence \
+            --json-out r252_evidence/fixture-replay.json \
+            > r252_evidence/fixture.stdout.log
+
+      - name: Run parent-first target-free R252 falsifier exactly once
+        id: falsifier
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python scripts/r252_cfsp4.py \
+            --v25 r252_inputs/estimator_v25.py \
+            --candidate-out r252-candidate-v25.py \
+            --out r252_evidence/target-free-result.json \
+            2>&1 | tee r252_evidence/target-free.stdout.log
+          code=${PIPESTATUS[0]}
+          printf '%s\n' "$code" > r252_evidence/target-free.exit-code.txt
+          exit "$code"
+
+      - name: Read frozen target-free decision
+        id: gate
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          p=Path("r252_evidence/target-free-result.json")
+          if not p.exists():
+              print("decision=MISSING")
+              print("go=false")
+              print("parent_inconclusive=false")
+          else:
+              d=json.loads(p.read_text())
+              decision=d.get("decision","MISSING")
+              print("decision="+decision)
+              print("go="+("true" if decision=="R252_TARGET_FREE_GO" else "false"))
+              print("parent_inconclusive="+("true" if decision=="R252_PARENT_INCONCLUSIVE" else "false"))
+          PY
+
+      - name: Install pinned dataset reader only after target-free GO
+        if: steps.gate.outputs.go == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check --no-input "datasets==4.1.1"
+          python - <<'PY'
+          import numpy, datasets
+          from importlib.metadata import version
+          assert numpy.__version__=="2.4.6"
+          assert datasets.__version__=="4.1.1"
+          assert version("flopscope")=="0.12.1"
+          assert version("whestbench")=="0.16.1"
+          PY
+
+      - name: Run exactly one public R209 mini-100 candidate panel
+        id: mini
+        if: steps.gate.outputs.go == 'true'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          whest run \
+            --estimator r252-candidate-v25.py \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --n-mlps 100 \
+            --runner local \
+            --flop-budget 2199023255552 \
+            --wall-time-limit 120 \
+            --residual-wall-time-limit 0.4 \
+            --max-threads 1 \
+            --format json \
+            > r252_evidence/mini100-report.json 2> r252_evidence/mini100.stderr
+          code=$?
+          printf '%s\n' "$code" > r252_evidence/mini100.exit-code.txt
+          exit "$code"
+
+      - name: Verify exact public row hashes and frozen public gates
+        id: public_gate
+        if: steps.gate.outputs.go == 'true'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python scripts/r252_public_gate.py \
+            --candidate-report r252_evidence/mini100-report.json \
+            --parent research/results/R209-v25-mini100.json \
+            --out r252_evidence/public-gate.json \
+            2>&1 | tee r252_evidence/public-gate.stdout.log
+          code=${PIPESTATUS[0]}
+          printf '%s\n' "$code" > r252_evidence/public-gate.exit-code.txt
+          exit "$code"
+
+      - name: Record one-shot terminal disposition
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          def load(path):
+              p=Path(path)
+              try: return json.loads(p.read_text())
+              except Exception: return None
+          def exit_code(path):
+              p=Path(path)
+              try: return int(p.read_text().strip())
+              except Exception: return None
+          tf=load("r252_evidence/target-free-result.json")
+          pg=load("r252_evidence/public-gate.json")
+          decision=(tf or {}).get("decision")
+          if decision=="R252_PARENT_INCONCLUSIVE":
+              status="INCONCLUSIVE"; verdict="PARENT_GATE_FAILED"
+          elif decision=="R252_TARGET_FREE_NO_GO":
+              status="SCIENTIFIC_REJECT"; verdict="TARGET_FREE_NO_GO"
+          elif decision=="R252_TARGET_FREE_GO":
+              if pg is None:
+                  status="INFRA_ERROR"; verdict="PUBLIC_STAGE_DID_NOT_PRODUCE_GATE_RECORD"
+              elif pg.get("public_gate_pass"):
+                  status="COMPLETE"; verdict="DEVELOPMENT_GO"
+              else:
+                  status="SCIENTIFIC_REJECT"; verdict="PUBLIC_DEVELOPMENT_NO_GO"
+          else:
+              status="INFRA_ERROR"; verdict="TARGET_FREE_RECORD_MISSING_OR_UNKNOWN"
+          out={
+            "schema":"arc.whitebox.r252.actions_disposition.v1",
+            "job_id":"R252",
+            "github_run_id":__import__("os").environ.get("GITHUB_RUN_ID"),
+            "github_run_attempt":__import__("os").environ.get("GITHUB_RUN_ATTEMPT"),
+            "github_sha":__import__("os").environ.get("GITHUB_SHA"),
+            "target_free_decision":decision,
+            "target_free_exit":exit_code("r252_evidence/target-free.exit-code.txt"),
+            "mini100_exit":exit_code("r252_evidence/mini100.exit-code.txt"),
+            "public_gate_exit":exit_code("r252_evidence/public-gate.exit-code.txt"),
+            "status":status,
+            "verdict":verdict,
+            "candidate_constructed":bool((tf or {}).get("candidate_constructed")),
+            "public_authorized":bool((tf or {}).get("public_authorized")),
+            "public_gate_pass":None if pg is None else bool(pg.get("public_gate_pass")),
+            "retry_authorized":False,
+            "actions_runs_authorized":1,
+          }
+          Path("r252_evidence/actions-disposition.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          print(json.dumps(out,sort_keys=True))
+          PY
+
+      - name: Hash immutable R252 evidence
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          paths=[]
+          root=Path("r252_evidence")
+          for p in sorted(root.rglob("*")):
+              if p.is_file() and p.name!="sha256.json":
+                  paths.append(p)
+          for p in [Path("r252-candidate-v25.py"),Path("r252_inputs/estimator_v25.py"),
+                    Path("research/r252/R252_PROTOCOL.md"),Path("research/r252/R252_NOVELTY_AUDIT.json"),
+                    Path("research/r252/R252_FIXTURE_MANIFEST.json"),Path("scripts/r252_fixture.py"),
+                    Path("scripts/r252_cfsp4.py"),Path("scripts/r252_public_gate.py"),
+                    Path("research/r252/R252_EXECUTE_TRIGGER.txt")]:
+              if p.is_file(): paths.append(p)
+          out={}
+          for p in paths:
+              out[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/"sha256.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+
+      - name: Upload immutable R252 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r252-cfsp4-one-shot
+          path: |
+            r252_evidence/
+            r252_inputs/estimator_v25.py
+            r252-candidate-v25.py
+            research/r252/R252_PROTOCOL.md
+            research/r252/R252_NOVELTY_AUDIT.json
+            research/r252/R252_FIXTURE_MANIFEST.json
+            research/r252/R252_EXECUTE_TRIGGER.txt
+            scripts/r252_fixture.py
+            scripts/r252_cfsp4.py
+            scripts/r252_public_gate.py
+            .github/workflows/r252-cfsp4-one-shot.yml
+          if-no-files-found: warn
+          retention-days: 90
