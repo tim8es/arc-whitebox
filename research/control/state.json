@@ -3105,6 +3105,26 @@
         }
       },
       "at": "2026-09-23T06:47:00+00:00"
+    },
+    {
+      "revision": 238,
+      "action": "enqueue",
+      "job": "R252",
+      "owner": "coordinator",
+      "payload": {
+        "title": "Test one new global-accuracy method in one pinned Actions run",
+        "hypothesis_id": "GLOBAL-ACCURACY-ONE-SHOT-ACTIONS-POST-R251",
+        "priority": 1,
+        "deliverable": "Test exactly one genuinely new global-accuracy estimator hypothesis after full-history deduplication. Exclude R251 GFNP, R232 DRRE descendants, R238 RSRF descendants, R247/R248/R250, R244 MP-R16, R223 V25-LF, and every closed/rejected family; no per-network tuning or invented leader method. Treat R251 only as an infrastructure terminal record, not scientific evidence. Freeze protocol, source/math, one exact deterministic 1024x16 target-free fixture with bytes/hashes/seeds/diagnostics, candidate gates, source-compliance and cost bounds before execution. Authorize exactly one standard ubuntu-24.04 GitHub-hosted Actions run, no retry, pinned Python 3.11.16 / NumPy 2.4.6 / FlopScope 0.12.1 / WhestBench 0.16.1 with verified package hashes. In that single run execute unchanged pinned V25 parent first; parent fail => INCONCLUSIVE and no candidate. Only after parent PASS construct/test the one frozen target-free candidate against known truth. Any target-free/source/cost gate fail => durable NO-GO and skip public data. Only if all pass, same workflow may proceed once to exact R209 public mini-100; gates exact row/hash identity, 0 failures, adjusted <=0.95*R209, >=55/100 improved, paired gain >2 descriptive SE, mean FLOPs <=R209, max residual <0.4s. No official-rank claim; no paid/private/holdout, R223/R244 outputs/artifacts, submission, leaderboard mutation, canonical V25 edit or gate relaxation. Save workflow/run/artifact hashes, fixture/replay/report/receipt, finish queue and regenerate STATUS.md from latest head.",
+        "depends_on": [
+          "R231",
+          "R239",
+          "R245",
+          "R249"
+        ],
+        "assigned_owner": "actions-accuracy-method-research"
+      },
+      "at": "2026-09-23T07:00:00+00:00"
     }
   ],
   "jobs": [
@@ -4994,10 +5014,27 @@
         "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json",
         "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb"
       }
+    },
+    {
+      "id": "R252",
+      "title": "Test one new global-accuracy method in one pinned Actions run",
+      "hypothesis_id": "GLOBAL-ACCURACY-ONE-SHOT-ACTIONS-POST-R251",
+      "priority": 1,
+      "deliverable": "Test exactly one genuinely new global-accuracy estimator hypothesis after full-history deduplication. Exclude R251 GFNP, R232 DRRE descendants, R238 RSRF descendants, R247/R248/R250, R244 MP-R16, R223 V25-LF, and every closed/rejected family; no per-network tuning or invented leader method. Treat R251 only as an infrastructure terminal record, not scientific evidence. Freeze protocol, source/math, one exact deterministic 1024x16 target-free fixture with bytes/hashes/seeds/diagnostics, candidate gates, source-compliance and cost bounds before execution. Authorize exactly one standard ubuntu-24.04 GitHub-hosted Actions run, no retry, pinned Python 3.11.16 / NumPy 2.4.6 / FlopScope 0.12.1 / WhestBench 0.16.1 with verified package hashes. In that single run execute unchanged pinned V25 parent first; parent fail => INCONCLUSIVE and no candidate. Only after parent PASS construct/test the one frozen target-free candidate against known truth. Any target-free/source/cost gate fail => durable NO-GO and skip public data. Only if all pass, same workflow may proceed once to exact R209 public mini-100; gates exact row/hash identity, 0 failures, adjusted <=0.95*R209, >=55/100 improved, paired gain >2 descriptive SE, mean FLOPs <=R209, max residual <0.4s. No official-rank claim; no paid/private/holdout, R223/R244 outputs/artifacts, submission, leaderboard mutation, canonical V25 edit or gate relaxation. Save workflow/run/artifact hashes, fixture/replay/report/receipt, finish queue and regenerate STATUS.md from latest head.",
+      "depends_on": [
+        "R231",
+        "R239",
+        "R245",
+        "R249"
+      ],
+      "assigned_owner": "actions-accuracy-method-research",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 237,
+  "revision": 238,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
