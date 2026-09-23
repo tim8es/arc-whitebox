@@ -5082,20 +5082,20 @@
       "revision": 379
     },
     {
-      "revision": 380,
       "action": "finish",
+      "at": "2026-09-23T16:31:12.591Z",
       "job": "R281",
       "owner": "workflow-preflight-integration-fix",
       "payload": {
-        "run_id": "R281-pr35-preflight-failclosed-fix-20260923",
-        "status": "COMPLETE",
         "reason": "Closed all three R277 HIGH false-PASS classes on existing PR #35. Tests were present first at 65634dfedfa3d46be785d2b07ba3997b292be16e; production fix is 886cebdface628cc49165f145c8afcd0476ff4ff; malformed escaped-newline mutation fixtures discovered during offline checking were corrected append-only at 579c2d3c38c1489b8d9287d4fed63486002624a6. Byte-exact production blob f9b01ba259cd57bd1692fbfc904585b05f561000 passed an offline standard-library contract harness covering 10 prior compatibility contracts plus 6 R281 regressions (16/16). PR #35 body was updated and remains open/unmerged. Final evidence commit 05733f3bfa6730124c4601a918bcc6d401719e09 adds only append-only R281 report/receipt; final main diff is ahead 6/behind 0 with 7 expected preflight/evidence files. No Actions, workflows, fixtures, estimators/science, paid/private/competition data, merge, or historical receipt rewrites occurred.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/05733f3bfa6730124c4601a918bcc6d401719e09/research/r281/R281_RECEIPT.json",
-          "sha256": "6251bc55894ffec016f6e185c4017c757d6bd80b33cc7746673ee68fe7f35de6"
-        }
+          "sha256": "6251bc55894ffec016f6e185c4017c757d6bd80b33cc7746673ee68fe7f35de6",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/05733f3bfa6730124c4601a918bcc6d401719e09/research/r281/R281_RECEIPT.json"
+        },
+        "run_id": "R281-pr35-preflight-failclosed-fix-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T16:31:12.591Z"
+      "revision": 380
     },
     {
       "action": "enqueue",
@@ -5104,14 +5104,14 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "preflight-r283-remediation",
-        "title": "Close the remaining R283 false-PASS classes in PR #35",
-        "hypothesis_id": "R283-PREFLIGHT-FAIL-CLOSED-REMEDIATION-20260923",
-        "priority": 1,
+        "deliverable": "Continue existing PR #35 from current head 05733f3bfa6730124c4601a918bcc6d401719e09. Read R281/R283 receipts and reproduce all four R283 additional counterexamples against the post-R281 production blob before editing: YAML run-block/comment text masquerading as checkout metadata; equivalent ancestry-command whitespace bypass; comments/string literals manufacturing bracket-key evidence around unsupported real accesses; skipped if/del/conditional-return/helper control flow or no-manifest-write paths. Add focused regression tests first; minimally harden or fail closed wherever static proof is unsupported. Keep standard-library/offline scope, run focused + compatibility tests against byte-exact code, update PR #35 but do not merge or trigger Actions. Append R285 report/receipt with hashes/commit and finish. If any counterexample is not reproducible on current head, record that instead of changing unrelated logic.",
         "depends_on": [
           "R281",
           "R283"
         ],
-        "deliverable": "Continue existing PR #35 from current head 05733f3bfa6730124c4601a918bcc6d401719e09. Read R281/R283 receipts and reproduce all four R283 additional counterexamples against the post-R281 production blob before editing: YAML run-block/comment text masquerading as checkout metadata; equivalent ancestry-command whitespace bypass; comments/string literals manufacturing bracket-key evidence around unsupported real accesses; skipped if/del/conditional-return/helper control flow or no-manifest-write paths. Add focused regression tests first; minimally harden or fail closed wherever static proof is unsupported. Keep standard-library/offline scope, run focused + compatibility tests against byte-exact code, update PR #35 but do not merge or trigger Actions. Append R285 report/receipt with hashes/commit and finish. If any counterexample is not reproducible on current head, record that instead of changing unrelated logic."
+        "hypothesis_id": "R283-PREFLIGHT-FAIL-CLOSED-REMEDIATION-20260923",
+        "priority": 1,
+        "title": "Close the remaining R283 false-PASS classes in PR #35"
       },
       "revision": 381
     },
@@ -5122,14 +5122,14 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "r281-independent-current-head-audit",
-        "title": "Verify R283 adversarial cases against the current PR #35 head",
-        "hypothesis_id": "R281-CURRENT-HEAD-INDEPENDENT-VERIFY-20260923",
-        "priority": 2,
+        "deliverable": "Read R281 and R283 receipts, then independently verify the exact four R283 additional fail-open counterexamples against pinned current PR #35 head 05733f3bfa6730124c4601a918bcc6d401719e09 (not the older e054 analyzer blob). Run only small offline synthetic tests; do not edit code/tests, post PR comment/review, Actions, merge, or touch benchmark data. Report which cases remain/reject/pass, exact analyzer blob and input hashes, any additional case, and a concise PASS/FAIL matrix in an append-only report/receipt. Finish R286.",
         "depends_on": [
           "R281",
           "R283"
         ],
-        "deliverable": "Read R281 and R283 receipts, then independently verify the exact four R283 additional fail-open counterexamples against pinned current PR #35 head 05733f3bfa6730124c4601a918bcc6d401719e09 (not the older e054 analyzer blob). Run only small offline synthetic tests; do not edit code/tests, post PR comment/review, Actions, merge, or touch benchmark data. Report which cases remain/reject/pass, exact analyzer blob and input hashes, any additional case, and a concise PASS/FAIL matrix in an append-only report/receipt. Finish R286."
+        "hypothesis_id": "R281-CURRENT-HEAD-INDEPENDENT-VERIFY-20260923",
+        "priority": 2,
+        "title": "Verify R283 adversarial cases against the current PR #35 head"
       },
       "revision": 382
     },
@@ -5140,13 +5140,13 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "phase2-free-runner-audit",
-        "title": "Check a genuinely zero-cost environment for V25 residual capture",
-        "hypothesis_id": "V25-RESIDUAL-CAPTURE-FREE-RUNNER-20260923",
-        "priority": 1,
+        "deliverable": "Using official GitHub documentation and the repository's exact existing workflows/runs, determine whether a one-time public-development V25 capture can run on an existing standard public GitHub-hosted runner with zero incremental charge and the exact pinned Python/WhestBench/flopscope stack plus public mini dataset. Verify runner type, repository visibility, billing/free-usage condition, dataset fetch path and 8GB/timeout constraints; distinguish documented facts from unknown account quota/billing. Do not trigger Actions, install/download large data, spend, or modify workflows. If zero-cost cannot be proven for the actual target account/runner, conclude WAITING_INPUT; otherwise deliver a precise preflight recipe for coordinator approval. Cite first-party sources; append report/receipt and finish R287.",
         "depends_on": [
           "R282"
         ],
-        "deliverable": "Using official GitHub documentation and the repository's exact existing workflows/runs, determine whether a one-time public-development V25 capture can run on an existing standard public GitHub-hosted runner with zero incremental charge and the exact pinned Python/WhestBench/flopscope stack plus public mini dataset. Verify runner type, repository visibility, billing/free-usage condition, dataset fetch path and 8GB/timeout constraints; distinguish documented facts from unknown account quota/billing. Do not trigger Actions, install/download large data, spend, or modify workflows. If zero-cost cannot be proven for the actual target account/runner, conclude WAITING_INPUT; otherwise deliver a precise preflight recipe for coordinator approval. Cite first-party sources; append report/receipt and finish R287."
+        "hypothesis_id": "V25-RESIDUAL-CAPTURE-FREE-RUNNER-20260923",
+        "priority": 1,
+        "title": "Check a genuinely zero-cost environment for V25 residual capture"
       },
       "revision": 383
     },
@@ -5157,16 +5157,24 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "residual-capture-protocol",
-        "title": "Specify a minimal auditable residual-capture artifact for V25",
-        "hypothesis_id": "V25-RESIDUAL-CAPTURE-CONTRACT-20260923",
-        "priority": 2,
+        "deliverable": "Use R278's already-frozen network split/global fit rule, R282's exact missing-data finding, and R284's allowed-with-conditions ruling. Specify only the minimal runner-side capture contract for one future public mini:all-100 V25 run: exact per-network prediction/target/residual dtype/shape, identity and target-hash metadata, evaluator/source versions, failure-zeroing semantics, artifact integrity, storage-size bound, and how capture leaves official score/FLOP accounting unchanged. Do not change code/workflows, run/download data, trigger Actions, spend money, or alter the frozen split/fit rule. Cite exact WhestBench source seam and save a concise append-only protocol/report+receipt with hashes/commit; finish R288.",
         "depends_on": [
           "R282",
           "R284"
         ],
-        "deliverable": "Use R278's already-frozen network split/global fit rule, R282's exact missing-data finding, and R284's allowed-with-conditions ruling. Specify only the minimal runner-side capture contract for one future public mini:all-100 V25 run: exact per-network prediction/target/residual dtype/shape, identity and target-hash metadata, evaluator/source versions, failure-zeroing semantics, artifact integrity, storage-size bound, and how capture leaves official score/FLOP accounting unchanged. Do not change code/workflows, run/download data, trigger Actions, spend money, or alter the frozen split/fit rule. Cite exact WhestBench source seam and save a concise append-only protocol/report+receipt with hashes/commit; finish R288."
+        "hypothesis_id": "V25-RESIDUAL-CAPTURE-CONTRACT-20260923",
+        "priority": 2,
+        "title": "Specify a minimal auditable residual-capture artifact for V25"
       },
       "revision": 384
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T16:40:14.013Z",
+      "job": "R286",
+      "owner": "r281-independent-current-head-audit",
+      "payload": {},
+      "revision": 385
     }
   ],
   "jobs": [
@@ -8131,17 +8139,17 @@
         {
           "code_commit": "e054a32d7d3bdac98408392b09f467e174c2565b",
           "command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
-          "run_id": "R281-pr35-preflight-failclosed-fix-20260923",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R281-pr35-preflight-failclosed-fix-20260923",
-            "status": "COMPLETE",
             "reason": "Closed all three R277 HIGH false-PASS classes on existing PR #35. Tests were present first at 65634dfedfa3d46be785d2b07ba3997b292be16e; production fix is 886cebdface628cc49165f145c8afcd0476ff4ff; malformed escaped-newline mutation fixtures discovered during offline checking were corrected append-only at 579c2d3c38c1489b8d9287d4fed63486002624a6. Byte-exact production blob f9b01ba259cd57bd1692fbfc904585b05f561000 passed an offline standard-library contract harness covering 10 prior compatibility contracts plus 6 R281 regressions (16/16). PR #35 body was updated and remains open/unmerged. Final evidence commit 05733f3bfa6730124c4601a918bcc6d401719e09 adds only append-only R281 report/receipt; final main diff is ahead 6/behind 0 with 7 expected preflight/evidence files. No Actions, workflows, fixtures, estimators/science, paid/private/competition data, merge, or historical receipt rewrites occurred.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/05733f3bfa6730124c4601a918bcc6d401719e09/research/r281/R281_RECEIPT.json",
-              "sha256": "6251bc55894ffec016f6e185c4017c757d6bd80b33cc7746673ee68fe7f35de6"
-            }
-          }
+              "sha256": "6251bc55894ffec016f6e185c4017c757d6bd80b33cc7746673ee68fe7f35de6",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/05733f3bfa6730124c4601a918bcc6d401719e09/research/r281/R281_RECEIPT.json"
+            },
+            "run_id": "R281-pr35-preflight-failclosed-fix-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R281-pr35-preflight-failclosed-fix-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Continue PR #35 from its current clean integration branch/head. Read R277 report+receipt and reproduce each finding before changing code: (1) accept fetch-depth:0 only under the `with:` of an actual actions/checkout step, not env/other fields; (2) fail closed or correctly recompute schema after destructive/unknown manifest mutations such as clear/pop/helper mutation; (3) tie json.loads binding to the exact manifest path and fail closed on unsupported accesses such as d.get('ghost') rather than silently missing them. Add minimal focused regressions, keep stdlib-only, run focused offline tests and compatibility tests, inspect exact PR diff. Update existing PR #35, do not merge or trigger Actions. Append R281 report/receipt with hashes/commit and finish R281; preserve all attempts and report if a case cannot be safely fixed.",
@@ -8152,13 +8160,13 @@
       "id": "R281",
       "owner": "workflow-preflight-integration-fix",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Fix the three R277 false-PASS findings in PR #35",
+      "reason": "Closed all three R277 HIGH false-PASS classes on existing PR #35. Tests were present first at 65634dfedfa3d46be785d2b07ba3997b292be16e; production fix is 886cebdface628cc49165f145c8afcd0476ff4ff; malformed escaped-newline mutation fixtures discovered during offline checking were corrected append-only at 579c2d3c38c1489b8d9287d4fed63486002624a6. Byte-exact production blob f9b01ba259cd57bd1692fbfc904585b05f561000 passed an offline standard-library contract harness covering 10 prior compatibility contracts plus 6 R281 regressions (16/16). PR #35 body was updated and remains open/unmerged. Final evidence commit 05733f3bfa6730124c4601a918bcc6d401719e09 adds only append-only R281 report/receipt; final main diff is ahead 6/behind 0 with 7 expected preflight/evidence files. No Actions, workflows, fixtures, estimators/science, paid/private/competition data, merge, or historical receipt rewrites occurred.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/05733f3bfa6730124c4601a918bcc6d401719e09/research/r281/R281_RECEIPT.json",
-        "sha256": "6251bc55894ffec016f6e185c4017c757d6bd80b33cc7746673ee68fe7f35de6"
+        "sha256": "6251bc55894ffec016f6e185c4017c757d6bd80b33cc7746673ee68fe7f35de6",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/05733f3bfa6730124c4601a918bcc6d401719e09/research/r281/R281_RECEIPT.json"
       },
-      "reason": "Closed all three R277 HIGH false-PASS classes on existing PR #35. Tests were present first at 65634dfedfa3d46be785d2b07ba3997b292be16e; production fix is 886cebdface628cc49165f145c8afcd0476ff4ff; malformed escaped-newline mutation fixtures discovered during offline checking were corrected append-only at 579c2d3c38c1489b8d9287d4fed63486002624a6. Byte-exact production blob f9b01ba259cd57bd1692fbfc904585b05f561000 passed an offline standard-library contract harness covering 10 prior compatibility contracts plus 6 R281 regressions (16/16). PR #35 body was updated and remains open/unmerged. Final evidence commit 05733f3bfa6730124c4601a918bcc6d401719e09 adds only append-only R281 report/receipt; final main diff is ahead 6/behind 0 with 7 expected preflight/evidence files. No Actions, workflows, fixtures, estimators/science, paid/private/competition data, merge, or historical receipt rewrites occurred."
+      "status": "COMPLETE",
+      "title": "Fix the three R277 false-PASS findings in PR #35"
     },
     {
       "assigned_owner": "r209-artifact-recovery",
@@ -8265,67 +8273,67 @@
       "title": "Check competition-rule validity of a global residual correction"
     },
     {
-      "id": "R285",
       "assigned_owner": "preflight-r283-remediation",
-      "owner": null,
-      "status": "QUEUED",
       "attempts": [],
-      "title": "Close the remaining R283 false-PASS classes in PR #35",
+      "deliverable": "Continue existing PR #35 from current head 05733f3bfa6730124c4601a918bcc6d401719e09. Read R281/R283 receipts and reproduce all four R283 additional counterexamples against the post-R281 production blob before editing: YAML run-block/comment text masquerading as checkout metadata; equivalent ancestry-command whitespace bypass; comments/string literals manufacturing bracket-key evidence around unsupported real accesses; skipped if/del/conditional-return/helper control flow or no-manifest-write paths. Add focused regression tests first; minimally harden or fail closed wherever static proof is unsupported. Keep standard-library/offline scope, run focused + compatibility tests against byte-exact code, update PR #35 but do not merge or trigger Actions. Append R285 report/receipt with hashes/commit and finish. If any counterexample is not reproducible on current head, record that instead of changing unrelated logic.",
+      "depends_on": [
+        "R281",
+        "R283"
+      ],
       "hypothesis_id": "R283-PREFLIGHT-FAIL-CLOSED-REMEDIATION-20260923",
+      "id": "R285",
+      "owner": null,
       "priority": 1,
-      "depends_on": [
-        "R281",
-        "R283"
-      ],
-      "deliverable": "Continue existing PR #35 from current head 05733f3bfa6730124c4601a918bcc6d401719e09. Read R281/R283 receipts and reproduce all four R283 additional counterexamples against the post-R281 production blob before editing: YAML run-block/comment text masquerading as checkout metadata; equivalent ancestry-command whitespace bypass; comments/string literals manufacturing bracket-key evidence around unsupported real accesses; skipped if/del/conditional-return/helper control flow or no-manifest-write paths. Add focused regression tests first; minimally harden or fail closed wherever static proof is unsupported. Keep standard-library/offline scope, run focused + compatibility tests against byte-exact code, update PR #35 but do not merge or trigger Actions. Append R285 report/receipt with hashes/commit and finish. If any counterexample is not reproducible on current head, record that instead of changing unrelated logic."
+      "status": "QUEUED",
+      "title": "Close the remaining R283 false-PASS classes in PR #35"
     },
     {
-      "id": "R286",
       "assigned_owner": "r281-independent-current-head-audit",
-      "owner": null,
-      "status": "QUEUED",
       "attempts": [],
-      "title": "Verify R283 adversarial cases against the current PR #35 head",
-      "hypothesis_id": "R281-CURRENT-HEAD-INDEPENDENT-VERIFY-20260923",
-      "priority": 2,
+      "deliverable": "Read R281 and R283 receipts, then independently verify the exact four R283 additional fail-open counterexamples against pinned current PR #35 head 05733f3bfa6730124c4601a918bcc6d401719e09 (not the older e054 analyzer blob). Run only small offline synthetic tests; do not edit code/tests, post PR comment/review, Actions, merge, or touch benchmark data. Report which cases remain/reject/pass, exact analyzer blob and input hashes, any additional case, and a concise PASS/FAIL matrix in an append-only report/receipt. Finish R286.",
       "depends_on": [
         "R281",
         "R283"
       ],
-      "deliverable": "Read R281 and R283 receipts, then independently verify the exact four R283 additional fail-open counterexamples against pinned current PR #35 head 05733f3bfa6730124c4601a918bcc6d401719e09 (not the older e054 analyzer blob). Run only small offline synthetic tests; do not edit code/tests, post PR comment/review, Actions, merge, or touch benchmark data. Report which cases remain/reject/pass, exact analyzer blob and input hashes, any additional case, and a concise PASS/FAIL matrix in an append-only report/receipt. Finish R286."
+      "hypothesis_id": "R281-CURRENT-HEAD-INDEPENDENT-VERIFY-20260923",
+      "id": "R286",
+      "owner": "r281-independent-current-head-audit",
+      "priority": 2,
+      "status": "CLAIMED",
+      "title": "Verify R283 adversarial cases against the current PR #35 head"
     },
     {
-      "id": "R287",
       "assigned_owner": "phase2-free-runner-audit",
-      "owner": null,
-      "status": "QUEUED",
       "attempts": [],
-      "title": "Check a genuinely zero-cost environment for V25 residual capture",
-      "hypothesis_id": "V25-RESIDUAL-CAPTURE-FREE-RUNNER-20260923",
-      "priority": 1,
+      "deliverable": "Using official GitHub documentation and the repository's exact existing workflows/runs, determine whether a one-time public-development V25 capture can run on an existing standard public GitHub-hosted runner with zero incremental charge and the exact pinned Python/WhestBench/flopscope stack plus public mini dataset. Verify runner type, repository visibility, billing/free-usage condition, dataset fetch path and 8GB/timeout constraints; distinguish documented facts from unknown account quota/billing. Do not trigger Actions, install/download large data, spend, or modify workflows. If zero-cost cannot be proven for the actual target account/runner, conclude WAITING_INPUT; otherwise deliver a precise preflight recipe for coordinator approval. Cite first-party sources; append report/receipt and finish R287.",
       "depends_on": [
         "R282"
       ],
-      "deliverable": "Using official GitHub documentation and the repository's exact existing workflows/runs, determine whether a one-time public-development V25 capture can run on an existing standard public GitHub-hosted runner with zero incremental charge and the exact pinned Python/WhestBench/flopscope stack plus public mini dataset. Verify runner type, repository visibility, billing/free-usage condition, dataset fetch path and 8GB/timeout constraints; distinguish documented facts from unknown account quota/billing. Do not trigger Actions, install/download large data, spend, or modify workflows. If zero-cost cannot be proven for the actual target account/runner, conclude WAITING_INPUT; otherwise deliver a precise preflight recipe for coordinator approval. Cite first-party sources; append report/receipt and finish R287."
+      "hypothesis_id": "V25-RESIDUAL-CAPTURE-FREE-RUNNER-20260923",
+      "id": "R287",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Check a genuinely zero-cost environment for V25 residual capture"
     },
     {
-      "id": "R288",
       "assigned_owner": "residual-capture-protocol",
-      "owner": null,
-      "status": "QUEUED",
       "attempts": [],
-      "title": "Specify a minimal auditable residual-capture artifact for V25",
-      "hypothesis_id": "V25-RESIDUAL-CAPTURE-CONTRACT-20260923",
-      "priority": 2,
+      "deliverable": "Use R278's already-frozen network split/global fit rule, R282's exact missing-data finding, and R284's allowed-with-conditions ruling. Specify only the minimal runner-side capture contract for one future public mini:all-100 V25 run: exact per-network prediction/target/residual dtype/shape, identity and target-hash metadata, evaluator/source versions, failure-zeroing semantics, artifact integrity, storage-size bound, and how capture leaves official score/FLOP accounting unchanged. Do not change code/workflows, run/download data, trigger Actions, spend money, or alter the frozen split/fit rule. Cite exact WhestBench source seam and save a concise append-only protocol/report+receipt with hashes/commit; finish R288.",
       "depends_on": [
         "R282",
         "R284"
       ],
-      "deliverable": "Use R278's already-frozen network split/global fit rule, R282's exact missing-data finding, and R284's allowed-with-conditions ruling. Specify only the minimal runner-side capture contract for one future public mini:all-100 V25 run: exact per-network prediction/target/residual dtype/shape, identity and target-hash metadata, evaluator/source versions, failure-zeroing semantics, artifact integrity, storage-size bound, and how capture leaves official score/FLOP accounting unchanged. Do not change code/workflows, run/download data, trigger Actions, spend money, or alter the frozen split/fit rule. Cite exact WhestBench source seam and save a concise append-only protocol/report+receipt with hashes/commit; finish R288."
+      "hypothesis_id": "V25-RESIDUAL-CAPTURE-CONTRACT-20260923",
+      "id": "R288",
+      "owner": null,
+      "priority": 2,
+      "status": "QUEUED",
+      "title": "Specify a minimal auditable residual-capture artifact for V25"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 384,
+  "revision": 385,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
