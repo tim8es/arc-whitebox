@@ -1,0 +1,153 @@
+{
+  "schema": "arc.whitebox.r286.current-head-independent-audit.v1",
+  "job": "R286",
+  "hypothesis_id": "R281-CURRENT-HEAD-INDEPENDENT-VERIFY-20260923",
+  "owner": "r281-independent-current-head-audit",
+  "run_id": "R286-pr35-current-head-adversarial-verify-20260923",
+  "status": "COMPLETE",
+  "verdict": "FAIL_CLOSED_CONTRACT_NOT_MET_CURRENT_HEAD",
+  "control": {
+    "assigned_revision": 384,
+    "assigned_head": "406d1574b4483e7c0c939949c6f46a9e7940d7e4",
+    "claim_revision": 385,
+    "claim_commit": "86b9e7561d33df0ead731b72590711530fa4ed08",
+    "start_revision": 389,
+    "start_commit": "838c983363e5e6fb2baabb0b0b8820d24685afbc",
+    "source_commit": "05733f3bfa6730124c4601a918bcc6d401719e09"
+  },
+  "dependencies": {
+    "R281": {
+      "receipt_commit": "05733f3bfa6730124c4601a918bcc6d401719e09",
+      "receipt_blob_sha1": "6e80b2b6f8b2e11a1eba7197403faa87396af8fc",
+      "receipt_sha256": "6251bc55894ffec016f6e185c4017c757d6bd80b33cc7746673ee68fe7f35de6"
+    },
+    "R283": {
+      "receipt_commit": "55ee4876459d338de136fa4be253e0c089c69697",
+      "receipt_blob_sha1": "be9a62eb0e3077407089db30969202ec548184ad",
+      "receipt_sha256": "fb1002ca8e67d4d1cc791443a70559a4037ae0bba260d3121050746839952180"
+    }
+  },
+  "pull_request": {
+    "number": 35,
+    "head_sha": "05733f3bfa6730124c4601a918bcc6d401719e09",
+    "base_sha": "b5b988f8ec49a5ec473d59fcbfdfaf8c4350c850",
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "mergeable_state": "clean"
+  },
+  "production_analyzer": {
+    "path": "scripts/arc_workflow_preflight.py",
+    "git_blob_sha1": "f9b01ba259cd57bd1692fbfc904585b05f561000",
+    "sha256": "1f73f557d943dc6b4fb4d42b2a5935f1d627082b292d8465f5018794dc8a38ce"
+  },
+  "reproduction_matrix": [
+    {
+      "id": "R283_N1_fake_checkout_text",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "CLOSED_EXACT_INPUT",
+      "workflow_sha256": "980a5dc6ed9321f1ae3b39356f2554810d5f43723570203e8472c086b56fbecb"
+    },
+    {
+      "id": "R283_N2_double_space_guard",
+      "expected": "REJECT",
+      "observed": "PASS",
+      "status": "FALSE_PASS_REMAINS",
+      "workflow_sha256": "c7ee2a6b32dde13575ed5ad981b3b964cb5095a0ef0b6d1dd1399dfff20ad894"
+    },
+    {
+      "id": "R283_N3_comment_decoy_get",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "CLOSED_EXACT_INPUT",
+      "workflow_sha256": "551178ee909700810030efc0d86fcb4b1f620d66b4af94e68346e2e3cefdcf95"
+    },
+    {
+      "id": "R283_N4_conditional_rebind",
+      "expected": "REJECT",
+      "observed": "PASS",
+      "status": "FALSE_PASS_REMAINS",
+      "generator_sha256": "a724e374d274bd63af24de33517ecb6d3be7b3f114448b8e74829092581cb3ec"
+    }
+  ],
+  "narrow_edge_cases": [
+    {
+      "id": "E1_fake_checkout_nested_with_in_run_block",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "workflow_sha256": "06abad97cc2bc1eff008a531cc04761132f1a53b3a37058ac79a763f7d57b684"
+    },
+    {
+      "id": "E2_manifest_alias_get",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "workflow_sha256": "fe9bb81bc0de121217de04a5ec027a411c9cc3398e06153b38d3b16cd98f5a33"
+    },
+    {
+      "id": "E3_dynamic_subscript",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "workflow_sha256": "07679b6f54c79ca2372ed19c9869163e632a22dbd900b08c9f883697aeddde13"
+    },
+    {
+      "id": "E4_generator_del",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "generator_sha256": "846cec7aac0131da4ba8282cee7357a8de22d1f2dfdd8c8a32b3335b29a97742"
+    },
+    {
+      "id": "E5_generator_conditional_early_return",
+      "observed": "PASS",
+      "expected": "REJECT",
+      "generator_sha256": "3950bfa081ebd63efdea54d4ac2f77413b91f550f26069f0df9634837c11b5d1"
+    }
+  ],
+  "controls": {
+    "valid_contract": "PASS",
+    "env_fetch_depth": "REJECT",
+    "direct_clear": "REJECT",
+    "direct_get": "REJECT"
+  },
+  "artifacts": {
+    "reproduction_inputs": {
+      "path": "research/r286/R286_REPRODUCTION_INPUTS.json",
+      "commit": "8a5e2af57c86f97f5bda37b807974ba5586571a5",
+      "git_blob_sha1": "4abcc3af49bb937337aabafaabeac6aeb9e49d54",
+      "sha256": "081550bac3585f3230a8d7f7bab4f058c254203dbfe89cd324710119e2f6e9ab"
+    },
+    "report": {
+      "path": "research/r286/R286_CURRENT_HEAD_INDEPENDENT_AUDIT.md",
+      "commit": "bf9dae7aa490c50082a92cd127cfd1a02fb5d75b",
+      "git_blob_sha1": "54d0f7c889fdc3d71d6531b8623a4f2b8649bc41",
+      "sha256": "82694656e417d10c4ff8e4494fe4c1ae8982adce839dd303908b29941f9c3872"
+    }
+  },
+  "source_ranges": {
+    "generator_dataflow": [
+      "scripts/arc_workflow_preflight.py:99-158",
+      "scripts/arc_workflow_preflight.py:202-226"
+    ],
+    "workflow_checkout_and_ancestry": [
+      "scripts/arc_workflow_preflight.py:243-365"
+    ],
+    "manifest_workflow_dataflow": [
+      "scripts/arc_workflow_preflight.py:397-475"
+    ],
+    "orchestration": [
+      "scripts/arc_workflow_preflight.py:484-510"
+    ]
+  },
+  "safety": {
+    "pr_modified": false,
+    "tests_modified": false,
+    "pr_review_or_comment_posted": false,
+    "pr_merged": false,
+    "actions_triggered": false,
+    "workflow_executed": false,
+    "fixture_executed": false,
+    "estimator_run": false,
+    "benchmark_run": false,
+    "benchmark_data_accessed": false
+  }
+}
