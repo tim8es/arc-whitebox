@@ -5775,6 +5775,24 @@
         "title": "Independently verify the repaired PR #36 before any merge or run"
       },
       "at": "2026-09-23T23:04:38.508Z"
+    },
+    {
+      "revision": 430,
+      "action": "enqueue",
+      "job": "R298",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "r288-capture-analysis-prep-new-session",
+        "depends_on": [
+          "R288",
+          "R291"
+        ],
+        "deliverable": "Prepare a small offline analyzer for the future R288/R291 V25 public-mini capture, on an isolated research branch without touching PR #36. First read R278_PROTOCOL.md, R288 capture contract and exact R291 harness serialization. Validate the exact `vectors.f32le`/manifest/SHA256SUMS format, row/network identity and the frozen lexicographic decimal-network_id 50/50 FIT/EVAL split. Implement only the frozen rule d=mean_FIT(target-pred), p_corrected=p+d on EVAL (no alpha/rank/sign/network tuning), and report per-network baseline/corrected final MSE, paired mean/SD/SE, improved count/fraction, median and the exact four R278 materiality gates. Include fail-closed handling for hashes, rows, targets, duplicate IDs, split and failure flags; do not call offline results an official adjusted score or infer leaderboard rank. Use standard library only; test with a tiny synthetic capture fixture and corruption cases; do not download/install deps/data, inspect or compute on any real captured vectors, run estimator/benchmark/Actions, spend money, alter PR #36, access holdout/private/full data, submit or edit canonical/leaderboard. If R278 leaves numerical accumulation/failure semantics ambiguous, record the ambiguity and propose a deterministic pre-data supplement rather than silently selecting after seeing results. Append report/receipt with exact hashes/commit and finish R298.",
+        "hypothesis_id": "R278-CAPTURE-RESULT-ANALYZER-PREP-20260924",
+        "priority": 2,
+        "title": "Prepare an offline analyzer for the frozen V25 residual capture"
+      },
+      "at": "2026-09-23T23:07:46.020Z"
     }
   ],
   "jobs": [
@@ -9288,10 +9306,25 @@
       "owner": null,
       "status": "QUEUED",
       "attempts": []
+    },
+    {
+      "assigned_owner": "r288-capture-analysis-prep-new-session",
+      "depends_on": [
+        "R288",
+        "R291"
+      ],
+      "deliverable": "Prepare a small offline analyzer for the future R288/R291 V25 public-mini capture, on an isolated research branch without touching PR #36. First read R278_PROTOCOL.md, R288 capture contract and exact R291 harness serialization. Validate the exact `vectors.f32le`/manifest/SHA256SUMS format, row/network identity and the frozen lexicographic decimal-network_id 50/50 FIT/EVAL split. Implement only the frozen rule d=mean_FIT(target-pred), p_corrected=p+d on EVAL (no alpha/rank/sign/network tuning), and report per-network baseline/corrected final MSE, paired mean/SD/SE, improved count/fraction, median and the exact four R278 materiality gates. Include fail-closed handling for hashes, rows, targets, duplicate IDs, split and failure flags; do not call offline results an official adjusted score or infer leaderboard rank. Use standard library only; test with a tiny synthetic capture fixture and corruption cases; do not download/install deps/data, inspect or compute on any real captured vectors, run estimator/benchmark/Actions, spend money, alter PR #36, access holdout/private/full data, submit or edit canonical/leaderboard. If R278 leaves numerical accumulation/failure semantics ambiguous, record the ambiguity and propose a deterministic pre-data supplement rather than silently selecting after seeing results. Append report/receipt with exact hashes/commit and finish R298.",
+      "hypothesis_id": "R278-CAPTURE-RESULT-ANALYZER-PREP-20260924",
+      "priority": 2,
+      "title": "Prepare an offline analyzer for the frozen V25 residual capture",
+      "id": "R298",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 429,
+  "revision": 430,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
