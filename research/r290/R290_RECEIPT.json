@@ -1,0 +1,122 @@
+{
+  "schema": "arc.whitebox.r290.github_token_persistence_audit.receipt.v1",
+  "id": "R290",
+  "run_id": "R290-gha-result-persistence-audit-20260923",
+  "owner": "gha-result-persistence-audit-r291-session",
+  "status": "COMPLETE",
+  "verdict": "DIRECT_GIT_PERSISTENCE_CONFIRMED_NO_ACTIONS_ARTIFACT_STORAGE",
+  "branch": "research/r290-gha-result-persistence-audit",
+  "report": {
+    "commit": "668f6755824d428ab003e59a743a76740c0f96e3",
+    "path": "research/r290/R290_GITHUB_TOKEN_PERSISTENCE_AUDIT.md",
+    "git_blob_sha1": "06786c5c79422852cf654df45106607534f60b36",
+    "sha256": "5d8a9de80437ea2a009c4ac008221567c4eca5728b3aaf98c64bb8778cc3df1c"
+  },
+  "inherited": {
+    "r288_receipt_sha256": "b3c6795d03996b79ffd1bc7d2766bec337e034b1f9a57eecc744de8b762b8f10",
+    "r287_receipt_sha256": "fdefbf9b71a07eec17dbf03c525a71f043cd6f2d578c9edb3eafac5719bf9fa2",
+    "r287_note": "R287 remains WAITING_INPUT only because Actions artifact/Packages shared-storage allowance could not be proven; this R290 path does not use that storage pool."
+  },
+  "repository_facts": {
+    "repository": "tim8es/arc-whitebox",
+    "visibility": "public",
+    "owner_type": "User",
+    "default_branch": "main",
+    "api_size_kib": 20053,
+    "repo_rulesets_count": 0,
+    "branch_protection": {
+      "main": false,
+      "research/control-v2": false,
+      "research/r291-v25-capture-harness": false,
+      "research/r288-v25-residual-capture-protocol": false
+    }
+  },
+  "current_workflows": [
+    {
+      "path": ".github/workflows/r233-v25-onehot-wick-fixture.yml",
+      "blob_sha1": "876e16aca6a8325b767b004c57016871fb7d6e1d",
+      "permissions": "job contents: read",
+      "push_trigger": "research/control-v2 + research/r233/R233_EXECUTE_TRIGGER.txt"
+    },
+    {
+      "path": ".github/workflows/r238-rsrf.yml",
+      "blob_sha1": "adae8a650a0f2c9c05c0b4354258e55f6e90a7db",
+      "permissions": "job contents: read",
+      "push_trigger": "research/control-v2 + research/r238/R238_EXECUTE_TRIGGER.txt"
+    },
+    {
+      "path": ".github/workflows/r252-cfsp4-one-shot.yml",
+      "blob_sha1": "608ea92fd571a8eac4d6ae5aa38e806c112f2cba",
+      "permissions": "workflow contents: read",
+      "push_trigger": "research/control-v2 + research/r252/R252_EXECUTE_TRIGGER.txt"
+    },
+    {
+      "path": ".github/workflows/research-control.yml",
+      "blob_sha1": "b44a640c8d3cd3b6ba21f452237d9ba631c92621",
+      "permissions": "workflow contents: read",
+      "push_trigger": "main + selected control/history/result paths"
+    }
+  ],
+  "required_future_permission": {
+    "minimal": "contents: write",
+    "placement": "prefer persistence job only",
+    "unspecified_scopes": "none when permissions key explicitly enumerates scope",
+    "current_workflows_sufficient_as_written": false
+  },
+  "trigger_effect": {
+    "current_push_filters_match_separate_research_branch": false,
+    "github_token_plain_push_creates_new_workflow_run": false,
+    "exceptions": [
+      "workflow_dispatch",
+      "repository_dispatch",
+      "documented approval-state PR behavior"
+    ],
+    "recursive_actions_risk": "not present for plain GITHUB_TOKEN git push"
+  },
+  "capture_storage": {
+    "vectors_bytes": 1228800,
+    "manifest_max_bytes": 131072,
+    "sha256sums_max_bytes": 4096,
+    "total_max_bytes": 1363968,
+    "storage_kind": "ordinary Git repository content",
+    "actions_artifact_storage_used": false,
+    "github_packages_used": false,
+    "git_lfs_used": false,
+    "cache_storage_used": false,
+    "file_hard_limit_status": "vectors.f32le < 100 MB enforced GitHub file limit",
+    "repository_size_status": "~20.9 MiB after capture, far below 10 GB recommended repository on-disk maximum"
+  },
+  "conclusion": {
+    "available_zero_artifact_storage_path": true,
+    "billing_dashboard_input_required": false,
+    "strongest_proven_target": "an existing research branch whose branch API reports protected:false",
+    "new_result_only_branch_preflight": "pre-create branch before authorized run and verify protected:false; if not done, use an existing verified unprotected research branch or do not persist",
+    "fail_closed": "on push rejection, do not fall back inside the same run to PAT, upload-artifact, LFS, Packages, cache, or paid storage"
+  },
+  "primary_sources": [
+    "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+    "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository",
+    "https://docs.github.com/en/actions/concepts/security/github_token",
+    "https://github.com/actions/checkout/blob/main/README.md",
+    "https://docs.github.com/en/billing/concepts/product-billing/github-actions",
+    "https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories",
+    "https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits",
+    "https://docs.github.com/en/billing/concepts/product-billing",
+    "https://docs.github.com/en/billing/concepts/product-billing/git-lfs"
+  ],
+  "accounting": {
+    "actions_triggered": 0,
+    "capture_result_commits_attempted": 0,
+    "artifacts_uploaded": 0,
+    "packages_or_lfs_or_cache_used": 0,
+    "dependencies_installed": 0,
+    "datasets_downloaded": 0,
+    "paid_resources": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "pr35_changes": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false,
+    "note": "Only the required append-only R290 audit report/receipt and central control records were committed."
+  }
+}
