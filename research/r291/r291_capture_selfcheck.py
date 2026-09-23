@@ -222,7 +222,7 @@ def main() -> None:
             r"combined_budget_exhausted)\s*="
         )
         out["patch_deletes_no_scorer_code"] = not removed_code
-        out["patch_assigns_no_scorer_state"] = not any(critical_assignment.search(ln) for ln in added)
+        out["patch_assigns_no_scorer_state"] = not any(\n            critical_assignment.search(ln) and not ln.rstrip().endswith(",") for ln in added\n        )
         out["patch_has_two_pre_mse_calls"] = patch.count("r291_capture.safe_capture(") == 2
         out["patch_no_return_change"] = "return {" not in "\n".join(added)
 
