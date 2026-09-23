@@ -3249,6 +3249,22 @@
         "session_or_agent_attribution": "UNKNOWN"
       },
       "at": "2026-09-23T07:33:00+00:00"
+    },
+    {
+      "revision": 246,
+      "action": "finish",
+      "job": "R253",
+      "owner": "r252-actions-accounting-audit",
+      "payload": {
+        "run_id": "R253-r252-actions-accounting-audit-20260923",
+        "status": "COMPLETE",
+        "reason": "R253 read-only/postflight audit COMPLETE. Immutable GitHub evidence verifies two distinct R252 Actions runs against one authorized run/no retry: 35830273198/job 107081017265 (D21-CWG) failed at runtime version-string verification after pinned wheel digests passed; 35830986191/job 107083271578 (CFSP4) failed at fixture truth-byte identity after pinned runtime/core/V25/weight checks passed. Both stopped before unchanged parent; parent/candidate/public measurements are 0/0/0. Revision 245 appended terminal_evidence_correction, preserved the original revision-241 finish event, kept R252 INFRA_ERROR, and projected the current R252 receipt/reason to the source-linked erratum. GitHub actor/commit account is tim8es; session/agent attribution remains UNKNOWN. No Actions trigger/edit/rerun, science, paid/private/holdout, submission, leaderboard or canonical change.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json",
+          "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244"
+        }
+      },
+      "at": "2026-09-23T07:36:00+00:00"
     }
   ],
   "jobs": [
@@ -5190,19 +5206,33 @@
       "title": "Audit duplicate R252 Actions runs and correct terminal evidence",
       "id": "R253",
       "owner": "r252-actions-accounting-audit",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "attempts": [
         {
           "run_id": "R253-r252-actions-accounting-audit-20260923",
           "code_commit": "8e1ede14cbff49fb3fabf9eecf005f08cb48ba9a",
           "command": "read-only/postflight audit only: verify immutable GitHub metadata/logs/artifacts for R252 runs 35830273198 and 35830986191; write source-linked incident report + JSON erratum; append terminal_evidence_correction preserving original finish; regenerate STATUS.md; no workflow trigger/edit/rerun or science",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R253-r252-actions-accounting-audit-20260923",
+            "status": "COMPLETE",
+            "reason": "R253 read-only/postflight audit COMPLETE. Immutable GitHub evidence verifies two distinct R252 Actions runs against one authorized run/no retry: 35830273198/job 107081017265 (D21-CWG) failed at runtime version-string verification after pinned wheel digests passed; 35830986191/job 107083271578 (CFSP4) failed at fixture truth-byte identity after pinned runtime/core/V25/weight checks passed. Both stopped before unchanged parent; parent/candidate/public measurements are 0/0/0. Revision 245 appended terminal_evidence_correction, preserved the original revision-241 finish event, kept R252 INFRA_ERROR, and projected the current R252 receipt/reason to the source-linked erratum. GitHub actor/commit account is tim8es; session/agent attribution remains UNKNOWN. No Actions trigger/edit/rerun, science, paid/private/holdout, submission, leaderboard or canonical change.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json",
+              "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244"
+            }
+          }
         }
-      ]
+      ],
+      "reason": "R253 read-only/postflight audit COMPLETE. Immutable GitHub evidence verifies two distinct R252 Actions runs against one authorized run/no retry: 35830273198/job 107081017265 (D21-CWG) failed at runtime version-string verification after pinned wheel digests passed; 35830986191/job 107083271578 (CFSP4) failed at fixture truth-byte identity after pinned runtime/core/V25/weight checks passed. Both stopped before unchanged parent; parent/candidate/public measurements are 0/0/0. Revision 245 appended terminal_evidence_correction, preserved the original revision-241 finish event, kept R252 INFRA_ERROR, and projected the current R252 receipt/reason to the source-linked erratum. GitHub actor/commit account is tim8es; session/agent attribution remains UNKNOWN. No Actions trigger/edit/rerun, science, paid/private/holdout, submission, leaderboard or canonical change.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json",
+        "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244"
+      }
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 245,
+  "revision": 246,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
