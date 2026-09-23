@@ -3417,6 +3417,18 @@
       "owner": "r254-harness-repair-responsive",
       "payload": {},
       "revision": 257
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T08:17:00+00:00",
+      "job": "R256",
+      "owner": "r254-harness-repair-responsive",
+      "payload": {
+        "code_commit": "bd37001bcb9cda9da75232542db4d2897270f8fc",
+        "command": "offline/static-only repair on isolated branch from exact R254 execution head ff40219e132ce208428b7acfb1a03a79cd535be7: preserve BPK2K math, V25 parent, fixture/seed/hashes, gates and meter semantics; replace BudgetContext.summary string misuse with supported typed residual-wall-time source; add and run exactly one small offline regression test for real contract + fail-closed unknown timing; no Actions/workflow, benchmark/science, R209/public, private/holdout, submission, canonical/leaderboard",
+        "run_id": "R256-r254-harness-static-repair-20260923"
+      },
+      "revision": 258
     }
   ],
   "jobs": [
@@ -5459,7 +5471,14 @@
     },
     {
       "assigned_owner": "r254-harness-repair-responsive",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "bd37001bcb9cda9da75232542db4d2897270f8fc",
+          "command": "offline/static-only repair on isolated branch from exact R254 execution head ff40219e132ce208428b7acfb1a03a79cd535be7: preserve BPK2K math, V25 parent, fixture/seed/hashes, gates and meter semantics; replace BudgetContext.summary string misuse with supported typed residual-wall-time source; add and run exactly one small offline regression test for real contract + fail-closed unknown timing; no Actions/workflow, benchmark/science, R209/public, private/holdout, submission, canonical/leaderboard",
+          "run_id": "R256-r254-harness-static-repair-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Static-only diagnosis and minimal harness repair in a new isolated branch based on the exact R254 candidate commit. Confirm the pinned BudgetContext.summary() contract from source/runtime; preserve candidate math, fixture bytes/seed, parent, thresholds, FLOP/meter gates and public gates exactly. Replace the incorrect string-as-mapping access with a supported typed source for residual-wall-time evidence; do not coerce unknown values to zero or weaken the 0.4s gate. Add one small offline regression check for the observed contract, run only that check, and produce a report/receipt with before/after hashes and commit. No Actions/workflow trigger, benchmark/science, public identity/data access, rerun, submission, canonical edit or R254 history rewrite. If a safe measured residual-time source cannot be established, stop with the exact blocker.",
       "depends_on": [
         "R249",
@@ -5469,12 +5488,12 @@
       "id": "R256",
       "owner": "r254-harness-repair-responsive",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Repair and test R254 telemetry boundary offline"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 257,
+  "revision": 258,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
