@@ -3125,6 +3125,14 @@
         "assigned_owner": "actions-accuracy-method-research"
       },
       "at": "2026-09-23T07:00:00+00:00"
+    },
+    {
+      "revision": 239,
+      "action": "claim",
+      "job": "R252",
+      "owner": "actions-accuracy-method-research",
+      "payload": {},
+      "at": "2026-09-23T07:00:01+00:00"
     }
   ],
   "jobs": [
@@ -5028,13 +5036,13 @@
         "R249"
       ],
       "assigned_owner": "actions-accuracy-method-research",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "actions-accuracy-method-research",
+      "status": "CLAIMED",
       "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 238,
+  "revision": 239,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
