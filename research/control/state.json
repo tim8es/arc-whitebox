@@ -4770,6 +4770,18 @@
       "owner": "public-methods-leaderboard-scan",
       "payload": {},
       "revision": 356
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T15:26:10+00:00",
+      "job": "R280",
+      "owner": "public-methods-leaderboard-scan",
+      "payload": {
+        "code_commit": "591a84a652d7cc28db0d1087a4b5e93f93c59cfc",
+        "command": "read-only official Phase-2 standings refresh and primary-source public method disclosure scan beyond J2W; no submission/paid/Actions/private/holdout data or leaderboard/canonical edits",
+        "run_id": "R280-public-methods-refresh-20260923"
+      },
+      "revision": 357
     }
   ],
   "jobs": [
@@ -7637,7 +7649,14 @@
     },
     {
       "assigned_owner": "public-methods-leaderboard-scan",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "591a84a652d7cc28db0d1087a4b5e93f93c59cfc",
+          "command": "read-only official Phase-2 standings refresh and primary-source public method disclosure scan beyond J2W; no submission/paid/Actions/private/holdout data or leaderboard/canonical edits",
+          "run_id": "R280-public-methods-refresh-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Refresh the official ARC Phase-2 visible leaderboard at a precise UTC/MSK timestamp and inspect primary public artifacts/forum disclosures for the next strongest visible entries and any newly disclosed reproducible method beyond the J2W page already found opaque in R264. Separate directly observed ranks/scores from method evidence and inference; do not attribute any row to our team without verified team/submission identity. If no new method evidence, report no-change. Save a short cited append-only report/receipt with source snapshots/hashes/commit and finish R280. No submission, private/holdout access, paid run, Actions, or leaderboard/canonical edits.",
       "depends_on": [
         "R263",
@@ -7647,12 +7666,12 @@
       "id": "R280",
       "owner": "public-methods-leaderboard-scan",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Refresh visible standings and scan public methods beyond J2W"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 356,
+  "revision": 357,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
