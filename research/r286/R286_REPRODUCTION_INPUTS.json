@@ -1,0 +1,205 @@
+{
+  "analyzer": {
+    "git_blob_sha1": "f9b01ba259cd57bd1692fbfc904585b05f561000",
+    "path": "scripts/arc_workflow_preflight.py",
+    "sha256": "1f73f557d943dc6b4fb4d42b2a5935f1d627082b292d8465f5018794dc8a38ce"
+  },
+  "cases": [
+    {
+      "category": "R283",
+      "detail": "PreflightError: job 'verify' ancestry guard requires a preceding actions/checkout with fetch-depth: 0 under its with: block in the same job",
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "dcf893d3bdf7cbfd5109d54eb1196b1f79b7e9d1b791b3d0c2953cd9dfa3c846",
+      "id": "R283_N1_fake_checkout_text",
+      "observed": "REJECT",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          # uses: actions/checkout@v4\n          fetch-depth: 0\n          git merge-base --is-ancestor \"$P\" HEAD\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n",
+      "workflow_sha256": "980a5dc6ed9321f1ae3b39356f2554810d5f43723570203e8472c086b56fbecb"
+    },
+    {
+      "category": "R283",
+      "detail": {
+        "asserted_manifest_keys": ["seed"],
+        "full_history_required": false,
+        "runtime_manifest": "RTEST_RUNTIME_MANIFEST.json",
+        "status": "PASS",
+        "workflow_runtime_manifest_names": ["RTEST_RUNTIME_MANIFEST.json"]
+      },
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "dcf893d3bdf7cbfd5109d54eb1196b1f79b7e9d1b791b3d0c2953cd9dfa3c846",
+      "id": "R283_N2_double_space_guard",
+      "observed": "PASS",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          git merge-base  --is-ancestor \"$P\" HEAD\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n",
+      "workflow_sha256": "c7ee2a6b32dde13575ed5ad981b3b964cb5095a0ef0b6d1dd1399dfff20ad894"
+    },
+    {
+      "category": "R283",
+      "detail": "PreflightError: unsupported manifest access 'get' on 'd'",
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "dcf893d3bdf7cbfd5109d54eb1196b1f79b7e9d1b791b3d0c2953cd9dfa3c846",
+      "id": "R283_N3_comment_decoy_get",
+      "observed": "REJECT",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          # d[\"seed\"]\n          assert d.get(\"ghost\") is True\n",
+      "workflow_sha256": "551178ee909700810030efc0d86fcb4b1f620d66b4af94e68346e2e3cefdcf95"
+    },
+    {
+      "category": "R283",
+      "detail": {
+        "asserted_manifest_keys": ["seed"],
+        "full_history_required": false,
+        "runtime_manifest": "RTEST_RUNTIME_MANIFEST.json",
+        "status": "PASS",
+        "workflow_runtime_manifest_names": ["RTEST_RUNTIME_MANIFEST.json"]
+      },
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    if True:\n        m = {}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "a724e374d274bd63af24de33517ecb6d3be7b3f114448b8e74829092581cb3ec",
+      "id": "R283_N4_conditional_rebind",
+      "observed": "PASS",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n",
+      "workflow_sha256": "1cf70e9de2a7e0f0979fbd4e48ff7d38ea3394d94f887d98e88cb7038fcfc879"
+    },
+    {
+      "category": "edge",
+      "detail": {
+        "asserted_manifest_keys": ["seed"],
+        "full_history_required": true,
+        "runtime_manifest": "RTEST_RUNTIME_MANIFEST.json",
+        "status": "PASS",
+        "workflow_runtime_manifest_names": ["RTEST_RUNTIME_MANIFEST.json"]
+      },
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "dcf893d3bdf7cbfd5109d54eb1196b1f79b7e9d1b791b3d0c2953cd9dfa3c846",
+      "id": "EDGE_fake_checkout_with_nested_with",
+      "observed": "PASS",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          # uses: actions/checkout@v4\n            with:\n              fetch-depth: 0\n          git merge-base --is-ancestor \"$P\" HEAD\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n",
+      "workflow_sha256": "06abad97cc2bc1eff008a531cc04761132f1a53b3a37058ac79a763f7d57b684"
+    },
+    {
+      "category": "edge",
+      "detail": {
+        "asserted_manifest_keys": ["seed"],
+        "full_history_required": false,
+        "runtime_manifest": "RTEST_RUNTIME_MANIFEST.json",
+        "status": "PASS",
+        "workflow_runtime_manifest_names": ["RTEST_RUNTIME_MANIFEST.json"]
+      },
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "dcf893d3bdf7cbfd5109d54eb1196b1f79b7e9d1b791b3d0c2953cd9dfa3c846",
+      "id": "EDGE_manifest_alias_get",
+      "observed": "PASS",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n          alias=d\n          assert alias.get(\"ghost\") is True\n",
+      "workflow_sha256": "fe9bb81bc0de121217de04a5ec027a411c9cc3398e06153b38d3b16cd98f5a33"
+    },
+    {
+      "category": "edge",
+      "detail": {
+        "asserted_manifest_keys": ["seed"],
+        "full_history_required": false,
+        "runtime_manifest": "RTEST_RUNTIME_MANIFEST.json",
+        "status": "PASS",
+        "workflow_runtime_manifest_names": ["RTEST_RUNTIME_MANIFEST.json"]
+      },
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "dcf893d3bdf7cbfd5109d54eb1196b1f79b7e9d1b791b3d0c2953cd9dfa3c846",
+      "id": "EDGE_dynamic_subscript",
+      "observed": "PASS",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n          key=\"ghost\"\n          assert d[key] is True\n",
+      "workflow_sha256": "07679b6f54c79ca2372ed19c9869163e632a22dbd900b08c9f883697aeddde13"
+    },
+    {
+      "category": "edge",
+      "detail": {
+        "asserted_manifest_keys": ["seed"],
+        "full_history_required": false,
+        "runtime_manifest": "RTEST_RUNTIME_MANIFEST.json",
+        "status": "PASS",
+        "workflow_runtime_manifest_names": ["RTEST_RUNTIME_MANIFEST.json"]
+      },
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    del m[\"seed\"]\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "846cec7aac0131da4ba8282cee7357a8de22d1f2dfdd8c8a32b3335b29a97742",
+      "id": "EDGE_generator_del",
+      "observed": "PASS",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n",
+      "workflow_sha256": "1cf70e9de2a7e0f0979fbd4e48ff7d38ea3394d94f887d98e88cb7038fcfc879"
+    },
+    {
+      "category": "edge",
+      "detail": {
+        "asserted_manifest_keys": ["seed"],
+        "full_history_required": false,
+        "runtime_manifest": "RTEST_RUNTIME_MANIFEST.json",
+        "status": "PASS",
+        "workflow_runtime_manifest_names": ["RTEST_RUNTIME_MANIFEST.json"]
+      },
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    if True:\n        return\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "3950bfa081ebd63efdea54d4ac2f77413b91f550f26069f0df9634837c11b5d1",
+      "id": "EDGE_generator_conditional_early_return",
+      "observed": "PASS",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n",
+      "workflow_sha256": "1cf70e9de2a7e0f0979fbd4e48ff7d38ea3394d94f887d98e88cb7038fcfc879"
+    },
+    {
+      "category": "control",
+      "detail": {
+        "asserted_manifest_keys": ["seed"],
+        "full_history_required": true,
+        "runtime_manifest": "RTEST_RUNTIME_MANIFEST.json",
+        "status": "PASS",
+        "workflow_runtime_manifest_names": ["RTEST_RUNTIME_MANIFEST.json"]
+      },
+      "expected_fail_closed": "PASS",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "dcf893d3bdf7cbfd5109d54eb1196b1f79b7e9d1b791b3d0c2953cd9dfa3c846",
+      "id": "CTRL_valid_contract",
+      "observed": "PASS",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n      - run: |\n          git merge-base --is-ancestor \"$P\" HEAD\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n",
+      "workflow_sha256": "23a4775044a41e3232ca95dc9edfe5bd28f18800d12a12b68bb78767b2028ddf"
+    },
+    {
+      "category": "control",
+      "detail": "PreflightError: job 'verify' ancestry guard requires a preceding actions/checkout with fetch-depth: 0 under its with: block in the same job",
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "dcf893d3bdf7cbfd5109d54eb1196b1f79b7e9d1b791b3d0c2953cd9dfa3c846",
+      "id": "CTRL_env_fetch_depth_reject",
+      "observed": "REJECT",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - uses: actions/checkout@v4\n        env:\n          fetch-depth: 0\n      - run: |\n          git merge-base --is-ancestor \"$P\" HEAD\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n",
+      "workflow_sha256": "164ed182a3732957488d4a29d004f74ab2319c4c3eb1e0491696a6a70ebbdd74"
+    },
+    {
+      "category": "control",
+      "detail": "PreflightError: unsupported manifest mutation 'clear' on 'm'",
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m={\"seed\":1}\n    m.clear()\n    out_dir=Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "6947684e17fe247ea9dd86e5f319e9c9a4c4fc48d5e29a3f660f742048418abb",
+      "id": "CTRL_clear_reject",
+      "observed": "REJECT",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n",
+      "workflow_sha256": "1cf70e9de2a7e0f0979fbd4e48ff7d38ea3394d94f887d98e88cb7038fcfc879"
+    },
+    {
+      "category": "control",
+      "detail": "PreflightError: unsupported manifest access 'get' on 'd'",
+      "expected_fail_closed": "REJECT",
+      "generator": "from pathlib import Path\nimport json\ndef main():\n    m = {\"seed\": 1}\n    out_dir = Path(\".\")\n    (out_dir/\"RTEST_RUNTIME_MANIFEST.json\").write_text(json.dumps(m))\n",
+      "generator_sha256": "dcf893d3bdf7cbfd5109d54eb1196b1f79b7e9d1b791b3d0c2953cd9dfa3c846",
+      "id": "CTRL_get_reject",
+      "observed": "REJECT",
+      "workflow": "jobs:\n  verify:\n    steps:\n      - run: |\n          import json, pathlib\n          p=pathlib.Path(\"RTEST_RUNTIME_MANIFEST.json\")\n          d=json.loads(p.read_text())\n          assert d[\"seed\"] == 1\n          assert d.get(\"ghost\") is None\n",
+      "workflow_sha256": "933e754fbbbc3c28fcade51f76beee85efe1556bf655b8e07ebc6742c2fe82b2"
+    }
+  ],
+  "job": "R286",
+  "method": "offline in-memory focused check_contract reproductions using the current analyzer function bodies; no workflow/generator/fixture execution",
+  "pr_head": "05733f3bfa6730124c4601a918bcc6d401719e09",
+  "run_id": "R286-pr35-current-head-adversarial-verify-20260923",
+  "schema": "arc.whitebox.r286.current-head-reproduction.v1"
+}
