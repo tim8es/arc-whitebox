@@ -3068,6 +3068,14 @@
         "title": "Test one new global-accuracy estimator after full-history deduplication"
       },
       "at": "2026-09-23T06:31:00+00:00"
+    },
+    {
+      "revision": 235,
+      "action": "claim",
+      "job": "R251",
+      "owner": "global-accuracy-method-research",
+      "payload": {},
+      "at": "2026-09-23T06:31:01+00:00"
     }
   ],
   "jobs": [
@@ -4931,14 +4939,14 @@
       ],
       "hypothesis_id": "GLOBAL-ACCURACY-POST-R231-FULL-HISTORY-METHOD",
       "id": "R251",
-      "owner": null,
+      "owner": "global-accuracy-method-research",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Test one new global-accuracy estimator after full-history deduplication"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 234,
+  "revision": 235,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
