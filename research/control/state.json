@@ -5450,6 +5450,22 @@
         "status": "COMPLETE"
       },
       "revision": 406
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T18:13:56.728Z",
+      "job": "R289",
+      "owner": "preflight-current-head-final-audit",
+      "payload": {
+        "reason": "Independent final read-only audit of current PR #35 head 7a65d58a559dce27f709374a0fbaea6726aa3b43 / production analyzer blob 2c87bc09992228be915e117a6d3aac8a703f68ab completed PASS_FOR_REQUESTED_R277_R283_R286_FALSE_PASS_CORPUS. All 17 inherited false-PASS inputs reject: R277 env.fetch-depth, clear/pop/helper mutation, get/wrong-load; R283 fake checkout, whitespace ancestry, comment/string decoys, conditional rebind/helper control flow; R286 nested run-block fake checkout, alias, dynamic subscript, delete, conditional early-return/no-write. Valid structural control still PASS. Matrix SHA256 2ac39bdcfaec15a7e6a80f12637d95cc75a54e940dda9a6c801b7551bd2f4ca6. No PR/code/test/docs/workflow edits, PR comments/reviews/merge, Actions, estimator, benchmark or data access.",
+        "receipt": {
+          "sha256": "1abe54e5b3192d6981bd32dca41548aaeb08e5f3620e941c61f16e24a90504e5",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/567796fd774db6430d772445d7e15db16ef7628d/research/r289/R289_RECEIPT.json"
+        },
+        "run_id": "R289-pr35-current-head-final-audit-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 407
     }
   ],
   "jobs": [
@@ -8697,8 +8713,17 @@
         {
           "code_commit": "7a65d58a559dce27f709374a0fbaea6726aa3b43",
           "command": "offline read-only synthetic replay of all R277/R283/R286 false-PASS inputs against exact current PR #35 production analyzer bytes on head 7a65d58a559dce27f709374a0fbaea6726aa3b43; includes whitespace ancestry, conditional/rebound/no-write generator, nested run-block fake checkout, alias/dynamic subscript, deletion/early-return, comment/string decoys; no PR edits/comments/review/merge, Actions, estimator, benchmark, or data",
+          "completion": {
+            "reason": "Independent final read-only audit of current PR #35 head 7a65d58a559dce27f709374a0fbaea6726aa3b43 / production analyzer blob 2c87bc09992228be915e117a6d3aac8a703f68ab completed PASS_FOR_REQUESTED_R277_R283_R286_FALSE_PASS_CORPUS. All 17 inherited false-PASS inputs reject: R277 env.fetch-depth, clear/pop/helper mutation, get/wrong-load; R283 fake checkout, whitespace ancestry, comment/string decoys, conditional rebind/helper control flow; R286 nested run-block fake checkout, alias, dynamic subscript, delete, conditional early-return/no-write. Valid structural control still PASS. Matrix SHA256 2ac39bdcfaec15a7e6a80f12637d95cc75a54e940dda9a6c801b7551bd2f4ca6. No PR/code/test/docs/workflow edits, PR comments/reviews/merge, Actions, estimator, benchmark or data access.",
+            "receipt": {
+              "sha256": "1abe54e5b3192d6981bd32dca41548aaeb08e5f3620e941c61f16e24a90504e5",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/567796fd774db6430d772445d7e15db16ef7628d/research/r289/R289_RECEIPT.json"
+            },
+            "run_id": "R289-pr35-current-head-final-audit-20260923",
+            "status": "COMPLETE"
+          },
           "run_id": "R289-pr35-current-head-final-audit-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independently audit the current PR #35 head after R285 (initial expected head 7a65d58a559dce27f709374a0fbaea6726aa3b43; refresh it before start). R286 pinned the prior 05733f head, so do not reuse it as current proof. Replay all R277/R283/R286 false-PASS inputs against exact current production bytes, including the whitespace, conditional generator, alias/dynamic subscript, nested run-block fake checkout, deletion and early-return cases. Read-only/offline only; no PR edits/comments/merge, Actions, estimator or benchmark data. Report exact head/blob, rejection matrix, any remaining counterexample and receipt/hash; finish R289.",
@@ -8710,7 +8735,12 @@
       "id": "R289",
       "owner": "preflight-current-head-final-audit",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Independent final read-only audit of current PR #35 head 7a65d58a559dce27f709374a0fbaea6726aa3b43 / production analyzer blob 2c87bc09992228be915e117a6d3aac8a703f68ab completed PASS_FOR_REQUESTED_R277_R283_R286_FALSE_PASS_CORPUS. All 17 inherited false-PASS inputs reject: R277 env.fetch-depth, clear/pop/helper mutation, get/wrong-load; R283 fake checkout, whitespace ancestry, comment/string decoys, conditional rebind/helper control flow; R286 nested run-block fake checkout, alias, dynamic subscript, delete, conditional early-return/no-write. Valid structural control still PASS. Matrix SHA256 2ac39bdcfaec15a7e6a80f12637d95cc75a54e940dda9a6c801b7551bd2f4ca6. No PR/code/test/docs/workflow edits, PR comments/reviews/merge, Actions, estimator, benchmark or data access.",
+      "receipt": {
+        "sha256": "1abe54e5b3192d6981bd32dca41548aaeb08e5f3620e941c61f16e24a90504e5",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/567796fd774db6430d772445d7e15db16ef7628d/research/r289/R289_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Adversarially verify the latest PR #35 head after R285"
     },
     {
@@ -8766,7 +8796,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 406,
+  "revision": 407,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
