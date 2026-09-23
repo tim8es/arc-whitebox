@@ -4095,6 +4095,18 @@
         "status": "SCIENTIFIC_REJECT"
       },
       "revision": 305
+    },
+    {
+      "revision": 306,
+      "action": "start",
+      "job": "R266",
+      "owner": "score-gap-analysis",
+      "payload": {
+        "run_id": "R266-score-gap-analysis-20260923",
+        "code_commit": "248d0d7672f8d939cd4d35c2fd3ce716369055d7",
+        "command": "read-only arithmetic analysis of completed R263 snapshot plus existing normalized R209/R223 rows; no estimator/Actions/new data access/private/holdout/full/submission/model/leaderboard edits"
+      },
+      "at": "2026-09-23T12:15:00+00:00"
     }
   ],
   "jobs": [
@@ -6520,7 +6532,14 @@
     },
     {
       "assigned_owner": "score-gap-analysis",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R266-score-gap-analysis-20260923",
+          "code_commit": "248d0d7672f8d939cd4d35c2fd3ce716369055d7",
+          "command": "read-only arithmetic analysis of completed R263 snapshot plus existing normalized R209/R223 rows; no estimator/Actions/new data access/private/holdout/full/submission/model/leaderboard edits",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Using the completed R263 official snapshot and existing normalized R209/R223 records only, calculate the exact official adjusted-score gap when comparison is valid, and the required raw-MSE improvement versus cost reduction under the official score formula and cost-floor. Include failure-penalty semantics, explicit comparable/not-comparable decision, and scenarios for matching the visible leader; do not claim a competition rank from mini-100. Preserve row-level inputs and reproducible calculations in an append-only report/receipt with hashes/commit; finish R266. No reruns, Actions, new data access, paid/private/holdout/full, submission, or model/leaderboard edits.",
       "depends_on": [
         "R263",
@@ -6530,7 +6549,7 @@
       "id": "R266",
       "owner": "score-gap-analysis",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Quantify the remaining score gap and required improvement"
     },
     {
@@ -6566,7 +6585,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 305,
+  "revision": 306,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
