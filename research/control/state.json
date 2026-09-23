@@ -1873,6 +1873,18 @@
       "owner": "independent-verifier-audit",
       "payload": {},
       "revision": 144
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T00:29:49.676Z",
+      "job": "R232",
+      "owner": "global-accuracy-research",
+      "payload": {
+        "code_commit": "b089631df4189e64b765abbd80092ab69945f6aa",
+        "command": "python scripts/r232_drre_exact_small.py --v25 r232-estimator-v25.py --out r232-drre-falsifier.json",
+        "run_id": "R232-v25-drre-exact-small-20260923"
+      },
+      "revision": 145
     }
   ],
   "jobs": [
@@ -2923,7 +2935,14 @@
     },
     {
       "assigned_owner": "global-accuracy-research",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "b089631df4189e64b765abbd80092ab69945f6aa",
+          "command": "python scripts/r232_drre_exact_small.py --v25 r232-estimator-v25.py --out r232-drre-falsifier.json",
+          "run_id": "R232-v25-drre-exact-small-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Continue after R227's terminal pre-science NO-GO and R231's finding that the V25 error tail is weakly concentrated. Read the complete immutable experiment ledger, current AGENTS/RESEARCH_PROCESS, and R227/R231 receipts. Identify exactly one genuinely untested global-accuracy estimator family (not per-network tail tuning, second K4 regeneration, feed-local lambda, one-factor copula, CountSketch, response-aligned D21, Walsh-coset/serializer rescue, or any renamed rejected mechanism). Freeze a mathematical specification, exact-small target-free falsifier, full production FLOP bound, and measurable GO/NO-GO before any run. Run only the small falsifier on verified free/existing compute; allow at most one same-panel mini-100 only if falsifier and cost gates pass. Preserve V25; no paid compute, holdout, or submission. If no strict novelty/feasibility, save terminal NO-GO with exact reason.",
       "depends_on": [
         "R231"
@@ -2932,7 +2951,7 @@
       "id": "R232",
       "owner": "global-accuracy-research",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Find one novel global-accuracy estimator hypothesis"
     },
     {
@@ -3055,7 +3074,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 144,
+  "revision": 145,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
