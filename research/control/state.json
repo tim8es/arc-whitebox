@@ -2602,6 +2602,18 @@
       "owner": "alternative-method-research",
       "payload": {},
       "at": "2026-09-23T04:01:16.322Z"
+    },
+    {
+      "revision": 202,
+      "action": "start",
+      "job": "R244",
+      "owner": "alternative-method-research",
+      "payload": {
+        "run_id": "R244-distinct-method-protocol-one-shot-20260923",
+        "code_commit": "b4a52a434ff39f5a48200245b1b785294d824101",
+        "command": "read-only R244 novelty/static-feasibility research and protocol freeze against immutable history; no estimator execution until frozen candidate/gates exist; if GO, continue this single attempt with at most one preregistered verified-free Actions workflow and one public mini-100 candidate panel"
+      },
+      "at": "2026-09-23T04:01:40.842Z"
     }
   ],
   "jobs": [
@@ -4172,19 +4184,26 @@
     },
     {
       "assigned_owner": "alternative-method-research",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R244-distinct-method-protocol-one-shot-20260923",
+          "code_commit": "b4a52a434ff39f5a48200245b1b785294d824101",
+          "command": "read-only R244 novelty/static-feasibility research and protocol freeze against immutable history; no estimator execution until frozen candidate/gates exist; if GO, continue this single attempt with at most one preregistered verified-free Actions workflow and one public mini-100 candidate panel",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read current AGENTS/RESEARCH_PROCESS, full history, R209 normalized V25 mini-100 record, R223 terminal result and R240 independent receipt. Select exactly one genuinely novel algorithm-level method aimed at lower official adjusted score; explicitly exclude V25-LF/local-feed lambda and all materially similar or previously rejected families. Freeze candidate source/config, exact parent/panel, score/cost/failure gates and expected measurable effect before execution. If novelty and static feasibility pass, use only verified free standard compute for at most one Actions workflow containing validation and exactly one public mini-100 candidate panel. No retry or second run even for infrastructure failure; stop and record INFRA_ERROR if pre-panel failure. Preserve every row and compare to R209 parent using the official adjusted score; label result development-only. If no feasible distinct candidate exists, save a source-linked desk NO-GO without running. No paid resources, private/holdout, submission/leaderboard mutation, canonical V25 edits, gate relaxation, or duplicate work.",
       "depends_on": [],
       "hypothesis_id": "V25-DISTINCT-ACCURACY-METHOD-POST-R223",
       "id": "R244",
       "owner": "alternative-method-research",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Select and test one distinct V25 score-improvement method after R223 no-go"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 201,
+  "revision": 202,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
