@@ -4784,16 +4784,28 @@
       "revision": 357
     },
     {
-      "revision": 358,
       "action": "start",
+      "at": "2026-09-23T15:27:34.275Z",
       "job": "R278",
       "owner": "residual-structure-diagnostic",
       "payload": {
-        "run_id": "R278-global-residual-direction-20260923",
         "code_commit": "9abb05944f7f37c60017a0a68e0a8e319c74ff26",
-        "command": "inspect pinned official/local runner and retained R209 artifact; if faithful local raw-vector instrumentation is available, run exactly one frozen FIT/EVAL residual-direction diagnostic; otherwise stop with exact blocker"
+        "command": "inspect pinned official/local runner and retained R209 artifact; if faithful local raw-vector instrumentation is available, run exactly one frozen FIT/EVAL residual-direction diagnostic; otherwise stop with exact blocker",
+        "run_id": "R278-global-residual-direction-20260923"
       },
-      "at": "2026-09-23T15:27:34.275Z"
+      "revision": 358
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T15:28:10.042Z",
+      "job": "R277",
+      "owner": "preflight-independent-review",
+      "payload": {
+        "code_commit": "e054a32d7d3bdac98408392b09f467e174c2565b",
+        "command": "read-only static independent review of PR #35 head e054a32d7d3bdac98408392b09f467e174c2565b: analyzer fail-closed boundaries, 10 regression tests vs contract, docs/CLI accuracy; no code edits, Actions, PR review/comment, merge, fixtures, estimators, or competition data",
+        "run_id": "R277-pr35-static-independent-review-20260923"
+      },
+      "revision": 359
     }
   ],
   "jobs": [
@@ -7611,7 +7623,14 @@
     },
     {
       "assigned_owner": "preflight-independent-review",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "e054a32d7d3bdac98408392b09f467e174c2565b",
+          "command": "read-only static independent review of PR #35 head e054a32d7d3bdac98408392b09f467e174c2565b: analyzer fail-closed boundaries, 10 regression tests vs contract, docs/CLI accuracy; no code edits, Actions, PR review/comment, merge, fixtures, estimators, or competition data",
+          "run_id": "R277-pr35-static-independent-review-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independently review PR #35 against its exact head, current main and the R257-R259 failure cases. Check the static analyzer's fail-closed behavior, whether the 10 tests actually protect the promised contract, and whether docs match CLI behavior. Do not edit code, trigger Actions, post a PR review/comment, or merge. Save a concise append-only report/receipt with exact files/lines, test evidence if safely runnable, hashes/commit; finish R277 with PASS, findings, or a precise blocker.",
       "depends_on": [
         "R275"
@@ -7620,16 +7639,16 @@
       "id": "R277",
       "owner": "preflight-independent-review",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Independently review the hardened preflight PR"
     },
     {
       "assigned_owner": "residual-structure-diagnostic",
       "attempts": [
         {
-          "run_id": "R278-global-residual-direction-20260923",
           "code_commit": "9abb05944f7f37c60017a0a68e0a8e319c74ff26",
           "command": "inspect pinned official/local runner and retained R209 artifact; if faithful local raw-vector instrumentation is available, run exactly one frozen FIT/EVAL residual-direction diagnostic; otherwise stop with exact blocker",
+          "run_id": "R278-global-residual-direction-20260923",
           "status": "RUNNING"
         }
       ],
@@ -7690,7 +7709,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 358,
+  "revision": 359,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
