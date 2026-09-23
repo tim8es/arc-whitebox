@@ -2401,6 +2401,18 @@
       "owner": "independent-v25-audit",
       "payload": {},
       "revision": 185
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T02:47:20.000Z",
+      "job": "R240",
+      "owner": "independent-v25-audit",
+      "payload": {
+        "run_id": "R240-r223-attempt6-independent-postflight-20260923",
+        "code_commit": "079da7f8a617e50b87ed1e35687b378312413362",
+        "command": "prepare independent offline verifier/checklist/self-check from frozen R223 attempt-6 protocol/workflow/source/comparator; no in-progress artifact inspection; postflight only after R223 terminal"
+      },
+      "revision": 186
     }
   ],
   "jobs": [
@@ -3863,12 +3875,19 @@
       "deliverable": "Prepare an independent offline verifier/checklist from the frozen R223 attempt-6 protocol, workflow, candidate source and comparator, without inspecting the in-progress R223 artifact or changing R223 files. Add a small synthetic self-check for row identity, official adjusted-score recomputation, failures, thresholds and manifest binding. Record queue start before preparation. Once R223 is terminal and its immutable artifact is available, independently verify ZIP digest/manifest and all 100 paired rows; recompute raw MSE, measured FLOPs, runtime/failures and adjusted score against the frozen R209 parent; apply every preregistered gate without loosening it. Produce a report and receipt with hashes, distinct development-vs-competition claims, and finish R240. No Actions run, estimator/benchmark execution, retries/rescue, paid compute, holdout/private data, submission, or edits to R223 candidate/protocol/workflow/canonical V25.",
       "id": "R240",
       "owner": "independent-v25-audit",
-      "status": "CLAIMED",
-      "attempts": []
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R240-r223-attempt6-independent-postflight-20260923",
+          "code_commit": "079da7f8a617e50b87ed1e35687b378312413362",
+          "command": "prepare independent offline verifier/checklist/self-check from frozen R223 attempt-6 protocol/workflow/source/comparator; no in-progress artifact inspection; postflight only after R223 terminal",
+          "status": "RUNNING"
+        }
+      ]
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 185,
+  "revision": 186,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
