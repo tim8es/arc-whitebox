@@ -1,6 +1,7 @@
 R232 frozen exact-small execution trigger
-run_id=R232-v25-drre-exact-small-20260923
-queue_start_commit=9cec083b09780edfebcf9e22478c1e159b6b0567
-code_commit=b089631df4189e64b765abbd80092ab69945f6aa
+run_id=R232-v25-drre-exact-small-attempt2-20260923
+queue_start_commit=4cd767d7b6811f195ea6b7af58130e8f3d3bb79c
+code_commit=92094fec2f046596fd33e8d4b751ea37747cc8b0
 command=python scripts/r232_drre_exact_small.py --v25 r232-estimator-v25.py --out r232-drre-falsifier.json
-no_protocol_changes=true
+repair_scope=workflow-bootstrap-only
+attempt=2; no_protocol_changes=true
