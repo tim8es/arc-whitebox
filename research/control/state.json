@@ -4222,6 +4222,18 @@
       "owner": "multilevel-debiasing-scout",
       "payload": {},
       "revision": 315
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T12:19:07.000Z",
+      "job": "R269",
+      "owner": "multilevel-debiasing-scout",
+      "payload": {
+        "code_commit": "0a71e03fa9fa003ddad826aa9a4dcb659319e9e3",
+        "command": "desk-only derivation from R265 protocol/report, full history and pinned V25 source; no execution unless all theory/cost gates pass",
+        "run_id": "R269-multilevel-theory-20260923"
+      },
+      "revision": 316
     }
   ],
   "jobs": [
@@ -6728,7 +6740,14 @@
     },
     {
       "assigned_owner": "multilevel-debiasing-scout",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "0a71e03fa9fa003ddad826aa9a4dcb659319e9e3",
+          "command": "desk-only derivation from R265 protocol/report, full history and pinned V25 source; no execution unless all theory/cost gates pass",
+          "run_id": "R269-multilevel-theory-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Follow the sole abstractly distinct lead from R265: randomized multilevel debiasing. Read its report/protocol and full history; derive whether a concrete V25 one/two-level hierarchy can satisfy an unbiased telescoping identity using only permitted metered operations and existing model outputs, and derive a full-production FLOP upper bound before any execution. Do not reuse/relabel Richardson, local-feed, copula, K3 transport, or other closed families. Define one deterministic synthetic target-free fixture and falsifier for correction decay/variance and cost. If no concrete hierarchy, target-free rationale, or honest bound exists, publish evidence-based NO_GO before execution. If all theory/cost gates pass, freeze protocol and run at most one local synthetic falsifier; no public/R209, Actions/cloud, paid, private/holdout/full, tuning/per-network selection, submission, canonical/leaderboard changes. Preserve every attempt, artifact and receipt, finish R269, and wait for coordinator before public/cloud work.",
       "depends_on": [
         "R265"
@@ -6737,12 +6756,12 @@
       "id": "R269",
       "owner": "multilevel-debiasing-scout",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Falsify V25 multilevel-debiasing feasibility"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 315,
+  "revision": 316,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
