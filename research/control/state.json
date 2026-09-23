@@ -1960,6 +1960,23 @@
         "reason": "Attempt 1 is verified INFRA_ERROR before the scientific falsifier: Actions failed at editable install of the ledger repo, and the frozen scientific step was skipped. The linked attempt-1 receipt hash has been corrected to the exact file hash. Repair only the workflow bootstrap by installing pinned Phase-2 runtime dependencies instead of pip install -e .; leave protocol, DRRE hypothesis, source blobs, seeds, and gates unchanged. Record a new attempt under the same R232 job; this is not a second scientific run, because none occurred in attempt 1."
       },
       "revision": 151
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T00:43:28.877345+00:00",
+      "job": "R237",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "verifier-hardening",
+        "deliverable": "Implement a fail-closed hardening pass for research/r234/r234_verify_r218.py and its checklist based on the seven confirmed R236 defects. Preserve frozen R217 thresholds, R218 source/workflow, and no-retry policy. Require run_attempt==1; cryptographically bind the supplied local artifact directory to the independently inspected Actions run/job and artifact ID/name/digest; verify run head/arm ancestry and workflow/executor blobs; pin expected-panel and prelaunch files to exact frozen blobs; require nonempty complete manifest coverage for every consumed artifact file; enforce the exact preflight gate-name set and independent version/environment evidence; verify dataset path and max_threads where exposed; require all mandatory taskset/proc/worker-region telemetry. Add synthetic offline regressions that fail if any R236 defect reopens. Do not read/use the still-running R218 artifact, do not change R218 or R217, do not trigger Actions, and run no estimator/science/paid/holdout/private/submission. Produce reviewable code/tests, a source-linked report and durable receipt; R220 remains the postflight owner after R218 completes.",
+        "depends_on": [
+          "R236"
+        ],
+        "hypothesis_id": "R218-R234-VERIFIER-HARDENING",
+        "priority": 1,
+        "title": "Harden R218 postflight verifier using R236 findings"
+      },
+      "revision": 152
     }
   ],
   "jobs": [
@@ -3183,10 +3200,24 @@
       "status": "COMPLETE",
       "title": "Independently audit the R234 postflight verifier before R218 completes",
       "verdict": "DEFECT"
+    },
+    {
+      "assigned_owner": "verifier-hardening",
+      "attempts": [],
+      "deliverable": "Implement a fail-closed hardening pass for research/r234/r234_verify_r218.py and its checklist based on the seven confirmed R236 defects. Preserve frozen R217 thresholds, R218 source/workflow, and no-retry policy. Require run_attempt==1; cryptographically bind the supplied local artifact directory to the independently inspected Actions run/job and artifact ID/name/digest; verify run head/arm ancestry and workflow/executor blobs; pin expected-panel and prelaunch files to exact frozen blobs; require nonempty complete manifest coverage for every consumed artifact file; enforce the exact preflight gate-name set and independent version/environment evidence; verify dataset path and max_threads where exposed; require all mandatory taskset/proc/worker-region telemetry. Add synthetic offline regressions that fail if any R236 defect reopens. Do not read/use the still-running R218 artifact, do not change R218 or R217, do not trigger Actions, and run no estimator/science/paid/holdout/private/submission. Produce reviewable code/tests, a source-linked report and durable receipt; R220 remains the postflight owner after R218 completes.",
+      "depends_on": [
+        "R236"
+      ],
+      "hypothesis_id": "R218-R234-VERIFIER-HARDENING",
+      "id": "R237",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Harden R218 postflight verifier using R236 findings"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 151,
+  "revision": 152,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
