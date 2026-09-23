@@ -217,6 +217,17 @@ def main() -> int:
             and energy["zero_energy_coordinate_count"] == 1
             and energy["finite_coordinate_count"] == a.WIDTH - 1
         )
+        all_zero = a._coordinate_energy_summary(
+            [[0.0] * a.WIDTH, [0.0] * a.WIDTH], [0, 1], [0.0] * a.WIDTH
+        )
+        checks["all_zero_energy_global_null"] = (
+            all_zero["sum_B"] == 0.0
+            and all_zero["sum_C"] == 0.0
+            and all_zero["weighted_global_explained_fraction"] is None
+            and all_zero["finite_coordinate_count"] == 0
+            and all_zero["zero_energy_coordinate_count"] == a.WIDTH
+            and all(v is None for v in all_zero["central_quantiles_type7"].values())
+        )
         checks["negative_explained"] = (
             energy["coordinates"][1]["B_k"] == 2.0
             and energy["coordinates"][1]["C_k"] == 8.0
