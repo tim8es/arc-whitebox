@@ -1885,6 +1885,18 @@
         "run_id": "R232-v25-drre-exact-small-20260923"
       },
       "revision": 145
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T00:30:17.000Z",
+      "job": "R236",
+      "owner": "independent-verifier-audit",
+      "payload": {
+        "run_id": "R236-r234-verifier-independent-audit-20260923",
+        "code_commit": "9cec083b09780edfebcf9e22478c1e159b6b0567",
+        "command": "independent read-only source audit of research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json against frozen R217 protocol and pinned R218 workflow/executor/schema; optional synthetic offline fail-closed check only; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical/R218"
+      },
+      "revision": 146
     }
   ],
   "jobs": [
@@ -3060,7 +3072,14 @@
     },
     {
       "assigned_owner": "independent-verifier-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R236-r234-verifier-independent-audit-20260923",
+          "code_commit": "9cec083b09780edfebcf9e22478c1e159b6b0567",
+          "command": "independent read-only source audit of research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json against frozen R217 protocol and pinned R218 workflow/executor/schema; optional synthetic offline fail-closed check only; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical/R218",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independently audit research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json against the frozen R217 protocol and pinned R218 workflow/executor/schema. Check for fail-open paths, omitted/misapplied provenance gates, metric/threshold drift, and false claims about what the R218 artifact proves. A small synthetic/offline check is allowed only to test verifier fail-closed behavior; do not inspect or interpret the still-running R218 artifact, query private/holdout data, alter R218, or trigger Actions. Produce a source-linked review report and durable receipt, then finish R236 with PASS, concrete defects, or INCONCLUSIVE. R220 remains the authoritative audit after R218 completes. No estimator/scientific run, paid compute, submission, or canonical edits.",
       "depends_on": [
         "R234"
@@ -3069,12 +3088,12 @@
       "id": "R236",
       "owner": "independent-verifier-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Independently audit the R234 postflight verifier before R218 completes"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 145,
+  "revision": 146,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
