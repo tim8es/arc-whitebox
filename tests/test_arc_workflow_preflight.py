@@ -204,7 +204,7 @@ class WorkflowPreflightTests(unittest.TestCase):
     def test_manifest_clear_fails_closed(self):
         generator = HARDENED_GENERATOR.replace(
             'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})',
-            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})\\n    m.clear()',
+            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})\n    m.clear()',
         )
         with self.assertRaisesRegex(p.PreflightError, "unsupported manifest mutation.*clear"):
             p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
@@ -212,7 +212,7 @@ class WorkflowPreflightTests(unittest.TestCase):
     def test_manifest_pop_fails_closed(self):
         generator = HARDENED_GENERATOR.replace(
             'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})',
-            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})\\n    m.pop("seed")',
+            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})\n    m.pop("seed")',
         )
         with self.assertRaisesRegex(p.PreflightError, "unsupported manifest mutation.*pop"):
             p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
@@ -220,10 +220,10 @@ class WorkflowPreflightTests(unittest.TestCase):
     def test_unknown_manifest_mutation_helper_fails_closed(self):
         generator = HARDENED_GENERATOR.replace(
             "def main():",
-            'def mutate_manifest(value):\\n    value.pop("seed")\\n\\ndef main():',
+            'def mutate_manifest(value):\n    value.pop("seed")\n\ndef main():',
         ).replace(
             'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})',
-            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})\\n    mutate_manifest(m)',
+            'm.update({"fixture_id": "x", "seed": 254001, "width": 1024, "depth": 16})\n    mutate_manifest(m)',
         )
         with self.assertRaisesRegex(p.PreflightError, "unsupported manifest mutation.*mutate_manifest"):
             p.check_contract(hardened_workflow(inline_manifest_step("seed")), generator)
