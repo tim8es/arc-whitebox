@@ -1,0 +1,72 @@
+name: R223 finish attempt 4 and repair
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_ATTEMPT4_FINISH_REPAIR_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  control:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R223 control"
+          git config user.email "arc-control@users.noreply.github.com"
+
+      - name: Finish attempt 4 as INFRA_ERROR
+        run: |
+          set -euo pipefail
+          git fetch origin 83ee212aa2e373d28772407fe652e0b4d22a279d
+          git show 83ee212aa2e373d28772407fe652e0b4d22a279d:research/r223/R223_ATTEMPT4_INFRA_RECEIPT.json > /tmp/r223_attempt4_receipt.json
+          RECEIPT_SHA="$(sha256sum /tmp/r223_attempt4_receipt.json | awk '{print $1}')"
+          python - "$RECEIPT_SHA" <<'PY'
+          import json,sys
+          sha=sys.argv[1]
+          payload={
+            "run_id":"R223-v25-local-feed-attempt4-20260923",
+            "status":"INFRA_ERROR",
+            "reason":"Attempt 4 passed the free-compute, pinned-distribution, pinned V25 blob and exact repaired parent->candidate byte-transform gates. It then stopped before downloading any R209 parent bytes because the shell exported GH_TOKEN but the curl Authorization header referenced unset GITHUB_TOKEN under set -u. whest validate and the candidate mini-100 panel were never invoked.",
+            "receipt":{
+              "url":"https://github.com/tim8es/arc-whitebox/blob/83ee212aa2e373d28772407fe652e0b4d22a279d/research/r223/R223_ATTEMPT4_INFRA_RECEIPT.json",
+              "sha256":sha
+            }
+          }
+          open("/tmp/r223_attempt4_finish.json","w").write(json.dumps(payload,indent=2,sort_keys=True)+"\n")
+          PY
+          python scripts/arc_control.py finish R223             --owner method-research             --payload /tmp/r223_attempt4_finish.json             --publish | tee /tmp/r223_attempt4_finish_result.json
+
+      - name: Publish auth-env repair
+        run: |
+          cat > /tmp/r223_repair5.json <<'JSON'
+          {
+            "reason": "Attempt 4 is preserved as pre-panel INFRA_ERROR. Repair only the parent-artifact download bootstrap by using the already exported GH_TOKEN in the curl Authorization header instead of unset GITHUB_TOKEN. The exact candidate bytes, V25-LF formula, clamp, panel, thresholds, parent hashes, ranks/source state, toolchain and all scientific gates remain unchanged."
+          }
+          JSON
+          python scripts/arc_control.py repair R223             --owner method-research             --payload /tmp/r223_repair5.json             --publish | tee /tmp/r223_repair5_result.json
+
+      - name: Verify remote state
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R223")
+          assert job["status"]=="CLAIMED", job
+          assert len(job["attempts"])==4, job["attempts"]
+          assert [a["status"] for a in job["attempts"]]==["INFRA_ERROR"]*4
+          print(json.dumps({"revision":state["revision"],"job":job},indent=2,sort_keys=True))
+          PY
