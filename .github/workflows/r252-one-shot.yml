@@ -1,0 +1,200 @@
+name: R252 one-shot global-accuracy method
+
+on:
+  push:
+    branches:
+      - research/r252-d21-sensitivity-gram-20260923
+    paths:
+      - .github/workflows/r252-one-shot.yml
+
+jobs:
+  r252:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Initialize evidence directory
+        run: |
+          mkdir -p r252_artifacts
+          printf '%s\n' "$GITHUB_SHA" > r252_artifacts/workflow_head_sha.txt
+          printf '%s\n' "$RUNNER_OS" > r252_artifacts/runner_os.txt
+          printf '%s\n' "$ImageOS" > r252_artifacts/image_os.txt
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.16"
+
+      - name: Verify pinned wheels before science
+        run: |
+          set -euo pipefail
+          test "$(python -c 'import platform; print(platform.python_version())')" = "3.11.16"
+          python -m pip download --no-deps --only-binary=:all:             numpy==2.4.6 flopscope==0.12.1 whestbench==0.16.1 -d r252_wheels
+          echo "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93  r252_wheels/numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl" | sha256sum -c -
+          echo "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582  r252_wheels/flopscope-0.12.1-py3-none-any.whl" | sha256sum -c -
+          echo "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e  r252_wheels/whestbench-0.16.1-py3-none-any.whl" | sha256sum -c -
+          sha256sum r252_wheels/* > r252_artifacts/pinned_wheels.sha256
+          python -m pip install             r252_wheels/numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl             r252_wheels/flopscope-0.12.1-py3-none-any.whl             r252_wheels/whestbench-0.16.1-py3-none-any.whl
+          python - <<'PY' > r252_artifacts/runtime_versions.json
+          import json, platform, numpy, flopscope, whestbench
+          got={
+            "python":platform.python_version(),
+            "numpy":numpy.__version__,
+            "flopscope":getattr(flopscope,"__version__","unknown"),
+            "whestbench":getattr(whestbench,"__version__","unknown"),
+          }
+          exp={"python":"3.11.16","numpy":"2.4.6","flopscope":"0.12.1","whestbench":"0.16.1"}
+          print(json.dumps(got,sort_keys=True))
+          if got != exp:
+              raise SystemExit(f"runtime mismatch: {got} != {exp}")
+          PY
+
+      - name: Reconstruct frozen target-free fixture
+        run: |
+          python research/r252/r252_fixture.py --out-dir r252_artifacts/fixture             > r252_artifacts/fixture_build.log
+
+      - name: Unchanged parent then frozen candidate
+        id: targetfree
+        shell: bash
+        run: |
+          set +e
+          PYTHONPATH=research/r252 python research/r252/r252_one_shot.py             --parent methods/public_504aldo/estimator_v25.py             --out-dir r252_artifacts             > r252_artifacts/target_free.stdout 2> r252_artifacts/target_free.stderr
+          code=$?
+          echo "$code" > r252_artifacts/target_free.exit
+          if [ "$code" -eq 0 ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      - name: Validate candidate only after target-free GO
+        id: validate
+        if: steps.targetfree.outputs.go == 'true'
+        shell: bash
+        run: |
+          set +e
+          whest validate             --estimator r252_artifacts/R252_CANDIDATE_SOURCE.py --json             > r252_artifacts/validate.json 2> r252_artifacts/validate.stderr
+          code=$?
+          echo "$code" > r252_artifacts/validate.exit
+          if [ "$code" -eq 0 ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      - name: Exact public R209 mini-100 only after every preflight GO
+        id: public
+        if: steps.targetfree.outputs.go == 'true' && steps.validate.outputs.go == 'true'
+        shell: bash
+        run: |
+          set +e
+          whest run             --estimator r252_artifacts/R252_CANDIDATE_SOURCE.py             --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2             --split mini             --streaming             --n-mlps 100             --runner local             --flop-budget 2199023255552             --wall-time-limit 120             --residual-wall-time-limit 0.4             --max-threads 1             --format json             > r252_artifacts/public_report.json 2> r252_artifacts/public.stderr
+          code=$?
+          echo "$code" > r252_artifacts/public.exit
+          if [ "$code" -eq 0 ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      - name: Apply frozen public gates
+        if: steps.public.outputs.go == 'true'
+        shell: bash
+        run: |
+          set +e
+          python research/r252/r252_public_gate.py             --candidate-report r252_artifacts/public_report.json             --r209 research/results/R209-v25-mini100.json             --out r252_artifacts/R252_PUBLIC_GATE.json             > r252_artifacts/public_gate.stdout 2> r252_artifacts/public_gate.stderr
+          echo "$?" > r252_artifacts/public_gate.exit
+          exit 0
+
+      - name: Build immutable workflow receipt and hashes
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, pathlib
+          root=pathlib.Path("r252_artifacts")
+          root.mkdir(exist_ok=True)
+          def readint(name):
+              p=root/name
+              try: return int(p.read_text().strip())
+              except Exception: return None
+          tf=None
+          p=root/"R252_TARGET_FREE_RESULT.json"
+          if p.exists():
+              try: tf=json.loads(p.read_text())
+              except Exception: pass
+          pg=None
+          p=root/"R252_PUBLIC_GATE.json"
+          if p.exists():
+              try: pg=json.loads(p.read_text())
+              except Exception: pass
+          if tf is None:
+              decision="INFRA_ERROR_BEFORE_TARGET_FREE_RESULT"
+          elif not tf.get("parent_go",False):
+              decision="INCONCLUSIVE_PARENT_GATE"
+          elif not tf.get("candidate_go",False):
+              decision="DEVELOPMENT_NO_GO_TARGET_FREE"
+          elif readint("validate.exit") not in (0,None):
+              decision="DEVELOPMENT_NO_GO_VALIDATION"
+          elif readint("public.exit") not in (0,None):
+              decision="DEVELOPMENT_NO_GO_PUBLIC_RUN_FAILURE"
+          elif pg is not None and pg.get("go"):
+              decision="PUBLIC_DEVELOPMENT_GO"
+          elif pg is not None:
+              decision="PUBLIC_DEVELOPMENT_NO_GO"
+          else:
+              decision="INFRA_ERROR_AFTER_TARGET_FREE_GO"
+          receipt={
+            "schema":"arc.r252.workflow_receipt.v1",
+            "run_id":"R252-one-shot-actions-global-accuracy-20260923",
+            "github_run_id":os.environ.get("GITHUB_RUN_ID"),
+            "github_run_attempt":os.environ.get("GITHUB_RUN_ATTEMPT"),
+            "github_sha":os.environ.get("GITHUB_SHA"),
+            "runner_os":os.environ.get("RUNNER_OS"),
+            "image_os":os.environ.get("ImageOS"),
+            "target_free_exit":readint("target_free.exit"),
+            "validate_exit":readint("validate.exit"),
+            "public_exit":readint("public.exit"),
+            "public_gate_exit":readint("public_gate.exit"),
+            "decision":decision,
+            "target_free":tf,
+            "public_gate":pg,
+            "safety":{
+              "workflow_count_authorized":1,
+              "retry":False,
+              "second_method":False,
+              "paid_or_larger_runner":False,
+              "private_holdout":False,
+              "submission":False,
+              "leaderboard_mutation":False,
+              "canonical_v25_edit":False,
+            },
+          }
+          (root/"R252_WORKFLOW_RECEIPT.json").write_text(
+              json.dumps(receipt,indent=2,sort_keys=True,allow_nan=False)+"\n")
+          hashes={}
+          for p in sorted(root.rglob("*")):
+              if p.is_file() and p.name!="R252_ARTIFACT_HASHES.json":
+                  hashes[str(p.relative_to(root))]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (root/"R252_ARTIFACT_HASHES.json").write_text(
+              json.dumps(hashes,indent=2,sort_keys=True)+"\n")
+          print(json.dumps({"decision":decision,"hashes":hashes},indent=2,sort_keys=True))
+          PY
+
+      - name: Upload R252 one-shot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r252-one-shot-evidence
+          path: r252_artifacts/
+          if-no-files-found: error
