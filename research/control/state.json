@@ -2908,6 +2908,23 @@
         "command": "protocol/history research only: read AGENTS/RESEARCH_PROCESS/history plus R209/R246/R247/R245 allowed evidence; select and freeze exactly one distinct network-agnostic V25 FLOPs-reduction method, exact R209 public mini-100 panel, target-free falsifier, metered-source compliance and scientific/cost/failure gates before any estimator/benchmark/Actions execution"
       },
       "revision": 223
+    },
+    {
+      "revision": 224,
+      "action": "enqueue",
+      "job": "R249",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "phase2-scalar-compliance-research",
+        "deliverable": "Research the official Phase-2 eligibility/metering boundary for Python scalar arithmetic in estimator predict code. Use primary sources only: pinned official AIcrowd starter-kit Allowed Code, code-patterns and FlopScope primer; current published Challenge Rules; official FlopScope client docs/source and any first-party organizer clarification that already exists. Treat R245 report as context only, not as evidence. Classify separately: (1) fnp.ndarray operators, (2) fnp.sqrt/divide and other primitives, (3) shape-derived scalar arithmetic such as 2/width passed into fnp ops, (4) output-affecting CPython math.* and coefficient calculations, (5) control/bookkeeping/loading. For each, cite exact source/version/hash and distinguish confirmed allowed, confirmed prohibited, and unresolved. Do not contact organizers; do not inspect R223/R244 candidate artifacts/output; no estimator/benchmark/Actions, private/holdout, paid compute, submission or leaderboard mutation. Write findings as one concise source-linked Markdown file in `research/r249/R249_SCALAR_METERING_ELIGIBILITY.md`; use that file URL and SHA256 as the R249 finish receipt.",
+        "depends_on": [
+          "R245"
+        ],
+        "hypothesis_id": "PHASE2-PYTHON-SCALAR-METERING-BOUNDARY",
+        "priority": 2,
+        "title": "Resolve official Phase-2 metering eligibility of Python scalar arithmetic"
+      },
+      "at": "2026-09-23 05:43:33+00:00"
     }
   ],
   "jobs": [
@@ -4668,10 +4685,24 @@
           "status": "RUNNING"
         }
       ]
+    },
+    {
+      "assigned_owner": "phase2-scalar-compliance-research",
+      "deliverable": "Research the official Phase-2 eligibility/metering boundary for Python scalar arithmetic in estimator predict code. Use primary sources only: pinned official AIcrowd starter-kit Allowed Code, code-patterns and FlopScope primer; current published Challenge Rules; official FlopScope client docs/source and any first-party organizer clarification that already exists. Treat R245 report as context only, not as evidence. Classify separately: (1) fnp.ndarray operators, (2) fnp.sqrt/divide and other primitives, (3) shape-derived scalar arithmetic such as 2/width passed into fnp ops, (4) output-affecting CPython math.* and coefficient calculations, (5) control/bookkeeping/loading. For each, cite exact source/version/hash and distinguish confirmed allowed, confirmed prohibited, and unresolved. Do not contact organizers; do not inspect R223/R244 candidate artifacts/output; no estimator/benchmark/Actions, private/holdout, paid compute, submission or leaderboard mutation. Write findings as one concise source-linked Markdown file in `research/r249/R249_SCALAR_METERING_ELIGIBILITY.md`; use that file URL and SHA256 as the R249 finish receipt.",
+      "depends_on": [
+        "R245"
+      ],
+      "hypothesis_id": "PHASE2-PYTHON-SCALAR-METERING-BOUNDARY",
+      "priority": 2,
+      "title": "Resolve official Phase-2 metering eligibility of Python scalar arithmetic",
+      "id": "R249",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 223,
+  "revision": 224,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
