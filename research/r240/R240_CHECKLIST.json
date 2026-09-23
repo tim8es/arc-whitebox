@@ -1,0 +1,142 @@
+{
+  "schema": "arc.whitebox.r240.r223_attempt6_checklist.v1",
+  "job": "R240",
+  "owner": "independent-v25-audit",
+  "mode": "offline postflight only",
+  "r223_attempt6": {
+    "queue_run_id": "R223-v25-local-feed-attempt6-20260923",
+    "code_commit": "bcf4b1a94c22b9d5e7cfce482de7f7b5d134c1dc",
+    "protocol_blob": "1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+    "workflow_blob": "d24e3f63e8ce447188868846e9b3e4ef755b395e",
+    "candidate_blob": "eb95d4ae46a031be5131eef8dd0909f2061b8749",
+    "exact_transform_verifier_blob": "961e5afb052e2cfdc15e1284de49e57ba1514a73",
+    "owner_compare_blob": "fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0",
+    "attempt6_path_patch_blob": "acdf3b788dfdf635533a23a9cf3d282a35241586",
+    "artifact_name": "r223-v25-local-feed-mini100-attempt6"
+  },
+  "comparator": {
+    "normalized_path": "research/results/R209-v25-mini100.json",
+    "normalized_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "normalized_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "parent_report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+    "parent_artifact_zip_sha256": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08",
+    "names_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "mean_raw_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "mean_c_over_b": 0.36666448157347986,
+    "failures": 0
+  },
+  "canonical_whestbench_0_16_1": {
+    "source_commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+    "scoring_path": "src/whestbench/scoring.py",
+    "failure_predicate": "bool(error_code) OR budget_exhausted OR time_exhausted OR residual_wall_time_exhausted OR combined_budget_exhausted",
+    "score": "final_layer_mse * (1.0 if failed else max(0.1,effective_compute/2**41))",
+    "note": "R240 uses canonical failure predicate even if owner compare helper is narrower."
+  },
+  "manifest_binding": {
+    "manifest_path": "r223_attempt6_evidence/sha256.json",
+    "requirements": [
+      "manifest is a nonempty JSON object",
+      "every artifact file except sha256.json maps to exactly one manifest key",
+      "no manifest key points to a missing artifact file",
+      "all listed SHA256 values recompute exactly",
+      "mandatory candidate/parent/result/provenance/runtime files are present",
+      "frozen uploaded R223 source/protocol files match expected git blobs"
+    ]
+  },
+  "mandatory_evidence": [
+    "compute_gate.json",
+    "whest_version.json",
+    "environment.txt",
+    "source_transform_guard.json",
+    "static_feed_identity.json",
+    "parent-report.json",
+    "validate.json",
+    "validate.stderr",
+    "validate.exit",
+    "candidate-report.json",
+    "run.stderr",
+    "run.exit",
+    "R223_ATTEMPT6_RESULT.json",
+    "sha256.json"
+  ],
+  "frozen_gates": [
+    {
+      "id": 1,
+      "name": "exact_100_name_order_identity",
+      "rule": "100 rows, parent/candidate (mlp_index,mlp_name) pairwise identical; both names SHA == frozen SHA"
+    },
+    {
+      "id": 2,
+      "name": "dataset_sha_identical",
+      "rule": "parent and candidate dataset SHA == frozen dataset SHA"
+    },
+    {
+      "id": 3,
+      "name": "candidate_failures_zero",
+      "rule": "zero canonical whestbench failures including error_code-only failures"
+    },
+    {
+      "id": 4,
+      "name": "candidate_mean_raw_mse_lt_parent",
+      "rule": "candidate mean raw MSE < 2.228303490170447e-8"
+    },
+    {
+      "id": 5,
+      "name": "candidate_mean_adjusted_le_0p995_parent",
+      "rule": "candidate mean independently recomputed adjusted score <= 8.129545452916639e-9"
+    },
+    {
+      "id": 6,
+      "name": "improves_at_least_55_of_100",
+      "rule": "candidate adjusted score < parent on >=55 rows"
+    },
+    {
+      "id": 7,
+      "name": "paired_delta_mean_gt_2se",
+      "rule": "mean(parent_adjusted-candidate_adjusted) > 2*sample-SE across 100 rows"
+    },
+    {
+      "id": 8,
+      "name": "candidate_mean_cb_le_parent_plus_1e_5",
+      "rule": "mean effective_compute / 2**41 <= 0.36666448157347986 + 1e-5"
+    },
+    {
+      "id": 9,
+      "name": "max_residual_lt_0p4",
+      "rule": "max candidate residual_wall_time_s < 0.4"
+    },
+    {
+      "id": 10,
+      "name": "exact_candidate_source_config_provenance",
+      "rule": "manifest, frozen blobs, transform guard, static identity, exact runtime, validate/run exits, parent normalized binding and reported-vs-recomputed scores all pass"
+    },
+    {
+      "id": 11,
+      "name": "only_one_candidate_panel_run",
+      "rule": "independent Actions/queue enumeration confirms exactly one R223 candidate panel invocation across attempts"
+    }
+  ],
+  "post_terminal_only": [
+    "read R223 terminal queue completion and receipt",
+    "enumerate R223 attempt-6 Actions run/job/artifact metadata",
+    "download immutable artifact ZIP exactly once for read-only postflight",
+    "verify GitHub artifact digest against independently computed ZIP SHA256",
+    "run offline verifier against ZIP + frozen normalized comparator + frozen workflow",
+    "compare owner R223_ATTEMPT6_RESULT only after independent recomputation",
+    "publish R240 report/receipt and queue finish"
+  ],
+  "prohibited": [
+    "inspect in-progress R223 artifact",
+    "execute estimator or benchmark",
+    "trigger Actions",
+    "modify R223 files",
+    "relax or reinterpret gates",
+    "retry/rescue candidate",
+    "paid compute",
+    "holdout/private data",
+    "submission",
+    "canonical V25 changes"
+  ]
+}
