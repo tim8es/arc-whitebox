@@ -4071,6 +4071,14 @@
         "status": "COMPLETE"
       },
       "revision": 303
+    },
+    {
+      "revision": 304,
+      "action": "claim",
+      "job": "R266",
+      "owner": "score-gap-analysis",
+      "payload": {},
+      "at": "2026-09-23T12:12:00+00:00"
     }
   ],
   "jobs": [
@@ -6490,9 +6498,9 @@
       ],
       "hypothesis_id": "R209-LEADER-GAP-SENSITIVITY-20260923",
       "id": "R266",
-      "owner": null,
+      "owner": "score-gap-analysis",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Quantify the remaining score gap and required improvement"
     },
     {
@@ -6528,7 +6536,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 303,
+  "revision": 304,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
