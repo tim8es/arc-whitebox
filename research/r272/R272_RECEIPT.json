@@ -1,0 +1,46 @@
+{
+  "historical_sources_inspected": {
+    "R257_workflow_commit": "187bc8f9ca459a96af1f7cf0d014bc906b278a2a",
+    "R258_workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
+    "R259_workflow_commit": "65394e2679bebd7005e7fba13de3166a2c5800d2",
+    "R260_workflow_commit": "47ab8c616665e6086e1b8c6f49acd937dab2d776",
+    "R267_postmortem_branch_head": "17418e2539750f1868bcb4d962f356b01ba71408"
+  },
+  "implementation": {
+    "commit": "986770e65787b440bbce80ca24f97baf3601a349",
+    "script_git_blob_sha1": "c50e96d37610af0a6745eb8d4fcbf83a16a00bc6",
+    "script_path": "scripts/arc_workflow_preflight.py",
+    "test_git_blob_sha1": "fff37038b1992a913d9c1de3ff6d64d0ac664e3e",
+    "test_path": "tests/test_r272_workflow_preflight.py"
+  },
+  "job": "R272",
+  "local_offline_check": {
+    "actions": false,
+    "cases": {
+      "R257_like_shallow_history": "REJECTED_EXPECTED",
+      "R258_like_manifest_path": "REJECTED_EXPECTED",
+      "R259_like_schema_field": "REJECTED_EXPECTED",
+      "R260_like_repaired_contract": "PASS_EXPECTED"
+    },
+    "competition_data": false,
+    "estimator_or_science": false,
+    "fixture_execution": false,
+    "guard_bytes_verified_against_git_blob": true,
+    "network": false
+  },
+  "report": {
+    "path": "research/r272/R272_WORKFLOW_PREFLIGHT_REPORT.md",
+    "sha256": "4aecd036c17744c5f38bddb5a0dc17413b28fa08f8f3f6854652571946859cd4"
+  },
+  "run_id": "R272-offline-workflow-preflight-20260923",
+  "safety": {
+    "actions_triggered": false,
+    "budget_spent": false,
+    "competition_data_downloaded": false,
+    "historical_workflows_or_receipts_changed": false,
+    "science_run": false,
+    "submission_or_leaderboard_or_canonical_changed": false
+  },
+  "schema": "arc.whitebox.r272.workflow-preflight-receipt.v1",
+  "status": "COMPLETE"
+}
