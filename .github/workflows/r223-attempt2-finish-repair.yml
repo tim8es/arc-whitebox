@@ -1,0 +1,72 @@
+name: R223 finish attempt 2 and repair
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_ATTEMPT2_FINISH_REPAIR_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  control:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R223 control"
+          git config user.email "arc-control@users.noreply.github.com"
+
+      - name: Finish attempt 2 as INFRA_ERROR
+        run: |
+          set -euo pipefail
+          git fetch origin 9f375488f40f5a55a66918622b5545a6825d5645
+          git show 9f375488f40f5a55a66918622b5545a6825d5645:research/r223/R223_ATTEMPT2_INFRA_RECEIPT.json > /tmp/r223_attempt2_receipt.json
+          RECEIPT_SHA="$(sha256sum /tmp/r223_attempt2_receipt.json | awk '{print $1}')"
+          python - "$RECEIPT_SHA" <<'PY'
+          import json,sys
+          sha=sys.argv[1]
+          payload={
+            "run_id":"R223-v25-local-feed-attempt2-20260923",
+            "status":"INFRA_ERROR",
+            "reason":"Attempt 2 stopped before source-transform verification, parent-artifact download, whest validate, or any mini-100 panel invocation. Standard public ubuntu-24.04 compute gate passed and pip installed the pinned distributions, but an attempt-2 bootstrap assertion incorrectly required module-level whestbench.__version__ == 0.16.1. The scientific V25-LF formula, clamp, panel and gates were never exercised.",
+            "receipt":{
+              "url":"https://github.com/tim8es/arc-whitebox/blob/9f375488f40f5a55a66918622b5545a6825d5645/research/r223/R223_ATTEMPT2_INFRA_RECEIPT.json",
+              "sha256":sha
+            }
+          }
+          open("/tmp/r223_attempt2_finish.json","w").write(json.dumps(payload,indent=2,sort_keys=True)+"\n")
+          PY
+          python scripts/arc_control.py finish R223             --owner method-research             --payload /tmp/r223_attempt2_finish.json             --publish | tee /tmp/r223_attempt2_finish_result.json
+
+      - name: Publish next infrastructure repair
+        run: |
+          cat > /tmp/r223_repair3.json <<'JSON'
+          {
+            "reason": "Attempt 2 is preserved as a second pre-panel INFRA_ERROR. Repair only the provenance bootstrap version check: replace the non-contractual module-level whestbench.__version__ assertion with importlib.metadata distribution-version checks for whestbench==0.16.1 and flopscope==0.12.1, while retaining whest version --json evidence. No estimator source, formula, clamp, panel, thresholds, parent artifact, or scientific configuration changes."
+          }
+          JSON
+          python scripts/arc_control.py repair R223             --owner method-research             --payload /tmp/r223_repair3.json             --publish | tee /tmp/r223_repair3_result.json
+
+      - name: Verify remote state
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R223")
+          assert job["status"]=="CLAIMED", job
+          assert len(job["attempts"])==2, job["attempts"]
+          assert [a["status"] for a in job["attempts"]]==["INFRA_ERROR","INFRA_ERROR"]
+          print(json.dumps({"revision":state["revision"],"job":job},indent=2,sort_keys=True))
+          PY
