@@ -4462,93 +4462,93 @@
       "revision": 332
     },
     {
-      "revision": 333,
       "action": "claim",
+      "at": "2026-09-23T13:21:29.838Z",
       "job": "R273",
       "owner": "score-gap-independent-audit",
       "payload": {},
-      "at": "2026-09-23T13:21:29.838Z"
+      "revision": 333
     },
     {
-      "revision": 334,
       "action": "start",
+      "at": "2026-09-23T13:21:55.082Z",
       "job": "R273",
       "owner": "score-gap-independent-audit",
       "payload": {
-        "run_id": "R273-v25-error-concentration-20260923",
         "code_commit": "fa2389f25bbb388550278ddef4a10a7ab5a7b714",
-        "command": "desk-only quantitative audit of immutable research/results/R209-v25-mini100.json against pinned official Phase-2 scoring formula; descriptive development evidence only"
+        "command": "desk-only quantitative audit of immutable research/results/R209-v25-mini100.json against pinned official Phase-2 scoring formula; descriptive development evidence only",
+        "run_id": "R273-v25-error-concentration-20260923"
       },
-      "at": "2026-09-23T13:21:55.082Z"
+      "revision": 334
     },
     {
-      "revision": 335,
       "action": "finish",
+      "at": "2026-09-23T13:25:08.722Z",
       "job": "R273",
       "owner": "score-gap-independent-audit",
       "payload": {
-        "run_id": "R273-v25-error-concentration-20260923",
-        "status": "COMPLETE",
         "reason": "Independent descriptive audit of immutable R209 V25 mini:all-100 rows completed. All 100/100 rows exactly reproduce official_adjusted_score from final_mse * max(0.1, measured_flops/budget_flops); 0 failures. Adjusted score mean 8.170397440117225e-9, sample SD 1.1587653552315885e-9, SE 1.1587653552315885e-10. Worst 10% contribute 12.4724509073% and worst 25% contribute 29.3130672490% of total score; largest row contributes 1.3592696640%. Measured FLOPs and budget are constant across all rows, so cost-factor variation contributes zero to cross-network dispersion and all score dispersion is scaled MSE dispersion. Development evidence is BROAD_BASED_NOT_OUTLIER_DOMINATED; global research should target broad MSE reduction under one fixed method/configuration, not per-network selection. No leaderboard comparison/rank, estimator, Actions, new data, paid/private/holdout/full, tuning, submission, model/leaderboard/canonical edits.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/3e5ecf637461175a1c2e721f199861655d73e105/research/r273/R273_RECEIPT.json",
-          "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e"
-        }
+          "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/3e5ecf637461175a1c2e721f199861655d73e105/research/r273/R273_RECEIPT.json"
+        },
+        "run_id": "R273-v25-error-concentration-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T13:25:08.722Z"
+      "revision": 335
     },
     {
-      "revision": 336,
       "action": "enqueue",
+      "at": "2026-09-23 13:32:42+00:00",
       "job": "R274",
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "workflow-preflight-guard",
-        "title": "Scope manifest schema validation to the emitted object",
-        "hypothesis_id": "R272-GENERATOR-MANIFEST-SCOPE-20260923",
-        "priority": 2,
+        "deliverable": "Harden the R272 offline preflight against a false positive: generator_contract() currently unions string keys from every ast.Dict in the whole fixture source, so an unrelated dictionary could make a nonexistent emitted-manifest field appear valid. Reproduce with a focused offline regression test where a key exists only in an unrelated dict and the workflow asserts it. Inspect the actual R254 fixture generator (research/r254/r254_fixture.py on research/r254-balanced-rider-reduction-20260923) and statically scope emitted schema extraction to the JSON object written as the runtime manifest; do not run the fixture. Keep standard-library-only and narrow. Run focused offline tests; do not edit workflows, historical reports/receipts, Actions or science. Use a new isolated R274 branch from R272 tip, add append-only R274 report/receipt with hashes/commit, and finish R274. Report if safe static scoping is not possible rather than weakening the guard.",
         "depends_on": [
           "R272"
         ],
-        "deliverable": "Harden the R272 offline preflight against a false positive: generator_contract() currently unions string keys from every ast.Dict in the whole fixture source, so an unrelated dictionary could make a nonexistent emitted-manifest field appear valid. Reproduce with a focused offline regression test where a key exists only in an unrelated dict and the workflow asserts it. Inspect the actual R254 fixture generator (research/r254/r254_fixture.py on research/r254-balanced-rider-reduction-20260923) and statically scope emitted schema extraction to the JSON object written as the runtime manifest; do not run the fixture. Keep standard-library-only and narrow. Run focused offline tests; do not edit workflows, historical reports/receipts, Actions or science. Use a new isolated R274 branch from R272 tip, add append-only R274 report/receipt with hashes/commit, and finish R274. Report if safe static scoping is not possible rather than weakening the guard."
+        "hypothesis_id": "R272-GENERATOR-MANIFEST-SCOPE-20260923",
+        "priority": 2,
+        "title": "Scope manifest schema validation to the emitted object"
       },
-      "at": "2026-09-23 13:32:42+00:00"
+      "revision": 336
     },
     {
-      "revision": 337,
       "action": "claim",
+      "at": "2026-09-23T13:35:06.710Z",
       "job": "R274",
       "owner": "workflow-preflight-guard",
       "payload": {},
-      "at": "2026-09-23T13:35:06.710Z"
+      "revision": 337
     },
     {
-      "revision": 338,
       "action": "start",
+      "at": "2026-09-23T13:35:34.671Z",
       "job": "R274",
       "owner": "workflow-preflight-guard",
       "payload": {
-        "run_id": "R274-offline-preflight-hardening-20260923",
         "code_commit": "e4bdd87661ca0459675e1b4b9e8d22358be378d4",
-        "command": "python -m unittest discover -s tests -p 'test_r274_workflow_preflight.py' -v"
+        "command": "python -m unittest discover -s tests -p 'test_r274_workflow_preflight.py' -v",
+        "run_id": "R274-offline-preflight-hardening-20260923"
       },
-      "at": "2026-09-23T13:35:34.671Z"
+      "revision": 338
     },
     {
-      "revision": 339,
       "action": "finish",
+      "at": "2026-09-23T13:52:43.888Z",
       "job": "R274",
       "owner": "workflow-preflight-guard",
       "payload": {
-        "run_id": "R274-offline-preflight-hardening-20260923",
-        "status": "COMPLETE",
         "reason": "Hardened the R272 offline preflight against all three independently reviewed false-PASS boundaries. Manifest schema is now traced only from the object actually serialized by json.dumps into the runtime manifest; unrelated dictionaries cannot legalize keys. Each git merge-base ancestry guard now requires the latest preceding full-history checkout in the same workflow job. Step analysis now includes unnamed - run: items and fails closed when a runtime-manifest read has no statically traceable json.loads binding or no extracted key paths. Focused R274 tests passed 6/6 and R272 compatibility tests passed 4/4 on the exact committed bytes. No workflows/history/R272 durable artifacts/historical receipts/results, Actions/science, competition data, budget, submission, leaderboard or canonical files were changed.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/0c27b505c120a336116bdee8c5dcad2210aa3f73/research/r274/R274_RECEIPT.json",
-          "sha256": "502f112fe9e5da4815fad1e758098f2c66a7fe5a880cec75dd14748cdfcc4551"
-        }
+          "sha256": "502f112fe9e5da4815fad1e758098f2c66a7fe5a880cec75dd14748cdfcc4551",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/0c27b505c120a336116bdee8c5dcad2210aa3f73/research/r274/R274_RECEIPT.json"
+        },
+        "run_id": "R274-offline-preflight-hardening-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T13:52:43.888Z"
+      "revision": 339
     },
     {
       "action": "enqueue",
@@ -4557,13 +4557,13 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "workflow-preflight-integration",
-        "title": "Integrate and operationalize the hardened workflow preflight",
-        "hypothesis_id": "R274-MAIN-INTEGRATION-20260923",
-        "priority": 1,
+        "deliverable": "Start from current main, not the historical R274 branch tip. Inspect R272/R274 implementation commits and compare against main; the existing R274 branch diverges and a direct PR would include hundreds of unrelated commits. Build a clean integration branch containing only the minimum preflight script/tests (and a short invocation doc if needed). Run focused offline R272/R274 tests on that clean branch; verify the diff is limited to intended files; open a reviewable PR to main only if clean and green. Do not merge, trigger Actions, execute fixtures/estimators, or edit historical evidence. If safe integration cannot be completed, report exact blocker and smallest next step. Publish claim/start/finish R275 and append report/receipt with hashes/commit.",
         "depends_on": [
           "R274"
         ],
-        "deliverable": "Start from current main, not the historical R274 branch tip. Inspect R272/R274 implementation commits and compare against main; the existing R274 branch diverges and a direct PR would include hundreds of unrelated commits. Build a clean integration branch containing only the minimum preflight script/tests (and a short invocation doc if needed). Run focused offline R272/R274 tests on that clean branch; verify the diff is limited to intended files; open a reviewable PR to main only if clean and green. Do not merge, trigger Actions, execute fixtures/estimators, or edit historical evidence. If safe integration cannot be completed, report exact blocker and smallest next step. Publish claim/start/finish R275 and append report/receipt with hashes/commit."
+        "hypothesis_id": "R274-MAIN-INTEGRATION-20260923",
+        "priority": 1,
+        "title": "Integrate and operationalize the hardened workflow preflight"
       },
       "revision": 340
     },
@@ -4574,88 +4574,88 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "v25-accuracy-research",
-        "title": "Test one distinct global V25 accuracy improvement",
-        "hypothesis_id": "V25-GLOBAL-ACCURACY-EXPLORATION-20260923",
-        "priority": 1,
+        "deliverable": "Use pinned V25 source and immutable R209 public mini:all-100 only as development evidence. Read current AGENTS.md, research/RESEARCH_PROCESS.md, STATUS, live queue and full relevant history; choose one concrete accuracy-improvement hypothesis not equivalent to a closed/rejected experiment, freeze a small bounded protocol, and implement/test it with existing/free local resources. Compare candidate with V25 on the same 100 networks and exact evaluator/meter versions; record every attempt, per-network adjusted score, raw MSE, measured FLOPs, failures and paired uncertainty. Keep one fixed global method/configuration (no per-network selection); do not claim leaderboard rank because R209 is not comparable to the visible 50. No new paid resources, private/holdout/full data, competition submission or leaderboard/canonical edits. If the chosen method fails, preserve the negative result and recommend the next scientifically distinct test. Claim/start/finish R276 and append report, normalized result if valid, and receipt with hashes/commit.",
         "depends_on": [
           "R209",
           "R273"
         ],
-        "deliverable": "Use pinned V25 source and immutable R209 public mini:all-100 only as development evidence. Read current AGENTS.md, research/RESEARCH_PROCESS.md, STATUS, live queue and full relevant history; choose one concrete accuracy-improvement hypothesis not equivalent to a closed/rejected experiment, freeze a small bounded protocol, and implement/test it with existing/free local resources. Compare candidate with V25 on the same 100 networks and exact evaluator/meter versions; record every attempt, per-network adjusted score, raw MSE, measured FLOPs, failures and paired uncertainty. Keep one fixed global method/configuration (no per-network selection); do not claim leaderboard rank because R209 is not comparable to the visible 50. No new paid resources, private/holdout/full data, competition submission or leaderboard/canonical edits. If the chosen method fails, preserve the negative result and recommend the next scientifically distinct test. Claim/start/finish R276 and append report, normalized result if valid, and receipt with hashes/commit."
+        "hypothesis_id": "V25-GLOBAL-ACCURACY-EXPLORATION-20260923",
+        "priority": 1,
+        "title": "Test one distinct global V25 accuracy improvement"
       },
       "revision": 341
     },
     {
-      "revision": 342,
       "action": "claim",
+      "at": "2026-09-23T15:02:32.658Z",
       "job": "R275",
       "owner": "workflow-preflight-integration",
       "payload": {},
-      "at": "2026-09-23T15:02:32.658Z"
+      "revision": 342
     },
     {
-      "revision": 343,
       "action": "claim",
+      "at": "2026-09-23T15:03:01.039Z",
       "job": "R276",
       "owner": "v25-accuracy-research",
       "payload": {},
-      "at": "2026-09-23T15:03:01.039Z"
+      "revision": 343
     },
     {
-      "revision": 344,
       "action": "start",
+      "at": "2026-09-23T15:03:10.866Z",
       "job": "R275",
       "owner": "workflow-preflight-integration",
       "payload": {
-        "run_id": "R275-main-preflight-integration-20260923",
         "code_commit": "b5b988f8ec49a5ec473d59fcbfdfaf8c4350c850",
-        "command": "python -m unittest tests/test_arc_workflow_preflight.py -v"
+        "command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
+        "run_id": "R275-main-preflight-integration-20260923"
       },
-      "at": "2026-09-23T15:03:10.866Z"
+      "revision": 344
     },
     {
-      "revision": 345,
       "action": "start",
+      "at": "2026-09-23T15:06:46.499Z",
       "job": "R276",
       "owner": "v25-accuracy-research",
       "payload": {
-        "run_id": "R276-v25-global-accuracy-screen-20260923",
         "code_commit": "4749fd4a28ecd4e717b93e76c0efc2794370229b",
-        "command": "full-history novelty/feasibility screen against pinned V25 + R209/R273; implement/test only if one genuinely distinct global candidate survives frozen gates"
+        "command": "full-history novelty/feasibility screen against pinned V25 + R209/R273; implement/test only if one genuinely distinct global candidate survives frozen gates",
+        "run_id": "R276-v25-global-accuracy-screen-20260923"
       },
-      "at": "2026-09-23T15:06:46.499Z"
+      "revision": 345
     },
     {
-      "revision": 346,
       "action": "finish",
+      "at": "2026-09-23T15:09:08.253Z",
       "job": "R276",
       "owner": "v25-accuracy-research",
       "payload": {
-        "run_id": "R276-v25-global-accuracy-screen-20260923",
-        "status": "SCIENTIFIC_REJECT",
         "reason": "Evidence-based NO-GO before implementation. Full current history plus post-history R2xx accuracy work leaves no concrete globally applicable V25 accuracy mechanism that is both genuinely distinct and sufficiently specified to justify a bounded mini:all-100 run. R265's full-history screen left randomized multilevel debiasing as the sole abstractly distinct lead; R269 subsequently made the only non-relabeling V25 telescope concrete and closed it pre-execution because it adds raw-MSE variance, lacks a same-quantity correction-decay rationale, and lacks an exact production cost split. R273 adds that V25 error is broad-based, strengthening the requirement for a bulk-moving global mechanism but not supplying a new method. Obvious remaining moves are descendants of already represented calibration/shrinkage, K3/K4, low-rank/basis/tensor, source-age/sampling, arithmetic/reassociation or the closed multilevel lane. No estimator implementation or execution, mini-100 candidate evaluation, Actions, new data, paid/private/holdout/full, tuning/per-network selection, submission, leaderboard or canonical edit occurred. No normalized candidate result was created.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/a646038b5aceb5428d6583b07525f394f4820c0d/research/r276/R276_RECEIPT.json",
-          "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71"
-        }
+          "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/a646038b5aceb5428d6583b07525f394f4820c0d/research/r276/R276_RECEIPT.json"
+        },
+        "run_id": "R276-v25-global-accuracy-screen-20260923",
+        "status": "SCIENTIFIC_REJECT"
       },
-      "at": "2026-09-23T15:09:08.253Z"
+      "revision": 346
     },
     {
-      "revision": 347,
       "action": "finish",
+      "at": "2026-09-23T15:10:53.455Z",
       "job": "R275",
       "owner": "workflow-preflight-integration",
       "payload": {
-        "run_id": "R275-main-preflight-integration-20260923",
-        "status": "COMPLETE",
         "reason": "Integrated the hardened R272/R274 workflow preflight onto a clean branch from current main instead of the 426-commit-diverged R274 history. Clean implementation commit 128e412673f2d495b999625a4fcc8b171c50691d added only the production guard, one consolidated 10-case focused test, and invocation docs; local offline command `python -m unittest tests/test_arc_workflow_preflight.py -v` passed 10/10 on exact committed bytes. Final branch e054a32d7d3bdac98408392b09f467e174c2565b is ahead 2/behind 0 from main and adds only those 3 integration files plus append-only R275 report/receipt. Review PR #35 is open and mergeable; it was not merged. No Actions, fixtures, estimators/science, competition data, paid resources, workflows, or historical evidence were changed.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/e054a32d7d3bdac98408392b09f467e174c2565b/research/r275/R275_RECEIPT.json",
-          "sha256": "39beafe3949efb9f82dcf930386056eb4f81ba2ea620366e366c5f9a144b25db"
-        }
+          "sha256": "39beafe3949efb9f82dcf930386056eb4f81ba2ea620366e366c5f9a144b25db",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/e054a32d7d3bdac98408392b09f467e174c2565b/research/r275/R275_RECEIPT.json"
+        },
+        "run_id": "R275-main-preflight-integration-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T15:10:53.455Z"
+      "revision": 347
     },
     {
       "action": "enqueue",
@@ -4664,13 +4664,13 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "preflight-independent-review",
-        "title": "Independently review the hardened preflight PR",
-        "hypothesis_id": "R275-INDEPENDENT-REVIEW-20260923",
-        "priority": 1,
+        "deliverable": "Independently review PR #35 against its exact head, current main and the R257-R259 failure cases. Check the static analyzer's fail-closed behavior, whether the 10 tests actually protect the promised contract, and whether docs match CLI behavior. Do not edit code, trigger Actions, post a PR review/comment, or merge. Save a concise append-only report/receipt with exact files/lines, test evidence if safely runnable, hashes/commit; finish R277 with PASS, findings, or a precise blocker.",
         "depends_on": [
           "R275"
         ],
-        "deliverable": "Independently review PR #35 against its exact head, current main and the R257-R259 failure cases. Check the static analyzer's fail-closed behavior, whether the 10 tests actually protect the promised contract, and whether docs match CLI behavior. Do not edit code, trigger Actions, post a PR review/comment, or merge. Save a concise append-only report/receipt with exact files/lines, test evidence if safely runnable, hashes/commit; finish R277 with PASS, findings, or a precise blocker."
+        "hypothesis_id": "R275-INDEPENDENT-REVIEW-20260923",
+        "priority": 1,
+        "title": "Independently review the hardened preflight PR"
       },
       "revision": 348
     },
@@ -4681,14 +4681,14 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "residual-structure-diagnostic",
-        "title": "Test for a global residual direction in V25 errors",
-        "hypothesis_id": "V25-CROSS-NETWORK-RESIDUAL-STRUCTURE-20260923",
-        "priority": 1,
+        "deliverable": "Follow the specific next-test proposal in R276/R276_RECEIPT.json: determine whether one fixed, network-agnostic output-space residual direction explains material V25 error across the central bulk. Inspect the pinned V25 source and official local runner; if raw prediction/target residual vectors are not retained, use the smallest faithful instrumentation to capture them. Freeze a deterministic network-level development split and one global fit/evaluation rule before computation; no per-network choices. Use only public mini:all-100 development networks and existing/free local compute, same pinned V25/evaluator; no Actions, new paid resources, private/holdout/full data, submission, leaderboard/canonical edits. Run at most one bounded diagnostic; report raw-vector provenance, failures, score/MSE impact only if the corrected estimator can be evaluated honestly, and distinguish exploratory from confirmatory evidence. Preserve all attempts, artifact hashes/commit, and finish R278; if instrumentation or rules make the test invalid, record the exact blocker, not a guessed result.",
         "depends_on": [
           "R209",
           "R273"
         ],
-        "deliverable": "Follow the specific next-test proposal in R276/R276_RECEIPT.json: determine whether one fixed, network-agnostic output-space residual direction explains material V25 error across the central bulk. Inspect the pinned V25 source and official local runner; if raw prediction/target residual vectors are not retained, use the smallest faithful instrumentation to capture them. Freeze a deterministic network-level development split and one global fit/evaluation rule before computation; no per-network choices. Use only public mini:all-100 development networks and existing/free local compute, same pinned V25/evaluator; no Actions, new paid resources, private/holdout/full data, submission, leaderboard/canonical edits. Run at most one bounded diagnostic; report raw-vector provenance, failures, score/MSE impact only if the corrected estimator can be evaluated honestly, and distinguish exploratory from confirmatory evidence. Preserve all attempts, artifact hashes/commit, and finish R278; if instrumentation or rules make the test invalid, record the exact blocker, not a guessed result."
+        "hypothesis_id": "V25-CROSS-NETWORK-RESIDUAL-STRUCTURE-20260923",
+        "priority": 1,
+        "title": "Test for a global residual direction in V25 errors"
       },
       "revision": 349
     },
@@ -4699,13 +4699,13 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "phase2-public-panel-audit",
-        "title": "Find a compliant local path to the official visible-50 panel",
-        "hypothesis_id": "PHASE2-VISIBLE50-REPRODUCTION-PATH-20260923",
-        "priority": 1,
+        "deliverable": "Using only official AIcrowd/whestbench/Hugging Face first-party docs and public metadata, independently investigate whether the exact online Phase-2 visible-50 MLP panel, stable identities/target fingerprints, and official grader/meter versions can be reproduced locally without a competition submission or sealed/private/full data. Start from R271's NOT_COMPARABLE finding (0/50 label overlap; missing network IDs/fingerprints; evaluator-version mismatch), identify exact endpoints/artifacts/permissions and any remaining gap. Do not download/run benchmark data or submit. Produce one concise cited report with a concrete yes/no pathway, hashes/commit, and finish R279.",
         "depends_on": [
           "R271"
         ],
-        "deliverable": "Using only official AIcrowd/whestbench/Hugging Face first-party docs and public metadata, independently investigate whether the exact online Phase-2 visible-50 MLP panel, stable identities/target fingerprints, and official grader/meter versions can be reproduced locally without a competition submission or sealed/private/full data. Start from R271's NOT_COMPARABLE finding (0/50 label overlap; missing network IDs/fingerprints; evaluator-version mismatch), identify exact endpoints/artifacts/permissions and any remaining gap. Do not download/run benchmark data or submit. Produce one concise cited report with a concrete yes/no pathway, hashes/commit, and finish R279."
+        "hypothesis_id": "PHASE2-VISIBLE50-REPRODUCTION-PATH-20260923",
+        "priority": 1,
+        "title": "Find a compliant local path to the official visible-50 panel"
       },
       "revision": 350
     },
@@ -4716,44 +4716,52 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "public-methods-leaderboard-scan",
-        "title": "Refresh visible standings and scan public methods beyond J2W",
-        "hypothesis_id": "PHASE2-PUBLIC-METHOD-EVIDENCE-REFRESH-20260923",
-        "priority": 2,
+        "deliverable": "Refresh the official ARC Phase-2 visible leaderboard at a precise UTC/MSK timestamp and inspect primary public artifacts/forum disclosures for the next strongest visible entries and any newly disclosed reproducible method beyond the J2W page already found opaque in R264. Separate directly observed ranks/scores from method evidence and inference; do not attribute any row to our team without verified team/submission identity. If no new method evidence, report no-change. Save a short cited append-only report/receipt with source snapshots/hashes/commit and finish R280. No submission, private/holdout access, paid run, Actions, or leaderboard/canonical edits.",
         "depends_on": [
           "R263",
           "R264"
         ],
-        "deliverable": "Refresh the official ARC Phase-2 visible leaderboard at a precise UTC/MSK timestamp and inspect primary public artifacts/forum disclosures for the next strongest visible entries and any newly disclosed reproducible method beyond the J2W page already found opaque in R264. Separate directly observed ranks/scores from method evidence and inference; do not attribute any row to our team without verified team/submission identity. If no new method evidence, report no-change. Save a short cited append-only report/receipt with source snapshots/hashes/commit and finish R280. No submission, private/holdout access, paid run, Actions, or leaderboard/canonical edits."
+        "hypothesis_id": "PHASE2-PUBLIC-METHOD-EVIDENCE-REFRESH-20260923",
+        "priority": 2,
+        "title": "Refresh visible standings and scan public methods beyond J2W"
       },
       "revision": 351
     },
     {
-      "revision": 352,
       "action": "claim",
+      "at": "2026-09-23T15:23:00+00:00",
       "job": "R279",
       "owner": "phase2-public-panel-audit",
       "payload": {},
-      "at": "2026-09-23T15:23:00+00:00"
+      "revision": 352
     },
     {
-      "revision": 353,
       "action": "start",
+      "at": "2026-09-23T15:24:00+00:00",
       "job": "R279",
       "owner": "phase2-public-panel-audit",
       "payload": {
-        "run_id": "R279-phase2-public-panel-audit-20260923",
         "code_commit": "6596e75b2ccde129653c5e4b2d42b4564f93f33f",
-        "command": "metadata/docs-only audit of official AIcrowd/whestbench/Hugging Face sources for exact Phase-2 visible-50 local reproducibility; no benchmark data download, estimator/benchmark run, Actions, submission, sealed/private/full access"
+        "command": "metadata/docs-only audit of official AIcrowd/whestbench/Hugging Face sources for exact Phase-2 visible-50 local reproducibility; no benchmark data download, estimator/benchmark run, Actions, submission, sealed/private/full access",
+        "run_id": "R279-phase2-public-panel-audit-20260923"
       },
-      "at": "2026-09-23T15:24:00+00:00"
+      "revision": 353
     },
     {
-      "revision": 354,
       "action": "claim",
+      "at": "2026-09-23T15:26:01.493Z",
       "job": "R278",
       "owner": "residual-structure-diagnostic",
       "payload": {},
-      "at": "2026-09-23T15:26:01.493Z"
+      "revision": 354
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T15:26:26.683Z",
+      "job": "R277",
+      "owner": "preflight-independent-review",
+      "payload": {},
+      "revision": 355
     }
   ],
   "jobs": [
@@ -7431,19 +7439,19 @@
       "assigned_owner": "score-gap-independent-audit",
       "attempts": [
         {
-          "run_id": "R273-v25-error-concentration-20260923",
           "code_commit": "fa2389f25bbb388550278ddef4a10a7ab5a7b714",
           "command": "desk-only quantitative audit of immutable research/results/R209-v25-mini100.json against pinned official Phase-2 scoring formula; descriptive development evidence only",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R273-v25-error-concentration-20260923",
-            "status": "COMPLETE",
             "reason": "Independent descriptive audit of immutable R209 V25 mini:all-100 rows completed. All 100/100 rows exactly reproduce official_adjusted_score from final_mse * max(0.1, measured_flops/budget_flops); 0 failures. Adjusted score mean 8.170397440117225e-9, sample SD 1.1587653552315885e-9, SE 1.1587653552315885e-10. Worst 10% contribute 12.4724509073% and worst 25% contribute 29.3130672490% of total score; largest row contributes 1.3592696640%. Measured FLOPs and budget are constant across all rows, so cost-factor variation contributes zero to cross-network dispersion and all score dispersion is scaled MSE dispersion. Development evidence is BROAD_BASED_NOT_OUTLIER_DOMINATED; global research should target broad MSE reduction under one fixed method/configuration, not per-network selection. No leaderboard comparison/rank, estimator, Actions, new data, paid/private/holdout/full, tuning, submission, model/leaderboard/canonical edits.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/3e5ecf637461175a1c2e721f199861655d73e105/research/r273/R273_RECEIPT.json",
-              "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e"
-            }
-          }
+              "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/3e5ecf637461175a1c2e721f199861655d73e105/research/r273/R273_RECEIPT.json"
+            },
+            "run_id": "R273-v25-error-concentration-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R273-v25-error-concentration-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits.",
@@ -7455,188 +7463,188 @@
       "id": "R273",
       "owner": "score-gap-independent-audit",
       "priority": 2,
-      "status": "COMPLETE",
-      "title": "Measure whether R209 V25 error is broad-based or concentrated",
+      "reason": "Independent descriptive audit of immutable R209 V25 mini:all-100 rows completed. All 100/100 rows exactly reproduce official_adjusted_score from final_mse * max(0.1, measured_flops/budget_flops); 0 failures. Adjusted score mean 8.170397440117225e-9, sample SD 1.1587653552315885e-9, SE 1.1587653552315885e-10. Worst 10% contribute 12.4724509073% and worst 25% contribute 29.3130672490% of total score; largest row contributes 1.3592696640%. Measured FLOPs and budget are constant across all rows, so cost-factor variation contributes zero to cross-network dispersion and all score dispersion is scaled MSE dispersion. Development evidence is BROAD_BASED_NOT_OUTLIER_DOMINATED; global research should target broad MSE reduction under one fixed method/configuration, not per-network selection. No leaderboard comparison/rank, estimator, Actions, new data, paid/private/holdout/full, tuning, submission, model/leaderboard/canonical edits.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/3e5ecf637461175a1c2e721f199861655d73e105/research/r273/R273_RECEIPT.json",
-        "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e"
+        "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/3e5ecf637461175a1c2e721f199861655d73e105/research/r273/R273_RECEIPT.json"
       },
-      "reason": "Independent descriptive audit of immutable R209 V25 mini:all-100 rows completed. All 100/100 rows exactly reproduce official_adjusted_score from final_mse * max(0.1, measured_flops/budget_flops); 0 failures. Adjusted score mean 8.170397440117225e-9, sample SD 1.1587653552315885e-9, SE 1.1587653552315885e-10. Worst 10% contribute 12.4724509073% and worst 25% contribute 29.3130672490% of total score; largest row contributes 1.3592696640%. Measured FLOPs and budget are constant across all rows, so cost-factor variation contributes zero to cross-network dispersion and all score dispersion is scaled MSE dispersion. Development evidence is BROAD_BASED_NOT_OUTLIER_DOMINATED; global research should target broad MSE reduction under one fixed method/configuration, not per-network selection. No leaderboard comparison/rank, estimator, Actions, new data, paid/private/holdout/full, tuning, submission, model/leaderboard/canonical edits."
+      "status": "COMPLETE",
+      "title": "Measure whether R209 V25 error is broad-based or concentrated"
     },
     {
       "assigned_owner": "workflow-preflight-guard",
-      "title": "Scope manifest schema validation to the emitted object",
-      "hypothesis_id": "R272-GENERATOR-MANIFEST-SCOPE-20260923",
-      "priority": 2,
+      "attempts": [
+        {
+          "code_commit": "e4bdd87661ca0459675e1b4b9e8d22358be378d4",
+          "command": "python -m unittest discover -s tests -p 'test_r274_workflow_preflight.py' -v",
+          "completion": {
+            "reason": "Hardened the R272 offline preflight against all three independently reviewed false-PASS boundaries. Manifest schema is now traced only from the object actually serialized by json.dumps into the runtime manifest; unrelated dictionaries cannot legalize keys. Each git merge-base ancestry guard now requires the latest preceding full-history checkout in the same workflow job. Step analysis now includes unnamed - run: items and fails closed when a runtime-manifest read has no statically traceable json.loads binding or no extracted key paths. Focused R274 tests passed 6/6 and R272 compatibility tests passed 4/4 on the exact committed bytes. No workflows/history/R272 durable artifacts/historical receipts/results, Actions/science, competition data, budget, submission, leaderboard or canonical files were changed.",
+            "receipt": {
+              "sha256": "502f112fe9e5da4815fad1e758098f2c66a7fe5a880cec75dd14748cdfcc4551",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/0c27b505c120a336116bdee8c5dcad2210aa3f73/research/r274/R274_RECEIPT.json"
+            },
+            "run_id": "R274-offline-preflight-hardening-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R274-offline-preflight-hardening-20260923",
+          "status": "COMPLETE"
+        }
+      ],
+      "deliverable": "Harden the R272 offline preflight against a false positive: generator_contract() currently unions string keys from every ast.Dict in the whole fixture source, so an unrelated dictionary could make a nonexistent emitted-manifest field appear valid. Reproduce with a focused offline regression test where a key exists only in an unrelated dict and the workflow asserts it. Inspect the actual R254 fixture generator (research/r254/r254_fixture.py on research/r254-balanced-rider-reduction-20260923) and statically scope emitted schema extraction to the JSON object written as the runtime manifest; do not run the fixture. Keep standard-library-only and narrow. Run focused offline tests; do not edit workflows, historical reports/receipts, Actions or science. Use a new isolated R274 branch from R272 tip, add append-only R274 report/receipt with hashes/commit, and finish R274. Report if safe static scoping is not possible rather than weakening the guard.",
       "depends_on": [
         "R272"
       ],
-      "deliverable": "Harden the R272 offline preflight against a false positive: generator_contract() currently unions string keys from every ast.Dict in the whole fixture source, so an unrelated dictionary could make a nonexistent emitted-manifest field appear valid. Reproduce with a focused offline regression test where a key exists only in an unrelated dict and the workflow asserts it. Inspect the actual R254 fixture generator (research/r254/r254_fixture.py on research/r254-balanced-rider-reduction-20260923) and statically scope emitted schema extraction to the JSON object written as the runtime manifest; do not run the fixture. Keep standard-library-only and narrow. Run focused offline tests; do not edit workflows, historical reports/receipts, Actions or science. Use a new isolated R274 branch from R272 tip, add append-only R274 report/receipt with hashes/commit, and finish R274. Report if safe static scoping is not possible rather than weakening the guard.",
+      "hypothesis_id": "R272-GENERATOR-MANIFEST-SCOPE-20260923",
       "id": "R274",
       "owner": "workflow-preflight-guard",
-      "status": "COMPLETE",
-      "attempts": [
-        {
-          "run_id": "R274-offline-preflight-hardening-20260923",
-          "code_commit": "e4bdd87661ca0459675e1b4b9e8d22358be378d4",
-          "command": "python -m unittest discover -s tests -p 'test_r274_workflow_preflight.py' -v",
-          "status": "COMPLETE",
-          "completion": {
-            "run_id": "R274-offline-preflight-hardening-20260923",
-            "status": "COMPLETE",
-            "reason": "Hardened the R272 offline preflight against all three independently reviewed false-PASS boundaries. Manifest schema is now traced only from the object actually serialized by json.dumps into the runtime manifest; unrelated dictionaries cannot legalize keys. Each git merge-base ancestry guard now requires the latest preceding full-history checkout in the same workflow job. Step analysis now includes unnamed - run: items and fails closed when a runtime-manifest read has no statically traceable json.loads binding or no extracted key paths. Focused R274 tests passed 6/6 and R272 compatibility tests passed 4/4 on the exact committed bytes. No workflows/history/R272 durable artifacts/historical receipts/results, Actions/science, competition data, budget, submission, leaderboard or canonical files were changed.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/0c27b505c120a336116bdee8c5dcad2210aa3f73/research/r274/R274_RECEIPT.json",
-              "sha256": "502f112fe9e5da4815fad1e758098f2c66a7fe5a880cec75dd14748cdfcc4551"
-            }
-          }
-        }
-      ],
+      "priority": 2,
+      "reason": "Hardened the R272 offline preflight against all three independently reviewed false-PASS boundaries. Manifest schema is now traced only from the object actually serialized by json.dumps into the runtime manifest; unrelated dictionaries cannot legalize keys. Each git merge-base ancestry guard now requires the latest preceding full-history checkout in the same workflow job. Step analysis now includes unnamed - run: items and fails closed when a runtime-manifest read has no statically traceable json.loads binding or no extracted key paths. Focused R274 tests passed 6/6 and R272 compatibility tests passed 4/4 on the exact committed bytes. No workflows/history/R272 durable artifacts/historical receipts/results, Actions/science, competition data, budget, submission, leaderboard or canonical files were changed.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/0c27b505c120a336116bdee8c5dcad2210aa3f73/research/r274/R274_RECEIPT.json",
-        "sha256": "502f112fe9e5da4815fad1e758098f2c66a7fe5a880cec75dd14748cdfcc4551"
+        "sha256": "502f112fe9e5da4815fad1e758098f2c66a7fe5a880cec75dd14748cdfcc4551",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/0c27b505c120a336116bdee8c5dcad2210aa3f73/research/r274/R274_RECEIPT.json"
       },
-      "reason": "Hardened the R272 offline preflight against all three independently reviewed false-PASS boundaries. Manifest schema is now traced only from the object actually serialized by json.dumps into the runtime manifest; unrelated dictionaries cannot legalize keys. Each git merge-base ancestry guard now requires the latest preceding full-history checkout in the same workflow job. Step analysis now includes unnamed - run: items and fails closed when a runtime-manifest read has no statically traceable json.loads binding or no extracted key paths. Focused R274 tests passed 6/6 and R272 compatibility tests passed 4/4 on the exact committed bytes. No workflows/history/R272 durable artifacts/historical receipts/results, Actions/science, competition data, budget, submission, leaderboard or canonical files were changed."
+      "status": "COMPLETE",
+      "title": "Scope manifest schema validation to the emitted object"
     },
     {
-      "id": "R275",
       "assigned_owner": "workflow-preflight-integration",
-      "owner": "workflow-preflight-integration",
-      "status": "COMPLETE",
       "attempts": [
         {
-          "run_id": "R275-main-preflight-integration-20260923",
           "code_commit": "b5b988f8ec49a5ec473d59fcbfdfaf8c4350c850",
           "command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R275-main-preflight-integration-20260923",
-            "status": "COMPLETE",
             "reason": "Integrated the hardened R272/R274 workflow preflight onto a clean branch from current main instead of the 426-commit-diverged R274 history. Clean implementation commit 128e412673f2d495b999625a4fcc8b171c50691d added only the production guard, one consolidated 10-case focused test, and invocation docs; local offline command `python -m unittest tests/test_arc_workflow_preflight.py -v` passed 10/10 on exact committed bytes. Final branch e054a32d7d3bdac98408392b09f467e174c2565b is ahead 2/behind 0 from main and adds only those 3 integration files plus append-only R275 report/receipt. Review PR #35 is open and mergeable; it was not merged. No Actions, fixtures, estimators/science, competition data, paid resources, workflows, or historical evidence were changed.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/e054a32d7d3bdac98408392b09f467e174c2565b/research/r275/R275_RECEIPT.json",
-              "sha256": "39beafe3949efb9f82dcf930386056eb4f81ba2ea620366e366c5f9a144b25db"
-            }
-          }
+              "sha256": "39beafe3949efb9f82dcf930386056eb4f81ba2ea620366e366c5f9a144b25db",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/e054a32d7d3bdac98408392b09f467e174c2565b/research/r275/R275_RECEIPT.json"
+            },
+            "run_id": "R275-main-preflight-integration-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R275-main-preflight-integration-20260923",
+          "status": "COMPLETE"
         }
       ],
-      "title": "Integrate and operationalize the hardened workflow preflight",
-      "hypothesis_id": "R274-MAIN-INTEGRATION-20260923",
-      "priority": 1,
+      "deliverable": "Start from current main, not the historical R274 branch tip. Inspect R272/R274 implementation commits and compare against main; the existing R274 branch diverges and a direct PR would include hundreds of unrelated commits. Build a clean integration branch containing only the minimum preflight script/tests (and a short invocation doc if needed). Run focused offline R272/R274 tests on that clean branch; verify the diff is limited to intended files; open a reviewable PR to main only if clean and green. Do not merge, trigger Actions, execute fixtures/estimators, or edit historical evidence. If safe integration cannot be completed, report exact blocker and smallest next step. Publish claim/start/finish R275 and append report/receipt with hashes/commit.",
       "depends_on": [
         "R274"
       ],
-      "deliverable": "Start from current main, not the historical R274 branch tip. Inspect R272/R274 implementation commits and compare against main; the existing R274 branch diverges and a direct PR would include hundreds of unrelated commits. Build a clean integration branch containing only the minimum preflight script/tests (and a short invocation doc if needed). Run focused offline R272/R274 tests on that clean branch; verify the diff is limited to intended files; open a reviewable PR to main only if clean and green. Do not merge, trigger Actions, execute fixtures/estimators, or edit historical evidence. If safe integration cannot be completed, report exact blocker and smallest next step. Publish claim/start/finish R275 and append report/receipt with hashes/commit.",
+      "hypothesis_id": "R274-MAIN-INTEGRATION-20260923",
+      "id": "R275",
+      "owner": "workflow-preflight-integration",
+      "priority": 1,
+      "reason": "Integrated the hardened R272/R274 workflow preflight onto a clean branch from current main instead of the 426-commit-diverged R274 history. Clean implementation commit 128e412673f2d495b999625a4fcc8b171c50691d added only the production guard, one consolidated 10-case focused test, and invocation docs; local offline command `python -m unittest tests/test_arc_workflow_preflight.py -v` passed 10/10 on exact committed bytes. Final branch e054a32d7d3bdac98408392b09f467e174c2565b is ahead 2/behind 0 from main and adds only those 3 integration files plus append-only R275 report/receipt. Review PR #35 is open and mergeable; it was not merged. No Actions, fixtures, estimators/science, competition data, paid resources, workflows, or historical evidence were changed.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/e054a32d7d3bdac98408392b09f467e174c2565b/research/r275/R275_RECEIPT.json",
-        "sha256": "39beafe3949efb9f82dcf930386056eb4f81ba2ea620366e366c5f9a144b25db"
+        "sha256": "39beafe3949efb9f82dcf930386056eb4f81ba2ea620366e366c5f9a144b25db",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/e054a32d7d3bdac98408392b09f467e174c2565b/research/r275/R275_RECEIPT.json"
       },
-      "reason": "Integrated the hardened R272/R274 workflow preflight onto a clean branch from current main instead of the 426-commit-diverged R274 history. Clean implementation commit 128e412673f2d495b999625a4fcc8b171c50691d added only the production guard, one consolidated 10-case focused test, and invocation docs; local offline command `python -m unittest tests/test_arc_workflow_preflight.py -v` passed 10/10 on exact committed bytes. Final branch e054a32d7d3bdac98408392b09f467e174c2565b is ahead 2/behind 0 from main and adds only those 3 integration files plus append-only R275 report/receipt. Review PR #35 is open and mergeable; it was not merged. No Actions, fixtures, estimators/science, competition data, paid resources, workflows, or historical evidence were changed."
+      "status": "COMPLETE",
+      "title": "Integrate and operationalize the hardened workflow preflight"
     },
     {
-      "id": "R276",
       "assigned_owner": "v25-accuracy-research",
-      "owner": "v25-accuracy-research",
-      "status": "SCIENTIFIC_REJECT",
       "attempts": [
         {
-          "run_id": "R276-v25-global-accuracy-screen-20260923",
           "code_commit": "4749fd4a28ecd4e717b93e76c0efc2794370229b",
           "command": "full-history novelty/feasibility screen against pinned V25 + R209/R273; implement/test only if one genuinely distinct global candidate survives frozen gates",
-          "status": "SCIENTIFIC_REJECT",
           "completion": {
-            "run_id": "R276-v25-global-accuracy-screen-20260923",
-            "status": "SCIENTIFIC_REJECT",
             "reason": "Evidence-based NO-GO before implementation. Full current history plus post-history R2xx accuracy work leaves no concrete globally applicable V25 accuracy mechanism that is both genuinely distinct and sufficiently specified to justify a bounded mini:all-100 run. R265's full-history screen left randomized multilevel debiasing as the sole abstractly distinct lead; R269 subsequently made the only non-relabeling V25 telescope concrete and closed it pre-execution because it adds raw-MSE variance, lacks a same-quantity correction-decay rationale, and lacks an exact production cost split. R273 adds that V25 error is broad-based, strengthening the requirement for a bulk-moving global mechanism but not supplying a new method. Obvious remaining moves are descendants of already represented calibration/shrinkage, K3/K4, low-rank/basis/tensor, source-age/sampling, arithmetic/reassociation or the closed multilevel lane. No estimator implementation or execution, mini-100 candidate evaluation, Actions, new data, paid/private/holdout/full, tuning/per-network selection, submission, leaderboard or canonical edit occurred. No normalized candidate result was created.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/a646038b5aceb5428d6583b07525f394f4820c0d/research/r276/R276_RECEIPT.json",
-              "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71"
-            }
-          }
+              "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/a646038b5aceb5428d6583b07525f394f4820c0d/research/r276/R276_RECEIPT.json"
+            },
+            "run_id": "R276-v25-global-accuracy-screen-20260923",
+            "status": "SCIENTIFIC_REJECT"
+          },
+          "run_id": "R276-v25-global-accuracy-screen-20260923",
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
-      "title": "Test one distinct global V25 accuracy improvement",
-      "hypothesis_id": "V25-GLOBAL-ACCURACY-EXPLORATION-20260923",
-      "priority": 1,
+      "deliverable": "Use pinned V25 source and immutable R209 public mini:all-100 only as development evidence. Read current AGENTS.md, research/RESEARCH_PROCESS.md, STATUS, live queue and full relevant history; choose one concrete accuracy-improvement hypothesis not equivalent to a closed/rejected experiment, freeze a small bounded protocol, and implement/test it with existing/free local resources. Compare candidate with V25 on the same 100 networks and exact evaluator/meter versions; record every attempt, per-network adjusted score, raw MSE, measured FLOPs, failures and paired uncertainty. Keep one fixed global method/configuration (no per-network selection); do not claim leaderboard rank because R209 is not comparable to the visible 50. No new paid resources, private/holdout/full data, competition submission or leaderboard/canonical edits. If the chosen method fails, preserve the negative result and recommend the next scientifically distinct test. Claim/start/finish R276 and append report, normalized result if valid, and receipt with hashes/commit.",
       "depends_on": [
         "R209",
         "R273"
       ],
-      "deliverable": "Use pinned V25 source and immutable R209 public mini:all-100 only as development evidence. Read current AGENTS.md, research/RESEARCH_PROCESS.md, STATUS, live queue and full relevant history; choose one concrete accuracy-improvement hypothesis not equivalent to a closed/rejected experiment, freeze a small bounded protocol, and implement/test it with existing/free local resources. Compare candidate with V25 on the same 100 networks and exact evaluator/meter versions; record every attempt, per-network adjusted score, raw MSE, measured FLOPs, failures and paired uncertainty. Keep one fixed global method/configuration (no per-network selection); do not claim leaderboard rank because R209 is not comparable to the visible 50. No new paid resources, private/holdout/full data, competition submission or leaderboard/canonical edits. If the chosen method fails, preserve the negative result and recommend the next scientifically distinct test. Claim/start/finish R276 and append report, normalized result if valid, and receipt with hashes/commit.",
+      "hypothesis_id": "V25-GLOBAL-ACCURACY-EXPLORATION-20260923",
+      "id": "R276",
+      "owner": "v25-accuracy-research",
+      "priority": 1,
+      "reason": "Evidence-based NO-GO before implementation. Full current history plus post-history R2xx accuracy work leaves no concrete globally applicable V25 accuracy mechanism that is both genuinely distinct and sufficiently specified to justify a bounded mini:all-100 run. R265's full-history screen left randomized multilevel debiasing as the sole abstractly distinct lead; R269 subsequently made the only non-relabeling V25 telescope concrete and closed it pre-execution because it adds raw-MSE variance, lacks a same-quantity correction-decay rationale, and lacks an exact production cost split. R273 adds that V25 error is broad-based, strengthening the requirement for a bulk-moving global mechanism but not supplying a new method. Obvious remaining moves are descendants of already represented calibration/shrinkage, K3/K4, low-rank/basis/tensor, source-age/sampling, arithmetic/reassociation or the closed multilevel lane. No estimator implementation or execution, mini-100 candidate evaluation, Actions, new data, paid/private/holdout/full, tuning/per-network selection, submission, leaderboard or canonical edit occurred. No normalized candidate result was created.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/a646038b5aceb5428d6583b07525f394f4820c0d/research/r276/R276_RECEIPT.json",
-        "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71"
+        "sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/a646038b5aceb5428d6583b07525f394f4820c0d/research/r276/R276_RECEIPT.json"
       },
-      "reason": "Evidence-based NO-GO before implementation. Full current history plus post-history R2xx accuracy work leaves no concrete globally applicable V25 accuracy mechanism that is both genuinely distinct and sufficiently specified to justify a bounded mini:all-100 run. R265's full-history screen left randomized multilevel debiasing as the sole abstractly distinct lead; R269 subsequently made the only non-relabeling V25 telescope concrete and closed it pre-execution because it adds raw-MSE variance, lacks a same-quantity correction-decay rationale, and lacks an exact production cost split. R273 adds that V25 error is broad-based, strengthening the requirement for a bulk-moving global mechanism but not supplying a new method. Obvious remaining moves are descendants of already represented calibration/shrinkage, K3/K4, low-rank/basis/tensor, source-age/sampling, arithmetic/reassociation or the closed multilevel lane. No estimator implementation or execution, mini-100 candidate evaluation, Actions, new data, paid/private/holdout/full, tuning/per-network selection, submission, leaderboard or canonical edit occurred. No normalized candidate result was created."
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Test one distinct global V25 accuracy improvement"
     },
     {
-      "id": "R277",
       "assigned_owner": "preflight-independent-review",
-      "owner": null,
-      "status": "QUEUED",
       "attempts": [],
-      "title": "Independently review the hardened preflight PR",
-      "hypothesis_id": "R275-INDEPENDENT-REVIEW-20260923",
-      "priority": 1,
+      "deliverable": "Independently review PR #35 against its exact head, current main and the R257-R259 failure cases. Check the static analyzer's fail-closed behavior, whether the 10 tests actually protect the promised contract, and whether docs match CLI behavior. Do not edit code, trigger Actions, post a PR review/comment, or merge. Save a concise append-only report/receipt with exact files/lines, test evidence if safely runnable, hashes/commit; finish R277 with PASS, findings, or a precise blocker.",
       "depends_on": [
         "R275"
       ],
-      "deliverable": "Independently review PR #35 against its exact head, current main and the R257-R259 failure cases. Check the static analyzer's fail-closed behavior, whether the 10 tests actually protect the promised contract, and whether docs match CLI behavior. Do not edit code, trigger Actions, post a PR review/comment, or merge. Save a concise append-only report/receipt with exact files/lines, test evidence if safely runnable, hashes/commit; finish R277 with PASS, findings, or a precise blocker."
+      "hypothesis_id": "R275-INDEPENDENT-REVIEW-20260923",
+      "id": "R277",
+      "owner": "preflight-independent-review",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Independently review the hardened preflight PR"
     },
     {
-      "id": "R278",
       "assigned_owner": "residual-structure-diagnostic",
-      "owner": "residual-structure-diagnostic",
-      "status": "CLAIMED",
       "attempts": [],
-      "title": "Test for a global residual direction in V25 errors",
-      "hypothesis_id": "V25-CROSS-NETWORK-RESIDUAL-STRUCTURE-20260923",
-      "priority": 1,
+      "deliverable": "Follow the specific next-test proposal in R276/R276_RECEIPT.json: determine whether one fixed, network-agnostic output-space residual direction explains material V25 error across the central bulk. Inspect the pinned V25 source and official local runner; if raw prediction/target residual vectors are not retained, use the smallest faithful instrumentation to capture them. Freeze a deterministic network-level development split and one global fit/evaluation rule before computation; no per-network choices. Use only public mini:all-100 development networks and existing/free local compute, same pinned V25/evaluator; no Actions, new paid resources, private/holdout/full data, submission, leaderboard/canonical edits. Run at most one bounded diagnostic; report raw-vector provenance, failures, score/MSE impact only if the corrected estimator can be evaluated honestly, and distinguish exploratory from confirmatory evidence. Preserve all attempts, artifact hashes/commit, and finish R278; if instrumentation or rules make the test invalid, record the exact blocker, not a guessed result.",
       "depends_on": [
         "R209",
         "R273"
       ],
-      "deliverable": "Follow the specific next-test proposal in R276/R276_RECEIPT.json: determine whether one fixed, network-agnostic output-space residual direction explains material V25 error across the central bulk. Inspect the pinned V25 source and official local runner; if raw prediction/target residual vectors are not retained, use the smallest faithful instrumentation to capture them. Freeze a deterministic network-level development split and one global fit/evaluation rule before computation; no per-network choices. Use only public mini:all-100 development networks and existing/free local compute, same pinned V25/evaluator; no Actions, new paid resources, private/holdout/full data, submission, leaderboard/canonical edits. Run at most one bounded diagnostic; report raw-vector provenance, failures, score/MSE impact only if the corrected estimator can be evaluated honestly, and distinguish exploratory from confirmatory evidence. Preserve all attempts, artifact hashes/commit, and finish R278; if instrumentation or rules make the test invalid, record the exact blocker, not a guessed result."
+      "hypothesis_id": "V25-CROSS-NETWORK-RESIDUAL-STRUCTURE-20260923",
+      "id": "R278",
+      "owner": "residual-structure-diagnostic",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Test for a global residual direction in V25 errors"
     },
     {
-      "id": "R279",
       "assigned_owner": "phase2-public-panel-audit",
-      "owner": "phase2-public-panel-audit",
-      "status": "RUNNING",
       "attempts": [
         {
-          "run_id": "R279-phase2-public-panel-audit-20260923",
           "code_commit": "6596e75b2ccde129653c5e4b2d42b4564f93f33f",
           "command": "metadata/docs-only audit of official AIcrowd/whestbench/Hugging Face sources for exact Phase-2 visible-50 local reproducibility; no benchmark data download, estimator/benchmark run, Actions, submission, sealed/private/full access",
+          "run_id": "R279-phase2-public-panel-audit-20260923",
           "status": "RUNNING"
         }
       ],
-      "title": "Find a compliant local path to the official visible-50 panel",
-      "hypothesis_id": "PHASE2-VISIBLE50-REPRODUCTION-PATH-20260923",
-      "priority": 1,
+      "deliverable": "Using only official AIcrowd/whestbench/Hugging Face first-party docs and public metadata, independently investigate whether the exact online Phase-2 visible-50 MLP panel, stable identities/target fingerprints, and official grader/meter versions can be reproduced locally without a competition submission or sealed/private/full data. Start from R271's NOT_COMPARABLE finding (0/50 label overlap; missing network IDs/fingerprints; evaluator-version mismatch), identify exact endpoints/artifacts/permissions and any remaining gap. Do not download/run benchmark data or submit. Produce one concise cited report with a concrete yes/no pathway, hashes/commit, and finish R279.",
       "depends_on": [
         "R271"
       ],
-      "deliverable": "Using only official AIcrowd/whestbench/Hugging Face first-party docs and public metadata, independently investigate whether the exact online Phase-2 visible-50 MLP panel, stable identities/target fingerprints, and official grader/meter versions can be reproduced locally without a competition submission or sealed/private/full data. Start from R271's NOT_COMPARABLE finding (0/50 label overlap; missing network IDs/fingerprints; evaluator-version mismatch), identify exact endpoints/artifacts/permissions and any remaining gap. Do not download/run benchmark data or submit. Produce one concise cited report with a concrete yes/no pathway, hashes/commit, and finish R279."
+      "hypothesis_id": "PHASE2-VISIBLE50-REPRODUCTION-PATH-20260923",
+      "id": "R279",
+      "owner": "phase2-public-panel-audit",
+      "priority": 1,
+      "status": "RUNNING",
+      "title": "Find a compliant local path to the official visible-50 panel"
     },
     {
-      "id": "R280",
       "assigned_owner": "public-methods-leaderboard-scan",
-      "owner": null,
-      "status": "QUEUED",
       "attempts": [],
-      "title": "Refresh visible standings and scan public methods beyond J2W",
-      "hypothesis_id": "PHASE2-PUBLIC-METHOD-EVIDENCE-REFRESH-20260923",
-      "priority": 2,
+      "deliverable": "Refresh the official ARC Phase-2 visible leaderboard at a precise UTC/MSK timestamp and inspect primary public artifacts/forum disclosures for the next strongest visible entries and any newly disclosed reproducible method beyond the J2W page already found opaque in R264. Separate directly observed ranks/scores from method evidence and inference; do not attribute any row to our team without verified team/submission identity. If no new method evidence, report no-change. Save a short cited append-only report/receipt with source snapshots/hashes/commit and finish R280. No submission, private/holdout access, paid run, Actions, or leaderboard/canonical edits.",
       "depends_on": [
         "R263",
         "R264"
       ],
-      "deliverable": "Refresh the official ARC Phase-2 visible leaderboard at a precise UTC/MSK timestamp and inspect primary public artifacts/forum disclosures for the next strongest visible entries and any newly disclosed reproducible method beyond the J2W page already found opaque in R264. Separate directly observed ranks/scores from method evidence and inference; do not attribute any row to our team without verified team/submission identity. If no new method evidence, report no-change. Save a short cited append-only report/receipt with source snapshots/hashes/commit and finish R280. No submission, private/holdout access, paid run, Actions, or leaderboard/canonical edits."
+      "hypothesis_id": "PHASE2-PUBLIC-METHOD-EVIDENCE-REFRESH-20260923",
+      "id": "R280",
+      "owner": null,
+      "priority": 2,
+      "status": "QUEUED",
+      "title": "Refresh visible standings and scan public methods beyond J2W"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 354,
+  "revision": 355,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
