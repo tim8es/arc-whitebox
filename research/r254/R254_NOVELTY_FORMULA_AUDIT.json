@@ -1,0 +1,48 @@
+{
+  "schema": "arc.r254.novelty_formula_audit.v1",
+  "history": {
+    "path": "research/history.json",
+    "git_blob_sha1": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "experiment_ids": 194,
+    "exact_term_counts": {
+      "pairwise sum": 0,
+      "pairwise summ": 0,
+      "compensated": 0,
+      "kahan": 0,
+      "neumaier": 0,
+      "summation order": 0,
+      "reduction tree": 0,
+      "einsum accumulation": 0
+    }
+  },
+  "required_evidence_read": ["R231","R232","R238","R239","R245","R249","R250","R251","R252","R253"],
+  "explicit_exclusions_checked": ["R251 GFNP","R252 D21-CWG","R252 CFSP4 unauthorized duplicate","R232 DRRE descendants","R238 RSRF descendants","R247 2:4 sparsity","R248 Kronecker transport","R250 LEG2-R1","R244 MP-R16","R223 V25-LF","closed/rejected immutable-history families"],
+  "candidate": "V25-BPK2K-BALANCED-CUMULANT-REDUCTION",
+  "closest_evidence": {
+    "R239": "diagnostic numerical-stability audit only; no estimator formula change",
+    "E050": "float64 V29 protocol; changes dtype rather than reduction parenthesization",
+    "R251": "changes fitted rider coefficients; BPK2K leaves rider and coefficients byte-identical",
+    "R252_CFSP4": "changes final scalar response; BPK2K changes repeated internal pK-to-K reduction only"
+  },
+  "parent_source": {
+    "git_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+    "pk2k_anchor_count_verified_pretrigger": 1
+  },
+  "formula_crosscheck": {
+    "same_contribution_order_before_reduction": true,
+    "same_contribution_products": true,
+    "same_coefficients": true,
+    "same_addition_count_m_minus_1": true,
+    "only_change": "binary parenthesization of contribution additions",
+    "real_arithmetic_equivalent": true
+  },
+  "fixture_pretrigger_replay": {
+    "status": "PASS",
+    "implementations": 2,
+    "weights_concat_sha256": "199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0",
+    "truth_sha256": "58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d"
+  },
+  "leader_method_inferred": false,
+  "per_network_tuning": false
+}
