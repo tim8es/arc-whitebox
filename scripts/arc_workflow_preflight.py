@@ -34,7 +34,7 @@ def _job_blocks(workflow: str) -> list[tuple[str, str]]:
     lines = workflow.splitlines()
     jobs_indexes = [
         i for i, line in enumerate(lines)
-        if re.match(r"^\\s*jobs:\\s*(?:#.*)?$", line)
+        if re.match(r"^\s*jobs:\s*(?:#.*)?$", line)
     ]
     if len(jobs_indexes) != 1:
         raise PreflightError("cannot statically identify one jobs: mapping")
@@ -48,7 +48,7 @@ def _job_blocks(workflow: str) -> list[tuple[str, str]]:
         indent = _indent(line)
         if indent <= jobs_indent:
             break
-        if re.match(r"^\\s*[A-Za-z0-9_.-]+:\\s*(?:#.*)?$", line):
+        if re.match(r"^\s*[A-Za-z0-9_.-]+:\s*(?:#.*)?$", line):
             job_indent = indent
             break
     if job_indent is None:
@@ -59,7 +59,7 @@ def _job_blocks(workflow: str) -> list[tuple[str, str]]:
         stripped = line.strip()
         if stripped and _indent(line) <= jobs_indent:
             break
-        match = re.match(r"^\\s*([A-Za-z0-9_.-]+):\\s*(?:#.*)?$", line)
+        match = re.match(r"^\s*([A-Za-z0-9_.-]+):\s*(?:#.*)?$", line)
         if match and _indent(line) == job_indent:
             starts.append((i, match.group(1)))
     if not starts:
@@ -80,7 +80,7 @@ def _checkout_steps(job_block: str) -> list[tuple[int, list[str]]]:
     lines = job_block.splitlines()
     steps: list[tuple[int, list[str]]] = []
     for i, line in enumerate(lines):
-        if not re.search(r"\\buses:\\s*actions/checkout@v\\d+\\s*$", line):
+        if not re.search(r"\buses:\s*actions/checkout@v\d+\s*$", line):
             continue
         indent = _indent(line)
         block = [line]
@@ -121,7 +121,7 @@ def require_full_history_for_ancestry(workflow: str) -> None:
                 )
             _, active_checkout = prior[-1]
             if not any(
-                re.search(r"^\\s*fetch-depth:\\s*0\\s*(?:#.*)?$", line)
+                re.search(r"^\s*fetch-depth:\s*0\s*(?:#.*)?$", line)
                 for line in active_checkout
             ):
                 raise PreflightError(
@@ -321,7 +321,7 @@ def _step_blocks(job_name: str, job_block: str) -> list[str]:
     lines = job_block.splitlines()
     step_headers = [
         i for i, line in enumerate(lines)
-        if re.match(r"^\\s*steps:\\s*(?:#.*)?$", line)
+        if re.match(r"^\s*steps:\s*(?:#.*)?$", line)
     ]
     if len(step_headers) != 1:
         raise PreflightError(f"cannot statically identify one steps: list in job {job_name!r}")
@@ -362,18 +362,18 @@ def _manifest_data_vars(block: str) -> set[str]:
     for line in block.splitlines():
         if not _RUNTIME_MANIFEST_RE.search(line):
             continue
-        match = re.match(r"^\\s*([A-Za-z_]\\w*)\\s*=", line)
+        match = re.match(r"^\s*([A-Za-z_]\w*)\s*=", line)
         if match:
             path_vars.add(match.group(1))
     data_vars: set[str] = set()
     loads = re.finditer(
-        r"(?m)^\\s*([A-Za-z_]\\w*)\\s*=\\s*json\\.loads\\s*\\(([^\\n]+)\\)\\s*$",
+        r"(?m)^\s*([A-Za-z_]\w*)\s*=\s*json\.loads\s*\(([^\n]+)\)\s*$",
         block,
     )
     for match in loads:
         target, argument = match.group(1), match.group(2)
         if _RUNTIME_MANIFEST_RE.search(argument) or any(
-            re.search(rf"\\b{re.escape(path_var)}\\b", argument) for path_var in path_vars
+            re.search(rf"\b{re.escape(path_var)}\b", argument) for path_var in path_vars
         ):
             data_vars.add(target)
     return data_vars
@@ -393,12 +393,12 @@ def asserted_manifest_paths(workflow: str) -> set[SchemaPath]:
         block_paths: set[SchemaPath] = set()
         for var in vars_:
             chain_re = re.compile(
-                rf"\\b{re.escape(var)}(?:\\[(?:\\\"[^\\\"]+\\\"|'[^']+')\\])+"
+                rf"\b{re.escape(var)}(?:\[(?:\"[^\"]+\"|'[^']+')\])+"
             )
             for chain in chain_re.findall(block):
                 keys = tuple(
                     match.group(2)
-                    for match in re.finditer(r"\\[([\\\"'])([^\\\"']+)\\1\\]", chain)
+                    for match in re.finditer(r"\[([\"'])([^\"']+)\1\]", chain)
                 )
                 if keys:
                     block_paths.add(keys)
