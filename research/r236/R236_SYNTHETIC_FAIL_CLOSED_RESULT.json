@@ -1,0 +1,23 @@
+{
+  "schema": "arc.whitebox.r236.synthetic_fail_closed_result.v1",
+  "executed_offline": true,
+  "python": "3.13.5",
+  "source_script": {
+    "path": "research/r236/r236_fail_closed_synthetic.py",
+    "commit": "7534164e2e7d6fbfb2d5dff4e508cb115f46a0a4",
+    "git_blob": "34ddcea39a6a56f1598c38a4f10362d9b7077ab7"
+  },
+  "r234_verifier": {
+    "path": "research/r234/r234_verify_r218.py",
+    "git_blob": "772843d4bc2b5929e851e621f33dd25a38cd5319"
+  },
+  "uses_r218_artifact": false,
+  "actions_triggered": false,
+  "cases": {
+    "empty_manifest_gate_passes": true,
+    "unpinned_expected_panel_predicates_pass": true,
+    "actions_run_attempt_2_predicate_passes": true,
+    "incomplete_preflight_gate_map_predicate_passes": true
+  },
+  "interpretation": "All four predicates are fail-open with respect to the frozen R217/R218 contract. This is a source-level synthetic check only; it does not inspect or simulate the R218 scientific measurements."
+}
