@@ -1,7 +1,21 @@
 {
-  "schema": "arc.whitebox.r234.verifier_checklist.v1",
+  "schema": "arc.whitebox.r234.verifier_checklist.v2_hardened_r237",
   "job_id": "R234",
-  "purpose": "Prepare R220 independent postflight tooling only; do not inspect a not-yet-complete R218 artifact or run estimator.",
+  "hardened_by": "R237",
+  "hardening_source": {
+    "r236_receipt": "research/r236/R236_RECEIPT.json",
+    "r236_receipt_commit": "6313780c7975b866267612ae1e2798c5a2f3d54b",
+    "defects": [
+      "R236-D1",
+      "R236-D2",
+      "R236-D3",
+      "R236-D4",
+      "R236-D5",
+      "R236-D6",
+      "R236-D7"
+    ]
+  },
+  "purpose": "R220 independent postflight tooling only after R218 COMPLETE. Do not inspect an in-progress R218 artifact and do not run estimator/science.",
   "frozen_sources": {
     "r217_protocol": {
       "path": "research/r217/R217_NEXT_RUNTIME_PROTOCOL.json",
@@ -10,6 +24,7 @@
       "sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968"
     },
     "r218_executor_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+    "r218_arm_head": "c8cb97dcd1383f4a1d741c5a36ba816deec452eb",
     "workflow": {
       "path": ".github/workflows/r218-affinity-crossover.yml",
       "git_blob_sha1": "d1fa366b1056d09f829a9620eda81034584147af"
@@ -20,18 +35,25 @@
     },
     "expected_panel": {
       "path": "research/r218/R218_EXPECTED_PANEL.json",
-      "git_blob_sha1": "8669ffff7408c4f251c700ca0d5f9fc24db5c8f0"
+      "git_blob_sha1": "8669ffff7408c4f251c700ca0d5f9fc24db5c8f0",
+      "sha256": "c09fdfb867fbb20ea1bea7e7334b3592d9fb5996a02419a0488d622413dbf9b6"
     },
     "prelaunch_gate": {
       "path": "research/r218/R218_PRELAUNCH_GATE.json",
-      "git_blob_sha1": "fe0745d3d0265b7afb8d952530998c6b0f942aa3"
+      "git_blob_sha1": "fe0745d3d0265b7afb8d952530998c6b0f942aa3",
+      "sha256": "e7ca2c1ff2449ff4c9bd393969f63fbd7416e1d62209fa1b6a16687aae819cd9"
     },
     "r218_arm": {
       "path": "research/R218_RUN_ARM.json",
       "branch": "research/r218-affinity-crossover-20260922",
+      "head_commit": "c8cb97dcd1383f4a1d741c5a36ba816deec452eb",
       "git_blob_sha1": "542f8f80cee29c83b4f9648a1c56f49ae9b9262a",
-      "executor_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
-      "attempts_allowed": 1
+      "sha256": "2c4c430c8ec8f0abcdbd84192f8c9040485804e65ca7adab3505dbf9c222cb54",
+      "parent_executor_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "attempts_allowed": 1,
+      "allowed_diff": [
+        "research/R218_RUN_ARM.json"
+      ]
     }
   },
   "frozen_contract": {
@@ -46,7 +68,8 @@
     "rows_total": 300,
     "rows_per_block": 50,
     "condition_observations_each": 100,
-    "panel": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2 mini:first-50",
+    "dataset_path": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "panel_split": "mini:first-50",
     "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
     "estimator_sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
     "flop_budget": 2199023255552,
@@ -64,44 +87,121 @@
       "indices_1_49": 581994796527
     }
   },
+  "exact_preflight_gate_names": [
+    "protocol_sha256",
+    "expected_panel_static",
+    "source_sha256",
+    "python",
+    "numpy",
+    "flopscope",
+    "whestbench",
+    "V26_STRASSEN",
+    "thread_env",
+    "required_allowed_cpus",
+    "block_sequence",
+    "dataset_contract",
+    "panel_static_identity",
+    "same_worker_single_job_design"
+  ],
+  "required_artifact_preflight_files": [
+    "preflight.json",
+    "runner_env.txt",
+    "azure_instance_metadata.json",
+    "preflight_lscpu.json",
+    "preflight_proc_cpuinfo.txt",
+    "preflight_proc_self_status.txt",
+    "preflight_taskset.txt",
+    "preflight_affinity.json",
+    "whest_version.json"
+  ],
+  "required_per_block_telemetry": [
+    "lscpu.json",
+    "proc_cpuinfo.txt",
+    "orchestrator_proc_self_status.txt",
+    "orchestrator_affinity.json",
+    "taskset_orchestrator.txt",
+    "child_proc_self_status.txt",
+    "child_taskset.txt"
+  ],
+  "fail_closed_requirements": [
+    "R236-D1: require artifact/preflight Actions run_attempt == 1 and independent Actions evidence run_attempt == 1; any other attempt is PROTOCOL_INVALID.",
+    "R236-D2: R220 must supply the independently downloaded Actions artifact ZIP plus Actions evidence containing run/job/artifact ID, exact artifact name, SHA256 digest, frozen head/arm/workflow/executor blobs and ancestry. The verifier hashes the ZIP and byte-compares every ZIP file to artifact-dir.",
+    "R236-D3: both --expected-panel and artifact R218_EXPECTED_PANEL.json must match frozen SHA256 c09fdf...; expected-panel blob must also be externally verified.",
+    "R236-D4: sha256.json must be a nonempty object whose keys exactly equal every other file in artifact-dir and every digest must match.",
+    "R236-D5: prelaunch artifact copy must match frozen SHA256 e7ca2c...; preflight gate keys must equal the exact frozen key set and all be true. Python and whest_version.json are checked locally; R220 Actions evidence must independently verify exact Python/NumPy/flopscope/whestbench versions from frozen workflow/run evidence.",
+    "R236-D6: every block must match exact dataset path+SHA and max_threads=1 in addition to budget/residual/shape/version.",
+    "R236-D7: all preflight and per-block mandatory telemetry files must exist and be nonempty; orchestrator/child taskset and /proc status CPU sets must match expected affinity; lscpu identity must match preflight; worker RUNNER_NAME and Azure region must be recorded and match external evidence."
+  ],
   "independent_postflight_checks": [
-    "Verify artifact sha256.json against every listed file before interpreting measurements.",
-    "Verify frozen R217 protocol SHA256 and exact six-block sequence U,C0,C1,C1,C0,U.",
-    "Independently inspect the GitHub Actions run/job after R218 COMPLETE: same run attempt, one crossover job containing all six blocks, no rerun/rescue; verify the arm record pins executor_commit 85f5ba..., without assuming the workflow run head SHA itself equals that executor commit.",
-    "Because estimator_v29.py is not copied into the r218 artifact, independently fetch/verify the frozen upstream estimator blob after R218 COMPLETE and record estimator_source_sha256_verified=86d9ca... in R220 Actions evidence; do not treat the owner's preflight boolean alone as independent source verification.",
-    "Verify runner_env/preflight identity agrees with Actions run/job metadata; preserve worker name/region and any missing telemetry.",
-    "For every block, require orchestrator allowed affinity to contain CPU0 and CPU1 and equal the preflight allowed set.",
-    "Require child taskset C0={0}, C1={1}; U must equal inherited allowed set and include 0 and 1.",
-    "Compare stable lscpu identity across all six block telemetry directories; do not use dynamic MHz fields as machine identity.",
-    "Parse six raw block reports independently; require exactly 50 rows each, exact expected name/order and exact per-MLP FLOPs.",
-    "Require dataset SHA/path, budget, residual limit, width/depth and whestbench version on every block.",
-    "Reconstruct all 300 observations and compare recomputed primary metrics to owner R218 receipt; discrepancy is protocol-invalid until explained.",
-    "For each MLP compute means across the two U blocks, two C0 blocks and two C1 blocks.",
-    "Primary delta = median_i(C0_mean_i - C1_mean_i). cpu0_slower_count = count_i(C0_mean_i > C1_mean_i).",
-    "failure_difference = total failures across two C0 blocks minus total failures across two C1 blocks.",
-    "Secondary comparisons C0-vs-U and C1-vs-U are descriptive only and cannot replace the predeclared primary CPU0-specific verdict."
+    "Do not run until R218 is COMPLETE and R220 owns the audit.",
+    "Obtain Actions run/job metadata independently; require attempt 1, one crossover job, no rerun/rescue, successful run/job for a causal verdict.",
+    "Download the exact Actions artifact by artifact ID; preserve artifact ID/name/digest and pass both extracted directory and original ZIP to verifier.",
+    "Verify the Actions head is frozen arm head c8cb97dc...; arm parent is executor commit 85f5ba...; one-commit diff adds only research/R218_RUN_ARM.json.",
+    "Verify workflow blob d1fa..., executor blob 4563..., arm blob 542f..., expected-panel blob 8669..., prelaunch blob fe07..., estimator SHA256 86d9....",
+    "Verify artifact manifest exact completeness before interpreting any measurements.",
+    "Verify exact preflight gate names, exact versions and thread env; require CPU0+CPU1 allowed.",
+    "Verify worker name and region and all required preflight telemetry.",
+    "For every block require all mandatory telemetry; C0 child={0}, C1 child={1}, U child=inherited allowed set; orchestrator remains inherited allowed set.",
+    "Parse six raw reports; require 50 rows each, exact frozen panel/order/FLOPs, dataset path/SHA, budget, residual limit, width/depth, max_threads=1, whestbench 0.16.1.",
+    "Reconstruct all 300 observations and compare recomputed metrics to owner receipt.",
+    "Primary delta = median_i(C0_mean_i-C1_mean_i); cpu0_slower_count=count_i(C0_mean_i>C1_mean_i); failure_difference=failures(C0)-failures(C1).",
+    "C0/C1 versus U is descriptive only."
   ],
   "decision_rule": {
-    "GO_CPU0_SPECIFIC": "All contract/provenance gates pass AND primary_delta_s >= 0.020 AND cpu0_slower_count >= 35/50 AND failure_difference >= 10.",
-    "NO_GO_CPU0_SPECIFIC": "All contract/provenance gates pass and any GO threshold fails.",
-    "PROTOCOL_INVALID": "Any contract/provenance gate fails; do not interpret runtime causally.",
-    "PENDING_EXTERNAL_ACTIONS_PROVENANCE": "Artifact-local checks pass but independent Actions run/job provenance has not yet been supplied."
+    "GO_CPU0_SPECIFIC": "All artifact and external provenance gates pass AND primary_delta_s >= 0.020 AND cpu0_slower_count >= 35/50 AND failure_difference >= 10.",
+    "NO_GO_CPU0_SPECIFIC": "All artifact and external provenance gates pass and any GO threshold fails.",
+    "PROTOCOL_INVALID": "Any local contract gate fails, or supplied external Actions/artifact/source provenance is invalid.",
+    "PENDING_EXTERNAL_ACTIONS_PROVENANCE": "All local artifact gates pass but no external Actions evidence has been supplied yet."
   },
-  "explicit_limits": [
-    "R234 does not poll or inspect the in-progress R218 scientific artifact.",
-    "R234 does not execute whest, estimator_v29, mini-50, mini-100, holdout, or submission.",
-    "R234 does not alter or repeat R218.",
-    "R234 does not claim or start R220; R220 remains dependency-gated on R218 COMPLETE.",
-    "Artifact alone cannot independently prove the GitHub Actions single-job provenance; R220 must obtain run/job evidence from GitHub Actions and feed/record it.",
-    "The workflow does not upload methods/r218/estimator_v29.py inside the R218 artifact, so independent source-hash verification is an external R220 provenance check."
-  ],
   "r220_actions_evidence_schema": {
+    "evidence_source": "github_actions_api_independent",
     "run_id": "must equal artifact preflight GITHUB_RUN_ID",
-    "run_attempt": "must equal artifact preflight GITHUB_RUN_ATTEMPT",
+    "run_attempt": 1,
+    "run_conclusion": "success",
+    "job_id": "positive integer from Actions API",
     "job_name": "crossover",
+    "job_conclusion": "success",
     "single_crossover_job_verified": true,
+    "artifact_id": "positive integer from Actions API",
+    "artifact_name": "r218-v29-l4-affinity-crossover",
+    "artifact_run_id": "must equal run_id",
+    "artifact_digest_sha256": "plain 64-hex SHA256 of independently downloaded artifact ZIP",
+    "head_sha": "c8cb97dcd1383f4a1d741c5a36ba816deec452eb",
+    "arm_commit": "c8cb97dcd1383f4a1d741c5a36ba816deec452eb",
+    "arm_blob": "542f8f80cee29c83b4f9648a1c56f49ae9b9262a",
+    "arm_sha256": "2c4c430c8ec8f0abcdbd84192f8c9040485804e65ca7adab3505dbf9c222cb54",
+    "arm_parent_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+    "arm_only_file_diff_verified": true,
+    "workflow_blob": "d1fa366b1056d09f829a9620eda81034584147af",
+    "executor_blob": "456364bd0558eb98d41a4f9cd0512484fe972d20",
     "executor_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+    "expected_panel_blob": "8669ffff7408c4f251c700ca0d5f9fc24db5c8f0",
+    "prelaunch_blob": "fe0745d3d0265b7afb8d952530998c6b0f942aa3",
     "estimator_source_sha256_verified": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
-    "note": "R220 must derive these from GitHub Actions + frozen arm/upstream source evidence after R218 COMPLETE; do not copy owner conclusions."
-  }
+    "environment_versions_verified": {
+      "python": "3.11.16",
+      "numpy": "2.4.6",
+      "flopscope": "0.12.1",
+      "whestbench": "0.16.1"
+    },
+    "runner_name": "must equal artifact preflight/runner_env RUNNER_NAME",
+    "runner_region": "must equal artifact Azure instance metadata compute.location"
+  },
+  "regression_contract": [
+    "attempt 2 must be rejected",
+    "wrong artifact ID/name/digest or ZIP-directory mismatch must be rejected",
+    "wrong head/arm/workflow/executor/source pins must be rejected",
+    "modified expected panel or prelaunch must be rejected",
+    "empty/incomplete/extra manifest must be rejected",
+    "missing/extra preflight gate keys or version drift must be rejected",
+    "wrong dataset path or max_threads must be rejected",
+    "missing mandatory telemetry or affinity mismatch must be rejected"
+  ],
+  "explicit_limits": [
+    "R237 does not inspect or interpret the in-progress R218 artifact.",
+    "R237 does not alter R217 thresholds or R218 workflow/executor/run/artifacts.",
+    "R237 does not execute whest/estimator/science or trigger Actions.",
+    "R237 does not access private/holdout data or submit.",
+    "R237 does not claim/start R220; R220 remains the authoritative postflight owner."
+  ]
 }
