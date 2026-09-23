@@ -515,7 +515,8 @@ def _manifest_dataflow(step: str) -> tuple[ast.Module, set[str]]:
         tree = ast.parse(source, filename="<workflow-manifest-step>")
     except SyntaxError as exc:
         raise PreflightError(
-            f"cannot statically parse runtime-manifest Python verifier: {exc.msg}"
+            "no statically traceable json.loads binding; "
+            f"cannot parse runtime-manifest Python verifier: {exc.msg}"
         ) from exc
 
     path_vars: set[str] = set()
@@ -630,20 +631,29 @@ def asserted_manifest_paths(workflow: str) -> set[SchemaPath]:
             if isinstance(current, ast.Name):
                 allowed_names.add(current)
 
+        unsupported_names: list[ast.Name] = []
         for node in ast.walk(tree):
-            if (
+            if not (
                 isinstance(node, ast.Name)
                 and node.id in vars_
                 and isinstance(node.ctx, ast.Load)
                 and node not in allowed_names
             ):
+                continue
+            parent = parents.get(node)
+            if isinstance(parent, ast.Attribute) and parent.value is node:
                 raise PreflightError(
-                    f"unsupported manifest access on {node.id!r}"
+                    f"unsupported manifest access {parent.attr!r} on {node.id!r}"
                 )
+            unsupported_names.append(node)
 
         if not block_paths:
             raise PreflightError(
                 f"job {job_name!r} reads runtime manifest but no statically verifiable key references were extracted"
+            )
+        if unsupported_names:
+            raise PreflightError(
+                f"unsupported manifest access on {unsupported_names[0].id!r}"
             )
         paths.update(block_paths)
     return paths
