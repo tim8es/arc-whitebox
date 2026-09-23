@@ -5931,6 +5931,20 @@
         "title": "Align coordinate-energy math with the frozen corrected-MSE arithmetic"
       },
       "at": "2026-09-23T23:45:38.449Z"
+    },
+    {
+      "revision": 441,
+      "action": "reassign",
+      "job": "R300",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "r298-binary32-energy-consistency-fix-r267",
+        "from_session": "6ab3a7f3-d754-83eb-be50-bbf1a4f90187",
+        "to_assigned_owner": "r300-binary32-energy-consistency-fix-r269",
+        "to_session": "6ab3a7fe-d4d4-83eb-b706-88dd77430353",
+        "reason": "The R267 recipient received the full R300 prompt but produced no agent response; thread is idle and queue remains QUEUED with zero claims/attempts. Fresh branch and Actions checks show no R300 branch or run. Transfer the same arithmetic-consistency task to the known responsive R269 session; R296 remains separately queued behind R294, so instruct R269 to handle R300 first."
+      },
+      "at": "2026-09-23T23:49:28.912Z"
     }
   ],
   "jobs": [
@@ -9520,7 +9534,7 @@
       "title": "Add the frozen coordinate-wise residual-energy diagnostic"
     },
     {
-      "assigned_owner": "r298-binary32-energy-consistency-fix-r267",
+      "assigned_owner": "r300-binary32-energy-consistency-fix-r269",
       "depends_on": [
         "R298",
         "R299"
@@ -9536,7 +9550,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 440,
+  "revision": 441,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
