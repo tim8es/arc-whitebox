@@ -1,0 +1,18 @@
+{
+  "schema": "arc.whitebox.r259.run_arm.v1",
+  "job": "R259",
+  "run_id": "R259-BPK2K-ONE-SHOT-20260923-A1",
+  "protocol_commit": "13a44d9cd19ecafc769c9eb8968cfd6ed5cd7a98",
+  "workflow_commit": "65394e2679bebd7005e7fba13de3166a2c5800d2",
+  "trigger_authorization": "EXACTLY_ONE_PUSH_TRIGGER",
+  "coordinator_preflight": "PASSED",
+  "authorized_workflow_path": ".github/workflows/r259-one-shot.yml",
+  "authorized_runner": "ubuntu-24.04",
+  "authorized_attempts": 1,
+  "retry": false,
+  "second_workflow": false,
+  "checkout_fetch_depth": 0,
+  "fixture_runtime_manifest": "R254_FIXTURE_RUNTIME_MANIFEST.json",
+  "public_access_condition": "ONLY_AFTER_TARGET_FREE_AND_VALIDATE_GO",
+  "submission": false
+}
