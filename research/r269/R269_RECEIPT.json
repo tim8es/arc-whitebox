@@ -1,0 +1,47 @@
+{
+  "actions_cloud_runs": 0,
+  "canonical_edits": false,
+  "claim_commit": "a6aa4466426b1fb8e20a2e6c484192e400018881",
+  "concrete_hierarchy": {
+    "identity": "E_B[Y0 + (B/p)(Y1-Y0)] = Y1",
+    "level0": "mu_15",
+    "level1": "mu_16",
+    "name": "V25 depth-prefix Bernoulli telescope",
+    "p": 0.5,
+    "raw_mse_consequence": "adds ((1-p)/p)*||Y1-Y0||^2/n expected MSE"
+  },
+  "decision": "EVIDENCE_BASED_NO_GO_BEFORE_EXECUTION",
+  "estimator_executions": 0,
+  "falsifier_executed": false,
+  "frozen_fixture": "R269-DEPTH-TELESCOPE-W32-D6-v1",
+  "history": {
+    "artifact_records": 631,
+    "blob_sha1": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "entries": 194
+  },
+  "job": "R269",
+  "leaderboard_edits": false,
+  "no_go_reasons": [
+    "No target-free rationale that depth-prefix V25 outputs form a convergent same-quantity hierarchy; layer coordinates differ.",
+    "No committed exact C0/C16 metered decomposition, so the nontrivial expected production FLOP bound cannot be honestly frozen before execution."
+  ],
+  "owner": "multilevel-debiasing-scout",
+  "paid_compute": false,
+  "per_network_selection": false,
+  "private_holdout_full_accesses": 0,
+  "protocol_commit": "8d93f50cab5b3c389e857e02667c2e400df43aae",
+  "protocol_sha256": "bfb94259e402f5fb441c1aaa776254a637da4fdb33cd4f45453ac925eec7d929",
+  "prototype_created": false,
+  "public_r209_accesses": 0,
+  "report_sha256": "580626633659523c49e0178cc083084afde2748bbf0373ce738e218ed6878e26",
+  "run_id": "R269-multilevel-theory-20260923",
+  "schema": "arc.whitebox.r269.receipt.v1",
+  "start_control_commit": "b24f69b9c74bf972c72f6e6621a511e88d4800f9",
+  "status": "SCIENTIFIC_REJECT",
+  "submission": false,
+  "tuning": false,
+  "v25": {
+    "source_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75"
+  }
+}
