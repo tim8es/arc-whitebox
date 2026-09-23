@@ -4460,6 +4460,14 @@
         "status": "COMPLETE"
       },
       "revision": 332
+    },
+    {
+      "revision": 333,
+      "action": "claim",
+      "job": "R273",
+      "owner": "score-gap-independent-audit",
+      "payload": {},
+      "at": "2026-09-23T13:21:29.838Z"
     }
   ],
   "jobs": [
@@ -7143,14 +7151,14 @@
       ],
       "hypothesis_id": "R209-V25-ERROR-CONCENTRATION-20260923",
       "id": "R273",
-      "owner": null,
+      "owner": "score-gap-independent-audit",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Measure whether R209 V25 error is broad-based or concentrated"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 332,
+  "revision": 333,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
