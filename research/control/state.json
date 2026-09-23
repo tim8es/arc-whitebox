@@ -5945,6 +5945,14 @@
         "reason": "The R267 recipient received the full R300 prompt but produced no agent response; thread is idle and queue remains QUEUED with zero claims/attempts. Fresh branch and Actions checks show no R300 branch or run. Transfer the same arithmetic-consistency task to the known responsive R269 session; R296 remains separately queued behind R294, so instruct R269 to handle R300 first."
       },
       "at": "2026-09-23T23:49:28.912Z"
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T23:50:00.000Z",
+      "job": "R300",
+      "owner": "r300-binary32-energy-consistency-fix-r269",
+      "payload": {},
+      "revision": 442
     }
   ],
   "jobs": [
@@ -9544,13 +9552,13 @@
       "priority": 1,
       "title": "Align coordinate-energy math with the frozen corrected-MSE arithmetic",
       "id": "R300",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "r300-binary32-energy-consistency-fix-r269",
+      "status": "CLAIMED",
       "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 441,
+  "revision": 442,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
