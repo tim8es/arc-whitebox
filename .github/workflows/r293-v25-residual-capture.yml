@@ -31,7 +31,10 @@ env:
   EXPECTED_DATASET_METADATA_SHA256: 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1
   EXPECTED_NAME_ORDER_SHA256: 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce
   R291_HARNESS_BLOB: 3e438c0f6b87ab2fa90c1fc71bbf3cfea1e9052d
-  R291_PATCH_BLOB: a3d909540fc079908fcca9987c5cdb0252a1da8c
+  R291_OLD_PATCH_BLOB: a3d909540fc079908fcca9987c5cdb0252a1da8c
+  R294_PATCH_BLOB: 65abb2e2040e44a7965f5123acd17bb838891532
+  R294_PATCH_SHA256: bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3
+  R294_PATCHED_SCORING_BLOB: 8493b7ff28110fb13f467400b6895c56bd7550bb
   R291_PANEL_BLOB: caf813cd5eab771108f105fe050fd6631b298733
 
 jobs:
@@ -206,13 +209,15 @@ jobs:
           test "$(git hash-object "$WORK/estimator_v25.py")" = "$V25_GIT_BLOB"
           test "$(sha256sum "$WORK/estimator_v25.py" | awk '{print $1}')" = "$V25_SHA256"
 
-      - name: Apply the frozen R291 evaluator-only patch
+      - name: Verify and apply the corrected R294 evaluator-only patch
         shell: bash
         run: |
           set -euo pipefail
           WORK="$RUNNER_TEMP/r293"
           test "$(git hash-object research/r291/r291_capture_harness.py)" = "$R291_HARNESS_BLOB"
-          test "$(git hash-object research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch)" = "$R291_PATCH_BLOB"
+          test "$(git hash-object research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch)" = "$R291_OLD_PATCH_BLOB"
+          test "$(git hash-object research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch)" = "$R294_PATCH_BLOB"
+          test "$(sha256sum research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch | awk '{print $1}')" = "$R294_PATCH_SHA256"
           test "$(git hash-object research/r291/R291_EXPECTED_PUBLIC_MINI100.json)" = "$R291_PANEL_BLOB"
           SCORING_PATH="$(python - <<'PY'
           import pathlib, whestbench.scoring
@@ -220,11 +225,20 @@ jobs:
           PY
           )"
           test "$(git hash-object "$SCORING_PATH")" = "$WHESTBENCH_SCORING_BLOB"
+          python scripts/r294_patch_apply_check.py \
+            --source "$SCORING_PATH" \
+            --patch research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch \
+            --old-patch research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch \
+            > "$WORK/r294-patch-apply-check.json"
           PATCH_ROOT="$WORK/patch-root"
           mkdir -p "$PATCH_ROOT/src/whestbench"
           cp "$SCORING_PATH" "$PATCH_ROOT/src/whestbench/scoring.py"
-          patch --batch --forward --fuzz=0 -p1 -d "$PATCH_ROOT" \
-            < research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch
+          git -C "$PATCH_ROOT" init -q
+          git -C "$PATCH_ROOT" apply --check \
+            "$GITHUB_WORKSPACE/research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch"
+          git -C "$PATCH_ROOT" apply \
+            "$GITHUB_WORKSPACE/research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch"
+          test "$(git hash-object "$PATCH_ROOT/src/whestbench/scoring.py")" = "$R294_PATCHED_SCORING_BLOB"
           test "$(grep -c 'r291_capture.safe_capture(' "$PATCH_ROOT/src/whestbench/scoring.py")" = "2"
           cp "$PATCH_ROOT/src/whestbench/scoring.py" "$SCORING_PATH"
           printf '%s\n' "$SCORING_PATH" > "$WORK/scoring-path.txt"
