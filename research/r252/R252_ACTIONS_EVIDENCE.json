@@ -1,0 +1,91 @@
+{
+  "schema": "arc.whitebox.r252.actions_evidence.v1",
+  "job_id": "R252",
+  "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+  "workflow": {
+    "run_id": 35830986191,
+    "job_id": 107083271578,
+    "run_attempt": 1,
+    "event": "push",
+    "head_sha": "71ecefb647bb590db14ba4b9d764652dea3d4040",
+    "conclusion": "failure",
+    "runner": "ubuntu-24.04 standard GitHub-hosted",
+    "workflow_path": ".github/workflows/r252-cfsp4-one-shot.yml",
+    "workflow_git_blob": "608ea92fd571a8eac4d6ae5aa38e806c112f2cba",
+    "trigger_commit": "71ecefb647bb590db14ba4b9d764652dea3d4040",
+    "retry_performed": false,
+    "total_r252_runs": 1
+  },
+  "runtime": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1+np2.4.6",
+    "whestbench": "0.16.1",
+    "runner_os": "Linux",
+    "runner_arch": "X64"
+  },
+  "verified_core_wheels": {
+    "numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93",
+    "flopscope-0.12.1-py3-none-any.whl": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582",
+    "whestbench-0.16.1-py3-none-any.whl": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"
+  },
+  "parent_source": {
+    "fetched": true,
+    "executed": false,
+    "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "fixture_preflight": {
+    "generator_git_blob": "d6df8fc84fe12901af523464aa325b8289806b64",
+    "manifest_git_blob": "93149ac04496b34497703b8c755ff1774c899e3b",
+    "all_16_weight_layer_hash_checks_passed": true,
+    "concatenated_weight_hash_check_passed": true,
+    "expected_concatenated_weight_sha256": "de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e",
+    "expected_truth_sha256": "623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450",
+    "truth_hash_check_passed": false,
+    "observed_truth_sha256": null,
+    "observed_truth_hash_not_retained_reason": "The frozen generator raised RuntimeError('truth hash mismatch') without including the computed observed digest and failed before writing fixture-replay.json or retained truth bytes.",
+    "exact_exception": "RuntimeError: truth hash mismatch",
+    "failure_step": "Reconstruct and retain exact frozen fixture bytes",
+    "process_exit_code": 1
+  },
+  "execution": {
+    "parent_measurements": 0,
+    "parent_symmetry_checkpoints": 0,
+    "candidate_constructed": false,
+    "candidate_measurements": 0,
+    "target_free_result_created": false,
+    "public_authorized": false,
+    "public_dataset_access": false,
+    "public_mini100_runs": 0,
+    "submissions": 0
+  },
+  "artifact": {
+    "id": 10736403843,
+    "name": "r252-cfsp4-one-shot",
+    "size_bytes": 46746,
+    "zip_sha256": "10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e",
+    "expires_at": "2026-12-22T07:18:00Z",
+    "retained_file_hashes": {
+      "r252_evidence/actions-disposition.json": "11e81c9c9c9268d3185a6ffb9c1fffe729a37880cd62312a25dc0ebe613cfb77",
+      "r252_evidence/core-wheel-sha256.json": "e3eeffa478c944236b063341ae101e671d63cf3270c263d580ac3bdca554eb14",
+      "r252_evidence/runtime.txt": "036fa0272b6d0505c9a6bedf3f5ad3c8888a88beac98df21bb744bb2ab404e40",
+      "r252_evidence/v25-identity.txt": "3cff0b46c0e316e970a1eeb90b34fd24a73834e575b9936aa2e86d21ad237894",
+      "r252_inputs/estimator_v25.py": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+      "research/r252/R252_EXECUTE_TRIGGER.txt": "0024a740d2da38d506f98d5910a6466cf140065fc7ff8db4439628d1e4141e56",
+      "research/r252/R252_FIXTURE_MANIFEST.json": "0f59875f40e8a15393ca9d23fd83f34526086366f31df5e8e73a96acbff64fd3",
+      "research/r252/R252_NOVELTY_AUDIT.json": "5dcfe3e3ad743fbeef19080153fd472aae9a33ee22a33803c133377573cd8a8d",
+      "research/r252/R252_PROTOCOL.md": "da1b4fe034c4f50fd878e0b2a016d596db3a397ef954e9bb49104641794e8330",
+      "scripts/r252_cfsp4.py": "08759c6490283b6ff19b1f36daf159eb02864ab482282069f0d33460a47e07b0",
+      "scripts/r252_fixture.py": "55fc29fd92ecbb28acaff25c02d9612462f6c1846fb54a7147b7ea625e9bef04",
+      "scripts/r252_public_gate.py": "26538ce2b2b33ef6ae272b8022ae43630780b1e6fb449b3e072c67ab9d84cd3b"
+    }
+  },
+  "interpretation": {
+    "status": "INFRA_ERROR",
+    "scientific_result": "NONE",
+    "root_cause_proven": "Frozen truth-byte identity was not reproducible in the pinned Actions environment.",
+    "root_cause_not_proven": "The numerical reason for the truth-byte mismatch is unknown because the observed digest/bytes were not retained. The generator contains float64 dense matvec reductions whose backend ordering is a plausible source, but that is inference only.",
+    "retry_authorized": false
+  }
+}
