@@ -1,0 +1,87 @@
+{
+  "schema": "arc.whitebox.r253.receipt.v1",
+  "job": "R253",
+  "run_id": "R253-r252-actions-accounting-audit-20260923",
+  "owner": "r252-actions-accounting-audit",
+  "mode": "read-only/postflight",
+  "status": "COMPLETE",
+  "subject_job": "R252",
+  "conclusion": "R252 remains INFRA_ERROR. Revision-241 finish was incomplete: one queue attempt produced two distinct R252 Actions runs under an authorization for exactly one run/no retry. Both runs failed before unchanged-parent execution; parent/candidate/public measurements are all zero. The original finish event remains intact and revision 245 appends terminal_evidence_correction with the erratum as current R252 receipt projection.",
+  "control": {
+    "refreshed_from_revision": 241,
+    "enqueue_revision": 242,
+    "claim_revision": 243,
+    "start_revision": 244,
+    "terminal_evidence_correction_revision": 245,
+    "correction_commit": "6a089f09aa904257673f709d42bfade979a0c19c",
+    "original_r252_finish_revision": 241,
+    "original_finish_preserved": true,
+    "r252_status_after_correction": "INFRA_ERROR"
+  },
+  "accounting": {
+    "queue_attempts": 1,
+    "actions_runs_authorized": 1,
+    "actions_runs_observed": 2,
+    "unauthorized_duplicate_dispatch": true,
+    "parent_measurements": 0,
+    "candidate_measurements": 0,
+    "public_measurements": 0
+  },
+  "runs": [
+    {
+      "github_run_id": 35830273198,
+      "job_id": 107081017265,
+      "head_sha": "c00cf0b98016c6fa81c203a6613ce811f585f0c2",
+      "workflow": ".github/workflows/r252-one-shot.yml",
+      "method": "V25-D21-CWG",
+      "artifact_id": 10736967637,
+      "artifact_zip_sha256": "4ecd1ed42f28a4b02caccd70dce9570a0738d7cb2b4f3976207fdd31f98bb989",
+      "terminal_stage": "runtime version-string check before fixture/science"
+    },
+    {
+      "github_run_id": 35830986191,
+      "job_id": 107083271578,
+      "head_sha": "71ecefb647bb590db14ba4b9d764652dea3d4040",
+      "workflow": ".github/workflows/r252-cfsp4-one-shot.yml",
+      "method": "V25-CFSP4",
+      "artifact_id": 10736403843,
+      "artifact_zip_sha256": "10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e",
+      "terminal_stage": "fixture truth-byte check before parent"
+    }
+  ],
+  "attribution": {
+    "github_actor": "tim8es",
+    "session_or_agent": "UNKNOWN"
+  },
+  "artifacts": {
+    "report": {
+      "url": "https://github.com/tim8es/arc-whitebox/blob/d4a58774da9569e581aa239669a3406f9a2f1ff9/research/r253/R253_R252_ACTIONS_INCIDENT_REPORT.md",
+      "git_blob_sha1": "5a2f70992bb256fc322e127da7c3ce2540ca7ddd",
+      "sha256": "9795755affa9f5710b69cefd20bc33f83a548f525c38e9b15856aafb583b89bd"
+    },
+    "erratum": {
+      "url": "https://github.com/tim8es/arc-whitebox/blob/d4a58774da9569e581aa239669a3406f9a2f1ff9/research/r253/R253_R252_TERMINAL_EVIDENCE_ERRATUM.json",
+      "git_blob_sha1": "a514c6f4cf942ccbdc1da55db15fc6d808e9ec0a",
+      "sha256": "680db7fcda71b5604006cd1aa26c00a44bc0bbb0c39553aa83b2b7e4d0c38313"
+    }
+  },
+  "source_links": {
+    "run1": "https://github.com/tim8es/arc-whitebox/actions/runs/35830273198",
+    "run1_job": "https://github.com/tim8es/arc-whitebox/actions/runs/35830273198/job/107081017265",
+    "run1_artifact": "https://github.com/tim8es/arc-whitebox/actions/runs/35830273198/artifacts/10736967637",
+    "run2": "https://github.com/tim8es/arc-whitebox/actions/runs/35830986191",
+    "run2_job": "https://github.com/tim8es/arc-whitebox/actions/runs/35830986191/job/107083271578",
+    "run2_artifact": "https://github.com/tim8es/arc-whitebox/actions/runs/35830986191/artifacts/10736403843",
+    "correction_commit": "https://github.com/tim8es/arc-whitebox/commit/6a089f09aa904257673f709d42bfade979a0c19c"
+  },
+  "prohibited_actions": {
+    "actions_triggered": false,
+    "workflow_edited": false,
+    "rerun": false,
+    "science": false,
+    "paid_compute": false,
+    "private_or_holdout": false,
+    "submission": false,
+    "leaderboard_or_canonical_change": false
+  }
+}
