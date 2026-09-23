@@ -1759,6 +1759,22 @@
         "command": "one isolated flopscope 0.12.1 micro-fixture for frozen ONEHOT-WICK-ROW-SELECT on pinned estimator_v25.py blob 195373a110215256b759d7c172ba8c923c62e5cc; prove bitwise identity and counted-FLOP delta only; no estimator/mini-100 unless identity+count+0.1%-materiality gates pass"
       },
       "revision": 135
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T00:01:11.000Z",
+      "job": "R233",
+      "owner": "v25-compute-audit",
+      "payload": {
+        "reason": "R233 source-level V25 counted-FLOP audit is terminal PRE-MINI NO-GO on the frozen materiality gate. Exact pinned V25 source audit found ONEHOT-WICK-ROW-SELECT: replace dense SL2/SR2/SL1 @ WT transforms by exact row selection plus scalar multiply because every coefficient row has one nonzero. Exactly one isolated free ubuntu-24.04 micro-fixture (Actions run 35799879085, job 106987553512) passed bitwise identity for WL1/WL2/WR2 in modes 0 and 1 and matched the preregistered flopscope 0.12.1 cost model exactly (mode0 5248->592; mode1 38704->4304). Production projection saves 62,756,864 FLOPs/MLP = 0.007783278470680822% of pinned V25 806,303,721,965 FLOPs, versus frozen meaningful threshold 806,303,722 FLOPs/MLP (0.1%); therefore meaningful GO fails by ~12.85x and mini-100 is not authorized. No estimator/full/mini run, paid/private/holdout data, submission, canonical estimator/result edit, R232 overlap, or rescue optimization.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/027f0c517ec55a27fffc0878b043e3216c021344/research/r233/R233_TERMINAL_RECEIPT.json",
+          "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62"
+        },
+        "run_id": "R233-v25-onehot-wick-cse-20260923",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 136
     }
   ],
   "jobs": [
@@ -2826,7 +2842,7 @@
       "title": "Find output-preserving V25 FLOP reductions",
       "owner": "v25-compute-audit",
       "assigned_owner": "v25-compute-audit",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "priority": 1,
       "hypothesis_id": "V25-OUTPUT-PRESERVING-COST-REDUCTION",
       "depends_on": [
@@ -2838,10 +2854,24 @@
           "run_id": "R233-v25-onehot-wick-cse-20260923",
           "code_commit": "48a9ccb3eaeca34a21e7dab636ab10935629e17b",
           "command": "one isolated flopscope 0.12.1 micro-fixture for frozen ONEHOT-WICK-ROW-SELECT on pinned estimator_v25.py blob 195373a110215256b759d7c172ba8c923c62e5cc; prove bitwise identity and counted-FLOP delta only; no estimator/mini-100 unless identity+count+0.1%-materiality gates pass",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT",
+          "completion": {
+            "reason": "R233 source-level V25 counted-FLOP audit is terminal PRE-MINI NO-GO on the frozen materiality gate. Exact pinned V25 source audit found ONEHOT-WICK-ROW-SELECT: replace dense SL2/SR2/SL1 @ WT transforms by exact row selection plus scalar multiply because every coefficient row has one nonzero. Exactly one isolated free ubuntu-24.04 micro-fixture (Actions run 35799879085, job 106987553512) passed bitwise identity for WL1/WL2/WR2 in modes 0 and 1 and matched the preregistered flopscope 0.12.1 cost model exactly (mode0 5248->592; mode1 38704->4304). Production projection saves 62,756,864 FLOPs/MLP = 0.007783278470680822% of pinned V25 806,303,721,965 FLOPs, versus frozen meaningful threshold 806,303,722 FLOPs/MLP (0.1%); therefore meaningful GO fails by ~12.85x and mini-100 is not authorized. No estimator/full/mini run, paid/private/holdout data, submission, canonical estimator/result edit, R232 overlap, or rescue optimization.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/027f0c517ec55a27fffc0878b043e3216c021344/research/r233/R233_TERMINAL_RECEIPT.json",
+              "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62"
+            },
+            "run_id": "R233-v25-onehot-wick-cse-20260923",
+            "status": "SCIENTIFIC_REJECT"
+          }
         }
       ],
-      "deliverable": "Perform a source-level cost audit of pinned public V25 using R226 records and R231 compute/score floor. Search for one algebraically equivalent/common-subexpression or memory-layout change that provably preserves estimator outputs while reducing counted FLOPs/runtime; distinguish true FLOP savings from wall-clock-only changes. Freeze exact identity/equivalence fixture, cost proof and a meaningful score/runtime gate first. Do not overlap with R232's estimator-family search. No canonical edits, no full estimator run initially; one isolated micro-fixture is allowed. Only authorize one bounded public mini-100 candidate if exact equivalence and a credible cost reduction are both demonstrated on free compute. If savings cannot approach a meaningful frontier, terminal NO-GO with evidence."
+      "deliverable": "Perform a source-level cost audit of pinned public V25 using R226 records and R231 compute/score floor. Search for one algebraically equivalent/common-subexpression or memory-layout change that provably preserves estimator outputs while reducing counted FLOPs/runtime; distinguish true FLOP savings from wall-clock-only changes. Freeze exact identity/equivalence fixture, cost proof and a meaningful score/runtime gate first. Do not overlap with R232's estimator-family search. No canonical edits, no full estimator run initially; one isolated micro-fixture is allowed. Only authorize one bounded public mini-100 candidate if exact equivalence and a credible cost reduction are both demonstrated on free compute. If savings cannot approach a meaningful frontier, terminal NO-GO with evidence.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/027f0c517ec55a27fffc0878b043e3216c021344/research/r233/R233_TERMINAL_RECEIPT.json",
+        "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62"
+      },
+      "reason": "R233 source-level V25 counted-FLOP audit is terminal PRE-MINI NO-GO on the frozen materiality gate. Exact pinned V25 source audit found ONEHOT-WICK-ROW-SELECT: replace dense SL2/SR2/SL1 @ WT transforms by exact row selection plus scalar multiply because every coefficient row has one nonzero. Exactly one isolated free ubuntu-24.04 micro-fixture (Actions run 35799879085, job 106987553512) passed bitwise identity for WL1/WL2/WR2 in modes 0 and 1 and matched the preregistered flopscope 0.12.1 cost model exactly (mode0 5248->592; mode1 38704->4304). Production projection saves 62,756,864 FLOPs/MLP = 0.007783278470680822% of pinned V25 806,303,721,965 FLOPs, versus frozen meaningful threshold 806,303,722 FLOPs/MLP (0.1%); therefore meaningful GO fails by ~12.85x and mini-100 is not authorized. No estimator/full/mini run, paid/private/holdout data, submission, canonical estimator/result edit, R232 overlap, or rescue optimization."
     },
     {
       "id": "R234",
@@ -2878,7 +2908,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 135,
+  "revision": 136,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
