@@ -1,0 +1,161 @@
+{
+  "schema": "arc.whitebox.r235.terminal_receipt.v1",
+  "job": "R235",
+  "hypothesis_id": "V25-MATERIAL-FLOP-CUT-SECOND-PASS",
+  "owner": "v25-compute-audit",
+  "run_id": "R235-v25-material-exact-second-pass-20260923",
+  "status": "TERMINAL_NO_GO_PRE_FIXTURE",
+  "decision": "SCIENTIFIC_REJECT",
+  "conclusion": "No distinct exact output-preserving V25 contraction/reuse path reaches the frozen >=1.0% production-savings gate. The strongest remaining exact ledger direction, WEIGHTED-ALIAS-GRAM, has an ideal upper bound of 5,131,321,344 FLOPs/MLP = 0.6364005528208066% of pinned V25, so no micro-fixture or mini-100 was authorized.",
+  "queue": {
+    "assigned_revision": 139,
+    "start_revision": 140,
+    "start_commit": "fa45f074520d624170fd5fb2b9543ac58ce3d33b",
+    "start_code_commit": "f87e3aa194589d4734ae4a4a72e231d4707737bb"
+  },
+  "pinned_source": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "path": "estimators/estimator_v25.py",
+    "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "evidence_sources": {
+    "upstream_findings_log": {
+      "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "git_blob": "09cf41e8826052ceb83109115cae688c03baaaca",
+      "findings": [
+        "F77",
+        "F79"
+      ]
+    },
+    "derivation_code_map_git_blob": "2b7f1e7df1ddf08a3925bbe883ebe0db14942eff",
+    "flopscope_primer": {
+      "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "git_blob": "7c1478581347f362f691aa1b8023d8edcd44874d"
+    },
+    "r209_v25": {
+      "git_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    },
+    "r233_receipt": {
+      "git_blob": "ba6e5a6df48007095ccf7ed1df522f347fe5d61e",
+      "sha256": "a66e9e6699a7c036e4bdcacd202f365ca89310310e3ddea687df75b7c278fa62"
+    }
+  },
+  "baseline": {
+    "counted_flops_per_mlp": 806303721965,
+    "width": 1024,
+    "depth": 16,
+    "budget_flops": 2199023255552,
+    "failures": 0
+  },
+  "dominant_profile": {
+    "unit_flops": 2147483648,
+    "units": {
+      "hub_nonsymmetric_contractions": 100,
+      "young_dense_transports": 80,
+      "shared_basis_contractions_approx": 30,
+      "shared_basis_formings_approx": 33,
+      "WQ_or_WDQ_approx": 27,
+      "Cpre_sandwich_already_symmetric_priced": 22.5,
+      "necessary_dense_nxn_matmuls": 16,
+      "joins_moves_qr_approx": 20,
+      "term_table_approx": 2.5
+    },
+    "interpretation": "The 180u hub+young core uses distinct non-symmetric operands. Alias/symmetry tags, batching, or fusion do not lower scalar multiply-add count while preserving the same arithmetic. C_pre is already symmetric-priced."
+  },
+  "screened_direction": {
+    "name": "WEIGHTED-ALIAS-GRAM",
+    "distinct_from_r233": true,
+    "current_form": "F @ (d * F.T)",
+    "candidate_form": "einsum('ia,i,ib->ab', X, d, X), X=F.T",
+    "algebraic_identity": "F diag(d) F^T = X^T diag(d) X",
+    "schedule": {
+      "join_layers": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "tier2_move_layers": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "weighted_grams_per_event": 2,
+      "total_eligible_weighted_grams": 34
+    },
+    "cost": {
+      "rank": 384,
+      "width": 1024,
+      "dense_flops_per_gram": 301842432,
+      "current_total_eligible_gram_flops": 10262642688,
+      "ideal_half_price_saving_flops": 5131321344,
+      "ideal_saving_fraction_of_v25": 0.0063640055282080665,
+      "ideal_saving_percent_of_v25": 0.6364005528208067,
+      "required_1pct_flops": 8063037219.65,
+      "threshold_fraction_reached": 0.6364005528208067,
+      "miss_factor": 1.5713374156693627
+    },
+    "secondary_blocker": "Upstream F77 records weighted same-object alias einsum SymmetryError at representative operand scale; not needed for the verdict because the ideal cost bound already fails."
+  },
+  "excluded_material_route": {
+    "name": "STRASSEN-WINOGRAD",
+    "reason": "Upstream F79 demonstrates material arithmetic savings but explicitly notes that enabled levels change float32 summation order. R235 requires exact output preservation, so reassociation is ineligible."
+  },
+  "frozen_artifacts": {
+    "protocol": {
+      "path": "research/r235/R235_PROTOCOL.md",
+      "commit": "042ac92dc9f5147c267ef0b6f73654d161d9a5a6",
+      "git_blob": "c7dab5f5add11551f248a415700147ea60dc9809"
+    },
+    "fixture": {
+      "path": "scripts/r235_weighted_alias_gram_fixture.py",
+      "commit": "6655bd44ebefaa659aea9de21d6cb6bbdf13f45e",
+      "git_blob": "bdeb240ec5b7c402690d5e673e9484a4fb67a21e",
+      "executed": false,
+      "execution_reason": "Frozen production upper bound fails 1.0% gate; protocol forbids fixture execution after pre-cost failure."
+    },
+    "cost_model": {
+      "path": "research/r235/R235_COST_MODEL.json",
+      "commit": "f87e3aa194589d4734ae4a4a72e231d4707737bb",
+      "git_blob": "970ca238e72455d01880cdc85c5f7e6b14cec63a"
+    },
+    "report": {
+      "path": "research/r235/R235_RESULT.md",
+      "commit": "211a17d84ba4b48ebfe4f9227288351886a452f2",
+      "git_blob": "a7faf38646bab4ca3bad4a2764404015729885ea",
+      "sha256": "0ab6449a2c2c08ef9f0af29b816b7587152dcbaa492e300ebfb1f4bdd83bb26e"
+    }
+  },
+  "gates": {
+    "source_identity_pass": true,
+    "distinct_candidate_pass": true,
+    "exact_fixture_required_if_cost_gate_passes": true,
+    "production_materiality_threshold_fraction": 0.01,
+    "production_materiality_pass": false,
+    "micro_fixture_authorized": false,
+    "mini100_authorized": false
+  },
+  "run_scope": {
+    "estimator_run": false,
+    "micro_fixture_run": false,
+    "mini100": false,
+    "paid_compute": false,
+    "private_or_holdout": false,
+    "submission": false,
+    "retry": false
+  },
+  "no_go_reason": "The strongest exact contraction/reuse candidate fails the production savings gate before execution. No exact material candidate remains after accounting for the nonsymmetric dominant core, already-priced covariance sandwich, necessary dense products, and non-exact Strassen reassociation."
+}
