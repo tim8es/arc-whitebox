@@ -5,7 +5,8 @@
 + AGE-GATED SHARED BASIS FOR OLD SOURCES (V21, 2026-09-03, F66 option C / F72)
 + PRE-ACTIVATION LAMBDA TABLE (V22, 2026-09-03, F68 prefit)
 + NESTED SECOND TIER FOR THE OLDEST SOURCES (V24, 2026-09-03, F72 tiers)
-+ ADAPTIVE PER-MLP LAMBDA (V25, 2026-09-03).\n+ R223 FEED-ONLY NORMALIZED PER-NEURON LAMBDA (development candidate, 2026-09-22).
++ ADAPTIVE PER-MLP LAMBDA (V25, 2026-09-03).
++ R223 FEED-ONLY NORMALIZED PER-NEURON LAMBDA (development candidate, 2026-09-22).
 
 V25: the regenerated kappa4 off-diagonal coefficient is no longer a frozen per-layer
 table but lam_l = LAM[l] * ((mean(dG)/mean(var)) / REF_R[l])^BETA, evaluated online at the
