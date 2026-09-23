@@ -3366,6 +3366,18 @@
       "owner": "r254-independent-verifier",
       "payload": {},
       "revision": 253
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T08:07:00+00:00",
+      "job": "R255",
+      "owner": "r254-independent-verifier",
+      "payload": {
+        "code_commit": "b5887ca4a6a363513c2f4283f81502fb2b3cdd65",
+        "command": "read-only postflight only: verify immutable R254 run 35834163527/job 107093511576/artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7; inspect workflow/log/source/fixture hashes, BudgetContext.summary() type mismatch, execution/persisted-measurement counts, public/mini100 absence; write append-only report+receipt; no workflow/science/canonical/leaderboard/submission edits",
+        "run_id": "R255-r254-independent-postflight-20260923"
+      },
+      "revision": 254
     }
   ],
   "jobs": [
@@ -5372,7 +5384,14 @@
     },
     {
       "assigned_owner": "r254-independent-verifier",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "b5887ca4a6a363513c2f4283f81502fb2b3cdd65",
+          "command": "read-only postflight only: verify immutable R254 run 35834163527/job 107093511576/artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7; inspect workflow/log/source/fixture hashes, BudgetContext.summary() type mismatch, execution/persisted-measurement counts, public/mini100 absence; write append-only report+receipt; no workflow/science/canonical/leaderboard/submission edits",
+          "run_id": "R255-r254-independent-postflight-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read-only independent postflight of R254. Verify the single Actions run/job/artifact/ZIP digest and immutable receipt; inspect workflow steps/logs plus exact source and fixture hashes; verify the BudgetContext.summary type error and that parent/candidate measurement counts are zero, validation/public access/public mini-100 were skipped, and the status is INFRA_ERROR rather than scientific rejection or success. Create one append-only report/receipt with source URLs, exact SHAs, conclusions and commit. Do not edit R254/R256, launch/rerun Actions, run science, access private/holdout, alter canonical/leaderboard, or claim unpersisted in-memory values.",
       "depends_on": [
         "R249",
@@ -5382,7 +5401,7 @@
       "id": "R255",
       "owner": "r254-independent-verifier",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Independently verify R254 terminal infrastructure evidence"
     },
     {
@@ -5402,7 +5421,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 253,
+  "revision": 254,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
