@@ -1,0 +1,72 @@
+name: R223 finish attempt 3 and repair
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_ATTEMPT3_FINISH_REPAIR_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  control:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R223 control"
+          git config user.email "arc-control@users.noreply.github.com"
+
+      - name: Finish attempt 3 as INFRA_ERROR
+        run: |
+          set -euo pipefail
+          git fetch origin 7e3126035494f85ff43db250a0b433cf75731595
+          git show 7e3126035494f85ff43db250a0b433cf75731595:research/r223/R223_ATTEMPT3_INFRA_RECEIPT.json > /tmp/r223_attempt3_receipt.json
+          RECEIPT_SHA="$(sha256sum /tmp/r223_attempt3_receipt.json | awk '{print $1}')"
+          python - "$RECEIPT_SHA" <<'PY'
+          import json,sys
+          sha=sys.argv[1]
+          payload={
+            "run_id":"R223-v25-local-feed-attempt3-20260923",
+            "status":"INFRA_ERROR",
+            "reason":"Attempt 3 stopped before parent-artifact download, validation, or any mini-100 panel invocation. Free standard compute and pinned distribution gates passed. The exact byte-transform guard verified the pinned V25 blob and attempt-1->current docstring normalization, then found one remaining provenance-only mismatch: pinned parent ends with LF while the candidate file did not. No estimator arithmetic or scientific gate was exercised.",
+            "receipt":{
+              "url":"https://github.com/tim8es/arc-whitebox/blob/7e3126035494f85ff43db250a0b433cf75731595/research/r223/R223_ATTEMPT3_INFRA_RECEIPT.json",
+              "sha256":sha
+            }
+          }
+          open("/tmp/r223_attempt3_finish.json","w").write(json.dumps(payload,indent=2,sort_keys=True)+"\n")
+          PY
+          python scripts/arc_control.py finish R223             --owner method-research             --payload /tmp/r223_attempt3_finish.json             --publish | tee /tmp/r223_attempt3_finish_result.json
+
+      - name: Publish EOF-provenance repair
+        run: |
+          cat > /tmp/r223_repair4.json <<'JSON'
+          {
+            "reason": "Attempt 3 is preserved as pre-panel INFRA_ERROR. Repair only source-provenance formatting: append the single terminal LF inherited from the pinned V25 blob and update the exact-transform verifier to recognize attempt-1's two non-arithmetic formatting defects (literal docstring backslash-n and missing terminal LF) before requiring full byte equality with the pinned V25->V25-LF transform. No formula, clamp, panel, thresholds, parent, ranks, source state, or tuning changes."
+          }
+          JSON
+          python scripts/arc_control.py repair R223             --owner method-research             --payload /tmp/r223_repair4.json             --publish | tee /tmp/r223_repair4_result.json
+
+      - name: Verify remote state
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          state=json.load(open("/tmp/control.json"))
+          job=next(j for j in state["jobs"] if j["id"]=="R223")
+          assert job["status"]=="CLAIMED", job
+          assert len(job["attempts"])==3, job["attempts"]
+          assert [a["status"] for a in job["attempts"]]==["INFRA_ERROR","INFRA_ERROR","INFRA_ERROR"]
+          print(json.dumps({"revision":state["revision"],"job":job},indent=2,sort_keys=True))
+          PY
