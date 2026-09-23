@@ -1,0 +1,47 @@
+{
+  "actions_runs": 0,
+  "canonical_edits": false,
+  "decision": "EVIDENCE_BASED_NO_GO_BEFORE_EXECUTION",
+  "estimator_executions": 0,
+  "history": {
+    "artifact_records": 631,
+    "blob_sha1": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "entries": 194,
+    "legacy_only_entries": 4,
+    "missing_entries": 45
+  },
+  "job": "R265",
+  "leaderboard_edits": false,
+  "literature_lead": {
+    "family": "randomized multilevel debiasing / randomized telescoping",
+    "giles_2008_doi": "10.1287/opre.1070.0496",
+    "outcome": "NO_GO_PRE_EXECUTION",
+    "reason": "No non-duplicative V25 hierarchy with committed target-free correction-decay signal and derivable production cost bound.",
+    "rhee_glynn_2015_doi": "10.1287/opre.2015.1404"
+  },
+  "local_synthetic_falsifiers": 0,
+  "normalized_refs": {
+    "R209-v25-mini100_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "R223-v25-local-feed-mini100_blob_sha1": "c8b617c43ff1145977c38e7e1cca6d23985ec392",
+    "strongest_compatible": "R209-v25-mini100"
+  },
+  "owner": "method-theory-scout",
+  "paid_compute": false,
+  "per_network_selection": false,
+  "private_holdout_full_accesses": 0,
+  "protocol_commit": "0b4406b79ba785ec716657c65ba75673dea99f92",
+  "prototype_created": false,
+  "public_r209_accesses": 0,
+  "r261": {
+    "preserved_declared_report_blob_sha1": "84df1b3ecbc86c4564a0c29148e49cf57a9a4528",
+    "receipt_blob_sha1": "47b0d745cd31e8707256f0f7183d0d0212d9442e",
+    "reconciliation_blob_sha1": "5cce867616e893cce4859e26c832fd94e826f153",
+    "report_actual_blob_sha1": "835eee8021cfc8760c50c1b6978dcdabf2e52a2e"
+  },
+  "report_sha256": "9fa61722dcbdb20dbf8549b6adecbead9d3265a60fd518d1e62054b5162ea501",
+  "run_id": "R265-theory-screen-20260923",
+  "schema": "arc.whitebox.r265.receipt.v1",
+  "status": "SCIENTIFIC_REJECT",
+  "submission": false,
+  "tuning": false
+}
