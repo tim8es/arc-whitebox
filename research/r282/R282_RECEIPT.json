@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "R282",
+  "run_id": "R282-r209-artifact-recovery-20260923",
+  "owner": "r209-artifact-recovery",
+  "status": "COMPLETE",
+  "verdict": "NO_RECOVERABLE_RAW_V25_RESIDUAL_VECTORS_IN_EXISTING_EVIDENCE",
+  "branch": "research/r282-r209-artifact-recovery-20260923",
+  "protocol": {
+    "commit": "c2ff82968849c4672a8d58db490452e4327a09c7",
+    "path": "research/r282/R282_PROTOCOL.md",
+    "git_blob_sha1": "576fa9ea205a56d0142050c52f7d2c7b9c429429",
+    "sha256": "d7841429b5766f142b29c4c263ee9981b5b7e209855227a4afe2d378f795cd39"
+  },
+  "audit": {
+    "commit": "9131a93b467a96d049d13c4b6ff6f563ff29889a",
+    "path": "research/r282/R282_ARTIFACT_RECOVERY_AUDIT.json",
+    "git_blob_sha1": "c0e49ebc66ee5824a3bc9fcf077231a703bb9b79",
+    "sha256": "3ef661820a01b28e354609b7fe921111cac956965d256e7b9fa826c83a64c968"
+  },
+  "report": {
+    "commit": "3bc891f7b141d0f5b373bf87f5f0ce8c7a40ad30",
+    "path": "research/r282/R282_REPORT.md",
+    "git_blob_sha1": "e6f88717039d08d1b96e69aa1b584d3a1f2c370d",
+    "sha256": "f5be0f985425957a09cb046cbe084868427347d65a6fde58b63bb0c1fe2c3cb4"
+  },
+  "findings": {
+    "r278_artifact_identity_correction": {
+      "r278_labelled_artifact_id": 10617318650,
+      "actual_identity": "e136-followup-v29",
+      "actual_v25_artifact_id": 10617855153,
+      "conclusion_unchanged": true
+    },
+    "r209_v25": {
+      "actions_run_id": 35544406064,
+      "head_sha": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+      "artifact_id": 10617855153,
+      "artifact_size_bytes": 106494,
+      "artifact_zip_sha256": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08",
+      "report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+      "raw_vectors_present": false,
+      "max_numeric_vector_length": 16
+    },
+    "r224_fingerprints": {
+      "actions_run_id": 35788780990,
+      "artifact_id": 10720913493,
+      "artifact_size_bytes": 9297,
+      "artifact_zip_sha256": "28feb5da04d3508b86a8b7afddc39a35f9a57a61bad76c0f63fbf3a2ee6de686",
+      "records": 100,
+      "target_hashes_present": true,
+      "target_bytes_present": false
+    },
+    "r223_attempt6": {
+      "actions_run_id": 35810427656,
+      "artifact_id": 10730459690,
+      "artifact_size_bytes": 261400,
+      "artifact_zip_sha256": "f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00",
+      "parent_report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+      "candidate_report_sha256": "72821cf9117b484b2cc4fe4affa21e08ece737e86813508d9c1c6d01b02f6710",
+      "paired_result_sha256": "52c5da262f442d3a499c2c77885abc91f81d596e10703c1ac582192ffc8dda65",
+      "raw_vectors_present": false,
+      "max_numeric_vector_length": 16,
+      "prior_attempt_panel_invocations": 0
+    }
+  },
+  "exact_gap": [
+    "V25 final prediction bytes float32[1024] for each of 100 public Mini networks",
+    "exact final target bytes float32[1024] (or full float32[16,1024]) for each network",
+    "or exact signed residual target_final - prediction_final float32[1024]"
+  ],
+  "minimal_future_capture": {
+    "whestbench_version": "0.16.1",
+    "source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "scoring_py_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "point": "evaluate_estimator after all failure zeroing and after pred_np/final_pred/final_target binding, before final_layer_mse aggregation",
+    "required_fields": [
+      "mlp_index",
+      "mlp_name",
+      "failure flags",
+      "flops_used",
+      "final_pred float32[1024]",
+      "final_target float32[1024]",
+      "shape",
+      "dtype",
+      "SHA256"
+    ]
+  },
+  "scope": {
+    "actions_triggered": 0,
+    "reruns": 0,
+    "benchmark_dataset_downloads": 0,
+    "paid_compute": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false
+  }
+}
