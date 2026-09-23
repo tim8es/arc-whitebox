@@ -2547,6 +2547,18 @@
       "owner": "independent-v25-audit",
       "payload": {},
       "revision": 196
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T03:50:30Z",
+      "job": "R242",
+      "owner": "independent-v25-audit",
+      "payload": {
+        "run_id": "R242-r223-attempt6-normalize-registry-20260923",
+        "code_commit": "c8a2fb1da44b7cb28913c605095ccc847c8e4b5d",
+        "command": "normalize immutable R223 attempt-6 artifact 10730459690 against R240 receipt into research/results; run registry check/compare and regenerate STATUS only; no estimator/benchmark/Actions/retry/repair/candidate/canonical edits"
+      },
+      "revision": 197
     }
   ],
   "jobs": [
@@ -4079,14 +4091,21 @@
     },
     {
       "assigned_owner": "independent-v25-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R242-r223-attempt6-normalize-registry-20260923",
+          "code_commit": "c8a2fb1da44b7cb28913c605095ccc847c8e4b5d",
+          "command": "normalize immutable R223 attempt-6 artifact 10730459690 against R240 receipt into research/results; run registry check/compare and regenerate STATUS only; no estimator/benchmark/Actions/retry/repair/candidate/canonical edits",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Use only immutable R223 attempt-6 artifact 10730459690 and R240 independent postflight receipt. Independently extract/verify all 100 candidate rows and panel identity, create a schema-valid normalized research/results record against R209 V25, preserve all rows/failures and the SCIENTIFIC_REJECT verdict, run registry check/compare and regenerate STATUS. Commit a durable integration receipt with hashes. No estimator/benchmark/Actions run, no retry/repair, no candidate or canonical edits, no paid compute, private/holdout data, submission, or leaderboard change. Refresh control head before every write and preserve concurrent events.",
       "depends_on": [],
       "hypothesis_id": "R223-ARTIFACT-RESULT-NORMALIZATION",
       "id": "R242",
       "owner": "independent-v25-audit",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Normalize verified R223 V25-LF mini-100 result into the shared registry"
     },
     {
@@ -4103,7 +4122,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 196,
+  "revision": 197,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
