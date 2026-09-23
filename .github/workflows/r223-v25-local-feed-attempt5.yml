@@ -1,0 +1,229 @@
+name: R223 V25 local-feed attempt 5
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_ATTEMPT5_RUN_ARM.json'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r223_attempt5:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    env:
+      PYTHONHASHSEED: "0"
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify attempt-5 arm, frozen blobs, and free standard compute
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p r223_attempt5_evidence
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+
+          arm=json.loads(Path("research/r223/R223_ATTEMPT5_RUN_ARM.json").read_text())
+          assert arm=={
+            "idempotency_key":"ARC-R223-V25-LOCAL-FEED-LAMBDA-ATTEMPT5-20260923",
+            "attempt":5,
+            "execute_once":True,
+            "panel":"public-v2-phase2-mini-100",
+            "scope":"one repaired same-panel candidate development run only"
+          }, arm
+
+          changed=subprocess.check_output(
+              ["git","diff","--name-only","HEAD^","HEAD"], text=True
+          ).splitlines()
+          assert changed==["research/r223/R223_ATTEMPT5_RUN_ARM.json"], changed
+
+          frozen={
+            "research/r223/R223_PROTOCOL.md":"1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+            "research/r223/R223_ATTEMPT2_PROTOCOL.md":"cc8fada8088942de9e284e09f1266d89278cb0b6",
+            "research/r223/R223_ATTEMPT3_INFRA_PATCH.md":"d76406ae9292782c2592b3ef9377341d127fb348",
+            "research/r223/R223_ATTEMPT5_PROVENANCE_PATCH.md":"e5c92d45e638bc85b66753c00c909e1f00aa9345",
+            "methods/r223_estimator_v25_local_feed.py":"eb95d4ae46a031be5131eef8dd0909f2061b8749",
+            "scripts/r223_verify_exact_transform.py":"961e5afb052e2cfdc15e1284de49e57ba1514a73",
+            "scripts/r223_compare_panel.py":"fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0"
+          }
+          for path,sha in frozen.items():
+              got=subprocess.check_output(
+                  ["git","rev-parse",f"HEAD:{path}"], text=True
+              ).strip()
+              assert got==sha,(path,got,sha)
+          PY
+
+          private="$(gh api repos/${GITHUB_REPOSITORY} --jq '.private')"
+          visibility="$(gh api repos/${GITHUB_REPOSITORY} --jq '.visibility')"
+          test "$private" = "false"
+          test "$visibility" = "public"
+          cat > r223_attempt5_evidence/compute_gate.json <<JSON
+          {
+            "repository": "${GITHUB_REPOSITORY}",
+            "private": $private,
+            "visibility": "$visibility",
+            "runs_on": "ubuntu-24.04",
+            "larger_runner_requested": false,
+            "runner_name": "${RUNNER_NAME}",
+            "runner_os": "${RUNNER_OS}",
+            "runner_arch": "${RUNNER_ARCH}",
+            "verified_free_existing_compute": true
+          }
+          JSON
+
+      - name: Install frozen R209-compatible toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install "numpy==2.4.6" "whestbench==0.16.1" "flopscope>=0.12.1,<0.13.0"
+          whest version --json > r223_attempt5_evidence/whest_version.json
+          python - <<'PY' > r223_attempt5_evidence/environment.txt
+          import importlib.metadata as md
+          import platform, numpy
+          whestbench_version=md.version("whestbench")
+          flopscope_version=md.version("flopscope")
+          print("python",platform.python_version())
+          print("numpy",numpy.__version__)
+          print("flopscope_distribution",flopscope_version)
+          print("whestbench_distribution",whestbench_version)
+          assert numpy.__version__=="2.4.6"
+          assert whestbench_version=="0.16.1"
+          assert flopscope_version=="0.12.1"
+          PY
+
+      - name: Verify pinned upstream source and exact repaired transform
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q https://github.com/504aldo/whest-p2-cumulant-k3.git /tmp/v25up
+          git -C /tmp/v25up checkout -q 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+          test "$(git -C /tmp/v25up rev-parse HEAD)" = "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45"
+
+          python scripts/r223_verify_exact_transform.py             /tmp/v25up/estimators/estimator_v25.py             methods/r223_estimator_v25_local_feed.py             r223_attempt5_evidence/source_transform_guard.json
+
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+
+          lam=0.007
+          q=[1.0,1.0,1.0,1.0]
+          r=sum(q)/len(q)
+          s=[min(2.0,max(0.5,x/r)) for x in q]
+          s=[x/(sum(s)/len(s)) for x in s]
+          lf=[lam*x for x in s]
+          assert lf==[lam]*4
+
+          q=[0.4,0.8,1.2,2.6]
+          r=sum(q)/len(q)
+          s=[min(2.0,max(0.5,x/r)) for x in q]
+          s=[x/(sum(s)/len(s)) for x in s]
+          lf=[lam*x for x in s]
+          assert abs(sum(lf)/len(lf)-lam) <= 2e-15
+          assert all(math.isfinite(x) for x in lf)
+
+          Path("r223_attempt5_evidence/static_feed_identity.json").write_text(
+            json.dumps({
+              "constant_ratio_identity_exact": True,
+              "heterogeneous_mean_lambda_error": abs(sum(lf)/len(lf)-lam),
+              "all_finite": True,
+              "clamp":[0.5,2.0]
+            },indent=2,sort_keys=True)+"\n"
+          )
+          PY
+
+      - name: Download and verify immutable R209 V25 parent artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL             -H "Authorization: Bearer ${GH_TOKEN}"             -H "Accept: application/vnd.github+json"             "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10617855153/zip"             -o /tmp/r209-v25.zip
+          echo "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08  /tmp/r209-v25.zip" | sha256sum -c -
+          mkdir -p /tmp/r209-v25
+          unzip -q /tmp/r209-v25.zip -d /tmp/r209-v25
+          echo "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3  /tmp/r209-v25/report.json" | sha256sum -c -
+          cp /tmp/r209-v25/report.json r223_attempt5_evidence/parent-report.json
+
+      - name: Validate frozen repaired candidate
+        shell: bash
+        run: |
+          set +e
+          whest validate             --estimator methods/r223_estimator_v25_local_feed.py             --json > r223_attempt5_evidence/validate.json             2> r223_attempt5_evidence/validate.stderr
+          code=$?
+          echo "$code" > r223_attempt5_evidence/validate.exit
+          test "$code" = "0"
+
+      - name: Run sole attempt-5 same-panel V25-LF development test
+        shell: bash
+        run: |
+          set +e
+          whest run             --estimator methods/r223_estimator_v25_local_feed.py             --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2             --split mini             --streaming             --n-mlps 100             --runner local             --flop-budget 2199023255552             --wall-time-limit 120             --residual-wall-time-limit 0.4             --max-threads 1             --format json             > r223_attempt5_evidence/candidate-report.json             2> r223_attempt5_evidence/run.stderr
+          code=$?
+          echo "$code" > r223_attempt5_evidence/run.exit
+          test "$code" = "0"
+
+      - name: Build paired 100-row frozen-gate result
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/r223_compare_panel.py             r223_attempt5_evidence/parent-report.json             r223_attempt5_evidence/candidate-report.json             r223_attempt5_evidence/R223_ATTEMPT5_RESULT.json
+
+      - name: Hash immutable evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          out={}
+          for p in sorted(Path("r223_attempt5_evidence").glob("*")):
+              if p.is_file():
+                  out[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          for p in [
+              Path("research/r223/R223_PROTOCOL.md"),
+              Path("research/r223/R223_ATTEMPT2_PROTOCOL.md"),
+              Path("research/r223/R223_ATTEMPT3_INFRA_PATCH.md"),
+              Path("research/r223/R223_ATTEMPT5_PROVENANCE_PATCH.md"),
+              Path("methods/r223_estimator_v25_local_feed.py"),
+              Path("scripts/r223_verify_exact_transform.py"),
+              Path("scripts/r223_compare_panel.py"),
+              Path("research/r223/R223_ATTEMPT5_RUN_ARM.json")
+          ]:
+              if p.is_file():
+                  out[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
+          Path("r223_attempt5_evidence/sha256.json").write_text(
+              json.dumps(out,indent=2,sort_keys=True)+"\n"
+          )
+          PY
+
+      - name: Upload R223 attempt-5 immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r223-v25-local-feed-mini100-attempt5
+          path: |
+            r223_attempt5_evidence/
+            research/r223/R223_ATTEMPT5_RUN_ARM.json
+            research/r223/R223_PROTOCOL.md
+            research/r223/R223_ATTEMPT2_PROTOCOL.md
+            research/r223/R223_ATTEMPT3_INFRA_PATCH.md
+            research/r223/R223_ATTEMPT5_PROVENANCE_PATCH.md
+            methods/r223_estimator_v25_local_feed.py
+            scripts/r223_verify_exact_transform.py
+            scripts/r223_compare_panel.py
+          if-no-files-found: error
+          retention-days: 90
