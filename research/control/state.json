@@ -1950,6 +1950,16 @@
         "verified_receipt_sha256": "70fafae6934ea144ada3220bbfe7e2820b810627a755b0ad113202851c9cb378"
       },
       "revision": 150
+    },
+    {
+      "action": "repair",
+      "at": "2026-09-23T00:40:10.840685+00:00",
+      "job": "R232",
+      "owner": "global-accuracy-research",
+      "payload": {
+        "reason": "Attempt 1 is verified INFRA_ERROR before the scientific falsifier: Actions failed at editable install of the ledger repo, and the frozen scientific step was skipped. The linked attempt-1 receipt hash has been corrected to the exact file hash. Repair only the workflow bootstrap by installing pinned Phase-2 runtime dependencies instead of pip install -e .; leave protocol, DRRE hypothesis, source blobs, seeds, and gates unchanged. Record a new attempt under the same R232 job; this is not a second scientific run, because none occurred in attempt 1."
+      },
+      "revision": 151
     }
   ],
   "jobs": [
@@ -3025,12 +3035,12 @@
       "id": "R232",
       "owner": "global-accuracy-research",
       "priority": 1,
-      "reason": "GitHub Actions run 35802437447 failed before the falsifier: workflow attempted `python -m pip install -e .`, but arc-whitebox is a ledger repository with neither setup.py nor pyproject.toml. The scientific step was skipped; no estimator measurement occurred. Durable attempt-1 receipt records the exact root cause and artifact.",
+      "reason": "Attempt 1 is verified INFRA_ERROR before the scientific falsifier: Actions failed at editable install of the ledger repo, and the frozen scientific step was skipped. The linked attempt-1 receipt hash has been corrected to the exact file hash. Repair only the workflow bootstrap by installing pinned Phase-2 runtime dependencies instead of pip install -e .; leave protocol, DRRE hypothesis, source blobs, seeds, and gates unchanged. Record a new attempt under the same R232 job; this is not a second scientific run, because none occurred in attempt 1.",
       "receipt": {
         "sha256": "d5a478879ea577816be8cd6660ca5af8faf353d285c140672719a95f4d2ea166",
         "url": "https://github.com/tim8es/arc-whitebox/blob/c5d2c3a925f250773eb8341dbfdbc5b1c4ef0407/research/r232/R232_INFRA_ERROR_RECEIPT_ATTEMPT1.json"
       },
-      "status": "INFRA_ERROR",
+      "status": "CLAIMED",
       "title": "Find one novel global-accuracy estimator hypothesis"
     },
     {
@@ -3176,7 +3186,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 150,
+  "revision": 151,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
