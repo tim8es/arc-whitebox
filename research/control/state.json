@@ -4806,6 +4806,22 @@
         "run_id": "R277-pr35-static-independent-review-20260923"
       },
       "revision": 359
+    },
+    {
+      "revision": 360,
+      "action": "finish",
+      "job": "R279",
+      "owner": "phase2-public-panel-audit",
+      "payload": {
+        "run_id": "R279-phase2-public-panel-audit-20260923",
+        "status": "COMPLETE",
+        "reason": "Independent metadata/docs-only audit completed. No first-party documented path currently exposes the exact online Phase-2 visible-50 panel for local reproduction without submission or sealed/private/full-test access. AIcrowd public submission pages expose 50 public mlp_index/mlp_name rows and scores but no network_id, mlp_seed, weights, ground-truth tensors or target fingerprints; Hugging Face v2-phase2 publishes only separate mini=100 and full=1000 splits and no visible50 selector/manifest. The exact grader pair is public and locally identifiable (whestbench 0.16.0 + flopscope[server] 0.12.0), so versions are not the blocker. Minimum missing artifact is an official immutable visible-50 manifest mapping each online row to a public dataset row/revision or mlp_seed plus target_sha256; if those rows are not already public, an immutable visible50 dataset artifact with weights and baked ground truth is additionally required. No benchmark data download, estimator/benchmark run, Actions, submission, paid resource, sealed/private/full-test access, leaderboard/canonical/model edit.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/4dfa44fbd31d463120888f6b6d832d31c931d4a3/research/r279/R279_RECEIPT.json",
+          "sha256": "99e2365dcb2feea9ed7fb30abac9bdc7e720241b5ee856e428e826735b9d8a57"
+        }
+      },
+      "at": "2026-09-23T15:36:00+00:00"
     }
   ],
   "jobs": [
@@ -7671,7 +7687,16 @@
           "code_commit": "6596e75b2ccde129653c5e4b2d42b4564f93f33f",
           "command": "metadata/docs-only audit of official AIcrowd/whestbench/Hugging Face sources for exact Phase-2 visible-50 local reproducibility; no benchmark data download, estimator/benchmark run, Actions, submission, sealed/private/full access",
           "run_id": "R279-phase2-public-panel-audit-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R279-phase2-public-panel-audit-20260923",
+            "status": "COMPLETE",
+            "reason": "Independent metadata/docs-only audit completed. No first-party documented path currently exposes the exact online Phase-2 visible-50 panel for local reproduction without submission or sealed/private/full-test access. AIcrowd public submission pages expose 50 public mlp_index/mlp_name rows and scores but no network_id, mlp_seed, weights, ground-truth tensors or target fingerprints; Hugging Face v2-phase2 publishes only separate mini=100 and full=1000 splits and no visible50 selector/manifest. The exact grader pair is public and locally identifiable (whestbench 0.16.0 + flopscope[server] 0.12.0), so versions are not the blocker. Minimum missing artifact is an official immutable visible-50 manifest mapping each online row to a public dataset row/revision or mlp_seed plus target_sha256; if those rows are not already public, an immutable visible50 dataset artifact with weights and baked ground truth is additionally required. No benchmark data download, estimator/benchmark run, Actions, submission, paid resource, sealed/private/full-test access, leaderboard/canonical/model edit.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/4dfa44fbd31d463120888f6b6d832d31c931d4a3/research/r279/R279_RECEIPT.json",
+              "sha256": "99e2365dcb2feea9ed7fb30abac9bdc7e720241b5ee856e428e826735b9d8a57"
+            }
+          }
         }
       ],
       "deliverable": "Using only official AIcrowd/whestbench/Hugging Face first-party docs and public metadata, independently investigate whether the exact online Phase-2 visible-50 MLP panel, stable identities/target fingerprints, and official grader/meter versions can be reproduced locally without a competition submission or sealed/private/full data. Start from R271's NOT_COMPARABLE finding (0/50 label overlap; missing network IDs/fingerprints; evaluator-version mismatch), identify exact endpoints/artifacts/permissions and any remaining gap. Do not download/run benchmark data or submit. Produce one concise cited report with a concrete yes/no pathway, hashes/commit, and finish R279.",
@@ -7682,8 +7707,13 @@
       "id": "R279",
       "owner": "phase2-public-panel-audit",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Find a compliant local path to the official visible-50 panel"
+      "status": "COMPLETE",
+      "title": "Find a compliant local path to the official visible-50 panel",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/4dfa44fbd31d463120888f6b6d832d31c931d4a3/research/r279/R279_RECEIPT.json",
+        "sha256": "99e2365dcb2feea9ed7fb30abac9bdc7e720241b5ee856e428e826735b9d8a57"
+      },
+      "reason": "Independent metadata/docs-only audit completed. No first-party documented path currently exposes the exact online Phase-2 visible-50 panel for local reproduction without submission or sealed/private/full-test access. AIcrowd public submission pages expose 50 public mlp_index/mlp_name rows and scores but no network_id, mlp_seed, weights, ground-truth tensors or target fingerprints; Hugging Face v2-phase2 publishes only separate mini=100 and full=1000 splits and no visible50 selector/manifest. The exact grader pair is public and locally identifiable (whestbench 0.16.0 + flopscope[server] 0.12.0), so versions are not the blocker. Minimum missing artifact is an official immutable visible-50 manifest mapping each online row to a public dataset row/revision or mlp_seed plus target_sha256; if those rows are not already public, an immutable visible50 dataset artifact with weights and baked ground truth is additionally required. No benchmark data download, estimator/benchmark run, Actions, submission, paid resource, sealed/private/full-test access, leaderboard/canonical/model edit."
     },
     {
       "assigned_owner": "public-methods-leaderboard-scan",
@@ -7709,7 +7739,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 359,
+  "revision": 360,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
