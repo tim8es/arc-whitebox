@@ -1,0 +1,145 @@
+{
+  "schema": "r251-protocol-v1",
+  "job_id": "R251",
+  "attempt_id": "R251-global-accuracy-method-20260923",
+  "status": "FROZEN_PRE_MEASUREMENT",
+  "owner": "global-accuracy-method-research",
+  "motivation": {
+    "r231": "R231 found 61.87% of V25 error energy in layers 12-15 and positive error correlation in all 100 rows; R251 therefore targets a global deep-layer closure bias rather than per-network tuning.",
+    "no_leader_invention": "R230 found competitor methods undisclosed; no leader method is assumed."
+  },
+  "history_dedup": {
+    "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "excluded": [
+      "DRRE / R232 descendants",
+      "RSRF / R238 descendants",
+      "R247 V25-NM24-YOUNG-D21-RIGHT-SPARSIFY and all 2:4 D21 sparsity rescue",
+      "R248 rank-1 Kronecker transport",
+      "R250 LEG2-R1",
+      "R244 MP-R16",
+      "R223 V25-LF",
+      "all families marked closed/rejected in research/history.json"
+    ],
+    "selected_family": "heteroscedastic row-local K4 off-diagonal closure",
+    "novelty_claim": "No history entry or required evidence describes replacing V25's scalar regenerated-K4 off-diagonal coefficient with a per-row standardized diagonal-K4 ratio while simultaneously deleting the V25 scalar adaptation."
+  },
+  "candidate": {
+    "id": "V25-HK4-ROWLOCAL",
+    "network_agnostic": true,
+    "per_network_tuning": false,
+    "source_parent": {
+      "repository": "504aldo/whest-p2-cumulant-k3",
+      "ref": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "path": "estimators/estimator_v25.py",
+      "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "sha256": "c0ae6f12f74cb8dc493f1b972a638a37ac745b5a0454161a8e1879fb0a7fd1ce"
+    },
+    "math": [
+      "Keep the frozen V25/V22 table value lambda_l entering transported diagonal K4: t_g=(W*W)@g_prev; t_v=var-(W*W)@var_prev; dG=t_g+t_v*lambda_l.",
+      "Delete V25's scalar rr=mean(dG0)/mean(var), rr/ref clip, fnp.power adaptation, and second dG recomputation.",
+      "Define q_i = dG_i / max(var_i, 1e-10) using fnp.maximum and fnp.divide.",
+      "Replace wk431_ij = C_off_ij * lambda_l by wk431_ij = C_off_ij * q_i. No column symmetrization is added because wk431 is the ordered (3,1) slice.",
+      "All other V25 equations, ranks, transports, term program, final trim, and outputs remain unchanged."
+    ],
+    "rationale": "The scalar lambda assumes homogeneous fourth-cumulant/covariance coupling across neurons. A row-local standardized diagonal-K4 ratio uses already transported K4 and variance to represent heteroscedastic coupling without adding a new low-rank transport or target-derived coefficient."
+  },
+  "metering_gate": {
+    "required_evidence": [
+      "R245 compliance audit",
+      "R249 scalar-metering audit"
+    ],
+    "rules": [
+      "No output-affecting math.* in predict.",
+      "All new output-affecting numerical operations are fnp primitives: maximum, divide, reshape, multiply, matmul/add/subtract inherited from parent.",
+      "No new nontrivial Python-scalar arithmetic is allowed in the candidate path; constants 1e-10 and table coefficients are literals passed as operands to fnp array operations.",
+      "Any unresolved scalar arithmetic introduced by implementation is terminal UNKNOWN/NO-GO before execution."
+    ]
+  },
+  "fixtures": {
+    "generator": "scripts/r251_fixture_replay.py",
+    "width": 1024,
+    "depth": 16,
+    "seeds": [
+      251001,
+      251002
+    ],
+    "construction": "one Gaussian latent coordinate; zero bias; first weight has only input row 0 nonzero; later weights dense deterministic hash-uniform; exact post-ReLU mean is the two-ray analytic expectation.",
+    "manifest_path": "research/r251/R251_FIXTURE_MANIFEST.json",
+    "exact_truth": "For each layer, propagate positive- and negative-ray slopes a_plus,a_minus exactly in float64 and set truth=(a_plus+a_minus)*0.3989422804014327."
+  },
+  "parent_first_gate": {
+    "mandatory": true,
+    "source": "unchanged pinned V25 source above",
+    "same_fixtures_as_candidate": true,
+    "required_checkpoints": [
+      "fixture weight and truth hashes exact",
+      "prediction finite at every layer",
+      "per-layer prediction max_abs recorded",
+      "every as_symmetric observation finite and symmetry deviation recorded",
+      "D21 debug tensor finite and max_abs recorded where available",
+      "deterministic exact replay of parent prediction bytes"
+    ],
+    "go": [
+      "no exception",
+      "all required checkpoints evaluable and finite",
+      "every observed symmetry deviation <= max(1e-6,1e-5*reference_scale)",
+      "parent prediction tensor shape exactly [16,1024] on both fixtures",
+      "parent final-layer exact-truth MSE finite and < 1e-2 on both fixtures",
+      "parent replay byte-identical on both fixtures"
+    ],
+    "fail_action": "Finish R251 INCONCLUSIVE with forensic trace. Do not implement or execute candidate; do not resize/rescale/change seeds; no retry."
+  },
+  "candidate_falsifier_gate": {
+    "only_after_parent_go": true,
+    "single_candidate_only": true,
+    "go": [
+      "candidate source-metering gate PASS",
+      "candidate prediction finite with shape [16,1024] on both frozen fixtures",
+      "candidate replay byte-identical on both fixtures",
+      "candidate final-layer MSE < parent final-layer MSE on each fixture",
+      "mean candidate final-layer MSE <= 0.80 * mean parent final-layer MSE",
+      "mean candidate layers-12-15 MSE <= 0.75 * mean parent layers-12-15 MSE",
+      "no candidate per-layer MSE exceeds 1.05 * parent per-layer MSE on either fixture",
+      "static all-in FLOP bound <= R209 parent mean FLOPs",
+      "target-free wall-clock residual bound < 0.4 s where the pinned runtime exposes residual timing"
+    ],
+    "fail_action": "Terminal DEVELOPMENT NO-GO; no estimator benchmark, no Actions, no second method."
+  },
+  "cost_bound": {
+    "r209_mean_flops": 806303721965,
+    "argument": "Candidate removes two fnp.mean reductions, scalar ratio/clip/power adaptation, and the second t_v*lambda plus add used to recompute dG. It adds one fnp.maximum(var,1e-10) and one fnp.divide(dG,var_safe); the wk431 elementwise multiply remains one n-by-n multiply with broadcast row operand instead of scalar operand. Therefore the frozen static operation-count bound is <= parent, subject to verification in the exact pinned FlopScope runtime before any public panel.",
+    "gate": "No public run unless exact source-level accounting under pinned FlopScope confirms candidate <= 806303721965 mean FLOPs and no unresolved unmetered arithmetic."
+  },
+  "public_panel": {
+    "only_after_all_preflight_pass": true,
+    "max_actions_runs": 1,
+    "retry": false,
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini:all-100",
+    "count": 100,
+    "shape": [
+      16,
+      1024
+    ],
+    "dtype": "float32",
+    "whestbench": "0.16.1",
+    "flopscope": "0.12.1+np2.4.6",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "development_gates": {
+      "failures": 0,
+      "row_hash_identity": "exact",
+      "mean_adjusted_score_max": 7.761877568111363e-9,
+      "improved_rows_min": 55,
+      "paired_parent_minus_candidate_gain": "> 2 descriptive SE",
+      "mean_flops_max": 806303721965,
+      "max_residual_s": "< 0.4"
+    },
+    "rank_inference": false
+  },
+  "stop_rules": [
+    "Parent gate failure or unevaluable checkpoint => INCONCLUSIVE, no candidate.",
+    "Source/metering/cost/falsifier failure => durable NO-GO, no estimator/benchmark/Actions.",
+    "No retry, seed change, fixture rescale/resize, second method, gate relaxation, paid/private/holdout/submission/leaderboard/canonical edits."
+  ]
+}
