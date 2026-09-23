@@ -1,0 +1,105 @@
+{
+  "schema": "arc.whitebox.r246.baseline_score_diagnostic_receipt.v1",
+  "job_id": "R246",
+  "owner": "baseline-score-diagnostic",
+  "run_id": "R246-r209-score-contribution-diagnostic-20260923",
+  "status": "COMPLETE",
+  "verdict": "DIAGNOSTIC_COMPLETE",
+  "source": {
+    "normalized_record": {
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    },
+    "receipt": {
+      "path": "research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json",
+      "commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+      "git_blob": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+      "sha256": "5c87e8868ce3221b01979f7360079960e8991629926a7623037662f3c4511740"
+    },
+    "actions_run_id": 35544406064,
+    "artifact_id": 10617855153,
+    "artifact_zip_sha256": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08",
+    "report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3"
+  },
+  "score_verification": {
+    "formula": "final_mse * max(0.1, measured_flops / budget_flops)",
+    "rows_checked": 100,
+    "failures": 0,
+    "score_mismatches": 0,
+    "max_absolute_score_delta": 0,
+    "budget_flops": 2199023255552,
+    "measured_flops_all_rows": 806303721965,
+    "cost_multiplier_all_rows": 0.36666448157347986,
+    "cost_floor_bind_count": 0,
+    "mean_raw_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "total_raw_mse": 0.000002228303490170447,
+    "total_adjusted_score": 8.170397440117224e-7
+  },
+  "concentration": {
+    "top1_share": 0.013592696639751477,
+    "top5_share": 0.06471417664447711,
+    "top10_share": 0.1247245090733508,
+    "top20_share": 0.23847414826413804,
+    "top1": {
+      "index": 47,
+      "name": "douglas-kelly",
+      "network_id": "1876000384391229791",
+      "target_sha256": "e7e276e55667cc175301cc5a865679be7f8b6cec5cc460935d417c6f3d86f4db",
+      "final_mse": 3.028865336318631e-8,
+      "adjusted_score": 1.1105773382971547e-8
+    },
+    "interpretation": "Moderate concentration only: top 20 contribute 23.8474% versus a 20% uniform reference. No per-network tuning is recommended."
+  },
+  "mse_vs_cost": {
+    "measured_flops_constant_across_rows": true,
+    "cost_multiplier_constant_across_rows": true,
+    "multiplier_cv": 0,
+    "mse_cv": 0.1418248455750718,
+    "adjusted_score_cv": 0.14182484557507194,
+    "cross_network_concentration_source": "raw MSE variation only; cost multiplier has zero cross-network variation",
+    "absolute_level": "mean adjusted score equals mean raw MSE times common multiplier 0.36666448157347986",
+    "floor_ratio": 3.6666448157347986,
+    "hypothetical_floor_score_ratio_vs_current": 0.27272889801288247,
+    "hypothetical_floor_reduction_fraction": 0.7272711019871175,
+    "note": "Floor counterfactual assumes unchanged MSE and is not evidence of achievable compute reduction."
+  },
+  "artifacts": {
+    "rows": {
+      "path": "research/r246/R246_ROW_DIAGNOSTIC.json",
+      "commit": "84019700d6b0b65eb0a62c9a79c008615056f4d0",
+      "git_blob": "bc2d42b065369a14bf01aa5f8937627626fb7dbd",
+      "sha256": "5100b2312392c744e087404f64343fb097866fc9f90d65e662df5b3718dde244"
+    },
+    "report": {
+      "path": "research/r246/R246_REPORT.md",
+      "commit": "9412af0f43b13f630f4aabc4a2e4d332bc926447",
+      "git_blob": "00720da19fb571d320930304defcedd978bb82c4",
+      "sha256": "1051ffadc404337d318e9866a2df76f407dd52b26481ece7bd1b848a53953e10"
+    }
+  },
+  "next_hypothesis": {
+    "id": "H-R246",
+    "statement": "A single network-agnostic V25 simplification, frozen before an independent preregistered development panel, can reduce measured FLOPs by at least 10% while keeping mean raw-MSE degradation below 11.111111111111116%; if both bounds hold while above the 0.1 floor, official adjusted score decreases.",
+    "falsification": "Reject this configuration if measured FLOPs do not fall by at least 10% or mean raw MSE rises by 11.111111111111116% or more on the preregistered independent panel.",
+    "anti_tuning": "No per-network selection or parameter tuning from R209 mini-100 contributor ranks."
+  },
+  "limitations": [
+    "Exposed development panel only; no holdout/generalization claim.",
+    "Raw prediction tensors were not archived, so MSE itself cannot be regenerated from predictions; only stored per-network MSE and official scoring can be independently recomputed."
+  ],
+  "scope": {
+    "read_R223_candidate": false,
+    "read_R244_candidate": false,
+    "shared_results_edited": false,
+    "status_edited": false,
+    "estimator_or_canonical_edited": false,
+    "benchmark_or_estimator_run": false,
+    "actions_triggered": false,
+    "private_or_holdout": false,
+    "paid_compute": false,
+    "submission": false,
+    "leaderboard_mutation": false
+  }
+}
