@@ -1,0 +1,88 @@
+{
+  "candidate_constructed": false,
+  "candidate_id": "V25-D21-CWG",
+  "conclusion": "The sole authorized standard public-repository Actions workflow stopped before any scientific step because of a version-reporting assertion bug after exact package wheel hashes had passed. No repair/retry is allowed; R252 is terminal INFRA_ERROR and makes no scientific claim about V25-D21-CWG.",
+  "frozen_fixture": {
+    "depth": 16,
+    "executed_in_workflow": false,
+    "id": "R252-BLOCK2-252001",
+    "seed": 252001,
+    "truth_sha256": "0803ca4d381ad13ab0842fcd4775a3e4b1ad2f1409f517d196ac89073c479946",
+    "weights_concat_sha256": "1ed998cad7f2ba4c8259f70a241913359ac49b7b0252d91a0c578539893ddfb0",
+    "width": 1024
+  },
+  "job_id": "R252",
+  "owner": "actions-accuracy-method-research",
+  "pre_science": {
+    "failure": "runtime version assertion compared distribution pins to module __version__ strings; FlopScope reported its expected +np2.4.6 local suffix and WhestBench exposed no __version__ at the queried attribute, so the step exited 1 after successful hash-verified installation and before fixture reconstruction.",
+    "flopscope_actual_reported": "0.12.1+np2.4.6",
+    "flopscope_requested": "0.12.1",
+    "numpy_actual": "2.4.6",
+    "numpy_requested": "2.4.6",
+    "python_actual": "3.11.16",
+    "python_requested": "3.11.16",
+    "wheel_hashes_verified": true,
+    "wheel_sha256": {
+      "flopscope": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582",
+      "numpy": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93",
+      "whestbench": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"
+    },
+    "whestbench_actual_module_field": "unknown",
+    "whestbench_requested": "0.16.1"
+  },
+  "protocol": {
+    "candidate_spec_commit": "47cc7720c0e9a2d2826230eb0af5f83abc410844",
+    "fixture_commit": "572b73f370ff44690a6fb53d80de089d47166e99",
+    "harness_commit": "f7168c383d04e9930406383da26ea666fbb843dc",
+    "protocol_commit": "c51b538d011b7d548769db88b22a8a4950624b8d",
+    "public_gate_commit": "85a1735aaa0fdb410d71f7c7c2d27e4b4495e368",
+    "workflow_trigger_commit": "c00cf0b98016c6fa81c203a6613ce811f585f0c2"
+  },
+  "report": {
+    "blob": "d1af57b89bff3647e41bd96f3974caf1d40bf24c",
+    "commit": "758d669654fa5816f8a18c15e049029e9bd2faed",
+    "path": "research/r252/R252_REPORT.md",
+    "sha256": "983f70272a710e6bd8b11f5401d80dcdafd59991cf89ffee71982fe5da543a1a"
+  },
+  "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+  "safety": {
+    "canonical_v25_edit": false,
+    "gate_relaxation": false,
+    "larger_or_self_hosted_runner": false,
+    "leaderboard_mutation": false,
+    "paid_compute": false,
+    "private_holdout": false,
+    "r223_r244_candidate_outputs_artifacts_read": false,
+    "r251_resumed": false,
+    "retry": false,
+    "second_method": false,
+    "second_workflow": false,
+    "submission": false
+  },
+  "schema": "arc.whitebox.r252.terminal_receipt.v1",
+  "scientific_measurements": {
+    "candidate": 0,
+    "parent": 0,
+    "public_mini100": 0
+  },
+  "status": "INFRA_ERROR",
+  "verdict": "TERMINAL_INFRA_ERROR_PRE_SCIENCE_NO_RETRY",
+  "workflow": {
+    "artifact_id": 10736967637,
+    "artifact_name": "r252-one-shot-evidence",
+    "artifact_size_bytes": 2072,
+    "artifact_zip_sha256": "4ecd1ed42f28a4b02caccd70dce9570a0738d7cb2b4f3976207fdd31f98bb989",
+    "attempt": 1,
+    "conclusion": "failure",
+    "head_sha": "c00cf0b98016c6fa81c203a6613ce811f585f0c2",
+    "job_id": 107081017265,
+    "run_id": 35830273198,
+    "runner": "ubuntu-24.04 standard GitHub-hosted"
+  },
+  "workflow_artifact_internal": {
+    "artifact_hash_manifest_sha256": "75741dea2b77099459b11983c506661e5a39687e8c5c724b2f9d4cd5edb415d9",
+    "pinned_wheels_manifest_sha256": "c46ce7622f09008b4ab5de09437ce1d608076a1667184ec7e317f9fda6b73f5c",
+    "runtime_versions_sha256": "b3b81e2c024683276fe6ff697cb8f98890bcbb559a30001201bbb2591d66c8a5",
+    "workflow_receipt_sha256": "37e6ddd91136c280c60375490885cba35f824372c3add845c5c85e4ac9a4e63a"
+  }
+}
