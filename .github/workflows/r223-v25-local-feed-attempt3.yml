@@ -30,7 +30,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify attempt-2 arm, frozen blobs, and free standard compute
+      - name: Verify attempt-3 arm, frozen blobs, and free standard compute
         shell: bash
         run: |
           set -euo pipefail
@@ -55,7 +55,8 @@ jobs:
 
           frozen={
             "research/r223/R223_PROTOCOL.md":"1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
-            "research/r223/R223_ATTEMPT2_PROTOCOL.md":"cc8fada8088942de9e284e09f1266d89278cb0b6",\n            "research/r223/R223_ATTEMPT3_INFRA_PATCH.md":"d76406ae9292782c2592b3ef9377341d127fb348",
+            "research/r223/R223_ATTEMPT2_PROTOCOL.md":"cc8fada8088942de9e284e09f1266d89278cb0b6",
+            "research/r223/R223_ATTEMPT3_INFRA_PATCH.md":"d76406ae9292782c2592b3ef9377341d127fb348",
             "methods/r223_estimator_v25_local_feed.py":"a53f07513109abe24a58d91144cd202c19b77790",
             "scripts/r223_verify_exact_transform.py":"95b2654eabf22fa0d975687d633ce33ae1ccfd8e",
             "scripts/r223_compare_panel.py":"fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0"
@@ -194,6 +195,7 @@ jobs:
           for p in [
               Path("research/r223/R223_PROTOCOL.md"),
               Path("research/r223/R223_ATTEMPT2_PROTOCOL.md"),
+              Path("research/r223/R223_ATTEMPT3_INFRA_PATCH.md"),
               Path("methods/r223_estimator_v25_local_feed.py"),
               Path("scripts/r223_verify_exact_transform.py"),
               Path("scripts/r223_compare_panel.py"),
@@ -206,7 +208,7 @@ jobs:
           )
           PY
 
-      - name: Upload R223 attempt-2 immutable evidence
+      - name: Upload R223 attempt-3 immutable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -216,6 +218,7 @@ jobs:
             research/r223/R223_ATTEMPT3_RUN_ARM.json
             research/r223/R223_PROTOCOL.md
             research/r223/R223_ATTEMPT2_PROTOCOL.md
+            research/r223/R223_ATTEMPT3_INFRA_PATCH.md
             methods/r223_estimator_v25_local_feed.py
             scripts/r223_verify_exact_transform.py
             scripts/r223_compare_panel.py
