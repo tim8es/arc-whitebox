@@ -3531,6 +3531,20 @@
       "owner": "bpk2k-one-shot-run-responsive",
       "payload": {},
       "revision": 265
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T08:59:00+00:00",
+      "job": "R258",
+      "owner": "bpk2k-one-shot-run-responsive",
+      "payload": {
+        "code_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
+        "protocol_commit": "f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33",
+        "workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
+        "command": "create exactly one commit on research/r258-bpk2k-full-history-one-shot-20260923 adding only research/r258/R258_RUN_ARM.json atop workflow commit 47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2; that push triggers .github/workflows/r258-one-shot.yml once. Protocol commit f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33; run_id R258-BPK2K-ONE-SHOT-20260923-A1. No rerun/second workflow.",
+        "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1"
+      },
+      "revision": 266
     }
   ],
   "jobs": [
@@ -5651,7 +5665,16 @@
     },
     {
       "assigned_owner": "bpk2k-one-shot-run-responsive",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
+          "protocol_commit": "f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33",
+          "workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
+          "command": "create exactly one commit on research/r258-bpk2k-full-history-one-shot-20260923 adding only research/r258/R258_RUN_ARM.json atop workflow commit 47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2; that push triggers .github/workflows/r258-one-shot.yml once. Protocol commit f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33; run_id R258-BPK2K-ONE-SHOT-20260923-A1. No rerun/second workflow.",
+          "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "One distinct successor evaluation after terminal R257 INFRA_ERROR. Base from immutable R257 terminal commit c4b46ecacba1876613a6e11b678399d0b1fd83ba and preserve the exact R256 typed harness, BPK2K source/math, parent, fixture/seed/hashes, thresholds, R209 data and public identity. The only execution-infrastructure fix is actions/checkout with fetch-depth: 0 so the protocol commit b63936a38bc0e3a6394b00f2ef1d484311aff9e4 exists for the frozen ancestry guard; verify branch ancestry and all source/fixture hashes before runtime/science. Create a fresh R258 protocol, run ID R258-BPK2K-ONE-SHOT-20260923-A1, one path-filtered workflow and one arm push. Publish claim/start on latest control head with exact workflow/code SHA before trigger. Use standard free ubuntu-24.04 and pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 hashes. One workflow only: unchanged V25 parent first on exact seed-254001 fixture; only after parent PASS execute unchanged BPK2K candidate. Keep every R254 target-free gate unchanged (final MSE <=0.95, all-layer <=0.98, >=12 improved layers, max per-layer degradation <=1.10, FLOPs<=parent, candidate residual<=1.05*parent+0.005, source/symmetry/finite/shape). Missing timing fails closed. If parent/infra gate fails, terminal INFRA_ERROR/INCONCLUSIVE and stop. Candidate target-free failure => SCIENTIFIC_REJECT and no public access. Only after all source/target-free/cost gates pass may the same workflow validate exact R209 100-row metadata/order/network/target hashes and run public mini-100; require failures=0, adjusted<=7.761877568111363e-9, >=55 improved, paired gain>2 descriptive SE, mean FLOPs<=806303721965, max residual<0.4s. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edits or R254/R257 history rewrite. Preserve receipt+artifact hashes and raw per-network rows if reached, distinguish GitHub workflow conclusion from research/scientific status, finish queue and regenerate STATUS.",
       "depends_on": [
         "R255",
@@ -5661,12 +5684,12 @@
       "id": "R258",
       "owner": "bpk2k-one-shot-run-responsive",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Run frozen BPK2K once after full-history checkout repair"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 265,
+  "revision": 266,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
