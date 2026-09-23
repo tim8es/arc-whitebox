@@ -2888,6 +2888,26 @@
         "started_attempts": 0
       },
       "at": "2026-09-23 05:36:12+00:00"
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T05:41:02.084Z",
+      "job": "R248",
+      "owner": "method-research-recovery",
+      "payload": {},
+      "revision": 222
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T05:41:03.084Z",
+      "job": "R248",
+      "owner": "method-research-recovery",
+      "payload": {
+        "run_id": "R248-post-r247-distinct-method-research-20260923",
+        "code_commit": "c32aeea0c0ae4e739b1b6f723fc7548ca63cdb24",
+        "command": "protocol/history research only: read AGENTS/RESEARCH_PROCESS/history plus R209/R246/R247/R245 allowed evidence; select and freeze exactly one distinct network-agnostic V25 FLOPs-reduction method, exact R209 public mini-100 panel, target-free falsifier, metered-source compliance and scientific/cost/failure gates before any estimator/benchmark/Actions execution"
+      },
+      "revision": 223
     }
   ],
   "jobs": [
@@ -4638,13 +4658,20 @@
       "priority": 1,
       "title": "Find and test a distinct metered V25 FLOPs-reduction method after R247 rejection",
       "id": "R248",
-      "owner": null,
-      "status": "QUEUED",
-      "attempts": []
+      "owner": "method-research-recovery",
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R248-post-r247-distinct-method-research-20260923",
+          "code_commit": "c32aeea0c0ae4e739b1b6f723fc7548ca63cdb24",
+          "command": "protocol/history research only: read AGENTS/RESEARCH_PROCESS/history plus R209/R246/R247/R245 allowed evidence; select and freeze exactly one distinct network-agnostic V25 FLOPs-reduction method, exact R209 public mini-100 panel, target-free falsifier, metered-source compliance and scientific/cost/failure gates before any estimator/benchmark/Actions execution",
+          "status": "RUNNING"
+        }
+      ]
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 221,
+  "revision": 223,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
