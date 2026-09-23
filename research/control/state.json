@@ -2995,6 +2995,14 @@
         "started_attempts": 0
       },
       "at": "2026-09-23T06:00:30+00:00"
+    },
+    {
+      "revision": 230,
+      "action": "claim",
+      "job": "R249",
+      "owner": "phase2-scalar-compliance-independent-audit",
+      "payload": {},
+      "at": "2026-09-23T06:00:31+00:00"
     }
   ],
   "jobs": [
@@ -4781,8 +4789,8 @@
       "priority": 2,
       "title": "Resolve official Phase-2 metering eligibility of Python scalar arithmetic",
       "id": "R249",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "phase2-scalar-compliance-independent-audit",
+      "status": "CLAIMED",
       "attempts": []
     },
     {
@@ -4810,7 +4818,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 229,
+  "revision": 230,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
