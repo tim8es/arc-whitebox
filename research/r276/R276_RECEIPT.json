@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "R276",
+  "run_id": "R276-v25-global-accuracy-screen-20260923",
+  "owner": "v25-accuracy-research",
+  "status": "SCIENTIFIC_REJECT",
+  "verdict": "EVIDENCE_BASED_NO_GO_BEFORE_IMPLEMENTATION",
+  "branch": "research/r276-v25-accuracy-screen-20260923",
+  "protocol": {
+    "commit": "4749fd4a28ecd4e717b93e76c0efc2794370229b",
+    "path": "research/r276/R276_PROTOCOL.md",
+    "git_blob_sha1": "4a7e1fa9f04a18f0daba97b8a124cfd2226df47c",
+    "sha256": "8b1e6b9fe0f4f5e335149af549433ebe760aabc0111ab463ed613203badee844"
+  },
+  "report": {
+    "commit": "df6f8c24c4b1feb3158951a717327b1cd35b1e03",
+    "path": "research/r276/R276_REPORT.md",
+    "git_blob_sha1": "4970614c1ac789b008260d726a2bbd5272116434",
+    "sha256": "b4fa309827b2b3d36f15e3615423d78220bfda5786a99fc6431a3450ebd14057"
+  },
+  "pinned_inputs": {
+    "history_git_blob_sha1": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "history_entries": 194,
+    "history_artifact_records": 631,
+    "v25_source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "v25_source_git_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "r209_v25_git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "r265_report_git_blob_sha1": "e9b5df06173bf70a587774f9374042962847d9e2",
+    "r269_report_git_blob_sha1": "8ea0fdf39e80483d005b0a9828f75a4eae291ee3",
+    "r273_receipt_sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e"
+  },
+  "dedupe_conclusion": {
+    "r265_last_distinct_lead": "randomized multilevel debiasing / randomized telescoping",
+    "r269_disposition": "EVIDENCE_BASED_NO_GO_BEFORE_EXECUTION",
+    "r273_new_information": "V25 error is broad-based, so useful research needs one global mechanism affecting the central bulk; this is a constraint, not a new estimator family.",
+    "surviving_concrete_distinct_candidate": null,
+    "reason": "After full-history and post-history R2xx deduplication, every obvious candidate is an already represented calibration/cumulant/low-rank/source-age/sampling/arithmetic family or the R269-closed multilevel lead. Running a renamed variant merely to inspect mini-100 outcomes would be method fishing."
+  },
+  "execution_accounting": {
+    "estimator_implementations": 0,
+    "estimator_executions": 0,
+    "candidate_mini100_evaluations": 0,
+    "normalized_candidate_result_created": false,
+    "actions_runs": 0,
+    "new_competition_data_accesses": 0,
+    "paid_compute": false,
+    "private_holdout_full_accesses": 0,
+    "tuning": false,
+    "per_network_selection": false,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false
+  },
+  "next_distinguishable_test": {
+    "type": "mechanism-signal diagnostic before another estimator",
+    "proposal": "Preregister a global residual-structure diagnostic that retains V25 prediction/target residual vectors and asks whether one fixed network-agnostic output-space direction explains material error across the central bulk; deduplicate it against earlier response-aligned/output-subspace work before execution.",
+    "blocker_now": "R209 normalized/archive evidence does not contain raw prediction tensors, so that diagnostic cannot be reconstructed from current immutable rows."
+  }
+}
