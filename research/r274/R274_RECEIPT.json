@@ -1,0 +1,63 @@
+{
+  "schema": "arc.whitebox.r274.workflow-preflight-hardening-receipt.v1",
+  "job": "R274",
+  "run_id": "R274-offline-preflight-hardening-20260923",
+  "status": "COMPLETE",
+  "base_r272_tip": "e4bdd87661ca0459675e1b4b9e8d22358be378d4",
+  "implementation_commit": "5faaf5116a38f4db202770eea70d1fb9355434a6",
+  "actual_fixture_source": {
+    "branch": "research/r254-balanced-rider-reduction-20260923",
+    "branch_head": "9a97e04bf0563e593c7fa9d6437410227d30dc1c",
+    "path": "research/r254/r254_fixture.py",
+    "git_blob_sha1": "141466b6c4aae6cc61fe086860dc0766a08d6968"
+  },
+  "closed_false_pass_boundaries": {
+    "serialized_object_schema_scope": true,
+    "same_job_full_history_checkout": true,
+    "unnamed_steps_and_empty_key_extraction_fail_closed": true
+  },
+  "files": {
+    "scripts/arc_workflow_preflight.py": {
+      "git_blob_sha1": "a654fa1e15bfa8f9c2bfaa39073ecdf044a74a12",
+      "sha256": "8d002d9f98ce717d2f84757bb2efea9f5b2c4660fb097b230bcc199d6c310cdf"
+    },
+    "tests/test_r272_workflow_preflight.py": {
+      "git_blob_sha1": "c81b621b2535598ea198d1791fe2310f1d57cfa6",
+      "sha256": "52f5ae2813e1cf62eb50395ab5d8106ff20dbfc4cd16ef29b4eafda6a4e222f1"
+    },
+    "tests/test_r274_workflow_preflight.py": {
+      "git_blob_sha1": "73e864930eef77dfb377b6f38366675a7ecb0e45",
+      "sha256": "d842f085332e6d79ddbaa4d5827fc4106c13e70258791c62645bdb78acbd34a9"
+    }
+  },
+  "offline_tests": {
+    "focused": {
+      "command": "python -m unittest discover -s tests -p 'test_r274_workflow_preflight.py' -v",
+      "tests": 6,
+      "passed": 6,
+      "output_sha256": "477f7108a2d417cb62dcf3f43452d2484d7b5704b11ef859fa05bccf00c591b4"
+    },
+    "r272_compatibility": {
+      "command": "python -m unittest discover -s tests -p 'test_r272_workflow_preflight.py' -v",
+      "tests": 4,
+      "passed": 4,
+      "output_sha256": "02540d5712f2f59beee921c0efa31abfc245bfb494114ae123154ccceb3822e6"
+    }
+  },
+  "safety": {
+    "actions_triggered": false,
+    "science_or_estimator_run": false,
+    "fixture_generator_executed": false,
+    "competition_data_accessed": false,
+    "budget_spent": false,
+    "workflow_files_changed": false,
+    "history_changed": false,
+    "r272_durable_artifacts_changed": false,
+    "historical_receipts_or_results_changed": false,
+    "submission_leaderboard_canonical_changed": false
+  },
+  "report": {
+    "path": "research/r274/R274_WORKFLOW_PREFLIGHT_HARDENING_REPORT.md",
+    "sha256": "982844c68bf481cf19c8eaf32a0c7ca36a1bc788218a617604b971ccb0a45096"
+  }
+}
