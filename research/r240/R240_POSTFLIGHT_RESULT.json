@@ -1,0 +1,122 @@
+{
+  "schema": "arc.whitebox.r240.r223_attempt6_postflight_result.v1",
+  "job": "R240",
+  "run_id": "R240-r223-attempt6-independent-postflight-20260923",
+  "verdict": "R240_INDEPENDENT_DEVELOPMENT_NO_GO",
+  "r223": {
+    "attempt": 6,
+    "queue_run_id": "R223-v25-local-feed-attempt6-20260923",
+    "actions_run_id": 35810427656,
+    "actions_job_id": 107020553482,
+    "actions_attempt": 1,
+    "actions_head_sha": "09efbb920313850a4727bd34db9088a46227ce5f",
+    "actions_conclusion": "success",
+    "artifact_id": 10730459690,
+    "artifact_name": "r223-v25-local-feed-mini100-attempt6",
+    "artifact_zip_sha256": "f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00"
+  },
+  "frozen_inputs": {
+    "protocol_blob": "1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+    "workflow_blob": "d24e3f63e8ce447188868846e9b3e4ef755b395e",
+    "candidate_blob": "eb95d4ae46a031be5131eef8dd0909f2061b8749",
+    "exact_transform_verifier_blob": "961e5afb052e2cfdc15e1284de49e57ba1514a73",
+    "owner_comparator_blob": "fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0",
+    "normalized_parent_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "normalized_parent_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "parent_report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "names_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce"
+  },
+  "artifact_binding": {
+    "github_digest_matches_independent_zip_sha256": true,
+    "manifest_entries": 23,
+    "actual_files_excluding_manifest": 23,
+    "manifest_missing": [],
+    "manifest_extra": [],
+    "manifest_hash_mismatches": [],
+    "mandatory_evidence_missing": [],
+    "manifest_ok": true,
+    "frozen_uploaded_blobs_ok": true,
+    "attempt6_arm_exact": true,
+    "source_transform_guard_ok": true,
+    "static_feed_identity_ok": true,
+    "free_compute_gate_ok": true,
+    "runtime_versions_ok": true,
+    "validate_exit_zero": true,
+    "panel_run_exit_zero": true
+  },
+  "parent_binding": {
+    "rows": 100,
+    "parent_report_sha256_exact": true,
+    "normalized_registry_binary_projection_sha256": "9f07b271d5d1a4f3180ba0a8a8b01b720198c08e3ee3906feb8416d01f38ec24",
+    "artifact_parent_binary_projection_sha256": "9f07b271d5d1a4f3180ba0a8a8b01b720198c08e3ee3906feb8416d01f38ec24",
+    "all_100_rows_match_normalized_registry": true,
+    "failures": 0,
+    "mean_raw_mse": 2.228303490170447e-8,
+    "mean_adjusted_recomputed": 8.170397440117226e-9,
+    "mean_effective_compute": 806303721965,
+    "mean_c_over_b": 0.36666448157347986,
+    "max_residual_s": 0.19043814401743475
+  },
+  "candidate_recomputed": {
+    "rows": 100,
+    "exact_name_order": true,
+    "row_score_mismatches": 0,
+    "aggregate_reported_score_matches_recomputed": true,
+    "failures": 0,
+    "mean_raw_mse": 2.2284993050902814e-8,
+    "mean_adjusted_score": 8.171116513490029e-9,
+    "mean_effective_compute": 806303829485,
+    "mean_c_over_b": 0.36666453046791503,
+    "max_residual_s": 0.19380312699274782,
+    "measured_flops_per_network": [
+      806303829485
+    ]
+  },
+  "paired": {
+    "improved_networks": 50,
+    "delta_mean_parent_minus_candidate": -7.190733728024271e-13,
+    "delta_se": 1.4922201293529365e-12,
+    "delta_mean_over_se": -0.48188156603559223,
+    "candidate_raw_mse_relative_change_percent": 0.008787623440809078,
+    "candidate_adjusted_relative_change_percent": 0.008800959538057818
+  },
+  "gates": {
+    "exact_100_name_order_identity": true,
+    "dataset_sha_identical": true,
+    "candidate_failures_zero": true,
+    "candidate_mean_raw_mse_lt_parent": false,
+    "candidate_mean_adjusted_le_0p995_parent": false,
+    "improves_at_least_55_of_100": false,
+    "paired_delta_mean_gt_2se": false,
+    "candidate_mean_cb_le_parent_plus_1e_5": true,
+    "max_residual_lt_0p4": true,
+    "exact_candidate_source_config_provenance": true,
+    "only_one_candidate_panel_run": true
+  },
+  "gate11_evidence": {
+    "attempts_1_to_5_panel_steps": "all skipped",
+    "attempt_6_panel_step": "completed success",
+    "observed_candidate_panel_invocations": 1
+  },
+  "owner_crosscheck": {
+    "owner_decision": "R223_SCIENTIFIC_REJECT_DROP_V25_LOCAL_FEED",
+    "owner_frozen_gate_values_match_independent_recompute": true,
+    "owner_per_network_rows_checked": 100,
+    "owner_per_network_mismatches": 0
+  },
+  "development_go": false,
+  "development_claim": "V25-LF fails the frozen same-panel development gates and should be dropped under R223.",
+  "competition_claim": "NONE. This is the same exposed public mini-100 development panel; no leaderboard rank, hidden/private generalization, submission-readiness or competition-outcome claim is supported.",
+  "scope": {
+    "actions_triggered": false,
+    "estimator_or_benchmark_run": false,
+    "candidate_modified": false,
+    "r223_files_modified": false,
+    "retry_or_rescue": false,
+    "paid_compute": false,
+    "holdout_or_private": false,
+    "submission": false,
+    "canonical_v25_changed": false
+  }
+}
