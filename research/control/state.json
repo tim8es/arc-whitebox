@@ -3429,6 +3429,22 @@
         "run_id": "R256-r254-harness-static-repair-20260923"
       },
       "revision": 258
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T08:22:30+00:00",
+      "job": "R256",
+      "owner": "r254-harness-repair-responsive",
+      "payload": {
+        "reason": "R256 offline/static harness repair COMPLETE on isolated branch research/r256-r254-harness-telemetry-repair-20260923 based directly on exact R254 execution head ff40219e132ce208428b7acfb1a03a79cd535be7. Primary FlopScope 0.12.1 source confirms BudgetContext.summary()->str, summary_dict()->dict and residual_wall_time_s->float|None; R256 uses the supported typed residual_wall_time_s property and fails closed on None/invalid/nonfinite/negative values without coercing unknown timing to zero. BPK2K formula blocks, pinned V25 parent, fixture seed/hashes, BUDGET, all MSE/FLOP gates, target-free candidate<=1.05*parent+0.005 gate, frozen workflow and public residual limit 0.4s remain unchanged. Exactly one small offline regression script ran and passed (R256_OFFLINE_REGRESSION_PASS); no harness/science/benchmark/Actions/R209/public/private/holdout/submission/canonical/leaderboard action occurred. Patch commit 625992a673a9b1ceee136a2b8b4b27da378a824d; sealed report/receipt commit f1e458952f2274ca375f97125ba3d181c494ad40. R257 is NOT authorized or started.",
+        "receipt": {
+          "sha256": "e33833cc18dae221ab2b5dcd0fd2bedc5203e7e67c8169c55e459d182e63582d",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/f1e458952f2274ca375f97125ba3d181c494ad40/research/r256/R256_RECEIPT.json"
+        },
+        "run_id": "R256-r254-harness-static-repair-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 259
     }
   ],
   "jobs": [
@@ -5476,7 +5492,16 @@
           "code_commit": "bd37001bcb9cda9da75232542db4d2897270f8fc",
           "command": "offline/static-only repair on isolated branch from exact R254 execution head ff40219e132ce208428b7acfb1a03a79cd535be7: preserve BPK2K math, V25 parent, fixture/seed/hashes, gates and meter semantics; replace BudgetContext.summary string misuse with supported typed residual-wall-time source; add and run exactly one small offline regression test for real contract + fail-closed unknown timing; no Actions/workflow, benchmark/science, R209/public, private/holdout, submission, canonical/leaderboard",
           "run_id": "R256-r254-harness-static-repair-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "reason": "R256 offline/static harness repair COMPLETE on isolated branch research/r256-r254-harness-telemetry-repair-20260923 based directly on exact R254 execution head ff40219e132ce208428b7acfb1a03a79cd535be7. Primary FlopScope 0.12.1 source confirms BudgetContext.summary()->str, summary_dict()->dict and residual_wall_time_s->float|None; R256 uses the supported typed residual_wall_time_s property and fails closed on None/invalid/nonfinite/negative values without coercing unknown timing to zero. BPK2K formula blocks, pinned V25 parent, fixture seed/hashes, BUDGET, all MSE/FLOP gates, target-free candidate<=1.05*parent+0.005 gate, frozen workflow and public residual limit 0.4s remain unchanged. Exactly one small offline regression script ran and passed (R256_OFFLINE_REGRESSION_PASS); no harness/science/benchmark/Actions/R209/public/private/holdout/submission/canonical/leaderboard action occurred. Patch commit 625992a673a9b1ceee136a2b8b4b27da378a824d; sealed report/receipt commit f1e458952f2274ca375f97125ba3d181c494ad40. R257 is NOT authorized or started.",
+            "receipt": {
+              "sha256": "e33833cc18dae221ab2b5dcd0fd2bedc5203e7e67c8169c55e459d182e63582d",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/f1e458952f2274ca375f97125ba3d181c494ad40/research/r256/R256_RECEIPT.json"
+            },
+            "run_id": "R256-r254-harness-static-repair-20260923",
+            "status": "COMPLETE"
+          }
         }
       ],
       "deliverable": "Static-only diagnosis and minimal harness repair in a new isolated branch based on the exact R254 candidate commit. Confirm the pinned BudgetContext.summary() contract from source/runtime; preserve candidate math, fixture bytes/seed, parent, thresholds, FLOP/meter gates and public gates exactly. Replace the incorrect string-as-mapping access with a supported typed source for residual-wall-time evidence; do not coerce unknown values to zero or weaken the 0.4s gate. Add one small offline regression check for the observed contract, run only that check, and produce a report/receipt with before/after hashes and commit. No Actions/workflow trigger, benchmark/science, public identity/data access, rerun, submission, canonical edit or R254 history rewrite. If a safe measured residual-time source cannot be established, stop with the exact blocker.",
@@ -5488,12 +5513,17 @@
       "id": "R256",
       "owner": "r254-harness-repair-responsive",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Repair and test R254 telemetry boundary offline"
+      "status": "COMPLETE",
+      "title": "Repair and test R254 telemetry boundary offline",
+      "reason": "R256 offline/static harness repair COMPLETE on isolated branch research/r256-r254-harness-telemetry-repair-20260923 based directly on exact R254 execution head ff40219e132ce208428b7acfb1a03a79cd535be7. Primary FlopScope 0.12.1 source confirms BudgetContext.summary()->str, summary_dict()->dict and residual_wall_time_s->float|None; R256 uses the supported typed residual_wall_time_s property and fails closed on None/invalid/nonfinite/negative values without coercing unknown timing to zero. BPK2K formula blocks, pinned V25 parent, fixture seed/hashes, BUDGET, all MSE/FLOP gates, target-free candidate<=1.05*parent+0.005 gate, frozen workflow and public residual limit 0.4s remain unchanged. Exactly one small offline regression script ran and passed (R256_OFFLINE_REGRESSION_PASS); no harness/science/benchmark/Actions/R209/public/private/holdout/submission/canonical/leaderboard action occurred. Patch commit 625992a673a9b1ceee136a2b8b4b27da378a824d; sealed report/receipt commit f1e458952f2274ca375f97125ba3d181c494ad40. R257 is NOT authorized or started.",
+      "receipt": {
+        "sha256": "e33833cc18dae221ab2b5dcd0fd2bedc5203e7e67c8169c55e459d182e63582d",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/f1e458952f2274ca375f97125ba3d181c494ad40/research/r256/R256_RECEIPT.json"
+      }
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 258,
+  "revision": 259,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
