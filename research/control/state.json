@@ -4380,12 +4380,24 @@
       "revision": 326
     },
     {
-      "revision": 327,
       "action": "claim",
+      "at": "2026-09-23T13:08:10.005Z",
       "job": "R272",
       "owner": "workflow-preflight-guard",
       "payload": {},
-      "at": "2026-09-23T13:08:10.005Z"
+      "revision": 327
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T13:08:39.307Z",
+      "job": "R271",
+      "owner": "leader-method-forensics",
+      "payload": {
+        "code_commit": "244e77592048e545282628ef16dfca65b95aeb2b",
+        "command": "read-only identity reconciliation of immutable R209 V25 mini100 against exact official visible Phase-2 50 using only R263/R270 and public primary sources; no dataset download/estimator/Actions/private/holdout/full/paid/submission/leaderboard/canonical edits",
+        "run_id": "R271-visible50-identity-reconciliation-20260923"
+      },
+      "revision": 328
     }
   ],
   "jobs": [
@@ -6990,7 +7002,14 @@
     },
     {
       "assigned_owner": "leader-method-forensics",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "244e77592048e545282628ef16dfca65b95aeb2b",
+          "command": "read-only identity reconciliation of immutable R209 V25 mini100 against exact official visible Phase-2 50 using only R263/R270 and public primary sources; no dataset download/estimator/Actions/private/holdout/full/paid/submission/leaderboard/canonical edits",
+          "run_id": "R271-visible50-identity-reconciliation-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read the immutable R209 V25 normalized 100-network record, R263 official leaderboard snapshot, R270 independent score audit, and official public Phase-2 primary pages. Determine whether the exact 50 visible scored MLP identities are present in R209 with matching evaluator/metric/versions. Compute V25 adjusted score on exactly that same 50 only if identity and aggregation are proven; otherwise state NOT_COMPARABLE and name the minimum missing public artifact. Preserve unknowns; do not infer the panel from row order or displayed rounded score. Append report+receipt with source URLs, row IDs, formulas, hashes and commit; finish R271. Read-only only: no estimator, dataset download, Actions, paid compute, private/holdout/full access, submission, leaderboard mutation or canonical edits.",
       "depends_on": [
         "R263",
@@ -7000,7 +7019,7 @@
       "id": "R271",
       "owner": "leader-method-forensics",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Map R209 V25 onto the official visible Phase-2 50"
     },
     {
@@ -7019,7 +7038,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 327,
+  "revision": 328,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
