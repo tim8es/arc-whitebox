@@ -2596,24 +2596,24 @@
       "revision": 200
     },
     {
-      "revision": 201,
       "action": "claim",
+      "at": "2026-09-23T04:01:16.322Z",
       "job": "R244",
       "owner": "alternative-method-research",
       "payload": {},
-      "at": "2026-09-23T04:01:16.322Z"
+      "revision": 201
     },
     {
-      "revision": 202,
       "action": "start",
+      "at": "2026-09-23T04:01:40.842Z",
       "job": "R244",
       "owner": "alternative-method-research",
       "payload": {
-        "run_id": "R244-distinct-method-protocol-one-shot-20260923",
         "code_commit": "b4a52a434ff39f5a48200245b1b785294d824101",
-        "command": "read-only R244 novelty/static-feasibility research and protocol freeze against immutable history; no estimator execution until frozen candidate/gates exist; if GO, continue this single attempt with at most one preregistered verified-free Actions workflow and one public mini-100 candidate panel"
+        "command": "read-only R244 novelty/static-feasibility research and protocol freeze against immutable history; no estimator execution until frozen candidate/gates exist; if GO, continue this single attempt with at most one preregistered verified-free Actions workflow and one public mini-100 candidate panel",
+        "run_id": "R244-distinct-method-protocol-one-shot-20260923"
       },
-      "at": "2026-09-23T04:01:40.842Z"
+      "revision": 202
     },
     {
       "action": "enqueue",
@@ -2638,20 +2638,20 @@
       "job": "R242",
       "owner": "independent-v25-audit",
       "payload": {
-        "run_id": "R242-r223-attempt6-normalize-registry-20260923",
-        "status": "COMPLETE",
-        "verdict": "R223_SCIENTIFIC_REJECT_PRESERVED",
         "reason": "R242 normalized the independently verified R223 attempt-6 candidate artifact into research/results/R223-v25-local-feed-mini100.json with all 100 rows, exact same-panel metadata and zero failures preserved. Artifact-row projection SHA256 113528ea2ed6fa59564099f29295ce94adca4be4f47910e765e39dfc716cf292 matches the committed record exactly; network IDs/target hashes match the R240-authenticated R209 V25 parent with 0 mismatches. Registry check passes with 7 normalized results. Same-panel compare vs R209-v25-mini100: score ratio 1.000088009595381, paired gain -7.190733728024271e-13, SE 1.4922201293529363e-12, 50/100 improved. R223 SCIENTIFIC_REJECT/DEVELOPMENT NO-GO is preserved. No estimator/benchmark/Actions/retry/repair/candidate/canonical/paid/private/holdout/submission/leaderboard action occurred.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json",
-          "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200"
-        }
+          "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json"
+        },
+        "run_id": "R242-r223-attempt6-normalize-registry-20260923",
+        "status": "COMPLETE",
+        "verdict": "R223_SCIENTIFIC_REJECT_PRESERVED"
       },
       "revision": 204
     },
     {
-      "revision": 205,
       "action": "enqueue",
+      "at": "2026-09-23T04:45:31Z",
       "job": "R246",
       "owner": "coordinator",
       "payload": {
@@ -2664,7 +2664,7 @@
         "priority": 2,
         "title": "Diagnose per-network score concentration in the immutable R209 V25 baseline"
       },
-      "at": "2026-09-23T04:45:31Z"
+      "revision": 205
     },
     {
       "action": "finish",
@@ -2672,29 +2672,29 @@
       "job": "R243",
       "owner": "registry-independent-audit",
       "payload": {
-        "run_id": "R243-registry-audit-20260923",
-        "status": "COMPLETE",
-        "verdict": "PASS",
         "reason": "Independent offline R243 audit PASS. R242 normalized R223-v25-local-feed-mini100 is row-for-row consistent with immutable artifact 10730459690 and authenticated R209 parent: 100/100 exact names/order, network IDs and target hashes; exact panel metadata; 0 mismatches in final MSE, measured FLOPs, failure status/reasons and official adjusted score; all 100 scores satisfy the official formula. Artifact and committed normalized IEEE-754 row projection SHA256 f89ac0172aec3a8e37c0553e5f20bbddbba6bc39c6e153c570725c653ce593f1. R242 receipt SHA256 c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200 verified; parent_id R209-v25-mini100 and SCIENTIFIC_REJECT are preserved; STATUS contains the candidate row/comparison and R242 COMPLETE. Registry-integrity verdict only; no estimator/benchmark/Actions/retry/repair/paid/private/holdout/submission/leaderboard/canonical mutation.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/f624ee7aa172e9170f2d21a0b4f75b6911e95a1d/research/r243/R243_RECEIPT.json",
-          "sha256": "a5442ec0573b953126fff83098f308a48bd1a3b8d47a3679f256ac719c8f3a08"
-        }
+          "sha256": "a5442ec0573b953126fff83098f308a48bd1a3b8d47a3679f256ac719c8f3a08",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/f624ee7aa172e9170f2d21a0b4f75b6911e95a1d/research/r243/R243_RECEIPT.json"
+        },
+        "run_id": "R243-registry-audit-20260923",
+        "status": "COMPLETE",
+        "verdict": "PASS"
       },
       "revision": 206
     },
     {
-      "revision": 207,
       "action": "finish",
+      "at": "2026-09-23T04:57:38.073Z",
       "job": "R244",
       "owner": "alternative-method-research",
       "payload": {
-        "status": "COMPLETE",
         "reason": "R244 DEVELOPMENT NO-GO: sole authorized Actions run 35816971984 / job 107040461290 attempt 1 completed successfully, but frozen MP-R16 scientific gates failed against exact R209 V25 mini-100. Artifact 10732583892 ZIP SHA256 885cd1767f82dcc933dae0daace593e722fa55c303d20acd3f935702fd159c30; manifest verified with zero mismatches; exact 100 name/network-id/target-hash order verified (sequence SHA256 2ff5fcdf2596bae7c356817ac6362eabfe15f728396c11ef15f7c82730038c66); every successful-row official adjusted score independently recomputed with zero discrepancy. Candidate mean raw MSE 2.244539880180696e-08 vs parent 2.228303490170447e-08; adjusted 8.228579159111482e-09 vs 8.170397440117226e-09; 40/100 improved; paired parent-candidate mean -5.818171899425493e-11, SE 1.6577006096567126e-11; failures 0; mean FLOPs 806171326730 <= 808502745220.552 gate; max residual 0.1557243770051855s. No retry, paid/private/holdout/submission/leaderboard mutation, canonical edit, or gate relaxation. Next: R245 independent static compliance audit may start.",
+        "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483",
         "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json",
-        "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483"
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T04:57:38.073Z"
+      "revision": 207
     },
     {
       "action": "claim",
@@ -2710,9 +2710,9 @@
       "job": "R246",
       "owner": "baseline-score-diagnostic",
       "payload": {
-        "run_id": "R246-r209-score-contribution-diagnostic-20260923",
         "code_commit": "c2d1d89b77081a87698187851b967f3f56ee5dae",
-        "command": "offline deterministic diagnostic using only immutable research/results/R209-v25-mini100.json and pinned R209 source receipt; recompute 100 official adjusted scores, concentration shares, cost-floor binding and MSE-vs-cost decomposition; no candidate outputs, estimator/benchmark/Actions, shared results/STATUS edits, private/holdout, paid compute, submission or leaderboard mutation"
+        "command": "offline deterministic diagnostic using only immutable research/results/R209-v25-mini100.json and pinned R209 source receipt; recompute 100 official adjusted scores, concentration shares, cost-floor binding and MSE-vs-cost decomposition; no candidate outputs, estimator/benchmark/Actions, shared results/STATUS edits, private/holdout, paid compute, submission or leaderboard mutation",
+        "run_id": "R246-r209-score-contribution-diagnostic-20260923"
       },
       "revision": 209
     },
@@ -2722,20 +2722,20 @@
       "job": "R246",
       "owner": "baseline-score-diagnostic",
       "payload": {
-        "run_id": "R246-r209-score-contribution-diagnostic-20260923",
-        "status": "COMPLETE",
-        "verdict": "DIAGNOSTIC_COMPLETE",
         "reason": "Offline R209 V25 mini-100 score diagnostic complete using only the immutable normalized R209 record and pinned R209 source receipt. Recomputed all 100 official adjusted scores with 0 mismatches; all rows use identical 806303721965 FLOPs / 2^41 = 0.36666448157347986 multiplier, so the 0.1 floor binds 0/100 and all cross-network score concentration comes from raw-MSE variation. Top-1/5/10/20 score shares are 1.3592696639751477%, 6.471417664447711%, 12.47245090733508%, and 23.847414826413804%. Mean raw MSE 2.228303490170447e-8; mean adjusted score 8.170397440117225e-9. Next preregisterable hypothesis H-R246: a network-agnostic V25 simplification can cut measured FLOPs >=10% while keeping mean raw-MSE degradation <11.111111111111116% on an independent preregistered development panel. No R223/R244 candidate output read; no shared results/STATUS/estimator edits, benchmark/Actions/private/holdout/paid/submission/leaderboard action.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/ba36152744f344ca7023aa807c8d1ab667baea04/research/r246/R246_RECEIPT.json",
-          "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4"
-        }
+          "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/ba36152744f344ca7023aa807c8d1ab667baea04/research/r246/R246_RECEIPT.json"
+        },
+        "run_id": "R246-r209-score-contribution-diagnostic-20260923",
+        "status": "COMPLETE",
+        "verdict": "DIAGNOSTIC_COMPLETE"
       },
       "revision": 210
     },
     {
-      "revision": 211,
       "action": "enqueue",
+      "at": "2026-09-23 05:05:48+00:00",
       "job": "R247",
       "owner": "coordinator",
       "payload": {
@@ -2748,27 +2748,27 @@
         "priority": 1,
         "title": "Test one network-agnostic V25 simplification for a score-improving FLOPs cut"
       },
-      "at": "2026-09-23 05:05:48+00:00"
+      "revision": 211
     },
     {
-      "revision": 212,
       "action": "claim",
+      "at": "2026-09-23T05:07:48.812Z",
       "job": "R245",
       "owner": "official-rules-audit",
       "payload": {},
-      "at": "2026-09-23T05:07:48.812Z"
+      "revision": 212
     },
     {
-      "revision": 213,
       "action": "start",
+      "at": "2026-09-23T05:08:06.657Z",
       "job": "R245",
       "owner": "official-rules-audit",
       "payload": {
-        "run_id": "R245-r244-static-official-metering-audit-20260923",
         "code_commit": "1e9053b4d2944c77530043592c652c8e61dfefcf",
-        "command": "read-only static audit of frozen R244 MP-R16 protocol/estimator/workflow against official Phase-2 allowed-code, scoring, and flopscope metering rules; inspect math.sqrt, scalar division, and numeric operations; no R244 artifact/output review or execution"
+        "command": "read-only static audit of frozen R244 MP-R16 protocol/estimator/workflow against official Phase-2 allowed-code, scoring, and flopscope metering rules; inspect math.sqrt, scalar division, and numeric operations; no R244 artifact/output review or execution",
+        "run_id": "R245-r244-static-official-metering-audit-20260923"
       },
-      "at": "2026-09-23T05:08:06.657Z"
+      "revision": 213
     },
     {
       "action": "claim",
@@ -2784,24 +2784,24 @@
       "job": "R247",
       "owner": "network-agnostic-efficiency-research",
       "payload": {
-        "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
         "code_commit": "afad944fffa3568a92a315db0ba11ffd312f55c3",
-        "command": "protocol/history preparation only: deduplicate prior mechanisms; freeze exactly one network-agnostic V25 candidate/config, exact public mini100 panel, target-free falsifier and scientific/cost/failure gates before any measurement; no candidate/benchmark/Actions execution before frozen gates"
+        "command": "protocol/history preparation only: deduplicate prior mechanisms; freeze exactly one network-agnostic V25 candidate/config, exact public mini100 panel, target-free falsifier and scientific/cost/failure gates before any measurement; no candidate/benchmark/Actions execution before frozen gates",
+        "run_id": "R247-h-r246-network-agnostic-efficiency-20260923"
       },
       "revision": 215
     },
     {
-      "revision": 216,
       "action": "finish",
+      "at": "2026-09-23T05:13:28.106Z",
       "job": "R245",
       "owner": "official-rules-audit",
       "payload": {
-        "status": "COMPLETE",
         "reason": "R245 static audit COMPLETE with STATIC COMPLIANCE NO-GO for frozen R244 MP-R16. Confirmed violation: estimator line 945 computes output-affecting u0 normalization with CPython math.sqrt(float(n)) outside FlopScope; official Phase-2 allowed-code summary limits stdlib math to control/bookkeeping/loading, says meaningful unmetered computation is disqualifiable, and documents fnp.sqrt as billed. Python-scalar divisions/coefficient arithmetic are confirmed unmetered but recorded as standalone eligibility UNKNOWN because FlopScope v0.12.1 itself demonstrates fnp.sqrt(2 / width). Confirmed covered paths: fnp-array operators and fnp sum/mean/sqrt/power/clip/einsum/qr are metered; no float/bool/int materialization of fnp values; no prohibited numerical library/FFI/concurrency imports in grader path. Workflow pins whestbench 0.16.1/flopscope 0.12.1; official starter-kit documents live grader 0.16.0/0.12.0 and only full/full_like non-scalar pricing changed in 0.12.1; R244 uses neither. Audit did not inspect R244 artifact/output or execute anything. Report commit 265090b3b83adc2d854826df8d30a973453ffe8b SHA256 9626fad07674a0e5025cbc18e8c4b5a1be4c04358881ff80c8170acf4d0c2157; receipt commit 941db3239e675571ccf78138cc9cbc21baab1b45 SHA256 00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9. Next: future distinct candidate must preregister a source compliance gate using metered fnp.sqrt for output-affecting sqrt/transcendental work and seek organizer clarification before relying on nontrivial free Python-scalar arithmetic.",
+        "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9",
         "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
-        "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9"
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T05:13:28.106Z"
+      "revision": 216
     },
     {
       "action": "finish",
@@ -2809,56 +2809,56 @@
       "job": "R247",
       "owner": "network-agnostic-efficiency-research",
       "payload": {
-        "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
-        "status": "SCIENTIFIC_REJECT",
-        "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
         "reason": "DEVELOPMENT NO-GO before public measurement. History-deduplicated candidate V25-NM24-YOUNG-D21-RIGHT-SPARSIFY passed the static >=10% FLOP-reduction planning gate (conservative candidate/parent ratio 0.8828118016350895) but failed the frozen target-free D21 fidelity falsifier decisively: 8/8 finite deterministic cases, identity control exact, but mean D21 RRMS 0.37184426509568913 vs <=0.012 and max 0.38016503271515556; every case exceeded the <=0.015 gate. Protocol therefore forbids estimator implementation/public mini-100/Actions. No R223/R244 candidate output/artifact read; no per-network tuning, benchmark, Actions, paid/private/holdout, retry, submission, leaderboard or canonical V25 mutation.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/10373eceef73c83593d0b4fe052e4c833511daaf/research/r247/R247_RECEIPT.json",
-          "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8"
-        }
+          "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/10373eceef73c83593d0b4fe052e4c833511daaf/research/r247/R247_RECEIPT.json"
+        },
+        "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
+        "status": "SCIENTIFIC_REJECT",
+        "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
       },
       "revision": 217
     },
     {
-      "revision": 218,
       "action": "receipt_projection_repair",
+      "at": "2026-09-23 05:27:46+00:00",
       "job": "R244",
       "owner": "coordinator",
       "payload": {
-        "reason": "Normalize completed-job projection to the schema-2 receipt object required by scripts/arc_control.py; preserve original finish event, result, receipt file and hash unchanged.",
         "legacy_fields": {
-          "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json",
-          "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483"
+          "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483",
+          "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json"
         },
+        "reason": "Normalize completed-job projection to the schema-2 receipt object required by scripts/arc_control.py; preserve original finish event, result, receipt file and hash unchanged.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json",
-          "sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483"
+          "sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json"
         }
       },
-      "at": "2026-09-23 05:27:46+00:00"
+      "revision": 218
     },
     {
-      "revision": 219,
       "action": "receipt_projection_repair",
+      "at": "2026-09-23 05:27:46+00:00",
       "job": "R245",
       "owner": "coordinator",
       "payload": {
-        "reason": "Normalize completed-job projection to the schema-2 receipt object required by scripts/arc_control.py; preserve original finish event, result, receipt file and hash unchanged.",
         "legacy_fields": {
-          "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
-          "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9"
+          "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9",
+          "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json"
         },
+        "reason": "Normalize completed-job projection to the schema-2 receipt object required by scripts/arc_control.py; preserve original finish event, result, receipt file and hash unchanged.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
-          "sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9"
+          "sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json"
         }
       },
-      "at": "2026-09-23 05:27:46+00:00"
+      "revision": 219
     },
     {
-      "revision": 220,
       "action": "enqueue",
+      "at": "2026-09-23 05:29:28+00:00",
       "job": "R248",
       "owner": "coordinator",
       "payload": {
@@ -2871,23 +2871,23 @@
         "priority": 1,
         "title": "Find and test a distinct metered V25 FLOPs-reduction method after R247 rejection"
       },
-      "at": "2026-09-23 05:29:28+00:00"
+      "revision": 220
     },
     {
-      "revision": 221,
       "action": "transfer",
+      "at": "2026-09-23 05:36:12+00:00",
       "job": "R248",
       "owner": "coordinator",
       "payload": {
         "from_owner": "post-r247-distinct-method-research",
         "from_thread_id": "6ab16705-0e2c-83eb-b737-1d9852e1ce00",
-        "to_owner": "method-research-recovery",
-        "to_thread_id": "6aaeba8b-df58-83eb-bb70-f271dba4a9c4",
         "reason": "Original recipient entered systemError before claim/start. Verified R248 is still QUEUED with attempts=[] and has no branch/protocol/candidate run; transfer the same job to a previously responsive existing ARC session before execution.",
         "run_exists": false,
-        "started_attempts": 0
+        "started_attempts": 0,
+        "to_owner": "method-research-recovery",
+        "to_thread_id": "6aaeba8b-df58-83eb-bb70-f271dba4a9c4"
       },
-      "at": "2026-09-23 05:36:12+00:00"
+      "revision": 221
     },
     {
       "action": "claim",
@@ -2903,15 +2903,15 @@
       "job": "R248",
       "owner": "method-research-recovery",
       "payload": {
-        "run_id": "R248-post-r247-distinct-method-research-20260923",
         "code_commit": "c32aeea0c0ae4e739b1b6f723fc7548ca63cdb24",
-        "command": "protocol/history research only: read AGENTS/RESEARCH_PROCESS/history plus R209/R246/R247/R245 allowed evidence; select and freeze exactly one distinct network-agnostic V25 FLOPs-reduction method, exact R209 public mini-100 panel, target-free falsifier, metered-source compliance and scientific/cost/failure gates before any estimator/benchmark/Actions execution"
+        "command": "protocol/history research only: read AGENTS/RESEARCH_PROCESS/history plus R209/R246/R247/R245 allowed evidence; select and freeze exactly one distinct network-agnostic V25 FLOPs-reduction method, exact R209 public mini-100 panel, target-free falsifier, metered-source compliance and scientific/cost/failure gates before any estimator/benchmark/Actions execution",
+        "run_id": "R248-post-r247-distinct-method-research-20260923"
       },
       "revision": 223
     },
     {
-      "revision": 224,
       "action": "enqueue",
+      "at": "2026-09-23 05:43:33+00:00",
       "job": "R249",
       "owner": "coordinator",
       "payload": {
@@ -2924,24 +2924,24 @@
         "priority": 2,
         "title": "Resolve official Phase-2 metering eligibility of Python scalar arithmetic"
       },
-      "at": "2026-09-23 05:43:33+00:00"
+      "revision": 224
     },
     {
-      "revision": 225,
       "action": "finish",
+      "at": "2026-09-23T05:49:54.862Z",
       "job": "R248",
       "owner": "method-research-recovery",
       "payload": {
-        "run_id": "R248-post-r247-distinct-method-research-20260923",
-        "status": "SCIENTIFIC_REJECT",
-        "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
         "reason": "R248 DEVELOPMENT NO-GO before estimator/public measurement. Distinct candidate V25-KRON1-YOUNG-TRANSPORT passed frozen novelty/static-cost/source-contract gates (conservative FLOP ratio 0.886473932833993 <=0.9), but the target-free oracle rank-1 Kronecker transport falsifier failed decisively: exact-Kronecker control RRMS 4.812580056623063e-16 PASS; 8/8 finite deterministic realistic cases; mean transported A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Per protocol no estimator, validation, benchmark, public mini-100 or Actions was run. No R223/R244 candidate artifact/output read, paid/private/holdout/submission/leaderboard/canonical edit, retry or second mechanism.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/ba0140b50588194b0a24b5005e4ba0fd9d32a6cd/research/r248/R248_RECEIPT.json",
-          "sha256": "9430fd30c2e4baf587581681968136b9a1a69d9625cdeea6093070ef5f0068e5"
-        }
+          "sha256": "9430fd30c2e4baf587581681968136b9a1a69d9625cdeea6093070ef5f0068e5",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/ba0140b50588194b0a24b5005e4ba0fd9d32a6cd/research/r248/R248_RECEIPT.json"
+        },
+        "run_id": "R248-post-r247-distinct-method-research-20260923",
+        "status": "SCIENTIFIC_REJECT",
+        "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
       },
-      "at": "2026-09-23T05:49:54.862Z"
+      "revision": 225
     },
     {
       "action": "enqueue",
@@ -2983,38 +2983,38 @@
       "revision": 228
     },
     {
-      "revision": 229,
       "action": "transfer",
+      "at": "2026-09-23T06:00:30+00:00",
       "job": "R249",
       "owner": "coordinator",
       "payload": {
         "from_owner": "phase2-scalar-compliance-research",
-        "to_owner": "phase2-scalar-compliance-independent-audit",
         "reason": "Previous recipient documented a repo-enabled Work-mode blocker and did not claim/start; same R249 remains QUEUED with attempts=[] and is transferred append-only to an existing capable session.",
         "run_exists": false,
-        "started_attempts": 0
+        "started_attempts": 0,
+        "to_owner": "phase2-scalar-compliance-independent-audit"
       },
-      "at": "2026-09-23T06:00:30+00:00"
+      "revision": 229
     },
     {
-      "revision": 230,
       "action": "claim",
+      "at": "2026-09-23T06:00:31+00:00",
       "job": "R249",
       "owner": "phase2-scalar-compliance-independent-audit",
       "payload": {},
-      "at": "2026-09-23T06:00:31+00:00"
+      "revision": 230
     },
     {
-      "revision": 231,
       "action": "start",
+      "at": "2026-09-23T06:00:32+00:00",
       "job": "R249",
       "owner": "phase2-scalar-compliance-independent-audit",
       "payload": {
-        "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
         "code_commit": "06a5293a52500dfb75ad1040b338f1d3591035ea",
-        "command": "source-only independent audit of official Phase-2 Allowed Code/code-patterns/Challenge Rules/FlopScope docs+source with R245 as context only; classify fnp array ops, fnp primitives, shape-derived scalars, math.*, Python scalar coefficient/division, and control/bookkeeping; no organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 outputs/artifacts, submission/leaderboard, or canonical edits"
+        "command": "source-only independent audit of official Phase-2 Allowed Code/code-patterns/Challenge Rules/FlopScope docs+source with R245 as context only; classify fnp array ops, fnp primitives, shape-derived scalars, math.*, Python scalar coefficient/division, and control/bookkeeping; no organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 outputs/artifacts, submission/leaderboard, or canonical edits",
+        "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923"
       },
-      "at": "2026-09-23T06:00:32+00:00"
+      "revision": 231
     },
     {
       "action": "finish",
@@ -3022,35 +3022,35 @@
       "job": "R250",
       "owner": "post-r248-next-method-research",
       "payload": {
-        "run_id": "R250-post-r248-next-method-research-20260923",
-        "status": "SCIENTIFIC_REJECT",
         "reason": "R250 DEVELOPMENT NO-GO before estimator/public measurement. Single frozen candidate V25-LEG2-R1-YOUNG-AP passed history-novelty/source/static-cost preflight (conservative FLOP ratio 0.8774850653457754 <=0.9) but failed the target-free structural fidelity gate decisively: exact rank-1 control PASS (max control RRMS 4.421498507036677e-16), deterministic replay PASS, 8/8 finite; max A/P reconstruction RRMS 0.9999977498858067 vs <=0.015, max D21-core RRMS 1.0024907470453626 vs <=0.015, mean D21-core RRMS 0.9997770493726187 vs <=0.012. Per frozen protocol no estimator, benchmark, public mini-100, Actions, retry or second method. No R223/R244 candidate outputs/artifacts, paid/private/holdout/submission/leaderboard/canonical V25 edit.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/cc18c09a8ddf19e100a2d1757d4091d47fb33b5c/research/r250/R250_RECEIPT.json",
-          "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026"
-        }
+          "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/cc18c09a8ddf19e100a2d1757d4091d47fb33b5c/research/r250/R250_RECEIPT.json"
+        },
+        "run_id": "R250-post-r248-next-method-research-20260923",
+        "status": "SCIENTIFIC_REJECT"
       },
       "revision": 232
     },
     {
-      "revision": 233,
       "action": "finish",
+      "at": "2026-09-23T06:26:00+00:00",
       "job": "R249",
       "owner": "phase2-scalar-compliance-independent-audit",
       "payload": {
-        "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
-        "status": "COMPLETE",
         "reason": "R249 source-only independent audit COMPLETE. Official Phase-2 sources support: ordinary fnp.ndarray operators CONFIRMED_ALLOWED and metered; fnp numerical primitives including sqrt/divide CONFIRMED_ALLOWED and metered; the exact trivial shape-derived pattern fnp.sqrt(2.0 / mlp.width) is CONFIRMED_ALLOWED only narrowly because the current official starter-kit explicitly recommends it, while the preceding Python scalar division is unmetered; output-affecting math.* numerical work is CONFIRMED_PROHIBITED because Phase 2 requires computation through FlopScope and reserves stdlib/residual Python for control/bookkeeping/plumbing; general output-affecting Python scalar coefficient/division arithmetic remains UNKNOWN as a blanket category because published primary sources define no de-minimis boundary between trivial argument shaping and meaningful unmetered computation; control/bookkeeping/loading is CONFIRMED_ALLOWED. FlopScope 0.12.0/0.12.1 README and client source are identical for the audited scalar path; live evaluator version was independently sourced from organizer clarification. Durable append-only JSON receipt: research/r249/R249_RECEIPT.json commit 2cc0a2971a32d09b72f86d7951d316619d779937 SHA256 bafacabb407083b27ab8a86a2856a24da3c885ec2024e7ecf781cd05507818c5. No organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 output/artifact inspection, submission/leaderboard, or canonical edit.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md",
-          "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175"
-        }
+          "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md"
+        },
+        "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T06:26:00+00:00"
+      "revision": 233
     },
     {
-      "revision": 234,
       "action": "enqueue",
+      "at": "2026-09-23T06:31:00+00:00",
       "job": "R251",
       "owner": "coordinator",
       "payload": {
@@ -3067,54 +3067,52 @@
         "priority": 1,
         "title": "Test one new global-accuracy estimator after full-history deduplication"
       },
-      "at": "2026-09-23T06:31:00+00:00"
+      "revision": 234
     },
     {
-      "revision": 235,
       "action": "claim",
+      "at": "2026-09-23T06:31:01+00:00",
       "job": "R251",
       "owner": "global-accuracy-method-research",
       "payload": {},
-      "at": "2026-09-23T06:31:01+00:00"
+      "revision": 235
     },
     {
-      "revision": 236,
       "action": "start",
+      "at": "2026-09-23T06:31:02+00:00",
       "job": "R251",
       "owner": "global-accuracy-method-research",
       "payload": {
-        "run_id": "R251-global-accuracy-full-history-method-20260923",
         "code_commit": "ef50654bf412d9c14d9c4eb9af2b329dd44aca55",
-        "command": "protocol/history preparation only: read complete immutable history and R231/R232/R238/R239/R245/R249/R250 evidence; freeze exactly one genuinely new global-accuracy hypothesis, unchanged-parent production-config synthetic fixture, byte hashes/seeds/diagnostics, metered source contract, exact target-free falsifier, FLOP/time bounds and stop rules before any measurement"
+        "command": "protocol/history preparation only: read complete immutable history and R231/R232/R238/R239/R245/R249/R250 evidence; freeze exactly one genuinely new global-accuracy hypothesis, unchanged-parent production-config synthetic fixture, byte hashes/seeds/diagnostics, metered source contract, exact target-free falsifier, FLOP/time bounds and stop rules before any measurement",
+        "run_id": "R251-global-accuracy-full-history-method-20260923"
       },
-      "at": "2026-09-23T06:31:02+00:00"
+      "revision": 236
     },
     {
-      "revision": 237,
       "action": "finish",
+      "at": "2026-09-23T06:47:00+00:00",
       "job": "R251",
       "owner": "global-accuracy-method-research",
       "payload": {
-        "run_id": "R251-global-accuracy-full-history-method-20260923",
-        "status": "INCONCLUSIVE",
-        "verdict": "PARENT_GATE_NOT_EXECUTED_PINNED_RUNTIME_UNAVAILABLE",
         "reason": "R251 terminal INCONCLUSIVE before parent science. Full-history deduplication and one new GFNP hypothesis were frozen before measurement, along with exact 1024x16 seed-251001 fixture bytes/hashes, diagnostics, gates and stop rules. Mandatory unchanged-parent production-shape gate could not be executed because the session runtime was Python 3.13.5/NumPy 2.3.5 with flopscope and whestbench absent and python3.11 unavailable; attempting to install the independently verified official FlopScope 0.12.1 wheel failed before installation after DNS retries with '[Errno -3] Temporary failure in name resolution'. The frozen protocol forbids substituting Actions, alternate runtime, changed fixture, reseed/resize/rescale or retry for this gate. Therefore there are no parent measurements/checkpoints and no scientific claim. GFNP estimator was not constructed and its candidate falsifier/public mini-100 were not run. No paid/private/holdout, R223/R244 output/artifact access, submission/leaderboard mutation, canonical V25 edit, second method or gate relaxation.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json",
-          "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb"
-        }
+          "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json"
+        },
+        "run_id": "R251-global-accuracy-full-history-method-20260923",
+        "status": "INCONCLUSIVE",
+        "verdict": "PARENT_GATE_NOT_EXECUTED_PINNED_RUNTIME_UNAVAILABLE"
       },
-      "at": "2026-09-23T06:47:00+00:00"
+      "revision": 237
     },
     {
-      "revision": 238,
       "action": "enqueue",
+      "at": "2026-09-23T07:00:00+00:00",
       "job": "R252",
       "owner": "coordinator",
       "payload": {
-        "title": "Test one new global-accuracy method in one pinned Actions run",
-        "hypothesis_id": "GLOBAL-ACCURACY-ONE-SHOT-ACTIONS-POST-R251",
-        "priority": 1,
+        "assigned_owner": "actions-accuracy-method-research",
         "deliverable": "Test exactly one genuinely new global-accuracy estimator hypothesis after full-history deduplication. Exclude R251 GFNP, R232 DRRE descendants, R238 RSRF descendants, R247/R248/R250, R244 MP-R16, R223 V25-LF, and every closed/rejected family; no per-network tuning or invented leader method. Treat R251 only as an infrastructure terminal record, not scientific evidence. Freeze protocol, source/math, one exact deterministic 1024x16 target-free fixture with bytes/hashes/seeds/diagnostics, candidate gates, source-compliance and cost bounds before execution. Authorize exactly one standard ubuntu-24.04 GitHub-hosted Actions run, no retry, pinned Python 3.11.16 / NumPy 2.4.6 / FlopScope 0.12.1 / WhestBench 0.16.1 with verified package hashes. In that single run execute unchanged pinned V25 parent first; parent fail => INCONCLUSIVE and no candidate. Only after parent PASS construct/test the one frozen target-free candidate against known truth. Any target-free/source/cost gate fail => durable NO-GO and skip public data. Only if all pass, same workflow may proceed once to exact R209 public mini-100; gates exact row/hash identity, 0 failures, adjusted <=0.95*R209, >=55/100 improved, paired gain >2 descriptive SE, mean FLOPs <=R209, max residual <0.4s. No official-rank claim; no paid/private/holdout, R223/R244 outputs/artifacts, submission, leaderboard mutation, canonical V25 edit or gate relaxation. Save workflow/run/artifact hashes, fixture/replay/report/receipt, finish queue and regenerate STATUS.md from latest head.",
         "depends_on": [
           "R231",
@@ -3122,50 +3120,52 @@
           "R245",
           "R249"
         ],
-        "assigned_owner": "actions-accuracy-method-research"
+        "hypothesis_id": "GLOBAL-ACCURACY-ONE-SHOT-ACTIONS-POST-R251",
+        "priority": 1,
+        "title": "Test one new global-accuracy method in one pinned Actions run"
       },
-      "at": "2026-09-23T07:00:00+00:00"
+      "revision": 238
     },
     {
-      "revision": 239,
       "action": "claim",
+      "at": "2026-09-23T07:00:01+00:00",
       "job": "R252",
       "owner": "actions-accuracy-method-research",
       "payload": {},
-      "at": "2026-09-23T07:00:01+00:00"
+      "revision": 239
     },
     {
-      "revision": 240,
       "action": "start",
+      "at": "2026-09-23T07:00:02+00:00",
       "job": "R252",
       "owner": "actions-accuracy-method-research",
       "payload": {
-        "run_id": "R252-one-shot-actions-global-accuracy-20260923",
         "code_commit": "26346269b3c14462057c3d508b3ff3adfaa97581",
-        "command": "protocol/history preparation only: deduplicate complete immutable history and required evidence; freeze exactly one new global-accuracy hypothesis, exact production-shape target-free fixture bytes/hashes/seeds/diagnostics, metered source contract, falsifier/cost/public gates and one-run stop rules before creating or triggering the sole standard ubuntu-24.04 Actions workflow"
+        "command": "protocol/history preparation only: deduplicate complete immutable history and required evidence; freeze exactly one new global-accuracy hypothesis, exact production-shape target-free fixture bytes/hashes/seeds/diagnostics, metered source contract, falsifier/cost/public gates and one-run stop rules before creating or triggering the sole standard ubuntu-24.04 Actions workflow",
+        "run_id": "R252-one-shot-actions-global-accuracy-20260923"
       },
-      "at": "2026-09-23T07:00:02+00:00"
+      "revision": 240
     },
     {
-      "revision": 241,
       "action": "finish",
+      "at": "2026-09-23T07:25:00+00:00",
       "job": "R252",
       "owner": "actions-accuracy-method-research",
       "payload": {
-        "run_id": "R252-one-shot-actions-global-accuracy-20260923",
-        "status": "INFRA_ERROR",
-        "verdict": "PRE_PARENT_FIXTURE_TRUTH_BYTE_IDENTITY_FAILURE_NO_RETRY",
         "reason": "R252 terminal INFRA_ERROR before parent science. The sole authorized standard ubuntu-24.04 Actions run 35830986191/job 107083271578 attempt 1 verified exact Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 core wheel hashes, frozen repo blobs, pinned V25 blob/SHA, and all 16 fixture weight hashes plus concatenated weight SHA256 de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e. It then failed at the frozen fixture truth-byte check with RuntimeError: truth hash mismatch against expected SHA256 623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450. The generator did not retain the observed failing truth digest/bytes, so the numerical cause is unknown. Parent executions=0, candidate constructed=false, candidate executions=0, public access/runs=0. Artifact 10736403843 ZIP SHA256 10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e. Per one-run/no-retry rule there is no repair/rerun and no scientific conclusion.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/cd67198c19f6b969e9f6622872d96ffdd5f2cbbc/research/r252/R252_RECEIPT.json",
-          "sha256": "07c4080b498d3e19ac48f6641f99219613d57e1eedbf01b7d2e5634bffd46758"
-        }
+          "sha256": "07c4080b498d3e19ac48f6641f99219613d57e1eedbf01b7d2e5634bffd46758",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/cd67198c19f6b969e9f6622872d96ffdd5f2cbbc/research/r252/R252_RECEIPT.json"
+        },
+        "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+        "status": "INFRA_ERROR",
+        "verdict": "PRE_PARENT_FIXTURE_TRUTH_BYTE_IDENTITY_FAILURE_NO_RETRY"
       },
-      "at": "2026-09-23T07:25:00+00:00"
+      "revision": 241
     },
     {
-      "revision": 242,
       "action": "enqueue",
+      "at": "2026-09-23T07:29:00+00:00",
       "job": "R253",
       "owner": "coordinator",
       "payload": {
@@ -3179,102 +3179,100 @@
         "priority": 1,
         "title": "Audit duplicate R252 Actions runs and correct terminal evidence"
       },
-      "at": "2026-09-23T07:29:00+00:00"
+      "revision": 242
     },
     {
-      "revision": 243,
       "action": "claim",
+      "at": "2026-09-23T07:29:01+00:00",
       "job": "R253",
       "owner": "r252-actions-accounting-audit",
       "payload": {},
-      "at": "2026-09-23T07:29:01+00:00"
+      "revision": 243
     },
     {
-      "revision": 244,
       "action": "start",
+      "at": "2026-09-23T07:29:02+00:00",
       "job": "R253",
       "owner": "r252-actions-accounting-audit",
       "payload": {
-        "run_id": "R253-r252-actions-accounting-audit-20260923",
         "code_commit": "8e1ede14cbff49fb3fabf9eecf005f08cb48ba9a",
-        "command": "read-only/postflight audit only: verify immutable GitHub metadata/logs/artifacts for R252 runs 35830273198 and 35830986191; write source-linked incident report + JSON erratum; append terminal_evidence_correction preserving original finish; regenerate STATUS.md; no workflow trigger/edit/rerun or science"
+        "command": "read-only/postflight audit only: verify immutable GitHub metadata/logs/artifacts for R252 runs 35830273198 and 35830986191; write source-linked incident report + JSON erratum; append terminal_evidence_correction preserving original finish; regenerate STATUS.md; no workflow trigger/edit/rerun or science",
+        "run_id": "R253-r252-actions-accounting-audit-20260923"
       },
-      "at": "2026-09-23T07:29:02+00:00"
+      "revision": 244
     },
     {
-      "revision": 245,
       "action": "terminal_evidence_correction",
+      "at": "2026-09-23T07:33:00+00:00",
       "job": "R252",
       "owner": "r252-actions-accounting-audit",
       "payload": {
-        "original_finish_revision": 241,
-        "original_finish_preserved": true,
-        "status": "INFRA_ERROR",
-        "verdict": "TWO_DISTINCT_ACTIONS_RUNS_PRE_SCIENCE_ONE_RUN_AUTHORIZATION_VIOLATED",
-        "reason": "R252 terminal evidence corrected by R253 postflight: status remains INFRA_ERROR and the original revision-241 finish event is preserved. Immutable GitHub evidence shows one queue attempt but two distinct push-triggered R252 Actions runs under an authorization for exactly one run/no retry. Run 35830273198/job 107081017265 used D21-CWG via .github/workflows/r252-one-shot.yml and failed before fixture/science because its exact runtime string check observed FlopScope 0.12.1+np2.4.6 and WhestBench unknown after all three pinned wheel digests passed. Run 35830986191/job 107083271578 used CFSP4 via .github/workflows/r252-cfsp4-one-shot.yml, passed pinned core/runtime/V25 and all 16 fixture weight hashes, then failed the frozen truth-byte check before parent. Parent measurements=0, candidate measurements=0, public measurements=0 across both runs. The second dispatch exceeded the one-run authorization. GitHub run/commit actor is tim8es; session/agent attribution is UNKNOWN.",
-        "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/d4a58774da9569e581aa239669a3406f9a2f1ff9/research/r253/R253_R252_TERMINAL_EVIDENCE_ERRATUM.json",
-          "sha256": "680db7fcda71b5604006cd1aa26c00a44bc0bbb0c39553aa83b2b7e4d0c38313"
-        },
-        "queue_attempts": 1,
         "actions_runs_authorized": 1,
         "actions_runs_observed": 2,
-        "unauthorized_duplicate_dispatch": true,
-        "scientific_measurements": {
-          "parent": 0,
-          "candidate": 0,
-          "public": 0
+        "github_actor": "tim8es",
+        "original_finish_preserved": true,
+        "original_finish_revision": 241,
+        "queue_attempts": 1,
+        "reason": "R252 terminal evidence corrected by R253 postflight: status remains INFRA_ERROR and the original revision-241 finish event is preserved. Immutable GitHub evidence shows one queue attempt but two distinct push-triggered R252 Actions runs under an authorization for exactly one run/no retry. Run 35830273198/job 107081017265 used D21-CWG via .github/workflows/r252-one-shot.yml and failed before fixture/science because its exact runtime string check observed FlopScope 0.12.1+np2.4.6 and WhestBench unknown after all three pinned wheel digests passed. Run 35830986191/job 107083271578 used CFSP4 via .github/workflows/r252-cfsp4-one-shot.yml, passed pinned core/runtime/V25 and all 16 fixture weight hashes, then failed the frozen truth-byte check before parent. Parent measurements=0, candidate measurements=0, public measurements=0 across both runs. The second dispatch exceeded the one-run authorization. GitHub run/commit actor is tim8es; session/agent attribution is UNKNOWN.",
+        "receipt": {
+          "sha256": "680db7fcda71b5604006cd1aa26c00a44bc0bbb0c39553aa83b2b7e4d0c38313",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/d4a58774da9569e581aa239669a3406f9a2f1ff9/research/r253/R253_R252_TERMINAL_EVIDENCE_ERRATUM.json"
         },
         "runs": [
           {
-            "github_run_id": 35830273198,
-            "job_id": 107081017265,
-            "workflow": ".github/workflows/r252-one-shot.yml",
-            "method": "V25-D21-CWG",
             "artifact_id": 10736967637,
             "artifact_zip_sha256": "4ecd1ed42f28a4b02caccd70dce9570a0738d7cb2b4f3976207fdd31f98bb989",
-            "failure": "runtime-version-string check before fixture/science"
+            "failure": "runtime-version-string check before fixture/science",
+            "github_run_id": 35830273198,
+            "job_id": 107081017265,
+            "method": "V25-D21-CWG",
+            "workflow": ".github/workflows/r252-one-shot.yml"
           },
           {
-            "github_run_id": 35830986191,
-            "job_id": 107083271578,
-            "workflow": ".github/workflows/r252-cfsp4-one-shot.yml",
-            "method": "V25-CFSP4",
             "artifact_id": 10736403843,
             "artifact_zip_sha256": "10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e",
-            "failure": "fixture truth-byte identity before parent"
+            "failure": "fixture truth-byte identity before parent",
+            "github_run_id": 35830986191,
+            "job_id": 107083271578,
+            "method": "V25-CFSP4",
+            "workflow": ".github/workflows/r252-cfsp4-one-shot.yml"
           }
         ],
-        "github_actor": "tim8es",
-        "session_or_agent_attribution": "UNKNOWN"
+        "scientific_measurements": {
+          "candidate": 0,
+          "parent": 0,
+          "public": 0
+        },
+        "session_or_agent_attribution": "UNKNOWN",
+        "status": "INFRA_ERROR",
+        "unauthorized_duplicate_dispatch": true,
+        "verdict": "TWO_DISTINCT_ACTIONS_RUNS_PRE_SCIENCE_ONE_RUN_AUTHORIZATION_VIOLATED"
       },
-      "at": "2026-09-23T07:33:00+00:00"
+      "revision": 245
     },
     {
-      "revision": 246,
       "action": "finish",
+      "at": "2026-09-23T07:36:00+00:00",
       "job": "R253",
       "owner": "r252-actions-accounting-audit",
       "payload": {
-        "run_id": "R253-r252-actions-accounting-audit-20260923",
-        "status": "COMPLETE",
         "reason": "R253 read-only/postflight audit COMPLETE. Immutable GitHub evidence verifies two distinct R252 Actions runs against one authorized run/no retry: 35830273198/job 107081017265 (D21-CWG) failed at runtime version-string verification after pinned wheel digests passed; 35830986191/job 107083271578 (CFSP4) failed at fixture truth-byte identity after pinned runtime/core/V25/weight checks passed. Both stopped before unchanged parent; parent/candidate/public measurements are 0/0/0. Revision 245 appended terminal_evidence_correction, preserved the original revision-241 finish event, kept R252 INFRA_ERROR, and projected the current R252 receipt/reason to the source-linked erratum. GitHub actor/commit account is tim8es; session/agent attribution remains UNKNOWN. No Actions trigger/edit/rerun, science, paid/private/holdout, submission, leaderboard or canonical change.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json",
-          "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244"
-        }
+          "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json"
+        },
+        "run_id": "R253-r252-actions-accounting-audit-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T07:36:00+00:00"
+      "revision": 246
     },
     {
-      "revision": 247,
       "action": "enqueue",
+      "at": "2026-09-23T07:41:00+00:00",
       "job": "R254",
       "owner": "coordinator",
       "payload": {
-        "title": "One-shot global-accuracy method with deterministic target-free truth",
-        "hypothesis_id": "R254-ONE-SHOT-GLOBAL-ACCURACY-NOVEL-METHOD",
-        "priority": 1,
+        "assigned_owner": "one-shot-accuracy-research",
         "deliverable": "Select exactly one history-deduplicated global-accuracy hypothesis; freeze protocol/spec/source and deterministic production-shape target-free fixture before one standard ubuntu-24.04 Actions run. Run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; only on parent PASS run the frozen candidate and target-free exact-truth/cost/source gates; only if all pass may the same workflow run exact public R209 mini-100 with frozen score/improvement/SE/FLOP/residual gates. Pin Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 with official wheel hashes and corrected distribution-metadata version checks. No retry, paid/private/holdout, submission, leaderboard/canonical edits, R223/R244 outputs/artifacts, R252 workflow edits, per-network tuning or gate relaxation.",
         "depends_on": [
           "R231",
@@ -3283,45 +3281,83 @@
           "R249",
           "R253"
         ],
-        "assigned_owner": "one-shot-accuracy-research"
+        "hypothesis_id": "R254-ONE-SHOT-GLOBAL-ACCURACY-NOVEL-METHOD",
+        "priority": 1,
+        "title": "One-shot global-accuracy method with deterministic target-free truth"
       },
-      "at": "2026-09-23T07:41:00+00:00"
+      "revision": 247
     },
     {
-      "revision": 248,
       "action": "claim",
+      "at": "2026-09-23T07:42:00+00:00",
       "job": "R254",
       "owner": "one-shot-accuracy-research",
       "payload": {},
-      "at": "2026-09-23T07:42:00+00:00"
+      "revision": 248
     },
     {
-      "revision": 249,
       "action": "start",
+      "at": "2026-09-23T07:55:00+00:00",
       "job": "R254",
       "owner": "one-shot-accuracy-research",
       "payload": {
-        "run_id": "R254-one-shot-global-accuracy-20260923",
         "code_commit": "a7c4932391c09c0f6004d83b410ed643b3ca8ad2",
-        "command": "one standard ubuntu-24.04 Actions workflow only: verify pinned wheel hashes and corrected importlib.metadata versions; reconstruct/replay frozen R254 monomial-path fixture; run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; on parent PASS only construct and run V25-BPK2K balanced pK-to-K cumulant reduction; on all target-free/source/cost gates only verify exact R209 mini-100 row/order/network/target hashes and run candidate once; no retry/second workflow"
+        "command": "one standard ubuntu-24.04 Actions workflow only: verify pinned wheel hashes and corrected importlib.metadata versions; reconstruct/replay frozen R254 monomial-path fixture; run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; on parent PASS only construct and run V25-BPK2K balanced pK-to-K cumulant reduction; on all target-free/source/cost gates only verify exact R209 mini-100 row/order/network/target hashes and run candidate once; no retry/second workflow",
+        "run_id": "R254-one-shot-global-accuracy-20260923"
       },
-      "at": "2026-09-23T07:55:00+00:00"
+      "revision": 249
     },
     {
-      "revision": 250,
       "action": "finish",
+      "at": "2026-09-23T08:00:00+00:00",
       "job": "R254",
       "owner": "one-shot-accuracy-research",
       "payload": {
-        "run_id": "R254-one-shot-global-accuracy-20260923",
-        "status": "INFRA_ERROR",
         "reason": "R254 terminal INFRA_ERROR after the sole authorized standard ubuntu-24.04 Actions run 35834163527/job 107093511576 attempt 1. Pinned wheel hashes and corrected importlib.metadata versions passed; pinned V25 source hashes passed; the deterministic 1024x16 monomial-path fixture and independent replay passed exact frozen weight/truth hashes. The unchanged parent executed first and control flow reached parent PASS, then the frozen V25-BPK2K candidate was constructed and executed. Before R254_TARGET_FREE_RESULT.json could be serialized, the harness crashed in candidate_gate because it assumed BudgetContext.summary() was a mapping but runtime returned a string: AttributeError: 'str' object has no attribute 'get'. Artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7. Persisted parent/candidate scientific measurements are 0/0; BPK2K accuracy/cost gates are unevaluated. Validation/public identity/public mini-100 were skipped. Per one-workflow/no-retry rule there is no repair/rerun or second method.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json",
-          "sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488"
-        }
+          "sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json"
+        },
+        "run_id": "R254-one-shot-global-accuracy-20260923",
+        "status": "INFRA_ERROR"
       },
-      "at": "2026-09-23T08:00:00+00:00"
+      "revision": 250
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T08:04:12Z",
+      "job": "R255",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "r254-independent-verifier",
+        "deliverable": "Read-only independent postflight of R254. Verify the single Actions run/job/artifact/ZIP digest and immutable receipt; inspect workflow steps/logs plus exact source and fixture hashes; verify the BudgetContext.summary type error and that parent/candidate measurement counts are zero, validation/public access/public mini-100 were skipped, and the status is INFRA_ERROR rather than scientific rejection or success. Create one append-only report/receipt with source URLs, exact SHAs, conclusions and commit. Do not edit R254/R256, launch/rerun Actions, run science, access private/holdout, alter canonical/leaderboard, or claim unpersisted in-memory values.",
+        "depends_on": [
+          "R249",
+          "R253"
+        ],
+        "hypothesis_id": "R254-TERMINAL-EVIDENCE-INDEPENDENT-POSTFLIGHT",
+        "priority": 1,
+        "title": "Independently verify R254 terminal infrastructure evidence"
+      },
+      "revision": 251
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T08:04:12Z",
+      "job": "R256",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "r254-harness-repair",
+        "deliverable": "Static-only diagnosis and minimal harness repair in a new isolated branch based on the exact R254 candidate commit. Confirm the pinned BudgetContext.summary() contract from source/runtime; preserve candidate math, fixture bytes/seed, parent, thresholds, FLOP/meter gates and public gates exactly. Replace the incorrect string-as-mapping access with a supported typed source for residual-wall-time evidence; do not coerce unknown values to zero or weaken the 0.4s gate. Add one small offline regression check for the observed contract, run only that check, and produce a report/receipt with before/after hashes and commit. No Actions/workflow trigger, benchmark/science, public identity/data access, rerun, submission, canonical edit or R254 history rewrite. If a safe measured residual-time source cannot be established, stop with the exact blocker.",
+        "depends_on": [
+          "R249",
+          "R253"
+        ],
+        "hypothesis_id": "R254-HARNESS-SUMMARY-TYPE-REPAIR",
+        "priority": 1,
+        "title": "Repair and test R254 telemetry boundary offline"
+      },
+      "revision": 252
     }
   ],
   "jobs": [
@@ -4858,18 +4894,18 @@
         {
           "code_commit": "c8a2fb1da44b7cb28913c605095ccc847c8e4b5d",
           "command": "normalize immutable R223 attempt-6 artifact 10730459690 against R240 receipt into research/results; run registry check/compare and regenerate STATUS only; no estimator/benchmark/Actions/retry/repair/candidate/canonical edits",
-          "run_id": "R242-r223-attempt6-normalize-registry-20260923",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R242-r223-attempt6-normalize-registry-20260923",
-            "status": "COMPLETE",
-            "verdict": "R223_SCIENTIFIC_REJECT_PRESERVED",
             "reason": "R242 normalized the independently verified R223 attempt-6 candidate artifact into research/results/R223-v25-local-feed-mini100.json with all 100 rows, exact same-panel metadata and zero failures preserved. Artifact-row projection SHA256 113528ea2ed6fa59564099f29295ce94adca4be4f47910e765e39dfc716cf292 matches the committed record exactly; network IDs/target hashes match the R240-authenticated R209 V25 parent with 0 mismatches. Registry check passes with 7 normalized results. Same-panel compare vs R209-v25-mini100: score ratio 1.000088009595381, paired gain -7.190733728024271e-13, SE 1.4922201293529363e-12, 50/100 improved. R223 SCIENTIFIC_REJECT/DEVELOPMENT NO-GO is preserved. No estimator/benchmark/Actions/retry/repair/candidate/canonical/paid/private/holdout/submission/leaderboard action occurred.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json",
-              "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200"
-            }
-          }
+              "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json"
+            },
+            "run_id": "R242-r223-attempt6-normalize-registry-20260923",
+            "status": "COMPLETE",
+            "verdict": "R223_SCIENTIFIC_REJECT_PRESERVED"
+          },
+          "run_id": "R242-r223-attempt6-normalize-registry-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Use only immutable R223 attempt-6 artifact 10730459690 and R240 independent postflight receipt. Independently extract/verify all 100 candidate rows and panel identity, create a schema-valid normalized research/results record against R209 V25, preserve all rows/failures and the SCIENTIFIC_REJECT verdict, run registry check/compare and regenerate STATUS. Commit a durable integration receipt with hashes. No estimator/benchmark/Actions run, no retry/repair, no candidate or canonical edits, no paid compute, private/holdout data, submission, or leaderboard change. Refresh control head before every write and preserve concurrent events.",
@@ -4878,13 +4914,13 @@
       "id": "R242",
       "owner": "independent-v25-audit",
       "priority": 2,
-      "status": "COMPLETE",
-      "title": "Normalize verified R223 V25-LF mini-100 result into the shared registry",
       "reason": "R242 normalized the independently verified R223 attempt-6 candidate artifact into research/results/R223-v25-local-feed-mini100.json with all 100 rows, exact same-panel metadata and zero failures preserved. Artifact-row projection SHA256 113528ea2ed6fa59564099f29295ce94adca4be4f47910e765e39dfc716cf292 matches the committed record exactly; network IDs/target hashes match the R240-authenticated R209 V25 parent with 0 mismatches. Registry check passes with 7 normalized results. Same-panel compare vs R209-v25-mini100: score ratio 1.000088009595381, paired gain -7.190733728024271e-13, SE 1.4922201293529363e-12, 50/100 improved. R223 SCIENTIFIC_REJECT/DEVELOPMENT NO-GO is preserved. No estimator/benchmark/Actions/retry/repair/candidate/canonical/paid/private/holdout/submission/leaderboard action occurred.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json",
-        "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200"
+        "sha256": "c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json"
       },
+      "status": "COMPLETE",
+      "title": "Normalize verified R223 V25-LF mini-100 result into the shared registry",
       "verdict": "R223_SCIENTIFIC_REJECT_PRESERVED"
     },
     {
@@ -4893,18 +4929,18 @@
         {
           "code_commit": "746473e48f9a6bbe19d44cae03f4fdf82d519989",
           "command": "read-only registry audit preparation",
-          "run_id": "R243-registry-audit-20260923",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R243-registry-audit-20260923",
-            "status": "COMPLETE",
-            "verdict": "PASS",
             "reason": "Independent offline R243 audit PASS. R242 normalized R223-v25-local-feed-mini100 is row-for-row consistent with immutable artifact 10730459690 and authenticated R209 parent: 100/100 exact names/order, network IDs and target hashes; exact panel metadata; 0 mismatches in final MSE, measured FLOPs, failure status/reasons and official adjusted score; all 100 scores satisfy the official formula. Artifact and committed normalized IEEE-754 row projection SHA256 f89ac0172aec3a8e37c0553e5f20bbddbba6bc39c6e153c570725c653ce593f1. R242 receipt SHA256 c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200 verified; parent_id R209-v25-mini100 and SCIENTIFIC_REJECT are preserved; STATUS contains the candidate row/comparison and R242 COMPLETE. Registry-integrity verdict only; no estimator/benchmark/Actions/retry/repair/paid/private/holdout/submission/leaderboard/canonical mutation.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/f624ee7aa172e9170f2d21a0b4f75b6911e95a1d/research/r243/R243_RECEIPT.json",
-              "sha256": "a5442ec0573b953126fff83098f308a48bd1a3b8d47a3679f256ac719c8f3a08"
-            }
-          }
+              "sha256": "a5442ec0573b953126fff83098f308a48bd1a3b8d47a3679f256ac719c8f3a08",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/f624ee7aa172e9170f2d21a0b4f75b6911e95a1d/research/r243/R243_RECEIPT.json"
+            },
+            "run_id": "R243-registry-audit-20260923",
+            "status": "COMPLETE",
+            "verdict": "PASS"
+          },
+          "run_id": "R243-registry-audit-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read current AGENTS/RESEARCH_PROCESS, R240 receipt, and R242 task. Prepare a small independent offline verification method without editing R242 files. After R242 is terminal and its normalized candidate record is committed, verify all 100 network IDs/order, target hashes, panel metadata, per-row MSE/FLOPs/failure statuses and official adjusted scores against immutable artifact 10730459690 and R240's independent recomputation; verify parent linkage to R209, receipt hashes, SCIENTIFIC_REJECT classification, and refreshed STATUS row. Produce a source-linked audit report and durable receipt, then finish R243. No estimator/benchmark/Actions run, no retry/repair, no paid/holdout/private data, no submission, no canonical edits. Refresh latest control head before writes; never overwrite concurrent events.",
@@ -4913,29 +4949,29 @@
       "id": "R243",
       "owner": "registry-independent-audit",
       "priority": 2,
-      "status": "COMPLETE",
-      "title": "Independently verify normalized R223 candidate registry record",
       "reason": "Independent offline R243 audit PASS. R242 normalized R223-v25-local-feed-mini100 is row-for-row consistent with immutable artifact 10730459690 and authenticated R209 parent: 100/100 exact names/order, network IDs and target hashes; exact panel metadata; 0 mismatches in final MSE, measured FLOPs, failure status/reasons and official adjusted score; all 100 scores satisfy the official formula. Artifact and committed normalized IEEE-754 row projection SHA256 f89ac0172aec3a8e37c0553e5f20bbddbba6bc39c6e153c570725c653ce593f1. R242 receipt SHA256 c4ba58c73ceb0956fc284c9865a62220649a04f7354069dd1e91c3094ee9c200 verified; parent_id R209-v25-mini100 and SCIENTIFIC_REJECT are preserved; STATUS contains the candidate row/comparison and R242 COMPLETE. Registry-integrity verdict only; no estimator/benchmark/Actions/retry/repair/paid/private/holdout/submission/leaderboard/canonical mutation.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/f624ee7aa172e9170f2d21a0b4f75b6911e95a1d/research/r243/R243_RECEIPT.json",
-        "sha256": "a5442ec0573b953126fff83098f308a48bd1a3b8d47a3679f256ac719c8f3a08"
+        "sha256": "a5442ec0573b953126fff83098f308a48bd1a3b8d47a3679f256ac719c8f3a08",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/f624ee7aa172e9170f2d21a0b4f75b6911e95a1d/research/r243/R243_RECEIPT.json"
       },
+      "status": "COMPLETE",
+      "title": "Independently verify normalized R223 candidate registry record",
       "verdict": "PASS"
     },
     {
       "assigned_owner": "alternative-method-research",
       "attempts": [
         {
-          "run_id": "R244-distinct-method-protocol-one-shot-20260923",
           "code_commit": "b4a52a434ff39f5a48200245b1b785294d824101",
           "command": "read-only R244 novelty/static-feasibility research and protocol freeze against immutable history; no estimator execution until frozen candidate/gates exist; if GO, continue this single attempt with at most one preregistered verified-free Actions workflow and one public mini-100 candidate panel",
-          "status": "COMPLETE",
           "completion": {
-            "status": "COMPLETE",
             "reason": "R244 DEVELOPMENT NO-GO: sole authorized Actions run 35816971984 / job 107040461290 attempt 1 completed successfully, but frozen MP-R16 scientific gates failed against exact R209 V25 mini-100. Artifact 10732583892 ZIP SHA256 885cd1767f82dcc933dae0daace593e722fa55c303d20acd3f935702fd159c30; manifest verified with zero mismatches; exact 100 name/network-id/target-hash order verified (sequence SHA256 2ff5fcdf2596bae7c356817ac6362eabfe15f728396c11ef15f7c82730038c66); every successful-row official adjusted score independently recomputed with zero discrepancy. Candidate mean raw MSE 2.244539880180696e-08 vs parent 2.228303490170447e-08; adjusted 8.228579159111482e-09 vs 8.170397440117226e-09; 40/100 improved; paired parent-candidate mean -5.818171899425493e-11, SE 1.6577006096567126e-11; failures 0; mean FLOPs 806171326730 <= 808502745220.552 gate; max residual 0.1557243770051855s. No retry, paid/private/holdout/submission/leaderboard mutation, canonical edit, or gate relaxation. Next: R245 independent static compliance audit may start.",
+            "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483",
             "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json",
-            "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483"
-          }
+            "status": "COMPLETE"
+          },
+          "run_id": "R244-distinct-method-protocol-one-shot-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read current AGENTS/RESEARCH_PROCESS, full history, R209 normalized V25 mini-100 record, R223 terminal result and R240 independent receipt. Select exactly one genuinely novel algorithm-level method aimed at lower official adjusted score; explicitly exclude V25-LF/local-feed lambda and all materially similar or previously rejected families. Freeze candidate source/config, exact parent/panel, score/cost/failure gates and expected measurable effect before execution. If novelty and static feasibility pass, use only verified free standard compute for at most one Actions workflow containing validation and exactly one public mini-100 candidate panel. No retry or second run even for infrastructure failure; stop and record INFRA_ERROR if pre-panel failure. Preserve every row and compare to R209 parent using the official adjusted score; label result development-only. If no feasible distinct candidate exists, save a source-linked desk NO-GO without running. No paid resources, private/holdout, submission/leaderboard mutation, canonical V25 edits, gate relaxation, or duplicate work.",
@@ -4944,197 +4980,215 @@
       "id": "R244",
       "owner": "alternative-method-research",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Select and test one distinct V25 score-improvement method after R223 no-go",
       "reason": "R244 DEVELOPMENT NO-GO: sole authorized Actions run 35816971984 / job 107040461290 attempt 1 completed successfully, but frozen MP-R16 scientific gates failed against exact R209 V25 mini-100. Artifact 10732583892 ZIP SHA256 885cd1767f82dcc933dae0daace593e722fa55c303d20acd3f935702fd159c30; manifest verified with zero mismatches; exact 100 name/network-id/target-hash order verified (sequence SHA256 2ff5fcdf2596bae7c356817ac6362eabfe15f728396c11ef15f7c82730038c66); every successful-row official adjusted score independently recomputed with zero discrepancy. Candidate mean raw MSE 2.244539880180696e-08 vs parent 2.228303490170447e-08; adjusted 8.228579159111482e-09 vs 8.170397440117226e-09; 40/100 improved; paired parent-candidate mean -5.818171899425493e-11, SE 1.6577006096567126e-11; failures 0; mean FLOPs 806171326730 <= 808502745220.552 gate; max residual 0.1557243770051855s. No retry, paid/private/holdout/submission/leaderboard mutation, canonical edit, or gate relaxation. Next: R245 independent static compliance audit may start.",
-      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json",
-      "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json",
-        "sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483"
-      }
+        "sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json"
+      },
+      "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483",
+      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json",
+      "status": "COMPLETE",
+      "title": "Select and test one distinct V25 score-improvement method after R223 no-go"
     },
     {
       "assigned_owner": "official-rules-audit",
+      "attempts": [
+        {
+          "code_commit": "1e9053b4d2944c77530043592c652c8e61dfefcf",
+          "command": "read-only static audit of frozen R244 MP-R16 protocol/estimator/workflow against official Phase-2 allowed-code, scoring, and flopscope metering rules; inspect math.sqrt, scalar division, and numeric operations; no R244 artifact/output review or execution",
+          "completion": {
+            "reason": "R245 static audit COMPLETE with STATIC COMPLIANCE NO-GO for frozen R244 MP-R16. Confirmed violation: estimator line 945 computes output-affecting u0 normalization with CPython math.sqrt(float(n)) outside FlopScope; official Phase-2 allowed-code summary limits stdlib math to control/bookkeeping/loading, says meaningful unmetered computation is disqualifiable, and documents fnp.sqrt as billed. Python-scalar divisions/coefficient arithmetic are confirmed unmetered but recorded as standalone eligibility UNKNOWN because FlopScope v0.12.1 itself demonstrates fnp.sqrt(2 / width). Confirmed covered paths: fnp-array operators and fnp sum/mean/sqrt/power/clip/einsum/qr are metered; no float/bool/int materialization of fnp values; no prohibited numerical library/FFI/concurrency imports in grader path. Workflow pins whestbench 0.16.1/flopscope 0.12.1; official starter-kit documents live grader 0.16.0/0.12.0 and only full/full_like non-scalar pricing changed in 0.12.1; R244 uses neither. Audit did not inspect R244 artifact/output or execute anything. Report commit 265090b3b83adc2d854826df8d30a973453ffe8b SHA256 9626fad07674a0e5025cbc18e8c4b5a1be4c04358881ff80c8170acf4d0c2157; receipt commit 941db3239e675571ccf78138cc9cbc21baab1b45 SHA256 00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9. Next: future distinct candidate must preregister a source compliance gate using metered fnp.sqrt for output-affecting sqrt/transcendental work and seek organizer clarification before relying on nontrivial free Python-scalar arithmetic.",
+            "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9",
+            "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
+            "status": "COMPLETE"
+          },
+          "run_id": "R245-r244-static-official-metering-audit-20260923",
+          "status": "COMPLETE"
+        }
+      ],
       "deliverable": "Independent read-only static compliance audit of the frozen R244 MP-R16 protocol, estimator source and one-shot workflow against official Phase-2 allowed-code/scoring sources. Explicitly inspect whether scalar math.sqrt/division and every numeric operation use the permitted metered path; inspect flopscope coverage and workflow provenance. Separate confirmed violations, non-violations and unknowns with exact source links/file hashes. Do not inspect the live R244 panel output/artifact, change its branch/files, rerun/stop anything, execute estimator/benchmark/Actions, access private/holdout, spend, submit, or mutate leaderboard. Save a concise report and receipt on a separate audit branch and finish R245.",
       "depends_on": [
         "R244"
       ],
       "hypothesis_id": "R244-OFFICIAL-COMPLIANCE-STATIC-AUDIT",
-      "priority": 1,
-      "title": "Independent static rules audit of R244 candidate and metered operations",
       "id": "R245",
       "owner": "official-rules-audit",
-      "status": "COMPLETE",
-      "attempts": [
-        {
-          "run_id": "R245-r244-static-official-metering-audit-20260923",
-          "code_commit": "1e9053b4d2944c77530043592c652c8e61dfefcf",
-          "command": "read-only static audit of frozen R244 MP-R16 protocol/estimator/workflow against official Phase-2 allowed-code, scoring, and flopscope metering rules; inspect math.sqrt, scalar division, and numeric operations; no R244 artifact/output review or execution",
-          "status": "COMPLETE",
-          "completion": {
-            "status": "COMPLETE",
-            "reason": "R245 static audit COMPLETE with STATIC COMPLIANCE NO-GO for frozen R244 MP-R16. Confirmed violation: estimator line 945 computes output-affecting u0 normalization with CPython math.sqrt(float(n)) outside FlopScope; official Phase-2 allowed-code summary limits stdlib math to control/bookkeeping/loading, says meaningful unmetered computation is disqualifiable, and documents fnp.sqrt as billed. Python-scalar divisions/coefficient arithmetic are confirmed unmetered but recorded as standalone eligibility UNKNOWN because FlopScope v0.12.1 itself demonstrates fnp.sqrt(2 / width). Confirmed covered paths: fnp-array operators and fnp sum/mean/sqrt/power/clip/einsum/qr are metered; no float/bool/int materialization of fnp values; no prohibited numerical library/FFI/concurrency imports in grader path. Workflow pins whestbench 0.16.1/flopscope 0.12.1; official starter-kit documents live grader 0.16.0/0.12.0 and only full/full_like non-scalar pricing changed in 0.12.1; R244 uses neither. Audit did not inspect R244 artifact/output or execute anything. Report commit 265090b3b83adc2d854826df8d30a973453ffe8b SHA256 9626fad07674a0e5025cbc18e8c4b5a1be4c04358881ff80c8170acf4d0c2157; receipt commit 941db3239e675571ccf78138cc9cbc21baab1b45 SHA256 00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9. Next: future distinct candidate must preregister a source compliance gate using metered fnp.sqrt for output-affecting sqrt/transcendental work and seek organizer clarification before relying on nontrivial free Python-scalar arithmetic.",
-            "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
-            "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9"
-          }
-        }
-      ],
+      "priority": 1,
       "reason": "R245 static audit COMPLETE with STATIC COMPLIANCE NO-GO for frozen R244 MP-R16. Confirmed violation: estimator line 945 computes output-affecting u0 normalization with CPython math.sqrt(float(n)) outside FlopScope; official Phase-2 allowed-code summary limits stdlib math to control/bookkeeping/loading, says meaningful unmetered computation is disqualifiable, and documents fnp.sqrt as billed. Python-scalar divisions/coefficient arithmetic are confirmed unmetered but recorded as standalone eligibility UNKNOWN because FlopScope v0.12.1 itself demonstrates fnp.sqrt(2 / width). Confirmed covered paths: fnp-array operators and fnp sum/mean/sqrt/power/clip/einsum/qr are metered; no float/bool/int materialization of fnp values; no prohibited numerical library/FFI/concurrency imports in grader path. Workflow pins whestbench 0.16.1/flopscope 0.12.1; official starter-kit documents live grader 0.16.0/0.12.0 and only full/full_like non-scalar pricing changed in 0.12.1; R244 uses neither. Audit did not inspect R244 artifact/output or execute anything. Report commit 265090b3b83adc2d854826df8d30a973453ffe8b SHA256 9626fad07674a0e5025cbc18e8c4b5a1be4c04358881ff80c8170acf4d0c2157; receipt commit 941db3239e675571ccf78138cc9cbc21baab1b45 SHA256 00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9. Next: future distinct candidate must preregister a source compliance gate using metered fnp.sqrt for output-affecting sqrt/transcendental work and seek organizer clarification before relying on nontrivial free Python-scalar arithmetic.",
-      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
-      "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
-        "sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9"
-      }
+        "sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json"
+      },
+      "receipt_sha256": "00390fe4bcc259c38474ecd735a500b8fbfecffe3a14e1fdd4d3cdad0499aba9",
+      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/941db3239e675571ccf78138cc9cbc21baab1b45/research/r245/R245_RECEIPT.json",
+      "status": "COMPLETE",
+      "title": "Independent static rules audit of R244 candidate and metered operations"
     },
     {
       "assigned_owner": "baseline-score-diagnostic",
+      "attempts": [
+        {
+          "code_commit": "c2d1d89b77081a87698187851b967f3f56ee5dae",
+          "command": "offline deterministic diagnostic using only immutable research/results/R209-v25-mini100.json and pinned R209 source receipt; recompute 100 official adjusted scores, concentration shares, cost-floor binding and MSE-vs-cost decomposition; no candidate outputs, estimator/benchmark/Actions, shared results/STATUS edits, private/holdout, paid compute, submission or leaderboard mutation",
+          "completion": {
+            "reason": "Offline R209 V25 mini-100 score diagnostic complete using only the immutable normalized R209 record and pinned R209 source receipt. Recomputed all 100 official adjusted scores with 0 mismatches; all rows use identical 806303721965 FLOPs / 2^41 = 0.36666448157347986 multiplier, so the 0.1 floor binds 0/100 and all cross-network score concentration comes from raw-MSE variation. Top-1/5/10/20 score shares are 1.3592696639751477%, 6.471417664447711%, 12.47245090733508%, and 23.847414826413804%. Mean raw MSE 2.228303490170447e-8; mean adjusted score 8.170397440117225e-9. Next preregisterable hypothesis H-R246: a network-agnostic V25 simplification can cut measured FLOPs >=10% while keeping mean raw-MSE degradation <11.111111111111116% on an independent preregistered development panel. No R223/R244 candidate output read; no shared results/STATUS/estimator edits, benchmark/Actions/private/holdout/paid/submission/leaderboard action.",
+            "receipt": {
+              "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/ba36152744f344ca7023aa807c8d1ab667baea04/research/r246/R246_RECEIPT.json"
+            },
+            "run_id": "R246-r209-score-contribution-diagnostic-20260923",
+            "status": "COMPLETE",
+            "verdict": "DIAGNOSTIC_COMPLETE"
+          },
+          "run_id": "R246-r209-score-contribution-diagnostic-20260923",
+          "status": "COMPLETE"
+        }
+      ],
       "deliverable": "Using only the immutable normalized R209 V25 public mini-100 record and its pinned source receipt, perform a deterministic offline diagnostic of where the baseline's official adjusted score comes from. Recompute/validate all 100 per-network scores from raw final MSE, measured FLOPs, budget, and official multiplier floor; quantify top-1/5/10/20 network contribution shares, whether the 0.1 cost floor binds, and whether aggregate score is driven mainly by error or cost. Preserve row IDs and hashes, report exact calculations and limitations, and recommend one next research question without tuning to these exposed networks. Do not inspect R223 candidate or any live R244 output/artifact, edit shared results/STATUS, modify estimator/canonical code, run estimator/benchmark/Actions, use private/holdout data, spend, submit, or mutate leaderboard. Save a source-linked report and receipt in a separate R246 path/branch, then finish the job.",
       "depends_on": [
         "R209"
       ],
       "hypothesis_id": "R209-MINI100-SCORE-CONTRIBUTION-DIAGNOSTIC",
-      "priority": 2,
-      "title": "Diagnose per-network score concentration in the immutable R209 V25 baseline",
       "id": "R246",
       "owner": "baseline-score-diagnostic",
-      "status": "COMPLETE",
-      "attempts": [
-        {
-          "run_id": "R246-r209-score-contribution-diagnostic-20260923",
-          "code_commit": "c2d1d89b77081a87698187851b967f3f56ee5dae",
-          "command": "offline deterministic diagnostic using only immutable research/results/R209-v25-mini100.json and pinned R209 source receipt; recompute 100 official adjusted scores, concentration shares, cost-floor binding and MSE-vs-cost decomposition; no candidate outputs, estimator/benchmark/Actions, shared results/STATUS edits, private/holdout, paid compute, submission or leaderboard mutation",
-          "status": "COMPLETE",
-          "completion": {
-            "run_id": "R246-r209-score-contribution-diagnostic-20260923",
-            "status": "COMPLETE",
-            "verdict": "DIAGNOSTIC_COMPLETE",
-            "reason": "Offline R209 V25 mini-100 score diagnostic complete using only the immutable normalized R209 record and pinned R209 source receipt. Recomputed all 100 official adjusted scores with 0 mismatches; all rows use identical 806303721965 FLOPs / 2^41 = 0.36666448157347986 multiplier, so the 0.1 floor binds 0/100 and all cross-network score concentration comes from raw-MSE variation. Top-1/5/10/20 score shares are 1.3592696639751477%, 6.471417664447711%, 12.47245090733508%, and 23.847414826413804%. Mean raw MSE 2.228303490170447e-8; mean adjusted score 8.170397440117225e-9. Next preregisterable hypothesis H-R246: a network-agnostic V25 simplification can cut measured FLOPs >=10% while keeping mean raw-MSE degradation <11.111111111111116% on an independent preregistered development panel. No R223/R244 candidate output read; no shared results/STATUS/estimator edits, benchmark/Actions/private/holdout/paid/submission/leaderboard action.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/ba36152744f344ca7023aa807c8d1ab667baea04/research/r246/R246_RECEIPT.json",
-              "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4"
-            }
-          }
-        }
-      ],
+      "priority": 2,
       "reason": "Offline R209 V25 mini-100 score diagnostic complete using only the immutable normalized R209 record and pinned R209 source receipt. Recomputed all 100 official adjusted scores with 0 mismatches; all rows use identical 806303721965 FLOPs / 2^41 = 0.36666448157347986 multiplier, so the 0.1 floor binds 0/100 and all cross-network score concentration comes from raw-MSE variation. Top-1/5/10/20 score shares are 1.3592696639751477%, 6.471417664447711%, 12.47245090733508%, and 23.847414826413804%. Mean raw MSE 2.228303490170447e-8; mean adjusted score 8.170397440117225e-9. Next preregisterable hypothesis H-R246: a network-agnostic V25 simplification can cut measured FLOPs >=10% while keeping mean raw-MSE degradation <11.111111111111116% on an independent preregistered development panel. No R223/R244 candidate output read; no shared results/STATUS/estimator edits, benchmark/Actions/private/holdout/paid/submission/leaderboard action.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/ba36152744f344ca7023aa807c8d1ab667baea04/research/r246/R246_RECEIPT.json",
-        "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4"
+        "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/ba36152744f344ca7023aa807c8d1ab667baea04/research/r246/R246_RECEIPT.json"
       },
+      "status": "COMPLETE",
+      "title": "Diagnose per-network score concentration in the immutable R209 V25 baseline",
       "verdict": "DIAGNOSTIC_COMPLETE"
     },
     {
       "assigned_owner": "network-agnostic-efficiency-research",
+      "attempts": [
+        {
+          "code_commit": "afad944fffa3568a92a315db0ba11ffd312f55c3",
+          "command": "protocol/history preparation only: deduplicate prior mechanisms; freeze exactly one network-agnostic V25 candidate/config, exact public mini100 panel, target-free falsifier and scientific/cost/failure gates before any measurement; no candidate/benchmark/Actions execution before frozen gates",
+          "completion": {
+            "reason": "DEVELOPMENT NO-GO before public measurement. History-deduplicated candidate V25-NM24-YOUNG-D21-RIGHT-SPARSIFY passed the static >=10% FLOP-reduction planning gate (conservative candidate/parent ratio 0.8828118016350895) but failed the frozen target-free D21 fidelity falsifier decisively: 8/8 finite deterministic cases, identity control exact, but mean D21 RRMS 0.37184426509568913 vs <=0.012 and max 0.38016503271515556; every case exceeded the <=0.015 gate. Protocol therefore forbids estimator implementation/public mini-100/Actions. No R223/R244 candidate output/artifact read; no per-network tuning, benchmark, Actions, paid/private/holdout, retry, submission, leaderboard or canonical V25 mutation.",
+            "receipt": {
+              "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/10373eceef73c83593d0b4fe052e4c833511daaf/research/r247/R247_RECEIPT.json"
+            },
+            "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
+            "status": "SCIENTIFIC_REJECT",
+            "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
+          },
+          "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
+          "status": "SCIENTIFIC_REJECT"
+        }
+      ],
       "deliverable": "Read current AGENTS/RESEARCH_PROCESS and full history, plus only the immutable R209 V25 mini-100 record, its source receipt, and the R246 diagnostic/receipt. Pursue H-R246: one network-agnostic V25 simplification targeting >=10% lower measured FLOPs while limiting raw-MSE degradation to <11.111111111111116%, so official adjusted score improves above the 0.1 cost floor. Select exactly one mechanism not materially similar to R223 V25-LF, R244 MP-R16, or prior rejected/history-covered methods; no per-network selection or tuning. Freeze candidate source/config, exact panel, target-free falsifier, official score/cost/failure gates, and one-shot execution plan before any measurement. If static and cheap falsifier gates pass, use at most one verified-free standard Actions workflow with validation and exactly one public mini-100 panel; no retry/second run, including infrastructure failures. Scientific GO additionally requires exact row/hash identity, 0 failures, mean adjusted <=0.995*R209, >=55/100 improved, paired parent-candidate gain >2 descriptive SE, mean FLOPs <=0.9*R209 and max residual <0.4s. Otherwise preserve DEVELOPMENT NO-GO/INFRA_ERROR precisely. Commit per-network evidence, hashes, report and receipt. No R223/R244 candidate artifacts or outputs, paid compute, private/holdout, submission, leaderboard mutation, canonical V25 edits, or gate relaxation.",
       "depends_on": [
         "R246"
       ],
       "hypothesis_id": "H-R246-NETWORK-AGNOSTIC-FLOP-REDUCTION",
-      "priority": 1,
-      "title": "Test one network-agnostic V25 simplification for a score-improving FLOPs cut",
       "id": "R247",
       "owner": "network-agnostic-efficiency-research",
-      "status": "SCIENTIFIC_REJECT",
-      "attempts": [
-        {
-          "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
-          "code_commit": "afad944fffa3568a92a315db0ba11ffd312f55c3",
-          "command": "protocol/history preparation only: deduplicate prior mechanisms; freeze exactly one network-agnostic V25 candidate/config, exact public mini100 panel, target-free falsifier and scientific/cost/failure gates before any measurement; no candidate/benchmark/Actions execution before frozen gates",
-          "status": "SCIENTIFIC_REJECT",
-          "completion": {
-            "run_id": "R247-h-r246-network-agnostic-efficiency-20260923",
-            "status": "SCIENTIFIC_REJECT",
-            "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
-            "reason": "DEVELOPMENT NO-GO before public measurement. History-deduplicated candidate V25-NM24-YOUNG-D21-RIGHT-SPARSIFY passed the static >=10% FLOP-reduction planning gate (conservative candidate/parent ratio 0.8828118016350895) but failed the frozen target-free D21 fidelity falsifier decisively: 8/8 finite deterministic cases, identity control exact, but mean D21 RRMS 0.37184426509568913 vs <=0.012 and max 0.38016503271515556; every case exceeded the <=0.015 gate. Protocol therefore forbids estimator implementation/public mini-100/Actions. No R223/R244 candidate output/artifact read; no per-network tuning, benchmark, Actions, paid/private/holdout, retry, submission, leaderboard or canonical V25 mutation.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/10373eceef73c83593d0b4fe052e4c833511daaf/research/r247/R247_RECEIPT.json",
-              "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8"
-            }
-          }
-        }
-      ],
+      "priority": 1,
       "reason": "DEVELOPMENT NO-GO before public measurement. History-deduplicated candidate V25-NM24-YOUNG-D21-RIGHT-SPARSIFY passed the static >=10% FLOP-reduction planning gate (conservative candidate/parent ratio 0.8828118016350895) but failed the frozen target-free D21 fidelity falsifier decisively: 8/8 finite deterministic cases, identity control exact, but mean D21 RRMS 0.37184426509568913 vs <=0.012 and max 0.38016503271515556; every case exceeded the <=0.015 gate. Protocol therefore forbids estimator implementation/public mini-100/Actions. No R223/R244 candidate output/artifact read; no per-network tuning, benchmark, Actions, paid/private/holdout, retry, submission, leaderboard or canonical V25 mutation.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/10373eceef73c83593d0b4fe052e4c833511daaf/research/r247/R247_RECEIPT.json",
-        "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8"
+        "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/10373eceef73c83593d0b4fe052e4c833511daaf/research/r247/R247_RECEIPT.json"
       },
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Test one network-agnostic V25 simplification for a score-improving FLOPs cut",
       "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
     },
     {
       "assigned_owner": "method-research-recovery",
+      "attempts": [
+        {
+          "code_commit": "c32aeea0c0ae4e739b1b6f723fc7548ca63cdb24",
+          "command": "protocol/history research only: read AGENTS/RESEARCH_PROCESS/history plus R209/R246/R247/R245 allowed evidence; select and freeze exactly one distinct network-agnostic V25 FLOPs-reduction method, exact R209 public mini-100 panel, target-free falsifier, metered-source compliance and scientific/cost/failure gates before any estimator/benchmark/Actions execution",
+          "completion": {
+            "reason": "R248 DEVELOPMENT NO-GO before estimator/public measurement. Distinct candidate V25-KRON1-YOUNG-TRANSPORT passed frozen novelty/static-cost/source-contract gates (conservative FLOP ratio 0.886473932833993 <=0.9), but the target-free oracle rank-1 Kronecker transport falsifier failed decisively: exact-Kronecker control RRMS 4.812580056623063e-16 PASS; 8/8 finite deterministic realistic cases; mean transported A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Per protocol no estimator, validation, benchmark, public mini-100 or Actions was run. No R223/R244 candidate artifact/output read, paid/private/holdout/submission/leaderboard/canonical edit, retry or second mechanism.",
+            "receipt": {
+              "sha256": "9430fd30c2e4baf587581681968136b9a1a69d9625cdeea6093070ef5f0068e5",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/ba0140b50588194b0a24b5005e4ba0fd9d32a6cd/research/r248/R248_RECEIPT.json"
+            },
+            "run_id": "R248-post-r247-distinct-method-research-20260923",
+            "status": "SCIENTIFIC_REJECT",
+            "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
+          },
+          "run_id": "R248-post-r247-distinct-method-research-20260923",
+          "status": "SCIENTIFIC_REJECT"
+        }
+      ],
       "deliverable": "Read current AGENTS/RESEARCH_PROCESS and full history, plus R209 baseline, R246 diagnostic, R247 target-free NO-GO report/receipt, and R245 static-compliance report. Identify exactly one genuinely distinct network-agnostic V25 FLOPs-reduction mechanism that is not R247's V25-NM24-YOUNG-D21-RIGHT-SPARSIFY or a material descendant, not R244 MP-R16, not R223 V25-LF, and not a history-closed family. Preserve the R246 score condition: target >=10% measured FLOPs reduction while raw-MSE degradation <11.111111111111116%, with official adjusted score as objective and no per-network tuning. Freeze candidate source/config, exact public R209 mini-100 panel, target-free falsifier, cost/failure/score gates, and one-shot execution plan before measurements. Mandatory source compliance: no output-affecting math.* in predict; use metered FlopScope (fnp) for sqrt/transcendentals; do not presume nontrivial Python-scalar arithmetic is free—avoid it or stop with eligibility UNKNOWN requiring organizer clarification. Any target-free falsifier failure => durable DEVELOPMENT NO-GO and no estimator/benchmark/Actions. If all gates pass, at most one verified-free standard Actions workflow with validation and exactly one public mini-100 panel, no retry/second run. Scientific GO requires exact row/hash identity, zero failures, mean adjusted <=0.995*R209, >=55/100 improved, paired parent-candidate gain >2 descriptive SE, mean FLOPs <=0.9*R209 and max residual <0.4s. Record all evidence/hashes; no R223/R244 candidate outputs/artifacts, paid compute, private/holdout, submission, leaderboard mutation, canonical V25 edits, or gate relaxation.",
       "depends_on": [
         "R245"
       ],
       "hypothesis_id": "POST-R247-DISTINCT-V25-EFFICIENCY-METHOD",
-      "priority": 1,
-      "title": "Find and test a distinct metered V25 FLOPs-reduction method after R247 rejection",
       "id": "R248",
       "owner": "method-research-recovery",
-      "status": "SCIENTIFIC_REJECT",
-      "attempts": [
-        {
-          "run_id": "R248-post-r247-distinct-method-research-20260923",
-          "code_commit": "c32aeea0c0ae4e739b1b6f723fc7548ca63cdb24",
-          "command": "protocol/history research only: read AGENTS/RESEARCH_PROCESS/history plus R209/R246/R247/R245 allowed evidence; select and freeze exactly one distinct network-agnostic V25 FLOPs-reduction method, exact R209 public mini-100 panel, target-free falsifier, metered-source compliance and scientific/cost/failure gates before any estimator/benchmark/Actions execution",
-          "status": "SCIENTIFIC_REJECT",
-          "completion": {
-            "run_id": "R248-post-r247-distinct-method-research-20260923",
-            "status": "SCIENTIFIC_REJECT",
-            "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
-            "reason": "R248 DEVELOPMENT NO-GO before estimator/public measurement. Distinct candidate V25-KRON1-YOUNG-TRANSPORT passed frozen novelty/static-cost/source-contract gates (conservative FLOP ratio 0.886473932833993 <=0.9), but the target-free oracle rank-1 Kronecker transport falsifier failed decisively: exact-Kronecker control RRMS 4.812580056623063e-16 PASS; 8/8 finite deterministic realistic cases; mean transported A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Per protocol no estimator, validation, benchmark, public mini-100 or Actions was run. No R223/R244 candidate artifact/output read, paid/private/holdout/submission/leaderboard/canonical edit, retry or second mechanism.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/ba0140b50588194b0a24b5005e4ba0fd9d32a6cd/research/r248/R248_RECEIPT.json",
-              "sha256": "9430fd30c2e4baf587581681968136b9a1a69d9625cdeea6093070ef5f0068e5"
-            }
-          }
-        }
-      ],
+      "priority": 1,
+      "reason": "R248 DEVELOPMENT NO-GO before estimator/public measurement. Distinct candidate V25-KRON1-YOUNG-TRANSPORT passed frozen novelty/static-cost/source-contract gates (conservative FLOP ratio 0.886473932833993 <=0.9), but the target-free oracle rank-1 Kronecker transport falsifier failed decisively: exact-Kronecker control RRMS 4.812580056623063e-16 PASS; 8/8 finite deterministic realistic cases; mean transported A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Per protocol no estimator, validation, benchmark, public mini-100 or Actions was run. No R223/R244 candidate artifact/output read, paid/private/holdout/submission/leaderboard/canonical edit, retry or second mechanism.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/ba0140b50588194b0a24b5005e4ba0fd9d32a6cd/research/r248/R248_RECEIPT.json",
-        "sha256": "9430fd30c2e4baf587581681968136b9a1a69d9625cdeea6093070ef5f0068e5"
+        "sha256": "9430fd30c2e4baf587581681968136b9a1a69d9625cdeea6093070ef5f0068e5",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/ba0140b50588194b0a24b5005e4ba0fd9d32a6cd/research/r248/R248_RECEIPT.json"
       },
-      "reason": "R248 DEVELOPMENT NO-GO before estimator/public measurement. Distinct candidate V25-KRON1-YOUNG-TRANSPORT passed frozen novelty/static-cost/source-contract gates (conservative FLOP ratio 0.886473932833993 <=0.9), but the target-free oracle rank-1 Kronecker transport falsifier failed decisively: exact-Kronecker control RRMS 4.812580056623063e-16 PASS; 8/8 finite deterministic realistic cases; mean transported A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Per protocol no estimator, validation, benchmark, public mini-100 or Actions was run. No R223/R244 candidate artifact/output read, paid/private/holdout/submission/leaderboard/canonical edit, retry or second mechanism."
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Find and test a distinct metered V25 FLOPs-reduction method after R247 rejection"
     },
     {
       "assigned_owner": "phase2-scalar-compliance-independent-audit",
+      "attempts": [
+        {
+          "code_commit": "06a5293a52500dfb75ad1040b338f1d3591035ea",
+          "command": "source-only independent audit of official Phase-2 Allowed Code/code-patterns/Challenge Rules/FlopScope docs+source with R245 as context only; classify fnp array ops, fnp primitives, shape-derived scalars, math.*, Python scalar coefficient/division, and control/bookkeeping; no organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 outputs/artifacts, submission/leaderboard, or canonical edits",
+          "completion": {
+            "reason": "R249 source-only independent audit COMPLETE. Official Phase-2 sources support: ordinary fnp.ndarray operators CONFIRMED_ALLOWED and metered; fnp numerical primitives including sqrt/divide CONFIRMED_ALLOWED and metered; the exact trivial shape-derived pattern fnp.sqrt(2.0 / mlp.width) is CONFIRMED_ALLOWED only narrowly because the current official starter-kit explicitly recommends it, while the preceding Python scalar division is unmetered; output-affecting math.* numerical work is CONFIRMED_PROHIBITED because Phase 2 requires computation through FlopScope and reserves stdlib/residual Python for control/bookkeeping/plumbing; general output-affecting Python scalar coefficient/division arithmetic remains UNKNOWN as a blanket category because published primary sources define no de-minimis boundary between trivial argument shaping and meaningful unmetered computation; control/bookkeeping/loading is CONFIRMED_ALLOWED. FlopScope 0.12.0/0.12.1 README and client source are identical for the audited scalar path; live evaluator version was independently sourced from organizer clarification. Durable append-only JSON receipt: research/r249/R249_RECEIPT.json commit 2cc0a2971a32d09b72f86d7951d316619d779937 SHA256 bafacabb407083b27ab8a86a2856a24da3c885ec2024e7ecf781cd05507818c5. No organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 output/artifact inspection, submission/leaderboard, or canonical edit.",
+            "receipt": {
+              "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md"
+            },
+            "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
+          "status": "COMPLETE"
+        }
+      ],
       "deliverable": "Research the official Phase-2 eligibility/metering boundary for Python scalar arithmetic in estimator predict code. Use primary sources only: pinned official AIcrowd starter-kit Allowed Code, code-patterns and FlopScope primer; current published Challenge Rules; official FlopScope client docs/source and any first-party organizer clarification that already exists. Treat R245 report as context only, not as evidence. Classify separately: (1) fnp.ndarray operators, (2) fnp.sqrt/divide and other primitives, (3) shape-derived scalar arithmetic such as 2/width passed into fnp ops, (4) output-affecting CPython math.* and coefficient calculations, (5) control/bookkeeping/loading. For each, cite exact source/version/hash and distinguish confirmed allowed, confirmed prohibited, and unresolved. Do not contact organizers; do not inspect R223/R244 candidate artifacts/output; no estimator/benchmark/Actions, private/holdout, paid compute, submission or leaderboard mutation. Write findings as one concise source-linked Markdown file in `research/r249/R249_SCALAR_METERING_ELIGIBILITY.md`; use that file URL and SHA256 as the R249 finish receipt.",
       "depends_on": [
         "R245"
       ],
       "hypothesis_id": "PHASE2-PYTHON-SCALAR-METERING-BOUNDARY",
-      "priority": 2,
-      "title": "Resolve official Phase-2 metering eligibility of Python scalar arithmetic",
       "id": "R249",
       "owner": "phase2-scalar-compliance-independent-audit",
-      "status": "COMPLETE",
-      "attempts": [
-        {
-          "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
-          "code_commit": "06a5293a52500dfb75ad1040b338f1d3591035ea",
-          "command": "source-only independent audit of official Phase-2 Allowed Code/code-patterns/Challenge Rules/FlopScope docs+source with R245 as context only; classify fnp array ops, fnp primitives, shape-derived scalars, math.*, Python scalar coefficient/division, and control/bookkeeping; no organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 outputs/artifacts, submission/leaderboard, or canonical edits",
-          "status": "COMPLETE",
-          "completion": {
-            "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
-            "status": "COMPLETE",
-            "reason": "R249 source-only independent audit COMPLETE. Official Phase-2 sources support: ordinary fnp.ndarray operators CONFIRMED_ALLOWED and metered; fnp numerical primitives including sqrt/divide CONFIRMED_ALLOWED and metered; the exact trivial shape-derived pattern fnp.sqrt(2.0 / mlp.width) is CONFIRMED_ALLOWED only narrowly because the current official starter-kit explicitly recommends it, while the preceding Python scalar division is unmetered; output-affecting math.* numerical work is CONFIRMED_PROHIBITED because Phase 2 requires computation through FlopScope and reserves stdlib/residual Python for control/bookkeeping/plumbing; general output-affecting Python scalar coefficient/division arithmetic remains UNKNOWN as a blanket category because published primary sources define no de-minimis boundary between trivial argument shaping and meaningful unmetered computation; control/bookkeeping/loading is CONFIRMED_ALLOWED. FlopScope 0.12.0/0.12.1 README and client source are identical for the audited scalar path; live evaluator version was independently sourced from organizer clarification. Durable append-only JSON receipt: research/r249/R249_RECEIPT.json commit 2cc0a2971a32d09b72f86d7951d316619d779937 SHA256 bafacabb407083b27ab8a86a2856a24da3c885ec2024e7ecf781cd05507818c5. No organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 output/artifact inspection, submission/leaderboard, or canonical edit.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md",
-              "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175"
-            }
-          }
-        }
-      ],
+      "priority": 2,
       "reason": "R249 source-only independent audit COMPLETE. Official Phase-2 sources support: ordinary fnp.ndarray operators CONFIRMED_ALLOWED and metered; fnp numerical primitives including sqrt/divide CONFIRMED_ALLOWED and metered; the exact trivial shape-derived pattern fnp.sqrt(2.0 / mlp.width) is CONFIRMED_ALLOWED only narrowly because the current official starter-kit explicitly recommends it, while the preceding Python scalar division is unmetered; output-affecting math.* numerical work is CONFIRMED_PROHIBITED because Phase 2 requires computation through FlopScope and reserves stdlib/residual Python for control/bookkeeping/plumbing; general output-affecting Python scalar coefficient/division arithmetic remains UNKNOWN as a blanket category because published primary sources define no de-minimis boundary between trivial argument shaping and meaningful unmetered computation; control/bookkeeping/loading is CONFIRMED_ALLOWED. FlopScope 0.12.0/0.12.1 README and client source are identical for the audited scalar path; live evaluator version was independently sourced from organizer clarification. Durable append-only JSON receipt: research/r249/R249_RECEIPT.json commit 2cc0a2971a32d09b72f86d7951d316619d779937 SHA256 bafacabb407083b27ab8a86a2856a24da3c885ec2024e7ecf781cd05507818c5. No organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 output/artifact inspection, submission/leaderboard, or canonical edit.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md",
-        "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175"
-      }
+        "sha256": "0995b689691b67c709f22d518069e41f8147fe6ba081ab78dd52cd78cd4ef175",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2/research/r249/R249_SCALAR_METERING_ELIGIBILITY.md"
+      },
+      "status": "COMPLETE",
+      "title": "Resolve official Phase-2 metering eligibility of Python scalar arithmetic"
     },
     {
       "assigned_owner": "post-r248-next-method-research",
+      "attempts": [
+        {
+          "code_commit": "99f35592913f59360b7f5c3e9645af6ee529b9f9",
+          "command": "protocol/history preparation only: read AGENTS/RESEARCH_PROCESS/full history and allowed R209/R245/R246/R248 evidence; freeze exactly one distinct V25 candidate, source/math, analytical all-in cost, target-free falsifier, exact R209 mini-100 panel and immutable gates before any estimator/benchmark/Actions execution",
+          "completion": {
+            "reason": "R250 DEVELOPMENT NO-GO before estimator/public measurement. Single frozen candidate V25-LEG2-R1-YOUNG-AP passed history-novelty/source/static-cost preflight (conservative FLOP ratio 0.8774850653457754 <=0.9) but failed the target-free structural fidelity gate decisively: exact rank-1 control PASS (max control RRMS 4.421498507036677e-16), deterministic replay PASS, 8/8 finite; max A/P reconstruction RRMS 0.9999977498858067 vs <=0.015, max D21-core RRMS 1.0024907470453626 vs <=0.015, mean D21-core RRMS 0.9997770493726187 vs <=0.012. Per frozen protocol no estimator, benchmark, public mini-100, Actions, retry or second method. No R223/R244 candidate outputs/artifacts, paid/private/holdout/submission/leaderboard/canonical V25 edit.",
+            "receipt": {
+              "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/cc18c09a8ddf19e100a2d1757d4091d47fb33b5c/research/r250/R250_RECEIPT.json"
+            },
+            "run_id": "R250-post-r248-next-method-research-20260923",
+            "status": "SCIENTIFIC_REJECT",
+            "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
+          },
+          "run_id": "R250-post-r248-next-method-research-20260923",
+          "status": "SCIENTIFIC_REJECT"
+        }
+      ],
       "deliverable": "Read current AGENTS/RESEARCH_PROCESS and complete experiment history, plus allowed R209 baseline, R246 score decomposition, R245 source-compliance findings and R248 terminal result. Select exactly one genuinely new network-agnostic V25 score-improvement hypothesis, excluding R247 2:4 D21 right-factor sparsity, R248 rank-1 Kronecker transport, R244 MP-R16, R223 V25-LF and all historically closed/rejected descendants; do not read R223/R244 candidate outputs/artifacts. Freeze source/math, one candidate, analytical all-in cost bound, exact target-free synthetic falsifier with deterministic realistic cases/controls/tolerances, exact R209 public mini-100 panel, score/failure gates and stop conditions before measurement. All output-affecting numerical operations must use metered fnp; no math.* or unresolved unmetered Python scalar arithmetic. Run only the frozen target-free falsifier first. Any falsifier/novelty/source-compliance/cost failure => durable DEVELOPMENT NO-GO report/receipt and finish with no estimator/benchmark/Actions or second method. Only if all preregistration gates PASS: at most one preverified-free standard Actions workflow, exactly one public R209 mini-100 panel, no retry. Public GO gates: exact row/hash identity, 0 failures, adjusted <=0.995*R209, >=55/100 better, paired gain >2 descriptive SE, mean FLOPs <=0.9*R209, max residual <0.4s. No paid/private/holdout/submission/leaderboard/canonical V25 edits/gate relaxation.",
       "depends_on": [
         "R245",
@@ -5142,54 +5196,36 @@
         "R248"
       ],
       "hypothesis_id": "POST-R248-DISTINCT-V25-SCORE-METHOD",
-      "priority": 1,
-      "title": "Test one distinct metered V25 score-improvement method after R248 rejection",
       "id": "R250",
       "owner": "post-r248-next-method-research",
-      "status": "SCIENTIFIC_REJECT",
-      "attempts": [
-        {
-          "run_id": "R250-post-r248-next-method-research-20260923",
-          "code_commit": "99f35592913f59360b7f5c3e9645af6ee529b9f9",
-          "command": "protocol/history preparation only: read AGENTS/RESEARCH_PROCESS/full history and allowed R209/R245/R246/R248 evidence; freeze exactly one distinct V25 candidate, source/math, analytical all-in cost, target-free falsifier, exact R209 mini-100 panel and immutable gates before any estimator/benchmark/Actions execution",
-          "status": "SCIENTIFIC_REJECT",
-          "completion": {
-            "run_id": "R250-post-r248-next-method-research-20260923",
-            "status": "SCIENTIFIC_REJECT",
-            "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
-            "reason": "R250 DEVELOPMENT NO-GO before estimator/public measurement. Single frozen candidate V25-LEG2-R1-YOUNG-AP passed history-novelty/source/static-cost preflight (conservative FLOP ratio 0.8774850653457754 <=0.9) but failed the target-free structural fidelity gate decisively: exact rank-1 control PASS (max control RRMS 4.421498507036677e-16), deterministic replay PASS, 8/8 finite; max A/P reconstruction RRMS 0.9999977498858067 vs <=0.015, max D21-core RRMS 1.0024907470453626 vs <=0.015, mean D21-core RRMS 0.9997770493726187 vs <=0.012. Per frozen protocol no estimator, benchmark, public mini-100, Actions, retry or second method. No R223/R244 candidate outputs/artifacts, paid/private/holdout/submission/leaderboard/canonical V25 edit.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/cc18c09a8ddf19e100a2d1757d4091d47fb33b5c/research/r250/R250_RECEIPT.json",
-              "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026"
-            }
-          }
-        }
-      ],
+      "priority": 1,
       "reason": "R250 DEVELOPMENT NO-GO before estimator/public measurement. Single frozen candidate V25-LEG2-R1-YOUNG-AP passed history-novelty/source/static-cost preflight (conservative FLOP ratio 0.8774850653457754 <=0.9) but failed the target-free structural fidelity gate decisively: exact rank-1 control PASS (max control RRMS 4.421498507036677e-16), deterministic replay PASS, 8/8 finite; max A/P reconstruction RRMS 0.9999977498858067 vs <=0.015, max D21-core RRMS 1.0024907470453626 vs <=0.015, mean D21-core RRMS 0.9997770493726187 vs <=0.012. Per frozen protocol no estimator, benchmark, public mini-100, Actions, retry or second method. No R223/R244 candidate outputs/artifacts, paid/private/holdout/submission/leaderboard/canonical V25 edit.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/cc18c09a8ddf19e100a2d1757d4091d47fb33b5c/research/r250/R250_RECEIPT.json",
-        "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026"
+        "sha256": "a44c7da234165d516e14308bac2c7495473c89b138304953d6810638dd8d6026",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/cc18c09a8ddf19e100a2d1757d4091d47fb33b5c/research/r250/R250_RECEIPT.json"
       },
+      "status": "SCIENTIFIC_REJECT",
+      "title": "Test one distinct metered V25 score-improvement method after R248 rejection",
       "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
     },
     {
       "assigned_owner": "global-accuracy-method-research",
       "attempts": [
         {
-          "run_id": "R251-global-accuracy-full-history-method-20260923",
           "code_commit": "ef50654bf412d9c14d9c4eb9af2b329dd44aca55",
           "command": "protocol/history preparation only: read complete immutable history and R231/R232/R238/R239/R245/R249/R250 evidence; freeze exactly one genuinely new global-accuracy hypothesis, unchanged-parent production-config synthetic fixture, byte hashes/seeds/diagnostics, metered source contract, exact target-free falsifier, FLOP/time bounds and stop rules before any measurement",
-          "status": "INCONCLUSIVE",
           "completion": {
-            "run_id": "R251-global-accuracy-full-history-method-20260923",
-            "status": "INCONCLUSIVE",
-            "verdict": "PARENT_GATE_NOT_EXECUTED_PINNED_RUNTIME_UNAVAILABLE",
             "reason": "R251 terminal INCONCLUSIVE before parent science. Full-history deduplication and one new GFNP hypothesis were frozen before measurement, along with exact 1024x16 seed-251001 fixture bytes/hashes, diagnostics, gates and stop rules. Mandatory unchanged-parent production-shape gate could not be executed because the session runtime was Python 3.13.5/NumPy 2.3.5 with flopscope and whestbench absent and python3.11 unavailable; attempting to install the independently verified official FlopScope 0.12.1 wheel failed before installation after DNS retries with '[Errno -3] Temporary failure in name resolution'. The frozen protocol forbids substituting Actions, alternate runtime, changed fixture, reseed/resize/rescale or retry for this gate. Therefore there are no parent measurements/checkpoints and no scientific claim. GFNP estimator was not constructed and its candidate falsifier/public mini-100 were not run. No paid/private/holdout, R223/R244 output/artifact access, submission/leaderboard mutation, canonical V25 edit, second method or gate relaxation.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json",
-              "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb"
-            }
-          }
+              "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json"
+            },
+            "run_id": "R251-global-accuracy-full-history-method-20260923",
+            "status": "INCONCLUSIVE",
+            "verdict": "PARENT_GATE_NOT_EXECUTED_PINNED_RUNTIME_UNAVAILABLE"
+          },
+          "run_id": "R251-global-accuracy-full-history-method-20260923",
+          "status": "INCONCLUSIVE"
         }
       ],
       "deliverable": "Accuracy-first, full-history-deduplicated global-accuracy research motivated by R231. Read complete history plus R231/R232/R238/R239/R245/R249/R250 evidence. Choose exactly one genuinely new global-accuracy estimator hypothesis, excluding DRRE/R232 descendants, RSRF/R238 descendants, R247 2:4 D21 sparsity, R248 rank-1 Kronecker transport, R250 LEG2-R1, R244 MP-R16, R223 V25-LF, and all closed/rejected history; no per-network tuning or invented leader method. Freeze math/source, deterministic target-free fixtures+byte hashes, seeds, diagnostics, falsifier gates, FLOP/time bounds and stop rules before measurement. First execute unchanged parent on the same production-configuration synthetic fixture and save exact fixture hashes plus per-layer finite/max-abs/symmetry checkpoints. Parent failure => terminal INCONCLUSIVE with forensic trace, no candidate construction/rescale/reseed/retry. Parent pass => run only the single frozen target-free candidate falsifier; every output-affecting numerical op through metered fnp, no math.* or unresolved unmetered scalar arithmetic. Any gate failure => durable NO-GO, no estimator/benchmark/Actions/second method. Only if all frozen target-free/source/cost gates pass: at most one verified-free standard Actions workflow on exactly public R209 mini-100, no retry; gates zero failures, exact row/hash identity, mean adjusted <=0.95*R209, >=55/100 better, paired gain >2 descriptive SE, mean FLOPs <=R209, max residual <0.4s. No official-rank/same-panel inference, paid/private/holdout, R223/R244 outputs/artifacts, submission/leaderboard mutation, canonical V25 edit, or gate relaxation.",
@@ -5204,19 +5240,34 @@
       "id": "R251",
       "owner": "global-accuracy-method-research",
       "priority": 1,
-      "status": "INCONCLUSIVE",
-      "title": "Test one new global-accuracy estimator after full-history deduplication",
       "reason": "R251 terminal INCONCLUSIVE before parent science. Full-history deduplication and one new GFNP hypothesis were frozen before measurement, along with exact 1024x16 seed-251001 fixture bytes/hashes, diagnostics, gates and stop rules. Mandatory unchanged-parent production-shape gate could not be executed because the session runtime was Python 3.13.5/NumPy 2.3.5 with flopscope and whestbench absent and python3.11 unavailable; attempting to install the independently verified official FlopScope 0.12.1 wheel failed before installation after DNS retries with '[Errno -3] Temporary failure in name resolution'. The frozen protocol forbids substituting Actions, alternate runtime, changed fixture, reseed/resize/rescale or retry for this gate. Therefore there are no parent measurements/checkpoints and no scientific claim. GFNP estimator was not constructed and its candidate falsifier/public mini-100 were not run. No paid/private/holdout, R223/R244 output/artifact access, submission/leaderboard mutation, canonical V25 edit, second method or gate relaxation.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json",
-        "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb"
-      }
+        "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json"
+      },
+      "status": "INCONCLUSIVE",
+      "title": "Test one new global-accuracy estimator after full-history deduplication"
     },
     {
-      "id": "R252",
-      "title": "Test one new global-accuracy method in one pinned Actions run",
-      "hypothesis_id": "GLOBAL-ACCURACY-ONE-SHOT-ACTIONS-POST-R251",
-      "priority": 1,
+      "assigned_owner": "actions-accuracy-method-research",
+      "attempts": [
+        {
+          "code_commit": "26346269b3c14462057c3d508b3ff3adfaa97581",
+          "command": "protocol/history preparation only: deduplicate complete immutable history and required evidence; freeze exactly one new global-accuracy hypothesis, exact production-shape target-free fixture bytes/hashes/seeds/diagnostics, metered source contract, falsifier/cost/public gates and one-run stop rules before creating or triggering the sole standard ubuntu-24.04 Actions workflow",
+          "completion": {
+            "reason": "R252 terminal INFRA_ERROR before parent science. The sole authorized standard ubuntu-24.04 Actions run 35830986191/job 107083271578 attempt 1 verified exact Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 core wheel hashes, frozen repo blobs, pinned V25 blob/SHA, and all 16 fixture weight hashes plus concatenated weight SHA256 de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e. It then failed at the frozen fixture truth-byte check with RuntimeError: truth hash mismatch against expected SHA256 623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450. The generator did not retain the observed failing truth digest/bytes, so the numerical cause is unknown. Parent executions=0, candidate constructed=false, candidate executions=0, public access/runs=0. Artifact 10736403843 ZIP SHA256 10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e. Per one-run/no-retry rule there is no repair/rerun and no scientific conclusion.",
+            "receipt": {
+              "sha256": "07c4080b498d3e19ac48f6641f99219613d57e1eedbf01b7d2e5634bffd46758",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/cd67198c19f6b969e9f6622872d96ffdd5f2cbbc/research/r252/R252_RECEIPT.json"
+            },
+            "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+            "status": "INFRA_ERROR",
+            "verdict": "PRE_PARENT_FIXTURE_TRUTH_BYTE_IDENTITY_FAILURE_NO_RETRY"
+          },
+          "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+          "status": "INFRA_ERROR"
+        }
+      ],
       "deliverable": "Test exactly one genuinely new global-accuracy estimator hypothesis after full-history deduplication. Exclude R251 GFNP, R232 DRRE descendants, R238 RSRF descendants, R247/R248/R250, R244 MP-R16, R223 V25-LF, and every closed/rejected family; no per-network tuning or invented leader method. Treat R251 only as an infrastructure terminal record, not scientific evidence. Freeze protocol, source/math, one exact deterministic 1024x16 target-free fixture with bytes/hashes/seeds/diagnostics, candidate gates, source-compliance and cost bounds before execution. Authorize exactly one standard ubuntu-24.04 GitHub-hosted Actions run, no retry, pinned Python 3.11.16 / NumPy 2.4.6 / FlopScope 0.12.1 / WhestBench 0.16.1 with verified package hashes. In that single run execute unchanged pinned V25 parent first; parent fail => INCONCLUSIVE and no candidate. Only after parent PASS construct/test the one frozen target-free candidate against known truth. Any target-free/source/cost gate fail => durable NO-GO and skip public data. Only if all pass, same workflow may proceed once to exact R209 public mini-100; gates exact row/hash identity, 0 failures, adjusted <=0.95*R209, >=55/100 improved, paired gain >2 descriptive SE, mean FLOPs <=R209, max residual <0.4s. No official-rank claim; no paid/private/holdout, R223/R244 outputs/artifacts, submission, leaderboard mutation, canonical V25 edit or gate relaxation. Save workflow/run/artifact hashes, fixture/replay/report/receipt, finish queue and regenerate STATUS.md from latest head.",
       "depends_on": [
         "R231",
@@ -5224,73 +5275,73 @@
         "R245",
         "R249"
       ],
-      "assigned_owner": "actions-accuracy-method-research",
+      "hypothesis_id": "GLOBAL-ACCURACY-ONE-SHOT-ACTIONS-POST-R251",
+      "id": "R252",
       "owner": "actions-accuracy-method-research",
-      "status": "INFRA_ERROR",
-      "attempts": [
-        {
-          "run_id": "R252-one-shot-actions-global-accuracy-20260923",
-          "code_commit": "26346269b3c14462057c3d508b3ff3adfaa97581",
-          "command": "protocol/history preparation only: deduplicate complete immutable history and required evidence; freeze exactly one new global-accuracy hypothesis, exact production-shape target-free fixture bytes/hashes/seeds/diagnostics, metered source contract, falsifier/cost/public gates and one-run stop rules before creating or triggering the sole standard ubuntu-24.04 Actions workflow",
-          "status": "INFRA_ERROR",
-          "completion": {
-            "run_id": "R252-one-shot-actions-global-accuracy-20260923",
-            "status": "INFRA_ERROR",
-            "verdict": "PRE_PARENT_FIXTURE_TRUTH_BYTE_IDENTITY_FAILURE_NO_RETRY",
-            "reason": "R252 terminal INFRA_ERROR before parent science. The sole authorized standard ubuntu-24.04 Actions run 35830986191/job 107083271578 attempt 1 verified exact Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 core wheel hashes, frozen repo blobs, pinned V25 blob/SHA, and all 16 fixture weight hashes plus concatenated weight SHA256 de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e. It then failed at the frozen fixture truth-byte check with RuntimeError: truth hash mismatch against expected SHA256 623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450. The generator did not retain the observed failing truth digest/bytes, so the numerical cause is unknown. Parent executions=0, candidate constructed=false, candidate executions=0, public access/runs=0. Artifact 10736403843 ZIP SHA256 10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e. Per one-run/no-retry rule there is no repair/rerun and no scientific conclusion.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/cd67198c19f6b969e9f6622872d96ffdd5f2cbbc/research/r252/R252_RECEIPT.json",
-              "sha256": "07c4080b498d3e19ac48f6641f99219613d57e1eedbf01b7d2e5634bffd46758"
-            }
-          }
-        }
-      ],
+      "priority": 1,
       "reason": "R252 terminal evidence corrected by R253 postflight: status remains INFRA_ERROR and the original revision-241 finish event is preserved. Immutable GitHub evidence shows one queue attempt but two distinct push-triggered R252 Actions runs under an authorization for exactly one run/no retry. Run 35830273198/job 107081017265 used D21-CWG via .github/workflows/r252-one-shot.yml and failed before fixture/science because its exact runtime string check observed FlopScope 0.12.1+np2.4.6 and WhestBench unknown after all three pinned wheel digests passed. Run 35830986191/job 107083271578 used CFSP4 via .github/workflows/r252-cfsp4-one-shot.yml, passed pinned core/runtime/V25 and all 16 fixture weight hashes, then failed the frozen truth-byte check before parent. Parent measurements=0, candidate measurements=0, public measurements=0 across both runs. The second dispatch exceeded the one-run authorization. GitHub run/commit actor is tim8es; session/agent attribution is UNKNOWN.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/d4a58774da9569e581aa239669a3406f9a2f1ff9/research/r253/R253_R252_TERMINAL_EVIDENCE_ERRATUM.json",
-        "sha256": "680db7fcda71b5604006cd1aa26c00a44bc0bbb0c39553aa83b2b7e4d0c38313"
-      }
+        "sha256": "680db7fcda71b5604006cd1aa26c00a44bc0bbb0c39553aa83b2b7e4d0c38313",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/d4a58774da9569e581aa239669a3406f9a2f1ff9/research/r253/R253_R252_TERMINAL_EVIDENCE_ERRATUM.json"
+      },
+      "status": "INFRA_ERROR",
+      "title": "Test one new global-accuracy method in one pinned Actions run"
     },
     {
       "assigned_owner": "r252-actions-accounting-audit",
+      "attempts": [
+        {
+          "code_commit": "8e1ede14cbff49fb3fabf9eecf005f08cb48ba9a",
+          "command": "read-only/postflight audit only: verify immutable GitHub metadata/logs/artifacts for R252 runs 35830273198 and 35830986191; write source-linked incident report + JSON erratum; append terminal_evidence_correction preserving original finish; regenerate STATUS.md; no workflow trigger/edit/rerun or science",
+          "completion": {
+            "reason": "R253 read-only/postflight audit COMPLETE. Immutable GitHub evidence verifies two distinct R252 Actions runs against one authorized run/no retry: 35830273198/job 107081017265 (D21-CWG) failed at runtime version-string verification after pinned wheel digests passed; 35830986191/job 107083271578 (CFSP4) failed at fixture truth-byte identity after pinned runtime/core/V25/weight checks passed. Both stopped before unchanged parent; parent/candidate/public measurements are 0/0/0. Revision 245 appended terminal_evidence_correction, preserved the original revision-241 finish event, kept R252 INFRA_ERROR, and projected the current R252 receipt/reason to the source-linked erratum. GitHub actor/commit account is tim8es; session/agent attribution remains UNKNOWN. No Actions trigger/edit/rerun, science, paid/private/holdout, submission, leaderboard or canonical change.",
+            "receipt": {
+              "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json"
+            },
+            "run_id": "R253-r252-actions-accounting-audit-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R253-r252-actions-accounting-audit-20260923",
+          "status": "COMPLETE"
+        }
+      ],
       "deliverable": "Read-only/postflight accounting audit of R252. Independently enumerate both GitHub Actions runs 35830273198/job 107081017265 and 35830986191/job 107083271578, their distinct workflows/methods, artifacts/logs and pre-science failures; preserve immutable evidence; create append-only incident report and JSON erratum; record one queue attempt versus two Actions runs and unauthorized duplicate dispatch; attribute actor/session only when proved by commit/run evidence, otherwise UNKNOWN. Append terminal_evidence_correction without rewriting the original R252 finish; keep R252 INFRA_ERROR while correcting current job-level reason/receipt projection to the erratum. Regenerate STATUS.md from latest control head. No workflow edits/triggers/reruns, science, paid/private/holdout, submissions, leaderboard or canonical changes.",
       "depends_on": [
         "R231",
         "R249"
       ],
       "hypothesis_id": "R252-ACTIONS-ACCOUNTING-POSTFLIGHT-AUDIT",
-      "priority": 1,
-      "title": "Audit duplicate R252 Actions runs and correct terminal evidence",
       "id": "R253",
       "owner": "r252-actions-accounting-audit",
-      "status": "COMPLETE",
-      "attempts": [
-        {
-          "run_id": "R253-r252-actions-accounting-audit-20260923",
-          "code_commit": "8e1ede14cbff49fb3fabf9eecf005f08cb48ba9a",
-          "command": "read-only/postflight audit only: verify immutable GitHub metadata/logs/artifacts for R252 runs 35830273198 and 35830986191; write source-linked incident report + JSON erratum; append terminal_evidence_correction preserving original finish; regenerate STATUS.md; no workflow trigger/edit/rerun or science",
-          "status": "COMPLETE",
-          "completion": {
-            "run_id": "R253-r252-actions-accounting-audit-20260923",
-            "status": "COMPLETE",
-            "reason": "R253 read-only/postflight audit COMPLETE. Immutable GitHub evidence verifies two distinct R252 Actions runs against one authorized run/no retry: 35830273198/job 107081017265 (D21-CWG) failed at runtime version-string verification after pinned wheel digests passed; 35830986191/job 107083271578 (CFSP4) failed at fixture truth-byte identity after pinned runtime/core/V25/weight checks passed. Both stopped before unchanged parent; parent/candidate/public measurements are 0/0/0. Revision 245 appended terminal_evidence_correction, preserved the original revision-241 finish event, kept R252 INFRA_ERROR, and projected the current R252 receipt/reason to the source-linked erratum. GitHub actor/commit account is tim8es; session/agent attribution remains UNKNOWN. No Actions trigger/edit/rerun, science, paid/private/holdout, submission, leaderboard or canonical change.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json",
-              "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244"
-            }
-          }
-        }
-      ],
+      "priority": 1,
       "reason": "R253 read-only/postflight audit COMPLETE. Immutable GitHub evidence verifies two distinct R252 Actions runs against one authorized run/no retry: 35830273198/job 107081017265 (D21-CWG) failed at runtime version-string verification after pinned wheel digests passed; 35830986191/job 107083271578 (CFSP4) failed at fixture truth-byte identity after pinned runtime/core/V25/weight checks passed. Both stopped before unchanged parent; parent/candidate/public measurements are 0/0/0. Revision 245 appended terminal_evidence_correction, preserved the original revision-241 finish event, kept R252 INFRA_ERROR, and projected the current R252 receipt/reason to the source-linked erratum. GitHub actor/commit account is tim8es; session/agent attribution remains UNKNOWN. No Actions trigger/edit/rerun, science, paid/private/holdout, submission, leaderboard or canonical change.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json",
-        "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244"
-      }
+        "sha256": "a312d652dadc0b1b0a0769641e301ac640de24aa3ec688d0f43047e65e527244",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/a315efe746ff707e66078d28fb2d009cddea1814/research/r253/R253_RECEIPT.json"
+      },
+      "status": "COMPLETE",
+      "title": "Audit duplicate R252 Actions runs and correct terminal evidence"
     },
     {
-      "title": "One-shot global-accuracy method with deterministic target-free truth",
-      "hypothesis_id": "R254-ONE-SHOT-GLOBAL-ACCURACY-NOVEL-METHOD",
-      "priority": 1,
+      "assigned_owner": "one-shot-accuracy-research",
+      "attempts": [
+        {
+          "code_commit": "a7c4932391c09c0f6004d83b410ed643b3ca8ad2",
+          "command": "one standard ubuntu-24.04 Actions workflow only: verify pinned wheel hashes and corrected importlib.metadata versions; reconstruct/replay frozen R254 monomial-path fixture; run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; on parent PASS only construct and run V25-BPK2K balanced pK-to-K cumulant reduction; on all target-free/source/cost gates only verify exact R209 mini-100 row/order/network/target hashes and run candidate once; no retry/second workflow",
+          "completion": {
+            "reason": "R254 terminal INFRA_ERROR after the sole authorized standard ubuntu-24.04 Actions run 35834163527/job 107093511576 attempt 1. Pinned wheel hashes and corrected importlib.metadata versions passed; pinned V25 source hashes passed; the deterministic 1024x16 monomial-path fixture and independent replay passed exact frozen weight/truth hashes. The unchanged parent executed first and control flow reached parent PASS, then the frozen V25-BPK2K candidate was constructed and executed. Before R254_TARGET_FREE_RESULT.json could be serialized, the harness crashed in candidate_gate because it assumed BudgetContext.summary() was a mapping but runtime returned a string: AttributeError: 'str' object has no attribute 'get'. Artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7. Persisted parent/candidate scientific measurements are 0/0; BPK2K accuracy/cost gates are unevaluated. Validation/public identity/public mini-100 were skipped. Per one-workflow/no-retry rule there is no repair/rerun or second method.",
+            "receipt": {
+              "sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json"
+            },
+            "run_id": "R254-one-shot-global-accuracy-20260923",
+            "status": "INFRA_ERROR"
+          },
+          "run_id": "R254-one-shot-global-accuracy-20260923",
+          "status": "INFRA_ERROR"
+        }
+      ],
       "deliverable": "Select exactly one history-deduplicated global-accuracy hypothesis; freeze protocol/spec/source and deterministic production-shape target-free fixture before one standard ubuntu-24.04 Actions run. Run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; only on parent PASS run the frozen candidate and target-free exact-truth/cost/source gates; only if all pass may the same workflow run exact public R209 mini-100 with frozen score/improvement/SE/FLOP/residual gates. Pin Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 with official wheel hashes and corrected distribution-metadata version checks. No retry, paid/private/holdout, submission, leaderboard/canonical edits, R223/R244 outputs/artifacts, R252 workflow edits, per-network tuning or gate relaxation.",
       "depends_on": [
         "R231",
@@ -5299,36 +5350,51 @@
         "R249",
         "R253"
       ],
-      "assigned_owner": "one-shot-accuracy-research",
+      "hypothesis_id": "R254-ONE-SHOT-GLOBAL-ACCURACY-NOVEL-METHOD",
       "id": "R254",
       "owner": "one-shot-accuracy-research",
-      "status": "INFRA_ERROR",
-      "attempts": [
-        {
-          "run_id": "R254-one-shot-global-accuracy-20260923",
-          "code_commit": "a7c4932391c09c0f6004d83b410ed643b3ca8ad2",
-          "command": "one standard ubuntu-24.04 Actions workflow only: verify pinned wheel hashes and corrected importlib.metadata versions; reconstruct/replay frozen R254 monomial-path fixture; run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; on parent PASS only construct and run V25-BPK2K balanced pK-to-K cumulant reduction; on all target-free/source/cost gates only verify exact R209 mini-100 row/order/network/target hashes and run candidate once; no retry/second workflow",
-          "status": "INFRA_ERROR",
-          "completion": {
-            "run_id": "R254-one-shot-global-accuracy-20260923",
-            "status": "INFRA_ERROR",
-            "reason": "R254 terminal INFRA_ERROR after the sole authorized standard ubuntu-24.04 Actions run 35834163527/job 107093511576 attempt 1. Pinned wheel hashes and corrected importlib.metadata versions passed; pinned V25 source hashes passed; the deterministic 1024x16 monomial-path fixture and independent replay passed exact frozen weight/truth hashes. The unchanged parent executed first and control flow reached parent PASS, then the frozen V25-BPK2K candidate was constructed and executed. Before R254_TARGET_FREE_RESULT.json could be serialized, the harness crashed in candidate_gate because it assumed BudgetContext.summary() was a mapping but runtime returned a string: AttributeError: 'str' object has no attribute 'get'. Artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7. Persisted parent/candidate scientific measurements are 0/0; BPK2K accuracy/cost gates are unevaluated. Validation/public identity/public mini-100 were skipped. Per one-workflow/no-retry rule there is no repair/rerun or second method.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json",
-              "sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488"
-            }
-          }
-        }
-      ],
+      "priority": 1,
+      "reason": "R254 terminal INFRA_ERROR after the sole authorized standard ubuntu-24.04 Actions run 35834163527/job 107093511576 attempt 1. Pinned wheel hashes and corrected importlib.metadata versions passed; pinned V25 source hashes passed; the deterministic 1024x16 monomial-path fixture and independent replay passed exact frozen weight/truth hashes. The unchanged parent executed first and control flow reached parent PASS, then the frozen V25-BPK2K candidate was constructed and executed. Before R254_TARGET_FREE_RESULT.json could be serialized, the harness crashed in candidate_gate because it assumed BudgetContext.summary() was a mapping but runtime returned a string: AttributeError: 'str' object has no attribute 'get'. Artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7. Persisted parent/candidate scientific measurements are 0/0; BPK2K accuracy/cost gates are unevaluated. Validation/public identity/public mini-100 were skipped. Per one-workflow/no-retry rule there is no repair/rerun or second method.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json",
-        "sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488"
+        "sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json"
       },
-      "reason": "R254 terminal INFRA_ERROR after the sole authorized standard ubuntu-24.04 Actions run 35834163527/job 107093511576 attempt 1. Pinned wheel hashes and corrected importlib.metadata versions passed; pinned V25 source hashes passed; the deterministic 1024x16 monomial-path fixture and independent replay passed exact frozen weight/truth hashes. The unchanged parent executed first and control flow reached parent PASS, then the frozen V25-BPK2K candidate was constructed and executed. Before R254_TARGET_FREE_RESULT.json could be serialized, the harness crashed in candidate_gate because it assumed BudgetContext.summary() was a mapping but runtime returned a string: AttributeError: 'str' object has no attribute 'get'. Artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7. Persisted parent/candidate scientific measurements are 0/0; BPK2K accuracy/cost gates are unevaluated. Validation/public identity/public mini-100 were skipped. Per one-workflow/no-retry rule there is no repair/rerun or second method."
+      "status": "INFRA_ERROR",
+      "title": "One-shot global-accuracy method with deterministic target-free truth"
+    },
+    {
+      "assigned_owner": "r254-independent-verifier",
+      "attempts": [],
+      "deliverable": "Read-only independent postflight of R254. Verify the single Actions run/job/artifact/ZIP digest and immutable receipt; inspect workflow steps/logs plus exact source and fixture hashes; verify the BudgetContext.summary type error and that parent/candidate measurement counts are zero, validation/public access/public mini-100 were skipped, and the status is INFRA_ERROR rather than scientific rejection or success. Create one append-only report/receipt with source URLs, exact SHAs, conclusions and commit. Do not edit R254/R256, launch/rerun Actions, run science, access private/holdout, alter canonical/leaderboard, or claim unpersisted in-memory values.",
+      "depends_on": [
+        "R249",
+        "R253"
+      ],
+      "hypothesis_id": "R254-TERMINAL-EVIDENCE-INDEPENDENT-POSTFLIGHT",
+      "id": "R255",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Independently verify R254 terminal infrastructure evidence"
+    },
+    {
+      "assigned_owner": "r254-harness-repair",
+      "attempts": [],
+      "deliverable": "Static-only diagnosis and minimal harness repair in a new isolated branch based on the exact R254 candidate commit. Confirm the pinned BudgetContext.summary() contract from source/runtime; preserve candidate math, fixture bytes/seed, parent, thresholds, FLOP/meter gates and public gates exactly. Replace the incorrect string-as-mapping access with a supported typed source for residual-wall-time evidence; do not coerce unknown values to zero or weaken the 0.4s gate. Add one small offline regression check for the observed contract, run only that check, and produce a report/receipt with before/after hashes and commit. No Actions/workflow trigger, benchmark/science, public identity/data access, rerun, submission, canonical edit or R254 history rewrite. If a safe measured residual-time source cannot be established, stop with the exact blocker.",
+      "depends_on": [
+        "R249",
+        "R253"
+      ],
+      "hypothesis_id": "R254-HARNESS-SUMMARY-TYPE-REPAIR",
+      "id": "R256",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Repair and test R254 telemetry boundary offline"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 250,
+  "revision": 252,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
