@@ -1,0 +1,64 @@
+{
+  "schema": "arc.whitebox.r223.attempt4_infra_receipt.v1",
+  "job_id": "R223",
+  "attempt": 4,
+  "status": "INFRA_ERROR",
+  "decision": "R223_ATTEMPT4_PRE_PANEL_PARENT_ARTIFACT_AUTH_ENV_FAILURE",
+  "branch": "research/r223-v25-isolated-improvement-20260922",
+  "queue": {
+    "start_revision": 173,
+    "start_control_commit": "fdf60da45f305b59d4330207b77b410fa36b6b64",
+    "run_id": "R223-v25-local-feed-attempt4-20260923",
+    "code_commit": "a10e79902d62829bdf261d102ac2e774688e52a6"
+  },
+  "execution": {
+    "actions_run_id": 35809847014,
+    "actions_job_id": 107018738567,
+    "head_sha": "962e50972b1b18ca21f3281c129146a83094d870",
+    "github_conclusion": "failure",
+    "free_standard_compute_gate_passed": true,
+    "toolchain_distribution_gate_passed": true,
+    "exact_source_transform_guard_passed": true,
+    "parent_artifact_download_started": false,
+    "whest_validate_started": false,
+    "candidate_panel_run_started": false,
+    "candidate_rows": null
+  },
+  "exact_source_provenance": {
+    "upstream_git_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "upstream_sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+    "candidate_git_blob_sha1": "eb95d4ae46a031be5131eef8dd0909f2061b8749",
+    "candidate_sha256": "a62f2d2e580c38a77741c5316a8a88b8a52b97d676ecd4a38639ca2c6e5c422b",
+    "candidate_equals_attempt1_after_docstring_and_terminal_lf_normalization": true,
+    "candidate_equals_exact_preregistered_parent_transform": true,
+    "formula_and_clamp_tokens_exact": true,
+    "target_access": false
+  },
+  "failure": {
+    "phase": "pre-panel immutable R209 parent-artifact download bootstrap",
+    "exact_error": "shell line 2: GITHUB_TOKEN: unbound variable",
+    "root_cause": "The workflow exported the GitHub Actions credential as GH_TOKEN but the curl Authorization header referenced GITHUB_TOKEN under set -u. Shell expansion failed before curl executed.",
+    "scientific_interpretation": "No parent artifact bytes were fetched, whest validate did not start, and no candidate mini-100 invocation occurred. V25-LF remains scientifically unevaluated."
+  },
+  "artifact": {
+    "id": 10728618750,
+    "name": "r223-v25-local-feed-mini100-attempt4",
+    "size_bytes": 38100,
+    "zip_sha256": "7ed4f1b4092059cb77e51c379cce1cc9147daf37750ba9829e557a45de6c30b2",
+    "expires_at": "2026-12-22T02:18:50Z"
+  },
+  "scope": {
+    "estimator_source_changed_in_attempt4": false,
+    "formula_changed": false,
+    "clamp_changed": false,
+    "panel_changed": false,
+    "thresholds_changed": false,
+    "public_mini_candidate_run": false,
+    "parent_rerun": false,
+    "paid_or_larger_runner": false,
+    "holdout_private": false,
+    "submission": false,
+    "canonical_change": false,
+    "leaderboard_claim": false
+  }
+}
