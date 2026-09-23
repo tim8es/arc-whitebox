@@ -4251,6 +4251,14 @@
         "deliverable": "Independently recompute R266 from immutable normalized R209 V25 rows and official Phase-2 scoring source. Verify mean adjusted score, cost factor, 0.1 floor, conditional raw-MSE reduction needed to match the displayed 2.1e-9, and treatment of R209 V29 failures; check arithmetic/rounding and explicitly preserve NOT_COMPARABLE because public mini:all-100 differs from 50-visible+50-sealed leaderboard evaluation. Do not claim official rank or exact gap. Produce an isolated append-only audit report/receipt with hashes/commit and finish R270. No estimator/Actions/data access/private/holdout/full/paid/submission/leaderboard/model/canonical edits."
       },
       "revision": 317
+    },
+    {
+      "revision": 318,
+      "action": "claim",
+      "job": "R270",
+      "owner": "score-gap-independent-audit",
+      "payload": {},
+      "at": "2026-09-23T12:21:48.350Z"
     }
   ],
   "jobs": [
@@ -6785,14 +6793,14 @@
         "R266"
       ],
       "assigned_owner": "score-gap-independent-audit",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "score-gap-independent-audit",
+      "status": "CLAIMED",
       "attempts": [],
       "deliverable": "Independently recompute R266 from immutable normalized R209 V25 rows and official Phase-2 scoring source. Verify mean adjusted score, cost factor, 0.1 floor, conditional raw-MSE reduction needed to match the displayed 2.1e-9, and treatment of R209 V29 failures; check arithmetic/rounding and explicitly preserve NOT_COMPARABLE because public mini:all-100 differs from 50-visible+50-sealed leaderboard evaluation. Do not claim official rank or exact gap. Produce an isolated append-only audit report/receipt with hashes/commit and finish R270. No estimator/Actions/data access/private/holdout/full/paid/submission/leaderboard/model/canonical edits."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 317,
+  "revision": 318,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
