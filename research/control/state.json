@@ -4400,50 +4400,66 @@
       "revision": 328
     },
     {
-      "revision": 329,
       "action": "start",
+      "at": "2026-09-23T13:09:21.677Z",
       "job": "R272",
       "owner": "workflow-preflight-guard",
       "payload": {
-        "run_id": "R272-offline-workflow-preflight-20260923",
         "code_commit": "afc0e19c9d3892ac1fe331f5c5105e4392579872",
-        "command": "python -m unittest discover -s tests -p 'test_r272_workflow_preflight.py' -v"
+        "command": "python -m unittest discover -s tests -p 'test_r272_workflow_preflight.py' -v",
+        "run_id": "R272-offline-workflow-preflight-20260923"
       },
-      "at": "2026-09-23T13:09:21.677Z"
+      "revision": 329
     },
     {
-      "revision": 330,
       "action": "enqueue",
+      "at": "2026-09-23 13:10:20+00:00",
       "job": "R273",
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "score-gap-independent-audit",
-        "title": "Measure whether R209 V25 error is broad-based or concentrated",
-        "hypothesis_id": "R209-V25-ERROR-CONCENTRATION-20260923",
-        "priority": 2,
+        "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits.",
         "depends_on": [
           "R209",
           "R270"
         ],
-        "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits."
+        "hypothesis_id": "R209-V25-ERROR-CONCENTRATION-20260923",
+        "priority": 2,
+        "title": "Measure whether R209 V25 error is broad-based or concentrated"
       },
-      "at": "2026-09-23 13:10:20+00:00"
+      "revision": 330
     },
     {
-      "revision": 331,
       "action": "finish",
+      "at": "2026-09-23T13:15:50.087Z",
       "job": "R272",
       "owner": "workflow-preflight-guard",
       "payload": {
-        "run_id": "R272-offline-workflow-preflight-20260923",
-        "status": "COMPLETE",
         "reason": "Added one narrow standard-library offline workflow preflight plus focused tests for the three verified R257-R259 infrastructure failure modes. Local synthetic contract check rejected shallow ancestry checkout, wrong runtime-manifest name, and nonexistent all_layer_hashes_equal; repaired R260-like contract passed. No Actions/science/fixture execution/competition-data access/budget spend/workflow or historical receipt edits occurred. Final branch commit e4bdd87661ca0459675e1b4b9e8d22358be378d4.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/e4bdd87661ca0459675e1b4b9e8d22358be378d4/research/r272/R272_RECEIPT.json",
-          "sha256": "de02ec9f5484f1826fd7f0d02404a842bda74482fc94e972dd47b29f9bb2809a"
-        }
+          "sha256": "de02ec9f5484f1826fd7f0d02404a842bda74482fc94e972dd47b29f9bb2809a",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/e4bdd87661ca0459675e1b4b9e8d22358be378d4/research/r272/R272_RECEIPT.json"
+        },
+        "run_id": "R272-offline-workflow-preflight-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T13:15:50.087Z"
+      "revision": 331
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T13:16:36.863Z",
+      "job": "R271",
+      "owner": "leader-method-forensics",
+      "payload": {
+        "reason": "Identity-level reconciliation complete: NOT_COMPARABLE. The official Phase-2 public ledger exposes 50 mlp_index/mlp_name rows but no network_id/target fingerprint. Official schema documents mlp_name as a deterministic stable label; the published visible-50 labels have 0/50 overlap with immutable R209's 100 labels, so no R209 subset can be selected by proven identity and no 50-row score was recomputed. Exact evaluator identity also fails: official starterkit source states grader whestbench v0.16.0 + flopscope[server] 0.12.0, while R209 records whestbench 0.16.1 + flopscope 0.12.1+np2.4.6. Minimum missing artifact is an official immutable visible-50 manifest mapping mlp_index/mlp_name to network_id (preferably target_sha256) plus grader versions; if those IDs are absent from R209, an immutable public V25 per-MLP result for that exact 50 is required. No row-order inference, estimator, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard or canonical/model edit.",
+        "receipt": {
+          "sha256": "fc0229b90aa1f69b30aa2a71672a271e1ac3ba43516190366cdef2247695a91c",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/772f010042a818ba641b64be58db55a78344217f/research/r271/R271_RECEIPT.json"
+        },
+        "run_id": "R271-visible50-identity-reconciliation-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 332
     }
   ],
   "jobs": [
@@ -7052,8 +7068,17 @@
         {
           "code_commit": "244e77592048e545282628ef16dfca65b95aeb2b",
           "command": "read-only identity reconciliation of immutable R209 V25 mini100 against exact official visible Phase-2 50 using only R263/R270 and public primary sources; no dataset download/estimator/Actions/private/holdout/full/paid/submission/leaderboard/canonical edits",
+          "completion": {
+            "reason": "Identity-level reconciliation complete: NOT_COMPARABLE. The official Phase-2 public ledger exposes 50 mlp_index/mlp_name rows but no network_id/target fingerprint. Official schema documents mlp_name as a deterministic stable label; the published visible-50 labels have 0/50 overlap with immutable R209's 100 labels, so no R209 subset can be selected by proven identity and no 50-row score was recomputed. Exact evaluator identity also fails: official starterkit source states grader whestbench v0.16.0 + flopscope[server] 0.12.0, while R209 records whestbench 0.16.1 + flopscope 0.12.1+np2.4.6. Minimum missing artifact is an official immutable visible-50 manifest mapping mlp_index/mlp_name to network_id (preferably target_sha256) plus grader versions; if those IDs are absent from R209, an immutable public V25 per-MLP result for that exact 50 is required. No row-order inference, estimator, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard or canonical/model edit.",
+            "receipt": {
+              "sha256": "fc0229b90aa1f69b30aa2a71672a271e1ac3ba43516190366cdef2247695a91c",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/772f010042a818ba641b64be58db55a78344217f/research/r271/R271_RECEIPT.json"
+            },
+            "run_id": "R271-visible50-identity-reconciliation-20260923",
+            "status": "COMPLETE"
+          },
           "run_id": "R271-visible50-identity-reconciliation-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read the immutable R209 V25 normalized 100-network record, R263 official leaderboard snapshot, R270 independent score audit, and official public Phase-2 primary pages. Determine whether the exact 50 visible scored MLP identities are present in R209 with matching evaluator/metric/versions. Compute V25 adjusted score on exactly that same 50 only if identity and aggregation are proven; otherwise state NOT_COMPARABLE and name the minimum missing public artifact. Preserve unknowns; do not infer the panel from row order or displayed rounded score. Append report+receipt with source URLs, row IDs, formulas, hashes and commit; finish R271. Read-only only: no estimator, dataset download, Actions, paid compute, private/holdout/full access, submission, leaderboard mutation or canonical edits.",
@@ -7065,26 +7090,31 @@
       "id": "R271",
       "owner": "leader-method-forensics",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Identity-level reconciliation complete: NOT_COMPARABLE. The official Phase-2 public ledger exposes 50 mlp_index/mlp_name rows but no network_id/target fingerprint. Official schema documents mlp_name as a deterministic stable label; the published visible-50 labels have 0/50 overlap with immutable R209's 100 labels, so no R209 subset can be selected by proven identity and no 50-row score was recomputed. Exact evaluator identity also fails: official starterkit source states grader whestbench v0.16.0 + flopscope[server] 0.12.0, while R209 records whestbench 0.16.1 + flopscope 0.12.1+np2.4.6. Minimum missing artifact is an official immutable visible-50 manifest mapping mlp_index/mlp_name to network_id (preferably target_sha256) plus grader versions; if those IDs are absent from R209, an immutable public V25 per-MLP result for that exact 50 is required. No row-order inference, estimator, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard or canonical/model edit.",
+      "receipt": {
+        "sha256": "fc0229b90aa1f69b30aa2a71672a271e1ac3ba43516190366cdef2247695a91c",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/772f010042a818ba641b64be58db55a78344217f/research/r271/R271_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Map R209 V25 onto the official visible Phase-2 50"
     },
     {
       "assigned_owner": "workflow-preflight-guard",
       "attempts": [
         {
-          "run_id": "R272-offline-workflow-preflight-20260923",
           "code_commit": "afc0e19c9d3892ac1fe331f5c5105e4392579872",
           "command": "python -m unittest discover -s tests -p 'test_r272_workflow_preflight.py' -v",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R272-offline-workflow-preflight-20260923",
-            "status": "COMPLETE",
             "reason": "Added one narrow standard-library offline workflow preflight plus focused tests for the three verified R257-R259 infrastructure failure modes. Local synthetic contract check rejected shallow ancestry checkout, wrong runtime-manifest name, and nonexistent all_layer_hashes_equal; repaired R260-like contract passed. No Actions/science/fixture execution/competition-data access/budget spend/workflow or historical receipt edits occurred. Final branch commit e4bdd87661ca0459675e1b4b9e8d22358be378d4.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/e4bdd87661ca0459675e1b4b9e8d22358be378d4/research/r272/R272_RECEIPT.json",
-              "sha256": "de02ec9f5484f1826fd7f0d02404a842bda74482fc94e972dd47b29f9bb2809a"
-            }
-          }
+              "sha256": "de02ec9f5484f1826fd7f0d02404a842bda74482fc94e972dd47b29f9bb2809a",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/e4bdd87661ca0459675e1b4b9e8d22358be378d4/research/r272/R272_RECEIPT.json"
+            },
+            "run_id": "R272-offline-workflow-preflight-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R272-offline-workflow-preflight-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Use R267 postmortem plus the actual R257-R260 workflow/fixture sources to identify the smallest useful reusable offline guard for the three verified failures: missing full-history protocol ancestry, fixture-manifest filename mismatch, and nonexistent replay-schema field. Inspect existing helpers first. If one small guard/test can catch all applicable failures without editing historical artifacts or live Actions workflows, implement it on an isolated branch and run only the local offline check; otherwise publish a concise evidence-based no-change report explaining why. Save report/receipt with hashes and commit; claim/start/finish R272 on the live control branch. Do not trigger Actions, run scientific estimators, access competition data, spend money, or edit old receipts/results.",
@@ -7095,32 +7125,32 @@
       "id": "R272",
       "owner": "workflow-preflight-guard",
       "priority": 2,
-      "status": "COMPLETE",
-      "title": "Add an offline preflight for the R257-R259 failure modes",
+      "reason": "Added one narrow standard-library offline workflow preflight plus focused tests for the three verified R257-R259 infrastructure failure modes. Local synthetic contract check rejected shallow ancestry checkout, wrong runtime-manifest name, and nonexistent all_layer_hashes_equal; repaired R260-like contract passed. No Actions/science/fixture execution/competition-data access/budget spend/workflow or historical receipt edits occurred. Final branch commit e4bdd87661ca0459675e1b4b9e8d22358be378d4.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/e4bdd87661ca0459675e1b4b9e8d22358be378d4/research/r272/R272_RECEIPT.json",
-        "sha256": "de02ec9f5484f1826fd7f0d02404a842bda74482fc94e972dd47b29f9bb2809a"
+        "sha256": "de02ec9f5484f1826fd7f0d02404a842bda74482fc94e972dd47b29f9bb2809a",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/e4bdd87661ca0459675e1b4b9e8d22358be378d4/research/r272/R272_RECEIPT.json"
       },
-      "reason": "Added one narrow standard-library offline workflow preflight plus focused tests for the three verified R257-R259 infrastructure failure modes. Local synthetic contract check rejected shallow ancestry checkout, wrong runtime-manifest name, and nonexistent all_layer_hashes_equal; repaired R260-like contract passed. No Actions/science/fixture execution/competition-data access/budget spend/workflow or historical receipt edits occurred. Final branch commit e4bdd87661ca0459675e1b4b9e8d22358be378d4."
+      "status": "COMPLETE",
+      "title": "Add an offline preflight for the R257-R259 failure modes"
     },
     {
       "assigned_owner": "score-gap-independent-audit",
-      "title": "Measure whether R209 V25 error is broad-based or concentrated",
-      "hypothesis_id": "R209-V25-ERROR-CONCENTRATION-20260923",
-      "priority": 2,
+      "attempts": [],
+      "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits.",
       "depends_on": [
         "R209",
         "R270"
       ],
-      "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits.",
+      "hypothesis_id": "R209-V25-ERROR-CONCENTRATION-20260923",
       "id": "R273",
       "owner": null,
+      "priority": 2,
       "status": "QUEUED",
-      "attempts": []
+      "title": "Measure whether R209 V25 error is broad-based or concentrated"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 331,
+  "revision": 332,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
