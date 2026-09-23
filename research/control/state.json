@@ -4965,6 +4965,18 @@
         "run_id": "R283-pr35-adversarial-synthetic-audit-20260923"
       },
       "revision": 370
+    },
+    {
+      "revision": 371,
+      "action": "start",
+      "job": "R282",
+      "owner": "r209-artifact-recovery",
+      "payload": {
+        "run_id": "R282-r209-artifact-recovery-20260923",
+        "code_commit": "c2ff82968849c4672a8d58db490452e4327a09c7",
+        "command": "inspect only existing public GitHub Actions artifacts/logs and committed R209/R223 material for retained V25 prediction/target/residual tensors; no Actions/reruns/dataset downloads"
+      },
+      "at": "2026-09-23T15:48:10.208Z"
     }
   ],
   "jobs": [
@@ -7939,7 +7951,14 @@
     },
     {
       "assigned_owner": "r209-artifact-recovery",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R282-r209-artifact-recovery-20260923",
+          "code_commit": "c2ff82968849c4672a8d58db490452e4327a09c7",
+          "command": "inspect only existing public GitHub Actions artifacts/logs and committed R209/R223 material for retained V25 prediction/target/residual tensors; no Actions/reruns/dataset downloads",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Follow R278's blocker: inspect only already-existing R209/R223 and related public GitHub Actions run artifacts/logs plus committed results for raw per-example predictions, targets, truth vectors or equivalent residual tensors needed for the R278 diagnostic. No new Actions, reruns, dataset downloads, paid resources, or private/holdout/full access. Verify provenance, run IDs, sizes, hashes and whether arrays correspond to the pinned V25/evaluator; if absent, state exact gap and a minimal future capture path. Produce append-only report/receipt and finish R282.",
       "depends_on": [
         "R209"
@@ -7948,7 +7967,7 @@
       "id": "R282",
       "owner": "r209-artifact-recovery",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Search existing ARC run artifacts for retained V25 residual vectors"
     },
     {
@@ -7986,7 +8005,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 370,
+  "revision": 371,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
