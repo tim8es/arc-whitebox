@@ -1785,6 +1785,23 @@
         "reason": "Align R233 queue job terminal state with its preserved finish event and attempt result SCIENTIFIC_REJECT. Preserve original receipt, reason, attempt, and all history; no scientific work or score was changed or rerun."
       },
       "revision": 137
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T00:14:55.175078+00:00",
+      "job": "R235",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "v25-compute-audit",
+        "deliverable": "Continue the compute-efficiency lane after terminal R233, but exclude its ONEHOT-WICK-ROW-SELECT (only 0.0077833% full-V25 FLOPs). Audit the pinned public V25 source and operator-level counted-FLOP profile for at most one distinct output-preserving contraction/reuse optimization that can save at least 1.0% of full per-MLP FLOPs. First freeze exact source identities, math/equivalence fixture, counted-FLOP derivation, production savings bound, and GO/NO-GO. Run only one isolated free micro-fixture. A bounded public mini-100 is allowed only if exact equivalence and >=1.0% production savings both pass; keep canonical V25 untouched. If no eligible path exists, record terminal NO-GO with the dominant operators and upper bounds. No paid compute, private/holdout data, submission, or repeat run.",
+        "depends_on": [
+          "R231"
+        ],
+        "hypothesis_id": "V25-MATERIAL-FLOP-CUT-SECOND-PASS",
+        "priority": 1,
+        "title": "Audit dominant V25 contractions for material exact FLOP savings"
+      },
+      "revision": 138
     }
   ],
   "jobs": [
@@ -2915,10 +2932,24 @@
       },
       "status": "COMPLETE",
       "title": "Prepare independent R218 crossover postflight verifier"
+    },
+    {
+      "assigned_owner": "v25-compute-audit",
+      "attempts": [],
+      "deliverable": "Continue the compute-efficiency lane after terminal R233, but exclude its ONEHOT-WICK-ROW-SELECT (only 0.0077833% full-V25 FLOPs). Audit the pinned public V25 source and operator-level counted-FLOP profile for at most one distinct output-preserving contraction/reuse optimization that can save at least 1.0% of full per-MLP FLOPs. First freeze exact source identities, math/equivalence fixture, counted-FLOP derivation, production savings bound, and GO/NO-GO. Run only one isolated free micro-fixture. A bounded public mini-100 is allowed only if exact equivalence and >=1.0% production savings both pass; keep canonical V25 untouched. If no eligible path exists, record terminal NO-GO with the dominant operators and upper bounds. No paid compute, private/holdout data, submission, or repeat run.",
+      "depends_on": [
+        "R231"
+      ],
+      "hypothesis_id": "V25-MATERIAL-FLOP-CUT-SECOND-PASS",
+      "id": "R235",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Audit dominant V25 contractions for material exact FLOP savings"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 137,
+  "revision": 138,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
