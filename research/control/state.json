@@ -3766,6 +3766,20 @@
         "deliverable": "Independently read the frozen R260 protocol plus its committed report/receipt. Verify report/receipt identity, source/runtime/fixture/artifact hash claims from available evidence; independently recompute parent/candidate final and all-layer MSE ratios and evaluate every frozen target-free gate. Reconcile workflow success with the scientific rejection and verify validation/public mini-100 was skipped. Produce an isolated R262 audit report and receipt with evidence links, exact calculations, hashes and any discrepancy; then finish this queue job. No reruns, Actions, R209/public/holdout/private/full data, paid resources, method proposals/tuning, submission, leaderboard/canonical changes, or edits to R260 artifacts. If repository write is unavailable, return the precise blocker and calculations without claiming completion."
       },
       "revision": 280
+    },
+    {
+      "action": "reassign",
+      "at": "2026-09-23 10:16:06+00:00",
+      "job": "R262",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "r260-independent-audit",
+        "from_session": null,
+        "to_assigned_owner": "r260-independent-audit-e178-guard",
+        "to_session": "6ab172ee-7a30-83ed-b295-d8d706a87d87",
+        "reason": "Bind unstarted R262 to an existing ARC verifier session; the queued task has no claim, start, branch or attempt, so no execution is being transferred."
+      },
+      "revision": 281
     }
   ],
   "jobs": [
@@ -6037,7 +6051,7 @@
       "depends_on": [
         "R260"
       ],
-      "assigned_owner": "r260-independent-audit",
+      "assigned_owner": "r260-independent-audit-e178-guard",
       "owner": null,
       "status": "QUEUED",
       "attempts": [],
@@ -6045,7 +6059,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 280,
+  "revision": 281,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
