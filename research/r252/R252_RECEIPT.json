@@ -1,7 +1,7 @@
 {
   "candidate_constructed": false,
   "candidate_id": "V25-D21-CWG",
-  "conclusion": "The sole authorized standard public-repository Actions workflow stopped before any scientific step because of a version-reporting assertion bug after exact package wheel hashes had passed. Later same-attempt control commits froze a different CFSP4 method/fixture after dispatch, creating protocol ambiguity; no second workflow exists and none is permitted. R252 is terminal INFRA_ERROR and makes no scientific claim.",
+  "conclusion": "Two R252 workflows were triggered under the same sole queue attempt, violating the frozen one-workflow/one-method rule. Both stopped before parent science: run 35830273198 at a runtime-version assertion, run 35830986191 at frozen fixture truth-hash reconstruction. Zero parent/candidate/public measurements occurred. No third workflow or repair is permitted; R252 is terminal INFRA_ERROR with no scientific claim.",
   "frozen_fixture": {
     "depth": 16,
     "executed_in_workflow": false,
@@ -40,9 +40,9 @@
   },
   "report": {
     "path": "research/r252/R252_REPORT.md",
-    "commit": "45998760467aef87f43e84706d9b9d0e0a6cb988",
-    "blob": "67097840e2ee35848377767d31fff6e06426a573",
-    "sha256": "693f41097a04f396cceec0e3dd7b99a5224e191a8db9b35cb2bc9ff932134e5a"
+    "commit": "16dc37e74dbc147f61654ad4caaa99edb37afeac",
+    "blob": "dbbd1731900def06820242b98485c38de8934e31",
+    "sha256": "2339029ce3909e190216734c760ed39849e9c062d523c05c2be0ba0e7ba686bd"
   },
   "run_id": "R252-one-shot-actions-global-accuracy-20260923",
   "safety": {
@@ -61,12 +61,12 @@
   },
   "schema": "arc.whitebox.r252.terminal_receipt.v1",
   "scientific_measurements": {
-    "candidate": 0,
     "parent": 0,
+    "candidate": 0,
     "public_mini100": 0
   },
   "status": "INFRA_ERROR",
-  "verdict": "TERMINAL_INFRA_ERROR_PRE_SCIENCE_NO_RETRY",
+  "verdict": "TERMINAL_INFRA_ERROR_PROTOCOL_VIOLATION_ZERO_SCIENCE",
   "workflow": {
     "artifact_id": 10736967637,
     "artifact_name": "r252-one-shot-evidence",
@@ -97,5 +97,23 @@
     ],
     "later_method": "CFSP4",
     "disposition": "Do not execute the later method/fixture: the sole authorized R252 workflow has already been consumed and R252 permits no second method or retry."
+  },
+  "duplicate_workflow": {
+    "protocol_violation": true,
+    "total_r252_workflows": 2,
+    "second_run": {
+      "run_id": 35830986191,
+      "job_id": 107083271578,
+      "head_sha": "71ecefb647bb590db14ba4b9d764652dea3d4040",
+      "artifact_id": 10736403843,
+      "artifact_name": "r252-cfsp4-one-shot",
+      "artifact_zip_sha256": "10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e",
+      "status": "INFRA_ERROR",
+      "failure": "fixture reconstruction raised RuntimeError: truth hash mismatch before parent execution",
+      "candidate_constructed": false,
+      "public_authorized": false,
+      "scientific_measurements": 0
+    },
+    "no_third_workflow": true
   }
 }
