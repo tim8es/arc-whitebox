@@ -5195,6 +5195,14 @@
         "run_id": "R288-v25-residual-capture-protocol-20260923"
       },
       "revision": 387
+    },
+    {
+      "revision": 388,
+      "action": "claim",
+      "job": "R287",
+      "owner": "phase2-free-runner-audit",
+      "payload": {},
+      "at": "2026-09-23T16:41:22.496Z"
     }
   ],
   "jobs": [
@@ -8331,9 +8339,9 @@
       ],
       "hypothesis_id": "V25-RESIDUAL-CAPTURE-FREE-RUNNER-20260923",
       "id": "R287",
-      "owner": null,
+      "owner": "phase2-free-runner-audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Check a genuinely zero-cost environment for V25 residual capture"
     },
     {
@@ -8360,7 +8368,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 387,
+  "revision": 388,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
