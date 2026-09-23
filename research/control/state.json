@@ -2769,6 +2769,14 @@
         "command": "read-only static audit of frozen R244 MP-R16 protocol/estimator/workflow against official Phase-2 allowed-code, scoring, and flopscope metering rules; inspect math.sqrt, scalar division, and numeric operations; no R244 artifact/output review or execution"
       },
       "at": "2026-09-23T05:08:06.657Z"
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T05:14:00Z",
+      "job": "R247",
+      "owner": "network-agnostic-efficiency-research",
+      "payload": {},
+      "revision": 214
     }
   ],
   "jobs": [
@@ -4459,13 +4467,13 @@
       "priority": 1,
       "title": "Test one network-agnostic V25 simplification for a score-improving FLOPs cut",
       "id": "R247",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "network-agnostic-efficiency-research",
+      "status": "CLAIMED",
       "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 213,
+  "revision": 214,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
