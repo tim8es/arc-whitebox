@@ -1,6 +1,6 @@
 # R241 — Official Phase-2 leaderboard refresh
 
-Checked: 2026-09-23 03:31:20 UTC UTC, immediately after the public AIcrowd page fetch. The browser tool exposes a rendered page snapshot ("Crawled: today"), not the underlying HTML bytes or a content digest.
+Checked: 2026-09-23 03:31:44 UTC, timestamped immediately after re-fetching the public AIcrowd leaderboard. The page labels its snapshot 'Crawled: today'; the browser tool does not expose underlying HTML bytes or a content digest.
 
 ## Current public leaderboard snapshot
 
