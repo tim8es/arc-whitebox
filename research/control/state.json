@@ -4378,6 +4378,14 @@
       "owner": "leader-method-forensics",
       "payload": {},
       "revision": 326
+    },
+    {
+      "revision": 327,
+      "action": "claim",
+      "job": "R272",
+      "owner": "workflow-preflight-guard",
+      "payload": {},
+      "at": "2026-09-23T13:08:10.005Z"
     }
   ],
   "jobs": [
@@ -7004,14 +7012,14 @@
       ],
       "hypothesis_id": "R257-R259-OFFLINE-PREFLIGHT-20260923",
       "id": "R272",
-      "owner": null,
+      "owner": "workflow-preflight-guard",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Add an offline preflight for the R257-R259 failure modes"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 326,
+  "revision": 327,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
