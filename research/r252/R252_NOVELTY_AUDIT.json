@@ -1,0 +1,55 @@
+{
+  "schema": "arc.whitebox.r252.novelty_audit.v1",
+  "candidate_id": "V25-CFSP4-FINAL-CORNISH-FISHER-SIGMA-POINT",
+  "history": {
+    "path": "research/history.json",
+    "git_blob_sha1": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "experiment_ids": 194,
+    "legacy_ledger_git_blob_sha1": "040e52efe01efd7280180b7e2d72901b4c2f0532"
+  },
+  "exact_term_counts": {
+    "cornish fisher": 0,
+    "cornish-fisher": 0,
+    "sigma point": 0,
+    "unscented": 0,
+    "quantile map": 0
+  },
+  "required_exclusions": [
+    "R251 GFNP (infrastructure terminal only; no scientific measurement)",
+    "R232 DRRE and descendants",
+    "R238 RSRF and descendants",
+    "R247 2:4 D21 right-factor sparsity",
+    "R248 rank-1 Kronecker transport",
+    "R250 LEG2-R1 Young A/P",
+    "R244 MP-R16",
+    "R223 V25-LF/local-feed lambda",
+    "all closed/rejected history families"
+  ],
+  "closest_history": [
+    {
+      "id": "E033",
+      "family": "diagonal four-cumulant Edgeworth carrier",
+      "disposition": "closed NO-GO",
+      "distinction": "E033 discarded cross-neuron state and propagated a separate scalar Edgeworth closure at every layer. CFSP4 preserves the full pinned V25 cross-neuron K3/K4 state/transport and changes only the final scalar response."
+    },
+    {
+      "id": "E098",
+      "family": "late K22 fixed fourth-order Edgeworth response",
+      "disposition": "closed NO-GO",
+      "distinction": "E098 injected a K22 Edgeworth correction. CFSP4 uses only the marginal D3/g4row already computed by V25 and applies a Cornish-Fisher quantile transform, with no K22 state or response."
+    },
+    {
+      "id": "E112",
+      "family": "factorized/scalar fourth-cumulant Edgeworth density closures",
+      "disposition": "closed NO-GO",
+      "distinction": "E112 used signed-density/Hermite Edgeworth corrections as the closure mechanism. CFSP4 does not use an Edgeworth density expansion; it evaluates a fixed Gaussian sigma-point expectation after a Cornish-Fisher quantile map, and it does not refactorize or replace V25's state."
+    }
+  ],
+  "leader_method": {
+    "source": "R230 queue/receipt conclusion",
+    "conclusion": "methods for target leader submissions were not publicly evidenced",
+    "leader_derived_hypotheses_used": 0
+  },
+  "r251_use": "Infrastructure record only: confirms no R251 measurement exists. GFNP math/result is not reused.",
+  "conclusion": "Treat CFSP4 as one genuinely distinct, target-free, network-agnostic final-response hypothesis. No second candidate is authorized."
+}
