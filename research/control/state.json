@@ -2184,6 +2184,18 @@
         "reason": "Attempt 2 is preserved as a second pre-panel INFRA_ERROR. Repair only the provenance bootstrap version check: replace the non-contractual module-level whestbench.__version__ assertion with importlib.metadata distribution-version checks for whestbench==0.16.1 and flopscope==0.12.1, while retaining whest version --json evidence. No estimator source, formula, clamp, panel, thresholds, parent artifact, or scientific configuration changes."
       },
       "revision": 168
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T02:09:18.362455+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "code_commit": "32aff4ec72edb2210069e7cb1d9999dbe627202b",
+        "command": "whest run --estimator methods/r223_estimator_v25_local_feed.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 100 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+        "run_id": "R223-v25-local-feed-attempt3-20260923"
+      },
+      "revision": 169
     }
   ],
   "jobs": [
@@ -2979,6 +2991,12 @@
           },
           "run_id": "R223-v25-local-feed-attempt2-20260923",
           "status": "INFRA_ERROR"
+        },
+        {
+          "code_commit": "32aff4ec72edb2210069e7cb1d9999dbe627202b",
+          "command": "whest run --estimator methods/r223_estimator_v25_local_feed.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 100 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "run_id": "R223-v25-local-feed-attempt3-20260923",
+          "status": "RUNNING"
         }
       ],
       "deliverable": "Inspect immutable history and V25's existing per-network public mini-100 evidence, then select exactly one untried, non-duplicative algorithm-level change aimed at reducing official adjusted score (not merely FLOPs below the 0.1B floor). Freeze the parent, code/config, falsifier, gates and exact panel before execution. Run at most one bounded development test on the same public mini-100 panel using only verified free/existing compute; do not alter canonical code. Compare every network, failures, MSE/FLOPs/runtime and score to V25; retain artifacts/hashes and commit. If novelty, cost or evidence is insufficient, finish with an explicit NO-GO and why. No holdout, paid resources, submission or leaderboard claims.",
@@ -2992,7 +3010,7 @@
         "sha256": "5eabfb77e78f9e419917c87c0853253f339cc2c1ccdeed99bfa5c64ce7f747d4",
         "url": "https://github.com/tim8es/arc-whitebox/blob/9f375488f40f5a55a66918622b5545a6825d5645/research/r223/R223_ATTEMPT2_INFRA_RECEIPT.json"
       },
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     },
     {
@@ -3538,7 +3556,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 168,
+  "revision": 169,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
