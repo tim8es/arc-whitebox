@@ -2695,6 +2695,14 @@
         "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483"
       },
       "at": "2026-09-23T04:57:38.073Z"
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T04:57:00Z",
+      "job": "R246",
+      "owner": "baseline-score-diagnostic",
+      "payload": {},
+      "revision": 208
     }
   ],
   "jobs": [
@@ -4341,13 +4349,13 @@
       "priority": 2,
       "title": "Diagnose per-network score concentration in the immutable R209 V25 baseline",
       "id": "R246",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "baseline-score-diagnostic",
+      "status": "CLAIMED",
       "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 207,
+  "revision": 208,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
