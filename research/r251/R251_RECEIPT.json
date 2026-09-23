@@ -1,0 +1,112 @@
+{
+  "schema": "r251-receipt-v1",
+  "job_id": "R251",
+  "attempt_id": "R251-global-accuracy-method-20260923",
+  "owner": "global-accuracy-method-research",
+  "status": "INCONCLUSIVE",
+  "verdict": "INCONCLUSIVE_PARENT_RUNTIME_UNAVAILABLE_PRE_MEASUREMENT",
+  "conclusion": "R251 froze one distinct global-accuracy hypothesis (V25-HK4-ROWLOCAL), deterministic production-shape target-free fixtures, exact truth hashes, source/metering rules, cost bound, parent-first diagnostics, falsifier gates, and the exact R209 public panel. The unchanged pinned V25 parent could not be executed in the available runtime because flopscope and whestbench were absent and the cache-only pinned install had no local flopscope distribution. The protocol reserves the only allowed Actions run for the public mini-100 after preflight; therefore no target-free Actions repair/run was launched. Candidate implementation/execution was not allowed. No scientific claim about candidate accuracy is made.",
+  "history": {
+    "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "read_evidence": {
+      "R231": "f36d8011fe1cf8eadf87e0751a18ca9555f9408f",
+      "R232": "d7acd05ee8b8caa71e6463f0e8dab6eb17fb829b",
+      "R238": "a8bb06f23f416ea4a1c01c655756477849234c74",
+      "R239": "6ba51144732eaadfe5ae8f5fb03d5f20b7561732",
+      "R245_report": "265090b3b83adc2d854826df8d30a973453ffe8b",
+      "R245_receipt": "941db3239e675571ccf78138cc9cbc21baab1b45",
+      "R249_report": "af688d4421f32ed7cc3bacdc8dc63733a4f4f6b2",
+      "R249_receipt": "2cc0a2971a32d09b72f86d7951d316619d779937",
+      "R250_report": "627f0f7a16cf40ec84e8f2774f1b51d9847b245e",
+      "R250_receipt": "cc18c09a8ddf19e100a2d1757d4091d47fb33b5c"
+    },
+    "excluded_families": [
+      "DRRE/R232 descendants",
+      "RSRF/R238 descendants",
+      "R247 2:4 D21 sparsity",
+      "R248 rank-1 Kronecker transport",
+      "R250 LEG2-R1",
+      "R244 MP-R16",
+      "R223 V25-LF",
+      "all history-closed/rejected families"
+    ]
+  },
+  "candidate": {
+    "id": "V25-HK4-ROWLOCAL",
+    "specified": true,
+    "implemented": false,
+    "executed": false,
+    "per_network_tuning": false,
+    "parent_git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "parent_sha256": "c0ae6f12f74cb8dc493f1b972a638a37ac745b5a0454161a8e1879fb0a7fd1ce"
+  },
+  "fixtures": {
+    "generator_commit": "38221d5fec606c3c9bfa80367292e337452a668a",
+    "generator_blob": "3b994c2be45db599be6cc043f9a368c0fc64949e",
+    "manifest_commit": "7d3e5f85915af29fd1ff0485e43f1915ae0eb187",
+    "manifest_blob": "72ca2dfe14901c5e6cc1d0f82260f15c86a3d87c",
+    "seed_251001_weights_aggregate_sha256": "a8fe9b06bfb36ffd176a062d04855ac21f158ccfb2afb3f0f8786941343d4522",
+    "seed_251001_truth_sha256": "5238af31e84e8b58fc89323e31e30c5d73d8619c1dae4ec53466677abf2295e3",
+    "seed_251002_weights_aggregate_sha256": "4fe37ac2f49c04c8bc37769a99ab49f9a77a31ccc896fef5c15435e8d1be4add",
+    "seed_251002_truth_sha256": "5ee74eb505999e0c9068076317158e0fc044d9dc0aa9cc1d6c8d95feaacc3d92"
+  },
+  "frozen_artifacts": {
+    "protocol_commit": "6d0250516712175eab0ca108ba023b3f312ef9c6",
+    "protocol_blob": "ca9f7581ff302bb66709638a3721925c66f4b0d7",
+    "report_commit": "d40cc35338904041268863a80421de556cebb317",
+    "report_blob": "0a754744c20699fa9b8d23bdaf2573359022031f"
+  },
+  "parent_gate": {
+    "executed": false,
+    "status": "UNEVALUABLE_INFRA",
+    "required_checkpoints": {
+      "finite": null,
+      "per_layer_max_abs": null,
+      "symmetry": null,
+      "replay_exact": null,
+      "truth_mse": null
+    },
+    "forensic": {
+      "python": "3.13.5",
+      "numpy": "2.3.5",
+      "platform": "Linux x86_64",
+      "import_flopscope": "ModuleNotFoundError: No module named 'flopscope'",
+      "import_whestbench": "ModuleNotFoundError: No module named 'whestbench'",
+      "cache_only_command": "python -m pip install --no-index flopscope==0.12.1 whestbench==0.16.1 numpy==2.4.6",
+      "cache_only_exit_code": 1,
+      "cache_only_error": "Could not find a version that satisfies the requirement flopscope==0.12.1; no matching distribution found."
+    }
+  },
+  "public_panel": {
+    "executed": false,
+    "actions_runs": 0,
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini:all-100",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "gates": {
+      "adjusted_max": 7.761877568111363e-9,
+      "improved_rows_min": 55,
+      "paired_gain": ">2 descriptive SE",
+      "mean_flops_max": 806303721965,
+      "max_residual_s": "<0.4",
+      "failures": 0
+    }
+  },
+  "scope_flags": {
+    "read_R223_candidate_output_or_artifact": false,
+    "read_R244_candidate_output_or_artifact": false,
+    "candidate_implemented": false,
+    "estimator_benchmark": false,
+    "actions_run": false,
+    "public_mini100_run": false,
+    "retry": false,
+    "second_method": false,
+    "paid_compute": false,
+    "private_holdout": false,
+    "submission": false,
+    "leaderboard": false,
+    "canonical_v25_edit": false,
+    "gate_relaxation": false
+  }
+}
