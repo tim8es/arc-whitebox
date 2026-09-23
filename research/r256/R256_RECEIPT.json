@@ -1,0 +1,102 @@
+{
+  "schema": "arc.whitebox.r256.receipt.v1",
+  "job": "R256",
+  "run_id": "R256-r254-harness-static-repair-20260923",
+  "owner": "r254-harness-repair-responsive",
+  "mode": "offline/static-only",
+  "status": "COMPLETE",
+  "verdict": "SAFE_TYPED_RESIDUAL_SOURCE_ESTABLISHED_PATCH_READY_FOR_INDEPENDENT_REVIEW",
+  "r257_authorized": false,
+  "base": {
+    "exact_r254_execution_head": "ff40219e132ce208428b7acfb1a03a79cd535be7",
+    "r254_harness_path": "research/r254/r254_one_shot.py",
+    "r254_harness_blob": "52f1885fcb4fc3cfb99a0ad2fc6b8517187605d9",
+    "r254_harness_sha256": "3cd153cbe3a5687acbb83f730c1cefa45c5d6b256ca375c1dbc576ace831ba11",
+    "r255_receipt_sha256": "ffbed0c8d5a8d89e51b590cbf6ef6ae0a23d450415239816600d93e9256cae7a"
+  },
+  "repair": {
+    "branch": "research/r256-r254-harness-telemetry-repair-20260923",
+    "patch_commit": "625992a673a9b1ceee136a2b8b4b27da378a824d",
+    "repaired_harness": {
+      "path": "research/r256/r254_one_shot_repaired.py",
+      "blob": "ca0eb5b53d86c4fa708c2b1cb4ed34a8146494ca",
+      "sha256": "6b6b77d3bd539acfcab535e8b4727e67a45e512aacfdc2d7369b5fbd9acb5cfd"
+    },
+    "timing_helper": {
+      "path": "research/r256/r256_timing.py",
+      "blob": "ea26de92d74ea6b4432e1f89301a7d55c9e52ae2",
+      "sha256": "dd7ea8de33d7810ad22087592ab0f744dcfec94903de13472d0a0c1dbb619cc6"
+    },
+    "regression_test": {
+      "path": "research/r256/test_r256_timing_boundary.py",
+      "blob": "4c273590b61f6f1624c68bdbb815891403c534fa",
+      "sha256": "fa5a1b8d6cc6f93487cda87ba0ed2e7d87ca3c0ef913197a30e9ed483c2b8b17"
+    }
+  },
+  "primary_contract": {
+    "flopscope_version": "0.12.1",
+    "flopscope_release_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+    "flopscope_budget_blob": "93349b139b3a08bdd67a7bc37b1b446c681c835c",
+    "summary_return_type": "str",
+    "summary_dict_return_type": "dict",
+    "residual_wall_time_property_type": "float|None",
+    "selected_typed_source": "BudgetContext.residual_wall_time_s",
+    "whestbench_commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+    "whestbench_worker_blob": "33f9d48793e67dd95180aadbcdd024720019348e",
+    "whestbench_uses_same_property": true
+  },
+  "fail_closed": {
+    "unknown_timing_coerced_to_zero": false,
+    "missing_timing_failure_suffix": "_residual_wall_time_unavailable",
+    "invalid_timing_failure_suffix": "_residual_wall_time_invalid",
+    "nonfinite_rejected": true,
+    "negative_rejected": true
+  },
+  "invariants": {
+    "bpk2k_old_formula_identical": true,
+    "bpk2k_new_formula_identical": true,
+    "pinned_parent_unchanged": true,
+    "fixture_seed_hashes_unchanged": true,
+    "budget_unchanged": true,
+    "mse_gates_unchanged": true,
+    "flop_gate_unchanged": true,
+    "target_free_relative_timing_gate": "candidate <= 1.05*parent + 0.005",
+    "target_free_relative_timing_gate_unchanged": true,
+    "public_residual_limit_s": 0.4,
+    "public_residual_limit_unchanged": true,
+    "workflow_blob_unchanged": "649e7b9184e0d8521636fd1af23fb9e4359b3a64",
+    "fixture_manifest_blob_unchanged": "5a6eb7bbfc07bf9e6609ee6cfbb2b2ea9e17ebf8",
+    "candidate_spec_blob_unchanged": "6bffbdfd113bba80cc72cd375cdc44138f9c0845",
+    "r254_files_modified": false
+  },
+  "fixture": {
+    "seed": 254001,
+    "weights_concat_sha256": "199e5fd8c669ec927717a12f0a3bbcee83e37db8db6e61e8c50eb791f457b3f0",
+    "truth_sha256": "58354221cedab39e900d78040a8383df45672425389f3865b731eea7b0063f1d"
+  },
+  "offline_regression": {
+    "tests_run": 1,
+    "command": "python test_r256_timing_boundary.py",
+    "output": "R256_OFFLINE_REGRESSION_PASS",
+    "result": "PASS",
+    "science_executed": false,
+    "benchmark_executed": false,
+    "public_data_accessed": false,
+    "actions_triggered": false
+  },
+  "report": {
+    "path": "research/r256/R256_HARNESS_REPAIR_REPORT.md",
+    "git_blob": "0c9db616044ee3b908e232ec632e2d17bc2e3807",
+    "sha256": "fdcaff5f663ab76cdb96797406e1a99d8c360fd879ada1e3cb361c6ca6fd7d63"
+  },
+  "prohibited_actions": {
+    "r254_modified": false,
+    "workflow_modified": false,
+    "actions_or_science_run": false,
+    "r209_or_public_data_access": false,
+    "private_or_holdout": false,
+    "submission": false,
+    "canonical_or_leaderboard_change": false,
+    "r257_started": false
+  }
+}
