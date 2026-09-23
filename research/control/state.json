@@ -5215,6 +5215,18 @@
         "run_id": "R286-pr35-current-head-adversarial-verify-20260923"
       },
       "revision": 389
+    },
+    {
+      "revision": 390,
+      "action": "start",
+      "job": "R287",
+      "owner": "phase2-free-runner-audit",
+      "payload": {
+        "run_id": "R287-free-runner-audit-20260923",
+        "code_commit": "50761f8373c8a5340e19ba2c0422b4aae721863e",
+        "command": "read-only audit of exact existing public GitHub-hosted runner configuration against official GitHub pricing/resources/timeout documentation and account-specific unknowns; no Actions/download/install"
+      },
+      "at": "2026-09-23T16:42:52.791Z"
     }
   ],
   "jobs": [
@@ -8351,7 +8363,14 @@
     },
     {
       "assigned_owner": "phase2-free-runner-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R287-free-runner-audit-20260923",
+          "code_commit": "50761f8373c8a5340e19ba2c0422b4aae721863e",
+          "command": "read-only audit of exact existing public GitHub-hosted runner configuration against official GitHub pricing/resources/timeout documentation and account-specific unknowns; no Actions/download/install",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Using official GitHub documentation and the repository's exact existing workflows/runs, determine whether a one-time public-development V25 capture can run on an existing standard public GitHub-hosted runner with zero incremental charge and the exact pinned Python/WhestBench/flopscope stack plus public mini dataset. Verify runner type, repository visibility, billing/free-usage condition, dataset fetch path and 8GB/timeout constraints; distinguish documented facts from unknown account quota/billing. Do not trigger Actions, install/download large data, spend, or modify workflows. If zero-cost cannot be proven for the actual target account/runner, conclude WAITING_INPUT; otherwise deliver a precise preflight recipe for coordinator approval. Cite first-party sources; append report/receipt and finish R287.",
       "depends_on": [
         "R282"
@@ -8360,7 +8379,7 @@
       "id": "R287",
       "owner": "phase2-free-runner-audit",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Check a genuinely zero-cost environment for V25 residual capture"
     },
     {
@@ -8387,7 +8406,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 389,
+  "revision": 390,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
