@@ -1,0 +1,135 @@
+{
+  "schema": "arc.whitebox.r247.candidate_spec.v1",
+  "job_id": "R247",
+  "hypothesis_id": "H-R246-NETWORK-AGNOSTIC-FLOP-REDUCTION",
+  "candidate_id": "V25-NM24-YOUNG-D21-RIGHT-SPARSIFY",
+  "parent": {
+    "estimator_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "normalized_record": "research/results/R209-v25-mini100.json",
+    "normalized_record_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "normalized_record_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "mean_raw_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "mean_flops": 806303721965,
+    "failures": 0,
+    "max_residual_s": 0.19043814401743475
+  },
+  "mechanism": {
+    "name": "fixed 2-of-4 magnitude sparsification of young-source D21 right factors",
+    "scope": "Only the young dense-source terms in _dslices need_d21=True. D3, transports, old tier, thin legs, covariance, K4 regeneration, lambda adaptation, mean correction, and final-layer trim remain unchanged.",
+    "rule": "For each young source and each right-factor row independently, partition contraction-index j into consecutive groups of 4. Keep the two entries with largest absolute magnitude in each group; ties resolve to lower j. Rescale the two kept values by sqrt(sum(all4^2)/sum(kept2^2)) when kept energy is nonzero; otherwise keep zeros. Apply the same fixed rule separately to A and P right factors. No target, network ID, row score, or per-network parameter enters the rule.",
+    "production_requirement": "A compliant implementation must execute only the two retained values per 4-wide group in the affected D21 right-factor contractions; multiplying dense zero-filled matrices does not satisfy the cost claim.",
+    "config": {
+      "group_size": 4,
+      "keep": 2,
+      "energy_rescale": true,
+      "tie_break": "lower contraction index",
+      "young_only": true,
+      "apply_A": true,
+      "apply_P": true,
+      "apply_D3": false
+    }
+  },
+  "novelty_firewall": {
+    "r223_v25_lf": "excluded: no lambda/local-feed modification",
+    "r244_mp_r16": "excluded: no rank-16 projection/moment projection mechanism",
+    "historical_rank_age_tiers": "excluded: no row-space rank/age change",
+    "historical_source_drop_window": "excluded: no source removal",
+    "historical_hub_column_cap_cp": "excluded: no global hub-column cap or CP-rank merge",
+    "historical_randomized_hadamard_estimation": "excluded: no random probes/Monte Carlo contraction estimator",
+    "historical_fwht_structured_projection": "excluded: no orthogonal/JL/FWHT projection",
+    "historical_strassen": "excluded: no fast matrix multiplication recursion",
+    "historical_precision": "excluded: no dtype/precision change",
+    "findings_search": "Pinned 504aldo findings_log at blob 09cf41e8826052ceb83109115cae688c03baaaca has no 2:4, N:M, magnitude-pruning, or structured-sparsity experiment for the V25 D21 right factors."
+  },
+  "static_cost_gate": {
+    "unit_flops": 2147483648,
+    "parent_units": 375.4644291312434,
+    "required_max_units": 337.9179862181191,
+    "basis": "F72/F73 anatomy: 54 young dense source-pairs each cost 4 units, of which 2 units are the two D21 right-factor contractions. 2:4 arithmetic halves those 108 contraction units, a nominal 54-unit saving before O(n^2) selection/rescaling overhead.",
+    "nominal_saved_units": 54,
+    "nominal_candidate_units": 321.4644291312434,
+    "nominal_flops_ratio": 0.8561806219967638,
+    "conservative_overhead_reserve_units": 10,
+    "conservative_candidate_units": 331.4644291312434,
+    "conservative_flops_ratio": 0.8828138390617702,
+    "pass_rule": "conservative candidate ratio <=0.9 parent",
+    "pass": true
+  },
+  "exact_public_panel": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini:all-100",
+    "count": 100,
+    "shape": [
+      16,
+      1024
+    ],
+    "dtype": "float32",
+    "evaluator": "whestbench 0.16.1",
+    "meter": "flopscope 0.12.1+np2.4.6",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "stage": "development"
+  },
+  "falsifier": {
+    "target_free": true,
+    "script": "scripts/r247_nm24_falsifier.py",
+    "seeds": [
+      247001,
+      247002,
+      247003,
+      247004
+    ],
+    "n": 128,
+    "young_sources": 8,
+    "fixture_families": [
+      "iid",
+      "v25_like_correlated"
+    ],
+    "primary_metric": "relative RMS error of D21 contraction after candidate right-factor sparsification",
+    "go_iff": "all 8 fixture/seed cases finite and deterministic, identity control error <=1e-14, each candidate D21 relative RMS error <=0.015, mean <=0.012",
+    "rationale": "F71/F72 empirical eps^2 law places roughly 2.2% D21 RMS error near +10% raw-MSE; 1.5% is a conservative target-free screen for the strict <11.111111111111116% raw-MSE degradation goal.",
+    "failure_semantics": "DEVELOPMENT NO-GO before public measurement; no estimator implementation or Actions run"
+  },
+  "scientific_gates": {
+    "identity_hash_exact": true,
+    "failures": 0,
+    "mean_adjusted_max": 8.12954545291664e-9,
+    "mean_adjusted_rule": "candidate <= 0.995 * R209",
+    "improved_networks_min": 55,
+    "paired_gain_over_descriptive_se_strict_gt": 2,
+    "mean_flops_max": 725673349768.5,
+    "mean_flops_rule": "candidate <= 0.9 * R209",
+    "max_residual_s_strict_lt": 0.4,
+    "raw_mse_degradation_strict_lt": 0.11111111111111116
+  },
+  "execution_plan": {
+    "before_actions": [
+      "static cost gate PASS",
+      "novelty firewall PASS",
+      "target-free falsifier GO",
+      "freeze full candidate estimator source/workflow/arm hashes",
+      "verify standard public GitHub-hosted runner is free for this public repository"
+    ],
+    "actions_max_workflows": 1,
+    "workflow_contents": [
+      "whest validate",
+      "exactly one candidate public mini-100 panel"
+    ],
+    "retries": 0,
+    "second_runs": 0,
+    "infra_failure": "INFRA_ERROR terminal for R247; no retry",
+    "no_parent_rerun": "Use immutable R209 normalized parent only."
+  },
+  "prohibited": [
+    "read R223 candidate output/artifact",
+    "read R244 candidate output/artifact",
+    "per-network tuning",
+    "gate relaxation",
+    "canonical V25 edit",
+    "paid compute",
+    "private/holdout",
+    "submission",
+    "leaderboard mutation"
+  ]
+}
