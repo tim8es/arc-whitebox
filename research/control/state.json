@@ -4007,6 +4007,18 @@
       "owner": "leader-method-forensics",
       "payload": {},
       "revision": 298
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T12:04:17.186Z",
+      "job": "R264",
+      "owner": "leader-method-forensics",
+      "payload": {
+        "code_commit": "f70cd8e08269b29c6bd1c2c7a4e2c5396f1a2009",
+        "command": "read-only forensic delta of public primary artifacts for current strongest visible Phase-2 entry; compare against R230/R241 and V25@dff3dd65e9d2210e02418cca99e05556f6bf2c75; no estimator/benchmark/Actions/private/holdout/submission/canonical edits",
+        "run_id": "R264-leader-method-forensics-20260923"
+      },
+      "revision": 299
     }
   ],
   "jobs": [
@@ -6350,14 +6362,21 @@
     },
     {
       "assigned_owner": "leader-method-forensics",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "f70cd8e08269b29c6bd1c2c7a4e2c5396f1a2009",
+          "command": "read-only forensic delta of public primary artifacts for current strongest visible Phase-2 entry; compare against R230/R241 and V25@dff3dd65e9d2210e02418cca99e05556f6bf2c75; no estimator/benchmark/Actions/private/holdout/submission/canonical edits",
+          "run_id": "R264-leader-method-forensics-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read the prior public-leader audit R230 and leaderboard snapshot R241. Inspect primary/public artifacts for the currently strongest visible Phase-2 entry and report only verifiable method/code changes or disclosures since R230; compare those against the pinned V25 source and cite exact source commits/locations. Separate observed implementation from inference; if no new public evidence exists, record a no-change result instead of inventing a method. Deliver a concise append-only report and receipt with hashes/commit; finish R264. No estimator/benchmark/Actions run, no private/holdout, submission or leaderboard/canonical edits.",
       "depends_on": [],
       "hypothesis_id": "PUBLIC-LEADER-METHOD-DELTA-20260923",
       "id": "R264",
       "owner": "leader-method-forensics",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Forensic delta of the current public leader method"
     },
     {
@@ -6422,7 +6441,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 298,
+  "revision": 299,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
