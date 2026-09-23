@@ -3749,6 +3749,23 @@
         "to_session": "6ab11f5a-a344-83eb-86f7-468821093e80"
       },
       "revision": 279
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T10:13:29+00:00",
+      "job": "R262",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "r260-independent-audit",
+        "title": "Independently audit R260 target-free evidence",
+        "hypothesis_id": "R260-INDEPENDENT-EVIDENCE-AUDIT",
+        "priority": 2,
+        "depends_on": [
+          "R260"
+        ],
+        "deliverable": "Independently read the frozen R260 protocol plus its committed report/receipt. Verify report/receipt identity, source/runtime/fixture/artifact hash claims from available evidence; independently recompute parent/candidate final and all-layer MSE ratios and evaluate every frozen target-free gate. Reconcile workflow success with the scientific rejection and verify validation/public mini-100 was skipped. Produce an isolated R262 audit report and receipt with evidence links, exact calculations, hashes and any discrepancy; then finish this queue job. No reruns, Actions, R209/public/holdout/private/full data, paid resources, method proposals/tuning, submission, leaderboard/canonical changes, or edits to R260 artifacts. If repository write is unavailable, return the precise blocker and calculations without claiming completion."
+      },
+      "revision": 280
     }
   ],
   "jobs": [
@@ -6011,10 +6028,24 @@
       "priority": 1,
       "status": "QUEUED",
       "title": "Find one orthogonal accuracy-first V25 method after BPK2K rejection"
+    },
+    {
+      "id": "R262",
+      "title": "Independently audit R260 target-free evidence",
+      "priority": 2,
+      "hypothesis_id": "R260-INDEPENDENT-EVIDENCE-AUDIT",
+      "depends_on": [
+        "R260"
+      ],
+      "assigned_owner": "r260-independent-audit",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": [],
+      "deliverable": "Independently read the frozen R260 protocol plus its committed report/receipt. Verify report/receipt identity, source/runtime/fixture/artifact hash claims from available evidence; independently recompute parent/candidate final and all-layer MSE ratios and evaluate every frozen target-free gate. Reconcile workflow success with the scientific rejection and verify validation/public mini-100 was skipped. Produce an isolated R262 audit report and receipt with evidence links, exact calculations, hashes and any discrepancy; then finish this queue job. No reruns, Actions, R209/public/holdout/private/full data, paid resources, method proposals/tuning, submission, leaderboard/canonical changes, or edits to R260 artifacts. If repository write is unavailable, return the precise blocker and calculations without claiming completion."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 279,
+  "revision": 280,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
