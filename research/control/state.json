@@ -5197,12 +5197,24 @@
       "revision": 387
     },
     {
-      "revision": 388,
       "action": "claim",
+      "at": "2026-09-23T16:41:22.496Z",
       "job": "R287",
       "owner": "phase2-free-runner-audit",
       "payload": {},
-      "at": "2026-09-23T16:41:22.496Z"
+      "revision": 388
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T16:42:03.618Z",
+      "job": "R286",
+      "owner": "r281-independent-current-head-audit",
+      "payload": {
+        "code_commit": "05733f3bfa6730124c4601a918bcc6d401719e09",
+        "command": "offline focused independent reproduction of the four R283 additional false-PASS counterexamples plus narrow edge cases against exact current PR #35 production analyzer blob on head 05733f3bfa6730124c4601a918bcc6d401719e09; no PR/tests edits, comments/review/merge, Actions, fixtures, estimator, or benchmark data",
+        "run_id": "R286-pr35-current-head-adversarial-verify-20260923"
+      },
+      "revision": 389
     }
   ],
   "jobs": [
@@ -8317,7 +8329,14 @@
     },
     {
       "assigned_owner": "r281-independent-current-head-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "05733f3bfa6730124c4601a918bcc6d401719e09",
+          "command": "offline focused independent reproduction of the four R283 additional false-PASS counterexamples plus narrow edge cases against exact current PR #35 production analyzer blob on head 05733f3bfa6730124c4601a918bcc6d401719e09; no PR/tests edits, comments/review/merge, Actions, fixtures, estimator, or benchmark data",
+          "run_id": "R286-pr35-current-head-adversarial-verify-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Read R281 and R283 receipts, then independently verify the exact four R283 additional fail-open counterexamples against pinned current PR #35 head 05733f3bfa6730124c4601a918bcc6d401719e09 (not the older e054 analyzer blob). Run only small offline synthetic tests; do not edit code/tests, post PR comment/review, Actions, merge, or touch benchmark data. Report which cases remain/reject/pass, exact analyzer blob and input hashes, any additional case, and a concise PASS/FAIL matrix in an append-only report/receipt. Finish R286.",
       "depends_on": [
         "R281",
@@ -8327,7 +8346,7 @@
       "id": "R286",
       "owner": "r281-independent-current-head-audit",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Verify R283 adversarial cases against the current PR #35 head"
     },
     {
@@ -8368,7 +8387,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 388,
+  "revision": 389,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
