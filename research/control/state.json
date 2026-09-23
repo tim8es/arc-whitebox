@@ -5739,6 +5739,24 @@
         "run_id": "R295-pr36-workflow-security-audit-20260924"
       },
       "at": "2026-09-23T22:55:00.000Z"
+    },
+    {
+      "revision": 428,
+      "action": "enqueue",
+      "job": "R296",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "r293-workflow-security-fix-r269",
+        "depends_on": [
+          "R294",
+          "R295"
+        ],
+        "deliverable": "After R294's patch repair lands on draft PR #36, fix the independent R295 workflow blockers on that same PR branch, with no benchmark/Actions execution. Preserve the one-shot/no-paid/public-mini boundaries. Required: (1) gate every expensive job on github.run_attempt==1 and add a durable atomic single-dispatch claim on the pre-created result branch so a second distinct dispatch also fails before benchmark; use an update-existing-ref compare-and-swap/non-force operation, never allow branch creation or a check-then-push race; (2) pin every action in the contents:write job to a verified full immutable commit SHA; (3) remove token insertion into the origin URL/config and ensure checkout credentials remain disabled, exposing GITHUB_TOKEN only in the minimal claim/persist API step without logging or storing it; (4) preserve exact result file allowlist and fail closed if any precondition/ref update fails. Keep PR #36 draft/open, do not create the result branch, merge, run Actions/benchmark, install/download data/dependencies, spend money, submit, or edit leaderboard/canonical. Add offline safety tests covering re-run and second-dispatch rejection, compare-and-swap against branch deletion/movement, immutable action pins, and token non-persistence. Append report/receipt with exact PR head, source hashes, test results, and any residual blocker; finish R296.",
+        "hypothesis_id": "PR36-ONE-SHOT-WORKFLOW-SECURITY-HARDENING-20260924",
+        "priority": 1,
+        "title": "Harden PR #36 against workflow reruns and branch races"
+      },
+      "at": "2026-09-23T23:02:54.146Z"
     }
   ],
   "jobs": [
@@ -9222,10 +9240,25 @@
         "sha256": "4e118c1d992bc042b02e0855e570b8b47db94de29d377037d6429fdc681911e6",
         "url": "https://github.com/tim8es/arc-whitebox/blob/b9b6c183dd4ba80522a519aa1ca3232618978a7d/research/r295/R295_RECEIPT.json"
       }
+    },
+    {
+      "assigned_owner": "r293-workflow-security-fix-r269",
+      "depends_on": [
+        "R294",
+        "R295"
+      ],
+      "deliverable": "After R294's patch repair lands on draft PR #36, fix the independent R295 workflow blockers on that same PR branch, with no benchmark/Actions execution. Preserve the one-shot/no-paid/public-mini boundaries. Required: (1) gate every expensive job on github.run_attempt==1 and add a durable atomic single-dispatch claim on the pre-created result branch so a second distinct dispatch also fails before benchmark; use an update-existing-ref compare-and-swap/non-force operation, never allow branch creation or a check-then-push race; (2) pin every action in the contents:write job to a verified full immutable commit SHA; (3) remove token insertion into the origin URL/config and ensure checkout credentials remain disabled, exposing GITHUB_TOKEN only in the minimal claim/persist API step without logging or storing it; (4) preserve exact result file allowlist and fail closed if any precondition/ref update fails. Keep PR #36 draft/open, do not create the result branch, merge, run Actions/benchmark, install/download data/dependencies, spend money, submit, or edit leaderboard/canonical. Add offline safety tests covering re-run and second-dispatch rejection, compare-and-swap against branch deletion/movement, immutable action pins, and token non-persistence. Append report/receipt with exact PR head, source hashes, test results, and any residual blocker; finish R296.",
+      "hypothesis_id": "PR36-ONE-SHOT-WORKFLOW-SECURITY-HARDENING-20260924",
+      "priority": 1,
+      "title": "Harden PR #36 against workflow reruns and branch races",
+      "id": "R296",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 427,
+  "revision": 428,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
