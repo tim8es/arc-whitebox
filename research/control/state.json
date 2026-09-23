@@ -3145,6 +3145,23 @@
         "command": "protocol/history preparation only: deduplicate complete immutable history and required evidence; freeze exactly one new global-accuracy hypothesis, exact production-shape target-free fixture bytes/hashes/seeds/diagnostics, metered source contract, falsifier/cost/public gates and one-run stop rules before creating or triggering the sole standard ubuntu-24.04 Actions workflow"
       },
       "at": "2026-09-23T07:00:02+00:00"
+    },
+    {
+      "revision": 241,
+      "action": "finish",
+      "job": "R252",
+      "owner": "actions-accuracy-method-research",
+      "payload": {
+        "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+        "status": "INFRA_ERROR",
+        "verdict": "PRE_PARENT_FIXTURE_TRUTH_BYTE_IDENTITY_FAILURE_NO_RETRY",
+        "reason": "R252 terminal INFRA_ERROR before parent science. The sole authorized standard ubuntu-24.04 Actions run 35830986191/job 107083271578 attempt 1 verified exact Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 core wheel hashes, frozen repo blobs, pinned V25 blob/SHA, and all 16 fixture weight hashes plus concatenated weight SHA256 de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e. It then failed at the frozen fixture truth-byte check with RuntimeError: truth hash mismatch against expected SHA256 623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450. The generator did not retain the observed failing truth digest/bytes, so the numerical cause is unknown. Parent executions=0, candidate constructed=false, candidate executions=0, public access/runs=0. Artifact 10736403843 ZIP SHA256 10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e. Per one-run/no-retry rule there is no repair/rerun and no scientific conclusion.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/cd67198c19f6b969e9f6622872d96ffdd5f2cbbc/research/r252/R252_RECEIPT.json",
+          "sha256": "07c4080b498d3e19ac48f6641f99219613d57e1eedbf01b7d2e5634bffd46758"
+        }
+      },
+      "at": "2026-09-23T07:25:00+00:00"
     }
   ],
   "jobs": [
@@ -5049,19 +5066,34 @@
       ],
       "assigned_owner": "actions-accuracy-method-research",
       "owner": "actions-accuracy-method-research",
-      "status": "RUNNING",
+      "status": "INFRA_ERROR",
       "attempts": [
         {
           "run_id": "R252-one-shot-actions-global-accuracy-20260923",
           "code_commit": "26346269b3c14462057c3d508b3ff3adfaa97581",
           "command": "protocol/history preparation only: deduplicate complete immutable history and required evidence; freeze exactly one new global-accuracy hypothesis, exact production-shape target-free fixture bytes/hashes/seeds/diagnostics, metered source contract, falsifier/cost/public gates and one-run stop rules before creating or triggering the sole standard ubuntu-24.04 Actions workflow",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR",
+          "completion": {
+            "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+            "status": "INFRA_ERROR",
+            "verdict": "PRE_PARENT_FIXTURE_TRUTH_BYTE_IDENTITY_FAILURE_NO_RETRY",
+            "reason": "R252 terminal INFRA_ERROR before parent science. The sole authorized standard ubuntu-24.04 Actions run 35830986191/job 107083271578 attempt 1 verified exact Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 core wheel hashes, frozen repo blobs, pinned V25 blob/SHA, and all 16 fixture weight hashes plus concatenated weight SHA256 de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e. It then failed at the frozen fixture truth-byte check with RuntimeError: truth hash mismatch against expected SHA256 623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450. The generator did not retain the observed failing truth digest/bytes, so the numerical cause is unknown. Parent executions=0, candidate constructed=false, candidate executions=0, public access/runs=0. Artifact 10736403843 ZIP SHA256 10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e. Per one-run/no-retry rule there is no repair/rerun and no scientific conclusion.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/cd67198c19f6b969e9f6622872d96ffdd5f2cbbc/research/r252/R252_RECEIPT.json",
+              "sha256": "07c4080b498d3e19ac48f6641f99219613d57e1eedbf01b7d2e5634bffd46758"
+            }
+          }
         }
-      ]
+      ],
+      "reason": "R252 terminal INFRA_ERROR before parent science. The sole authorized standard ubuntu-24.04 Actions run 35830986191/job 107083271578 attempt 1 verified exact Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 core wheel hashes, frozen repo blobs, pinned V25 blob/SHA, and all 16 fixture weight hashes plus concatenated weight SHA256 de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e. It then failed at the frozen fixture truth-byte check with RuntimeError: truth hash mismatch against expected SHA256 623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450. The generator did not retain the observed failing truth digest/bytes, so the numerical cause is unknown. Parent executions=0, candidate constructed=false, candidate executions=0, public access/runs=0. Artifact 10736403843 ZIP SHA256 10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e. Per one-run/no-retry rule there is no repair/rerun and no scientific conclusion.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/cd67198c19f6b969e9f6622872d96ffdd5f2cbbc/research/r252/R252_RECEIPT.json",
+        "sha256": "07c4080b498d3e19ac48f6641f99219613d57e1eedbf01b7d2e5634bffd46758"
+      }
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 240,
+  "revision": 241,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
