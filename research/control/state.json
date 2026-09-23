@@ -4839,6 +4839,22 @@
         "status": "COMPLETE"
       },
       "revision": 361
+    },
+    {
+      "revision": 362,
+      "action": "finish",
+      "job": "R278",
+      "owner": "residual-structure-diagnostic",
+      "payload": {
+        "run_id": "R278-global-residual-direction-20260923",
+        "status": "INFRA_ERROR",
+        "reason": "Blocked before diagnostic execution with an exact local-environment/data blocker. The frozen split and global fit rule were committed before any raw residual computation. Existing R209 artifact 10617318650 was inspected locally: 100 per-MLP rows but no prediction/target/truth/vector fields, so residual vectors cannot be reconstructed. Exact WhestBench 0.16.1 source (tag target 4d08668b485c8a7d25a105c3c00d2f4fc2538f18, scoring.py blob 9cf7653a...) shows a faithful runner-side capture point after all failure zeroing and after pred_np/final_pred/final_target materialization but before MSE computation; this would not alter estimator FLOP accounting. Current local runtime is Python 3.13.5/NumPy 2.3.5 with no Python 3.11, whestbench, flopscope, datasets, or public mini cache. Local pip retrieval of whestbench 0.16.1/flopscope 0.12.1 failed before download after DNS retries. The exact prepared public mini is ~6.93GB/100 rows and absent locally. Running under an unpinned stack or synthetic/regenerated truth would violate the assignment. No diagnostic, estimator, Actions, paid/private/holdout/full, submission, leaderboard/canonical edits occurred; no MSE/score effect is inferred.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/83dfbe710cad5fbb1cab6e5b6fce0ccd06d47966/research/r278/R278_RECEIPT.json",
+          "sha256": "3294904ef96c263f3562c7b34de98d0379c56207a424ab5ac91a649b27dfbd81"
+        }
+      },
+      "at": "2026-09-23T15:34:24.863Z"
     }
   ],
   "jobs": [
@@ -7682,7 +7698,16 @@
           "code_commit": "9abb05944f7f37c60017a0a68e0a8e319c74ff26",
           "command": "inspect pinned official/local runner and retained R209 artifact; if faithful local raw-vector instrumentation is available, run exactly one frozen FIT/EVAL residual-direction diagnostic; otherwise stop with exact blocker",
           "run_id": "R278-global-residual-direction-20260923",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR",
+          "completion": {
+            "run_id": "R278-global-residual-direction-20260923",
+            "status": "INFRA_ERROR",
+            "reason": "Blocked before diagnostic execution with an exact local-environment/data blocker. The frozen split and global fit rule were committed before any raw residual computation. Existing R209 artifact 10617318650 was inspected locally: 100 per-MLP rows but no prediction/target/truth/vector fields, so residual vectors cannot be reconstructed. Exact WhestBench 0.16.1 source (tag target 4d08668b485c8a7d25a105c3c00d2f4fc2538f18, scoring.py blob 9cf7653a...) shows a faithful runner-side capture point after all failure zeroing and after pred_np/final_pred/final_target materialization but before MSE computation; this would not alter estimator FLOP accounting. Current local runtime is Python 3.13.5/NumPy 2.3.5 with no Python 3.11, whestbench, flopscope, datasets, or public mini cache. Local pip retrieval of whestbench 0.16.1/flopscope 0.12.1 failed before download after DNS retries. The exact prepared public mini is ~6.93GB/100 rows and absent locally. Running under an unpinned stack or synthetic/regenerated truth would violate the assignment. No diagnostic, estimator, Actions, paid/private/holdout/full, submission, leaderboard/canonical edits occurred; no MSE/score effect is inferred.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/83dfbe710cad5fbb1cab6e5b6fce0ccd06d47966/research/r278/R278_RECEIPT.json",
+              "sha256": "3294904ef96c263f3562c7b34de98d0379c56207a424ab5ac91a649b27dfbd81"
+            }
+          }
         }
       ],
       "deliverable": "Follow the specific next-test proposal in R276/R276_RECEIPT.json: determine whether one fixed, network-agnostic output-space residual direction explains material V25 error across the central bulk. Inspect the pinned V25 source and official local runner; if raw prediction/target residual vectors are not retained, use the smallest faithful instrumentation to capture them. Freeze a deterministic network-level development split and one global fit/evaluation rule before computation; no per-network choices. Use only public mini:all-100 development networks and existing/free local compute, same pinned V25/evaluator; no Actions, new paid resources, private/holdout/full data, submission, leaderboard/canonical edits. Run at most one bounded diagnostic; report raw-vector provenance, failures, score/MSE impact only if the corrected estimator can be evaluated honestly, and distinguish exploratory from confirmatory evidence. Preserve all attempts, artifact hashes/commit, and finish R278; if instrumentation or rules make the test invalid, record the exact blocker, not a guessed result.",
@@ -7694,8 +7719,13 @@
       "id": "R278",
       "owner": "residual-structure-diagnostic",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Test for a global residual direction in V25 errors"
+      "status": "INFRA_ERROR",
+      "title": "Test for a global residual direction in V25 errors",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/83dfbe710cad5fbb1cab6e5b6fce0ccd06d47966/research/r278/R278_RECEIPT.json",
+        "sha256": "3294904ef96c263f3562c7b34de98d0379c56207a424ab5ac91a649b27dfbd81"
+      },
+      "reason": "Blocked before diagnostic execution with an exact local-environment/data blocker. The frozen split and global fit rule were committed before any raw residual computation. Existing R209 artifact 10617318650 was inspected locally: 100 per-MLP rows but no prediction/target/truth/vector fields, so residual vectors cannot be reconstructed. Exact WhestBench 0.16.1 source (tag target 4d08668b485c8a7d25a105c3c00d2f4fc2538f18, scoring.py blob 9cf7653a...) shows a faithful runner-side capture point after all failure zeroing and after pred_np/final_pred/final_target materialization but before MSE computation; this would not alter estimator FLOP accounting. Current local runtime is Python 3.13.5/NumPy 2.3.5 with no Python 3.11, whestbench, flopscope, datasets, or public mini cache. Local pip retrieval of whestbench 0.16.1/flopscope 0.12.1 failed before download after DNS retries. The exact prepared public mini is ~6.93GB/100 rows and absent locally. Running under an unpinned stack or synthetic/regenerated truth would violate the assignment. No diagnostic, estimator, Actions, paid/private/holdout/full, submission, leaderboard/canonical edits occurred; no MSE/score effect is inferred."
     },
     {
       "assigned_owner": "phase2-public-panel-audit",
@@ -7771,7 +7801,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 361,
+  "revision": 362,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
