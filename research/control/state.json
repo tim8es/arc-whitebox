@@ -2362,6 +2362,23 @@
         "command": "read-only source-linked audit of R232/R238 frozen protocols, receipts, scripts, retained Actions logs/evidence, pinned V25 and flopscope 0.12.1; no execution/recreation/Actions/benchmark/candidate/source edits"
       },
       "revision": 182
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T02:34:30.000Z",
+      "job": "R239",
+      "owner": "numerical-stability-audit",
+      "payload": {
+        "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
+        "status": "COMPLETE",
+        "verdict": "DIAGNOSTIC_ONLY",
+        "reason": "Read-only R239 diagnosis complete. R232 and R238 are distinct failure classes: in flopscope 0.12.1, R232's SymmetryError max_deviation=inf is a hard-coded sentinel reached only after the einsum result passes np.isfinite and then fails the symmetry allclose check, so retained R232 evidence proves a finite symmetry-validation mismatch, not NaN/Inf. R238 independently records two real overflow warnings before V25 line 929 as_symmetric(C), then max_deviation=nan; exact originating V25 operation/layer is not recoverable because raw fixture tensors, per-layer state and caller-resolving op trace were not retained. Both runs used the same unchanged V25 source blob but frozen off-suite small runtime overrides, not production width-1024/depth-16 configuration. One future guard is preregistered conceptually only: retain exact fixture bytes/hashes plus parent per-layer finite/max-abs and symmetry residual checkpoints before candidate construction. No code execution, fixture recreation/resizing, Actions/estimator/benchmark, candidate, edits to R232/R238/R223/canonical, paid/holdout/private data, or submission.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/6ba51144732eaadfe5ae8f5fb03d5f20b7561732/research/r239/R239_RECEIPT.json",
+          "sha256": "10f3d70b5c1745428996066bcabecd1f1206942ab8037f74bfc0aa67002ebc6a"
+        }
+      },
+      "revision": 183
     }
   ],
   "jobs": [
@@ -3790,19 +3807,35 @@
       "depends_on": [],
       "id": "R239",
       "owner": "numerical-stability-audit",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "attempts": [
         {
           "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
           "code_commit": "62485e00fb0b3a7ce14410e57595cc9757ba52d2",
           "command": "read-only source-linked audit of R232/R238 frozen protocols, receipts, scripts, retained Actions logs/evidence, pinned V25 and flopscope 0.12.1; no execution/recreation/Actions/benchmark/candidate/source edits",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
+            "status": "COMPLETE",
+            "verdict": "DIAGNOSTIC_ONLY",
+            "reason": "Read-only R239 diagnosis complete. R232 and R238 are distinct failure classes: in flopscope 0.12.1, R232's SymmetryError max_deviation=inf is a hard-coded sentinel reached only after the einsum result passes np.isfinite and then fails the symmetry allclose check, so retained R232 evidence proves a finite symmetry-validation mismatch, not NaN/Inf. R238 independently records two real overflow warnings before V25 line 929 as_symmetric(C), then max_deviation=nan; exact originating V25 operation/layer is not recoverable because raw fixture tensors, per-layer state and caller-resolving op trace were not retained. Both runs used the same unchanged V25 source blob but frozen off-suite small runtime overrides, not production width-1024/depth-16 configuration. One future guard is preregistered conceptually only: retain exact fixture bytes/hashes plus parent per-layer finite/max-abs and symmetry residual checkpoints before candidate construction. No code execution, fixture recreation/resizing, Actions/estimator/benchmark, candidate, edits to R232/R238/R223/canonical, paid/holdout/private data, or submission.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/6ba51144732eaadfe5ae8f5fb03d5f20b7561732/research/r239/R239_RECEIPT.json",
+              "sha256": "10f3d70b5c1745428996066bcabecd1f1206942ab8037f74bfc0aa67002ebc6a"
+            }
+          }
         }
-      ]
+      ],
+      "reason": "Read-only R239 diagnosis complete. R232 and R238 are distinct failure classes: in flopscope 0.12.1, R232's SymmetryError max_deviation=inf is a hard-coded sentinel reached only after the einsum result passes np.isfinite and then fails the symmetry allclose check, so retained R232 evidence proves a finite symmetry-validation mismatch, not NaN/Inf. R238 independently records two real overflow warnings before V25 line 929 as_symmetric(C), then max_deviation=nan; exact originating V25 operation/layer is not recoverable because raw fixture tensors, per-layer state and caller-resolving op trace were not retained. Both runs used the same unchanged V25 source blob but frozen off-suite small runtime overrides, not production width-1024/depth-16 configuration. One future guard is preregistered conceptually only: retain exact fixture bytes/hashes plus parent per-layer finite/max-abs and symmetry residual checkpoints before candidate construction. No code execution, fixture recreation/resizing, Actions/estimator/benchmark, candidate, edits to R232/R238/R223/canonical, paid/holdout/private data, or submission.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/6ba51144732eaadfe5ae8f5fb03d5f20b7561732/research/r239/R239_RECEIPT.json",
+        "sha256": "10f3d70b5c1745428996066bcabecd1f1206942ab8037f74bfc0aa67002ebc6a"
+      },
+      "verdict": "DIAGNOSTIC_ONLY"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 182,
+  "revision": 183,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
