@@ -2855,6 +2855,23 @@
         }
       },
       "at": "2026-09-23 05:27:46+00:00"
+    },
+    {
+      "revision": 220,
+      "action": "enqueue",
+      "job": "R248",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "post-r247-distinct-method-research",
+        "deliverable": "Read current AGENTS/RESEARCH_PROCESS and full history, plus R209 baseline, R246 diagnostic, R247 target-free NO-GO report/receipt, and R245 static-compliance report. Identify exactly one genuinely distinct network-agnostic V25 FLOPs-reduction mechanism that is not R247's V25-NM24-YOUNG-D21-RIGHT-SPARSIFY or a material descendant, not R244 MP-R16, not R223 V25-LF, and not a history-closed family. Preserve the R246 score condition: target >=10% measured FLOPs reduction while raw-MSE degradation <11.111111111111116%, with official adjusted score as objective and no per-network tuning. Freeze candidate source/config, exact public R209 mini-100 panel, target-free falsifier, cost/failure/score gates, and one-shot execution plan before measurements. Mandatory source compliance: no output-affecting math.* in predict; use metered FlopScope (fnp) for sqrt/transcendentals; do not presume nontrivial Python-scalar arithmetic is free—avoid it or stop with eligibility UNKNOWN requiring organizer clarification. Any target-free falsifier failure => durable DEVELOPMENT NO-GO and no estimator/benchmark/Actions. If all gates pass, at most one verified-free standard Actions workflow with validation and exactly one public mini-100 panel, no retry/second run. Scientific GO requires exact row/hash identity, zero failures, mean adjusted <=0.995*R209, >=55/100 improved, paired parent-candidate gain >2 descriptive SE, mean FLOPs <=0.9*R209 and max residual <0.4s. Record all evidence/hashes; no R223/R244 candidate outputs/artifacts, paid compute, private/holdout, submission, leaderboard mutation, canonical V25 edits, or gate relaxation.",
+        "depends_on": [
+          "R245"
+        ],
+        "hypothesis_id": "POST-R247-DISTINCT-V25-EFFICIENCY-METHOD",
+        "priority": 1,
+        "title": "Find and test a distinct metered V25 FLOPs-reduction method after R247 rejection"
+      },
+      "at": "2026-09-23 05:29:28+00:00"
     }
   ],
   "jobs": [
@@ -4594,10 +4611,24 @@
         "sha256": "effc2539915ec22def353d85c897083d3b5f6ab4d78958877662726ab0fe27e8"
       },
       "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
+    },
+    {
+      "assigned_owner": "post-r247-distinct-method-research",
+      "deliverable": "Read current AGENTS/RESEARCH_PROCESS and full history, plus R209 baseline, R246 diagnostic, R247 target-free NO-GO report/receipt, and R245 static-compliance report. Identify exactly one genuinely distinct network-agnostic V25 FLOPs-reduction mechanism that is not R247's V25-NM24-YOUNG-D21-RIGHT-SPARSIFY or a material descendant, not R244 MP-R16, not R223 V25-LF, and not a history-closed family. Preserve the R246 score condition: target >=10% measured FLOPs reduction while raw-MSE degradation <11.111111111111116%, with official adjusted score as objective and no per-network tuning. Freeze candidate source/config, exact public R209 mini-100 panel, target-free falsifier, cost/failure/score gates, and one-shot execution plan before measurements. Mandatory source compliance: no output-affecting math.* in predict; use metered FlopScope (fnp) for sqrt/transcendentals; do not presume nontrivial Python-scalar arithmetic is free—avoid it or stop with eligibility UNKNOWN requiring organizer clarification. Any target-free falsifier failure => durable DEVELOPMENT NO-GO and no estimator/benchmark/Actions. If all gates pass, at most one verified-free standard Actions workflow with validation and exactly one public mini-100 panel, no retry/second run. Scientific GO requires exact row/hash identity, zero failures, mean adjusted <=0.995*R209, >=55/100 improved, paired parent-candidate gain >2 descriptive SE, mean FLOPs <=0.9*R209 and max residual <0.4s. Record all evidence/hashes; no R223/R244 candidate outputs/artifacts, paid compute, private/holdout, submission, leaderboard mutation, canonical V25 edits, or gate relaxation.",
+      "depends_on": [
+        "R245"
+      ],
+      "hypothesis_id": "POST-R247-DISTINCT-V25-EFFICIENCY-METHOD",
+      "priority": 1,
+      "title": "Find and test a distinct metered V25 FLOPs-reduction method after R247 rejection",
+      "id": "R248",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 219,
+  "revision": 220,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
