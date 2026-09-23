@@ -4600,6 +4600,18 @@
       "owner": "v25-accuracy-research",
       "payload": {},
       "at": "2026-09-23T15:03:01.039Z"
+    },
+    {
+      "revision": 344,
+      "action": "start",
+      "job": "R275",
+      "owner": "workflow-preflight-integration",
+      "payload": {
+        "run_id": "R275-main-preflight-integration-20260923",
+        "code_commit": "b5b988f8ec49a5ec473d59fcbfdfaf8c4350c850",
+        "command": "python -m unittest tests/test_arc_workflow_preflight.py -v"
+      },
+      "at": "2026-09-23T15:03:10.866Z"
     }
   ],
   "jobs": [
@@ -7348,8 +7360,15 @@
       "id": "R275",
       "assigned_owner": "workflow-preflight-integration",
       "owner": "workflow-preflight-integration",
-      "status": "CLAIMED",
-      "attempts": [],
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R275-main-preflight-integration-20260923",
+          "code_commit": "b5b988f8ec49a5ec473d59fcbfdfaf8c4350c850",
+          "command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
+          "status": "RUNNING"
+        }
+      ],
       "title": "Integrate and operationalize the hardened workflow preflight",
       "hypothesis_id": "R274-MAIN-INTEGRATION-20260923",
       "priority": 1,
@@ -7375,7 +7394,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 343,
+  "revision": 344,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
