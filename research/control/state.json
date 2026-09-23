@@ -5807,6 +5807,20 @@
         "reason": "The original recipient received the full task and one concise nudge but remained idle; live queue still had zero claims/attempts, and read-only branch/Actions checks found no R298 branch or run. Transfer the same offline analyzer task to the previously repo-capable idle R267 session; no duplicate execution."
       },
       "at": "2026-09-23T23:11:49.082Z"
+    },
+    {
+      "revision": 432,
+      "action": "reassign",
+      "job": "R298",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "r288-capture-analysis-prep-r267",
+        "from_session": "6ab3a7f3-d754-83eb-be50-bbf1a4f90187",
+        "to_assigned_owner": "r288-capture-analysis-prep-r269",
+        "to_session": "6ab3a7fe-d4d4-83eb-b706-88dd77430353",
+        "reason": "The R267 follow-up message to start R298 timed out before delivery; session remained idle, R298 stayed QUEUED with zero attempts, and fresh branch/Actions checks found no R298 branch or run. Transfer the same analyzer-preparation job to the known repo-capable R269 session, which has a separate R296 queued behind R294; instruct it to handle R298 first and not claim R296 concurrently."
+      },
+      "at": "2026-09-23T23:14:22.492Z"
     }
   ],
   "jobs": [
@@ -9322,7 +9336,7 @@
       "attempts": []
     },
     {
-      "assigned_owner": "r288-capture-analysis-prep-r267",
+      "assigned_owner": "r288-capture-analysis-prep-r269",
       "depends_on": [
         "R288",
         "R291"
@@ -9338,7 +9352,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 431,
+  "revision": 432,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
