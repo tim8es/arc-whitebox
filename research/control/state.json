@@ -2196,6 +2196,23 @@
         "run_id": "R223-v25-local-feed-attempt3-20260923"
       },
       "revision": 169
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T02:09:37.000Z",
+      "job": "R238",
+      "owner": "global-accuracy-research",
+      "payload": {
+        "reason": "R238 terminal INCONCLUSIVE at the frozen base-executability prerequisite. The sole allowed free standard ubuntu-24.04 Actions run 35808859764/job 107015629065, attempt 1, used trigger/head 37610aeb8f93ab6975d4fef996ebf6f20a81367f and verified the exact pinned upstream V25 git blob 195373a110215256b759d7c172ba8c923c62e5cc (download SHA256 c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20). On the first preregistered synthetic fixture the unchanged parent failed before a valid prediction with flopscope.errors.SymmetryError at C = flops.as_symmetric(C, symmetry=(0,1)), max deviation=nan. Frozen decision R238_BASE_INCONCLUSIVE, falsifier exit 20. Per protocol candidate construction was forbidden: candidate_constructed=false/candidate_file_exists=false; exact truth/scientific gates were not evaluated; validation and mini100 were skipped; no resize, seed/scale change, retry, rescue or second Actions run. RSRF accuracy was not measured and is not scientifically falsified. No public benchmark/mini data, paid compute, private/holdout, submission, or canonical V25 edit.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/a8bb06f23f416ea4a1c01c655756477849234c74/research/r238/R238_TERMINAL_RECEIPT.json",
+          "sha256": "361a6f9b50a8e4211df7a9cf43cbd1740932c7b21650dc2ffbbf97437e2467cd"
+        },
+        "run_id": "R238-v25-rsrf-exact-small-20260923",
+        "status": "INCONCLUSIVE",
+        "verdict": "R238_BASE_INCONCLUSIVE"
+      },
+      "revision": 170
     }
   ],
   "jobs": [
@@ -3540,7 +3557,17 @@
           "code_commit": "12c595f3dec66e4616f76ca688b1f5339b5bdf24",
           "command": "python scripts/r238_rsrf_exact_small.py --v25 r238-estimator-v25.py --candidate-out r238-candidate-v25.py --out r238-rsrf-falsifier.json",
           "run_id": "R238-v25-rsrf-exact-small-20260923",
-          "status": "RUNNING"
+          "status": "INCONCLUSIVE",
+          "completion": {
+            "reason": "R238 terminal INCONCLUSIVE at the frozen base-executability prerequisite. The sole allowed free standard ubuntu-24.04 Actions run 35808859764/job 107015629065, attempt 1, used trigger/head 37610aeb8f93ab6975d4fef996ebf6f20a81367f and verified the exact pinned upstream V25 git blob 195373a110215256b759d7c172ba8c923c62e5cc (download SHA256 c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20). On the first preregistered synthetic fixture the unchanged parent failed before a valid prediction with flopscope.errors.SymmetryError at C = flops.as_symmetric(C, symmetry=(0,1)), max deviation=nan. Frozen decision R238_BASE_INCONCLUSIVE, falsifier exit 20. Per protocol candidate construction was forbidden: candidate_constructed=false/candidate_file_exists=false; exact truth/scientific gates were not evaluated; validation and mini100 were skipped; no resize, seed/scale change, retry, rescue or second Actions run. RSRF accuracy was not measured and is not scientifically falsified. No public benchmark/mini data, paid compute, private/holdout, submission, or canonical V25 edit.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/a8bb06f23f416ea4a1c01c655756477849234c74/research/r238/R238_TERMINAL_RECEIPT.json",
+              "sha256": "361a6f9b50a8e4211df7a9cf43cbd1740932c7b21650dc2ffbbf97437e2467cd"
+            },
+            "run_id": "R238-v25-rsrf-exact-small-20260923",
+            "status": "INCONCLUSIVE",
+            "verdict": "R238_BASE_INCONCLUSIVE"
+          }
         }
       ],
       "deliverable": "Read the full immutable experiment ledger, AGENTS/RESEARCH_PROCESS, and R227/R231/R232 receipts. Choose exactly one genuinely untested estimator family targeting aggregate raw-MSE improvement, not tail-only tuning. Explicitly exclude DRRE/Richardson from R232 and every rejected descendant already listed in R232/R233/R227. Before any candidate run, freeze math, source identities, exact-small target-free truth/falsifier, production FLOP bound, and GO/NO-GO. Because R232 failed in the first high-rank V25 C_pre SymmetryError before producing an MSE, prove the unmodified pinned V25 parent executes on the proposed fixture as a prerequisite inside the same single free Actions run; if that base-executability gate fails, stop terminal INCONCLUSIVE without candidate execution and do not resize/rescue the fixture. If base and falsifier/cost gates pass, at most one candidate falsifier and at most one bounded same-panel mini-100, only when authorized by the frozen gates. Preserve canonical V25; no paid compute, holdout/private data, submission, or repeat of R232 DRRE. Save all protocols, artifacts, hashes, per-row evidence when applicable, receipt, and queue finish.",
@@ -3551,12 +3578,18 @@
       "id": "R238",
       "owner": "global-accuracy-research",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Find a distinct global-accuracy method after the DRRE execution no-go"
+      "status": "INCONCLUSIVE",
+      "title": "Find a distinct global-accuracy method after the DRRE execution no-go",
+      "reason": "R238 terminal INCONCLUSIVE at the frozen base-executability prerequisite. The sole allowed free standard ubuntu-24.04 Actions run 35808859764/job 107015629065, attempt 1, used trigger/head 37610aeb8f93ab6975d4fef996ebf6f20a81367f and verified the exact pinned upstream V25 git blob 195373a110215256b759d7c172ba8c923c62e5cc (download SHA256 c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20). On the first preregistered synthetic fixture the unchanged parent failed before a valid prediction with flopscope.errors.SymmetryError at C = flops.as_symmetric(C, symmetry=(0,1)), max deviation=nan. Frozen decision R238_BASE_INCONCLUSIVE, falsifier exit 20. Per protocol candidate construction was forbidden: candidate_constructed=false/candidate_file_exists=false; exact truth/scientific gates were not evaluated; validation and mini100 were skipped; no resize, seed/scale change, retry, rescue or second Actions run. RSRF accuracy was not measured and is not scientifically falsified. No public benchmark/mini data, paid compute, private/holdout, submission, or canonical V25 edit.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/a8bb06f23f416ea4a1c01c655756477849234c74/research/r238/R238_TERMINAL_RECEIPT.json",
+        "sha256": "361a6f9b50a8e4211df7a9cf43cbd1740932c7b21650dc2ffbbf97437e2467cd"
+      },
+      "verdict": "R238_BASE_INCONCLUSIVE"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 169,
+  "revision": 170,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
