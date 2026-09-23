@@ -2305,6 +2305,16 @@
         "status": "INFRA_ERROR"
       },
       "revision": 177
+    },
+    {
+      "action": "repair",
+      "at": "2026-09-23T02:24:59.363354+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "reason": "Attempt 5 is preserved as pre-panel INFRA_ERROR. Repair only the workflow frozen-path reference: retain immutable research/r223/R223_ATTEMPT4_PROVENANCE_PATCH.md and add research/r223/R223_ATTEMPT5_AUTH_PATCH.md; do not rename the former. Keep the GH_TOKEN auth repair. No estimator bytes, formula, clamp, panel, thresholds, parent hashes, ranks/source state, toolchain or scientific gates change."
+      },
+      "revision": 178
     }
   ],
   "jobs": [
@@ -3153,12 +3163,12 @@
       "id": "R223",
       "owner": "method-research",
       "priority": 2,
-      "reason": "Attempt 5 stopped in the initial frozen-path guard before toolchain/source/parent/validate/panel execution because the workflow referenced nonexistent R223_ATTEMPT5_PROVENANCE_PATCH.md instead of immutable R223_ATTEMPT4_PROVENANCE_PATCH.md. No candidate mini-100 invocation occurred.",
+      "reason": "Attempt 5 is preserved as pre-panel INFRA_ERROR. Repair only the workflow frozen-path reference: retain immutable research/r223/R223_ATTEMPT4_PROVENANCE_PATCH.md and add research/r223/R223_ATTEMPT5_AUTH_PATCH.md; do not rename the former. Keep the GH_TOKEN auth repair. No estimator bytes, formula, clamp, panel, thresholds, parent hashes, ranks/source state, toolchain or scientific gates change.",
       "receipt": {
         "sha256": "e7b47930a02363dce83a29b648c744ea6e28805a9ea700f2985222fb12302dff",
         "url": "https://github.com/tim8es/arc-whitebox/blob/3a7e7b08b91d6c11f6f58abcb5b850b4b5dafce9/research/r223/R223_ATTEMPT5_INFRA_RECEIPT.json"
       },
-      "status": "INFRA_ERROR",
+      "status": "CLAIMED",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     },
     {
@@ -3720,7 +3730,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 177,
+  "revision": 178,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
