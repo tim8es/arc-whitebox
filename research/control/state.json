@@ -2393,6 +2393,14 @@
         "deliverable": "Prepare an independent offline verifier/checklist from the frozen R223 attempt-6 protocol, workflow, candidate source and comparator, without inspecting the in-progress R223 artifact or changing R223 files. Add a small synthetic self-check for row identity, official adjusted-score recomputation, failures, thresholds and manifest binding. Record queue start before preparation. Once R223 is terminal and its immutable artifact is available, independently verify ZIP digest/manifest and all 100 paired rows; recompute raw MSE, measured FLOPs, runtime/failures and adjusted score against the frozen R209 parent; apply every preregistered gate without loosening it. Produce a report and receipt with hashes, distinct development-vs-competition claims, and finish R240. No Actions run, estimator/benchmark execution, retries/rescue, paid compute, holdout/private data, submission, or edits to R223 candidate/protocol/workflow/canonical V25."
       },
       "at": "2026-09-23T02:46:35+00:00"
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T02:47:00.000Z",
+      "job": "R240",
+      "owner": "independent-v25-audit",
+      "payload": {},
+      "revision": 185
     }
   ],
   "jobs": [
@@ -3854,13 +3862,13 @@
       "priority": 2,
       "deliverable": "Prepare an independent offline verifier/checklist from the frozen R223 attempt-6 protocol, workflow, candidate source and comparator, without inspecting the in-progress R223 artifact or changing R223 files. Add a small synthetic self-check for row identity, official adjusted-score recomputation, failures, thresholds and manifest binding. Record queue start before preparation. Once R223 is terminal and its immutable artifact is available, independently verify ZIP digest/manifest and all 100 paired rows; recompute raw MSE, measured FLOPs, runtime/failures and adjusted score against the frozen R209 parent; apply every preregistered gate without loosening it. Produce a report and receipt with hashes, distinct development-vs-competition claims, and finish R240. No Actions run, estimator/benchmark execution, retries/rescue, paid compute, holdout/private data, submission, or edits to R223 candidate/protocol/workflow/canonical V25.",
       "id": "R240",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "independent-v25-audit",
+      "status": "CLAIMED",
       "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 184,
+  "revision": 185,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
