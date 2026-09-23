@@ -1,0 +1,25 @@
+{
+  "candidate_id": "V25-LEG2-R1-YOUNG-AP",
+  "canonical_result_sha256": "e50801c502e8f0a2dfd7cbf9dbf0eef38d4386ce774156a44b35da322fa50fbc",
+  "cases": [
+    {"a_rrms":0.0021853632282883154,"age":0,"core_d21_rrms":0.9999347208874526,"finite":true,"joint_rrms":0.5141544001739929,"p_rrms":0.9999815085937231,"seed":25001},
+    {"a_rrms":0.000922472429351353,"age":2,"core_d21_rrms":0.9999702310076796,"finite":true,"joint_rrms":0.5164003327262268,"p_rrms":0.9999967824245256,"seed":25001},
+    {"a_rrms":0.0008204323088880527,"age":0,"core_d21_rrms":1.0001611749476382,"finite":true,"joint_rrms":0.5280975047214685,"p_rrms":0.9999977498858067,"seed":25002},
+    {"a_rrms":0.012283587924193899,"age":2,"core_d21_rrms":0.9960934648420402,"finite":true,"joint_rrms":0.5109350728835218,"p_rrms":0.9993959760332813,"seed":25002},
+    {"a_rrms":0.00483677401334815,"age":0,"core_d21_rrms":0.9998886940720862,"finite":true,"joint_rrms":0.5263717253399075,"p_rrms":0.9999203720493295,"seed":25003},
+    {"a_rrms":0.005380728176310107,"age":2,"core_d21_rrms":1.0024907470453626,"finite":true,"joint_rrms":0.5382413769908733,"p_rrms":0.9999129880940473,"seed":25003},
+    {"a_rrms":0.008516283702976938,"age":0,"core_d21_rrms":1.0009197654361626,"finite":true,"joint_rrms":0.5182448660633315,"p_rrms":0.9997311420495177,"seed":25004},
+    {"a_rrms":0.0024204187912083342,"age":2,"core_d21_rrms":0.9987575967425278,"finite":true,"joint_rrms":0.5188243866500749,"p_rrms":0.9999784086235218,"seed":25004}
+  ],
+  "control": {"a_rrms":2.3702863780049514e-16,"core_d21_rrms":4.421498507036677e-16,"p_rrms":1.3167213188881879e-16},
+  "public_panel_used": false,
+  "schema": "arc.whitebox.r250.target_free_falsifier.v1",
+  "summary": {
+    "decision": "FAIL",
+    "gates": {"control":true,"deterministic_replay":true,"each_a_p_rrms":false,"each_core_d21_rrms":false,"finite":true,"mean_core_d21_rrms":false},
+    "max_core_d21_rrms": 1.0024907470453626,
+    "max_pair_rrms": 0.9999977498858067,
+    "mean_core_d21_rrms": 0.9997770493726187
+  },
+  "target_data_used": false
+}
