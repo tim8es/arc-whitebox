@@ -4999,6 +4999,18 @@
       "owner": "residual-correction-rules-audit-responsive",
       "payload": {},
       "revision": 373
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T15:26:10+00:00",
+      "job": "R284",
+      "owner": "residual-correction-rules-audit-responsive",
+      "payload": {
+        "code_commit": "b87bfe1af41487c28a17d72a2db932af7cee09cd",
+        "command": "read-only first-party AIcrowd/ARC rules and official starterkit source review for one fixed global residual direction/coefficient learned only from public development mini networks; no estimator/run/data download/Actions/paid/private/holdout/full/submission/leaderboard/canonical edits",
+        "run_id": "R284-residual-correction-rules-audit-20260923"
+      },
+      "revision": 374
     }
   ],
   "jobs": [
@@ -8015,19 +8027,26 @@
     },
     {
       "assigned_owner": "residual-correction-rules-audit-responsive",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "b87bfe1af41487c28a17d72a2db932af7cee09cd",
+          "command": "read-only first-party AIcrowd/ARC rules and official starterkit source review for one fixed global residual direction/coefficient learned only from public development mini networks; no estimator/run/data download/Actions/paid/private/holdout/full/submission/leaderboard/canonical edits",
+          "run_id": "R284-residual-correction-rules-audit-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Use first-party AIcrowd/ARC allowed-code rules, official evaluator/starterkit source, and R276/R278 artifacts to determine whether an estimator may embed one fixed output-space residual direction and coefficient fitted offline from public development mini networks, then apply it globally to unseen inputs/networks. Separate permitted public development use from leakage of evaluation-network targets, package-time constants, and metered runtime computation. Cite exact official sources and state any ambiguity as UNKNOWN; no organizer contact, estimator implementation/run, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard/canonical edits. Save one concise research artifact/receipt with hashes/commit and finish R284.",
       "depends_on": [],
       "hypothesis_id": "V25-RESIDUAL-CORRECTION-RULES-20260923",
       "id": "R284",
       "owner": "residual-correction-rules-audit-responsive",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Check competition-rule validity of a global residual correction"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 373,
+  "revision": 374,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
