@@ -1,0 +1,142 @@
+{
+  "schema": "arc.whitebox.r248.receipt.v1",
+  "job_id": "R248",
+  "owner": "method-research-recovery",
+  "run_id": "R248-post-r247-distinct-method-research-20260923",
+  "status": "SCIENTIFIC_REJECT",
+  "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER",
+  "hypothesis": "A distinct network-agnostic rank-1 Kronecker surrogate for the V25 young-source transport operator can cut >=10% measured FLOPs while preserving transport fidelity tightly enough to keep raw-MSE degradation below the R246 score threshold.",
+  "tested_configuration": "V25-KRON1-YOUNG-TRANSPORT",
+  "conclusion": "Static novelty/cost/source-contract gates passed, but the frozen target-free oracle falsifier failed decisively. Exact-Kronecker control and 8/8 deterministic finite cases passed; best possible rank-1 Kronecker transport had mean A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Stop before estimator implementation, validation, public mini-100 or Actions.",
+  "provenance": {
+    "queue_start_code_commit": "c32aeea0c0ae4e739b1b6f723fc7548ca63cdb24",
+    "research_branch": "research/r248-kron1-young-transport-20260923",
+    "parent_v25_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "r209_record": {
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    },
+    "r209_source_receipt_sha256": "5c87e8868ce3221b01979f7360079960e8991629926a7623037662f3c4511740",
+    "r246": {
+      "report_blob": "00720da19fb571d320930304defcedd978bb82c4",
+      "receipt_blob": "dd5ac175db94d38770fd5e3cc2076b8b541a1a88"
+    },
+    "r247": {
+      "report_blob": "de2768d8326a489968d024a6a3e365c687240779",
+      "candidate_blob": "b52dafbc77714276de5dbd14332426f3c664df47",
+      "receipt_blob": "926c6c9c24ca216add47ec8e20607871d8abb5e1"
+    },
+    "r245_static_report_blob": "5402396548bf046122edba07a8d6f73743526c8c",
+    "history": {
+      "experiment_count": 194,
+      "blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb"
+    },
+    "upstream_findings_blob": "09cf41e8826052ceb83109115cae688c03baaaca"
+  },
+  "frozen_artifacts": {
+    "candidate_spec": {
+      "path": "research/r248/R248_CANDIDATE_SPEC.json",
+      "commit": "eac7d7a216bec51fb55b7e8ce8606aab7c37cb70",
+      "git_blob": "3c8300af8386d9aa8e2e4aa434cc09d06874d233",
+      "sha256": "0291e5599b2645d4f334d86f5b8384bdbb4e73655fac76e2396d93b9fab44d37"
+    },
+    "falsifier": {
+      "path": "scripts/r248_kron1_transport_falsifier.py",
+      "commit": "0fe8d65e495b1c62244b31e9f03360c240bfd0d2",
+      "git_blob": "ed1609650a842660bf19f94a39adcf395db239e5",
+      "sha256": "96ed06013c83cee9910d986cb61b2f1e8eb86df074256295eb7f0836bb7a865f"
+    },
+    "protocol": {
+      "path": "research/r248/R248_PROTOCOL.json",
+      "commit": "5b7046f8c5b8ec8b71c337ab11ce412b89bf6873",
+      "git_blob": "be129968bd14578c43b74935d5a36d7d98692d2f",
+      "sha256": "cde0830975bb0a140d837adaf423e98578f2911149d1333427aa99a0694332cb"
+    },
+    "falsifier_result": {
+      "path": "research/r248/R248_FALSIFIER_RESULT.json",
+      "commit": "0fd7270ab362563e1d486d62084f8ec8ce51ad4c",
+      "git_blob": "16d3df320232828f0254e5c8d48d375cc37edc9a",
+      "sha256": "c4ab12de20ecd0bd0208d3519fb18563677fbc1bdb28633cd4b66a90a7588670",
+      "canonical_without_self_hash_sha256": "4a379199ec212c777c7418f177280281d97fbcd55c85a4db3623fa0a82fb2f31"
+    },
+    "report": {
+      "path": "research/r248/R248_REPORT.md",
+      "commit": "a416814484b35b04909c276eefe9a50f4fa15767",
+      "git_blob": "e5b0dbde2c09243119ed7df98d31a5b6abea5a8b",
+      "sha256": "389e3e8a51971a4a6c355999e54700250b47fe12d3e9e54bbc5227978a51525a"
+    }
+  },
+  "novelty_firewall": {
+    "r247_right_factor_sparsification_excluded": true,
+    "r244_mp_r16_excluded": true,
+    "r223_v25_lf_excluded": true,
+    "source_rank_age_tiers_excluded": true,
+    "source_drop_window_excluded": true,
+    "source_axis_compression_excluded": true,
+    "sketches_sampling_fwht_excluded": true,
+    "strassen_trilinear_aggregation_excluded": true,
+    "precision_excluded": true,
+    "displacement_structure_excluded": true,
+    "candidate_distinction": "Approximate shared young transport operator by rank-1 Kronecker product; leave D21 right-factor contractions dense/exact."
+  },
+  "static_cost": {
+    "parent_mean_flops": 806303721965,
+    "required_max_mean_flops": 725673349768.5,
+    "parent_units": 375.4644291312434,
+    "parent_young_transport_units": 54,
+    "kron_apply_units": 3.375,
+    "conservative_overhead_reserve_units": 8,
+    "conservative_candidate_units": 332.8394291312434,
+    "conservative_candidate_flops": 714767231469,
+    "conservative_candidate_parent_ratio": 0.886473932833993,
+    "gate_pass": true,
+    "measured": false
+  },
+  "source_compliance": {
+    "production_estimator_implemented": false,
+    "frozen_contract_no_output_affecting_math_star": true,
+    "frozen_contract_metered_fnp_sqrt": true,
+    "frozen_contract_no_nontrivial_python_scalar_numeric_work": true,
+    "eligibility_unknown_triggered": false,
+    "note": "Offline NumPy/SVD falsifier is a target-free oracle analysis, not Phase-2 estimator/submission code."
+  },
+  "falsifier": {
+    "target_free": true,
+    "public_dataset_opened": false,
+    "targets_opened": false,
+    "oracle_best_rank1_kron": true,
+    "cases": 8,
+    "finite_cases": 8,
+    "deterministic_cases": 8,
+    "control_rrms": 4.812580056623063e-16,
+    "control_max": 1e-12,
+    "mean_transport_rrms": 0.9846514161220152,
+    "mean_transport_max": 0.012,
+    "max_any_rrms": 0.9913359558380901,
+    "each_max": 0.015,
+    "go": false
+  },
+  "public_science": {
+    "estimator_implemented": false,
+    "validation_run": false,
+    "benchmark_run": false,
+    "public_mini100_run": false,
+    "actions_run": false,
+    "scientific_score_gates_measured": false,
+    "reason": "Forbidden after frozen target-free falsifier NO-GO."
+  },
+  "scope": {
+    "read_R223_candidate_output_or_artifact": false,
+    "read_R244_candidate_output_or_artifact": false,
+    "per_network_tuning": false,
+    "canonical_v25_edited": false,
+    "paid_compute": false,
+    "private_holdout": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "retry": false,
+    "second_mechanism": false,
+    "gate_relaxation": false
+  }
+}
