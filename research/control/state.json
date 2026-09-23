@@ -3306,6 +3306,22 @@
         "command": "one standard ubuntu-24.04 Actions workflow only: verify pinned wheel hashes and corrected importlib.metadata versions; reconstruct/replay frozen R254 monomial-path fixture; run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; on parent PASS only construct and run V25-BPK2K balanced pK-to-K cumulant reduction; on all target-free/source/cost gates only verify exact R209 mini-100 row/order/network/target hashes and run candidate once; no retry/second workflow"
       },
       "at": "2026-09-23T07:55:00+00:00"
+    },
+    {
+      "revision": 250,
+      "action": "finish",
+      "job": "R254",
+      "owner": "one-shot-accuracy-research",
+      "payload": {
+        "run_id": "R254-one-shot-global-accuracy-20260923",
+        "status": "INFRA_ERROR",
+        "reason": "R254 terminal INFRA_ERROR after the sole authorized standard ubuntu-24.04 Actions run 35834163527/job 107093511576 attempt 1. Pinned wheel hashes and corrected importlib.metadata versions passed; pinned V25 source hashes passed; the deterministic 1024x16 monomial-path fixture and independent replay passed exact frozen weight/truth hashes. The unchanged parent executed first and control flow reached parent PASS, then the frozen V25-BPK2K candidate was constructed and executed. Before R254_TARGET_FREE_RESULT.json could be serialized, the harness crashed in candidate_gate because it assumed BudgetContext.summary() was a mapping but runtime returned a string: AttributeError: 'str' object has no attribute 'get'. Artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7. Persisted parent/candidate scientific measurements are 0/0; BPK2K accuracy/cost gates are unevaluated. Validation/public identity/public mini-100 were skipped. Per one-workflow/no-retry rule there is no repair/rerun or second method.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json",
+          "sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488"
+        }
+      },
+      "at": "2026-09-23T08:00:00+00:00"
     }
   ],
   "jobs": [
@@ -5286,19 +5302,33 @@
       "assigned_owner": "one-shot-accuracy-research",
       "id": "R254",
       "owner": "one-shot-accuracy-research",
-      "status": "RUNNING",
+      "status": "INFRA_ERROR",
       "attempts": [
         {
           "run_id": "R254-one-shot-global-accuracy-20260923",
           "code_commit": "a7c4932391c09c0f6004d83b410ed643b3ca8ad2",
           "command": "one standard ubuntu-24.04 Actions workflow only: verify pinned wheel hashes and corrected importlib.metadata versions; reconstruct/replay frozen R254 monomial-path fixture; run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; on parent PASS only construct and run V25-BPK2K balanced pK-to-K cumulant reduction; on all target-free/source/cost gates only verify exact R209 mini-100 row/order/network/target hashes and run candidate once; no retry/second workflow",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR",
+          "completion": {
+            "run_id": "R254-one-shot-global-accuracy-20260923",
+            "status": "INFRA_ERROR",
+            "reason": "R254 terminal INFRA_ERROR after the sole authorized standard ubuntu-24.04 Actions run 35834163527/job 107093511576 attempt 1. Pinned wheel hashes and corrected importlib.metadata versions passed; pinned V25 source hashes passed; the deterministic 1024x16 monomial-path fixture and independent replay passed exact frozen weight/truth hashes. The unchanged parent executed first and control flow reached parent PASS, then the frozen V25-BPK2K candidate was constructed and executed. Before R254_TARGET_FREE_RESULT.json could be serialized, the harness crashed in candidate_gate because it assumed BudgetContext.summary() was a mapping but runtime returned a string: AttributeError: 'str' object has no attribute 'get'. Artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7. Persisted parent/candidate scientific measurements are 0/0; BPK2K accuracy/cost gates are unevaluated. Validation/public identity/public mini-100 were skipped. Per one-workflow/no-retry rule there is no repair/rerun or second method.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json",
+              "sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488"
+            }
+          }
         }
-      ]
+      ],
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/9a97e04bf0563e593c7fa9d6437410227d30dc1c/research/r254/R254_RECEIPT.json",
+        "sha256": "fd39195e64e5404cbb52729da173ff4931e19969d0044425463b24cb72949488"
+      },
+      "reason": "R254 terminal INFRA_ERROR after the sole authorized standard ubuntu-24.04 Actions run 35834163527/job 107093511576 attempt 1. Pinned wheel hashes and corrected importlib.metadata versions passed; pinned V25 source hashes passed; the deterministic 1024x16 monomial-path fixture and independent replay passed exact frozen weight/truth hashes. The unchanged parent executed first and control flow reached parent PASS, then the frozen V25-BPK2K candidate was constructed and executed. Before R254_TARGET_FREE_RESULT.json could be serialized, the harness crashed in candidate_gate because it assumed BudgetContext.summary() was a mapping but runtime returned a string: AttributeError: 'str' object has no attribute 'get'. Artifact 10737609819 ZIP SHA256 9512985e1af5a98afa9d4ca4e87f6935d8e15ac9c73a28a3a7f0c3ddc5db05e7. Persisted parent/candidate scientific measurements are 0/0; BPK2K accuracy/cost gates are unevaluated. Validation/public identity/public mini-100 were skipped. Per one-workflow/no-retry rule there is no repair/rerun or second method."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 249,
+  "revision": 250,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
