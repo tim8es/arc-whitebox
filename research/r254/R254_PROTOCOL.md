@@ -1,4 +1,4 @@
-# R254 frozen protocol — V25-BR13 balanced mean-rider reduction
+# R254 frozen protocol — V25-BPK2K balanced pK-to-K cumulant reduction
 
 Status: **FROZEN BEFORE SOLE ACTIONS TRIGGER**  
 Owner: `one-shot-accuracy-research`  
@@ -26,7 +26,7 @@ protocol. BR13 is distinct: it changes neither dtype nor mathematical estimator
 formula. It changes only the float32 parenthesization of one already-existing 13-term
 V25 rider reduction.
 
-## Exactly one hypothesis: V25-BR13
+## Exactly one hypothesis: V25-BPK2K
 
 Pinned parent:
 `504aldo/whest-p2-cumulant-k3@18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45`,
@@ -34,29 +34,29 @@ Pinned parent:
 `195373a110215256b759d7c172ba8c923c62e5cc`, SHA256
 `c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20`.
 
-Parent source anchor, verified once pre-trigger:
-`delta = feats @ beta_rows[li]`.
+BPK2K changes only the reduction order in the existing `PK2K_TABLE`
+moment-to-cumulant conversion, which runs on every nonlinear layer. The parent builds
+each contribution `prod*coef` in frozen table order and accumulates sequentially.
+The candidate builds the identical contribution list and reduces adjacent pairs in a
+fixed balanced binary tree until one term remains.
 
-BR13 keeps the 13 features, all 16x13 coefficients, every V25 K3/K4/source/rank/lambda
-operation and every gate unchanged. It computes the same real-arithmetic dot product
-using a fixed balanced binary tree:
+Therefore in real arithmetic every K1/K2/K3/K4/K11/K21/K22 output is identical.
+No coefficient, term, state, rank, source, lambda, rider, target, network ID, seed,
+clipping or damping changes. For m contributions, parent and candidate both perform
+the identical contribution products and exactly m-1 additions; only parentheses differ.
+The hypothesis is that reducing float32 addition depth in the repeated global
+moment-cumulant conversion reduces accumulated cancellation/roundoff enough to improve
+raw accuracy.
 
-- 13 elementwise products;
-- six adjacent pair sums;
-- three pair-pair sums;
-- two next-level sums, one joining term 12;
-- one final sum.
+The candidate delta contains no `math.*`, Python scalar numerical algorithm,
+division, transcendental, external numerical library or unmetered reduction. Pairwise
+sums are ordinary metered `fnp.ndarray` additions; Python lists/loop indices are
+control/bookkeeping only. Static FLOP direction is equal; measured candidate <= parent
+is mandatory.
 
-Thus parent and candidate both have semantically 13 multiplies + 12 adds per output.
-No fitted coefficient, target, network ID, seed choice, branch, clipping, damping,
-rank change or per-network rule exists. The hypothesis is purely that a shorter fixed
-float32 reduction depth reduces cancellation/roundoff in the existing global V25 rider
-enough to improve raw accuracy.
-
-The source delta contains no `math.*`, scalar numerical algorithm, division,
-transcendental, external library or unmetered numerical reduction. Numerical products
-and additions remain `fnp.ndarray` operators. Static FLOP direction is equal; measured
-FlopScope candidate <= parent is mandatory.
+This is not R251 GFNP (no rider coefficient projection), either R252 method (no D21
+weighting and no final Cornish-Fisher response), DRRE/RSRF, low-rank/sparsity/transport,
+AGO/gauge, sampling/CV, or source-tier compression.
 
 ## Deterministic production-shape target-free fixture
 
