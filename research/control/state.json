@@ -4271,6 +4271,22 @@
         "command": "desk-only recomputation from immutable normalized R209 V25/V29 rows and official Phase-2 scoring source; no estimator/Actions/new data/private/holdout/full/paid/submission/leaderboard/model/canonical changes"
       },
       "at": "2026-09-23T12:22:13.274Z"
+    },
+    {
+      "revision": 320,
+      "action": "finish",
+      "job": "R270",
+      "owner": "score-gap-independent-audit",
+      "payload": {
+        "run_id": "R270-score-gap-independent-audit-20260923",
+        "status": "COMPLETE",
+        "reason": "Independent desk-only recomputation verifies R266 arithmetic from immutable normalized R209 V25/V29 rows and the official Phase-2 scoring formula. V25 mean adjusted score 8.170397440117225e-9, exact cost factor 0.36666448157347986125387251377105712890625, 0.1 floor behavior, conditional 74.29745596353915% same-cost raw-MSE reduction versus displayed 2.1e-9, and 5.757900157515475% residual MSE reduction at the floor are all correct. R209 V29 has 57 residual_wall_time_exhausted failures whose multiplier-1 penalties dominate its score. The 2.1e-9 value is display-rounded/unrounded value unknown. Strict comparison remains NOT_COMPARABLE because R209 public mini:all-100 differs from 50-visible+50-sealed evaluation; no official rank or exact gap is claimed. No estimator/Actions/competition dataset fetch/private/holdout/full/paid/submission/leaderboard/model/canonical changes.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/157629ac3639759496114d977f1ef5da25072c6a/research/r270/R270_RECEIPT.json",
+          "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4"
+        }
+      },
+      "at": "2026-09-23T12:26:49.310Z"
     }
   ],
   "jobs": [
@@ -6806,20 +6822,34 @@
       ],
       "assigned_owner": "score-gap-independent-audit",
       "owner": "score-gap-independent-audit",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "attempts": [
         {
           "run_id": "R270-score-gap-independent-audit-20260923",
           "code_commit": "385756cddca324a96acd6a50d0f7294ed8e825e7",
           "command": "desk-only recomputation from immutable normalized R209 V25/V29 rows and official Phase-2 scoring source; no estimator/Actions/new data/private/holdout/full/paid/submission/leaderboard/model/canonical changes",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R270-score-gap-independent-audit-20260923",
+            "status": "COMPLETE",
+            "reason": "Independent desk-only recomputation verifies R266 arithmetic from immutable normalized R209 V25/V29 rows and the official Phase-2 scoring formula. V25 mean adjusted score 8.170397440117225e-9, exact cost factor 0.36666448157347986125387251377105712890625, 0.1 floor behavior, conditional 74.29745596353915% same-cost raw-MSE reduction versus displayed 2.1e-9, and 5.757900157515475% residual MSE reduction at the floor are all correct. R209 V29 has 57 residual_wall_time_exhausted failures whose multiplier-1 penalties dominate its score. The 2.1e-9 value is display-rounded/unrounded value unknown. Strict comparison remains NOT_COMPARABLE because R209 public mini:all-100 differs from 50-visible+50-sealed evaluation; no official rank or exact gap is claimed. No estimator/Actions/competition dataset fetch/private/holdout/full/paid/submission/leaderboard/model/canonical changes.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/157629ac3639759496114d977f1ef5da25072c6a/research/r270/R270_RECEIPT.json",
+              "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4"
+            }
+          }
         }
       ],
-      "deliverable": "Independently recompute R266 from immutable normalized R209 V25 rows and official Phase-2 scoring source. Verify mean adjusted score, cost factor, 0.1 floor, conditional raw-MSE reduction needed to match the displayed 2.1e-9, and treatment of R209 V29 failures; check arithmetic/rounding and explicitly preserve NOT_COMPARABLE because public mini:all-100 differs from 50-visible+50-sealed leaderboard evaluation. Do not claim official rank or exact gap. Produce an isolated append-only audit report/receipt with hashes/commit and finish R270. No estimator/Actions/data access/private/holdout/full/paid/submission/leaderboard/model/canonical edits."
+      "deliverable": "Independently recompute R266 from immutable normalized R209 V25 rows and official Phase-2 scoring source. Verify mean adjusted score, cost factor, 0.1 floor, conditional raw-MSE reduction needed to match the displayed 2.1e-9, and treatment of R209 V29 failures; check arithmetic/rounding and explicitly preserve NOT_COMPARABLE because public mini:all-100 differs from 50-visible+50-sealed leaderboard evaluation. Do not claim official rank or exact gap. Produce an isolated append-only audit report/receipt with hashes/commit and finish R270. No estimator/Actions/data access/private/holdout/full/paid/submission/leaderboard/model/canonical edits.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/157629ac3639759496114d977f1ef5da25072c6a/research/r270/R270_RECEIPT.json",
+        "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4"
+      },
+      "reason": "Independent desk-only recomputation verifies R266 arithmetic from immutable normalized R209 V25/V29 rows and the official Phase-2 scoring formula. V25 mean adjusted score 8.170397440117225e-9, exact cost factor 0.36666448157347986125387251377105712890625, 0.1 floor behavior, conditional 74.29745596353915% same-cost raw-MSE reduction versus displayed 2.1e-9, and 5.757900157515475% residual MSE reduction at the floor are all correct. R209 V29 has 57 residual_wall_time_exhausted failures whose multiplier-1 penalties dominate its score. The 2.1e-9 value is display-rounded/unrounded value unknown. Strict comparison remains NOT_COMPARABLE because R209 public mini:all-100 differs from 50-visible+50-sealed evaluation; no official rank or exact gap is claimed. No estimator/Actions/competition dataset fetch/private/holdout/full/paid/submission/leaderboard/model/canonical changes."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 319,
+  "revision": 320,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
