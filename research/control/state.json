@@ -3088,6 +3088,23 @@
         "command": "protocol/history preparation only: read complete immutable history and R231/R232/R238/R239/R245/R249/R250 evidence; freeze exactly one genuinely new global-accuracy hypothesis, unchanged-parent production-config synthetic fixture, byte hashes/seeds/diagnostics, metered source contract, exact target-free falsifier, FLOP/time bounds and stop rules before any measurement"
       },
       "at": "2026-09-23T06:31:02+00:00"
+    },
+    {
+      "revision": 237,
+      "action": "finish",
+      "job": "R251",
+      "owner": "global-accuracy-method-research",
+      "payload": {
+        "run_id": "R251-global-accuracy-full-history-method-20260923",
+        "status": "INCONCLUSIVE",
+        "verdict": "PARENT_GATE_NOT_EXECUTED_PINNED_RUNTIME_UNAVAILABLE",
+        "reason": "R251 terminal INCONCLUSIVE before parent science. Full-history deduplication and one new GFNP hypothesis were frozen before measurement, along with exact 1024x16 seed-251001 fixture bytes/hashes, diagnostics, gates and stop rules. Mandatory unchanged-parent production-shape gate could not be executed because the session runtime was Python 3.13.5/NumPy 2.3.5 with flopscope and whestbench absent and python3.11 unavailable; attempting to install the independently verified official FlopScope 0.12.1 wheel failed before installation after DNS retries with '[Errno -3] Temporary failure in name resolution'. The frozen protocol forbids substituting Actions, alternate runtime, changed fixture, reseed/resize/rescale or retry for this gate. Therefore there are no parent measurements/checkpoints and no scientific claim. GFNP estimator was not constructed and its candidate falsifier/public mini-100 were not run. No paid/private/holdout, R223/R244 output/artifact access, submission/leaderboard mutation, canonical V25 edit, second method or gate relaxation.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json",
+          "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb"
+        }
+      },
+      "at": "2026-09-23T06:47:00+00:00"
     }
   ],
   "jobs": [
@@ -4945,7 +4962,17 @@
           "run_id": "R251-global-accuracy-full-history-method-20260923",
           "code_commit": "ef50654bf412d9c14d9c4eb9af2b329dd44aca55",
           "command": "protocol/history preparation only: read complete immutable history and R231/R232/R238/R239/R245/R249/R250 evidence; freeze exactly one genuinely new global-accuracy hypothesis, unchanged-parent production-config synthetic fixture, byte hashes/seeds/diagnostics, metered source contract, exact target-free falsifier, FLOP/time bounds and stop rules before any measurement",
-          "status": "RUNNING"
+          "status": "INCONCLUSIVE",
+          "completion": {
+            "run_id": "R251-global-accuracy-full-history-method-20260923",
+            "status": "INCONCLUSIVE",
+            "verdict": "PARENT_GATE_NOT_EXECUTED_PINNED_RUNTIME_UNAVAILABLE",
+            "reason": "R251 terminal INCONCLUSIVE before parent science. Full-history deduplication and one new GFNP hypothesis were frozen before measurement, along with exact 1024x16 seed-251001 fixture bytes/hashes, diagnostics, gates and stop rules. Mandatory unchanged-parent production-shape gate could not be executed because the session runtime was Python 3.13.5/NumPy 2.3.5 with flopscope and whestbench absent and python3.11 unavailable; attempting to install the independently verified official FlopScope 0.12.1 wheel failed before installation after DNS retries with '[Errno -3] Temporary failure in name resolution'. The frozen protocol forbids substituting Actions, alternate runtime, changed fixture, reseed/resize/rescale or retry for this gate. Therefore there are no parent measurements/checkpoints and no scientific claim. GFNP estimator was not constructed and its candidate falsifier/public mini-100 were not run. No paid/private/holdout, R223/R244 output/artifact access, submission/leaderboard mutation, canonical V25 edit, second method or gate relaxation.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json",
+              "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb"
+            }
+          }
         }
       ],
       "deliverable": "Accuracy-first, full-history-deduplicated global-accuracy research motivated by R231. Read complete history plus R231/R232/R238/R239/R245/R249/R250 evidence. Choose exactly one genuinely new global-accuracy estimator hypothesis, excluding DRRE/R232 descendants, RSRF/R238 descendants, R247 2:4 D21 sparsity, R248 rank-1 Kronecker transport, R250 LEG2-R1, R244 MP-R16, R223 V25-LF, and all closed/rejected history; no per-network tuning or invented leader method. Freeze math/source, deterministic target-free fixtures+byte hashes, seeds, diagnostics, falsifier gates, FLOP/time bounds and stop rules before measurement. First execute unchanged parent on the same production-configuration synthetic fixture and save exact fixture hashes plus per-layer finite/max-abs/symmetry checkpoints. Parent failure => terminal INCONCLUSIVE with forensic trace, no candidate construction/rescale/reseed/retry. Parent pass => run only the single frozen target-free candidate falsifier; every output-affecting numerical op through metered fnp, no math.* or unresolved unmetered scalar arithmetic. Any gate failure => durable NO-GO, no estimator/benchmark/Actions/second method. Only if all frozen target-free/source/cost gates pass: at most one verified-free standard Actions workflow on exactly public R209 mini-100, no retry; gates zero failures, exact row/hash identity, mean adjusted <=0.95*R209, >=55/100 better, paired gain >2 descriptive SE, mean FLOPs <=R209, max residual <0.4s. No official-rank/same-panel inference, paid/private/holdout, R223/R244 outputs/artifacts, submission/leaderboard mutation, canonical V25 edit, or gate relaxation.",
@@ -4960,12 +4987,17 @@
       "id": "R251",
       "owner": "global-accuracy-method-research",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Test one new global-accuracy estimator after full-history deduplication"
+      "status": "INCONCLUSIVE",
+      "title": "Test one new global-accuracy estimator after full-history deduplication",
+      "reason": "R251 terminal INCONCLUSIVE before parent science. Full-history deduplication and one new GFNP hypothesis were frozen before measurement, along with exact 1024x16 seed-251001 fixture bytes/hashes, diagnostics, gates and stop rules. Mandatory unchanged-parent production-shape gate could not be executed because the session runtime was Python 3.13.5/NumPy 2.3.5 with flopscope and whestbench absent and python3.11 unavailable; attempting to install the independently verified official FlopScope 0.12.1 wheel failed before installation after DNS retries with '[Errno -3] Temporary failure in name resolution'. The frozen protocol forbids substituting Actions, alternate runtime, changed fixture, reseed/resize/rescale or retry for this gate. Therefore there are no parent measurements/checkpoints and no scientific claim. GFNP estimator was not constructed and its candidate falsifier/public mini-100 were not run. No paid/private/holdout, R223/R244 output/artifact access, submission/leaderboard mutation, canonical V25 edit, second method or gate relaxation.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/3c22c02a8bde8f4368aa2610f4a80d3a7b094400/research/r251/R251_RECEIPT.json",
+        "sha256": "96661a276b5a9ddaee2389b8c2dc772e25fb6ee20601b0567582a267c698e7cb"
+      }
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 236,
+  "revision": 237,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
