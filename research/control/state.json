@@ -3808,6 +3808,22 @@
         "run_id": "R262-r260-independent-audit-20260923"
       },
       "revision": 284
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T10:23:00+00:00",
+      "job": "R262",
+      "owner": "r260-independent-audit-e178-guard",
+      "payload": {
+        "reason": "Independent read-only audit verified R260 artifact integrity and recomputed every frozen target-free gate. Final ratio 1.0003220117801912 >0.95 and all-layer ratio 1.0000406003104108 >0.98 are the only failures; 13 improved layers, max degradation 1.0003220117801912, FLOP ratio 1.0, residual 0.31171112699985315 <=0.3453375111489872, finite/shape/symmetry/source gates pass. GitHub workflow success is consistent with preserved terminal evidence while science is SCIENTIFIC_REJECT_TARGET_FREE. Validation/R209 identity/public mini-100 were skipped as required. No rerun or prohibited access.",
+        "receipt": {
+          "sha256": "753ab8f90c42fb5c6f6748de723877e6a2e5e17ac4f23a23e63b579f1e187402",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/d6c29031c8c7c751602ffe34e8eff538d237137a/research/r262/R262_RECEIPT.json"
+        },
+        "run_id": "R262-r260-independent-audit-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 285
     }
   ],
   "jobs": [
@@ -6087,7 +6103,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 284,
+  "revision": 285,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
