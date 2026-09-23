@@ -1,0 +1,64 @@
+{
+  "schema": "arc.whitebox.r284.rules_audit.receipt.v1",
+  "id": "R284",
+  "run_id": "R284-residual-correction-rules-audit-20260923",
+  "owner": "residual-correction-rules-audit-responsive",
+  "status": "COMPLETE",
+  "verdict": "CONFIRMED_ALLOWED_WITH_CONDITIONS",
+  "decision": {
+    "development_public_mini_fit": "ALLOWED",
+    "frozen_global_parameters_on_unseen_networks": "ALLOWED",
+    "shipped_numeric_data_artifact": "ALLOWED",
+    "python_literal_embedding_of_learned_1024_vector": "UNKNOWN_AVOIDABLE",
+    "evaluation_target_dependence": "NOT_ALLOWED_AND_NOT_EXPOSED_BY_CONTRACT",
+    "setup_time_numerical_precompute": "OUTSIDE_DOCUMENTED_ALLOWED_PATH",
+    "predict_time_correction_via_flopscope": "REQUIRED_AND_METERED"
+  },
+  "report": {
+    "commit": "f9df93918e0d53fb3fe755b346ce983fcd0d9ba4",
+    "path": "research/r284/R284_RESIDUAL_CORRECTION_RULES_AUDIT.md",
+    "git_blob_sha1": "ca4f924449a814bb4ccd82852f8df4927058f134",
+    "sha256": "28df3978a4e92a17e3dbc1f616a0245388b8cf350a10b537da1dd5a0ee60d752"
+  },
+  "pinned_project_inputs": {
+    "r276_report_git_blob_sha1": "4970614c1ac789b008260d726a2bbd5272116434",
+    "r276_receipt_git_blob_sha1": "56f40cc6b109d769e521c9ba0cf363c7683ef5ab",
+    "r276_receipt_sha256": "cadd1fe473b1e849c3c3c195a8e4a348212ef578328e7b2b8f8145af45056b71",
+    "r278_report_git_blob_sha1": "84a1186a70770b0480064f6d26703807b05b2f32",
+    "r278_receipt_git_blob_sha1": "1568273d596bd2510c8a3c3520db6da18d2918b0",
+    "r278_receipt_sha256": "3294904ef96c263f3562c7b34de98d0379c56207a424ab5ac91a649b27dfbd81"
+  },
+  "official_sources": {
+    "starterkit_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "allowed_code_blob": "525276e8e5bc7f6a7dd54e876140ab0df514be32",
+    "ship_weights_blob": "1e8dc52cd52bb4858de0aea0e6ca07354e7b4055",
+    "estimator_contract_blob": "43c1494420b46aad4bc1dbbab83528eca6b89668",
+    "code_patterns_blob": "2d1aa532af6f160fd0942da34f78595216a596de",
+    "use_evaluation_datasets_blob": "53af1ead77023bb2c4c27fa2a64b494a4f46aa26",
+    "whestbench_version": "0.16.1",
+    "whestbench_tag_object": "66526b4c80d9aea6af981c7a0f92e9ec76c57238",
+    "whestbench_tag_target_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "whestbench_sdk_blob": "7442366e445702d6c2fcc12baaa39c7a2d7af4da",
+    "whestbench_scoring_blob": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "challenge_rules_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/challenge_rules",
+    "aicrowd_townhall_url": "https://discourse.aicrowd.com/t/townhall-summary-recording/18078"
+  },
+  "runtime_accounting": {
+    "final_layer_width": 1024,
+    "multiply_plus_add_float32_flops_if_alpha_and_direction_separate": 2048,
+    "add_only_float32_flops_if_correction_precombined_offline": 1024,
+    "note": "Conditional on exactly one elementwise multiply plus add, or one add; extra materialization/stack/copy operations must be counted separately."
+  },
+  "accounting": {
+    "estimator_implementations": 0,
+    "estimator_runs": 0,
+    "dataset_downloads": 0,
+    "actions_runs": 0,
+    "paid_resources": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false,
+    "organizer_contacts": 0
+  }
+}
