@@ -1,0 +1,35 @@
+{
+  "schema": "arc.whitebox.r252.fixture_manifest.v1",
+  "fixture_id": "R252-PRODUCTION-SHAPE-TWOTAP-POSITIVE-MIX-252001",
+  "seed": 252001,
+  "width": 1024,
+  "depth": 16,
+  "dtype": "float32",
+  "truth_dtype": "little-endian float64",
+  "construction": {
+    "layer0": "W0[j,j]=float32(0.8); W0[(j+17)%1024,j]=float32(0.6); otherwise +0.0f",
+    "later": "stride_l=2*((37*l+13)%511)+1; q_j=((j*(2*l+3)+252001+97*l)%25)-12; scale_j=float32(1+q_j/512); W_l[j,j]=float32(0.625)*scale_j; W_l[(j+stride_l)%1024,j]=float32(0.375)*scale_j; otherwise +0.0f",
+    "truth": "Layer 0 exact Gaussian ReLU marginal mean; layers 1..15 exact positive linear mean transport because later weights are nonnegative."
+  },
+  "layer_sha256": [
+    "dae5fc841d3ae8801b8e17f0542c73af73b96f1dd2c58f5d7ce5d6f3f806ce79",
+    "a58a2305a12618ea645d649e40383e5a893375cbafc8ca94435fc3d5708036cd",
+    "d4df7c5c649e380e3150aad9a9bce819877650dbbd0a079db83d53a62cf4dbef",
+    "34047f41bcd430b98b29a02198c1166b74312619811ad9bef2d8f88a9dba5544",
+    "a40a635c18dc9fd54765ba31f511d8f2e07b5d2890264f1d45af68722c302f1b",
+    "1e29f8b3e7ef3baef3c2768d20e8be90c0741c9c9907ea3738648f4c75a12157",
+    "53090fae9f190e54c84cabee7ecc9c66cf506e08f59539f947287ca3d3aaf820",
+    "63f2e8a75eb45d820fc70c83ed3e921ff3f69eb7b514d0175e786126a4d92b45",
+    "aba44c40d884da3756999de4ee97d05580bab6ff2f210dd83949befc00479e45",
+    "76dff38f3497c15f99cdb11df53378441c6f4d05644530387848547eddd1ea05",
+    "4fccf3d8a2980c699e855a6b45e0c42c7763a8cba31f56e99277cc1c13c80581",
+    "fbe7a64b3dc6e94ec49ea25caf41dc83e4a5c77994780f8d7ebbd630418a685e",
+    "9599ac0719278ec13f7ffd332966bf3c7ab44c0fb12bc2ab0dcf59d903d1caca",
+    "1a8bad0dc8ce503ced7cec5645082a9bca8423c0e378c174eb3c5c06070eaa11",
+    "7c6ee18750f3adefce869b59b907e6a7f154e39319b313e26df57ca0854029dd",
+    "e8884bf05efc729ccbb738c756a4b77396281efe68ee6e12bb3555016b829e47"
+  ],
+  "dense_concat_sha256": "de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e",
+  "exact_truth_sha256": "623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450",
+  "replay_requirement": "Two independent reconstructions in the sole workflow must be byte-identical and match every frozen hash before parent execution."
+}
