@@ -1992,11 +1992,23 @@
       "job": "R237",
       "owner": "verifier-hardening",
       "payload": {
-        "run_id": "R237-r234-verifier-hardening-20260923",
         "code_commit": "ea6ef5ba92713e0cd9c7b22b550fb7f859bf7d45",
-        "command": "harden research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json for R236 D1-D7; add offline synthetic fail-closed regressions only; preserve R217 thresholds/R218 workflow-executor-run/R220 ownership; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical estimator"
+        "command": "harden research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json for R236 D1-D7; add offline synthetic fail-closed regressions only; preserve R217 thresholds/R218 workflow-executor-run/R220 ownership; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical estimator",
+        "run_id": "R237-r234-verifier-hardening-20260923"
       },
       "revision": 154
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T00:50:59.835959+00:00",
+      "job": "R232",
+      "owner": "global-accuracy-research",
+      "payload": {
+        "code_commit": "92094fec2f046596fd33e8d4b751ea37747cc8b0",
+        "command": "After workflow-only bootstrap repair commit 92094fec2f046596fd33e8d4b751ea37747cc8b0, update the R232 execution trigger for attempt 2 and launch exactly one standard ubuntu-24.04 Actions run of the unchanged frozen command: python scripts/r232_drre_exact_small.py --v25 r232-estimator-v25.py --out r232-drre-falsifier.json. Scientific protocol, source, seeds, ranks, gamma, gates unchanged; attempt 1 was infra-only and skipped the falsifier.",
+        "run_id": "R232-v25-drre-exact-small-attempt2-20260923"
+      },
+      "revision": 155
     }
   ],
   "jobs": [
@@ -3062,6 +3074,12 @@
           },
           "run_id": "R232-v25-drre-exact-small-20260923",
           "status": "INFRA_ERROR"
+        },
+        {
+          "code_commit": "92094fec2f046596fd33e8d4b751ea37747cc8b0",
+          "command": "After workflow-only bootstrap repair commit 92094fec2f046596fd33e8d4b751ea37747cc8b0, update the R232 execution trigger for attempt 2 and launch exactly one standard ubuntu-24.04 Actions run of the unchanged frozen command: python scripts/r232_drre_exact_small.py --v25 r232-estimator-v25.py --out r232-drre-falsifier.json. Scientific protocol, source, seeds, ranks, gamma, gates unchanged; attempt 1 was infra-only and skipped the falsifier.",
+          "run_id": "R232-v25-drre-exact-small-attempt2-20260923",
+          "status": "RUNNING"
         }
       ],
       "deliverable": "Continue after R227's terminal pre-science NO-GO and R231's finding that the V25 error tail is weakly concentrated. Read the complete immutable experiment ledger, current AGENTS/RESEARCH_PROCESS, and R227/R231 receipts. Identify exactly one genuinely untested global-accuracy estimator family (not per-network tail tuning, second K4 regeneration, feed-local lambda, one-factor copula, CountSketch, response-aligned D21, Walsh-coset/serializer rescue, or any renamed rejected mechanism). Freeze a mathematical specification, exact-small target-free falsifier, full production FLOP bound, and measurable GO/NO-GO before any run. Run only the small falsifier on verified free/existing compute; allow at most one same-panel mini-100 only if falsifier and cost gates pass. Preserve V25; no paid compute, holdout, or submission. If no strict novelty/feasibility, save terminal NO-GO with exact reason.",
@@ -3077,7 +3095,7 @@
         "sha256": "d5a478879ea577816be8cd6660ca5af8faf353d285c140672719a95f4d2ea166",
         "url": "https://github.com/tim8es/arc-whitebox/blob/c5d2c3a925f250773eb8341dbfdbc5b1c4ef0407/research/r232/R232_INFRA_ERROR_RECEIPT_ATTEMPT1.json"
       },
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Find one novel global-accuracy estimator hypothesis"
     },
     {
@@ -3225,9 +3243,9 @@
       "assigned_owner": "verifier-hardening",
       "attempts": [
         {
-          "run_id": "R237-r234-verifier-hardening-20260923",
           "code_commit": "ea6ef5ba92713e0cd9c7b22b550fb7f859bf7d45",
           "command": "harden research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json for R236 D1-D7; add offline synthetic fail-closed regressions only; preserve R217 thresholds/R218 workflow-executor-run/R220 ownership; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical estimator",
+          "run_id": "R237-r234-verifier-hardening-20260923",
           "status": "RUNNING"
         }
       ],
@@ -3244,7 +3262,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 154,
+  "revision": 155,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
