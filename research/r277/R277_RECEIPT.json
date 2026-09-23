@@ -1,0 +1,142 @@
+{
+  "schema": "arc.whitebox.r277.pr35-independent-review.v1",
+  "job": "R277",
+  "hypothesis_id": "R275-INDEPENDENT-REVIEW-20260923",
+  "owner": "preflight-independent-review",
+  "run_id": "R277-pr35-static-independent-review-20260923",
+  "status": "COMPLETE",
+  "verdict": "FINDINGS_NOT_PASS",
+  "control": {
+    "assigned_revision": 351,
+    "assigned_head": "2ca6613bcc46bad110548b371f1819c5f98d545e",
+    "live_revision_at_first_verified_read": 353,
+    "claim_revision": 355,
+    "claim_commit": "a318a290cb6a23387768ee56350534af1ae7853f",
+    "start_revision": 359,
+    "start_commit": "4a6f33b421a167290ea00cdfc3f29dc0cadb1222",
+    "source_commit": "e054a32d7d3bdac98408392b09f467e174c2565b"
+  },
+  "pull_request": {
+    "number": 35,
+    "url": "https://github.com/tim8es/arc-whitebox/pull/35",
+    "base_ref": "main",
+    "base_sha": "b5b988f8ec49a5ec473d59fcbfdfaf8c4350c850",
+    "head_sha": "e054a32d7d3bdac98408392b09f467e174c2565b",
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "changed_files": 5
+  },
+  "reviewed_blobs": {
+    "scripts/arc_workflow_preflight.py": {
+      "git_blob_sha1": "a654fa1e15bfa8f9c2bfaa39073ecdf044a74a12",
+      "sha256": "8d002d9f98ce717d2f84757bb2efea9f5b2c4660fb097b230bcc199d6c310cdf"
+    },
+    "tests/test_arc_workflow_preflight.py": {
+      "git_blob_sha1": "a5c4cc5801d30af3ffcdcb9b53c0d5cc932593fb",
+      "sha256": "041102f9622deb96eb2fd886aca771de0dd0553ad6efbf626ea6d39a3449a5e8"
+    },
+    "docs/workflow-preflight.md": {
+      "git_blob_sha1": "81d37a3759c0fc67b6bc8705e05a74e01877d4bd",
+      "sha256": "1b1118309f616c7e0d977d2c0da3e6073b99de2fc16459f7d338cef1d9c2a3ba"
+    }
+  },
+  "historical_contract_evidence": {
+    "r257": {
+      "workflow_commit": "187bc8f9ca459a96af1f7cf0d014bc906b278a2a",
+      "workflow_blob_sha1": "96e47b51cac6b7ecf39f02a47dd2cb63d1771578",
+      "receipt_sha256": "4b28cfb1f912afc9cae0b98484b711ee8dde5145e5d0753b2977eadd21093cc1",
+      "failure": "shallow checkout hid protocol ancestor"
+    },
+    "r258": {
+      "workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
+      "workflow_blob_sha1": "d6ac9965c19bbbaeb5c6a6598b5e01d08929805f",
+      "receipt_sha256": "60e0ed2e62a400c5738a1da63c88b59c47352c5e872ec8f1e7935f60091472ef",
+      "failure": "workflow expected wrong runtime-manifest filename"
+    },
+    "r259": {
+      "workflow_commit": "65394e2679bebd7005e7fba13de3166a2c5800d2",
+      "workflow_blob_sha1": "9d8099c4ba68904b2b6b38f07b4f878dc2053efa",
+      "receipt_sha256": "dd1c5c0d9941941cb00153e076c09cb51743966f0486579de85ac70f97af1fe1",
+      "failure": "workflow asserted nonexistent independent_replay.all_layer_hashes_equal"
+    },
+    "r254_fixture": {
+      "path": "research/r254/r254_fixture.py",
+      "git_blob_sha1": "141466b6c4aae6cc61fe086860dc0766a08d6968"
+    }
+  },
+  "tests_review": {
+    "exact_test_count": 10,
+    "r275_recorded_passed": 10,
+    "r275_recorded_command": "python -m unittest tests/test_arc_workflow_preflight.py -v",
+    "r275_verbose_output_sha256": "49d62a48aa3753688382c26f6b51a6b55f7e70d5e0e5853f5d8c49a778f92f98",
+    "r277_reexecuted_tests": false,
+    "static_mapping_result": "PASS_FOR_R257_R259_AND_R274_REGRESSIONS",
+    "broader_contract_result": "INSUFFICIENT_DUE_TO_FALSE_PASS_CLASSES"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "HIGH",
+      "title": "fetch-depth is not structurally scoped to actions/checkout with:",
+      "evidence_lines": [
+        "scripts/arc_workflow_preflight.py:264-276",
+        "scripts/arc_workflow_preflight.py:307-314",
+        "docs/workflow-preflight.md:16-17",
+        "tests/test_arc_workflow_preflight.py:140-155"
+      ],
+      "summary": "Any matching fetch-depth: 0 line anywhere inside the checkout step block can satisfy the analyzer. A valid steps[*].env.fetch-depth: 0 does not set the checkout input yet can produce a false PASS for an ancestry guard."
+    },
+    {
+      "id": "F2",
+      "severity": "HIGH",
+      "title": "destructive or unknown manifest mutations are silently ignored",
+      "evidence_lines": [
+        "scripts/arc_workflow_preflight.py:98-116",
+        "scripts/arc_workflow_preflight.py:118-133",
+        "scripts/arc_workflow_preflight.py:190-199",
+        "tests/test_arc_workflow_preflight.py:116-138"
+      ],
+      "summary": "Calls other than modeled .update() and other unsupported mutations can be skipped while stale schema is retained. m.clear()/pop()/helper mutation can remove a key at runtime that the analyzer still approves."
+    },
+    {
+      "id": "F3",
+      "severity": "HIGH",
+      "title": "workflow manifest binding and key-access tracing is partial",
+      "evidence_lines": [
+        "scripts/arc_workflow_preflight.py:359-378",
+        "scripts/arc_workflow_preflight.py:381-409",
+        "docs/workflow-preflight.md:19-20",
+        "tests/test_arc_workflow_preflight.py:164-184"
+      ],
+      "summary": "json.loads is treated as tied to the manifest when its argument merely mentions the path variable, and only bracket key chains are extracted. A valid bracket read can mask an unsupported d.get('ghost') read, allowing a false PASS."
+    }
+  ],
+  "docs_cli": {
+    "invocation_matches_cli": true,
+    "standard_library_only": true,
+    "no_execution_of_workflow_or_generator": true,
+    "failure_return_code": 2,
+    "success_return_code": 0,
+    "fail_closed_claim_accurate": false,
+    "reason": "F1-F3 are concrete source-level false-PASS classes outside the 10 covered regressions."
+  },
+  "report": {
+    "path": "research/r277/R277_PR35_INDEPENDENT_REVIEW.md",
+    "commit": "e75d118bcaa6246a8e56ad6b431470cb681aa6a4",
+    "git_blob_sha1": "d1169cc39e9c53cf4d832385e4b9a4b857cf2814",
+    "sha256": "5c14a27ccd5466bb26a316d3ae09546e474ff51dd6e8badf2e4a8d44dfed914c"
+  },
+  "safety": {
+    "production_code_edited": false,
+    "actions_triggered": false,
+    "pr_review_or_comment_posted": false,
+    "pr_merged": false,
+    "fixture_executed": false,
+    "estimator_or_science_run": false,
+    "competition_data_accessed": false
+  }
+}
