@@ -1,0 +1,481 @@
+{
+  "schema": "arc.whitebox.r271.identity_audit.v1",
+  "task": "R271",
+  "owner": "leader-method-forensics",
+  "run_id": "R271-visible50-identity-reconciliation-20260923",
+  "checked_at_utc": "2026-09-23T13:06:00Z",
+  "verdict": "NOT_COMPARABLE",
+  "visible_panel_source": {
+    "url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+    "role": "official Phase-2 submission detail exposing the challenge public split ledger",
+    "public_count": 50,
+    "private_sealed_count": 50,
+    "page_fields_used": [
+      "mlp_index",
+      "mlp_name"
+    ],
+    "network_id_field_exposed": false,
+    "note": "The page states every public-split number is graded on the 50 public MLPs and recomputed each submission. Rows below are transcribed by published mlp_index, not inferred from display order."
+  },
+  "official_schema_source": {
+    "starterkit_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "path": "docs/reference/score-report-fields.md",
+    "git_blob_sha1": "4656a892bfeea52a233b900f6d698db8524936fc",
+    "mlp_index_line": 53,
+    "mlp_name_line": 54,
+    "meaning": "mlp_name is documented as a deterministic human-readable slug and stable label; the documented per-MLP schema has no network_id field."
+  },
+  "official_metric": {
+    "round": "v2-phase2",
+    "starterkit_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "scoring_model_blob_sha1": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e",
+    "rounds_blob_sha1": "2aaf38a54b5d6ed83ce2604870dcac59e62cee59",
+    "formula": "mean_m(final_layer_mse_m * max(0.1, F_m/B)); failure multiplier=1.0",
+    "B": 2199023255552
+  },
+  "evaluator_versions": {
+    "official_starterkit_pyproject_blob_sha1": "2c1d562a2073046d6912868184b52c8c593d23c5",
+    "official_starterkit_dependencies": "whestbench>=0.16.1,<0.17.0; flopscope>=0.12.1,<0.13.0",
+    "official_grader_statement": "whestbench v0.16.0; flopscope[server]==0.12.0",
+    "r209_recorded_evaluator": "whestbench 0.16.1",
+    "r209_recorded_meter": "flopscope 0.12.1+np2.4.6",
+    "exact_evaluator_version_match": false
+  },
+  "r209": {
+    "path": "research/results/R209-v25-mini100.json",
+    "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "panel": {
+      "count": 100,
+      "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+      "dtype": "float32",
+      "evaluator": "whestbench 0.16.1",
+      "meter": "flopscope 0.12.1+np2.4.6",
+      "revision": "v2-phase2; metadata SHA256 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1; all_layer_means raw SHA256 per network",
+      "shape": [
+        16,
+        1024
+      ],
+      "split": "mini:all-100",
+      "stage": "development"
+    },
+    "row_count": 100,
+    "source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75"
+  },
+  "visible50_rows": [
+    {
+      "mlp_index": 0,
+      "mlp_name": "natasha-heath",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 1,
+      "mlp_name": "caitlin-kemp",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 2,
+      "mlp_name": "jennifer-jordan",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 3,
+      "mlp_name": "brandon-chen",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 4,
+      "mlp_name": "nicholas-gonzalez",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 5,
+      "mlp_name": "thomas-anderson",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 6,
+      "mlp_name": "jill-gardner",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 7,
+      "mlp_name": "amanda-richmond",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 8,
+      "mlp_name": "tina-garcia",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 9,
+      "mlp_name": "alicia-levy",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 10,
+      "mlp_name": "jennifer-miller",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 11,
+      "mlp_name": "richard-contreras",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 12,
+      "mlp_name": "david-webb",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 13,
+      "mlp_name": "bradley-king",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 14,
+      "mlp_name": "jodi-morales",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 15,
+      "mlp_name": "travis-ward",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 16,
+      "mlp_name": "tanya-bennett",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 17,
+      "mlp_name": "joseph-vega",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 18,
+      "mlp_name": "amy-young",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 19,
+      "mlp_name": "april-rogers",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 20,
+      "mlp_name": "william-white",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 21,
+      "mlp_name": "evan-jennings",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 22,
+      "mlp_name": "julie-grant",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 23,
+      "mlp_name": "chad-cortez",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 24,
+      "mlp_name": "diana-summers",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 25,
+      "mlp_name": "lauren-nelson",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 26,
+      "mlp_name": "stephen-kelly",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 27,
+      "mlp_name": "brandy-johnston",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 28,
+      "mlp_name": "joshua-reed",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 29,
+      "mlp_name": "william-saunders",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 30,
+      "mlp_name": "john-fischer",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 31,
+      "mlp_name": "stacey-cunningham",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 32,
+      "mlp_name": "jeffery-bailey",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 33,
+      "mlp_name": "sandra-fernandez",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 34,
+      "mlp_name": "patricia-douglas",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 35,
+      "mlp_name": "donald-nguyen",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 36,
+      "mlp_name": "ian-lara",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 37,
+      "mlp_name": "margaret-miller",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 38,
+      "mlp_name": "gabriel-baird",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 39,
+      "mlp_name": "jason-davies",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 40,
+      "mlp_name": "jerry-kerr",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 41,
+      "mlp_name": "travis-fox",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 42,
+      "mlp_name": "tim-richardson",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 43,
+      "mlp_name": "seth-griffin",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 44,
+      "mlp_name": "stephanie-garcia",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 45,
+      "mlp_name": "daniel-martinez",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 46,
+      "mlp_name": "jared-parker",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 47,
+      "mlp_name": "ronnie-carpenter",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 48,
+      "mlp_name": "leah-fields",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    },
+    {
+      "mlp_index": 49,
+      "mlp_name": "tyler-espinoza",
+      "public_network_id": null,
+      "network_id_exposed_by_official_page": false,
+      "r209_same_name_present": false,
+      "r209_network_id_if_same_name": null
+    }
+  ],
+  "comparison": {
+    "official_visible50_count": 50,
+    "r209_count": 100,
+    "visible50_stable_label_overlap_with_r209": 0,
+    "exact_visible50_network_ids_available": false,
+    "exact_id_match_test_possible": false,
+    "row_order_used_for_identity": false,
+    "exact_same_panel_proven": false,
+    "score_recomputed": false,
+    "reason": "Official Phase-2 public ledger does not expose network_id/target fingerprints, and its 50 deterministic stable mlp_name labels have zero overlap with the 100 R209 labels. R209 also records a one-patch-newer evaluator/meter than the official grader statement."
+  },
+  "minimum_public_artifact": {
+    "for_formal_identity_test": "An official immutable visible-50 manifest tying each public mlp_index/mlp_name to a machine-stable network_id (preferably also target_sha256), plus the grader evaluator/meter versions.",
+    "for_recomputing_v25_from_existing_evidence": "Those exact visible-50 network IDs must be present in R209 rows with matching target fingerprints and scoring/evaluator semantics. If they are not, an immutable official/public V25 per-MLP result artifact for those exact 50 is additionally required."
+  }
+}
