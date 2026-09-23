@@ -1,0 +1,162 @@
+{
+  "schema": "arc.whitebox.r245.r244_static_phase2_compliance.v1",
+  "job": "R245",
+  "owner": "official-rules-audit",
+  "status": "COMPLETE",
+  "verdict": "STATIC_COMPLIANCE_NO_GO_CONFIRMED_UNMETERED_MATH_SQRT",
+  "scope": {
+    "mode": "read-only static source/workflow audit",
+    "inspected": [
+      "R244 frozen protocol",
+      "R244 frozen estimator source",
+      "R244 frozen one-shot workflow",
+      "official/public Phase-2 rules and FlopScope documentation"
+    ],
+    "explicitly_not_inspected": [
+      "R244 candidate artifact",
+      "R244 candidate output"
+    ],
+    "prohibited_actions_performed": false,
+    "no_execution": true,
+    "no_actions_run": true,
+    "no_private_or_holdout": true,
+    "no_paid_compute": true,
+    "no_submission": true,
+    "no_leaderboard_mutation": true,
+    "no_r244_file_change": true
+  },
+  "frozen_r244": {
+    "head": "f8548d77bdc27b643734f0ce1e9bc6fb243fb56a",
+    "protocol": {
+      "path": "research/r244/R244_PROTOCOL.md",
+      "git_blob": "0cd8e63fb4184a816e653b7507bf8ba9b1bb10e7",
+      "sha256": "963b12b66df5a1b3f60d4e7ce8186b25ba0381f4e99e5c777236e051a0043d5e"
+    },
+    "estimator": {
+      "path": "methods/r244_estimator_v25_marginal_rres.py",
+      "git_blob": "d034aee83c766d6eb613b71a1a22c30241cd172a",
+      "sha256": "7987d43f6eb79bee50805bf1474d43e0a09a29737b86e3aab22b34ca97385859"
+    },
+    "workflow": {
+      "path": ".github/workflows/r244-mp-r16.yml",
+      "git_blob": "32a3bb0d5d45a2acb79151560d132d97876f4ee4",
+      "sha256": "32b04a7e3f7f442b2ada3b3b82d5d502cf6dd418ade8009ca54e5845aa49d87b"
+    }
+  },
+  "official_sources": {
+    "starterkit_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "allowed_code": {
+      "git_blob": "525276e8e5bc7f6a7dd54e876140ab0df514be32",
+      "sha256": "fb6384e63deeec6dd579ed679e2dafaffcd0343511dd24638199362cf3ddbcdf",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/concepts/allowed-code.md"
+    },
+    "flopscope_primer": {
+      "git_blob": "7c1478581347f362f691aa1b8023d8edcd44874d",
+      "sha256": "7a5fdcbcbbb5e4000b91ad7158fceb4d4cd5ca6c7e5006f04acbab2423a23b41",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/reference/flopscope-primer.md"
+    },
+    "code_patterns": {
+      "git_blob": "2d1aa532af6f160fd0942da34f78595216a596de",
+      "sha256": "7460fcb736eb34c42293c6f8446de1d031554edeacb68f6e9ee5aa7752553157",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/reference/code-patterns.md"
+    },
+    "pyproject": {
+      "git_blob": "2c1d562a2073046d6912868184b52c8c593d23c5",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/pyproject.toml"
+    },
+    "challenge_rules": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/challenge_rules",
+    "live_grader_version_confirmation": "https://discourse.aicrowd.com/t/shipped-covariance-propagation-example-trips-the-phase-2-residual-cap-locally-0-16-0-but-grades-fine-what-happens-when-the-evaluator-upgrades/18202/2",
+    "flopscope_v0_12_1": {
+      "commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+      "readme_git_blob": "3d10edb5d6456ff7eef9c1e0f9c6f1d3d2ff8fb0",
+      "readme_sha256": "3b7f3a50fe96fcba90d250c7b39799ad05acd068009a291045052026e6033914",
+      "url": "https://github.com/AIcrowd/flopscope/blob/v0.12.1/README.md"
+    }
+  },
+  "findings": {
+    "confirmed_violations": [
+      {
+        "id": "R245-V1",
+        "source_line": 945,
+        "expression": "u0 = ones_n * (1.0 / math.sqrt(float(n)))",
+        "finding": "math.sqrt executes output-affecting estimator numerical work in CPython outside FlopScope. Official Phase-2 summary limits stdlib math to control/bookkeeping/loading, says meaningful unmetered computation is a breach, and provides billed fnp.sqrt.",
+        "candidate_specific": true
+      }
+    ],
+    "confirmed_unmetered_but_standalone_eligibility_unknown": [
+      {
+        "lines": [
+          342,
+          343,
+          344,
+          345,
+          429
+        ],
+        "finding": "_statics(n) performs Python scalar arithmetic/divisions inside predict to derive output-affecting coefficients."
+      },
+      {
+        "lines": [
+          945
+        ],
+        "finding": "1.0 / math.sqrt(...) is a Python scalar division before the result is multiplied into a FlopScope array."
+      },
+      {
+        "lines": [
+          661,
+          664,
+          707,
+          708,
+          712,
+          713,
+          993,
+          994,
+          996,
+          997,
+          998,
+          1002,
+          1003
+        ],
+        "finding": "Python float conversions/coefficient arithmetic prepare scalar factors outside the array meter."
+      }
+    ],
+    "ambiguity_basis": "FlopScope v0.12.1 README itself demonstrates fnp.sqrt(2 / width), leaving shape-derived Python scalar division outside the metered sqrt. Official materials do not define a blanket de-minimis/scalar-arithmetic eligibility boundary. These scalar cases are therefore not independently promoted to confirmed violations.",
+    "confirmed_non_violations": [
+      "No numpy/scipy/BLAS/FFI/concurrency/torch/jax import in the grader import path.",
+      "No float(fnp...), bool(fnp...), or int(fnp...) scalar materialization found.",
+      "Operators on fnp arrays and fnp sum/mean/sqrt/power/clip/einsum/linalg.qr remain on documented metered paths.",
+      "Shape/index/control operations are bookkeeping.",
+      "R244 source uses neither fnp.full nor fnp.full_like; the official starter-kit states that non-scalar full/full_like is the only 0.12.1 pricing change relative to the live 0.12.0 grader meter."
+    ],
+    "unknowns": [
+      "Whether an external packaging/static scanner rejects the local_engine import under the unreachable __main__ guard.",
+      "The official materials do not explicitly define when small shape-derived Python scalar arithmetic crosses the 'meaningful computation' threshold."
+    ]
+  },
+  "workflow_provenance": {
+    "runs_on": "ubuntu-24.04",
+    "local_versions": {
+      "numpy": "2.4.6",
+      "whestbench": "0.16.1",
+      "flopscope": "0.12.1"
+    },
+    "live_grader_documented": {
+      "whestbench": "0.16.0",
+      "flopscope_server": "0.12.0",
+      "flopscope_client": "0.12.0"
+    },
+    "phase2_limits_in_workflow": {
+      "flop_budget": 2199023255552,
+      "wall_time_limit_s": 120,
+      "residual_wall_time_limit_s": 0.4,
+      "max_threads": 1
+    },
+    "version_assessment": "Starter-kit pyproject explicitly documents the one-patch lead and says only non-scalar full/full_like pricing changes in flopscope 0.12.1. R244 uses neither, so that known patch-level pricing difference does not apply."
+  },
+  "report": {
+    "path": "research/r245/R245_STATIC_COMPLIANCE_REPORT.md",
+    "commit": "265090b3b83adc2d854826df8d30a973453ffe8b",
+    "git_blob": "5402396548bf046122edba07a8d6f73743526c8c",
+    "sha256": "9626fad07674a0e5025cbc18e8c4b5a1be4c04358881ff80c8170acf4d0c2157"
+  },
+  "next_step": "Do not modify or rerun R244. For any future distinct candidate, preregister a source-level compliance gate requiring output-affecting sqrt/transcendental numerical work in predict to use FlopScope (e.g. fnp.sqrt), and obtain organizer clarification before relying on nontrivial free Python-scalar arithmetic."
+}
