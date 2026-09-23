@@ -95,25 +95,50 @@ class _GeneratorResolver:
             return self._local_call(expr, stack)
         return _SCALAR
 
-    def _apply_update(self, call: ast.Call, env: dict[str, object], stack: tuple[str, ...]) -> None:
-        if not (
-            isinstance(call.func, ast.Attribute)
-            and call.func.attr == "update"
-            and isinstance(call.func.value, ast.Name)
-        ):
+    @staticmethod
+    def _tracked_dict_name(expr: ast.expr, env: dict[str, object]) -> str | None:
+        if isinstance(expr, ast.Name) and isinstance(env.get(expr.id), frozenset):
+            return expr.id
+        return None
+
+    def _apply_manifest_call(
+        self,
+        call: ast.Call,
+        env: dict[str, object],
+        stack: tuple[str, ...],
+    ) -> None:
+        if isinstance(call.func, ast.Attribute):
+            name = self._tracked_dict_name(call.func.value, env)
+            if name is None:
+                return
+            if call.func.attr != "update":
+                raise PreflightError(
+                    f"unsupported manifest mutation {call.func.attr!r} on {name!r}"
+                )
+            current = env[name]
+            if len(call.args) != 1 or call.keywords:
+                raise PreflightError(
+                    "runtime manifest update must use one statically resolvable dict"
+                )
+            added = self._value(call.args[0], env, stack)
+            if not isinstance(added, frozenset):
+                raise PreflightError("cannot statically resolve runtime manifest update")
+            env[name] = frozenset(set(current) | set(added))
             return
-        name = call.func.value.id
-        if name not in env:
-            return
-        current = env[name]
-        if not isinstance(current, frozenset):
-            raise PreflightError(f"cannot statically update non-dict manifest object {name!r}")
-        if len(call.args) != 1 or call.keywords:
-            raise PreflightError("runtime manifest update must use one statically resolvable dict")
-        added = self._value(call.args[0], env, stack)
-        if not isinstance(added, frozenset):
-            raise PreflightError("cannot statically resolve runtime manifest update")
-        env[name] = frozenset(set(current) | set(added))
+
+        tracked_args = [
+            arg.id
+            for arg in call.args
+            if isinstance(arg, ast.Name) and isinstance(env.get(arg.id), frozenset)
+        ]
+        if tracked_args:
+            if isinstance(call.func, ast.Name):
+                callee = call.func.id
+            else:
+                callee = ast.unparse(call.func)
+            raise PreflightError(
+                f"unsupported manifest mutation via {callee!r} for {tracked_args!r}"
+            )
 
     def _process(self, statements: list[ast.stmt], stack: tuple[str, ...]) -> tuple[dict[str, object], object | None]:
         env: dict[str, object] = {}
@@ -125,7 +150,7 @@ class _GeneratorResolver:
             elif isinstance(stmt, ast.AnnAssign) and stmt.value is not None:
                 self._assign(stmt.target, self._value(stmt.value, env, stack), env)
             elif isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Call):
-                self._apply_update(stmt.value, env, stack)
+                self._apply_manifest_call(stmt.value, env, stack)
             elif isinstance(stmt, ast.Return):
                 if stmt.value is None:
                     return env, _SCALAR
@@ -277,6 +302,35 @@ def _checkout_steps(job_block: str) -> list[tuple[int, list[str]]]:
     return steps
 
 
+def _checkout_has_full_history(step: list[str]) -> bool:
+    uses_indent = _indent(step[0])
+    with_index = None
+    with_indent = None
+    for i, line in enumerate(step[1:], start=1):
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        indent = _indent(line)
+        if indent <= uses_indent:
+            break
+        if re.match(r"^\s*with:\s*(?:#.*)?$", line):
+            with_index = i
+            with_indent = indent
+            break
+    if with_index is None or with_indent is None:
+        return False
+    for line in step[with_index + 1:]:
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        indent = _indent(line)
+        if indent <= with_indent:
+            break
+        if re.match(r"^\s*fetch-depth:\s*0\s*(?:#.*)?$", line):
+            return True
+    return False
+
+
 def require_full_history_for_ancestry(workflow: str) -> None:
     total_guards = workflow.count("git merge-base --is-ancestor")
     if total_guards == 0:
@@ -305,12 +359,9 @@ def require_full_history_for_ancestry(workflow: str) -> None:
                     f"job {job_name!r} ancestry guard has no preceding actions/checkout in the same job"
                 )
             _, active_checkout = prior[-1]
-            if not any(
-                re.search(r"^\s*fetch-depth:\s*0\s*(?:#.*)?$", line)
-                for line in active_checkout
-            ):
+            if not _checkout_has_full_history(active_checkout):
                 raise PreflightError(
-                    f"job {job_name!r} ancestry guard requires a preceding actions/checkout with fetch-depth: 0 in the same job"
+                    f"job {job_name!r} ancestry guard requires a preceding actions/checkout with fetch-depth: 0 under its with: block in the same job"
                 )
     if mapped_guards != total_guards:
         raise PreflightError("ancestry guard could not be mapped unambiguously to a workflow job")
@@ -364,17 +415,31 @@ def _manifest_data_vars(block: str) -> set[str]:
         match = re.match(r"^\s*([A-Za-z_]\w*)\s*=", line)
         if match:
             path_vars.add(match.group(1))
+
     data_vars: set[str] = set()
-    loads = re.finditer(
+    loads = list(re.finditer(
         r"(?m)^\s*([A-Za-z_]\w*)\s*=\s*json\.loads\s*\(([^\n]+)\)\s*$",
         block,
-    )
+    ))
+    manifest_load_seen = False
     for match in loads:
-        target, argument = match.group(1), match.group(2)
-        if _RUNTIME_MANIFEST_RE.search(argument) or any(
-            re.search(rf"\b{re.escape(path_var)}\b", argument) for path_var in path_vars
-        ):
+        target, argument = match.group(1), match.group(2).strip()
+        direct = re.fullmatch(
+            r"pathlib\.Path\([^\n]*R[A-Z0-9_]*RUNTIME[A-Z0-9_]*MANIFEST\.json[^\n]*\)\.read_text\(\s*\)",
+            argument,
+        )
+        via_var = re.fullmatch(r"([A-Za-z_]\w*)\.read_text\(\s*\)", argument)
+        if direct or (via_var and via_var.group(1) in path_vars):
             data_vars.add(target)
+            manifest_load_seen = True
+        elif any(re.search(rf"\b{re.escape(path_var)}\b", argument) for path_var in path_vars):
+            raise PreflightError(
+                "json.loads must read the exact runtime manifest path via <manifest_path>.read_text()"
+            )
+    if loads and not manifest_load_seen and path_vars:
+        raise PreflightError(
+            "json.loads must read the exact runtime manifest path via <manifest_path>.read_text()"
+        )
     return data_vars
 
 
@@ -391,6 +456,14 @@ def asserted_manifest_paths(workflow: str) -> set[SchemaPath]:
             )
         block_paths: set[SchemaPath] = set()
         for var in vars_:
+            unsupported = re.search(
+                rf"\b{re.escape(var)}(?:\[(?:\"[^\"]+\"|'[^']+')\])*\.([A-Za-z_]\w*)\s*\(",
+                block,
+            )
+            if unsupported:
+                raise PreflightError(
+                    f"unsupported manifest access {unsupported.group(1)!r} on {var!r}"
+                )
             chain_re = re.compile(
                 rf"\b{re.escape(var)}(?:\[(?:\"[^\"]+\"|'[^']+')\])+"
             )
