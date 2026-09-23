@@ -3188,6 +3188,18 @@
       "owner": "r252-actions-accounting-audit",
       "payload": {},
       "at": "2026-09-23T07:29:01+00:00"
+    },
+    {
+      "revision": 244,
+      "action": "start",
+      "job": "R253",
+      "owner": "r252-actions-accounting-audit",
+      "payload": {
+        "run_id": "R253-r252-actions-accounting-audit-20260923",
+        "code_commit": "8e1ede14cbff49fb3fabf9eecf005f08cb48ba9a",
+        "command": "read-only/postflight audit only: verify immutable GitHub metadata/logs/artifacts for R252 runs 35830273198 and 35830986191; write source-linked incident report + JSON erratum; append terminal_evidence_correction preserving original finish; regenerate STATUS.md; no workflow trigger/edit/rerun or science"
+      },
+      "at": "2026-09-23T07:29:02+00:00"
     }
   ],
   "jobs": [
@@ -5129,12 +5141,19 @@
       "title": "Audit duplicate R252 Actions runs and correct terminal evidence",
       "id": "R253",
       "owner": "r252-actions-accounting-audit",
-      "status": "CLAIMED",
-      "attempts": []
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R253-r252-actions-accounting-audit-20260923",
+          "code_commit": "8e1ede14cbff49fb3fabf9eecf005f08cb48ba9a",
+          "command": "read-only/postflight audit only: verify immutable GitHub metadata/logs/artifacts for R252 runs 35830273198 and 35830986191; write source-linked incident report + JSON erratum; append terminal_evidence_correction preserving original finish; regenerate STATUS.md; no workflow trigger/edit/rerun or science",
+          "status": "RUNNING"
+        }
+      ]
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 243,
+  "revision": 244,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
