@@ -2715,6 +2715,23 @@
         "command": "offline deterministic diagnostic using only immutable research/results/R209-v25-mini100.json and pinned R209 source receipt; recompute 100 official adjusted scores, concentration shares, cost-floor binding and MSE-vs-cost decomposition; no candidate outputs, estimator/benchmark/Actions, shared results/STATUS edits, private/holdout, paid compute, submission or leaderboard mutation"
       },
       "revision": 209
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T05:01:00Z",
+      "job": "R246",
+      "owner": "baseline-score-diagnostic",
+      "payload": {
+        "run_id": "R246-r209-score-contribution-diagnostic-20260923",
+        "status": "COMPLETE",
+        "verdict": "DIAGNOSTIC_COMPLETE",
+        "reason": "Offline R209 V25 mini-100 score diagnostic complete using only the immutable normalized R209 record and pinned R209 source receipt. Recomputed all 100 official adjusted scores with 0 mismatches; all rows use identical 806303721965 FLOPs / 2^41 = 0.36666448157347986 multiplier, so the 0.1 floor binds 0/100 and all cross-network score concentration comes from raw-MSE variation. Top-1/5/10/20 score shares are 1.3592696639751477%, 6.471417664447711%, 12.47245090733508%, and 23.847414826413804%. Mean raw MSE 2.228303490170447e-8; mean adjusted score 8.170397440117225e-9. Next preregisterable hypothesis H-R246: a network-agnostic V25 simplification can cut measured FLOPs >=10% while keeping mean raw-MSE degradation <11.111111111111116% on an independent preregistered development panel. No R223/R244 candidate output read; no shared results/STATUS/estimator edits, benchmark/Actions/private/holdout/paid/submission/leaderboard action.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/ba36152744f344ca7023aa807c8d1ab667baea04/research/r246/R246_RECEIPT.json",
+          "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4"
+        }
+      },
+      "revision": 210
     }
   ],
   "jobs": [
@@ -4362,19 +4379,35 @@
       "title": "Diagnose per-network score concentration in the immutable R209 V25 baseline",
       "id": "R246",
       "owner": "baseline-score-diagnostic",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "attempts": [
         {
           "run_id": "R246-r209-score-contribution-diagnostic-20260923",
           "code_commit": "c2d1d89b77081a87698187851b967f3f56ee5dae",
           "command": "offline deterministic diagnostic using only immutable research/results/R209-v25-mini100.json and pinned R209 source receipt; recompute 100 official adjusted scores, concentration shares, cost-floor binding and MSE-vs-cost decomposition; no candidate outputs, estimator/benchmark/Actions, shared results/STATUS edits, private/holdout, paid compute, submission or leaderboard mutation",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R246-r209-score-contribution-diagnostic-20260923",
+            "status": "COMPLETE",
+            "verdict": "DIAGNOSTIC_COMPLETE",
+            "reason": "Offline R209 V25 mini-100 score diagnostic complete using only the immutable normalized R209 record and pinned R209 source receipt. Recomputed all 100 official adjusted scores with 0 mismatches; all rows use identical 806303721965 FLOPs / 2^41 = 0.36666448157347986 multiplier, so the 0.1 floor binds 0/100 and all cross-network score concentration comes from raw-MSE variation. Top-1/5/10/20 score shares are 1.3592696639751477%, 6.471417664447711%, 12.47245090733508%, and 23.847414826413804%. Mean raw MSE 2.228303490170447e-8; mean adjusted score 8.170397440117225e-9. Next preregisterable hypothesis H-R246: a network-agnostic V25 simplification can cut measured FLOPs >=10% while keeping mean raw-MSE degradation <11.111111111111116% on an independent preregistered development panel. No R223/R244 candidate output read; no shared results/STATUS/estimator edits, benchmark/Actions/private/holdout/paid/submission/leaderboard action.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/ba36152744f344ca7023aa807c8d1ab667baea04/research/r246/R246_RECEIPT.json",
+              "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4"
+            }
+          }
         }
-      ]
+      ],
+      "reason": "Offline R209 V25 mini-100 score diagnostic complete using only the immutable normalized R209 record and pinned R209 source receipt. Recomputed all 100 official adjusted scores with 0 mismatches; all rows use identical 806303721965 FLOPs / 2^41 = 0.36666448157347986 multiplier, so the 0.1 floor binds 0/100 and all cross-network score concentration comes from raw-MSE variation. Top-1/5/10/20 score shares are 1.3592696639751477%, 6.471417664447711%, 12.47245090733508%, and 23.847414826413804%. Mean raw MSE 2.228303490170447e-8; mean adjusted score 8.170397440117225e-9. Next preregisterable hypothesis H-R246: a network-agnostic V25 simplification can cut measured FLOPs >=10% while keeping mean raw-MSE degradation <11.111111111111116% on an independent preregistered development panel. No R223/R244 candidate output read; no shared results/STATUS/estimator edits, benchmark/Actions/private/holdout/paid/submission/leaderboard action.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/ba36152744f344ca7023aa807c8d1ab667baea04/research/r246/R246_RECEIPT.json",
+        "sha256": "86f6a7c59ad6e6ef19f93f7d375eef85dbca5b4b72ed4f69f111526856f460d4"
+      },
+      "verdict": "DIAGNOSTIC_COMPLETE"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 209,
+  "revision": 210,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
