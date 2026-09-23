@@ -1802,6 +1802,14 @@
         "title": "Audit dominant V25 contractions for material exact FLOP savings"
       },
       "revision": 138
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T00:15:19.498745+00:00",
+      "job": "R235",
+      "owner": "v25-compute-audit",
+      "payload": {},
+      "revision": 139
     }
   ],
   "jobs": [
@@ -2942,14 +2950,14 @@
       ],
       "hypothesis_id": "V25-MATERIAL-FLOP-CUT-SECOND-PASS",
       "id": "R235",
-      "owner": null,
+      "owner": "v25-compute-audit",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Audit dominant V25 contractions for material exact FLOP savings"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 138,
+  "revision": 139,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
