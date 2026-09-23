@@ -5260,20 +5260,36 @@
       "revision": 392
     },
     {
-      "revision": 393,
       "action": "finish",
+      "at": "2026-09-23T16:48:18.705Z",
       "job": "R287",
       "owner": "phase2-free-runner-audit",
       "payload": {
-        "run_id": "R287-free-runner-audit-20260923",
-        "status": "WAITING_INPUT",
         "reason": "Official GitHub documentation plus exact repository/run evidence prove that the target repository is public and its existing ubuntu-latest/ubuntu-24.04 jobs ran on the standard GitHub Actions runner group. GitHub documents standard hosted runners as free and unlimited for public repositories; public standard Ubuntu provides 4 CPU/16 GB RAM/14 GB SSD. R209 explicitly used Python 3.11 and observed 3.11.16 with WhestBench 0.16.1 / FlopScope 0.12.1+np2.4.6, public mini streaming, runner local, 8 GB participant cap and 120s/0.4s limits; it completed in ~64m under a 330m timeout. R223 confirmed ubuntu-24.04 standard runner and explicit package pins, completing in ~59m under 100m. Therefore runner compute incremental cost is documented $0 and resource/timeout feasibility is supported. However durable Actions artifact storage is a separate plan/account allowance shared with GitHub Packages and can be billed or blocked when exhausted. Public repo evidence cannot prove owner tim8es current plan/storage usage/budget state. Exact missing input: immediately before authorization, account-owner billing/usage evidence showing at least 1 MiB remaining included shared Actions artifact/GitHub Packages storage with no metered storage overage active. No Actions, workflow edits, installs/downloads, paid resources, private/holdout/full, submission, leaderboard or canonical edits occurred.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/c84a6fa3fc5978edf951d9611893d53c37cc1b63/research/r287/R287_RECEIPT.json",
-          "sha256": "fdefbf9b71a07eec17dbf03c525a71f043cd6f2d578c9edb3eafac5719bf9fa2"
-        }
+          "sha256": "fdefbf9b71a07eec17dbf03c525a71f043cd6f2d578c9edb3eafac5719bf9fa2",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/c84a6fa3fc5978edf951d9611893d53c37cc1b63/research/r287/R287_RECEIPT.json"
+        },
+        "run_id": "R287-free-runner-audit-20260923",
+        "status": "WAITING_INPUT"
       },
-      "at": "2026-09-23T16:48:18.705Z"
+      "revision": 393
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T16:51:56.173Z",
+      "job": "R286",
+      "owner": "r281-independent-current-head-audit",
+      "payload": {
+        "reason": "Independent offline current-head audit of PR #35 exact head 05733f3bfa6730124c4601a918bcc6d401719e09 / analyzer blob f9b01ba259cd57bd1692fbfc904585b05f561000 completed with FAIL_CLOSED_CONTRACT_NOT_MET_CURRENT_HEAD. Exact R283 matrix: N1 fake checkout text REJECT (closed for exact input), N2 double-space ancestry guard PASS (false-pass remains), N3 comment decoy plus d.get REJECT (closed for exact input), N4 conditional generator rebind PASS (false-pass remains). Narrow current-head probes also false-PASS for fake checkout metadata with nested with:/fetch-depth inside run block, manifest alias access, dynamic subscript, generator del, and conditional early return before write. Controls confirm the direct R281 env-fetch-depth, clear, and get regressions reject and a valid contract passes. Repro inputs/hashes, report and receipt are append-only R286 files only; no PR/tests/workflow edits, PR comment/review, merge, Actions, fixtures, estimator, benchmark run or benchmark-data access.",
+        "receipt": {
+          "sha256": "40bc27eb85e0f58e12bb94976661a2892ad399fdae673cc5dce110d0e0337fce",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/4becb8a04d4ac6796e50e101a4984505680ae762/research/r286/R286_RECEIPT.json"
+        },
+        "run_id": "R286-pr35-current-head-adversarial-verify-20260923",
+        "status": "COMPLETE"
+      },
+      "revision": 394
     }
   ],
   "jobs": [
@@ -8392,8 +8408,17 @@
         {
           "code_commit": "05733f3bfa6730124c4601a918bcc6d401719e09",
           "command": "offline focused independent reproduction of the four R283 additional false-PASS counterexamples plus narrow edge cases against exact current PR #35 production analyzer blob on head 05733f3bfa6730124c4601a918bcc6d401719e09; no PR/tests edits, comments/review/merge, Actions, fixtures, estimator, or benchmark data",
+          "completion": {
+            "reason": "Independent offline current-head audit of PR #35 exact head 05733f3bfa6730124c4601a918bcc6d401719e09 / analyzer blob f9b01ba259cd57bd1692fbfc904585b05f561000 completed with FAIL_CLOSED_CONTRACT_NOT_MET_CURRENT_HEAD. Exact R283 matrix: N1 fake checkout text REJECT (closed for exact input), N2 double-space ancestry guard PASS (false-pass remains), N3 comment decoy plus d.get REJECT (closed for exact input), N4 conditional generator rebind PASS (false-pass remains). Narrow current-head probes also false-PASS for fake checkout metadata with nested with:/fetch-depth inside run block, manifest alias access, dynamic subscript, generator del, and conditional early return before write. Controls confirm the direct R281 env-fetch-depth, clear, and get regressions reject and a valid contract passes. Repro inputs/hashes, report and receipt are append-only R286 files only; no PR/tests/workflow edits, PR comment/review, merge, Actions, fixtures, estimator, benchmark run or benchmark-data access.",
+            "receipt": {
+              "sha256": "40bc27eb85e0f58e12bb94976661a2892ad399fdae673cc5dce110d0e0337fce",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/4becb8a04d4ac6796e50e101a4984505680ae762/research/r286/R286_RECEIPT.json"
+            },
+            "run_id": "R286-pr35-current-head-adversarial-verify-20260923",
+            "status": "COMPLETE"
+          },
           "run_id": "R286-pr35-current-head-adversarial-verify-20260923",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read R281 and R283 receipts, then independently verify the exact four R283 additional fail-open counterexamples against pinned current PR #35 head 05733f3bfa6730124c4601a918bcc6d401719e09 (not the older e054 analyzer blob). Run only small offline synthetic tests; do not edit code/tests, post PR comment/review, Actions, merge, or touch benchmark data. Report which cases remain/reject/pass, exact analyzer blob and input hashes, any additional case, and a concise PASS/FAIL matrix in an append-only report/receipt. Finish R286.",
@@ -8405,7 +8430,12 @@
       "id": "R286",
       "owner": "r281-independent-current-head-audit",
       "priority": 2,
-      "status": "RUNNING",
+      "reason": "Independent offline current-head audit of PR #35 exact head 05733f3bfa6730124c4601a918bcc6d401719e09 / analyzer blob f9b01ba259cd57bd1692fbfc904585b05f561000 completed with FAIL_CLOSED_CONTRACT_NOT_MET_CURRENT_HEAD. Exact R283 matrix: N1 fake checkout text REJECT (closed for exact input), N2 double-space ancestry guard PASS (false-pass remains), N3 comment decoy plus d.get REJECT (closed for exact input), N4 conditional generator rebind PASS (false-pass remains). Narrow current-head probes also false-PASS for fake checkout metadata with nested with:/fetch-depth inside run block, manifest alias access, dynamic subscript, generator del, and conditional early return before write. Controls confirm the direct R281 env-fetch-depth, clear, and get regressions reject and a valid contract passes. Repro inputs/hashes, report and receipt are append-only R286 files only; no PR/tests/workflow edits, PR comment/review, merge, Actions, fixtures, estimator, benchmark run or benchmark-data access.",
+      "receipt": {
+        "sha256": "40bc27eb85e0f58e12bb94976661a2892ad399fdae673cc5dce110d0e0337fce",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/4becb8a04d4ac6796e50e101a4984505680ae762/research/r286/R286_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Verify R283 adversarial cases against the current PR #35 head"
     },
     {
@@ -8414,17 +8444,17 @@
         {
           "code_commit": "50761f8373c8a5340e19ba2c0422b4aae721863e",
           "command": "read-only audit of exact existing public GitHub-hosted runner configuration against official GitHub pricing/resources/timeout documentation and account-specific unknowns; no Actions/download/install",
-          "run_id": "R287-free-runner-audit-20260923",
-          "status": "WAITING_INPUT",
           "completion": {
-            "run_id": "R287-free-runner-audit-20260923",
-            "status": "WAITING_INPUT",
             "reason": "Official GitHub documentation plus exact repository/run evidence prove that the target repository is public and its existing ubuntu-latest/ubuntu-24.04 jobs ran on the standard GitHub Actions runner group. GitHub documents standard hosted runners as free and unlimited for public repositories; public standard Ubuntu provides 4 CPU/16 GB RAM/14 GB SSD. R209 explicitly used Python 3.11 and observed 3.11.16 with WhestBench 0.16.1 / FlopScope 0.12.1+np2.4.6, public mini streaming, runner local, 8 GB participant cap and 120s/0.4s limits; it completed in ~64m under a 330m timeout. R223 confirmed ubuntu-24.04 standard runner and explicit package pins, completing in ~59m under 100m. Therefore runner compute incremental cost is documented $0 and resource/timeout feasibility is supported. However durable Actions artifact storage is a separate plan/account allowance shared with GitHub Packages and can be billed or blocked when exhausted. Public repo evidence cannot prove owner tim8es current plan/storage usage/budget state. Exact missing input: immediately before authorization, account-owner billing/usage evidence showing at least 1 MiB remaining included shared Actions artifact/GitHub Packages storage with no metered storage overage active. No Actions, workflow edits, installs/downloads, paid resources, private/holdout/full, submission, leaderboard or canonical edits occurred.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/c84a6fa3fc5978edf951d9611893d53c37cc1b63/research/r287/R287_RECEIPT.json",
-              "sha256": "fdefbf9b71a07eec17dbf03c525a71f043cd6f2d578c9edb3eafac5719bf9fa2"
-            }
-          }
+              "sha256": "fdefbf9b71a07eec17dbf03c525a71f043cd6f2d578c9edb3eafac5719bf9fa2",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/c84a6fa3fc5978edf951d9611893d53c37cc1b63/research/r287/R287_RECEIPT.json"
+            },
+            "run_id": "R287-free-runner-audit-20260923",
+            "status": "WAITING_INPUT"
+          },
+          "run_id": "R287-free-runner-audit-20260923",
+          "status": "WAITING_INPUT"
         }
       ],
       "deliverable": "Using official GitHub documentation and the repository's exact existing workflows/runs, determine whether a one-time public-development V25 capture can run on an existing standard public GitHub-hosted runner with zero incremental charge and the exact pinned Python/WhestBench/flopscope stack plus public mini dataset. Verify runner type, repository visibility, billing/free-usage condition, dataset fetch path and 8GB/timeout constraints; distinguish documented facts from unknown account quota/billing. Do not trigger Actions, install/download large data, spend, or modify workflows. If zero-cost cannot be proven for the actual target account/runner, conclude WAITING_INPUT; otherwise deliver a precise preflight recipe for coordinator approval. Cite first-party sources; append report/receipt and finish R287.",
@@ -8435,13 +8465,13 @@
       "id": "R287",
       "owner": "phase2-free-runner-audit",
       "priority": 1,
-      "status": "WAITING_INPUT",
-      "title": "Check a genuinely zero-cost environment for V25 residual capture",
+      "reason": "Official GitHub documentation plus exact repository/run evidence prove that the target repository is public and its existing ubuntu-latest/ubuntu-24.04 jobs ran on the standard GitHub Actions runner group. GitHub documents standard hosted runners as free and unlimited for public repositories; public standard Ubuntu provides 4 CPU/16 GB RAM/14 GB SSD. R209 explicitly used Python 3.11 and observed 3.11.16 with WhestBench 0.16.1 / FlopScope 0.12.1+np2.4.6, public mini streaming, runner local, 8 GB participant cap and 120s/0.4s limits; it completed in ~64m under a 330m timeout. R223 confirmed ubuntu-24.04 standard runner and explicit package pins, completing in ~59m under 100m. Therefore runner compute incremental cost is documented $0 and resource/timeout feasibility is supported. However durable Actions artifact storage is a separate plan/account allowance shared with GitHub Packages and can be billed or blocked when exhausted. Public repo evidence cannot prove owner tim8es current plan/storage usage/budget state. Exact missing input: immediately before authorization, account-owner billing/usage evidence showing at least 1 MiB remaining included shared Actions artifact/GitHub Packages storage with no metered storage overage active. No Actions, workflow edits, installs/downloads, paid resources, private/holdout/full, submission, leaderboard or canonical edits occurred.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/c84a6fa3fc5978edf951d9611893d53c37cc1b63/research/r287/R287_RECEIPT.json",
-        "sha256": "fdefbf9b71a07eec17dbf03c525a71f043cd6f2d578c9edb3eafac5719bf9fa2"
+        "sha256": "fdefbf9b71a07eec17dbf03c525a71f043cd6f2d578c9edb3eafac5719bf9fa2",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/c84a6fa3fc5978edf951d9611893d53c37cc1b63/research/r287/R287_RECEIPT.json"
       },
-      "reason": "Official GitHub documentation plus exact repository/run evidence prove that the target repository is public and its existing ubuntu-latest/ubuntu-24.04 jobs ran on the standard GitHub Actions runner group. GitHub documents standard hosted runners as free and unlimited for public repositories; public standard Ubuntu provides 4 CPU/16 GB RAM/14 GB SSD. R209 explicitly used Python 3.11 and observed 3.11.16 with WhestBench 0.16.1 / FlopScope 0.12.1+np2.4.6, public mini streaming, runner local, 8 GB participant cap and 120s/0.4s limits; it completed in ~64m under a 330m timeout. R223 confirmed ubuntu-24.04 standard runner and explicit package pins, completing in ~59m under 100m. Therefore runner compute incremental cost is documented $0 and resource/timeout feasibility is supported. However durable Actions artifact storage is a separate plan/account allowance shared with GitHub Packages and can be billed or blocked when exhausted. Public repo evidence cannot prove owner tim8es current plan/storage usage/budget state. Exact missing input: immediately before authorization, account-owner billing/usage evidence showing at least 1 MiB remaining included shared Actions artifact/GitHub Packages storage with no metered storage overage active. No Actions, workflow edits, installs/downloads, paid resources, private/holdout/full, submission, leaderboard or canonical edits occurred."
+      "status": "WAITING_INPUT",
+      "title": "Check a genuinely zero-cost environment for V25 residual capture"
     },
     {
       "assigned_owner": "residual-capture-protocol",
@@ -8482,7 +8512,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 393,
+  "revision": 394,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
