@@ -1,0 +1,161 @@
+{
+  "schema": "arc.whitebox.r240.terminal_receipt.v1",
+  "job_id": "R240",
+  "hypothesis_id": "R223-V25-LF-INDEPENDENT-POSTFLIGHT",
+  "owner": "independent-v25-audit",
+  "run_id": "R240-r223-attempt6-independent-postflight-20260923",
+  "status": "COMPLETE",
+  "verdict": "R240_INDEPENDENT_DEVELOPMENT_NO_GO",
+  "conclusion": "Independent postflight of immutable R223 attempt 6 confirms exact artifact/provenance binding and independently recomputes all 100 paired rows. Frozen gates 1,2,3,8,9,10,11 pass; gates 4,5,6,7 fail. Candidate V25-LF has 0 failures but slightly worse mean raw MSE and adjusted score than frozen V25, improves only 50/100 rows, and paired parent-minus-candidate mean is negative and not >2SE. No gate was relaxed. This is same-exposed-panel development evidence only; no competition/leaderboard/holdout/submission claim.",
+  "queue": {
+    "claim_revision": 185,
+    "claim_commit": "079da7f8a617e50b87ed1e35687b378312413362",
+    "start_revision": 186,
+    "start_commit": "07e1bda5ed894103909a00beea925b5cc511e0f4",
+    "note": "At R240 postflight publication, central control revision 190 still displayed the R223 attempt-6 queue attempt as RUNNING even though GitHub Actions run/job were independently verified completed/success and the immutable artifact existed. R240 did not mutate R223 queue state."
+  },
+  "prep": {
+    "verifier": {
+      "path": "research/r240/r240_verify_r223_attempt6.py",
+      "commit": "7dddfad12ad5720751225bc8d6127e10cd40a81e",
+      "git_blob": "eb15b02152f67e87cd9a7bb3fc31ccd0930d67ff",
+      "sha256": "f1f36b9dab560c815d363a4002a7e4f2a50ca3ae1a0b6ed8eac24864d7d14222"
+    },
+    "checklist": {
+      "path": "research/r240/R240_CHECKLIST.json",
+      "commit": "9131534ed843dfad8208a062e9b2149b9c1aa016",
+      "git_blob": "397ee787bde7a3ea80a74ee8bf9aa956fad2b18e",
+      "sha256": "53f6dff4ad2db606c1c33aa44bbcbb4af4c08ca49ad08b172e02173810c42222"
+    },
+    "selfcheck": {
+      "path": "research/r240/r240_selfcheck.py",
+      "commit": "779e66a7e45e52beb9bfdb53aad7b34c457cefd7",
+      "git_blob": "df5bfd9f60822fb37a1c615b719317df0e5487a2",
+      "sha256": "bfb1566e3a812b6f9fb7dc1c75fd88d446f1256133a8aff9be5a054dc24a7d0b"
+    },
+    "selfcheck_result": {
+      "path": "research/r240/R240_SELFCHECK_RESULT.json",
+      "commit": "84d0f27141f9719eb1834baaab55f0dbf5437f25",
+      "git_blob": "b3bc44f2e2940d3968c86830c8527bae78c943e2",
+      "sha256": "9df28ebe4dd5221f429244a3f26f66ae5076b2119a767d3fb64e866d81a9dc9d",
+      "pass": true
+    }
+  },
+  "r223_attempt6": {
+    "queue_run_id": "R223-v25-local-feed-attempt6-20260923",
+    "actions_run_id": 35810427656,
+    "actions_job_id": 107020553482,
+    "run_attempt": 1,
+    "head_sha": "09efbb920313850a4727bd34db9088a46227ce5f",
+    "actions_status": "completed",
+    "actions_conclusion": "success",
+    "artifact_id": 10730459690,
+    "artifact_name": "r223-v25-local-feed-mini100-attempt6",
+    "artifact_size_bytes": 261400,
+    "artifact_zip_sha256": "f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00",
+    "github_digest_matches_independent_download": true
+  },
+  "frozen_identity": {
+    "protocol_blob": "1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+    "workflow_blob": "d24e3f63e8ce447188868846e9b3e4ef755b395e",
+    "candidate_blob": "eb95d4ae46a031be5131eef8dd0909f2061b8749",
+    "transform_verifier_blob": "961e5afb052e2cfdc15e1284de49e57ba1514a73",
+    "owner_comparator_blob": "fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0",
+    "normalized_parent_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "normalized_parent_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "parent_report_sha256": "68683f9f2e8eca89a85fd18826998f5937d4770c2ce33bf6e6738fb236c8e5a3"
+  },
+  "binding": {
+    "manifest_ok": true,
+    "manifest_entries": 23,
+    "actual_files_excluding_manifest": 23,
+    "manifest_missing": 0,
+    "manifest_extra": 0,
+    "manifest_hash_mismatches": 0,
+    "mandatory_evidence_missing": 0,
+    "frozen_uploaded_blobs_ok": true,
+    "attempt6_arm_exact": true,
+    "source_transform_guard_ok": true,
+    "static_feed_identity_ok": true,
+    "runtime_versions_ok": true,
+    "validate_exit_zero": true,
+    "panel_exit_zero": true,
+    "normalized_parent_all_100_rows_match": true,
+    "normalized_and_artifact_parent_projection_sha256": "9f07b271d5d1a4f3180ba0a8a8b01b720198c08e3ee3906feb8416d01f38ec24",
+    "owner_per_network_rows_checked": 100,
+    "owner_per_network_mismatches": 0
+  },
+  "recomputed": {
+    "parent": {
+      "rows": 100,
+      "failures": 0,
+      "mean_raw_mse": 2.228303490170447e-8,
+      "mean_adjusted_score": 8.170397440117226e-9,
+      "mean_effective_compute": 806303721965,
+      "mean_c_over_b": 0.36666448157347986,
+      "max_residual_s": 0.19043814401743475
+    },
+    "candidate": {
+      "rows": 100,
+      "failures": 0,
+      "mean_raw_mse": 2.2284993050902814e-8,
+      "mean_adjusted_score": 8.171116513490029e-9,
+      "mean_effective_compute": 806303829485,
+      "mean_c_over_b": 0.36666453046791503,
+      "max_residual_s": 0.19380312699274782
+    },
+    "paired": {
+      "improved_networks": 50,
+      "delta_mean_parent_minus_candidate": -7.190733728024271e-13,
+      "delta_se": 1.4922201293529365e-12,
+      "delta_mean_over_se": -0.48188156603559223
+    }
+  },
+  "frozen_gates": {
+    "exact_100_name_order_identity": true,
+    "dataset_sha_identical": true,
+    "candidate_failures_zero": true,
+    "candidate_mean_raw_mse_lt_parent": false,
+    "candidate_mean_adjusted_le_0p995_parent": false,
+    "improves_at_least_55_of_100": false,
+    "paired_delta_mean_gt_2se": false,
+    "candidate_mean_cb_le_parent_plus_1e_5": true,
+    "max_residual_lt_0p4": true,
+    "exact_candidate_source_config_provenance": true,
+    "only_one_candidate_panel_run": true
+  },
+  "gate11": {
+    "attempts_1_to_5_panel_steps": "skipped",
+    "attempt_6_panel_step": "completed success",
+    "total_candidate_panel_invocations": 1
+  },
+  "durable_artifacts": {
+    "result": {
+      "path": "research/r240/R240_POSTFLIGHT_RESULT.json",
+      "commit": "675d55f63d3f216351c721ed167304dbfae18aa7",
+      "git_blob": "3b6f1758c522567d492f7e9d5dd7d97b41e4b7a4",
+      "sha256": "109a6f0dee648120be3658be689fc2a007cee8e661e6e5408c5a6b9fe7f38058"
+    },
+    "report": {
+      "path": "research/r240/R240_POSTFLIGHT_REPORT.md",
+      "commit": "1d63ee3d68c67b48f1e9541371cba8716c7a6bbd",
+      "git_blob": "c4a7a5e13b4cf7024cf01cf9574f95d736312c80",
+      "sha256": "9e2c307f9570a91f6873b9d616814343c07039a26c8843a1f119c508db1f81be"
+    }
+  },
+  "claim_boundary": {
+    "development": "Frozen V25-LF fails R223 same-panel development gates and should be dropped under that protocol.",
+    "competition": "No rank, hidden/private generalization, submission-readiness or competition outcome claim."
+  },
+  "scope": {
+    "r223_files_modified": false,
+    "actions_triggered": false,
+    "estimator_or_benchmark_run": false,
+    "candidate_modified": false,
+    "retry_or_rescue": false,
+    "paid_compute": false,
+    "holdout_or_private": false,
+    "submission": false,
+    "canonical_v25_changed": false
+  }
+}
