@@ -2329,19 +2329,19 @@
       "revision": 179
     },
     {
-      "revision": 180,
       "action": "enqueue",
+      "at": "2026-09-23T02:31:44+00:00",
       "job": "R239",
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "numerical-stability-audit",
-        "title": "Trace R232/R238 synthetic V25 base failures without another run",
+        "deliverable": "Read-only source-linked diagnosis of the unchanged pinned V25 base SymmetryError/NaN before prediction in R232 and R238. Inspect current AGENTS/RESEARCH_PROCESS, both frozen protocols and terminal receipts, exact synthetic fixture generators/commands, Actions evidence/logs, pinned V25 source and matching flopscope version. Trace the earliest non-finite operation only where retained evidence permits; separate observations, inference, and unknowns, especially if raw synthetic inputs were not retained. Produce a compact report and durable receipt with file/blob/hash references and one future protocol guard for a separately preregistered method. Do not execute code, recreate or resize fixtures, run Actions/estimator/benchmark, construct a candidate, modify R232/R238/R223/canonical files, use paid/holdout/private data, or submit. Claim/start/finish this R239 job and commit only the report/receipt.",
+        "depends_on": [],
         "hypothesis_id": "V25-SYNTHETIC-BASE-EXECUTABILITY-ROOT-CAUSE",
         "priority": 2,
-        "deliverable": "Read-only source-linked diagnosis of the unchanged pinned V25 base SymmetryError/NaN before prediction in R232 and R238. Inspect current AGENTS/RESEARCH_PROCESS, both frozen protocols and terminal receipts, exact synthetic fixture generators/commands, Actions evidence/logs, pinned V25 source and matching flopscope version. Trace the earliest non-finite operation only where retained evidence permits; separate observations, inference, and unknowns, especially if raw synthetic inputs were not retained. Produce a compact report and durable receipt with file/blob/hash references and one future protocol guard for a separately preregistered method. Do not execute code, recreate or resize fixtures, run Actions/estimator/benchmark, construct a candidate, modify R232/R238/R223/canonical files, use paid/holdout/private data, or submit. Claim/start/finish this R239 job and commit only the report/receipt.",
-        "depends_on": []
+        "title": "Trace R232/R238 synthetic V25 base failures without another run"
       },
-      "at": "2026-09-23T02:31:44+00:00"
+      "revision": 180
     },
     {
       "action": "claim",
@@ -2357,9 +2357,9 @@
       "job": "R239",
       "owner": "numerical-stability-audit",
       "payload": {
-        "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
         "code_commit": "62485e00fb0b3a7ce14410e57595cc9757ba52d2",
-        "command": "read-only source-linked audit of R232/R238 frozen protocols, receipts, scripts, retained Actions logs/evidence, pinned V25 and flopscope 0.12.1; no execution/recreation/Actions/benchmark/candidate/source edits"
+        "command": "read-only source-linked audit of R232/R238 frozen protocols, receipts, scripts, retained Actions logs/evidence, pinned V25 and flopscope 0.12.1; no execution/recreation/Actions/benchmark/candidate/source edits",
+        "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923"
       },
       "revision": 182
     },
@@ -2369,30 +2369,30 @@
       "job": "R239",
       "owner": "numerical-stability-audit",
       "payload": {
-        "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
-        "status": "COMPLETE",
-        "verdict": "DIAGNOSTIC_ONLY",
         "reason": "Read-only R239 diagnosis complete. R232 and R238 are distinct failure classes: in flopscope 0.12.1, R232's SymmetryError max_deviation=inf is a hard-coded sentinel reached only after the einsum result passes np.isfinite and then fails the symmetry allclose check, so retained R232 evidence proves a finite symmetry-validation mismatch, not NaN/Inf. R238 independently records two real overflow warnings before V25 line 929 as_symmetric(C), then max_deviation=nan; exact originating V25 operation/layer is not recoverable because raw fixture tensors, per-layer state and caller-resolving op trace were not retained. Both runs used the same unchanged V25 source blob but frozen off-suite small runtime overrides, not production width-1024/depth-16 configuration. One future guard is preregistered conceptually only: retain exact fixture bytes/hashes plus parent per-layer finite/max-abs and symmetry residual checkpoints before candidate construction. No code execution, fixture recreation/resizing, Actions/estimator/benchmark, candidate, edits to R232/R238/R223/canonical, paid/holdout/private data, or submission.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/6ba51144732eaadfe5ae8f5fb03d5f20b7561732/research/r239/R239_RECEIPT.json",
-          "sha256": "10f3d70b5c1745428996066bcabecd1f1206942ab8037f74bfc0aa67002ebc6a"
-        }
+          "sha256": "10f3d70b5c1745428996066bcabecd1f1206942ab8037f74bfc0aa67002ebc6a",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/6ba51144732eaadfe5ae8f5fb03d5f20b7561732/research/r239/R239_RECEIPT.json"
+        },
+        "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
+        "status": "COMPLETE",
+        "verdict": "DIAGNOSTIC_ONLY"
       },
       "revision": 183
     },
     {
-      "revision": 184,
       "action": "enqueue",
+      "at": "2026-09-23T02:46:35+00:00",
       "job": "R240",
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "independent-v25-audit",
-        "title": "Prepare and run independent postflight for R223 attempt 6",
+        "deliverable": "Prepare an independent offline verifier/checklist from the frozen R223 attempt-6 protocol, workflow, candidate source and comparator, without inspecting the in-progress R223 artifact or changing R223 files. Add a small synthetic self-check for row identity, official adjusted-score recomputation, failures, thresholds and manifest binding. Record queue start before preparation. Once R223 is terminal and its immutable artifact is available, independently verify ZIP digest/manifest and all 100 paired rows; recompute raw MSE, measured FLOPs, runtime/failures and adjusted score against the frozen R209 parent; apply every preregistered gate without loosening it. Produce a report and receipt with hashes, distinct development-vs-competition claims, and finish R240. No Actions run, estimator/benchmark execution, retries/rescue, paid compute, holdout/private data, submission, or edits to R223 candidate/protocol/workflow/canonical V25.",
         "hypothesis_id": "R223-V25-LF-INDEPENDENT-POSTFLIGHT",
         "priority": 2,
-        "deliverable": "Prepare an independent offline verifier/checklist from the frozen R223 attempt-6 protocol, workflow, candidate source and comparator, without inspecting the in-progress R223 artifact or changing R223 files. Add a small synthetic self-check for row identity, official adjusted-score recomputation, failures, thresholds and manifest binding. Record queue start before preparation. Once R223 is terminal and its immutable artifact is available, independently verify ZIP digest/manifest and all 100 paired rows; recompute raw MSE, measured FLOPs, runtime/failures and adjusted score against the frozen R209 parent; apply every preregistered gate without loosening it. Produce a report and receipt with hashes, distinct development-vs-competition claims, and finish R240. No Actions run, estimator/benchmark execution, retries/rescue, paid compute, holdout/private data, submission, or edits to R223 candidate/protocol/workflow/canonical V25."
+        "title": "Prepare and run independent postflight for R223 attempt 6"
       },
-      "at": "2026-09-23T02:46:35+00:00"
+      "revision": 184
     },
     {
       "action": "claim",
@@ -2408,11 +2408,46 @@
       "job": "R240",
       "owner": "independent-v25-audit",
       "payload": {
-        "run_id": "R240-r223-attempt6-independent-postflight-20260923",
         "code_commit": "079da7f8a617e50b87ed1e35687b378312413362",
-        "command": "prepare independent offline verifier/checklist/self-check from frozen R223 attempt-6 protocol/workflow/source/comparator; no in-progress artifact inspection; postflight only after R223 terminal"
+        "command": "prepare independent offline verifier/checklist/self-check from frozen R223 attempt-6 protocol/workflow/source/comparator; no in-progress artifact inspection; postflight only after R223 terminal",
+        "run_id": "R240-r223-attempt6-independent-postflight-20260923"
       },
       "revision": 186
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T03:26:44Z",
+      "job": "R241",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "coordinator",
+        "deliverable": "Read-only, timestamped refresh of the official Phase-2 AIcrowd leaderboard and official scoring metric; compare the visible leader score conditionally with the verified R209 V25 public mini-100 score. Record official source URLs, exact values, arithmetic, and why a rank/comparable claim is or is not supported. Save report and receipt, no estimator/benchmark/Actions run, no paid compute, no private/holdout, no submission or leaderboard mutation.",
+        "depends_on": [],
+        "hypothesis_id": "PHASE2-LEADERBOARD-SNAPSHOT-20260923",
+        "priority": 2,
+        "title": "Refresh official Phase-2 leaderboard and assess score comparability"
+      },
+      "revision": 187
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T03:26:44Z",
+      "job": "R241",
+      "owner": "coordinator",
+      "payload": {},
+      "revision": 188
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T03:26:44Z",
+      "job": "R241",
+      "owner": "coordinator",
+      "payload": {
+        "code_commit": "1e73f7a8086b3e8a782bcceef6eccce43175bc83",
+        "command": "Read-only official AIcrowd leaderboard/scoring-source review and R209 mini-100 comparison; no estimator, benchmark, or Actions execution.",
+        "run_id": "R241-official-leaderboard-snapshot-20260923-0328Z"
+      },
+      "revision": 189
     }
   ],
   "jobs": [
@@ -3834,60 +3869,79 @@
     },
     {
       "assigned_owner": "numerical-stability-audit",
-      "title": "Trace R232/R238 synthetic V25 base failures without another run",
-      "hypothesis_id": "V25-SYNTHETIC-BASE-EXECUTABILITY-ROOT-CAUSE",
-      "priority": 2,
-      "deliverable": "Read-only source-linked diagnosis of the unchanged pinned V25 base SymmetryError/NaN before prediction in R232 and R238. Inspect current AGENTS/RESEARCH_PROCESS, both frozen protocols and terminal receipts, exact synthetic fixture generators/commands, Actions evidence/logs, pinned V25 source and matching flopscope version. Trace the earliest non-finite operation only where retained evidence permits; separate observations, inference, and unknowns, especially if raw synthetic inputs were not retained. Produce a compact report and durable receipt with file/blob/hash references and one future protocol guard for a separately preregistered method. Do not execute code, recreate or resize fixtures, run Actions/estimator/benchmark, construct a candidate, modify R232/R238/R223/canonical files, use paid/holdout/private data, or submit. Claim/start/finish this R239 job and commit only the report/receipt.",
-      "depends_on": [],
-      "id": "R239",
-      "owner": "numerical-stability-audit",
-      "status": "COMPLETE",
       "attempts": [
         {
-          "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
           "code_commit": "62485e00fb0b3a7ce14410e57595cc9757ba52d2",
           "command": "read-only source-linked audit of R232/R238 frozen protocols, receipts, scripts, retained Actions logs/evidence, pinned V25 and flopscope 0.12.1; no execution/recreation/Actions/benchmark/candidate/source edits",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
-            "status": "COMPLETE",
-            "verdict": "DIAGNOSTIC_ONLY",
             "reason": "Read-only R239 diagnosis complete. R232 and R238 are distinct failure classes: in flopscope 0.12.1, R232's SymmetryError max_deviation=inf is a hard-coded sentinel reached only after the einsum result passes np.isfinite and then fails the symmetry allclose check, so retained R232 evidence proves a finite symmetry-validation mismatch, not NaN/Inf. R238 independently records two real overflow warnings before V25 line 929 as_symmetric(C), then max_deviation=nan; exact originating V25 operation/layer is not recoverable because raw fixture tensors, per-layer state and caller-resolving op trace were not retained. Both runs used the same unchanged V25 source blob but frozen off-suite small runtime overrides, not production width-1024/depth-16 configuration. One future guard is preregistered conceptually only: retain exact fixture bytes/hashes plus parent per-layer finite/max-abs and symmetry residual checkpoints before candidate construction. No code execution, fixture recreation/resizing, Actions/estimator/benchmark, candidate, edits to R232/R238/R223/canonical, paid/holdout/private data, or submission.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/6ba51144732eaadfe5ae8f5fb03d5f20b7561732/research/r239/R239_RECEIPT.json",
-              "sha256": "10f3d70b5c1745428996066bcabecd1f1206942ab8037f74bfc0aa67002ebc6a"
-            }
-          }
+              "sha256": "10f3d70b5c1745428996066bcabecd1f1206942ab8037f74bfc0aa67002ebc6a",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/6ba51144732eaadfe5ae8f5fb03d5f20b7561732/research/r239/R239_RECEIPT.json"
+            },
+            "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
+            "status": "COMPLETE",
+            "verdict": "DIAGNOSTIC_ONLY"
+          },
+          "run_id": "R239-v25-synthetic-numerical-stability-audit-20260923",
+          "status": "COMPLETE"
         }
       ],
+      "deliverable": "Read-only source-linked diagnosis of the unchanged pinned V25 base SymmetryError/NaN before prediction in R232 and R238. Inspect current AGENTS/RESEARCH_PROCESS, both frozen protocols and terminal receipts, exact synthetic fixture generators/commands, Actions evidence/logs, pinned V25 source and matching flopscope version. Trace the earliest non-finite operation only where retained evidence permits; separate observations, inference, and unknowns, especially if raw synthetic inputs were not retained. Produce a compact report and durable receipt with file/blob/hash references and one future protocol guard for a separately preregistered method. Do not execute code, recreate or resize fixtures, run Actions/estimator/benchmark, construct a candidate, modify R232/R238/R223/canonical files, use paid/holdout/private data, or submit. Claim/start/finish this R239 job and commit only the report/receipt.",
+      "depends_on": [],
+      "hypothesis_id": "V25-SYNTHETIC-BASE-EXECUTABILITY-ROOT-CAUSE",
+      "id": "R239",
+      "owner": "numerical-stability-audit",
+      "priority": 2,
       "reason": "Read-only R239 diagnosis complete. R232 and R238 are distinct failure classes: in flopscope 0.12.1, R232's SymmetryError max_deviation=inf is a hard-coded sentinel reached only after the einsum result passes np.isfinite and then fails the symmetry allclose check, so retained R232 evidence proves a finite symmetry-validation mismatch, not NaN/Inf. R238 independently records two real overflow warnings before V25 line 929 as_symmetric(C), then max_deviation=nan; exact originating V25 operation/layer is not recoverable because raw fixture tensors, per-layer state and caller-resolving op trace were not retained. Both runs used the same unchanged V25 source blob but frozen off-suite small runtime overrides, not production width-1024/depth-16 configuration. One future guard is preregistered conceptually only: retain exact fixture bytes/hashes plus parent per-layer finite/max-abs and symmetry residual checkpoints before candidate construction. No code execution, fixture recreation/resizing, Actions/estimator/benchmark, candidate, edits to R232/R238/R223/canonical, paid/holdout/private data, or submission.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/6ba51144732eaadfe5ae8f5fb03d5f20b7561732/research/r239/R239_RECEIPT.json",
-        "sha256": "10f3d70b5c1745428996066bcabecd1f1206942ab8037f74bfc0aa67002ebc6a"
+        "sha256": "10f3d70b5c1745428996066bcabecd1f1206942ab8037f74bfc0aa67002ebc6a",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/6ba51144732eaadfe5ae8f5fb03d5f20b7561732/research/r239/R239_RECEIPT.json"
       },
+      "status": "COMPLETE",
+      "title": "Trace R232/R238 synthetic V25 base failures without another run",
       "verdict": "DIAGNOSTIC_ONLY"
     },
     {
       "assigned_owner": "independent-v25-audit",
-      "title": "Prepare and run independent postflight for R223 attempt 6",
-      "hypothesis_id": "R223-V25-LF-INDEPENDENT-POSTFLIGHT",
-      "priority": 2,
-      "deliverable": "Prepare an independent offline verifier/checklist from the frozen R223 attempt-6 protocol, workflow, candidate source and comparator, without inspecting the in-progress R223 artifact or changing R223 files. Add a small synthetic self-check for row identity, official adjusted-score recomputation, failures, thresholds and manifest binding. Record queue start before preparation. Once R223 is terminal and its immutable artifact is available, independently verify ZIP digest/manifest and all 100 paired rows; recompute raw MSE, measured FLOPs, runtime/failures and adjusted score against the frozen R209 parent; apply every preregistered gate without loosening it. Produce a report and receipt with hashes, distinct development-vs-competition claims, and finish R240. No Actions run, estimator/benchmark execution, retries/rescue, paid compute, holdout/private data, submission, or edits to R223 candidate/protocol/workflow/canonical V25.",
-      "id": "R240",
-      "owner": "independent-v25-audit",
-      "status": "RUNNING",
       "attempts": [
         {
-          "run_id": "R240-r223-attempt6-independent-postflight-20260923",
           "code_commit": "079da7f8a617e50b87ed1e35687b378312413362",
           "command": "prepare independent offline verifier/checklist/self-check from frozen R223 attempt-6 protocol/workflow/source/comparator; no in-progress artifact inspection; postflight only after R223 terminal",
+          "run_id": "R240-r223-attempt6-independent-postflight-20260923",
           "status": "RUNNING"
         }
-      ]
+      ],
+      "deliverable": "Prepare an independent offline verifier/checklist from the frozen R223 attempt-6 protocol, workflow, candidate source and comparator, without inspecting the in-progress R223 artifact or changing R223 files. Add a small synthetic self-check for row identity, official adjusted-score recomputation, failures, thresholds and manifest binding. Record queue start before preparation. Once R223 is terminal and its immutable artifact is available, independently verify ZIP digest/manifest and all 100 paired rows; recompute raw MSE, measured FLOPs, runtime/failures and adjusted score against the frozen R209 parent; apply every preregistered gate without loosening it. Produce a report and receipt with hashes, distinct development-vs-competition claims, and finish R240. No Actions run, estimator/benchmark execution, retries/rescue, paid compute, holdout/private data, submission, or edits to R223 candidate/protocol/workflow/canonical V25.",
+      "hypothesis_id": "R223-V25-LF-INDEPENDENT-POSTFLIGHT",
+      "id": "R240",
+      "owner": "independent-v25-audit",
+      "priority": 2,
+      "status": "RUNNING",
+      "title": "Prepare and run independent postflight for R223 attempt 6"
+    },
+    {
+      "assigned_owner": "coordinator",
+      "attempts": [
+        {
+          "code_commit": "1e73f7a8086b3e8a782bcceef6eccce43175bc83",
+          "command": "Read-only official AIcrowd leaderboard/scoring-source review and R209 mini-100 comparison; no estimator, benchmark, or Actions execution.",
+          "run_id": "R241-official-leaderboard-snapshot-20260923-0328Z",
+          "status": "RUNNING"
+        }
+      ],
+      "deliverable": "Read-only, timestamped refresh of the official Phase-2 AIcrowd leaderboard and official scoring metric; compare the visible leader score conditionally with the verified R209 V25 public mini-100 score. Record official source URLs, exact values, arithmetic, and why a rank/comparable claim is or is not supported. Save report and receipt, no estimator/benchmark/Actions run, no paid compute, no private/holdout, no submission or leaderboard mutation.",
+      "depends_on": [],
+      "hypothesis_id": "PHASE2-LEADERBOARD-SNAPSHOT-20260923",
+      "id": "R241",
+      "owner": "coordinator",
+      "priority": 2,
+      "status": "RUNNING",
+      "title": "Refresh official Phase-2 leaderboard and assess score comparability"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 186,
+  "revision": 189,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
