@@ -2942,6 +2942,45 @@
         }
       },
       "at": "2026-09-23T05:49:54.862Z"
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T06:04:00+00:00",
+      "job": "R250",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "post-r248-next-method-research",
+        "deliverable": "Read current AGENTS/RESEARCH_PROCESS and complete experiment history, plus allowed R209 baseline, R246 score decomposition, R245 source-compliance findings and R248 terminal result. Select exactly one genuinely new network-agnostic V25 score-improvement hypothesis, excluding R247 2:4 D21 right-factor sparsity, R248 rank-1 Kronecker transport, R244 MP-R16, R223 V25-LF and all historically closed/rejected descendants; do not read R223/R244 candidate outputs/artifacts. Freeze source/math, one candidate, analytical all-in cost bound, exact target-free synthetic falsifier with deterministic realistic cases/controls/tolerances, exact R209 public mini-100 panel, score/failure gates and stop conditions before measurement. All output-affecting numerical operations must use metered fnp; no math.* or unresolved unmetered Python scalar arithmetic. Run only the frozen target-free falsifier first. Any falsifier/novelty/source-compliance/cost failure => durable DEVELOPMENT NO-GO report/receipt and finish with no estimator/benchmark/Actions or second method. Only if all preregistration gates PASS: at most one preverified-free standard Actions workflow, exactly one public R209 mini-100 panel, no retry. Public GO gates: exact row/hash identity, 0 failures, adjusted <=0.995*R209, >=55/100 better, paired gain >2 descriptive SE, mean FLOPs <=0.9*R209, max residual <0.4s. No paid/private/holdout/submission/leaderboard/canonical V25 edits/gate relaxation.",
+        "depends_on": [
+          "R245",
+          "R246",
+          "R248"
+        ],
+        "hypothesis_id": "POST-R248-DISTINCT-V25-SCORE-METHOD",
+        "priority": 1,
+        "title": "Test one distinct metered V25 score-improvement method after R248 rejection"
+      },
+      "revision": 226
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T06:04:01+00:00",
+      "job": "R250",
+      "owner": "post-r248-next-method-research",
+      "payload": {},
+      "revision": 227
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T06:04:02+00:00",
+      "job": "R250",
+      "owner": "post-r248-next-method-research",
+      "payload": {
+        "code_commit": "99f35592913f59360b7f5c3e9645af6ee529b9f9",
+        "command": "protocol/history preparation only: read AGENTS/RESEARCH_PROCESS/full history and allowed R209/R245/R246/R248 evidence; freeze exactly one distinct V25 candidate, source/math, analytical all-in cost, target-free falsifier, exact R209 mini-100 panel and immutable gates before any estimator/benchmark/Actions execution",
+        "run_id": "R250-post-r248-next-method-research-20260923"
+      },
+      "revision": 228
     }
   ],
   "jobs": [
@@ -4731,10 +4770,33 @@
       "owner": null,
       "status": "QUEUED",
       "attempts": []
+    },
+    {
+      "assigned_owner": "post-r248-next-method-research",
+      "deliverable": "Read current AGENTS/RESEARCH_PROCESS and complete experiment history, plus allowed R209 baseline, R246 score decomposition, R245 source-compliance findings and R248 terminal result. Select exactly one genuinely new network-agnostic V25 score-improvement hypothesis, excluding R247 2:4 D21 right-factor sparsity, R248 rank-1 Kronecker transport, R244 MP-R16, R223 V25-LF and all historically closed/rejected descendants; do not read R223/R244 candidate outputs/artifacts. Freeze source/math, one candidate, analytical all-in cost bound, exact target-free synthetic falsifier with deterministic realistic cases/controls/tolerances, exact R209 public mini-100 panel, score/failure gates and stop conditions before measurement. All output-affecting numerical operations must use metered fnp; no math.* or unresolved unmetered Python scalar arithmetic. Run only the frozen target-free falsifier first. Any falsifier/novelty/source-compliance/cost failure => durable DEVELOPMENT NO-GO report/receipt and finish with no estimator/benchmark/Actions or second method. Only if all preregistration gates PASS: at most one preverified-free standard Actions workflow, exactly one public R209 mini-100 panel, no retry. Public GO gates: exact row/hash identity, 0 failures, adjusted <=0.995*R209, >=55/100 better, paired gain >2 descriptive SE, mean FLOPs <=0.9*R209, max residual <0.4s. No paid/private/holdout/submission/leaderboard/canonical V25 edits/gate relaxation.",
+      "depends_on": [
+        "R245",
+        "R246",
+        "R248"
+      ],
+      "hypothesis_id": "POST-R248-DISTINCT-V25-SCORE-METHOD",
+      "priority": 1,
+      "title": "Test one distinct metered V25 score-improvement method after R248 rejection",
+      "id": "R250",
+      "owner": "post-r248-next-method-research",
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R250-post-r248-next-method-research-20260923",
+          "code_commit": "99f35592913f59360b7f5c3e9645af6ee529b9f9",
+          "command": "protocol/history preparation only: read AGENTS/RESEARCH_PROCESS/full history and allowed R209/R245/R246/R248 evidence; freeze exactly one distinct V25 candidate, source/math, analytical all-in cost, target-free falsifier, exact R209 mini-100 panel and immutable gates before any estimator/benchmark/Actions execution",
+          "status": "RUNNING"
+        }
+      ]
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 225,
+  "revision": 228,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
