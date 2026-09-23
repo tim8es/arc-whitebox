@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "id": "R263",
+  "run_id": "R263-leaderboard-refresh-20260923",
+  "owner": "leaderboard-refresh-arc",
+  "status": "COMPLETE",
+  "verdict": "NOT_COMPARABLE",
+  "checked_at_utc": "2026-09-23T12:05:34Z",
+  "checked_at_moscow": "2026-09-23T15:05:34+03:00",
+  "branch": "research/r263-leaderboard-refresh-20260923",
+  "protocol": {
+    "commit": "fbb17a40760fc6630fda08f1d87533b298917324",
+    "path": "research/r263/R263_PROTOCOL.md"
+  },
+  "source_snapshot": {
+    "commit": "d9d965d6bccb681658cade3e3d90f9e770152a29",
+    "path": "research/r263/R263_SOURCE_SNAPSHOT.json",
+    "git_blob_sha1": "08b2453f8a3dc3b7e1d57fb939214143c6b5aa25",
+    "sha256": "6cbb8ce69ad4330cc624e78209a49a1b333e3845daf8def1fd2a462d6ff49646"
+  },
+  "report": {
+    "commit": "975ebeac62ee89ccb7f3b866ae4a10be7e057639",
+    "path": "research/r263/R263_LEADERBOARD_REFRESH.md",
+    "git_blob_sha1": "b607b71ac482b99086cc799be52b607b14f13d69",
+    "sha256": "d8706a9cec3c537e934619ab052e210492674920c2c94dbc8390a6174dcb4a8f"
+  },
+  "official_snapshot": {
+    "leader": "J2W",
+    "leader_submission_id": 331539,
+    "adjusted_score_display": "0.0000000021",
+    "final_layer_mse_display": "0.0000000164",
+    "compute_utilisation_display": "0.1306572576",
+    "failed_mlps_display": 0,
+    "entries": 312,
+    "deadline_utc": "2026-10-17T23:59:00Z",
+    "deadline_moscow": "2026-10-18T02:59:00+03:00"
+  },
+  "metric": {
+    "name": "adjusted_final_layer_score",
+    "lower_is_better": true,
+    "formula": "mean_m(final_layer_mse_m * max(0.1, C_m/B)); failure multiplier=1.0; Phase2 C_m=F_m",
+    "official_scoring_git_blob_sha1": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e",
+    "official_rounds_git_blob_sha1": "2aaf38a54b5d6ed83ce2604870dcac59e62cee59"
+  },
+  "r209_v25": {
+    "result_git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "receipt_sha256": "5c87e8868ce3221b01979f7360079960e8991629926a7623037662f3c4511740",
+    "panel": "v2-phase2 / mini:all-100 / public development",
+    "networks": 100,
+    "failures": 0,
+    "adjusted_final_layer_score": 8.170397440117225e-9
+  },
+  "comparability": {
+    "metric_match": true,
+    "aggregation_match": true,
+    "split_match": false,
+    "online_visible_panel": "50 public MLPs; 50 sealed; full 100 is final evaluation",
+    "decision": "NOT_COMPARABLE",
+    "numeric_gap_computed": false,
+    "rank_claimed": false
+  },
+  "sources": [
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331539",
+    "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+    "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197",
+    "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/concepts/scoring-model.md",
+    "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/reference/rounds.md",
+    "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/getting-started/stage-3-run-local.md"
+  ],
+  "no_actions": [
+    "No estimator or benchmark run",
+    "No GitHub Actions workflow triggered",
+    "No paid resources",
+    "No private/holdout/full dataset access",
+    "No submission",
+    "No leaderboard mutation",
+    "No canonical result mutation"
+  ]
+}
