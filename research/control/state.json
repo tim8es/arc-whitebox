@@ -4496,6 +4496,23 @@
         }
       },
       "at": "2026-09-23T13:25:08.722Z"
+    },
+    {
+      "revision": 336,
+      "action": "enqueue",
+      "job": "R274",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "workflow-preflight-guard",
+        "title": "Scope manifest schema validation to the emitted object",
+        "hypothesis_id": "R272-GENERATOR-MANIFEST-SCOPE-20260923",
+        "priority": 2,
+        "depends_on": [
+          "R272"
+        ],
+        "deliverable": "Harden the R272 offline preflight against a false positive: generator_contract() currently unions string keys from every ast.Dict in the whole fixture source, so an unrelated dictionary could make a nonexistent emitted-manifest field appear valid. Reproduce with a focused offline regression test where a key exists only in an unrelated dict and the workflow asserts it. Inspect the actual R254 fixture generator (research/r254/r254_fixture.py on research/r254-balanced-rider-reduction-20260923) and statically scope emitted schema extraction to the JSON object written as the runtime manifest; do not run the fixture. Keep standard-library-only and narrow. Run focused offline tests; do not edit workflows, historical reports/receipts, Actions or science. Use a new isolated R274 branch from R272 tip, add append-only R274 report/receipt with hashes/commit, and finish R274. Report if safe static scoping is not possible rather than weakening the guard."
+      },
+      "at": "2026-09-23 13:32:42+00:00"
     }
   ],
   "jobs": [
@@ -7204,10 +7221,24 @@
         "sha256": "3c74ead349c98eab12e971feb9f7dd74c7f1e4f2520338880a3a83df57a89f8e"
       },
       "reason": "Independent descriptive audit of immutable R209 V25 mini:all-100 rows completed. All 100/100 rows exactly reproduce official_adjusted_score from final_mse * max(0.1, measured_flops/budget_flops); 0 failures. Adjusted score mean 8.170397440117225e-9, sample SD 1.1587653552315885e-9, SE 1.1587653552315885e-10. Worst 10% contribute 12.4724509073% and worst 25% contribute 29.3130672490% of total score; largest row contributes 1.3592696640%. Measured FLOPs and budget are constant across all rows, so cost-factor variation contributes zero to cross-network dispersion and all score dispersion is scaled MSE dispersion. Development evidence is BROAD_BASED_NOT_OUTLIER_DOMINATED; global research should target broad MSE reduction under one fixed method/configuration, not per-network selection. No leaderboard comparison/rank, estimator, Actions, new data, paid/private/holdout/full, tuning, submission, model/leaderboard/canonical edits."
+    },
+    {
+      "assigned_owner": "workflow-preflight-guard",
+      "title": "Scope manifest schema validation to the emitted object",
+      "hypothesis_id": "R272-GENERATOR-MANIFEST-SCOPE-20260923",
+      "priority": 2,
+      "depends_on": [
+        "R272"
+      ],
+      "deliverable": "Harden the R272 offline preflight against a false positive: generator_contract() currently unions string keys from every ast.Dict in the whole fixture source, so an unrelated dictionary could make a nonexistent emitted-manifest field appear valid. Reproduce with a focused offline regression test where a key exists only in an unrelated dict and the workflow asserts it. Inspect the actual R254 fixture generator (research/r254/r254_fixture.py on research/r254-balanced-rider-reduction-20260923) and statically scope emitted schema extraction to the JSON object written as the runtime manifest; do not run the fixture. Keep standard-library-only and narrow. Run focused offline tests; do not edit workflows, historical reports/receipts, Actions or science. Use a new isolated R274 branch from R272 tip, add append-only R274 report/receipt with hashes/commit, and finish R274. Report if safe static scoping is not possible rather than weakening the guard.",
+      "id": "R274",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 335,
+  "revision": 336,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
