@@ -5953,6 +5953,18 @@
       "owner": "r300-binary32-energy-consistency-fix-r269",
       "payload": {},
       "revision": 442
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T23:51:00.000Z",
+      "job": "R300",
+      "owner": "r300-binary32-energy-consistency-fix-r269",
+      "payload": {
+        "code_commit": "85a6af9b3ec125a56a12463c2c9b7303a563ed70",
+        "command": "stdlib-only append-only R300 analyzer supplement: align coordinate C_k with exact R298 binary32 corrected-residual path pred_corr=f32(pred+d), residual_corr=f32(target-pred_corr); synthetic p=target=1,d≈1e-8 regression plus aggregate consistency test only; no historical R298/R299 edits, PR #36, real vectors, benchmark/estimator, Actions, downloads/installs, paid/private/holdout/full/submission/leaderboard/canonical changes",
+        "run_id": "R300-binary32-energy-consistency-fix-20260924"
+      },
+      "revision": 443
     }
   ],
   "jobs": [
@@ -9553,12 +9565,19 @@
       "title": "Align coordinate-energy math with the frozen corrected-MSE arithmetic",
       "id": "R300",
       "owner": "r300-binary32-energy-consistency-fix-r269",
-      "status": "CLAIMED",
-      "attempts": []
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "code_commit": "85a6af9b3ec125a56a12463c2c9b7303a563ed70",
+          "command": "stdlib-only append-only R300 analyzer supplement: align coordinate C_k with exact R298 binary32 corrected-residual path pred_corr=f32(pred+d), residual_corr=f32(target-pred_corr); synthetic p=target=1,d≈1e-8 regression plus aggregate consistency test only; no historical R298/R299 edits, PR #36, real vectors, benchmark/estimator, Actions, downloads/installs, paid/private/holdout/full/submission/leaderboard/canonical changes",
+          "run_id": "R300-binary32-energy-consistency-fix-20260924",
+          "status": "RUNNING"
+        }
+      ]
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 442,
+  "revision": 443,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
