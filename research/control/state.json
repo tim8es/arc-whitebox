@@ -3485,6 +3485,26 @@
         "run_id": "R257-BPK2K-ONE-SHOT-20260923-A1"
       },
       "revision": 262
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T08:49:30+00:00",
+      "job": "R257",
+      "owner": "bpk2k-one-shot-run-responsive",
+      "payload": {
+        "reason": "R257 terminal INFRA_ERROR before science. Exactly one authorized Actions run 35838865448/job 107108851475/attempt 1 was triggered by arm commit 47d082eca6d70bed44c3d4346e15672efc09f333; artifact 10740567074 ZIP SHA256 e33cdfe28cc74f6ece1896a62fefe5e221fec67ff3c7c1f928aeac50434db24a. Workflow conclusion was failure. The first substantive guard command `git merge-base --is-ancestor b63936a38bc0e3a6394b00f2ef1d484311aff9e4 HEAD` failed exit 128 with `fatal: Not a valid commit name ...` because actions/checkout@v4 used a depth-1 checkout that omitted the frozen protocol ancestor. Setup-python, wheel/runtime checks, source-hash checks, V25 parent fetch/execution, fixture replay, BPK2K construction/execution, target-free measurements, validation, R209 identity/public mini100/public gates all did not execute. Parent/candidate/public measurement counts are 0/0/0; science is UNEVALUATED. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, canonical/leaderboard or R254 history changes. Sealed report/receipt commit c4b46ecacba1876613a6e11b678399d0b1fd83ba.",
+        "receipt": {
+          "sha256": "4b28cfb1f912afc9cae0b98484b711ee8dde5145e5d0753b2977eadd21093cc1",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/c4b46ecacba1876613a6e11b678399d0b1fd83ba/research/r257/R257_RECEIPT.json"
+        },
+        "run_id": "R257-BPK2K-ONE-SHOT-20260923-A1",
+        "github_run_id": 35838865448,
+        "github_job_id": 107108851475,
+        "artifact_id": 10740567074,
+        "artifact_zip_sha256": "e33cdfe28cc74f6ece1896a62fefe5e221fec67ff3c7c1f928aeac50434db24a",
+        "status": "INFRA_ERROR"
+      },
+      "revision": 263
     }
   ],
   "jobs": [
@@ -5570,7 +5590,20 @@
           "workflow_commit": "187bc8f9ca459a96af1f7cf0d014bc906b278a2a",
           "command": "create exactly one commit on research/r257-bpk2k-repaired-one-shot-20260923 adding only research/r257/R257_RUN_ARM.json atop workflow commit 187bc8f9ca459a96af1f7cf0d014bc906b278a2a; that single push triggers .github/workflows/r257-one-shot.yml once. Protocol commit b63936a38bc0e3a6394b00f2ef1d484311aff9e4; run_id R257-BPK2K-ONE-SHOT-20260923-A1. No rerun/second workflow.",
           "run_id": "R257-BPK2K-ONE-SHOT-20260923-A1",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR",
+          "completion": {
+            "reason": "R257 terminal INFRA_ERROR before science. Exactly one authorized Actions run 35838865448/job 107108851475/attempt 1 was triggered by arm commit 47d082eca6d70bed44c3d4346e15672efc09f333; artifact 10740567074 ZIP SHA256 e33cdfe28cc74f6ece1896a62fefe5e221fec67ff3c7c1f928aeac50434db24a. Workflow conclusion was failure. The first substantive guard command `git merge-base --is-ancestor b63936a38bc0e3a6394b00f2ef1d484311aff9e4 HEAD` failed exit 128 with `fatal: Not a valid commit name ...` because actions/checkout@v4 used a depth-1 checkout that omitted the frozen protocol ancestor. Setup-python, wheel/runtime checks, source-hash checks, V25 parent fetch/execution, fixture replay, BPK2K construction/execution, target-free measurements, validation, R209 identity/public mini100/public gates all did not execute. Parent/candidate/public measurement counts are 0/0/0; science is UNEVALUATED. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, canonical/leaderboard or R254 history changes. Sealed report/receipt commit c4b46ecacba1876613a6e11b678399d0b1fd83ba.",
+            "receipt": {
+              "sha256": "4b28cfb1f912afc9cae0b98484b711ee8dde5145e5d0753b2977eadd21093cc1",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/c4b46ecacba1876613a6e11b678399d0b1fd83ba/research/r257/R257_RECEIPT.json"
+            },
+            "run_id": "R257-BPK2K-ONE-SHOT-20260923-A1",
+            "github_run_id": 35838865448,
+            "github_job_id": 107108851475,
+            "artifact_id": 10740567074,
+            "artifact_zip_sha256": "e33cdfe28cc74f6ece1896a62fefe5e221fec67ff3c7c1f928aeac50434db24a",
+            "status": "INFRA_ERROR"
+          }
         }
       ],
       "deliverable": "One new, separately versioned one-shot evaluation of the unchanged R254 BPK2K candidate using only the reviewed R256 typed harness on an isolated successor branch from R256 receipt commit f1e458952f2274ca375f97125ba3d181c494ad40. Before any run, freeze R257 protocol, workflow, source hashes, one unique run ID, and exact gates; publish start on latest control head. Use pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1 and WhestBench 0.16.1 with the already verified wheel digests; standard free ubuntu-24.04 runner only. In exactly one workflow/attempt, run unchanged pinned V25 parent first on R254-MONOMIAL-PATH-254001 (seed 254001, exact existing weight/truth hashes); only after parent PASS run the unchanged BPK2K candidate. Preserve all frozen R254 target-free gates: final MSE ratio <=0.95, all-layer <=0.98, >=12 improved layers, max per-layer degradation <=1.10, candidate FLOPs <= parent, candidate residual <=1.05*parent+0.005; metered fnp/source compliance unchanged. Parent/infra failure => accurate terminal status, no candidate/public. Candidate target-free gate failure => SCIENTIFIC_REJECT for this configuration, skip public. Only if every target-free/source/cost gate passes, validate exact R209 mini-100 row/order/network/target hashes and run exact public mini-100 within the same workflow; require failures=0, adjusted score <=7.761877568111363e-9, >=55/100 improved, paired gain >2 descriptive SE, mean FLOPs <=806303721965, max residual <0.4s. Save raw per-network evidence/artifact hashes, report/receipt, finish queue and regenerate STATUS. No retries/second workflow, method/seed/threshold tuning, paid/private/holdout/full data, R223/R244 output access, submission, leaderboard/canonical edits or claims of official rank. Do not modify R254 historical artifacts.",
@@ -5582,12 +5615,17 @@
       "id": "R257",
       "owner": "bpk2k-one-shot-run-responsive",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Evaluate repaired BPK2K on frozen target-free then public R209 gates"
+      "status": "INFRA_ERROR",
+      "title": "Evaluate repaired BPK2K on frozen target-free then public R209 gates",
+      "reason": "R257 terminal INFRA_ERROR before science. Exactly one authorized Actions run 35838865448/job 107108851475/attempt 1 was triggered by arm commit 47d082eca6d70bed44c3d4346e15672efc09f333; artifact 10740567074 ZIP SHA256 e33cdfe28cc74f6ece1896a62fefe5e221fec67ff3c7c1f928aeac50434db24a. Workflow conclusion was failure. The first substantive guard command `git merge-base --is-ancestor b63936a38bc0e3a6394b00f2ef1d484311aff9e4 HEAD` failed exit 128 with `fatal: Not a valid commit name ...` because actions/checkout@v4 used a depth-1 checkout that omitted the frozen protocol ancestor. Setup-python, wheel/runtime checks, source-hash checks, V25 parent fetch/execution, fixture replay, BPK2K construction/execution, target-free measurements, validation, R209 identity/public mini100/public gates all did not execute. Parent/candidate/public measurement counts are 0/0/0; science is UNEVALUATED. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, canonical/leaderboard or R254 history changes. Sealed report/receipt commit c4b46ecacba1876613a6e11b678399d0b1fd83ba.",
+      "receipt": {
+        "sha256": "4b28cfb1f912afc9cae0b98484b711ee8dde5145e5d0753b2977eadd21093cc1",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/c4b46ecacba1876613a6e11b678399d0b1fd83ba/research/r257/R257_RECEIPT.json"
+      }
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 262,
+  "revision": 263,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
