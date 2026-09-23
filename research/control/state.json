@@ -4410,6 +4410,24 @@
         "command": "python -m unittest discover -s tests -p 'test_r272_workflow_preflight.py' -v"
       },
       "at": "2026-09-23T13:09:21.677Z"
+    },
+    {
+      "revision": 330,
+      "action": "enqueue",
+      "job": "R273",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "score-gap-independent-audit",
+        "title": "Measure whether R209 V25 error is broad-based or concentrated",
+        "hypothesis_id": "R209-V25-ERROR-CONCENTRATION-20260923",
+        "priority": 2,
+        "depends_on": [
+          "R209",
+          "R270"
+        ],
+        "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits."
+      },
+      "at": "2026-09-23 13:10:20+00:00"
     }
   ],
   "jobs": [
@@ -7054,10 +7072,25 @@
       "priority": 2,
       "status": "RUNNING",
       "title": "Add an offline preflight for the R257-R259 failure modes"
+    },
+    {
+      "assigned_owner": "score-gap-independent-audit",
+      "title": "Measure whether R209 V25 error is broad-based or concentrated",
+      "hypothesis_id": "R209-V25-ERROR-CONCENTRATION-20260923",
+      "priority": 2,
+      "depends_on": [
+        "R209",
+        "R270"
+      ],
+      "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits.",
+      "id": "R273",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 329,
+  "revision": 330,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
