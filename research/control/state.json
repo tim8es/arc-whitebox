@@ -5466,6 +5466,20 @@
         "status": "COMPLETE"
       },
       "revision": 407
+    },
+    {
+      "action": "reassign",
+      "at": "2026-09-23T18:24:55Z",
+      "job": "R290",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "gha-result-persistence-audit-responsive",
+        "from_session": "6ab3a7f9-fb08-83ed-ac5c-c3d500d50d1b",
+        "reason": "Previous recipient explicitly reported no repo-work capability and left R290 unclaimed with no attempts. First reroute also remained unclaimed; the current R268 target is idle and just completed repo-backed R291. No branch/run/artifact exists; transfer the same job with no duplicate execution.",
+        "to_assigned_owner": "gha-result-persistence-audit-r291-session",
+        "to_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b"
+      },
+      "revision": 408
     }
   ],
   "jobs": [
@@ -8744,7 +8758,7 @@
       "title": "Adversarially verify the latest PR #35 head after R285"
     },
     {
-      "assigned_owner": "gha-result-persistence-audit-responsive",
+      "assigned_owner": "gha-result-persistence-audit-r291-session",
       "attempts": [],
       "deliverable": "Using first-party GitHub Actions docs and this public repository's settings/workflow patterns, determine whether the planned ~1.36 MB residual capture can be saved to a dedicated research branch by a narrowly permissioned GITHUB_TOKEN commit, avoiding upload-artifact storage that R287 could not verify as quota-free. Inspect workflow token permissions, branch/rule constraints, effects on downstream workflow triggers, and repository storage policy. Read-only/docs-only; do not trigger Actions, write a commit, upload artifact, install/download data, or spend money. State exact remaining account-owner inputs if zero-cost still cannot be guaranteed; cite sources, append report/receipt and finish R290.",
       "depends_on": [
@@ -8796,7 +8810,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 407,
+  "revision": 408,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
