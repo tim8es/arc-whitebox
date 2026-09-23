@@ -4428,6 +4428,22 @@
         "deliverable": "Independently analyze only the immutable per-network rows in research/results/R209-v25-mini100.json and the official scoring formula. Verify every adjusted-score row from raw MSE and measured FLOPs; report n/failures, score and MSE mean/SD/SE/quantiles, contribution share of the worst 10% and 25% of networks, and whether cost variation or raw-MSE variation drives the result. Explain whether the gap is outlier-dominated or broad-based and what that means for global (not per-network-selected) research. This is descriptive public-mini-100 development evidence only: no leaderboard rank or comparison claim. Save a reproducible append-only report/receipt with hashes/commit and finish R273. No estimator, Actions, data fetch, paid compute, private/holdout/full, tuning, submission or model/leaderboard/canonical edits."
       },
       "at": "2026-09-23 13:10:20+00:00"
+    },
+    {
+      "revision": 331,
+      "action": "finish",
+      "job": "R272",
+      "owner": "workflow-preflight-guard",
+      "payload": {
+        "run_id": "R272-offline-workflow-preflight-20260923",
+        "status": "COMPLETE",
+        "reason": "Added one narrow standard-library offline workflow preflight plus focused tests for the three verified R257-R259 infrastructure failure modes. Local synthetic contract check rejected shallow ancestry checkout, wrong runtime-manifest name, and nonexistent all_layer_hashes_equal; repaired R260-like contract passed. No Actions/science/fixture execution/competition-data access/budget spend/workflow or historical receipt edits occurred. Final branch commit e4bdd87661ca0459675e1b4b9e8d22358be378d4.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/e4bdd87661ca0459675e1b4b9e8d22358be378d4/research/r272/R272_RECEIPT.json",
+          "sha256": "de02ec9f5484f1826fd7f0d02404a842bda74482fc94e972dd47b29f9bb2809a"
+        }
+      },
+      "at": "2026-09-23T13:15:50.087Z"
     }
   ],
   "jobs": [
@@ -7059,7 +7075,16 @@
           "run_id": "R272-offline-workflow-preflight-20260923",
           "code_commit": "afc0e19c9d3892ac1fe331f5c5105e4392579872",
           "command": "python -m unittest discover -s tests -p 'test_r272_workflow_preflight.py' -v",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R272-offline-workflow-preflight-20260923",
+            "status": "COMPLETE",
+            "reason": "Added one narrow standard-library offline workflow preflight plus focused tests for the three verified R257-R259 infrastructure failure modes. Local synthetic contract check rejected shallow ancestry checkout, wrong runtime-manifest name, and nonexistent all_layer_hashes_equal; repaired R260-like contract passed. No Actions/science/fixture execution/competition-data access/budget spend/workflow or historical receipt edits occurred. Final branch commit e4bdd87661ca0459675e1b4b9e8d22358be378d4.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/e4bdd87661ca0459675e1b4b9e8d22358be378d4/research/r272/R272_RECEIPT.json",
+              "sha256": "de02ec9f5484f1826fd7f0d02404a842bda74482fc94e972dd47b29f9bb2809a"
+            }
+          }
         }
       ],
       "deliverable": "Use R267 postmortem plus the actual R257-R260 workflow/fixture sources to identify the smallest useful reusable offline guard for the three verified failures: missing full-history protocol ancestry, fixture-manifest filename mismatch, and nonexistent replay-schema field. Inspect existing helpers first. If one small guard/test can catch all applicable failures without editing historical artifacts or live Actions workflows, implement it on an isolated branch and run only the local offline check; otherwise publish a concise evidence-based no-change report explaining why. Save report/receipt with hashes and commit; claim/start/finish R272 on the live control branch. Do not trigger Actions, run scientific estimators, access competition data, spend money, or edit old receipts/results.",
@@ -7070,8 +7095,13 @@
       "id": "R272",
       "owner": "workflow-preflight-guard",
       "priority": 2,
-      "status": "RUNNING",
-      "title": "Add an offline preflight for the R257-R259 failure modes"
+      "status": "COMPLETE",
+      "title": "Add an offline preflight for the R257-R259 failure modes",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/e4bdd87661ca0459675e1b4b9e8d22358be378d4/research/r272/R272_RECEIPT.json",
+        "sha256": "de02ec9f5484f1826fd7f0d02404a842bda74482fc94e972dd47b29f9bb2809a"
+      },
+      "reason": "Added one narrow standard-library offline workflow preflight plus focused tests for the three verified R257-R259 infrastructure failure modes. Local synthetic contract check rejected shallow ancestry checkout, wrong runtime-manifest name, and nonexistent all_layer_hashes_equal; repaired R260-like contract passed. No Actions/science/fixture execution/competition-data access/budget spend/workflow or historical receipt edits occurred. Final branch commit e4bdd87661ca0459675e1b4b9e8d22358be378d4."
     },
     {
       "assigned_owner": "score-gap-independent-audit",
@@ -7090,7 +7120,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 330,
+  "revision": 331,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
