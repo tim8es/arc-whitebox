@@ -1,0 +1,125 @@
+{
+  "schema": "arc.whitebox.r252.terminal_receipt.v1",
+  "job_id": "R252",
+  "run_id": "R252-one-shot-actions-global-accuracy-20260923",
+  "owner": "actions-accuracy-method-research",
+  "status": "INFRA_ERROR",
+  "verdict": "PRE_PARENT_FIXTURE_TRUTH_BYTE_IDENTITY_FAILURE_NO_RETRY",
+  "scientific_result": "NONE",
+  "reason": "The sole authorized standard ubuntu-24.04 Actions run passed frozen repository/core-wheel/runtime/V25 identity checks and all 16 frozen fixture weight-byte checks, then failed before parent execution because the reconstructed exact-truth bytes did not match the preregistered SHA256. The generator raised RuntimeError('truth hash mismatch') without retaining the observed digest or truth bytes. Per the one-run/no-retry protocol, no parent/candidate/public measurement may follow and no scientific inference is made.",
+  "queue_start": {
+    "enqueue_revision": 238,
+    "claim_revision": 239,
+    "start_revision": 240,
+    "start_commit": "bafb52055334a54b47407ab06b29060836fb4a95"
+  },
+  "hypothesis": {
+    "id": "V25-CFSP4-FINAL-CORNISH-FISHER-SIGMA-POINT",
+    "protocol_path": "research/r252/R252_PROTOCOL.md",
+    "protocol_blob": "c04cc77676429584453668ded8a81f14f326a2f4",
+    "novelty_path": "research/r252/R252_NOVELTY_AUDIT.json",
+    "novelty_blob": "636f47bb3cf733a2872f8367b86c5dba0c8b2e6a",
+    "candidate_constructed": false
+  },
+  "fixture": {
+    "id": "R252-PRODUCTION-SHAPE-TWOTAP-POSITIVE-MIX-252001",
+    "seed": 252001,
+    "shape": [
+      16,
+      1024
+    ],
+    "manifest_path": "research/r252/R252_FIXTURE_MANIFEST.json",
+    "manifest_blob": "93149ac04496b34497703b8c755ff1774c899e3b",
+    "all_weight_hash_checks_passed": true,
+    "concatenated_weight_sha256": "de5fcc26bb7eaf45f29175cb292f27091b6b13ab6a4f3dc095be96cf402a8d4e",
+    "expected_truth_sha256": "623f35aaf0a3a9dfc7f9955ea0c45d02b118fc0fa20579f0747116b838d54450",
+    "observed_truth_sha256": null,
+    "observed_truth_not_retained": true
+  },
+  "actions": {
+    "runs_authorized": 1,
+    "runs_created": 1,
+    "retry_authorized": false,
+    "retries_or_reruns_performed": 0,
+    "run_id": 35830986191,
+    "job_id": 107083271578,
+    "attempt": 1,
+    "head_sha": "71ecefb647bb590db14ba4b9d764652dea3d4040",
+    "conclusion": "failure",
+    "workflow_path": ".github/workflows/r252-cfsp4-one-shot.yml",
+    "workflow_blob": "608ea92fd571a8eac4d6ae5aa38e806c112f2cba",
+    "runner": "ubuntu-24.04 standard GitHub-hosted",
+    "artifact": {
+      "id": 10736403843,
+      "name": "r252-cfsp4-one-shot",
+      "zip_sha256": "10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e",
+      "size_bytes": 46746,
+      "expires_at": "2026-12-22T07:18:00Z"
+    }
+  },
+  "pinned_runtime": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1+np2.4.6",
+    "whestbench": "0.16.1",
+    "wheel_sha256": {
+      "numpy": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93",
+      "flopscope": "cd08df7e0eb468117b9a48b82d076130a9a9858ec20fdc0d015e2bd477519582",
+      "whestbench": "1a8e2620880221eb357056b0fdd65425b026dab222657f54ee202bd75dab987e"
+    }
+  },
+  "parent": {
+    "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+    "source_fetched_and_verified": true,
+    "executions": 0,
+    "measurements": 0,
+    "symmetry_checkpoints": 0
+  },
+  "candidate": {
+    "constructed": false,
+    "executions": 0,
+    "measurements": 0
+  },
+  "public_stage": {
+    "authorized": false,
+    "dataset_access": false,
+    "mini100_runs": 0,
+    "rank_claim": false
+  },
+  "durable_files": {
+    "actions_evidence": {
+      "path": "research/r252/R252_ACTIONS_EVIDENCE.json",
+      "commit": "76df68e220970a391e37bc3569ab7a8ee25db6f7",
+      "git_blob": "df2ccd909d65b410132ff97e41fce5f4a37e8017",
+      "sha256": "84e6c158557e1220d033ae6a07202960b0b9d7a02d831de430a8e3b84031698e"
+    },
+    "replay_failure": {
+      "path": "research/r252/R252_FIXTURE_REPLAY_FAILURE.json",
+      "commit": "b213b22878489b59c25c73dae6668670ee5c1d06",
+      "git_blob": "0f2ca14f8797d1bc3322d666182608d9e8c2c8f4",
+      "sha256": "1b698f82c97438b0171f3d05fb94ec82e66bfa071cc9a9854a5ddfbea3244589"
+    },
+    "report": {
+      "path": "research/r252/R252_REPORT.md",
+      "commit": "41203e56bd82c32a89c875e7ac1c2f5572f3bf82",
+      "git_blob": "aca0726d02d2bda95bbebe2a8f622cba87a699bc",
+      "sha256": "c1a59b35a919d1cc670cc98a96e47db0cae2e309063d401febd73f5e4ad52ffe"
+    }
+  },
+  "forensic_limit": "The actual failing truth digest is unavailable because the sole frozen generator did not retain it. The numerical cause of the mismatch is therefore unknown; no rerun is permitted to recover it.",
+  "prohibited_and_not_performed": [
+    "workflow retry or rerun",
+    "second method",
+    "parent scientific measurement",
+    "candidate scientific measurement",
+    "public R209 mini-100 access",
+    "private or holdout access",
+    "R223 or R244 candidate output/artifact access",
+    "paid/larger/self-hosted compute",
+    "submission",
+    "leaderboard mutation",
+    "canonical V25 edit",
+    "gate relaxation"
+  ]
+}
