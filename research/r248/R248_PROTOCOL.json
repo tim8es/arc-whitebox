@@ -1,0 +1,120 @@
+{
+  "schema": "arc.whitebox.r248.protocol.v1",
+  "job_id": "R248",
+  "owner": "method-research-recovery",
+  "run_id": "R248-post-r247-distinct-method-research-20260923",
+  "status": "FROZEN_PRE_FALSIFIER",
+  "source_commit": "0fe8d65e495b1c62244b31e9f03360c240bfd0d2",
+  "parent": {
+    "estimator_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "r209_record_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "r209_source_receipt_sha256": "5c87e8868ce3221b01979f7360079960e8991629926a7623037662f3c4511740",
+    "mean_raw_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "mean_flops": 806303721965
+  },
+  "evidence_inputs": {
+    "process": [
+      "AGENTS.md blob 6d9c61537a282a7d141af316dd8be438d1015a49",
+      "research/RESEARCH_PROCESS.md blob bf5a4676d8f36100e2dfdde32d544a39661eba8d"
+    ],
+    "history": "research/history.json: 194 experiments, blob 8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "r246": "R246 report blob 00720da19fb571d320930304defcedd978bb82c4; receipt blob dd5ac175db94d38770fd5e3cc2076b8b541a1a88",
+    "r247": "R247 report blob de2768d8326a489968d024a6a3e365c687240779; candidate blob b52dafbc77714276de5dbd14332426f3c664df47; receipt blob 926c6c9c24ca216add47ec8e20607871d8abb5e1",
+    "r245": "R245 static compliance report blob 5402396548bf046122edba07a8d6f73743526c8c",
+    "upstream_findings": "504aldo findings_log blob 09cf41e8826052ceb83109115cae688c03baaaca"
+  },
+  "candidate": {
+    "id": "V25-KRON1-YOUNG-TRANSPORT",
+    "spec_path": "research/r248/R248_CANDIDATE_SPEC.json",
+    "spec_git_blob": "3c8300af8386d9aa8e2e4aa434cc09d06874d233",
+    "distinction": "Approximate only the shared young A/P transport operator WD by one rank-1 Kronecker product. D21 contraction right factors remain dense/exact; no source/rank/age/lambda/Rres change."
+  },
+  "exact_public_panel": {
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini:all-100",
+    "count": 100,
+    "shape": [
+      16,
+      1024
+    ],
+    "dtype": "float32",
+    "evaluator": "whestbench 0.16.1",
+    "meter": "flopscope 0.12.1+np2.4.6",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce",
+    "stage": "development"
+  },
+  "static_gates": {
+    "novelty_pass": true,
+    "conservative_cost_ratio": 0.886473932833993,
+    "cost_required_max": 0.9,
+    "source_compliance_contract_pass": true,
+    "note": "Source-compliance pass is a frozen implementation contract, not an executed estimator audit."
+  },
+  "source_compliance_gate": {
+    "no_output_affecting_math_star": true,
+    "numerical_sqrt_transcendentals": "metered fnp only",
+    "output_affecting_python_scalar_arithmetic": "forbidden except shape/index bookkeeping; any newly required nontrivial scalar arithmetic => eligibility UNKNOWN and stop",
+    "planned_array_ops": [
+      "fnp.ones",
+      "fnp.sum",
+      "fnp.sqrt",
+      "fnp.maximum",
+      "fnp reshape/transpose",
+      "fnp matmul/einsum",
+      "fnp array division"
+    ],
+    "fixed_shape_constants": {
+      "n": 1024,
+      "d": 32
+    }
+  },
+  "falsifier": {
+    "path": "scripts/r248_kron1_transport_falsifier.py",
+    "git_blob": "ed1609650a842660bf19f94a39adcf395db239e5",
+    "command": "python scripts/r248_kron1_transport_falsifier.py --output research/r248/R248_FALSIFIER_RESULT.json",
+    "target_free": true,
+    "public_dataset": false,
+    "targets": false,
+    "oracle": "best possible rank-1 Kronecker Frobenius approximation, stricter/favorable upper bound on the production one-power candidate",
+    "gate": "exact-Kronecker control RRMS <=1e-12; 8/8 realistic cases finite and deterministic; each operator/A/P transport RRMS <=0.015; mean A/P transport RRMS <=0.012",
+    "failure_semantics": "DEVELOPMENT NO-GO; no estimator implementation, benchmark, validation, public panel or Actions"
+  },
+  "scientific_go": [
+    "exact R209 panel IDs/order/network_id/target_sha256 and metadata",
+    "0 failures",
+    "mean adjusted <=8.12954545291664e-9",
+    "at least 55/100 rows improve official adjusted score",
+    "paired parent-minus-candidate gain >2 descriptive SE",
+    "mean FLOPs <=725673349768.5",
+    "max residual <0.4s",
+    "mean raw-MSE degradation <11.111111111111116%"
+  ],
+  "one_shot_policy": {
+    "actions_workflows_max": 1,
+    "retry": false,
+    "second_run": false,
+    "prerequisites": [
+      "target-free falsifier GO",
+      "complete candidate estimator/workflow/arm hashes frozen",
+      "verified-free standard GitHub-hosted Actions runner"
+    ],
+    "workflow": [
+      "whest validate",
+      "exactly one candidate public mini-100 panel"
+    ],
+    "parent_rerun": false
+  },
+  "prohibited": {
+    "read_R223_candidate_output_or_artifact": false,
+    "read_R244_candidate_output_or_artifact": false,
+    "per_network_tuning": false,
+    "paid": false,
+    "private_holdout": false,
+    "submission": false,
+    "leaderboard_mutation": false,
+    "canonical_v25_edit": false,
+    "gate_relaxation": false
+  }
+}
