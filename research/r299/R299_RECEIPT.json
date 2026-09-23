@@ -1,0 +1,113 @@
+{
+  "accounting": {
+    "actions_runs": 0,
+    "benchmarks_or_estimator_runs": 0,
+    "data_or_dependency_downloads": 0,
+    "dependency_installs": 0,
+    "leaderboard_or_canonical_edits": 0,
+    "paid_resources": false,
+    "pr36_edits": 0,
+    "private_holdout_full_access": 0,
+    "real_capture_vectors_inspected": 0,
+    "submissions": 0
+  },
+  "artifacts": {
+    "analyzer": {
+      "git_blob_sha1": "d8469b233f458dbe7813babdcfe21a82016664e1",
+      "path": "research/r299/r299_capture_analyzer.py",
+      "sha256": "f4ac7a72773c87221f12a182165b0145673285c879290b4fd6020d0840f83a51"
+    },
+    "code_commit": "0184099e1062065d0821d2a8f530882c52192d33",
+    "report": {
+      "commit": "98f046f231399ce1818e2c759d2773a73af4c887",
+      "git_blob_sha1": "17712e934ff3fc34fb2f2fd54a6e2bd83149c1d1",
+      "path": "research/r299/R299_REPORT.md",
+      "sha256": "5206fb98d4a9583c70ba46058b0723a3faa184d0e3d23a2b77ec881330d3317d"
+    },
+    "selfcheck": {
+      "git_blob_sha1": "03ebb9c9a1f7cba61cd199ac2b8b8066b1de466a",
+      "path": "research/r299/r299_capture_analyzer_selfcheck.py",
+      "sha256": "bd1556d21a6fc338ceea26240cde4885168093662d2bb24ca6d927d340f154d1"
+    }
+  },
+  "branch": "research/r299-coordinate-energy-analysis-20260924",
+  "control": {
+    "claim_commit": "e1f45060e8cd0a790eb71332af1f7307e8255c59",
+    "claim_revision": 437,
+    "start_commit": "7c3b2e61531c8aeb9cf255dc3de8e51f2608a451",
+    "start_revision": 438
+  },
+  "coordinate_energy": {
+    "B_k": "sum over frozen EVAL i of r_ik^2",
+    "C_k": "sum over frozen EVAL i of binary32(r_ik-d_k)^2",
+    "explained_k": "1-C_k/B_k for B_k>0; null for B_k==0",
+    "finite_coordinate_count": "number of non-null finite explained_k values",
+    "quantiles": {
+      "convention": "Hyndman-Fan type 7: h=(n-1)p, zero-based linear interpolation",
+      "population": "finite explained_k only",
+      "probabilities": [
+        0.1,
+        0.25,
+        0.5,
+        0.75,
+        0.9
+      ]
+    },
+    "weighted_global": "1-sum_k(C_k)/sum_k(B_k) for positive total B; null if total B is zero",
+    "zero_energy_semantics": "B_k==0 => explained_k null and excluded from finite count/quantiles; C_k still contributes to global sum_C"
+  },
+  "decision": "ANALYZER_SUPPLEMENT_PREPARED_DELTA_TESTED_NO_REAL_CAPTURE",
+  "frozen_inherited_rules": {
+    "arithmetic": "R298 binary32 supplement preserved",
+    "eval": "p_corrected = p + d on EVAL only",
+    "fit": "d = mean_FIT(target-pred)",
+    "no_tuning": true,
+    "split": "lexicographic decimal network_id strings; first 50 FIT, last 50 EVAL"
+  },
+  "job": "R299",
+  "owner": "r298-coordinate-energy-analysis-r269",
+  "reason": "Added the missing R278 coordinate-wise residual-energy diagnostic as an append-only R299 analyzer supplement, frozen before real vectors. Five pure numerical delta semantics passed in the available local Python runtime. Full committed integration self-check is present but unexecuted because this session has no repository checkout/command runner and the task prohibits downloads needed to materialize one.",
+  "residual_blocker": {
+    "effect": "The committed 19-check integration self-check was not executed in this session.",
+    "exact": "Connected GitHub APIs permit read/write but expose no repository command runner; local filesystem has no checkout; task prohibits clone/raw/source downloads solely to materialize a checkout.",
+    "scope": "Execution evidence only; formulas, analyzer code, and tests are committed. R298 inherited 13-check self-check remains recorded PASS in its immutable receipt."
+  },
+  "run_id": "R299-coordinate-energy-analysis-20260924",
+  "schema": "arc.whitebox.r299.coordinate_energy_analysis.receipt.v1",
+  "sources": {
+    "r278_protocol": {
+      "commit": "83dfbe710cad5fbb1cab6e5b6fce0ccd06d47966",
+      "git_blob_sha1": "0ccc6b20fb4a8ad1c62a95d98dea4681970bb97d"
+    },
+    "r298_analyzer": {
+      "commit": "6f1e96d07cbb22c243c76d19a49ff8b4e7dd19fb",
+      "git_blob_sha1": "f1d5a9da7872ff6e632fef1e6c7dd2c90a6091ea"
+    },
+    "r298_receipt": {
+      "commit": "6f1e96d07cbb22c243c76d19a49ff8b4e7dd19fb",
+      "git_blob_sha1": "277058cb85e3425d9ba911c6210fb9bfdd0dc564"
+    }
+  },
+  "status": "COMPLETE",
+  "tests": {
+    "committed_selfcheck": {
+      "inherited_r298_checks": 13,
+      "new_r299_checks": 6,
+      "result": "NOT_RUN_NO_CHECKOUT_AND_DOWNLOADS_PROHIBITED",
+      "total_checks": 19
+    },
+    "delta_numeric_runtime": {
+      "checks": [
+        "zero_energy_coordinate_null",
+        "all_zero_global_and_quantiles_null",
+        "negative_explained_fraction",
+        "weighted_global_includes_zero_energy_C_penalty",
+        "type7_p10_p25_p50_p75_p90_examples"
+      ],
+      "passed": 5,
+      "required": 5,
+      "result": "PASS"
+    },
+    "static_integration_assertion": "Committed self-check also asserts coordinate_residual_energy output and p10/p25/p50/p75/p90 keys."
+  }
+}
