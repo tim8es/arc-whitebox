@@ -3294,6 +3294,18 @@
       "owner": "one-shot-accuracy-research",
       "payload": {},
       "at": "2026-09-23T07:42:00+00:00"
+    },
+    {
+      "revision": 249,
+      "action": "start",
+      "job": "R254",
+      "owner": "one-shot-accuracy-research",
+      "payload": {
+        "run_id": "R254-one-shot-global-accuracy-20260923",
+        "code_commit": "a7c4932391c09c0f6004d83b410ed643b3ca8ad2",
+        "command": "one standard ubuntu-24.04 Actions workflow only: verify pinned wheel hashes and corrected importlib.metadata versions; reconstruct/replay frozen R254 monomial-path fixture; run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; on parent PASS only construct and run V25-BPK2K balanced pK-to-K cumulant reduction; on all target-free/source/cost gates only verify exact R209 mini-100 row/order/network/target hashes and run candidate once; no retry/second workflow"
+      },
+      "at": "2026-09-23T07:55:00+00:00"
     }
   ],
   "jobs": [
@@ -5274,12 +5286,19 @@
       "assigned_owner": "one-shot-accuracy-research",
       "id": "R254",
       "owner": "one-shot-accuracy-research",
-      "status": "CLAIMED",
-      "attempts": []
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R254-one-shot-global-accuracy-20260923",
+          "code_commit": "a7c4932391c09c0f6004d83b410ed643b3ca8ad2",
+          "command": "one standard ubuntu-24.04 Actions workflow only: verify pinned wheel hashes and corrected importlib.metadata versions; reconstruct/replay frozen R254 monomial-path fixture; run unchanged pinned V25 parent first with finite/max-abs/symmetry checkpoints; on parent PASS only construct and run V25-BPK2K balanced pK-to-K cumulant reduction; on all target-free/source/cost gates only verify exact R209 mini-100 row/order/network/target hashes and run candidate once; no retry/second workflow",
+          "status": "RUNNING"
+        }
+      ]
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 248,
+  "revision": 249,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
