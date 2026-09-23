@@ -1,0 +1,6 @@
+{
+  "idempotency_key": "ARC-R223-ATTEMPT2-FINISH-REPAIR-20260923",
+  "job": "R223",
+  "attempt_finished": 2,
+  "repair_next_infrastructure_attempt": true
+}
