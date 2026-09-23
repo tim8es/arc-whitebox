@@ -1,0 +1,106 @@
+{
+  "schema": "arc.whitebox.r247.nm24_falsifier.v1",
+  "candidate_id": "V25-NM24-YOUNG-D21-RIGHT-SPARSIFY",
+  "target_free": true,
+  "n": 128,
+  "young_sources": 8,
+  "seeds": [
+    247001,
+    247002,
+    247003,
+    247004
+  ],
+  "thresholds": {
+    "identity_max": 1e-14,
+    "each_d21_rrms_max": 0.015,
+    "mean_d21_rrms_max": 0.012
+  },
+  "cases": [
+    {
+      "family": "iid",
+      "seed": 247001,
+      "identity_rrms": 0,
+      "candidate_d21_rrms": 0.3726602999561968,
+      "deterministic_max_abs": 0,
+      "finite": true
+    },
+    {
+      "family": "iid",
+      "seed": 247002,
+      "identity_rrms": 0,
+      "candidate_d21_rrms": 0.37126109558787107,
+      "deterministic_max_abs": 0,
+      "finite": true
+    },
+    {
+      "family": "iid",
+      "seed": 247003,
+      "identity_rrms": 0,
+      "candidate_d21_rrms": 0.37536843453518165,
+      "deterministic_max_abs": 0,
+      "finite": true
+    },
+    {
+      "family": "iid",
+      "seed": 247004,
+      "identity_rrms": 0,
+      "candidate_d21_rrms": 0.38016503271515556,
+      "deterministic_max_abs": 0,
+      "finite": true
+    },
+    {
+      "family": "v25_like_correlated",
+      "seed": 247001,
+      "identity_rrms": 0,
+      "candidate_d21_rrms": 0.36133862381167436,
+      "deterministic_max_abs": 0,
+      "finite": true
+    },
+    {
+      "family": "v25_like_correlated",
+      "seed": 247002,
+      "identity_rrms": 0,
+      "candidate_d21_rrms": 0.3676833135842606,
+      "deterministic_max_abs": 0,
+      "finite": true
+    },
+    {
+      "family": "v25_like_correlated",
+      "seed": 247003,
+      "identity_rrms": 0,
+      "candidate_d21_rrms": 0.373725657958854,
+      "deterministic_max_abs": 0,
+      "finite": true
+    },
+    {
+      "family": "v25_like_correlated",
+      "seed": 247004,
+      "identity_rrms": 0,
+      "candidate_d21_rrms": 0.37255166261631883,
+      "deterministic_max_abs": 0,
+      "finite": true
+    }
+  ],
+  "mean_d21_rrms": 0.37184426509568913,
+  "max_d21_rrms": 0.38016503271515556,
+  "gates": {
+    "case_count": true,
+    "all_finite": true,
+    "deterministic": true,
+    "identity": true,
+    "each_d21_rrms_le_0p015": false,
+    "mean_d21_rrms_le_0p012": false
+  },
+  "go": false,
+  "canonical_without_self_hash_sha256": "2b47e01b509039ce4f7c1f9be7c24cf23a94c68aff3a17b5bfd2a3ff6dafdcfd",
+  "execution": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "platform": "Linux x86_64",
+    "public_dataset_opened": false,
+    "targets_opened": false,
+    "benchmark": false,
+    "estimator": false,
+    "actions": false
+  }
+}
