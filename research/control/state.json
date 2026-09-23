@@ -2539,6 +2539,14 @@
         "title": "Independently verify normalized R223 candidate registry record"
       },
       "revision": 195
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T03:50:10Z",
+      "job": "R242",
+      "owner": "independent-v25-audit",
+      "payload": {},
+      "revision": 196
     }
   ],
   "jobs": [
@@ -4076,9 +4084,9 @@
       "depends_on": [],
       "hypothesis_id": "R223-ARTIFACT-RESULT-NORMALIZATION",
       "id": "R242",
-      "owner": null,
+      "owner": "independent-v25-audit",
       "priority": 2,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Normalize verified R223 V25-LF mini-100 result into the shared registry"
     },
     {
@@ -4095,7 +4103,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 195,
+  "revision": 196,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
