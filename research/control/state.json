@@ -3644,6 +3644,14 @@
         "title": "Run frozen BPK2K after fixture replay-schema preflight repair"
       },
       "revision": 272
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T09:24:00+00:00",
+      "job": "R260",
+      "owner": "bpk2k-one-shot-run-responsive",
+      "payload": {},
+      "revision": 273
     }
   ],
   "jobs": [
@@ -5857,14 +5865,14 @@
       ],
       "hypothesis_id": "R260-BPK2K-ONE-SHOT-FIXTURE-REPLAY-SCHEMA",
       "id": "R260",
-      "owner": null,
+      "owner": "bpk2k-one-shot-run-responsive",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Run frozen BPK2K after fixture replay-schema preflight repair"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 272,
+  "revision": 273,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
