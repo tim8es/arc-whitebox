@@ -2251,6 +2251,22 @@
         "run_id": "R223-v25-local-feed-attempt4-20260923"
       },
       "revision": 173
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T02:21:05.953855+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "reason": "Attempt 4 passed the free-compute, pinned-distribution, pinned V25 blob and exact repaired parent->candidate byte-transform gates. It then stopped before downloading any R209 parent bytes because the shell exported GH_TOKEN but the curl Authorization header referenced unset GITHUB_TOKEN under set -u. whest validate and the candidate mini-100 panel were never invoked.",
+        "receipt": {
+          "sha256": "54c2b455a5c4e14607f82c7377e5b27a3780390ce74402cbb43a6cbd3812f4b9",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/83ee212aa2e373d28772407fe652e0b4d22a279d/research/r223/R223_ATTEMPT4_INFRA_RECEIPT.json"
+        },
+        "run_id": "R223-v25-local-feed-attempt4-20260923",
+        "status": "INFRA_ERROR"
+      },
+      "revision": 174
     }
   ],
   "jobs": [
@@ -3065,8 +3081,17 @@
         {
           "code_commit": "a10e79902d62829bdf261d102ac2e774688e52a6",
           "command": "whest run --estimator methods/r223_estimator_v25_local_feed.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 100 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "completion": {
+            "reason": "Attempt 4 passed the free-compute, pinned-distribution, pinned V25 blob and exact repaired parent->candidate byte-transform gates. It then stopped before downloading any R209 parent bytes because the shell exported GH_TOKEN but the curl Authorization header referenced unset GITHUB_TOKEN under set -u. whest validate and the candidate mini-100 panel were never invoked.",
+            "receipt": {
+              "sha256": "54c2b455a5c4e14607f82c7377e5b27a3780390ce74402cbb43a6cbd3812f4b9",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/83ee212aa2e373d28772407fe652e0b4d22a279d/research/r223/R223_ATTEMPT4_INFRA_RECEIPT.json"
+            },
+            "run_id": "R223-v25-local-feed-attempt4-20260923",
+            "status": "INFRA_ERROR"
+          },
           "run_id": "R223-v25-local-feed-attempt4-20260923",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR"
         }
       ],
       "deliverable": "Inspect immutable history and V25's existing per-network public mini-100 evidence, then select exactly one untried, non-duplicative algorithm-level change aimed at reducing official adjusted score (not merely FLOPs below the 0.1B floor). Freeze the parent, code/config, falsifier, gates and exact panel before execution. Run at most one bounded development test on the same public mini-100 panel using only verified free/existing compute; do not alter canonical code. Compare every network, failures, MSE/FLOPs/runtime and score to V25; retain artifacts/hashes and commit. If novelty, cost or evidence is insufficient, finish with an explicit NO-GO and why. No holdout, paid resources, submission or leaderboard claims.",
@@ -3075,12 +3100,12 @@
       "id": "R223",
       "owner": "method-research",
       "priority": 2,
-      "reason": "Attempt 3 is preserved as pre-panel INFRA_ERROR. Repair only source-provenance formatting: append the single terminal LF inherited from the pinned V25 blob and update the exact-transform verifier to recognize attempt-1's two non-arithmetic formatting defects (literal docstring backslash-n and missing terminal LF) before requiring full byte equality with the pinned V25->V25-LF transform. No formula, clamp, panel, thresholds, parent, ranks, source state, or tuning changes.",
+      "reason": "Attempt 4 passed the free-compute, pinned-distribution, pinned V25 blob and exact repaired parent->candidate byte-transform gates. It then stopped before downloading any R209 parent bytes because the shell exported GH_TOKEN but the curl Authorization header referenced unset GITHUB_TOKEN under set -u. whest validate and the candidate mini-100 panel were never invoked.",
       "receipt": {
-        "sha256": "fb269138973ba97fd4228086f30dc2cfda0b4fbb609e7b8175b5a2f7f90645f7",
-        "url": "https://github.com/tim8es/arc-whitebox/blob/7e3126035494f85ff43db250a0b433cf75731595/research/r223/R223_ATTEMPT3_INFRA_RECEIPT.json"
+        "sha256": "54c2b455a5c4e14607f82c7377e5b27a3780390ce74402cbb43a6cbd3812f4b9",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/83ee212aa2e373d28772407fe652e0b4d22a279d/research/r223/R223_ATTEMPT4_INFRA_RECEIPT.json"
       },
-      "status": "RUNNING",
+      "status": "INFRA_ERROR",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     },
     {
@@ -3642,7 +3667,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 173,
+  "revision": 174,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
