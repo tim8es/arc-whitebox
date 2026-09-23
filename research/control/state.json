@@ -2594,6 +2594,14 @@
         "title": "Select and test one distinct V25 score-improvement method after R223 no-go"
       },
       "revision": 200
+    },
+    {
+      "revision": 201,
+      "action": "claim",
+      "job": "R244",
+      "owner": "alternative-method-research",
+      "payload": {},
+      "at": "2026-09-23T04:01:16.322Z"
     }
   ],
   "jobs": [
@@ -4169,14 +4177,14 @@
       "depends_on": [],
       "hypothesis_id": "V25-DISTINCT-ACCURACY-METHOD-POST-R223",
       "id": "R244",
-      "owner": null,
+      "owner": "alternative-method-research",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Select and test one distinct V25 score-improvement method after R223 no-go"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 200,
+  "revision": 201,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
