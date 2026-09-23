@@ -4879,13 +4879,13 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "workflow-preflight-integration-fix",
-        "title": "Fix the three R277 false-PASS findings in PR #35",
-        "hypothesis_id": "R277-PREFLIGHT-FAIL-CLOSED-FIX-20260923",
-        "priority": 1,
+        "deliverable": "Continue PR #35 from its current clean integration branch/head. Read R277 report+receipt and reproduce each finding before changing code: (1) accept fetch-depth:0 only under the `with:` of an actual actions/checkout step, not env/other fields; (2) fail closed or correctly recompute schema after destructive/unknown manifest mutations such as clear/pop/helper mutation; (3) tie json.loads binding to the exact manifest path and fail closed on unsupported accesses such as d.get('ghost') rather than silently missing them. Add minimal focused regressions, keep stdlib-only, run focused offline tests and compatibility tests, inspect exact PR diff. Update existing PR #35, do not merge or trigger Actions. Append R281 report/receipt with hashes/commit and finish R281; preserve all attempts and report if a case cannot be safely fixed.",
         "depends_on": [
           "R277"
         ],
-        "deliverable": "Continue PR #35 from its current clean integration branch/head. Read R277 report+receipt and reproduce each finding before changing code: (1) accept fetch-depth:0 only under the `with:` of an actual actions/checkout step, not env/other fields; (2) fail closed or correctly recompute schema after destructive/unknown manifest mutations such as clear/pop/helper mutation; (3) tie json.loads binding to the exact manifest path and fail closed on unsupported accesses such as d.get('ghost') rather than silently missing them. Add minimal focused regressions, keep stdlib-only, run focused offline tests and compatibility tests, inspect exact PR diff. Update existing PR #35, do not merge or trigger Actions. Append R281 report/receipt with hashes/commit and finish R281; preserve all attempts and report if a case cannot be safely fixed."
+        "hypothesis_id": "R277-PREFLIGHT-FAIL-CLOSED-FIX-20260923",
+        "priority": 1,
+        "title": "Fix the three R277 false-PASS findings in PR #35"
       },
       "revision": 364
     },
@@ -4896,13 +4896,13 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "r209-artifact-recovery",
-        "title": "Search existing ARC run artifacts for retained V25 residual vectors",
-        "hypothesis_id": "R209-EXISTING-RAW-VECTOR-RECOVERY-20260923",
-        "priority": 1,
+        "deliverable": "Follow R278's blocker: inspect only already-existing R209/R223 and related public GitHub Actions run artifacts/logs plus committed results for raw per-example predictions, targets, truth vectors or equivalent residual tensors needed for the R278 diagnostic. No new Actions, reruns, dataset downloads, paid resources, or private/holdout/full access. Verify provenance, run IDs, sizes, hashes and whether arrays correspond to the pinned V25/evaluator; if absent, state exact gap and a minimal future capture path. Produce append-only report/receipt and finish R282.",
         "depends_on": [
           "R209"
         ],
-        "deliverable": "Follow R278's blocker: inspect only already-existing R209/R223 and related public GitHub Actions run artifacts/logs plus committed results for raw per-example predictions, targets, truth vectors or equivalent residual tensors needed for the R278 diagnostic. No new Actions, reruns, dataset downloads, paid resources, or private/holdout/full access. Verify provenance, run IDs, sizes, hashes and whether arrays correspond to the pinned V25/evaluator; if absent, state exact gap and a minimal future capture path. Produce append-only report/receipt and finish R282."
+        "hypothesis_id": "R209-EXISTING-RAW-VECTOR-RECOVERY-20260923",
+        "priority": 1,
+        "title": "Search existing ARC run artifacts for retained V25 residual vectors"
       },
       "revision": 365
     },
@@ -4913,13 +4913,13 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "preflight-adversarial-audit",
-        "title": "Adversarially test PR #35 beyond the known false-PASS cases",
-        "hypothesis_id": "R275-PREFLIGHT-ADVERSARIAL-COVERAGE-20260923",
-        "priority": 2,
+        "deliverable": "Independently inspect PR #35 current head plus R277 findings. Using only small synthetic workflow/generator strings and offline tests, reproduce the three reported fail-open cases and probe for additional ways unsupported YAML/Python dataflow can produce a false PASS. Do not edit PR #35, create a PR review/comment, trigger Actions, execute fixtures/estimators, or access competition data. Report exact minimal counterexamples, affected functions/lines and the smallest safe fail-closed behavior in an append-only report/receipt with hashes/commit; finish R283.",
         "depends_on": [
           "R277"
         ],
-        "deliverable": "Independently inspect PR #35 current head plus R277 findings. Using only small synthetic workflow/generator strings and offline tests, reproduce the three reported fail-open cases and probe for additional ways unsupported YAML/Python dataflow can produce a false PASS. Do not edit PR #35, create a PR review/comment, trigger Actions, execute fixtures/estimators, or access competition data. Report exact minimal counterexamples, affected functions/lines and the smallest safe fail-closed behavior in an append-only report/receipt with hashes/commit; finish R283."
+        "hypothesis_id": "R275-PREFLIGHT-ADVERSARIAL-COVERAGE-20260923",
+        "priority": 2,
+        "title": "Adversarially test PR #35 beyond the known false-PASS cases"
       },
       "revision": 366
     },
@@ -4930,21 +4930,29 @@
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "residual-correction-rules-audit",
-        "title": "Check competition-rule validity of a global residual correction",
+        "deliverable": "Use first-party AIcrowd/ARC allowed-code rules, official evaluator/starterkit source, and R276/R278 artifacts to determine whether an estimator may embed one fixed output-space residual direction and coefficient fitted offline from public development mini networks, then apply it globally to unseen inputs/networks. Separate permitted public development use from leakage of evaluation-network targets, package-time constants, and metered runtime computation. Cite exact official sources and state any ambiguity as UNKNOWN; no organizer contact, estimator implementation/run, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard/canonical edits. Save one concise research artifact/receipt with hashes/commit and finish R284.",
+        "depends_on": [],
         "hypothesis_id": "V25-RESIDUAL-CORRECTION-RULES-20260923",
         "priority": 1,
-        "depends_on": [],
-        "deliverable": "Use first-party AIcrowd/ARC allowed-code rules, official evaluator/starterkit source, and R276/R278 artifacts to determine whether an estimator may embed one fixed output-space residual direction and coefficient fitted offline from public development mini networks, then apply it globally to unseen inputs/networks. Separate permitted public development use from leakage of evaluation-network targets, package-time constants, and metered runtime computation. Cite exact official sources and state any ambiguity as UNKNOWN; no organizer contact, estimator implementation/run, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard/canonical edits. Save one concise research artifact/receipt with hashes/commit and finish R284."
+        "title": "Check competition-rule validity of a global residual correction"
       },
       "revision": 367
     },
     {
-      "revision": 368,
       "action": "claim",
+      "at": "2026-09-23T15:46:09.593Z",
       "job": "R282",
       "owner": "r209-artifact-recovery",
       "payload": {},
-      "at": "2026-09-23T15:46:09.593Z"
+      "revision": 368
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T15:46:59.970Z",
+      "job": "R283",
+      "owner": "preflight-adversarial-audit",
+      "payload": {},
+      "revision": 369
     }
   ],
   "jobs": [
@@ -7904,62 +7912,62 @@
       "title": "Refresh visible standings and scan public methods beyond J2W"
     },
     {
-      "id": "R281",
       "assigned_owner": "workflow-preflight-integration-fix",
-      "owner": null,
-      "status": "QUEUED",
       "attempts": [],
-      "title": "Fix the three R277 false-PASS findings in PR #35",
-      "hypothesis_id": "R277-PREFLIGHT-FAIL-CLOSED-FIX-20260923",
-      "priority": 1,
+      "deliverable": "Continue PR #35 from its current clean integration branch/head. Read R277 report+receipt and reproduce each finding before changing code: (1) accept fetch-depth:0 only under the `with:` of an actual actions/checkout step, not env/other fields; (2) fail closed or correctly recompute schema after destructive/unknown manifest mutations such as clear/pop/helper mutation; (3) tie json.loads binding to the exact manifest path and fail closed on unsupported accesses such as d.get('ghost') rather than silently missing them. Add minimal focused regressions, keep stdlib-only, run focused offline tests and compatibility tests, inspect exact PR diff. Update existing PR #35, do not merge or trigger Actions. Append R281 report/receipt with hashes/commit and finish R281; preserve all attempts and report if a case cannot be safely fixed.",
       "depends_on": [
         "R277"
       ],
-      "deliverable": "Continue PR #35 from its current clean integration branch/head. Read R277 report+receipt and reproduce each finding before changing code: (1) accept fetch-depth:0 only under the `with:` of an actual actions/checkout step, not env/other fields; (2) fail closed or correctly recompute schema after destructive/unknown manifest mutations such as clear/pop/helper mutation; (3) tie json.loads binding to the exact manifest path and fail closed on unsupported accesses such as d.get('ghost') rather than silently missing them. Add minimal focused regressions, keep stdlib-only, run focused offline tests and compatibility tests, inspect exact PR diff. Update existing PR #35, do not merge or trigger Actions. Append R281 report/receipt with hashes/commit and finish R281; preserve all attempts and report if a case cannot be safely fixed."
+      "hypothesis_id": "R277-PREFLIGHT-FAIL-CLOSED-FIX-20260923",
+      "id": "R281",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Fix the three R277 false-PASS findings in PR #35"
     },
     {
-      "id": "R282",
       "assigned_owner": "r209-artifact-recovery",
-      "owner": "r209-artifact-recovery",
-      "status": "CLAIMED",
       "attempts": [],
-      "title": "Search existing ARC run artifacts for retained V25 residual vectors",
-      "hypothesis_id": "R209-EXISTING-RAW-VECTOR-RECOVERY-20260923",
-      "priority": 1,
+      "deliverable": "Follow R278's blocker: inspect only already-existing R209/R223 and related public GitHub Actions run artifacts/logs plus committed results for raw per-example predictions, targets, truth vectors or equivalent residual tensors needed for the R278 diagnostic. No new Actions, reruns, dataset downloads, paid resources, or private/holdout/full access. Verify provenance, run IDs, sizes, hashes and whether arrays correspond to the pinned V25/evaluator; if absent, state exact gap and a minimal future capture path. Produce append-only report/receipt and finish R282.",
       "depends_on": [
         "R209"
       ],
-      "deliverable": "Follow R278's blocker: inspect only already-existing R209/R223 and related public GitHub Actions run artifacts/logs plus committed results for raw per-example predictions, targets, truth vectors or equivalent residual tensors needed for the R278 diagnostic. No new Actions, reruns, dataset downloads, paid resources, or private/holdout/full access. Verify provenance, run IDs, sizes, hashes and whether arrays correspond to the pinned V25/evaluator; if absent, state exact gap and a minimal future capture path. Produce append-only report/receipt and finish R282."
+      "hypothesis_id": "R209-EXISTING-RAW-VECTOR-RECOVERY-20260923",
+      "id": "R282",
+      "owner": "r209-artifact-recovery",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Search existing ARC run artifacts for retained V25 residual vectors"
     },
     {
-      "id": "R283",
       "assigned_owner": "preflight-adversarial-audit",
-      "owner": null,
-      "status": "QUEUED",
       "attempts": [],
-      "title": "Adversarially test PR #35 beyond the known false-PASS cases",
-      "hypothesis_id": "R275-PREFLIGHT-ADVERSARIAL-COVERAGE-20260923",
-      "priority": 2,
+      "deliverable": "Independently inspect PR #35 current head plus R277 findings. Using only small synthetic workflow/generator strings and offline tests, reproduce the three reported fail-open cases and probe for additional ways unsupported YAML/Python dataflow can produce a false PASS. Do not edit PR #35, create a PR review/comment, trigger Actions, execute fixtures/estimators, or access competition data. Report exact minimal counterexamples, affected functions/lines and the smallest safe fail-closed behavior in an append-only report/receipt with hashes/commit; finish R283.",
       "depends_on": [
         "R277"
       ],
-      "deliverable": "Independently inspect PR #35 current head plus R277 findings. Using only small synthetic workflow/generator strings and offline tests, reproduce the three reported fail-open cases and probe for additional ways unsupported YAML/Python dataflow can produce a false PASS. Do not edit PR #35, create a PR review/comment, trigger Actions, execute fixtures/estimators, or access competition data. Report exact minimal counterexamples, affected functions/lines and the smallest safe fail-closed behavior in an append-only report/receipt with hashes/commit; finish R283."
+      "hypothesis_id": "R275-PREFLIGHT-ADVERSARIAL-COVERAGE-20260923",
+      "id": "R283",
+      "owner": "preflight-adversarial-audit",
+      "priority": 2,
+      "status": "CLAIMED",
+      "title": "Adversarially test PR #35 beyond the known false-PASS cases"
     },
     {
-      "id": "R284",
       "assigned_owner": "residual-correction-rules-audit",
-      "owner": null,
-      "status": "QUEUED",
       "attempts": [],
-      "title": "Check competition-rule validity of a global residual correction",
-      "hypothesis_id": "V25-RESIDUAL-CORRECTION-RULES-20260923",
-      "priority": 1,
+      "deliverable": "Use first-party AIcrowd/ARC allowed-code rules, official evaluator/starterkit source, and R276/R278 artifacts to determine whether an estimator may embed one fixed output-space residual direction and coefficient fitted offline from public development mini networks, then apply it globally to unseen inputs/networks. Separate permitted public development use from leakage of evaluation-network targets, package-time constants, and metered runtime computation. Cite exact official sources and state any ambiguity as UNKNOWN; no organizer contact, estimator implementation/run, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard/canonical edits. Save one concise research artifact/receipt with hashes/commit and finish R284.",
       "depends_on": [],
-      "deliverable": "Use first-party AIcrowd/ARC allowed-code rules, official evaluator/starterkit source, and R276/R278 artifacts to determine whether an estimator may embed one fixed output-space residual direction and coefficient fitted offline from public development mini networks, then apply it globally to unseen inputs/networks. Separate permitted public development use from leakage of evaluation-network targets, package-time constants, and metered runtime computation. Cite exact official sources and state any ambiguity as UNKNOWN; no organizer contact, estimator implementation/run, dataset download, Actions, paid/private/holdout/full access, submission, leaderboard/canonical edits. Save one concise research artifact/receipt with hashes/commit and finish R284."
+      "hypothesis_id": "V25-RESIDUAL-CORRECTION-RULES-20260923",
+      "id": "R284",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Check competition-rule validity of a global residual correction"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 368,
+  "revision": 369,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
