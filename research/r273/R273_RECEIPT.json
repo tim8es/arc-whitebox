@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "R273",
+  "run_id": "R273-v25-error-concentration-20260923",
+  "owner": "score-gap-independent-audit",
+  "status": "COMPLETE",
+  "verdict": "BROAD_BASED_NOT_OUTLIER_DOMINATED",
+  "branch": "research/r273-v25-error-concentration-20260923",
+  "source": {
+    "r209_v25_path": "research/results/R209-v25-mini100.json",
+    "r209_v25_git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "official_scoring_url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/concepts/scoring-model.md",
+    "official_scoring_git_blob_sha1": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e"
+  },
+  "protocol": {
+    "commit": "fa2389f25bbb388550278ddef4a10a7ab5a7b714",
+    "path": "research/r273/R273_PROTOCOL.md",
+    "git_blob_sha1": "9a1beefe4e535317a1b4db78b73c8a967f8ef096"
+  },
+  "artifacts": {
+    "calculations": {
+      "commit": "1170251c338550e9a172b0cce54b381dc0239543",
+      "path": "research/r273/R273_CALCULATIONS.json",
+      "git_blob_sha1": "bd7b378b64dd0fcb611e298e3a988ef471ebeccf",
+      "sha256": "9fa9affed548ac9a393e4887aa64b71b0016206861ab11228b16d7114f01ac78"
+    },
+    "report": {
+      "commit": "7b6826abd66e4ecfc9e8786d5ac39447931f1315",
+      "path": "research/r273/R273_ERROR_CONCENTRATION_AUDIT.md",
+      "git_blob_sha1": "e201e4d4078f193be932c945779c35496566a2a4",
+      "sha256": "6aff206d41ac4fcc5a1068daf8788f92420e7fc5f4156cacbd3f8a26a59856da"
+    }
+  },
+  "verified": {
+    "n": 100,
+    "failures": 0,
+    "rows_formula_exact_equal": 100,
+    "max_abs_formula_minus_recorded": 0,
+    "adjusted_score_mean": 8.170397440117225e-9,
+    "adjusted_score_sample_sd": 1.1587653552315885e-9,
+    "adjusted_score_se": 1.1587653552315885e-10,
+    "mse_mean": 2.228303490170447e-8,
+    "mse_sample_sd": 3.160287983878172e-9,
+    "mse_se": 3.160287983878172e-10,
+    "worst_10_share_of_total_score": 0.1247245090733508,
+    "worst_25_share_of_total_score": 0.2931306724898917,
+    "worst_1_share_of_total_score": 0.013592696639751477,
+    "unique_cost_factors": 1,
+    "cost_factor_sample_sd": 0,
+    "conclusion": "Across-network adjusted-score dispersion is entirely scaled MSE dispersion because measured FLOPs, budget and compute multiplier are constant across all 100 rows."
+  },
+  "interpretation": {
+    "classification": "BROAD_BASED_NOT_OUTLIER_DOMINATED",
+    "reason": "Worst 10% contribute 12.47% of total score, worst 25% contribute 29.31%, and the largest single network contributes 1.36%; the remaining 90% still contribute 87.53%.",
+    "global_research_implication": "Prioritize one globally applicable mechanism/configuration that reduces MSE across the central bulk; track central quantiles plus tail regressions and do not use per-network selection."
+  },
+  "scope_limits": [
+    "Descriptive public development mini:all-100 evidence only",
+    "No leaderboard comparison or rank/place claim",
+    "No estimator or benchmark execution",
+    "No GitHub Actions",
+    "No new data access",
+    "No paid/private/holdout/full evaluation",
+    "No tuning or per-network selection",
+    "No submission",
+    "No model, leaderboard, or canonical edit"
+  ]
+}
