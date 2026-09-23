@@ -88,8 +88,11 @@ def main() -> None:
     attempt1 = attempt1_bytes.decode("utf-8")
     assert attempt1.count(ATTEMPT1_LITERAL) == 1
     normalized_attempt1 = attempt1.replace(ATTEMPT1_LITERAL, NEW_DOC)
+    assert not normalized_attempt1.endswith("\n")
+    normalized_attempt1 += "\n"
+    assert candidate.endswith("\n")
     assert normalized_attempt1 == candidate, (
-        "attempt-2 candidate differs from attempt-1 by more than docstring newline"
+        "candidate differs from attempt-1 by more than docstring newline plus terminal-LF normalization"
     )
 
     # Independently reconstruct the preregistered candidate from pinned V25.
@@ -116,15 +119,15 @@ def main() -> None:
     assert ATTEMPT1_LITERAL not in candidate
 
     result = {
-        "schema": "arc.whitebox.r223.attempt2_transform_guard.v1",
+        "schema": "arc.whitebox.r223.repaired_transform_guard.v2",
         "upstream_git_blob_sha1": observed_parent_blob,
         "upstream_sha256": sha256_bytes(parent_bytes),
         "attempt1_candidate_commit": ATTEMPT1_CANDIDATE_COMMIT,
         "attempt1_candidate_sha256": sha256_bytes(attempt1_bytes),
-        "attempt2_candidate_git_blob_sha1": git_blob(str(candidate_path)),
-        "attempt2_candidate_sha256": sha256_bytes(candidate_bytes),
-        "attempt2_equals_attempt1_after_docstring_newline_normalization": True,
-        "attempt2_equals_exact_preregistered_parent_transform": True,
+        "candidate_git_blob_sha1": git_blob(str(candidate_path)),
+        "candidate_sha256": sha256_bytes(candidate_bytes),
+        "candidate_equals_attempt1_after_docstring_and_terminal_lf_normalization": True,
+        "candidate_equals_exact_preregistered_parent_transform": True,
         "formula_and_clamp_tokens_exact": True,
         "target_access": False,
     }
