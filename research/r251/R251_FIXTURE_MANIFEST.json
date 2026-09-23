@@ -1,0 +1,152 @@
+{
+  "schema": "arc.whitebox.r251.fixture.v1",
+  "width": 1024,
+  "depth": 16,
+  "seed": 251001,
+  "dtype": "float32",
+  "layout": "C",
+  "distribution": "x0 ~ iid N(0,1); weights are positive monomial/permutation matrices",
+  "construction": "For layer l and input row i: p=( (2*l+1)*i + ((251001+37*l) mod 1024) ) mod 1024; q=((i+3*l) mod 9)-4; W_l[i,p]=float32(1+q/64); all other entries exactly +0.0f.",
+  "layers": [
+    {
+      "layer": 0,
+      "a": 1,
+      "b": 121,
+      "scale_q_formula": "((i+0) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 1,
+      "a": 3,
+      "b": 158,
+      "scale_q_formula": "((i+3) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 2,
+      "a": 5,
+      "b": 195,
+      "scale_q_formula": "((i+6) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 3,
+      "a": 7,
+      "b": 232,
+      "scale_q_formula": "((i+9) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 4,
+      "a": 9,
+      "b": 269,
+      "scale_q_formula": "((i+12) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 5,
+      "a": 11,
+      "b": 306,
+      "scale_q_formula": "((i+15) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 6,
+      "a": 13,
+      "b": 343,
+      "scale_q_formula": "((i+18) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 7,
+      "a": 15,
+      "b": 380,
+      "scale_q_formula": "((i+21) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 8,
+      "a": 17,
+      "b": 417,
+      "scale_q_formula": "((i+24) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 9,
+      "a": 19,
+      "b": 454,
+      "scale_q_formula": "((i+27) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 10,
+      "a": 21,
+      "b": 491,
+      "scale_q_formula": "((i+30) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 11,
+      "a": 23,
+      "b": 528,
+      "scale_q_formula": "((i+33) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 12,
+      "a": 25,
+      "b": 565,
+      "scale_q_formula": "((i+36) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 13,
+      "a": 27,
+      "b": 602,
+      "scale_q_formula": "((i+39) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 14,
+      "a": 29,
+      "b": 639,
+      "scale_q_formula": "((i+42) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    },
+    {
+      "layer": 15,
+      "a": 31,
+      "b": 676,
+      "scale_q_formula": "((i+45) mod 9)-4",
+      "scale": "float32(1+q/64)"
+    }
+  ],
+  "dense_layer_sha256": [
+    "b873f8ed174a1347ad92e1550ecaea4a9144bf381f4e052a09b641366f94df83",
+    "ecc5b274d92c9fcdf2032e3c14f5409f39274fa28e78cc8a244e0e91d233884c",
+    "f69144ec33b5f89307d658728e4682a15490d42d749fda2a99e94cacddd4505a",
+    "e016abbcf1db863eb715b91360f091080fcc3c976d12097b408f203cbb290fdf",
+    "d826a99c66866357717e12de73dd425e911558acb52d1c38ca65dba724b36453",
+    "a924d761a936ac62e31565fb796ed1c3be353ee9c7b58fe269296bafdf60dec5",
+    "29657f0a3390d94162480a69503cdcbc87a1efcce8743675f65132c0544e6bd3",
+    "217ba760b23f545c868b3e58cfbe595f911c52f597fb0df3796ee5d8bba1cad0",
+    "ad5b8638fee1cb8c9d1fbe17a90e69f3a4a60925c0300f2e9b2c18e20967a3da",
+    "3fea42b9b36230c6bc6d2fe0f44743c716838f64d9772135c8b51482c88ec21e",
+    "979579e0fe092b6ea3aef2e31e08b86fcbe50f928ae977bd8feb96a1d4abc1d7",
+    "0be2bea3f17f17cf2bb7b966d78a0726c49611da7088a32fbdbbd5386f532878",
+    "f360375aa83d14d38f97dbb42733bea715158b2df789211745d14f8af46dc1fa",
+    "406909107437a0d614ebf9b4472a143a68a5078d150dcee571d16a10878b7be3",
+    "a9261f622359fc04451f6ed806d3738405050e91b86b603311646afdfa39f59c",
+    "86c62598613a17031a87797faefb62a16bb1e367474fb52d9d6fd00aaaf11b4a"
+  ],
+  "dense_concat_sha256": "3b94abf468e6d829c5caf55096cbb13946a3ed042a92815eb718c5c8c501ff1a",
+  "exact_mean_truth_sha256": "8e326c2c124ac70b41afb64ada24317430bb18c0a459428044094b1d954b0876",
+  "exact_mean_truth_dtype": "little-endian float64 C-order (16,1024)",
+  "exact_mean_formula": "After layer 0 ReLU and all-positive monomial transforms, E[h_l,j]=phi0 times the product of positive path scales, phi0=1/sqrt(2*pi).",
+  "compact_manifest_canonical_sha256": "dc0f668e9bda2dd5dc3d35f7956b8f4c446eb156b5b6b1db8b3154c45d246313",
+  "notes": [
+    "Production shape/riders are enabled: width=1024, depth=16.",
+    "No target/public/private network is used.",
+    "The dense tensors are reconstructed exactly from this compact fixture; the per-layer and concatenated dense byte hashes freeze their bytes."
+  ]
+}
