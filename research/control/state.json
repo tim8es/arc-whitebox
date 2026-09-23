@@ -4584,6 +4584,14 @@
         "deliverable": "Use pinned V25 source and immutable R209 public mini:all-100 only as development evidence. Read current AGENTS.md, research/RESEARCH_PROCESS.md, STATUS, live queue and full relevant history; choose one concrete accuracy-improvement hypothesis not equivalent to a closed/rejected experiment, freeze a small bounded protocol, and implement/test it with existing/free local resources. Compare candidate with V25 on the same 100 networks and exact evaluator/meter versions; record every attempt, per-network adjusted score, raw MSE, measured FLOPs, failures and paired uncertainty. Keep one fixed global method/configuration (no per-network selection); do not claim leaderboard rank because R209 is not comparable to the visible 50. No new paid resources, private/holdout/full data, competition submission or leaderboard/canonical edits. If the chosen method fails, preserve the negative result and recommend the next scientifically distinct test. Claim/start/finish R276 and append report, normalized result if valid, and receipt with hashes/commit."
       },
       "revision": 341
+    },
+    {
+      "revision": 342,
+      "action": "claim",
+      "job": "R275",
+      "owner": "workflow-preflight-integration",
+      "payload": {},
+      "at": "2026-09-23T15:02:32.658Z"
     }
   ],
   "jobs": [
@@ -7331,8 +7339,8 @@
     {
       "id": "R275",
       "assigned_owner": "workflow-preflight-integration",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "workflow-preflight-integration",
+      "status": "CLAIMED",
       "attempts": [],
       "title": "Integrate and operationalize the hardened workflow preflight",
       "hypothesis_id": "R274-MAIN-INTEGRATION-20260923",
@@ -7359,7 +7367,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 341,
+  "revision": 342,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
