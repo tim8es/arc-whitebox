@@ -4181,6 +4181,23 @@
         "run_id": "R268-r261-reconciliation-audit-20260923"
       },
       "revision": 312
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T12:17:17Z",
+      "job": "R269",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "multilevel-debiasing-scout",
+        "title": "Falsify V25 multilevel-debiasing feasibility",
+        "hypothesis_id": "V25-MULTILEVEL-DEBIASING-FEASIBILITY-20260923",
+        "priority": 1,
+        "depends_on": [
+          "R265"
+        ],
+        "deliverable": "Follow the sole abstractly distinct lead from R265: randomized multilevel debiasing. Read its report/protocol and full history; derive whether a concrete V25 one/two-level hierarchy can satisfy an unbiased telescoping identity using only permitted metered operations and existing model outputs, and derive a full-production FLOP upper bound before any execution. Do not reuse/relabel Richardson, local-feed, copula, K3 transport, or other closed families. Define one deterministic synthetic target-free fixture and falsifier for correction decay/variance and cost. If no concrete hierarchy, target-free rationale, or honest bound exists, publish evidence-based NO_GO before execution. If all theory/cost gates pass, freeze protocol and run at most one local synthetic falsifier; no public/R209, Actions/cloud, paid, private/holdout/full, tuning/per-network selection, submission, canonical/leaderboard changes. Preserve every attempt, artifact and receipt, finish R269, and wait for coordinator before public/cloud work."
+      },
+      "revision": 313
     }
   ],
   "jobs": [
@@ -6670,10 +6687,24 @@
       "priority": 2,
       "status": "RUNNING",
       "title": "Independently verify the R261 control reconciliation"
+    },
+    {
+      "id": "R269",
+      "title": "Falsify V25 multilevel-debiasing feasibility",
+      "priority": 1,
+      "hypothesis_id": "V25-MULTILEVEL-DEBIASING-FEASIBILITY-20260923",
+      "depends_on": [
+        "R265"
+      ],
+      "assigned_owner": "multilevel-debiasing-scout",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": [],
+      "deliverable": "Follow the sole abstractly distinct lead from R265: randomized multilevel debiasing. Read its report/protocol and full history; derive whether a concrete V25 one/two-level hierarchy can satisfy an unbiased telescoping identity using only permitted metered operations and existing model outputs, and derive a full-production FLOP upper bound before any execution. Do not reuse/relabel Richardson, local-feed, copula, K3 transport, or other closed families. Define one deterministic synthetic target-free fixture and falsifier for correction decay/variance and cost. If no concrete hierarchy, target-free rationale, or honest bound exists, publish evidence-based NO_GO before execution. If all theory/cost gates pass, freeze protocol and run at most one local synthetic falsifier; no public/R209, Actions/cloud, paid, private/holdout/full, tuning/per-network selection, submission, canonical/leaderboard changes. Preserve every attempt, artifact and receipt, finish R269, and wait for coordinator before public/cloud work."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 312,
+  "revision": 313,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
