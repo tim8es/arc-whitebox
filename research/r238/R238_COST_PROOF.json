@@ -1,0 +1,40 @@
+{
+  "schema": "arc.whitebox.r238.rsrf_cost.v1",
+  "job_id": "R238",
+  "family": "RSRF-V25 recycled-start range finder",
+  "parent_v25_flops": 806303721965,
+  "budget": 2199023255552,
+  "production": {
+    "width": 1024,
+    "r_old": 384,
+    "tier1_joins_total": 10,
+    "joins_with_recycled_basis": 9,
+    "changed_operation": "Omega = Omega + Qp",
+    "conservative_flops_per_element": 2,
+    "conservative_extra_flops": 7077888,
+    "candidate_all_in_upper": 806310799853,
+    "candidate_utilization_upper": 0.36666770022429773,
+    "parent_utilization": 0.36666448157347986,
+    "raw_mse_break_even_ratio": 0.9999912218861495,
+    "relative_cost_increase": 0.000008778190906388872
+  },
+  "exact_small": {
+    "width": 12,
+    "depth": 10,
+    "r_old": 8,
+    "r_old2": 6,
+    "age_old": 4,
+    "age_old2": 7,
+    "joins_expected_total": 4,
+    "joins_with_recycled_basis_expected": 3,
+    "conservative_extra_flops_upper": 576
+  },
+  "gates": {
+    "production_under_budget": true,
+    "small_scientific_ratio_gate": 0.95,
+    "projected_adjusted_ratio_at_small_gate": 0.950008339281361,
+    "projected_adjusted_ratio_at_small_gate_lt_1": true,
+    "mini100_mean_adjusted_ratio_gate": 0.995
+  },
+  "note": "The 2-FLOP/element charge for the added elementwise sum is deliberately conservative. No savings or pass sharing are credited."
+}
