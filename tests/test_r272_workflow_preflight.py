@@ -8,13 +8,14 @@ import arc_workflow_preflight as p
 
 GENERATOR = r'''
 from pathlib import Path
+import json
 def build():
     replay={"layer_sha256": [], "weights_concat_sha256": "w", "truth_sha256": "t"}
     m={"layer_sha256": [], "weights_concat_sha256": "w", "truth_sha256": "t",
        "independent_replay": replay, "replay_equal": True}
     m.update({"seed": 254001})
     out_dir=Path(".")
-    (out_dir/"R254_FIXTURE_RUNTIME_MANIFEST.json").write_text("{}")
+    (out_dir/"R254_FIXTURE_RUNTIME_MANIFEST.json").write_text(json.dumps(m))
 '''
 
 
