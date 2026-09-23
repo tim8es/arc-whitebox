@@ -2289,6 +2289,22 @@
         "run_id": "R223-v25-local-feed-attempt5-20260923"
       },
       "revision": 176
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T02:24:57.735673+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "reason": "Attempt 5 stopped in the initial frozen-path guard before toolchain/source/parent/validate/panel execution because the workflow referenced nonexistent R223_ATTEMPT5_PROVENANCE_PATCH.md instead of immutable R223_ATTEMPT4_PROVENANCE_PATCH.md. No candidate mini-100 invocation occurred.",
+        "receipt": {
+          "sha256": "e7b47930a02363dce83a29b648c744ea6e28805a9ea700f2985222fb12302dff",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/3a7e7b08b91d6c11f6f58abcb5b850b4b5dafce9/research/r223/R223_ATTEMPT5_INFRA_RECEIPT.json"
+        },
+        "run_id": "R223-v25-local-feed-attempt5-20260923",
+        "status": "INFRA_ERROR"
+      },
+      "revision": 177
     }
   ],
   "jobs": [
@@ -3118,8 +3134,17 @@
         {
           "code_commit": "df03e4d85d70686e381172c9066ddb90016b45d4",
           "command": "whest run --estimator methods/r223_estimator_v25_local_feed.py --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 --split mini --streaming --n-mlps 100 --runner local --flop-budget 2199023255552 --wall-time-limit 120 --residual-wall-time-limit 0.4 --max-threads 1 --format json",
+          "completion": {
+            "reason": "Attempt 5 stopped in the initial frozen-path guard before toolchain/source/parent/validate/panel execution because the workflow referenced nonexistent R223_ATTEMPT5_PROVENANCE_PATCH.md instead of immutable R223_ATTEMPT4_PROVENANCE_PATCH.md. No candidate mini-100 invocation occurred.",
+            "receipt": {
+              "sha256": "e7b47930a02363dce83a29b648c744ea6e28805a9ea700f2985222fb12302dff",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/3a7e7b08b91d6c11f6f58abcb5b850b4b5dafce9/research/r223/R223_ATTEMPT5_INFRA_RECEIPT.json"
+            },
+            "run_id": "R223-v25-local-feed-attempt5-20260923",
+            "status": "INFRA_ERROR"
+          },
           "run_id": "R223-v25-local-feed-attempt5-20260923",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR"
         }
       ],
       "deliverable": "Inspect immutable history and V25's existing per-network public mini-100 evidence, then select exactly one untried, non-duplicative algorithm-level change aimed at reducing official adjusted score (not merely FLOPs below the 0.1B floor). Freeze the parent, code/config, falsifier, gates and exact panel before execution. Run at most one bounded development test on the same public mini-100 panel using only verified free/existing compute; do not alter canonical code. Compare every network, failures, MSE/FLOPs/runtime and score to V25; retain artifacts/hashes and commit. If novelty, cost or evidence is insufficient, finish with an explicit NO-GO and why. No holdout, paid resources, submission or leaderboard claims.",
@@ -3128,12 +3153,12 @@
       "id": "R223",
       "owner": "method-research",
       "priority": 2,
-      "reason": "Attempt 4 is preserved as pre-panel INFRA_ERROR. Repair only the parent-artifact download bootstrap by using the already exported GH_TOKEN in the curl Authorization header instead of unset GITHUB_TOKEN. The exact candidate bytes, V25-LF formula, clamp, panel, thresholds, parent hashes, ranks/source state, toolchain and all scientific gates remain unchanged.",
+      "reason": "Attempt 5 stopped in the initial frozen-path guard before toolchain/source/parent/validate/panel execution because the workflow referenced nonexistent R223_ATTEMPT5_PROVENANCE_PATCH.md instead of immutable R223_ATTEMPT4_PROVENANCE_PATCH.md. No candidate mini-100 invocation occurred.",
       "receipt": {
-        "sha256": "54c2b455a5c4e14607f82c7377e5b27a3780390ce74402cbb43a6cbd3812f4b9",
-        "url": "https://github.com/tim8es/arc-whitebox/blob/83ee212aa2e373d28772407fe652e0b4d22a279d/research/r223/R223_ATTEMPT4_INFRA_RECEIPT.json"
+        "sha256": "e7b47930a02363dce83a29b648c744ea6e28805a9ea700f2985222fb12302dff",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/3a7e7b08b91d6c11f6f58abcb5b850b4b5dafce9/research/r223/R223_ATTEMPT5_INFRA_RECEIPT.json"
       },
-      "status": "RUNNING",
+      "status": "INFRA_ERROR",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     },
     {
@@ -3695,7 +3720,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 176,
+  "revision": 177,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
