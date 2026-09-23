@@ -6065,6 +6065,18 @@
             
                   },
             "revision": 433
+          },
+      {
+            "action": "start",
+            "at": "2026-09-23T23:18:53.489Z",
+            "job": "R298",
+            "owner": "r288-capture-analysis-prep-r269",
+            "payload": {
+                    "code_commit": "90c96778edec9935d3dbf3082bd98586fb716586",
+                    "command": "stdlib-only offline analyzer prep from frozen R278/R288/R291 contracts on isolated research branch; synthetic fixture/corruption tests only; no PR #36, real capture vectors, benchmark, Actions, downloads/installs, paid/private/holdout/full/submission/leaderboard/canonical changes",
+                    "run_id": "R298-capture-analysis-prep-20260924"
+                  },
+            "revision": 434
           }
     ],
   "jobs": [
@@ -9640,7 +9652,12 @@
       {
             "assigned_owner": "r288-capture-analysis-prep-r269",
             "attempts": [
-            
+                    {
+                              "code_commit": "90c96778edec9935d3dbf3082bd98586fb716586",
+                              "command": "stdlib-only offline analyzer prep from frozen R278/R288/R291 contracts on isolated research branch; synthetic fixture/corruption tests only; no PR #36, real capture vectors, benchmark, Actions, downloads/installs, paid/private/holdout/full/submission/leaderboard/canonical changes",
+                              "run_id": "R298-capture-analysis-prep-20260924",
+                              "status": "RUNNING"
+                            }
                   ],
             "deliverable": "Prepare a small offline analyzer for the future R288/R291 V25 public-mini capture, on an isolated research branch without touching PR #36. First read R278_PROTOCOL.md, R288 capture contract and exact R291 harness serialization. Validate the exact `vectors.f32le`/manifest/SHA256SUMS format, row/network identity and the frozen lexicographic decimal-network_id 50/50 FIT/EVAL split. Implement only the frozen rule d=mean_FIT(target-pred), p_corrected=p+d on EVAL (no alpha/rank/sign/network tuning), and report per-network baseline/corrected final MSE, paired mean/SD/SE, improved count/fraction, median and the exact four R278 materiality gates. Include fail-closed handling for hashes, rows, targets, duplicate IDs, split and failure flags; do not call offline results an official adjusted score or infer leaderboard rank. Use standard library only; test with a tiny synthetic capture fixture and corruption cases; do not download/install deps/data, inspect or compute on any real captured vectors, run estimator/benchmark/Actions, spend money, alter PR #36, access holdout/private/full data, submit or edit canonical/leaderboard. If R278 leaves numerical accumulation/failure semantics ambiguous, record the ambiguity and propose a deterministic pre-data supplement rather than silently selecting after seeing results. Append report/receipt with exact hashes/commit and finish R298.",
             "depends_on": [
@@ -9651,12 +9668,12 @@
             "id": "R298",
             "owner": "r288-capture-analysis-prep-r269",
             "priority": 2,
-            "status": "CLAIMED",
+            "status": "RUNNING",
             "title": "Prepare an offline analyzer for the frozen V25 residual capture"
           }
     ],
   "policy_version": "research-process-v2",
-  "revision": 433,
+  "revision": 434,
   "schema_version": 2,
   "spending": {
       "cap_usd": 100,
