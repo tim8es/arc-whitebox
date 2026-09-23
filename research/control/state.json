@@ -4073,12 +4073,28 @@
       "revision": 303
     },
     {
-      "revision": 304,
       "action": "claim",
+      "at": "2026-09-23T12:12:00+00:00",
       "job": "R266",
       "owner": "score-gap-analysis",
       "payload": {},
-      "at": "2026-09-23T12:12:00+00:00"
+      "revision": 304
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T12:12:47.000Z",
+      "job": "R265",
+      "owner": "method-theory-scout",
+      "payload": {
+        "reason": "Evidence-based NO_GO before execution. Full current history (194 E-IDs / 631 artifacts) plus R227-R261 method evidence leaves randomized multilevel debiasing as the only abstractly distinct literature lead, but no concrete V25 nested hierarchy is both non-duplicative and supported by committed target-free correction-decay evidence; without such a hierarchy no honest full production FLOP bound is derivable. No prototype or falsifier executed; no public/R209, Actions/cloud, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes.",
+        "receipt": {
+          "sha256": "b149bac5efae609da439e154dbcefbe910e647fd5b64b41eafe1576ca7825cea",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/bc287eed95df49fb41d81d157b15471a5aa73a3d/research/r265/R265_RECEIPT.json"
+        },
+        "run_id": "R265-theory-screen-20260923",
+        "status": "SCIENTIFIC_REJECT"
+      },
+      "revision": 305
     }
   ],
   "jobs": [
@@ -6473,8 +6489,17 @@
         {
           "code_commit": "0b4406b79ba785ec716657c65ba75673dea99f92",
           "command": "desk-only repository + primary-source screen pinned by research/r265/R265_PROTOCOL.md; no estimator execution authorized",
+          "completion": {
+            "reason": "Evidence-based NO_GO before execution. Full current history (194 E-IDs / 631 artifacts) plus R227-R261 method evidence leaves randomized multilevel debiasing as the only abstractly distinct literature lead, but no concrete V25 nested hierarchy is both non-duplicative and supported by committed target-free correction-decay evidence; without such a hierarchy no honest full production FLOP bound is derivable. No prototype or falsifier executed; no public/R209, Actions/cloud, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes.",
+            "receipt": {
+              "sha256": "b149bac5efae609da439e154dbcefbe910e647fd5b64b41eafe1576ca7825cea",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/bc287eed95df49fb41d81d157b15471a5aa73a3d/research/r265/R265_RECEIPT.json"
+            },
+            "run_id": "R265-theory-screen-20260923",
+            "status": "SCIENTIFIC_REJECT"
+          },
           "run_id": "R265-theory-screen-20260923",
-          "status": "RUNNING"
+          "status": "SCIENTIFIC_REJECT"
         }
       ],
       "deliverable": "Read current full research/history.json, AGENTS.md, RESEARCH_PROCESS.md, R261 report/receipt and current best compatible normalized records. Independently choose at most one genuinely new accuracy-first estimator family not equivalent to any tested/closed family; ground math in primary sources and document a full-history novelty check. Do not force a candidate: if no plausible, budget-feasible mechanism survives, publish an evidence-based NO_GO. If a candidate survives, freeze source/math, exact deterministic target-free synthetic fixture, parent/comparator, metered path, full production FLOP bound and one falsifier before coding; implement one isolated prototype and run at most one local synthetic falsifier. No public/R209, Actions, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes. Save artifacts, hashes and commit; finish R265 and wait for coordinator before any public/cloud work.",
@@ -6485,7 +6510,12 @@
       "id": "R265",
       "owner": "method-theory-scout",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Evidence-based NO_GO before execution. Full current history (194 E-IDs / 631 artifacts) plus R227-R261 method evidence leaves randomized multilevel debiasing as the only abstractly distinct literature lead, but no concrete V25 nested hierarchy is both non-duplicative and supported by committed target-free correction-decay evidence; without such a hierarchy no honest full production FLOP bound is derivable. No prototype or falsifier executed; no public/R209, Actions/cloud, paid, private/holdout/full, tuning, per-network selection, submission, canonical or leaderboard changes.",
+      "receipt": {
+        "sha256": "b149bac5efae609da439e154dbcefbe910e647fd5b64b41eafe1576ca7825cea",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/bc287eed95df49fb41d81d157b15471a5aa73a3d/research/r265/R265_RECEIPT.json"
+      },
+      "status": "SCIENTIFIC_REJECT",
       "title": "Screen one distinct accuracy-first estimator after R261"
     },
     {
@@ -6536,7 +6566,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 304,
+  "revision": 305,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
