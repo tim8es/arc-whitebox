@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "R270",
+  "run_id": "R270-score-gap-independent-audit-20260923",
+  "owner": "score-gap-independent-audit",
+  "status": "COMPLETE",
+  "verdict": "R266_ARITHMETIC_VERIFIED_NOT_COMPARABLE",
+  "branch": "research/r270-score-gap-independent-audit-20260923",
+  "checked_at_utc": "2026-09-23T12:24:14.770Z",
+  "protocol": {
+    "commit": "385756cddca324a96acd6a50d0f7294ed8e825e7",
+    "path": "research/r270/R270_PROTOCOL.md"
+  },
+  "calculations": {
+    "commit": "f84dc295705790fb14539ef0f627cc1b56c6b899",
+    "path": "research/r270/R270_AUDIT_CALCULATIONS.json",
+    "git_blob_sha1": "ec2fbe43f3d4ba62c134cdfb2106477510bb9ee9"
+  },
+  "report": {
+    "commit": "2aed53698c8b065ea2cf0981669901ce90c0a6f3",
+    "path": "research/r270/R270_INDEPENDENT_AUDIT.md",
+    "git_blob_sha1": "5978a1667ce69bab0e042e333ff15b6cbb636b46"
+  },
+  "immutable_sources": {
+    "r209_v25_git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "r209_v29_git_blob_sha1": "1c5d779ef7d6b0d85963c1db7bc4e91887a7086c",
+    "official_scoring_git_blob_sha1": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e",
+    "r266_report_git_blob_sha1": "0c0c193244738b4adf4c6369589e8bdcaa28d5ef",
+    "r266_calculations_git_blob_sha1": "8b5ee19cd40ade790a82e5d7e0f1a7ba94ef89da",
+    "r266_receipt_git_blob_sha1": "28d721653959746502fd5cb104045ef05f876e30",
+    "r266_receipt_sha256": "795bb53fabc907f367a98aaf605bc7304a916eced234e854d16dd1fa552a604c"
+  },
+  "verified": {
+    "r209_v25_mean_adjusted_score": "8.170397440117225e-9",
+    "r209_v25_exact_cost_factor": "0.36666448157347986125387251377105712890625",
+    "cost_floor": "0.1",
+    "conditional_same_cost_raw_mse_reduction_percent_at_displayed_2_1e_9": "74.297455963539147090092366850928113760877212830467",
+    "cost_only_required_factor_without_floor": "0.094242099842484524766484138211858689901438570148436",
+    "floor_required_raw_mse_reduction_percent": "5.7579001575154752335158617881413100985614298515641",
+    "r209_v29_failures": 57,
+    "r209_v29_failure_reason": "residual_wall_time_exhausted",
+    "r209_v29_mean_adjusted_score": "0.5270942878803214",
+    "r209_v29_failure_rows_contribution_to_overall_mean": "0.5270942854881286",
+    "r209_v29_success_rows_contribution_to_overall_mean": "2.392192892427515e-9",
+    "substantive_arithmetic_error_found": false
+  },
+  "comparability": {
+    "metric_match": true,
+    "aggregation_match": true,
+    "split_match": false,
+    "r209_panel": "public development mini:all-100",
+    "online_visible_panel": "50 public visible + 50 sealed; full 100 final evaluation",
+    "decision": "NOT_COMPARABLE",
+    "official_gap": null,
+    "competition_rank": null
+  },
+  "rounding": {
+    "displayed_value": "0.0000000021",
+    "exact_unrounded_value_known": false,
+    "renderer_rounding_mode_known": false,
+    "conclusion": "Conditional calculations are correct against the displayed threshold; no exact hidden-score gap is claimed."
+  },
+  "no_actions": [
+    "No estimator or benchmark run",
+    "No GitHub Actions workflow",
+    "No competition dataset fetch or new model data access",
+    "No private/holdout/full evaluation",
+    "No paid resource",
+    "No submission",
+    "No leaderboard mutation",
+    "No model edit",
+    "No canonical-result mutation"
+  ]
+}
