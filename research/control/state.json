@@ -5517,6 +5517,24 @@
         "run_id": "R290-gha-result-persistence-audit-20260923"
       },
       "revision": 411
+    },
+    {
+      "revision": 412,
+      "action": "enqueue",
+      "job": "R292",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "capture-harness-independent-audit-r267",
+        "depends_on": [
+          "R288",
+          "R291"
+        ],
+        "deliverable": "Independently audit the exact R291 capture harness, integration patch and self-check against the frozen R288 protocol and official WhestBench 0.16.1 scoring source. Verify both pre-MSE capture seams (normal and generic exception), failure-zeroing coverage, residual sign/dtype/shape, R224 network/target fingerprints, frozen 50/50 split, hashes/size bound, fail-isolated capture errors, and that scorer inputs/outputs and FLOP accounting are unchanged. Run only the committed stdlib synthetic self-check if available; do not download/install dependencies or data, run benchmark/Actions, alter harness/workflows, upload artifacts, or spend money. Append a concise independent report/receipt with exact commit/blob hashes and PASS/findings; finish R292.",
+        "hypothesis_id": "V25-CAPTURE-HARNESS-INDEPENDENT-AUDIT-20260924",
+        "priority": 1,
+        "title": "Independently verify the R291 V25 capture harness"
+      },
+      "at": "2026-09-23T21:05:01.583Z"
     }
   ],
   "jobs": [
@@ -8850,10 +8868,25 @@
       },
       "status": "COMPLETE",
       "title": "Prepare a capture-only V25 harness without running the benchmark"
+    },
+    {
+      "assigned_owner": "capture-harness-independent-audit-r267",
+      "depends_on": [
+        "R288",
+        "R291"
+      ],
+      "deliverable": "Independently audit the exact R291 capture harness, integration patch and self-check against the frozen R288 protocol and official WhestBench 0.16.1 scoring source. Verify both pre-MSE capture seams (normal and generic exception), failure-zeroing coverage, residual sign/dtype/shape, R224 network/target fingerprints, frozen 50/50 split, hashes/size bound, fail-isolated capture errors, and that scorer inputs/outputs and FLOP accounting are unchanged. Run only the committed stdlib synthetic self-check if available; do not download/install dependencies or data, run benchmark/Actions, alter harness/workflows, upload artifacts, or spend money. Append a concise independent report/receipt with exact commit/blob hashes and PASS/findings; finish R292.",
+      "hypothesis_id": "V25-CAPTURE-HARNESS-INDEPENDENT-AUDIT-20260924",
+      "priority": 1,
+      "title": "Independently verify the R291 V25 capture harness",
+      "id": "R292",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 411,
+  "revision": 412,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
