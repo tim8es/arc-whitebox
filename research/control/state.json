@@ -3583,6 +3583,14 @@
         "title": "Run frozen BPK2K after fixture-manifest path preflight repair"
       },
       "revision": 268
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T09:08:30+00:00",
+      "job": "R259",
+      "owner": "bpk2k-one-shot-run-responsive",
+      "payload": {},
+      "revision": 269
     }
   ],
   "jobs": [
@@ -5753,14 +5761,14 @@
       ],
       "hypothesis_id": "R259-BPK2K-ONE-SHOT-FIXTURE-PATH",
       "id": "R259",
-      "owner": null,
+      "owner": "bpk2k-one-shot-run-responsive",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Run frozen BPK2K after fixture-manifest path preflight repair"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 268,
+  "revision": 269,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
