@@ -2052,24 +2052,24 @@
       "revision": 158
     },
     {
-      "revision": 159,
       "action": "finish",
+      "at": "2026-09-23T01:08:00+00:00",
       "job": "R218",
       "owner": "baseline-diagnosis",
       "payload": {
-        "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
-        "status": "COMPLETE",
-        "actions_run_id": 35783866968,
         "actions_job_id": 106935773981,
+        "actions_run_id": 35783866968,
         "artifact_id": 10726329197,
         "artifact_zip_sha256": "c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0",
         "reason": "Single frozen R217 six-block public first-50 crossover completed in Actions run 35783866968/job 106935773981, run_attempt=1, artifact 10726329197 (ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0). Artifact manifest is complete (84/84, no mismatches); owner receipt contains and was checked against all 300 raw per-MLP observations. Block failures/scores: U1 9/0.1628720702; C0-1 6/0.1115006404; C1-1 7/0.1444175951; C1-2 30/0.5664171172; C0-2 46/0.8459754114; U2 10/0.1966510511. Frozen threshold evidence recomputed: median C0-C1 +0.04774312495s PASS, CPU0 slower 32/50 FAIL versus >=35, failure difference 52-37=15 PASS. Thus 2/3 numerical thresholds pass and the owner receipt labels NO_GO_CPU0_SPECIFIC. Because R236 found fail-open gaps in R234, R218 makes no final causal ruling; independent causal interpretation is deferred to R220 after R237. No rerun/retry/rescue, holdout/private data, submission, or canonical V25 change.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/ddb9a9537822d6002dc1eb6df191f0a1141a9427/research/R218_EXECUTION_RECEIPT.json",
-          "sha256": "74ed1238c93eff16899b42717c56c2cb81aca2b9ccfa16a64c2494a04f9046c0"
-        }
+          "sha256": "74ed1238c93eff16899b42717c56c2cb81aca2b9ccfa16a64c2494a04f9046c0",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/ddb9a9537822d6002dc1eb6df191f0a1141a9427/research/R218_EXECUTION_RECEIPT.json"
+        },
+        "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T01:08:00+00:00"
+      "revision": 159
     },
     {
       "action": "claim",
@@ -2085,9 +2085,9 @@
       "job": "R220",
       "owner": "postflight-audit",
       "payload": {
-        "run_id": "R220-r218-independent-postflight-20260923",
         "code_commit": "41a434a870b26166485c4e9503c2782ace5df95f",
-        "command": "first run the R237 offline synthetic fail-closed suite fresh and require PASS; only then independently audit immutable R218 Actions run 35783866968/job 106935773981/attempt 1/artifact 10726329197, verify ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, provenance/manifest/R236 D1-D7, recompute frozen R217 six-block thresholds; no Actions rerun, estimator, holdout/private data, submission, or canonical edits"
+        "command": "first run the R237 offline synthetic fail-closed suite fresh and require PASS; only then independently audit immutable R218 Actions run 35783866968/job 106935773981/attempt 1/artifact 10726329197, verify ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, provenance/manifest/R236 D1-D7, recompute frozen R217 six-block thresholds; no Actions rerun, estimator, holdout/private data, submission, or canonical edits",
+        "run_id": "R220-r218-independent-postflight-20260923"
       },
       "revision": 161
     },
@@ -2099,8 +2099,8 @@
       "payload": {
         "reason": "R237 verifier-hardening terminal PASS. The hardened R234 verifier/checklist close R236 D1-D7, and a coordinator-performed fresh offline regression materialized the exact current control-v2 verifier/test file bodies at their expected relative paths in an isolated workspace (not a full-checkout claim). git hash-object matched verifier blob c5bdb49977550ff682b73c151807d9aeb8d18e98 and test blob 6e31aa9e48f55e6bbe23dc83f5e819b509096d72; SHA256s d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c and f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b. Exact command `python -m unittest test_r234_verifier_hardening.py -v` ran all seven named D1-D7 synthetic tests, exit 0, OK (0.091s). The suite uses only the hardened verifier, Python stdlib and temporary synthetic fixtures. No R218 artifact, Actions, estimator/science, paid compute, holdout/private data, submission, canonical code, or R217/R218 threshold/workflow changes were involved. This is a tooling-hardening verdict only; R220 remains authoritative for R218 postflight.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/b495d12d4fc926882a7162701beb88172c7500bc/research/r237/R237_TERMINAL_RECEIPT.json",
-          "sha256": "ec72d236fdbf7f1c09fe09fc5507a09a5aa38552b3b2e141a64977b565cb6c3d"
+          "sha256": "ec72d236fdbf7f1c09fe09fc5507a09a5aa38552b3b2e141a64977b565cb6c3d",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b495d12d4fc926882a7162701beb88172c7500bc/research/r237/R237_TERMINAL_RECEIPT.json"
         },
         "run_id": "R237-r234-verifier-hardening-20260923",
         "status": "COMPLETE",
@@ -2114,16 +2114,26 @@
       "job": "R220",
       "owner": "postflight-audit",
       "payload": {
-        "run_id": "R220-r218-independent-postflight-20260923",
-        "status": "INCONCLUSIVE",
-        "verdict": "PROTOCOL_INVALID",
         "reason": "Independent R220 postflight finished fail-closed. A fresh exact R237 offline hardening suite passed 7/7 tests (exit 0) before R218 evidence inspection. Independently validated Actions run 35783866968, sole job 106935773981, run_attempt=1, head c8cb97dcd1383f4a1d741c5a36ba816deec452eb, artifact 10726329197, downloaded ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, head->executor ancestry, frozen workflow/executor/panel/prelaunch/protocol/estimator hashes, worker/region telemetry, and complete manifest 84/84 with zero mismatches. R236 D1-D5 and D7 PASS. D6 FAILS exactly because all six immutable raw block reports omit run_config.max_threads; commands/workflow/thread env request one thread, but the frozen R237 per-block report gate may not be relaxed or substituted. Hardened verifier: 289 gates, 283 pass, exactly six failures block_01_max_threads through block_06_max_threads; external Actions/artifact/source provenance passes. Independently recomputed 300 rows and frozen R217 metrics: median C0-C1=0.04774312494998867s PASS, CPU0 slower 32/50 FAIL, failure difference 52-37=15 PASS. Threshold-only branch would be NO_GO_CPU0_SPECIFIC, but any required contract/provenance gate failure takes precedence, so final independent verdict is PROTOCOL_INVALID / INCONCLUSIVE and no causal GO/NO-GO is ratified. No Actions rerun, estimator, holdout/private data, submission, canonical edit, rescue, or gate relaxation.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/0f31ac4aaa4ad638188fe521d451f0728fb152b1/research/r220/R220_RECEIPT.json",
-          "sha256": "ccdf890b7e0f59fe5e0aba8f4ff4630de7dfa53e198149d0de132cb0fcc315b5"
-        }
+          "sha256": "ccdf890b7e0f59fe5e0aba8f4ff4630de7dfa53e198149d0de132cb0fcc315b5",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/0f31ac4aaa4ad638188fe521d451f0728fb152b1/research/r220/R220_RECEIPT.json"
+        },
+        "run_id": "R220-r218-independent-postflight-20260923",
+        "status": "INCONCLUSIVE",
+        "verdict": "PROTOCOL_INVALID"
       },
       "revision": 163
+    },
+    {
+      "action": "repair",
+      "at": "2026-09-23T01:58:35.160531+00:00",
+      "job": "R223",
+      "owner": "method-research",
+      "payload": {
+        "reason": "RESEARCH_PROCESS v2 supersedes the historical blanket no-repair rule and permits infrastructure repair under the same job. Preserve R223 attempt 1 as INFRA_ERROR with no panel measurement. Attempt 2 changes no scientific hypothesis, K4->K3 feed-local lambda formula, clamp, panel, thresholds, parent, or tuning. Repair scope is limited to the pre-panel source-provenance bootstrap: move the byte-transform verifier out of the YAML multiline block so indentation is stable, and replace the candidate docstring's literal backslash-n with an actual LF."
+      },
+      "revision": 164
     }
   ],
   "jobs": [
@@ -2719,21 +2729,21 @@
         {
           "code_commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
           "command": "python scripts/r218_run_crossover.py --estimator methods/r218/estimator_v29.py --protocol research/r217/R217_NEXT_RUNTIME_PROTOCOL.json --expected-panel research/r218/R218_EXPECTED_PANEL.json --out r218 --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
-          "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
-          "status": "COMPLETE",
           "completion": {
-            "status": "COMPLETE",
-            "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
-            "actions_run_id": 35783866968,
             "actions_job_id": 106935773981,
+            "actions_run_id": 35783866968,
             "artifact_id": 10726329197,
             "artifact_zip_sha256": "c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0",
             "reason": "Single frozen R217 six-block public first-50 crossover completed in Actions run 35783866968/job 106935773981, run_attempt=1, artifact 10726329197 (ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0). Artifact manifest is complete (84/84, no mismatches); owner receipt contains and was checked against all 300 raw per-MLP observations. Block failures/scores: U1 9/0.1628720702; C0-1 6/0.1115006404; C1-1 7/0.1444175951; C1-2 30/0.5664171172; C0-2 46/0.8459754114; U2 10/0.1966510511. Frozen threshold evidence recomputed: median C0-C1 +0.04774312495s PASS, CPU0 slower 32/50 FAIL versus >=35, failure difference 52-37=15 PASS. Thus 2/3 numerical thresholds pass and the owner receipt labels NO_GO_CPU0_SPECIFIC. Because R236 found fail-open gaps in R234, R218 makes no final causal ruling; independent causal interpretation is deferred to R220 after R237. No rerun/retry/rescue, holdout/private data, submission, or canonical V25 change.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/ddb9a9537822d6002dc1eb6df191f0a1141a9427/research/R218_EXECUTION_RECEIPT.json",
-              "sha256": "74ed1238c93eff16899b42717c56c2cb81aca2b9ccfa16a64c2494a04f9046c0"
-            }
-          }
+              "sha256": "74ed1238c93eff16899b42717c56c2cb81aca2b9ccfa16a64c2494a04f9046c0",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/ddb9a9537822d6002dc1eb6df191f0a1141a9427/research/R218_EXECUTION_RECEIPT.json"
+            },
+            "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
+            "status": "COMPLETE"
+          },
+          "run_id": "R218-v29-l4-same-worker-affinity-crossover-attempt1",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Execute exactly the frozen R217 six-block U,C0,C1,C1,C0,U crossover on the same Actions worker, using the same public first-50 MLPs and unchanged V29/L4 source. Before execution verify every frozen gate (worker identity, allowed CPUs 0 and 1, versions, dataset/source hashes, order, FLOPs and thread environment); if any gate fails, stop and record protocol-invalid/INFRA_ERROR. Use only verified free/existing compute; do not incur or request new paid resources. Preserve all 300 per-MLP observations, worker/region and telemetry, failures, hashes and block scores. One six-block run only, no retry/rescue, private holdout or submission. Treat this as an exposed-panel runtime diagnostic, not a fresh independent generalization claim; publish artifact and finish queue with measured GO/NO-GO.",
@@ -2744,13 +2754,13 @@
       "id": "R218",
       "owner": "baseline-diagnosis",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Same-worker CPU-affinity crossover after R217 forensic diagnosis",
       "reason": "Single frozen R217 six-block public first-50 crossover completed in Actions run 35783866968/job 106935773981, run_attempt=1, artifact 10726329197 (ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0). Artifact manifest is complete (84/84, no mismatches); owner receipt contains and was checked against all 300 raw per-MLP observations. Block failures/scores: U1 9/0.1628720702; C0-1 6/0.1115006404; C1-1 7/0.1444175951; C1-2 30/0.5664171172; C0-2 46/0.8459754114; U2 10/0.1966510511. Frozen threshold evidence recomputed: median C0-C1 +0.04774312495s PASS, CPU0 slower 32/50 FAIL versus >=35, failure difference 52-37=15 PASS. Thus 2/3 numerical thresholds pass and the owner receipt labels NO_GO_CPU0_SPECIFIC. Because R236 found fail-open gaps in R234, R218 makes no final causal ruling; independent causal interpretation is deferred to R220 after R237. No rerun/retry/rescue, holdout/private data, submission, or canonical V25 change.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/ddb9a9537822d6002dc1eb6df191f0a1141a9427/research/R218_EXECUTION_RECEIPT.json",
-        "sha256": "74ed1238c93eff16899b42717c56c2cb81aca2b9ccfa16a64c2494a04f9046c0"
-      }
+        "sha256": "74ed1238c93eff16899b42717c56c2cb81aca2b9ccfa16a64c2494a04f9046c0",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/ddb9a9537822d6002dc1eb6df191f0a1141a9427/research/R218_EXECUTION_RECEIPT.json"
+      },
+      "status": "COMPLETE",
+      "title": "Same-worker CPU-affinity crossover after R217 forensic diagnosis"
     },
     {
       "assigned_owner": "method-research",
@@ -2789,20 +2799,20 @@
       "assigned_owner": "postflight-audit",
       "attempts": [
         {
-          "run_id": "R220-r218-independent-postflight-20260923",
           "code_commit": "41a434a870b26166485c4e9503c2782ace5df95f",
           "command": "first run the R237 offline synthetic fail-closed suite fresh and require PASS; only then independently audit immutable R218 Actions run 35783866968/job 106935773981/attempt 1/artifact 10726329197, verify ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, provenance/manifest/R236 D1-D7, recompute frozen R217 six-block thresholds; no Actions rerun, estimator, holdout/private data, submission, or canonical edits",
-          "status": "INCONCLUSIVE",
           "completion": {
-            "run_id": "R220-r218-independent-postflight-20260923",
-            "status": "INCONCLUSIVE",
-            "verdict": "PROTOCOL_INVALID",
             "reason": "Independent R220 postflight finished fail-closed. A fresh exact R237 offline hardening suite passed 7/7 tests (exit 0) before R218 evidence inspection. Independently validated Actions run 35783866968, sole job 106935773981, run_attempt=1, head c8cb97dcd1383f4a1d741c5a36ba816deec452eb, artifact 10726329197, downloaded ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, head->executor ancestry, frozen workflow/executor/panel/prelaunch/protocol/estimator hashes, worker/region telemetry, and complete manifest 84/84 with zero mismatches. R236 D1-D5 and D7 PASS. D6 FAILS exactly because all six immutable raw block reports omit run_config.max_threads; commands/workflow/thread env request one thread, but the frozen R237 per-block report gate may not be relaxed or substituted. Hardened verifier: 289 gates, 283 pass, exactly six failures block_01_max_threads through block_06_max_threads; external Actions/artifact/source provenance passes. Independently recomputed 300 rows and frozen R217 metrics: median C0-C1=0.04774312494998867s PASS, CPU0 slower 32/50 FAIL, failure difference 52-37=15 PASS. Threshold-only branch would be NO_GO_CPU0_SPECIFIC, but any required contract/provenance gate failure takes precedence, so final independent verdict is PROTOCOL_INVALID / INCONCLUSIVE and no causal GO/NO-GO is ratified. No Actions rerun, estimator, holdout/private data, submission, canonical edit, rescue, or gate relaxation.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/0f31ac4aaa4ad638188fe521d451f0728fb152b1/research/r220/R220_RECEIPT.json",
-              "sha256": "ccdf890b7e0f59fe5e0aba8f4ff4630de7dfa53e198149d0de132cb0fcc315b5"
-            }
-          }
+              "sha256": "ccdf890b7e0f59fe5e0aba8f4ff4630de7dfa53e198149d0de132cb0fcc315b5",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/0f31ac4aaa4ad638188fe521d451f0728fb152b1/research/r220/R220_RECEIPT.json"
+            },
+            "run_id": "R220-r218-independent-postflight-20260923",
+            "status": "INCONCLUSIVE",
+            "verdict": "PROTOCOL_INVALID"
+          },
+          "run_id": "R220-r218-independent-postflight-20260923",
+          "status": "INCONCLUSIVE"
         }
       ],
       "deliverable": "After R218 completes, independently verify its immutable artifact, all six blocks and same-worker/CPU gates, recompute per-MLP C0/C1/U residual summaries, failure differences and official adjusted scores, and apply R217's predeclared thresholds exactly. Confirm or reject the causal interpretation within the protocol's limits; preserve missing telemetry or deviations. Create audit receipt/commit and finish the job. No rerun, holdout, paid run or submission.",
@@ -2813,13 +2823,13 @@
       "id": "R220",
       "owner": "postflight-audit",
       "priority": 1,
-      "status": "INCONCLUSIVE",
-      "title": "Independently audit the same-worker R210 crossover evidence",
       "reason": "Independent R220 postflight finished fail-closed. A fresh exact R237 offline hardening suite passed 7/7 tests (exit 0) before R218 evidence inspection. Independently validated Actions run 35783866968, sole job 106935773981, run_attempt=1, head c8cb97dcd1383f4a1d741c5a36ba816deec452eb, artifact 10726329197, downloaded ZIP SHA256 c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0, head->executor ancestry, frozen workflow/executor/panel/prelaunch/protocol/estimator hashes, worker/region telemetry, and complete manifest 84/84 with zero mismatches. R236 D1-D5 and D7 PASS. D6 FAILS exactly because all six immutable raw block reports omit run_config.max_threads; commands/workflow/thread env request one thread, but the frozen R237 per-block report gate may not be relaxed or substituted. Hardened verifier: 289 gates, 283 pass, exactly six failures block_01_max_threads through block_06_max_threads; external Actions/artifact/source provenance passes. Independently recomputed 300 rows and frozen R217 metrics: median C0-C1=0.04774312494998867s PASS, CPU0 slower 32/50 FAIL, failure difference 52-37=15 PASS. Threshold-only branch would be NO_GO_CPU0_SPECIFIC, but any required contract/provenance gate failure takes precedence, so final independent verdict is PROTOCOL_INVALID / INCONCLUSIVE and no causal GO/NO-GO is ratified. No Actions rerun, estimator, holdout/private data, submission, canonical edit, rescue, or gate relaxation.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/0f31ac4aaa4ad638188fe521d451f0728fb152b1/research/r220/R220_RECEIPT.json",
-        "sha256": "ccdf890b7e0f59fe5e0aba8f4ff4630de7dfa53e198149d0de132cb0fcc315b5"
-      }
+        "sha256": "ccdf890b7e0f59fe5e0aba8f4ff4630de7dfa53e198149d0de132cb0fcc315b5",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/0f31ac4aaa4ad638188fe521d451f0728fb152b1/research/r220/R220_RECEIPT.json"
+      },
+      "status": "INCONCLUSIVE",
+      "title": "Independently audit the same-worker R210 crossover evidence"
     },
     {
       "assigned_owner": "leaderboard-audit",
@@ -2912,12 +2922,12 @@
       "id": "R223",
       "owner": "method-research",
       "priority": 2,
-      "reason": "R223 froze one novel accuracy-directed V25 delta (normalized per-neuron K4->K3 feed lambda) after auditing the immutable R209 mini-100 parent. The standard public GitHub-hosted compute gate and pinned upstream V25 blob check passed, but the mandatory pre-panel byte-provenance guard failed before parent artifact download, whest validate, or any candidate mini-100 execution. Exact blocker: YAML block-scalar dedentation corrupted indentation inside the inline multiline source pattern, causing assert p.count(old)==1 to fail. A separate read-only audit also found a literal backslash-n in the candidate docstring; arithmetic patch bytes otherwise match after that docstring normalization. Frozen protocol forbids repair/retry, so no per-network candidate result exists and no scientific score claim is made.",
+      "reason": "RESEARCH_PROCESS v2 supersedes the historical blanket no-repair rule and permits infrastructure repair under the same job. Preserve R223 attempt 1 as INFRA_ERROR with no panel measurement. Attempt 2 changes no scientific hypothesis, K4->K3 feed-local lambda formula, clamp, panel, thresholds, parent, or tuning. Repair scope is limited to the pre-panel source-provenance bootstrap: move the byte-transform verifier out of the YAML multiline block so indentation is stable, and replace the candidate docstring's literal backslash-n with an actual LF.",
       "receipt": {
         "sha256": "cdc27cf6342639249ac6d0753c428e637f74d7085ea8cf152a29c91f5ddfa4ea",
         "url": "https://github.com/tim8es/arc-whitebox/blob/64b5fa1a2fed2a3f77021534875dbc7b0e2ff27f/research/r223/R223_TERMINAL_RECEIPT.json"
       },
-      "status": "INFRA_ERROR",
+      "status": "CLAIMED",
       "title": "Run one isolated improvement test on the strongest reproducible V25 estimator"
     },
     {
@@ -3409,18 +3419,18 @@
         {
           "code_commit": "ea6ef5ba92713e0cd9c7b22b550fb7f859bf7d45",
           "command": "harden research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json for R236 D1-D7; add offline synthetic fail-closed regressions only; preserve R217 thresholds/R218 workflow-executor-run/R220 ownership; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical estimator",
-          "run_id": "R237-r234-verifier-hardening-20260923",
-          "status": "COMPLETE",
           "completion": {
             "reason": "R237 verifier-hardening terminal PASS. The hardened R234 verifier/checklist close R236 D1-D7, and a coordinator-performed fresh offline regression materialized the exact current control-v2 verifier/test file bodies at their expected relative paths in an isolated workspace (not a full-checkout claim). git hash-object matched verifier blob c5bdb49977550ff682b73c151807d9aeb8d18e98 and test blob 6e31aa9e48f55e6bbe23dc83f5e819b509096d72; SHA256s d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c and f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b. Exact command `python -m unittest test_r234_verifier_hardening.py -v` ran all seven named D1-D7 synthetic tests, exit 0, OK (0.091s). The suite uses only the hardened verifier, Python stdlib and temporary synthetic fixtures. No R218 artifact, Actions, estimator/science, paid compute, holdout/private data, submission, canonical code, or R217/R218 threshold/workflow changes were involved. This is a tooling-hardening verdict only; R220 remains authoritative for R218 postflight.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/b495d12d4fc926882a7162701beb88172c7500bc/research/r237/R237_TERMINAL_RECEIPT.json",
-              "sha256": "ec72d236fdbf7f1c09fe09fc5507a09a5aa38552b3b2e141a64977b565cb6c3d"
+              "sha256": "ec72d236fdbf7f1c09fe09fc5507a09a5aa38552b3b2e141a64977b565cb6c3d",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/b495d12d4fc926882a7162701beb88172c7500bc/research/r237/R237_TERMINAL_RECEIPT.json"
             },
             "run_id": "R237-r234-verifier-hardening-20260923",
             "status": "COMPLETE",
             "verdict": "PASS"
-          }
+          },
+          "run_id": "R237-r234-verifier-hardening-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Implement a fail-closed hardening pass for research/r234/r234_verify_r218.py and its checklist based on the seven confirmed R236 defects. Preserve frozen R217 thresholds, R218 source/workflow, and no-retry policy. Require run_attempt==1; cryptographically bind the supplied local artifact directory to the independently inspected Actions run/job and artifact ID/name/digest; verify run head/arm ancestry and workflow/executor blobs; pin expected-panel and prelaunch files to exact frozen blobs; require nonempty complete manifest coverage for every consumed artifact file; enforce the exact preflight gate-name set and independent version/environment evidence; verify dataset path and max_threads where exposed; require all mandatory taskset/proc/worker-region telemetry. Add synthetic offline regressions that fail if any R236 defect reopens. Do not read/use the still-running R218 artifact, do not change R218 or R217, do not trigger Actions, and run no estimator/science/paid/holdout/private/submission. Produce reviewable code/tests, a source-linked report and durable receipt; R220 remains the postflight owner after R218 completes.",
@@ -3431,13 +3441,13 @@
       "id": "R237",
       "owner": "verifier-hardening",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Harden R218 postflight verifier using R236 findings",
       "reason": "R237 verifier-hardening terminal PASS. The hardened R234 verifier/checklist close R236 D1-D7, and a coordinator-performed fresh offline regression materialized the exact current control-v2 verifier/test file bodies at their expected relative paths in an isolated workspace (not a full-checkout claim). git hash-object matched verifier blob c5bdb49977550ff682b73c151807d9aeb8d18e98 and test blob 6e31aa9e48f55e6bbe23dc83f5e819b509096d72; SHA256s d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c and f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b. Exact command `python -m unittest test_r234_verifier_hardening.py -v` ran all seven named D1-D7 synthetic tests, exit 0, OK (0.091s). The suite uses only the hardened verifier, Python stdlib and temporary synthetic fixtures. No R218 artifact, Actions, estimator/science, paid compute, holdout/private data, submission, canonical code, or R217/R218 threshold/workflow changes were involved. This is a tooling-hardening verdict only; R220 remains authoritative for R218 postflight.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/b495d12d4fc926882a7162701beb88172c7500bc/research/r237/R237_TERMINAL_RECEIPT.json",
-        "sha256": "ec72d236fdbf7f1c09fe09fc5507a09a5aa38552b3b2e141a64977b565cb6c3d"
+        "sha256": "ec72d236fdbf7f1c09fe09fc5507a09a5aa38552b3b2e141a64977b565cb6c3d",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/b495d12d4fc926882a7162701beb88172c7500bc/research/r237/R237_TERMINAL_RECEIPT.json"
       },
+      "status": "COMPLETE",
+      "title": "Harden R218 postflight verifier using R236 findings",
       "verdict": "PASS"
     },
     {
@@ -3456,7 +3466,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 163,
+  "revision": 164,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
