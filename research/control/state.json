@@ -2554,9 +2554,9 @@
       "job": "R242",
       "owner": "independent-v25-audit",
       "payload": {
-        "run_id": "R242-r223-attempt6-normalize-registry-20260923",
         "code_commit": "c8a2fb1da44b7cb28913c605095ccc847c8e4b5d",
-        "command": "normalize immutable R223 attempt-6 artifact 10730459690 against R240 receipt into research/results; run registry check/compare and regenerate STATUS only; no estimator/benchmark/Actions/retry/repair/candidate/canonical edits"
+        "command": "normalize immutable R223 attempt-6 artifact 10730459690 against R240 receipt into research/results; run registry check/compare and regenerate STATUS only; no estimator/benchmark/Actions/retry/repair/candidate/canonical edits",
+        "run_id": "R242-r223-attempt6-normalize-registry-20260923"
       },
       "revision": 197
     },
@@ -2574,11 +2574,26 @@
       "job": "R243",
       "owner": "registry-independent-audit",
       "payload": {
-        "run_id": "R243-registry-audit-20260923",
         "code_commit": "746473e48f9a6bbe19d44cae03f4fdf82d519989",
-        "command": "read-only registry audit preparation"
+        "command": "read-only registry audit preparation",
+        "run_id": "R243-registry-audit-20260923"
       },
       "revision": 199
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T03:57:56Z",
+      "job": "R244",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "alternative-method-research",
+        "deliverable": "Read current AGENTS/RESEARCH_PROCESS, full history, R209 normalized V25 mini-100 record, R223 terminal result and R240 independent receipt. Select exactly one genuinely novel algorithm-level method aimed at lower official adjusted score; explicitly exclude V25-LF/local-feed lambda and all materially similar or previously rejected families. Freeze candidate source/config, exact parent/panel, score/cost/failure gates and expected measurable effect before execution. If novelty and static feasibility pass, use only verified free standard compute for at most one Actions workflow containing validation and exactly one public mini-100 candidate panel. No retry or second run even for infrastructure failure; stop and record INFRA_ERROR if pre-panel failure. Preserve every row and compare to R209 parent using the official adjusted score; label result development-only. If no feasible distinct candidate exists, save a source-linked desk NO-GO without running. No paid resources, private/holdout, submission/leaderboard mutation, canonical V25 edits, gate relaxation, or duplicate work.",
+        "depends_on": [],
+        "hypothesis_id": "V25-DISTINCT-ACCURACY-METHOD-POST-R223",
+        "priority": 1,
+        "title": "Select and test one distinct V25 score-improvement method after R223 no-go"
+      },
+      "revision": 200
     }
   ],
   "jobs": [
@@ -4113,9 +4128,9 @@
       "assigned_owner": "independent-v25-audit",
       "attempts": [
         {
-          "run_id": "R242-r223-attempt6-normalize-registry-20260923",
           "code_commit": "c8a2fb1da44b7cb28913c605095ccc847c8e4b5d",
           "command": "normalize immutable R223 attempt-6 artifact 10730459690 against R240 receipt into research/results; run registry check/compare and regenerate STATUS only; no estimator/benchmark/Actions/retry/repair/candidate/canonical edits",
+          "run_id": "R242-r223-attempt6-normalize-registry-20260923",
           "status": "RUNNING"
         }
       ],
@@ -4132,9 +4147,9 @@
       "assigned_owner": "registry-independent-audit",
       "attempts": [
         {
-          "run_id": "R243-registry-audit-20260923",
           "code_commit": "746473e48f9a6bbe19d44cae03f4fdf82d519989",
           "command": "read-only registry audit preparation",
+          "run_id": "R243-registry-audit-20260923",
           "status": "RUNNING"
         }
       ],
@@ -4146,10 +4161,22 @@
       "priority": 2,
       "status": "RUNNING",
       "title": "Independently verify normalized R223 candidate registry record"
+    },
+    {
+      "assigned_owner": "alternative-method-research",
+      "attempts": [],
+      "deliverable": "Read current AGENTS/RESEARCH_PROCESS, full history, R209 normalized V25 mini-100 record, R223 terminal result and R240 independent receipt. Select exactly one genuinely novel algorithm-level method aimed at lower official adjusted score; explicitly exclude V25-LF/local-feed lambda and all materially similar or previously rejected families. Freeze candidate source/config, exact parent/panel, score/cost/failure gates and expected measurable effect before execution. If novelty and static feasibility pass, use only verified free standard compute for at most one Actions workflow containing validation and exactly one public mini-100 candidate panel. No retry or second run even for infrastructure failure; stop and record INFRA_ERROR if pre-panel failure. Preserve every row and compare to R209 parent using the official adjusted score; label result development-only. If no feasible distinct candidate exists, save a source-linked desk NO-GO without running. No paid resources, private/holdout, submission/leaderboard mutation, canonical V25 edits, gate relaxation, or duplicate work.",
+      "depends_on": [],
+      "hypothesis_id": "V25-DISTINCT-ACCURACY-METHOD-POST-R223",
+      "id": "R244",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Select and test one distinct V25 score-improvement method after R223 no-go"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 199,
+  "revision": 200,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
