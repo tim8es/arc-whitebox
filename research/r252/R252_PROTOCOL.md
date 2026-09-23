@@ -1,4 +1,4 @@
-# R252 frozen protocol — V25 D21-sensitivity weighted confinement Gram
+# R252 frozen protocol — V25 D21-channel weighted confinement Gram
 
 Status: **FROZEN BEFORE THE SOLE ACTIONS WORKFLOW**  
 Run ID: `R252-one-shot-actions-global-accuracy-20260923`
@@ -11,7 +11,7 @@ Excluded families remain excluded: R251 GFNP; R232 DRRE descendants; R238 RSRF d
 
 Exactly one candidate is frozen:
 
-**V25-D21-SWG — D21-sensitivity weighted confinement Gram.**
+**V25-D21-CWG — D21-channel weighted confinement Gram.**
 
 The pinned V25 shared old-source basis (F72/F73) chooses its range from a weighted leg Gram. At source birth the parent stores
 `dA = 9 + w2^2 + 9 e^2`, `dP = 1 + s^2`, a hub-leg-energy heuristic. But the dominant downstream accuracy channel is the D21 contraction. Its leading right-factor groups are
@@ -35,7 +35,7 @@ Parent: `methods/public_504aldo/estimator_v25.py` at R209 code commit `dff3dd65e
 
 Candidate construction is forbidden until the unchanged-parent gate passes. The workflow freezes an exact two-anchor textual patch and asserts each anchor occurs exactly once. It then writes a temporary candidate source only after parent GO. No canonical V25 file is edited.
 
-The scientific delta introduces only arithmetic whose array operand is already an `fnp.ndarray`: multiplication/addition by literal constants. It adds no `math.*`, Python scalar division, scalar reduction/materialization, numerical stdlib call, new numerical library, FFI or concurrency. The literal `0.1111111111111111` is shipped data, not runtime scalar division. Before any public panel the workflow must statically verify these exact patch anchors and fail closed if the integrated delta contains a new output-affecting Python numerical path.
+The scientific delta introduces only arithmetic whose array operand is already an `fnp.ndarray`: multiplication/addition by literal constants. It adds no `math.*`, Python scalar division, scalar reduction/materialization, numerical stdlib call, new numerical library, FFI or concurrency. Before any public panel the workflow must statically verify these exact patch anchors and fail closed if the integrated delta contains a new output-affecting Python numerical path.
 
 R249 remains binding. R252 does not generalize the narrow `fnp.sqrt(2.0 / width)` example into permission for arbitrary scalar arithmetic.
 
