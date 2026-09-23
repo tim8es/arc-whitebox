@@ -5683,6 +5683,25 @@
         "run_id": "R294-r291-patch-format-repair-pr36-20260924"
       },
       "revision": 423
+    },
+    {
+      "revision": 424,
+      "action": "enqueue",
+      "job": "R295",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "r293-workflow-security-audit-r269",
+        "depends_on": [
+          "R288",
+          "R290",
+          "R293"
+        ],
+        "deliverable": "Independently audit only the security and persistence control plane of draft PR #36 at its exact current head (initial known head 114e08d49943c309fe09830af0a5e24095af9246). Do not audit/repair the R291 unified diff; R292 found its format defect and R294 owns that fix. Verify workflow_dispatch-only/main-ref confirmation, concurrency/no-retry semantics, job-level GITHUB_TOKEN permissions and checkout credential handling, result-branch preconditions (pre-existing, unprotected, same dispatch SHA), path/file allowlist, exact Git push target, and absence of upload-artifact/LFS/PAT/cache/secret exposure or unintended triggers. Read-only; no PR review/comment, code edits, branch creation, Actions/benchmark, data/dependency download, paid resource, or submission. Pin exact PR/workflow blob SHA and disclose which fields must be rechecked if R294 changes the workflow. Append a concise report/receipt with concrete findings and finish R295.",
+        "hypothesis_id": "R293-WORKFLOW-PERMISSION-PERSISTENCE-AUDIT-20260924",
+        "priority": 1,
+        "title": "Independently audit PR #36 workflow permission and persistence safety"
+      },
+      "at": "2026-09-23T22:47:36.216Z"
     }
   ],
   "jobs": [
@@ -9128,10 +9147,26 @@
       "priority": 1,
       "status": "RUNNING",
       "title": "Repair and verify the capture patch in draft PR #36"
+    },
+    {
+      "assigned_owner": "r293-workflow-security-audit-r269",
+      "depends_on": [
+        "R288",
+        "R290",
+        "R293"
+      ],
+      "deliverable": "Independently audit only the security and persistence control plane of draft PR #36 at its exact current head (initial known head 114e08d49943c309fe09830af0a5e24095af9246). Do not audit/repair the R291 unified diff; R292 found its format defect and R294 owns that fix. Verify workflow_dispatch-only/main-ref confirmation, concurrency/no-retry semantics, job-level GITHUB_TOKEN permissions and checkout credential handling, result-branch preconditions (pre-existing, unprotected, same dispatch SHA), path/file allowlist, exact Git push target, and absence of upload-artifact/LFS/PAT/cache/secret exposure or unintended triggers. Read-only; no PR review/comment, code edits, branch creation, Actions/benchmark, data/dependency download, paid resource, or submission. Pin exact PR/workflow blob SHA and disclose which fields must be rechecked if R294 changes the workflow. Append a concise report/receipt with concrete findings and finish R295.",
+      "hypothesis_id": "R293-WORKFLOW-PERMISSION-PERSISTENCE-AUDIT-20260924",
+      "priority": 1,
+      "title": "Independently audit PR #36 workflow permission and persistence safety",
+      "id": "R295",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 423,
+  "revision": 424,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
