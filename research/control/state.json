@@ -4310,66 +4310,74 @@
       "job": "R267",
       "owner": "coordinator",
       "payload": {
-        "run_id": "R267-workflow-postmortem-20260923",
-        "status": "COMPLETE",
         "reason": "Postmortem verified against immutable R257-R260 terminal reports/receipts. R257 shallow checkout hid the frozen protocol ancestor; R258 fixed ancestry but used a fixture manifest filename different from the generator output; R259 fixed the path but asserted nonexistent independent_replay.all_layer_hashes_equal. R257-R259 each had one Actions attempt and zero parent/candidate/scientific measurements. R260 passed infrastructure, executed parent and candidate once, and failed only final-MSE and all-layer-MSE target-free gates; public mini-100 was skipped. Recommended narrow offline preflight: verify full-history protocol ancestry and test the fixture generator's actual path/schema before arm. No generic linter/code added; no historical artifacts/workflows changed. Report and receipt committed on isolated R267 branch.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/research/r267-workflow-postmortem-20260923/research/r267/R267_RECEIPT.json",
-          "sha256": "f2e5c7db82b09a687cd52dd6230bd71a0cf93195fc5be5a9a339e8678573f961"
-        }
+          "sha256": "f2e5c7db82b09a687cd52dd6230bd71a0cf93195fc5be5a9a339e8678573f961",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/research/r267-workflow-postmortem-20260923/research/r267/R267_RECEIPT.json"
+        },
+        "run_id": "R267-workflow-postmortem-20260923",
+        "status": "COMPLETE"
       },
       "revision": 322
     },
     {
-      "revision": 323,
       "action": "finish",
+      "at": "2026-09-23T12:55:56+00:00",
       "job": "R268",
       "owner": "coordinator",
       "payload": {
-        "run_id": "R268-r261-reconciliation-audit-20260923",
-        "status": "COMPLETE",
         "reason": "R268 independently verified that R261's scientific NO-GO and current state projection agree with finish event revision 289; the original receipt/report blob mismatch and missing source/receipt fields in revisions 288-289 are accurately preserved in the append-only reconciliation note. Source commit dff3dd65... is reconstructed from R209, not present in the start event. Audit artifacts committed on the isolated R268 branch. Also synchronized STATUS.md: R265 is SCIENTIFIC_REJECT per state/event revision 305, not RUNNING. No science, Actions, data access, paid compute, or submission.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/c38830893baf4aa927c43e07e2e488f68b929644/research/r268/R268_RECEIPT.json",
-          "sha256": "8c2a17c58361a9c0a22f2686eb1ffba9fc133c950c3506a0aa5ccee2eabf9a3a"
-        }
+          "sha256": "8c2a17c58361a9c0a22f2686eb1ffba9fc133c950c3506a0aa5ccee2eabf9a3a",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/c38830893baf4aa927c43e07e2e488f68b929644/research/r268/R268_RECEIPT.json"
+        },
+        "run_id": "R268-r261-reconciliation-audit-20260923",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-23T12:55:56+00:00"
+      "revision": 323
     },
     {
-      "revision": 324,
       "action": "enqueue",
+      "at": "2026-09-23T13:04:20+00:00",
       "job": "R271",
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "leader-method-forensics",
-        "title": "Map R209 V25 onto the official visible Phase-2 50",
-        "hypothesis_id": "VISIBLE50-IDENTITY-RECONCILIATION-20260923",
-        "priority": 1,
+        "deliverable": "Read the immutable R209 V25 normalized 100-network record, R263 official leaderboard snapshot, R270 independent score audit, and official public Phase-2 primary pages. Determine whether the exact 50 visible scored MLP identities are present in R209 with matching evaluator/metric/versions. Compute V25 adjusted score on exactly that same 50 only if identity and aggregation are proven; otherwise state NOT_COMPARABLE and name the minimum missing public artifact. Preserve unknowns; do not infer the panel from row order or displayed rounded score. Append report+receipt with source URLs, row IDs, formulas, hashes and commit; finish R271. Read-only only: no estimator, dataset download, Actions, paid compute, private/holdout/full access, submission, leaderboard mutation or canonical edits.",
         "depends_on": [
           "R263",
           "R270"
         ],
-        "deliverable": "Read the immutable R209 V25 normalized 100-network record, R263 official leaderboard snapshot, R270 independent score audit, and official public Phase-2 primary pages. Determine whether the exact 50 visible scored MLP identities are present in R209 with matching evaluator/metric/versions. Compute V25 adjusted score on exactly that same 50 only if identity and aggregation are proven; otherwise state NOT_COMPARABLE and name the minimum missing public artifact. Preserve unknowns; do not infer the panel from row order or displayed rounded score. Append report+receipt with source URLs, row IDs, formulas, hashes and commit; finish R271. Read-only only: no estimator, dataset download, Actions, paid compute, private/holdout/full access, submission, leaderboard mutation or canonical edits."
+        "hypothesis_id": "VISIBLE50-IDENTITY-RECONCILIATION-20260923",
+        "priority": 1,
+        "title": "Map R209 V25 onto the official visible Phase-2 50"
       },
-      "at": "2026-09-23T13:04:20+00:00"
+      "revision": 324
     },
     {
-      "revision": 325,
       "action": "enqueue",
+      "at": "2026-09-23T13:04:21+00:00",
       "job": "R272",
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "workflow-preflight-guard",
-        "title": "Add an offline preflight for the R257-R259 failure modes",
-        "hypothesis_id": "R257-R259-OFFLINE-PREFLIGHT-20260923",
-        "priority": 2,
+        "deliverable": "Use R267 postmortem plus the actual R257-R260 workflow/fixture sources to identify the smallest useful reusable offline guard for the three verified failures: missing full-history protocol ancestry, fixture-manifest filename mismatch, and nonexistent replay-schema field. Inspect existing helpers first. If one small guard/test can catch all applicable failures without editing historical artifacts or live Actions workflows, implement it on an isolated branch and run only the local offline check; otherwise publish a concise evidence-based no-change report explaining why. Save report/receipt with hashes and commit; claim/start/finish R272 on the live control branch. Do not trigger Actions, run scientific estimators, access competition data, spend money, or edit old receipts/results.",
         "depends_on": [
           "R267"
         ],
-        "deliverable": "Use R267 postmortem plus the actual R257-R260 workflow/fixture sources to identify the smallest useful reusable offline guard for the three verified failures: missing full-history protocol ancestry, fixture-manifest filename mismatch, and nonexistent replay-schema field. Inspect existing helpers first. If one small guard/test can catch all applicable failures without editing historical artifacts or live Actions workflows, implement it on an isolated branch and run only the local offline check; otherwise publish a concise evidence-based no-change report explaining why. Save report/receipt with hashes and commit; claim/start/finish R272 on the live control branch. Do not trigger Actions, run scientific estimators, access competition data, spend money, or edit old receipts/results."
+        "hypothesis_id": "R257-R259-OFFLINE-PREFLIGHT-20260923",
+        "priority": 2,
+        "title": "Add an offline preflight for the R257-R259 failure modes"
       },
-      "at": "2026-09-23T13:04:21+00:00"
+      "revision": 325
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T13:07:19.061Z",
+      "job": "R271",
+      "owner": "leader-method-forensics",
+      "payload": {},
+      "revision": 326
     }
   ],
   "jobs": [
@@ -6835,17 +6843,17 @@
         {
           "code_commit": "fe8472fb3d0d9b6da67d20558ef8e73d21443b4c",
           "command": "read-only audit of immutable R257-R260 receipts/workflow failures; create append-only postmortem report/receipt and one small offline guard only if useful; no Actions/science",
-          "run_id": "R267-workflow-postmortem-20260923",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R267-workflow-postmortem-20260923",
-            "status": "COMPLETE",
             "reason": "Postmortem verified against immutable R257-R260 terminal reports/receipts. R257 shallow checkout hid the frozen protocol ancestor; R258 fixed ancestry but used a fixture manifest filename different from the generator output; R259 fixed the path but asserted nonexistent independent_replay.all_layer_hashes_equal. R257-R259 each had one Actions attempt and zero parent/candidate/scientific measurements. R260 passed infrastructure, executed parent and candidate once, and failed only final-MSE and all-layer-MSE target-free gates; public mini-100 was skipped. Recommended narrow offline preflight: verify full-history protocol ancestry and test the fixture generator's actual path/schema before arm. No generic linter/code added; no historical artifacts/workflows changed. Report and receipt committed on isolated R267 branch.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/research/r267-workflow-postmortem-20260923/research/r267/R267_RECEIPT.json",
-              "sha256": "f2e5c7db82b09a687cd52dd6230bd71a0cf93195fc5be5a9a339e8678573f961"
-            }
-          }
+              "sha256": "f2e5c7db82b09a687cd52dd6230bd71a0cf93195fc5be5a9a339e8678573f961",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/research/r267-workflow-postmortem-20260923/research/r267/R267_RECEIPT.json"
+            },
+            "run_id": "R267-workflow-postmortem-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R267-workflow-postmortem-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independently trace the immutable R257/R258/R259 infra receipts and the R260 successful target-free run. Build a short cause/effect timeline for the repeated shallow-history, manifest-path and schema-contract failures; distinguish verified facts from inference and quantify work that never reached science. Recommend the smallest offline preflight that would have caught these exact errors. Add/run one minimal offline check only if it is small and reusable; do not edit historical workflows or receipts, trigger Actions, rerun science, or access public/holdout/private data. Commit an append-only report/receipt and any narrowly scoped check, finish R267.",
@@ -6859,13 +6867,13 @@
       "id": "R267",
       "owner": "coordinator",
       "priority": 2,
-      "status": "COMPLETE",
-      "title": "Postmortem the R257-R260 execution failures",
       "reason": "Postmortem verified against immutable R257-R260 terminal reports/receipts. R257 shallow checkout hid the frozen protocol ancestor; R258 fixed ancestry but used a fixture manifest filename different from the generator output; R259 fixed the path but asserted nonexistent independent_replay.all_layer_hashes_equal. R257-R259 each had one Actions attempt and zero parent/candidate/scientific measurements. R260 passed infrastructure, executed parent and candidate once, and failed only final-MSE and all-layer-MSE target-free gates; public mini-100 was skipped. Recommended narrow offline preflight: verify full-history protocol ancestry and test the fixture generator's actual path/schema before arm. No generic linter/code added; no historical artifacts/workflows changed. Report and receipt committed on isolated R267 branch.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/research/r267-workflow-postmortem-20260923/research/r267/R267_RECEIPT.json",
-        "sha256": "f2e5c7db82b09a687cd52dd6230bd71a0cf93195fc5be5a9a339e8678573f961"
-      }
+        "sha256": "f2e5c7db82b09a687cd52dd6230bd71a0cf93195fc5be5a9a339e8678573f961",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/research/r267-workflow-postmortem-20260923/research/r267/R267_RECEIPT.json"
+      },
+      "status": "COMPLETE",
+      "title": "Postmortem the R257-R260 execution failures"
     },
     {
       "assigned_owner": "coordinator",
@@ -6873,17 +6881,17 @@
         {
           "code_commit": "fe8472fb3d0d9b6da67d20558ef8e73d21443b4c",
           "command": "read-only independent audit of R261 queue events, original receipt/report blob mismatch and current control projection; create audit report/receipt",
-          "run_id": "R268-r261-reconciliation-audit-20260923",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R268-r261-reconciliation-audit-20260923",
-            "status": "COMPLETE",
             "reason": "R268 independently verified that R261's scientific NO-GO and current state projection agree with finish event revision 289; the original receipt/report blob mismatch and missing source/receipt fields in revisions 288-289 are accurately preserved in the append-only reconciliation note. Source commit dff3dd65... is reconstructed from R209, not present in the start event. Audit artifacts committed on the isolated R268 branch. Also synchronized STATUS.md: R265 is SCIENTIFIC_REJECT per state/event revision 305, not RUNNING. No science, Actions, data access, paid compute, or submission.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/c38830893baf4aa927c43e07e2e488f68b929644/research/r268/R268_RECEIPT.json",
-              "sha256": "8c2a17c58361a9c0a22f2686eb1ffba9fc133c950c3506a0aa5ccee2eabf9a3a"
-            }
-          }
+              "sha256": "8c2a17c58361a9c0a22f2686eb1ffba9fc133c950c3506a0aa5ccee2eabf9a3a",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/c38830893baf4aa927c43e07e2e488f68b929644/research/r268/R268_RECEIPT.json"
+            },
+            "run_id": "R268-r261-reconciliation-audit-20260923",
+            "status": "COMPLETE"
+          },
+          "run_id": "R268-r261-reconciliation-audit-20260923",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read the append-only queue events through R261 finish, the original R261 report/receipt, the coordinator reconciliation note, and current state.json/STATUS. Independently verify receipt/report blob mismatch handling, source commit provenance, reconstructed attempt projection, and consistency of current job status with append-only history. Preserve original history; report any remaining discrepancy without editing R261 artifacts/state. Save an isolated audit report and receipt with hashes/commit and finish R268. No Actions, science, public/holdout, paid resources, submission, or leaderboard/canonical changes.",
@@ -6894,13 +6902,13 @@
       "id": "R268",
       "owner": "coordinator",
       "priority": 2,
-      "status": "COMPLETE",
-      "title": "Independently verify the R261 control reconciliation",
       "reason": "R268 independently verified that R261's scientific NO-GO and current state projection agree with finish event revision 289; the original receipt/report blob mismatch and missing source/receipt fields in revisions 288-289 are accurately preserved in the append-only reconciliation note. Source commit dff3dd65... is reconstructed from R209, not present in the start event. Audit artifacts committed on the isolated R268 branch. Also synchronized STATUS.md: R265 is SCIENTIFIC_REJECT per state/event revision 305, not RUNNING. No science, Actions, data access, paid compute, or submission.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/c38830893baf4aa927c43e07e2e488f68b929644/research/r268/R268_RECEIPT.json",
-        "sha256": "8c2a17c58361a9c0a22f2686eb1ffba9fc133c950c3506a0aa5ccee2eabf9a3a"
-      }
+        "sha256": "8c2a17c58361a9c0a22f2686eb1ffba9fc133c950c3506a0aa5ccee2eabf9a3a",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/c38830893baf4aa927c43e07e2e488f68b929644/research/r268/R268_RECEIPT.json"
+      },
+      "status": "COMPLETE",
+      "title": "Independently verify the R261 control reconciliation"
     },
     {
       "assigned_owner": "multilevel-debiasing-scout",
@@ -6974,36 +6982,36 @@
     },
     {
       "assigned_owner": "leader-method-forensics",
-      "title": "Map R209 V25 onto the official visible Phase-2 50",
-      "hypothesis_id": "VISIBLE50-IDENTITY-RECONCILIATION-20260923",
-      "priority": 1,
+      "attempts": [],
+      "deliverable": "Read the immutable R209 V25 normalized 100-network record, R263 official leaderboard snapshot, R270 independent score audit, and official public Phase-2 primary pages. Determine whether the exact 50 visible scored MLP identities are present in R209 with matching evaluator/metric/versions. Compute V25 adjusted score on exactly that same 50 only if identity and aggregation are proven; otherwise state NOT_COMPARABLE and name the minimum missing public artifact. Preserve unknowns; do not infer the panel from row order or displayed rounded score. Append report+receipt with source URLs, row IDs, formulas, hashes and commit; finish R271. Read-only only: no estimator, dataset download, Actions, paid compute, private/holdout/full access, submission, leaderboard mutation or canonical edits.",
       "depends_on": [
         "R263",
         "R270"
       ],
-      "deliverable": "Read the immutable R209 V25 normalized 100-network record, R263 official leaderboard snapshot, R270 independent score audit, and official public Phase-2 primary pages. Determine whether the exact 50 visible scored MLP identities are present in R209 with matching evaluator/metric/versions. Compute V25 adjusted score on exactly that same 50 only if identity and aggregation are proven; otherwise state NOT_COMPARABLE and name the minimum missing public artifact. Preserve unknowns; do not infer the panel from row order or displayed rounded score. Append report+receipt with source URLs, row IDs, formulas, hashes and commit; finish R271. Read-only only: no estimator, dataset download, Actions, paid compute, private/holdout/full access, submission, leaderboard mutation or canonical edits.",
+      "hypothesis_id": "VISIBLE50-IDENTITY-RECONCILIATION-20260923",
       "id": "R271",
-      "owner": null,
-      "status": "QUEUED",
-      "attempts": []
+      "owner": "leader-method-forensics",
+      "priority": 1,
+      "status": "CLAIMED",
+      "title": "Map R209 V25 onto the official visible Phase-2 50"
     },
     {
       "assigned_owner": "workflow-preflight-guard",
-      "title": "Add an offline preflight for the R257-R259 failure modes",
-      "hypothesis_id": "R257-R259-OFFLINE-PREFLIGHT-20260923",
-      "priority": 2,
+      "attempts": [],
+      "deliverable": "Use R267 postmortem plus the actual R257-R260 workflow/fixture sources to identify the smallest useful reusable offline guard for the three verified failures: missing full-history protocol ancestry, fixture-manifest filename mismatch, and nonexistent replay-schema field. Inspect existing helpers first. If one small guard/test can catch all applicable failures without editing historical artifacts or live Actions workflows, implement it on an isolated branch and run only the local offline check; otherwise publish a concise evidence-based no-change report explaining why. Save report/receipt with hashes and commit; claim/start/finish R272 on the live control branch. Do not trigger Actions, run scientific estimators, access competition data, spend money, or edit old receipts/results.",
       "depends_on": [
         "R267"
       ],
-      "deliverable": "Use R267 postmortem plus the actual R257-R260 workflow/fixture sources to identify the smallest useful reusable offline guard for the three verified failures: missing full-history protocol ancestry, fixture-manifest filename mismatch, and nonexistent replay-schema field. Inspect existing helpers first. If one small guard/test can catch all applicable failures without editing historical artifacts or live Actions workflows, implement it on an isolated branch and run only the local offline check; otherwise publish a concise evidence-based no-change report explaining why. Save report/receipt with hashes and commit; claim/start/finish R272 on the live control branch. Do not trigger Actions, run scientific estimators, access competition data, spend money, or edit old receipts/results.",
+      "hypothesis_id": "R257-R259-OFFLINE-PREFLIGHT-20260923",
       "id": "R272",
       "owner": null,
+      "priority": 2,
       "status": "QUEUED",
-      "attempts": []
+      "title": "Add an offline preflight for the R257-R259 failure modes"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 325,
+  "revision": 326,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
