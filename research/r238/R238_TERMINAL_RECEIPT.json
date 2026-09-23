@@ -1,0 +1,157 @@
+{
+  "schema": "arc.whitebox.r238.terminal_receipt.v1",
+  "job": "R238",
+  "hypothesis_id": "GLOBAL-ACCURACY-POST-DRRE-EXECUTION-FAILURE",
+  "owner": "global-accuracy-research",
+  "run_id": "R238-v25-rsrf-exact-small-20260923",
+  "status": "INCONCLUSIVE",
+  "verdict": "R238_BASE_INCONCLUSIVE",
+  "family": "RSRF-V25 recycled-start range finder",
+  "conclusion": "The frozen unchanged-V25 base-executability prerequisite failed on the first preregistered synthetic fixture with flopscope.errors.SymmetryError (max deviation = nan) before a valid parent prediction existed. Per the frozen R238 protocol, candidate construction, resizing/rescue, validation, mini-100 and any second Actions run were forbidden. RSRF accuracy was therefore not measured and the family was not scientifically falsified.",
+  "governance": {
+    "agents_blob": "6d9c61537a282a7d141af316dd8be438d1015a49",
+    "research_process_blob": "bf5a4676d8f36100e2dfdde32d544a39661eba8d",
+    "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "history_experiment_ids": 194,
+    "legacy_ledger_blob": "040e52efe01efd7280180b7e2d72901b4c2f0532",
+    "r227_receipt_blob": "17f5b48580c7c6cf76b2966084b80024af04affe",
+    "r231_receipt_blob": "a2cf807ce9617c464e0e60b12f0bbfc17e196cf4",
+    "r232_terminal_receipt_blob": "c6aa858bd083c86067160325015032d9d7208343"
+  },
+  "frozen_artifacts": {
+    "novelty": {
+      "path": "research/r238/R238_NOVELTY_AUDIT.json",
+      "commit": "9138548194e0a20ef6ec70af439b28441081e766",
+      "git_blob": "17ad024f8458963c743c818ce677e14dd2eccc7a",
+      "sha256": "ac7f8ba6d6d68a099c84dcbb854a769010ad948e25389aeeebc3806c6cc09b6f"
+    },
+    "cost": {
+      "path": "research/r238/R238_COST_PROOF.json",
+      "commit": "81fca8a43ea9223690561a26d2fba1cceef8fb08",
+      "git_blob": "69d97130cf2fc4f819df4abc4dab07569fde2803",
+      "sha256": "818a19ff591ed2e2699bf29631042416abd6e06c93b371d2aaa072bc633b4fda"
+    },
+    "protocol": {
+      "path": "research/r238/R238_PROTOCOL.md",
+      "commit": "5bcd090dfb13df51c05415135ada71b3deefc420",
+      "git_blob": "757e3f67741b9e05b709a247eae5c9a921d787e6",
+      "sha256": "51146f2b4c1c6cc15ce7f5983dcdeab3690a96d82b234fb5c7a75527e4fb1769"
+    },
+    "falsifier": {
+      "path": "scripts/r238_rsrf_exact_small.py",
+      "commit": "b31450cb2d795f54288db1c460b1d51b0e297693",
+      "git_blob": "17b6cd77afeca3387bb6f06c3577194f1dae6f0c",
+      "sha256": "ecadc455a647c3d8579413a05b8f3d1bd11f65f17f89fa65aac3c8f97b3a6503"
+    },
+    "workflow": {
+      "path": ".github/workflows/r238-rsrf.yml",
+      "commit": "12c595f3dec66e4616f76ca688b1f5339b5bdf24",
+      "git_blob": "adae8a650a0f2c9c05c0b4354258e55f6e90a7db",
+      "sha256": "ebf1cee3a137e262a367f1322eeb6d6037715d0284d7dd2f36252fdf0b4d19cf"
+    },
+    "trigger": {
+      "path": "research/r238/R238_EXECUTE_TRIGGER.txt",
+      "commit": "37610aeb8f93ab6975d4fef996ebf6f20a81367f",
+      "git_blob": "e241dd4b7b161d81bd2b76cf3e59bbcabb7b623f",
+      "sha256": "da397b56dbb9b38a4bd07641a88303be9681d3222cfdcfe2c6229658c04511a6"
+    }
+  },
+  "queue_start": {
+    "revision": 166,
+    "commit": "0dc2f1ca005765e11d9af4594a07c4d48171adfb",
+    "code_commit": "12c595f3dec66e4616f76ca688b1f5339b5bdf24",
+    "command": "python scripts/r238_rsrf_exact_small.py --v25 r238-estimator-v25.py --candidate-out r238-candidate-v25.py --out r238-rsrf-falsifier.json"
+  },
+  "pinned_parent": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "path": "estimators/estimator_v25.py",
+    "git_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "downloaded_sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "frozen_candidate_definition": {
+    "mechanism": "At each tier-1 shared-basis rebuild after the first, keep R_OLD and one Gram application but use Omega = W_slice + Qp instead of only W_slice.",
+    "recycling_coefficient": 1,
+    "fitted_or_target_chosen_parameters": false,
+    "distinct_from": [
+      "R232 DRRE/Richardson",
+      "E022 oversampled spectral rebuild",
+      "QPASS/power-iteration changes",
+      "E094 source-axis compression",
+      "response-aligned D21/K3 families"
+    ]
+  },
+  "cost_proof": {
+    "parent_flops": 806303721965,
+    "conservative_extra_flops": 7077888,
+    "candidate_all_in_upper": 806310799853,
+    "budget": 2199023255552,
+    "utilization_upper": 0.36666770022429773,
+    "raw_mse_break_even_ratio": 0.9999912218861495,
+    "frozen_small_ratio_gate": 0.95,
+    "projected_adjusted_ratio_at_small_gate": 0.950008339281361
+  },
+  "sole_actions_run": {
+    "run_id": 35808859764,
+    "job_id": 107015629065,
+    "attempt": 1,
+    "head_sha": "37610aeb8f93ab6975d4fef996ebf6f20a81367f",
+    "workflow_conclusion": "success",
+    "artifact_id": 10728444220,
+    "artifact_name": "r238-v25-rsrf",
+    "artifact_zip_sha256": "761783a92ac967758dbcee9a6d9fadb146280d89fa6f782cfcbc9a927083ef2a",
+    "retries_or_reruns": 0
+  },
+  "prerequisite": {
+    "decision": "R238_BASE_INCONCLUSIVE",
+    "exit_code": 20,
+    "base_executable": false,
+    "failing_fixture_index": 0,
+    "error_type": "SymmetryError",
+    "error_message": "Tensor not symmetric along axes (0, 1): max deviation = nan (tolerance: atol=1e-06, rtol=1e-05).",
+    "terminal_site": "r238-estimator-v25.py:929 C = flops.as_symmetric(C, symmetry=(0, 1))"
+  },
+  "downstream_execution": {
+    "candidate_constructed": false,
+    "candidate_executed": false,
+    "exact_truth_constructed": false,
+    "scientific_gates_evaluated": false,
+    "candidate_validation_executed": false,
+    "mini100_authorized": false,
+    "mini100_executed": false
+  },
+  "evidence": {
+    "actions_evidence": {
+      "path": "research/r238/R238_ACTIONS_EVIDENCE.json",
+      "commit": "55647395ede70522a6972b0a5be53b13d99003e2",
+      "git_blob": "66a751f4478f1e3c0d85785e05af571015107adf",
+      "sha256": "e37ad177dc4b1f7cb453e687194a69b59d61e84c3d4e350718f7bfc679842c43"
+    },
+    "result": {
+      "path": "research/r238/R238_RESULT.md",
+      "commit": "14385ab65b6d10246a5758f442041042ae5155c5",
+      "git_blob": "0c0be7f5bd2bb25f7f106fc2721b6307baf2d8ad",
+      "sha256": "6defe88bd7af3f1cad7d51660a005f38b3b63153421d89922796a5ac5a72e4bb"
+    },
+    "falsifier_json_sha256": "e69e6058ac898366fb24ad5d1e833aecd02e6e5ad6a5ad72295326c5effa3208",
+    "actions_disposition_sha256": "d556eaf15f6a33634e754d144f82f705550037c6cc7c1f40e31413cb29704575",
+    "stdout_sha256": "4ed8dbdf7c42171008ab417b69166d0608da6541ec8ad458941bfa5bfb83351b"
+  },
+  "interpretation": {
+    "scientific_status": "UNEVALUATED",
+    "rsrf_accuracy_measured": false,
+    "rsrf_scientifically_falsified": false,
+    "terminal_reason": "parent fixture executability failure",
+    "rescue_allowed": false
+  },
+  "scope": {
+    "actions_runs": 1,
+    "public_benchmark_data": false,
+    "mini100": false,
+    "private_or_holdout": false,
+    "paid_compute": false,
+    "submission": false,
+    "canonical_v25_mutated": false,
+    "parameter_or_fixture_rescue": false
+  }
+}
