@@ -1892,11 +1892,27 @@
       "job": "R236",
       "owner": "independent-verifier-audit",
       "payload": {
-        "run_id": "R236-r234-verifier-independent-audit-20260923",
         "code_commit": "9cec083b09780edfebcf9e22478c1e159b6b0567",
-        "command": "independent read-only source audit of research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json against frozen R217 protocol and pinned R218 workflow/executor/schema; optional synthetic offline fail-closed check only; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical/R218"
+        "command": "independent read-only source audit of research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json against frozen R217 protocol and pinned R218 workflow/executor/schema; optional synthetic offline fail-closed check only; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical/R218",
+        "run_id": "R236-r234-verifier-independent-audit-20260923"
       },
       "revision": 146
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-23T00:33:33.536Z",
+      "job": "R232",
+      "owner": "global-accuracy-research",
+      "payload": {
+        "reason": "GitHub Actions run 35802437447 failed before the falsifier: workflow attempted `python -m pip install -e .`, but arc-whitebox is a ledger repository with neither setup.py nor pyproject.toml. The scientific step was skipped; no estimator measurement occurred. Durable attempt-1 receipt records the exact root cause and artifact.",
+        "receipt": {
+          "sha256": "9008905c2b931e1755d07792fe7276917f8c337da97f7a3d51ec1da4d2f5a3ba",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/c5d2c3a925f250773eb8341dbfdbc5b1c4ef0407/research/r232/R232_INFRA_ERROR_RECEIPT_ATTEMPT1.json"
+        },
+        "run_id": "R232-v25-drre-exact-small-20260923",
+        "status": "INFRA_ERROR"
+      },
+      "revision": 147
     }
   ],
   "jobs": [
@@ -2951,8 +2967,17 @@
         {
           "code_commit": "b089631df4189e64b765abbd80092ab69945f6aa",
           "command": "python scripts/r232_drre_exact_small.py --v25 r232-estimator-v25.py --out r232-drre-falsifier.json",
+          "completion": {
+            "reason": "GitHub Actions run 35802437447 failed before the falsifier: workflow attempted `python -m pip install -e .`, but arc-whitebox is a ledger repository with neither setup.py nor pyproject.toml. The scientific step was skipped; no estimator measurement occurred. Durable attempt-1 receipt records the exact root cause and artifact.",
+            "receipt": {
+              "sha256": "9008905c2b931e1755d07792fe7276917f8c337da97f7a3d51ec1da4d2f5a3ba",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/c5d2c3a925f250773eb8341dbfdbc5b1c4ef0407/research/r232/R232_INFRA_ERROR_RECEIPT_ATTEMPT1.json"
+            },
+            "run_id": "R232-v25-drre-exact-small-20260923",
+            "status": "INFRA_ERROR"
+          },
           "run_id": "R232-v25-drre-exact-small-20260923",
-          "status": "RUNNING"
+          "status": "INFRA_ERROR"
         }
       ],
       "deliverable": "Continue after R227's terminal pre-science NO-GO and R231's finding that the V25 error tail is weakly concentrated. Read the complete immutable experiment ledger, current AGENTS/RESEARCH_PROCESS, and R227/R231 receipts. Identify exactly one genuinely untested global-accuracy estimator family (not per-network tail tuning, second K4 regeneration, feed-local lambda, one-factor copula, CountSketch, response-aligned D21, Walsh-coset/serializer rescue, or any renamed rejected mechanism). Freeze a mathematical specification, exact-small target-free falsifier, full production FLOP bound, and measurable GO/NO-GO before any run. Run only the small falsifier on verified free/existing compute; allow at most one same-panel mini-100 only if falsifier and cost gates pass. Preserve V25; no paid compute, holdout, or submission. If no strict novelty/feasibility, save terminal NO-GO with exact reason.",
@@ -2963,7 +2988,12 @@
       "id": "R232",
       "owner": "global-accuracy-research",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "GitHub Actions run 35802437447 failed before the falsifier: workflow attempted `python -m pip install -e .`, but arc-whitebox is a ledger repository with neither setup.py nor pyproject.toml. The scientific step was skipped; no estimator measurement occurred. Durable attempt-1 receipt records the exact root cause and artifact.",
+      "receipt": {
+        "sha256": "9008905c2b931e1755d07792fe7276917f8c337da97f7a3d51ec1da4d2f5a3ba",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/c5d2c3a925f250773eb8341dbfdbc5b1c4ef0407/research/r232/R232_INFRA_ERROR_RECEIPT_ATTEMPT1.json"
+      },
+      "status": "INFRA_ERROR",
       "title": "Find one novel global-accuracy estimator hypothesis"
     },
     {
@@ -3074,9 +3104,9 @@
       "assigned_owner": "independent-verifier-audit",
       "attempts": [
         {
-          "run_id": "R236-r234-verifier-independent-audit-20260923",
           "code_commit": "9cec083b09780edfebcf9e22478c1e159b6b0567",
           "command": "independent read-only source audit of research/r234/r234_verify_r218.py and R234_VERIFIER_CHECKLIST.json against frozen R217 protocol and pinned R218 workflow/executor/schema; optional synthetic offline fail-closed check only; do not inspect R218 artifact, trigger Actions, run estimator/science, access holdout/private data, submit, or edit canonical/R218",
+          "run_id": "R236-r234-verifier-independent-audit-20260923",
           "status": "RUNNING"
         }
       ],
@@ -3093,7 +3123,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 146,
+  "revision": 147,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
