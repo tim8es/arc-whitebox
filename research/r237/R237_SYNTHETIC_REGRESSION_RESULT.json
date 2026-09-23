@@ -1,0 +1,54 @@
+{
+  "schema": "arc.whitebox.r237.synthetic_fail_closed_regression_result.v1",
+  "job": "R237",
+  "run_id": "R237-r234-verifier-hardening-20260923",
+  "execution": {
+    "mode": "offline synthetic helper-predicate regression",
+    "python": "3.13.5",
+    "actions_triggered": false,
+    "r218_artifact_used": false,
+    "estimator_or_science_run": false,
+    "private_or_holdout": false
+  },
+  "hardened_verifier": {
+    "path": "research/r234/r234_verify_r218.py",
+    "commit": "9e260d25d2f4ead1cbba1845de07e13aa6d7b9b2",
+    "git_blob": "c5bdb49977550ff682b73c151807d9aeb8d18e98",
+    "sha256": "d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c"
+  },
+  "hardened_checklist": {
+    "path": "research/r234/R234_VERIFIER_CHECKLIST.json",
+    "commit": "0309c6c1c6aa0905cbfbcc4e6fa9f01b69e45302",
+    "git_blob": "a17bdb292273049b292a52163dc1ee1fed7f7064",
+    "sha256": "f811564789b439f5b5df9ed72df577f5a51748d8e8432cf7b4c85399ce2b475a"
+  },
+  "committed_regression_suite": {
+    "path": "research/r237/test_r234_verifier_hardening.py",
+    "commit": "a1b7179a011eed858a8a14edeffa33073ba695eb",
+    "git_blob": "6e31aa9e48f55e6bbe23dc83f5e819b509096d72",
+    "sha256": "f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b"
+  },
+  "cases": {
+    "D1_attempt2_rejected": true,
+    "D2_artifact_id_name_digest_head_workflow_executor_mutations_rejected": true,
+    "D3_exact_panel_prelaunch_pins_reject_modified_content": true,
+    "D4_manifest_complete_nonempty_and_exact_coverage": true,
+    "D5_exact_preflight_keys_and_version_drift_rejected": true,
+    "D6_dataset_path_and_max_threads_drift_rejected": true,
+    "D7_missing_mandatory_telemetry_rejected": true
+  },
+  "thresholds_unchanged": {
+    "primary_delta_s_min": 0.02,
+    "cpu0_slower_count_min": 35,
+    "failure_difference_min": 10,
+    "block_sequence": [
+      "U",
+      "C0",
+      "C1",
+      "C1",
+      "C0",
+      "U"
+    ]
+  },
+  "result": "PASS_7_OF_7_HARDENING_REGRESSION_CATEGORIES"
+}
