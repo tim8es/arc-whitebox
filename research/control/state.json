@@ -3003,6 +3003,18 @@
       "owner": "phase2-scalar-compliance-independent-audit",
       "payload": {},
       "at": "2026-09-23T06:00:31+00:00"
+    },
+    {
+      "revision": 231,
+      "action": "start",
+      "job": "R249",
+      "owner": "phase2-scalar-compliance-independent-audit",
+      "payload": {
+        "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
+        "code_commit": "06a5293a52500dfb75ad1040b338f1d3591035ea",
+        "command": "source-only independent audit of official Phase-2 Allowed Code/code-patterns/Challenge Rules/FlopScope docs+source with R245 as context only; classify fnp array ops, fnp primitives, shape-derived scalars, math.*, Python scalar coefficient/division, and control/bookkeeping; no organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 outputs/artifacts, submission/leaderboard, or canonical edits"
+      },
+      "at": "2026-09-23T06:00:32+00:00"
     }
   ],
   "jobs": [
@@ -4790,8 +4802,15 @@
       "title": "Resolve official Phase-2 metering eligibility of Python scalar arithmetic",
       "id": "R249",
       "owner": "phase2-scalar-compliance-independent-audit",
-      "status": "CLAIMED",
-      "attempts": []
+      "status": "RUNNING",
+      "attempts": [
+        {
+          "run_id": "R249-phase2-scalar-compliance-independent-audit-20260923",
+          "code_commit": "06a5293a52500dfb75ad1040b338f1d3591035ea",
+          "command": "source-only independent audit of official Phase-2 Allowed Code/code-patterns/Challenge Rules/FlopScope docs+source with R245 as context only; classify fnp array ops, fnp primitives, shape-derived scalars, math.*, Python scalar coefficient/division, and control/bookkeeping; no organizer contact, estimator/benchmark/Actions, private/holdout, paid compute, R223/R244 outputs/artifacts, submission/leaderboard, or canonical edits",
+          "status": "RUNNING"
+        }
+      ]
     },
     {
       "assigned_owner": "post-r248-next-method-research",
@@ -4818,7 +4837,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 230,
+  "revision": 231,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
