@@ -1,0 +1,66 @@
+{
+  "candidate_id": "V25-LEG2-R1-YOUNG-AP",
+  "execution": {
+    "actions_run": false,
+    "benchmark_run": false,
+    "canonical_v25_edit": false,
+    "estimator_implemented": false,
+    "leaderboard_mutation": false,
+    "paid": false,
+    "private_or_holdout": false,
+    "public_mini100_run": false,
+    "r223_r244_candidate_outputs_read": false,
+    "retry": false,
+    "second_method": false,
+    "submission": false
+  },
+  "falsifier": {
+    "canonical_result_sha256": "e50801c502e8f0a2dfd7cbf9dbf0eef38d4386ce774156a44b35da322fa50fbc",
+    "control_max_rrms": 4.421498507036677e-16,
+    "deterministic_replay": true,
+    "finite_cases": "8/8",
+    "gates": {
+      "control_le_1e-12": true,
+      "each_a_p_rrms_le_0.015": false,
+      "each_core_d21_rrms_le_0.015": false,
+      "mean_core_d21_rrms_le_0.012": false
+    },
+    "max_core_d21_rrms": 1.0024907470453626,
+    "max_pair_rrms": 0.9999977498858067,
+    "mean_core_d21_rrms": 0.9997770493726187,
+    "public_panel_used": false,
+    "result_blob": "d0374f319487f4b048e0ab9f843152ef37cf285c",
+    "result_commit": "c97cf138ec31752f69638bdff1af38971c251343",
+    "target_data_used": false
+  },
+  "frozen_protocol": {
+    "candidate_spec_blob": "df0eb473b2c10d8cdc89ded495214d32e7a8ef9d",
+    "commit": "0101551e119ccee19a8deadf6629c111528ba598",
+    "falsifier_script_blob": "c431b1fe95ceb36eba08ad4313b8bb31d0752c62",
+    "protocol_blob": "4b184e2f2f16f6ba6df4e0fc183e9f555d5edd00"
+  },
+  "owner": "post-r248-next-method-research",
+  "queue": {
+    "claim_revision": 227,
+    "enqueue_revision": 226,
+    "start_revision": 228
+  },
+  "reason": "Frozen V25-LEG2-R1-YOUNG-AP passed novelty/source/static-cost preflight but failed the target-free structural fidelity gate decisively: max A/P RRMS 0.9999977498858067, max D21-core RRMS 1.0024907470453626, mean D21-core RRMS 0.9997770493726187. Protocol therefore stops before estimator/public measurement or Actions.",
+  "report": {
+    "blob": "44165f0be68ae9a221ffb375341742e8043e717a",
+    "commit": "296382930abf634037d6377605daa56ed4e87957",
+    "sha256": "aa8c1173a89cd04f6a45cd20bd5ac561a416c905353215b7eff9f32dc1ab9530"
+  },
+  "run_id": "R250-post-r248-next-method-research-20260923",
+  "schema": "arc.whitebox.r250.receipt.v1",
+  "static_cost": {
+    "candidate_flops_bound": 707519474157,
+    "candidate_parent_ratio": 0.8774850653457754,
+    "gate_max_ratio": 0.9,
+    "parent_flops": 806303721965,
+    "pass": true
+  },
+  "status": "SCIENTIFIC_REJECT",
+  "task": "R250",
+  "verdict": "DEVELOPMENT_NO_GO_TARGET_FREE_FALSIFIER"
+}
