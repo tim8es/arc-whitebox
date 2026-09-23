@@ -1,0 +1,403 @@
+name: R293 V25 residual capture one-shot
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type RUN_R293_V25_CAPTURE_ONCE to authorize the frozen one-shot'
+        required: true
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: r293-v25-capture-one-shot
+  cancel-in-progress: false
+
+env:
+  RESULT_BRANCH: research/r293-v25-capture-result
+  RESULT_ROOT: research/captures/r293
+  V25_UPSTREAM_REPO: 504aldo/whest-p2-cumulant-k3
+  V25_UPSTREAM_COMMIT: 18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45
+  V25_R288_CONTROL_COMMIT: dff3dd65e9d2210e02418cca99e05556f6bf2c75
+  V25_GIT_BLOB: 195373a110215256b759d7c172ba8c923c62e5cc
+  V25_SHA256: c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20
+  WHESTBENCH_VERSION: 0.16.1
+  WHESTBENCH_SOURCE_COMMIT: 4d08668b485c8a7d25a105c3c00d2f4fc2538f18
+  WHESTBENCH_SCORING_BLOB: 9cf7653a0267c4d048617c9045ac8be127f3c8bf
+  FLOPSCOPE_VERSION: 0.12.1
+  NUMPY_VERSION: 2.4.6
+  DATASETS_VERSION: 4.1.1
+  EXPECTED_DATASET_METADATA_SHA256: 264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1
+  EXPECTED_NAME_ORDER_SHA256: 18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce
+  R291_HARNESS_BLOB: 3e438c0f6b87ab2fa90c1fc71bbf3cfea1e9052d
+  R291_PATCH_BLOB: a3d909540fc079908fcca9987c5cdb0252a1da8c
+  R291_PANEL_BLOB: caf813cd5eab771108f105fe050fd6631b298733
+
+jobs:
+  preflight:
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm == 'RUN_R293_V25_CAPTURE_ONCE' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Static workflow and frozen-artifact gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/r293_capture_workflow_preflight.py \
+            --workflow .github/workflows/r293-v25-residual-capture.yml \
+            --protocol research/r293/R293_PROTOCOL.json \
+            --repo-root .
+
+      - name: Verify pre-created result branch is unprotected, unused, and exactly at dispatch SHA
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+          branch = os.environ["RESULT_BRANCH"]
+          assert branch == "research/r293-v25-capture-result"
+          owner_repo = os.environ["GITHUB_REPOSITORY"]
+          url = (
+              "https://api.github.com/repos/"
+              + owner_repo
+              + "/branches/"
+              + urllib.parse.quote(branch, safe="")
+          )
+          req = urllib.request.Request(
+              url,
+              headers={
+                  "Accept": "application/vnd.github+json",
+                  "Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                  "X-GitHub-Api-Version": "2022-11-28",
+              },
+          )
+          with urllib.request.urlopen(req, timeout=30) as response:
+              data = json.load(response)
+          if data.get("protected") is not False:
+              raise SystemExit("result branch must exist and report protected=false")
+          if data.get("commit", {}).get("sha") != os.environ["GITHUB_SHA"]:
+              raise SystemExit("result branch tip must equal the workflow_dispatch main SHA")
+          print(json.dumps({
+              "branch": branch,
+              "protected": data.get("protected"),
+              "sha": data.get("commit", {}).get("sha"),
+          }, sort_keys=True))
+          PY
+          remote_sha="$(git ls-remote --heads origin "refs/heads/$RESULT_BRANCH" | awk '{print $1}')"
+          test -n "$remote_sha"
+          test "$remote_sha" = "$GITHUB_SHA"
+          git fetch --depth=1 origin "refs/heads/$RESULT_BRANCH:refs/remotes/origin/r293-result"
+          if git cat-file -e "refs/remotes/origin/r293-result:research/captures/r293/manifest.json" 2>/dev/null; then
+            echo "result branch already contains R293 capture output" >&2
+            exit 1
+          fi
+
+  persist:
+    needs: preflight
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm == 'RUN_R293_V25_CAPTURE_ONCE' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    permissions:
+      contents: write
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      WHEST_SKIP_HARDWARE_FALLBACK_PROBES: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.16"
+
+      - name: Recheck result-branch race gate before any benchmark setup
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+          branch = os.environ["RESULT_BRANCH"]
+          url = (
+              "https://api.github.com/repos/"
+              + os.environ["GITHUB_REPOSITORY"]
+              + "/branches/"
+              + urllib.parse.quote(branch, safe="")
+          )
+          req = urllib.request.Request(
+              url,
+              headers={
+                  "Accept": "application/vnd.github+json",
+                  "Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                  "X-GitHub-Api-Version": "2022-11-28",
+              },
+          )
+          with urllib.request.urlopen(req, timeout=30) as response:
+              data = json.load(response)
+          if data.get("protected") is not False:
+              raise SystemExit("result branch protection changed")
+          if data.get("commit", {}).get("sha") != os.environ["GITHUB_SHA"]:
+              raise SystemExit("result branch moved after preflight")
+          PY
+          test "$(git ls-remote --heads origin "refs/heads/$RESULT_BRANCH" | awk '{print $1}')" = "$GITHUB_SHA"
+
+      - name: Install exact direct runtime pins and record resolved environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORK="$RUNNER_TEMP/r293"
+          mkdir -p "$WORK"
+          python -m pip install --disable-pip-version-check --no-input \
+            "numpy==2.4.6" \
+            "flopscope==0.12.1" \
+            "whestbench==0.16.1" \
+            "datasets==4.1.1"
+          python - <<'PY' > "$WORK/runtime.json"
+          import importlib.metadata as md
+          import json, platform, subprocess
+          expected = {
+              "numpy": "2.4.6",
+              "flopscope": "0.12.1",
+              "whestbench": "0.16.1",
+              "datasets": "4.1.1",
+          }
+          observed = {name: md.version(name) for name in expected}
+          if observed != expected:
+              raise SystemExit(f"runtime pin mismatch: {observed}")
+          if platform.python_version() != "3.11.16":
+              raise SystemExit("python version mismatch")
+          freeze = subprocess.check_output(
+              ["python", "-m", "pip", "freeze", "--all"], text=True
+          ).splitlines()
+          print(json.dumps({
+              "python": platform.python_version(),
+              "direct_pins": observed,
+              "pip_freeze": sorted(freeze),
+          }, sort_keys=True))
+          PY
+
+      - name: Fetch and verify exact V25 bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORK="$RUNNER_TEMP/r293"
+          curl -fsSL \
+            "https://raw.githubusercontent.com/$V25_UPSTREAM_REPO/$V25_UPSTREAM_COMMIT/estimators/estimator_v25.py" \
+            -o "$WORK/estimator_v25.py"
+          test "$(git hash-object "$WORK/estimator_v25.py")" = "$V25_GIT_BLOB"
+          test "$(sha256sum "$WORK/estimator_v25.py" | awk '{print $1}')" = "$V25_SHA256"
+
+      - name: Apply the frozen R291 evaluator-only patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORK="$RUNNER_TEMP/r293"
+          test "$(git hash-object research/r291/r291_capture_harness.py)" = "$R291_HARNESS_BLOB"
+          test "$(git hash-object research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch)" = "$R291_PATCH_BLOB"
+          test "$(git hash-object research/r291/R291_EXPECTED_PUBLIC_MINI100.json)" = "$R291_PANEL_BLOB"
+          SCORING_PATH="$(python - <<'PY'
+          import pathlib, whestbench.scoring
+          print(pathlib.Path(whestbench.scoring.__file__).resolve())
+          PY
+          )"
+          test "$(git hash-object "$SCORING_PATH")" = "$WHESTBENCH_SCORING_BLOB"
+          PATCH_ROOT="$WORK/patch-root"
+          mkdir -p "$PATCH_ROOT/src/whestbench"
+          cp "$SCORING_PATH" "$PATCH_ROOT/src/whestbench/scoring.py"
+          patch --batch --forward --fuzz=0 -p1 -d "$PATCH_ROOT" \
+            < research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch
+          test "$(grep -c 'r291_capture.safe_capture(' "$PATCH_ROOT/src/whestbench/scoring.py")" = "2"
+          cp "$PATCH_ROOT/src/whestbench/scoring.py" "$SCORING_PATH"
+          printf '%s\n' "$SCORING_PATH" > "$WORK/scoring-path.txt"
+          sha256sum "$SCORING_PATH" > "$WORK/patched-scoring-sha256.txt"
+
+      - name: Validate exact V25 interface before the one-shot panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORK="$RUNNER_TEMP/r293"
+          whest validate --estimator "$WORK/estimator_v25.py" --json > "$WORK/validate.json"
+
+      - name: Run the frozen public mini all-100 capture exactly once
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}/research/r291
+          R291_RUN_ID: R293-v25-public-mini100-capture
+          R291_WORKFLOW_RUN_ID: ${{ github.run_id }}
+          R291_CAPTURE_CODE_COMMIT: ${{ github.sha }}
+          R291_CAPTURE_CODE_BLOB: 3e438c0f6b87ab2fa90c1fc71bbf3cfea1e9052d
+        run: |
+          set -euo pipefail
+          WORK="$RUNNER_TEMP/r293"
+          export R291_CAPTURE_DIR="$WORK/capture"
+          export R291_EXPECTED_PANEL="$GITHUB_WORKSPACE/research/r291/R291_EXPECTED_PUBLIC_MINI100.json"
+          whest run \
+            --estimator "$WORK/estimator_v25.py" \
+            --dataset hf://aicrowd/arc-whestbench-public-2026@v2-phase2 \
+            --split mini \
+            --streaming \
+            --n-mlps 100 \
+            --runner local \
+            --flop-budget 2199023255552 \
+            --wall-time-limit 120 \
+            --residual-wall-time-limit 0.4 \
+            --max-threads 1 \
+            --format json \
+            > "$WORK/official-report.json" \
+            2> "$WORK/run.stderr"
+          python research/r291/r291_capture_harness.py seal \
+            --capture-dir "$WORK/capture" \
+            --official-report "$WORK/official-report.json" \
+            > "$WORK/seal.json"
+
+      - name: Verify frozen split, manifest, hashes, and build the only persisted receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORK="$RUNNER_TEMP/r293"
+          python - <<'PY'
+          import hashlib, json, os, pathlib
+          work = pathlib.Path(os.environ["RUNNER_TEMP"]) / "r293"
+          cap = work / "capture"
+          manifest = json.loads((cap / "manifest.json").read_text())
+          vectors = (cap / "vectors.f32le").read_bytes()
+          if manifest.get("schema") != "arc.whitebox.r291.capture.v1":
+              raise SystemExit("manifest schema mismatch")
+          if manifest.get("rows") != 100 or manifest.get("dtype") != "<f4":
+              raise SystemExit("manifest shape/dtype row contract mismatch")
+          if manifest.get("vector_shape") != [1024]:
+              raise SystemExit("manifest vector shape mismatch")
+          rows = manifest.get("records")
+          if not isinstance(rows, list) or len(rows) != 100:
+              raise SystemExit("manifest row count mismatch")
+          ids = [str(r["network_id"]) for r in rows]
+          ordered = sorted(ids)
+          fit = set(ordered[:50])
+          if sum(r["split_role"] == "FIT" for r in rows) != 50:
+              raise SystemExit("FIT count mismatch")
+          if sum(r["split_role"] == "EVAL" for r in rows) != 50:
+              raise SystemExit("EVAL count mismatch")
+          if any((r["network_id"] in fit) != (r["split_role"] == "FIT") for r in rows):
+              raise SystemExit("frozen lexicographic split mismatch")
+          if len(vectors) != 1228800:
+              raise SystemExit("raw payload size mismatch")
+          if hashlib.sha256(vectors).hexdigest() != manifest["vectors_sha256"]:
+              raise SystemExit("vectors SHA mismatch")
+          report = (work / "official-report.json").read_bytes()
+          if hashlib.sha256(report).hexdigest() != manifest["official_report_sha256"]:
+              raise SystemExit("official report binding mismatch")
+          sums = {}
+          for line in (cap / "SHA256SUMS").read_text().splitlines():
+              digest, name = line.split(None, 1)
+              sums[name.strip()] = digest
+          if sums.get("vectors.f32le") != hashlib.sha256(vectors).hexdigest():
+              raise SystemExit("SHA256SUMS vectors mismatch")
+          if sums.get("manifest.json") != hashlib.sha256((cap / "manifest.json").read_bytes()).hexdigest():
+              raise SystemExit("SHA256SUMS manifest mismatch")
+          if (
+              len(vectors)
+              + (cap / "manifest.json").stat().st_size
+              + (cap / "SHA256SUMS").stat().st_size
+              > 1363968
+          ):
+              raise SystemExit("R288 protocol size cap exceeded")
+          runtime = json.loads((work / "runtime.json").read_text())
+          seal = json.loads((work / "seal.json").read_text())
+          receipt = {
+              "schema": "arc.whitebox.r293.capture_run_receipt.v1",
+              "job": "R293",
+              "scientific_diagnostic_complete": False,
+              "github_run_id": os.environ["GITHUB_RUN_ID"],
+              "github_run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "github_sha": os.environ["GITHUB_SHA"],
+              "result_branch": os.environ["RESULT_BRANCH"],
+              "v25": {
+                  "r288_control_commit": os.environ["V25_R288_CONTROL_COMMIT"],
+                  "upstream_commit": os.environ["V25_UPSTREAM_COMMIT"],
+                  "git_blob_sha1": os.environ["V25_GIT_BLOB"],
+                  "sha256": os.environ["V25_SHA256"],
+              },
+              "runtime": runtime,
+              "whestbench": {
+                  "version": os.environ["WHESTBENCH_VERSION"],
+                  "source_commit": os.environ["WHESTBENCH_SOURCE_COMMIT"],
+                  "original_scoring_blob_sha1": os.environ["WHESTBENCH_SCORING_BLOB"],
+                  "patched_scoring_sha256": (work / "patched-scoring-sha256.txt").read_text().split()[0],
+              },
+              "dataset": {
+                  "uri": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+                  "split": "mini",
+                  "rows": 100,
+                  "metadata_sha256": os.environ["EXPECTED_DATASET_METADATA_SHA256"],
+                  "name_order_sha256": os.environ["EXPECTED_NAME_ORDER_SHA256"],
+              },
+              "capture": {
+                  "vectors_sha256": hashlib.sha256(vectors).hexdigest(),
+                  "manifest_sha256": hashlib.sha256((cap / "manifest.json").read_bytes()).hexdigest(),
+                  "sha256sums_sha256": hashlib.sha256((cap / "SHA256SUMS").read_bytes()).hexdigest(),
+                  "official_report_sha256": hashlib.sha256(report).hexdigest(),
+                  "raw_payload_bytes": len(vectors),
+                  "fit_rows": 50,
+                  "eval_rows": 50,
+                  "seal": seal,
+              },
+          }
+          (work / "run-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+          )
+          PY
+
+      - name: Persist only the sealed allowlist to the pre-existing result branch
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          WORK="$RUNNER_TEMP/r293"
+          remote_sha="$(git ls-remote --heads origin "refs/heads/$RESULT_BRANCH" | awk '{print $1}')"
+          test "$remote_sha" = "$GITHUB_SHA"
+          mkdir -p research/captures/r293
+          cp "$WORK/capture/vectors.f32le" research/captures/r293/vectors.f32le
+          cp "$WORK/capture/manifest.json" research/captures/r293/manifest.json
+          cp "$WORK/capture/SHA256SUMS" research/captures/r293/SHA256SUMS
+          cp "$WORK/run-receipt.json" research/captures/r293/run-receipt.json
+          mapfile -t changed < <(git status --porcelain --untracked-files=all | sed 's/^?? //; s/^.. //')
+          printf '%s\n' "${changed[@]}" | sort > "$WORK/changed.txt"
+          cat > "$WORK/allowed.txt" <<'EOF'
+          research/captures/r293/SHA256SUMS
+          research/captures/r293/manifest.json
+          research/captures/r293/run-receipt.json
+          research/captures/r293/vectors.f32le
+          EOF
+          diff -u "$WORK/allowed.txt" "$WORK/changed.txt"
+          git add research/captures/r293/vectors.f32le
+          git add research/captures/r293/manifest.json
+          git add research/captures/r293/SHA256SUMS
+          git add research/captures/r293/run-receipt.json
+          git diff --cached --name-only | sort > "$WORK/staged.txt"
+          diff -u "$WORK/allowed.txt" "$WORK/staged.txt"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "research(R293): preserve frozen V25 residual capture"
+          test "$(git rev-parse HEAD^)" = "$GITHUB_SHA"
+          git remote set-url origin "https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+          git push origin "HEAD:refs/heads/$RESULT_BRANCH"
