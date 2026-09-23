@@ -1,0 +1,37 @@
+{
+  "schema": "arc.whitebox.r268.receipt.v1",
+  "job": "R268",
+  "owner": "coordinator",
+  "run_id": "R268-r261-reconciliation-audit-20260923",
+  "status": "COMPLETE",
+  "verdict": "R261_RECONCILIATION_CORRECT_WITH_REMAINING_STATUS_INDEX_DRIFT",
+  "report": {
+    "path": "research/r268/R268_R261_RECONCILIATION_AUDIT.md",
+    "git_blob_sha1": "83a4b7cb97f786ccaa0c282a17d7653b592a7cd7",
+    "sha256": "585fb3e907b2fc011ffc59f1cfa7b7403b6e64aa8cf4c25099555eb1dc751024"
+  },
+  "evidence": {
+    "r261_report_commit": "933d259ec33c37c88f98df8c214935d02d8b60ca",
+    "r261_report_actual_blob_sha1": "835eee8021cfc8760c50c1b6978dcdabf2e52a2e",
+    "r261_receipt_commit": "c7d0e98a413c0e4fc4e462d7aa65d8eeaae42f66",
+    "r261_receipt_actual_blob_sha1": "47b0d745cd31e8707256f0f7183d0d0212d9442e",
+    "r261_receipt_sha256": "dabaa077c1eb70a4f5cf89355e8e262bf555e2ce1f23ac308de457b588885e8e",
+    "reconciliation_note_commit": "9dfb89faeb33617da2f5ca91d32fa776426e228b",
+    "reconciliation_note_actual_blob_sha1": "5cce867616e893cce4859e26c832fd94e826f153",
+    "reconciliation_note_sha256": "ceb4aa86da2ac1cd23ecea0bac0d6f4c68668d8d91c103ae39a39af8d155b5c2",
+    "control_state_revision": 322,
+    "r261_start_event_revision": 288,
+    "r261_finish_event_revision": 289,
+    "r265_finish_event_revision": 305,
+    "r209_v25_source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75"
+  },
+  "execution": {
+    "candidate_executed": false,
+    "estimator_executions": 0,
+    "actions_runs": 0,
+    "public_accesses": 0,
+    "paid_compute": false,
+    "submission": false,
+    "canonical_or_leaderboard_edits": false
+  }
+}
