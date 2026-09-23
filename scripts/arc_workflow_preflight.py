@@ -155,6 +155,10 @@ class _GeneratorResolver:
                 if stmt.value is None:
                     return env, _SCALAR
                 return env, self._value(stmt.value, env, stack)
+            else:
+                raise PreflightError(
+                    f"unsupported generator statement {type(stmt).__name__} on runtime manifest dataflow"
+                )
         return env, None
 
     def _function_return(self, fn: ast.FunctionDef, stack: tuple[str, ...]) -> object:
@@ -286,40 +290,54 @@ def _job_blocks(workflow: str) -> list[tuple[str, str]]:
     return blocks
 
 
-def _checkout_steps(job_block: str) -> list[tuple[int, list[str]]]:
-    lines = job_block.splitlines()
-    steps: list[tuple[int, list[str]]] = []
-    for i, line in enumerate(lines):
-        if not re.search(r"\buses:\s*actions/checkout@v\d+\s*$", line):
+def _checkout_steps(job_name: str, job_block: str) -> list[tuple[int, str]]:
+    steps: list[tuple[int, str]] = []
+    for step_index, step in enumerate(_step_blocks(job_name, job_block)):
+        lines = step.splitlines()
+        if not lines:
             continue
-        indent = _indent(line)
-        block = [line]
-        for following in lines[i + 1:]:
-            if following.lstrip().startswith("- ") and _indent(following) == indent:
-                break
-            block.append(following)
-        steps.append((i, block))
+        item_indent = _indent(lines[0])
+        first = lines[0]
+        checkout = bool(re.match(
+            r"^\s*-\s+uses:\s*actions/checkout@v\d+\s*(?:#.*)?$",
+            first,
+        ))
+        if not checkout:
+            for line in lines[1:]:
+                stripped = line.strip()
+                if not stripped or stripped.startswith("#"):
+                    continue
+                if _indent(line) != item_indent + 2:
+                    continue
+                if re.match(r"^\s*uses:\s*actions/checkout@v\d+\s*(?:#.*)?$", line):
+                    checkout = True
+                    break
+        if checkout:
+            steps.append((step_index, step))
     return steps
 
 
-def _checkout_has_full_history(step: list[str]) -> bool:
-    uses_indent = _indent(step[0])
+def _checkout_has_full_history(step: str) -> bool:
+    lines = step.splitlines()
+    if not lines:
+        return False
+    item_indent = _indent(lines[0])
     with_index = None
     with_indent = None
-    for i, line in enumerate(step[1:], start=1):
+    for i, line in enumerate(lines[1:], start=1):
         stripped = line.strip()
         if not stripped or stripped.startswith("#"):
             continue
-        indent = _indent(line)
-        if indent <= uses_indent:
-            break
-        if re.match(r"^\s*with:\s*(?:#.*)?$", line):
+        if _indent(line) == item_indent + 2 and re.match(
+            r"^\s*with:\s*(?:#.*)?$",
+            line,
+        ):
             with_index = i
-            with_indent = indent
+            with_indent = _indent(line)
             break
     if with_index is None or with_indent is None:
         return False
-    for line in step[with_index + 1:]:
+    for line in lines[with_index + 1:]:
         stripped = line.strip()
         if not stripped or stripped.startswith("#"):
             continue
@@ -331,27 +349,47 @@ def _checkout_has_full_history(step: list[str]) -> bool:
     return False
 
 
+def _normalized_shell_step(step: str) -> str:
+    return re.sub(r"\\\s*\n\s*", " ", step)
+
+
+def _step_has_ancestry_guard(step: str) -> bool:
+    normalized = _normalized_shell_step(step)
+    supported = re.search(
+        r"\bgit[ \t]+merge-base[ \t]+--is-ancestor\b",
+        normalized,
+    )
+    mentions_merge_base = re.search(r"\bmerge-base\b", normalized)
+    mentions_is_ancestor = re.search(r"\bis-ancestor\b", normalized)
+    if mentions_merge_base and mentions_is_ancestor and not supported:
+        raise PreflightError(
+            "cannot statically normalize merge-base/is-ancestor ancestry guard"
+        )
+    return supported is not None
+
+
+def _workflow_has_ancestry_guard(workflow: str) -> bool:
+    for job_name, block in _job_blocks(workflow):
+        for step in _step_blocks(job_name, block):
+            if _step_has_ancestry_guard(step):
+                return True
+    return False
+
+
 def require_full_history_for_ancestry(workflow: str) -> None:
-    total_guards = workflow.count("git merge-base --is-ancestor")
-    if total_guards == 0:
-        return
-    jobs = _job_blocks(workflow)
-    mapped_guards = 0
-    for job_name, block in jobs:
-        guard_count = block.count("git merge-base --is-ancestor")
-        mapped_guards += guard_count
-        if guard_count == 0:
+    for job_name, block in _job_blocks(workflow):
+        steps = _step_blocks(job_name, block)
+        guard_indexes = [
+            index for index, step in enumerate(steps)
+            if _step_has_ancestry_guard(step)
+        ]
+        if not guard_indexes:
             continue
-        checkouts = _checkout_steps(block)
+        checkouts = _checkout_steps(job_name, block)
         if not checkouts:
             raise PreflightError(
                 f"job {job_name!r} has ancestry guard but no actions/checkout step"
             )
-        job_lines = block.splitlines()
-        guard_indexes = [
-            i for i, line in enumerate(job_lines)
-            if "git merge-base --is-ancestor" in line
-        ]
         for guard_index in guard_indexes:
             prior = [(index, step) for index, step in checkouts if index < guard_index]
             if not prior:
@@ -363,8 +401,6 @@ def require_full_history_for_ancestry(workflow: str) -> None:
                 raise PreflightError(
                     f"job {job_name!r} ancestry guard requires a preceding actions/checkout with fetch-depth: 0 under its with: block in the same job"
                 )
-    if mapped_guards != total_guards:
-        raise PreflightError("ancestry guard could not be mapped unambiguously to a workflow job")
 
 
 def _step_blocks(job_name: str, job_block: str) -> list[str]:
@@ -407,40 +443,140 @@ def _step_blocks_with_runtime_manifest(workflow: str) -> list[tuple[str, str]]:
     return blocks
 
 
-def _manifest_data_vars(block: str) -> set[str]:
-    path_vars: set[str] = set()
-    for line in block.splitlines():
-        if not _RUNTIME_MANIFEST_RE.search(line):
-            continue
-        match = re.match(r"^\s*([A-Za-z_]\w*)\s*=", line)
+def _run_block_python_source(step: str) -> str:
+    lines = step.splitlines()
+    if not lines:
+        raise PreflightError("empty workflow step")
+    item_indent = _indent(lines[0])
+    run_index = None
+    for i, line in enumerate(lines):
+        if i == 0:
+            match = re.match(r"^\s*-\s+run:\s*\|\s*(?:#.*)?$", line)
+        else:
+            match = (
+                _indent(line) == item_indent + 2
+                and re.match(r"^\s*run:\s*\|\s*(?:#.*)?$", line)
+            )
         if match:
-            path_vars.add(match.group(1))
+            if run_index is not None:
+                raise PreflightError("workflow step has multiple run: block scalars")
+            run_index = i
+    if run_index is None:
+        raise PreflightError("runtime-manifest step is not a supported run: | block")
+    body = lines[run_index + 1:]
+    nonblank = [line for line in body if line.strip()]
+    if not nonblank:
+        raise PreflightError("runtime-manifest run block is empty")
+    content_indent = min(_indent(line) for line in nonblank)
+    body = [line[content_indent:] if len(line) >= content_indent else "" for line in body]
+    start = next(
+        (i for i, line in enumerate(body) if _RUNTIME_MANIFEST_RE.search(line)),
+        None,
+    )
+    if start is None:
+        raise PreflightError("runtime-manifest run block has no manifest path")
+    return "\n".join(body[start:])
+
+
+def _runtime_path_call(expr: ast.expr) -> bool:
+    if not isinstance(expr, ast.Call) or expr.keywords or len(expr.args) != 1:
+        return False
+    func = expr.func
+    is_path = (
+        isinstance(func, ast.Attribute)
+        and isinstance(func.value, ast.Name)
+        and func.value.id == "pathlib"
+        and func.attr == "Path"
+    ) or (isinstance(func, ast.Name) and func.id == "Path")
+    if not is_path:
+        return False
+    arg = expr.args[0]
+    return (
+        isinstance(arg, ast.Constant)
+        and isinstance(arg.value, str)
+        and _RUNTIME_MANIFEST_RE.search(arg.value) is not None
+    )
+
+
+def _exact_manifest_read(expr: ast.expr, path_vars: set[str]) -> bool:
+    if not isinstance(expr, ast.Call) or expr.args or expr.keywords:
+        return False
+    if not isinstance(expr.func, ast.Attribute) or expr.func.attr != "read_text":
+        return False
+    source = expr.func.value
+    return (
+        isinstance(source, ast.Name) and source.id in path_vars
+    ) or _runtime_path_call(source)
+
+
+def _manifest_dataflow(step: str) -> tuple[ast.Module, set[str]]:
+    source = _run_block_python_source(step)
+    try:
+        tree = ast.parse(source, filename="<workflow-manifest-step>")
+    except SyntaxError as exc:
+        raise PreflightError(
+            f"cannot statically parse runtime-manifest Python verifier: {exc.msg}"
+        ) from exc
+
+    path_vars: set[str] = set()
+    for node in ast.walk(tree):
+        if not isinstance(node, (ast.Assign, ast.AnnAssign)):
+            continue
+        value = node.value
+        targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+        if _runtime_path_call(value):
+            for target in targets:
+                if isinstance(target, ast.Name):
+                    path_vars.add(target.id)
 
     data_vars: set[str] = set()
-    loads = list(re.finditer(
-        r"(?m)^\s*([A-Za-z_]\w*)\s*=\s*json\.loads\s*\(([^\n]+)\)\s*$",
-        block,
-    ))
-    manifest_load_seen = False
-    for match in loads:
-        target, argument = match.group(1), match.group(2).strip()
-        direct = re.fullmatch(
-            r"pathlib\.Path\([^\n]*R[A-Z0-9_]*RUNTIME[A-Z0-9_]*MANIFEST\.json[^\n]*\)\.read_text\(\s*\)",
-            argument,
-        )
-        via_var = re.fullmatch(r"([A-Za-z_]\w*)\.read_text\(\s*\)", argument)
-        if direct or (via_var and via_var.group(1) in path_vars):
-            data_vars.add(target)
-            manifest_load_seen = True
-        elif any(re.search(rf"\b{re.escape(path_var)}\b", argument) for path_var in path_vars):
-            raise PreflightError(
-                "json.loads must read the exact runtime manifest path via <manifest_path>.read_text()"
-            )
-    if loads and not manifest_load_seen and path_vars:
+    saw_load = False
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Assign) or len(node.targets) != 1:
+            continue
+        target = node.targets[0]
+        value = node.value
+        if not (
+            isinstance(target, ast.Name)
+            and isinstance(value, ast.Call)
+            and isinstance(value.func, ast.Attribute)
+            and isinstance(value.func.value, ast.Name)
+            and value.func.value.id == "json"
+            and value.func.attr == "loads"
+        ):
+            continue
+        saw_load = True
+        if len(value.args) != 1 or value.keywords or not _exact_manifest_read(value.args[0], path_vars):
+            mentioned = {
+                name.id for name in ast.walk(value)
+                if isinstance(name, ast.Name)
+            }
+            if mentioned & path_vars:
+                raise PreflightError(
+                    "json.loads must read the exact runtime manifest path via <manifest_path>.read_text()"
+                )
+            continue
+        data_vars.add(target.id)
+
+    if saw_load and not data_vars and path_vars:
         raise PreflightError(
             "json.loads must read the exact runtime manifest path via <manifest_path>.read_text()"
         )
-    return data_vars
+    return tree, data_vars
+
+
+def _subscript_chain(node: ast.Subscript) -> tuple[str, SchemaPath] | None:
+    keys: list[str] = []
+    current: ast.expr = node
+    while isinstance(current, ast.Subscript):
+        key = current.slice
+        if not isinstance(key, ast.Constant) or not isinstance(key.value, str):
+            return None
+        keys.append(key.value)
+        current = current.value
+    if not isinstance(current, ast.Name):
+        return None
+    return current.id, tuple(reversed(keys))
 
 
 def asserted_manifest_paths(workflow: str) -> set[SchemaPath]:
@@ -449,31 +585,62 @@ def asserted_manifest_paths(workflow: str) -> set[SchemaPath]:
         raise PreflightError("workflow never references a runtime fixture manifest in a step")
     paths: set[SchemaPath] = set()
     for job_name, block in blocks:
-        vars_ = _manifest_data_vars(block)
+        tree, vars_ = _manifest_dataflow(block)
         if not vars_:
             raise PreflightError(
                 f"job {job_name!r} runtime-manifest step has no statically traceable json.loads binding; cannot verify key references"
             )
+        parents: dict[ast.AST, ast.AST] = {}
+        for parent in ast.walk(tree):
+            for child in ast.iter_child_nodes(parent):
+                parents[child] = parent
+
         block_paths: set[SchemaPath] = set()
-        for var in vars_:
-            unsupported = re.search(
-                rf"\b{re.escape(var)}(?:\[(?:\"[^\"]+\"|'[^']+')\])*\.([A-Za-z_]\w*)\s*\(",
-                block,
-            )
-            if unsupported:
+        allowed_names: set[ast.Name] = set()
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Subscript):
+                continue
+            parent = parents.get(node)
+            if isinstance(parent, ast.Subscript) and parent.value is node:
+                continue
+            chain = _subscript_chain(node)
+            if chain is None:
+                roots = [
+                    name for name in ast.walk(node)
+                    if isinstance(name, ast.Name) and name.id in vars_
+                ]
+                if roots:
+                    raise PreflightError(
+                        f"unsupported manifest access dynamic subscript on {roots[0].id!r}"
+                    )
+                continue
+            root, keys = chain
+            if root not in vars_:
+                continue
+            if isinstance(parent, ast.Attribute) or (
+                isinstance(parent, ast.Call) and parent.func is node
+            ):
                 raise PreflightError(
-                    f"unsupported manifest access {unsupported.group(1)!r} on {var!r}"
+                    f"unsupported manifest access derived use on {root!r}"
                 )
-            chain_re = re.compile(
-                rf"\b{re.escape(var)}(?:\[(?:\"[^\"]+\"|'[^']+')\])+"
-            )
-            for chain in chain_re.findall(block):
-                keys = tuple(
-                    match.group(2)
-                    for match in re.finditer(r"\[([\"'])([^\"']+)\1\]", chain)
+            block_paths.add(keys)
+            current: ast.expr = node
+            while isinstance(current, ast.Subscript):
+                current = current.value
+            if isinstance(current, ast.Name):
+                allowed_names.add(current)
+
+        for node in ast.walk(tree):
+            if (
+                isinstance(node, ast.Name)
+                and node.id in vars_
+                and isinstance(node.ctx, ast.Load)
+                and node not in allowed_names
+            ):
+                raise PreflightError(
+                    f"unsupported manifest access on {node.id!r}"
                 )
-                if keys:
-                    block_paths.add(keys)
+
         if not block_paths:
             raise PreflightError(
                 f"job {job_name!r} reads runtime manifest but no statically verifiable key references were extracted"
@@ -506,7 +673,7 @@ def check_contract(workflow: str, generator: str) -> dict:
         )
     return {
         "status": "PASS",
-        "full_history_required": "git merge-base --is-ancestor" in workflow,
+        "full_history_required": _workflow_has_ancestry_guard(workflow),
         "runtime_manifest": emitted,
         "workflow_runtime_manifest_names": sorted(used_names),
         "asserted_manifest_keys": sorted(_display_path(path) for path in asserted),
