@@ -2981,6 +2981,20 @@
         "run_id": "R250-post-r248-next-method-research-20260923"
       },
       "revision": 228
+    },
+    {
+      "revision": 229,
+      "action": "transfer",
+      "job": "R249",
+      "owner": "coordinator",
+      "payload": {
+        "from_owner": "phase2-scalar-compliance-research",
+        "to_owner": "phase2-scalar-compliance-independent-audit",
+        "reason": "Previous recipient documented a repo-enabled Work-mode blocker and did not claim/start; same R249 remains QUEUED with attempts=[] and is transferred append-only to an existing capable session.",
+        "run_exists": false,
+        "started_attempts": 0
+      },
+      "at": "2026-09-23T06:00:30+00:00"
     }
   ],
   "jobs": [
@@ -4758,7 +4772,7 @@
       "reason": "R248 DEVELOPMENT NO-GO before estimator/public measurement. Distinct candidate V25-KRON1-YOUNG-TRANSPORT passed frozen novelty/static-cost/source-contract gates (conservative FLOP ratio 0.886473932833993 <=0.9), but the target-free oracle rank-1 Kronecker transport falsifier failed decisively: exact-Kronecker control RRMS 4.812580056623063e-16 PASS; 8/8 finite deterministic realistic cases; mean transported A/P RRMS 0.9846514161220152 vs <=0.012 and max any RRMS 0.9913359558380901 vs <=0.015. Per protocol no estimator, validation, benchmark, public mini-100 or Actions was run. No R223/R244 candidate artifact/output read, paid/private/holdout/submission/leaderboard/canonical edit, retry or second mechanism."
     },
     {
-      "assigned_owner": "phase2-scalar-compliance-research",
+      "assigned_owner": "phase2-scalar-compliance-independent-audit",
       "deliverable": "Research the official Phase-2 eligibility/metering boundary for Python scalar arithmetic in estimator predict code. Use primary sources only: pinned official AIcrowd starter-kit Allowed Code, code-patterns and FlopScope primer; current published Challenge Rules; official FlopScope client docs/source and any first-party organizer clarification that already exists. Treat R245 report as context only, not as evidence. Classify separately: (1) fnp.ndarray operators, (2) fnp.sqrt/divide and other primitives, (3) shape-derived scalar arithmetic such as 2/width passed into fnp ops, (4) output-affecting CPython math.* and coefficient calculations, (5) control/bookkeeping/loading. For each, cite exact source/version/hash and distinguish confirmed allowed, confirmed prohibited, and unresolved. Do not contact organizers; do not inspect R223/R244 candidate artifacts/output; no estimator/benchmark/Actions, private/holdout, paid compute, submission or leaderboard mutation. Write findings as one concise source-linked Markdown file in `research/r249/R249_SCALAR_METERING_ELIGIBILITY.md`; use that file URL and SHA256 as the R249 finish receipt.",
       "depends_on": [
         "R245"
@@ -4796,7 +4810,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 228,
+  "revision": 229,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
