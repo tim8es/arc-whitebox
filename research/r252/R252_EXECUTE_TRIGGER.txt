@@ -1,0 +1,13 @@
+R252 ONE-SHOT EXECUTION ARM
+job=R252
+run_id=R252-one-shot-actions-global-accuracy-20260923
+authorized_actions_runs=1
+retry_authorized=false
+runner=ubuntu-24.04 standard GitHub-hosted
+python=3.11.16
+protocol_blob=c04cc77676429584453668ded8a81f14f326a2f4
+workflow_blob=608ea92fd571a8eac4d6ae5aa38e806c112f2cba
+fixture_manifest_blob=93149ac04496b34497703b8c755ff1774c899e3b
+candidate=V25-CFSP4-FINAL-CORNISH-FISHER-SIGMA-POINT
+parent_first=true
+public_conditional_on_all_target_free_source_cost_gates=true
