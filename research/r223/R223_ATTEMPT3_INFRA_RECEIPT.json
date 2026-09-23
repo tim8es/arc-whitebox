@@ -1,0 +1,69 @@
+{
+  "schema": "arc.whitebox.r223.attempt3_infra_receipt.v1",
+  "job_id": "R223",
+  "attempt": 3,
+  "status": "INFRA_ERROR",
+  "decision": "R223_ATTEMPT3_PRE_PANEL_EXACT_BYTE_TRANSFORM_EOF_MISMATCH",
+  "branch": "research/r223-v25-isolated-improvement-20260922",
+  "queue": {
+    "start_revision": 169,
+    "start_control_commit": "1a1a64fd2937f2d2124f4bb451503af1e378d4e7",
+    "run_id": "R223-v25-local-feed-attempt3-20260923",
+    "code_commit": "32aff4ec72edb2210069e7cb1d9999dbe627202b"
+  },
+  "execution": {
+    "actions_run_id": 35809243000,
+    "actions_job_id": 107016834321,
+    "head_sha": "5b49874e01cac67427afcb4887a7cb778a5386e4",
+    "github_conclusion": "failure",
+    "free_standard_compute_gate_passed": true,
+    "toolchain_distribution_gate_passed": true,
+    "pinned_upstream_checkout_started": true,
+    "pinned_parent_git_blob_verified": true,
+    "exact_transform_guard_started": true,
+    "parent_artifact_download_started": false,
+    "whest_validate_started": false,
+    "candidate_panel_run_started": false,
+    "candidate_rows": null
+  },
+  "failure": {
+    "phase": "pre-panel exact byte-transform provenance guard",
+    "exception": "AssertionError: candidate differs from exact preregistered V25->V25-LF transform",
+    "guard_progress": "The verifier first proved that the current candidate equals the immutable attempt-1 candidate after replacing only the literal docstring backslash-n with an LF. It then failed only on full parent->candidate byte equality.",
+    "read_only_root_cause": {
+      "pinned_parent_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+      "pinned_parent_blob_length": 62060,
+      "pinned_parent_ends_with_lf": true,
+      "attempt1_candidate_blob": "a09ec139bc7399f169ace02cf587d55bc1c8771b",
+      "attempt1_candidate_blob_length": 62586,
+      "attempt1_candidate_ends_with_lf": false,
+      "attempt2_3_candidate_blob": "a53f07513109abe24a58d91144cd202c19b77790",
+      "attempt2_3_candidate_blob_length": 62585,
+      "attempt2_3_candidate_ends_with_lf": false,
+      "textual_diff_after_preregistered_transform_ignoring_eof": "none",
+      "remaining_byte_difference": "one terminal LF at EOF"
+    },
+    "scientific_interpretation": "No panel measurement occurred. The V25-LF arithmetic remains scientifically unevaluated."
+  },
+  "artifact": {
+    "id": 10729126405,
+    "name": "r223-v25-local-feed-mini100-attempt3",
+    "size_bytes": 35704,
+    "zip_sha256": "054f1c82ce0434fc00a60bd404f251ecea0291c98efef257bb225d9d49ea92ef",
+    "expires_at": "2026-12-22T02:09:44Z"
+  },
+  "scope": {
+    "estimator_arithmetic_changed": false,
+    "formula_changed": false,
+    "clamp_changed": false,
+    "panel_changed": false,
+    "thresholds_changed": false,
+    "public_mini_candidate_run": false,
+    "parent_rerun": false,
+    "paid_or_larger_runner": false,
+    "holdout_private": false,
+    "submission": false,
+    "canonical_change": false,
+    "leaderboard_claim": false
+  }
+}
