@@ -1,0 +1,68 @@
+{
+  "schema": "arc.whitebox.r242.integration_receipt.v1",
+  "job_id": "R242",
+  "owner": "independent-v25-audit",
+  "run_id": "R242-r223-attempt6-normalize-registry-20260923",
+  "status": "COMPLETE_PENDING_QUEUE_FINISH",
+  "verdict": "SCIENTIFIC_REJECT",
+  "development_decision": "R223_SCIENTIFIC_REJECT_DROP_V25_LOCAL_FEED",
+  "source": {
+    "artifact_id": 10730459690,
+    "artifact_name": "r223-v25-local-feed-mini100-attempt6",
+    "artifact_zip_sha256": "f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00",
+    "r240_receipt_path": "research/r240/R240_RECEIPT.json",
+    "r240_receipt_blob": "f9f19b6313a5b302e2f1d6a40014a5d55ef5494a",
+    "r240_receipt_sha256": "e75ec5e2641df59887cf38520e9d9f3a449731fa5fcac481398433c4c4ac8bbd"
+  },
+  "normalized_result": {
+    "path": "research/results/R223-v25-local-feed-mini100.json",
+    "commit": "cced07bca1f63608321be5ac21b3167a0971e82e",
+    "git_blob": "c8b617c43ff1145977c38e7e1cca6d23985ec392",
+    "sha256": "3c8633826ac2efb74db73ba7f5640ec34f0ebb8c91c517f0cf418b6794184587",
+    "rows": 100,
+    "failures": 0,
+    "mean_raw_mse": 2.2284993050902814e-8,
+    "mean_adjusted_score": 8.171116513490032e-9,
+    "mean_measured_flops": 806303829485,
+    "artifact_row_projection_sha256": "113528ea2ed6fa59564099f29295ce94adca4be4f47910e765e39dfc716cf292",
+    "committed_row_projection_sha256": "113528ea2ed6fa59564099f29295ce94adca4be4f47910e765e39dfc716cf292",
+    "identity_mismatches_vs_authenticated_R209_parent": 0,
+    "score_mismatches": 0,
+    "panel_exact_vs_R209_parent": true,
+    "parent_id": "R209-v25-mini100"
+  },
+  "registry": {
+    "check": "PASS: 7 normalized results",
+    "compare": {
+      "candidate": "R223-v25-local-feed-mini100",
+      "parent": "R209-v25-mini100",
+      "networks": 100,
+      "score_ratio": 1.000088009595381,
+      "paired_gain_mean": -7.190733728024271e-13,
+      "paired_gain_se": 1.4922201293529363e-12,
+      "improved_networks": 50,
+      "worst_score_degradation": 4.0325608174922025e-11,
+      "interpretation": "SE across networks; not a significance or holdout claim"
+    }
+  },
+  "status_refresh": {
+    "integration_commit": "c3831b1f469dcc37ad85a1786e590b50b925ec8f",
+    "git_blob": "bbb7f9853f1b1c2d807d90afb89e0d1d37c3ed33",
+    "sha256": "a38a66055f323265cea5a7448d579ccce41bae66efddc0632ace1b3a1a16bf0b",
+    "generated_from_queue_revision": 202,
+    "result_row_present": true,
+    "parent_comparison_present": true,
+    "note": "Queue finish performs the final terminal-state STATUS refresh."
+  },
+  "claim_boundary": "Same exposed mini-100 development panel only. Preserve SCIENTIFIC_REJECT/DEVELOPMENT NO-GO; no leaderboard, holdout, submission-readiness or competition claim.",
+  "scope": {
+    "estimator_or_benchmark_run": false,
+    "actions_triggered": false,
+    "retry_or_repair": false,
+    "candidate_or_canonical_edit": false,
+    "paid_compute": false,
+    "holdout_or_private": false,
+    "submission": false,
+    "leaderboard_change": false
+  }
+}
