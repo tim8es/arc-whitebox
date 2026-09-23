@@ -1,0 +1,114 @@
+{
+  "accounting": {
+    "actions_runs": 0,
+    "benchmarks_or_estimator_runs": 0,
+    "data_or_dependency_downloads": 0,
+    "dependency_installs": 0,
+    "leaderboard_or_canonical_edits": 0,
+    "paid_resources": false,
+    "pr36_edits": 0,
+    "private_holdout_full_access": 0,
+    "real_capture_vectors_inspected": 0,
+    "submissions": 0
+  },
+  "artifacts": {
+    "analyzer": {
+      "git_blob_sha1": "f1d5a9da7872ff6e632fef1e6c7dd2c90a6091ea",
+      "path": "research/r298/r298_capture_analyzer.py",
+      "sha256": "916cbaf658009a9805d9f2bd1a6127a8c3a0db093440cb05d7a435dae264b3d4"
+    },
+    "code_commit": "95cd3175129a0cfba740e7a0249a3f1131bb0ffc",
+    "report": {
+      "commit": "9586d8c89f268dfa250c10145df21e39c5525d95",
+      "git_blob_sha1": "1a7b9521c9945bbb9a3443a83c1b139e87213802",
+      "path": "research/r298/R298_REPORT.md"
+    },
+    "selfcheck": {
+      "git_blob_sha1": "e05443ffece962cf54c8b568c1536b60a2c071fb",
+      "path": "research/r298/r298_capture_analyzer_selfcheck.py",
+      "sha256": "84f7230eb2ed6cd8693a93aaf3147e14d29284a99f0d53f21efbb2fdbf6b449c"
+    }
+  },
+  "branch": "research/r298-capture-analysis-prep-20260924",
+  "control": {
+    "claim_commit": "90c96778edec9935d3dbf3082bd98586fb716586",
+    "claim_revision": 433,
+    "start_commit": "9ac138922ad4eb0bfa1b65c7c44b1c9255768097",
+    "start_revision": 434
+  },
+  "decision": "ANALYZER_PREPARED_SYNTHETICALLY_VERIFIED_NO_REAL_CAPTURE",
+  "frozen_rule": {
+    "eval": "p_corrected = p + d on EVAL only",
+    "fit": "d = mean_FIT(target-pred)",
+    "forbidden_tuning": [
+      "alpha",
+      "rank",
+      "sign",
+      "selector",
+      "per-network scalar",
+      "feature",
+      "normalization",
+      "network-specific tuning"
+    ],
+    "split": "lexicographic decimal network_id strings; first 50 FIT, last 50 EVAL"
+  },
+  "job": "R298",
+  "owner": "r288-capture-analysis-prep-r269",
+  "pre_data_arithmetic_supplement": {
+    "classification": "offline diagnostic only; not official WhestBench adjusted score",
+    "corrected_prediction": "binary32(pred+d)",
+    "corrected_residual": "binary32(target-corrected_prediction)",
+    "d": "binary32(math.fsum(50 decoded binary32 FIT residuals)/50) per coordinate",
+    "mse": "math.fsum(decoded_binary32_residual**2)/1024 in Python binary64",
+    "paired": "mean via math.fsum/n; sample SD n-1; SE=SD/sqrt(n); statistics.median",
+    "reason": "R278 did not specify offline floating-point accumulation/rounding; supplement frozen before any real capture inspection"
+  },
+  "reason": "Prepared a standard-library fail-closed analyzer for the frozen R278/R288/R291 capture contract and verified it only on synthetic data/corruption cases. No real capture was inspected and no benchmark or Actions run occurred.",
+  "run_id": "R298-capture-analysis-prep-20260924",
+  "schema": "arc.whitebox.r298.capture_analysis_prep.receipt.v1",
+  "selfcheck": {
+    "checks": [
+      "valid_fixture",
+      "split_50_50",
+      "frozen_rule_only",
+      "failure_retained",
+      "materiality_gates_exercised",
+      "offline_label",
+      "production_pins_frozen",
+      "reject_bad_sums",
+      "reject_duplicate_id",
+      "reject_split_mismatch",
+      "reject_target_fingerprint",
+      "reject_failure_flag_mismatch",
+      "reject_residual_corruption"
+    ],
+    "command": "python research/r298/r298_capture_analyzer_selfcheck.py",
+    "passed_checks": 13,
+    "python": "3.13.5",
+    "required_checks": 13,
+    "result": "PASS"
+  },
+  "sources": {
+    "r278_protocol": {
+      "commit": "83dfbe710cad5fbb1cab6e5b6fce0ccd06d47966",
+      "git_blob_sha1": "0ccc6b20fb4a8ad1c62a95d98dea4681970bb97d"
+    },
+    "r288_capture_contract": {
+      "commit": "cac87b0377674d3591b69f2b09db1873e8df9747",
+      "git_blob_sha1": "3b0d21fab8b668e22ae4d08022bfbf27452c8cb5"
+    },
+    "r291_expected_panel": {
+      "commit": "54658e100314f398007e6ed7525550cc5db6706c",
+      "git_blob_sha1": "caf813cd5eab771108f105fe050fd6631b298733"
+    },
+    "r291_harness": {
+      "commit": "54658e100314f398007e6ed7525550cc5db6706c",
+      "git_blob_sha1": "3e438c0f6b87ab2fa90c1fc71bbf3cfea1e9052d"
+    },
+    "r291_selfcheck": {
+      "commit": "54658e100314f398007e6ed7525550cc5db6706c",
+      "git_blob_sha1": "265688d5bd80dc05a0469cfdc3e6239ae5d3921d"
+    }
+  },
+  "status": "COMPLETE"
+}
