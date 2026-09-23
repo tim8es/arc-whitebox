@@ -1,0 +1,102 @@
+{
+  "schema": "arc.whitebox.r273.error_concentration.v1",
+  "task": "R273",
+  "owner": "score-gap-independent-audit",
+  "run_id": "R273-v25-error-concentration-20260923",
+  "source": {
+    "path": "research/results/R209-v25-mini100.json",
+    "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "panel": "public development mini:all-100",
+    "evaluator": "whestbench 0.16.1",
+    "meter": "flopscope 0.12.1+np2.4.6"
+  },
+  "official_scoring_source": {
+    "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/concepts/scoring-model.md",
+    "git_blob_sha1": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e",
+    "formula": "final_mse * max(0.1, measured_flops / budget_flops), mean across MLPs; failures use multiplier 1.0"
+  },
+  "conventions": {
+    "sd": "sample SD with denominator n-1 across networks",
+    "se": "sample SD / sqrt(n)",
+    "quantiles": "Hyndman-Fan type 7 / linear interpolation with h=(n-1)p",
+    "worst_fraction": "sort descending by adjusted score; n=100 means exact top 10 and top 25"
+  },
+  "row_verification": {
+    "n": 100,
+    "failures": 0,
+    "rows_formula_exact_equal": 100,
+    "max_abs_formula_minus_recorded": 0,
+    "unique_measured_flops": [
+      806303721965
+    ],
+    "unique_budget_flops": [
+      2199023255552
+    ],
+    "exact_cost_factor_decimal": "0.36666448157347986125387251377105712890625"
+  },
+  "adjusted_score": {
+    "mean": 8.170397440117225e-9,
+    "sample_sd": 1.1587653552315885e-9,
+    "se": 1.1587653552315885e-10,
+    "min": 5.269560766710126e-9,
+    "p05": 6.385327324593524e-9,
+    "p10": 6.475717079694986e-9,
+    "p25": 7.267271249107595e-9,
+    "p50": 8.351256307996911e-9,
+    "p75": 8.874482886497207e-9,
+    "p90": 9.573278620054346e-9,
+    "p95": 1.0125841648708702e-8,
+    "max": 1.1105773382971547e-8,
+    "coefficient_of_variation": 0.14182484557507194
+  },
+  "final_mse": {
+    "mean": 2.228303490170447e-8,
+    "sample_sd": 3.160287983878172e-9,
+    "se": 3.160287983878172e-10,
+    "min": 1.4371615009167726e-8,
+    "p05": 1.7414632846879385e-8,
+    "p10": 1.7661151829884147e-8,
+    "p25": 1.981994879329818e-8,
+    "p50": 2.2776289299031305e-8,
+    "p75": 2.420327938068567e-8,
+    "p90": 2.6109097284177096e-8,
+    "p95": 2.7616096343052732e-8,
+    "max": 3.028865336318631e-8,
+    "coefficient_of_variation": 0.1418248455750718
+  },
+  "concentration": {
+    "worst_1_share_of_total_score": 0.013592696639751477,
+    "worst_5_share_of_total_score": 0.06471417664447711,
+    "worst_10_share_of_total_score": 0.1247245090733508,
+    "worst_25_share_of_total_score": 0.2931306724898917,
+    "remaining_90_share": 0.8752754909266492,
+    "remaining_75_share": 0.7068693275101083,
+    "top10_share_relative_to_equal_share_baseline": 1.247245090733508,
+    "top25_share_relative_to_equal_share_baseline": 1.1725226899595669,
+    "diagnostic_trimmed_mean_after_removing_worst_10": 7.945942922738269e-9,
+    "diagnostic_trimmed_mean_reduction_vs_full_mean": 0.02747167674816753,
+    "diagnostic_trimmed_mean_after_removing_worst_25": 7.7005377919813e-9,
+    "diagnostic_trimmed_mean_reduction_vs_full_mean_25": 0.05750756331985529
+  },
+  "cost_vs_mse_variation": {
+    "cost_factor_sample_sd": 0,
+    "cost_factor_cv": 0,
+    "mse_sample_variance": 9.98742014104476e-18,
+    "score_sample_variance": 1.3427371484849892e-18,
+    "cost_factor_squared_times_mse_variance": 1.3427371484849879e-18,
+    "relative_variance_identity_error_from_binary_floating_point": 1.0040319228466899e-15,
+    "score_mse_correlation": 0.9999999999999993,
+    "conclusion": "Across these 100 rows the compute multiplier is constant, so cost variation contributes zero to cross-network score dispersion; adjusted-score dispersion is exactly the scaled MSE dispersion."
+  },
+  "interpretation": {
+    "classification": "BROAD_BASED_NOT_OUTLIER_DOMINATED",
+    "basis": "Worst 10% contribute 12.47% rather than a dominant fraction; worst 25% contribute 29.31%; largest single row is 1.36%. The bulk 90% still contributes 87.53% of total score.",
+    "global_research_implication": "Large score reductions require a globally applicable mechanism that moves the center and broad bulk of the MSE distribution, not special treatment of a few high-error networks. Evaluation should track central quantiles and tail regressions under one fixed global method/configuration with no per-network selection."
+  },
+  "limitations": [
+    "Descriptive development evidence only on R209 public mini:all-100.",
+    "No leaderboard comparison, rank, or same-panel external gap is inferred.",
+    "Network-level descriptive SE is not a held-out significance guarantee.",
+    "No estimator, Actions, new data access, paid/private/holdout/full evaluation, tuning, submission, model, leaderboard, or canonical edit."
+  ]
+}
