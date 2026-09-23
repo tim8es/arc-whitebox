@@ -4746,6 +4746,14 @@
         "command": "metadata/docs-only audit of official AIcrowd/whestbench/Hugging Face sources for exact Phase-2 visible-50 local reproducibility; no benchmark data download, estimator/benchmark run, Actions, submission, sealed/private/full access"
       },
       "at": "2026-09-23T15:24:00+00:00"
+    },
+    {
+      "revision": 354,
+      "action": "claim",
+      "job": "R278",
+      "owner": "residual-structure-diagnostic",
+      "payload": {},
+      "at": "2026-09-23T15:26:01.493Z"
     }
   ],
   "jobs": [
@@ -7578,8 +7586,8 @@
     {
       "id": "R278",
       "assigned_owner": "residual-structure-diagnostic",
-      "owner": null,
-      "status": "QUEUED",
+      "owner": "residual-structure-diagnostic",
+      "status": "CLAIMED",
       "attempts": [],
       "title": "Test for a global residual direction in V25 errors",
       "hypothesis_id": "V25-CROSS-NETWORK-RESIDUAL-STRUCTURE-20260923",
@@ -7628,7 +7636,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 353,
+  "revision": 354,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
