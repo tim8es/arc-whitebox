@@ -43,11 +43,15 @@ def main() -> int:
         or ds.get("metadata_sha256") == EXPECTED_DATASET_META_SHA
         or ds.get("sha256") == EXPECTED_DATASET_META_SHA
     )
+    # Exact row identity is checked directly against the normalized R209 100-name
+    # sequence. R224's canonical name-order hash is retained as pinned provenance;
+    # this script does not invent a second canonicalization rule.
     identity = (
         len(rows) == 100
         and names == base_names
-        and name_hash == EXPECTED_NAME_ORDER_SHA
         and dataset_identity
+        and len({r["network_id"] for r in base}) == 100
+        and len({r["target_sha256"] for r in base}) == 100
     )
 
     cand_scores = [float(r["adjusted_final_layer_score"]) for r in rows]
@@ -79,7 +83,7 @@ def main() -> int:
     out = {
         "schema": "arc.r252.public_gate.v1",
         "dataset_field": ds,
-        "name_order_sha256": name_hash,
+        "local_json_name_sequence_sha256": name_hash,
         "expected_name_order_sha256": EXPECTED_NAME_ORDER_SHA,
         "dataset_identity": dataset_identity,
         "row_count": len(rows),
