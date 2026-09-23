@@ -3539,10 +3539,10 @@
       "owner": "bpk2k-one-shot-run-responsive",
       "payload": {
         "code_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
-        "protocol_commit": "f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33",
-        "workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
         "command": "create exactly one commit on research/r258-bpk2k-full-history-one-shot-20260923 adding only research/r258/R258_RUN_ARM.json atop workflow commit 47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2; that push triggers .github/workflows/r258-one-shot.yml once. Protocol commit f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33; run_id R258-BPK2K-ONE-SHOT-20260923-A1. No rerun/second workflow.",
-        "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1"
+        "protocol_commit": "f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33",
+        "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1",
+        "workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2"
       },
       "revision": 266
     },
@@ -3552,19 +3552,37 @@
       "job": "R258",
       "owner": "bpk2k-one-shot-run-responsive",
       "payload": {
+        "artifact_id": 10740674582,
+        "artifact_zip_sha256": "4109b2e0c6cd5e7380bf60dcf1a5efe621af9df9bbe5dee6d142410efdb6ec9f",
+        "github_job_id": 107113033506,
+        "github_run_id": 35840156117,
         "reason": "R258 terminal INFRA_ERROR before parent/candidate science. Exactly one authorized Actions run 35840156117/job 107113033506/attempt 1 was triggered by arm commit 1d4998148c7a3e374002c00fdebddcf713e95daa; artifact 10740674582 ZIP SHA256 4109b2e0c6cd5e7380bf60dcf1a5efe621af9df9bbe5dee6d142410efdb6ec9f. The R257 shallow-history defect was repaired: checkout fetch-depth:0, protocol ancestry, source/blob/SHA checks, pinned Python 3.11.16/NumPy 2.4.6/FlopScope 0.12.1/WhestBench 0.16.1 wheel checks, V25 parent download/hash, and fixture generation/replay all passed. The fixture script persisted r258_artifacts/fixture/R254_FIXTURE_RUNTIME_MANIFEST.json, but the unchanged R257 workflow-side assertion attempted r258_artifacts/fixture/R254_RUNTIME_FIXTURE_MANIFEST.json and failed FileNotFoundError exit 1. Parent estimator execution, BPK2K construction/execution, target-free measurements, validation, live R209 identity/public mini-100/public gates did not execute; counts are 0/0/0 and science is UNEVALUATED. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edit, or R254/R257 history rewrite. Sealed report/receipt commit d99a52d0d3cf0f1c946de78173588bc258e74b54.",
         "receipt": {
           "sha256": "60e0ed2e62a400c5738a1da63c88b59c47352c5e872ec8f1e7935f60091472ef",
           "url": "https://github.com/tim8es/arc-whitebox/blob/d99a52d0d3cf0f1c946de78173588bc258e74b54/research/r258/R258_RECEIPT.json"
         },
         "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1",
-        "github_run_id": 35840156117,
-        "github_job_id": 107113033506,
-        "artifact_id": 10740674582,
-        "artifact_zip_sha256": "4109b2e0c6cd5e7380bf60dcf1a5efe621af9df9bbe5dee6d142410efdb6ec9f",
         "status": "INFRA_ERROR"
       },
       "revision": 267
+    },
+    {
+      "action": "enqueue",
+      "at": "2026-09-23T09:05:07Z",
+      "job": "R259",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "bpk2k-one-shot-run-responsive",
+        "deliverable": "One distinct successor after terminal R258 INFRA_ERROR, based on R258 terminal report/receipt commit d99a52d0d3cf0f1c946de78173588bc258e74b54. Preserve frozen R258 protocol and all science/gates. First independently read research/r254/r254_fixture.py and assert that its actual emitted file is R254_FIXTURE_RUNTIME_MANIFEST.json; correct only the R259 workflow's expected fixture-manifest path (no fixture generator, BPK2K, parent, timing helper, thresholds, source/meter, or R209 data change). Add a workflow preflight that statically verifies the expected manifest name matches the generator source before setup/science; then reconstruct fixture and validate the emitted file exists, replay is exact, and all 16 hashes match before parent execution. Preserve fetch-depth:0, ancestry/source hashes and R258 pins. Create a fresh R259 protocol/manifest/workflow/run ID R259-BPK2K-ONE-SHOT-20260923-A1; one path-filtered arm push triggers exactly one standard free ubuntu-24.04 workflow/attempt. Publish claim/start with exact workflow SHA and command before trigger. Use pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1 and WhestBench 0.16.1 hashes. Unchanged V25 parent first; only after parent PASS run unchanged BPK2K on exact fixture seed 254001. Keep original target-free gates exactly: final MSE<=0.95, all-layer<=0.98, >=12 improved layers, max degradation<=1.10, candidate FLOPs<=parent, residual<=1.05*parent+0.005 and source/finite/symmetry/shape checks; unknown timing fails closed. If any gate fails, stop and accurately report. Public R209 mini100 only in same run after target-free+validation GO and exact row/order/network/target hashes; frozen gates failures=0, adjusted<=7.761877568111363e-9, >=55 improved, paired gain>2 descriptive SE, mean FLOPs<=806303721965, max residual<0.4s. No retries/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edits or history rewrites. Preserve raw per-network evidence and hashes if reached, finish the queue and regenerate STATUS; distinguish workflow conclusion from scientific result.",
+        "depends_on": [
+          "R255",
+          "R256"
+        ],
+        "hypothesis_id": "R259-BPK2K-ONE-SHOT-FIXTURE-PATH",
+        "priority": 1,
+        "title": "Run frozen BPK2K after fixture-manifest path preflight repair"
+      },
+      "revision": 268
     }
   ],
   "jobs": [
@@ -5688,24 +5706,24 @@
       "attempts": [
         {
           "code_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
-          "protocol_commit": "f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33",
-          "workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2",
           "command": "create exactly one commit on research/r258-bpk2k-full-history-one-shot-20260923 adding only research/r258/R258_RUN_ARM.json atop workflow commit 47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2; that push triggers .github/workflows/r258-one-shot.yml once. Protocol commit f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33; run_id R258-BPK2K-ONE-SHOT-20260923-A1. No rerun/second workflow.",
-          "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1",
-          "status": "INFRA_ERROR",
           "completion": {
+            "artifact_id": 10740674582,
+            "artifact_zip_sha256": "4109b2e0c6cd5e7380bf60dcf1a5efe621af9df9bbe5dee6d142410efdb6ec9f",
+            "github_job_id": 107113033506,
+            "github_run_id": 35840156117,
             "reason": "R258 terminal INFRA_ERROR before parent/candidate science. Exactly one authorized Actions run 35840156117/job 107113033506/attempt 1 was triggered by arm commit 1d4998148c7a3e374002c00fdebddcf713e95daa; artifact 10740674582 ZIP SHA256 4109b2e0c6cd5e7380bf60dcf1a5efe621af9df9bbe5dee6d142410efdb6ec9f. The R257 shallow-history defect was repaired: checkout fetch-depth:0, protocol ancestry, source/blob/SHA checks, pinned Python 3.11.16/NumPy 2.4.6/FlopScope 0.12.1/WhestBench 0.16.1 wheel checks, V25 parent download/hash, and fixture generation/replay all passed. The fixture script persisted r258_artifacts/fixture/R254_FIXTURE_RUNTIME_MANIFEST.json, but the unchanged R257 workflow-side assertion attempted r258_artifacts/fixture/R254_RUNTIME_FIXTURE_MANIFEST.json and failed FileNotFoundError exit 1. Parent estimator execution, BPK2K construction/execution, target-free measurements, validation, live R209 identity/public mini-100/public gates did not execute; counts are 0/0/0 and science is UNEVALUATED. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edit, or R254/R257 history rewrite. Sealed report/receipt commit d99a52d0d3cf0f1c946de78173588bc258e74b54.",
             "receipt": {
               "sha256": "60e0ed2e62a400c5738a1da63c88b59c47352c5e872ec8f1e7935f60091472ef",
               "url": "https://github.com/tim8es/arc-whitebox/blob/d99a52d0d3cf0f1c946de78173588bc258e74b54/research/r258/R258_RECEIPT.json"
             },
             "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1",
-            "github_run_id": 35840156117,
-            "github_job_id": 107113033506,
-            "artifact_id": 10740674582,
-            "artifact_zip_sha256": "4109b2e0c6cd5e7380bf60dcf1a5efe621af9df9bbe5dee6d142410efdb6ec9f",
             "status": "INFRA_ERROR"
-          }
+          },
+          "protocol_commit": "f123a7f6b0f1b0e12314e6a4c9c21980fd3a6a33",
+          "run_id": "R258-BPK2K-ONE-SHOT-20260923-A1",
+          "status": "INFRA_ERROR",
+          "workflow_commit": "47d8ff5eef1cc70a60e7c9cb9ad10c3cec1a0cc2"
         }
       ],
       "deliverable": "One distinct successor evaluation after terminal R257 INFRA_ERROR. Base from immutable R257 terminal commit c4b46ecacba1876613a6e11b678399d0b1fd83ba and preserve the exact R256 typed harness, BPK2K source/math, parent, fixture/seed/hashes, thresholds, R209 data and public identity. The only execution-infrastructure fix is actions/checkout with fetch-depth: 0 so the protocol commit b63936a38bc0e3a6394b00f2ef1d484311aff9e4 exists for the frozen ancestry guard; verify branch ancestry and all source/fixture hashes before runtime/science. Create a fresh R258 protocol, run ID R258-BPK2K-ONE-SHOT-20260923-A1, one path-filtered workflow and one arm push. Publish claim/start on latest control head with exact workflow/code SHA before trigger. Use standard free ubuntu-24.04 and pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1, WhestBench 0.16.1 hashes. One workflow only: unchanged V25 parent first on exact seed-254001 fixture; only after parent PASS execute unchanged BPK2K candidate. Keep every R254 target-free gate unchanged (final MSE <=0.95, all-layer <=0.98, >=12 improved layers, max per-layer degradation <=1.10, FLOPs<=parent, candidate residual<=1.05*parent+0.005, source/symmetry/finite/shape). Missing timing fails closed. If parent/infra gate fails, terminal INFRA_ERROR/INCONCLUSIVE and stop. Candidate target-free failure => SCIENTIFIC_REJECT and no public access. Only after all source/target-free/cost gates pass may the same workflow validate exact R209 100-row metadata/order/network/target hashes and run public mini-100; require failures=0, adjusted<=7.761877568111363e-9, >=55 improved, paired gain>2 descriptive SE, mean FLOPs<=806303721965, max residual<0.4s. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edits or R254/R257 history rewrite. Preserve receipt+artifact hashes and raw per-network rows if reached, distinguish GitHub workflow conclusion from research/scientific status, finish queue and regenerate STATUS.",
@@ -5717,17 +5735,32 @@
       "id": "R258",
       "owner": "bpk2k-one-shot-run-responsive",
       "priority": 1,
-      "status": "INFRA_ERROR",
-      "title": "Run frozen BPK2K once after full-history checkout repair",
       "reason": "R258 terminal INFRA_ERROR before parent/candidate science. Exactly one authorized Actions run 35840156117/job 107113033506/attempt 1 was triggered by arm commit 1d4998148c7a3e374002c00fdebddcf713e95daa; artifact 10740674582 ZIP SHA256 4109b2e0c6cd5e7380bf60dcf1a5efe621af9df9bbe5dee6d142410efdb6ec9f. The R257 shallow-history defect was repaired: checkout fetch-depth:0, protocol ancestry, source/blob/SHA checks, pinned Python 3.11.16/NumPy 2.4.6/FlopScope 0.12.1/WhestBench 0.16.1 wheel checks, V25 parent download/hash, and fixture generation/replay all passed. The fixture script persisted r258_artifacts/fixture/R254_FIXTURE_RUNTIME_MANIFEST.json, but the unchanged R257 workflow-side assertion attempted r258_artifacts/fixture/R254_RUNTIME_FIXTURE_MANIFEST.json and failed FileNotFoundError exit 1. Parent estimator execution, BPK2K construction/execution, target-free measurements, validation, live R209 identity/public mini-100/public gates did not execute; counts are 0/0/0 and science is UNEVALUATED. No retry/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edit, or R254/R257 history rewrite. Sealed report/receipt commit d99a52d0d3cf0f1c946de78173588bc258e74b54.",
       "receipt": {
         "sha256": "60e0ed2e62a400c5738a1da63c88b59c47352c5e872ec8f1e7935f60091472ef",
         "url": "https://github.com/tim8es/arc-whitebox/blob/d99a52d0d3cf0f1c946de78173588bc258e74b54/research/r258/R258_RECEIPT.json"
-      }
+      },
+      "status": "INFRA_ERROR",
+      "title": "Run frozen BPK2K once after full-history checkout repair"
+    },
+    {
+      "assigned_owner": "bpk2k-one-shot-run-responsive",
+      "attempts": [],
+      "deliverable": "One distinct successor after terminal R258 INFRA_ERROR, based on R258 terminal report/receipt commit d99a52d0d3cf0f1c946de78173588bc258e74b54. Preserve frozen R258 protocol and all science/gates. First independently read research/r254/r254_fixture.py and assert that its actual emitted file is R254_FIXTURE_RUNTIME_MANIFEST.json; correct only the R259 workflow's expected fixture-manifest path (no fixture generator, BPK2K, parent, timing helper, thresholds, source/meter, or R209 data change). Add a workflow preflight that statically verifies the expected manifest name matches the generator source before setup/science; then reconstruct fixture and validate the emitted file exists, replay is exact, and all 16 hashes match before parent execution. Preserve fetch-depth:0, ancestry/source hashes and R258 pins. Create a fresh R259 protocol/manifest/workflow/run ID R259-BPK2K-ONE-SHOT-20260923-A1; one path-filtered arm push triggers exactly one standard free ubuntu-24.04 workflow/attempt. Publish claim/start with exact workflow SHA and command before trigger. Use pinned Python 3.11.16, NumPy 2.4.6, FlopScope 0.12.1 and WhestBench 0.16.1 hashes. Unchanged V25 parent first; only after parent PASS run unchanged BPK2K on exact fixture seed 254001. Keep original target-free gates exactly: final MSE<=0.95, all-layer<=0.98, >=12 improved layers, max degradation<=1.10, candidate FLOPs<=parent, residual<=1.05*parent+0.005 and source/finite/symmetry/shape checks; unknown timing fails closed. If any gate fails, stop and accurately report. Public R209 mini100 only in same run after target-free+validation GO and exact row/order/network/target hashes; frozen gates failures=0, adjusted<=7.761877568111363e-9, >=55 improved, paired gain>2 descriptive SE, mean FLOPs<=806303721965, max residual<0.4s. No retries/second workflow, tuning, paid/private/holdout/full, R223/R244 artifact access, submission, leaderboard/canonical edits or history rewrites. Preserve raw per-network evidence and hashes if reached, finish the queue and regenerate STATUS; distinguish workflow conclusion from scientific result.",
+      "depends_on": [
+        "R255",
+        "R256"
+      ],
+      "hypothesis_id": "R259-BPK2K-ONE-SHOT-FIXTURE-PATH",
+      "id": "R259",
+      "owner": null,
+      "priority": 1,
+      "status": "QUEUED",
+      "title": "Run frozen BPK2K after fixture-manifest path preflight repair"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 267,
+  "revision": 268,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
