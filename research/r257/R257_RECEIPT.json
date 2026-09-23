@@ -1,0 +1,74 @@
+{
+  "schema": "arc.whitebox.r257.receipt.v1",
+  "job": "R257",
+  "run_id": "R257-BPK2K-ONE-SHOT-20260923-A1",
+  "owner": "bpk2k-one-shot-run-responsive",
+  "status": "INFRA_ERROR",
+  "scientific_status": "UNEVALUATED",
+  "verdict": "TERMINAL_INFRA_ERROR_SHALLOW_CHECKOUT_PROTOCOL_ANCESTRY_GUARD",
+  "frozen": {
+    "base_r256_receipt_commit": "f1e458952f2274ca375f97125ba3d181c494ad40",
+    "protocol_commit": "b63936a38bc0e3a6394b00f2ef1d484311aff9e4",
+    "protocol_blob": "6dd5cffe374c0ffcf531c518b7067e640f1f55b6",
+    "manifest_blob": "d5a1fd60b6b24cf4f4feb21000e39773fd6e25eb",
+    "workflow_commit": "187bc8f9ca459a96af1f7cf0d014bc906b278a2a",
+    "workflow_blob": "96e47b51cac6b7ecf39f02a47dd2cb63d1771578",
+    "arm_commit": "47d082eca6d70bed44c3d4346e15672efc09f333"
+  },
+  "execution": {
+    "github_run_id": 35838865448,
+    "github_job_id": 107108851475,
+    "github_run_attempt": 1,
+    "head_sha": "47d082eca6d70bed44c3d4346e15672efc09f333",
+    "workflow_conclusion": "failure",
+    "workflow_runs_observed": 1,
+    "retry": false,
+    "second_workflow": false,
+    "artifact_id": 10740567074,
+    "artifact_name": "r257-one-shot-evidence",
+    "artifact_size_bytes": 1911,
+    "artifact_zip_sha256": "e33cdfe28cc74f6ece1896a62fefe5e221fec67ff3c7c1f928aeac50434db24a"
+  },
+  "failure": {
+    "stage": "Verify frozen ancestry and source identities",
+    "first_command": "git merge-base --is-ancestor \"$R257_PROTOCOL_COMMIT\" HEAD",
+    "exit_code": 128,
+    "exact_message": "fatal: Not a valid commit name b63936a38bc0e3a6394b00f2ef1d484311aff9e4",
+    "cause": "actions/checkout@v4 default shallow checkout fetched only the arm head, so the frozen protocol ancestor was unavailable locally",
+    "classification": "workflow/bootstrap ancestry-guard infrastructure error"
+  },
+  "accounting": {
+    "setup_python_executed": false,
+    "wheel_verification_executed": false,
+    "parent_fetch_executed": false,
+    "fixture_replay_executed": false,
+    "source_hash_checks_completed": false,
+    "parent_executions": 0,
+    "candidate_constructions": 0,
+    "candidate_executions": 0,
+    "target_free_result_present": false,
+    "target_free_measurements": 0,
+    "validation_executed": false,
+    "public_identity_accessed": false,
+    "public_mini100_executed": false,
+    "public_measurements": 0,
+    "public_per_network_evidence_present": false,
+    "public_gate_executed": false
+  },
+  "artifact_evidence": {
+    "workflow_receipt_sha256": "99c55aae415cb88de917db6ed771748f33a720fcbf6d905efd005039a0a3186d",
+    "artifact_hash_map_sha256": "86f4b01fad2f49a0e8dcfc540b010cc13cced5b416d64c688914a69664d47bdf",
+    "workflow_receipt_decision": "INFRA_ERROR_BEFORE_TARGET_FREE_RESULT",
+    "exact_file_count": 7
+  },
+  "safety": {
+    "paid_or_larger_runner": false,
+    "private_or_holdout_or_full": false,
+    "r223_r244_outputs_or_artifacts": false,
+    "submission": false,
+    "leaderboard_or_canonical_edit": false,
+    "r254_history_edit": false,
+    "tuning": false,
+    "scientific_numeric_claims": false
+  }
+}
