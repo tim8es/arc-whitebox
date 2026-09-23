@@ -43,7 +43,13 @@
     "r291_harness_sha256": "28526a56505beaa94183ea590810949a3a856639d3f6fa63d8869ddad419ad3e",
     "r291_expected_panel_path": "research/r291/R291_EXPECTED_PUBLIC_MINI100.json",
     "r291_expected_panel_blob_sha1": "caf813cd5eab771108f105fe050fd6631b298733",
-    "r291_expected_panel_sha256": "ebeb221b71cf3842e807d5cf28b8c38493e53032c8e1fa897b7f5bef6b1be720"
+    "r291_expected_panel_sha256": "ebeb221b71cf3842e807d5cf28b8c38493e53032c8e1fa897b7f5bef6b1be720",
+    "r291_patch_status": "historical_malformed_rejected_by_r294_check",
+    "r294_patch_path": "research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch",
+    "r294_patch_blob_sha1": "65abb2e2040e44a7965f5123acd17bb838891532",
+    "r294_patch_sha256": "bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3",
+    "r294_patched_scoring_blob_sha1": "8493b7ff28110fb13f467400b6895c56bd7550bb",
+    "active_integration_patch": "r294_patch_path"
   },
   "meter": {
     "flopscope_source_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
