@@ -4953,6 +4953,18 @@
       "owner": "preflight-adversarial-audit",
       "payload": {},
       "revision": 369
+    },
+    {
+      "action": "start",
+      "at": "2026-09-23T15:47:32.346Z",
+      "job": "R283",
+      "owner": "preflight-adversarial-audit",
+      "payload": {
+        "code_commit": "e054a32d7d3bdac98408392b09f467e174c2565b",
+        "command": "offline focused adversarial checks of PR #35 analyzer on small synthetic workflow/generator strings; reproduce R277 F1-F3 and probe additional unsupported YAML/Python dataflow false-PASS paths; no PR edits/comments/review/merge, Actions, fixtures, estimator, or public benchmark data",
+        "run_id": "R283-pr35-adversarial-synthetic-audit-20260923"
+      },
+      "revision": 370
     }
   ],
   "jobs": [
@@ -7941,7 +7953,14 @@
     },
     {
       "assigned_owner": "preflight-adversarial-audit",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "e054a32d7d3bdac98408392b09f467e174c2565b",
+          "command": "offline focused adversarial checks of PR #35 analyzer on small synthetic workflow/generator strings; reproduce R277 F1-F3 and probe additional unsupported YAML/Python dataflow false-PASS paths; no PR edits/comments/review/merge, Actions, fixtures, estimator, or public benchmark data",
+          "run_id": "R283-pr35-adversarial-synthetic-audit-20260923",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independently inspect PR #35 current head plus R277 findings. Using only small synthetic workflow/generator strings and offline tests, reproduce the three reported fail-open cases and probe for additional ways unsupported YAML/Python dataflow can produce a false PASS. Do not edit PR #35, create a PR review/comment, trigger Actions, execute fixtures/estimators, or access competition data. Report exact minimal counterexamples, affected functions/lines and the smallest safe fail-closed behavior in an append-only report/receipt with hashes/commit; finish R283.",
       "depends_on": [
         "R277"
@@ -7950,7 +7969,7 @@
       "id": "R283",
       "owner": "preflight-adversarial-audit",
       "priority": 2,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Adversarially test PR #35 beyond the known false-PASS cases"
     },
     {
@@ -7967,7 +7986,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 369,
+  "revision": 370,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
