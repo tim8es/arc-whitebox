@@ -1,0 +1,64 @@
+name: R223 finish attempt 5 and repair
+
+on:
+  push:
+    branches:
+      - research/r223-v25-isolated-improvement-20260922
+    paths:
+      - 'research/r223/R223_ATTEMPT5_FINISH_REPAIR_ARM.json'
+
+permissions:
+  contents: write
+
+jobs:
+  control:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure git identity
+        run: |
+          git config user.name "ARC R223 control"
+          git config user.email "arc-control@users.noreply.github.com"
+      - name: Finish attempt 5 as INFRA_ERROR
+        run: |
+          set -euo pipefail
+          git fetch origin 3a7e7b08b91d6c11f6f58abcb5b850b4b5dafce9
+          git show 3a7e7b08b91d6c11f6f58abcb5b850b4b5dafce9:research/r223/R223_ATTEMPT5_INFRA_RECEIPT.json > /tmp/r.json
+          RECEIPT_SHA="$(sha256sum /tmp/r.json | awk '{print $1}')"
+          python - "$RECEIPT_SHA" <<'PY'
+          import json,sys
+          sha=sys.argv[1]
+          p={
+            "run_id":"R223-v25-local-feed-attempt5-20260923",
+            "status":"INFRA_ERROR",
+            "reason":"Attempt 5 stopped in the initial frozen-path guard before toolchain/source/parent/validate/panel execution because the workflow referenced nonexistent R223_ATTEMPT5_PROVENANCE_PATCH.md instead of immutable R223_ATTEMPT4_PROVENANCE_PATCH.md. No candidate mini-100 invocation occurred.",
+            "receipt":{"url":"https://github.com/tim8es/arc-whitebox/blob/3a7e7b08b91d6c11f6f58abcb5b850b4b5dafce9/research/r223/R223_ATTEMPT5_INFRA_RECEIPT.json","sha256":sha}
+          }
+          open("/tmp/finish.json","w").write(json.dumps(p,indent=2,sort_keys=True)+"\n")
+          PY
+          python scripts/arc_control.py finish R223 --owner method-research --payload /tmp/finish.json --publish
+      - name: Publish path-reference repair
+        run: |
+          cat > /tmp/repair.json <<'JSON'
+          {
+            "reason": "Attempt 5 is preserved as pre-panel INFRA_ERROR. Repair only the workflow frozen-path reference: retain immutable research/r223/R223_ATTEMPT4_PROVENANCE_PATCH.md and add research/r223/R223_ATTEMPT5_AUTH_PATCH.md; do not rename the former. Keep the GH_TOKEN auth repair. No estimator bytes, formula, clamp, panel, thresholds, parent hashes, ranks/source state, toolchain or scientific gates change."
+          }
+          JSON
+          python scripts/arc_control.py repair R223 --owner method-research --payload /tmp/repair.json --publish
+      - name: Verify remote state
+        run: |
+          python scripts/arc_control.py status --remote > /tmp/control.json
+          python - <<'PY'
+          import json
+          s=json.load(open("/tmp/control.json")); j=next(x for x in s["jobs"] if x["id"]=="R223")
+          assert j["status"]=="CLAIMED"; assert len(j["attempts"])==5
+          assert [a["status"] for a in j["attempts"]]==["INFRA_ERROR"]*5
+          print(json.dumps({"revision":s["revision"],"job":j},indent=2,sort_keys=True))
+          PY
