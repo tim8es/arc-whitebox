@@ -1,0 +1,143 @@
+{
+  "schema": "arc.whitebox.r291.capture_harness.receipt.v1",
+  "id": "R291",
+  "run_id": "R291-v25-capture-harness-preparation-20260923",
+  "owner": "v25-capture-harness-preparation",
+  "status": "COMPLETE",
+  "verdict": "HARNESS_PREPARED_SYNTHETICALLY_VERIFIED_NO_BENCHMARK",
+  "branch": "research/r291-v25-capture-harness",
+  "report": {
+    "commit": "07ebd90a832d4316e1a66378d6d7fd498d1bfb77",
+    "path": "research/r291/R291_CAPTURE_HARNESS_REPORT.md",
+    "git_blob_sha1": "dd12ec1b805702a1c21be089ea6e5a68552699a4",
+    "sha256": "e38fbbb993cd3fe5234c5810440605a3cc823000295061924bd8670b40d29836"
+  },
+  "artifacts": {
+    "harness": {
+      "path": "research/r291/r291_capture_harness.py",
+      "commit": "c77fe685182c688898548a2650c51894f1e09339",
+      "git_blob_sha1": "3e438c0f6b87ab2fa90c1fc71bbf3cfea1e9052d",
+      "sha256": "28526a56505beaa94183ea590810949a3a856639d3f6fa63d8869ddad419ad3e",
+      "bytes": 16789
+    },
+    "selfcheck": {
+      "path": "research/r291/r291_capture_selfcheck.py",
+      "commit": "e920f2f1a2636f2e5be8db1caf2e0c95707fdd84",
+      "git_blob_sha1": "265688d5bd80dc05a0469cfdc3e6239ae5d3921d",
+      "sha256": "6a6c9d16c6cc06eaeaa003e9b91c222e242c2abc9caaf766451fc4e8f6f1088f",
+      "bytes": 5641
+    },
+    "integration_patch": {
+      "path": "research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch",
+      "commit": "2e8a30bbf24e12640cdc27d19947ba0c27f6384e",
+      "git_blob_sha1": "a3d909540fc079908fcca9987c5cdb0252a1da8c",
+      "sha256": "20ff649b9c5eec3711b223496ee3eaef0d657cc4252de8690a20dc21557e464e",
+      "bytes": 3080
+    },
+    "expected_panel": {
+      "path": "research/r291/R291_EXPECTED_PUBLIC_MINI100.json",
+      "commit": "a80be8bad4c39498ccf65c0c4aa9d6d4e6209bb9",
+      "git_blob_sha1": "caf813cd5eab771108f105fe050fd6631b298733",
+      "sha256": "ebeb221b71cf3842e807d5cf28b8c38493e53032c8e1fa897b7f5bef6b1be720",
+      "bytes": 22905,
+      "rows": 100
+    }
+  },
+  "inherited_evidence": {
+    "r278_receipt_sha256": "3294904ef96c263f3562c7b34de98d0379c56207a424ab5ac91a649b27dfbd81",
+    "r282_receipt_sha256": "07b3c78ac5ecb95827a48bba8443ab990bc9294f08dc7a6553a82f0bc3a9aab6",
+    "r284_receipt_sha256": "65a6bd083657d6d07fa7dd340731bbb36733e14341f174768ec57ff3f832c81b",
+    "r288_receipt_sha256": "b3c6795d03996b79ffd1bc7d2766bec337e034b1f9a57eecc744de8b762b8f10"
+  },
+  "pinned_source": {
+    "v25_source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "v25_source_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "whestbench_version": "0.16.1",
+    "whestbench_tag_object": "66526b4c80d9aea6af981c7a0f92e9ec76c57238",
+    "whestbench_source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "whestbench_scoring_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "flopscope_version": "0.12.1",
+    "flopscope_tag_object": "e683fd35c74bde24240c1b8c3fb3d8b1e8e7e10e",
+    "flopscope_source_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+    "flopscope_cost_model_blob_sha1": "fee260eb5b65bf74f353a154e4fe0aac53762793",
+    "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce"
+  },
+  "integration_check": {
+    "official_scoring_blob_exact": true,
+    "init_anchor_count": 1,
+    "exception_anchor_count": 1,
+    "common_anchor_count": 1,
+    "patch_deleted_official_lines": 0,
+    "safe_capture_calls": 2,
+    "canonical_score_expressions_unchanged": true,
+    "patch_assigns_no_canonical_scorer_state": true,
+    "patch_changes_no_return_path": true
+  },
+  "synthetic_selfcheck": {
+    "mode": "stdlib-only synthetic 100-row serialization/invariant exercise; no WhestBench/FlopScope/V25/dataset/benchmark import or execution",
+    "result": "PASS",
+    "passed": 16,
+    "total": 16,
+    "checks": {
+      "serialization_sealed": true,
+      "rows_100": true,
+      "raw_payload_exact": true,
+      "storage_bound": true,
+      "fit_eval_50_50": true,
+      "failure_zero_row_preserved": true,
+      "scorer_inputs_unchanged": true,
+      "synthetic_scorer_outputs_unchanged": true,
+      "residual_exact": true,
+      "record_hash_exact": true,
+      "target_all_hash_verified": true,
+      "capture_error_isolated": true,
+      "patch_deletes_no_scorer_code": true,
+      "patch_assigns_no_scorer_state": true,
+      "patch_has_two_pre_mse_calls": true,
+      "patch_no_return_change": true
+    },
+    "note": "An initial checker-only regex false positive treated keyword arguments as assignments; the checker was narrowed and exact final committed bytes passed 16/16."
+  },
+  "capture_contract": {
+    "persisted_vectors": [
+      "final_pred",
+      "final_target",
+      "residual_target_minus_pred"
+    ],
+    "dtype": "<f4",
+    "vector_shape": [
+      1024
+    ],
+    "rows": 100,
+    "raw_payload_bytes": 1228800,
+    "uncompressed_protocol_content_max_bytes": 1363968,
+    "all_layer_target_bytes_persisted": false,
+    "r224_all_layer_target_hash_verified": true,
+    "common_seam": "after scoring.py final_pred/final_target bind and all failure zeroing, before final MSE",
+    "generic_exception_seam": "after zero prediction materialization and target/all_target bind, before failure MSE",
+    "fail_isolated": true,
+    "post_run_seal_required": true
+  },
+  "limitations": [
+    "Prepared patch was not applied to an installed WhestBench runtime in R291.",
+    "No real public Mini or benchmark execution occurred.",
+    "Future authorized run must use the pinned evaluator/source/environment and separately verify its produced capture."
+  ],
+  "accounting": {
+    "estimator_changes": 0,
+    "workflow_changes": 0,
+    "pr35_changes": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "actions_runs": 0,
+    "dataset_downloads": 0,
+    "dependency_installs": 0,
+    "capture_artifacts_uploaded": 0,
+    "paid_resources": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false
+  }
+}
