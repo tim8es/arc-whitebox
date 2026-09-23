@@ -2682,6 +2682,19 @@
         }
       },
       "revision": 206
+    },
+    {
+      "revision": 207,
+      "action": "finish",
+      "job": "R244",
+      "owner": "alternative-method-research",
+      "payload": {
+        "status": "COMPLETE",
+        "reason": "R244 DEVELOPMENT NO-GO: sole authorized Actions run 35816971984 / job 107040461290 attempt 1 completed successfully, but frozen MP-R16 scientific gates failed against exact R209 V25 mini-100. Artifact 10732583892 ZIP SHA256 885cd1767f82dcc933dae0daace593e722fa55c303d20acd3f935702fd159c30; manifest verified with zero mismatches; exact 100 name/network-id/target-hash order verified (sequence SHA256 2ff5fcdf2596bae7c356817ac6362eabfe15f728396c11ef15f7c82730038c66); every successful-row official adjusted score independently recomputed with zero discrepancy. Candidate mean raw MSE 2.244539880180696e-08 vs parent 2.228303490170447e-08; adjusted 8.228579159111482e-09 vs 8.170397440117226e-09; 40/100 improved; paired parent-candidate mean -5.818171899425493e-11, SE 1.6577006096567126e-11; failures 0; mean FLOPs 806171326730 <= 808502745220.552 gate; max residual 0.1557243770051855s. No retry, paid/private/holdout/submission/leaderboard mutation, canonical edit, or gate relaxation. Next: R245 independent static compliance audit may start.",
+        "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json",
+        "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483"
+      },
+      "at": "2026-09-23T04:57:38.073Z"
     }
   ],
   "jobs": [
@@ -4289,7 +4302,7 @@
           "run_id": "R244-distinct-method-protocol-one-shot-20260923",
           "code_commit": "b4a52a434ff39f5a48200245b1b785294d824101",
           "command": "read-only R244 novelty/static-feasibility research and protocol freeze against immutable history; no estimator execution until frozen candidate/gates exist; if GO, continue this single attempt with at most one preregistered verified-free Actions workflow and one public mini-100 candidate panel",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Read current AGENTS/RESEARCH_PROCESS, full history, R209 normalized V25 mini-100 record, R223 terminal result and R240 independent receipt. Select exactly one genuinely novel algorithm-level method aimed at lower official adjusted score; explicitly exclude V25-LF/local-feed lambda and all materially similar or previously rejected families. Freeze candidate source/config, exact parent/panel, score/cost/failure gates and expected measurable effect before execution. If novelty and static feasibility pass, use only verified free standard compute for at most one Actions workflow containing validation and exactly one public mini-100 candidate panel. No retry or second run even for infrastructure failure; stop and record INFRA_ERROR if pre-panel failure. Preserve every row and compare to R209 parent using the official adjusted score; label result development-only. If no feasible distinct candidate exists, save a source-linked desk NO-GO without running. No paid resources, private/holdout, submission/leaderboard mutation, canonical V25 edits, gate relaxation, or duplicate work.",
@@ -4298,8 +4311,11 @@
       "id": "R244",
       "owner": "alternative-method-research",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Select and test one distinct V25 score-improvement method after R223 no-go"
+      "status": "COMPLETE",
+      "title": "Select and test one distinct V25 score-improvement method after R223 no-go",
+      "reason": "R244 DEVELOPMENT NO-GO: sole authorized Actions run 35816971984 / job 107040461290 attempt 1 completed successfully, but frozen MP-R16 scientific gates failed against exact R209 V25 mini-100. Artifact 10732583892 ZIP SHA256 885cd1767f82dcc933dae0daace593e722fa55c303d20acd3f935702fd159c30; manifest verified with zero mismatches; exact 100 name/network-id/target-hash order verified (sequence SHA256 2ff5fcdf2596bae7c356817ac6362eabfe15f728396c11ef15f7c82730038c66); every successful-row official adjusted score independently recomputed with zero discrepancy. Candidate mean raw MSE 2.244539880180696e-08 vs parent 2.228303490170447e-08; adjusted 8.228579159111482e-09 vs 8.170397440117226e-09; 40/100 improved; paired parent-candidate mean -5.818171899425493e-11, SE 1.6577006096567126e-11; failures 0; mean FLOPs 806171326730 <= 808502745220.552 gate; max residual 0.1557243770051855s. No retry, paid/private/holdout/submission/leaderboard mutation, canonical edit, or gate relaxation. Next: R245 independent static compliance audit may start.",
+      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/035cd5f9de9cecc6db1f99807293de3409eb1251/research/r244/R244_POSTFLIGHT_RECEIPT.json",
+      "receipt_sha256": "54f6017b9e51ed2380c20aadbf7b7aff39ebd30d9be1acce874547e4943c2483"
     },
     {
       "assigned_owner": "official-rules-audit",
@@ -4331,7 +4347,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 206,
+  "revision": 207,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
