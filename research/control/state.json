@@ -1977,6 +1977,14 @@
         "title": "Harden R218 postflight verifier using R236 findings"
       },
       "revision": 152
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T00:43:48.425053+00:00",
+      "job": "R237",
+      "owner": "verifier-hardening",
+      "payload": {},
+      "revision": 153
     }
   ],
   "jobs": [
@@ -3210,14 +3218,14 @@
       ],
       "hypothesis_id": "R218-R234-VERIFIER-HARDENING",
       "id": "R237",
-      "owner": null,
+      "owner": "verifier-hardening",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Harden R218 postflight verifier using R236 findings"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 152,
+  "revision": 153,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
