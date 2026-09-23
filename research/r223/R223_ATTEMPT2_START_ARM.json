@@ -1,0 +1,6 @@
+{
+  "idempotency_key": "ARC-R223-ATTEMPT2-START-20260923",
+  "job": "R223",
+  "attempt": 2,
+  "scientific_run": false
+}
