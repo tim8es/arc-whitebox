@@ -2327,6 +2327,21 @@
         "run_id": "R223-v25-local-feed-attempt6-20260923"
       },
       "revision": 179
+    },
+    {
+      "revision": 180,
+      "action": "enqueue",
+      "job": "R239",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "numerical-stability-audit",
+        "title": "Trace R232/R238 synthetic V25 base failures without another run",
+        "hypothesis_id": "V25-SYNTHETIC-BASE-EXECUTABILITY-ROOT-CAUSE",
+        "priority": 2,
+        "deliverable": "Read-only source-linked diagnosis of the unchanged pinned V25 base SymmetryError/NaN before prediction in R232 and R238. Inspect current AGENTS/RESEARCH_PROCESS, both frozen protocols and terminal receipts, exact synthetic fixture generators/commands, Actions evidence/logs, pinned V25 source and matching flopscope version. Trace the earliest non-finite operation only where retained evidence permits; separate observations, inference, and unknowns, especially if raw synthetic inputs were not retained. Produce a compact report and durable receipt with file/blob/hash references and one future protocol guard for a separately preregistered method. Do not execute code, recreate or resize fixtures, run Actions/estimator/benchmark, construct a candidate, modify R232/R238/R223/canonical files, use paid/holdout/private data, or submit. Claim/start/finish this R239 job and commit only the report/receipt.",
+        "depends_on": []
+      },
+      "at": "2026-09-23T02:31:44+00:00"
     }
   ],
   "jobs": [
@@ -3745,10 +3760,22 @@
       "status": "INCONCLUSIVE",
       "title": "Find a distinct global-accuracy method after the DRRE execution no-go",
       "verdict": "R238_BASE_INCONCLUSIVE"
+    },
+    {
+      "assigned_owner": "numerical-stability-audit",
+      "title": "Trace R232/R238 synthetic V25 base failures without another run",
+      "hypothesis_id": "V25-SYNTHETIC-BASE-EXECUTABILITY-ROOT-CAUSE",
+      "priority": 2,
+      "deliverable": "Read-only source-linked diagnosis of the unchanged pinned V25 base SymmetryError/NaN before prediction in R232 and R238. Inspect current AGENTS/RESEARCH_PROCESS, both frozen protocols and terminal receipts, exact synthetic fixture generators/commands, Actions evidence/logs, pinned V25 source and matching flopscope version. Trace the earliest non-finite operation only where retained evidence permits; separate observations, inference, and unknowns, especially if raw synthetic inputs were not retained. Produce a compact report and durable receipt with file/blob/hash references and one future protocol guard for a separately preregistered method. Do not execute code, recreate or resize fixtures, run Actions/estimator/benchmark, construct a candidate, modify R232/R238/R223/canonical files, use paid/holdout/private data, or submit. Claim/start/finish this R239 job and commit only the report/receipt.",
+      "depends_on": [],
+      "id": "R239",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 179,
+  "revision": 180,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
