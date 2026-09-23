@@ -3409,6 +3409,14 @@
         "to_session": "6aae9b93-4aac-83eb-b504-95a09d913852"
       },
       "revision": 256
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-23T08:16:30+00:00",
+      "job": "R256",
+      "owner": "r254-harness-repair-responsive",
+      "payload": {},
+      "revision": 257
     }
   ],
   "jobs": [
@@ -5459,14 +5467,14 @@
       ],
       "hypothesis_id": "R254-HARNESS-SUMMARY-TYPE-REPAIR",
       "id": "R256",
-      "owner": null,
+      "owner": "r254-harness-repair-responsive",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Repair and test R254 telemetry boundary offline"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 256,
+  "revision": 257,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
