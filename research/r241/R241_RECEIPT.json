@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "R241",
+  "run_id": "R241-official-leaderboard-snapshot-20260923-0328Z",
+  "owner": "coordinator",
+  "status": "COMPLETE",
+  "verdict": "NOT_COMPARABLE_FOR_RANK",
+  "code_commit": "1e73f7a8086b3e8a782bcceef6eccce43175bc83",
+  "report_url": "https://github.com/tim8es/arc-whitebox/blob/research/control-v2/research/r241/R241_LEADERBOARD_REFRESH.md",
+  "report_commit": "f7a2d3f2c855d639250e459e7b8b80c2f9b13d71",
+  "report_sha256": "62bc2866abca422fdad2eff0b414b4ab89c32bc0534e5098e9b943c24c34baee",
+  "checked_at_utc": "2026-09-23T03:31:44Z",
+  "leaderboard": {
+    "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "snapshot_label": "Crawled: today",
+    "top_rank": 1,
+    "participant": "J2W",
+    "submission_id": "331539",
+    "adjusted_score_display": "0.0000000021",
+    "final_layer_mse_display": "0.0000000164",
+    "compute_utilization_display": "0.1306572576",
+    "failed_mlps": 0,
+    "entries": 310,
+    "last_submission_display": "Sat, 19 Sep 2026 00:05 UTC"
+  },
+  "runner_up": {
+    "participant": "suliman_tadros",
+    "adjusted_score_display": "0.0000000022",
+    "last_submission_display": "Wed, 23 Sep 2026 01:42 UTC"
+  },
+  "r209_v25": {
+    "id": "R209-v25-mini100",
+    "result_url": "https://github.com/tim8es/arc-whitebox/blob/research/control-v2/research/results/R209-v25-mini100.json",
+    "file_git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "panel": "v2-phase2 / mini:all-100 / public development",
+    "networks": 100,
+    "failures": 0,
+    "adjusted_score_recomputed": 8.170397440117225e-9
+  },
+  "conditional_numeric_gap": {
+    "ratio_to_displayed_leader": 3.8906654476748685,
+    "score_higher_percent": 289.06654476748685,
+    "caveat": "Leaderboard score is rounded and the scored panel/aggregation is not published in the leaderboard row; this is not an official rank estimate."
+  },
+  "evidence_sources": [
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197",
+    "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/reference/score-report-fields.md",
+    "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/getting-started/stage-3-run-local.md"
+  ],
+  "no_actions": [
+    "No estimator/benchmark/Actions run",
+    "No paid resources",
+    "No private/holdout data accessed",
+    "No submission",
+    "No leaderboard mutation"
+  ],
+  "limitation": "Official metric formula is identified, but same-panel/same-aggregation comparability and rank are not verified. Rendered page provides no HTML-byte digest."
+}
