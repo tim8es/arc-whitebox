@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reconstruct the frozen R251 production-shaped target-free fixture exactly."""
 from __future__ import annotations
-import argparse, hashlib, json, math, pathlib
+import argparse, hashlib, json, pathlib
 import numpy as np
 
 WIDTH=1024
@@ -16,7 +16,7 @@ def build():
     weights=[]
     truth=np.empty((DEPTH,WIDTH),dtype=np.float64)
     coef=np.ones(WIDTH,dtype=np.float64)
-    phi0=1.0/math.sqrt(2.0*math.pi)  # fixture/reference generation only, never candidate predict
+    phi0=0.3989422804014327  # frozen 1/sqrt(2*pi); no runtime math.*
     agg=hashlib.sha256()
     got=[]
     for l in range(DEPTH):
