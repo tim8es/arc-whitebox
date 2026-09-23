@@ -69,6 +69,20 @@ After the sole workflow had already been triggered, the authoritative `research/
 
 These commits preserve queue revision 240 and the same sole RUNNING attempt, but they describe a different candidate/fixture from the already-triggered D21-CWG workflow. No second R252 workflow exists in GitHub Actions at finalization time. Because the user requires exactly one method and one workflow, R252 must not continue on the later CFSP4 line. This is recorded as protocol ambiguity, not scientific evidence, and is an additional reason to terminate without retry.
 
+## Duplicate workflow actually triggered
+
+The later CFSP4 control path subsequently armed its own workflow, producing a **second** R252 Actions run despite the frozen one-workflow rule:
+
+- run `35830986191`, job `107083271578`, head `71ecefb647bb590db14ba4b9d764652dea3d4040`;
+- artifact `r252-cfsp4-one-shot`, ID `10736403843`, ZIP SHA256 `10bb14764934b5b46e17cd0abded75ea883310bf2e2ec042c9bd29d2c6c0039e`;
+- Python 3.11.16 / NumPy 2.4.6 / FlopScope 0.12.1+np2.4.6 / WhestBench 0.16.1 were verified;
+- pinned V25 source identity passed;
+- fixture reconstruction failed with `RuntimeError: truth hash mismatch` before parent execution;
+- its disposition is `INFRA_ERROR / TARGET_FREE_RECORD_MISSING_OR_UNKNOWN`;
+- candidate was not constructed; public was not authorized.
+
+Thus **both workflows stopped before scientific measurement**. Nevertheless, two workflows and two frozen methods existed under one queue attempt, which is itself a protocol violation. R252 is therefore terminal INFRA_ERROR with zero parent/candidate/public measurements and no scientific conclusion. No third workflow or repair is allowed.
+
 ## Scientific state
 
 There were **zero scientific measurements**:
