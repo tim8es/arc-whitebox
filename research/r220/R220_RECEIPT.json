@@ -1,0 +1,262 @@
+{
+  "schema": "arc.whitebox.r220.independent_postflight.v1",
+  "job_id": "R220",
+  "run_id": "R220-r218-independent-postflight-20260923",
+  "owner": "postflight-audit",
+  "status": "INCONCLUSIVE",
+  "verdict": "PROTOCOL_INVALID",
+  "conclusion": "Independent R218 postflight cannot ratify a causal GO/NO-GO because the frozen R237 fail-closed D6 gate fails: every one of the six immutable raw block reports omits run_config.max_threads. D1-D5 and D7 pass. The six-block numerical thresholds independently recompute to primary_delta_s=0.04774312494998867 (passes >=0.020), cpu0_slower_count=32/50 (fails >=35), failure_difference=15 (passes >=10). Threshold-only would be NO_GO_CPU0_SPECIFIC, but R217's contract rule gives PROTOCOL_INVALID when any required provenance/contract gate fails.",
+  "queue": {
+    "authoritative_dependency_revision_seen": 159,
+    "claim_revision": 160,
+    "claim_commit": "41a434a870b26166485c4e9503c2782ace5df95f",
+    "start_revision": 161,
+    "start_commit": "446b592ed1ad0056a9bd6a27667dcc715b5329b5",
+    "start_code_commit": "41a434a870b26166485c4e9503c2782ace5df95f"
+  },
+  "fresh_r237_suite": {
+    "prerequisite_result": "PASS",
+    "tests_run": 7,
+    "tests_passed": 7,
+    "exit_code": 0,
+    "verifier": {
+      "path": "research/r234/r234_verify_r218.py",
+      "commit": "9e260d25d2f4ead1cbba1845de07e13aa6d7b9b2",
+      "git_blob_sha1": "c5bdb49977550ff682b73c151807d9aeb8d18e98",
+      "sha256": "d8ee7485606dd62b60b38abddf601b8ce1a5aad36c5255a0def962c4d22bcf7c",
+      "url": "https://github.com/tim8es/arc-whitebox/blob/9e260d25d2f4ead1cbba1845de07e13aa6d7b9b2/research/r234/r234_verify_r218.py"
+    },
+    "suite": {
+      "path": "research/r237/test_r234_verifier_hardening.py",
+      "commit": "a1b7179a011eed858a8a14edeffa33073ba695eb",
+      "sha256": "f9a8efb6a4af357a744452a8ff46328f69bf87b4eb17357d29b34953b855ab0b",
+      "url": "https://github.com/tim8es/arc-whitebox/blob/a1b7179a011eed858a8a14edeffa33073ba695eb/research/r237/test_r234_verifier_hardening.py"
+    },
+    "fresh_stderr_sha256": "eef489d4b3e2ef00ae0a1050184430cd24acd67681cd1fbd2ebf06443372bcbb",
+    "fresh_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "r218_artifact_used_by_suite": false,
+    "actions_triggered_by_suite": false
+  },
+  "r218_actions": {
+    "run_id": 35783866968,
+    "run_attempt": 1,
+    "run_number": 1,
+    "run_conclusion": "success",
+    "run_url": "https://github.com/tim8es/arc-whitebox/actions/runs/35783866968",
+    "job_id": 106935773981,
+    "job_name": "crossover",
+    "job_conclusion": "success",
+    "job_url": "https://github.com/tim8es/arc-whitebox/actions/runs/35783866968/job/106935773981",
+    "single_job_verified": true,
+    "head_branch": "research/r218-affinity-crossover-20260922",
+    "head_sha": "c8cb97dcd1383f4a1d741c5a36ba816deec452eb",
+    "runner_id": 1000005102,
+    "runner_name": "GitHub Actions 1000005102",
+    "runner_label": "ubuntu-24.04",
+    "worker_id_from_logs": "1afa6f87-fdc3-4e38-9eac-960fa4024f10",
+    "azure_region_from_logs": "westus",
+    "no_rerun_observed": true
+  },
+  "artifact": {
+    "artifact_id": 10726329197,
+    "name": "r218-v29-l4-affinity-crossover",
+    "run_id": 35783866968,
+    "head_sha": "c8cb97dcd1383f4a1d741c5a36ba816deec452eb",
+    "zip_sha256_expected": "c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0",
+    "zip_sha256_downloaded": "c70603fc45e40da9e03b926acf6656cf654c26d8046ea7cc8e808bd208f8cea0",
+    "digest_match": true,
+    "extracted_file_count": 85,
+    "manifest_entry_count": 84,
+    "actual_nonmanifest_file_count": 84,
+    "manifest_exact_file_set": true,
+    "manifest_hash_mismatches": 0,
+    "manifest_sha256": "3aa0dd49675279b61b09c1dff226b8f09cd96e889a0c6a0f8f12d0ff55eeab64"
+  },
+  "frozen_sources": {
+    "head": {
+      "commit": "c8cb97dcd1383f4a1d741c5a36ba816deec452eb",
+      "parent_executor": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "compare_ahead_by": 1,
+      "only_changed_file_from_executor": "research/R218_RUN_ARM.json",
+      "url": "https://github.com/tim8es/arc-whitebox/commit/c8cb97dcd1383f4a1d741c5a36ba816deec452eb"
+    },
+    "arm": {
+      "git_blob_sha1": "542f8f80cee29c83b4f9648a1c56f49ae9b9262a",
+      "sha256": "2c4c430c8ec8f0abcdbd84192f8c9040485804e65ca7adab3505dbf9c222cb54"
+    },
+    "workflow": {
+      "commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "git_blob_sha1": "d1fa366b1056d09f829a9620eda81034584147af",
+      "sha256": "e22ea05515a3d084cf31a2bc232be1443bd75ec412970b87083e75d2f83c37ac",
+      "url": "https://github.com/tim8es/arc-whitebox/blob/85f5ba13236aad07bf31436b356cfa2a3744ad33/.github/workflows/r218-affinity-crossover.yml"
+    },
+    "executor": {
+      "commit": "85f5ba13236aad07bf31436b356cfa2a3744ad33",
+      "git_blob_sha1": "456364bd0558eb98d41a4f9cd0512484fe972d20",
+      "sha256": "47a050444f70b55f4306be30cee68d16f4390d408f89c9edf15fab53dfcb5c0f",
+      "url": "https://github.com/tim8es/arc-whitebox/blob/85f5ba13236aad07bf31436b356cfa2a3744ad33/scripts/r218_run_crossover.py"
+    },
+    "expected_panel": {
+      "git_blob_sha1": "8669ffff7408c4f251c700ca0d5f9fc24db5c8f0",
+      "sha256": "c09fdfb867fbb20ea1bea7e7334b3592d9fb5996a02419a0488d622413dbf9b6"
+    },
+    "prelaunch": {
+      "git_blob_sha1": "fe0745d3d0265b7afb8d952530998c6b0f942aa3",
+      "sha256": "e7ca2c1ff2449ff4c9bd393969f63fbd7416e1d62209fa1b6a16687aae819cd9"
+    },
+    "r217_protocol": {
+      "git_blob_sha1": "a940706931d280fe2a720836d9db248146862270",
+      "sha256": "40d7153775efcc882410ff414a909ab6f6bab24193ecb2d746d7acdab33f6968"
+    },
+    "upstream_estimator": {
+      "repository": "504aldo/whest-p2-cumulant-k3",
+      "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "git_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+      "sha256": "86d9ca9b28e6fe2b6c74750a0b6ae4bba4c14f742ddc3f5f56bc7fb4ec9d8e27",
+      "url": "https://github.com/504aldo/whest-p2-cumulant-k3/blob/18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45/estimators/estimator_v29.py"
+    }
+  },
+  "r236_d1_d7": {
+    "source": {
+      "commit": "6313780c7975b866267612ae1e2798c5a2f3d54b",
+      "url": "https://github.com/tim8es/arc-whitebox/blob/6313780c7975b866267612ae1e2798c5a2f3d54b/research/r236/R236_RECEIPT.json"
+    },
+    "D1_attempt_exactly_1": "PASS",
+    "D2_artifact_source_cryptographic_binding": "PASS",
+    "D3_expected_panel_pin": "PASS",
+    "D4_complete_nonempty_manifest": "PASS",
+    "D5_exact_preflight_gates_versions": "PASS",
+    "D6_dataset_path_and_max_threads": "FAIL",
+    "D7_mandatory_telemetry_worker_region": "PASS",
+    "d6_exact_gap": "Dataset path/hash pass. All six raw block reports omit run_config.max_threads, so the frozen R237 gates block_01_max_threads through block_06_max_threads fail. Commands/workflow/environment request one thread, but those are not substituted for the required immutable per-block report field."
+  },
+  "hardened_verifier_real_artifact": {
+    "output_sha256": "e989303c88e69b488f4c30722048a186f107c582e791bb69ed4cd3fa1c7074d2",
+    "actions_evidence_sha256": "c6c836d067027f29dfa7243ea64c03b4190853f32590a554702f99150ca612a3",
+    "total_gates": 289,
+    "passed_gates": 283,
+    "failed_gates": 6,
+    "failed_gate_names": [
+      "block_01_max_threads",
+      "block_02_max_threads",
+      "block_03_max_threads",
+      "block_04_max_threads",
+      "block_05_max_threads",
+      "block_06_max_threads"
+    ],
+    "external_actions_artifact_source_provenance_ok": true,
+    "artifact_contract_ok": false,
+    "decision": "PROTOCOL_INVALID"
+  },
+  "recomputation": {
+    "block_sequence": [
+      "U",
+      "C0",
+      "C1",
+      "C1",
+      "C0",
+      "U"
+    ],
+    "rows_per_block": 50,
+    "rows_total": 300,
+    "exact_panel_name_order": true,
+    "exact_per_mlp_flops": true,
+    "blocks": [
+      {
+        "block": 1,
+        "condition": "U",
+        "failures": 9,
+        "mean_residual_s": 0.38484114569674943,
+        "median_residual_s": 0.3628683560056061,
+        "adjusted_score": 0.1628720702327748
+      },
+      {
+        "block": 2,
+        "condition": "C0",
+        "failures": 6,
+        "mean_residual_s": 0.38088295359854785,
+        "median_residual_s": 0.3674199080228391,
+        "adjusted_score": 0.11150064042404939
+      },
+      {
+        "block": 3,
+        "condition": "C1",
+        "failures": 7,
+        "mean_residual_s": 0.3888362281038644,
+        "median_residual_s": 0.3730561244733508,
+        "adjusted_score": 0.1444175950747003
+      },
+      {
+        "block": 4,
+        "condition": "C1",
+        "failures": 30,
+        "mean_residual_s": 0.44379883004739895,
+        "median_residual_s": 0.4281737424298626,
+        "adjusted_score": 0.5664171171507668
+      },
+      {
+        "block": 5,
+        "condition": "C0",
+        "failures": 46,
+        "mean_residual_s": 0.5171179791056056,
+        "median_residual_s": 0.5208763130149237,
+        "adjusted_score": 0.8459754114414441
+      },
+      {
+        "block": 6,
+        "condition": "U",
+        "failures": 10,
+        "mean_residual_s": 0.3844484254440249,
+        "median_residual_s": 0.3638787950394544,
+        "adjusted_score": 0.196651051055639
+      }
+    ],
+    "conditions": {
+      "C0": {
+        "failures": 52,
+        "observations": 100,
+        "mean_residual_s": 0.44900046635207674,
+        "mean_adjusted_score": 0.4787380259327467
+      },
+      "C1": {
+        "failures": 37,
+        "observations": 100,
+        "mean_residual_s": 0.4163175290756317,
+        "mean_adjusted_score": 0.3554173561127335
+      },
+      "U": {
+        "failures": 19,
+        "observations": 100,
+        "mean_residual_s": 0.38464478557038717,
+        "mean_adjusted_score": 0.17976156064420692
+      }
+    },
+    "frozen_thresholds": {
+      "primary_delta_s": 0.04774312494998867,
+      "primary_delta_s_min": 0.02,
+      "primary_delta_pass": true,
+      "cpu0_slower_count": 32,
+      "cpu0_slower_count_min": 35,
+      "cpu0_slower_count_pass": false,
+      "failure_difference": 15,
+      "failure_difference_min": 10,
+      "failure_difference_pass": true
+    },
+    "threshold_only_branch_if_all_gates_passed": "NO_GO_CPU0_SPECIFIC",
+    "actual_fail_closed_decision": "PROTOCOL_INVALID"
+  },
+  "report": {
+    "path": "research/r220/R220_INDEPENDENT_POSTFLIGHT_REPORT.md",
+    "commit": "3e20c9df06aa4c9d8f1afe67d5c7adbaf40397ce",
+    "url": "https://github.com/tim8es/arc-whitebox/blob/3e20c9df06aa4c9d8f1afe67d5c7adbaf40397ce/research/r220/R220_INDEPENDENT_POSTFLIGHT_REPORT.md"
+  },
+  "safety": {
+    "actions_rerun": false,
+    "estimator_run": false,
+    "holdout_or_private_data": false,
+    "submission": false,
+    "canonical_edits": false,
+    "r218_modified": false,
+    "gates_relaxed": false
+  }
+}
