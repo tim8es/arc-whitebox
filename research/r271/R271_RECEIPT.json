@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "id": "R271",
+  "hypothesis_id": "VISIBLE50-IDENTITY-RECONCILIATION-20260923",
+  "owner": "leader-method-forensics",
+  "run_id": "R271-visible50-identity-reconciliation-20260923",
+  "status": "COMPLETE",
+  "verdict": "NOT_COMPARABLE",
+  "control": {
+    "assigned_revision": 325,
+    "claim_revision": 326,
+    "start_revision": 328,
+    "requested_control_head": "5a6e8ea9baf01fd7aa06a95eb1082e7ef9d46252",
+    "claim_commit": "244e77592048e545282628ef16dfca65b95aeb2b",
+    "start_commit": "99bb88466c6fcb077ca2cf27205c5ed04eb462d6",
+    "code_commit": "244e77592048e545282628ef16dfca65b95aeb2b"
+  },
+  "artifacts": {
+    "identity_audit": {
+      "path": "research/r271/R271_IDENTITY_AUDIT.json",
+      "commit": "4869346674d3d2fd8b411e710fbfef2cdff62338",
+      "git_blob_sha1": "dae9e30f803918f642710e50e0191568f9939578",
+      "sha256": "c1d329541d544f396e02b18ddb2c78c02bf73da911ff7a97f3bd0b1827ac1260"
+    },
+    "report": {
+      "path": "research/r271/R271_VISIBLE50_RECONCILIATION.md",
+      "commit": "0a676466a69325e82f23349791050710b7a69a9e",
+      "git_blob_sha1": "fecfd6f388d9efbb63fefceb4039c1efa439a27d",
+      "sha256": "4089c18da5cf30ca659dde0fd7c4dcb85e991cf351547fd0f45016e3700c05e8"
+    }
+  },
+  "immutable_inputs": {
+    "r209_v25": {
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "source_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+      "evaluator": "whestbench 0.16.1",
+      "meter": "flopscope 0.12.1+np2.4.6",
+      "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+      "rows": 100
+    },
+    "r263_receipt": {
+      "git_blob_sha1": "3d1471b320c1db00b4f7fb7f2e8e613c2d3030cd",
+      "sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73"
+    },
+    "r270_receipt": {
+      "git_blob_sha1": "beceee124e20da42179a921fafd18205e4ba0b99",
+      "sha256": "52a20603e87ce02216bb49a3263a6efa2a07d8a990c1c59e3a1ee6f4b26c87f4"
+    }
+  },
+  "official_sources": {
+    "visible50_url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+    "starterkit_commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "pyproject_blob_sha1": "2c1d562a2073046d6912868184b52c8c593d23c5",
+    "score_report_fields_blob_sha1": "4656a892bfeea52a233b900f6d698db8524936fc",
+    "scoring_model_blob_sha1": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e",
+    "rounds_blob_sha1": "2aaf38a54b5d6ed83ce2604870dcac59e62cee59"
+  },
+  "findings": {
+    "visible_public_rows": 50,
+    "visible_private_sealed_rows": 50,
+    "public_network_ids_exposed": 0,
+    "public_stable_mlp_names_exposed": 50,
+    "visible50_stable_label_overlap_with_r209": 0,
+    "exact_visible50_network_id_join_possible": false,
+    "exact_panel_match_proven": false,
+    "metric_rule_match": true,
+    "aggregation_rule_match": true,
+    "exact_evaluator_version_match": false,
+    "exact_meter_version_match": false,
+    "r209_visible50_score_recomputed": false,
+    "first50_or_order_based_inference_used": false
+  },
+  "evaluator_version_evidence": {
+    "official_grader": "whestbench v0.16.0; flopscope[server]==0.12.0",
+    "official_starterkit_dependencies": "whestbench>=0.16.1,<0.17.0; flopscope>=0.12.1,<0.13.0",
+    "r209": "whestbench 0.16.1; flopscope 0.12.1+np2.4.6"
+  },
+  "minimum_public_artifact": "Official immutable visible-50 manifest mapping each public mlp_index/mlp_name to network_id (preferably target_sha256) and grader evaluator/meter versions. To compute from existing R209, those IDs/fingerprints must occur in R209; otherwise an immutable public V25 per-MLP result artifact for the exact visible 50 is required.",
+  "rounding": "No same-panel score was computed. The leader display 2.1e-9 remains rounded with unknown renderer mode per R270.",
+  "forbidden_and_not_performed": [
+    "estimator run",
+    "benchmark run",
+    "dataset download",
+    "GitHub Actions run",
+    "paid compute",
+    "private/holdout/full data access",
+    "competition submission",
+    "leaderboard mutation",
+    "canonical/model edit"
+  ]
+}
