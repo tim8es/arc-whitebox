@@ -1114,5 +1114,109 @@
     "new_estimator_measurement_count": 0,
     "benchmark_measurement_count": 0,
     "submission_count": 0
+  },
+
+  "r355": {
+    "parent_head": "2762fea23ca6d35c226a0a4851efcb5c536776a8",
+    "policy": {
+      "append_only": true,
+      "fast_forward_only": true,
+      "rebase": false,
+      "reset": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "modified_paths": [
+        "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
+        "research/r320/R320_RECEIPT.json"
+      ],
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false
+    },
+    "dedupe_before_update": {
+      "R347_present_report": false,
+      "R347_present_receipt": false,
+      "R349_present_report": false,
+      "R349_present_receipt": false,
+      "R354_present_report": false,
+      "R354_present_receipt": false,
+      "decision": "NOT_YET_INTEGRATED"
+    },
+    "added_tasks": [
+      "R347",
+      "R349",
+      "R354"
+    ],
+    "preserved_entries_unchanged": [
+      "R341",
+      "R343",
+      "R342",
+      "R348"
+    ],
+    "classifications": {
+      "R347": "THEORY_ESTIMATOR_FAMILY_DEDUPE_NOT_MEASUREMENT",
+      "R349": "PUBLIC_UI_SNAPSHOT_ATTESTATION_ONLY_NOT_MEASUREMENT",
+      "R354": "INTEGRITY_REVIEW_NOT_MEASUREMENT"
+    },
+    "new_estimator_measurement_count": 0,
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
+  },
+  "r355_snapshot": {
+    "R347": {
+      "branch": "review/r347-hermite-spectral-mean-estimator-scout-20260924",
+      "head": "53070953bc502b8847f57e235b5ec5e57acf909e",
+      "verdict": "ALREADY_COVERED",
+      "direct_duplicate": "E115 dense total-degree Hermite chaos",
+      "report_path": "research/r347/R347_HERMITE_SPECTRAL_MEAN_ESTIMATOR_SCOUT.md",
+      "report_blob": "e2d31a3b097904b15de27540ae9af019912324ff",
+      "receipt_path": "research/r347/R347_RECEIPT.json",
+      "receipt_blob": "9d318ea7e2d9c9727ba9c92f1bc0778d2439cf5a",
+      "new_estimator_measurement": false
+    },
+    "R349": {
+      "branch": "review/r349-live-leaderboard-snapshot-20260924",
+      "head": "0447834b74ac88712200c14997e1fd24276b30e6",
+      "classification": "PUBLIC_UI_LEADERBOARD_SNAPSHOT",
+      "report_path": "research/r349/R349_LIVE_LEADERBOARD_SNAPSHOT.md",
+      "report_blob": "268bb1b6e8f53b11c713b8b97adbba1ad81e0394",
+      "receipt_path": "research/r349/R349_RECEIPT.json",
+      "receipt_blob": "c1a1689061e22f96bddbce65586c24d1dd60eefc",
+      "persisted_visible_row_count_attestation": 197,
+      "raw_current_row_arrays_committed": false,
+      "current_payload_and_delta_independently_recomputable_from_git": false,
+      "evidence_classification": "PERSISTED_ATTESTATION_ONLY",
+      "leaderboard_r209_public50": "NOT_COMPARABLE_NOT_JOINABLE",
+      "new_estimator_measurement": false
+    },
+    "R354": {
+      "branch": "review/r354-r347-r349-integrity-audit-20260924",
+      "head": "9a834e54bddbf9ddbc462c30f63e9008e8c31969",
+      "verdict": "CONSISTENT_WITH_PERSISTED_EVIDENCE_R349_CURRENT_RAW_CAPTURE_NOT_INDEPENDENTLY_REPRODUCIBLE_FROM_REPO",
+      "report_path": "research/r354/R354_R347_R349_INTEGRITY_AUDIT.md",
+      "report_blob": "deada75ee43b6bc642448de1cd112c06ac5fae04",
+      "receipt_path": "research/r354/R354_RECEIPT.json",
+      "receipt_blob": "33a767b307111030d8db1ec4026331fb51846708",
+      "r347_integrity_consistent": true,
+      "r349_integrity_consistent": true,
+      "r349_current_raw_payload_reproduced_from_git": false,
+      "new_estimator_measurement": false
+    },
+    "new_estimator_measurement_count": 0
+  },
+  "r355_execution_accounting": {
+    "estimator_runs": 0,
+    "benchmark_runs": 0,
+    "actions_runs": 0,
+    "downloads": 0,
+    "paid_resources": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_v2_edits": 0,
+    "queue_edits": 0,
+    "new_files": 0
   }
+
 }

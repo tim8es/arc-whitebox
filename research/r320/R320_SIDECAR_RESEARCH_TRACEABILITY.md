@@ -356,3 +356,62 @@ R348 also records a separate first-party WhestBench local presentation helper us
 
 R348 adds **0 estimator measurements**, **0 benchmark measurements**, and **0 submissions**. It changes no R341/R343/R342 conclusion. The consolidated interpretation remains that `2.00e-9` is stored **UI display text only**; exact web formatting, exact underlying float/interval, public-50↔R209 comparability, and true contest gap remain unresolved where previously marked unknown/not comparable.
 
+## R355 integration — R347/R349 plus independent R354 integrity audit
+
+R355 appends the newly completed R347 and R349 sidecars after the independent R354 repository-integrity review. Existing R341, R343, R342, and R348 entries above are preserved unchanged.
+
+### R347 — Hermite / polynomial-chaos estimator-family dedupe
+
+- type: **theory / estimator-family dedupe**, not a measurement
+- status/verdict: **`COMPLETE / ALREADY_COVERED`**
+- branch: `review/r347-hermite-spectral-mean-estimator-scout-20260924`
+- exact head: `53070953bc502b8847f57e235b5ec5e57acf909e`
+- report: `research/r347/R347_HERMITE_SPECTRAL_MEAN_ESTIMATOR_SCOUT.md`
+  - blob: `e2d31a3b097904b15de27540ae9af019912324ff`
+  - source: https://github.com/tim8es/arc-whitebox/blob/53070953bc502b8847f57e235b5ec5e57acf909e/research/r347/R347_HERMITE_SPECTRAL_MEAN_ESTIMATOR_SCOUT.md
+- receipt: `research/r347/R347_RECEIPT.json`
+  - blob: `9d318ea7e2d9c9727ba9c92f1bc0778d2439cf5a`
+  - source: https://github.com/tim8es/arc-whitebox/blob/53070953bc502b8847f57e235b5ec5e57acf909e/research/r347/R347_RECEIPT.json
+
+R347 fired its stop rule at deduplication: the requested dense total-degree Hermite / polynomial-chaos spectral lane is already occupied by E115 (`TERMINAL_NO_GO_DENSE_TOTAL_DEGREE_HERMITE_CHAOS`). R347 performed no new derivation, implementation, falsifier, benchmark, or estimator run. **New estimator measurements: 0.**
+
+### R349 — live public leaderboard UI snapshot
+
+- type: **public UI leaderboard snapshot / display delta**
+- status: **COMPLETE**
+- branch: `review/r349-live-leaderboard-snapshot-20260924`
+- exact head: `0447834b74ac88712200c14997e1fd24276b30e6`
+- report: `research/r349/R349_LIVE_LEADERBOARD_SNAPSHOT.md`
+  - blob: `268bb1b6e8f53b11c713b8b97adbba1ad81e0394`
+  - source: https://github.com/tim8es/arc-whitebox/blob/0447834b74ac88712200c14997e1fd24276b30e6/research/r349/R349_LIVE_LEADERBOARD_SNAPSHOT.md
+- receipt: `research/r349/R349_RECEIPT.json`
+  - blob: `c1a1689061e22f96bddbce65586c24d1dd60eefc`
+  - source: https://github.com/tim8es/arc-whitebox/blob/0447834b74ac88712200c14997e1fd24276b30e6/research/r349/R349_RECEIPT.json
+
+Persisted R349 attestation records a current public-board capture of **197 visible rows** (100 page 1 + 97 page 2) at `2026-09-24T12:20:18.917Z`. However, the raw 197 row arrays were **not committed** to Git; only report + receipt were committed. Therefore all current-capture-derived row payload/hash/delta claims are **attestation-only from the repository perspective**, not independently recomputable from committed R349 bytes. R349 is a UI snapshot, not an estimator measurement, and it preserves leaderboard↔R209/public-50 as `NOT_COMPARABLE / NOT_JOINABLE`.
+
+### R354 — independent repository integrity review of R347/R349
+
+- type: **integrity/content review**
+- status/verdict: **`COMPLETE / CONSISTENT_WITH_PERSISTED_EVIDENCE; R349 current raw capture not independently reproducible from repo`**
+- branch: `review/r354-r347-r349-integrity-audit-20260924`
+- exact head: `9a834e54bddbf9ddbc462c30f63e9008e8c31969`
+- report: `research/r354/R354_R347_R349_INTEGRITY_AUDIT.md`
+  - blob: `deada75ee43b6bc642448de1cd112c06ac5fae04`
+  - source: https://github.com/tim8es/arc-whitebox/blob/9a834e54bddbf9ddbc462c30f63e9008e8c31969/research/r354/R354_R347_R349_INTEGRITY_AUDIT.md
+- receipt: `research/r354/R354_RECEIPT.json`
+  - blob: `33a767b307111030d8db1ec4026331fb51846708`
+  - source: https://github.com/tim8es/arc-whitebox/blob/9a834e54bddbf9ddbc462c30f63e9008e8c31969/research/r354/R354_RECEIPT.json
+
+R354 found no material report/receipt integrity discrepancy. It independently confirmed R347's live head/blobs and E115 arithmetic references. For R349 it independently verified branch integrity and the committed R304 historical baseline, but could **not** reproduce the current 197-row payload, current-array hash, or current-vs-R304 delta calculations because the raw current arrays are absent from Git. Classification: `PERSISTED_ATTESTATION_ONLY_NOT_INDEPENDENTLY_RECOMPUTABLE_FROM_REPOSITORY`.
+
+### R355 measurement separation
+
+The three additions remain distinct:
+
+- **R347:** estimator-family/theory dedupe — **0 new estimator measurements**.
+- **R349:** public leaderboard UI snapshot — **0 estimator measurements**.
+- **R354:** repository integrity review — **0 estimator measurements**.
+
+**Total new estimator measurements introduced by R347/R349/R354: 0.**
+
