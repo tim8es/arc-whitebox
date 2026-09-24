@@ -10,7 +10,10 @@
     "result_branch_precreated_externally": true,
     "result_branch_must_be_unprotected": true,
     "result_branch_tip_must_equal_dispatch_sha": true,
-    "result_branch_created_by_workflow": false
+    "result_branch_created_by_workflow": false,
+    "run_attempt_must_equal": 1,
+    "result_branch_tip_must_equal_dispatch_sha_before_claim": true,
+    "second_dispatch_rejected_after_claim": true
   },
   "runner": {
     "label": "ubuntu-24.04",
@@ -106,12 +109,56 @@
   "inherited_receipts": {
     "r288": "b3c6795d03996b79ffd1bc7d2766bec337e034b1f9a57eecc744de8b762b8f10",
     "r290": "61fb8cd816e91416dd80f6b31ef87f8687310776ed74ce5dc1a069cf062eee00",
-    "r291": "c534f45b6928cf42a3674625d3e548c7fe38da9cc3d233ccbe6f863c7f34d8b4"
+    "r291": "c534f45b6928cf42a3674625d3e548c7fe38da9cc3d233ccbe6f863c7f34d8b4",
+    "r294": "RECEIPT_ON_PR_BRANCH",
+    "r295": "4e118c1d992bc042b02e0855e570b8b47db94de29d377037d6429fdc681911e6"
   },
   "authorization": {
     "merge_authorized": false,
     "actions_run_authorized": false,
     "benchmark_authorized": false,
     "result_branch_creation_authorized": false
+  },
+  "actions": {
+    "checkout": {
+      "version": "v4.2.2",
+      "commit_sha": "11bd71901bbe5b1630ceea73d27597364c9af683"
+    },
+    "setup_python": {
+      "version": "v5.6.0",
+      "commit_sha": "a26af69be951a213d495a4c3e4e4022e16d87065"
+    },
+    "full_sha_required_in_contents_write_job": true
+  },
+  "persistence": {
+    "claim": {
+      "timing": "before dependency install / validation / benchmark",
+      "commit": "empty durable claim commit",
+      "expected_old_tip": "github.sha",
+      "update": "git push --force-with-lease=<result-ref>:<github.sha>",
+      "branch_creation_allowed": false,
+      "branch_movement_allowed": false,
+      "rerun_allowed": false,
+      "second_dispatch_allowed": false
+    },
+    "result": {
+      "expected_old_tip": "claim commit sha",
+      "update": "git push --force-with-lease=<result-ref>:<claim-sha>",
+      "exact_file_allowlist": [
+        "research/captures/r293/vectors.f32le",
+        "research/captures/r293/manifest.json",
+        "research/captures/r293/SHA256SUMS",
+        "research/captures/r293/run-receipt.json"
+      ],
+      "branch_creation_allowed": false,
+      "branch_movement_allowed": false
+    },
+    "credentials": {
+      "checkout_persist_credentials": false,
+      "token_in_remote_url": false,
+      "token_in_persistent_git_config": false,
+      "token_exposure": "only claim and final atomic push steps; process-scoped credential helper via GIT_CONFIG_* environment",
+      "pat": false
+    }
   }
 }
