@@ -5915,36 +5915,36 @@
       "revision": 439
     },
     {
-      "revision": 440,
       "action": "enqueue",
+      "at": "2026-09-23T23:45:38.449Z",
       "job": "R300",
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "r298-binary32-energy-consistency-fix-r267",
+        "deliverable": "Correct the R299 coordinate-energy arithmetic mismatch before any real capture is inspected. Reproduce the float32 counterexample p=target=1, d≈1e-8: R299's binary32(r-d) is nonzero while the frozen R298 path binary32(target-binary32(pred+d)) is zero. In a new append-only R300 analyzer supplement/branch, preserve R298/R299 source and receipts unchanged; define C_k from the exact corrected-residual bytes produced by R298 (pred_corr=binary32(pred+d); residual_corr=binary32(target-pred_corr)), and B_k from the stored canonical binary32 baseline residual. Keep the global/coordinate weighting, zero-energy/null/quantile semantics and no-tuning rule. Add synthetic regression(s) proving coordinate C totals match the R298 corrected-MSE path and catch the counterexample; run the committed self-check if an existing repo-capable checkout/runner is available. No cloning/downloading to materialize checkout, no real capture vectors, estimator/benchmark/Actions, dependency/data downloads, paid resources, PR #36 edits, holdout/private/full, submission, leaderboard/canonical changes. Append report/receipt with exact formulas/hashes/tests and finish R300.",
         "depends_on": [
           "R298",
           "R299"
         ],
-        "deliverable": "Correct the R299 coordinate-energy arithmetic mismatch before any real capture is inspected. Reproduce the float32 counterexample p=target=1, d≈1e-8: R299's binary32(r-d) is nonzero while the frozen R298 path binary32(target-binary32(pred+d)) is zero. In a new append-only R300 analyzer supplement/branch, preserve R298/R299 source and receipts unchanged; define C_k from the exact corrected-residual bytes produced by R298 (pred_corr=binary32(pred+d); residual_corr=binary32(target-pred_corr)), and B_k from the stored canonical binary32 baseline residual. Keep the global/coordinate weighting, zero-energy/null/quantile semantics and no-tuning rule. Add synthetic regression(s) proving coordinate C totals match the R298 corrected-MSE path and catch the counterexample; run the committed self-check if an existing repo-capable checkout/runner is available. No cloning/downloading to materialize checkout, no real capture vectors, estimator/benchmark/Actions, dependency/data downloads, paid resources, PR #36 edits, holdout/private/full, submission, leaderboard/canonical changes. Append report/receipt with exact formulas/hashes/tests and finish R300.",
         "hypothesis_id": "R299-R298-BINARY32-ENERGY-CONSISTENCY-20260924",
         "priority": 1,
         "title": "Align coordinate-energy math with the frozen corrected-MSE arithmetic"
       },
-      "at": "2026-09-23T23:45:38.449Z"
+      "revision": 440
     },
     {
-      "revision": 441,
       "action": "reassign",
+      "at": "2026-09-23T23:49:28.912Z",
       "job": "R300",
       "owner": "coordinator",
       "payload": {
         "from_assigned_owner": "r298-binary32-energy-consistency-fix-r267",
         "from_session": "6ab3a7f3-d754-83eb-be50-bbf1a4f90187",
+        "reason": "The R267 recipient received the full R300 prompt but produced no agent response; thread is idle and queue remains QUEUED with zero claims/attempts. Fresh branch and Actions checks show no R300 branch or run. Transfer the same arithmetic-consistency task to the known responsive R269 session; R296 remains separately queued behind R294, so instruct R269 to handle R300 first.",
         "to_assigned_owner": "r300-binary32-energy-consistency-fix-r269",
-        "to_session": "6ab3a7fe-d4d4-83eb-b706-88dd77430353",
-        "reason": "The R267 recipient received the full R300 prompt but produced no agent response; thread is idle and queue remains QUEUED with zero claims/attempts. Fresh branch and Actions checks show no R300 branch or run. Transfer the same arithmetic-consistency task to the known responsive R269 session; R296 remains separately queued behind R294, so instruct R269 to handle R300 first."
+        "to_session": "6ab3a7fe-d4d4-83eb-b706-88dd77430353"
       },
-      "at": "2026-09-23T23:49:28.912Z"
+      "revision": 441
     },
     {
       "action": "claim",
@@ -5984,54 +5984,54 @@
       "revision": 444
     },
     {
-      "revision": 445,
       "action": "enqueue",
+      "at": "2026-09-24T00:00:20.307Z",
       "job": "R301",
       "owner": "coordinator",
       "payload": {
         "assigned_owner": "r300-integration-selfcheck-r267",
+        "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
         "depends_on": [
           "R298",
           "R300"
         ],
-        "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
         "hypothesis_id": "R300-COMMITTED-SELFHECK-INDEPENDENT-VERIFY-20260924",
         "priority": 1,
         "title": "Execute the committed R300 synthetic self-check on exact bytes"
       },
-      "at": "2026-09-24T00:00:20.307Z"
+      "revision": 445
     },
     {
-      "revision": 446,
       "action": "reassign",
+      "at": "2026-09-24T00:04:33.422Z",
       "job": "R301",
       "owner": "coordinator",
       "payload": {
         "from_assigned_owner": "r300-integration-selfcheck-r267",
         "from_session": "6ab3a7f3-d754-83eb-be50-bbf1a4f90187",
+        "reason": "R267 returned systemError after R301 delivery; queue remained QUEUED with zero attempts, and read-only checks found no R301 branch or Actions run. R268 is the currently responsive repo-capable session working R294. Queue R301 behind that same session's R294 work to prevent overlapping edits; start only after R294 COMPLETE.",
         "to_assigned_owner": "r300-integration-selfcheck-r268",
-        "to_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b",
-        "reason": "R267 returned systemError after R301 delivery; queue remained QUEUED with zero attempts, and read-only checks found no R301 branch or Actions run. R268 is the currently responsive repo-capable session working R294. Queue R301 behind that same session's R294 work to prevent overlapping edits; start only after R294 COMPLETE."
+        "to_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b"
       },
-      "at": "2026-09-24T00:04:33.422Z"
+      "revision": 446
     },
     {
-      "revision": 447,
       "action": "reassign",
+      "at": "2026-09-24T00:06:19.893Z",
       "job": "R296",
       "owner": "coordinator",
       "payload": {
         "from_assigned_owner": "r293-workflow-security-fix-r269",
         "from_session": "6ab3a7fe-d4d4-83eb-b706-88dd77430353",
+        "reason": "R269 session reached systemError after R300; R296 remained QUEUED with zero attempts and no R296 branch/run. Transfer workflow hardening to the active repo-capable R268 session, strictly after its current R294 patch repair completes.",
         "to_assigned_owner": "r293-workflow-security-fix-r268",
-        "to_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b",
-        "reason": "R269 session reached systemError after R300; R296 remained QUEUED with zero attempts and no R296 branch/run. Transfer workflow hardening to the active repo-capable R268 session, strictly after its current R294 patch repair completes."
+        "to_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b"
       },
-      "at": "2026-09-24T00:06:19.893Z"
+      "revision": 447
     },
     {
-      "revision": 448,
       "action": "dependency_update",
+      "at": "2026-09-24T00:06:19.893Z",
       "job": "R301",
       "owner": "coordinator",
       "payload": {
@@ -6039,15 +6039,32 @@
           "R298",
           "R300"
         ],
+        "reason": "R301 is assigned to the same R268 session as PR #36 workflow edits. Add explicit queue ordering so the offline analyzer self-check starts only after R294 patch repair and R296 workflow hardening, preventing concurrent work in one session.",
         "to_depends_on": [
           "R294",
           "R296",
           "R298",
           "R300"
-        ],
-        "reason": "R301 is assigned to the same R268 session as PR #36 workflow edits. Add explicit queue ordering so the offline analyzer self-check starts only after R294 patch repair and R296 workflow hardening, preventing concurrent work in one session."
+        ]
       },
-      "at": "2026-09-24T00:06:19.893Z"
+      "revision": 448
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-24T00:19:00+00:00",
+      "job": "R294",
+      "owner": "v25-capture-workflow-patch-repair-r268",
+      "payload": {
+        "decision": "R291_PATCH_FORMAT_REPAIRED_AND_REAL_APPLY_EVIDENCE_CONFIRMED",
+        "reason": "Repaired blocking R292 F1 in draft PR #36 without altering historical R291 artifacts. New append-only R294 patch blob 65abb2e2040e44a7965f5123acd17bb838891532 / SHA256 bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3 corrects only unified-diff hunk headers; its 41 inserted source lines are identical to R291 intent and it deletes zero official lines. Independent exact-byte offline verification against WhestBench scoring.py blob 9cf7653a0267c4d048617c9045ac8be127f3c8bf reports git apply --check PASS, apply PASS, patched blob 8493b7ff28110fb13f467400b6895c56bd7550bb, original-source order preserved and score/return/FLOP anchors unchanged. Workflow/protocol/preflight now pin/select R294 and run a real apply checker plus explicit git apply --check. A local unchanged Linux replay was attempted but did not reach checker because source retrieval failed with `curl: (6) Could not resolve host: raw.githubusercontent.com`; no local Linux PASS is claimed. PR #36 remains draft/open, no Actions/benchmark/data/dependency/paid/result-branch/submission/leaderboard/canonical activity occurred.",
+        "receipt": {
+          "sha256": "1e03f3f25f54973a11f9c2d0ef1aed02935d1d18cb5e96f79b2c67173c47afb9",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/4cb350b2ccf280fe26de069b83120764229c002b/research/r294/R294_RECEIPT.json"
+        },
+        "run_id": "R294-r291-patch-format-repair-pr36-20260924",
+        "status": "COMPLETE"
+      },
+      "revision": 449
     }
   ],
   "jobs": [
@@ -9478,8 +9495,18 @@
         {
           "code_commit": "9b1cbb2d64c8203c9b50ddfd926bf275d983eacd",
           "command": "offline/static repair of blocking R292 F1 in draft PR #36 only: reproduce old R291 patch git apply failure on exact WhestBench 0.16.1 scoring blob 9cf7653a0267c4d048617c9045ac8be127f3c8bf; create append-only R294 corrected patch; update workflow/protocol/preflight pins; add real local git apply --check/apply semantic check; no historical R291 edits, merge, Actions/benchmark, estimator/data/dependency downloads, result branch, paid/submission/leaderboard/canonical changes",
+          "completion": {
+            "decision": "R291_PATCH_FORMAT_REPAIRED_AND_REAL_APPLY_EVIDENCE_CONFIRMED",
+            "reason": "Repaired blocking R292 F1 in draft PR #36 without altering historical R291 artifacts. New append-only R294 patch blob 65abb2e2040e44a7965f5123acd17bb838891532 / SHA256 bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3 corrects only unified-diff hunk headers; its 41 inserted source lines are identical to R291 intent and it deletes zero official lines. Independent exact-byte offline verification against WhestBench scoring.py blob 9cf7653a0267c4d048617c9045ac8be127f3c8bf reports git apply --check PASS, apply PASS, patched blob 8493b7ff28110fb13f467400b6895c56bd7550bb, original-source order preserved and score/return/FLOP anchors unchanged. Workflow/protocol/preflight now pin/select R294 and run a real apply checker plus explicit git apply --check. A local unchanged Linux replay was attempted but did not reach checker because source retrieval failed with `curl: (6) Could not resolve host: raw.githubusercontent.com`; no local Linux PASS is claimed. PR #36 remains draft/open, no Actions/benchmark/data/dependency/paid/result-branch/submission/leaderboard/canonical activity occurred.",
+            "receipt": {
+              "sha256": "1e03f3f25f54973a11f9c2d0ef1aed02935d1d18cb5e96f79b2c67173c47afb9",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/4cb350b2ccf280fe26de069b83120764229c002b/research/r294/R294_RECEIPT.json"
+            },
+            "run_id": "R294-r291-patch-format-repair-pr36-20260924",
+            "status": "COMPLETE"
+          },
           "run_id": "R294-r291-patch-format-repair-pr36-20260924",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Repair the blocking R292 finding in draft PR #36 only. First reproduce `git apply` failure on the exact PR/R291 patch bytes against the pinned WhestBench 0.16.1 `scoring.py` blob 9cf7653a0267c4d048617c9045ac8be127f3c8bf. Root cause is inconsistent unified-diff hunk counts; do not alter historical R291 files/receipts. Create a new append-only R294 corrected patch artifact in the PR branch, generated against that exact source; make only the hunk-count/patch-format correction unless reproduction proves another necessary change. Update the draft workflow and its preflight/protocol pins to the R294 patch hash; add a reproducible local check that applies the patch to the exact pinned source and rejects the old malformed bytes. Confirm the resulting patch changes only the three intended pre-MSE capture seams and does not alter scorer return paths/score/FLOP accounting. Run offline/static tests only. No merge, Actions, benchmark, estimator/data download, dependency install, paid resource, result branch, submission, or leaderboard/canonical edits. Keep PR #36 draft/open. Append R294 report/receipt and finish with exact commits/hashes, `git apply --check` evidence, tests, and remaining gates.",
@@ -9491,7 +9518,12 @@
       "id": "R294",
       "owner": "v25-capture-workflow-patch-repair-r268",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Repaired blocking R292 F1 in draft PR #36 without altering historical R291 artifacts. New append-only R294 patch blob 65abb2e2040e44a7965f5123acd17bb838891532 / SHA256 bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3 corrects only unified-diff hunk headers; its 41 inserted source lines are identical to R291 intent and it deletes zero official lines. Independent exact-byte offline verification against WhestBench scoring.py blob 9cf7653a0267c4d048617c9045ac8be127f3c8bf reports git apply --check PASS, apply PASS, patched blob 8493b7ff28110fb13f467400b6895c56bd7550bb, original-source order preserved and score/return/FLOP anchors unchanged. Workflow/protocol/preflight now pin/select R294 and run a real apply checker plus explicit git apply --check. A local unchanged Linux replay was attempted but did not reach checker because source retrieval failed with `curl: (6) Could not resolve host: raw.githubusercontent.com`; no local Linux PASS is claimed. PR #36 remains draft/open, no Actions/benchmark/data/dependency/paid/result-branch/submission/leaderboard/canonical activity occurred.",
+      "receipt": {
+        "sha256": "1e03f3f25f54973a11f9c2d0ef1aed02935d1d18cb5e96f79b2c67173c47afb9",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/4cb350b2ccf280fe26de069b83120764229c002b/research/r294/R294_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Repair and verify the capture patch in draft PR #36"
     },
     {
@@ -9638,23 +9670,10 @@
     },
     {
       "assigned_owner": "r300-binary32-energy-consistency-fix-r269",
-      "depends_on": [
-        "R298",
-        "R299"
-      ],
-      "deliverable": "Correct the R299 coordinate-energy arithmetic mismatch before any real capture is inspected. Reproduce the float32 counterexample p=target=1, d≈1e-8: R299's binary32(r-d) is nonzero while the frozen R298 path binary32(target-binary32(pred+d)) is zero. In a new append-only R300 analyzer supplement/branch, preserve R298/R299 source and receipts unchanged; define C_k from the exact corrected-residual bytes produced by R298 (pred_corr=binary32(pred+d); residual_corr=binary32(target-pred_corr)), and B_k from the stored canonical binary32 baseline residual. Keep the global/coordinate weighting, zero-energy/null/quantile semantics and no-tuning rule. Add synthetic regression(s) proving coordinate C totals match the R298 corrected-MSE path and catch the counterexample; run the committed self-check if an existing repo-capable checkout/runner is available. No cloning/downloading to materialize checkout, no real capture vectors, estimator/benchmark/Actions, dependency/data downloads, paid resources, PR #36 edits, holdout/private/full, submission, leaderboard/canonical changes. Append report/receipt with exact formulas/hashes/tests and finish R300.",
-      "hypothesis_id": "R299-R298-BINARY32-ENERGY-CONSISTENCY-20260924",
-      "priority": 1,
-      "title": "Align coordinate-energy math with the frozen corrected-MSE arithmetic",
-      "id": "R300",
-      "owner": "r300-binary32-energy-consistency-fix-r269",
-      "status": "COMPLETE",
       "attempts": [
         {
           "code_commit": "85a6af9b3ec125a56a12463c2c9b7303a563ed70",
           "command": "stdlib-only append-only R300 analyzer supplement: align coordinate C_k with exact R298 binary32 corrected-residual path pred_corr=f32(pred+d), residual_corr=f32(target-pred_corr); synthetic p=target=1,d≈1e-8 regression plus aggregate consistency test only; no historical R298/R299 edits, PR #36, real vectors, benchmark/estimator, Actions, downloads/installs, paid/private/holdout/full/submission/leaderboard/canonical changes",
-          "run_id": "R300-binary32-energy-consistency-fix-20260924",
-          "status": "COMPLETE",
           "completion": {
             "decision": "BINARY32_CONSISTENCY_FIX_PREPARED_DELTA_TESTED_NO_REAL_CAPTURE",
             "reason": "Append-only R300 supplement replaces R299 coordinate C arithmetic with the exact frozen R298 binary32 corrected-residual path before any real capture is inspected. The required p=target=1,d≈1e-8 counterexample and a 50x1024 aggregate corrected-energy consistency check both passed in the available local numerical scratch runtime. The committed 21-check integration self-check is present but unexecuted because this session has no repository checkout/command runner and cloning/downloading to materialize one is prohibited. Historical R298/R299 artifacts and PR #36 were untouched; no real vectors, benchmark/estimator, Actions, downloads/installs, paid/private/holdout/full access, submission, leaderboard/canonical edit, or R296 claim occurred.",
@@ -9664,35 +9683,48 @@
             },
             "run_id": "R300-binary32-energy-consistency-fix-20260924",
             "status": "COMPLETE"
-          }
+          },
+          "run_id": "R300-binary32-energy-consistency-fix-20260924",
+          "status": "COMPLETE"
         }
       ],
+      "deliverable": "Correct the R299 coordinate-energy arithmetic mismatch before any real capture is inspected. Reproduce the float32 counterexample p=target=1, d≈1e-8: R299's binary32(r-d) is nonzero while the frozen R298 path binary32(target-binary32(pred+d)) is zero. In a new append-only R300 analyzer supplement/branch, preserve R298/R299 source and receipts unchanged; define C_k from the exact corrected-residual bytes produced by R298 (pred_corr=binary32(pred+d); residual_corr=binary32(target-pred_corr)), and B_k from the stored canonical binary32 baseline residual. Keep the global/coordinate weighting, zero-energy/null/quantile semantics and no-tuning rule. Add synthetic regression(s) proving coordinate C totals match the R298 corrected-MSE path and catch the counterexample; run the committed self-check if an existing repo-capable checkout/runner is available. No cloning/downloading to materialize checkout, no real capture vectors, estimator/benchmark/Actions, dependency/data downloads, paid resources, PR #36 edits, holdout/private/full, submission, leaderboard/canonical changes. Append report/receipt with exact formulas/hashes/tests and finish R300.",
+      "depends_on": [
+        "R298",
+        "R299"
+      ],
+      "hypothesis_id": "R299-R298-BINARY32-ENERGY-CONSISTENCY-20260924",
+      "id": "R300",
+      "owner": "r300-binary32-energy-consistency-fix-r269",
+      "priority": 1,
       "reason": "Append-only R300 supplement replaces R299 coordinate C arithmetic with the exact frozen R298 binary32 corrected-residual path before any real capture is inspected. The required p=target=1,d≈1e-8 counterexample and a 50x1024 aggregate corrected-energy consistency check both passed in the available local numerical scratch runtime. The committed 21-check integration self-check is present but unexecuted because this session has no repository checkout/command runner and cloning/downloading to materialize one is prohibited. Historical R298/R299 artifacts and PR #36 were untouched; no real vectors, benchmark/estimator, Actions, downloads/installs, paid/private/holdout/full access, submission, leaderboard/canonical edit, or R296 claim occurred.",
       "receipt": {
         "sha256": "87f8eaf7819749fbb2fb1a7a30719bb68e3ec7177ce7a8e61df05aeb8f7666de",
         "url": "https://github.com/tim8es/arc-whitebox/blob/813756ced282c780ac28f6da1e4228d8bc9c50b8/research/r300/R300_RECEIPT.json"
-      }
+      },
+      "status": "COMPLETE",
+      "title": "Align coordinate-energy math with the frozen corrected-MSE arithmetic"
     },
     {
       "assigned_owner": "r300-integration-selfcheck-r268",
+      "attempts": [],
+      "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
       "depends_on": [
         "R294",
         "R296",
         "R298",
         "R300"
       ],
-      "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
       "hypothesis_id": "R300-COMMITTED-SELFHECK-INDEPENDENT-VERIFY-20260924",
-      "priority": 1,
-      "title": "Execute the committed R300 synthetic self-check on exact bytes",
       "id": "R301",
       "owner": null,
+      "priority": 1,
       "status": "QUEUED",
-      "attempts": []
+      "title": "Execute the committed R300 synthetic self-check on exact bytes"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 448,
+  "revision": 449,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
