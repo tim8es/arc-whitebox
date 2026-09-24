@@ -1062,4 +1062,57 @@
     "public50_join": "UNKNOWN_NOT_COMPARABLE",
     "true_gap_or_rank_prediction": false
   }
+,
+  "r350": {
+    "parent_head": "949361e498dd4339e75ddc2baf199782f7a9a5e5",
+    "report_append_commit": "30ad409003f57a6d2774023130ac79f344aea159",
+    "policy": {
+      "append_only": true,
+      "fast_forward_only": true,
+      "rebase": false,
+      "reset": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "modified_paths": [
+        "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
+        "research/r320/R320_RECEIPT.json"
+      ],
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false
+    },
+    "dedupe_before_update": {
+      "r348_task_occurrences_report": 0,
+      "r348_task_occurrences_receipt": 0,
+      "r348_exact_head_occurrences_report": 0,
+      "r348_exact_head_occurrences_receipt": 0,
+      "decision": "NOT_YET_INTEGRATED"
+    },
+    "added_task": "R348",
+    "classification": "SOURCE_AUDIT_NOT_ESTIMATOR_MEASUREMENT",
+    "r341_entry_preserved_unchanged": true,
+    "r343_entry_preserved_unchanged": true,
+    "r342_entry_preserved_unchanged": true,
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
+  },
+  "r350_snapshot": {
+    "r348_branch": "review/r348-leaderboard-display-precision-audit-20260924",
+    "r348_head": "4329109ff12afb44259b8221726dbb3f384688a5",
+    "report_path": "research/r348/R348_LEADERBOARD_DISPLAY_PRECISION_AUDIT.md",
+    "report_blob": "77a88dd22cb29b2a6cc7a3a9e346c6ee2d665554",
+    "receipt_path": "research/r348/R348_LEADERBOARD_DISPLAY_PRECISION_AUDIT_RECEIPT.json",
+    "receipt_blob": "ce0268c5f1e37d2dbe1b05ad84bf989ac9f12771",
+    "verdict": "UNKNOWN_FORMATTER_NOT_PUBLICLY_OBSERVABLE",
+    "aicrowd_web_adjusted_score_formatter": "UNKNOWN",
+    "aicrowd_web_rounding_mode": "UNKNOWN",
+    "aicrowd_web_display_precision": "UNKNOWN",
+    "exact_underlying_score_interval": "UNKNOWN_NOT_DERIVABLE_FROM_PUBLIC_EVIDENCE",
+    "aicrowd_web_final_layer_mse_formatter": "UNKNOWN",
+    "local_whestbench_formatter": "f\"{float(value):.2e}\"",
+    "local_whestbench_formatter_is_aicrowd_web_evidence": false,
+    "new_estimator_measurement_count": 0,
+    "benchmark_measurement_count": 0,
+    "submission_count": 0
+  }
 }
