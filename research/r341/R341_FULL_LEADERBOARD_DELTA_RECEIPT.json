@@ -1,0 +1,117 @@
+{
+  "schema": "arc.whitebox.r341.full-leaderboard-delta.v1",
+  "job": "R341",
+  "status": "PARTIAL_CAPTURE_DOM_PAGINATION_BLOCKED",
+  "verdict": "PARTIAL_CAPTURE_DOM_PAGINATION_BLOCKED",
+  "capture_attempt_timestamp_utc": "2026-09-24T11:36:20Z",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r341-full-leaderboard-delta-20260924",
+  "baseline_r304": {
+    "captured_at_utc": "2026-09-24T02:36:19.062Z",
+    "displayed_range": "Showing 1–100 of 195",
+    "visible_rows": 100,
+    "raw_artifact_path": "research/r304/R304_RAW_VISIBLE_ROWS.json",
+    "raw_artifact_git_blob_sha1": "2fee6241febe322fbff2cbc605581590fc072ee6",
+    "normalized_rows_sha256": "4ffcdf469435f3b6dd55df39b6a06c3b5a186b7de89251a526254169a0fbe0d5",
+    "raw_file_sha256": "807df449176bd1cde98e6da418f30aa4aba848c9767a7e44196385587f17b016",
+    "supplement_receipt_path": "research/r304/R304_CAPTURE_SUPPLEMENT_RECEIPT.json",
+    "supplement_receipt_git_blob_sha1": "02aa0698369cc23bcd78753f3de7691589606acb",
+    "historical_page2_captured": false
+  },
+  "current_capture": {
+    "page1_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+    "page2_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2&page=2",
+    "task_supplied_current_total_rows": 197,
+    "task_supplied_total_independently_verified": false,
+    "stale_official_crawl_rows_observed": 50,
+    "stale_crawl_excluded_from_live_delta": true,
+    "page1_live_dom_captured": false,
+    "page2_live_dom_captured": false,
+    "page2_result": "CLIENT_LOADING_SHELL_NO_ROWS",
+    "full_197_rows_captured": false
+  },
+  "coverage": {
+    "historical_r304_first100": "100/100",
+    "historical_r304_page2": "0/UNKNOWN",
+    "current_live_rows_certified": 1,
+    "current_first100_comparable": "1/100",
+    "current_page2_live_rows": 0,
+    "current_full_board": "NOT_ESTABLISHED"
+  },
+  "live_rank1_anchor": {
+    "source": "completed R340 committed live-snapshot lineage",
+    "r340_branch": "review/r340-j2w-submission-332136-method-audit-20260924",
+    "r340_receipt_path": "research/r340/R340_RECEIPT.json",
+    "r340_receipt_git_blob_sha1": "bca09edfeb7ec0efa792f7b2c4b3abebb7d2e3fb",
+    "participant": "joe_wanza",
+    "team": "J2W",
+    "rank": 1,
+    "displayed_adjusted_score": "2.00e-9",
+    "final_layer_mse": "1.61e-8",
+    "entries": 323,
+    "latest_displayed": "Sep 24 08:55",
+    "view_target_submission_id": 332136,
+    "view_target_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332136",
+    "submission_page_opened_in_r341": false
+  },
+  "comparable_delta": {
+    "rows_compared": 1,
+    "r304_rank1": {
+      "participant_team_display": "J2W 1 member · Numascale AS",
+      "rank": "01",
+      "adjusted_score_display": "2.10e-9",
+      "final_layer_mse_display": "1.64e-8",
+      "entries": 320,
+      "last_submission_display": "Sep 19, 00:05 5 d ago",
+      "view_target_submission_id": "UNKNOWN_NOT_PRESERVED_IN_RAW_ROWS"
+    },
+    "current_rank1": {
+      "participant": "joe_wanza",
+      "team": "J2W",
+      "rank": 1,
+      "adjusted_score_display": "2.00e-9",
+      "final_layer_mse_display": "1.61e-8",
+      "entries": 323,
+      "last_submission_display": "Sep 24 08:55",
+      "view_target_submission_id": 332136
+    },
+    "rank_change": "RETAINED_RANK_1",
+    "additions_first100": "UNKNOWN",
+    "removals_first100": "UNKNOWN",
+    "other_moves_first100": "UNKNOWN",
+    "rows_2_to_100": "UNKNOWN",
+    "historical_rows_101_plus": "UNKNOWN",
+    "exact_unrounded_score_inferred": false,
+    "score_gap_computed": false,
+    "algorithm_inferred": false,
+    "full_board_change_inferred": false
+  },
+  "blocker": {
+    "code": "DOM_PAGINATION_BLOCKED",
+    "details": [
+      "Accessible official crawl is stale for J2W relative to the live anchor.",
+      "Page-2 public extraction returned only Loading/generic shell.",
+      "No browser-control surface available in this session could execute and paginate the hydrated live leaderboard DOM.",
+      "Submission pages were not opened as a workaround."
+    ]
+  },
+  "report": {
+    "path": "research/r341/R341_FULL_LEADERBOARD_DELTA.md",
+    "creation_commit": "516b3c2b5c7c9e4b493cd4637bab8a811e127152",
+    "git_blob_sha1": "60455019c3691cae865aafd979280c7ba3603d6d"
+  },
+  "safety": {
+    "submission_pages_opened": false,
+    "sealed_private_holdout_tables_inspected": false,
+    "datasets_or_dependencies_accessed_or_downloaded": false,
+    "estimator_or_benchmark_run": false,
+    "github_actions_run": false,
+    "paid_resources_used": false,
+    "competition_submission": false,
+    "participant_or_organizer_contact": false,
+    "main_edited": false,
+    "pull_request_edited_or_opened": false,
+    "control_edited": false,
+    "queue_edited": false
+  }
+}
