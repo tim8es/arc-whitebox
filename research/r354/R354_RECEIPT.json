@@ -1,0 +1,165 @@
+{
+  "schema": "arc.whitebox.r354.r347_r349_integrity_audit.v1",
+  "task": "R354",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "CONSISTENT_WITH_PERSISTED_EVIDENCE_R349_CURRENT_RAW_CAPTURE_NOT_INDEPENDENTLY_REPRODUCIBLE_FROM_REPO",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r354-r347-r349-integrity-audit-20260924",
+  "targets": {
+    "R347": {
+      "branch": "review/r347-hermite-spectral-mean-estimator-scout-20260924",
+      "expected_head": "53070953bc502b8847f57e235b5ec5e57acf909e",
+      "live_head": "53070953bc502b8847f57e235b5ec5e57acf909e",
+      "parent": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+      "ahead_by": 1,
+      "behind_by": 0,
+      "merge_base": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+      "files": [
+        {
+          "path": "research/r347/R347_HERMITE_SPECTRAL_MEAN_ESTIMATOR_SCOUT.md",
+          "blob_sha1": "e2d31a3b097904b15de27540ae9af019912324ff"
+        },
+        {
+          "path": "research/r347/R347_RECEIPT.json",
+          "blob_sha1": "9d318ea7e2d9c9727ba9c92f1bc0778d2439cf5a"
+        }
+      ],
+      "report_receipt_consistent": true,
+      "discrepancy": null,
+      "direct_duplicate_e115": {
+        "branch": "research/e115-hermite-chaos-certified-tail-20260919",
+        "live_head": "85552f57c263be172fdceae25fffe278be065680",
+        "protocol_blob_sha1": "a63ac3cdedc6bf8a4948c22b8b907a1333f84f70",
+        "result_receipt_blob_sha1": "1f4c10bba845238bd07055c2f423a92c0cdb612a",
+        "verdict": "TERMINAL_NO_GO_DENSE_TOTAL_DEGREE_HERMITE_CHAOS"
+      },
+      "numeric_checks": {
+        "degree1_basis_count": {
+          "reported": 1025,
+          "recomputed": 1025,
+          "pass": true
+        },
+        "degree2_basis_count": {
+          "reported": 525825,
+          "recomputed": 525825,
+          "pass": true
+        },
+        "degree1_two_layer_transport_lower_bound_flops": {
+          "reported": 4299161600,
+          "recomputed": 4299161600,
+          "pass": true
+        },
+        "degree2_two_layer_transport_lower_bound_flops": {
+          "reported": 2205469900800,
+          "recomputed": 2205469900800,
+          "pass": true
+        },
+        "phase2_budget_flops": 2199023255552,
+        "degree2_minus_budget_flops": 6446645248,
+        "degree2_budget_exceeded": true,
+        "degree1_parseval_remainder_mse": {
+          "reported": 0.09084505690810465,
+          "recomputed_expression": "0.25 - 1/(2*pi)",
+          "pass": true
+        },
+        "degree2_parseval_remainder_mse": {
+          "reported": 0.011267585362156995,
+          "recomputed_approx": 0.01126758536215698,
+          "pass": true
+        }
+      },
+      "r320_reference": {
+        "claimed_and_live_head": "949361e498dd4339e75ddc2baf199782f7a9a5e5",
+        "report_blob_sha1": "41b14238c0062081e1b3970e2961cb7c18ef88f9",
+        "receipt_blob_sha1": "280516be04a2606a431f084e8cef9e678d290184",
+        "pass": true
+      },
+      "remaining_unverifiable": [
+        "E115 historical Actions/runtime execution was not rerun.",
+        "E115 artifact ZIP digest/deterministic replay was not independently re-fetched or rerun."
+      ]
+    },
+    "R349": {
+      "branch": "review/r349-live-leaderboard-snapshot-20260924",
+      "expected_head": "0447834b74ac88712200c14997e1fd24276b30e6",
+      "live_head": "0447834b74ac88712200c14997e1fd24276b30e6",
+      "parent": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+      "ahead_by": 1,
+      "behind_by": 0,
+      "merge_base": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+      "files": [
+        {
+          "path": "research/r349/R349_LIVE_LEADERBOARD_SNAPSHOT.md",
+          "blob_sha1": "268bb1b6e8f53b11c713b8b97adbba1ad81e0394"
+        },
+        {
+          "path": "research/r349/R349_RECEIPT.json",
+          "blob_sha1": "c1a1689061e22f96bddbce65586c24d1dd60eefc"
+        }
+      ],
+      "report_receipt_consistent": true,
+      "discrepancy": null,
+      "raw_197_rows": {
+        "committed": false,
+        "report_labels_not_committed": true,
+        "receipt_labels_not_committed": true,
+        "branch_tree_confirms_no_raw_array_file": true,
+        "persisted_claimed_utf8_bytes": 21732,
+        "persisted_claimed_sha256": "a16f4399d9c71e869a1199285584148066746204ebe66a54c22d254b954e81bf",
+        "independently_recomputable_from_repo": false
+      },
+      "r304_baseline": {
+        "branch": "review/r304-leaderboard-delta-20260924",
+        "head": "fcff8898104a21431eb9e1a5eec0f5cb6bb00468",
+        "raw_path": "research/r304/R304_RAW_VISIBLE_ROWS.json",
+        "raw_blob_sha1": "2fee6241febe322fbff2cbc605581590fc072ee6",
+        "raw_file_sha256_reported": "807df449176bd1cde98e6da418f30aa4aba848c9767a7e44196385587f17b016",
+        "raw_file_sha256_recomputed": "807df449176bd1cde98e6da418f30aa4aba848c9767a7e44196385587f17b016",
+        "raw_file_sha256_pass": true,
+        "normalized_rows_sha256_reported": "4ffcdf469435f3b6dd55df39b6a06c3b5a186b7de89251a526254169a0fbe0d5",
+        "normalized_rows_sha256_recomputed": "4ffcdf469435f3b6dd55df39b6a06c3b5a186b7de89251a526254169a0fbe0d5",
+        "normalized_rows_sha256_pass": true,
+        "row_count": 100,
+        "cells_per_row": 10,
+        "old_only_strings_all_present_in_r304": true,
+        "j2w_historical_row_matches_r349": true
+      },
+      "remaining_unverifiable_from_committed_repo": [
+        "Current 197-row compact-array byte length and SHA-256.",
+        "Current page1/page2 row payload and 100/97 split as independently observed facts.",
+        "95/5/5 identity-delta calculation.",
+        "Current-only display strings as current-capture facts.",
+        "Shared-95 field-change counts.",
+        "Current page-2 ranks cwc=101 and ely2sh=102.",
+        "Current J2W display values.",
+        "Capture timestamp/ranges as independently observed UI facts.",
+        "Continued retention of raw arrays in coordinator browser session."
+      ],
+      "classification_of_unverifiable_claims": "PERSISTED_ATTESTATION_ONLY_NOT_INDEPENDENTLY_RECOMPUTABLE_FROM_REPOSITORY"
+    }
+  },
+  "overall": {
+    "material_discrepancies_found": 0,
+    "integration_readiness": "ARTIFACTS_INTERNALLY_CONSISTENT_WITH_EXPLICIT_R349_EVIDENCE_LIMIT",
+    "note": "R354 does not integrate these artifacts into R320."
+  },
+  "safety": {
+    "site_recaptured": false,
+    "submission_pages_opened": false,
+    "methods_inferred": false,
+    "benchmark_or_estimator_run": false,
+    "actions_run": false,
+    "downloads": false,
+    "private_sealed_holdout_full_access": false,
+    "r320_edited": false,
+    "main_edited": false,
+    "control_edited": false,
+    "queue_edited": false,
+    "pr_edited_or_opened": false
+  },
+  "report": {
+    "path": "research/r354/R354_R347_R349_INTEGRITY_AUDIT.md",
+    "git_blob_sha1": "deada75ee43b6bc642448de1cd112c06ac5fae04"
+  }
+}
