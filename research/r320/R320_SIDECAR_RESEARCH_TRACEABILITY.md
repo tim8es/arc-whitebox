@@ -482,3 +482,70 @@ R356 introduces **0 estimator measurements** and explicitly authorizes **nothing
 
 **H185 remains blocked at G2.**
 
+## R360 integration — R352 theory audit and R359 top-10 UI snapshot
+
+R360 appends the completed R352 and R359 evidence to the consolidated traceability record. All earlier R320 entries are preserved unchanged.
+
+### R352 — tensorized / low-rank Hermite frontier audit
+
+- type: **theory / primary-source desk audit**, not an estimator measurement
+- status: **COMPLETE**
+- verdict: **`EVIDENCE_BASED_NO_GO_NO_CERTIFIED_LOW_RANK_TT_HERMITE_PATH`**
+- branch: `review/r352-tensorized-hermite-frontier-20260924`
+- exact head: `4e46b2bd8d04c15270b40872101555b6ac77f3e7`
+- report: `research/r352/R352_TENSORIZED_HERMITE_FRONTIER.md`
+  - blob: `6f25841331f0199bd6ee7966a4bda796d79d2c59`
+  - source: https://github.com/tim8es/arc-whitebox/blob/4e46b2bd8d04c15270b40872101555b6ac77f3e7/research/r352/R352_TENSORIZED_HERMITE_FRONTIER.md
+- receipt: `research/r352/R352_RECEIPT.json`
+  - blob: `432737e41f2b3576d1b5192a01a177c799c58d3b`
+  - source: https://github.com/tim8es/arc-whitebox/blob/4e46b2bd8d04c15270b40872101555b6ac77f3e7/research/r352/R352_RECEIPT.json
+
+R352 specifically examined the remaining low-rank / tensorized Hermite-chaos possibility rather than repeating the already-covered dense total-degree chaos lane. Its evidence-based conclusion is that no audited primary-source path supplies a certified low-rank TT/Hermite state with the required generic dense affine + ReLU propagation, controlled rank growth, production cost, and propagated final-mean error guarantee.
+
+This is an **evidence-based feasibility NO-GO for the audited path**, **not a universal impossibility theorem**. R352 performed **0 estimator measurements** and no production/scientific run.
+
+### R359 — live public leaderboard top-10 snapshot
+
+- type: **public UI snapshot / top-10 only**, not an estimator measurement
+- status: **COMPLETE**
+- branch: `review/r359-live-leaderboard-top10-capture-20260924`
+- exact head: `314750b3456138a91295213ed5019899011fcd3e`
+- report: `research/r359/R359_LIVE_LEADERBOARD_TOP10_SNAPSHOT.md`
+  - blob: `12428d566f9a5f735f94e7a76d54eb6c8660c01c`
+  - source: https://github.com/tim8es/arc-whitebox/blob/314750b3456138a91295213ed5019899011fcd3e/research/r359/R359_LIVE_LEADERBOARD_TOP10_SNAPSHOT.md
+- receipt: `research/r359/R359_RECEIPT.json`
+  - blob: `292f6c05d4a2a920c1408da7e4646f15297ff3e8`
+  - source: https://github.com/tim8es/arc-whitebox/blob/314750b3456138a91295213ed5019899011fcd3e/research/r359/R359_RECEIPT.json
+
+Persisted R359 snapshot time: **`2026-09-24T13:33:30Z`**.
+
+The UI showed **“Showing 1–100 of 197”**. R359 persisted only the exact visible **top 10 rows**, not the remaining page-one rows or page 2. Therefore R359 is a reproducible top-10 snapshot only, **not** a full-board archive.
+
+Leader display recorded for J2W / joe_wanza:
+
+- rank: **01**
+- Adjusted Score display: **`2.00e-9`**
+- Final Layer MSE display: **`1.61e-8`**
+- VS sampling display: **`566×`**
+- Entries: **324**
+
+Compared only to the earlier persisted R349 display snapshot, J2W Entries changed **323 → 324** while displayed score, Final Layer MSE, and VS-sampling text remained the same. This does **not** establish an exact-score delta.
+
+Preserved boundary:
+
+- exact underlying leaderboard score: **UNKNOWN**
+- web formatter / score interval: **UNKNOWN**
+- true competition gap: **UNKNOWN / NOT_COMPARABLE**
+- public-50 ↔ R209 join/equivalence: **NOT_COMPARABLE**
+- full-board current archive: **NOT PRESENT**
+- exact full-board membership delta: **NOT ESTABLISHED**
+
+R359 adds **0 estimator measurements**.
+
+### R360 measurement separation
+
+- **R352:** theory / primary-source desk audit — **0 estimator measurements**
+- **R359:** public UI top-10 snapshot — **0 estimator measurements**
+
+**Total new estimator measurements introduced by R352/R359: 0.**
+
