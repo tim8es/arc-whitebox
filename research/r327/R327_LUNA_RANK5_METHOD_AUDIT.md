@@ -184,3 +184,35 @@ Project comparison evidence:
 - PR edit/open: **NO**
 - control/queue edit: **NO**
 - report-only branch: **YES**
+
+## R330 integrity correction — prior R312 overlap
+
+**Integrity classification:** `CONFIRMATORY_DUPLICATE_OF_R312`  
+**Novel method delta:** **NONE**
+
+R327 did **not** newly discover or first audit Luna / dogus_ozel submission **#332100**. An earlier completed audit, **R312**, had already audited the same public submission, the same displayed submission timestamp (**Sep 24, 03:32**), and had already concluded **NO_PUBLIC_METHOD**.
+
+Exact prior R312 identity inspected for this correction:
+
+- branch: `review/r312-luna-public-method-audit-20260924`
+- final branch head: `4af4a8bda987abb99ea4a2f5b85c8d7c7ac46321`
+- report: `research/r312/R312_LUNA_PUBLIC_METHOD_AUDIT.md`
+- report blob SHA-1: `584c53dc7938be817d9a9cc78505bd69b5032e45`
+- receipt: `research/r312/R312_LUNA_PUBLIC_METHOD_AUDIT_RECEIPT.json`
+- receipt blob SHA-1: `c12e4223e22850c7086a21cf6b28a2350a390977`
+- R312 audit capture: `2026-09-24T09:37:35Z`
+- R312 verdict: `NO_PUBLIC_METHOD`
+- R312 canonical submission: `#332100`
+
+R327's only incremental value is its **later public snapshot at 2026-09-24T10:29:59.376316039Z UTC**, which independently confirmed that the same public submission **#332100** still exposed grader telemetry but no estimator description, method-specific configuration, source/repository, commit, or reproducible implementation linkage.
+
+Accordingly:
+
+- R327's `NO_PUBLIC_METHOD` remains valid as a **confirmed status**;
+- it must **not** be cited as a novel top-6 method discovery or first audit;
+- there is **no new method delta** relative to R312;
+- both R312 and R327 explicitly made **no method inference from rank, score, MSE, compute utilisation, timestamp, or entry count**;
+- ideas admitted remain **0**.
+
+R330 changes only this integrity classification/lineage. It does not alter the underlying R327 public-evidence observations.
+

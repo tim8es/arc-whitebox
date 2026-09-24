@@ -103,5 +103,37 @@
     "No competition submission.",
     "No participant or organizer contact.",
     "No main, PR, control, or queue edit."
-  ]
+  ],
+  "integrity_correction": {
+    "task": "R330",
+    "classification": "CONFIRMATORY_DUPLICATE_OF_R312",
+    "novel_method_delta": false,
+    "preserves_r327_verdict": "NO_PUBLIC_METHOD",
+    "r327_is_novel_discovery": false,
+    "incremental_value": "Later public snapshot confirming that the same submission #332100 still exposed no estimator/method/config/source/repository/commit disclosure.",
+    "r312": {
+      "branch": "review/r312-luna-public-method-audit-20260924",
+      "final_head": "4af4a8bda987abb99ea4a2f5b85c8d7c7ac46321",
+      "report_path": "research/r312/R312_LUNA_PUBLIC_METHOD_AUDIT.md",
+      "report_blob_sha1": "584c53dc7938be817d9a9cc78505bd69b5032e45",
+      "receipt_path": "research/r312/R312_LUNA_PUBLIC_METHOD_AUDIT_RECEIPT.json",
+      "receipt_blob_sha1": "c12e4223e22850c7086a21cf6b28a2350a390977",
+      "audit_capture_utc": "2026-09-24T09:37:35Z",
+      "submission_id": 332100,
+      "submitted_display": "Sep 24, 03:32",
+      "verdict": "NO_PUBLIC_METHOD"
+    },
+    "r327": {
+      "pre_correction_tip": "3aa08a9adc982c5a866948cabb38e783d20b80cc",
+      "audit_snapshot_utc": "2026-09-24T10:29:59.376316039Z",
+      "submission_id": 332100,
+      "verdict": "NO_PUBLIC_METHOD",
+      "ideas_admitted": 0
+    },
+    "inference_control": {
+      "r312_inferred_method_from_rank_or_score": false,
+      "r327_inferred_method_from_rank_or_score": false
+    },
+    "correction_scope": "Append-only integrity/lineage correction only; no change to underlying R327 public-evidence observations."
+  }
 }
