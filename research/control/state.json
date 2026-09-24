@@ -6085,6 +6085,23 @@
         "run_id": "R296-pr36-workflow-security-hardening-20260924"
       },
       "revision": 451
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-24T00:48:00+00:00",
+      "job": "R296",
+      "owner": "r293-workflow-security-fix-r268",
+      "payload": {
+        "decision": "PR36_SECURITY_HARDENING_STATIC_PASS_NO_RUN",
+        "reason": "Hardened draft PR #36 against all confirmed R295 workflow blockers without execution. Added github.run_attempt==1 guards; durable empty-commit single-dispatch claim before install/benchmark; two explicit expected-old-tip force-with-lease CAS updates that reject absent/moved/deleted refs and never recreate the pre-created result branch; full immutable action pins actions/checkout v4.2.2=11bd71901bbe5b1630ceea73d27597364c9af683 and actions/setup-python v5.6.0=a26af69be951a213d495a4c3e4e4022e16d87065; removed token-bearing origin mutation and persistent credential config, with GITHUB_TOKEN exposed only in the two minimal CAS push steps via process-scoped GIT_CONFIG_* credential helper. Preserved workflow_dispatch/main/confirmation, contents:write only persist, exact four-file allowlist, and R294 patch/apply gates. Exact committed-byte static assertions PASS; offline local bare-remote CAS adversarial matrix PASS 8/8 including rerun/second dispatch, branch absent/moved and final-stage delete/move races; process-scoped token helper test PASS 3/3. PR remains open/draft/unmerged at c3cb55870d9cc313e1323fd92fb5778b3e74b796, result branch absent, no Actions/benchmark/data/dependency/paid/submission/leaderboard/canonical activity.",
+        "receipt": {
+          "sha256": "247e1e9d3a1e3d697476860bbbe3e57dd2f2d40077194a2be5b9d06003e6fe61",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/c3cb55870d9cc313e1323fd92fb5778b3e74b796/research/r296/R296_RECEIPT.json"
+        },
+        "run_id": "R296-pr36-workflow-security-hardening-20260924",
+        "status": "COMPLETE"
+      },
+      "revision": 452
     }
   ],
   "jobs": [
@@ -9590,8 +9607,18 @@
         {
           "code_commit": "4cb350b2ccf280fe26de069b83120764229c002b",
           "command": "offline/static harden draft PR #36 only: fail closed on github.run_attempt!=1 in benchmark-capable jobs; atomic update-existing-ref CAS/lease for pre-created result branch including absent/moved/race rejection; pin checkout/setup-python to verified full immutable SHAs; no token in origin URL/config and expose built-in token only to minimal push/claim process; preserve R293/R294 gates and exact four-file allowlist; add adversarial self-checks; no Actions/benchmark/data/dependency installs/result-branch creation/merge/paid/submission/leaderboard/canonical edits",
+          "completion": {
+            "decision": "PR36_SECURITY_HARDENING_STATIC_PASS_NO_RUN",
+            "reason": "Hardened draft PR #36 against all confirmed R295 workflow blockers without execution. Added github.run_attempt==1 guards; durable empty-commit single-dispatch claim before install/benchmark; two explicit expected-old-tip force-with-lease CAS updates that reject absent/moved/deleted refs and never recreate the pre-created result branch; full immutable action pins actions/checkout v4.2.2=11bd71901bbe5b1630ceea73d27597364c9af683 and actions/setup-python v5.6.0=a26af69be951a213d495a4c3e4e4022e16d87065; removed token-bearing origin mutation and persistent credential config, with GITHUB_TOKEN exposed only in the two minimal CAS push steps via process-scoped GIT_CONFIG_* credential helper. Preserved workflow_dispatch/main/confirmation, contents:write only persist, exact four-file allowlist, and R294 patch/apply gates. Exact committed-byte static assertions PASS; offline local bare-remote CAS adversarial matrix PASS 8/8 including rerun/second dispatch, branch absent/moved and final-stage delete/move races; process-scoped token helper test PASS 3/3. PR remains open/draft/unmerged at c3cb55870d9cc313e1323fd92fb5778b3e74b796, result branch absent, no Actions/benchmark/data/dependency/paid/submission/leaderboard/canonical activity.",
+            "receipt": {
+              "sha256": "247e1e9d3a1e3d697476860bbbe3e57dd2f2d40077194a2be5b9d06003e6fe61",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/c3cb55870d9cc313e1323fd92fb5778b3e74b796/research/r296/R296_RECEIPT.json"
+            },
+            "run_id": "R296-pr36-workflow-security-hardening-20260924",
+            "status": "COMPLETE"
+          },
           "run_id": "R296-pr36-workflow-security-hardening-20260924",
-          "status": "RUNNING"
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "After R294's patch repair lands on draft PR #36, fix the independent R295 workflow blockers on that same PR branch, with no benchmark/Actions execution. Preserve the one-shot/no-paid/public-mini boundaries. Required: (1) gate every expensive job on github.run_attempt==1 and add a durable atomic single-dispatch claim on the pre-created result branch so a second distinct dispatch also fails before benchmark; use an update-existing-ref compare-and-swap/non-force operation, never allow branch creation or a check-then-push race; (2) pin every action in the contents:write job to a verified full immutable commit SHA; (3) remove token insertion into the origin URL/config and ensure checkout credentials remain disabled, exposing GITHUB_TOKEN only in the minimal claim/persist API step without logging or storing it; (4) preserve exact result file allowlist and fail closed if any precondition/ref update fails. Keep PR #36 draft/open, do not create the result branch, merge, run Actions/benchmark, install/download data/dependencies, spend money, submit, or edit leaderboard/canonical. Add offline safety tests covering re-run and second-dispatch rejection, compare-and-swap against branch deletion/movement, immutable action pins, and token non-persistence. Append report/receipt with exact PR head, source hashes, test results, and any residual blocker; finish R296.",
@@ -9603,7 +9630,12 @@
       "id": "R296",
       "owner": "r293-workflow-security-fix-r268",
       "priority": 1,
-      "status": "RUNNING",
+      "reason": "Hardened draft PR #36 against all confirmed R295 workflow blockers without execution. Added github.run_attempt==1 guards; durable empty-commit single-dispatch claim before install/benchmark; two explicit expected-old-tip force-with-lease CAS updates that reject absent/moved/deleted refs and never recreate the pre-created result branch; full immutable action pins actions/checkout v4.2.2=11bd71901bbe5b1630ceea73d27597364c9af683 and actions/setup-python v5.6.0=a26af69be951a213d495a4c3e4e4022e16d87065; removed token-bearing origin mutation and persistent credential config, with GITHUB_TOKEN exposed only in the two minimal CAS push steps via process-scoped GIT_CONFIG_* credential helper. Preserved workflow_dispatch/main/confirmation, contents:write only persist, exact four-file allowlist, and R294 patch/apply gates. Exact committed-byte static assertions PASS; offline local bare-remote CAS adversarial matrix PASS 8/8 including rerun/second dispatch, branch absent/moved and final-stage delete/move races; process-scoped token helper test PASS 3/3. PR remains open/draft/unmerged at c3cb55870d9cc313e1323fd92fb5778b3e74b796, result branch absent, no Actions/benchmark/data/dependency/paid/submission/leaderboard/canonical activity.",
+      "receipt": {
+        "sha256": "247e1e9d3a1e3d697476860bbbe3e57dd2f2d40077194a2be5b9d06003e6fe61",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/c3cb55870d9cc313e1323fd92fb5778b3e74b796/research/r296/R296_RECEIPT.json"
+      },
+      "status": "COMPLETE",
       "title": "Harden PR #36 against workflow reruns and branch races"
     },
     {
@@ -9751,7 +9783,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 451,
+  "revision": 452,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
