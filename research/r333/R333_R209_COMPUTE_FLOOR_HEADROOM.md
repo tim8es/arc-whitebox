@@ -237,3 +237,73 @@ R319 found the grader-public-50 → R209 exact join unproven. R322 found the ide
 - private/holdout/full access: **NO**
 - submission: **NO**
 - main/PR/control/queue edit: **NO**
+
+
+## R342 append-only leaderboard snapshot refresh
+
+R342 does **not** alter or delete the original R333 `2.10e-9` calculation. That value is now explicitly historical.
+
+### Timestamped leaderboard snapshots
+
+- **Historical R333/R325 snapshot:** rank-1 displayed Adjusted Score `0.0000000021` = `2.10e-9`, observed approximately **2026-09-24 10:20 UTC**.
+- **Current latest verified snapshot for this addendum:** rank-1 displayed Adjusted Score `2.00e-9`, observed **2026-09-24 11:28 UTC**.
+- R340 preserves the later `2.00e-9` live snapshot; R341 at `2026-09-24T11:36:20Z` treats that as the live rank-1 anchor and explicitly excludes the accessible stale `2.10e-9` crawl from its live delta.
+- R342's own ordinary web fetch also returned the stale `2.10e-9` row, and no live hydrated-browser control surface was available in this session. Therefore R342 does **not** claim an independently newer DOM observation than 11:28 UTC; it uses the latest verified public observation and does not substitute the stale crawler value.
+- No submission page was opened for this refresh.
+
+The exact underlying leaderboard float and formatter remain **UNKNOWN**. Only the displayed text `2.00e-9` is used.
+
+### Exact-decimal fixed-MSE counterfactual at the refreshed display
+
+Immutable R209 input is unchanged:
+
+- `research/results/R209-v25-mini100.json`
+- integration commit `20fafab5471e6ed227562c651179dd2ef331ea22`
+- Git blob `0183d0570f7c9965e00e8553ffc003c313865232`
+- file SHA-256 `f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742`
+- 100 valid `v2-phase2 mini:all-100` rows.
+
+Using the 100 serialized decimal `final_mse` lexemes directly:
+
+- exact decimal sum of raw MSEs: `2.22830349017044681e-6`
+- exact decimal mean raw MSE: **`2.22830349017044681e-8`**
+- fixed-raw-MSE score floor at multiplier `0.1`: **`2.22830349017044681e-9`**
+
+This is the same fixed-accuracy counterfactual as R333, evaluated with exact serialized-decimal arithmetic. The original R333 aggregate was shown as `2.228303490170447e-8` / floor `2.228303490170447e-9`; those historical rounded/binary-float values remain preserved above.
+
+For the refreshed displayed threshold `2.00e-9`, if the multiplier were exactly `0.1`:
+
+[
+\bar{m}_{\rm target}
+=
+\frac{2.00\times10^{-9}}{0.1}
+=
+2.00\times10^{-8}.
+]
+
+Relative to the exact serialized R209 mean:
+
+- required mean raw MSE: **`2.00e-8`**
+- absolute raw-MSE reduction required: **`2.2830349017044681e-9`**
+- relative raw-MSE reduction required: **`0.102456191976337782836253435762`**
+- percentage reduction required: **`10.245619197633778283625343576205%`**
+- fixed-MSE floor minus displayed text: **`2.2830349017044681e-10`**
+
+Therefore compute-only reduction at fixed observed R209 raw MSE remains insufficient even at the most favorable allowed `0.1` multiplier, relative to the refreshed displayed text.
+
+### Interpretation guardrail
+
+This is still only a **same-panel / same-scorer counterfactual**.
+
+R342 does **not** establish that:
+
+- the grader public-50 is a subset of, identical to, or directly joinable to R209 Mini-100;
+- the R209 Mini-100 mean is a competition public-50 score;
+- the leaderboard's exact unrounded value equals `2.00e-9`;
+- an estimator can actually attain the `0.1` multiplier while preserving the observed R209 raw MSE;
+- a `10.2456%` raw-MSE reduction is achievable;
+- this arithmetic is a leaderboard gap or implies any competition rank.
+
+Public-50 identity join remains **UNKNOWN / NOT_COMPARABLE** under R319/R322. Competition-rank equivalence also remains **UNKNOWN / NOT_COMPARABLE**.
+
+R333's historical `2.10e-9` calculation remains part of the record; R342 adds the later `2.00e-9 @ 11:28 UTC` snapshot and its corresponding counterfactual only.

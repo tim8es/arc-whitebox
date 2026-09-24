@@ -78,5 +78,87 @@
     "pr_edit": false,
     "control_edit": false,
     "queue_edit": false
+  },
+  "r342_append_only_refresh": {
+    "task": "R342",
+    "status": "COMPLETE_WITH_LATEST_VERIFIED_PUBLIC_SNAPSHOT",
+    "parent_head": "b089c3e24f7ea5499b66f09da27a2be3f9b5d3de",
+    "historical_snapshot": {
+      "displayed_adjusted_score_text": "2.10e-9",
+      "displayed_decimal_text": "0.0000000021",
+      "observed_utc_approx": "2026-09-24T10:20:00Z",
+      "provenance": "R325 leaderboard observation used by original R333; original R333 calculation preserved unchanged",
+      "current": false
+    },
+    "current_latest_verified_snapshot": {
+      "displayed_adjusted_score_text": "2.00e-9",
+      "observed_utc": "2026-09-24T11:28:00Z",
+      "exact_underlying_float_known": false,
+      "formatter_known": false,
+      "provenance": [
+        "task-supplied verified public observation",
+        "R340 committed live-snapshot lineage",
+        "R341 live rank-1 anchor at capture attempt 2026-09-24T11:36:20Z"
+      ],
+      "r340_receipt_blob_sha1": "bca09edfeb7ec0efa792f7b2c4b3abebb7d2e3fb",
+      "r341_receipt_blob_sha1": "2809f024b167cf28507540f7a113aba8d57af750",
+      "r342_independently_newer_live_dom_observation": false,
+      "stale_accessible_crawl_displayed_score": "2.10e-9",
+      "stale_crawl_used_for_current_snapshot": false,
+      "live_dom_blocker": "No hydrated browser-control surface available in this session; ordinary web fetch returned a stale leaderboard row relative to the later verified 2.00e-9 observation.",
+      "submission_pages_opened": false
+    },
+    "immutable_input": {
+      "path": "research/results/R209-v25-mini100.json",
+      "integration_commit": "20fafab5471e6ed227562c651179dd2ef331ea22",
+      "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "file_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+      "rows": 100
+    },
+    "exact_decimal_recompute": {
+      "arithmetic_source": "100 serialized decimal per_network[*].final_mse lexemes",
+      "raw_mse_sum_decimal": "0.00000222830349017044681",
+      "mean_raw_mse_decimal": "0.0000000222830349017044681",
+      "fixed_raw_mse_multiplier": "0.1",
+      "fixed_raw_mse_floor_decimal": "0.00000000222830349017044681",
+      "refreshed_display_decimal": "0.00000000200",
+      "required_mean_raw_mse_at_0_1_decimal": "0.0000000200",
+      "absolute_raw_mse_reduction_decimal": "0.0000000022830349017044681",
+      "relative_raw_mse_reduction_decimal": "0.102456191976337782836253435762",
+      "relative_raw_mse_reduction_percent_decimal": "10.245619197633778283625343576205",
+      "floor_minus_display_decimal": "0.00000000022830349017044681"
+    },
+    "scorer": {
+      "whestbench_version": "0.16.1",
+      "source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+      "scoring_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+      "budget_blob_sha1": "6586f12d178e0136420cb282535663f1faad5abc",
+      "rounds_blob_sha1": "c2891dae7c21f27fdcaaab239c7bfd5d8cfc0890",
+      "formula": "s_m = raw_mse_m * max(0.1, C_m/B_m); Phase 2 C_m=F_m; suite mean over rows",
+      "max_abs_row_recompute_vs_stored_adjusted_score": 0
+    },
+    "interpretation": {
+      "same_panel_same_scorer_counterfactual": true,
+      "achievable_estimator_claim": false,
+      "leaderboard_gap_claim": false,
+      "public50_identity_join": "UNKNOWN_NOT_COMPARABLE",
+      "competition_rank_equivalence": "UNKNOWN_NOT_COMPARABLE",
+      "exact_leaderboard_float_known": false
+    },
+    "execution_accounting": {
+      "estimator_runs": 0,
+      "benchmark_runs": 0,
+      "code_created_or_committed": false,
+      "actions_runs": 0,
+      "downloads": false,
+      "private_holdout_full_access": false,
+      "submissions": 0,
+      "main_edit": false,
+      "pr_edit": false,
+      "control_edit": false,
+      "queue_edit": false,
+      "submission_pages_opened": false
+    },
+    "report_blob_sha1": "439ccaf94f06520ab4355d177493faad8857b936"
   }
 }
