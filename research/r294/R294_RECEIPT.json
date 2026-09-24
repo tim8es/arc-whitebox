@@ -1,0 +1,165 @@
+{
+  "schema": "arc.whitebox.r294.patch_format_repair.receipt.v1",
+  "id": "R294",
+  "run_id": "R294-r291-patch-format-repair-pr36-20260924",
+  "owner": "v25-capture-workflow-patch-repair-r268",
+  "status": "COMPLETE",
+  "verdict": "R291_PATCH_FORMAT_REPAIRED_AND_REAL_APPLY_EVIDENCE_CONFIRMED",
+  "scientific_diagnostic_complete": false,
+  "pr": {
+    "number": 36,
+    "url": "https://github.com/tim8es/arc-whitebox/pull/36",
+    "branch": "research/r293-v25-capture-workflow-prep",
+    "pre_report_head": "41a6ff997e3985db5ad3902067c42aa0d43a4acc",
+    "draft_expected": true,
+    "merged_expected": false
+  },
+  "inherited": {
+    "r292_report": {
+      "commit": "660232b78410412c253286701190d831135370a1",
+      "git_blob_sha1": "925a1d41c917f043e84a9c8a372fcd6199119ed0",
+      "sha256": "424d37a4139421e46ce4c89df955b60014d153a8d3a55737d27f284527f5d757"
+    },
+    "r292_receipt": {
+      "commit": "3d9684cc93449e9a411e86f14b8385939bdc33e6",
+      "git_blob_sha1": "eca95be1a8907dedf5e04708a8c9c8db3906e32c",
+      "queue_sha256": "906ba41a435b3c6cca9cde1af9a7af3fd3641d6ab523ebb21dc6ac051ca0be3d"
+    },
+    "historical_r291_patch": {
+      "path": "research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch",
+      "git_blob_sha1": "a3d909540fc079908fcca9987c5cdb0252a1da8c",
+      "sha256": "20ff649b9c5eec3711b223496ee3eaef0d657cc4252de8690a20dc21557e464e",
+      "bytes": 3080,
+      "preserved_unchanged": true,
+      "status": "MALFORMED_HISTORICAL_EVIDENCE",
+      "known_git_apply_error": "corrupt patch at patch line 23"
+    }
+  },
+  "pinned_source": {
+    "whestbench_version": "0.16.1",
+    "whestbench_source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "scoring_py_git_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf"
+  },
+  "repaired_patch": {
+    "path": "research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch",
+    "introducing_commit": "8ad4094a5d6c0808308be3a1e7d39eb878bc03ef",
+    "git_blob_sha1": "65abb2e2040e44a7965f5123acd17bb838891532",
+    "sha256": "bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3",
+    "bytes": 3080,
+    "patched_scoring_git_blob_sha1": "8493b7ff28110fb13f467400b6895c56bd7550bb",
+    "hunks": [
+      "@@ -681,6 +681,17 @@ def evaluate_estimator(",
+      "@@ -816,6 +827,21 @@ def evaluate_estimator(",
+      "@@ -945,6 +971,21 @@ def evaluate_estimator("
+    ],
+    "source_additions": 41,
+    "source_deletions": 0,
+    "additions_identical_to_historical_r291_intent": true
+  },
+  "apply_checker": {
+    "path": "scripts/r294_patch_apply_check.py",
+    "introducing_commit": "c0553a11a6f2046485a2dcf03281b15f2ca18dd6",
+    "identity_pin_commit": "41a6ff997e3985db5ad3902067c42aa0d43a4acc",
+    "git_blob_sha1": "547ec661b8cf0548ee080acca2f32f9eeef4537c",
+    "sha256": "98479a811d8f36b6afb98ebc495a00b3a3727c438a90bea47e7b1cb69cef625d",
+    "bytes": 6555
+  },
+  "independent_exact_byte_verification": {
+    "provenance": "independent offline verifier result supplied to the continuing R294 attempt",
+    "exact_source_blob": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "exact_patch_blob": "65abb2e2040e44a7965f5123acd17bb838891532",
+    "exact_patch_sha256": "bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3",
+    "git_apply_check": "PASS",
+    "git_apply_check_exit": 0,
+    "git_apply": "PASS",
+    "git_apply_exit": 0,
+    "patched_source_blob": "8493b7ff28110fb13f467400b6895c56bd7550bb",
+    "source_additions": 41,
+    "source_deletions": 0,
+    "official_source_order_preserved": true,
+    "score_return_flop_anchor_counts_unchanged": true,
+    "historical_r291_patch_rejected": true
+  },
+  "local_linux_replay": {
+    "attempted": true,
+    "checker_executed": false,
+    "reason": "prior temp files were absent; source-only retrieval failed before checker execution",
+    "exact_error": "curl: (6) Could not resolve host: raw.githubusercontent.com",
+    "claim_scope": "No local Linux PASS is claimed in R294; apply PASS is attributed only to the independent exact-byte verifier."
+  },
+  "windows_checker_note": {
+    "original_committed_checker_behavior": "stopped only on platform-specific historical-error stderr formatting",
+    "windows_stderr_form": "error: corrupt patch at <path>:23",
+    "expected_linux_stderr_form": "error: corrupt patch at line 23",
+    "temporary_local_comparison_only": true,
+    "repository_or_pr_modified_for_this": false
+  },
+  "pr_repairs": {
+    "commits": [
+      "8ad4094a5d6c0808308be3a1e7d39eb878bc03ef",
+      "c0553a11a6f2046485a2dcf03281b15f2ca18dd6",
+      "0a47870e0129159cbea8557b91f36cb519db7cff",
+      "0959ba102ce83b445757b66961589d0b0e37ec90",
+      "42f485b2761297c78376f2ad05fb2ab4d2d6ed22",
+      "41a6ff997e3985db5ad3902067c42aa0d43a4acc"
+    ],
+    "workflow": {
+      "path": ".github/workflows/r293-v25-residual-capture.yml",
+      "git_blob_sha1": "8339eeb42e9a37dbea3c7aae6ad0c4ef6edfa7be",
+      "sha256": "6dbe23e2637de7e196002af17de3e193630f41032e5a1f75eab58c1ab9473efe"
+    },
+    "protocol": {
+      "path": "research/r293/R293_PROTOCOL.json",
+      "git_blob_sha1": "fa31b93944d75604a7a096e308ddc0d28092acd7",
+      "sha256": "9c2b066e71da6e81f7d667c8000646d71a6aa4822c61149aed73fb7589061420"
+    },
+    "static_preflight": {
+      "path": "scripts/r293_capture_workflow_preflight.py",
+      "git_blob_sha1": "67d440beac3c4fee85e796b09fcd77849e0f00f2",
+      "sha256": "d6655c54c94daf984c46aabefaadedf88948edb8ed396c4bcbe6022db429e2e9"
+    },
+    "active_patch_is_r294": true,
+    "workflow_runs_real_checker": true,
+    "workflow_runs_explicit_git_apply_check": true,
+    "workflow_applies_only_r294_patch": true,
+    "old_r291_patch_used_only_as_rejection_evidence": true
+  },
+  "semantic_boundary": {
+    "initializer_insertions": 1,
+    "capture_call_insertions": 2,
+    "official_source_deletions": 0,
+    "official_mse_expressions_changed": false,
+    "score_aggregation_changed": false,
+    "return_path_changed": false,
+    "participant_budget_context_changed": false,
+    "flop_accounting_changed": false,
+    "effective_compute_changed": false,
+    "failure_zeroing_changed": false
+  },
+  "report": {
+    "path": "research/r294/R294_REPORT.md",
+    "commit": "7f31c65aa42c6ed0ba3846ef41454b630bf70392",
+    "git_blob_sha1": "c3fc50e3dd71524e28a8305cb5f7ca1bfd8b133e",
+    "sha256": "32d4234485e33cb5eb428c0117754f2fda76ac0e4e555b5ec61135451c828fad",
+    "bytes": 9752
+  },
+  "next_gates": [
+    "Keep PR #36 draft/open pending dependent R296/R301 work and independent review.",
+    "Any later PR-head change invalidates the recorded workflow/protocol/preflight hashes and requires re-review.",
+    "No workflow dispatch, benchmark, result-branch creation, or scientific use is authorized by R294."
+  ],
+  "accounting": {
+    "historical_r291_files_modified": 0,
+    "actions_runs": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "datasets_accessed_or_downloaded": 0,
+    "dependencies_installed_or_downloaded": 0,
+    "paid_resources": false,
+    "result_branch_created": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false,
+    "pr_merged": 0
+  }
+}
