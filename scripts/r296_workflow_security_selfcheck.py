@@ -176,13 +176,42 @@ def main() -> int:
             p.returncode != 0 and remote_tip(remote) == moved
         )
 
-        # Happy path through durable claim then final result CAS.
+        # Durable claim used by final-stage race tests.
         set_remote(repo, remote, base)
         git(["reset", "--hard", base], repo)
         claim = make_empty(repo, "durable-claim")
         p1 = lease_push(repo, remote, base)
         require(p1.returncode == 0 and remote_tip(remote) == claim,
                 "setup durable claim failed")
+
+        # Deletion after claim must not let final lease recreate the branch.
+        git(["reset", "--hard", claim], repo)
+        (repo / "deleted-final.txt").write_text("candidate\n", encoding="utf-8")
+        git(["add", "deleted-final.txt"], repo)
+        git(["commit", "-m", "candidate-after-delete"], repo)
+        set_remote(repo, remote, None)
+        p_deleted = lease_push(repo, remote, claim)
+        checks["deleted_before_final_not_recreated"] = (
+            p_deleted.returncode != 0 and remote_tip(remote) is None
+        )
+
+        # Movement after claim must reject a stale final lease.
+        set_remote(repo, remote, claim)
+        git(["reset", "--hard", claim], repo)
+        moved_after_claim = make_empty(repo, "external-move-after-claim")
+        set_remote(repo, remote, moved_after_claim)
+        git(["reset", "--hard", claim], repo)
+        (repo / "moved-final.txt").write_text("candidate\n", encoding="utf-8")
+        git(["add", "moved-final.txt"], repo)
+        git(["commit", "-m", "candidate-after-move"], repo)
+        p_moved = lease_push(repo, remote, claim)
+        checks["moved_before_final_rejected"] = (
+            p_moved.returncode != 0 and remote_tip(remote) == moved_after_claim
+        )
+
+        # Happy path through durable claim then final result CAS.
+        set_remote(repo, remote, claim)
+        git(["reset", "--hard", claim], repo)
         (repo / "result.txt").write_text("result\n", encoding="utf-8")
         git(["add", "result.txt"], repo)
         git(["commit", "-m", "result"], repo)
