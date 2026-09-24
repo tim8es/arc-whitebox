@@ -548,4 +548,78 @@ R359 adds **0 estimator measurements**.
 - **R359:** public UI top-10 snapshot — **0 estimator measurements**
 
 **Total new estimator measurements introduced by R352/R359: 0.**
+## R365 integration — corrected R352/R364 plus R361/R362/R363 audits
 
+R365 appends only the corrected/live R352 lineage and completed independent theory/audit sidecars. The historical R352-original and existing R359 top-10 snapshot remain intact and are not duplicated or expanded.
+
+### R352 / R364 — corrected tensorized-Hermite frontier artifact
+
+- type: **theory artifact correction / provenance update**, not an estimator measurement
+- status: **COMPLETE**
+- current verdict: **`EVIDENCE_BASED_NO_GO_NO_CERTIFIED_LOW_RANK_TT_HERMITE_PATH`**
+- universal impossibility claim: **NO**
+- branch: `review/r352-tensorized-hermite-frontier-20260924`
+- original immutable R352 head: `4e46b2bd8d04c15270b40872101555b6ac77f3e7`
+- corrected live head after R364: `c51af6c62639503d326f4cbda5b2d59116bbb718`
+- corrected report blob: `f384caa56b1a43212bf909ccfd3567fa86a7b4e4`
+- corrected receipt blob: `ca4f4608a592594a321790e760aa2d7f6398476b`
+- report: https://github.com/tim8es/arc-whitebox/blob/c51af6c62639503d326f4cbda5b2d59116bbb718/research/r352/R352_TENSORIZED_HERMITE_FRONTIER.md
+- receipt: https://github.com/tim8es/arc-whitebox/blob/c51af6c62639503d326f4cbda5b2d59116bbb718/research/r352/R352_RECEIPT.json
+
+R364 is one fast-forward correction commit on the R352 branch and preserves the original R352 head/blobs as immutable provenance. The narrow evidence-based feasibility NO-GO is unchanged. The corrected receipt stores the large p=17,118 integers exactly as decimal strings and corrects the p=214 tail/target decimal representation; the exact generic-rank result remains an exact-rank statement, not an approximate-rank necessity theorem.
+
+### R361 — independent mathematical red-team of original R352
+
+- type: **independent theory/math audit**, not an estimator measurement
+- status/verdict: **`COMPLETE / PASS_WITH_NONMATERIAL_CORRECTIONS_R352_NARROW_VERDICT_CONFIRMED`**
+- branch: `review/r361-r352-independent-math-redteam-20260924`
+- exact head: `4a99ea885d0a66141af823cd308770d66b8f8245`
+- report blob: `d4797eb6075f84731679eab15a4f343c98d8f478`
+- receipt blob: `f1c0951a382a195a367c01cddc850a9c55537aec`
+- report: https://github.com/tim8es/arc-whitebox/blob/4a99ea885d0a66141af823cd308770d66b8f8245/research/r361/R361_R352_INDEPENDENT_MATH_REDTEAM.md
+- receipt: https://github.com/tim8es/arc-whitebox/blob/4a99ea885d0a66141af823cd308770d66b8f8245/research/r361/R361_RECEIPT.json
+
+R361 independently confirmed the normalized ReLU Hermite formula/tails, the generic exact central-cut rank bound and the exact Markdown core/byte arithmetic. Its corrections are nonmaterial to the narrow R352 conclusion. It also preserves the distinction between exact TT rank and approximate TT rank.
+
+### R362 — per-neuron scalar Hermite/TT composability audit
+
+- type: **theory / primary-source desk audit**, not an estimator measurement
+- status/verdict: **`COMPLETE / EVIDENCE_BASED_NO_GO_PER_NEURON_SCALAR_TT_NOT_CERTIFIED_COMPOSABLE`**
+- branch: `review/r362-per-neuron-hermite-tt-composability-20260924`
+- exact head: `4f6ea23f3e2bf273d36892703515eeb5672b7564`
+- report blob: `a9826ac5f4ecc372fe72156a10a5566fd6687e0e`
+- receipt blob: `19ae43635af9d9d69efdeaa49eb53d091c59c83a`
+- report: https://github.com/tim8es/arc-whitebox/blob/4f6ea23f3e2bf273d36892703515eeb5672b7564/research/r362/R362_PER_NEURON_HERMITE_TT_COMPOSABILITY.md
+- receipt: https://github.com/tim8es/arc-whitebox/blob/4f6ea23f3e2bf273d36892703515eeb5672b7564/research/r362/R362_RECEIPT.json
+
+R362 closes the explicitly unclosed per-neuron scalar-carrier desk question at the evidence level: separate first-layer scalar ridge TTs have exact rank `p+1`, but a generic 1024-way next-layer dense sum has the central-cut exact-rank sandwich `1024p-2046 <= r <= 1024(p+1)`. Exact ReLU is not finite-degree Hermite closed, and no primary-source theorem supplies the approximate-rank/recompression/error certificate needed for a width-1024/depth-16 sub-`2^41` path. This is not a universal impossibility claim.
+
+### R363 — independent audit of original R352 and R364 correction
+
+- type: **independent correction/integrity/math audit**, not an estimator measurement
+- status/verdict: **`COMPLETE / PASS_WITH_MINOR_ARTIFACT_SEMANTICS_NUANCE_R364_CORRECTED_R352_NARROW_VERDICT_VALID`**
+- branch: `review/r363-r352-correction-independent-audit-20260924`
+- exact live head: `825c4c83ceb2e4cfae3c1c129b36b8d2b06b9154`
+- report blob: `caa818efc0a9da9af03e237216f3f8716961feb3`
+- receipt blob: `cc123000e37d8f57f0ed6f94da78ea333491f363`
+- report: https://github.com/tim8es/arc-whitebox/blob/825c4c83ceb2e4cfae3c1c129b36b8d2b06b9154/research/r363/R363_R352_CORRECTION_INDEPENDENT_AUDIT.md
+- receipt: https://github.com/tim8es/arc-whitebox/blob/825c4c83ceb2e4cfae3c1c129b36b8d2b06b9154/research/r363/R363_RECEIPT.json
+
+R363 independently confirms the corrected narrow R352 result. Important semantic boundaries:
+
+- the exact ratio `T214/(1.89e-8)` is a nonterminating rational; the finite published R364 JSON decimal is a high-precision decimal prefix/rounded representation, not an exact terminating decimal and **not an exact contest gap**;
+- the R352 central-cut bound is an **exact generic TT-rank** result and does **not** establish approximate-rank necessity;
+- Oseledets 2011 is the upstream source for standard TT rounding `O(d n r^3)`, while Dolgov et al. 2015 explicitly restates the corresponding `O(M p r^3)` PCE-context rank-reduction scale while citing Oseledets; R364 is therefore a provenance refinement, not repair of a false complexity formula.
+
+### R365 preservation and measurement boundary
+
+- historical R347/R349/R354/R348/R351/R356/R341/R343/R342 entries: **preserved unchanged**;
+- R352-original entry at `4e46b2...` and original blobs: **preserved unchanged**;
+- R359 top-10 snapshot: **already present, not duplicated, not expanded to a full leaderboard**;
+- R359 exact underlying score / formatter interval: **UNKNOWN**;
+- R359 true gap and R209/public-50 relation: **UNKNOWN / NOT_COMPARABLE**;
+- R352/R364, R361, R362 and R363 are **desk/theory/audit evidence only**;
+- new estimator measurements introduced by R365: **0**;
+- leaderboard/competition activity introduced by R365: **0**.
+
+**R365 adds traceability only; it changes no scientific measurement or competition state.**

@@ -1424,6 +1424,146 @@
     "control_v2_edits": 0,
     "queue_edits": 0,
     "new_files": 0
+  },
+
+  "r365": {
+    "parent_head": "0e062ab63f82f4e489d22a83be56cf9b1a3fa663",
+    "policy": {
+      "append_only": true,
+      "fast_forward_only": true,
+      "reset": false,
+      "rebase": false,
+      "force": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "modified_paths": [
+        "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
+        "research/r320/R320_RECEIPT.json"
+      ],
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false
+    },
+    "dedupe_before_update": {
+      "r352_original_present": true,
+      "r359_present": true,
+      "r359_duplicated": false,
+      "corrected_r352_r364_present": false,
+      "r361_present": false,
+      "r362_present": false,
+      "r363_present": false,
+      "decision": "APPEND_CORRECTION_AND_NEW_AUDITS_ONLY"
+    },
+    "preserved_entries": [
+      "R347",
+      "R349",
+      "R354",
+      "R348",
+      "R351",
+      "R356",
+      "R341",
+      "R343",
+      "R342",
+      "R352-original",
+      "R359"
+    ],
+    "added_or_updated": [
+      "R352-corrected-R364",
+      "R361",
+      "R362",
+      "R363"
+    ],
+    "classifications": {
+      "R352-corrected-R364": "THEORY_ARTIFACT_CORRECTION_DESK_AUDIT_NOT_ESTIMATOR_MEASUREMENT",
+      "R361": "INDEPENDENT_THEORY_MATH_AUDIT_NOT_ESTIMATOR_MEASUREMENT",
+      "R362": "THEORY_PRIMARY_SOURCE_DESK_AUDIT_NOT_ESTIMATOR_MEASUREMENT",
+      "R363": "INDEPENDENT_CORRECTION_INTEGRITY_MATH_AUDIT_NOT_ESTIMATOR_MEASUREMENT"
+    },
+    "new_estimator_measurement_count": 0,
+    "leaderboard_or_competition_actions_added": 0,
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
+  },
+  "r365_snapshot": {
+    "R352-corrected-R364": {
+      "branch": "review/r352-tensorized-hermite-frontier-20260924",
+      "original_head": "4e46b2bd8d04c15270b40872101555b6ac77f3e7",
+      "corrected_live_head": "c51af6c62639503d326f4cbda5b2d59116bbb718",
+      "verdict": "EVIDENCE_BASED_NO_GO_NO_CERTIFIED_LOW_RANK_TT_HERMITE_PATH",
+      "report_path": "research/r352/R352_TENSORIZED_HERMITE_FRONTIER.md",
+      "report_blob": "f384caa56b1a43212bf909ccfd3567fa86a7b4e4",
+      "receipt_path": "research/r352/R352_RECEIPT.json",
+      "receipt_blob": "ca4f4608a592594a321790e760aa2d7f6398476b",
+      "original_entry_preserved": true,
+      "universal_impossibility_claimed": false,
+      "exact_rank_implies_approximate_rank_necessity": false,
+      "new_estimator_measurement": false
+    },
+    "R361": {
+      "branch": "review/r361-r352-independent-math-redteam-20260924",
+      "head": "4a99ea885d0a66141af823cd308770d66b8f8245",
+      "verdict": "PASS_WITH_NONMATERIAL_CORRECTIONS_R352_NARROW_VERDICT_CONFIRMED",
+      "report_path": "research/r361/R361_R352_INDEPENDENT_MATH_REDTEAM.md",
+      "report_blob": "d4797eb6075f84731679eab15a4f343c98d8f478",
+      "receipt_path": "research/r361/R361_RECEIPT.json",
+      "receipt_blob": "f1c0951a382a195a367c01cddc850a9c55537aec",
+      "universal_impossibility_claimed": false,
+      "new_estimator_measurement": false
+    },
+    "R362": {
+      "branch": "review/r362-per-neuron-hermite-tt-composability-20260924",
+      "head": "4f6ea23f3e2bf273d36892703515eeb5672b7564",
+      "verdict": "EVIDENCE_BASED_NO_GO_PER_NEURON_SCALAR_TT_NOT_CERTIFIED_COMPOSABLE",
+      "report_path": "research/r362/R362_PER_NEURON_HERMITE_TT_COMPOSABILITY.md",
+      "report_blob": "a9826ac5f4ecc372fe72156a10a5566fd6687e0e",
+      "receipt_path": "research/r362/R362_RECEIPT.json",
+      "receipt_blob": "19ae43635af9d9d69efdeaa49eb53d091c59c83a",
+      "generic_dense_sum_rank_lower": "1024*p-2046",
+      "generic_dense_sum_rank_upper": "1024*(p+1)",
+      "universal_impossibility_claimed": false,
+      "new_estimator_measurement": false
+    },
+    "R363": {
+      "branch": "review/r363-r352-correction-independent-audit-20260924",
+      "head": "825c4c83ceb2e4cfae3c1c129b36b8d2b06b9154",
+      "verdict": "PASS_WITH_MINOR_ARTIFACT_SEMANTICS_NUANCE_R364_CORRECTED_R352_NARROW_VERDICT_VALID",
+      "report_path": "research/r363/R363_R352_CORRECTION_INDEPENDENT_AUDIT.md",
+      "report_blob": "caa818efc0a9da9af03e237216f3f8716961feb3",
+      "receipt_path": "research/r363/R363_RECEIPT.json",
+      "receipt_blob": "cc123000e37d8f57f0ed6f94da78ea333491f363",
+      "ratio_semantics": "T214/(1.89e-8) is a nonterminating rational; finite published decimal is a high-precision prefix/rounded representation, not an exact contest gap",
+      "exact_rank_implies_approximate_rank_necessity": false,
+      "source_attribution_semantics": "Oseledets 2011 is upstream standard-rounding source; Dolgov 2015 explicitly states O(M*p*r^3) in PCE context while citing Oseledets",
+      "universal_impossibility_claimed": false,
+      "new_estimator_measurement": false
+    },
+    "R359_preservation": {
+      "duplicate_added": false,
+      "expanded_to_full_board": false,
+      "exact_underlying_score": "UNKNOWN",
+      "formatter_interval": "UNKNOWN",
+      "true_gap": "UNKNOWN_NOT_COMPARABLE",
+      "r209_public50": "NOT_COMPARABLE"
+    },
+    "new_estimator_measurement_count": 0
+  },
+  "r365_execution_accounting": {
+    "estimator_runs": 0,
+    "test_runs": 0,
+    "benchmark_runs": 0,
+    "synthetic_runs": 0,
+    "reruns": 0,
+    "actions_runs": 0,
+    "downloads": 0,
+    "paid_resources": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "leaderboard_or_competition_actions": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_v2_edits": 0,
+    "queue_edits": 0,
+    "new_files": 0
   }
 
 }
