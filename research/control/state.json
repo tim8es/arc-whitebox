@@ -6104,25 +6104,25 @@
       "revision": 452
     },
     {
-      "revision": 453,
       "action": "enqueue",
+      "at": "2026-09-24T00:53:41.503+00:00",
       "job": "R302",
       "owner": "coordinator",
       "payload": {
-        "title": "Repair and rerun the exact committed R296 workflow security self-check",
-        "hypothesis_id": "R296-CHECKER-ARGUMENT-ORDER-REPAIR-20260924",
-        "priority": 1,
+        "assigned_owner": "r296-selfcheck-correction-r269",
         "deliverable": "Independent exact-byte review found the committed scripts/r296_workflow_security_selfcheck.py (blob dc09a5c4a06136370344c27723c5c430588b0fa2) still calls git(repo, args) at set_remote, while git is defined as git(args, cwd). The committed checker fails with TypeError before its CAS matrix, contradicting R296's PASS receipt. Make the minimum argument-order fix in draft PR #36 as an append-only R302 correction; preserve the R296 report/receipt/history. Re-run the exact committed self-check against the exact current workflow and protocol bytes and record all 21 checks, hashes and output. Update only the test helper plus R302 report/receipt; no workflow changes unless the test reveals a separate concrete defect. Keep PR #36 draft/open/unmerged; no Actions, benchmark, estimator, data/dependency install/download, paid resources, result-branch creation, holdout, submission or leaderboard/canonical changes. If no local runner, do not claim PASS; report precise limitation and cite the coordinator's temporary one-line probe only as separate evidence.",
         "depends_on": [
           "R296"
         ],
-        "assigned_owner": "r296-selfcheck-correction-r269"
+        "hypothesis_id": "R296-CHECKER-ARGUMENT-ORDER-REPAIR-20260924",
+        "priority": 1,
+        "title": "Repair and rerun the exact committed R296 workflow security self-check"
       },
-      "at": "2026-09-24T00:53:41.503+00:00"
+      "revision": 453
     },
     {
-      "revision": 454,
       "action": "dependency_update",
+      "at": "2026-09-24T00:53:41.503+00:00",
       "job": "R297",
       "owner": "coordinator",
       "payload": {
@@ -6130,313 +6130,329 @@
           "R294",
           "R296"
         ],
+        "reason": "R302 repairs and verifies the exact committed R296 self-check after independent reproduction of a failure; final review must gate on that evidence.",
         "to_depends_on": [
           "R294",
           "R296",
           "R302"
-        ],
-        "reason": "R302 repairs and verifies the exact committed R296 self-check after independent reproduction of a failure; final review must gate on that evidence."
+        ]
       },
-      "at": "2026-09-24T00:53:41.503+00:00"
+      "revision": 454
     },
     {
-      "revision": 455,
       "action": "reassign",
+      "at": "2026-09-24T00:53:41.503+00:00",
       "job": "R297",
       "owner": "coordinator",
       "payload": {
         "from_owner": "r291-capture-final-review-r267",
-        "to_owner": "r297-independent-final-review-r4553b",
-        "reason": "The old R267 thread is idle after prior failed delivery; the job remains QUEUED with zero attempts, and no branch/run exists. Transfer to fresh independent ARC session; it must wait for R294/R296/R302 COMPLETE."
+        "reason": "The old R267 thread is idle after prior failed delivery; the job remains QUEUED with zero attempts, and no branch/run exists. Transfer to fresh independent ARC session; it must wait for R294/R296/R302 COMPLETE.",
+        "to_owner": "r297-independent-final-review-r4553b"
       },
-      "at": "2026-09-24T00:53:41.503+00:00"
+      "revision": 455
     },
     {
-      "revision": 456,
       "action": "reassign",
+      "at": "2026-09-24T00:53:41.503+00:00",
       "job": "R301",
       "owner": "coordinator",
       "payload": {
         "from_owner": "r300-integration-selfcheck-r268",
-        "to_owner": "r300-integration-selfcheck-r45546",
-        "reason": "R268 session returned systemError after R296; R301 remains QUEUED with zero attempts, no R301 artifact/run exists, and all dependencies are complete. Transfer the exact synthetic-only verification to a fresh ARC project session."
+        "reason": "R268 session returned systemError after R296; R301 remains QUEUED with zero attempts, no R301 artifact/run exists, and all dependencies are complete. Transfer the exact synthetic-only verification to a fresh ARC project session.",
+        "to_owner": "r300-integration-selfcheck-r45546"
       },
-      "at": "2026-09-24T00:53:41.503+00:00"
+      "revision": 456
     },
     {
-      "revision": 457,
       "action": "reassign",
+      "at": "2026-09-24T01:00:09.969+00:00",
       "job": "R302",
       "owner": "coordinator",
       "payload": {
         "from_owner": "r296-selfcheck-correction-r269",
-        "to_owner": "Control Center 7.09",
-        "reason": "Assigned R302 session remained idle with no claim/start or PR change after direct task delivery; transfer verified one-line exact checker failure to the coordinator to prevent idle work."
+        "reason": "Assigned R302 session remained idle with no claim/start or PR change after direct task delivery; transfer verified one-line exact checker failure to the coordinator to prevent idle work.",
+        "to_owner": "Control Center 7.09"
       },
-      "at": "2026-09-24T01:00:09.969+00:00"
+      "revision": 457
     },
     {
-      "revision": 458,
       "action": "reassign",
+      "at": "2026-09-24T01:00:09.969+00:00",
       "job": "R301",
       "owner": "coordinator",
       "payload": {
         "from_owner": "r300-integration-selfcheck-r45546",
-        "to_owner": "Control Center 7.09",
-        "reason": "R301 recipient explicitly reported no local checkout/terminal and could not execute; queue remains QUEUED with zero attempts. Coordinator will run the exact synthetic-only standard-library checker using individually pinned GitHub source artifacts, without cloning, dependencies or real data."
+        "reason": "R301 recipient explicitly reported no local checkout/terminal and could not execute; queue remains QUEUED with zero attempts. Coordinator will run the exact synthetic-only standard-library checker using individually pinned GitHub source artifacts, without cloning, dependencies or real data.",
+        "to_owner": "Control Center 7.09"
       },
-      "at": "2026-09-24T01:00:09.969+00:00"
+      "revision": 458
     },
     {
-      "revision": 459,
       "action": "claim",
+      "at": "2026-09-24T01:00:09.969+00:00",
       "job": "R302",
       "owner": "Control Center 7.09",
       "payload": {},
-      "at": "2026-09-24T01:00:09.969+00:00"
+      "revision": 459
     },
     {
-      "revision": 460,
       "action": "start",
+      "at": "2026-09-24T01:00:09.969+00:00",
       "job": "R302",
       "owner": "Control Center 7.09",
       "payload": {
-        "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
         "code_commit": "c3cb55870d9cc313e1323fd92fb5778b3e74b796",
-        "command": "apply the one-line set_remote git(args, repo) argument-order correction to PR #36; run exact committed 21-check security selfcheck against exact workflow/protocol bytes; append R302 report/receipt; no Actions/benchmark/data/dependency/merge"
+        "command": "apply the one-line set_remote git(args, repo) argument-order correction to PR #36; run exact committed 21-check security selfcheck against exact workflow/protocol bytes; append R302 report/receipt; no Actions/benchmark/data/dependency/merge",
+        "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter"
       },
-      "at": "2026-09-24T01:00:09.969+00:00"
+      "revision": 460
     },
     {
-      "revision": 461,
       "action": "finish",
+      "at": "2026-09-24T01:05:57.822+00:00",
       "job": "R302",
       "owner": "Control Center 7.09",
       "payload": {
-        "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
-        "status": "COMPLETE",
         "reason": "Corrected only the committed R296 security self-check argument-order bug in PR #36; preserved R296 history. The exact corrected checker, workflow and protocol bytes passed 21/21 synthetic/static checks on Python 3.13.13/Git 2.55.0.windows.3. Confirmed CAS success and rejection paths, rerun/duplicate dispatch gates, action pins and token non-persistence. PR #36 remains open/draft/unmerged; no Actions, benchmark, estimator, real data, dependencies, paid resources, result branch, holdout, submission, leaderboard or canonical edit.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/f6fb9018504632edffa1fb80d14ce8a68f442602/research/r302/R302_RECEIPT.json",
-          "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56"
-        }
+          "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/f6fb9018504632edffa1fb80d14ce8a68f442602/research/r302/R302_RECEIPT.json"
+        },
+        "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-24T01:05:57.822+00:00"
+      "revision": 461
     },
     {
-      "revision": 462,
       "action": "claim",
+      "at": "2026-09-24T01:05:57.822+00:00",
       "job": "R301",
       "owner": "Control Center 7.09",
       "payload": {},
-      "at": "2026-09-24T01:05:57.822+00:00"
+      "revision": 462
     },
     {
-      "revision": 463,
       "action": "start",
+      "at": "2026-09-24T01:05:57.822+00:00",
       "job": "R301",
       "owner": "Control Center 7.09",
       "payload": {
-        "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
         "code_commit": "813756ced282c780ac28f6da1e4228d8bc9c50b8",
-        "command": "verify exact R300 receipt-pinned source artifacts and run only research/r300/r300_capture_analyzer_selfcheck.py with synthetic fixtures using individual GitHub API files; no clone/data/dependencies/real vectors; append report/receipt"
+        "command": "verify exact R300 receipt-pinned source artifacts and run only research/r300/r300_capture_analyzer_selfcheck.py with synthetic fixtures using individual GitHub API files; no clone/data/dependencies/real vectors; append report/receipt",
+        "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter"
       },
-      "at": "2026-09-24T01:05:57.822+00:00"
+      "revision": 463
     },
     {
-      "revision": 464,
       "action": "finish",
+      "at": "2026-09-24T01:14:16.470+00:00",
       "job": "R301",
       "owner": "Control Center 7.09",
       "payload": {
-        "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
-        "status": "COMPLETE",
         "reason": "Fetched exact R300 analyzer/self-check artifacts by immutable commit/blob and verified their Git blob IDs and SHA-256 against R300 receipt. Synthetic standard-library checker passed all 21 substantive checks with pass=true/exit 0 on Python 3.13.13; the protocol target is Python 3.11.16, so that exact runtime was not tested. R298/R299 historical analyzer/self-check blobs still match their receipts. No real capture vectors, benchmark, Actions, deps/data, paid resource, PR edit, holdout or submission.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/b80d11b14be609fb99628b08c7a8695a82e3fdad/research/r301/R301_RECEIPT.json",
-          "sha256": "e1804c7fe2466d44c53073b3536e25c1ffc9538b29fa34a1a255290fc4f610ce"
-        }
+          "sha256": "e1804c7fe2466d44c53073b3536e25c1ffc9538b29fa34a1a255290fc4f610ce",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b80d11b14be609fb99628b08c7a8695a82e3fdad/research/r301/R301_RECEIPT.json"
+        },
+        "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-24T01:14:16.470+00:00"
+      "revision": 464
     },
     {
-      "revision": 465,
       "action": "claim",
+      "at": "2026-09-24T01:22:46.971+00:00",
       "job": "R297",
       "owner": "r297-independent-final-review-r4553b",
       "payload": {
         "reason": "Coordinator published claim for GitHub-only reviewer after the session reported no queue execution environment."
       },
-      "at": "2026-09-24T01:22:46.971+00:00"
+      "revision": 465
     },
     {
-      "revision": 466,
       "action": "start",
+      "at": "2026-09-24T01:22:46.971+00:00",
       "job": "R297",
       "owner": "r297-independent-final-review-r4553b",
       "payload": {
-        "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
         "code_commit": "f6fb9018504632edffa1fb80d14ce8a68f442602",
-        "command": "read-only final audit of exact draft PR #36 head using GitHub API: verify R294/R296/R302 hashes, workflow gates, branch CAS/rerun behavior, token and four-file allowlist; no code edits or Actions"
+        "command": "read-only final audit of exact draft PR #36 head using GitHub API: verify R294/R296/R302 hashes, workflow gates, branch CAS/rerun behavior, token and four-file allowlist; no code edits or Actions",
+        "run_id": "R297-pr36-final-independent-review-20260924-r4553b"
       },
-      "at": "2026-09-24T01:22:46.971+00:00"
+      "revision": 466
     },
     {
-      "revision": 467,
       "action": "finish",
+      "at": "2026-09-24T01:30:05.271+00:00",
       "job": "R297",
       "owner": "r297-independent-final-review-r4553b",
       "payload": {
-        "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
-        "status": "COMPLETE",
         "reason": "Independent final static review PASS on exact PR head f6fb9018504632edffa1fb80d14ce8a68f442602. Direct GitHub API inspection confirmed R291 preservation, active R294 patch/pins, workflow/protocol/preflight alignment, rerun gates, durable pre-benchmark claim and expected-tip CAS, absent branch fail-closed, action SHA tag refs, token non-persistence, exact four-file allowlist and absence of forbidden artifact/secret/holdout/submission paths. Reviewer explicitly did NOT independently execute git apply/CAS/credential-helper replays or recompute SHA-256; those are distinguished as committed R294/R302 receipt-backed evidence. PR remains open/draft/unmerged; no Actions/benchmark/PR edit/comment/review/merge.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/5ba5883ba17e10ff5814cb76678a94ecccc90e77/research/r297/R297_RECEIPT.json",
-          "sha256": "b7541570502a420442569662e87700765f42c90a04cc64fc4867d3e50d0d881f"
-        }
+          "sha256": "b7541570502a420442569662e87700765f42c90a04cc64fc4867d3e50d0d881f",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/5ba5883ba17e10ff5814cb76678a94ecccc90e77/research/r297/R297_RECEIPT.json"
+        },
+        "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-24T01:30:05.271+00:00"
+      "revision": 467
     },
     {
-      "revision": 468,
       "action": "reassign",
+      "at": "2026-09-24T01:41:27.740+00:00",
       "job": "R287",
       "owner": "coordinator",
       "payload": {
         "from_owner": "phase2-free-runner-audit",
-        "to_owner": "Control Center 7.09",
-        "reason": "The prior WAITING_INPUT attempt was specific to included Actions artifact storage. Current R290/R293 design uses direct Git persistence and no Actions artifacts. Prior attempt is terminal; no live run/process to duplicate. Coordinator is re-evaluating this changed path read-only."
+        "reason": "The prior WAITING_INPUT attempt was specific to included Actions artifact storage. Current R290/R293 design uses direct Git persistence and no Actions artifacts. Prior attempt is terminal; no live run/process to duplicate. Coordinator is re-evaluating this changed path read-only.",
+        "to_owner": "Control Center 7.09"
       },
-      "at": "2026-09-24T01:41:27.740+00:00"
+      "revision": 468
     },
     {
-      "revision": 469,
       "action": "claim",
+      "at": "2026-09-24T01:41:27.740+00:00",
       "job": "R287",
       "owner": "Control Center 7.09",
       "payload": {},
-      "at": "2026-09-24T01:41:27.740+00:00"
+      "revision": 469
     },
     {
-      "revision": 470,
       "action": "start",
+      "at": "2026-09-24T01:41:27.740+00:00",
       "job": "R287",
       "owner": "Control Center 7.09",
       "payload": {
-        "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
         "code_commit": "f6fb9018504632edffa1fb80d14ce8a68f442602",
-        "command": "read-only reassessment of zero-cost gate against exact final PR #36: public standard ubuntu-24.04 runner, direct Git persistence, no Actions artifact storage; verify visibility/runner/paths and retain approval gates; no dispatch/download/install/merge"
+        "command": "read-only reassessment of zero-cost gate against exact final PR #36: public standard ubuntu-24.04 runner, direct Git persistence, no Actions artifact storage; verify visibility/runner/paths and retain approval gates; no dispatch/download/install/merge",
+        "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter"
       },
-      "at": "2026-09-24T01:41:27.740+00:00"
+      "revision": 470
     },
     {
-      "revision": 471,
       "action": "finish",
+      "at": "2026-09-24T01:46:36.266+00:00",
       "job": "R287",
       "owner": "Control Center 7.09",
       "payload": {
-        "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
-        "status": "COMPLETE",
         "reason": "Reassessed the R287 cost gate against exact final PR #36 workflow and current official GitHub docs. Standard ubuntu-24.04 runner on this public repository is documented free/unlimited; current workflow uses direct Git persistence and no Actions artifact/Packages/cache/LFS storage path, so the prior 1 MiB artifact-quota input is superseded. Exact offline preflight passed and confirmed pins/frozen artifacts/allowlist. The result branch is still absent and protocol forbids branch creation/merge/dispatch until separately authorized; no Actions, benchmark, data/dependency, paid resource or submission occurred.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/4a31d15ea9da35d618fb1cec8307de6e82ad7d4e/research/r287/R287_DIRECT_GIT_COST_REASSESSMENT_RECEIPT.json",
-          "sha256": "55aeb2851c0f823dd00fe2935f578bc13a7dc1fd0ec32c9252d89dd39f86f059"
-        }
+          "sha256": "55aeb2851c0f823dd00fe2935f578bc13a7dc1fd0ec32c9252d89dd39f86f059",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/4a31d15ea9da35d618fb1cec8307de6e82ad7d4e/research/r287/R287_DIRECT_GIT_COST_REASSESSMENT_RECEIPT.json"
+        },
+        "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-24T01:46:36.266+00:00"
+      "revision": 471
     },
     {
-      "revision": 472,
       "action": "enqueue",
+      "at": "2026-09-24T01:53:54.143+00:00",
       "job": "R303",
       "owner": "coordinator",
       "payload": {
-        "title": "Refresh official ARC leaderboard and exact score comparability",
-        "hypothesis_id": "OFFICIAL-PHASE2-LEADERBOARD-FRESH-20260924",
-        "priority": 1,
+        "assigned_owner": "r303-live-leaderboard-statistician",
         "deliverable": "Refresh the current official ARC White-Box Phase-2 leaderboard and rules from first-party AIcrowd sources; freeze access date/time and source URLs/hashes. Compare the current visible leader with the strongest verified project results only when exact panel/split and metric are demonstrably comparable. Reconcile against R263/R271 receipts and current `research/STATUS.md`, specifically the visible-50 vs public mini:all-100 identity mismatch; do not infer an exact score gap or rank if still NOT_COMPARABLE. Record the current official best row, score precision/rounding, deadline/rules, and a clear decision on whether a valid direct comparison exists. Read-only: no benchmark/Actions/estimator, no data/dependency downloads, no paid resources, no private/holdout/full access, no submission, no PR/leaderboard/canonical edits. Save one append-only Markdown report and receipt on a report-only branch; never write main or PR #36.",
         "depends_on": [
           "R263",
           "R271"
         ],
-        "assigned_owner": "r303-live-leaderboard-statistician"
+        "hypothesis_id": "OFFICIAL-PHASE2-LEADERBOARD-FRESH-20260924",
+        "priority": 1,
+        "title": "Refresh official ARC leaderboard and exact score comparability"
       },
-      "at": "2026-09-24T01:53:54.143+00:00"
+      "revision": 472
     },
     {
-      "revision": 473,
       "action": "claim",
+      "at": "2026-09-24T01:53:54.143+00:00",
       "job": "R303",
       "owner": "r303-live-leaderboard-statistician",
       "payload": {},
-      "at": "2026-09-24T01:53:54.143+00:00"
+      "revision": 473
     },
     {
-      "revision": 474,
       "action": "start",
+      "at": "2026-09-24T01:53:54.143+00:00",
       "job": "R303",
       "owner": "r303-live-leaderboard-statistician",
       "payload": {
-        "run_id": "R303-official-leaderboard-refresh-20260924",
         "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
-        "command": "read-only official leaderboard/rules refresh and panel comparability audit; report/receipt on isolated review branch; no Actions/benchmark/data/paid/holdout/submission/PR edits"
+        "command": "read-only official leaderboard/rules refresh and panel comparability audit; report/receipt on isolated review branch; no Actions/benchmark/data/paid/holdout/submission/PR edits",
+        "run_id": "R303-official-leaderboard-refresh-20260924"
       },
-      "at": "2026-09-24T01:53:54.143+00:00"
+      "revision": 474
     },
     {
-      "revision": 475,
       "action": "finish",
+      "at": "2026-09-24T02:22:42.873+00:00",
       "job": "R303",
       "owner": "r303-live-leaderboard-statistician",
       "payload": {
-        "run_id": "R303-official-leaderboard-refresh-20260924",
-        "status": "COMPLETE",
         "reason": "Fresh first-party AIcrowd Phase-2 leaderboard snapshot captured at 2026-09-24T02:07:55Z: 100 of 195 displayed rows, J2W rank 1 with displayed adjusted score 2.10e-9 (3 significant digits), exact unrounded score unknown; deadline Oct 17 2026 23:59 UTC. Official metric/rules refreshed. Comparison with R209/R223 mini-100 is NOT_COMPARABLE because current visible Phase-2 panel is visible-50 and no immutable network/target identity join is published; no exact gap/rank inferred. Report/receipt preserve snapshot. No Actions, benchmark, estimator, data/dependency downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits.",
         "receipt": {
-          "url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json",
-          "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c"
-        }
+          "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json"
+        },
+        "run_id": "R303-official-leaderboard-refresh-20260924",
+        "status": "COMPLETE"
       },
-      "at": "2026-09-24T02:22:42.873+00:00"
+      "revision": 475
     },
     {
-      "revision": 476,
       "action": "enqueue",
+      "at": "2026-09-24T02:30:56.210+00:00",
       "job": "R304",
       "owner": "coordinator",
       "payload": {
-        "title": "Poll official leaderboard and report changes since R303",
-        "hypothesis_id": "LIVE-LEADERBOARD-DELTA-20260924",
-        "priority": 2,
+        "assigned_owner": "r304-live-board-delta-statistician",
         "deliverable": "Poll the live official AIcrowd Phase-2 leaderboard and compare its visible rows with the immutable R303 snapshot captured at 2026-09-24T02:07:55Z. Use only first-party sources; record exact UTC time, current top rows/displayed precision/row count/deadline, and a compact delta (or explicitly no change in the captured window). Preserve raw displayed rows in the receipt/JSON artifact and hashes. Re-check comparability against R209/R223 without inferring any score gap/rank absent an exact same-panel identity join. Append one Markdown report and receipt on a report-only branch. No Actions, benchmark, estimator, downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits.",
         "depends_on": [
           "R303",
           "R263",
           "R271"
         ],
-        "assigned_owner": "r304-live-board-delta-statistician"
+        "hypothesis_id": "LIVE-LEADERBOARD-DELTA-20260924",
+        "priority": 2,
+        "title": "Poll official leaderboard and report changes since R303"
       },
-      "at": "2026-09-24T02:30:56.210+00:00"
+      "revision": 476
     },
     {
-      "revision": 477,
       "action": "claim",
+      "at": "2026-09-24T02:30:56.210+00:00",
       "job": "R304",
       "owner": "r304-live-board-delta-statistician",
       "payload": {},
-      "at": "2026-09-24T02:30:56.210+00:00"
+      "revision": 477
     },
     {
-      "revision": 478,
       "action": "start",
+      "at": "2026-09-24T02:30:56.210+00:00",
       "job": "R304",
       "owner": "r304-live-board-delta-statistician",
       "payload": {
-        "run_id": "R304-live-leaderboard-poll-20260924-0230",
         "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
-        "command": "read-only first-party AIcrowd leaderboard delta snapshot vs R303 at 02:07:55Z; report/receipt only; no Actions/benchmark/download/paid/holdout/submission/PR edits"
+        "command": "read-only first-party AIcrowd leaderboard delta snapshot vs R303 at 02:07:55Z; report/receipt only; no Actions/benchmark/download/paid/holdout/submission/PR edits",
+        "run_id": "R304-live-leaderboard-poll-20260924-0230"
       },
-      "at": "2026-09-24T02:30:56.210+00:00"
+      "revision": 478
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-24T02:59:32+00:00:00",
+      "job": "R304",
+      "owner": "r304-live-board-delta-statistician",
+      "payload": {
+        "reason": "First-party AIcrowd Phase-2 snapshot at 2026-09-24T02:36:19.062Z: J2W remains rank 01 at displayed 2.10e-9 (3 significant digits), 320 entries. In the reviewed scope, AndreasHad04 moved from displayed rank 28 / 4.90e-9 to rank 25 / 4.70e-9; adjacent rows shifted. Rows 1-4 and 6-10 matched R303, while row 5 changed only relative-age text. Snapshot showed 100/195 rows, but the full 100-row diff was not performed; changes elsewhere are UNKNOWN. R209/R223 remain NOT_COMPARABLE because exact visible-50 identity and evaluator/meter compatibility are unproven; no gap/rank claimed. Report/receipt are preserved on the report-only branch. No Actions, benchmark, paid resources, data/dependency downloads, holdout/private access, submission, PR/main/canonical edits.",
+        "receipt": {
+          "sha256": "abe1c88940a7502ee61a7bd1d10c1f5454c8a3fc61c0204d785a11bd28bbb9f9",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/195f306b04993b671d6d2cd7682c367963ca9905/research/r304/R304_RECEIPT.json"
+        },
+        "run_id": "R304-live-leaderboard-poll-20260924-0230",
+        "status": "COMPLETE"
+      },
+      "revision": 479
     }
   ],
   "jobs": [
@@ -9625,19 +9641,19 @@
           "status": "WAITING_INPUT"
         },
         {
-          "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
           "code_commit": "f6fb9018504632edffa1fb80d14ce8a68f442602",
           "command": "read-only reassessment of zero-cost gate against exact final PR #36: public standard ubuntu-24.04 runner, direct Git persistence, no Actions artifact storage; verify visibility/runner/paths and retain approval gates; no dispatch/download/install/merge",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
-            "status": "COMPLETE",
             "reason": "Reassessed the R287 cost gate against exact final PR #36 workflow and current official GitHub docs. Standard ubuntu-24.04 runner on this public repository is documented free/unlimited; current workflow uses direct Git persistence and no Actions artifact/Packages/cache/LFS storage path, so the prior 1 MiB artifact-quota input is superseded. Exact offline preflight passed and confirmed pins/frozen artifacts/allowlist. The result branch is still absent and protocol forbids branch creation/merge/dispatch until separately authorized; no Actions, benchmark, data/dependency, paid resource or submission occurred.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/4a31d15ea9da35d618fb1cec8307de6e82ad7d4e/research/r287/R287_DIRECT_GIT_COST_REASSESSMENT_RECEIPT.json",
-              "sha256": "55aeb2851c0f823dd00fe2935f578bc13a7dc1fd0ec32c9252d89dd39f86f059"
-            }
-          }
+              "sha256": "55aeb2851c0f823dd00fe2935f578bc13a7dc1fd0ec32c9252d89dd39f86f059",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/4a31d15ea9da35d618fb1cec8307de6e82ad7d4e/research/r287/R287_DIRECT_GIT_COST_REASSESSMENT_RECEIPT.json"
+            },
+            "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
+            "status": "COMPLETE"
+          },
+          "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Using official GitHub documentation and the repository's exact existing workflows/runs, determine whether a one-time public-development V25 capture can run on an existing standard public GitHub-hosted runner with zero incremental charge and the exact pinned Python/WhestBench/flopscope stack plus public mini dataset. Verify runner type, repository visibility, billing/free-usage condition, dataset fetch path and 8GB/timeout constraints; distinguish documented facts from unknown account quota/billing. Do not trigger Actions, install/download large data, spend, or modify workflows. If zero-cost cannot be proven for the actual target account/runner, conclude WAITING_INPUT; otherwise deliver a precise preflight recipe for coordinator approval. Cite first-party sources; append report/receipt and finish R287.",
@@ -9650,8 +9666,8 @@
       "priority": 1,
       "reason": "Reassessed the R287 cost gate against exact final PR #36 workflow and current official GitHub docs. Standard ubuntu-24.04 runner on this public repository is documented free/unlimited; current workflow uses direct Git persistence and no Actions artifact/Packages/cache/LFS storage path, so the prior 1 MiB artifact-quota input is superseded. Exact offline preflight passed and confirmed pins/frozen artifacts/allowlist. The result branch is still absent and protocol forbids branch creation/merge/dispatch until separately authorized; no Actions, benchmark, data/dependency, paid resource or submission occurred.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/4a31d15ea9da35d618fb1cec8307de6e82ad7d4e/research/r287/R287_DIRECT_GIT_COST_REASSESSMENT_RECEIPT.json",
-        "sha256": "55aeb2851c0f823dd00fe2935f578bc13a7dc1fd0ec32c9252d89dd39f86f059"
+        "sha256": "55aeb2851c0f823dd00fe2935f578bc13a7dc1fd0ec32c9252d89dd39f86f059",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/4a31d15ea9da35d618fb1cec8307de6e82ad7d4e/research/r287/R287_DIRECT_GIT_COST_REASSESSMENT_RECEIPT.json"
       },
       "status": "COMPLETE",
       "title": "Check a genuinely zero-cost environment for V25 residual capture"
@@ -9992,19 +10008,19 @@
       "assigned_owner": "r297-independent-final-review-r4553b",
       "attempts": [
         {
-          "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
           "code_commit": "f6fb9018504632edffa1fb80d14ce8a68f442602",
           "command": "read-only final audit of exact draft PR #36 head using GitHub API: verify R294/R296/R302 hashes, workflow gates, branch CAS/rerun behavior, token and four-file allowlist; no code edits or Actions",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
-            "status": "COMPLETE",
             "reason": "Independent final static review PASS on exact PR head f6fb9018504632edffa1fb80d14ce8a68f442602. Direct GitHub API inspection confirmed R291 preservation, active R294 patch/pins, workflow/protocol/preflight alignment, rerun gates, durable pre-benchmark claim and expected-tip CAS, absent branch fail-closed, action SHA tag refs, token non-persistence, exact four-file allowlist and absence of forbidden artifact/secret/holdout/submission paths. Reviewer explicitly did NOT independently execute git apply/CAS/credential-helper replays or recompute SHA-256; those are distinguished as committed R294/R302 receipt-backed evidence. PR remains open/draft/unmerged; no Actions/benchmark/PR edit/comment/review/merge.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/5ba5883ba17e10ff5814cb76678a94ecccc90e77/research/r297/R297_RECEIPT.json",
-              "sha256": "b7541570502a420442569662e87700765f42c90a04cc64fc4867d3e50d0d881f"
-            }
-          }
+              "sha256": "b7541570502a420442569662e87700765f42c90a04cc64fc4867d3e50d0d881f",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/5ba5883ba17e10ff5814cb76678a94ecccc90e77/research/r297/R297_RECEIPT.json"
+            },
+            "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
+            "status": "COMPLETE"
+          },
+          "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "After R294 patch repair and R296 workflow hardening are COMPLETE, independently audit the exact final draft PR #36 head; do not review an earlier snapshot. Reproduce that the old R291 patch is malformed and remains unchanged as historical evidence; verify the new R294 patch applies with `git apply --check` to the exact pinned WhestBench 0.16.1 scoring.py blob and the applied diff contains only the intended pre-MSE capture seams. Independently verify the workflow/preflight references the corrected patch and enforces all R295 controls: no run retries/re-dispatch, atomic existing-branch claim/update with no branch recreate or race, pinned action SHAs in contents:write job, no persisted token URL/config, exact four-file allowlist, no paid/artifact/secret/holdout/submission paths. Static/offline only; no code edits, PR comments/review, merge, branch creation, Actions/benchmark, data/dependency downloads, or spending. Record exact PR/workflow/patch/test hashes and PASS or blocking findings in append-only R297 report/receipt; finish R297.",
@@ -10017,13 +10033,13 @@
       "id": "R297",
       "owner": "r297-independent-final-review-r4553b",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Independently verify the repaired PR #36 before any merge or run",
+      "reason": "Independent final static review PASS on exact PR head f6fb9018504632edffa1fb80d14ce8a68f442602. Direct GitHub API inspection confirmed R291 preservation, active R294 patch/pins, workflow/protocol/preflight alignment, rerun gates, durable pre-benchmark claim and expected-tip CAS, absent branch fail-closed, action SHA tag refs, token non-persistence, exact four-file allowlist and absence of forbidden artifact/secret/holdout/submission paths. Reviewer explicitly did NOT independently execute git apply/CAS/credential-helper replays or recompute SHA-256; those are distinguished as committed R294/R302 receipt-backed evidence. PR remains open/draft/unmerged; no Actions/benchmark/PR edit/comment/review/merge.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/5ba5883ba17e10ff5814cb76678a94ecccc90e77/research/r297/R297_RECEIPT.json",
-        "sha256": "b7541570502a420442569662e87700765f42c90a04cc64fc4867d3e50d0d881f"
+        "sha256": "b7541570502a420442569662e87700765f42c90a04cc64fc4867d3e50d0d881f",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/5ba5883ba17e10ff5814cb76678a94ecccc90e77/research/r297/R297_RECEIPT.json"
       },
-      "reason": "Independent final static review PASS on exact PR head f6fb9018504632edffa1fb80d14ce8a68f442602. Direct GitHub API inspection confirmed R291 preservation, active R294 patch/pins, workflow/protocol/preflight alignment, rerun gates, durable pre-benchmark claim and expected-tip CAS, absent branch fail-closed, action SHA tag refs, token non-persistence, exact four-file allowlist and absence of forbidden artifact/secret/holdout/submission paths. Reviewer explicitly did NOT independently execute git apply/CAS/credential-helper replays or recompute SHA-256; those are distinguished as committed R294/R302 receipt-backed evidence. PR remains open/draft/unmerged; no Actions/benchmark/PR edit/comment/review/merge."
+      "status": "COMPLETE",
+      "title": "Independently verify the repaired PR #36 before any merge or run"
     },
     {
       "assigned_owner": "r288-capture-analysis-prep-r269",
@@ -10140,19 +10156,19 @@
       "assigned_owner": "Control Center 7.09",
       "attempts": [
         {
-          "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
           "code_commit": "813756ced282c780ac28f6da1e4228d8bc9c50b8",
           "command": "verify exact R300 receipt-pinned source artifacts and run only research/r300/r300_capture_analyzer_selfcheck.py with synthetic fixtures using individual GitHub API files; no clone/data/dependencies/real vectors; append report/receipt",
-          "status": "COMPLETE",
           "completion": {
-            "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
-            "status": "COMPLETE",
             "reason": "Fetched exact R300 analyzer/self-check artifacts by immutable commit/blob and verified their Git blob IDs and SHA-256 against R300 receipt. Synthetic standard-library checker passed all 21 substantive checks with pass=true/exit 0 on Python 3.13.13; the protocol target is Python 3.11.16, so that exact runtime was not tested. R298/R299 historical analyzer/self-check blobs still match their receipts. No real capture vectors, benchmark, Actions, deps/data, paid resource, PR edit, holdout or submission.",
             "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/b80d11b14be609fb99628b08c7a8695a82e3fdad/research/r301/R301_RECEIPT.json",
-              "sha256": "e1804c7fe2466d44c53073b3536e25c1ffc9538b29fa34a1a255290fc4f610ce"
-            }
-          }
+              "sha256": "e1804c7fe2466d44c53073b3536e25c1ffc9538b29fa34a1a255290fc4f610ce",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/b80d11b14be609fb99628b08c7a8695a82e3fdad/research/r301/R301_RECEIPT.json"
+            },
+            "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
+            "status": "COMPLETE"
+          },
+          "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
+          "status": "COMPLETE"
         }
       ],
       "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
@@ -10166,111 +10182,125 @@
       "id": "R301",
       "owner": "Control Center 7.09",
       "priority": 1,
-      "status": "COMPLETE",
-      "title": "Execute the committed R300 synthetic self-check on exact bytes",
+      "reason": "Fetched exact R300 analyzer/self-check artifacts by immutable commit/blob and verified their Git blob IDs and SHA-256 against R300 receipt. Synthetic standard-library checker passed all 21 substantive checks with pass=true/exit 0 on Python 3.13.13; the protocol target is Python 3.11.16, so that exact runtime was not tested. R298/R299 historical analyzer/self-check blobs still match their receipts. No real capture vectors, benchmark, Actions, deps/data, paid resource, PR edit, holdout or submission.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/b80d11b14be609fb99628b08c7a8695a82e3fdad/research/r301/R301_RECEIPT.json",
-        "sha256": "e1804c7fe2466d44c53073b3536e25c1ffc9538b29fa34a1a255290fc4f610ce"
+        "sha256": "e1804c7fe2466d44c53073b3536e25c1ffc9538b29fa34a1a255290fc4f610ce",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/b80d11b14be609fb99628b08c7a8695a82e3fdad/research/r301/R301_RECEIPT.json"
       },
-      "reason": "Fetched exact R300 analyzer/self-check artifacts by immutable commit/blob and verified their Git blob IDs and SHA-256 against R300 receipt. Synthetic standard-library checker passed all 21 substantive checks with pass=true/exit 0 on Python 3.13.13; the protocol target is Python 3.11.16, so that exact runtime was not tested. R298/R299 historical analyzer/self-check blobs still match their receipts. No real capture vectors, benchmark, Actions, deps/data, paid resource, PR edit, holdout or submission."
+      "status": "COMPLETE",
+      "title": "Execute the committed R300 synthetic self-check on exact bytes"
     },
     {
-      "id": "R302",
-      "priority": 1,
-      "title": "Repair and rerun the exact committed R296 workflow security self-check",
-      "hypothesis_id": "R296-CHECKER-ARGUMENT-ORDER-REPAIR-20260924",
+      "assigned_owner": "Control Center 7.09",
+      "attempts": [
+        {
+          "code_commit": "c3cb55870d9cc313e1323fd92fb5778b3e74b796",
+          "command": "apply the one-line set_remote git(args, repo) argument-order correction to PR #36; run exact committed 21-check security selfcheck against exact workflow/protocol bytes; append R302 report/receipt; no Actions/benchmark/data/dependency/merge",
+          "completion": {
+            "reason": "Corrected only the committed R296 security self-check argument-order bug in PR #36; preserved R296 history. The exact corrected checker, workflow and protocol bytes passed 21/21 synthetic/static checks on Python 3.13.13/Git 2.55.0.windows.3. Confirmed CAS success and rejection paths, rerun/duplicate dispatch gates, action pins and token non-persistence. PR #36 remains open/draft/unmerged; no Actions, benchmark, estimator, real data, dependencies, paid resources, result branch, holdout, submission, leaderboard or canonical edit.",
+            "receipt": {
+              "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/f6fb9018504632edffa1fb80d14ce8a68f442602/research/r302/R302_RECEIPT.json"
+            },
+            "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
+            "status": "COMPLETE"
+          },
+          "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
+          "status": "COMPLETE"
+        }
+      ],
+      "deliverable": "Independent exact-byte review found the committed scripts/r296_workflow_security_selfcheck.py (blob dc09a5c4a06136370344c27723c5c430588b0fa2) still calls git(repo, args) at set_remote, while git is defined as git(args, cwd). The committed checker fails with TypeError before its CAS matrix, contradicting R296's PASS receipt. Make the minimum argument-order fix in draft PR #36 as an append-only R302 correction; preserve the R296 report/receipt/history. Re-run the exact committed self-check against the exact current workflow and protocol bytes and record all 21 checks, hashes and output. Update only the test helper plus R302 report/receipt; no workflow changes unless the test reveals a separate concrete defect. Keep PR #36 draft/open/unmerged; no Actions, benchmark, estimator, data/dependency install/download, paid resources, result-branch creation, holdout, submission or leaderboard/canonical changes. If no local runner, do not claim PASS; report precise limitation and cite the coordinator's temporary one-line probe only as separate evidence.",
       "depends_on": [
         "R296"
       ],
-      "assigned_owner": "Control Center 7.09",
-      "deliverable": "Independent exact-byte review found the committed scripts/r296_workflow_security_selfcheck.py (blob dc09a5c4a06136370344c27723c5c430588b0fa2) still calls git(repo, args) at set_remote, while git is defined as git(args, cwd). The committed checker fails with TypeError before its CAS matrix, contradicting R296's PASS receipt. Make the minimum argument-order fix in draft PR #36 as an append-only R302 correction; preserve the R296 report/receipt/history. Re-run the exact committed self-check against the exact current workflow and protocol bytes and record all 21 checks, hashes and output. Update only the test helper plus R302 report/receipt; no workflow changes unless the test reveals a separate concrete defect. Keep PR #36 draft/open/unmerged; no Actions, benchmark, estimator, data/dependency install/download, paid resources, result-branch creation, holdout, submission or leaderboard/canonical changes. If no local runner, do not claim PASS; report precise limitation and cite the coordinator's temporary one-line probe only as separate evidence.",
-      "status": "COMPLETE",
+      "hypothesis_id": "R296-CHECKER-ARGUMENT-ORDER-REPAIR-20260924",
+      "id": "R302",
       "owner": "Control Center 7.09",
-      "attempts": [
-        {
-          "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
-          "code_commit": "c3cb55870d9cc313e1323fd92fb5778b3e74b796",
-          "command": "apply the one-line set_remote git(args, repo) argument-order correction to PR #36; run exact committed 21-check security selfcheck against exact workflow/protocol bytes; append R302 report/receipt; no Actions/benchmark/data/dependency/merge",
-          "status": "COMPLETE",
-          "completion": {
-            "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
-            "status": "COMPLETE",
-            "reason": "Corrected only the committed R296 security self-check argument-order bug in PR #36; preserved R296 history. The exact corrected checker, workflow and protocol bytes passed 21/21 synthetic/static checks on Python 3.13.13/Git 2.55.0.windows.3. Confirmed CAS success and rejection paths, rerun/duplicate dispatch gates, action pins and token non-persistence. PR #36 remains open/draft/unmerged; no Actions, benchmark, estimator, real data, dependencies, paid resources, result branch, holdout, submission, leaderboard or canonical edit.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/f6fb9018504632edffa1fb80d14ce8a68f442602/research/r302/R302_RECEIPT.json",
-              "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56"
-            }
-          }
-        }
-      ],
+      "priority": 1,
+      "reason": "Corrected only the committed R296 security self-check argument-order bug in PR #36; preserved R296 history. The exact corrected checker, workflow and protocol bytes passed 21/21 synthetic/static checks on Python 3.13.13/Git 2.55.0.windows.3. Confirmed CAS success and rejection paths, rerun/duplicate dispatch gates, action pins and token non-persistence. PR #36 remains open/draft/unmerged; no Actions, benchmark, estimator, real data, dependencies, paid resources, result branch, holdout, submission, leaderboard or canonical edit.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/f6fb9018504632edffa1fb80d14ce8a68f442602/research/r302/R302_RECEIPT.json",
-        "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56"
+        "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/f6fb9018504632edffa1fb80d14ce8a68f442602/research/r302/R302_RECEIPT.json"
       },
-      "reason": "Corrected only the committed R296 security self-check argument-order bug in PR #36; preserved R296 history. The exact corrected checker, workflow and protocol bytes passed 21/21 synthetic/static checks on Python 3.13.13/Git 2.55.0.windows.3. Confirmed CAS success and rejection paths, rerun/duplicate dispatch gates, action pins and token non-persistence. PR #36 remains open/draft/unmerged; no Actions, benchmark, estimator, real data, dependencies, paid resources, result branch, holdout, submission, leaderboard or canonical edit."
+      "status": "COMPLETE",
+      "title": "Repair and rerun the exact committed R296 workflow security self-check"
     },
     {
-      "id": "R303",
-      "priority": 1,
-      "title": "Refresh official ARC leaderboard and exact score comparability",
-      "hypothesis_id": "OFFICIAL-PHASE2-LEADERBOARD-FRESH-20260924",
+      "assigned_owner": "r303-live-leaderboard-statistician",
+      "attempts": [
+        {
+          "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+          "command": "read-only official leaderboard/rules refresh and panel comparability audit; report/receipt on isolated review branch; no Actions/benchmark/data/paid/holdout/submission/PR edits",
+          "completion": {
+            "reason": "Fresh first-party AIcrowd Phase-2 leaderboard snapshot captured at 2026-09-24T02:07:55Z: 100 of 195 displayed rows, J2W rank 1 with displayed adjusted score 2.10e-9 (3 significant digits), exact unrounded score unknown; deadline Oct 17 2026 23:59 UTC. Official metric/rules refreshed. Comparison with R209/R223 mini-100 is NOT_COMPARABLE because current visible Phase-2 panel is visible-50 and no immutable network/target identity join is published; no exact gap/rank inferred. Report/receipt preserve snapshot. No Actions, benchmark, estimator, data/dependency downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits.",
+            "receipt": {
+              "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json"
+            },
+            "run_id": "R303-official-leaderboard-refresh-20260924",
+            "status": "COMPLETE"
+          },
+          "run_id": "R303-official-leaderboard-refresh-20260924",
+          "status": "COMPLETE"
+        }
+      ],
+      "deliverable": "Refresh the current official ARC White-Box Phase-2 leaderboard and rules from first-party AIcrowd sources; freeze access date/time and source URLs/hashes. Compare the current visible leader with the strongest verified project results only when exact panel/split and metric are demonstrably comparable. Reconcile against R263/R271 receipts and current `research/STATUS.md`, specifically the visible-50 vs public mini:all-100 identity mismatch; do not infer an exact score gap or rank if still NOT_COMPARABLE. Record the current official best row, score precision/rounding, deadline/rules, and a clear decision on whether a valid direct comparison exists. Read-only: no benchmark/Actions/estimator, no data/dependency downloads, no paid resources, no private/holdout/full access, no submission, no PR/leaderboard/canonical edits. Save one append-only Markdown report and receipt on a report-only branch; never write main or PR #36.",
       "depends_on": [
         "R263",
         "R271"
       ],
-      "assigned_owner": "r303-live-leaderboard-statistician",
-      "status": "COMPLETE",
+      "hypothesis_id": "OFFICIAL-PHASE2-LEADERBOARD-FRESH-20260924",
+      "id": "R303",
       "owner": "r303-live-leaderboard-statistician",
-      "attempts": [
-        {
-          "run_id": "R303-official-leaderboard-refresh-20260924",
-          "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
-          "command": "read-only official leaderboard/rules refresh and panel comparability audit; report/receipt on isolated review branch; no Actions/benchmark/data/paid/holdout/submission/PR edits",
-          "status": "COMPLETE",
-          "completion": {
-            "run_id": "R303-official-leaderboard-refresh-20260924",
-            "status": "COMPLETE",
-            "reason": "Fresh first-party AIcrowd Phase-2 leaderboard snapshot captured at 2026-09-24T02:07:55Z: 100 of 195 displayed rows, J2W rank 1 with displayed adjusted score 2.10e-9 (3 significant digits), exact unrounded score unknown; deadline Oct 17 2026 23:59 UTC. Official metric/rules refreshed. Comparison with R209/R223 mini-100 is NOT_COMPARABLE because current visible Phase-2 panel is visible-50 and no immutable network/target identity join is published; no exact gap/rank inferred. Report/receipt preserve snapshot. No Actions, benchmark, estimator, data/dependency downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits.",
-            "receipt": {
-              "url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json",
-              "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c"
-            }
-          }
-        }
-      ],
-      "deliverable": "Refresh the current official ARC White-Box Phase-2 leaderboard and rules from first-party AIcrowd sources; freeze access date/time and source URLs/hashes. Compare the current visible leader with the strongest verified project results only when exact panel/split and metric are demonstrably comparable. Reconcile against R263/R271 receipts and current `research/STATUS.md`, specifically the visible-50 vs public mini:all-100 identity mismatch; do not infer an exact score gap or rank if still NOT_COMPARABLE. Record the current official best row, score precision/rounding, deadline/rules, and a clear decision on whether a valid direct comparison exists. Read-only: no benchmark/Actions/estimator, no data/dependency downloads, no paid resources, no private/holdout/full access, no submission, no PR/leaderboard/canonical edits. Save one append-only Markdown report and receipt on a report-only branch; never write main or PR #36.",
+      "priority": 1,
+      "reason": "Fresh first-party AIcrowd Phase-2 leaderboard snapshot captured at 2026-09-24T02:07:55Z: 100 of 195 displayed rows, J2W rank 1 with displayed adjusted score 2.10e-9 (3 significant digits), exact unrounded score unknown; deadline Oct 17 2026 23:59 UTC. Official metric/rules refreshed. Comparison with R209/R223 mini-100 is NOT_COMPARABLE because current visible Phase-2 panel is visible-50 and no immutable network/target identity join is published; no exact gap/rank inferred. Report/receipt preserve snapshot. No Actions, benchmark, estimator, data/dependency downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits.",
       "receipt": {
-        "url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json",
-        "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c"
+        "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json"
       },
-      "reason": "Fresh first-party AIcrowd Phase-2 leaderboard snapshot captured at 2026-09-24T02:07:55Z: 100 of 195 displayed rows, J2W rank 1 with displayed adjusted score 2.10e-9 (3 significant digits), exact unrounded score unknown; deadline Oct 17 2026 23:59 UTC. Official metric/rules refreshed. Comparison with R209/R223 mini-100 is NOT_COMPARABLE because current visible Phase-2 panel is visible-50 and no immutable network/target identity join is published; no exact gap/rank inferred. Report/receipt preserve snapshot. No Actions, benchmark, estimator, data/dependency downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits."
+      "status": "COMPLETE",
+      "title": "Refresh official ARC leaderboard and exact score comparability"
     },
     {
-      "id": "R304",
-      "priority": 2,
-      "title": "Poll official leaderboard and report changes since R303",
-      "hypothesis_id": "LIVE-LEADERBOARD-DELTA-20260924",
+      "assigned_owner": "r304-live-board-delta-statistician",
+      "attempts": [
+        {
+          "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+          "command": "read-only first-party AIcrowd leaderboard delta snapshot vs R303 at 02:07:55Z; report/receipt only; no Actions/benchmark/download/paid/holdout/submission/PR edits",
+          "completion": {
+            "reason": "First-party AIcrowd Phase-2 snapshot at 2026-09-24T02:36:19.062Z: J2W remains rank 01 at displayed 2.10e-9 (3 significant digits), 320 entries. In the reviewed scope, AndreasHad04 moved from displayed rank 28 / 4.90e-9 to rank 25 / 4.70e-9; adjacent rows shifted. Rows 1-4 and 6-10 matched R303, while row 5 changed only relative-age text. Snapshot showed 100/195 rows, but the full 100-row diff was not performed; changes elsewhere are UNKNOWN. R209/R223 remain NOT_COMPARABLE because exact visible-50 identity and evaluator/meter compatibility are unproven; no gap/rank claimed. Report/receipt are preserved on the report-only branch. No Actions, benchmark, paid resources, data/dependency downloads, holdout/private access, submission, PR/main/canonical edits.",
+            "receipt": {
+              "sha256": "abe1c88940a7502ee61a7bd1d10c1f5454c8a3fc61c0204d785a11bd28bbb9f9",
+              "url": "https://github.com/tim8es/arc-whitebox/blob/195f306b04993b671d6d2cd7682c367963ca9905/research/r304/R304_RECEIPT.json"
+            },
+            "run_id": "R304-live-leaderboard-poll-20260924-0230",
+            "status": "COMPLETE"
+          },
+          "run_id": "R304-live-leaderboard-poll-20260924-0230",
+          "status": "COMPLETE"
+        }
+      ],
+      "deliverable": "Poll the live official AIcrowd Phase-2 leaderboard and compare its visible rows with the immutable R303 snapshot captured at 2026-09-24T02:07:55Z. Use only first-party sources; record exact UTC time, current top rows/displayed precision/row count/deadline, and a compact delta (or explicitly no change in the captured window). Preserve raw displayed rows in the receipt/JSON artifact and hashes. Re-check comparability against R209/R223 without inferring any score gap/rank absent an exact same-panel identity join. Append one Markdown report and receipt on a report-only branch. No Actions, benchmark, estimator, downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits.",
       "depends_on": [
         "R303",
         "R263",
         "R271"
       ],
-      "assigned_owner": "r304-live-board-delta-statistician",
-      "status": "RUNNING",
+      "hypothesis_id": "LIVE-LEADERBOARD-DELTA-20260924",
+      "id": "R304",
       "owner": "r304-live-board-delta-statistician",
-      "attempts": [
-        {
-          "run_id": "R304-live-leaderboard-poll-20260924-0230",
-          "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
-          "command": "read-only first-party AIcrowd leaderboard delta snapshot vs R303 at 02:07:55Z; report/receipt only; no Actions/benchmark/download/paid/holdout/submission/PR edits",
-          "status": "RUNNING"
-        }
-      ],
-      "deliverable": "Poll the live official AIcrowd Phase-2 leaderboard and compare its visible rows with the immutable R303 snapshot captured at 2026-09-24T02:07:55Z. Use only first-party sources; record exact UTC time, current top rows/displayed precision/row count/deadline, and a compact delta (or explicitly no change in the captured window). Preserve raw displayed rows in the receipt/JSON artifact and hashes. Re-check comparability against R209/R223 without inferring any score gap/rank absent an exact same-panel identity join. Append one Markdown report and receipt on a report-only branch. No Actions, benchmark, estimator, downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits."
+      "priority": 2,
+      "reason": "First-party AIcrowd Phase-2 snapshot at 2026-09-24T02:36:19.062Z: J2W remains rank 01 at displayed 2.10e-9 (3 significant digits), 320 entries. In the reviewed scope, AndreasHad04 moved from displayed rank 28 / 4.90e-9 to rank 25 / 4.70e-9; adjacent rows shifted. Rows 1-4 and 6-10 matched R303, while row 5 changed only relative-age text. Snapshot showed 100/195 rows, but the full 100-row diff was not performed; changes elsewhere are UNKNOWN. R209/R223 remain NOT_COMPARABLE because exact visible-50 identity and evaluator/meter compatibility are unproven; no gap/rank claimed. Report/receipt are preserved on the report-only branch. No Actions, benchmark, paid resources, data/dependency downloads, holdout/private access, submission, PR/main/canonical edits.",
+      "receipt": {
+        "sha256": "abe1c88940a7502ee61a7bd1d10c1f5454c8a3fc61c0204d785a11bd28bbb9f9",
+        "url": "https://github.com/tim8es/arc-whitebox/blob/195f306b04993b671d6d2cd7682c367963ca9905/research/r304/R304_RECEIPT.json"
+      },
+      "status": "COMPLETE",
+      "title": "Poll official leaderboard and report changes since R303"
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 478,
+  "revision": 479,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
