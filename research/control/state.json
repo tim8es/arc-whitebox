@@ -6206,6 +6206,42 @@
         "command": "apply the one-line set_remote git(args, repo) argument-order correction to PR #36; run exact committed 21-check security selfcheck against exact workflow/protocol bytes; append R302 report/receipt; no Actions/benchmark/data/dependency/merge"
       },
       "at": "2026-09-24T01:00:09.969+00:00"
+    },
+    {
+      "revision": 461,
+      "action": "finish",
+      "job": "R302",
+      "owner": "Control Center 7.09",
+      "payload": {
+        "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
+        "status": "COMPLETE",
+        "reason": "Corrected only the committed R296 security self-check argument-order bug in PR #36; preserved R296 history. The exact corrected checker, workflow and protocol bytes passed 21/21 synthetic/static checks on Python 3.13.13/Git 2.55.0.windows.3. Confirmed CAS success and rejection paths, rerun/duplicate dispatch gates, action pins and token non-persistence. PR #36 remains open/draft/unmerged; no Actions, benchmark, estimator, real data, dependencies, paid resources, result branch, holdout, submission, leaderboard or canonical edit.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/f6fb9018504632edffa1fb80d14ce8a68f442602/research/r302/R302_RECEIPT.json",
+          "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56"
+        }
+      },
+      "at": "2026-09-24T01:05:57.822+00:00"
+    },
+    {
+      "revision": 462,
+      "action": "claim",
+      "job": "R301",
+      "owner": "Control Center 7.09",
+      "payload": {},
+      "at": "2026-09-24T01:05:57.822+00:00"
+    },
+    {
+      "revision": 463,
+      "action": "start",
+      "job": "R301",
+      "owner": "Control Center 7.09",
+      "payload": {
+        "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
+        "code_commit": "813756ced282c780ac28f6da1e4228d8bc9c50b8",
+        "command": "verify exact R300 receipt-pinned source artifacts and run only research/r300/r300_capture_analyzer_selfcheck.py with synthetic fixtures using individual GitHub API files; no clone/data/dependencies/real vectors; append report/receipt"
+      },
+      "at": "2026-09-24T01:05:57.822+00:00"
     }
   ],
   "jobs": [
@@ -9871,7 +9907,14 @@
     },
     {
       "assigned_owner": "Control Center 7.09",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
+          "code_commit": "813756ced282c780ac28f6da1e4228d8bc9c50b8",
+          "command": "verify exact R300 receipt-pinned source artifacts and run only research/r300/r300_capture_analyzer_selfcheck.py with synthetic fixtures using individual GitHub API files; no clone/data/dependencies/real vectors; append report/receipt",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
       "depends_on": [
         "R294",
@@ -9881,9 +9924,9 @@
       ],
       "hypothesis_id": "R300-COMMITTED-SELFHECK-INDEPENDENT-VERIFY-20260924",
       "id": "R301",
-      "owner": null,
+      "owner": "Control Center 7.09",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "RUNNING",
       "title": "Execute the committed R300 synthetic self-check on exact bytes"
     },
     {
@@ -9896,20 +9939,34 @@
       ],
       "assigned_owner": "Control Center 7.09",
       "deliverable": "Independent exact-byte review found the committed scripts/r296_workflow_security_selfcheck.py (blob dc09a5c4a06136370344c27723c5c430588b0fa2) still calls git(repo, args) at set_remote, while git is defined as git(args, cwd). The committed checker fails with TypeError before its CAS matrix, contradicting R296's PASS receipt. Make the minimum argument-order fix in draft PR #36 as an append-only R302 correction; preserve the R296 report/receipt/history. Re-run the exact committed self-check against the exact current workflow and protocol bytes and record all 21 checks, hashes and output. Update only the test helper plus R302 report/receipt; no workflow changes unless the test reveals a separate concrete defect. Keep PR #36 draft/open/unmerged; no Actions, benchmark, estimator, data/dependency install/download, paid resources, result-branch creation, holdout, submission or leaderboard/canonical changes. If no local runner, do not claim PASS; report precise limitation and cite the coordinator's temporary one-line probe only as separate evidence.",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "owner": "Control Center 7.09",
       "attempts": [
         {
           "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
           "code_commit": "c3cb55870d9cc313e1323fd92fb5778b3e74b796",
           "command": "apply the one-line set_remote git(args, repo) argument-order correction to PR #36; run exact committed 21-check security selfcheck against exact workflow/protocol bytes; append R302 report/receipt; no Actions/benchmark/data/dependency/merge",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
+            "status": "COMPLETE",
+            "reason": "Corrected only the committed R296 security self-check argument-order bug in PR #36; preserved R296 history. The exact corrected checker, workflow and protocol bytes passed 21/21 synthetic/static checks on Python 3.13.13/Git 2.55.0.windows.3. Confirmed CAS success and rejection paths, rerun/duplicate dispatch gates, action pins and token non-persistence. PR #36 remains open/draft/unmerged; no Actions, benchmark, estimator, real data, dependencies, paid resources, result branch, holdout, submission, leaderboard or canonical edit.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/f6fb9018504632edffa1fb80d14ce8a68f442602/research/r302/R302_RECEIPT.json",
+              "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56"
+            }
+          }
         }
-      ]
+      ],
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/f6fb9018504632edffa1fb80d14ce8a68f442602/research/r302/R302_RECEIPT.json",
+        "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56"
+      },
+      "reason": "Corrected only the committed R296 security self-check argument-order bug in PR #36; preserved R296 history. The exact corrected checker, workflow and protocol bytes passed 21/21 synthetic/static checks on Python 3.13.13/Git 2.55.0.windows.3. Confirmed CAS success and rejection paths, rerun/duplicate dispatch gates, action pins and token non-persistence. PR #36 remains open/draft/unmerged; no Actions, benchmark, estimator, real data, dependencies, paid resources, result branch, holdout, submission, leaderboard or canonical edit."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 460,
+  "revision": 463,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
