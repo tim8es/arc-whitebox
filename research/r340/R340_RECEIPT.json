@@ -1,0 +1,87 @@
+{
+  "artifact": {
+    "receipt_path": "research/r340/R340_RECEIPT.json",
+    "report_path": "research/r340/R340_J2W_SUBMISSION_332136_METHOD_AUDIT.md",
+    "report_sha256": "0e3d378cb1fc3e71cd72c4090b66a8fa92f067ffdcd42a6cdc4ae5c3fe2315e4"
+  },
+  "branch": "review/r340-j2w-submission-332136-method-audit-20260924",
+  "dedupe": {
+    "exact_332136_report_found_before_r340": false,
+    "prior_lineage_submission_id": 331539,
+    "prior_r328_not_reused_as_current_method_evidence": true,
+    "repository_search_query": "332136"
+  },
+  "job": "R340",
+  "main_base": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "method_disclosure": {
+    "configuration": null,
+    "dedupe_against_r209_r223_required": false,
+    "estimator_family": null,
+    "follow_up_proposed": null,
+    "reproducible_instructions": null,
+    "source_commit": null,
+    "source_repository": null
+  },
+  "note": "The public crawlable leaderboard available during R340 lagged the supplied live snapshot and still linked J2W to older #331539. R340 preserved the supplied live snapshot verbatim for target identification and did not substitute stale crawler metrics or infer a method from either snapshot.",
+  "public_references": [
+    {
+      "commit_linked": false,
+      "configuration_linked": false,
+      "kind": "exact_submission",
+      "method_family_linked": false,
+      "reproducible_instructions_linked": false,
+      "source_repo_linked": false,
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332136"
+    },
+    {
+      "kind": "first_party_team",
+      "participant_identity": "joe_wanza",
+      "relevant_public_method_or_source_link_found": false,
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/J2W"
+    },
+    {
+      "kind": "first_party_participant_profile",
+      "relevant_public_method_or_source_link_found": false,
+      "url": "https://www.aicrowd.com/participants/joe_wanza"
+    },
+    {
+      "kind": "older_submission_lineage_only",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331539",
+      "used_to_infer_332136_method": false
+    }
+  ],
+  "repository": "tim8es/arc-whitebox",
+  "safety": {
+    "actions_triggered": false,
+    "code_or_benchmark_run": false,
+    "control_or_queue_edited": false,
+    "downloads_or_installs": false,
+    "main_edited": false,
+    "method_inferred_from_metrics": false,
+    "paid_resources_used": false,
+    "pr_edited_or_created": false,
+    "sealed_or_private_rows_read": false,
+    "sealed_per_network_table_read": false,
+    "submission_made": false,
+    "participant_contacted": false
+  },
+  "schema": "arc.whitebox.r340.j2w-submission-332136-method-audit-receipt.v1",
+  "scope": "public method disclosure only",
+  "status": "COMPLETE",
+  "target": {
+    "leaderboard_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "live_snapshot_as_supplied": {
+      "displayed_adjusted_score": "2.00e-9",
+      "entries": 323,
+      "final_layer_mse": "1.61e-8",
+      "latest_displayed": "Sep 24 08:55",
+      "rank": 1,
+      "view_target_submission_id": 332136
+    },
+    "participant": "joe_wanza",
+    "submission_id": 332136,
+    "submission_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332136",
+    "team": "J2W"
+  },
+  "verdict": "NO_PUBLIC_METHOD"
+}
