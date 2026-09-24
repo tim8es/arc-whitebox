@@ -1,0 +1,289 @@
+{
+  "schema": "arc.whitebox.r353.r209_capture_readiness_audit.v1",
+  "task": "R353",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "recommendation": "YES_CONDITIONALLY_NOT_AUTHORIZED_TO_RUN",
+  "verdict": "PR36_CAN_UNBLOCK_R209_RESIDUAL_CAPTURE_AT_ZERO_SPEND_AFTER_EXPLICIT_CONTROL_AND_REPOSITORY_GATES",
+  "no_measurement_claim": true,
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r353-r209-capture-readiness-audit-20260924",
+  "live_pr36": {
+    "number": 36,
+    "title": "R293: prepare manual one-shot V25 residual capture workflow",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "base_ref": "main",
+    "base_sha": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "head_ref": "research/r293-v25-capture-workflow-prep",
+    "head_sha": "f6fb9018504632edffa1fb80d14ce8a68f442602",
+    "updated_at": "2026-09-24T01:05:14Z",
+    "comments": 0,
+    "review_comments": 0,
+    "check_runs_on_head": 0,
+    "status_contexts_on_head": 0,
+    "result_branch": "research/r293-v25-capture-result",
+    "result_branch_currently_exists": false
+  },
+  "current_execution_artifacts": {
+    "workflow": {
+      "path": ".github/workflows/r293-v25-residual-capture.yml",
+      "git_blob_sha1": "19f6f95ceb2cacef5497eafd5e31e20e86cfad8c"
+    },
+    "protocol": {
+      "path": "research/r293/R293_PROTOCOL.json",
+      "git_blob_sha1": "cc51198550b0d35b7fb0e34e8b072d74a456476c"
+    },
+    "active_r294_patch_blob_sha1": "65abb2e2040e44a7965f5123acd17bb838891532",
+    "corrected_r296_r302_security_checker_blob_sha1": "e6c975a72f8f4863b476bfe5b636984fe1169713"
+  },
+  "evidence_chain": {
+    "R278": {
+      "receipt_blob_sha1": "1568273d596bd2510c8a3c3520db6da18d2918b0",
+      "status": "INFRA_ERROR",
+      "verdict": "BLOCKED_BEFORE_DIAGNOSTIC_EXECUTION",
+      "diagnostic_executions": 0,
+      "finding": "Frozen global residual-direction diagnostic exists but no raw residual measurement was made."
+    },
+    "R282": {
+      "receipt_blob_sha1": "48a29e486405693a993fcc429a3fd9c80d28da5e",
+      "status": "COMPLETE",
+      "verdict": "NO_RECOVERABLE_RAW_V25_RESIDUAL_VECTORS_IN_EXISTING_EVIDENCE",
+      "finding": "Existing R209/R223/R224 retained artifacts do not contain final prediction/target/residual vectors."
+    },
+    "R290": {
+      "receipt_blob_sha1": "cf0c899bb29c05097df94f1471ce3fff61388da7",
+      "status": "COMPLETE",
+      "verdict": "DIRECT_GIT_PERSISTENCE_CONFIRMED_NO_ACTIONS_ARTIFACT_STORAGE",
+      "finding": "Public standard GitHub-hosted runner plus ordinary Git result persistence provides a zero-spend path without Actions artifact/Packages/LFS/cache storage."
+    },
+    "R291": {
+      "receipt_blob_sha1": "53251462138aab94d1cff51c284331eccec089d4",
+      "status": "COMPLETE",
+      "verdict": "HARNESS_PREPARED_SYNTHETICALLY_VERIFIED_NO_BENCHMARK"
+    },
+    "R292": {
+      "receipt_blob_sha1": "eca95be1a8907dedf5e04708a8c9c8db3906e32c",
+      "status": "COMPLETE",
+      "verdict": "FINDINGS_NOT_PASS",
+      "finding": "Historical R291 integration patch malformed; later repaired by R294."
+    },
+    "R293": {
+      "receipt_blob_sha1": "79aa5993883d31e5eec27d854781a86e470242d2",
+      "status": "COMPLETE",
+      "verdict": "REVIEW_PR_PREPARED_NOT_MERGED_NOT_RUN",
+      "scientific_diagnostic_complete": false
+    },
+    "R294": {
+      "receipt_blob_sha1_at_current_pr_head": "6ca61e19a79e277e33f994b9bdbc407c8d796e61",
+      "status": "COMPLETE",
+      "verdict": "R291_PATCH_FORMAT_REPAIRED_AND_REAL_APPLY_EVIDENCE_CONFIRMED"
+    },
+    "R295": {
+      "receipt_blob_sha1": "0119ce35b6ce9fd6efd4765797eeb9735ad17759",
+      "status": "COMPLETE",
+      "verdict": "SECURITY_NO_GO_BEFORE_ACTIONS",
+      "finding": "Found rerun/CAS/action-pin/token issues later addressed by R296/R302."
+    },
+    "R296": {
+      "receipt_blob_sha1_at_current_pr_head": "92614092309b3265162e03ace38984621dc470e9",
+      "status": "COMPLETE",
+      "verdict": "PR36_SECURITY_HARDENING_STATIC_PASS_NO_RUN",
+      "caveat": "Original committed checker execution claim was superseded by R302 after helper-argument defect was found."
+    },
+    "R297": {
+      "receipt_blob_sha1": "ccdda2f0d60a68e38e5dfd2e89bedc7277352071",
+      "status": "COMPLETE",
+      "verdict": "PASS_STATIC_READ_ONLY_WITH_EXPLICIT_NOT_RUN_REPLAYS",
+      "reviewed_head": "f6fb9018504632edffa1fb80d14ce8a68f442602"
+    },
+    "R298": {
+      "receipt_blob_sha1": "277058cb85e3425d9ba911c6210fb9bfdd0dc564",
+      "status": "COMPLETE",
+      "decision": "ANALYZER_PREPARED_SYNTHETICALLY_VERIFIED_NO_REAL_CAPTURE",
+      "synthetic_checks_passed": 13
+    },
+    "R299": {
+      "receipt_blob_sha1": "cc2eb44635f54ae315d2a03ac2d8eb0c117b601f",
+      "status": "COMPLETE",
+      "decision": "ANALYZER_SUPPLEMENT_PREPARED_DELTA_TESTED_NO_REAL_CAPTURE",
+      "note": "Full integration selfcheck was not run in R299."
+    },
+    "R300": {
+      "receipt_blob_sha1": "b7728caecfd9612e7fcaffab94562361279a4011",
+      "status": "COMPLETE",
+      "decision": "BINARY32_CONSISTENCY_FIX_PREPARED_DELTA_TESTED_NO_REAL_CAPTURE",
+      "note": "Full 21-check selfcheck was added but not run in R300."
+    },
+    "R301": {
+      "receipt_blob_sha1": "45538ad637630707601192c0633fb3dabfe6d4d6",
+      "status": "COMPLETE",
+      "verdict": "EXACT_R300_SYNTHETIC_SELFCHECK_PASS_21_OF_21",
+      "runtime_python": "3.13.13",
+      "pinned_target_python": "3.11.16",
+      "target_runtime_tested": false,
+      "real_capture_vectors_accessed": 0
+    },
+    "R302": {
+      "receipt_blob_sha1": "a6b895abce913529c987eb64ba8d8fb40b523033",
+      "status": "COMPLETE",
+      "verdict": "COMMITTED_R296_CHECKER_FIXED_AND_EXACT_21_CHECK_PASS",
+      "current_pr_head": "f6fb9018504632edffa1fb80d14ce8a68f442602",
+      "actions_runs": 0,
+      "benchmark_runs": 0
+    }
+  },
+  "policy_sources": {
+    "agents_md": {
+      "path": "AGENTS.md",
+      "git_blob_sha1": "6d9c61537a282a7d141af316dd8be438d1015a49"
+    },
+    "research_process": {
+      "path": "research/RESEARCH_PROCESS.md",
+      "git_blob_sha1": "bf5a4676d8f36100e2dfdde32d544a39661eba8d"
+    },
+    "relevant_rules": [
+      "Coordinator allocates executable jobs and workers publish claim/start before actual execution.",
+      "Verified free/existing compute may be reused; new paid resources are prohibited until spending is reconciled.",
+      "Development-data exploration is permitted; exposed panels must not be relabeled as fresh holdout.",
+      "Research workers do not submit to the competition.",
+      "Historical failed outcomes are preserved rather than rewritten."
+    ],
+    "r278_specific_constraint": "The historical R278 protocol said no Actions for that exact R278 attempt; a future Actions capture must be a newly authorized capture execution job, not an implicit R278 rerun."
+  },
+  "proposed_capture": {
+    "classification": {
+      "target_free": false,
+      "public_development": true,
+      "target_bearing": true,
+      "operational_repeat_of_v25_public_mini100": true,
+      "new_scientific_residual_structure_measurement_after_capture": true,
+      "fresh_holdout_or_confirmation": false,
+      "private": false,
+      "holdout": false,
+      "full_competition_test": false,
+      "paid": false,
+      "submission": false,
+      "new_candidate_score_benchmark": false
+    },
+    "runner": "ubuntu-24.04 standard GitHub-hosted public-repository runner",
+    "python": "3.11.16",
+    "direct_runtime_pins": {
+      "numpy": "2.4.6",
+      "flopscope": "0.12.1",
+      "whestbench": "0.16.1",
+      "datasets": "4.1.1"
+    },
+    "v25": {
+      "repository": "504aldo/whest-p2-cumulant-k3",
+      "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+      "git_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc"
+    },
+    "dataset": {
+      "uri": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+      "split": "mini",
+      "streaming": true,
+      "n_mlps": 100,
+      "stage": "public development"
+    },
+    "scorer_limits": {
+      "flop_budget": 2199023255552,
+      "wall_time_s": 120,
+      "residual_wall_time_s": 0.4,
+      "runner": "local",
+      "max_threads": 1
+    },
+    "capture_seam": "After failure zeroing and final prediction/target materialization, before final-layer MSE computation.",
+    "captured_vectors": [
+      "final_pred float32[1024]",
+      "final_target float32[1024]",
+      "residual target-final minus pred-final float32[1024]"
+    ],
+    "rows": 100,
+    "raw_payload_bytes": 1228800,
+    "output_allowlist": [
+      "research/captures/r293/vectors.f32le",
+      "research/captures/r293/manifest.json",
+      "research/captures/r293/SHA256SUMS",
+      "research/captures/r293/run-receipt.json"
+    ],
+    "actions_artifact_storage": false,
+    "git_lfs": false,
+    "packages": false,
+    "cache": false,
+    "pat": false
+  },
+  "frozen_scientific_consumer": {
+    "split": "lexicographic decimal network_id strings; first 50 FIT, last 50 EVAL",
+    "fit": "d = mean_FIT(target - pred)",
+    "eval": "pred_corrected = pred + d on EVAL only",
+    "materiality_gates": [
+      "EVAL mean raw MSE improves by at least 2.0%",
+      "at least 30/50 EVAL networks improve",
+      "mean paired MSE gain > 2 descriptive SE",
+      "median EVAL raw MSE improves"
+    ],
+    "label": "PUBLIC_DEVELOPMENT_OFFLINE_DIAGNOSTIC_ONLY",
+    "no_per_network_tuning": true,
+    "not_fresh_holdout": true
+  },
+  "zero_spend_assessment": {
+    "proven_path": true,
+    "basis": "R290 plus current R293 protocol",
+    "conditions": [
+      "Repository remains public.",
+      "Use only standard GitHub-hosted public-repository runner.",
+      "Persist only ordinary Git content to the fixed research branch.",
+      "No upload-artifact, Packages, LFS, cache, PAT, or paid fallback.",
+      "Any runner/push/policy rejection fails closed."
+    ]
+  },
+  "current_blockers": [
+    "PR #36 is draft and unmerged; workflow requires main.",
+    "Result branch research/r293-v25-capture-result is absent.",
+    "Protocol authorization flags for merge, Actions run, benchmark and result-branch creation are false.",
+    "No live check-run/status execution evidence exists on current PR head.",
+    "No current control claim/start authorizes the real capture.",
+    "R301 analyzer selfcheck passed on Python 3.13.13, not the target Python 3.11.16."
+  ],
+  "remaining_gates": {
+    "before_capture": [
+      "Coordinator allocates a new one-shot capture-execution job and publishes claim/start with exact code SHA and command.",
+      "Explicitly authorize and merge exact reviewed PR head f6fb9018504632edffa1fb80d14ce8a68f442602 to main.",
+      "If PR head changes, repeat final static/security review.",
+      "Externally create research/r293-v25-capture-result at exact merged-main dispatch SHA; verify protected=false and no prior manifest.",
+      "Dispatch exactly once from that SHA with exact confirmation token and run_attempt=1."
+    ],
+    "after_capture_before_science": [
+      "Verify result branch CAS lineage and exactly four allowlisted files/hashes/manifest/runtime identity.",
+      "Replay exact R300 21-check synthetic analyzer selfcheck under Python 3.11.16 before first real-vector analysis, or obtain explicit acceptance of R301's runtime-version limitation.",
+      "Coordinator allocates a separate scientific consumer job and publishes claim/start before analyzing real vectors."
+    ]
+  },
+  "shortest_safe_next_step": "Coordinator should create an explicit new capture-execution control job tied to the exact reviewed PR head, then authorize merge/result-branch preparation/exactly-one dispatch. Do not dispatch before that control GO.",
+  "report": {
+    "path": "research/r353/R353_R209_CAPTURE_READINESS_AUDIT.md",
+    "creation_commit": "1a12dadeb2839e0fe5c5f6208a6ffa67cf1bb2f4",
+    "git_blob_sha1": "2eb71f5d5839ac4fd3d94aad49250d25c743ed37"
+  },
+  "execution_accounting": {
+    "actions_runs": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "public_dataset_accesses_or_downloads": 0,
+    "dependency_downloads_or_installs": 0,
+    "real_capture_vectors_accessed": 0,
+    "paid_resources": false,
+    "private_access": false,
+    "holdout_access": false,
+    "full_access": false,
+    "competition_submissions": 0,
+    "pr_comments_reviews_merges_or_edits": 0,
+    "main_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
