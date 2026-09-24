@@ -6102,6 +6102,66 @@
         "status": "COMPLETE"
       },
       "revision": 452
+    },
+    {
+      "revision": 453,
+      "action": "enqueue",
+      "job": "R302",
+      "owner": "coordinator",
+      "payload": {
+        "title": "Repair and rerun the exact committed R296 workflow security self-check",
+        "hypothesis_id": "R296-CHECKER-ARGUMENT-ORDER-REPAIR-20260924",
+        "priority": 1,
+        "deliverable": "Independent exact-byte review found the committed scripts/r296_workflow_security_selfcheck.py (blob dc09a5c4a06136370344c27723c5c430588b0fa2) still calls git(repo, args) at set_remote, while git is defined as git(args, cwd). The committed checker fails with TypeError before its CAS matrix, contradicting R296's PASS receipt. Make the minimum argument-order fix in draft PR #36 as an append-only R302 correction; preserve the R296 report/receipt/history. Re-run the exact committed self-check against the exact current workflow and protocol bytes and record all 21 checks, hashes and output. Update only the test helper plus R302 report/receipt; no workflow changes unless the test reveals a separate concrete defect. Keep PR #36 draft/open/unmerged; no Actions, benchmark, estimator, data/dependency install/download, paid resources, result-branch creation, holdout, submission or leaderboard/canonical changes. If no local runner, do not claim PASS; report precise limitation and cite the coordinator's temporary one-line probe only as separate evidence.",
+        "depends_on": [
+          "R296"
+        ],
+        "assigned_owner": "r296-selfcheck-correction-r269"
+      },
+      "at": "2026-09-24T00:53:41.503+00:00"
+    },
+    {
+      "revision": 454,
+      "action": "dependency_update",
+      "job": "R297",
+      "owner": "coordinator",
+      "payload": {
+        "from_depends_on": [
+          "R294",
+          "R296"
+        ],
+        "to_depends_on": [
+          "R294",
+          "R296",
+          "R302"
+        ],
+        "reason": "R302 repairs and verifies the exact committed R296 self-check after independent reproduction of a failure; final review must gate on that evidence."
+      },
+      "at": "2026-09-24T00:53:41.503+00:00"
+    },
+    {
+      "revision": 455,
+      "action": "reassign",
+      "job": "R297",
+      "owner": "coordinator",
+      "payload": {
+        "from_owner": "r291-capture-final-review-r267",
+        "to_owner": "r297-independent-final-review-r4553b",
+        "reason": "The old R267 thread is idle after prior failed delivery; the job remains QUEUED with zero attempts, and no branch/run exists. Transfer to fresh independent ARC session; it must wait for R294/R296/R302 COMPLETE."
+      },
+      "at": "2026-09-24T00:53:41.503+00:00"
+    },
+    {
+      "revision": 456,
+      "action": "reassign",
+      "job": "R301",
+      "owner": "coordinator",
+      "payload": {
+        "from_owner": "r300-integration-selfcheck-r268",
+        "to_owner": "r300-integration-selfcheck-r45546",
+        "reason": "R268 session returned systemError after R296; R301 remains QUEUED with zero attempts, no R301 artifact/run exists, and all dependencies are complete. Transfer the exact synthetic-only verification to a fresh ARC project session."
+      },
+      "at": "2026-09-24T00:53:41.503+00:00"
     }
   ],
   "jobs": [
@@ -9639,12 +9699,13 @@
       "title": "Harden PR #36 against workflow reruns and branch races"
     },
     {
-      "assigned_owner": "r291-capture-final-review-r267",
+      "assigned_owner": "r297-independent-final-review-r4553b",
       "attempts": [],
       "deliverable": "After R294 patch repair and R296 workflow hardening are COMPLETE, independently audit the exact final draft PR #36 head; do not review an earlier snapshot. Reproduce that the old R291 patch is malformed and remains unchanged as historical evidence; verify the new R294 patch applies with `git apply --check` to the exact pinned WhestBench 0.16.1 scoring.py blob and the applied diff contains only the intended pre-MSE capture seams. Independently verify the workflow/preflight references the corrected patch and enforces all R295 controls: no run retries/re-dispatch, atomic existing-branch claim/update with no branch recreate or race, pinned action SHAs in contents:write job, no persisted token URL/config, exact four-file allowlist, no paid/artifact/secret/holdout/submission paths. Static/offline only; no code edits, PR comments/review, merge, branch creation, Actions/benchmark, data/dependency downloads, or spending. Record exact PR/workflow/patch/test hashes and PASS or blocking findings in append-only R297 report/receipt; finish R297.",
       "depends_on": [
         "R294",
-        "R296"
+        "R296",
+        "R302"
       ],
       "hypothesis_id": "PR36-FINAL-PATCH-AND-WORKFLOW-INDEPENDENT-REVIEW-20260924",
       "id": "R297",
@@ -9765,7 +9826,7 @@
       "title": "Align coordinate-energy math with the frozen corrected-MSE arithmetic"
     },
     {
-      "assigned_owner": "r300-integration-selfcheck-r268",
+      "assigned_owner": "r300-integration-selfcheck-r45546",
       "attempts": [],
       "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
       "depends_on": [
@@ -9780,10 +9841,24 @@
       "priority": 1,
       "status": "QUEUED",
       "title": "Execute the committed R300 synthetic self-check on exact bytes"
+    },
+    {
+      "id": "R302",
+      "priority": 1,
+      "title": "Repair and rerun the exact committed R296 workflow security self-check",
+      "hypothesis_id": "R296-CHECKER-ARGUMENT-ORDER-REPAIR-20260924",
+      "depends_on": [
+        "R296"
+      ],
+      "assigned_owner": "r296-selfcheck-correction-r269",
+      "deliverable": "Independent exact-byte review found the committed scripts/r296_workflow_security_selfcheck.py (blob dc09a5c4a06136370344c27723c5c430588b0fa2) still calls git(repo, args) at set_remote, while git is defined as git(args, cwd). The committed checker fails with TypeError before its CAS matrix, contradicting R296's PASS receipt. Make the minimum argument-order fix in draft PR #36 as an append-only R302 correction; preserve the R296 report/receipt/history. Re-run the exact committed self-check against the exact current workflow and protocol bytes and record all 21 checks, hashes and output. Update only the test helper plus R302 report/receipt; no workflow changes unless the test reveals a separate concrete defect. Keep PR #36 draft/open/unmerged; no Actions, benchmark, estimator, data/dependency install/download, paid resources, result-branch creation, holdout, submission or leaderboard/canonical changes. If no local runner, do not claim PASS; report precise limitation and cite the coordinator's temporary one-line probe only as separate evidence.",
+      "status": "QUEUED",
+      "owner": null,
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 452,
+  "revision": 456,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
