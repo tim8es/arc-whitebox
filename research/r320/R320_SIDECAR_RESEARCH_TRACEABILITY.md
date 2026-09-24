@@ -1,11 +1,12 @@
 # R320 — sidecar research traceability audit
 
-**Status:** COMPLETE — corrected by R323; extended by R332  
+**Status:** COMPLETE — corrected by R323; extended by R332/R334  
 **Mode:** report-only traceability audit  
 **Branch:** `review/r320-sidecar-research-traceability-20260924`  
 **Exact base:** `4619801e0cc5e7e340cd0406eb44e0633d8aa5e5`  
 **R323 correction parent:** `ae418aa7bcdb08549b051745816bce16aafe1e7e`  
-**R332 extension parent:** `0c4db1d79deb9b2f608001127d8359b0c0fafd27`
+**R332 extension parent:** `0c4db1d79deb9b2f608001127d8359b0c0fafd27`  
+**R334 extension parent:** `1c285e5d504d6eb3c971d5afae9db3188e0dcea0`
 
 ## R323 correction notice
 
@@ -73,6 +74,7 @@ R332 is a traceability-only extension. It does not reinterpret these sidecars as
 | R328 | official-source public-method / identity-delta audit | `NO_PUBLIC_METHOD`; current J2W View remains #331539; #332101 belongs to AndreasHad04 | `review/r328-j2w-current-submission-method-delta-20260924` / `0f5c3212eb0da2e9fba2bade2ceea33d818c403b` | report `research/r328/R328_J2W_CURRENT_SUBMISSION_METHOD_DELTA.md`, blob `c9967bc084c3371324c291cf1e5ce1d7c57689bc`, https://github.com/tim8es/arc-whitebox/blob/0f5c3212eb0da2e9fba2bade2ceea33d818c403b/research/r328/R328_J2W_CURRENT_SUBMISSION_METHOD_DELTA.md ; receipt `research/r328/R328_RECEIPT.json`, blob `96d7d51d902c44d9773fee794d8122627de96156`, https://github.com/tim8es/arc-whitebox/blob/0f5c3212eb0da2e9fba2bade2ceea33d818c403b/research/r328/R328_RECEIPT.json | **NO** |
 | R329 | official-source public-method audit | current rank-3 `marius_binner` / #331953: `NO_PUBLIC_METHOD` | `review/r329-rank3-marius-method-audit-20260924` / `17713f7dd2fa43f86a1b02f24f843b77bb433960` | report `research/r329/R329_RANK3_MARIUS_METHOD_AUDIT.md`, blob `4f05197a07391fc92515b085bc78f4f2665295ea`, https://github.com/tim8es/arc-whitebox/blob/17713f7dd2fa43f86a1b02f24f843b77bb433960/research/r329/R329_RANK3_MARIUS_METHOD_AUDIT.md ; receipt `research/r329/R329_RANK3_MARIUS_METHOD_AUDIT_RECEIPT.json`, blob `0172658228760db0d685e4e43f2cfd93b5c4a8c8`, https://github.com/tim8es/arc-whitebox/blob/17713f7dd2fa43f86a1b02f24f843b77bb433960/research/r329/R329_RANK3_MARIUS_METHOD_AUDIT_RECEIPT.json | **NO** |
 | R331 | independent arithmetic/provenance red-team | `COMPLETE / PASS`; R325 quantitative results independently reproduced, no correction | `review/r331-independent-r325-bound-verification-20260924` / `695bde569e8164d3bccceae4c0d5ab01698de1fd` | report `research/r331/R331_INDEPENDENT_R325_BOUND_VERIFICATION.md`, blob `4f46e1550e0e900556793712eff45c08e413f0fd`, https://github.com/tim8es/arc-whitebox/blob/695bde569e8164d3bccceae4c0d5ab01698de1fd/research/r331/R331_INDEPENDENT_R325_BOUND_VERIFICATION.md ; receipt `research/r331/R331_RECEIPT.json`, blob `3a8e567c58518335fa9e6aa2bb7c90afda0c41d0`, https://github.com/tim8es/arc-whitebox/blob/695bde569e8164d3bccceae4c0d5ab01698de1fd/research/r331/R331_RECEIPT.json | **NO — arithmetic/provenance verification only** |
+| R333 | conditional offline score-decomposition | `COMPLETE / COMPUTE_ONLY_INSUFFICIENT_AT_FIXED_OBSERVED_ACCURACY` | `review/r333-r209-compute-floor-headroom-20260924` / `b089c3e24f7ea5499b66f09da27a2be3f9b5d3de` | report `research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md`, blob `5e2b58a80a647b9f0a8dcc3355a65d8e5a01e4f5`, https://github.com/tim8es/arc-whitebox/blob/b089c3e24f7ea5499b66f09da27a2be3f9b5d3de/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md ; receipt `research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json`, blob `3718a7ce748a57db36f08fbd64fd55cabd51c801`, https://github.com/tim8es/arc-whitebox/blob/b089c3e24f7ea5499b66f09da27a2be3f9b5d3de/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json | **NO — offline decomposition of stored R209 outputs only** |
 
 ### Caveats preserved by R332
 
@@ -85,16 +87,18 @@ R332 is a traceability-only extension. It does not reinterpret these sidecars as
 - **R328:** the fresh J2W View remains #331539; #332101 is attributable to AndreasHad04 from the current leaderboard, not J2W. Exact unrounded J2W score remains unknown.
 - **R329:** current rank-3 row directly links marius_binner to #331953; public access does not establish method disclosure.
 - **R331:** independently reproduces R325's saved arithmetic/provenance and preserves the same external limitation: the actual public-50 to R209 membership/join remains unproved.
+- **R333:** at fixed committed R209 mean raw MSE `2.228303490170447e-8`, the Phase-2 `0.1` multiplier floor gives counterfactual mean adjusted score `2.228303490170447e-9`, still numerically above the rounded leaderboard display `2.10e-9`. Matching that display at multiplier `0.1` would require mean raw MSE `2.10e-8`, a `5.7579%` reduction from the committed R209 mean. This is score decomposition only: no achievable-estimator claim, no same-panel leaderboard claim, and the exact public-50→R209 join remains unproved.
 
 ### Measurement separation
 
-**Genuine new estimator measurements among R321, R322, R324–R329, and R331: 0.**
+**Genuine new estimator measurements among R321, R322, R324–R329, R331, and R333: 0.**
 
 - R321 is theory/red-team only.
 - R322, R326–R329 are source/identity/public-method audits.
 - R324 and R330 are corrections only.
 - R325 performs offline arithmetic on already committed R209 V25 per-MLP adjusted scores; it does not rerun V25 or the grader.
 - R331 independently rechecks R325 arithmetic/provenance; it does not rerun an estimator or benchmark.
+- R333 decomposes the already committed R209 score into a fixed-observed-accuracy compute-floor counterfactual; it does not measure a new estimator, prove achievability, or establish grader public-50 membership.
 
 This preserves the earlier distinction: a report can recognize or recompute facts from a prior scientific measurement without itself becoming a new estimator measurement.
 
@@ -178,7 +182,7 @@ At the audited formal snapshot:
 
 This does **not** mean the sidecar artifacts are absent. R313 is the clearest example: no formal R313 event exists, while the completed correction is durably stored as the second fast-forward commit on R309's branch.
 
-R320/R323/R332 do not backfill claim/start/finish events and do not edit control-v2.
+R320/R323/R332/R334 do not backfill claim/start/finish events and do not edit control-v2.
 
 ## Shortest safe next step
 
@@ -186,7 +190,7 @@ R320/R323/R332 do not backfill claim/start/finish events and do not edit control
 
 No historical claim/start/finish events should be fabricated.
 
-## R320/R323/R332 execution accounting
+## R320/R323/R332/R334 execution accounting
 
 - estimator/benchmark runs: **0**
 - Actions runs: **0**

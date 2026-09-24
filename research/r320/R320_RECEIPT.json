@@ -1,5 +1,5 @@
 {
-  "schema": "arc.whitebox.r320.sidecar_traceability.v3",
+  "schema": "arc.whitebox.r320.sidecar_traceability.v4",
   "task": "R320",
   "correction_task": "R323",
   "date": "2026-09-24",
@@ -467,6 +467,48 @@
       },
       "actual_new_estimator_measurement": false,
       "caveat": "Verifies saved R325 arithmetic/scorer provenance only; actual grader public-50 membership remains unproved and no estimator/benchmark was rerun."
+    },
+    {
+      "id": "R333",
+      "type": "conditional_offline_score_decomposition",
+      "status": "COMPLETE",
+      "verdict": "COMPUTE_ONLY_INSUFFICIENT_AT_FIXED_OBSERVED_ACCURACY",
+      "branch": "review/r333-r209-compute-floor-headroom-20260924",
+      "head": "b089c3e24f7ea5499b66f09da27a2be3f9b5d3de",
+      "evidence": {
+        "report": {
+          "path": "research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md",
+          "blob_sha1": "5e2b58a80a647b9f0a8dcc3355a65d8e5a01e4f5",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b089c3e24f7ea5499b66f09da27a2be3f9b5d3de/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md"
+        },
+        "receipt": {
+          "path": "research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json",
+          "blob_sha1": "3718a7ce748a57db36f08fbd64fd55cabd51c801",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b089c3e24f7ea5499b66f09da27a2be3f9b5d3de/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json"
+        },
+        "cumulative_diff_from_exact_base_only_these_two_paths": true
+      },
+      "input": {
+        "path": "research/results/R209-v25-mini100.json",
+        "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+        "file_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+      },
+      "counterfactual": {
+        "fixed_observed_mean_raw_mse": 2.228303490170447e-8,
+        "multiplier_floor": 0.1,
+        "mean_score_floor": 2.228303490170447e-9,
+        "rounded_leaderboard_display": "2.10e-9",
+        "exact_underlying_leaderboard_float_known": false,
+        "required_mean_raw_mse_at_0_1_for_display": 2.1e-8,
+        "relative_raw_mse_reduction_needed": 0.05757900157515477,
+        "relative_raw_mse_reduction_needed_percent_rounded": "5.7579%"
+      },
+      "actual_new_estimator_measurement": false,
+      "offline_reanalysis_of_stored_r209_outputs_only": true,
+      "achievable_estimator_claim": false,
+      "same_panel_leaderboard_claim": false,
+      "public50_to_r209_join_proven": false,
+      "caveat": "The fixed-MSE floor is an offline score-decomposition counterfactual. The exact public-50 to R209 membership remains unproved, so this is not a competition result or achievable-estimator claim."
     }
   ],
   "measurement_classification": {
@@ -477,7 +519,9 @@
     "note": "R313 corrects traceability to an existing R223 measurement; it does not create a new measurement.",
     "new_estimator_measurements_generated_by_r321_r329_and_r331": 0,
     "r325_is_stored_output_reanalysis_not_new_estimator_measurement": true,
-    "r331_is_arithmetic_provenance_verification_not_new_estimator_measurement": true
+    "r331_is_arithmetic_provenance_verification_not_new_estimator_measurement": true,
+    "r333_is_offline_score_decomposition_not_new_estimator_measurement": true,
+    "new_estimator_measurements_generated_by_r333": 0
   },
   "leaderboard_r209": {
     "comparability_decision": "NOT_COMPARABLE",
@@ -500,7 +544,7 @@
   "recommended_next_step": "Coordinator-owned append-only reconciliation of completed sidecars using immutable task ID, branch head and receipt/report hashes through a supported archival/import path; represent R313 as a correction to R309 and do not fabricate historical claim/start/finish events.",
   "report": {
     "path": "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
-    "git_blob_sha1": "18d5a950928b213dc69a732be38102208b807723"
+    "git_blob_sha1": "f287d2d7188301f30dff5b0ff06e117fe9d3f65f"
   },
   "execution_accounting": {
     "estimator_runs": 0,
@@ -518,7 +562,12 @@
     "r332_benchmark_runs": 0,
     "r332_actions_runs": 0,
     "r332_downloads": 0,
-    "r332_new_files": 0
+    "r332_new_files": 0,
+    "r334_estimator_runs": 0,
+    "r334_benchmark_runs": 0,
+    "r334_actions_runs": 0,
+    "r334_downloads": 0,
+    "r334_new_files": 0
   },
   "extension_task": "R332",
   "extension_parent_head": "0c4db1d79deb9b2f608001127d8359b0c0fafd27",
@@ -552,5 +601,33 @@
     "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
     "every_included_sidecar_cumulative_diff_verified_two_paths": true
   },
-  "r332_report_blob_sha1": "18d5a950928b213dc69a732be38102208b807723"
+  "r332_report_blob_sha1": "18d5a950928b213dc69a732be38102208b807723",
+  "latest_extension_task": "R334",
+  "r334": {
+    "parent_head": "1c285e5d504d6eb3c971d5afae9db3188e0dcea0",
+    "policy": {
+      "append_only": true,
+      "rebase": false,
+      "reset": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false
+    },
+    "added_task": "R333",
+    "actual_new_estimator_measurement": false
+  },
+  "r334_snapshot": {
+    "included_id": "R333",
+    "r333_head": "b089c3e24f7ea5499b66f09da27a2be3f9b5d3de",
+    "r333_report_blob": "5e2b58a80a647b9f0a8dcc3355a65d8e5a01e4f5",
+    "r333_receipt_blob": "3718a7ce748a57db36f08fbd64fd55cabd51c801",
+    "input_r209_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "input_r209_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "new_estimator_measurement": false,
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
+  },
+  "r334_report_blob_sha1": "f287d2d7188301f30dff5b0ff06e117fe9d3f65f"
 }
