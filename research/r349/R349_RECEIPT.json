@@ -1,0 +1,124 @@
+{
+  "schema": "arc.whitebox.r349.live_leaderboard_snapshot.v1",
+  "task": "R349",
+  "status": "COMPLETE",
+  "mode": "report-only persistence of coordinator CUA capture + bounded R304 first-page delta",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r349-live-leaderboard-snapshot-20260924",
+  "current_snapshot": {
+    "provenance": "coordinator-recovered public Phase-2 leaderboard capture using user's Chrome UI with CUA",
+    "captured_at_utc": "2026-09-24T12:20:18.917Z",
+    "official_page1_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+    "official_page2_url_attempted": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2&page=2",
+    "direct_page2_url_ignored_by_client_state": true,
+    "pagination_method": "clicked visible pagination button 2",
+    "page1": {
+      "range": "Showing 1–100 of 197",
+      "rows": 100
+    },
+    "page2": {
+      "range": "Showing 101–197 of 197",
+      "rows": 97
+    },
+    "total_visible_rows": 197,
+    "cells_per_row": 10,
+    "concatenated_rows_compact_json_utf8_bytes": 21732,
+    "concatenated_rows_sha256": "a16f4399d9c71e869a1199285584148066746204ebe66a54c22d254b954e81bf",
+    "raw_rows_committed_to_repository": false,
+    "raw_rows_note": "Raw page1+page2 arrays were retained in coordinator browser session but are not stored as a GitHub file in R349.",
+    "submission_pages_opened": false
+  },
+  "baseline_r304": {
+    "branch": "review/r304-leaderboard-delta-20260924",
+    "head": "fcff8898104a21431eb9e1a5eec0f5cb6bb00468",
+    "captured_at_utc": "2026-09-24T02:36:19.062Z",
+    "range": "Showing 1–100 of 195",
+    "rows": 100,
+    "raw_blob_sha1": "2fee6241febe322fbff2cbc605581590fc072ee6",
+    "raw_file_sha256": "807df449176bd1cde98e6da418f30aa4aba848c9767a7e44196385587f17b016",
+    "normalized_rows_sha256": "4ffcdf469435f3b6dd55df39b6a06c3b5a186b7de89251a526254169a0fbe0d5",
+    "historical_page2_captured": false
+  },
+  "first100_display_cell3_identity_delta": {
+    "r304_rows": 100,
+    "current_rows": 100,
+    "exact_shared": 95,
+    "old_only": [
+      "DO dogus_ozel —",
+      "ED edo2 —",
+      "NK DancinGirl 1 member",
+      "CW cwc —",
+      "EL ely2sh —"
+    ],
+    "current_only": [
+      "DO Luna 1 member",
+      "ED edo2 None",
+      "NK DancinGirl 1 member · CSU",
+      "CL clawdia —",
+      "EX exploringsolver —"
+    ],
+    "interpret_as_5_exits_5_entrants": false,
+    "caveat": "DO/ED/NK differences may reflect team/metadata/display changes.",
+    "placement_context": {
+      "cwc_current_rank": 101,
+      "ely2sh_current_rank": 102,
+      "clawdia_current_first100": true,
+      "exploringsolver_current_first100": true,
+      "clawdia_historical_below100_possible": true,
+      "exploringsolver_historical_below100_possible": true
+    }
+  },
+  "shared95_field_changes": {
+    "displayed_rank_changed": 64,
+    "displayed_adjusted_score_changed": 13,
+    "displayed_adjusted_score_lower": 13,
+    "displayed_adjusted_score_higher": 0,
+    "final_layer_mse_changed": 10,
+    "final_layer_mse_lower": 9,
+    "final_layer_mse_higher": 1,
+    "entries_changed": 22,
+    "last_submission_exact_date_time_changed": 13
+  },
+  "j2w": {
+    "rank_old": 1,
+    "rank_current": 1,
+    "adjusted_score_old_display": "2.10e−9",
+    "adjusted_score_current_display": "2.00e−9",
+    "exact_unrounded_score_known": false,
+    "final_layer_mse_old_display": "1.64e−8",
+    "final_layer_mse_current_display": "1.61e−8",
+    "sampling_ratio_old_display": "539×",
+    "sampling_ratio_current_display": "566×",
+    "entries_old": 320,
+    "entries_current": 323,
+    "last_submission_old_display": "Sep 19 00:05",
+    "last_submission_current_display": "Sep 24 08:55"
+  },
+  "boundaries": {
+    "ui_total_old": 195,
+    "ui_total_current": 197,
+    "exact_full_board_additions_removals": "UNKNOWN",
+    "full_historical_page2_delta": "UNKNOWN",
+    "firstpage_string_replacements_equal_membership_turnover": false,
+    "exact_unrounded_score_delta": "UNKNOWN",
+    "leaderboard_r209_public50_identity": "NOT_COMPARABLE_NOT_JOINABLE",
+    "true_gap_inference": false,
+    "placement_inference": false
+  },
+  "preserves_prior_artifacts": {
+    "r341_edited": false,
+    "r345_edited": false
+  },
+  "execution_accounting": {
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "github_actions_runs": 0,
+    "downloads_or_installs": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
