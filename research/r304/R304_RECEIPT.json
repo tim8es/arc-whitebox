@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "id": "R304",
+  "owner": "r304-live-board-delta-statistician",
+  "run_id": "R304-live-leaderboard-poll-20260924-0230",
+  "status": "COMPLETE",
+  "verdict": "CHANGED_CONFIRMED_IN_REVIEWED_ROWS",
+  "control": {
+    "branch": "review/r304-leaderboard-delta-20260924",
+    "revision": 478,
+    "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
+  },
+  "snapshot": {
+    "captured_at_utc": "2026-09-24T02:36:19.062Z",
+    "endpoint": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+    "phase_display": "PHASE 2 · LIVE",
+    "page_range_display": "Showing 1–100 of 195",
+    "visible_rows": 100,
+    "page_total_entries": 195,
+    "comparison_scope": "leader, first 10 rows, and affected visible positions 25–30; not a full 100-row comparison",
+    "compared_columns": [
+      "Δ",
+      "#",
+      "PARTICIPANT",
+      "ADJUSTED SCORE",
+      "FINAL LAYER MSE",
+      "VS SAMPLING approx.",
+      "ENTRIES",
+      "LAST SUBMISSION"
+    ],
+    "current_leader": {
+      "participant": "J2W",
+      "rank_display": "01",
+      "adjusted_score_display": "2.10e−9",
+      "displayed_significant_digits": 3,
+      "exact_unrounded_score": "UNKNOWN",
+      "final_layer_mse_display": "1.64e−8",
+      "vs_sampling_approx_display": "539×",
+      "entries_display": 320,
+      "last_submission_display": "Sep 19, 00:05 5 d ago"
+    },
+    "first_10_comparison": {
+      "rows_1_4_and_6_10": "EXACT_MATCH_TO_R303_ACROSS_EIGHT_RECORDED_FIELDS",
+      "row_5_only_change": {
+        "field": "last_submission_display_relative_age",
+        "before": "Sep 24, 01:18 49 min ago",
+        "after": "Sep 24, 01:18 1 h ago"
+      }
+    },
+    "current_top_10_rows": [
+      [
+        "–",
+        "01",
+        "JW J2W 1 member · Numascale AS",
+        "2.10e−9",
+        "1.64e−8",
+        "539×",
+        "320",
+        "Sep 19, 00:05 5 d ago"
+      ],
+      [
+        "–",
+        "02",
+        "ST suliman_tadros —",
+        "2.20e−9",
+        "1.63e−8",
+        "514×",
+        "51",
+        "Sep 23, 01:42 1 d ago"
+      ],
+      [
+        "–",
+        "03",
+        "MB marius_binner University of Bergen",
+        "2.30e−9",
+        "1.56e−8",
+        "492×",
+        "158",
+        "Sep 23, 06:46 19 h ago"
+      ],
+      [
+        "–",
+        "04",
+        "AS a_s6 —",
+        "2.50e−9",
+        "2.00e−8",
+        "453×",
+        "108",
+        "Sep 21, 13:55 2 d ago"
+      ],
+      [
+        "new",
+        "05",
+        "DO dogus_ozel —",
+        "2.70e−9",
+        "1.76e−8",
+        "419×",
+        "5",
+        "Sep 24, 01:18 1 h ago"
+      ],
+      [
+        "▼1",
+        "06",
+        "CI LD AE Puffi 3 members",
+        "2.80e−9",
+        "1.94e−8",
+        "404×",
+        "78",
+        "Sep 8, 14:09 2 w ago"
+      ],
+      [
+        "▼1",
+        "06",
+        "OL reds 1 member",
+        "2.80e−9",
+        "1.73e−8",
+        "404×",
+        "60",
+        "Sep 21, 08:47 2 d ago"
+      ],
+      [
+        "▼1",
+        "08",
+        "OQ oqaris Sobolev Institute of Mathematics",
+        "3.10e−9",
+        "2.15e−8",
+        "365×",
+        "93",
+        "Sep 14, 05:56 1 w ago"
+      ],
+      [
+        "▼1",
+        "08",
+        "BE ben3 Max Planck Institute for Intelligent Systems",
+        "3.10e−9",
+        "1.68e−8",
+        "365×",
+        "23",
+        "Sep 22, 19:38 1 d ago"
+      ],
+      [
+        "▲2",
+        "08",
+        "ML mliston —",
+        "3.10e−9",
+        "1.80e−8",
+        "365×",
+        "41",
+        "Sep 23, 14:50 11 h ago"
+      ]
+    ],
+    "changed_entry": {
+      "participant": "AndreasHad04",
+      "before": {
+        "visible_position": 30,
+        "row": [
+          "▲9",
+          "28",
+          "AN AndreasHad04 —",
+          "4.90e−9",
+          "2.12e−8",
+          "231×",
+          "56",
+          "Sep 23, 12:15 13 h ago"
+        ]
+      },
+      "current": {
+        "visible_position": 26,
+        "row": [
+          "▲12",
+          "25",
+          "AN AndreasHad04 —",
+          "4.70e−9",
+          "2.00e−8",
+          "241×",
+          "56",
+          "Sep 24, 01:22 1 h ago"
+        ]
+      }
+    },
+    "neighboring_reorder": [
+      {
+        "participant": "pricop_tudor",
+        "before": "position 26 / rank 26",
+        "current": "position 27 / rank 27",
+        "adjusted_score_unchanged": "4.80e−9"
+      },
+      {
+        "participant": "Hack2Publish",
+        "before": "position 27 / rank 26",
+        "current": "position 28 / rank 27",
+        "adjusted_score_unchanged": "4.80e−9"
+      },
+      {
+        "participant": "drmohammad_banisalman",
+        "before": "position 28 / rank 28",
+        "current": "position 29 / rank 29",
+        "adjusted_score_unchanged": "4.90e−9"
+      },
+      {
+        "participant": "sophie549",
+        "before": "position 29 / rank 28",
+        "current": "position 30 / rank 29",
+        "adjusted_score_unchanged": "4.90e−9"
+      }
+    ]
+  },
+  "baseline": {
+    "id": "R303",
+    "captured_at_utc": "2026-09-24T02:07:55.431Z",
+    "commit": "0c15bee860dc1d22224dd1294fcaa82bca26b8a4",
+    "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json",
+    "receipt_git_blob_sha1": "0584af060b3a7c51e103519593fe5736a52d349f"
+  },
+  "deadline": {
+    "submissions_close_utc": "2026-10-17T23:59:00Z",
+    "primary_source": "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197"
+  },
+  "comparability": {
+    "r209_r223_reconciled": false,
+    "reason": "R303/R271 did not prove exact visible-50 panel identity; evaluator/meter compatibility is also unresolved.",
+    "exact_gap": "UNKNOWN",
+    "rank_claim": "NONE"
+  },
+  "sources": [
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/challenge_rules",
+    "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197",
+    "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json",
+    "https://github.com/tim8es/arc-whitebox/blob/772f010042a818ba641b64be58db55a78344217f/research/r271/R271_RECEIPT.json"
+  ],
+  "access_limitations": [
+    "Browser request to raw.githubusercontent.com returned net::ERR_BLOCKED_BY_CLIENT; R303 receipt was successfully read using the GitHub repository connector.",
+    "AIcrowd challenge_rules text extraction returned only a Loading shell; deadline was verified in the official AIcrowd Phase-2 announcement.",
+    "Rows outside the reviewed leader/top-10/changed neighborhood were not compared; full-table delta remains UNKNOWN."
+  ],
+  "not_run": [
+    "No Actions, estimator, benchmark, or data/dependency downloads.",
+    "No paid resources, private/holdout/full access, competition submission, leaderboard/canonical edits, or contact."
+  ],
+  "report_path": "research/r304/R304_LEADERBOARD_DELTA_REPORT.md",
+  "report": {
+    "path": "research/r304/R304_LEADERBOARD_DELTA_REPORT.md",
+    "sha256": "066f559e9c4fd66cef02e08fc8107f26c62d3e57c93b67b55b7f12bb10171c9f"
+  }
+}
