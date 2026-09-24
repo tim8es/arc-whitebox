@@ -1,76 +1,191 @@
 {
-  "schema": "arc.whitebox.r374.next-distinct-estimator-frontier.v1",
+  "schema": "arc.whitebox.r374.next-distinct-estimator-frontier.v2_corrected",
   "task": "R374",
   "date": "2026-09-24",
   "status": "COMPLETE",
-  "verdict": "NO_GO_EXPLICIT_POLYHEDRAL_CDF_CERTIFICATION_EXCEEDS_PHASE2",
-  "branch": "review/r374-next-distinct-estimator-frontier-20260924",
+  "verdict": "TERMINAL_NO_GO_NO_FINITE_RELU_CLOSED_LIFT_ZONOID_PROPAGATION_THEOREM",
+  "measurement_classification": "REPORT_ONLY_THEORY_METHOD_SCOUT_NO_NEW_ESTIMATOR_MEASUREMENT",
   "exact_base": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r374-next-distinct-estimator-frontier-20260924",
   "live_evidence": {
     "r320_head": "7336ffb2a88ab38ebb96177d4bc7d8bfd5dd53e1",
     "r320_report_blob": "870c9131a4e4bc745ea6ad6510d6a45115dcc5a8",
     "r320_receipt_blob": "3fa12a194b1fd33361465bef815afe1eedc81460",
-    "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb"
+    "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "e100_e193_ids": 94,
+    "e100_e193_artifact_records": 468
   },
-  "candidate": {
-    "name": "PCDF-MID",
-    "mechanism": "global polyhedral output-CDF certification plus deterministic tail-integral midpoint mean readout",
-    "sampled_regression": false,
-    "unbiased": false,
-    "error_certificate": "MSE_i <= H_i^2=(1/1024)*sum_j h_ij^2 from certified CDF envelope plus Gaussian-tail bound",
-    "distinct_from_r366": true,
-    "distinct_from_layerwise_gate_state": true
+  "correction_provenance": {
+    "reason": "Transient parallel draft PCDF-MID used explicit activation-polytope/sign-cell enumeration, which violates the task's activation-boundary/orthant-related novelty exclusion. Final R374 replaces that mechanism with a distinct lift-zonoid distribution-state screen.",
+    "superseded_branch_head": "4f07ebdbda30aec981b50267fbcd65763590e1cf",
+    "superseded_report_blob": "69890a8662ad69aee440150c05517027db4d05d1",
+    "superseded_receipt_blob": "441c0687ae8c9ef6daecbb422e6ecbbb4e39304f",
+    "files_added_or_deleted_by_correction": 0,
+    "third_file_created": false
+  },
+  "dedupe": {
+    "direct_receipts": {
+      "R317": "81f6adbc9cc64ab5ad3f4aaf230fe035fffa5ea5",
+      "R321": "2c3d9f881d669ee924cecca106611c6c295a7243",
+      "R335": "4e7d9523f1b08580358b9f2340f076977e611573",
+      "R347": "9d318ea7e2d9c9727ba9c92f1bc0778d2439cf5a",
+      "R352_corrected": "ca4f4608a592594a321790e760aa2d7f6398476b",
+      "R361": "f1c0951a382a195a367c01cddc850a9c55537aec",
+      "R362": "19ae43635af9d9d69efdeaa49eb53d091c59c83a",
+      "R363": "cc123000e37d8f57f0ed6f94da78ea333491f363",
+      "R366": "1929547b16f922470cb81071446b3a43d3dea95c"
+    },
+    "r366_report_blob": "f2c512a04c1eb9b0d179cd04a5563e34a6f109aa",
+    "excluded_families": [
+      "Stein/JVP/control variates",
+      "antithetic/Haar/radial Rao-Blackwell",
+      "sampling/QMC/cubature",
+      "conditional Gaussian/halfspace/orthant/mask-conditioned state",
+      "cumulant K3/K4/Edgeworth/higher moments",
+      "Hermite/polynomial chaos",
+      "TT/CP/Tucker/TensorSketch/CountSketch",
+      "characteristic-function/Hilbert",
+      "activation-boundary/boundary-flux/explicit activation-region geometry",
+      "displacement structure",
+      "response-aligned/adjoint/observable",
+      "source-age/window/tail",
+      "randomized multilevel/telescope",
+      "H185 fast arithmetic",
+      "R366 white-box shallow-ridge flattening and sampled-regression descendants"
+    ],
+    "repository_term_search_zero_hits": [
+      "zonoid",
+      "lift zonoid",
+      "support function",
+      "stop-loss",
+      "convex body",
+      "Hausdorff"
+    ],
+    "surviving_distinct_class_count_before_theory_gate": 1
   },
   "parent": {
     "id": "R209 V25",
+    "path": "research/results/R209-v25-mini100.json",
+    "blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "integration_commit": "20fafab5471e6ed227562c651179dd2ef331ea22",
     "panel": "v2-phase2 mini:all-100",
+    "rows": 100,
+    "failures": 0,
     "mean_raw_final_layer_mse": "2.22830349017044681e-8",
     "mean_adjusted_score_approx": "8.170397440117225e-9",
-    "measured_flops_per_network": "806303721965",
-    "failures": "0/100"
+    "measured_flops_per_network": 806303721965,
+    "leaderboard_comparison_used": false
   },
-  "exact_gate": "(1/100)*sum_i H_i^2*max(0.1,C_i/2^41) < 8.170397440117225e-9, with each C_i<2^41, memory<=8GiB, wall<=120s, residual<=0.4s",
-  "cost_obstruction": {
-    "condition": "generic invertible zero-bias 1024x1024 first layer",
-    "first_layer_nonempty_sign_cells": "2^1024",
-    "explicit_polytope_work_lower_bound": "2^1024 elementary cell operations",
-    "phase2_budget": "2^41",
-    "compute_over_budget_factor_lower_bound": "2^983 (~10^295.91)",
-    "one_bit_per_cell_memory_bytes": "2^1021",
-    "memory_cap_bytes": "2^33",
-    "memory_over_cap_factor_lower_bound": "2^988 (~10^297.42)"
+  "candidate": {
+    "name": "LZSP",
+    "expansion": "lift-zonoid support propagation",
+    "state": "K_H = E[ [0,(1,H)] ] subset R^(n+1)",
+    "support_identity": "h_K(a,u)=E[(a+u^T H)_+]",
+    "layer_mean_identity": "E[H_l,i]=h_{K_{H_{l-1}}}(0,w_l,i)",
+    "exact_if_continuum_state": true,
+    "unbiasedness": "exact deterministic mean when K is exact; approximate finite state uses deterministic Hausdorff error certificate",
+    "distinct_from_r366": true,
+    "distinct_from_moment_cf_hermite_tensor_state": true,
+    "distinct_from_activation_region_enumeration": true,
+    "caveat": "Directly pushing finite generators as pseudo-atoms becomes deterministic particle/cubature propagation and is excluded."
   },
-  "missing_theorem": "A sub-budget non-sampling compressed global output-CDF certificate for generic dense width-1024/depth-16 ReLU networks, with rigorous numerical error sufficient for the R209 gate and without explicit activation-region enumeration.",
-  "falsifier": {
-    "executed": false,
-    "preregistered_reentry_gate": [
-      "certified output-CDF algorithm avoiding explicit first-layer cell enumeration",
-      "proof C_CDF(1024,16,epsilon)<2^41 and memory<=8GiB",
-      "composable CDF plus Gaussian-tail mean-error certificate",
-      "target-independent epsilon and R with constants capable of satisfying the R209 inequality"
-    ],
-    "formal_queue_job_proposed": false
+  "error_certificate": {
+    "assumption": "d_H(K_tilde,K_true)<=delta for penultimate hidden-state lift zonoid",
+    "coordinate": "|mu_hat_j-mu_j| <= delta*||w_L,j||_2",
+    "final_mse": "MSE_final <= delta^2 * ||W_L||_F^2 / n",
+    "n": 1024
+  },
+  "exact_same_panel_gate": "(1/100)*sum_i [delta_i^2*(||W_L,i||_F^2/1024)*max(0.1,C_i/2^41)] < 8.170397440117225e-9, with every row satisfying Phase-2 FLOP/time/memory limits",
+  "planning_only": {
+    "he_law_expected_S": "E[||W_L||_F^2/1024]=2",
+    "score_floor_common_delta_orientation": "delta < 2.021187452973774e-4",
+    "exact_same_panel_claim": false
+  },
+  "phase2": {
+    "width": 1024,
+    "depth": 16,
+    "flop_budget": 2199023255552,
+    "score_floor_multiplier": 0.1,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "solution_process_memory": "8 GB",
+    "sources": {
+      "scoring_blob": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+      "generation_blob": "38397fae458acfd46b5642866481672c7fce6f2d",
+      "rounds_blob": "c2891dae7c21f27fdcaaab239c7bfd5d8cfc0890",
+      "changelog_blob": "fb2e2ababe42c7764fad4b99681445b65c75f7ad"
+    }
+  },
+  "finite_state_accounting": {
+    "representation": "P=sum_{r=1}^N [0,g_r], g_r in R^1025",
+    "final_readout_scalar_mult_adds": "C_read(N)=2*n^2*N-n = 2,097,152*N-1,024",
+    "float32_state_bytes": "4*(n+1)*N = 4,100*N",
+    "zero_build_zero_cert_floor_readout_max_N": 104857,
+    "zero_build_zero_cert_full_budget_readout_max_N": 1048576,
+    "state_bytes_at_floor_readout_max_N": 429913700,
+    "state_bytes_float32_at_full_budget_readout_max_N": 4299161600,
+    "state_bytes_float64_at_full_budget_readout_max_N": 8598323200,
+    "particle_pushforward_dense_only": "C_particle >= 16*N*(2*n^2-n) before ReLU/certification/readout",
+    "particle_pushforward_floor_orientation_N": 6556,
+    "particle_pushforward_full_budget_orientation_N": 65568,
+    "particle_pushforward_admissible": false,
+    "particle_rejection_reason": "collapses to excluded deterministic particle/cubature/discrete-measure propagation"
   },
   "primary_sources": [
     {
-      "title": "Exact Upper and Lower Bounds for the Output Distribution of Neural Networks with Random Inputs",
-      "authors": "Kofnov, Kapla, Bartocci, Bura",
-      "venue": "ICML 2025 / PMLR 267",
-      "url": "https://proceedings.mlr.press/v267/kofnov25a.html",
-      "arxiv": "https://arxiv.org/abs/2502.11672"
+      "authors": "Gleb Koshevoy; Karl Mosler",
+      "year": 1998,
+      "title": "Lift zonoids, random convex hulls and the variability of random vectors",
+      "venue": "Bernoulli 4(3), 377-399",
+      "doi": "10.2307/3318721",
+      "url": "https://wisotypo3.uni-koeln.de/sites/statistik/pdf_publikationen/1998_KoshevoyM98.pdf",
+      "used_for": [
+        "positive-part support function",
+        "lift-zonoid support identity",
+        "injectivity / full-distribution identification",
+        "Radon inversion statement"
+      ]
     },
     {
-      "title": "On the Number of Linear Regions of Deep Neural Networks",
-      "authors": "Montufar, Pascanu, Cho, Bengio",
-      "venue": "NIPS 2014",
-      "url": "https://proceedings.neurips.cc/paper_files/paper/2014/hash/fa6f2a469cc4d61a92d96e74617c3d2a-Abstract.html",
-      "arxiv": "https://arxiv.org/abs/1402.1869"
+      "authors": "Jonathan W. Siegel",
+      "year": 2025,
+      "title": "Optimal Approximation of Zonoids and Uniform Approximation by Shallow Neural Networks",
+      "venue": "Constructive Approximation 62, 441-469",
+      "doi": "10.1007/s00365-025-09712-9",
+      "url": "https://doi.org/10.1007/s00365-025-09712-9",
+      "used_for": "single-zonoid finite zonotope approximation rate C(d) N^(-1/2-3/(2d)); not a ReLU pushforward theorem"
     }
   ],
+  "exact_blocker": {
+    "missing_theorem": "A deterministic finite-state non-particle operator Phi_W that maps a certified approximation of K_H to a certified approximation of K_{ReLU(W H)} with explicit Hausdorff error recurrence d_H(K_tilde',K_true') <= A(W)*delta + tau(N,W), plus explicit construction/certification FLOP and memory bounds strong enough to satisfy the R209 same-panel score inequality.",
+    "known_exact_continuum_update_is_finite_algorithm": false,
+    "known_zonotope_approximation_theorem_supplies_relu_pushforward": false,
+    "all_in_cost_closed": false,
+    "reason_all_in_not_closed": "C_all=C_build+C_cert+C_read; C_build and C_cert have no admissible bound because the finite nonlinear closure theorem is missing. R374 does not set them to zero.",
+    "universal_impossibility_claim": false
+  },
+  "falsifier": {
+    "id": "F374-LZ-CLOSURE",
+    "type": "ZERO_RUN_THEOREM_GATE",
+    "executed": false,
+    "go_requires": [
+      "finite-state definition not equivalent to discrete particle/cubature pushforward",
+      "explicit nonlinear update Phi_W",
+      "proof of composable Hausdorff error recurrence",
+      "complete construction/certification FLOP and memory formula",
+      "constants leaving nonempty N/delta/C region satisfying exact R209 same-panel inequality and all Phase-2 limits"
+    ],
+    "no_go_if_any_missing": true,
+    "current_result": "NO_GO"
+  },
+  "queue": {
+    "formal_control_queue_job_proposed": false,
+    "reason": "candidate failed pre-execution theorem/cost gate"
+  },
   "artifacts": {
     "report_path": "research/r374/R374_NEXT_DISTINCT_ESTIMATOR_FRONTIER.md",
-    "report_blob_sha1": "69890a8662ad69aee440150c05517027db4d05d1",
-    "report_commit": "4d930bdbef27aac3b2a60e172feeb10188dc5225",
+    "report_blob_sha1": "bcf7b9369628e85cff7fb0585a27e895f99a12a7",
+    "report_update_commit": "f0b98ebcbd1ffb99e9ead7d7dc8a7d991ce90870",
     "receipt_path": "research/r374/R374_RECEIPT.json"
   },
   "execution_accounting": {
@@ -81,6 +196,7 @@
     "official_runs": 0,
     "actions_runs": 0,
     "downloads": 0,
+    "dependency_installs": 0,
     "paid_resources": false,
     "private_holdout_full_access": false,
     "submissions": 0,
