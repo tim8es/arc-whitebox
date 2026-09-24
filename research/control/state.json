@@ -6065,6 +6065,14 @@
         "status": "COMPLETE"
       },
       "revision": 449
+    },
+    {
+      "action": "claim",
+      "at": "2026-09-24T00:30:00+00:00",
+      "job": "R296",
+      "owner": "r293-workflow-security-fix-r268",
+      "payload": {},
+      "revision": 450
     }
   ],
   "jobs": [
@@ -9574,9 +9582,9 @@
       ],
       "hypothesis_id": "PR36-ONE-SHOT-WORKFLOW-SECURITY-HARDENING-20260924",
       "id": "R296",
-      "owner": null,
+      "owner": "r293-workflow-security-fix-r268",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "CLAIMED",
       "title": "Harden PR #36 against workflow reruns and branch races"
     },
     {
@@ -9724,7 +9732,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 449,
+  "revision": 450,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
