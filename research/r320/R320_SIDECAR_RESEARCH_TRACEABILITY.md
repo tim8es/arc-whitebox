@@ -297,3 +297,31 @@ The consolidated boundary remains:
 - leaderboard ↔ R209 score/rank equivalence: **NOT_COMPARABLE**
 - true contest gap: **UNKNOWN**
 
+## R346 integration — completed R342 addendum on existing R333 branch
+
+R342 is now complete and is added here without modifying R333 history. The original R333 `2.10e-9` snapshot remains historical evidence; R342 is an append-only refresh on the same branch.
+
+- task: **R342**
+- status: **COMPLETE_WITH_LATEST_VERIFIED_PUBLIC_SNAPSHOT**
+- branch: `review/r333-r209-compute-floor-headroom-20260924`
+- exact head: `a7910fec8ad5613833db98c663452e7f232baf7f`
+- parent: `b089c3e24f7ea5499b66f09da27a2be3f9b5d3de`
+- report: `research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md`
+  - blob: `439ccaf94f06520ab4355d177493faad8857b936`
+  - source: https://github.com/tim8es/arc-whitebox/blob/a7910fec8ad5613833db98c663452e7f232baf7f/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md
+- receipt: `research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json`
+  - blob: `a225fe4d075eaeceab44ca47599775493744c7d1`
+  - source: https://github.com/tim8es/arc-whitebox/blob/a7910fec8ad5613833db98c663452e7f232baf7f/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json
+
+Preserved interpretation:
+
+- latest verified stored rank-1 UI snapshot: **`2.00e-9` at 2026-09-24 11:28 UTC**;
+- exact underlying leaderboard float and formatter: **UNKNOWN**;
+- exact-decimal R209 mean raw MSE: **`2.22830349017044681e-8`**;
+- fixed-MSE score floor at multiplier `0.1`: **`2.22830349017044681e-9`**;
+- under the same-panel/same-scorer counterfactual, required raw-MSE reduction to numerically equal the displayed `2.00e-9`: **`10.245619197633778283625343576205%`**;
+- this is **not** a true leaderboard gap and **not** a rank prediction;
+- public-50 ↔ R209 identity remains **UNKNOWN / NOT_COMPARABLE**;
+- R333's earlier `2.10e-9` snapshot remains preserved as historical and is not overwritten.
+
+R342 generated no new estimator measurement, benchmark, or submission. R343 remains a separate independent `PASS` arithmetic/source verification entry.

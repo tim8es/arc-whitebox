@@ -1,5 +1,5 @@
 {
-  "schema": "arc.whitebox.r320.sidecar_traceability.v7",
+  "schema": "arc.whitebox.r320.sidecar_traceability.v8",
   "task": "R320",
   "correction_task": "R323",
   "date": "2026-09-24",
@@ -700,6 +700,53 @@
         "predicted_rank_or_place": false
       },
       "actual_new_estimator_measurement": false
+    },
+    {
+      "id": "R342",
+      "type": "append_only_conditional_score_floor_refresh",
+      "status": "COMPLETE_WITH_LATEST_VERIFIED_PUBLIC_SNAPSHOT",
+      "verdict": "COMPUTE_ONLY_INSUFFICIENT_AT_FIXED_OBSERVED_ACCURACY",
+      "branch": "review/r333-r209-compute-floor-headroom-20260924",
+      "head": "a7910fec8ad5613833db98c663452e7f232baf7f",
+      "parent_head": "b089c3e24f7ea5499b66f09da27a2be3f9b5d3de",
+      "evidence": {
+        "report": {
+          "path": "research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md",
+          "blob_sha1": "439ccaf94f06520ab4355d177493faad8857b936",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/a7910fec8ad5613833db98c663452e7f232baf7f/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md"
+        },
+        "receipt": {
+          "path": "research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json",
+          "blob_sha1": "a225fe4d075eaeceab44ca47599775493744c7d1",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/a7910fec8ad5613833db98c663452e7f232baf7f/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json"
+        }
+      },
+      "historical_r333_snapshot": {
+        "displayed_adjusted_score": "2.10e-9",
+        "preserved": true,
+        "overwritten": false
+      },
+      "refreshed_snapshot": {
+        "displayed_adjusted_score": "2.00e-9",
+        "observed_utc": "2026-09-24T11:28:00Z",
+        "exact_underlying_float_known": false,
+        "formatter_known": false,
+        "stored_ui_snapshot_only": true
+      },
+      "exact_decimal_counterfactual": {
+        "mean_raw_mse": "2.22830349017044681e-8",
+        "multiplier_floor": "0.1",
+        "fixed_mse_score_floor": "2.22830349017044681e-9",
+        "required_raw_mse_reduction_percent": "10.245619197633778283625343576205%",
+        "same_panel_same_scorer_counterfactual": true
+      },
+      "interpretation": {
+        "true_leaderboard_gap_claimed": false,
+        "rank_prediction_claimed": false,
+        "public50_identity_join": "UNKNOWN_NOT_COMPARABLE",
+        "exact_leaderboard_float": "UNKNOWN"
+      },
+      "actual_new_estimator_measurement": false
     }
   ],
   "measurement_classification": {
@@ -722,7 +769,9 @@
     "r340_is_public_method_audit_not_new_estimator_measurement": true,
     "r341_is_partial_leaderboard_forensic_not_new_estimator_measurement": true,
     "r343_is_arithmetic_source_verification_not_new_estimator_measurement": true,
-    "new_estimator_measurements_generated_by_r340_r341_r343": 0
+    "new_estimator_measurements_generated_by_r340_r341_r343": 0,
+    "r342_is_append_only_counterfactual_refresh_not_new_estimator_measurement": true,
+    "new_estimator_measurements_generated_by_r342": 0
   },
   "leaderboard_r209": {
     "comparability_decision": "NOT_COMPARABLE",
@@ -745,7 +794,7 @@
   "recommended_next_step": "Coordinator-owned append-only reconciliation of completed sidecars using immutable task ID, branch head and receipt/report hashes through a supported archival/import path; represent R313 as a correction to R309 and do not fabricate historical claim/start/finish events.",
   "report": {
     "path": "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
-    "git_blob_sha1": "54fb45fe3cb3ae5de72367d65980e0085d3bb3e4"
+    "git_blob_sha1": "41b14238c0062081e1b3970e2961cb7c18ef88f9"
   },
   "execution_accounting": {
     "estimator_runs": 0,
@@ -783,7 +832,12 @@
     "r344_benchmark_runs": 0,
     "r344_actions_runs": 0,
     "r344_downloads": 0,
-    "r344_new_files": 0
+    "r344_new_files": 0,
+    "r346_estimator_runs": 0,
+    "r346_benchmark_runs": 0,
+    "r346_actions_runs": 0,
+    "r346_downloads": 0,
+    "r346_new_files": 0
   },
   "extension_task": "R332",
   "extension_parent_head": "0c4db1d79deb9b2f608001127d8359b0c0fafd27",
@@ -818,7 +872,7 @@
     "every_included_sidecar_cumulative_diff_verified_two_paths": true
   },
   "r332_report_blob_sha1": "18d5a950928b213dc69a732be38102208b807723",
-  "latest_extension_task": "R344",
+  "latest_extension_task": "R346",
   "r334": {
     "parent_head": "1c285e5d504d6eb3c971d5afae9db3188e0dcea0",
     "policy": {
@@ -973,5 +1027,39 @@
       "public50_r209": "NOT_COMPARABLE_NOT_JOINABLE"
     },
     "new_estimator_measurement_count": 0
+  },
+  "r346": {
+    "parent_head": "add2ac364f935adf42b05c7ec9ededd59db541c3",
+    "policy": {
+      "append_only": true,
+      "rebase": false,
+      "reset": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false
+    },
+    "dedupe_before_update": {
+      "r342_completed_entry_present": false,
+      "completed_r342_head_present": false
+    },
+    "added_task": "R342",
+    "r333_historical_2_10_snapshot_preserved": true,
+    "r343_separate_independent_pass_entry_preserved": true,
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
+  },
+  "r346_snapshot": {
+    "r342_head": "a7910fec8ad5613833db98c663452e7f232baf7f",
+    "report_blob": "439ccaf94f06520ab4355d177493faad8857b936",
+    "receipt_blob": "a225fe4d075eaeceab44ca47599775493744c7d1",
+    "stored_ui_snapshot": "2.00e-9",
+    "snapshot_utc": "2026-09-24T11:28:00Z",
+    "exact_float": "UNKNOWN",
+    "fixed_mse_floor": "2.22830349017044681e-9",
+    "required_raw_mse_reduction_percent": "10.245619197633778283625343576205%",
+    "public50_join": "UNKNOWN_NOT_COMPARABLE",
+    "true_gap_or_rank_prediction": false
   }
 }
