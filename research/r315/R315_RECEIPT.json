@@ -1,0 +1,84 @@
+{
+  "schema": "arc.whitebox.r315.top2_top3_config_audit.v1",
+  "task": "R315",
+  "status": "COMPLETE",
+  "verdict": "NO_PUBLIC_METHOD",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r315-top2-top3-config-audit-20260924",
+  "captured_at_utc": "2026-09-24T09:47:54.311419Z",
+  "scope": "public unauthenticated AIcrowd first-party submission Configuration/metadata surfaces only",
+  "targets": [
+    {
+      "participant": "suliman_tadros",
+      "submission_id": 331931,
+      "canonical_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331931",
+      "canonical_link_verified_from_leaderboard": true,
+      "estimator_or_method_name_publicly_verified": false,
+      "participant_method_parameters_publicly_verified": false,
+      "source_code_link_publicly_verified": false,
+      "repository_link_publicly_verified": false,
+      "direct_method_writeup_link_publicly_verified": false,
+      "grading_configuration_values_captured": false,
+      "capture_observation": "public page reachable; text capture exposes generic shell and Share/Copy URL but not target-specific client-rendered Configuration payload",
+      "verdict": "NO_PUBLIC_METHOD"
+    },
+    {
+      "participant": "marius_binner",
+      "submission_id": 331953,
+      "canonical_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331953",
+      "canonical_link_verified_from_leaderboard": true,
+      "estimator_or_method_name_publicly_verified": false,
+      "participant_method_parameters_publicly_verified": false,
+      "source_code_link_publicly_verified": false,
+      "repository_link_publicly_verified": false,
+      "direct_method_writeup_link_publicly_verified": false,
+      "grading_configuration_values_captured": false,
+      "capture_observation": "public page reachable; text capture exposes generic shell and Share/Copy URL but not target-specific client-rendered Configuration payload",
+      "verdict": "NO_PUBLIC_METHOD"
+    }
+  ],
+  "evidence": {
+    "leaderboard_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "leaderboard_mapping": [
+      {
+        "participant": "suliman_tadros",
+        "submission_id": 331931
+      },
+      {
+        "participant": "marius_binner",
+        "submission_id": 331953
+      }
+    ],
+    "method_linkage_rule": "Only direct public first-party linkage to the exact submission ID counts.",
+    "evidence_limitation": "Current unauthenticated text capture does not expose the client-rendered target-specific Configuration payload; no configuration values are inferred."
+  },
+  "exclusions": {
+    "score_or_rank_inference": false,
+    "general_forum_scan": false,
+    "r306_j2w_reanalysis": false,
+    "r307_andreas_reanalysis": false,
+    "r312_luna_reanalysis": false,
+    "contact": false,
+    "login": false,
+    "paid": false,
+    "private_access": false,
+    "holdout_access": false,
+    "full_access": false,
+    "submission": false
+  },
+  "actions": {
+    "public_page_read": true,
+    "actions_run": false,
+    "benchmark": false,
+    "downloads": false,
+    "main_edit": false,
+    "pr_edit": false,
+    "control_edit": false
+  },
+  "artifacts": {
+    "report_path": "research/r315/R315_TOP2_TOP3_CONFIG_AUDIT.md",
+    "report_blob_sha": "efdd6f0bd504e667a0b50262f73ccb72d7fbc9e8",
+    "report_commit": "18b913b3245121d010c8746e805b3bcf48b5c0e2",
+    "receipt_path": "research/r315/R315_RECEIPT.json"
+  }
+}
