@@ -2,8 +2,8 @@
   "schema": "arc.whitebox.r335.accuracy-side-estimator-scout.v1",
   "job": "R335",
   "status": "COMPLETE",
-  "verdict": "EVIDENCE_BASED_NO_GO",
-  "classification": "ALREADY_COVERED_AT_DEEP_REALIZATION",
+  "verdict": "EVIDENCE_BASED_FEASIBILITY_NO_GO",
+  "classification": "R337_MATERIAL_CORRECTION_APPLIED",
   "ideas_admitted": 0,
   "control": {
     "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
@@ -32,16 +32,20 @@
     "acronym": "CFPP",
     "count": 1,
     "scalar_identity_new_to_named_project_mechanisms": true,
-    "deep_estimator_family_genuinely_unoccupied": false,
+    "deep_estimator_family_genuinely_unoccupied": null,
     "precise_formula": "E[X_+] = E[X]/2 + (1/pi) integral_0^infinity (1-Re phi_X(t))/t^2 dt; for Z_j=w_j^T H, phi_Zj(t)=Phi_H(t w_j)",
     "assumptions": [
       "finite first absolute moment",
       "access to required joint characteristic-function values or a certified approximation"
     ],
     "accuracy_relevance": "direct deterministic control of neuron-mean error, hence raw final-layer MSE; not merely a sampling-variance statement",
-    "blocker": "joint characteristic-function propagation through generic dense componentwise ReLU has no new polynomial-size closed state; exact realization re-enters orthant/boundary state, tractable approximations re-enter occupied sampling/Gaussian-mixture/low-rank families",
+    "blocker": "No audited primary source supplies a finite reusable polynomial-size joint-dependence state for generic dense post-ReLU propagation with rigorous composable depth-16 error control and credible Phase-2 FLOP/residual guarantees. Explicit mask enumeration is one exact representation, not a proved necessity or general lower bound; full joint-CF/Hilbert representations avoid an explicit mask table but do not supply the required finite reusable generic-dense state.",
     "phase2_flop_bound_proven": false,
-    "residual_lt_0_4s_path_proven": false
+    "residual_lt_0_4s_path_proven": false,
+    "deep_estimator_novelty_after_r337": "Published deep-ReLU CF/Hilbert propagation exists (Pilipovsky et al. 2023); no qualifying generic-dense dependency-correct Phase-2 state/error/cost package was found.",
+    "impossibility_theorem_claimed": false,
+    "explicit_mask_enumeration_necessary_claimed": false,
+    "exponential_lower_bound_claimed": false
   },
   "primary_literature": [
     {
@@ -60,6 +64,15 @@
       "doi": "10.1007/s10959-016-0709-1",
       "url": "https://doi.org/10.1007/s10959-016-0709-1",
       "author_preprint": "https://arxiv.org/abs/1603.07365"
+    },
+    {
+      "authors": "Joshua Pilipovsky; Vignesh Sivaramakrishnan; Meeko Oishi; Panagiotis Tsiotras",
+      "year": 2023,
+      "title": "Probabilistic Verification of ReLU Neural Networks via Characteristic Functions",
+      "venue": "Proceedings of The 5th Annual Learning for Dynamics and Control Conference, PMLR 211:966-979",
+      "url": "https://proceedings.mlr.press/v211/pilipovsky23a.html",
+      "author_preprint": "https://arxiv.org/abs/2212.01544",
+      "relevance": "Published deep-ReLU CF/Hilbert propagation; numerical construction propagates component-wise CFs; product factorization of scalar CFs is conditioned on independence; generic dense hidden mixing does not generally preserve that condition; numerical errors can propagate after max/ReLU layers and HT propagation-error study is left open."
     }
   ],
   "dedupe": {
@@ -161,7 +174,8 @@
       "static production extrapolation < 2^41 FLOPs/network",
       "credible width-1024 residual path < 0.4 s",
       "no fallback to occupied sampling, Gaussian/mixture, low-rank/compression, or explicit mask/boundary families"
-    ]
+    ],
+    "note": "R338 confirms this remains a future re-entry condition only; no falsifier was executed."
   },
   "execution_accounting": {
     "code_created": false,
@@ -177,5 +191,46 @@
     "pr_edit": false,
     "control_edit": false,
     "queue_edit": false
+  },
+  "original_verdict": "EVIDENCE_BASED_NO_GO",
+  "original_classification": "ALREADY_COVERED_AT_DEEP_REALIZATION",
+  "r338_correction": {
+    "task": "R338",
+    "type": "append_only_material_correction",
+    "r335_pre_correction_tip": "9e01cb63dc2a4e662422b3ae98af67d1830505b7",
+    "r337_evidence": {
+      "branch": "review/r337-r335-independent-red-team-20260924",
+      "final_head": "9c233d8ba33ae64316d6ec71bc0f433dc8574451",
+      "report_path": "research/r337/R337_R335_INDEPENDENT_RED_TEAM.md",
+      "report_blob_sha1": "551d895ffdc222ee5e2b45246419a70613f9eae1",
+      "receipt_path": "research/r337/R337_RECEIPT.json",
+      "receipt_blob_sha1": "4248094963d4f1161a71fba100479b227ea8d67b",
+      "verdict": "PASS_WITH_MATERIAL_CORRECTION",
+      "terminal_interpretation": "EVIDENCE_BASED_FEASIBILITY_NO_GO_UNCHANGED"
+    },
+    "omitted_primary_method": {
+      "authors": "Joshua Pilipovsky; Vignesh Sivaramakrishnan; Meeko Oishi; Panagiotis Tsiotras",
+      "year": 2023,
+      "pmlr_url": "https://proceedings.mlr.press/v211/pilipovsky23a.html",
+      "author_preprint": "https://arxiv.org/abs/2212.01544",
+      "deep_relu_cf_hilbert_method_published": true,
+      "componentwise_cf_numerical_state": true,
+      "product_factorization_independence_condition": true,
+      "generic_dense_hidden_independence_preserved_in_general": false,
+      "paper_reports_errors_propagating_after_relu_max": true,
+      "propagation_error_analysis_left_open": true
+    },
+    "representation_correction": {
+      "explicit_mask_decomposition_valid": true,
+      "explicit_mask_enumeration_proved_necessary": false,
+      "full_joint_cf_hilbert_can_express_exact_transform_without_explicit_mask_table": true,
+      "exponential_lower_bound_claimed": false,
+      "impossibility_theorem_claimed": false,
+      "single_gaussian_or_orthant_query_may_be_polynomial_time": true,
+      "persistent_composable_state_is_distinct_problem": true
+    },
+    "surviving_feasibility_no_go": "No audited primary source supplies a finite reusable polynomial-size joint-dependence state with rigorous composable propagated-error control and credible <2^41 FLOP / <0.4 s residual guarantees for generic dense width-1024/depth-16.",
+    "reentry_gate_executed": false,
+    "changes_to_reentry_gate": "none"
   }
 }

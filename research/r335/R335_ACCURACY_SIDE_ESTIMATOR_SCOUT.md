@@ -1,7 +1,8 @@
 # R335 — targeted accuracy-side estimator theory scout
 
 **Status:** COMPLETE  
-**Verdict:** **EVIDENCE_BASED_NO_GO / ALREADY_COVERED_AT_DEEP_REALIZATION**  
+**Verdict:** **EVIDENCE_BASED_FEASIBILITY_NO_GO**  
+**R338 correction:** R337 material red-team correction applied; this is not an impossibility theorem  
 **Candidate families admitted for execution:** **0**  
 **Branch:** `review/r335-accuracy-side-estimator-scout-20260924`  
 **Exact base:** `4619801e0cc5e7e340cd0406eb44e0633d8aa5e5`
@@ -12,9 +13,9 @@ Is there a genuinely unoccupied estimator family that could lower **raw final-la
 
 R333 supplies only a prioritization target, not a proven competition gap. Under its explicitly conditional same-panel/same-scorer comparison, replacing every R209 row's compute multiplier by the 0.1 floor while keeping raw MSE fixed still leaves a score floor of `2.228303490170447e-9`. To hit the illustrative rounded `2.10e-9` display threshold at multiplier 0.1 would require mean raw MSE `2.10e-8`, a reduction of `5.757900157515477%` from R209's `2.228303490170447e-8`. R333 also records that the public-50 join is unproven, so this is a research-prioritization target only.
 
-R335 looked for exactly one mathematically distinct accuracy-side mechanism in primary literature. The only survivor not already named in the ledger was a **characteristic-function positive-part propagation** identity. The scalar identity is exact and directly controls mean error, but it does not yield a new feasible deep estimator: exact propagation of the required joint characteristic function through a dense ReLU layer re-enters the already occupied gate/orthant/boundary state of R317/R321/E114-E119; approximate realizations fall back into already occupied sampling, Gaussian/mixture, or low-rank/compression families.
+R335 screened **characteristic-function positive-part propagation** as its one accuracy-side mechanism. The scalar identity is exact and directly controls mean error. Independent R337 review later identified an omitted directly relevant primary source: Pilipovsky et al. (L4DC/PMLR 2023) give a real deep-ReLU characteristic-function propagation method using Hilbert transforms. Their published numerical construction propagates component-wise CFs; product factorization into scalar CFs is stated under an independence condition, while generic dense affine mixing does not generally preserve hidden-coordinate independence. Their examples report numerical errors propagating after ReLU/max layers, and the author preprint leaves propagation of Hilbert-transform numerical errors as future work.
 
-Therefore R335 stops before implementation or falsifier execution.
+Accordingly, R335 stops before implementation or falsifier execution for the narrower reason that no audited primary source supplies a **finite reusable polynomial-size joint-dependence state with rigorous composable propagated-error control and credible Phase-2 FLOP/residual guarantees for generic dense width-1024/depth-16**. This is an evidence-based feasibility NO-GO, not an impossibility theorem.
 
 ## Frozen dedupe evidence
 
@@ -48,7 +49,9 @@ This dedupe also enforces the brief's exclusions: no repackaging of Gaussian cov
 1. Iosif Pinelis, **“Characteristic function of the positive part of a random variable and related results, with applications,”** *Statistics & Probability Letters* 106 (2015), 281–286. DOI: https://doi.org/10.1016/j.spl.2015.07.031
 2. Iosif Pinelis, **“Positive-part moments via characteristic functions, and more general expressions,”** *Journal of Theoretical Probability* 31 (2018), 527–555. DOI: https://doi.org/10.1007/s10959-016-0709-1 ; author preprint: https://arxiv.org/abs/1603.07365
 
-These are primary mathematical papers. Pinelis gives exact integral representations of the positive part and its moments in terms of the characteristic function.
+3. Joshua Pilipovsky, Vignesh Sivaramakrishnan, Meeko Oishi, Panagiotis Tsiotras, **“Probabilistic Verification of ReLU Neural Networks via Characteristic Functions,”** *Proceedings of The 5th Annual Learning for Dynamics and Control Conference*, PMLR 211:966–979 (2023): https://proceedings.mlr.press/v211/pilipovsky23a.html ; author preprint: https://arxiv.org/abs/2212.01544
+
+These are primary mathematical/method papers. Pinelis gives exact integral representations of the positive part and its moments in terms of the characteristic function; Pilipovsky et al. provide a published deep-ReLU CF/Hilbert propagation construction.
 
 ### Exact scalar formula
 
@@ -137,37 +140,24 @@ The formula is global: every output neuron receives the same estimator rule, wit
 
 The problem is not the scalar identity. The problem is the deep state needed to evaluate it.
 
-## Deep propagation obstruction
+## Deep propagation obstruction — corrected by R337
 
-To use the formula at layer (ell+2), one needs the joint characteristic function of
+To use the formula at layer (ell+2), one needs the joint characteristic function of the post-ReLU vector at future row-ray arguments.
 
-[
-H_{ell+1}=operatorname{ReLU}(Z),qquad Z=W_{ell+1}H_ell,
-]
+One exact representation is the activation-mask/orthant partition already written in the original R335 analysis. An **explicit mask-indexed realization** can contain up to (2^n) gate regions.
 
-at the future row-ray arguments.
+R337 materially corrects the stronger interpretation: **explicit orthant/mask enumeration is not proved necessary for every exact representation.** Full joint-characteristic-function/Hilbert-transform representations can express the exact nonlinear transform without an explicit mask table. The (2^n) count is therefore only an output-size observation about an explicit mask representation, not a general computational lower bound.
 
-For a generic vector (Z), an exact partition by activation mask gives
+Pilipovsky et al. 2023 make the distinction concrete. They give the exact multivariate affine-CF rule and a scalar/component-wise ReLU-CF Hilbert-transform update. Their numerical construction propagates component-wise CFs, while their product factorization of a joint CF into scalar CFs is stated for independent scalar variables. Generic dense affine mixing does not generally preserve that hidden-coordinate independence.
 
-[
-Phi_{operatorname{ReLU}(Z)}(u)
-=
-sum_{Asubseteq{1,ldots,n}}
-int_{mathcal O_A}
-exp!left(i,u_A^	op z_Aight)
-,dP_Z(z),
-]
+The narrower persistent-state issue is:
 
-where (mathcal O_A) is the sign orthant with active set (A).
+- later arbitrary dense rows query **joint** dependence along new frequency directions; coordinate marginal CFs alone are not generically sufficient;
+- a full joint CF is an exact functional representation, but R335/R337 found no audited theorem compressing it into a finite reusable polynomial-size generic-dense state with rigorous layer-to-layer approximation-error control;
+- the Pilipovsky numerical method reports errors that propagate after ReLU/max layers, and its author preprint explicitly leaves Hilbert-transform propagation-error analysis open;
+- a single Gaussian/orthant query may be polynomial-time in suitable randomized/oracle models, which is distinct from a persistent composable state through 16 dense nonlinear layers.
 
-That identity exposes the same persistent-state problem as R317/R321:
-
-- an explicit exact realization has up to (2^n) gate regions;
-- at (n=1024), explicit mask state is impossible;
-- knowing finitely many scalar/marginal characteristic functions does not determine the required joint nonlinear transform;
-- a finite set of row-ray CF values is not closed under the componentwise ReLU followed by another generic dense matrix.
-
-The candidate therefore has no new polynomial-size deep recurrence.
+R335 therefore makes **no** claim that exact propagation must enumerate masks, **no** universal exponential lower-bound claim, and **no** impossibility claim.
 
 ## Exhaustive realization check
 
@@ -185,10 +175,13 @@ Every obvious way to make the scalar identity executable falls into an already o
 4. **Compress the joint CF in TT/CP/low-rank/basis/random-feature form.**  
    This is a low-rank/compression descendant already closed as a family by R265/R276/R308 unless a new theorem supplies a generic dense error/state bound.
 
-5. **Evaluate the exact ReLU transform by sign masks, truncated pieces, or activation-boundary integrals.**  
-   This is R317/R321 and E114-E119.
+5. **Use an explicit sign-mask/truncated-piece/activation-boundary representation.**  
+   This is one exact realization route and overlaps R317/R321 and E114-E119. It is not asserted to be necessary for every exact representation.
 
-So the apparently new Fourier/CF identity does not produce a genuinely unoccupied **deep estimator family** under the project's novelty rule.
+6. **Use the published component-wise Hilbert-CF propagation of Pilipovsky et al.**  
+   This is a real prior method, not a missing-method vacuum. Its numerical state is component-wise, and the scalar-CF product factorization is stated under independence; generic dense mixing does not generally preserve that condition. The paper reports errors propagating after max/ReLU layers and leaves propagation-error analysis open.
+
+So the Fourier/CF direction is not rejected because exact propagation must enumerate orthants. It is rejected only at the present **generic-dense Phase-2 feasibility evidence gate**.
 
 ## Complexity and Phase-2 feasibility
 
@@ -196,12 +189,7 @@ If an exact joint-CF oracle existed, (K) scalar quadrature nodes per neuron woul
 
 But there is no such oracle. The cost-dominating operation is updating or querying the **joint** CF after a generic dense ReLU layer.
 
-Known realizations above either:
-
-- carry exponential mask state;
-- use stochastic samples;
-- collapse to Gaussian/small-mixture approximations;
-- or require low-rank/tensor compression without a new generic error theorem.
+The audited realizations do not establish the needed production package. An explicit mask-indexed realization has exponential state size, but that is **not** a lower bound on all algorithms. A full joint-CF/Hilbert representation avoids an explicit mask table but is not supplied as a finite reusable polynomial-size dependency-correct state with rigorous composable error control. Component-wise CF propagation uses an independence-based factorization that generic dense mixing does not generally preserve; sampling, Gaussian/mixture, and low-rank approximations return to occupied families.
 
 Therefore R335 cannot derive an honest all-in bound below
 
@@ -239,13 +227,37 @@ This falsifier is only a re-entry condition. R335 has no concrete non-duplicate 
 
 ## Decision
 
-**EVIDENCE_BASED_NO_GO / ALREADY_COVERED_AT_DEEP_REALIZATION.**
+**EVIDENCE_BASED_FEASIBILITY_NO_GO.**
 
-The positive-part characteristic-function identity is mathematically valid and, at the scalar level, new relative to the project's named mechanisms. It is also accuracy-side: its approximation error directly bounds neuron-mean error and hence raw MSE.
+The positive-part characteristic-function identity is mathematically valid and accuracy-side: approximation error can directly control neuron-mean error and hence raw MSE. R337 additionally establishes that deep ReLU CF/Hilbert propagation is already a real published method (Pilipovsky et al. 2023), so the literature landscape is broader than the original R335 screen recorded.
 
-But it does **not** survive the deep-estimator novelty/cost gate. The required joint-CF propagation through generic dense ReLU layers either becomes the already-audited gate/orthant/boundary representation, or is made tractable only by sampling, Gaussian/mixture closure, or low-rank compression already occupied in the ledger.
+The defensible terminal statement is narrow: **no audited primary source supplies a finite reusable polynomial-size state that preserves generic dense post-ReLU joint dependence, comes with rigorous composable propagated-error control through depth 16, and supports an all-in <2^41 FLOP plus <0.4 s residual derivation at width 1024.** This is not an impossibility theorem. It does not claim that every exact representation enumerates masks, that a single orthant/Gaussian query is exponential, or that no future compact representation can exist.
 
-R335 therefore admits **0 estimator ideas for execution** and makes no claim about any leaderboard participant's method.
+R335 therefore still admits **0 estimator ideas for execution** and makes no claim about any leaderboard participant's method.
+
+## R338 append-only material correction from independent R337
+
+R338 incorporates the independent R337 red-team without rewriting history.
+
+Exact R337 evidence:
+
+- branch: `review/r337-r335-independent-red-team-20260924`
+- final head: `9c233d8ba33ae64316d6ec71bc0f433dc8574451`
+- report: `research/r337/R337_R335_INDEPENDENT_RED_TEAM.md`
+- report blob SHA-1: `551d895ffdc222ee5e2b45246419a70613f9eae1`
+- receipt: `research/r337/R337_RECEIPT.json`
+- receipt blob SHA-1: `4248094963d4f1161a71fba100479b227ea8d67b`
+- R337 verdict: `PASS_WITH_MATERIAL_CORRECTION — EVIDENCE_BASED_FEASIBILITY_NO_GO_UNCHANGED`
+
+Accepted corrections:
+
+1. Pilipovsky et al. 2023 is directly relevant omitted primary literature. PMLR: https://proceedings.mlr.press/v211/pilipovsky23a.html ; author preprint: https://arxiv.org/abs/2212.01544. It provides deep-ReLU CF propagation via Hilbert transforms. Its numerical construction propagates component-wise CFs; the joint-to-product rule is conditioned on independence, which generic dense hidden mixing does not generally preserve. Numerical errors are reported to propagate after max/ReLU layers, and the preprint leaves HT error propagation as future work.
+
+2. The mask/orthant sum is a valid exact representation, but not a theorem that all exact representations must enumerate masks. Full joint-CF/Hilbert representations can encode the transform without an explicit mask table. No universal exponential lower bound is claimed.
+
+3. Polynomial-time single Gaussian/orthant queries in suitable models do not resolve the distinct persistent-state problem: maintaining a finite reusable dependency-correct state through repeated generic dense ReLU layers with composable error and Phase-2 cost/timing guarantees.
+
+The preregistered R335 re-entry falsifier remains **explicitly unexecuted**. Its fixture and GO/NO-GO thresholds are unchanged by R338.
 
 ## Execution accounting
 
