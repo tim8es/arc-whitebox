@@ -1,0 +1,249 @@
+{
+  "schema": "arc.whitebox.r356.h185_static_dense_flops_reconstruction.v1",
+  "task": "R356",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "decision": "NO_GO_PROOF_GRADE_STATIC_RECONSTRUCTION_NOT_CLOSED",
+  "authorization": "NONE",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r356-h185-static-dense-flops-reconstruction-20260924",
+  "scope": "static immutable-source and exact FlopScope billing audit only; no execution",
+  "lineage": {
+    "E187": {
+      "branch": "research/e187-h185-protocol-hardening-20260922",
+      "live_head": "06fbb08fb9ece3b5b3d8da7b60fee331030a044f",
+      "protocol_report_blob": "d623a9348518c0afe2869fc89f44a746960e81f5",
+      "protocol_lock_blob": "215187db7fb4a3ba391a1229e48ce6a482bebd97",
+      "parent_ledger_blob": "33699fbfa47e23ffef99b6a99e064aa130100671",
+      "protocol_status": "NO_GO",
+      "owner_run_authorized": false
+    },
+    "E190": {
+      "branch": "research/e190-cost-evidence-recovery-20260922",
+      "live_head": "7145df65c84970eeab5dbfb48d1045eaee8be7ca",
+      "report_blob": "976ebe39a06092bbc5838ea3f249cc5348bc87a5",
+      "recovered_ledger_blob": "4ba395635e08f9fafd592edd8978207341d7d42a",
+      "exact_parent_total_flops": 558473140719,
+      "exact_dense_raw_flops_recovered": false,
+      "exact_remainder_raw_flops_recovered": false,
+      "exact_per_namespace_raw_flops_recovered": false
+    },
+    "E191": {
+      "branch": "review/e191-e190-independent-review-20260922",
+      "live_head": "37488d6e9abd52c625cde9506f541dcd85c70701",
+      "report_blob": "04a7407a0b93580b9868ffcc28d461ee91c4f89a",
+      "separate_json_receipt_present": false,
+      "requirement": "exact total, exact 11-namespace dense subtotal, exact fixed subtotal, and same-ledger exact reconciliation"
+    }
+  },
+  "f86": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "namespaced_estimator": {
+      "path": "estimators/estimator_v29_ns.py",
+      "blob_sha1": "f91df783b83cb5fae0af57a16799c5df81891bd2"
+    },
+    "plain_estimator": {
+      "path": "estimators/estimator_v29.py",
+      "blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c"
+    },
+    "harness": {
+      "path": "harness/audit_v29_ns.py",
+      "blob_sha1": "279d8e0308360fde7616d56f8e8cc2705b529898"
+    },
+    "committed_log": {
+      "path": "docs/audit_v29_ns_d0.log",
+      "blob_sha1": "a689ef69fd64bed7765cb93ce4910c3fedcbd04a",
+      "call2_ops": 13121,
+      "dense_namespace_calls": 6172,
+      "grouped_dense_display_units": 222.44,
+      "grouped_fixed_display_units": 37.62,
+      "grouped_total_display_units": 260.06,
+      "dense_family_display_rows_sum_units": 222.45,
+      "raw_oplog_persisted": false
+    },
+    "namespace_generator_blob": "6c0e439eaeefcb2e06991cb86d9bda3b174fc30d",
+    "rounded_cost_csv_blob": "a70f696b5e525aaa70522eb0a02189e2c88dc5e9",
+    "dense_namespaces": [
+      "young_transport",
+      "hub",
+      "shared",
+      "old_legs",
+      "j_rf",
+      "j_rot",
+      "j_proj",
+      "j_tier2",
+      "j_qc",
+      "j_core",
+      "qc_transport"
+    ],
+    "call2_semantics": "second predict on same estimator, steady-state ledger; call1 is warm-up and establishes persistent pool state"
+  },
+  "flopscope_0_12_1": {
+    "repository": "AIcrowd/flopscope",
+    "commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+    "pyproject_blob": "57ce0e5bedc56999104209c84c3b82de66e50058",
+    "budget_blob": "f4d32d9d6a10b7292ba2e3c6fdbd8c68955248b8",
+    "flops_blob": "d8103735c03f08ec915b7846bc877ad57d47fa03",
+    "registry_blob": "de7388e5649224360ca3fa8e5f62b4ad5ebcc596",
+    "weights_blob": "b221c25484a645e9ef9b54529c2ab69d2509e477",
+    "dtype_billing_blob": "87c5789569320593a6054e0ca24d3d9e88df8b8b",
+    "array_ops_blob": "d112b1e96e50cfdf0674c3230d291b622191b86d",
+    "pointwise_blob": "5d8f9210ff23979ef9658897d8cd1a02127b33c4",
+    "linalg_decompositions_blob": "4c10967cf0b2dc7fcad8a7626f403c75faa6eb39",
+    "packaged_default_weights_blob": "5f7074f76d56b92180c8a1553a3ebe3a4c1d43f5",
+    "version": "0.12.1",
+    "billing_rule": "adjusted_cost = int(base_flop_cost * dtype_rate * complex_factor * operation_weight)",
+    "op_record_exact_fields": [
+      "op_name",
+      "shapes",
+      "flop_cost",
+      "namespace",
+      "resolved_dtype",
+      "cumulative"
+    ],
+    "matmul_formula": "2*m*k*n - m*n",
+    "packaged_defaults_checked": {
+      "matmul_weight": 1,
+      "add_weight": 1,
+      "subtract_weight": 1,
+      "multiply_weight": 1,
+      "copyto_weight": 1,
+      "sum_weight": 1,
+      "reshape_weight": 1,
+      "linalg_qr_weight": 1,
+      "empty_weight": 0,
+      "float32_dtype_rate": 1,
+      "float64_dtype_rate": 2
+    },
+    "runtime_override_hooks": [
+      "FLOPSCOPE_DISABLE_WEIGHTS",
+      "FLOPSCOPE_WEIGHTS_FILE"
+    ]
+  },
+  "conditional_static_consistency_only": {
+    "promoted_to_f86_exact_evidence": false,
+    "assumptions": [
+      "source-default estimator configuration",
+      "packaged default FlopScope weights/dtype rates",
+      "call1/call2 persistent state follows that exact default path"
+    ],
+    "common_matmul_shape": "(1024,1024) @ (1024,384), or transpose-equivalent output shape",
+    "common_matmul_exact_base_flops": 804913152,
+    "examples": {
+      "qc_transport_candidate_flops": 804913152,
+      "j_qc_candidate_flops": 8049131520,
+      "j_proj_candidate_flops": 16098263040,
+      "j_core_candidate_flops": 6047514624
+    },
+    "note": "These are source-default consistency examples only and are not accepted as the historical F86 exact namespace ledger."
+  },
+  "blockers": {
+    "estimator_runtime_configuration": {
+      "status": "MISSING_IMMUTABLE_F86_PROCESS_FACT",
+      "cost_affecting_env_not_recorded": [
+        "V17_NO_FEED",
+        "V17_NO_WK431",
+        "V17_NO_REGEN",
+        "V18_NO_FB",
+        "V19_FULL_LAST",
+        "V21_NO_CONFINE",
+        "V21_QPASS",
+        "V19_NO_SRC_LAST",
+        "V26_STRASSEN",
+        "V26_STRASSEN_HUB",
+        "V29_CPRE_LEV",
+        "V28_STRASSEN_SB",
+        "V26_STRASSEN_MIN",
+        "V28_STRASSEN_FIRST",
+        "V28_STRASSEN_FUSE_P",
+        "V21_AGE_OLD",
+        "V21_R_OLD",
+        "V24_AGE_OLD2",
+        "V24_R_OLD2",
+        "V24_QPASS2"
+      ],
+      "consequence": "operation identities, multiplicities, shapes and persistent pool allocation history are not uniquely proof-pinned by source alone"
+    },
+    "flopscope_runtime_configuration": {
+      "status": "MISSING_IMMUTABLE_F86_PROCESS_FACT",
+      "missing": [
+        "effective FLOPSCOPE_DISABLE_WEIGHTS state",
+        "effective FLOPSCOPE_WEIGHTS_FILE state/content hash",
+        "effective active operation-weight and dtype-rate table identity"
+      ],
+      "consequence": "same source op stream can have different exact adjusted integer costs under a custom runtime billing table"
+    },
+    "call2_state": {
+      "status": "DEPENDENT_ON_CALL1",
+      "detail": "persistent _Pool and _Strassen buffers survive call1; allocation/growth can bill copyto/reshape in call2 depending on call1 schedule",
+      "consequence": "proof-grade call2 reconstruction must statically replay call1 state transitions after runtime configuration is pinned"
+    },
+    "persisted_op_identity": {
+      "status": "ABSENT",
+      "detail": "committed F86 text preserves family call counts and rounded costs, but not actual call2 OpRecord names/shapes/dtypes/exact flop_cost values"
+    }
+  },
+  "reconciliation": {
+    "exact_parent_total": "PASS",
+    "exact_call2_ops": "PASS",
+    "exact_dense_family_call_counts": "PASS",
+    "exact_source_billing_formulas": "PASS",
+    "actual_f86_estimator_runtime_config": "FAIL_MISSING",
+    "actual_f86_active_billing_config": "FAIL_MISSING",
+    "exact_all_13121_operation_identities": "FAIL_NOT_PROOF_GRADE_RECONSTRUCTED",
+    "exact_11_namespace_flops": "FAIL_NOT_RECOVERED",
+    "exact_dense_subtotal": "FAIL_NOT_RECOVERED",
+    "exact_fixed_remainder": "FAIL_NOT_RECOVERED",
+    "exact_dense_plus_fixed_equals_total": "FAIL_COMPONENTS_MISSING",
+    "h185_dense_denominator": "FAIL_STILL_MISSING"
+  },
+  "precise_minimal_missing_static_fact": {
+    "description": "A content-addressed immutable runtime/billing manifest for the historical F86 process that produced audit_v29_ns_d0.log.",
+    "required": [
+      "exact values or explicit absence of every cost-affecting estimator environment variable",
+      "effective FLOPSCOPE_DISABLE_WEIGHTS value/absence",
+      "effective FLOPSCOPE_WEIGHTS_FILE value/absence and content hash if custom",
+      "effective active billing-table identity/hash",
+      "exact FlopScope/NumPy runtime identity"
+    ],
+    "why_sufficient_in_principle": "With the pinned source and harness, this would freeze the two-call schedule so a future static proof could enumerate call1, carry persistent pool state, enumerate call2, and sum exact namespace costs.",
+    "alternative_sufficient_existing_artifact_if_found": "immutable raw F86 call2 ctx.op_log with op_name, shapes, namespace, resolved_dtype and exact flop_cost for all 13121 records",
+    "present_now": false
+  },
+  "rules": {
+    "rounded_value_inversion_used": false,
+    "execution_used_to_recover_counts": false,
+    "h185_authorized": false,
+    "hardening_ready": false,
+    "scientific_h185_rejection_claimed": false
+  },
+  "report": {
+    "path": "research/r356/R356_H185_STATIC_DENSE_FLOPS_RECONSTRUCTION.md",
+    "creation_commit": "c690af2d1e0ef9686d30b2324d55211d84debba0",
+    "git_blob_sha1": "851530b2ddabc730533887174a700beaedbe2219"
+  },
+  "execution_accounting": {
+    "estimator_runs": 0,
+    "test_runs": 0,
+    "benchmark_runs": 0,
+    "recovery_reruns": 0,
+    "actions_runs": 0,
+    "dependency_or_data_downloads_or_installs": 0,
+    "target_reads": 0,
+    "paid_resources": false,
+    "private_access": false,
+    "holdout_access": false,
+    "full_access": false,
+    "submissions": 0,
+    "e187_edits": 0,
+    "e190_edits": 0,
+    "e191_edits": 0,
+    "e193_edits": 0,
+    "r320_edits": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
