@@ -1,0 +1,159 @@
+{
+  "schema": "arc.whitebox.r309.toolchain_delta_audit.v1",
+  "task": "R309",
+  "date": "2026-09-24",
+  "mode": "source-only immutable official tag/commit audit",
+  "status": "COMPLETE",
+  "repository": "tim8es/arc-whitebox",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r309-toolchain-delta-audit-20260924",
+  "artifacts": {
+    "report_path": "research/r309/R309_TOOLCHAIN_DELTA_AUDIT.md",
+    "report_git_blob_sha": "52ca2812e932bb52c8259e67939e34721962f6c2",
+    "receipt_path": "research/r309/R309_TOOLCHAIN_DELTA_AUDIT_RECEIPT.json"
+  },
+  "official_starterkit": {
+    "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+    "pyproject_blob": "2c1d562a2073046d6912868184b52c8c593d23c5",
+    "local_pair": {
+      "whestbench": "0.16.1",
+      "flopscope": "0.12.1"
+    },
+    "grader_pair": {
+      "whestbench": "0.16.0",
+      "flopscope_server": "0.12.0"
+    }
+  },
+  "immutable_tags": {
+    "whestbench": {
+      "v0.16.0": {
+        "tag_object": "714bedbdd306b6d4eaf15d1e9ec550fe810b9a39",
+        "commit": "8f0cb19a92eae7f88139e2f3810a392cf7a5b95e"
+      },
+      "v0.16.1": {
+        "tag_object": "66526b4c80d9aea6af981c7a0f92e9ec76c57238",
+        "commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18"
+      }
+    },
+    "flopscope": {
+      "v0.12.0": {
+        "tag_object": "5c8bf6a8d2449a1d9e5f676eec72576485b5300d",
+        "commit": "2b8682e354379c50bc24145675356b8bb87fe6b3"
+      },
+      "v0.12.1": {
+        "tag_object": "e683fd35c74bde24240c1b8c3fb3d8b1e8e7e10e",
+        "commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693"
+      },
+      "implementation_commit": "260a1289b3847ebbccc37f3e12659eadd8a10366"
+    }
+  },
+  "whestbench_blob_equality": {
+    "scoring": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "seeds": "d04431aca4643a45831d22751a4f6d49d6467435",
+    "runner": "75636c28fa3eabc6047e1c981f34b6a0501ba8f3",
+    "subprocess_worker": "33f9d48793e67dd95180aadbcdd024720019348e",
+    "reporting": "343bc9af5b6c1e942e5c469fac8cf909b6406cc2",
+    "protocol": "fd03c7a79d8fa797fb910394de811edb4f02203b"
+  },
+  "whestbench_budget_blobs": {
+    "0.16.0": "73c25ce6c4a49ee90095710c213465c9579e4441",
+    "0.16.1": "6586f12d178e0136420cb282535663f1faad5abc",
+    "additive_mc_reference_commit": "5f2b2a3ba6b0549e13e9b625dfa74d53c2c344b8"
+  },
+  "flopscope_relevant_blobs": {
+    "array_ops": {
+      "0.12.0": "51e27ecfebe5c05e3be7b70a4cd127c570a0e0df",
+      "0.12.1": "d112b1e96e50cfdf0674c3230d291b622191b86d"
+    },
+    "symmetric": {
+      "0.12.0": "ed9cfcfd47fd7340e4d11f36b913103d8ca82269",
+      "0.12.1": "73c796835c586fcdb5c763bc30dd7ce4cb7277a4"
+    },
+    "symmetry_utils": {
+      "0.12.0": "8d63f4883152cb8f8516d079c052d9859ccda693",
+      "0.12.1": "6d9a489e868bfb06bf049429acee4cab6a2cfaf6"
+    },
+    "random": {
+      "0.12.0": "b2b892ffe678f3e67a480b38d7b90e544a5d4166",
+      "0.12.1": "629b1131c581ae33f56055b2c8c4ee7c98967618"
+    },
+    "registry": {
+      "0.12.0": "af61edaa3f6b1438b72fb730096f6110c040cd52",
+      "0.12.1": "de7388e5649224360ca3fa8e5f62b4ad5ebcc596"
+    }
+  },
+  "classifications": {
+    "whestbench_scoring": "COMPATIBLE",
+    "whestbench_seeding": "COMPATIBLE",
+    "whestbench_runner_evaluator": "COMPATIBLE",
+    "phase2_residual_cap_logic": "COMPATIBLE",
+    "exact_residual_outcome_cross_runtime": "UNKNOWN",
+    "flopscope_generic_all_programs": "NOT_COMPATIBLE",
+    "flopscope_non_scalar_full_full_like_downstream_billing": "NOT_COMPATIBLE",
+    "flopscope_as_symmetric_charge": "COMPATIBLE",
+    "flopscope_as_symmetric_tolerance_only_value_semantics": "NOT_COMPATIBLE",
+    "flopscope_default_reynolds_enumerable": "COMPATIBLE",
+    "flopscope_oversized_reynolds_or_canonical_copy": "NOT_COMPATIBLE",
+    "r209_v25_source_semantic_score_portability": "COMPATIBLE",
+    "r209_v25_exact_numeric_grader_replay": "UNKNOWN",
+    "r209_v29_exact_residual_failure_set": "UNKNOWN",
+    "r223_actual_score_portability": "UNKNOWN",
+    "r223_candidate_source_level_evaluator_and_flop_semantics": "COMPATIBLE"
+  },
+  "r209": {
+    "evidence_branch": "research/r209-e136-archive-evidence",
+    "evidence_blob": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+    "frozen_v25_repo": "504aldo/whest-p2-cumulant-k3",
+    "frozen_v25_blob": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "observed_toolchain": {
+      "python": "3.11.16",
+      "whestbench": "0.16.1",
+      "flopscope": "0.12.1+np2.4.6",
+      "numpy": "2.4.6"
+    },
+    "v25": {
+      "failures": 0,
+      "adjusted_score": 8.170397440117225e-9,
+      "mean_effective_compute": 806303721965,
+      "max_residual_s": 0.19043814401743475
+    },
+    "affected_api_scan": {
+      "non_scalar_full_full_like": false,
+      "symmetrize_or_random_symmetric": false,
+      "as_symmetric_calls": 2,
+      "as_symmetric_inputs": "eye; diagflat(K2v)+(K11+K11.T)*0.5 (symmetric by construction)",
+      "setup_default_rng": "assigned but never subsequently read"
+    }
+  },
+  "r223": {
+    "evidence_branch": "research/r223-v25-isolated-improvement-20260922",
+    "terminal_receipt_blob": "a2ea83717b979b40e8ec13703c7465e0f50189ba",
+    "status": "INFRA_ERROR_PRE_PANEL",
+    "scientific_panel_started": false,
+    "candidate_score_exists": false,
+    "candidate_blob": "a09ec139bc7399f169ace02cf587d55bc1c8771b",
+    "comparator_blob": "fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0",
+    "affected_api_scan": "same affected FlopScope call pattern as R209 V25"
+  },
+  "minimum_future_verification": [
+    "Obtain an immutable grader-environment receipt for exact NumPy/build metadata in addition to the stated whestbench 0.16.0 / flopscope 0.12.0 pair.",
+    "Only if exact R209 score portability must be proven, run one separately authorized offline/public Mini-100 replay of frozen R209 V25 under the exact grader pair/environment and compare per-MLP order, metric/prediction hashes where available, FLOPs, residual flags, and adjusted scores.",
+    "Do not perform an R223 portability replay unless a scientific R223 run is separately authorized; no existing R223 candidate score exists."
+  ],
+  "prohibited_actions": {
+    "package_download": false,
+    "package_install": false,
+    "package_execution": false,
+    "dataset_download": false,
+    "benchmark": false,
+    "github_actions": false,
+    "paid_compute": false,
+    "holdout": false,
+    "full_data": false,
+    "submission": false,
+    "main_edit": false,
+    "pr_edit": false,
+    "control_edit": false
+  },
+  "conclusion": "No source-level evidence that the 0.16.1/0.12.1 patch gap materially changes R209 V25 adjusted scoring or the accounting a future R223 candidate run would receive. Generic FlopScope equivalence is false because 0.12.1 contains narrow symmetry/value/accounting changes. Exact grader-runtime numeric/timing reproduction remains UNKNOWN until the stated minimum runtime verification is separately authorized."
+}
