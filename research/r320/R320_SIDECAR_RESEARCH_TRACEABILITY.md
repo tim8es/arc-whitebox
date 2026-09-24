@@ -656,3 +656,23 @@ Interpretation boundary remains strict:
 - no rank prediction
 
 R367 is therefore a UI-level evidence update only, not a scientific estimator result.
+
+## R372 integration — R366 distinct estimator-frontier scout
+
+R366 completed one **theory / primary-source desk audit**, not an estimator measurement.
+
+- Verdict: **`TERMINAL_NO_GO_MISSING_CERTIFIED_WHITE_BOX_SHALLOW_RIDGE_FLATTENING_THEOREM`**
+- Candidate examined: a deterministic shallow-ridge surrogate `g(x)=A ReLU(Bx)` with analytic Gaussian readout `E[g(X)] = A (||b_1||,…,||b_m||)^T / sqrt(2*pi)`, exact for the surrogate when `X~N(0,I)`.
+- Jensen gives `||E[f]-E[g]||_2^2 <= E||f-g||_2^2`; a whole-function Gaussian-L2 certificate would directly control final-mean error.
+- Analytic readout cost is approximately `4*1024*m` FLOPs with `8192*m` float32 bytes for `A,B`; at `m=131072`, that is about **536,870,912 FLOPs / 1 GiB** for readout storage only. This does not include a valid, cost-bounded construction of `A,B`.
+- R366's same-panel R209 Mini-100 planning gate is conditional: mean normalized residual MSE below `8.170397440117225e-8` would be needed under the stated scorer-floor assumption. It is not a public-50 join or a leaderboard-gap estimate.
+- The blocker is a missing constructive white-box theorem for deterministic `T_m(W)->(A,B)` on width-1024/depth-16 He-Gaussian ReLU networks that simultaneously certifies adequate Gaussian-L2 error, small enough `m`, and bounded construction FLOPs/memory/time.
+- Dedupe covered E100–E193 and named prior families; no matching deterministic shallow-ridge flattening/distillation artifact was found. This is a **narrow feasibility NO-GO for the audited path, not a universal impossibility theorem**.
+- Classification: **theory/primary-source desk audit; 0 new estimator measurements; no implementation or run**.
+
+Artifacts:
+- Branch `review/r366-uncovered-estimator-frontier-scout-20260924`, head `02305335c80161311e13839de3268be97a43e504`, exact base `4619801e0cc5e7e340cd0406eb44e0633d8aa5e5`.
+- [R366 report](https://github.com/tim8es/arc-whitebox/blob/02305335c80161311e13839de3268be97a43e504/research/r366/R366_UNCOVERED_ESTIMATOR_FRONTIER_SCOUT.md) — blob `f2c512a04c1eb9b0d179cd04a5563e34a6f109aa`.
+- [R366 receipt](https://github.com/tim8es/arc-whitebox/blob/02305335c80161311e13839de3268be97a43e504/research/r366/R366_RECEIPT.json) — blob `1929547b16f922470cb81071446b3a43d3dea95c`.
+
+R366 introduced **0 estimator measurements**; exact competition score/gap remains **UNKNOWN / NOT_COMPARABLE**.

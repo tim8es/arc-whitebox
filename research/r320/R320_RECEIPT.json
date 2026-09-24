@@ -795,6 +795,32 @@
         "rank_prediction_claimed": false
       },
       "actual_new_estimator_measurement": false
+    },
+    {
+      "id": "R366",
+      "type": "theory_estimator_frontier_scout",
+      "status": "COMPLETE",
+      "classification": "THEORY_PRIMARY_SOURCE_DESK_AUDIT",
+      "verdict": "TERMINAL_NO_GO_MISSING_CERTIFIED_WHITE_BOX_SHALLOW_RIDGE_FLATTENING_THEOREM",
+      "branch": "review/r366-uncovered-estimator-frontier-scout-20260924",
+      "head": "02305335c80161311e13839de3268be97a43e504",
+      "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+      "evidence": {
+        "report": {
+          "path": "research/r366/R366_UNCOVERED_ESTIMATOR_FRONTIER_SCOUT.md",
+          "blob_sha1": "f2c512a04c1eb9b0d179cd04a5563e34a6f109aa",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/02305335c80161311e13839de3268be97a43e504/research/r366/R366_UNCOVERED_ESTIMATOR_FRONTIER_SCOUT.md"
+        },
+        "receipt": {
+          "path": "research/r366/R366_RECEIPT.json",
+          "blob_sha1": "1929547b16f922470cb81071446b3a43d3dea95c",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/02305335c80161311e13839de3268be97a43e504/research/r366/R366_RECEIPT.json"
+        }
+      },
+      "universal_impossibility_claimed": false,
+      "actual_new_estimator_measurement": false,
+      "conditional_same_panel_residual_gate": "8.170397440117225e-8",
+      "missing_gate": "certified deterministic construction T_m(W)->(A,B) with sufficient Gaussian-L2 accuracy and bounded Phase-2 construction cost"
     }
   ],
   "measurement_classification": {
@@ -821,7 +847,9 @@
     "r342_is_append_only_counterfactual_refresh_not_new_estimator_measurement": true,
     "new_estimator_measurements_generated_by_r342": 0,
     "r367_is_public_ui_attestation_not_new_estimator_measurement": true,
-    "new_estimator_measurements_generated_by_r367": 0
+    "new_estimator_measurements_generated_by_r367": 0,
+    "r366_is_theory_primary_source_desk_audit_not_new_estimator_measurement": true,
+    "new_estimator_measurements_generated_by_r366": 0
   },
   "leaderboard_r209": {
     "comparability_decision": "NOT_COMPARABLE",
@@ -844,7 +872,7 @@
   "recommended_next_step": "Coordinator-owned append-only reconciliation of completed sidecars using immutable task ID, branch head and receipt/report hashes through a supported archival/import path; represent R313 as a correction to R309 and do not fabricate historical claim/start/finish events.",
   "report": {
     "path": "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
-    "git_blob_sha1": "870c9131a4e4bc745ea6ad6510d6a45115dcc5a8"
+    "git_blob_sha1": "669af011e82b6549530e442a30d3a5e92d23ec4f"
   },
   "execution_accounting": {
     "estimator_runs": 0,
@@ -894,7 +922,12 @@
     "r370_synthetic_runs": 0,
     "r370_downloads": 0,
     "r370_browser_interactions": 0,
-    "r370_new_files": 0
+    "r370_new_files": 0,
+    "r372_estimator_runs": 0,
+    "r372_benchmark_runs": 0,
+    "r372_actions_runs": 0,
+    "r372_downloads": 0,
+    "r372_new_files": 0
   },
   "extension_task": "R332",
   "extension_parent_head": "0c4db1d79deb9b2f608001127d8359b0c0fafd27",
@@ -929,7 +962,7 @@
     "every_included_sidecar_cumulative_diff_verified_two_paths": true
   },
   "r332_report_blob_sha1": "18d5a950928b213dc69a732be38102208b807723",
-  "latest_extension_task": "R370",
+  "latest_extension_task": "R372",
   "r334": {
     "parent_head": "1c285e5d504d6eb3c971d5afae9db3188e0dcea0",
     "policy": {
@@ -1644,6 +1677,41 @@
     },
     "added_task": "R367",
     "source_head_verified": "8906d5abaa0d4688be6ceb89370ce7dcd27dbb4b",
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
+  },
+  "r372": {
+    "parent_head": "7336ffb2a88ab38ebb96177d4bc7d8bfd5dd53e1",
+    "policy": {
+      "append_only": true,
+      "fast_forward_only": true,
+      "rebase": false,
+      "reset": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "modified_paths": [
+        "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
+        "research/r320/R320_RECEIPT.json"
+      ],
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false,
+      "actions": false,
+      "benchmark": false,
+      "estimator": false,
+      "downloads": false,
+      "paid_resources": false,
+      "private_holdout_full_access": false,
+      "submission": false
+    },
+    "dedupe_before_update": {
+      "r366_entry_present": false,
+      "r366_head_present": false,
+      "r366_report_blob_present": false,
+      "r366_receipt_blob_present": false
+    },
+    "added_task": "R366",
+    "classification": "THEORY_PRIMARY_SOURCE_DESK_AUDIT_NOT_ESTIMATOR_MEASUREMENT",
     "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
   }
 }
