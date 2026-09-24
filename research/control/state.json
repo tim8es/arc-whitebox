@@ -6296,6 +6296,38 @@
         }
       },
       "at": "2026-09-24T01:30:05.271+00:00"
+    },
+    {
+      "revision": 468,
+      "action": "reassign",
+      "job": "R287",
+      "owner": "coordinator",
+      "payload": {
+        "from_owner": "phase2-free-runner-audit",
+        "to_owner": "Control Center 7.09",
+        "reason": "The prior WAITING_INPUT attempt was specific to included Actions artifact storage. Current R290/R293 design uses direct Git persistence and no Actions artifacts. Prior attempt is terminal; no live run/process to duplicate. Coordinator is re-evaluating this changed path read-only."
+      },
+      "at": "2026-09-24T01:41:27.740+00:00"
+    },
+    {
+      "revision": 469,
+      "action": "claim",
+      "job": "R287",
+      "owner": "Control Center 7.09",
+      "payload": {},
+      "at": "2026-09-24T01:41:27.740+00:00"
+    },
+    {
+      "revision": 470,
+      "action": "start",
+      "job": "R287",
+      "owner": "Control Center 7.09",
+      "payload": {
+        "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
+        "code_commit": "f6fb9018504632edffa1fb80d14ce8a68f442602",
+        "command": "read-only reassessment of zero-cost gate against exact final PR #36: public standard ubuntu-24.04 runner, direct Git persistence, no Actions artifact storage; verify visibility/runner/paths and retain approval gates; no dispatch/download/install/merge"
+      },
+      "at": "2026-09-24T01:41:27.740+00:00"
     }
   ],
   "jobs": [
@@ -9466,7 +9498,7 @@
       "title": "Verify R283 adversarial cases against the current PR #35 head"
     },
     {
-      "assigned_owner": "phase2-free-runner-audit",
+      "assigned_owner": "Control Center 7.09",
       "attempts": [
         {
           "code_commit": "50761f8373c8a5340e19ba2c0422b4aae721863e",
@@ -9482,6 +9514,12 @@
           },
           "run_id": "R287-free-runner-audit-20260923",
           "status": "WAITING_INPUT"
+        },
+        {
+          "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
+          "code_commit": "f6fb9018504632edffa1fb80d14ce8a68f442602",
+          "command": "read-only reassessment of zero-cost gate against exact final PR #36: public standard ubuntu-24.04 runner, direct Git persistence, no Actions artifact storage; verify visibility/runner/paths and retain approval gates; no dispatch/download/install/merge",
+          "status": "RUNNING"
         }
       ],
       "deliverable": "Using official GitHub documentation and the repository's exact existing workflows/runs, determine whether a one-time public-development V25 capture can run on an existing standard public GitHub-hosted runner with zero incremental charge and the exact pinned Python/WhestBench/flopscope stack plus public mini dataset. Verify runner type, repository visibility, billing/free-usage condition, dataset fetch path and 8GB/timeout constraints; distinguish documented facts from unknown account quota/billing. Do not trigger Actions, install/download large data, spend, or modify workflows. If zero-cost cannot be proven for the actual target account/runner, conclude WAITING_INPUT; otherwise deliver a precise preflight recipe for coordinator approval. Cite first-party sources; append report/receipt and finish R287.",
@@ -9490,14 +9528,14 @@
       ],
       "hypothesis_id": "V25-RESIDUAL-CAPTURE-FREE-RUNNER-20260923",
       "id": "R287",
-      "owner": "phase2-free-runner-audit",
+      "owner": "Control Center 7.09",
       "priority": 1,
       "reason": "Official GitHub documentation plus exact repository/run evidence prove that the target repository is public and its existing ubuntu-latest/ubuntu-24.04 jobs ran on the standard GitHub Actions runner group. GitHub documents standard hosted runners as free and unlimited for public repositories; public standard Ubuntu provides 4 CPU/16 GB RAM/14 GB SSD. R209 explicitly used Python 3.11 and observed 3.11.16 with WhestBench 0.16.1 / FlopScope 0.12.1+np2.4.6, public mini streaming, runner local, 8 GB participant cap and 120s/0.4s limits; it completed in ~64m under a 330m timeout. R223 confirmed ubuntu-24.04 standard runner and explicit package pins, completing in ~59m under 100m. Therefore runner compute incremental cost is documented $0 and resource/timeout feasibility is supported. However durable Actions artifact storage is a separate plan/account allowance shared with GitHub Packages and can be billed or blocked when exhausted. Public repo evidence cannot prove owner tim8es current plan/storage usage/budget state. Exact missing input: immediately before authorization, account-owner billing/usage evidence showing at least 1 MiB remaining included shared Actions artifact/GitHub Packages storage with no metered storage overage active. No Actions, workflow edits, installs/downloads, paid resources, private/holdout/full, submission, leaderboard or canonical edits occurred.",
       "receipt": {
         "sha256": "fdefbf9b71a07eec17dbf03c525a71f043cd6f2d578c9edb3eafac5719bf9fa2",
         "url": "https://github.com/tim8es/arc-whitebox/blob/c84a6fa3fc5978edf951d9611893d53c37cc1b63/research/r287/R287_RECEIPT.json"
       },
-      "status": "WAITING_INPUT",
+      "status": "RUNNING",
       "title": "Check a genuinely zero-cost environment for V25 residual capture"
     },
     {
@@ -10055,7 +10093,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 467,
+  "revision": 470,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
