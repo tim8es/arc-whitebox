@@ -1,0 +1,118 @@
+{
+  "schema": "arc.whitebox.r316.a_s6-public-method-audit.v1",
+  "job": "R316",
+  "status": "NO_PUBLIC_METHOD",
+  "audit_date_utc": "2026-09-24",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r316-a-s6-public-method-audit-20260924",
+  "subject": {
+    "participant": "a_s6",
+    "leaderboard_rank": 4,
+    "submission_id": 331756,
+    "adjusted_score": "2.5e-9",
+    "final_layer_mse": "2.00e-8",
+    "compute_utilisation": "0.1258033415",
+    "mlps_failed": 0,
+    "entries": 108,
+    "last_submission_display": "Mon, 21 Sep 2026 13:55"
+  },
+  "public_linkage": {
+    "leaderboard_to_submission": {
+      "status": "CONFIRMED",
+      "mechanism": "The public a_s6 leaderboard row's View link resolves directly to /submissions/331756."
+    },
+    "canonical_submission_page": {
+      "status": "PUBLIC_PAGE_CONFIRMED",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331756",
+      "public_rendering_observation": "Unauthenticated public rendering exposed no estimator name/configuration, source/repository/code link, commit SHA, or author analysis tied to #331756."
+    },
+    "estimator_name": {
+      "status": "NO_PUBLIC_METHOD",
+      "directly_linked_to_submission_331756": false
+    },
+    "estimator_configuration": {
+      "status": "NO_PUBLIC_METHOD",
+      "directly_linked_to_submission_331756": false
+    },
+    "source_code_or_repository": {
+      "status": "NO_PUBLIC_METHOD",
+      "directly_linked_to_submission_331756": false
+    },
+    "commit": {
+      "status": "NO_PUBLIC_METHOD",
+      "value": null,
+      "reason": "No commit identifier was directly linked to #331756 by an audited public first-party AIcrowd source."
+    },
+    "author_writeup": {
+      "status": "NO_PUBLIC_METHOD",
+      "directly_linked_to_submission_331756": false
+    }
+  },
+  "first_party_sources": [
+    {
+      "kind": "leaderboard",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+      "used_for": [
+        "current a_s6 row",
+        "direct View linkage to #331756",
+        "grading summary"
+      ]
+    },
+    {
+      "kind": "canonical_submission",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331756",
+      "used_for": [
+        "canonical public submission identity",
+        "public configuration-page method-field audit"
+      ]
+    },
+    {
+      "kind": "official_writeup_guidance",
+      "url": "https://discourse.aicrowd.com/t/algorithmic-contribution-prize-guidelines-how-arc-judges-these-prizes-discretion-technical-writeups-llm-usage/18041",
+      "used_for": [
+        "first-party rule that public method writeups clearly state the submission ID they describe"
+      ]
+    }
+  ],
+  "first_party_search_terms": [
+    "331756",
+    "a_s6",
+    "a_s6 331756",
+    "331756 estimator",
+    "331756 repository",
+    "331756 code"
+  ],
+  "inference_controls": {
+    "require_direct_first_party_submission_linkage": true,
+    "infer_method_from_rank_or_score": false,
+    "infer_identity_outside_aicrowd": false,
+    "record_unlinked_repo_or_commit": false
+  },
+  "unknowns": [
+    "The estimator name/family used by #331756.",
+    "The estimator configuration used by #331756.",
+    "Whether source code or a repository for #331756 exists privately or outside the audited first-party linkage.",
+    "Any commit corresponding to #331756.",
+    "Whether an author write-up directly linked to #331756 will be published later."
+  ],
+  "report": {
+    "path": "research/r316/R316_A_S6_PUBLIC_METHOD_AUDIT.md",
+    "git_blob_sha1": "b9cdd29af93d897b77a8bac6c9ea6d282bd8d22f",
+    "commit": "3dc1c682166a5222f4cb824d8d9d6d343b6f141b"
+  },
+  "safety": {
+    "actions_triggered": false,
+    "benchmark_or_science_run": false,
+    "submission_made": false,
+    "login_or_private_access": false,
+    "participant_contacted": false,
+    "identity_search_outside_official_aicrowd": false,
+    "dataset_or_dependency_downloaded": false,
+    "paid_resource_used": false,
+    "private_holdout_or_full_data_accessed": false,
+    "main_changed": false,
+    "pull_request_changed_or_opened": false,
+    "control_changed": false,
+    "workflow_changed": false
+  }
+}
