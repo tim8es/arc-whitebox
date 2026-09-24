@@ -1,0 +1,126 @@
+{
+  "schema": "arc.whitebox.r306.j2w-public-method-audit.v1",
+  "job": "R306",
+  "run_id": "R306-j2w-method-audit-20260924",
+  "status": "COMPLETE",
+  "verdict": "NO_PUBLIC_METHOD",
+  "audit_date": "2026-09-24",
+  "control": {
+    "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "branch": "review/r306-j2w-method-audit-20260924",
+    "report_only": true,
+    "main_edited": false,
+    "pr_edited": false,
+    "control_edited": false
+  },
+  "target": {
+    "team": "J2W",
+    "official_team_member_count": 1,
+    "official_team_organizer": "joe_wanza",
+    "current_public_submission_id": 331539,
+    "leaderboard": {
+      "rank_display": "01",
+      "adjusted_score_display": "2.10e-9",
+      "exact_unrounded_score": "UNKNOWN",
+      "final_layer_mse_display": "1.64e-8",
+      "vs_sampling_approx_display": "539x",
+      "entries_display": 320,
+      "last_submission_display_in_r303_r304": "Sep 19, 00:05"
+    }
+  },
+  "public_method": {
+    "method_exposed": false,
+    "reproducible_from_public_evidence": false,
+    "submission_specific_method_claims": [],
+    "participant_linked_repositories": [],
+    "code_commit_links": [],
+    "downloadable_estimator_artifacts": [],
+    "j2w_specific_environment_manifest": null,
+    "submission_page_access_result": "PUBLIC_ROUTE_EXISTS_READABLE_ANONYMOUS_BODY_IS_LOADING_SHELL",
+    "reason": "No admissible J2W public surface inspected by R306 exposed a submission-specific method description, estimator source link, participant-linked repository, immutable code commit, downloadable estimator artifact, or J2W-specific build manifest."
+  },
+  "toolchain": {
+    "scope": "CHALLENGE_WIDE_EVALUATOR_NOT_J2W_SPECIFIC",
+    "organizer": "mohanty",
+    "organizer_post_date": "2026-08-27",
+    "whestbench": "0.16.0",
+    "flopscope_server": "0.12.0",
+    "flopscope_client": "0.12.0",
+    "participant_specific_pin_proven": false,
+    "source": "https://discourse.aicrowd.com/t/shipped-covariance-propagation-example-trips-the-phase-2-residual-cap-locally-0-16-0-but-grades-fine-what-happens-when-the-evaluator-upgrades/18202"
+  },
+  "comparison": {
+    "r230": {
+      "path": "research/R230_PUBLIC_LEADER_METHOD_AUDIT.md",
+      "ref": "research/control-v2",
+      "git_blob_sha1_observed_by_r306": "98a33dddf9cc56db090a7b66fcc7577949727e96",
+      "prior_verdict": "NO_PUBLIC_METHOD_EVIDENCE_FOR_TARGET_SUBMISSIONS",
+      "j2w_submission_id": 331539,
+      "leader_derived_hypotheses": 0,
+      "r306_change": "NO_ADMISSIBLE_METHOD_DISCLOSURE_FOUND"
+    },
+    "r303": {
+      "receipt_commit": "0c15bee860dc1d22224dd1294fcaa82bca26b8a4",
+      "receipt_git_blob_sha1": "0584af060b3a7c51e103519593fe5736a52d349f",
+      "captured_at_utc": "2026-09-24T02:07:55.431Z",
+      "j2w_rank_display": "01",
+      "j2w_adjusted_score_display": "2.10e-9",
+      "j2w_final_layer_mse_display": "1.64e-8",
+      "j2w_entries_display": 320
+    },
+    "r304": {
+      "receipt_commit": "5351f455c87afdd6eb3a4147e94c38d191968d18",
+      "full_delta_report_commit": "fcff8898104a21431eb9e1a5eec0f5cb6bb00468",
+      "captured_at_utc": "2026-09-24T02:36:19.062Z",
+      "j2w_rank_display": "01",
+      "j2w_adjusted_score_display": "2.10e-9",
+      "j2w_final_layer_mse_display": "1.64e-8",
+      "j2w_entries_display": 320,
+      "j2w_change_from_r303": "UNCHANGED_ACROSS_RECORDED_LEADER_FIELDS",
+      "raw_rows_sha256": "4ffcdf469435f3b6dd55df39b6a06c3b5a186b7de89251a526254169a0fbe0d5"
+    }
+  },
+  "experiment_history_transfer": {
+    "candidate_count": 0,
+    "candidate": null,
+    "decision": "NO_LEADER_DERIVED_IDEA_ADMITTED",
+    "reason": "The admissible target-method evidence is empty. Inferring a mechanism from rank, score, MSE, utilization, timing, or entry count is prohibited and would risk duplicating already explored K3/K4, V29/Strassen/batching, shared-basis/source compression, higher-order closure, CountSketch, or prior leader-forensics lanes documented by R230."
+  },
+  "report": {
+    "path": "research/r306/R306_J2W_METHOD_AUDIT.md",
+    "creation_commit": "5733d5b5bb27c950a413a97369227a1291b2bac6",
+    "git_blob_sha1": "68d7a5e45d05eaa584e3a1c5137696ae9dab89d8"
+  },
+  "sources": {
+    "official_aicrowd": [
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331539",
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/J2W",
+      "https://discourse.aicrowd.com/t/shipped-covariance-propagation-example-trips-the-phase-2-residual-cap-locally-0-16-0-but-grades-fine-what-happens-when-the-evaluator-upgrades/18202"
+    ],
+    "project_comparison": [
+      "https://github.com/tim8es/arc-whitebox/blob/research/control-v2/research/R230_PUBLIC_LEADER_METHOD_AUDIT.md",
+      "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json",
+      "https://github.com/tim8es/arc-whitebox/blob/5351f455c87afdd6eb3a4147e94c38d191968d18/research/r304/R304_RECEIPT.json",
+      "https://github.com/tim8es/arc-whitebox/blob/fcff8898104a21431eb9e1a5eec0f5cb6bb00468/research/r304/R304_FULL_DELTA_AUDIT.md",
+      "https://github.com/tim8es/arc-whitebox/blob/5351f455c87afdd6eb3a4147e94c38d191968d18/research/r304/R304_RAW_VISIBLE_ROWS.json"
+    ]
+  },
+  "evidence_limitations": [
+    "The public submission route for 331539 did not expose readable submission internals in the anonymous audit view.",
+    "No participant-linked repository was established from the admissible J2W public surfaces; arbitrary name-matched repositories were intentionally not searched or attributed.",
+    "The organizer-confirmed package versions describe the challenge evaluator environment, not a J2W-specific source-tree or dependency-manifest pin.",
+    "Exact unrounded leaderboard score and submission-private fields remain unknown."
+  ],
+  "not_run": [
+    "No dataset download.",
+    "No dependency download or installation.",
+    "No estimator or benchmark execution.",
+    "No GitHub Actions run.",
+    "No paid compute.",
+    "No private, holdout, or full-data access.",
+    "No competition submission.",
+    "No participant or organizer contact.",
+    "No main, PR, or control edit."
+  ]
+}
