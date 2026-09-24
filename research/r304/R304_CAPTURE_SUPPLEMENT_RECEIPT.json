@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "R304-CAPTURE-SUPPLEMENT",
+  "parent_run_id": "R304-live-leaderboard-poll-20260924-0230",
+  "owner": "r304-live-board-delta-statistician",
+  "status": "COMPLETE",
+  "append_only": true,
+  "original_r304_report_and_receipt_modified": false,
+  "branch": "review/r304-leaderboard-delta-20260924",
+  "capture": {
+    "reused_prior_capture": true,
+    "new_refresh_performed": false,
+    "captured_at_utc": "2026-09-24T02:36:19.062Z",
+    "source_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+    "page_range_display": "Showing 1–100 of 195",
+    "visible_row_count": 100,
+    "cells_per_row": 10,
+    "representation": "All 100 captured row arrays, ten cell strings each, preserved from the R304 browser-session capture.",
+    "cell_text_capture": "Stored R304 browser capture: visible table-cell innerText, with consecutive whitespace collapsed to one ASCII space and outer whitespace trimmed at capture time."
+  },
+  "raw_rows_artifact": {
+    "path": "research/r304/R304_RAW_VISIBLE_ROWS.json",
+    "git_blob_sha1": "2fee6241febe322fbff2cbc605581590fc072ee6",
+    "visible_rows": 100,
+    "cells_per_row": 10,
+    "raw_rows_sha256": "4ffcdf469435f3b6dd55df39b6a06c3b5a186b7de89251a526254169a0fbe0d5",
+    "raw_rows_sha256_method": "SHA-256 of UTF-8 bytes of compact JSON.stringify(rows), no BOM, no trailing newline.",
+    "raw_file_sha256": "807df449176bd1cde98e6da418f30aa4aba848c9767a7e44196385587f17b016"
+  },
+  "baseline": {
+    "r303_capture_utc": "2026-09-24T02:07:55.431Z",
+    "r303_receipt": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json"
+  },
+  "limitations": [
+    "Rows are preserved as captured by R304; cell text normalization (whitespace collapse and trim) was applied at the time of the original capture.",
+    "This supplement adds the complete first-100 row payload and does not revise R304's original delta conclusions."
+  ],
+  "no_actions_or_scope_expansion": true
+}
