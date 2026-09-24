@@ -1,0 +1,164 @@
+{
+  "schema": "arc.whitebox.r293.capture_workflow_protocol.v1",
+  "job": "R293",
+  "purpose": "review-only preparation of one-shot R278/R288 V25 public mini:all-100 residual capture workflow",
+  "dispatch": {
+    "trigger": "workflow_dispatch only",
+    "required_ref": "refs/heads/main",
+    "confirmation_input": "RUN_R293_V25_CAPTURE_ONCE",
+    "result_branch": "research/r293-v25-capture-result",
+    "result_branch_precreated_externally": true,
+    "result_branch_must_be_unprotected": true,
+    "result_branch_tip_must_equal_dispatch_sha": true,
+    "result_branch_created_by_workflow": false,
+    "run_attempt_must_equal": 1,
+    "result_branch_tip_must_equal_dispatch_sha_before_claim": true,
+    "second_dispatch_rejected_after_claim": true
+  },
+  "runner": {
+    "label": "ubuntu-24.04",
+    "class": "standard GitHub-hosted public-repository runner",
+    "max_threads": 1
+  },
+  "runtime_pins": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1",
+    "datasets": "4.1.1"
+  },
+  "v25": {
+    "r288_control_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "upstream_repository": "504aldo/whest-p2-cumulant-k3",
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "path": "estimators/estimator_v25.py",
+    "git_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20"
+  },
+  "evaluator": {
+    "whestbench_source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "whestbench_scoring_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "r291_patch_path": "research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch",
+    "r291_patch_blob_sha1": "a3d909540fc079908fcca9987c5cdb0252a1da8c",
+    "r291_patch_sha256": "20ff649b9c5eec3711b223496ee3eaef0d657cc4252de8690a20dc21557e464e",
+    "r291_harness_path": "research/r291/r291_capture_harness.py",
+    "r291_harness_blob_sha1": "3e438c0f6b87ab2fa90c1fc71bbf3cfea1e9052d",
+    "r291_harness_sha256": "28526a56505beaa94183ea590810949a3a856639d3f6fa63d8869ddad419ad3e",
+    "r291_expected_panel_path": "research/r291/R291_EXPECTED_PUBLIC_MINI100.json",
+    "r291_expected_panel_blob_sha1": "caf813cd5eab771108f105fe050fd6631b298733",
+    "r291_expected_panel_sha256": "ebeb221b71cf3842e807d5cf28b8c38493e53032c8e1fa897b7f5bef6b1be720",
+    "r291_patch_status": "historical_malformed_rejected_by_r294_check",
+    "r294_patch_path": "research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch",
+    "r294_patch_blob_sha1": "65abb2e2040e44a7965f5123acd17bb838891532",
+    "r294_patch_sha256": "bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3",
+    "r294_patched_scoring_blob_sha1": "8493b7ff28110fb13f467400b6895c56bd7550bb",
+    "active_integration_patch": "r294_patch_path",
+    "r294_apply_checker_path": "scripts/r294_patch_apply_check.py",
+    "r294_apply_checker_blob_sha1": "547ec661b8cf0548ee080acca2f32f9eeef4537c",
+    "r294_apply_checker_sha256": "98479a811d8f36b6afb98ebc495a00b3a3727c438a90bea47e7b1cb69cef625d"
+  },
+  "meter": {
+    "flopscope_source_commit": "b599f015b0bc005b1edb6d7a1b10e0814675e693",
+    "version": "0.12.1",
+    "numpy": "2.4.6"
+  },
+  "dataset": {
+    "uri": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "revision": "v2-phase2",
+    "split": "mini",
+    "streaming": true,
+    "n_mlps": 100,
+    "metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "name_order_sha256": "18c917b7f0870aa366a7d6803e79b0eaeadd7f2fc2944130cd019782298473ce"
+  },
+  "scoring": {
+    "flop_budget": 2199023255552,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "runner": "local",
+    "max_threads": 1
+  },
+  "frozen_r278": {
+    "split": "lexicographic decimal network_id strings; first 50 FIT, last 50 EVAL",
+    "residual": "final_target - final_pred",
+    "fit": "d = mean_FIT(residual)",
+    "eval": "pred_corrected = pred + d on EVAL",
+    "per_network_tuning": false
+  },
+  "output": {
+    "root": "research/captures/r293",
+    "allowlist": [
+      "research/captures/r293/vectors.f32le",
+      "research/captures/r293/manifest.json",
+      "research/captures/r293/SHA256SUMS",
+      "research/captures/r293/run-receipt.json"
+    ],
+    "raw_payload_bytes": 1228800,
+    "total_protocol_max_bytes": 1363968,
+    "actions_artifact_storage": false,
+    "git_lfs": false,
+    "pat": false,
+    "cache": false
+  },
+  "permissions": {
+    "default": "none",
+    "preflight_job": "contents: read",
+    "persistence_job": "contents: write",
+    "secrets": false
+  },
+  "inherited_receipts": {
+    "r288": "b3c6795d03996b79ffd1bc7d2766bec337e034b1f9a57eecc744de8b762b8f10",
+    "r290": "61fb8cd816e91416dd80f6b31ef87f8687310776ed74ce5dc1a069cf062eee00",
+    "r291": "c534f45b6928cf42a3674625d3e548c7fe38da9cc3d233ccbe6f863c7f34d8b4",
+    "r294": "1e03f3f25f54973a11f9c2d0ef1aed02935d1d18cb5e96f79b2c67173c47afb9",
+    "r295": "4e118c1d992bc042b02e0855e570b8b47db94de29d377037d6429fdc681911e6"
+  },
+  "authorization": {
+    "merge_authorized": false,
+    "actions_run_authorized": false,
+    "benchmark_authorized": false,
+    "result_branch_creation_authorized": false
+  },
+  "actions": {
+    "checkout": {
+      "version": "v4.2.2",
+      "commit_sha": "11bd71901bbe5b1630ceea73d27597364c9af683"
+    },
+    "setup_python": {
+      "version": "v5.6.0",
+      "commit_sha": "a26af69be951a213d495a4c3e4e4022e16d87065"
+    },
+    "full_sha_required_in_contents_write_job": true
+  },
+  "persistence": {
+    "claim": {
+      "timing": "before dependency install / validation / benchmark",
+      "commit": "empty durable claim commit",
+      "expected_old_tip": "github.sha",
+      "update": "git push --force-with-lease=<result-ref>:<github.sha>",
+      "branch_creation_allowed": false,
+      "branch_movement_allowed": false,
+      "rerun_allowed": false,
+      "second_dispatch_allowed": false
+    },
+    "result": {
+      "expected_old_tip": "claim commit sha",
+      "update": "git push --force-with-lease=<result-ref>:<claim-sha>",
+      "exact_file_allowlist": [
+        "research/captures/r293/vectors.f32le",
+        "research/captures/r293/manifest.json",
+        "research/captures/r293/SHA256SUMS",
+        "research/captures/r293/run-receipt.json"
+      ],
+      "branch_creation_allowed": false,
+      "branch_movement_allowed": false
+    },
+    "credentials": {
+      "checkout_persist_credentials": false,
+      "token_in_remote_url": false,
+      "token_in_persistent_git_config": false,
+      "token_exposure": "only claim and final atomic push steps; process-scoped credential helper via GIT_CONFIG_* environment",
+      "pat": false
+    }
+  }
+}

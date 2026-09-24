@@ -1,0 +1,81 @@
+{
+  "schema": "arc.whitebox.r302.r296_selfcheck_correction.receipt.v1",
+  "id": "R302",
+  "run_id": "R302-r296-selfcheck-repair-20260924-controlcenter",
+  "owner": "Control Center 7.09",
+  "status": "COMPLETE",
+  "verdict": "COMMITTED_R296_CHECKER_FIXED_AND_EXACT_21_CHECK_PASS",
+  "scientific_diagnostic_complete": false,
+  "pr": {
+    "number": 36,
+    "branch": "research/r293-v25-capture-workflow-prep",
+    "correction_commit": "bf7a613652c669f350451196ea9fbb706ad05550",
+    "corrected_checker_blob": "e6c975a72f8f4863b476bfe5b636984fe1169713",
+    "state": "open/draft/unmerged"
+  },
+  "prior_failure": {
+    "head": "c3cb55870d9cc313e1323fd92fb5778b3e74b796",
+    "checker_blob": "dc09a5c4a06136370344c27723c5c430588b0fa2",
+    "failure": "TypeError: Value after * must be an iterable, not WindowsPath",
+    "location": "set_remote: git(repo, args) while helper signature is git(args, cwd); failed before CAS matrix"
+  },
+  "correction": {
+    "changed_only": "scripts/r296_workflow_security_selfcheck.py argument order in set_remote",
+    "checker_sha256": "0392e2c88d7c9f6cb75813cc330cdd699217d9537957d428d3d183edd9673da0",
+    "workflow_blob": "19f6f95ceb2cacef5497eafd5e31e20e86cfad8c",
+    "workflow_sha256": "23cb8b2a4db23b6dd030b6148cfaa8d6d2cb45e31ff264195c970117fd69f863",
+    "protocol_blob": "cc51198550b0d35b7fb0e34e8b072d74a456476c",
+    "protocol_sha256": "e0e36f5107676326529359f238b678b03d5faf25fae913d102387dc6ba1f3a74"
+  },
+  "verification": {
+    "runtime": {
+      "python": "3.13.13",
+      "git": "2.55.0.windows.3"
+    },
+    "method": "Exact GitHub-fetched checker/workflow/protocol bytes, isolated temp directory; no clone",
+    "command": "python check.py --workflow workflow.yml --protocol protocol.json",
+    "status": "PASS",
+    "passed": 21,
+    "failed": [],
+    "exit_code": 0,
+    "checks": [
+      "checkout_full_sha",
+      "claim_cas_success",
+      "claim_expected_dispatch_tip",
+      "deleted_before_final_not_recreated",
+      "deleted_branch_not_recreated",
+      "durable_claim_before_install",
+      "final_cas_success",
+      "moved_before_final_rejected",
+      "moved_branch_rejected",
+      "no_mutable_action_tags",
+      "process_scoped_helper_not_persisted",
+      "protocol_no_branch_creation",
+      "protocol_no_rerun_or_second_dispatch",
+      "rerun_gate_two_jobs",
+      "rerun_or_second_dispatch_lease_rejected",
+      "result_expected_claim_tip",
+      "setup_python_full_sha",
+      "stale_final_lease_rejected",
+      "token_not_in_remote",
+      "token_only_two_minimal_steps",
+      "two_atomic_leases"
+    ]
+  },
+  "report": {
+    "path": "research/r302/R302_REPORT.md"
+  },
+  "accounting": {
+    "actions_runs": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "real_capture_vectors_accessed": 0,
+    "data_or_dependencies_downloaded_or_installed": 0,
+    "paid_resources": false,
+    "result_branch_created": 0,
+    "submission": false,
+    "leaderboard_edits": false,
+    "canonical_edits": false,
+    "pr_merged": false
+  }
+}

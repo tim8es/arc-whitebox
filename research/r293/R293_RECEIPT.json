@@ -1,0 +1,168 @@
+{
+  "schema": "arc.whitebox.r293.capture_workflow_prep.receipt.v1",
+  "id": "R293",
+  "run_id": "R293-v25-capture-workflow-prep-20260924",
+  "owner": "v25-capture-workflow-prep-r268",
+  "status": "COMPLETE",
+  "verdict": "REVIEW_PR_PREPARED_NOT_MERGED_NOT_RUN",
+  "scientific_diagnostic_complete": false,
+  "branch": {
+    "name": "research/r293-v25-capture-workflow-prep",
+    "base": "main",
+    "base_sha": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "report_commit": "03bd4d488655767cdc55cbd517163d3d9b45a539"
+  },
+  "pull_request": {
+    "number": 36,
+    "url": "https://github.com/tim8es/arc-whitebox/pull/36",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "base": "main"
+  },
+  "result_branch": {
+    "frozen_name": "research/r293-v25-capture-result",
+    "exists_during_r293": false,
+    "creation_by_workflow": false,
+    "required_pre_run_state": {
+      "precreated_externally": true,
+      "protected": false,
+      "tip_equals_dispatch_main_sha": true,
+      "existing_capture_manifest": false
+    }
+  },
+  "inherited_receipts": {
+    "r288_sha256": "b3c6795d03996b79ffd1bc7d2766bec337e034b1f9a57eecc744de8b762b8f10",
+    "r290_sha256": "61fb8cd816e91416dd80f6b31ef87f8687310776ed74ce5dc1a069cf062eee00",
+    "r291_sha256": "c534f45b6928cf42a3674625d3e548c7fe38da9cc3d233ccbe6f863c7f34d8b4"
+  },
+  "artifacts": {
+    "workflow": {
+      "path": ".github/workflows/r293-v25-residual-capture.yml",
+      "git_blob_sha1": "a7130bb2248fba3ad04bdd6c55348496aa8cdd9d",
+      "sha256": "9e5c4f93b2a06522ecda68d7d817de69dad9363d0b5156354e84947ff70d9c0b",
+      "bytes": 17998
+    },
+    "protocol": {
+      "path": "research/r293/R293_PROTOCOL.json",
+      "git_blob_sha1": "ae42019fed2ae34faaa02d8c8cf423c49750ed0d",
+      "sha256": "ed88671c7e2341cddf6cdf718a33ec87541dc2c5962ae9f1128734920b9b9764",
+      "bytes": 4186
+    },
+    "static_preflight": {
+      "path": "scripts/r293_capture_workflow_preflight.py",
+      "git_blob_sha1": "24cc8d120d7d8c3e72f45016bc83f8b391ed92f1",
+      "sha256": "1328b06e73dc3f38e610952993163cf0037e09fef1e93ed82635f3ec3d1e26b4",
+      "bytes": 7571
+    },
+    "report": {
+      "path": "research/r293/R293_REPORT.md",
+      "commit": "03bd4d488655767cdc55cbd517163d3d9b45a539",
+      "git_blob_sha1": "03654f53cf6f1a1526b910a518018b93bc58cab7",
+      "sha256": "a0caa49de9917b431a2bf296a2cf68401aa36de16feb9abe7e839cab0ca39e53",
+      "bytes": 11447
+    },
+    "r291_harness": {
+      "path": "research/r291/r291_capture_harness.py",
+      "git_blob_sha1": "3e438c0f6b87ab2fa90c1fc71bbf3cfea1e9052d",
+      "sha256": "28526a56505beaa94183ea590810949a3a856639d3f6fa63d8869ddad419ad3e"
+    },
+    "r291_patch": {
+      "path": "research/r291/R291_WHESTBENCH_0_16_1_INTEGRATION.patch",
+      "git_blob_sha1": "a3d909540fc079908fcca9987c5cdb0252a1da8c",
+      "sha256": "20ff649b9c5eec3711b223496ee3eaef0d657cc4252de8690a20dc21557e464e"
+    },
+    "r291_expected_panel": {
+      "path": "research/r291/R291_EXPECTED_PUBLIC_MINI100.json",
+      "git_blob_sha1": "caf813cd5eab771108f105fe050fd6631b298733",
+      "sha256": "ebeb221b71cf3842e807d5cf28b8c38493e53032c8e1fa897b7f5bef6b1be720"
+    }
+  },
+  "pins": {
+    "runner": "ubuntu-24.04 standard GitHub-hosted",
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "flopscope": "0.12.1",
+    "whestbench": "0.16.1",
+    "datasets": "4.1.1",
+    "v25_upstream_repository": "504aldo/whest-p2-cumulant-k3",
+    "v25_upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "v25_r288_control_commit": "dff3dd65e9d2210e02418cca99e05556f6bf2c75",
+    "v25_git_blob_sha1": "195373a110215256b759d7c172ba8c923c62e5cc",
+    "v25_sha256": "c0ae6f12d27d851ddd104dd749ac1f2a6400a6b18a0b4104c389150b93bd4b20",
+    "whestbench_source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "whestbench_scoring_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf"
+  },
+  "workflow_safety": {
+    "trigger": "workflow_dispatch only",
+    "required_ref": "refs/heads/main",
+    "confirmation": "RUN_R293_V25_CAPTURE_ONCE",
+    "top_level_permissions": "none",
+    "preflight_permission": "contents: read",
+    "persistence_permission": "contents: write",
+    "contents_write_occurrences": 1,
+    "checkout_persist_credentials": false,
+    "pull_request_trigger": false,
+    "push_trigger": false,
+    "secrets": false,
+    "upload_artifact": false,
+    "git_lfs": false,
+    "pat": false,
+    "cache": false,
+    "result_branch_dispatch_input": false,
+    "output_allowlist": [
+      "research/captures/r293/vectors.f32le",
+      "research/captures/r293/manifest.json",
+      "research/captures/r293/SHA256SUMS",
+      "research/captures/r293/run-receipt.json"
+    ],
+    "static_scope_check": "PASS"
+  },
+  "pr_actions_audit": {
+    "existing_main_pr_workflow_path_filter_matches_r293_changed_paths": false,
+    "r293_workflow_has_pull_request_trigger": false,
+    "actions_runs_created_by_r293_preparation_or_pr": 0,
+    "latest_observed_existing_run_id": 35902504659,
+    "latest_observed_existing_run_created_at": "2026-09-23T18:26:44Z"
+  },
+  "risks": [
+    "R291 patch remains synthetically/static verified rather than live public-mini integrated.",
+    "Direct runtime package versions are exact but transitive packages are resolver-selected; future receipt records full pip freeze.",
+    "Result branch is intentionally absent and must later be created externally at the exact merged-main SHA and verified unprotected.",
+    "Repository rules/token policy may change before authorization; any push rejection must fail closed.",
+    "vectors.f32le exceeds GitHub's recommended 1 MB file size but remains far below the 100 MB hard limit.",
+    "Successful capture is not a scientific decision and does not authorize R278 correction fitting/evaluation."
+  ],
+  "next_gates": [
+    "Review draft PR #36 and exact hashes.",
+    "Separately authorize and merge PR #36 to main.",
+    "Externally create the frozen result branch at the exact merged-main SHA.",
+    "Verify result branch protected=false and persistence policy remains compatible.",
+    "Separately authorize exactly one workflow_dispatch from that main SHA.",
+    "Verify result commit/hashes after the run.",
+    "Open a separate scientific task before consuming the capture for R278."
+  ],
+  "accounting": {
+    "pr_created": 1,
+    "pr_merged": 0,
+    "result_branch_created": 0,
+    "actions_triggered": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "dependencies_installed_or_downloaded": 0,
+    "datasets_downloaded_or_accessed": 0,
+    "capture_result_commits": 0,
+    "artifacts_uploaded": 0,
+    "git_lfs_used": 0,
+    "pat_used": 0,
+    "cache_used": 0,
+    "paid_resources": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "estimator_semantic_changes": 0,
+    "scorer_semantic_changes_beyond_frozen_r291_patch": 0,
+    "pr35_changes": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false
+  }
+}

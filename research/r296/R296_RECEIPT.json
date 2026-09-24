@@ -1,0 +1,187 @@
+{
+  "schema": "arc.whitebox.r296.pr36_workflow_security_hardening.receipt.v1",
+  "id": "R296",
+  "run_id": "R296-pr36-workflow-security-hardening-20260924",
+  "owner": "r293-workflow-security-fix-r268",
+  "status": "COMPLETE",
+  "verdict": "PR36_SECURITY_HARDENING_STATIC_PASS_NO_RUN",
+  "scientific_diagnostic_complete": false,
+  "pr": {
+    "number": 36,
+    "branch": "research/r293-v25-capture-workflow-prep",
+    "initial_head": "4cb350b2ccf280fe26de069b83120764229c002b",
+    "hardened_pre_report_head": "e854147327889c4d240e705034dd5c238479fe94",
+    "report_commit": "1f113e00251409760a317715104ceab5ac6ee8d7",
+    "expected_state": "open/draft/unmerged"
+  },
+  "inherited": {
+    "r294_receipt_sha256": "1e03f3f25f54973a11f9c2d0ef1aed02935d1d18cb5e96f79b2c67173c47afb9",
+    "r295_receipt_sha256": "4e118c1d992bc042b02e0855e570b8b47db94de29d377037d6429fdc681911e6"
+  },
+  "artifacts": {
+    "workflow": {
+      "path": ".github/workflows/r293-v25-residual-capture.yml",
+      "git_blob_sha1": "19f6f95ceb2cacef5497eafd5e31e20e86cfad8c",
+      "sha256": "23cb8b2a4db23b6dd030b6148cfaa8d6d2cb45e31ff264195c970117fd69f863",
+      "bytes": 22374
+    },
+    "protocol": {
+      "path": "research/r293/R293_PROTOCOL.json",
+      "git_blob_sha1": "cc51198550b0d35b7fb0e34e8b072d74a456476c",
+      "sha256": "e0e36f5107676326529359f238b678b03d5faf25fae913d102387dc6ba1f3a74",
+      "bytes": 6682
+    },
+    "preflight": {
+      "path": "scripts/r293_capture_workflow_preflight.py",
+      "git_blob_sha1": "ba27e0a6f6e13e24344b3cec6b60a5717e45b51f",
+      "sha256": "be910a30efe4ddb0c77826bd92d5c58f058a1db673f314cd3b61667d2d795e1f",
+      "bytes": 12591
+    },
+    "adversarial_selfcheck": {
+      "path": "scripts/r296_workflow_security_selfcheck.py",
+      "git_blob_sha1": "dc09a5c4a06136370344c27723c5c430588b0fa2",
+      "sha256": "55ea4d7300d1e8e1913a07031b626bd1475e4d46f9590033a8fb38c5e4865d82",
+      "bytes": 10698
+    },
+    "active_r294_patch": {
+      "path": "research/r294/R294_WHESTBENCH_0_16_1_INTEGRATION.patch",
+      "git_blob_sha1": "65abb2e2040e44a7965f5123acd17bb838891532",
+      "sha256": "bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3",
+      "bytes": 3080
+    },
+    "report": {
+      "path": "research/r296/R296_REPORT.md",
+      "commit": "1f113e00251409760a317715104ceab5ac6ee8d7",
+      "git_blob_sha1": "2ac07a67a8c10c444f4a989c0796656fed7197d2",
+      "sha256": "62f80cef918c5f73365a0e75dd806d1fa94019318d38889a6988519003e7ebe9",
+      "bytes": 9219
+    }
+  },
+  "fixes": {
+    "rerun_gate": {
+      "github_run_attempt_required": 1,
+      "guarded_jobs": [
+        "preflight",
+        "persist"
+      ],
+      "benchmark_capable_jobs": [
+        "persist"
+      ],
+      "durable_claim_before_benchmark": true,
+      "second_distinct_dispatch_rejected_before_benchmark": true
+    },
+    "atomic_ref_updates": {
+      "claim_expected_old_tip": "github.sha",
+      "final_expected_old_tip": "durable claim sha",
+      "mechanism": "git push --force-with-lease=<ref>:<explicit expected old sha>",
+      "branch_creation_allowed": false,
+      "branch_absent_fail_closed": true,
+      "branch_moved_fail_closed": true,
+      "blind_force": false
+    },
+    "action_pins": {
+      "checkout": {
+        "version": "v4.2.2",
+        "commit_sha": "11bd71901bbe5b1630ceea73d27597364c9af683",
+        "verification": "official GitHub tag ref refs/tags/v4.2.2"
+      },
+      "setup_python": {
+        "version": "v5.6.0",
+        "commit_sha": "a26af69be951a213d495a4c3e4e4022e16d87065",
+        "verification": "official GitHub tag ref refs/tags/v5.6.0"
+      },
+      "mutable_major_tags_remaining": false
+    },
+    "token_handling": {
+      "checkout_persist_credentials": false,
+      "token_in_remote_url": false,
+      "token_in_persistent_git_config": false,
+      "explicit_token_steps": 2,
+      "token_steps": [
+        "durable claim CAS push",
+        "final result CAS push"
+      ],
+      "process_scoped_credential_helper": true
+    }
+  },
+  "preserved": {
+    "trigger": "workflow_dispatch only",
+    "required_ref": "refs/heads/main",
+    "confirmation": "RUN_R293_V25_CAPTURE_ONCE",
+    "runner": "ubuntu-24.04 standard GitHub-hosted",
+    "top_level_permissions": "none",
+    "preflight_permissions": "contents: read",
+    "persistence_permissions": "contents: write",
+    "result_branch": "research/r293-v25-capture-result",
+    "result_branch_created_by_workflow": false,
+    "output_allowlist": [
+      "research/captures/r293/vectors.f32le",
+      "research/captures/r293/manifest.json",
+      "research/captures/r293/SHA256SUMS",
+      "research/captures/r293/run-receipt.json"
+    ],
+    "active_r294_patch_blob": "65abb2e2040e44a7965f5123acd17bb838891532",
+    "active_r294_patch_sha256": "bab98621f510520a0fe8539c41bb2d59dd4680eaa8237a63a81d082897934cf3",
+    "r294_apply_checker_retained": true
+  },
+  "tests": {
+    "exact_current_static_assertions": "PASS",
+    "cas_adversarial": {
+      "status": "PASS",
+      "passed": 8,
+      "total": 8,
+      "checks": {
+        "claim_cas_success": true,
+        "second_dispatch_rejected": true,
+        "deleted_branch_not_recreated": true,
+        "moved_branch_rejected": true,
+        "deleted_before_final_not_recreated": true,
+        "moved_before_final_rejected": true,
+        "final_cas_success": true,
+        "stale_final_lease_rejected": true
+      }
+    },
+    "token_process_scope": {
+      "status": "PASS",
+      "passed": 3,
+      "total": 3,
+      "checks": {
+        "process_scoped_helper_visible": true,
+        "helper_not_persisted": true,
+        "dummy_token_not_persisted": true
+      }
+    },
+    "initial_selfcheck_fixture_note": "First local adversarial attempt failed before lease testing because the bare test remote lacked the base object; fixture was repaired to seed/move test refs via local pushes, then final scenarios passed."
+  },
+  "live_observations_before_report": {
+    "result_branch_exists": false,
+    "actions_runs_on_r296_head": 0,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_merged": false
+  },
+  "next_gates": [
+    "Independent review of the final PR #36 head and R296 security hashes.",
+    "Separate authorization to merge PR #36 to main.",
+    "External creation of the frozen result branch at the exact merged-main SHA and verification protected=false.",
+    "Separate authorization for exactly one first-attempt workflow_dispatch.",
+    "If a durable claim exists without final result, require explicit external reset/re-authorization; do not rerun.",
+    "Verify result ref and exact four output hashes before any scientific consumer task."
+  ],
+  "accounting": {
+    "actions_runs": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "datasets_accessed_or_downloaded": 0,
+    "dependencies_installed_or_downloaded": 0,
+    "paid_resources": false,
+    "result_branch_created": 0,
+    "pr_merged": 0,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false,
+    "r294_patch_semantic_changes": 0,
+    "r291_historical_artifact_changes": 0
+  }
+}
