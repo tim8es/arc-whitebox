@@ -1,0 +1,173 @@
+{
+  "schema": "arc.whitebox.r359.public_leaderboard_top10_snapshot.v1",
+  "task": "R359",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "classification": "PUBLIC_UI_SNAPSHOT_TOP10_ONLY_NOT_ESTIMATOR_MEASUREMENT",
+  "source": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+  "capture_time_utc": "2026-09-24T13:33:30Z",
+  "visible_range": "Showing 1–100 of 197",
+  "persisted_rows": 10,
+  "persisted_cells_per_row": 10,
+  "exact_rendered_top10_cells": [
+    [
+      "–",
+      "01",
+      "JW J2W 1 member · Numascale AS",
+      "2.00e−9",
+      "1.61e−8",
+      "566×",
+      "324",
+      "Sep 24, 08:55 4 h ago",
+      "",
+      "View"
+    ],
+    [
+      "–",
+      "02",
+      "ST suliman_tadros —",
+      "2.20e−9",
+      "1.63e−8",
+      "514×",
+      "52",
+      "Sep 23, 01:42 1 d ago",
+      "",
+      "View"
+    ],
+    [
+      "–",
+      "03",
+      "MB marius_binner University of Bergen",
+      "2.30e−9",
+      "1.56e−8",
+      "492×",
+      "158",
+      "Sep 23, 06:46 1 d ago",
+      "",
+      "View"
+    ],
+    [
+      "–",
+      "04",
+      "AS a_s6 —",
+      "2.50e−9",
+      "2.00e−8",
+      "453×",
+      "108",
+      "Sep 21, 13:55 2 d ago",
+      "",
+      "View"
+    ],
+    [
+      "new",
+      "05",
+      "DO Luna 1 member",
+      "2.60e−9",
+      "1.67e−8",
+      "435×",
+      "7",
+      "Sep 24, 03:32 9 h ago",
+      "",
+      "View"
+    ],
+    [
+      "▼1",
+      "06",
+      "CI LD AE Puffi 3 members",
+      "2.80e−9",
+      "1.94e−8",
+      "404×",
+      "78",
+      "Sep 8, 14:09 2 w ago",
+      "",
+      "View"
+    ],
+    [
+      "▼1",
+      "06",
+      "OL reds 1 member",
+      "2.80e−9",
+      "1.73e−8",
+      "404×",
+      "60",
+      "Sep 21, 08:47 3 d ago",
+      "",
+      "View"
+    ],
+    [
+      "▼1",
+      "08",
+      "OQ oqaris Sobolev Institute of Mathematics",
+      "3.10e−9",
+      "2.15e−8",
+      "365×",
+      "93",
+      "Sep 14, 05:56 1 w ago",
+      "",
+      "View"
+    ],
+    [
+      "▼1",
+      "08",
+      "BE ben3 Max Planck Institute for Intelligent Systems",
+      "3.10e−9",
+      "1.68e−8",
+      "365×",
+      "23",
+      "Sep 22, 19:38 1 d ago",
+      "",
+      "View"
+    ],
+    [
+      "▲1",
+      "08",
+      "ML mliston —",
+      "3.10e−9",
+      "1.80e−8",
+      "365×",
+      "41",
+      "Sep 23, 14:50 22 h ago",
+      "",
+      "View"
+    ]
+  ],
+  "leader": {
+    "rank_display": "01",
+    "participant_display": "J2W",
+    "handle_display": "joe_wanza",
+    "adjusted_score_display": "2.00e-9",
+    "final_layer_mse_display": "1.61e-8",
+    "vs_sampling_display": "566×",
+    "entries": "324",
+    "last_submission_display": "Sep 24, 08:55 4 h ago"
+  },
+  "previous_snapshot": {
+    "task": "R349",
+    "capture_time_utc": "2026-09-24T12:20:18.917Z",
+    "entries": "323",
+    "displayed_score": "2.00e-9",
+    "final_layer_mse": "1.61e-8",
+    "vs_sampling": "566×",
+    "interpretation": "Only display-level cells compared; not an exact score delta."
+  },
+  "boundaries": {
+    "full_board_rows_persisted": false,
+    "page_2_persisted": false,
+    "exact_underlying_score": "UNKNOWN",
+    "formatter_interval": "UNKNOWN",
+    "true_leaderboard_gap": "UNKNOWN_NOT_COMPARABLE",
+    "r209_public50_join": "NOT_COMPARABLE"
+  },
+  "forbidden_activity": {
+    "submission_pages_opened": 0,
+    "estimator_runs": 0,
+    "benchmark_runs": 0,
+    "actions_runs": 0,
+    "downloads": 0,
+    "paid_resources": 0,
+    "private_holdout_full_access": 0,
+    "submissions": 0,
+    "leaderboard_mutations": 0,
+    "main_pr_control_queue_edits": 0
+  }
+}
