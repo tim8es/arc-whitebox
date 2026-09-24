@@ -5982,6 +5982,24 @@
         "status": "COMPLETE"
       },
       "revision": 444
+    },
+    {
+      "revision": 445,
+      "action": "enqueue",
+      "job": "R301",
+      "owner": "coordinator",
+      "payload": {
+        "assigned_owner": "r300-integration-selfcheck-r267",
+        "depends_on": [
+          "R298",
+          "R300"
+        ],
+        "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
+        "hypothesis_id": "R300-COMMITTED-SELFHECK-INDEPENDENT-VERIFY-20260924",
+        "priority": 1,
+        "title": "Execute the committed R300 synthetic self-check on exact bytes"
+      },
+      "at": "2026-09-24T00:00:20.307Z"
     }
   ],
   "jobs": [
@@ -9606,10 +9624,25 @@
         "sha256": "87f8eaf7819749fbb2fb1a7a30719bb68e3ec7177ce7a8e61df05aeb8f7666de",
         "url": "https://github.com/tim8es/arc-whitebox/blob/813756ced282c780ac28f6da1e4228d8bc9c50b8/research/r300/R300_RECEIPT.json"
       }
+    },
+    {
+      "assigned_owner": "r300-integration-selfcheck-r267",
+      "depends_on": [
+        "R298",
+        "R300"
+      ],
+      "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
+      "hypothesis_id": "R300-COMMITTED-SELFHECK-INDEPENDENT-VERIFY-20260924",
+      "priority": 1,
+      "title": "Execute the committed R300 synthetic self-check on exact bytes",
+      "id": "R301",
+      "owner": null,
+      "status": "QUEUED",
+      "attempts": []
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 444,
+  "revision": 445,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
