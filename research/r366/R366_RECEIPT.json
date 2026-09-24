@@ -1,0 +1,243 @@
+{
+  "schema": "arc.whitebox.r366.uncovered-estimator-frontier-scout.v1",
+  "task": "R366",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "TERMINAL_NO_GO_MISSING_CERTIFIED_WHITE_BOX_SHALLOW_RIDGE_FLATTENING_THEOREM",
+  "measurement_classification": "REPORT_ONLY_THEORY_METHOD_SCOUT_NO_NEW_ESTIMATOR_MEASUREMENT",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r366-uncovered-estimator-frontier-scout-20260924",
+  "provenance": {
+    "history": {
+      "path": "research/history.json",
+      "git_blob_sha1": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+      "e100_e193_ids": 94,
+      "e100_e193_artifact_records": 468
+    },
+    "live_r320_final_dedupe_snapshot": {
+      "branch": "review/r320-sidecar-research-traceability-20260924",
+      "head": "7336ffb2a88ab38ebb96177d4bc7d8bfd5dd53e1",
+      "report_path": "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
+      "report_blob_sha1": "870c9131a4e4bc745ea6ad6510d6a45115dcc5a8",
+      "receipt_path": "research/r320/R320_RECEIPT.json",
+      "receipt_blob_sha1": "3fa12a194b1fd33361465bef815afe1eedc81460",
+      "r366_occurrences_before": 0,
+      "shallow_ridge_surrogate_distillation_occurrences_before": 0
+    },
+    "broad_prior_screens": {
+      "R265": {
+        "report_blob_sha1": "e9b5df06173bf70a587774f9374042962847d9e2"
+      },
+      "R276": {
+        "report_blob_sha1": "4970614c1ac789b008260d726a2bbd5272116434"
+      },
+      "R308": {
+        "report_blob_sha1": "e07ddccdf3744c741a571556d7597ac15b460c4b"
+      }
+    },
+    "corrected_tensorized_hermite": {
+      "branch": "review/r352-tensorized-hermite-frontier-20260924",
+      "corrected_head": "c51af6c62639503d326f4cbda5b2d59116bbb718",
+      "corrected_report_blob_sha1": "f384caa56b1a43212bf909ccfd3567fa86a7b4e4",
+      "corrected_receipt_blob_sha1": "ca4f4608a592594a321790e760aa2d7f6398476b",
+      "verdict": "EVIDENCE_BASED_NO_GO_NO_CERTIFIED_LOW_RANK_TT_HERMITE_PATH",
+      "universal_impossibility_claim": false
+    }
+  },
+  "baseline": {
+    "id": "R209-v25-mini100",
+    "path": "research/results/R209-v25-mini100.json",
+    "integration_commit": "20fafab5471e6ed227562c651179dd2ef331ea22",
+    "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "panel": "v2-phase2 mini:all-100",
+    "rows": 100,
+    "failures": 0,
+    "mean_raw_final_mse_exact_decimal": "2.22830349017044681e-8",
+    "mean_adjusted_score_approx": "8.170397440117225e-9",
+    "measured_flops_per_network": 806303721965,
+    "comparison_rule": "ONLY_SAME_VERIFIED_PANEL; NO_LEADERBOARD_GAP_OR_RANK_INFERENCE"
+  },
+  "dedupe": {
+    "scanned_history_range": "E100-E193 plus full-history prior inventories and live R320 sidecars",
+    "families": {
+      "stein_jvp_control_variate": "OCCUPIED",
+      "antithetic_haar_radial_rao_blackwell": "OCCUPIED",
+      "qmc_cubature_frames": "OCCUPIED",
+      "conditional_gaussian_halfspace_orthant": "OCCUPIED",
+      "cumulant_k3_k4_edgeworth_moment_closure": "OCCUPIED",
+      "dense_hermite_chaos": "TERMINALLY_COVERED_E115_R347",
+      "low_rank_tensorized_hermite": "EVIDENCE_BASED_NO_GO_R352_R364_R361_R362_R363",
+      "tt_cp_tucker_countsketch_tensorsketch": "OCCUPIED",
+      "characteristic_function_hilbert": "EVIDENCE_BASED_FEASIBILITY_NO_GO_R335_R337",
+      "activation_boundary_flux": "OCCUPIED",
+      "response_aligned_adjoint_observable": "OCCUPIED",
+      "source_age_window_tail": "OCCUPIED",
+      "structured_basis_kronecker_legendre": "OCCUPIED",
+      "randomized_multilevel_telescope": "CLOSED_R265_R269",
+      "displacement_structure": "TERMINAL_DESK_NO_GO_E192",
+      "fast_arithmetic_h185": "OCCUPIED_AND_H185_G2_BLOCKED"
+    },
+    "candidate_repository_term_search": {
+      "shallow": 0,
+      "ridge_function": 0,
+      "distill": 0,
+      "surrogate_network": 0,
+      "two_layer": 0
+    },
+    "surviving_distinct_class_count_before_theory_gate": 1
+  },
+  "class_screened": {
+    "name": "WSRF-AGR_WHITE_BOX_SHALLOW_RIDGE_FLATTENING_ANALYTIC_GAUSSIAN_READOUT",
+    "admitted_for_execution": false,
+    "representation": "g_A_B(x)=A ReLU(Bx), A in R^(n x m), B in R^(m x n), deterministic target-free white-box T_m(W)->(A,B)",
+    "analytic_readout": "mu_hat=(1/sqrt(2*pi))*A*[||b_1||_2,...,||b_m||_2]^T for X~N(0,I)",
+    "expectation_exact_for_surrogate": true,
+    "unbiased_for_original": false,
+    "novelty_boundary": "Sample-fitted A,B would collapse into occupied sampling/regression/distillation lanes; only deterministic white-box flattening counts as distinct.",
+    "controlled_error": {
+      "delta_sq": "E_X ||f_W(X)-g_A_B(X)||_2^2",
+      "bound": "||E f_W - E g_A_B||_2^2 <= delta_sq by Jensen",
+      "final_mean_mse_bound": "MSE_mean <= delta_sq / n",
+      "n": 1024
+    }
+  },
+  "phase2": {
+    "width": 1024,
+    "depth": 16,
+    "flop_budget": 2199023255552,
+    "floor_multiplier": "0.1",
+    "floor_integer_flop_ceiling": 219902325555,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "solution_process_memory": "8 GB",
+    "weight_law": "iid N(0,2/1024), float32 dense 1024x1024 matrices"
+  },
+  "same_panel_gates": {
+    "general_adjusted_score_sufficient_condition": "mean_i[(delta_i^2/1024)*max(0.1,C_i/2^41)] < 8.170397440117225e-9",
+    "at_score_floor": {
+      "condition": "mean_i[delta_i^2/1024] < 8.170397440117225e-8",
+      "equivalent_average_total_output_L2_sq_lt": "8.36648697868004e-5"
+    },
+    "raw_accuracy_domination": {
+      "condition": "mean_i[delta_i^2/1024] < 2.22830349017044681e-8"
+    },
+    "leaderboard_comparison_used": false
+  },
+  "cost_model": {
+    "readout_flops_leading_order": "4*n*m + O(m+n)",
+    "at_n_1024": "4096*m + O(m)",
+    "coefficient_memory_float32_bytes": "8*n*m = 8192*m",
+    "example_m_131072": {
+      "coefficient_bytes": 1073741824,
+      "coefficient_memory_gib": 1,
+      "leading_readout_flops": 536870912
+    },
+    "original_dense_weights_float32_bytes": 67108864,
+    "bottleneck": "C_Tm: deterministic white-box surrogate construction and certification cost",
+    "all_in": "C_all=C_Tm+C_readout+C_aux"
+  },
+  "exact_blocker": {
+    "missing_theorem": "A source-backed or independently proved deterministic target-free white-box transform T_m for width-1024/depth-16 iid He-Gaussian ReLU networks that simultaneously bounds Gaussian-L2 approximation error strongly enough for the R209 same-panel score inequality and bounds construction+readout cost, memory, wall, and residual time within Phase-2 limits.",
+    "no_primary_source_found_with_required_constants": true,
+    "universal_impossibility_claim": false,
+    "theory_gate_passed": false,
+    "numerical_falsifier_authorized": false
+  },
+  "primary_sources": [
+    {
+      "authors": "G. M. Tallis",
+      "year": 1961,
+      "title": "The Moment Generating Function of the Truncated Multi-Normal Distribution",
+      "doi": "10.1111/j.2517-6161.1961.tb00408.x",
+      "url": "https://doi.org/10.1111/j.2517-6161.1961.tb00408.x",
+      "used_for": "truncated-normal moment framework; scalar ReLU expectation special case"
+    },
+    {
+      "authors": "Francis Bach",
+      "year": 2017,
+      "title": "Breaking the Curse of Dimensionality with Convex Neural Networks",
+      "url": "https://jmlr.org/papers/v18/14-546.html",
+      "used_for": "single-hidden-layer positively homogeneous/ReLU approximation theory and computational caveat"
+    },
+    {
+      "authors": "Daniel Hsu; Clayton Sanford; Rocco Servedio; Emmanouil V. Vlatakis-Gkaragkounis",
+      "year": 2021,
+      "title": "On the Approximation Power of Two-Layer Networks of Random ReLUs",
+      "url": "https://proceedings.mlr.press/v134/hsu21a.html",
+      "used_for": "quantitative shallow approximation upper/lower bounds; not transferred as ARC impossibility"
+    },
+    {
+      "authors": "Ronen Eldan; Ohad Shamir",
+      "year": 2016,
+      "title": "The Power of Depth for Feedforward Neural Networks",
+      "url": "https://proceedings.mlr.press/v49/eldan16.html",
+      "used_for": "depth separation; rejects unsupported universal compact-flattening premise; distribution differs from ARC"
+    },
+    {
+      "authors": "Matus Telgarsky",
+      "year": 2016,
+      "title": "Benefits of Depth in Neural Networks",
+      "url": "https://proceedings.mlr.press/v49/telgarsky16.html",
+      "used_for": "independent depth/width separation; not an ARC ensemble lower bound"
+    },
+    {
+      "authors": "Sitan Chen; Aravind Gollakota; Adam Klivans; Raghu Meka",
+      "year": 2022,
+      "title": "Hardness of Noise-Free Learning for Two-Hidden-Layer Neural Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/45a7ca247462d9e465ee88c8a302ca70-Abstract-Conference.html",
+      "used_for": "Gaussian-input black-box/SQ learning hardness caveat; explicitly not transferred to white-box lower bound"
+    },
+    {
+      "authors": "AIcrowd",
+      "title": "WhestBench Phase-2 scoring/generation sources",
+      "source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+      "scoring_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+      "rounds_blob_sha1": "c2891dae7c21f27fdcaaab239c7bfd5d8cfc0890",
+      "generation_blob_sha1": "38397fae458acfd46b5642866481672c7fce6f2d",
+      "used_for": "width/depth, score formula/floor, FLOP/wall/residual limits, He-Gaussian weights"
+    },
+    {
+      "authors": "AIcrowd",
+      "title": "WhestBench changelog v0.16.0",
+      "source_commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+      "changelog_blob_sha1": "fb2e2ababe42c7764fad4b99681445b65c75f7ad",
+      "used_for": "8 GB Phase-2 solution-process memory limit"
+    }
+  ],
+  "falsifier": {
+    "cheapest_current_falsifier": "THEORY_CERTIFICATE_GATE",
+    "result": "FAIL",
+    "synthetic_or_benchmark_run_count": 0,
+    "reason": "No constructive T_m/error/cost theorem exists to freeze a meaningful numerical candidate without reverting to occupied sample-fit/regression search.",
+    "reentry_requires": [
+      "deterministic white-box T_m(W), not sample-fitted distillation",
+      "computable Gaussian-L2 error certificate delta^2",
+      "all-in construction+readout FLOP/memory/wall/residual bound",
+      "constants satisfying the R209 same-panel inequality before execution"
+    ]
+  },
+  "historical_verdicts_preserved": true,
+  "execution_accounting": {
+    "estimator_implementation": false,
+    "repository_code_created_or_run": false,
+    "synthetic_estimator_runs": 0,
+    "benchmark_runs": 0,
+    "actions_runs": 0,
+    "downloads": 0,
+    "dependency_installs": 0,
+    "paid_resources": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "leaderboard_method_comparison": false,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0,
+    "r320_edits": 0
+  },
+  "report": {
+    "path": "research/r366/R366_UNCOVERED_ESTIMATOR_FRONTIER_SCOUT.md",
+    "creation_commit": "0bd6696168f15c18565db0274b6f812cba1310e5",
+    "git_blob_sha1": "f2c512a04c1eb9b0d179cd04a5563e34a6f109aa"
+  }
+}
