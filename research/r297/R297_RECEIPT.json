@@ -1,0 +1,107 @@
+{
+  "schema": "arc.whitebox.r297.independent_final_review.receipt.v1",
+  "id": "R297",
+  "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
+  "owner": "r297-independent-final-review-r4553b",
+  "status": "COMPLETE",
+  "verdict": "PASS_STATIC_READ_ONLY_WITH_EXPLICIT_NOT_RUN_REPLAYS",
+  "scientific_diagnostic_complete": false,
+  "reviewed_pr": {
+    "number": 36,
+    "repository": "tim8es/arc-whitebox",
+    "head": "f6fb9018504632edffa1fb80d14ce8a68f442602",
+    "state": "open/draft/unmerged"
+  },
+  "direct_observations": {
+    "historical_r291_patch_blob": "a3d909540fc079908fcca9987c5cdb0252a1da8c",
+    "active_r294_patch_blob": "65abb2e2040e44a7965f5123acd17bb838891532",
+    "workflow_blob": "19f6f95ceb2cacef5497eafd5e31e20e86cfad8c",
+    "protocol_blob": "cc51198550b0d35b7fb0e34e8b072d74a456476c",
+    "preflight_blob": "ba27e0a6f6e13e24344b3cec6b60a5717e45b51f",
+    "r294_apply_checker_blob": "547ec661b8cf0548ee080acca2f32f9eeef4537c",
+    "corrected_r296_selfcheck_blob": "e6c975a72f8f4863b476bfe5b636984fe1169713",
+    "result_branch_exists": false,
+    "action_tag_refs": {
+      "checkout_v4_2_2": "11bd71901bbe5b1630ceea73d27597364c9af683",
+      "setup_python_v5_6_0": "a26af69be951a213d495a4c3e4e4022e16d87065"
+    }
+  },
+  "static_checks": {
+    "r291_preserved": true,
+    "r294_active_and_pinned": true,
+    "workflow_protocol_alignment": true,
+    "rerun_gate_both_jobs": true,
+    "durable_claim_before_install_validate_benchmark": true,
+    "claim_expected_tip_cas": true,
+    "final_expected_tip_cas": true,
+    "branch_absent_fail_closed": true,
+    "branch_creation_by_workflow": false,
+    "mutable_action_tags_absent": true,
+    "checkout_persist_credentials_false": true,
+    "token_in_remote_url": false,
+    "token_in_persistent_git_config_by_design": false,
+    "exact_four_file_allowlist": true,
+    "actions_artifact_storage_path": false,
+    "git_lfs_path": false,
+    "pat_path": false,
+    "cache_path": false,
+    "pr_trigger_path": false,
+    "private_holdout_path": false,
+    "submission_path": false,
+    "merge_path": false
+  },
+  "receipt_backed_execution": {
+    "r294_git_apply": {
+      "source": "research/r294/R294_RECEIPT.json",
+      "status": "PASS_IN_COMMITTED_RECEIPT",
+      "reviewer_execution": "NOT_RUN",
+      "source_blob": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+      "patch_blob": "65abb2e2040e44a7965f5123acd17bb838891532",
+      "patched_blob": "8493b7ff28110fb13f467400b6895c56bd7550bb"
+    },
+    "r302_corrected_selfcheck": {
+      "source": "research/r302/R302_RECEIPT.json",
+      "status": "PASS_21_OF_21_IN_COMMITTED_RECEIPT",
+      "reviewer_execution": "NOT_RUN",
+      "corrected_checker_blob": "e6c975a72f8f4863b476bfe5b636984fe1169713",
+      "workflow_sha256": "23cb8b2a4db23b6dd030b6148cfaa8d6d2cb45e31ff264195c970117fd69f863",
+      "protocol_sha256": "e0e36f5107676326529359f238b678b03d5faf25fae913d102387dc6ba1f3a74",
+      "checker_sha256": "0392e2c88d7c9f6cb75813cc330cdd699217d9537957d428d3d183edd9673da0"
+    }
+  },
+  "reviewer_not_run": [
+    "local git apply --check / git apply replay",
+    "CAS adversarial execution replay",
+    "credential-helper persistence execution replay",
+    "independent SHA-256 recomputation of all committed blobs"
+  ],
+  "output_allowlist": [
+    "research/captures/r293/SHA256SUMS",
+    "research/captures/r293/manifest.json",
+    "research/captures/r293/run-receipt.json",
+    "research/captures/r293/vectors.f32le"
+  ],
+  "report": {
+    "path": "research/r297/R297_REPORT.md",
+    "commit": "e165011d7f79f65e4f90f722d9530154b4bcbab5",
+    "git_blob_sha1": "c27189433c61da655a465ff8c95bc2f8ed8275f6"
+  },
+  "artifact_branch": "research/r297-final-independent-review-r4553b",
+  "accounting": {
+    "actions_runs": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "datasets_accessed_or_downloaded": 0,
+    "dependencies_installed_or_downloaded": 0,
+    "paid_resources": false,
+    "result_branch_created": 0,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false,
+    "pr_comments_or_reviews": 0,
+    "pr_merged": false,
+    "pr_code_edits": 0
+  },
+  "finish_request": "Coordinator should publish R297 finish against this append-only report/receipt and preserve PR #36 open/draft/unmerged."
+}
