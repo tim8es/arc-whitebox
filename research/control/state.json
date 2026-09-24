@@ -6398,6 +6398,45 @@
         }
       },
       "at": "2026-09-24T02:22:42.873+00:00"
+    },
+    {
+      "revision": 476,
+      "action": "enqueue",
+      "job": "R304",
+      "owner": "coordinator",
+      "payload": {
+        "title": "Poll official leaderboard and report changes since R303",
+        "hypothesis_id": "LIVE-LEADERBOARD-DELTA-20260924",
+        "priority": 2,
+        "deliverable": "Poll the live official AIcrowd Phase-2 leaderboard and compare its visible rows with the immutable R303 snapshot captured at 2026-09-24T02:07:55Z. Use only first-party sources; record exact UTC time, current top rows/displayed precision/row count/deadline, and a compact delta (or explicitly no change in the captured window). Preserve raw displayed rows in the receipt/JSON artifact and hashes. Re-check comparability against R209/R223 without inferring any score gap/rank absent an exact same-panel identity join. Append one Markdown report and receipt on a report-only branch. No Actions, benchmark, estimator, downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits.",
+        "depends_on": [
+          "R303",
+          "R263",
+          "R271"
+        ],
+        "assigned_owner": "r304-live-board-delta-statistician"
+      },
+      "at": "2026-09-24T02:30:56.210+00:00"
+    },
+    {
+      "revision": 477,
+      "action": "claim",
+      "job": "R304",
+      "owner": "r304-live-board-delta-statistician",
+      "payload": {},
+      "at": "2026-09-24T02:30:56.210+00:00"
+    },
+    {
+      "revision": 478,
+      "action": "start",
+      "job": "R304",
+      "owner": "r304-live-board-delta-statistician",
+      "payload": {
+        "run_id": "R304-live-leaderboard-poll-20260924-0230",
+        "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+        "command": "read-only first-party AIcrowd leaderboard delta snapshot vs R303 at 02:07:55Z; report/receipt only; no Actions/benchmark/download/paid/holdout/submission/PR edits"
+      },
+      "at": "2026-09-24T02:30:56.210+00:00"
     }
   ],
   "jobs": [
@@ -10205,10 +10244,33 @@
         "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c"
       },
       "reason": "Fresh first-party AIcrowd Phase-2 leaderboard snapshot captured at 2026-09-24T02:07:55Z: 100 of 195 displayed rows, J2W rank 1 with displayed adjusted score 2.10e-9 (3 significant digits), exact unrounded score unknown; deadline Oct 17 2026 23:59 UTC. Official metric/rules refreshed. Comparison with R209/R223 mini-100 is NOT_COMPARABLE because current visible Phase-2 panel is visible-50 and no immutable network/target identity join is published; no exact gap/rank inferred. Report/receipt preserve snapshot. No Actions, benchmark, estimator, data/dependency downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits."
+    },
+    {
+      "id": "R304",
+      "priority": 2,
+      "title": "Poll official leaderboard and report changes since R303",
+      "hypothesis_id": "LIVE-LEADERBOARD-DELTA-20260924",
+      "depends_on": [
+        "R303",
+        "R263",
+        "R271"
+      ],
+      "assigned_owner": "r304-live-board-delta-statistician",
+      "status": "RUNNING",
+      "owner": "r304-live-board-delta-statistician",
+      "attempts": [
+        {
+          "run_id": "R304-live-leaderboard-poll-20260924-0230",
+          "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+          "command": "read-only first-party AIcrowd leaderboard delta snapshot vs R303 at 02:07:55Z; report/receipt only; no Actions/benchmark/download/paid/holdout/submission/PR edits",
+          "status": "RUNNING"
+        }
+      ],
+      "deliverable": "Poll the live official AIcrowd Phase-2 leaderboard and compare its visible rows with the immutable R303 snapshot captured at 2026-09-24T02:07:55Z. Use only first-party sources; record exact UTC time, current top rows/displayed precision/row count/deadline, and a compact delta (or explicitly no change in the captured window). Preserve raw displayed rows in the receipt/JSON artifact and hashes. Re-check comparability against R209/R223 without inferring any score gap/rank absent an exact same-panel identity join. Append one Markdown report and receipt on a report-only branch. No Actions, benchmark, estimator, downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 475,
+  "revision": 478,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
