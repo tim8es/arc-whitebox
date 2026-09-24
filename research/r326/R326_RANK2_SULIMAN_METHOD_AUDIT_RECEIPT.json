@@ -1,0 +1,93 @@
+{
+  "schema": "arc.whitebox.r326.rank2-suliman-public-method-audit.v1",
+  "job": "R326",
+  "status": "NO_PUBLIC_METHOD",
+  "audit_date_utc": "2026-09-24",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r326-rank2-suliman-method-audit-20260924",
+  "target": {
+    "participant": "suliman_tadros",
+    "leaderboard_rank": 2,
+    "current_leaderboard_submission_id": 331931,
+    "adjusted_score_display": "2.20e-9",
+    "final_layer_mse_display": "1.63e-8",
+    "compute_utilisation_display": "0.1375978303",
+    "mlps_failed": 0,
+    "entries": 52,
+    "leaderboard_row_timestamp": "Wed, 23 Sep 2026 01:42"
+  },
+  "submission_identity": {
+    "status": "CONFIRMED_DIRECT_LINK",
+    "source": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "canonical_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331931",
+    "mechanism": "Current rank-2 row View link resolves directly to #331931."
+  },
+  "chronology": {
+    "official_profile_url": "https://www.aicrowd.com/participants/suliman_tadros",
+    "later_graded_submission_observed": 331945,
+    "later_graded_submission_time": "Wed, 23 Sep 2026 05:11:45",
+    "audited_submission_time": "Wed, 23 Sep 2026 01:42:29",
+    "inference": "No causal inference; current leaderboard-linked submission remains #331931."
+  },
+  "public_method": {
+    "estimator_name": "NO_PUBLIC_METHOD",
+    "estimator_config_or_params": "NO_PUBLIC_METHOD",
+    "source_code": "NO_PUBLIC_METHOD",
+    "repository": "NO_PUBLIC_METHOD",
+    "commit": null,
+    "reproducible_method": "NO_PUBLIC_METHOD",
+    "author_writeup": "NO_PUBLIC_METHOD",
+    "participant_linked_repositories": [],
+    "submission_specific_method_claims": [],
+    "canonical_page_result": "PUBLIC_ROUTE_RESOLVES_ANONYMOUS_TEXT_SURFACE_IS_GENERIC_SHELL",
+    "participant_profile_disclosure": "Profile states suliman_tadros has not posted anything on Discourse; no participant-linked repository/source URL exposed in inspected public profile."
+  },
+  "comparison_to_prior_audits": {
+    "r306": {
+      "scope": "J2W / #331539",
+      "verdict": "NO_PUBLIC_METHOD",
+      "receipt_blob_sha1": "e0f86ba1c7b9ee757bc432dbaf7c2e98918ef726",
+      "duplicated": false
+    },
+    "r318": {
+      "scope": "Puffi #330322 and reds #331730 canonical public configuration audit",
+      "verdict": "NO_PUBLIC_METHOD",
+      "receipt_blob_sha1": "501fae48dc32112772b6cc55132663f9a23d24f9",
+      "duplicated": false
+    },
+    "r326_scope": "Only suliman_tadros current leaderboard-linked #331931."
+  },
+  "idea_transfer": {
+    "public_method_evidence_available": false,
+    "candidate_count": 0,
+    "candidate": null,
+    "experiment_history_dedupe_triggered": false,
+    "reason": "No admissible submission-specific method evidence exists; no idea is inferred from name/rank/score/compute or identity."
+  },
+  "sources": [
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331931",
+    "https://www.aicrowd.com/participants/suliman_tadros",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions?q%5Bparticipant_name_equals%5D=suliman_tadros"
+  ],
+  "report": {
+    "path": "research/r326/R326_RANK2_SULIMAN_METHOD_AUDIT.md",
+    "creation_commit": "04a0fbc4708392ffc444cbfbe8dcd798c73739e4",
+    "git_blob_sha1": "81e1cd551ed34bb7800af1ebd41524dc1ac13629"
+  },
+  "execution_accounting": {
+    "code_or_estimator_run": false,
+    "benchmark_run": false,
+    "dataset_or_dependency_download": false,
+    "github_actions_run": false,
+    "paid_compute_or_spend": false,
+    "private_holdout_or_full_access": false,
+    "competition_submission": false,
+    "participant_or_organizer_contact": false,
+    "arbitrary_external_identity_or_repo_search": false,
+    "main_edited": false,
+    "pull_request_edited_or_opened": false,
+    "control_edited": false,
+    "queue_edited": false
+  }
+}
