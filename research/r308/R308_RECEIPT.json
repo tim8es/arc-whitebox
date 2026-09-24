@@ -1,0 +1,146 @@
+{
+  "schema": "arc.whitebox.r308.theory_scout_receipt.v1",
+  "job": "R308",
+  "mode": "report_only_theory_scout",
+  "status": "COMPLETE",
+  "decision": "NO_GO_AFTER_DEDUPLICATION",
+  "branch": "review/r308-theory-scout-20260924",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "report": {
+    "path": "research/r308/R308_THEORY_SCOUT_REPORT.md",
+    "commit": "ff67d038cabfb09ba492bb0dadf7dc642d90b211",
+    "git_blob_sha1": "b48a39995bd6c6ab39af496e6d105fb78e56f52b"
+  },
+  "candidate": null,
+  "hypotheses_proposed": 0,
+  "reason": "After deduplicating the requested R2xx evidence against the complete project mechanism inventory, no estimator remained that was simultaneously mathematically distinct, network-agnostic, target-free in construction, mechanism-motivated before execution, and plausibly compatible with the production FLOP/residual caps. Proposing another local-K4, calibration, structured-compression, extrapolation, recycled-basis, or randomized-hierarchy variant would recycle an occupied family.",
+  "evidence": {
+    "history_git_blob_sha1": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+    "requested_project_records": {
+      "R209": {
+        "normalized_result_git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+        "mean_final_mse": 2.228303490170447e-8,
+        "mean_adjusted_score": 8.170397440117225e-9,
+        "mean_measured_flops": 806303721965
+      },
+      "R231": {
+        "receipt_git_blob_sha1": "a2cf807ce9617c464e0e60b12f0bbfc17e196cf4",
+        "conclusion": "GLOBAL_ACCURACY_PRIMARY; COMPUTE_ONLY_FLOOR_INSUFFICIENT; ERROR_TAIL_WEAKLY_CONCENTRATED"
+      },
+      "R223": {
+        "protocol_branch": "research/r223-v25-isolated-improvement-20260922",
+        "normalized_postflight_git_blob_sha1": "c8b617c43ff1145977c38e7e1cca6d23985ec392",
+        "family": "normalized per-neuron K4-to-K3 feed lambda",
+        "disposition": "same-panel SCIENTIFIC_REJECT / slightly worse than R209"
+      },
+      "R232": {
+        "branch": "research/r232-v25-dual-resolution-richardson-20260923",
+        "family": "dual-resolution Richardson debiasing",
+        "disposition": "protocol-terminal before valid MSE comparison; family already defined"
+      },
+      "R238": {
+        "terminal_receipt_commit": "a8bb06f23f416ea4a1c01c655756477849234c74",
+        "family": "recycled-start range finder",
+        "disposition": "parent executability failure before candidate; frozen lineage already defined"
+      },
+      "R244": {
+        "branch": "research/r244-marginal-preserving-rres-20260923",
+        "family": "marginal-preserving Rres low-rank factorization",
+        "disposition_from_R276_project_summary": "valid mini:all-100 measurement; worse adjusted score and MSE"
+      },
+      "R247": {
+        "branch": "research/r247-network-agnostic-efficiency-20260923",
+        "family": "2:4 young-D21 right-factor sparsification",
+        "disposition": "target-free structural fidelity failure"
+      },
+      "R248": {
+        "branch": "research/r248-kron1-young-transport-20260923",
+        "family": "rank-1 Kronecker young transport",
+        "disposition": "target-free oracle fidelity failure"
+      },
+      "R250": {
+        "branch": "research/r250-leg2-r1-young-ap-20260923",
+        "family": "rank-1 shared A/P leg channel",
+        "disposition": "target-free oracle fidelity failure"
+      },
+      "R251": {
+        "branch": "research/r251-global-accuracy-method-20260923",
+        "family_from_own_report": "V25-HK4-ROWLOCAL heteroscedastic row-local K4 closure",
+        "disposition": "INCONCLUSIVE before candidate execution; family already occupied"
+      },
+      "R261": {
+        "branch": "research/r261-orthogonal-local-targetfree-20260923",
+        "family_screened": "remove existing online mean-correction rider",
+        "disposition": "evidence-based NO_GO before execution"
+      },
+      "R265": {
+        "branch": "research/r265-method-theory-scout-20260923",
+        "disposition": "full-history NO_GO; only abstract randomized multilevel lead survived temporarily"
+      },
+      "R269": {
+        "branch": "research/r269-multilevel-debiasing-scout-20260923",
+        "family": "depth-prefix Bernoulli randomized telescope",
+        "disposition": "NO_GO before execution: added expected MSE, no same-quantity hierarchy/cost split"
+      },
+      "R276": {
+        "branch": "research/r276-v25-accuracy-screen-20260923",
+        "disposition": "EVIDENCE_BASED_NO_GO_BEFORE_IMPLEMENTATION; no concrete distinct candidate after full-history and post-history deduplication"
+      }
+    }
+  },
+  "primary_scientific_sources": [
+    {
+      "authors": "Michael B. Giles",
+      "year": 2008,
+      "title": "Multilevel Monte Carlo Path Simulation",
+      "venue": "Operations Research 56(3):607-617",
+      "doi": "10.1287/opre.1070.0496"
+    },
+    {
+      "authors": "Chang-Han Rhee; Peter W. Glynn",
+      "year": 2015,
+      "title": "Unbiased Estimation with Square Root Convergence for SDE Models",
+      "venue": "Operations Research 63(5):1026-1043",
+      "doi": "10.1287/opre.2015.1404"
+    }
+  ],
+  "falsifier": {
+    "preregistered": false,
+    "executed": false,
+    "stop_go_thresholds": null,
+    "reason": "No credible distinct estimator survived the theory/deduplication gate; freezing arbitrary synthetic thresholds without an estimator would be method fishing."
+  },
+  "production_accounting": {
+    "contest_budget_flops_per_network": 2199023255552,
+    "residual_wall_cap_s": 0.4,
+    "candidate_static_flops": null,
+    "candidate_residual_bound_s": null,
+    "reason": "No candidate proposed."
+  },
+  "execution_accounting": {
+    "estimator_implementations": 0,
+    "estimator_executions": 0,
+    "synthetic_falsifier_runs": 0,
+    "benchmark_runs": 0,
+    "actions_runs": 0,
+    "dataset_downloads": 0,
+    "dependency_downloads": 0,
+    "paid_compute": false,
+    "private_holdout_full_accesses": 0,
+    "submissions": 0
+  },
+  "mutations": {
+    "main": false,
+    "pull_requests": false,
+    "control": false,
+    "workflows": false,
+    "code": false,
+    "report_only_branch": true
+  },
+  "control_note": "No control mutation was made because the user explicitly constrained R308 to report-only branch artifacts and prohibited control edits.",
+  "scientific_claims": {
+    "new_estimator_result_claimed": false,
+    "impossibility_claimed": false,
+    "no_go_scope": "No credible distinct hypothesis justified by the allowed evidence under the R308 brief."
+  }
+}
