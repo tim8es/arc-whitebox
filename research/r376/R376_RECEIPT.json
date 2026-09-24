@@ -1,0 +1,229 @@
+{
+  "schema": "arc.whitebox.r376.new-estimator-frontier.v1",
+  "task": "R376",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "TERMINAL_NO_GO_GLOBAL_AFFINE_GAUSSIAN_RELAXATION_CANNOT_CLEAR_FIXED_TARGET_GATE_WITH_AVAILABLE_LOCAL_EVIDENCE",
+  "measurement_classification": "REPORT_ONLY_THEORY_METHOD_SCOUT_NO_NEW_ESTIMATOR_MEASUREMENT",
+  "branch": "research/r376-new-estimator-frontier-20260924",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "provenance": {
+    "history": {
+      "path": "research/history.json",
+      "git_blob_sha1": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+      "e100_e193_ids": 94,
+      "e100_e193_artifact_records": 468
+    },
+    "live_r320": {
+      "branch": "review/r320-sidecar-research-traceability-20260924",
+      "head": "a6aa948c6fdd2cc97cb721623a6259d01e30e761",
+      "report_blob_sha1": "669af011e82b6549530e442a30d3a5e92d23ec4f",
+      "receipt_blob_sha1": "a47466aaed0854bea3d60ca20354b4499b9cc0d1"
+    },
+    "r374": {
+      "branch": "review/r374-next-distinct-estimator-frontier-20260924",
+      "head": "659ab891e1e7a27f0edadb8768b1e094420247ac",
+      "report_blob_sha1": "bcf7b9369628e85cff7fb0585a27e895f99a12a7",
+      "receipt_blob_sha1": "34e304d510309494e4f3a4fb43c6d8400a1e9855",
+      "verdict": "TERMINAL_NO_GO_NO_FINITE_RELU_CLOSED_LIFT_ZONOID_PROPAGATION_THEOREM"
+    },
+    "r224_local_data_evidence": {
+      "branch": "review/r224-r209-mini100-fingerprints-20260922",
+      "receipt_blob_sha1": "9865e9cdccfadc62a67e380714ad9df8000153e9",
+      "fingerprint_blob_sha1": "9ecde34282c3fbef51ff3b11d4ec439012b3c52d",
+      "target_payload_local": false,
+      "persisted_fields": [
+        "100 mlp_seed/network_id values",
+        "100 target SHA256 fingerprints",
+        "target dtype float32",
+        "target shape [16,1024]"
+      ]
+    }
+  },
+  "parent": {
+    "id": "R209-v25-mini100",
+    "path": "research/results/R209-v25-mini100.json",
+    "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "integration_commit": "20fafab5471e6ed227562c651179dd2ef331ea22",
+    "panel": "v2-phase2 mini:all-100",
+    "rows": 100,
+    "failures": 0,
+    "mean_raw_final_layer_mse": "2.22830349017044681e-8",
+    "adjusted_score": "8.170397440117225e-9",
+    "measured_flops_per_network": 806303721965,
+    "leaderboard_comparison_used": false
+  },
+  "dedupe": {
+    "excluded_families": [
+      "sampling/Monte Carlo residuals",
+      "cubature/sigma-point/frame/deterministic particles",
+      "QMC/Sobol/spherical designs",
+      "control variates/Stein/JVP",
+      "antithetic/Haar/radial Rao-Blackwell",
+      "conditional Gaussian/halfspace/orthant/mask-conditioned state",
+      "cumulant K3/K4/Edgeworth/higher moments",
+      "Hermite/polynomial chaos",
+      "TT/CP/Tucker/CountSketch/TensorSketch",
+      "characteristic-function/Hilbert",
+      "activation-boundary/boundary-flux/explicit activation-region geometry",
+      "displacement structure",
+      "response-aligned/adjoint/observable",
+      "source-age/window/tail",
+      "randomized multilevel/telescope",
+      "H185 exact-fast-arithmetic",
+      "R366 shallow-ridge flattening and sampled-regression descendants",
+      "R374 lift-zonoid and close stop-loss/distribution-state variants"
+    ],
+    "e100_e193_term_search_zero_hits": [
+      "CROWN",
+      "DeepPoly",
+      "Fast-Lin",
+      "linear bound",
+      "affine bound",
+      "interval bound",
+      "convex relaxation"
+    ],
+    "surviving_distinct_class_count": 1
+  },
+  "candidate": {
+    "name": "GELR",
+    "expansion": "Gaussian-Expected Linear Relaxation",
+    "target_free": true,
+    "sampled": false,
+    "representation": "single global affine lower/upper verification bounds on symmetric Gaussian truncation box",
+    "estimator": "mu_hat_j(R)=U_j(R)/2 with U_j(R)=p_R*gamma_j+Lambda_j*sqrt(n*q_R)",
+    "error_certificate": "|mu_hat_j-mu_j|<=U_j/2",
+    "fixed_target_not_population": true,
+    "distinct_from_r366": true,
+    "distinct_from_r374": true,
+    "distinct_from_activation_region_enumeration": true,
+    "note": "Input partitioning/branch-and-bound rescue is excluded because it re-enters activation-geometry/subdivision family."
+  },
+  "structural_floor": {
+    "n": 1024,
+    "rbar": "31.992188454829048",
+    "formula": "h_j(R) >= c(R)*mu_j, c(R)=[p_R*R+2*sqrt(n*q_R)]/(4*E||X||_2)",
+    "optimized_R": "5.546",
+    "p_R": "0.9999700710959285",
+    "q_R": "2.992890407149673e-05",
+    "c_star": "0.04607344105297431",
+    "meaning": "Any single-global-affine GELR certificate has at least a 4.6073441% coordinatewise relative certificate radius against the true mean amplitude."
+  },
+  "same_panel_gate": {
+    "sufficient_score_go": "(1/100)*sum_i H_i^2*max(0.1,C_i/2^41) < 8.170397440117225e-9",
+    "floor_raw_mse_threshold": "8.170397440117225e-8",
+    "necessary_target_mean_square_rms2": "3.848946586479219e-05",
+    "necessary_target_rms": "0.00620398790011652",
+    "stricter_raw_parent_target_rms": "0.00323993666765405",
+    "status": "UNRESOLVED_AND_NOT_ADMISSIBLE_WITH_LOCAL_EVIDENCE",
+    "blocker": "Exact Mini-100 final target mean vectors/RMS are not locally materialized; only target hashes are persisted. No fixed-panel theorem supplies the missing amplitude."
+  },
+  "phase2": {
+    "width": 1024,
+    "depth": 16,
+    "flop_budget": 2199023255552,
+    "score_floor_multiplier": 0.1,
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": 0.4,
+    "solution_process_memory": "8 GB",
+    "official_source_blobs": {
+      "scoring": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+      "generation": "38397fae458acfd46b5642866481672c7fce6f2d",
+      "rounds": "c2891dae7c21f27fdcaaab239c7bfd5d8cfc0890",
+      "changelog": "fb2e2ababe42c7764fad4b99681445b65c75f7ad"
+    }
+  },
+  "cost_memory_time": {
+    "frozen_implementation_envelope": {
+      "dense_matmuls_per_layer_max": 4,
+      "dense_matmul_scalar_flops": "2*n^3",
+      "extra_scalar_ops_per_layer": "64*n^2",
+      "all_in_static_flop_cap": 138512695296,
+      "fraction_of_budget": "0.06298828125",
+      "scorer_floor_path": true
+    },
+    "memory": {
+      "input_weights_float32_bytes": 67108864,
+      "work_matrices_assumption": "up to 8 1024x1024 float64 matrices",
+      "work_matrices_bytes": 67108864,
+      "frozen_candidate_memory_cap": "256 MiB",
+      "phase2_cap": "8 GB"
+    },
+    "time": {
+      "wall_120s_proven": false,
+      "residual_0_4s_proven": false,
+      "reason": "No production-shape implementation/timing run authorized because the stronger fixed-target accuracy-admission gate is unresolved."
+    }
+  },
+  "primary_sources": [
+    {
+      "authors": "Tsui-Wei Weng; Huan Zhang; Hongge Chen; Zhao Song; Cho-Jui Hsieh; Luca Daniel; Duane Boning; Inderjit Dhillon",
+      "year": 2018,
+      "title": "Towards Fast Computation of Certified Robustness for ReLU Networks",
+      "venue": "ICML 2018 / PMLR 80",
+      "url": "https://proceedings.mlr.press/v80/weng18a.html",
+      "used_for": "Fast-Lin sound global linear ReLU relaxations and polynomial-time bound propagation"
+    },
+    {
+      "authors": "Huan Zhang; Tsui-Wei Weng; Pin-Yu Chen; Cho-Jui Hsieh; Luca Daniel",
+      "year": 2018,
+      "title": "Efficient Neural Network Robustness Certification with General Activation Functions",
+      "venue": "NeurIPS 2018",
+      "url": "https://proceedings.neurips.cc/paper/2018/hash/d04863f100d59b3eb688a11f95b0ae60-Abstract.html",
+      "used_for": "CROWN sound linear/quadratic activation relaxations and adaptive bound selection"
+    }
+  ],
+  "local_mini100_availability": {
+    "main_tree_dataset_payload_count": 0,
+    "searched_extensions": [
+      ".parquet",
+      ".npz",
+      ".npy",
+      ".zip"
+    ],
+    "target_arrays_local": false,
+    "external_dataset_identified": "aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "download_performed": false
+  },
+  "falsifier": {
+    "id": "F376-GELR-ADMISSION",
+    "executed": false,
+    "stage_1": "If already-local exact Mini-100 targets exist, compute target RMS T. Immediate NO_GO if T>=0.00620398790011652.",
+    "stage_2": "Only if stage 1 passes, freeze one GELR implementation and require FlopScope<=138512695296, candidate memory<=256MiB, wall<=120s, residual<=0.4s.",
+    "stage_3": "Only if stages 1-2 pass, one same-panel Mini-100 scorer run against R209.",
+    "current_stop": "Stage 1 cannot be executed from local repository evidence because target vectors are absent; downloading them is forbidden."
+  },
+  "exact_blocker": {
+    "type": "MISSING_LOCAL_FIXED_PANEL_TARGET_DATA_OR_FIXED_PANEL_AMPLITUDE_THEOREM",
+    "statement": "GELR can only possibly beat R209 at the scorer floor if the actual Mini-100 final target RMS is <0.00620398790011652. The local repo persists target hashes but not target arrays/RMS, and no theorem about the fixed deployed panel supplies this value. Population-over-weights arguments are not accepted as a substitute."
+  },
+  "implementation": {
+    "created": false,
+    "reason": "Mandatory fixed-target admission gate not closed; user requested implementation only after all gates survive and local Mini-100 is already available."
+  },
+  "report": {
+    "path": "research/r376/R376_NEW_ESTIMATOR_FRONTIER.md",
+    "creation_commit": "9115ced5016e2c899c646963656ef539fdfe28f5",
+    "git_blob_sha1": "999de9d6203ac263a5da1c9d1b1e20daba43488d"
+  },
+  "execution_accounting": {
+    "estimator_code_created": false,
+    "estimator_runs": 0,
+    "synthetic_runs": 0,
+    "mini100_runs": 0,
+    "benchmark_runs": 0,
+    "scorer_runs": 0,
+    "actions_runs": 0,
+    "downloads": 0,
+    "dependency_installs": 0,
+    "paid_compute": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "r320_edits": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0,
+    "historical_verdicts_changed": false
+  }
+}
