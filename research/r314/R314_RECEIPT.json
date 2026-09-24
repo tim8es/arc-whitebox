@@ -1,0 +1,177 @@
+{
+  "schema": "arc.whitebox.r314.r311_comparability_independent_audit.v1",
+  "task": "R314",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "NOT_COMPARABLE",
+  "mode": "report-only independent primary-source audit",
+  "control": {
+    "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "branch": "review/r314-r311-comparability-independent-audit-20260924",
+    "report_only": true,
+    "main_edited": false,
+    "pr_edited_or_opened": false,
+    "control_edited": false,
+    "workflows_edited": false
+  },
+  "question": "Whether the live Phase-2 AIcrowd leaderboard ADJUSTED SCORE is the same-panel/same-source quantitatively comparable score as committed R209 V25 Mini-100.",
+  "public_aicrowd": {
+    "leaderboard_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "leaderboard_columns_observed": [
+      "rank",
+      "participants",
+      "Adjusted Score",
+      "Final Layer MSE",
+      "Compute utilisation",
+      "MLPs failed",
+      "Entries",
+      "Last Submission",
+      "Submission Trend"
+    ],
+    "andreas_current_row": {
+      "displayed_rank": 22,
+      "adjusted_score_display": "0.0000000043",
+      "final_layer_mse_display": "0.0000000186",
+      "compute_utilisation_display": "0.2328913187",
+      "mlps_failed_display": "0.0000000000",
+      "entries": 59,
+      "current_view_submission_id": 332101,
+      "requested_historical_submission_id": 332093,
+      "current_row_is_submission_332093": false
+    },
+    "requested_submission_332093": {
+      "canonical_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332093",
+      "fresh_submission_specific_body_text_extracted_in_r314": false,
+      "limitation": "The public route is dynamic and its submission-specific body was not text-extractable in the current R314 fetch interface. R314 does not substitute #332101 fields or claim a fresh #332093-specific DOM capture.",
+      "prior_project_record_used_only_as_secondary_crosscheck": "R307 records a first-party submissions-listing observation identifying #332093 as AndreasHad04, graded, adjusted score 4.65e-9, Final Layer MSE 2.00e-8, Sep 24 01:22. It is not the primary basis for R314 comparability."
+    },
+    "phase2_submission_detail_contract": {
+      "evidence_url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+      "public_split_mlps": 50,
+      "public_split_state": "scored and visible",
+      "private_split_mlps": 50,
+      "private_split_state": "locked/sealed until results release",
+      "full_test_mlps": 100,
+      "final_score_role": "separate full-test score/rank after sealed half release",
+      "adjusted_score_label": "Public split",
+      "adjusted_score_aggregation_text": "mean over 50 public MLPs",
+      "caveat": "This is official same-challenge Phase-2 submission-detail UI evidence, not a fresh #332093-specific body capture."
+    }
+  },
+  "official_whestbench": {
+    "repository": "AIcrowd/whestbench",
+    "commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+    "scoring": {
+      "path": "src/whestbench/scoring.py",
+      "git_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+      "per_mlp_formula": "final_layer_mse_m * max(0.1, C_m/B_m) for valid runs; failure multiplier 1.0",
+      "suite_aggregation": "arithmetic mean of primary_scores via float(fnp.mean(fnp.asarray(primary_scores)))",
+      "explicit_score_rounding_in_aggregation_found": false
+    },
+    "schema": {
+      "path": "docs/reference/score-report-fields.md",
+      "git_blob_sha1": "3b66b33a0775f01eecbda2a148495d471f2eff65",
+      "field": "adjusted_final_layer_score",
+      "semantics": "suite mean of per-MLP budget-adjusted final-layer scores"
+    },
+    "human_presentation": {
+      "path": "src/whestbench/presentation/adapters.py",
+      "git_blob_sha1": "bc92da337db234b598303dda96e3da470e126e4e",
+      "mse_formatter": "f\"{float(value):.2e}\"",
+      "significant_digits": 3
+    },
+    "phase2_contract": {
+      "flop_budget_per_mlp": 2199023255552,
+      "residual_wall_time_cap_s": 0.4
+    },
+    "live_grader_versions_from_organizer_primary_source": {
+      "whestbench": "0.16.0",
+      "flopscope_server": "0.12.0",
+      "flopscope_client": "0.12.0",
+      "source": "https://www.aicrowd.com/participants/mohanty"
+    }
+  },
+  "r209": {
+    "receipt_repository": "tim8es/arc-whitebox",
+    "receipt_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+    "receipt_path": "research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json",
+    "receipt_git_blob_sha1": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "dataset_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "split": "mini",
+    "n_mlps": 100,
+    "width": 1024,
+    "depth": 16,
+    "official_scorer": false,
+    "holdout": false,
+    "full_split": false,
+    "v25_failures": 0,
+    "v25_adjusted_final_layer_score": 8.170397440117225e-9,
+    "toolchain": {
+      "python": "3.11.16",
+      "whestbench": "0.16.1",
+      "flopscope": "0.12.1+np2.4.6",
+      "numpy": "2.4.6"
+    },
+    "immutable_per_mlp_records": 100,
+    "raw_prediction_vectors_archived": false
+  },
+  "comparability": {
+    "metric_family_matches": true,
+    "per_mlp_formula_structurally_matches": true,
+    "aggregation_operator_matches": true,
+    "aggregation_set_matches": false,
+    "leaderboard_public_mlp_count": 50,
+    "r209_mlp_count": 100,
+    "exact_panel_identity_proven": false,
+    "exact_public50_to_r209_join_proven": false,
+    "data_provenance_identical_proven": false,
+    "official_grader_status_matches": false,
+    "toolchain_identity_matches": false,
+    "toolchain_version_difference_numerical_effect_proven": false,
+    "exact_unrounded_live_leaderboard_score_available": false,
+    "final_full_test_score_or_rank_publicly_available": false,
+    "decision": "NOT_COMPARABLE",
+    "ratio_computed": false,
+    "gap_computed": false,
+    "place_inferred": false
+  },
+  "rounded_or_unknown_fields": [
+    "Live leaderboard cells are rounded display strings; exact underlying float is not exposed.",
+    "Exact leaderboard-table frontend formatter/rounding rule is unknown.",
+    "Submission detail can expose more precision than the leaderboard/header, but still does not establish the exact underlying float.",
+    "Exact identities/hash/join keys for the 50 grader-public MLPs are not established by the requested public pages.",
+    "Exact mapping of grader-public 50 to R209 Mini-100 is not established.",
+    "Full-test 100-MLP score and final rank remain sealed/not public.",
+    "Live-grader and R209 toolchain versions differ; whether the difference changes score numerically is not established."
+  ],
+  "r311_audit": {
+    "report_url": "https://github.com/tim8es/arc-whitebox/blob/af16cdf782e97e4a7a1753f1516635191493f0d1/research/r311/R311_LEADERBOARD_SCORE_COMPARABILITY.md",
+    "audited_commit": "af16cdf782e97e4a7a1753f1516635191493f0d1",
+    "central_verdict": "NOT_COMPARABLE",
+    "independently_reproduced": true,
+    "material_overclaims_changing_verdict": [],
+    "qualifications": [
+      "R311 used official Phase-2 submission #329251 to establish the challenge-wide 50-public/50-sealed/full-test UI contract; it did not inspect #332093 specifically. R311 did not falsely claim otherwise.",
+      "The phrase 'local development aggregate' can be misread: R209 ran in GitHub Actions using WhestBench runner=local. 'Non-official-grader HF Mini-100 aggregate' is more precise.",
+      "Toolchain uncertainty can be made concrete: organizer says live grader WhestBench 0.16.0 / FlopScope 0.12.0, while R209 records 0.16.1 / 0.12.1+np2.4.6. No numerical scoring consequence is inferred.",
+      "The current AndreasHad04 leaderboard row links to #332101, so current row fields must not be back-projected onto historical #332093."
+    ],
+    "conclusion": "No material R311 overclaim was found that invalidates or weakens the NOT_COMPARABLE conclusion."
+  },
+  "report": {
+    "path": "research/r314/R314_R311_COMPARABILITY_INDEPENDENT_AUDIT.md",
+    "creation_commit": "a407d7dbb13ea713e56ffdc10ce523ade077c2a4",
+    "git_blob_sha1": "3ca4bd06b3140d91a54a232076c5fefe0e35ba93"
+  },
+  "execution_accounting": {
+    "benchmark_or_estimator_runs": 0,
+    "challenge_dataset_accesses_or_downloads": 0,
+    "dependency_or_package_downloads": 0,
+    "github_actions_runs": 0,
+    "competition_submissions": 0,
+    "private_holdout_full_data_accesses": 0,
+    "sealed_values_accessed": 0,
+    "paid_compute": false
+  }
+}
