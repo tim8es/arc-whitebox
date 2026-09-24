@@ -1,0 +1,82 @@
+{
+  "schema": "arc.whitebox.r333.r209-compute-floor-headroom.v1",
+  "job": "R333",
+  "status": "COMPLETE",
+  "verdict": "COMPUTE_ONLY_INSUFFICIENT_AT_FIXED_OBSERVED_ACCURACY",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r333-r209-compute-floor-headroom-20260924",
+  "dedupe": {
+    "r209": "No fixed-MSE 0.1-floor aggregate analysis found.",
+    "r225": "Unrelated R219 terminal-proof audit.",
+    "r230": "Qualitative floor warning only; no R209 floor calculation.",
+    "r325": "50-of-100 actual adjusted-score envelope only; no fixed-MSE 0.1-floor calculation.",
+    "already_covered": false
+  },
+  "input": {
+    "path": "research/results/R209-v25-mini100.json",
+    "integration_commit": "20fafab5471e6ed227562c651179dd2ef331ea22",
+    "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "file_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "archive_per_mlp_sha256": "85472c4808bff7a83a9ca853688ad9068895b073bb1592fd0f364d82c112b13e",
+    "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+    "panel": "v2-phase2 mini:all-100",
+    "rows": 100
+  },
+  "scorer": {
+    "whestbench_version": "0.16.1",
+    "tag_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "scoring_blob": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "budget_blob": "6586f12d178e0136420cb282535663f1faad5abc",
+    "rounds_blob": "c2891dae7c21f27fdcaaab239c7bfd5d8cfc0890",
+    "formula": "s_m = raw_mse_m * max(0.1, C_m/B_m); Phase 2 C_m=F_m; suite mean over rows"
+  },
+  "observed": {
+    "budget_flops": 2199023255552,
+    "measured_flops_per_row": 806303721965,
+    "utilization_per_row": 0.36666448157347986,
+    "mean_raw_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "max_abs_row_recompute_error": 0
+  },
+  "counterfactual": {
+    "multiplier_floor": 0.1,
+    "mean_score_floor": 2.228303490170447e-9,
+    "actual_to_floor_absolute_reduction": 5.942093949946778e-9,
+    "actual_to_floor_relative_reduction": 0.7272711019871175
+  },
+  "illustrative_display_threshold": {
+    "display_score": 2.1e-9,
+    "exact_underlying_float_known": false,
+    "required_mean_raw_mse_at_multiplier_0_1": 2.1e-8,
+    "absolute_raw_mse_reduction_needed": 1.2830349017044704e-9,
+    "relative_raw_mse_reduction_needed": 0.05757900157515477,
+    "floor_minus_display": 1.2830349017044687e-10,
+    "same_panel_scorer_condition_required": true
+  },
+  "limitations": {
+    "public50_join_proven": false,
+    "r319_verdict": "NOT_JOINABLE",
+    "r322_mapping_publicly_exposed": false,
+    "leaderboard_prediction": false,
+    "achievability_claim": false
+  },
+  "report": {
+    "path": "research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md",
+    "creation_commit": "002bccc705070f5f863d1afe1a3677212a0dd89c",
+    "git_blob_sha1": "5e2b58a80a647b9f0a8dcc3355a65d8e5a01e4f5"
+  },
+  "execution_accounting": {
+    "estimator_runs": 0,
+    "benchmark_runs": 0,
+    "repository_code_created_or_run": false,
+    "dataset_or_dependency_download": false,
+    "github_actions_runs": 0,
+    "paid_compute": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "main_edit": false,
+    "pr_edit": false,
+    "control_edit": false,
+    "queue_edit": false
+  }
+}
