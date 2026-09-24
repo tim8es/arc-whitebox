@@ -1,0 +1,127 @@
+{
+  "schema": "arc.whitebox.r307.andreashad04-public-aicrowd-audit.v1",
+  "job": "R307",
+  "status": "PARTIAL_PUBLIC_EVIDENCE",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r307-andreas-update-audit-20260924",
+  "scope": {
+    "external_sources": "first-party public AIcrowd pages only",
+    "causal_inference_from_score": false
+  },
+  "r304_anchor": {
+    "report_commit": "fcff8898104a21431eb9e1a5eec0f5cb6bb00468",
+    "report_path": "research/r304/R304_FULL_DELTA_AUDIT.md",
+    "raw_snapshot_commit": "5351f455c87afdd6eb3a4147e94c38d191968d18",
+    "raw_snapshot_path": "research/r304/R304_RAW_VISIBLE_ROWS.json",
+    "before": {
+      "participant": "AndreasHad04",
+      "rank": 28,
+      "displayed_score": "4.90e-9",
+      "displayed_final_layer_mse": "2.12e-8",
+      "last_submission_display": "Sep 23, 12:15"
+    },
+    "after": {
+      "participant": "AndreasHad04",
+      "rank": 25,
+      "displayed_score": "4.70e-9",
+      "displayed_final_layer_mse": "2.00e-8",
+      "entries": 56,
+      "last_submission_display": "Sep 24, 01:22"
+    }
+  },
+  "findings": {
+    "matching_submission": {
+      "status": "CONFIRMED_PUBLIC_EVIDENCE",
+      "submission_id": 332093,
+      "participant": "AndreasHad04",
+      "grading_state": "graded",
+      "public_submission_score": "4.65e-9",
+      "leaderboard_display_match": "4.70e-9",
+      "final_layer_mse": "2.00e-8",
+      "displayed_time": "Sep 24, 01:22",
+      "rationale": "Exact participant, timestamp and Final Layer MSE match R304; 4.65e-9 rounds to the R304 leaderboard display 4.70e-9."
+    },
+    "method_description": {
+      "status": "NO_PUBLIC_LINKAGE",
+      "background_public_method_post_exists": true,
+      "background_post_date": "2026-09-22",
+      "linked_to_submission_332093": false,
+      "causal_attribution_made": false,
+      "note": "AndreasHad04 publicly described parts of their kappa4/covariance chain on AIcrowd before #332093, but the post does not name #332093 or claim it produced the R304 result."
+    },
+    "source_code": {
+      "status": "NO_PUBLIC_EVIDENCE",
+      "linked_to_submission_332093": false,
+      "note": "No public AIcrowd code/repository/script artifact linked to #332093 was found. In the Sep 22 thread AndreasHad04 states their workspace is not public."
+    },
+    "regrade": {
+      "status": "NO_PUBLIC_EVIDENCE",
+      "note": "No public AIcrowd regrade marker or explanation for the R304 update was found."
+    },
+    "causal_reason_for_score_rank_change": {
+      "status": "UNKNOWN_NOT_INFERRED"
+    }
+  },
+  "first_party_sources": [
+    {
+      "kind": "submissions_index",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions",
+      "used_for": [
+        "submission_id",
+        "participant",
+        "grading_state",
+        "score",
+        "final_layer_mse",
+        "displayed_time"
+      ]
+    },
+    {
+      "kind": "submission_canonical_path",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332093",
+      "used_for": [
+        "canonical_identifier_only"
+      ],
+      "note": "The dynamic canonical page was not relied on for method/code fields."
+    },
+    {
+      "kind": "leaderboard",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+      "used_for": [
+        "current-state guard against treating a later View target as the R304 event"
+      ]
+    },
+    {
+      "kind": "participant_forum_post",
+      "url": "https://discourse.aicrowd.com/t/everything-we-tried-a-factorized-k-3-cumulant-propagation-estimator-at-0-25-x-b-where-its-flops-go-and-25-measured-dead-ends-team-504aldo-rank-10/18218",
+      "used_for": [
+        "background_method_description",
+        "workspace_not_public_statement"
+      ]
+    }
+  ],
+  "unknowns": [
+    "Which estimator or code change, if any, caused the #332093 score.",
+    "Whether #332093 used the configuration discussed by AndreasHad04 on Sep 22.",
+    "Whether any non-public code artifact or private workspace maps to #332093.",
+    "Whether any separate backend regrade/rescoring process affected the observed leaderboard values."
+  ],
+  "report": {
+    "path": "research/r307/R307_ANDREASHAD04_UPDATE_AUDIT.md",
+    "git_blob_sha1": "35d6e58a111308238a43f3ad1d8a5f2ede2d28f2",
+    "commit": "fbf301f3f68940d090f48016a1732283b8d50cc1"
+  },
+  "safety": {
+    "actions_triggered": false,
+    "benchmark_or_science_run": false,
+    "submission_made": false,
+    "login_or_private_access": false,
+    "participant_contacted": false,
+    "dataset_or_dependency_downloaded": false,
+    "paid_resource_used": false,
+    "holdout_or_full_data_accessed": false,
+    "main_changed": false,
+    "pull_request_changed_or_opened": false,
+    "control_changed": false,
+    "workflow_changed": false
+  }
+}
