@@ -1,0 +1,124 @@
+{
+  "schema": "arc.whitebox.r322.public50-manifest-source-audit.v1",
+  "job": "R322",
+  "status": "EXISTS_BUT_NOT_PUBLICLY_EXPOSED",
+  "existence_class": "b",
+  "date_utc": "2026-09-24",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r322-public50-manifest-source-audit-20260924",
+  "blocker_from_r319": {
+    "receipt_path": "research/r319/R319_PUBLIC50_R209_JOIN_AUDIT_RECEIPT.json",
+    "receipt_git_blob_sha1": "517c4ea88041432c6929c561b18b42a01be94761",
+    "direct_key_coverage": "0/50",
+    "missing_artifact": "Immutable official grader-public 50-row mlp_index -> canonical network_id mapping with R224-equivalent decimal exact int64 mlp_seed semantics."
+  },
+  "findings": {
+    "public_manifest_accessible": false,
+    "underlying_identity_map_exists": true,
+    "separate_standalone_manifest_file_proven": false,
+    "exact_deployed_phase2_private_repo_or_revision_public": false,
+    "exact_phase2_public50_seed_values_public": false,
+    "exact_phase2_public50_artifact_hash_public": false,
+    "classification": "EXISTS_BUT_NOT_PUBLICLY_EXPOSED"
+  },
+  "first_party_evidence": {
+    "phase2_submission_surface": {
+      "url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+      "public_split_rows": 50,
+      "holdout_rows": 50,
+      "full_test_rows": 100,
+      "published_identity_fields": [
+        "mlp_index",
+        "mlp_name"
+      ],
+      "mlp_seed_published": false,
+      "network_id_published": false,
+      "target_hash_published": false
+    },
+    "whestbench_schema": {
+      "repository": "AIcrowd/whestbench",
+      "commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+      "path": "docs/reference/dataset-format.md",
+      "git_blob_sha1": "aeadf7c1246fe7383dfdb6187a6e2826556a72e8",
+      "url": "https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/docs/reference/dataset-format.md",
+      "row_identity_fields": {
+        "mlp_id": "int32 0-based logical-dataset index",
+        "mlp_seed": "int64 canonical input seed under seed protocol 3.0/4.0"
+      }
+    },
+    "evaluation_dataset_workflow": {
+      "repository": "AIcrowd/whestbench",
+      "commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+      "path": "docs/how-to/parallel-bake.md",
+      "git_blob_sha1": "32af5ceb79870dc9546299bed7ca9bc5bcfdbdeb",
+      "url": "https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/docs/how-to/parallel-bake.md",
+      "evidence": [
+        "evaluation public and holdout splits use separate explicit per-MLP seed files",
+        "example public-seeds.json contains 50 seeds",
+        "example holdout-seeds.json contains 50 seeds",
+        "splits are combined into an evaluation dataset",
+        "example upload of evaluation dataset uses --private"
+      ],
+      "example_repo": "aicrowd/arc-whestbench-2026-evals",
+      "example_tag": "round-1",
+      "exact_deployed_phase2_artifact_claimed": false
+    },
+    "public_dataset_viewer": {
+      "repo": "aicrowd/arc-whestbench-public-2026",
+      "revision": "v2-phase2",
+      "observed_verified_commit": "aa99830fdc09fad15407b10e8e3459d3e18bba0a",
+      "tree_url": "https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026/tree/v2-phase2",
+      "metadata_url": "https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026/blob/v2-phase2/metadata.json",
+      "seed_protocol_name": "whestbench_explicit_per_mlp_seeds",
+      "seed_protocol_version": "3.0",
+      "exposed_splits": {
+        "mini": 100,
+        "full": 1000
+      },
+      "grader_public50_split_exposed": false,
+      "is_missing_bridge": false
+    }
+  },
+  "identity_semantics": {
+    "r224_network_id_rule": "decimal exact int64 mlp_seed",
+    "official_schema_seed_protocol_3": "mlp_seed is the canonical input seed stored in the dataset row",
+    "semantic_bridge_possible_if_exported": true
+  },
+  "minimal_unblocker": {
+    "required_fields": [
+      "mlp_index",
+      "mlp_seed"
+    ],
+    "row_count": 50,
+    "required_binding": "Explicit statement that mlp_seed uses WhestBench seed protocol 3.0 canonical input-seed semantics for the current Phase-2 grader public split.",
+    "required_immutability": "Immutable artifact identifier/hash or immutable version/revision.",
+    "preferred_additional_fields": [
+      "target_sha256",
+      "evaluator dataset repo/revision/commit",
+      "parquet/blob SHA-256"
+    ]
+  },
+  "prohibited_inferences": {
+    "infer_id_from_mlp_name": false,
+    "infer_id_from_row_order": false,
+    "infer_join_from_score": false
+  },
+  "report": {
+    "path": "research/r322/R322_PUBLIC50_MANIFEST_SOURCE_AUDIT.md",
+    "creation_commit": "3fe58a7ef35c5fa56863b2c8f609276d06767ff1",
+    "git_blob_sha1": "4f0b925acac9779b8fd6794418065d8bd6565e33"
+  },
+  "execution_accounting": {
+    "code_or_estimator_executed": false,
+    "benchmark_run": false,
+    "github_actions_run": false,
+    "dataset_or_dependency_download": false,
+    "login_or_authentication": false,
+    "paid_compute": false,
+    "private_holdout_or_full_access": false,
+    "competition_submission": false,
+    "main_edited": false,
+    "pull_request_edited_or_opened": false,
+    "control_edited": false
+  }
+}
