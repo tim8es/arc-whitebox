@@ -1,0 +1,338 @@
+{
+  "schema": "arc.whitebox.r379.aicrowd_preflight.v1",
+  "task": "R379",
+  "date": "2026-09-24",
+  "status": "COMPLETE_PREFLIGHT_ONLY",
+  "authorization_status": "PREPARED_NOT_AUTHORIZED_TO_SUBMIT",
+  "submission_performed": false,
+  "login_or_eligibility_check_performed": false,
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "research/r379-aicrowd-preflight-20260924",
+  "r223": {
+    "branch": "research/r223-v25-isolated-improvement-20260922",
+    "live_head": "09efbb920313850a4727bd34db9088a46227ce5f",
+    "candidate": {
+      "path": "methods/r223_estimator_v25_local_feed.py",
+      "git_blob_sha1": "eb95d4ae46a031be5131eef8dd0909f2061b8749",
+      "sha256_attempt6": "a62f2d2e580c38a77741c5316a8a88b8a52b97d676ecd4a38639ca2c6e5c422b",
+      "target_access": false
+    },
+    "attempt6": {
+      "workflow_run_id": 35810427656,
+      "job_id": 107020553482,
+      "workflow_blob_sha1": "d24e3f63e8ce447188868846e9b3e4ef755b395e",
+      "conclusion": "success",
+      "whest_validate_exit_zero": true,
+      "validation_mode": "--json",
+      "rich_checks_table_archived_and_reviewed": false,
+      "same_panel_run_success": true,
+      "artifact": {
+        "id": 10730459690,
+        "name": "r223-v25-local-feed-mini100-attempt6",
+        "size_bytes": 261400,
+        "zip_sha256": "f144bfd2a5a8a82aaa3e600d1f384d68cfe5e525eb7e22e91eb1d7e843763e00",
+        "expires_at": "2026-12-22T02:27:31Z",
+        "downloaded_by_r379": false,
+        "classification": "GITHUB_ACTIONS_DEVELOPMENT_EVIDENCE_ARTIFACT_NOT_A_WHEST_SUBMISSION_TARBALL"
+      }
+    },
+    "metrics": {
+      "parent_r209": {
+        "mean_raw_mse": "2.228303490170447e-8",
+        "mean_adjusted_score": "8.170397440117225e-9",
+        "mean_c_over_b": "0.36666448157347986"
+      },
+      "candidate_r223": {
+        "failures": 0,
+        "mean_raw_mse": "2.2284993050902814e-8",
+        "mean_adjusted_score": "8.171116513490029e-9",
+        "mean_effective_compute": "806303829485",
+        "mean_c_over_b": "0.36666453046791503",
+        "max_residual_s": "0.19380312699274782",
+        "improved_networks": 50,
+        "paired_delta_mean_parent_minus_candidate": "-7.190733728024271e-13",
+        "paired_delta_mean_over_se": "-0.48188156603559223"
+      },
+      "decision": "R223_SCIENTIFIC_REJECT_DROP_V25_LOCAL_FEED",
+      "candidate_better_than_r209": false
+    },
+    "package_status": {
+      "whest_package_run": false,
+      "manifest_json_committed": false,
+      "submission_tarball_committed": false,
+      "validate_package_run": false,
+      "submit_dry_run_run": false,
+      "status": "NOT_BUILT_AS_AICROWD_SUBMISSION_PACKAGE"
+    },
+    "static_allowed_code_scan": {
+      "imports": [
+        "__future__.annotations",
+        "math",
+        "flopscope",
+        "flopscope.numpy",
+        "whestbench.BaseEstimator",
+        "whestbench.SetupContext",
+        "whestbench.domain.MLP",
+        "os"
+      ],
+      "direct_numpy_import": false,
+      "prohibited_tokens_found": [],
+      "dev_only_local_engine_import_under_main": true,
+      "recommendation": "Remove dev-only __main__/local_engine harness from final shipped estimator to avoid sandbox/static-review ambiguity."
+    }
+  },
+  "official_phase2": {
+    "observed_date": "2026-09-24",
+    "launch_url": "https://www.aicrowd.com/participants/mohanty",
+    "challenge_rules_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/challenge_rules",
+    "participation_terms_url": "https://www.aicrowd.com/participation_terms",
+    "shape": {
+      "width": 1024,
+      "depth": 16
+    },
+    "output_shape": [
+      16,
+      1024
+    ],
+    "flop_budget_per_mlp": "2199023255552",
+    "wall_time_limit_s": 120,
+    "residual_wall_time_limit_s": "0.4",
+    "setup_timeout_s": 5,
+    "memory_limit_gb": 8,
+    "submissions_per_team_per_utc_day": 10,
+    "registration_team_freeze_deadline_utc": "2026-10-02T23:59:00Z",
+    "submission_deadline_utc": "2026-10-17T23:59:00Z",
+    "published_live_grader": {
+      "whestbench": "0.16.0",
+      "flopscope_client": "0.12.0",
+      "flopscope_server": "0.12.0"
+    },
+    "current_starterkit": {
+      "head": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "whestbench_constraint": ">=0.16.1,<0.17.0",
+      "flopscope_constraint": ">=0.12.1,<0.13.0",
+      "pyproject_blob_sha1": "2c1d562a2073046d6912868184b52c8c593d23c5"
+    }
+  },
+  "official_sources": {
+    "starterkit": {
+      "head": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "pre_submission_checklist": {
+        "path": "docs/how-to/pre-submission-checklist.md",
+        "blob_sha1": "6399ccb6d319a53d4d7c382c87d29d5630c8e367"
+      },
+      "allowed_code": {
+        "path": "docs/concepts/allowed-code.md",
+        "blob_sha1": "525276e8e5bc7f6a7dd54e876140ab0df514be32"
+      },
+      "ship_weights": {
+        "path": "docs/how-to/ship-weights.md",
+        "blob_sha1": "1e8dc52cd52bb4858de0aea0e6ca07354e7b4055"
+      },
+      "stage5_package": {
+        "path": "docs/getting-started/stage-5-package.md",
+        "blob_sha1": "1b4009b6c7ae7db0a49a7ff82f9ecd653bba79eb"
+      },
+      "rounds": {
+        "path": "docs/reference/rounds.md",
+        "blob_sha1": "2aaf38a54b5d6ed83ce2604870dcac59e62cee59"
+      },
+      "estimator_contract": {
+        "path": "docs/reference/estimator-contract.md",
+        "blob_sha1": "43c1494420b46aad4bc1dbbab83528eca6b89668"
+      },
+      "stage2_validate": {
+        "path": "docs/getting-started/stage-2-validate.md",
+        "blob_sha1": "615f737026f501d7d50afa54b7581da5af6e46ae"
+      }
+    },
+    "whestbench": {
+      "head": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+      "packaging_blob_sha1": "26f9f1c07cdbbec40659ce150e31e77d3c553bd7",
+      "validation_blob_sha1": "d9c81db3f171a28d6b85ac8b4a2de1879fef02c0",
+      "cli_blob_sha1": "f214a0e210aa2cd10d0d0a68b14a2b1341b4091f",
+      "aicrowd_client_blob_sha1": "000750d57a7720c336e751f89efc7bc05ae78fa5",
+      "limits_blob_sha1": "77d3109367c646a50c5b8c19cba0826ba8533f8b",
+      "max_submission_bytes": "52428800",
+      "max_submission_files": 50
+    }
+  },
+  "attribution_license": {
+    "upstream_repo": "504aldo/whest-p2-cumulant-k3",
+    "upstream_commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "license": "MIT",
+    "license_blob_sha1": "2c843327a87b547245b566f02391295ba71ad26a",
+    "copyright": "Copyright (c) 2026 504aldo",
+    "mit_notice_required_in_copy_or_substantial_portion": true,
+    "aicrowd_third_party_disclosure_required": true,
+    "r223_estimator_contains_upstream_notice": false,
+    "r223_submission_notice_package_present": false,
+    "status": "INCOMPLETE_FOR_FUTURE_SUBMISSION"
+  },
+  "actual_checks": {
+    "local_whest_validate": {
+      "checks": [
+        "class resolution",
+        "setup execution/timing",
+        "probe output shape",
+        "finite values"
+      ],
+      "caveat": "Rich Checks table must be reviewed; --json alone omits full check-row evidence."
+    },
+    "local_package_validation": {
+      "checks": [
+        "gzip tar readable",
+        "manifest.json readable/valid",
+        "supported schema/api",
+        "entrypoint module present",
+        "files[] valid",
+        "regular files present",
+        "per-file SHA256 matches",
+        "directory entries rejected"
+      ],
+      "before_upload": true
+    },
+    "evaluator_and_review": {
+      "package_manifest_integrity": true,
+      "package_size_and_file_caps": true,
+      "runtime_resource_caps": true,
+      "sandbox_import_surface": true,
+      "automated_allowed_code_checks_every_submission": true,
+      "flagged_agent_assisted_validation": true,
+      "unresolved_human_review": true,
+      "post_grading_review_possible": true,
+      "successful_score_is_not_eligibility_ruling": true
+    }
+  },
+  "future_candidate_gate": [
+    {
+      "id": "SCI-1",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Frozen candidate source/config/hashes."
+    },
+    {
+      "id": "SCI-2",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Same R209 Mini-100 dataset/name-order identity."
+    },
+    {
+      "id": "SCI-3",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Zero failures; raw MSE and adjusted score strictly below R209."
+    },
+    {
+      "id": "SCI-4",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Prefer existing anti-noise development gate: adjusted <=8.129545452916639e-9, >=55/100 improvements, paired mean >2SE."
+    },
+    {
+      "id": "RULE-1",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Static allowed-code review of final shipped source; strip dev-only imports/harness."
+    },
+    {
+      "id": "VAL-1",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Rich whest validate Checks table all OK; archive human-readable result."
+    },
+    {
+      "id": "VAL-2",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Official-checklist local and subprocess 3-MLP scores within ~1%."
+    },
+    {
+      "id": "VAL-3",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "No FLOP/wall/residual exhaustion; setup <5s; residual <0.4s; memory <8GB; wall <120s."
+    },
+    {
+      "id": "VER-1",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Record current starterkit versions and compatibility against published live grader 0.16.0/0.12.0."
+    },
+    {
+      "id": "LIC-1",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Include upstream MIT copyright/permission notice and explicit third-party disclosure."
+    },
+    {
+      "id": "PKG-1",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Clean root estimator.py package; <=50 files and <=50MiB."
+    },
+    {
+      "id": "PKG-2",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Run whest package; inspect manifest/file list; freeze archive SHA256."
+    },
+    {
+      "id": "PKG-3",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Run whest validate-package."
+    },
+    {
+      "id": "PKG-4",
+      "required": true,
+      "status": "PENDING_FUTURE_CANDIDATE",
+      "criterion": "Run whest submit --estimator . --dry-run only; save no-upload preview."
+    },
+    {
+      "id": "AUTH-1",
+      "required": true,
+      "status": "NOT_AUTHORIZED",
+      "criterion": "Obtain explicit coordinator authorization for one slot."
+    },
+    {
+      "id": "AUTH-2",
+      "required": true,
+      "status": "NOT_CHECKED",
+      "criterion": "Only after AUTH-1: authenticate/check AIcrowd eligibility and current team quota."
+    },
+    {
+      "id": "AUTH-3",
+      "required": true,
+      "status": "NOT_AUTHORIZED",
+      "criterion": "Submit exact frozen package without rebuilding."
+    }
+  ],
+  "comparability_guardrails": {
+    "r223_called_improvement": false,
+    "r223_vs_r209_same_panel_result": "WORSE",
+    "mini100_to_public50_join": "NOT_COMPARABLE_NOT_JOINABLE",
+    "leaderboard_prediction": false
+  },
+  "execution_accounting": {
+    "estimator_runs": 0,
+    "benchmark_runs": 0,
+    "synthetic_runs": 0,
+    "actions_runs_triggered": 0,
+    "competition_data_downloads": 0,
+    "workflow_artifact_downloads": 0,
+    "login_attempts": 0,
+    "eligibility_checks": 0,
+    "submissions": 0,
+    "private_holdout_full_access": false,
+    "r320_edits": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  },
+  "report": {
+    "path": "research/r379/R379_AICROWD_PREFLIGHT.md",
+    "git_blob_sha1": "69eebfc1b2f75b24e3eb480e5830610e31e83339"
+  }
+}
