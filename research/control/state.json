@@ -6014,6 +6014,40 @@
         "reason": "R267 returned systemError after R301 delivery; queue remained QUEUED with zero attempts, and read-only checks found no R301 branch or Actions run. R268 is the currently responsive repo-capable session working R294. Queue R301 behind that same session's R294 work to prevent overlapping edits; start only after R294 COMPLETE."
       },
       "at": "2026-09-24T00:04:33.422Z"
+    },
+    {
+      "revision": 447,
+      "action": "reassign",
+      "job": "R296",
+      "owner": "coordinator",
+      "payload": {
+        "from_assigned_owner": "r293-workflow-security-fix-r269",
+        "from_session": "6ab3a7fe-d4d4-83eb-b706-88dd77430353",
+        "to_assigned_owner": "r293-workflow-security-fix-r268",
+        "to_session": "6ab3a7ec-9420-83ed-89e0-927ed028a93b",
+        "reason": "R269 session reached systemError after R300; R296 remained QUEUED with zero attempts and no R296 branch/run. Transfer workflow hardening to the active repo-capable R268 session, strictly after its current R294 patch repair completes."
+      },
+      "at": "2026-09-24T00:06:19.893Z"
+    },
+    {
+      "revision": 448,
+      "action": "dependency_update",
+      "job": "R301",
+      "owner": "coordinator",
+      "payload": {
+        "from_depends_on": [
+          "R298",
+          "R300"
+        ],
+        "to_depends_on": [
+          "R294",
+          "R296",
+          "R298",
+          "R300"
+        ],
+        "reason": "R301 is assigned to the same R268 session as PR #36 workflow edits. Add explicit queue ordering so the offline analyzer self-check starts only after R294 patch repair and R296 workflow hardening, preventing concurrent work in one session."
+      },
+      "at": "2026-09-24T00:06:19.893Z"
     }
   ],
   "jobs": [
@@ -9499,7 +9533,7 @@
       "title": "Independently audit PR #36 workflow permission and persistence safety"
     },
     {
-      "assigned_owner": "r293-workflow-security-fix-r269",
+      "assigned_owner": "r293-workflow-security-fix-r268",
       "attempts": [],
       "deliverable": "After R294's patch repair lands on draft PR #36, fix the independent R295 workflow blockers on that same PR branch, with no benchmark/Actions execution. Preserve the one-shot/no-paid/public-mini boundaries. Required: (1) gate every expensive job on github.run_attempt==1 and add a durable atomic single-dispatch claim on the pre-created result branch so a second distinct dispatch also fails before benchmark; use an update-existing-ref compare-and-swap/non-force operation, never allow branch creation or a check-then-push race; (2) pin every action in the contents:write job to a verified full immutable commit SHA; (3) remove token insertion into the origin URL/config and ensure checkout credentials remain disabled, exposing GITHUB_TOKEN only in the minimal claim/persist API step without logging or storing it; (4) preserve exact result file allowlist and fail closed if any precondition/ref update fails. Keep PR #36 draft/open, do not create the result branch, merge, run Actions/benchmark, install/download data/dependencies, spend money, submit, or edit leaderboard/canonical. Add offline safety tests covering re-run and second-dispatch rejection, compare-and-swap against branch deletion/movement, immutable action pins, and token non-persistence. Append report/receipt with exact PR head, source hashes, test results, and any residual blocker; finish R296.",
       "depends_on": [
@@ -9642,6 +9676,8 @@
     {
       "assigned_owner": "r300-integration-selfcheck-r268",
       "depends_on": [
+        "R294",
+        "R296",
         "R298",
         "R300"
       ],
@@ -9656,7 +9692,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 446,
+  "revision": 448,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
