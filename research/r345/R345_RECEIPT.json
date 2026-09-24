@@ -1,0 +1,99 @@
+{
+  "schema": "arc.whitebox.r345.public_leaderboard_pagination_recovery.v1",
+  "task": "R345",
+  "date": "2026-09-24",
+  "status": "NO_GO_PUBLIC_PAGINATION_STILL_BLOCKED",
+  "verdict": "NO_GO_PUBLIC_PAGINATION_STILL_BLOCKED",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r345-public-leaderboard-pagination-recovery-20260924",
+  "purpose": "Bounded read-only recovery attempt for R341's public Phase-2 leaderboard pagination blocker.",
+  "r304_baseline": {
+    "branch": "review/r304-leaderboard-delta-20260924",
+    "head": "fcff8898104a21431eb9e1a5eec0f5cb6bb00468",
+    "captured_at_utc": "2026-09-24T02:36:19.062Z",
+    "displayed_range": "Showing 1–100 of 195",
+    "visible_rows": 100,
+    "raw_artifact_path": "research/r304/R304_RAW_VISIBLE_ROWS.json",
+    "raw_artifact_git_blob_sha1": "2fee6241febe322fbff2cbc605581590fc072ee6",
+    "normalized_rows_sha256": "4ffcdf469435f3b6dd55df39b6a06c3b5a186b7de89251a526254169a0fbe0d5",
+    "raw_file_sha256": "807df449176bd1cde98e6da418f30aa4aba848c9767a7e44196385587f17b016",
+    "supplement_path": "research/r304/R304_CAPTURE_SUPPLEMENT_RECEIPT.json",
+    "supplement_git_blob_sha1": "02aa0698369cc23bcd78753f3de7691589606acb",
+    "exact_artifact_hash_crosscheck": "PASS_SUPPLEMENT_AND_FETCHED_BLOB_IDENTITIES_AGREE",
+    "historical_page2_captured": false
+  },
+  "r341_parent_blocker": {
+    "head": "86d37d0e5ad90dae62354df8ad3746e5405a9cbd",
+    "receipt_blob_sha1": "2809f024b167cf28507540f7a113aba8d57af750",
+    "verdict": "PARTIAL_CAPTURE_DOM_PAGINATION_BLOCKED"
+  },
+  "public_page_attempts": {
+    "page1": {
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+      "result": "CLIENT_LOADING_SHELL",
+      "hydrated_rows_captured": 0
+    },
+    "page2": {
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2&page=2",
+      "result": "CLIENT_LOADING_SHELL",
+      "hydrated_rows_captured": 0
+    }
+  },
+  "documented_api_check": {
+    "swagger_url": "https://api.aicrowd.com/swagger.json",
+    "documented_route": "GET /challenges/{challenge_slug}/leaderboards",
+    "swagger_global_security": "api_key in AUTHORIZATION header",
+    "attempted_url": "https://api.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "unauthenticated_http_status": 401,
+    "public_payload_rows_captured": 0,
+    "credentials_supplied": false,
+    "authenticated_retry": false,
+    "stopped_after_auth_required": true,
+    "separate_documented_unauthenticated_endpoint_found": false,
+    "caveat": "Bounded public-source search result only; not a claim that no internal/client route exists."
+  },
+  "coverage": {
+    "current_page1_rows_captured": 0,
+    "current_page2_rows_captured": 0,
+    "documented_api_rows_captured": 0,
+    "current_rows_total_captured": 0,
+    "r304_first100_verified": "100/100",
+    "rows_compared_to_r304": 0,
+    "current_first100_delta": "UNKNOWN",
+    "current_page2_membership": "UNKNOWN",
+    "historical_page2_delta": "UNKNOWN",
+    "current_total_visible_rows": "UNKNOWN"
+  },
+  "blocker": {
+    "code": "PUBLIC_DOM_PAGINATION_AND_AUTH_API_BLOCKED",
+    "details": [
+      "Public page 1 extraction returned only Loading/client shell.",
+      "Public page 2 extraction returned only Loading/client shell.",
+      "Official documented leaderboard API returned HTTP 401 without credentials.",
+      "No credentials or authenticated retry were used.",
+      "No separate documented unauthenticated same-table endpoint was identified in the bounded public-source search."
+    ]
+  },
+  "report": {
+    "path": "research/r345/R345_PUBLIC_LEADERBOARD_PAGINATION_RECOVERY.md",
+    "git_blob_sha1": "2f6f85459df632704ad30fc8b62fbc873f39b0db"
+  },
+  "safety": {
+    "submission_pages_opened": false,
+    "submissions_inferred": false,
+    "methods_inferred": false,
+    "benchmark_datasets_accessed_or_downloaded": false,
+    "sealed_private_holdout_access": false,
+    "credentials_supplied": false,
+    "code_artifact_created": false,
+    "estimator_or_benchmark_run": false,
+    "github_actions_run": false,
+    "paid_resources_used": false,
+    "competition_submission": false,
+    "participant_or_organizer_contact": false,
+    "main_edit": false,
+    "pull_request_edit_or_open": false,
+    "control_edit": false,
+    "queue_edit": false
+  }
+}
