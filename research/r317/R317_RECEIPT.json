@@ -29,12 +29,12 @@
     "exact_gate_conditioned_truncated_gaussian_mixture": {
       "novelty": "MATHEMATICALLY_DISTINCT_BUT_NOT_COST_FEASIBLE",
       "representation": "Retain orthant/sign-mask probabilities and truncated-Gaussian conditional moments instead of collapsing to one Gaussian.",
-      "worst_case_state": "O(2^n) orthants per dense layer before depth compounding",
+      "worst_case_state": "Explicit all-mask output size: Theta(2^n*n) with one conditional first-moment vector per mask; Theta(2^n*n^2) with one full conditional covariance per mask.",
       "phase2_dimensions": {
         "width": 1024,
         "depth": 16
       },
-      "blocker": "No project- or paper-supported polynomial-size compression theorem with a credible <2^41 FLOP and <0.4 s residual bound.",
+      "blocker": "No audited theorem supplies a reusable polynomial-size non-Gaussian all-mask state that composes through generic dense ReLU layers with rigorous propagated error and a credible <2^41 FLOP / <0.4 s residual bound. This is distinct from a single orthant query, for which randomized polynomial-time algorithms exist.",
       "adjacent_prior": "E039 fixed two-component half-space Gaussian mixture and E114-E119 exact activation-boundary state"
     },
     "boundary_integral_route": {
@@ -71,6 +71,22 @@
       "title": "A useful theorem for nonlinear devices having Gaussian inputs",
       "doi": "10.1109/TIT.1958.1057444",
       "role": "Gaussian nonlinear correlation derivative identity"
+    },
+    {
+      "authors": "Ravi Kannan; Guangxing Li",
+      "year": 1996,
+      "title": "Sampling According to the Multivariate Normal Density",
+      "venue": "FOCS 1996",
+      "doi": "10.1109/SFCS.1996.548479",
+      "role": "R324/R321 caveat: randomized polynomial-time correlated-Gaussian positive-orthant approximation/sampling; a single-query result, not a persistent all-mask state"
+    },
+    {
+      "authors": "Ben Cousins; Santosh Vempala",
+      "year": 2014,
+      "title": "A Cubic Algorithm for Computing Gaussian Volume",
+      "venue": "SODA 2014",
+      "doi": "10.1137/1.9781611973402.90",
+      "role": "R324/R321 caveat: randomized polynomial Gaussian-volume/restricted-sampling algorithms; do not imply a reusable gate-conditioned state or contest error/cost guarantee"
     }
   ],
   "dedupe_evidence": {
@@ -138,7 +154,7 @@
   "falsifier": {
     "preregistered": false,
     "executed": false,
-    "reason": "No genuinely distinct cost-feasible estimator survived theory-first novelty/cost screening. A falsifier would only test a duplicate Gaussian-moment evaluator or an infeasible exponential-state construction."
+    "reason": "No genuinely distinct cost-feasible estimator survived theory-first novelty/cost screening. R321 clarifies that the blocker is not single-orthant query complexity but the absence of a reusable polynomial-size propagated non-Gaussian all-mask state; explicit all-mask state has exponential output size."
   },
   "gains_claimed": false,
   "execution_accounting": {
@@ -157,8 +173,31 @@
   },
   "artifacts": {
     "report_path": "research/r317/R317_TRUNCATED_NORMAL_GATE_ESTIMATOR_REPORT.md",
-    "report_blob_sha": "102854932f111e793657747a4aa227b23f19e7fc",
+    "report_blob_sha": "b134ccb1c77c3d0e70fe70b64b651e6e5dd1f77c",
     "report_commit": "606ff49a6f25afde2b6f38f35be7d0a5fbf71ab2",
     "receipt_path": "research/r317/R317_RECEIPT.json"
+  },
+  "r324_clarification": {
+    "task": "R324",
+    "source_independent_red_team": {
+      "task": "R321",
+      "branch": "review/r321-r317-compression-red-team-20260924",
+      "head": "774aac4105bfe1a171f40f7272fc4267aae6c2f8",
+      "report_blob": "b0b71f4d74596c4744d0353d1654ac5726aeb2bb",
+      "receipt_blob": "2c3d9f881d669ee924cecca106611c6c295a7243",
+      "verdict": "EVIDENCE_BASED_INDEPENDENT_NO_GO_R317_CORE_NOT_FALSIFIED"
+    },
+    "core_r317_no_go_unchanged": true,
+    "caveat": "Do not claim that one correlated Gaussian orthant/convex-set query is inevitably exponential. Kannan-Li 1996 and Cousins-Vempala 2014 provide randomized polynomial-time algorithms for relevant single restricted-Gaussian queries.",
+    "explicit_all_mask_state": {
+      "conditional_first_moments": "Theta(2^n*n)",
+      "full_conditional_covariances": "Theta(2^n*n^2)",
+      "statement_type": "explicit-state output-size bookkeeping, not a lower bound for one orthant integral"
+    },
+    "actual_blocker": "No reusable polynomial-size non-Gaussian all-mask state was found that composes through generic dense ReLU layers with rigorous propagated error and derivable Phase-2 FLOP/residual bounds.",
+    "single_query_sampling_limitation": "A probability/sampling query for one restricted Gaussian does not create the persistent state needed by the next dense layer and supplies no contest-level final-MSE, FlopScope, or residual-time guarantee.",
+    "structured_tmvn_caveat": "Fast hierarchical/low-rank TMVN algorithms exist under rank/sparsity/low-effective-dimension assumptions, but those assumptions are not established for generic dense contest covariance transport.",
+    "parent_head": "6264781a18c1cea2ec6540ea312875ec1d5aba56",
+    "history_policy": "single append-only commit; no rebase/reset/history rewrite"
   }
 }

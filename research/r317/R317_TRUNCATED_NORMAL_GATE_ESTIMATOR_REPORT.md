@@ -173,11 +173,13 @@ Z\mid \operatorname{sign}(Z)=s.
 
 After ReLU, each mask supplies one gate-conditioned component. Tallis/Rosenbaum/Plackett identities can support moments/probabilities for such truncated Gaussian pieces.
 
-This would indeed retain information that single-Gaussian E038 discards. But it has no plausible Phase-2 production path:
+This would indeed retain information that single-Gaussian E038 discards. R321 independently red-teamed the compression claim and narrows the obstruction: **do not infer that one correlated Gaussian orthant/convex-set query is inevitably exponential.** Kannan–Li (FOCS 1996, DOI `10.1109/SFCS.1996.548479`) and Cousins–Vempala (SODA 2014, DOI `10.1137/1.9781611973402.90`) give randomized polynomial-time algorithms for relevant Gaussian restricted-volume/sampling queries.
 
-1. a dense width-(n) ReLU layer has up to (2^n) sign masks; for (n=1024), explicit orthant state is astronomically large before considering depth;
-2. exact multivariate orthant probabilities/moments are themselves high-dimensional integration problems;
-3. collapsing those components back to one mean/covariance returns to E038;
+The production blocker is instead the persistent state needed to compose through further generic dense ReLU layers:
+
+1. if mask-conditioned first moments are stored explicitly, the output-size lower bookkeeping is `Θ(2^n n)`; with one full conditional covariance per mask it is `Θ(2^n n^2)`;
+2. a randomized polynomial-time algorithm for **one** orthant/convex-set probability or restricted-Gaussian sample does not materialize a reusable non-Gaussian all-mask state, does not by itself compose through the next arbitrary dense `W`, and supplies no contest-level propagated-error or FlopScope/residual guarantee for the 16-layer estimator;
+3. collapsing the conditional information back to one mean/covariance returns to E038;
 4. retaining only a fixed small mixture returns to the already-occupied E039/half-space-mixture family unless a genuinely new compression theorem is supplied.
 
 The project's exact non-Gaussian alternative reaches the same obstruction from a different representation. E114 established an exact activation-boundary-flux identity for deep zero-bias ReLU expectations; E119 later built the boundary state mechanically on width<=8/depth<=4 but its rigorous omission certificate retained about 98.18%–98.80% of boundary atoms and could not safely discard even one nonzero atom on the frozen corpus. That is direct project evidence against assuming a compact exact gate/boundary representation without a new structural theorem.
@@ -205,13 +207,14 @@ This case is **cost-plausible but duplicate and accuracy-obstructed**.
 State:
 all materially relevant orthants/activation regions and their truncated moments.
 
-Worst-case state count per dense layer:
-[
-O(2^n)
-]
-before compounding through depth.
+For an **explicit all-mask representation**, the output-size state per dense layer is at least
 
-This case is **mathematically distinct but not plausibly cost-feasible** for (n=1024,L=16) under the Phase-2 FLOP/residual caps, absent a new proven compression identity. No such identity is present in the requested evidence.
+- `Θ(2^n n)` if each mask carries its conditional first moment;
+- `Θ(2^n n^2)` if each mask carries a full conditional covariance.
+
+These are explicit-state sizes, not lower bounds on the complexity of a single orthant integral. R321 verified that randomized polynomial-time single-query Gaussian-volume/sampling algorithms exist. What R321 did **not** find is a reusable polynomial-size non-Gaussian state that preserves the required gate-conditioned information, composes through arbitrary dense layers, has a rigorous propagated approximation bound, and admits a derived Phase-2 FLOP/residual bound.
+
+This case is therefore **mathematically distinct but not plausibly cost-feasible** for (n=1024,L=16) under the Phase-2 FLOP/residual caps on the audited evidence.
 
 ## Boundary-integral variant
 
@@ -222,6 +225,20 @@ Gaussian boundary/Price identities do not create a third route:
 
 Thus “boundary integral” is either a duplicate Gaussian moment evaluator or an already-occupied exact boundary-geometry family.
 
+## R324 clarification from independent R321 red-team
+
+R321 independently audited this exact compression claim on branch `review/r321-r317-compression-red-team-20260924`, head `774aac4105bfe1a171f40f7272fc4267aae6c2f8`, report blob `b0b71f4d74596c4744d0353d1654ac5726aeb2bb`, receipt blob `2c3d9f881d669ee924cecca106611c6c295a7243`.
+
+Its result **confirms the narrow R317 NO_GO but adds an important caveat**:
+
+- one generic correlated Gaussian orthant/convex-set query can have randomized polynomial-time approximation/sampling algorithms (Kannan–Li 1996; Cousins–Vempala 2014);
+- therefore R317 must not claim that a single orthant query is inevitably exponential;
+- the unresolved production object is a **reusable polynomial-size non-Gaussian all-mask state** that survives repeated generic dense ReLU transforms;
+- explicit state has output size `Θ(2^n n)` for per-mask first moments or `Θ(2^n n^2)` for per-mask full covariances;
+- single-query randomized sampling/volume computation does not create that persistent state and gives no theorem mapping its query error/work to final 16-layer activation-mean error, `<2^41` billed FLOPs, and `<0.4 s` residual time.
+
+R321 additionally screened fast structured TMVN algorithms, including hierarchical/low-rank methods, but their rank/sparsity/conditional-structure assumptions are not guaranteed by generic dense contest covariance transport. No qualifying generic-dense compression theorem was found.
+
 ## Decision
 
 **R317 = NO_GO_BEFORE_IMPLEMENTATION.**
@@ -229,11 +246,11 @@ Thus “boundary integral” is either a duplicate Gaussian moment evaluator or 
 Reason:
 
 1. The production-feasible version — exact Tallis/Rosenbaum/Plackett bivariate orthant moments inside a single-Gaussian layerwise closure — is not a new estimator family. It is a direct numerical refinement/descendant of authoritative E038 conditional-Gaussian full-covariance propagation, with E036 and E111 supplying additional negative evidence that Gaussian-response fidelity is not the missing representation.
-2. The genuinely distinct version — retaining exact gate-conditioned truncated-Gaussian components across layers — has exponential orthant/activation-region state in the dense width-1024 setting and no project- or paper-supported compression theorem that yields a credible (<2^{41}) FLOP and (<0.4) s residual path.
+2. The genuinely distinct version — retaining gate-conditioned truncated-Gaussian information across layers — has an explicit all-mask output size of `Θ(2^n n)` for conditional means or `Θ(2^n n^2)` for full conditional covariances. R321 confirms that this must **not** be confused with the complexity of one orthant query: randomized polynomial-time single-query algorithms exist. The blocker is that no audited theorem supplies a reusable polynomial-size non-Gaussian state with rigorous propagated error and credible `<2^{41}` FLOP / `<0.4 s` residual bounds for generic dense layers.
 3. A boundary-integral escape route is already represented by E114–E119 and currently lacks material certified compression.
 
 No gain is predicted. No estimator is preregistered, implemented, or run, because the novelty/cost gate fails at theory screen.
 
 ## Re-entry condition
 
-A future task would need a **new theorem or representation**, not a different Gaussian integral evaluator: specifically, a target-free compression of gate-conditioned orthant/boundary state with a proved or tightly derived polynomial-size state bound and an all-in Phase-2 cost bound. Without that, exact orthant moments either collapse back to E038 or explode combinatorially.
+A future task would need a **new theorem or representation**, not a different single-query Gaussian integral evaluator: specifically, a target-free reusable compression of gate-conditioned orthant/boundary state with a proved polynomial-size state bound, composable layer-to-layer error control, and an all-in Phase-2 FLOP/residual bound. Without that, exact orthant moments either collapse back to E038/E039 or require an explicit all-mask state of exponential output size; polynomial-time single-query Gaussian-volume/sampling algorithms do not by themselves solve that persistent-state problem.
