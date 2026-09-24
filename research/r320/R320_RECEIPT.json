@@ -1,20 +1,60 @@
 {
-  "schema": "arc.whitebox.r320.sidecar_traceability.v1",
+  "schema": "arc.whitebox.r320.sidecar_traceability.v2",
   "task": "R320",
+  "correction_task": "R323",
   "date": "2026-09-24",
-  "status": "COMPLETE",
-  "mode": "report-only traceability audit",
+  "status": "COMPLETE_CORRECTED",
+  "mode": "report-only traceability audit correction",
   "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
   "branch": "review/r320-sidecar-research-traceability-20260924",
+  "correction_parent_head": "ae418aa7bcdb08549b051745816bce16aafe1e7e",
+  "correction_policy": {
+    "append_only": true,
+    "rebase": false,
+    "reset": false,
+    "history_rewrite": false,
+    "main_edit": false,
+    "pr_edit": false,
+    "control_v2_edit": false,
+    "queue_edit": false
+  },
+  "thread_reconciliation": {
+    "supplied_thread_ids": {
+      "R313": "6ab4553b-b804-83eb-a733-f2166dfb251d",
+      "R317": "6ab40c0b-9d34-83ed-8b2e-7f7d787497bb",
+      "R319": "6ab41812-4f20-83eb-a085-455902edc88b"
+    },
+    "direct_thread_uuid_dereference_available_in_repo_interface": false,
+    "verification_basis": "The supplied terminal outputs were independently cross-checked against exact GitHub branch history, heads, reports and receipts; GitHub evidence matches the requested corrections."
+  },
+  "superseded_errors": [
+    {
+      "id": "R313",
+      "old_r320_state": "UNKNOWN / no artifact",
+      "corrected_state": "COMPLETE comparability correction preserved as fast-forward commit on existing R309 branch; no separate R313 branch/files"
+    },
+    {
+      "id": "R317",
+      "old_r320_state": "IN_PROGRESS",
+      "corrected_state": "COMPLETE / EVIDENCE_BASED_NO_GO_BEFORE_IMPLEMENTATION"
+    },
+    {
+      "id": "R319",
+      "old_r320_state": "PENDING",
+      "corrected_state": "COMPLETE / NOT_JOINABLE"
+    }
+  ],
   "formal_control": {
     "branch": "research/control-v2",
-    "head_commit": "089532101b2d1bb767c9eb57dd5c781dbe852b33",
+    "audited_head_commit": "089532101b2d1bb767c9eb57dd5c781dbe852b33",
     "revision": 479,
     "state_blob_sha1": "1c594d83fe0564e3fffac0188fd9c4c48413434c",
-    "r306_r319_jobs_found": 0,
-    "r306_r319_events_found": 0,
-    "status_view_generated_from_state": true,
-    "dedicated_sidecar_registry_found": false
+    "r306_r319_sidecar_jobs_found": 0,
+    "r306_r319_sidecar_events_found": 0,
+    "r313_formal_event_found": false,
+    "r223_finish_event_revision": 193,
+    "dedicated_sidecar_registry_found": false,
+    "note": "Absence of a formal R313 event is not absence of the R313 correction artifact."
   },
   "entries": [
     {
@@ -24,13 +64,8 @@
       "branch": "review/r306-j2w-method-audit-20260924",
       "head": "6519194e8f570b4b519bd97a1f574b33a86033f2",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r306/R306_J2W_METHOD_AUDIT.md",
-        "research/r306/R306_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "e0f86ba1c7b9ee757bc432dbaf7c2e98918ef726",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R307",
@@ -39,13 +74,8 @@
       "branch": "review/r307-andreas-update-audit-20260924",
       "head": "0962a1bd9230253bc37132961043459687aa6c79",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r307/R307_ANDREASHAD04_UPDATE_AUDIT.md",
-        "research/r307/R307_ANDREASHAD04_UPDATE_AUDIT_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "ec96ab7580c0fc16edcbb2d97227d719b80ca8f1",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R308",
@@ -54,28 +84,20 @@
       "branch": "review/r308-theory-scout-20260924",
       "head": "9c3ef5eefe014e7bdb1a11cc8941999048f6654b",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r308/R308_THEORY_SCOUT_REPORT.md",
-        "research/r308/R308_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "0c4232035690fdc2b609fc33feea7cb9667aa7e5",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R309",
       "type": "comparability",
-      "verdict": "COMPLETE_SOURCE_TOOLCHAIN_AUDIT_EXACT_GRADER_REPLAY_UNKNOWN",
+      "verdict": "COMPLETE_SOURCE_TOOLCHAIN_AUDIT_WITH_R313_CORRECTION",
       "branch": "review/r309-toolchain-delta-audit-20260924",
       "head": "1e23a25550369da60b976416fe0f502a6189b833",
-      "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r309/R309_TOOLCHAIN_DELTA_AUDIT.md",
-        "research/r309/R309_TOOLCHAIN_DELTA_AUDIT_RECEIPT.json"
-      ],
+      "report_blob_sha1": "d26f0174b32ffa647a0454bb24be038cdf0e14c1",
       "receipt_blob_sha1": "2eb00990f3e1e8465ca48e918718033c0ecbd395",
+      "artifacts_confirmed": true,
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R310",
@@ -84,13 +106,8 @@
       "branch": "review/r310-leaderboard-top-check-20260924",
       "head": "80d55d7150e7907bd96f99a78a0b88cd4cdd6f5c",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r310/R310_LEADERBOARD_TOP_CHECK.md",
-        "research/r310/R310_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "9145a3b432cfc56fcae1154f24839b182361c699",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R311",
@@ -99,13 +116,8 @@
       "branch": "review/r311-leaderboard-score-comparability-20260924",
       "head": "af16cdf782e97e4a7a1753f1516635191493f0d1",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r311/R311_LEADERBOARD_SCORE_COMPARABILITY.md",
-        "research/r311/R311_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "29891f15e4c976f9541280d6a141a8538be86172",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R312",
@@ -114,25 +126,39 @@
       "branch": "review/r312-luna-public-method-audit-20260924",
       "head": "4af4a8bda987abb99ea4a2f5b85c8d7c7ac46321",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r312/R312_LUNA_PUBLIC_METHOD_AUDIT.md",
-        "research/r312/R312_LUNA_PUBLIC_METHOD_AUDIT_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "c12e4223e22850c7086a21cf6b28a2350a390977",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R313",
-      "type": "unknown_traceability_gap",
-      "verdict": "UNKNOWN",
-      "branch": null,
-      "head": null,
-      "artifacts_confirmed": false,
-      "artifact_files": [],
+      "type": "comparability",
+      "verdict": "COMPLETE_R223_ATTEMPT6_CORRECTION",
+      "branch": "review/r309-toolchain-delta-audit-20260924",
+      "head": "1e23a25550369da60b976416fe0f502a6189b833",
+      "separate_r313_branch": false,
+      "correction_commit": "1e23a25550369da60b976416fe0f502a6189b833",
+      "correction_parent_r309_commit": "d526eb9c8663acad798ec658b740f2a945d83768",
+      "report_blob_sha1": "d26f0174b32ffa647a0454bb24be038cdf0e14c1",
+      "receipt_blob_sha1": "2eb00990f3e1e8465ca48e918718033c0ecbd395",
+      "artifacts_confirmed": true,
       "reflected_in_control_v2": false,
-      "scientific_measurement": null,
-      "note": "No current R313 branch/ref or report/receipt found; no scientific or audit verdict inferred."
+      "formal_r313_event_found": false,
+      "underlying_r223_finish_event_revision": 193,
+      "scientific_measurement_generated_by_sidecar": false,
+      "corrected_measurement_record": {
+        "measurement_task": "R223",
+        "attempt": 6,
+        "panel": "public Phase-2 mini:all-100 development",
+        "rows": 100,
+        "candidate_failures": 0,
+        "parent_failures": 0,
+        "candidate_adjusted_score": 8.171116513490032e-9,
+        "parent_r209_adjusted_score": 8.170397440117226e-9,
+        "parent_minus_candidate_mean": -7.190733728024271e-13,
+        "candidate_worse_than_parent_by": 7.190733728024271e-13,
+        "terminal_development_verdict": "SCIENTIFIC_REJECT_DROP_V25_LOCAL_FEED",
+        "interpretation": "same-panel development NO-GO"
+      }
     },
     {
       "id": "R314",
@@ -141,13 +167,8 @@
       "branch": "review/r314-r311-comparability-independent-audit-20260924",
       "head": "3c350f49176fc3bfff259f88288b353517946bc1",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r314/R314_R311_COMPARABILITY_INDEPENDENT_AUDIT.md",
-        "research/r314/R314_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "1c353d3746a83006b4cff0b49f041d6b5aa2e89e",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R315",
@@ -156,13 +177,8 @@
       "branch": "review/r315-top2-top3-config-audit-20260924",
       "head": "aa5806c4c6b1bee41acf6ad6785aa53aac363120",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r315/R315_TOP2_TOP3_CONFIG_AUDIT.md",
-        "research/r315/R315_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "44699d71bba3d639b97b55eac17d3fe56d21ef4b",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R316",
@@ -171,29 +187,24 @@
       "branch": "review/r316-a-s6-public-method-audit-20260924",
       "head": "aee8e4fd50efbbfb248f9c4586a9e3df37f6d965",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r316/R316_A_S6_PUBLIC_METHOD_AUDIT.md",
-        "research/r316/R316_A_S6_PUBLIC_METHOD_AUDIT_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "a9c4aca60ba7a588fbd90a21d4736da0a8393f9b",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R317",
       "type": "theory",
-      "verdict": "IN_PROGRESS",
+      "verdict": "EVIDENCE_BASED_NO_GO_BEFORE_IMPLEMENTATION",
       "branch": "review/r317-truncated-normal-gate-estimator-20260924",
       "head": "6264781a18c1cea2ec6540ea312875ec1d5aba56",
-      "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r317/R317_TRUNCATED_NORMAL_GATE_ESTIMATOR_REPORT.md",
-        "research/r317/R317_RECEIPT.json"
-      ],
+      "report_blob_sha1": "102854932f111e793657747a4aa227b23f19e7fc",
       "receipt_blob_sha1": "926e190d4672d9a8f26853566bf66b4c82cba291",
+      "artifacts_confirmed": true,
       "reflected_in_control_v2": false,
-      "scientific_measurement": null,
-      "note": "Per R320 instruction, status only; no task conclusion is reported or relied upon."
+      "scientific_measurement_generated_by_sidecar": false,
+      "estimator_implementation": false,
+      "estimator_execution": false,
+      "synthetic_runs": 0,
+      "public_benchmark_runs": 0
     },
     {
       "id": "R318",
@@ -202,71 +213,61 @@
       "branch": "review/r318-top6-public-config-audit-20260924",
       "head": "d0138a3fe772c712d331f5fde0c7e75be5bb56b7",
       "artifacts_confirmed": true,
-      "artifact_files": [
-        "research/r318/R318_TOP6_PUBLIC_CONFIG_AUDIT.md",
-        "research/r318/R318_TOP6_PUBLIC_CONFIG_AUDIT_RECEIPT.json"
-      ],
-      "receipt_blob_sha1": "501fae48dc32112772b6cc55132663f9a23d24f9",
       "reflected_in_control_v2": false,
-      "scientific_measurement": false
+      "scientific_measurement_generated_by_sidecar": false
     },
     {
       "id": "R319",
-      "type": "pending",
-      "verdict": "PENDING",
-      "branch": null,
-      "head": null,
-      "artifacts_confirmed": false,
-      "artifact_files": [],
+      "type": "comparability",
+      "verdict": "NOT_JOINABLE",
+      "branch": "review/r319-public50-r209-join-audit-20260924",
+      "head": "9086b846cc6e11ad91117870c3015d25bfc5504a",
+      "report_blob_sha1": "c858a8f3bd29f50c5188894aeaaa73e2208a374f",
+      "receipt_blob_sha1": "517c4ea88041432c6929c561b18b42a01be94761",
+      "artifacts_confirmed": true,
       "reflected_in_control_v2": false,
-      "scientific_measurement": null,
-      "note": "Per R320 instruction, pending status only; no conclusion inferred."
+      "scientific_measurement_generated_by_sidecar": false,
+      "join": {
+        "grader_public_rows": 50,
+        "public_network_id_present": "0/50",
+        "public_target_sha256_present": "0/50",
+        "r209_network_id_present": "100/100",
+        "r209_target_sha256_present": "100/100",
+        "direct_key_coverage": "0/50",
+        "overlap_test_possible": false,
+        "full_join_proven": false
+      }
     }
   ],
   "measurement_classification": {
-    "confirmed_new_estimator_measurements_in_completed_sidecars": 0,
-    "completed_theory_only": [
-      "R308"
-    ],
-    "completed_leaderboard_forensic": [
-      "R306",
-      "R307",
-      "R310",
-      "R312",
-      "R315",
-      "R316",
-      "R318"
-    ],
-    "completed_comparability": [
-      "R309",
-      "R311",
-      "R314"
-    ],
-    "traceability_gap": [
-      "R313"
-    ],
-    "status_only_no_conclusion": [
-      "R317",
-      "R319"
-    ],
-    "note": "References to older measured R209/R223 evidence do not convert sidecar audits into new experiments."
+    "new_estimator_measurements_generated_by_r306_r319_sidecars": 0,
+    "real_prior_measurement_correctly_restored_by_r313": "R223 attempt 6",
+    "r223_attempt6_is_scientific_measurement": true,
+    "r223_attempt6_same_panel_development_no_go": true,
+    "note": "R313 corrects traceability to an existing R223 measurement; it does not create a new measurement."
   },
   "leaderboard_r209": {
-    "decision": "NOT_COMPARABLE",
+    "comparability_decision": "NOT_COMPARABLE",
+    "join_decision": "NOT_JOINABLE",
     "supporting_sidecars": [
       "R311",
-      "R314"
+      "R314",
+      "R319"
     ],
-    "blocker": "Exact immutable join between grader-public leaderboard panel and corresponding R209 rows, with compatible scoring provenance, is not established.",
+    "blocker": "The official grader-public 50 rows expose no canonical network_id manifest; an immutable official public-50 canonical-ID manifest compatible with R224 identity semantics is missing.",
+    "public_network_id_coverage": "0/50",
     "ratio_computed": false,
     "gap_computed": false,
     "place_inferred": false
   },
-  "recommended_next_step": "Coordinator-owned append-only reconciliation of completed sidecars using immutable task ID, branch head and receipt URL/hash through an explicitly supported archival/import path; do not fabricate historical claim/start/finish. Resolve R313 first; keep R317/R319 pending until actually complete.",
+  "later_tasks": {
+    "R321": "started after original R320 audit window; no conclusion imported into this correction",
+    "R322": "started after original R320 audit window; no conclusion imported into this correction"
+  },
+  "recommended_next_step": "Coordinator-owned append-only reconciliation of completed sidecars using immutable task ID, branch head and receipt/report hashes through a supported archival/import path; represent R313 as a correction to R309 and do not fabricate historical claim/start/finish events.",
   "report": {
     "path": "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
-    "creation_commit": "a3adcdc72b5b8935b65cb35b36dc9f0eb45e0eed",
-    "git_blob_sha1": "f0fee199cc6ad3334e1da2f09ac2dc919956ed45"
+    "git_blob_sha1": "9d68523175215ede160519387756991d11daa4cd"
   },
   "execution_accounting": {
     "estimator_runs": 0,
