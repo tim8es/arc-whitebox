@@ -1,0 +1,88 @@
+{
+  "schema": "arc.whitebox.r287.direct_git_cost_reassessment.receipt.v1",
+  "id": "R287",
+  "run_id": "R287-direct-git-cost-recheck-20260924-controlcenter",
+  "owner": "Control Center 7.09",
+  "status": "COMPLETE",
+  "verdict": "PUBLIC_RUNNER_COST_ZERO_ARTIFACT_STORAGE_GATE_SUPERSEDED_NO_DISPATCH_AUTHORIZATION",
+  "scientific_diagnostic_complete": false,
+  "prior_attempt": {
+    "run_id": "R287-free-runner-audit-20260923",
+    "status": "WAITING_INPUT",
+    "missing_input": "1 MiB included shared Actions artifact/GitHub Packages storage, required only by the old Actions-artifact persistence plan"
+  },
+  "current_evidence": {
+    "repository": {
+      "full_name": "tim8es/arc-whitebox",
+      "visibility": "public",
+      "private": false,
+      "reported_size_kb": 20884
+    },
+    "pr": {
+      "number": 36,
+      "head": "f6fb9018504632edffa1fb80d14ce8a68f442602",
+      "state": "open/draft/unmerged"
+    },
+    "workflow": {
+      "path": ".github/workflows/r293-v25-residual-capture.yml",
+      "blob_sha1": "19f6f95ceb2cacef5497eafd5e31e20e86cfad8c",
+      "runner": "ubuntu-24.04",
+      "jobs": 2,
+      "direct_git_pushes": 2,
+      "artifact_upload": false,
+      "github_packages": false,
+      "git_lfs": false,
+      "cache": false,
+      "pat": false
+    },
+    "protocol": {
+      "path": "research/r293/R293_PROTOCOL.json",
+      "blob_sha1": "cc51198550b0d35b7fb0e34e8b072d74a456476c",
+      "result_branch": "research/r293-v25-capture-result",
+      "branch_creation_authorized": false,
+      "merge_authorized": false,
+      "actions_run_authorized": false,
+      "benchmark_authorized": false
+    },
+    "result_branch_exists": false,
+    "preflight": {
+      "path": "scripts/r293_capture_workflow_preflight.py",
+      "blob_sha1": "ba27e0a6f6e13e24344b3cec6b60a5717e45b51f",
+      "status": "PASS",
+      "exit_code": 0,
+      "runtime": "Python 3.13.13",
+      "verified_exact_head": "f6fb9018504632edffa1fb80d14ce8a68f442602"
+    },
+    "direct_git_persistence_audit": {
+      "receipt_url": "https://github.com/tim8es/arc-whitebox/blob/b097ad413eb63d17078eab95758ed14642d5d7e7/research/r290/R290_RECEIPT.json",
+      "verdict": "DIRECT_GIT_PERSISTENCE_CONFIRMED_NO_ACTIONS_ARTIFACT_STORAGE"
+    },
+    "official_sources": [
+      "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+      "https://docs.github.com/en/billing/concepts/product-billing/github-actions"
+    ]
+  },
+  "conclusion": {
+    "github_standard_public_runner_incremental_cost": "$0 documented",
+    "actions_artifact_storage_quota_required": false,
+    "third_party_billing_live_verified": false,
+    "dispatch_authorized": false,
+    "user_gate": "explicit authorization for result-branch creation, PR merge, and one-time workflow dispatch"
+  },
+  "accounting": {
+    "actions_runs": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "dataset_accessed_or_downloaded": 0,
+    "dependencies_installed_or_downloaded": 0,
+    "paid_resources": false,
+    "result_branch_created": 0,
+    "submission": false,
+    "holdout_access": 0,
+    "leaderboard_edits": false,
+    "canonical_edits": false
+  },
+  "report": {
+    "path": "research/r287/R287_DIRECT_GIT_COST_REASSESSMENT_REPORT.md"
+  }
+}
