@@ -6344,6 +6344,44 @@
         }
       },
       "at": "2026-09-24T01:46:36.266+00:00"
+    },
+    {
+      "revision": 472,
+      "action": "enqueue",
+      "job": "R303",
+      "owner": "coordinator",
+      "payload": {
+        "title": "Refresh official ARC leaderboard and exact score comparability",
+        "hypothesis_id": "OFFICIAL-PHASE2-LEADERBOARD-FRESH-20260924",
+        "priority": 1,
+        "deliverable": "Refresh the current official ARC White-Box Phase-2 leaderboard and rules from first-party AIcrowd sources; freeze access date/time and source URLs/hashes. Compare the current visible leader with the strongest verified project results only when exact panel/split and metric are demonstrably comparable. Reconcile against R263/R271 receipts and current `research/STATUS.md`, specifically the visible-50 vs public mini:all-100 identity mismatch; do not infer an exact score gap or rank if still NOT_COMPARABLE. Record the current official best row, score precision/rounding, deadline/rules, and a clear decision on whether a valid direct comparison exists. Read-only: no benchmark/Actions/estimator, no data/dependency downloads, no paid resources, no private/holdout/full access, no submission, no PR/leaderboard/canonical edits. Save one append-only Markdown report and receipt on a report-only branch; never write main or PR #36.",
+        "depends_on": [
+          "R263",
+          "R271"
+        ],
+        "assigned_owner": "r303-live-leaderboard-statistician"
+      },
+      "at": "2026-09-24T01:53:54.143+00:00"
+    },
+    {
+      "revision": 473,
+      "action": "claim",
+      "job": "R303",
+      "owner": "r303-live-leaderboard-statistician",
+      "payload": {},
+      "at": "2026-09-24T01:53:54.143+00:00"
+    },
+    {
+      "revision": 474,
+      "action": "start",
+      "job": "R303",
+      "owner": "r303-live-leaderboard-statistician",
+      "payload": {
+        "run_id": "R303-official-leaderboard-refresh-20260924",
+        "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+        "command": "read-only official leaderboard/rules refresh and panel comparability audit; report/receipt on isolated review branch; no Actions/benchmark/data/paid/holdout/submission/PR edits"
+      },
+      "at": "2026-09-24T01:53:54.143+00:00"
     }
   ],
   "jobs": [
@@ -10115,10 +10153,32 @@
         "sha256": "a5c3ee1b4f04c194b9a5697292388c6223e5b3ab2fb117850beb6827b57dea56"
       },
       "reason": "Corrected only the committed R296 security self-check argument-order bug in PR #36; preserved R296 history. The exact corrected checker, workflow and protocol bytes passed 21/21 synthetic/static checks on Python 3.13.13/Git 2.55.0.windows.3. Confirmed CAS success and rejection paths, rerun/duplicate dispatch gates, action pins and token non-persistence. PR #36 remains open/draft/unmerged; no Actions, benchmark, estimator, real data, dependencies, paid resources, result branch, holdout, submission, leaderboard or canonical edit."
+    },
+    {
+      "id": "R303",
+      "priority": 1,
+      "title": "Refresh official ARC leaderboard and exact score comparability",
+      "hypothesis_id": "OFFICIAL-PHASE2-LEADERBOARD-FRESH-20260924",
+      "depends_on": [
+        "R263",
+        "R271"
+      ],
+      "assigned_owner": "r303-live-leaderboard-statistician",
+      "status": "RUNNING",
+      "owner": "r303-live-leaderboard-statistician",
+      "attempts": [
+        {
+          "run_id": "R303-official-leaderboard-refresh-20260924",
+          "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+          "command": "read-only official leaderboard/rules refresh and panel comparability audit; report/receipt on isolated review branch; no Actions/benchmark/data/paid/holdout/submission/PR edits",
+          "status": "RUNNING"
+        }
+      ],
+      "deliverable": "Refresh the current official ARC White-Box Phase-2 leaderboard and rules from first-party AIcrowd sources; freeze access date/time and source URLs/hashes. Compare the current visible leader with the strongest verified project results only when exact panel/split and metric are demonstrably comparable. Reconcile against R263/R271 receipts and current `research/STATUS.md`, specifically the visible-50 vs public mini:all-100 identity mismatch; do not infer an exact score gap or rank if still NOT_COMPARABLE. Record the current official best row, score precision/rounding, deadline/rules, and a clear decision on whether a valid direct comparison exists. Read-only: no benchmark/Actions/estimator, no data/dependency downloads, no paid resources, no private/holdout/full access, no submission, no PR/leaderboard/canonical edits. Save one append-only Markdown report and receipt on a report-only branch; never write main or PR #36."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 471,
+  "revision": 474,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
