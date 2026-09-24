@@ -1,0 +1,181 @@
+{
+  "schema": "arc.whitebox.r335.accuracy-side-estimator-scout.v1",
+  "job": "R335",
+  "status": "COMPLETE",
+  "verdict": "EVIDENCE_BASED_NO_GO",
+  "classification": "ALREADY_COVERED_AT_DEEP_REALIZATION",
+  "ideas_admitted": 0,
+  "control": {
+    "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "branch": "review/r335-accuracy-side-estimator-scout-20260924",
+    "report_only": true,
+    "expected_file_count": 2,
+    "main_edited": false,
+    "pr_edited": false,
+    "control_edited": false,
+    "queue_edited": false
+  },
+  "r333_motivation": {
+    "branch": "review/r333-r209-compute-floor-headroom-20260924",
+    "head": "b089c3e24f7ea5499b66f09da27a2be3f9b5d3de",
+    "report_blob": "5e2b58a80a647b9f0a8dcc3355a65d8e5a01e4f5",
+    "receipt_blob": "3718a7ce748a57db36f08fbd64fd55cabd51c801",
+    "mean_raw_mse_r209": 2.228303490170447e-8,
+    "illustrative_required_mean_raw_mse_at_multiplier_0_1": 2.1e-8,
+    "conditional_relative_raw_mse_reduction_needed": 0.05757900157515477,
+    "same_panel_scorer_condition_required": true,
+    "public50_join_proven": false,
+    "interpretation": "research prioritization target only; not a proven competition gap"
+  },
+  "candidate_screened": {
+    "name": "characteristic-function positive-part propagation",
+    "acronym": "CFPP",
+    "count": 1,
+    "scalar_identity_new_to_named_project_mechanisms": true,
+    "deep_estimator_family_genuinely_unoccupied": false,
+    "precise_formula": "E[X_+] = E[X]/2 + (1/pi) integral_0^infinity (1-Re phi_X(t))/t^2 dt; for Z_j=w_j^T H, phi_Zj(t)=Phi_H(t w_j)",
+    "assumptions": [
+      "finite first absolute moment",
+      "access to required joint characteristic-function values or a certified approximation"
+    ],
+    "accuracy_relevance": "direct deterministic control of neuron-mean error, hence raw final-layer MSE; not merely a sampling-variance statement",
+    "blocker": "joint characteristic-function propagation through generic dense componentwise ReLU has no new polynomial-size closed state; exact realization re-enters orthant/boundary state, tractable approximations re-enter occupied sampling/Gaussian-mixture/low-rank families",
+    "phase2_flop_bound_proven": false,
+    "residual_lt_0_4s_path_proven": false
+  },
+  "primary_literature": [
+    {
+      "authors": "Iosif Pinelis",
+      "year": 2015,
+      "title": "Characteristic function of the positive part of a random variable and related results, with applications",
+      "venue": "Statistics & Probability Letters 106, 281-286",
+      "doi": "10.1016/j.spl.2015.07.031",
+      "url": "https://doi.org/10.1016/j.spl.2015.07.031"
+    },
+    {
+      "authors": "Iosif Pinelis",
+      "year": 2018,
+      "title": "Positive-part moments via characteristic functions, and more general expressions",
+      "venue": "Journal of Theoretical Probability 31, 527-555",
+      "doi": "10.1007/s10959-016-0709-1",
+      "url": "https://doi.org/10.1007/s10959-016-0709-1",
+      "author_preprint": "https://arxiv.org/abs/1603.07365"
+    }
+  ],
+  "dedupe": {
+    "R209": {
+      "head": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+      "archive_blob": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+      "v25_blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "v25_sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742"
+    },
+    "R223": {
+      "head": "09efbb920313850a4727bd34db9088a46227ce5f",
+      "protocol_blob": "1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+      "terminal_receipt_blob": "a2ea83717b979b40e8ec13703c7465e0f50189ba",
+      "normalized_result_blob": "c8b617c43ff1145977c38e7e1cca6d23985ec392"
+    },
+    "R265": {
+      "head": "bc287eed95df49fb41d81d157b15471a5aa73a3d",
+      "report_blob": "e9b5df06173bf70a587774f9374042962847d9e2",
+      "receipt_blob": "2c0b54df545a50faf215d049f3a3363927fd4eb1"
+    },
+    "R276": {
+      "head": "a646038b5aceb5428d6583b07525f394f4820c0d",
+      "report_blob": "4970614c1ac789b008260d726a2bbd5272116434",
+      "receipt_blob": "56f40cc6b109d769e521c9ba0cf363c7683ef5ab"
+    },
+    "R308": {
+      "head": "9c3ef5eefe014e7bdb1a11cc8941999048f6654b",
+      "report_blob": "e07ddccdf3744c741a571556d7597ac15b460c4b",
+      "receipt_blob": "0c4232035690fdc2b609fc33feea7cb9667aa7e5"
+    },
+    "R317": {
+      "head": "6ede298753b7ebc35765e18479775879769712ff",
+      "report_blob": "b134ccb1c77c3d0e70fe70b64b651e6e5dd1f77c",
+      "receipt_blob": "81f6adbc9cc64ab5ad3f4aaf230fe035fffa5ea5"
+    },
+    "R321": {
+      "head": "774aac4105bfe1a171f40f7272fc4267aae6c2f8",
+      "report_blob": "b0b71f4d74596c4744d0353d1654ac5726aeb2bb",
+      "receipt_blob": "2c3d9f881d669ee924cecca106611c6c295a7243"
+    },
+    "R333": {
+      "head": "b089c3e24f7ea5499b66f09da27a2be3f9b5d3de",
+      "report_blob": "5e2b58a80a647b9f0a8dcc3355a65d8e5a01e4f5",
+      "receipt_blob": "3718a7ce748a57db36f08fbd64fd55cabd51c801"
+    },
+    "E036": {
+      "branch": "research/e036-price4-covariance-20260915",
+      "head": "99ab17d2814ba3ecf05909e03328f1f23a35b5a7",
+      "protocol_blob": "fd191c7b88ce8af759bf8467b2db0e052a36d2c0",
+      "result_blob": "fc27202a39e5fa825754ea50e11366bb7ef3b1be"
+    },
+    "E038": {
+      "branch": "research/e038-conditional-gaussian-cov-20260915",
+      "head": "8003377936f1f95c154a35b3d9c2bebfe3b81b14",
+      "protocol_blob": "06993b1f3fc0670c1e6f2c08ac36e0a6242994b4",
+      "result_blob": "665ad6ee0ef4661a2bdb76eb7cf4f0af1c4988d1"
+    },
+    "E038_sampling": {
+      "branch": "research/e038-sobol-trajectory-qmc-20260915",
+      "head": "d528ba57fa4fad854a1c6b20115b65662844c087",
+      "protocol_blob": "0ac0ef2aeae8dba6c8a758859284e295c420cba3",
+      "result_blob": "26894833cce52efd3f2341b9c29a2754f944bbe6"
+    },
+    "E039": {
+      "head": "b0d3ffe85b3a2c1128fb190ede149ab11f4a2f88",
+      "protocol_blob": "c7d96d16e2e75500277d6892a6f8c9c1ac0f5674",
+      "result_blob": "7556cdfda8227bfc0ee1936c2a463d48d9c73d2f"
+    },
+    "E104": {
+      "head": "d8e06c806d18b1ccd1405648cf990e0b32d5762f",
+      "protocol_blob": "61d5abb0ce7f773fdc05ee5b0ab787a6f2237930",
+      "result_blob": "e896296de3c487a88f522d3fca3182645205ef86"
+    },
+    "E111": {
+      "head": "9d0dcc429fc4b62a6607ea28c97fbb44327dbaf2",
+      "protocol_blob": "08d1068347da04dc94f8f492b00d1c46021c2e25",
+      "result_blob": "61f4e243352fe9d7b505777d2503313700af77f0",
+      "terminal_receipt_blob": "91d8ce0c2314c5356456e05dc646a6630751788d"
+    },
+    "E114": {
+      "head": "b9f64030f65da9b32fc7718d04fb108ee1a73dab",
+      "protocol_blob": "81722ba7d928c68e1d12079d22f10ab75b5ac722",
+      "result_blob": "4f5df3f8a3c222b7e18f62ac9774902ded58972a",
+      "receipt_blob": "f34ea6f233c954cfcc612be8dcd8949e0f6ccd24"
+    },
+    "E119": {
+      "head": "a69e542fa8a53708dd581aac47739fc5d8e36955",
+      "protocol_blob": "5f0f9c9a4521fd94ebc0f60fff758a5c58cf107b",
+      "result_blob": "b31551896b7138309da1cf17fe651674b1a5a9c5",
+      "receipt_blob": "0a38d66197f8f817a3954c99850122714a77cce7"
+    }
+  },
+  "preregistered_reentry_falsifier": {
+    "executed": false,
+    "fixture": "future exact-small synthetic only; generic dense zero-bias ReLU, width 8 depth 4; no contest targets",
+    "go_thresholds": [
+      "candidate raw mean-vector MSE <= 0.94 * matched parent raw MSE",
+      "median per-neuron squared error does not worsen",
+      "static production extrapolation < 2^41 FLOPs/network",
+      "credible width-1024 residual path < 0.4 s",
+      "no fallback to occupied sampling, Gaussian/mixture, low-rank/compression, or explicit mask/boundary families"
+    ]
+  },
+  "execution_accounting": {
+    "code_created": false,
+    "estimator_runs": 0,
+    "synthetic_runs": 0,
+    "benchmark_runs": 0,
+    "downloads": false,
+    "actions_runs": 0,
+    "paid_compute": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "main_edit": false,
+    "pr_edit": false,
+    "control_edit": false,
+    "queue_edit": false
+  }
+}
