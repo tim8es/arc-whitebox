@@ -1,0 +1,268 @@
+{
+  "schema": "arc.whitebox.r310.leaderboard_top_check.v1",
+  "task": "R310",
+  "status": "COMPLETE",
+  "mode": "public-page read-only snapshot and frozen-snapshot delta",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r310-leaderboard-top-check-20260924",
+  "snapshot": {
+    "captured_at_utc": "2026-09-24T09:29:17.177839Z",
+    "official_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "total_records_or_pages": "NOT_DISPLAYED_IN_CAPTURED_PUBLIC_DOM",
+    "parser_visible_extent": "rows through displayed rank 50",
+    "score_capture_rule": "preserve exact public DOM string",
+    "submission_id_rule": "resolved from each row's public View link target"
+  },
+  "comparator": {
+    "task": "R304",
+    "captured_at_utc": "2026-09-24T02:36:19.062Z",
+    "commit": "5351f455c87afdd6eb3a4147e94c38d191968d18",
+    "path": "research/r304/R304_RAW_VISIBLE_ROWS.json",
+    "blob_sha": "2fee6241febe322fbff2cbc605581590fc072ee6",
+    "source_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+    "recorded_page_range": "Showing 1–100 of 195"
+  },
+  "first_place": {
+    "participant": "J2W",
+    "rank": "01",
+    "submission_id": 331539,
+    "current_score_display": "0.0000000021",
+    "r304_score_display": "2.10e−9",
+    "displayed_value_changed": false,
+    "exact_unrounded_score_known": false
+  },
+  "current_first_20_visible_rows": [
+    {
+      "row": 1,
+      "rank": "01",
+      "participant": "J2W",
+      "submission_id": 331539,
+      "score": "0.0000000021",
+      "entries": 321
+    },
+    {
+      "row": 2,
+      "rank": "02",
+      "participant": "suliman_tadros",
+      "submission_id": 331931,
+      "score": "0.0000000022",
+      "entries": 52
+    },
+    {
+      "row": 3,
+      "rank": "03",
+      "participant": "marius_binner",
+      "submission_id": 331953,
+      "score": "0.0000000023",
+      "entries": 158
+    },
+    {
+      "row": 4,
+      "rank": "04",
+      "participant": "a_s6",
+      "submission_id": 331756,
+      "score": "0.0000000025",
+      "entries": 108
+    },
+    {
+      "row": 5,
+      "rank": "05",
+      "participant": "Luna",
+      "submission_id": 332100,
+      "score": "0.0000000026",
+      "entries": 7
+    },
+    {
+      "row": 6,
+      "rank": "06",
+      "participant": "Puffi",
+      "submission_id": 330322,
+      "score": "0.0000000028",
+      "entries": 78
+    },
+    {
+      "row": 7,
+      "rank": "06",
+      "participant": "reds",
+      "submission_id": 331730,
+      "score": "0.0000000028",
+      "entries": 60
+    },
+    {
+      "row": 8,
+      "rank": "08",
+      "participant": "oqaris",
+      "submission_id": 330951,
+      "score": "0.0000000031",
+      "entries": 93
+    },
+    {
+      "row": 9,
+      "rank": "08",
+      "participant": "ben3",
+      "submission_id": 331882,
+      "score": "0.0000000031",
+      "entries": 23
+    },
+    {
+      "row": 10,
+      "rank": "08",
+      "participant": "mliston",
+      "submission_id": 332026,
+      "score": "0.0000000031",
+      "entries": 41
+    },
+    {
+      "row": 11,
+      "rank": "11",
+      "participant": "Camaro",
+      "submission_id": 331734,
+      "score": "0.0000000033",
+      "entries": 68
+    },
+    {
+      "row": 12,
+      "rank": "11",
+      "participant": "MeatProxy",
+      "submission_id": 332060,
+      "score": "0.0000000033",
+      "entries": 12
+    },
+    {
+      "row": 13,
+      "rank": "13",
+      "participant": "thegamers",
+      "submission_id": 330514,
+      "score": "0.0000000036",
+      "entries": 38
+    },
+    {
+      "row": 14,
+      "rank": "13",
+      "participant": "hyojun_kwon",
+      "submission_id": 332017,
+      "score": "0.0000000036",
+      "entries": 116
+    },
+    {
+      "row": 15,
+      "rank": "13",
+      "participant": "emanuel_ruzak",
+      "submission_id": 332103,
+      "score": "0.0000000036",
+      "entries": 4
+    },
+    {
+      "row": 16,
+      "rank": "16",
+      "participant": "shiv_m",
+      "submission_id": 332013,
+      "score": "0.0000000037",
+      "entries": 125
+    },
+    {
+      "row": 17,
+      "rank": "16",
+      "participant": "lode_dockx",
+      "submission_id": 332122,
+      "score": "0.0000000037",
+      "entries": 81
+    },
+    {
+      "row": 18,
+      "rank": "18",
+      "participant": "jlacombe",
+      "submission_id": 332114,
+      "score": "0.0000000039",
+      "entries": 45
+    },
+    {
+      "row": 19,
+      "rank": "19",
+      "participant": "fklassen",
+      "submission_id": 331831,
+      "score": "0.0000000040",
+      "entries": 40
+    },
+    {
+      "row": 20,
+      "rank": "20",
+      "participant": "thibault_gounant",
+      "submission_id": 331819,
+      "score": "0.0000000041",
+      "entries": 131
+    }
+  ],
+  "delta_vs_r304_first_20_visible_rows": {
+    "entered": [
+      "Luna",
+      "jlacombe"
+    ],
+    "left": [
+      "dogus_ozel",
+      "LuDoe"
+    ],
+    "changed_common_rows": [
+      {
+        "participant": "emanuel_ruzak",
+        "r304_rank": "16",
+        "current_rank": "13",
+        "r304_score": "3.80e−9",
+        "current_score": "0.0000000036"
+      },
+      {
+        "participant": "shiv_m",
+        "r304_rank": "15",
+        "current_rank": "16",
+        "r304_score": "3.70e−9",
+        "current_score": "0.0000000037"
+      },
+      {
+        "participant": "lode_dockx",
+        "r304_rank": "19",
+        "current_rank": "16",
+        "r304_score": "4.20e−9",
+        "current_score": "0.0000000037"
+      },
+      {
+        "participant": "fklassen",
+        "r304_rank": "17",
+        "current_rank": "19",
+        "r304_score": "4.00e−9",
+        "current_score": "0.0000000040"
+      },
+      {
+        "participant": "thibault_gounant",
+        "r304_rank": "18",
+        "current_rank": "20",
+        "r304_score": "4.10e−9",
+        "current_score": "0.0000000041"
+      }
+    ],
+    "tie_semantics_note": "R304 had three displayed-rank-19 rows, so jlacombe was visible row 21 but rank 19. Primary comparison uses first 20 visible rows."
+  },
+  "exclusions": {
+    "andreas_had04_analysis": false,
+    "andreas_had04_note": "Not analyzed; R307 owns that audit. It is outside current first 20.",
+    "exact_gap_to_project_estimator": false,
+    "anonymous_row_to_project_code_linkage": false,
+    "causal_inference_from_score_or_rank": false
+  },
+  "actions": {
+    "public_page_read": true,
+    "github_report_only_branch_created": true,
+    "benchmark": false,
+    "actions_run": false,
+    "dataset_download": false,
+    "package_download_or_install": false,
+    "submission": false,
+    "main_edit": false,
+    "pr_edit": false,
+    "control_edit": false
+  },
+  "artifacts": {
+    "report_path": "research/r310/R310_LEADERBOARD_TOP_CHECK.md",
+    "report_blob_sha": "25d8ed9337c002b6c1eb53ea093c8d119947d9f0",
+    "report_commit": "24e278e4dcd20d7c7fd496c96a4b2aefa07ef3bf"
+  }
+}
