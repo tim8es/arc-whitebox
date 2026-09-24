@@ -1,0 +1,107 @@
+{
+  "schema": "arc.whitebox.r347.hermite-spectral-mean-estimator-scout.v1",
+  "task": "R347",
+  "status": "COMPLETE",
+  "verdict": "ALREADY_COVERED",
+  "measurement_classification": "NO_NEW_ESTIMATOR_MEASUREMENT",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r347-hermite-spectral-mean-estimator-scout-20260924",
+  "stop_rule": "Exact/equivalent Hermite/polynomial-chaos spectral-truncation family already occupied; stop before literature derivation, analytic gate, implementation, or run.",
+  "direct_duplicate": {
+    "experiment": "E115",
+    "branch": "research/e115-hermite-chaos-certified-tail-20260919",
+    "head": "85552f57c263be172fdceae25fffe278be065680",
+    "protocol_path": "research/E115_PROTOCOL.md",
+    "protocol_blob_sha1": "a63ac3cdedc6bf8a4948c22b8b907a1333f84f70",
+    "receipt_path": "research/E115_RESULT_RECEIPT.json",
+    "receipt_blob_sha1": "1f4c10bba845238bd07055c2f423a92c0cdb612a",
+    "mechanism": "dense total-degree Wiener/Hermite chaos transport with exact Parseval L2 remainder",
+    "representation": "f(X)=sum_{|alpha|>=0} c_alpha He_alpha(X)",
+    "truncation_certificate": "E[(f-P_p f)^2]=sum_{|alpha|>p} alpha! c_alpha^2",
+    "basis_count": "B(d,p)=C(d+p,p)",
+    "verdict": "TERMINAL_NO_GO_DENSE_TOTAL_DEGREE_HERMITE_CHAOS",
+    "historical_falsifier": {
+      "degree1_parseval_remainder_mse": 0.09084505690810465,
+      "degree2_parseval_remainder_mse": 0.011267585362156995,
+      "degree1_basis_count": 1025,
+      "degree2_basis_count": 525825,
+      "degree2_two_layer_transport_lower_bound_flops": 2205469900800,
+      "phase2_budget_flops": 2199023255552
+    },
+    "scope_caveat": "Does not rule out a separately preregistered low-rank/tensorized chaos mechanism with a distinct experiment identity and explicit rank-growth certificate."
+  },
+  "registry": {
+    "R320": {
+      "branch": "review/r320-sidecar-research-traceability-20260924",
+      "head": "949361e498dd4339e75ddc2baf199782f7a9a5e5",
+      "report_blob": "41b14238c0062081e1b3970e2961cb7c18ef88f9",
+      "receipt_blob": "280516be04a2606a431f084e8cef9e678d290184"
+    },
+    "R265": {
+      "head": "bc287eed95df49fb41d81d157b15471a5aa73a3d",
+      "report_blob": "e9b5df06173bf70a587774f9374042962847d9e2",
+      "occupation_text": "polynomial/TensorSketch, Hermite/chaos"
+    },
+    "R276": {
+      "head": "a646038b5aceb5428d6583b07525f394f4820c0d",
+      "report_blob": "4970614c1ac789b008260d726a2bbd5272116434",
+      "occupation_text": "polynomial/TensorSketch, Hermite/chaos"
+    },
+    "R308": {
+      "head": "9c3ef5eefe014e7bdb1a11cc8941999048f6654b",
+      "report_blob": "e07ddccdf3744c741a571556d7597ac15b460c4b",
+      "occupation_text": "polynomial/Hermite/TensorSketch"
+    },
+    "R209": {
+      "head": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+      "archive_blob": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+      "normalized_v25_blob": "0183d0570f7c9965e00e8553ffc003c313865232"
+    },
+    "R223": {
+      "head": "09efbb920313850a4727bd34db9088a46227ce5f",
+      "protocol_blob": "1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+      "normalized_result_blob": "c8b617c43ff1145977c38e7e1cca6d23985ec392"
+    },
+    "R317": {
+      "head": "6ede298753b7ebc35765e18479775879769712ff",
+      "report_blob": "b134ccb1c77c3d0e70fe70b64b651e6e5dd1f77c",
+      "receipt_blob": "81f6adbc9cc64ab5ad3f4aaf230fe035fffa5ea5"
+    },
+    "R321": {
+      "head": "774aac4105bfe1a171f40f7272fc4267aae6c2f8",
+      "report_blob": "b0b71f4d74596c4744d0353d1654ac5726aeb2bb",
+      "receipt_blob": "2c3d9f881d669ee924cecca106611c6c295a7243"
+    },
+    "R335_R338": {
+      "head": "1e233a439b81708353513998898e9f7cfd10caf2",
+      "report_blob": "32fcd8e7c43c712aa81b2c0e2f3487f3911d9c23",
+      "receipt_blob": "4e7d9523f1b08580358b9f2340f076977e611573"
+    }
+  },
+  "downstream_requested_work": {
+    "new_primary_source_derivation_performed": false,
+    "analytic_error_gate_performed": false,
+    "new_cost_model_performed": false,
+    "new_falsifier_designed": false,
+    "synthetic_width8_depth4_run": false,
+    "reason": "dedupe stop rule fired"
+  },
+  "execution_accounting": {
+    "code_created": false,
+    "code_modified": false,
+    "estimator_runs": 0,
+    "synthetic_runs": 0,
+    "benchmark_runs": 0,
+    "downloads": 0,
+    "dependency_installs": 0,
+    "actions_runs": 0,
+    "paid_resources": false,
+    "public_leaderboard_scraping": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "main_edit": false,
+    "pr_edit": false,
+    "control_edit": false,
+    "queue_edit": false
+  }
+}
