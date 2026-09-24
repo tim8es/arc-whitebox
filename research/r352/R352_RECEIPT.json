@@ -1,0 +1,252 @@
+{
+  "schema": "arc.whitebox.r352.tensorized_hermite_frontier.v1",
+  "task": "R352",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "EVIDENCE_BASED_NO_GO_NO_CERTIFIED_LOW_RANK_TT_HERMITE_PATH",
+  "measurement_classification": "THEORY_PRIMARY_SOURCE_DESK_AUDIT_ONLY_NO_NEW_ESTIMATOR_MEASUREMENT",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r352-tensorized-hermite-frontier-20260924",
+  "dedupe": {
+    "E115": {
+      "branch": "research/e115-hermite-chaos-certified-tail-20260919",
+      "head": "85552f57c263be172fdceae25fffe278be065680",
+      "protocol_blob_sha1": "a63ac3cdedc6bf8a4948c22b8b907a1333f84f70",
+      "receipt_blob_sha1": "1f4c10bba845238bd07055c2f423a92c0cdb612a",
+      "verdict": "TERMINAL_NO_GO_DENSE_TOTAL_DEGREE_HERMITE_CHAOS",
+      "scope_caveat": "does not rule out a distinct low-rank/tensorized chaos representation"
+    },
+    "R347": {
+      "head": "53070953bc502b8847f57e235b5ec5e57acf909e",
+      "report_blob_sha1": "e2d31a3b097904b15de27540ae9af019912324ff",
+      "receipt_blob_sha1": "9d318ea7e2d9c9727ba9c92f1bc0778d2439cf5a",
+      "verdict": "ALREADY_COVERED",
+      "unclosed_lane": "separately specified low-rank/tensorized chaos with rank-growth/error certificate"
+    },
+    "inventories": {
+      "R265": {
+        "head": "bc287eed95df49fb41d81d157b15471a5aa73a3d",
+        "report_blob_sha1": "e9b5df06173bf70a587774f9374042962847d9e2"
+      },
+      "R276": {
+        "head": "a646038b5aceb5428d6583b07525f394f4820c0d",
+        "report_blob_sha1": "4970614c1ac789b008260d726a2bbd5272116434"
+      },
+      "R308": {
+        "head": "9c3ef5eefe014e7bdb1a11cc8941999048f6654b",
+        "report_blob_sha1": "e07ddccdf3744c741a571556d7597ac15b460c4b"
+      }
+    },
+    "orthant_state": {
+      "R317": {
+        "head": "6ede298753b7ebc35765e18479775879769712ff",
+        "report_blob_sha1": "b134ccb1c77c3d0e70fe70b64b651e6e5dd1f77c"
+      },
+      "R321": {
+        "head": "774aac4105bfe1a171f40f7272fc4267aae6c2f8",
+        "report_blob_sha1": "b0b71f4d74596c4744d0353d1654ac5726aeb2bb"
+      }
+    },
+    "characteristic_function": {
+      "R335_R338": {
+        "head": "1e233a439b81708353513998898e9f7cfd10caf2",
+        "report_blob_sha1": "32fcd8e7c43c712aa81b2c0e2f3487f3911d9c23",
+        "receipt_blob_sha1": "4e7d9523f1b08580358b9f2340f076977e611573"
+      }
+    },
+    "tensor_compression": {
+      "E181_H180_CP": {
+        "head": "42a85188ebf23f0d0626f81f52b39449150c22d2",
+        "protocol_blob_sha1": "555c02b5e3b3cfa1b4782bbb662610a95064cf88",
+        "receipt_blob_sha1": "4fa4df934c6a255bfbafd1f8aa16b393ecbc7a6e",
+        "terminal_reason": "G2_D21_RMS_GATE_FAILURE"
+      },
+      "E148_GSTT_K3": {
+        "head": "d79eb8e670fbb8ff007283d9ed1eab6dd53a8b35",
+        "primary_source_note_blob_sha1": "a7a7a8b375eacbe7406f13b78e895f9c693ed4bc",
+        "terminal_receipt_blob_sha1": "1be554a39bc4ac62a8fdf6d29dcbfa758b84323f",
+        "decision": "E148_TERMINAL_NO_GO_CLOSE_GSTT_K3"
+      },
+      "E008_TensorSketch": {
+        "historical_branch": "research/e008-polynomial-sketch",
+        "historical_branch_head": "d33c546b8ed1495da4a97bb2b1ec84406ca6e333",
+        "result_blob_sha1": "dc33cd36b83a4b3c6fbb258b3bd56e438ef6c68b"
+      }
+    }
+  },
+  "primary_sources": [
+    {
+      "authors": "I. V. Oseledets",
+      "year": 2011,
+      "title": "Tensor-Train Decomposition",
+      "doi": "10.1137/090752286",
+      "url": "https://epubs.siam.org/doi/10.1137/090752286",
+      "used_for": [
+        "TT rank/unfolding framework",
+        "TT-SVD/rounding error control",
+        "Hadamard product rank multiplication",
+        "standard TT arithmetic"
+      ]
+    },
+    {
+      "authors": "I. Oseledets; E. Tyrtyshnikov",
+      "year": 2010,
+      "title": "TT-cross approximation for multidimensional arrays",
+      "doi": "10.1016/j.laa.2009.07.024",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0024379509003747",
+      "used_for": [
+        "TT-cross low-rank interpolation framework"
+      ]
+    },
+    {
+      "authors": "S. Dolgov; B. N. Khoromskij; A. Litvinenko; H. G. Matthies",
+      "year": 2015,
+      "title": "Polynomial Chaos Expansion of Random Coefficients and the Solution of Stochastic Partial Differential Equations in the Tensor Train Format",
+      "doi": "10.1137/140972536",
+      "url": "https://epubs.siam.org/doi/10.1137/140972536",
+      "author_manuscript": "https://arxiv.org/abs/1503.03210",
+      "used_for": [
+        "tensor-product PCE in TT/block-TT",
+        "storage O(M p r^2)",
+        "rounding O(M p r^3)",
+        "adaptive block TT-cross",
+        "rank data-dependence"
+      ]
+    },
+    {
+      "authors": "S. Goel; S. Karmalkar; A. R. Klivans",
+      "year": 2019,
+      "title": "Time/Accuracy Tradeoffs for Learning a ReLU with respect to Gaussian Marginals",
+      "venue": "NeurIPS 2019",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2019/file/067a26d87265ea39030f5bd82408ce7c-Paper.pdf",
+      "used_for": [
+        "normalized Hermite basis",
+        "exact univariate ReLU Hermite coefficients",
+        "multivariate ridge Hermite expansion"
+      ]
+    }
+  ],
+  "candidate": {
+    "name": "BLOCK_TT_TENSOR_PRODUCT_HERMITE_PCE",
+    "latent_dimension": 1024,
+    "width": 1024,
+    "depth": 16,
+    "state": "vector activation Hermite coefficient tensor over original Gaussian coordinates, with neuron index as block/output mode",
+    "mean_readout": "zero multi-index coefficient",
+    "affine_rule": "dense W acts linearly on block/output mode; latent TT ranks need not increase from affine mixing alone",
+    "relu_routes": [
+      "polynomial TT algebra plus mandatory rounding",
+      "block TT-cross / coefficient reprojection"
+    ],
+    "novelty": "distinct from dense total-degree E115 and neuron/K3 CP/TT carriers"
+  },
+  "exact_generic_first_layer_rank": {
+    "assumptions": [
+      "generic dense normalized first-layer row directions",
+      "even Hermite truncation degree p with nonzero top ReLU coefficient",
+      "shared original Gaussian coordinate basis"
+    ],
+    "cut_latent_coordinates": 512,
+    "rank_formula": "r_S >= sum_{j=0}^p min(1024, C(512+j-1,j)) = 1024*p - 511 for p>=2",
+    "neighboring_rank_formula": "r_511 >= 1024*p - 512",
+    "scalar_single_ridge_rank": "p+1",
+    "output_mode_ordering_escape": false,
+    "interpretation": "exact block-PCE unfolding-rank statement for generic dense weights; not an approximate-rank lower bound"
+  },
+  "hermite_tail": {
+    "coefficient_square_formula": "c_(2m)^2 = [C(2m,m)/4^m] / [2*pi*(2m-1)^2]",
+    "total_even_ge2": "0.090845056908104664231116236627485637965540354259544",
+    "tail_degree_2": "0.011267585362156996346674354941228456948310531389315",
+    "tail_degree_214": "0.000013492776924771552593505491419418409773612758086801",
+    "tail_degree_17116": "0.000000018902711367864330420500761794859257860834116110138",
+    "tail_degree_17118": "0.000000018899398744672019163911215174428104806218667786487",
+    "target_scale": "0.0000000189",
+    "minimum_even_degree_at_or_below_target": 17118,
+    "interpretation": "best standardized single-ReLU degree-p Gaussian L2 polynomial projection; sufficient function-space certificate scale, not a necessity theorem for final mean"
+  },
+  "propagated_error": {
+    "normalized_error": "e_l = sqrt(E||h_l-hat_h_l||_2^2 / n)",
+    "recurrence": "e_(l+1) <= ||W_l||_2 * e_l + tau_(l+1)",
+    "final_mean_bound": "MSE_mean <= e_L^2 <= (sum_k tau_k product_{j>k} ||W_j||_2)^2",
+    "source_of_bound": "ReLU 1-Lipschitz plus Jensen",
+    "missing_for_candidate": [
+      "generic dense layer norm/product control tied to contest state",
+      "per-layer certified TT/PCE truncation residual tau_l",
+      "rank bound achieving those residuals"
+    ]
+  },
+  "production_scale": {
+    "budget_flops": 2199023255552,
+    "p214": {
+      "exact_block_rank_512": 218625,
+      "neighboring_rank_511": 218624,
+      "standard_dense_core_entries": 10276284480000,
+      "standard_dense_core_float32_bytes": 41105137920000,
+      "standard_dense_core_float32_tb_decimal": 41.10513792,
+      "relu_tail_over_target_approx": 713.9035440471721
+    },
+    "p17118": {
+      "exact_block_rank_512": 17528321,
+      "neighboring_rank_511": 17528320,
+      "standard_dense_core_entries": 5259676132688775000,
+      "standard_dense_core_float32_bytes": 21038704530755100000,
+      "standard_dense_core_float32_eb_decimal": 21.0387045307551,
+      "standard_dense_core_float64_bytes": 42077409061510200000
+    },
+    "dense_tt_rounding_big_o_substitution": {
+      "formula_scale": "d*(p+1)*r^3 from O(M p r^3); illustrative scale only, NOT an exact FlopScope lower bound",
+      "p2": {
+        "rank": 1537,
+        "scale_ops": 11154312662016,
+        "scale_over_2pow41": 5.07239413401112
+      },
+      "p214": {
+        "rank": 218625,
+        "scale_ops": "2300582882070000000000",
+        "scale_over_2pow41": 1046183971.1160792
+      },
+      "p17118": {
+        "rank": 17528321,
+        "scale_ops": "94405935994351499235467426816",
+        "scale_over_2pow41": 42930849301388430
+      }
+    }
+  },
+  "approximate_tt_escape": {
+    "mathematically_possible": true,
+    "admitted_as_candidate": false,
+    "reason": "No primary-source theorem or persisted ARC evidence supplies generic dense depth-16 ReLU PCE singular-value/rank decay plus composable final-mean error and Phase-2 cost bounds.",
+    "tt_cross_rank_is_data_dependent": true,
+    "empirical_rank_choice_without_run_disallowed": true
+  },
+  "blocker": "Missing a source-backed generic-dense approximate TT rank theorem/certificate through ReLU that simultaneously yields per-layer Gaussian-L2 residuals, a propagated final-mean MSE bound, and an all-in width-1024/depth-16 Phase-2 cost/residual path.",
+  "reentry_requires": [
+    "composable shared/adaptive coordinate tensorized Hermite state",
+    "rank bound r(p,l) under generic dense affine plus ReLU",
+    "computable per-layer L2 truncation residual",
+    "rigorous final-mean propagation bound",
+    "all-in production FLOP/memory/residual certificate"
+  ],
+  "historical_verdicts_preserved": true,
+  "execution_accounting": {
+    "estimator_implementation": false,
+    "synthetic_runs": 0,
+    "benchmark_runs": 0,
+    "downloads": 0,
+    "dependency_installs": 0,
+    "actions_runs": 0,
+    "paid_compute": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "leaderboard_access_or_edit": false,
+    "r320_edits": 0,
+    "pr_edits": 0,
+    "main_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  },
+  "report": {
+    "path": "research/r352/R352_TENSORIZED_HERMITE_FRONTIER.md",
+    "git_blob_sha1": "6f25841331f0199bd6ee7966a4bda796d79d2c59"
+  }
+}
