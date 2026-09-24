@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "id": "R304-FULL-DELTA-AUDIT",
+  "baseline": {
+    "id": "R303",
+    "captured_at_utc": "2026-09-24T02:07:55.431Z",
+    "receipt_git_blob_sha1": "0584af060b3a7c51e103519593fe5736a52d349f",
+    "rows": 100,
+    "columns": 8
+  },
+  "current": {
+    "id": "R304",
+    "captured_at_utc": "2026-09-24T02:36:19.062Z",
+    "receipt_git_blob_sha1": "2fee6241febe322fbff2cbc605581590fc072ee6",
+    "rows": 100,
+    "columns": 10,
+    "normalized_rows_sha256": "4ffcdf469435f3b6dd55df39b6a06c3b5a186b7de89251a526254169a0fbe0d5",
+    "raw_rows_artifact": "research/r304/R304_RAW_VISIBLE_ROWS.json"
+  },
+  "comparison": {
+    "join_key": "exact participant display string in column 3",
+    "compared_columns": [
+      "delta",
+      "display_rank",
+      "participant",
+      "adjusted_score",
+      "final_layer_mse",
+      "vs_sampling_approx",
+      "entries",
+      "last_submission"
+    ],
+    "current_extra_columns_ignored": [
+      "submissions_over_time",
+      "view"
+    ],
+    "baseline_rows": 100,
+    "current_rows": 100,
+    "participant_labels_matched": 100,
+    "entries_into_first_100": 0,
+    "entries_out_of_first_100": 0,
+    "changed_rows": 14,
+    "scored_entry_updates": 1,
+    "rank_or_position_shifts": 4,
+    "relative_age_only_changes": 9
+  },
+  "result": {
+    "leader_unchanged": {
+      "participant": "J2W",
+      "display_rank": "01",
+      "adjusted_score": "2.10e−9",
+      "exact_unrounded_score": "UNKNOWN"
+    },
+    "changed_rows": [
+      {
+        "participant": "DO dogus_ozel —",
+        "category": "relative_age_only",
+        "changed_fields": [
+          "last_submission"
+        ],
+        "baseline_position": 5,
+        "current_position": 5,
+        "baseline_row": [
+          "new",
+          "05",
+          "DO dogus_ozel —",
+          "2.70e−9",
+          "1.76e−8",
+          "419×",
+          "5",
+          "Sep 24, 01:18 49 min ago"
+        ],
+        "current_row": [
+          "new",
+          "05",
+          "DO dogus_ozel —",
+          "2.70e−9",
+          "1.76e−8",
+          "419×",
+          "5",
+          "Sep 24, 01:18 1 h ago"
+        ]
+      },
+      {
+        "participant": "ME MeatProxy —",
+        "category": "relative_age_only",
+        "changed_fields": [
+          "last_submission"
+        ],
+        "baseline_position": 12,
+        "current_position": 12,
+        "baseline_row": [
+          "▲34",
+          "11",
+          "ME MeatProxy —",
+          "3.30e−9",
+          "1.79e−8",
+          "343×",
+          "12",
+          "Sep 23, 19:31 6 h ago"
+        ],
+        "current_row": [
+          "▲34",
+          "11",
+          "ME MeatProxy —",
+          "3.30e−9",
+          "1.79e−8",
+          "343×",
+          "12",
+          "Sep 23, 19:31 7 h ago"
+        ]
+      },
+      {
+        "participant": "SM shiv_m Independent",
+        "category": "relative_age_only",
+        "changed_fields": [
+          "last_submission"
+        ],
+        "baseline_position": 15,
+        "current_position": 15,
+        "baseline_row": [
+          "▼2",
+          "15",
+          "SM shiv_m Independent",
+          "3.70e−9",
+          "2.04e−8",
+          "306×",
+          "125",
+          "Sep 23, 12:28 13 h ago"
+        ],
+        "current_row": [
+          "▼2",
+          "15",
+          "SM shiv_m Independent",
+          "3.70e−9",
+          "2.04e−8",
+          "306×",
+          "125",
+          "Sep 23, 12:28 14 h ago"
+        ]
+      },
+      {
+        "participant": "ER emanuel_ruzak University of Buenos Aires",
+        "category": "relative_age_only",
+        "changed_fields": [
+          "last_submission"
+        ],
+        "baseline_position": 16,
+        "current_position": 16,
+        "baseline_row": [
+          "▲21",
+          "16",
+          "ER emanuel_ruzak University of Buenos Aires",
+          "3.80e−9",
+          "1.91e−8",
+          "298×",
+          "3",
+          "Sep 23, 16:13 9 h ago"
+        ],
+        "current_row": [
+          "▲21",
+          "16",
+          "ER emanuel_ruzak University of Buenos Aires",
+          "3.80e−9",
+          "1.91e−8",
+          "298×",
+          "3",
+          "Sep 23, 16:13 10 h ago"
+        ]
+      },
+      {
+        "participant": "LU LuDoe —",
+        "category": "relative_age_only",
+        "changed_fields": [
+          "last_submission"
+        ],
+        "baseline_position": 20,
+        "current_position": 20,
+        "baseline_row": [
+          "▼1",
+          "19",
+          "LU LuDoe —",
+          "4.20e−9",
+          "2.12e−8",
+          "269×",
+          "51",
+          "Sep 23, 06:34 19 h ago"
+        ],
+        "current_row": [
+          "▼1",
+          "19",
+          "LU LuDoe —",
+          "4.20e−9",
+          "2.12e−8",
+          "269×",
+          "51",
+          "Sep 23, 06:34 20 h ago"
+        ]
+      },
+      {
+        "participant": "PT pricop_tudor Alexandru Ioan Cuza University of Iasi",
+        "category": "rank_or_position_shift",
+        "changed_fields": [
+          "delta",
+          "display_rank"
+        ],
+        "baseline_position": 26,
+        "current_position": 27,
+        "baseline_row": [
+          "▼3",
+          "26",
+          "PT pricop_tudor Alexandru Ioan Cuza University of Iasi",
+          "4.80e−9",
+          "2.18e−8",
+          "236×",
+          "17",
+          "Sep 16, 11:17 1 w ago"
+        ],
+        "current_row": [
+          "▼4",
+          "27",
+          "PT pricop_tudor Alexandru Ioan Cuza University of Iasi",
+          "4.80e−9",
+          "2.18e−8",
+          "236×",
+          "17",
+          "Sep 16, 11:17 1 w ago"
+        ]
+      },
+      {
+        "participant": "MD ES Hack2Publish 2 members",
+        "category": "rank_or_position_shift",
+        "changed_fields": [
+          "delta",
+          "display_rank"
+        ],
+        "baseline_position": 27,
+        "current_position": 28,
+        "baseline_row": [
+          "▲11",
+          "26",
+          "MD ES Hack2Publish 2 members",
+          "4.80e−9",
+          "2.13e−8",
+          "236×",
+          "19",
+          "Sep 24, 00:05 2 h ago"
+        ],
+        "current_row": [
+          "▲10",
+          "27",
+          "MD ES Hack2Publish 2 members",
+          "4.80e−9",
+          "2.13e−8",
+          "236×",
+          "19",
+          "Sep 24, 00:05 2 h ago"
+        ]
+      },
+      {
+        "participant": "DB drmohammad_banisalman —",
+        "category": "rank_or_position_shift",
+        "changed_fields": [
+          "delta",
+          "display_rank"
+        ],
+        "baseline_position": 28,
+        "current_position": 29,
+        "baseline_row": [
+          "▼4",
+          "28",
+          "DB drmohammad_banisalman —",
+          "4.90e−9",
+          "2.23e−8",
+          "231×",
+          "17",
+          "Sep 18, 16:15 5 d ago"
+        ],
+        "current_row": [
+          "▼5",
+          "29",
+          "DB drmohammad_banisalman —",
+          "4.90e−9",
+          "2.23e−8",
+          "231×",
+          "17",
+          "Sep 18, 16:15 5 d ago"
+        ]
+      },
+      {
+        "participant": "SO sophie549 self study",
+        "category": "rank_or_position_shift",
+        "changed_fields": [
+          "delta",
+          "display_rank"
+        ],
+        "baseline_position": 29,
+        "current_position": 30,
+        "baseline_row": [
+          "▼4",
+          "28",
+          "SO sophie549 self study",
+          "4.90e−9",
+          "2.14e−8",
+          "231×",
+          "72",
+          "Sep 21, 08:47 2 d ago"
+        ],
+        "current_row": [
+          "▼5",
+          "29",
+          "SO sophie549 self study",
+          "4.90e−9",
+          "2.14e−8",
+          "231×",
+          "72",
+          "Sep 21, 08:47 2 d ago"
+        ]
+      },
+      {
+        "participant": "AN AndreasHad04 —",
+        "category": "scored_entry_update",
+        "changed_fields": [
+          "delta",
+          "display_rank",
+          "adjusted_score",
+          "final_layer_mse",
+          "vs_sampling_approx",
+          "last_submission"
+        ],
+        "baseline_position": 30,
+        "current_position": 26,
+        "baseline_row": [
+          "▲9",
+          "28",
+          "AN AndreasHad04 —",
+          "4.90e−9",
+          "2.12e−8",
+          "231×",
+          "56",
+          "Sep 23, 12:15 13 h ago"
+        ],
+        "current_row": [
+          "▲12",
+          "25",
+          "AN AndreasHad04 —",
+          "4.70e−9",
+          "2.00e−8",
+          "241×",
+          "56",
+          "Sep 24, 01:22 1 h ago"
+        ]
+      },
+      {
+        "participant": "NE neopok919 —",
+        "category": "relative_age_only",
+        "changed_fields": [
+          "last_submission"
+        ],
+        "baseline_position": 48,
+        "current_position": 48,
+        "baseline_row": [
+          "▲18",
+          "43",
+          "NE neopok919 —",
+          "5.30e−9",
+          "2.46e−8",
+          "214×",
+          "24",
+          "Sep 23, 08:27 17 h ago"
+        ],
+        "current_row": [
+          "▲18",
+          "43",
+          "NE neopok919 —",
+          "5.30e−9",
+          "2.46e−8",
+          "214×",
+          "24",
+          "Sep 23, 08:27 18 h ago"
+        ]
+      },
+      {
+        "participant": "ZR ze_rong —",
+        "category": "relative_age_only",
+        "changed_fields": [
+          "last_submission"
+        ],
+        "baseline_position": 70,
+        "current_position": 70,
+        "baseline_row": [
+          "new",
+          "70",
+          "ZR ze_rong —",
+          "6.90e−9",
+          "2.07e−8",
+          "164×",
+          "3",
+          "Sep 23, 19:11 6 h ago"
+        ],
+        "current_row": [
+          "new",
+          "70",
+          "ZR ze_rong —",
+          "6.90e−9",
+          "2.07e−8",
+          "164×",
+          "3",
+          "Sep 23, 19:11 7 h ago"
+        ]
+      },
+      {
+        "participant": "AK artiem_kuznietsov —",
+        "category": "relative_age_only",
+        "changed_fields": [
+          "last_submission"
+        ],
+        "baseline_position": 81,
+        "current_position": 81,
+        "baseline_row": [
+          "▲34",
+          "81",
+          "AK artiem_kuznietsov —",
+          "9.60e−9",
+          "2.96e−8",
+          "118×",
+          "8",
+          "Sep 23, 20:21 5 h ago"
+        ],
+        "current_row": [
+          "▲34",
+          "81",
+          "AK artiem_kuznietsov —",
+          "9.60e−9",
+          "2.96e−8",
+          "118×",
+          "8",
+          "Sep 23, 20:21 6 h ago"
+        ]
+      },
+      {
+        "participant": "AA aamir_abdul_azeez —",
+        "category": "relative_age_only",
+        "changed_fields": [
+          "last_submission"
+        ],
+        "baseline_position": 83,
+        "current_position": 83,
+        "baseline_row": [
+          "▼5",
+          "83",
+          "AA aamir_abdul_azeez —",
+          "1.03e−8",
+          "2.43e−8",
+          "110×",
+          "12",
+          "Sep 24, 00:11 1 h ago"
+        ],
+        "current_row": [
+          "▼5",
+          "83",
+          "AA aamir_abdul_azeez —",
+          "1.03e−8",
+          "2.43e−8",
+          "110×",
+          "12",
+          "Sep 24, 00:11 2 h ago"
+        ]
+      }
+    ],
+    "verdict": "FULL_FIRST_100_DELTA_AUDITED"
+  },
+  "limits": [
+    "Only the first 100 of 195 leaderboard rows were available in the captured page; no claim about rows 101-195.",
+    "R209/R223 remain NOT_COMPARABLE to the official visible-50 panel; no project-to-leader gap or rank is inferred.",
+    "Relative-age text is presentation metadata and is not a score change."
+  ]
+}
