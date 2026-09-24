@@ -1,0 +1,103 @@
+{
+  "schema": "arc.whitebox.r329.rank3-marius-public-method-audit.v1",
+  "job": "R329",
+  "status": "NO_PUBLIC_METHOD",
+  "audit_date_utc": "2026-09-24",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r329-rank3-marius-method-audit-20260924",
+  "dedupe": {
+    "r306": {
+      "scope": "J2W #331539",
+      "receipt_blob_sha1": "e0f86ba1c7b9ee757bc432dbaf7c2e98918ef726",
+      "covers_current_target": false
+    },
+    "r318": {
+      "scope": "Puffi #330322; reds #331730",
+      "receipt_blob_sha1": "501fae48dc32112772b6cc55132663f9a23d24f9",
+      "covers_current_target": false
+    },
+    "r326": {
+      "scope": "suliman_tadros #331931",
+      "receipt_blob_sha1": "406e1e26d28bd6d161041b79124d3d76037f4384",
+      "covers_current_target": false
+    },
+    "already_audited": false
+  },
+  "target": {
+    "participant": "marius_binner",
+    "leaderboard_rank": 3,
+    "current_leaderboard_submission_id": 331953,
+    "adjusted_score_display": "2.30e-9",
+    "final_layer_mse_display": "1.56e-8",
+    "compute_utilisation_display": "0.1474118618",
+    "mlps_failed": 0,
+    "entries": 158,
+    "last_submission_display": "Wed, 23 Sep 2026 06:46"
+  },
+  "submission_identity": {
+    "status": "CONFIRMED_DIRECT_LINK",
+    "leaderboard_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+    "canonical_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331953",
+    "mechanism": "Current rank-3 row View target resolves directly to submission #331953."
+  },
+  "public_page": {
+    "accessible_without_authentication": true,
+    "method_disclosure_visible": false,
+    "distinction": "Public route access does not establish public method disclosure."
+  },
+  "public_method": {
+    "estimator_name": "NO_PUBLIC_METHOD",
+    "estimator_config_or_params": "NO_PUBLIC_METHOD",
+    "source_code": "NO_PUBLIC_METHOD",
+    "repository": "NO_PUBLIC_METHOD",
+    "commit": null,
+    "reproducible_method": "NO_PUBLIC_METHOD",
+    "participant_linked_repositories": [],
+    "submission_specific_method_claims": []
+  },
+  "participant_linked_public_sources": [
+    {
+      "url": "https://discourse.aicrowd.com/t/phase-1-final-evaluation-question-overfitting-to-public-instances/18118",
+      "author": "marius_binner",
+      "topic": "Phase-1 evaluation/overfitting question",
+      "method_disclosure_for_331953": false
+    },
+    {
+      "url": "https://discourse.aicrowd.com/t/potential-flopscope-accounting-bypass-bug/18099/3",
+      "author": "marius_binner",
+      "topic": "flopscope accounting bug discussion",
+      "method_disclosure_for_331953": false
+    }
+  ],
+  "third_party_speculation": {
+    "treated_as_method_evidence": false,
+    "note": "Other participants' speculation about top methods is not attributed to #331953."
+  },
+  "idea_transfer": {
+    "explicit_public_method_available": false,
+    "candidate_count": 0,
+    "candidate": null,
+    "experiment_history_dedupe_triggered": false,
+    "reason": "No explicit submission-specific public method exists from which a valid new hypothesis could be derived."
+  },
+  "report": {
+    "path": "research/r329/R329_RANK3_MARIUS_METHOD_AUDIT.md",
+    "creation_commit": "22a45d227c29ffe30f94b46d3dbfc898d6e66b1a",
+    "git_blob_sha1": "4f05197a07391fc92515b085bc78f4f2665295ea"
+  },
+  "execution_accounting": {
+    "code_or_estimator_execution": false,
+    "benchmark_run": false,
+    "dependency_or_data_download": false,
+    "github_actions_run": false,
+    "paid_compute_or_spend": false,
+    "private_holdout_or_full_access": false,
+    "competition_submission": false,
+    "participant_or_organizer_contact": false,
+    "arbitrary_external_identity_or_repository_search": false,
+    "main_edited": false,
+    "pull_request_edited_or_opened": false,
+    "control_edited": false,
+    "queue_edited": false
+  }
+}
