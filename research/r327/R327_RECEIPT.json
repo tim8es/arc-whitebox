@@ -1,0 +1,107 @@
+{
+  "schema": "arc.whitebox.r327.luna-rank5-method-audit.v1",
+  "job": "R327",
+  "status": "COMPLETE",
+  "verdict": "NO_PUBLIC_METHOD",
+  "idea_count": 0,
+  "audit_snapshot_utc": "2026-09-24T10:29:59.376316039Z",
+  "control": {
+    "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "branch": "review/r327-luna-rank5-method-audit-20260924",
+    "report_only": true,
+    "expected_new_file_count": 2,
+    "main_edited": false,
+    "pr_edited_or_opened": false,
+    "control_or_queue_edited": false
+  },
+  "subject": {
+    "team": "Luna",
+    "participant": "dogus_ozel",
+    "leaderboard_rank_snapshot": 5,
+    "leaderboard_snapshot_utc": "2026-09-24T09:29:17.177839Z",
+    "submission_id": 332100,
+    "leaderboard_adjusted_score_dom": "0.0000000026",
+    "leaderboard_entries": 7,
+    "submission_listing": {
+      "status": "graded",
+      "adjusted_score_display": "2.60 e-9",
+      "final_layer_mse_display": "1.67 e-8",
+      "submitted_display": "Sep 24, 03:32",
+      "view_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332100"
+    },
+    "canonical_submission": {
+      "publicly_available": true,
+      "phase": "Phase 2",
+      "graded_successfully": true,
+      "public_mlps_scored": 50,
+      "public_mlps_failed": 0,
+      "exact_page_adjusted_score_display": "2.598 x10^-9"
+    }
+  },
+  "public_method": {
+    "page_availability": "PUBLIC_AND_TELEMETRY_READABLE",
+    "method_description": "NOT_EXPOSED",
+    "estimator_name_or_family": "NOT_EXPOSED",
+    "estimator_parameters": "NOT_EXPOSED",
+    "method_specific_configuration": "NOT_EXPOSED",
+    "source_file_or_archive": "NOT_EXPOSED",
+    "participant_linked_repository": null,
+    "immutable_code_commit": null,
+    "reproduction_environment_or_command": "NOT_EXPOSED",
+    "participant_writeup_tied_to_submission": "NOT_EXPOSED",
+    "reproducible_from_public_evidence": false,
+    "note": "The page exposes Overview/Configuration UI labels and generic schema 2.0, but no estimator-specific config/source payload in the public rendering."
+  },
+  "linked_surfaces": {
+    "canonical_submission": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332100",
+    "participant_url_exposed_by_submission": "https://www.aicrowd.com/participants/dogus_ozel",
+    "participant_public_fetch_result": "HTTP_404_OR_UNAVAILABLE_IN_R327_EXTRACTION_PATH",
+    "team": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/Luna",
+    "team_member_count": 1,
+    "team_organizer": "dogus_ozel",
+    "team_external_repository_link": null,
+    "participant_authored_official_method_post_found": false
+  },
+  "idea_gate": {
+    "direct_concrete_method_disclosed": false,
+    "ledger_dedup_required": false,
+    "ideas_admitted": 0,
+    "reason": "No source directly discloses a concrete mechanism for #332100. R327 does not infer ideas from rank, score, MSE, FLOPs, wall time, or submission progression."
+  },
+  "prior_scope": {
+    "r306_j2w_reaudited": false,
+    "r318_puffi_reds_reaudited": false,
+    "r310_used_only_for_leaderboard_identity_snapshot": true
+  },
+  "sources": {
+    "official_aicrowd": [
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions?q%5Bparticipant_name_equals%5D=dogus_ozel",
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332100",
+      "https://www.aicrowd.com/participants/dogus_ozel",
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/Luna"
+    ],
+    "project_comparison": [
+      "https://github.com/tim8es/arc-whitebox/blob/80d55d7150e7907bd96f99a78a0b88cd4cdd6f5c/research/r310/R310_RECEIPT.json",
+      "https://github.com/tim8es/arc-whitebox/blob/review/r306-j2w-method-audit-20260924/research/r306/R306_RECEIPT.json",
+      "https://github.com/tim8es/arc-whitebox/blob/d0138a3fe772c712d331f5fde0c7e75be5bb56b7/research/r318/R318_TOP6_PUBLIC_CONFIG_AUDIT_RECEIPT.json"
+    ]
+  },
+  "report": {
+    "path": "research/r327/R327_LUNA_RANK5_METHOD_AUDIT.md",
+    "creation_commit": "c2f4abb70df4fac973918b980e23356b07879713",
+    "git_blob_sha1": "08180fdfcfa9cd77ab18a7fcc9f3747b88be0e18"
+  },
+  "not_run": [
+    "No benchmark or science run.",
+    "No competitor code download.",
+    "No dependency download or install.",
+    "No dataset download or access.",
+    "No GitHub Actions run.",
+    "No paid compute.",
+    "No private, holdout, or full-data access.",
+    "No competition submission.",
+    "No participant or organizer contact.",
+    "No main, PR, control, or queue edit."
+  ]
+}
