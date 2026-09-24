@@ -137,6 +137,32 @@ def main() -> int:
                        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         git(["config", "user.name", "R296 selfcheck"], repo)
         git(["config", "user.email", "r296@example.invalid"], repo)
+
+        # The workflow's GIT_CONFIG_* helper is process-scoped: no token/helper survives in .git/config.
+        dummy = "r296-dummy-token-must-not-persist"
+        helper = '!f() { printf "%s\\n" "username=x-access-token" "password=$GITHUB_TOKEN"; }; f'
+        env = {
+            **os.environ,
+            "GITHUB_TOKEN": dummy,
+            "GIT_CONFIG_COUNT": "1",
+            "GIT_CONFIG_KEY_0": "credential.helper",
+            "GIT_CONFIG_VALUE_0": helper,
+        }
+        visible = subprocess.run(
+            ["git", "config", "--get", "credential.helper"],
+            cwd=repo, env=env, text=True,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False,
+        )
+        local_after = git(["config", "--local", "--get", "credential.helper"], repo, check=False)
+        config_text = (repo / ".git" / "config").read_text(encoding="utf-8")
+        checks["process_scoped_helper_not_persisted"] = (
+            visible.returncode == 0
+            and "$GITHUB_TOKEN" in visible.stdout
+            and local_after.returncode != 0
+            and dummy not in config_text
+            and "credential" not in config_text.lower()
+        )
+
         (repo / "base.txt").write_text("base\n", encoding="utf-8")
         git(["add", "base.txt"], repo)
         git(["commit", "-m", "base"], repo)
