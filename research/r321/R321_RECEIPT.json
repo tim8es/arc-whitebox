@@ -1,0 +1,176 @@
+{
+  "schema": "arc.whitebox.r321.r317_compression_red_team.v1",
+  "task": "R321",
+  "status": "COMPLETE",
+  "decision": "EVIDENCE_BASED_INDEPENDENT_NO_GO_R317_CORE_NOT_FALSIFIED",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r321-r317-compression-red-team-20260924",
+  "captured_at_utc": "2026-09-24T10:11:42.992674Z",
+  "scope": "Targeted independent red-team of R317 gate-conditioned truncated-Gaussian compression claim; primary mathematical sources only.",
+  "substantive_correction_to_r317": {
+    "statement": "A single generic correlated Gaussian orthant probability is not inherently exponential: randomized polynomial-time approximation/sampling algorithms exist.",
+    "does_this_falsify_core_r317": false,
+    "reason": "Those algorithms answer one orthant/convex-set query or return restricted-Gaussian samples; they do not supply a reusable polynomial-size non-Gaussian state closed under subsequent arbitrary dense ReLU layers."
+  },
+  "candidate_theorems": [
+    {
+      "source": "Kannan and Li, Sampling According to the Multivariate Normal Density, FOCS 1996",
+      "doi": "10.1109/SFCS.1996.548479",
+      "type": "controlled randomized approximation/sampling",
+      "scope": "one positive-orthant correlated Gaussian probability/distribution",
+      "polynomial_time": true,
+      "qualifies": false,
+      "reason": "single-query/sampling result, not all-mask propagated moment compression; finite-support sampling is an already occupied estimator family"
+    },
+    {
+      "source": "Cousins and Vempala, A Cubic Algorithm for Computing Gaussian Volume, SODA 2014",
+      "doi": "10.1137/1.9781611973402.90",
+      "type": "controlled randomized approximation/sampling",
+      "theorem": "For convex K satisfying the theorem's roundness assumption, (1+epsilon) Gaussian-volume approximation with probability 1-p in O(n^3 log n log^3(n/epsilon) log(1/p)/epsilon^2); restricted Gaussian first sample O*(n^3), later samples O*(n^2).",
+      "assumptions": [
+        "convex-set membership oracle",
+        "stated Gaussian-volume theorem requires K containing a unit ball",
+        "accuracy epsilon and failure probability p"
+      ],
+      "qualifies": false,
+      "reason": "one convex-set query/sampler; no composable all-mask state; no FlopScope or residual-time theorem; stated roundness theorem does not directly match a Gaussian centered at an orthant apex"
+    },
+    {
+      "source": "Huang, Cao, Fang, Genton, Keyes, Turkiyyah, O(N) TMVN I, Adv Comput Math 2021",
+      "doi": "10.1007/s10444-021-09888-1",
+      "type": "structured exact/numerical hierarchical TMVN expectation algorithm",
+      "stated_complexity": "O(N), prefactor controlled by off-diagonal block rank and effective variables",
+      "assumptions": [
+        "low-rank H(x)",
+        "proper clustering",
+        "low-rank blocks in precision A",
+        "low-dimensional features",
+        "worked rigorous cases include tridiagonal precision / exponential covariance",
+        "representative K=1 and effective variables <=2"
+      ],
+      "qualifies": false,
+      "reason": "generic dense W C W^T has no guaranteed hierarchical low-rank/low-effective-dimensional precision or covariance structure"
+    },
+    {
+      "source": "Zheng, Tang, Huang, Wu, O(N) TMVN II, Adv Comput Math 2022",
+      "doi": "10.1007/s10444-022-09988-6",
+      "type": "structured simultaneous TMVN moment computation",
+      "stated_complexity": "all total-order <=M moments O(N^M) for M>=2; first moments O(N log N)",
+      "assumptions": [
+        "same low-rank covariance/precision-block structure",
+        "low-dimensional features",
+        "tridiagonal/exponential worked cases K=1, P<=2",
+        "sparse-grid extension aimed at K+P about 5-20"
+      ],
+      "limitation": "paper states no practical tools known when K+P>20 truly independent variables",
+      "qualifies": false,
+      "reason": "structural assumptions are not established for generic dense contest layers"
+    },
+    {
+      "source": "Cao, Genton, Keyes, Turkiyyah, Hierarchical-block conditioning approximations, Stat Comput 2019",
+      "doi": "10.1007/s11222-018-9825-3",
+      "type": "hierarchical low-rank approximation",
+      "stated_complexity": "major cost O(n log n)",
+      "assumptions": [
+        "low-rank block approximations",
+        "block size m",
+        "conditioning dimension d << n"
+      ],
+      "rigorous_error_control": false,
+      "limitation": "primary paper explicitly states absence of an internal approximation-error estimate for tuning",
+      "qualifies": false,
+      "reason": "not a rigorous controlled approximation for generic dense covariance; empirical spatial-statistics error is not a contest-wide bound"
+    },
+    {
+      "source": "Cao, Genton, Keyes, Turkiyyah, Exploiting Low Rank Covariance Structures, Stat Comput 2021",
+      "doi": "10.1007/s11222-020-09978-y",
+      "type": "tile-low-rank QMC/Monte Carlo probability estimation",
+      "assumptions": [
+        "useful tile-low-rank covariance blocks",
+        "spatial-statistics structure"
+      ],
+      "qualifies": false,
+      "reason": "structural assumption not guaranteed for generic dense layers; stochastic/QMC family already occupied"
+    },
+    {
+      "source": "Kan and Robotti, On Moments of Folded and Truncated Multivariate Normal Distributions, JCGS 2017",
+      "doi": "10.1080/10618600.2017.1322092",
+      "type": "moment recurrences",
+      "qualifies": false,
+      "reason": "efficient local evaluation of moments for one specified truncation is not a polynomial-size representation of all gate-conditioned states through depth"
+    },
+    {
+      "source": "Macdonald and Waeldchen, A Complete Characterisation of ReLU-Invariant Distributions, AISTATS/PMLR 2022",
+      "url": "https://proceedings.mlr.press/v151/macdonald22a.html",
+      "type": "exact invariant-family obstruction",
+      "theorem": "For a continuous finite-parameter ReLU-invariant family under x->ReLU(Wx+b), one of d=1, finite support, or non-locally-Lipschitz parametrization is necessary.",
+      "used_as_formal_contest_impossibility": false,
+      "reason": "the theorem's invariance class includes arbitrary biases and addresses exact invariance, whereas relevant ARC lanes are bias-free and R321 also asks about controlled approximations"
+    }
+  ],
+  "generic_dense_structure_check": {
+    "formula": "For SPD C and arbitrary SPD target S, W=S^(1/2) C^(-1/2) gives W C W^T=S.",
+    "consequence": "An unrestricted dense square affine transport can span arbitrary SPD covariance; hierarchical block rank, tridiagonal precision, Markov sparsity, spatial covariance, bounded K+P, or bounded treewidth cannot be assumed uniformly from the architecture.",
+    "contest_structure_established_for_fast_tmvn_theorems": false
+  },
+  "phase2_implications": {
+    "width": 1024,
+    "depth": 16,
+    "flop_budget": 2199023255552,
+    "residual_cap_s": 0.4,
+    "explicit_mask_first_moment_state": "Theta(2^n n)",
+    "explicit_mask_full_covariance_state": "Theta(2^n n^2)",
+    "cousins_vempala_n_cubed": 1073741824,
+    "orientation_only": {
+      "epsilon_0_1_n3_over_eps2": 107374182400,
+      "epsilon_0_1_fraction_of_budget": 0.048828125,
+      "epsilon_0_01_n3_over_eps2": 10737418240000,
+      "epsilon_0_01_fraction_of_budget": 4.8828125,
+      "caveat": "Excludes theorem logarithms/constants/oracle costs and is not a FlopScope bound; no justified epsilon-to-final-MSE mapping exists."
+    },
+    "residual_bound_available": false
+  },
+  "dedupe": {
+    "E038": {
+      "result_blob": "665ad6ee0ef4661a2bdb76eb7cf4f0af1c4988d1",
+      "rule": "single-Gaussian re-collapse excluded"
+    },
+    "E039": {
+      "result_blob": "7556cdfda8227bfc0ee1936c2a463d48d9c73d2f",
+      "rule": "fixed small mixture excluded"
+    },
+    "E114_E119": {
+      "E119_result_blob": "b31551896b7138309da1cf17fe651674b1a5a9c5",
+      "rule": "activation-boundary exact-state family already occupied; no new certified compression theorem found"
+    },
+    "R308": {
+      "report_blob": "e07ddccdf3744c741a571556d7597ac15b460c4b",
+      "rule": "sampling/QMC/cubature/low-rank/conditional-Gaussian families not relabeled"
+    },
+    "R317": {
+      "report_blob": "102854932f111e793657747a4aa227b23f19e7fc"
+    }
+  },
+  "qualifying_theorem_found": false,
+  "final_reason": "Primary literature contains polynomial-time single-orthant algorithms and fast structured-TMVN methods, but no audited theorem simultaneously provides generic-dense validity, non-sampling polynomial-size propagated gate-conditioned state, composable exact/rigorous error control, and a derivable Phase-2 FLOP/residual bound.",
+  "execution_accounting": {
+    "implementation": false,
+    "estimator_execution": false,
+    "synthetic_runs": 0,
+    "public_benchmark_runs": 0,
+    "actions_runs": 0,
+    "data_or_dependency_downloads": false,
+    "paid_compute": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "main_edit": false,
+    "pr_edit": false,
+    "control_edit": false
+  },
+  "artifacts": {
+    "report_path": "research/r321/R321_R317_COMPRESSION_RED_TEAM_REPORT.md",
+    "report_blob_sha": "b0b71f4d74596c4744d0353d1654ac5726aeb2bb",
+    "report_commit": "8898147e8001b3c6123237bde0573af692c9bb03",
+    "receipt_path": "research/r321/R321_RECEIPT.json"
+  }
+}
