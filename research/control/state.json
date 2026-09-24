@@ -6258,6 +6258,28 @@
         }
       },
       "at": "2026-09-24T01:14:16.470+00:00"
+    },
+    {
+      "revision": 465,
+      "action": "claim",
+      "job": "R297",
+      "owner": "r297-independent-final-review-r4553b",
+      "payload": {
+        "reason": "Coordinator published claim for GitHub-only reviewer after the session reported no queue execution environment."
+      },
+      "at": "2026-09-24T01:22:46.971+00:00"
+    },
+    {
+      "revision": 466,
+      "action": "start",
+      "job": "R297",
+      "owner": "r297-independent-final-review-r4553b",
+      "payload": {
+        "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
+        "code_commit": "f6fb9018504632edffa1fb80d14ce8a68f442602",
+        "command": "read-only final audit of exact draft PR #36 head using GitHub API: verify R294/R296/R302 hashes, workflow gates, branch CAS/rerun behavior, token and four-file allowlist; no code edits or Actions"
+      },
+      "at": "2026-09-24T01:22:46.971+00:00"
     }
   ],
   "jobs": [
@@ -9796,7 +9818,14 @@
     },
     {
       "assigned_owner": "r297-independent-final-review-r4553b",
-      "attempts": [],
+      "attempts": [
+        {
+          "run_id": "R297-pr36-final-independent-review-20260924-r4553b",
+          "code_commit": "f6fb9018504632edffa1fb80d14ce8a68f442602",
+          "command": "read-only final audit of exact draft PR #36 head using GitHub API: verify R294/R296/R302 hashes, workflow gates, branch CAS/rerun behavior, token and four-file allowlist; no code edits or Actions",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "After R294 patch repair and R296 workflow hardening are COMPLETE, independently audit the exact final draft PR #36 head; do not review an earlier snapshot. Reproduce that the old R291 patch is malformed and remains unchanged as historical evidence; verify the new R294 patch applies with `git apply --check` to the exact pinned WhestBench 0.16.1 scoring.py blob and the applied diff contains only the intended pre-MSE capture seams. Independently verify the workflow/preflight references the corrected patch and enforces all R295 controls: no run retries/re-dispatch, atomic existing-branch claim/update with no branch recreate or race, pinned action SHAs in contents:write job, no persisted token URL/config, exact four-file allowlist, no paid/artifact/secret/holdout/submission paths. Static/offline only; no code edits, PR comments/review, merge, branch creation, Actions/benchmark, data/dependency downloads, or spending. Record exact PR/workflow/patch/test hashes and PASS or blocking findings in append-only R297 report/receipt; finish R297.",
       "depends_on": [
         "R294",
@@ -9805,9 +9834,9 @@
       ],
       "hypothesis_id": "PR36-FINAL-PATCH-AND-WORKFLOW-INDEPENDENT-REVIEW-20260924",
       "id": "R297",
-      "owner": null,
+      "owner": "r297-independent-final-review-r4553b",
       "priority": 1,
-      "status": "QUEUED",
+      "status": "RUNNING",
       "title": "Independently verify the repaired PR #36 before any merge or run"
     },
     {
@@ -9996,7 +10025,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 464,
+  "revision": 466,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
