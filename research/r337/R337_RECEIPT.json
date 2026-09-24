@@ -1,0 +1,228 @@
+{
+  "schema": "arc.whitebox.r337.r335_independent_red_team.v1",
+  "task": "R337",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "PASS_WITH_MATERIAL_CORRECTION",
+  "terminal_interpretation": "EVIDENCE_BASED_FEASIBILITY_NO_GO_UNCHANGED",
+  "mode": "report-only targeted independent red-team; not a broad theory scout",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r337-r335-independent-red-team-20260924",
+  "r335_target": {
+    "exact_head": "9e01cb63dc2a4e662422b3ae98af67d1830505b7",
+    "report_path": "research/r335/R335_ACCURACY_SIDE_ESTIMATOR_SCOUT.md",
+    "report_blob_sha1": "1477f3be912bf8c641e3e51c9812cc4833a603d1",
+    "receipt_path": "research/r335/R335_RECEIPT.json",
+    "receipt_blob_sha1": "d4d1891d2f13dd51b38032baacd7cb8dd92066b5",
+    "original_verdict": "EVIDENCE_BASED_NO_GO",
+    "original_classification": "ALREADY_COVERED_AT_DEEP_REALIZATION"
+  },
+  "scalar_formula_verification": {
+    "status": "PASS",
+    "assumption": "E|X| < infinity",
+    "formula": "E[X_+] = E[X]/2 + (1/pi) integral_0^infinity (1 - Re phi_X(t))/t^2 dt",
+    "derivation": "Pinelis absolute-moment identity at p=1 gives E|X|=(2/pi) integral (1-Re phi)/t^2; combine with X_+=(X+|X|)/2.",
+    "primary_source": {
+      "authors": "Iosif Pinelis",
+      "title": "Positive-part moments via the characteristic functions, and more general expressions",
+      "publication": "Journal of Theoretical Probability 31 (2018), 527-555",
+      "doi": "10.1007/s10959-016-0709-1",
+      "author_preprint": "https://arxiv.org/abs/1603.07365"
+    },
+    "generalized_joint_embedding_note": "Pinelis Theorem 2.3 allows a complex-valued random multiplier Y in generalized positive-part expectations, so scalar positive-part transforms can be embedded in joint expectations."
+  },
+  "dense_joint_cf_verification": {
+    "status": "PASS",
+    "identity": "For Z_j = w_j^T H, phi_Zj(t) = Phi_H(t w_j).",
+    "implication": "A future arbitrary dense row requires joint-CF information along new row rays; coordinate marginal CFs alone do not determine this generically.",
+    "primary_source_affine_rule": {
+      "authors": "Joshua Pilipovsky, Vignesh Sivaramakrishnan, Meeko Oishi, Panagiotis Tsiotras",
+      "title": "Probabilistic Verification of ReLU Neural Networks via Characteristic Functions",
+      "publication": "L4DC 2023, PMLR 211, 966-979",
+      "url": "https://proceedings.mlr.press/v211/pilipovsky23a.html",
+      "author_preprint": "https://arxiv.org/abs/2212.01544",
+      "equation": "Phi_{WH+b}(t)=exp(i t^T b) Phi_H(W^T t)"
+    }
+  },
+  "material_corrections": [
+    {
+      "id": "OMITTED_PRIMARY_METHOD",
+      "correction": "R335 omitted Pilipovsky et al. 2023, a directly relevant published deep-ReLU characteristic-function/Hilbert-transform propagation method.",
+      "changes_no_go": false,
+      "reason": "Its published numerical state is component-wise; its product factorization rule is stated for independent scalar variables, while generic dense hidden coordinates are not generally independent. It does not supply the required generic-dense joint-state, propagated-error, FLOP, or residual guarantees."
+    },
+    {
+      "id": "NO_EXPLICIT_ORTHANT_NECESSITY_THEOREM",
+      "correction": "R335's explicit orthant decomposition is valid, but explicit 2^n mask enumeration is not proved necessary for every exact representation. Full joint-CF/Hilbert-transform representations can encode the transform without an explicit mask table.",
+      "changes_no_go": false,
+      "reason": "No audited primary source supplies a finite reusable polynomial-size generic-dense state with rigorous composable error and Phase-2 cost/timing bounds."
+    },
+    {
+      "id": "NO_EXPONENTIAL_LOWER_BOUND",
+      "correction": "The 2^n count is an explicit mask-state size observation, not a general computational lower bound.",
+      "changes_no_go": false
+    }
+  ],
+  "single_query_vs_persistent_state": {
+    "single_query": {
+      "finding": "Polynomial-time randomized Gaussian-volume/restricted-Gaussian algorithms exist in suitable oracle models; therefore one high-dimensional Gaussian/orthant-type query must not be labeled inherently exponential.",
+      "primary_source": {
+        "authors": "Ben Cousins and Santosh Vempala",
+        "title": "A Cubic Algorithm for Computing Gaussian Volume",
+        "publication": "SODA 2014",
+        "author_preprint": "https://arxiv.org/abs/1306.5829",
+        "theorem_complexity": "O*(n^3) Gaussian-volume approximation under stated convex-set conditions; O*(n^3) first restricted-Gaussian sample, O*(n^2) subsequent samples"
+      }
+    },
+    "persistent_state": {
+      "finding": "No primary source audited supplies a finite polynomial-size reusable state that preserves generic dense post-ReLU joint dependence with a rigorous composable error theorem.",
+      "exponential_lower_bound_claimed": false
+    }
+  },
+  "omitted_method_audit": {
+    "source": "Pilipovsky et al. 2023",
+    "exact_multivariate_affine_cf_rule_present": true,
+    "scalar_relu_cf_hilbert_transform_present": true,
+    "componentwise_cf_propagation_present": true,
+    "product_factorization_independence_condition_present": true,
+    "generic_dense_hidden_independence_preserved": false,
+    "exact_generic_dense_joint_cf_recurrence_established_by_paper": false,
+    "deep_example": {
+      "inputs": 2,
+      "hidden_layers": 5,
+      "neurons_per_hidden_layer": 50,
+      "outputs": 2,
+      "grid_points_N": 10000,
+      "hilbert_terms_M": 5000
+    },
+    "two_layer_timing_example": {
+      "grid_points_N": 10000,
+      "hilbert_terms_M": 1000,
+      "reported_seconds_approx": 3.55,
+      "note": "Author-reported CPU experiment; not a FlopScope or ARC bound."
+    },
+    "paper_notes_numerical_errors_propagate_after_relu": true,
+    "paper_lists_ht_error_propagation_as_future_work": true
+  },
+  "supporting_exact_closure_context": {
+    "source": {
+      "authors": "Jan Macdonald and Stephan Wäldchen",
+      "title": "A Complete Characterisation of ReLU-Invariant Distributions",
+      "publication": "AISTATS 2022, PMLR 151",
+      "url": "https://proceedings.mlr.press/v151/macdonald22a.html"
+    },
+    "use": "supporting context only",
+    "impossibility_theorem_for_r335_claimed": false,
+    "exponential_lower_bound_claimed": false,
+    "caveats": [
+      "The theorem concerns exact invariant parametrized families under its own framework.",
+      "It does not rule out controlled approximation or every special bias-free/task-specific representation.",
+      "It does not provide a Phase-2 FLOP lower bound."
+    ]
+  },
+  "shallow_exact_current_result_context": {
+    "source": {
+      "authors": "Andrew Thompson, Miles McCrory",
+      "title": "Uncertainty propagation through trained multi-layer perceptrons: Exact analytical results",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2601.16830"
+    },
+    "scope": "single-hidden-layer ReLU MLP with multivariate-Gaussian input",
+    "supplies_generic_depth16_closure": false
+  },
+  "phase2_feasibility": {
+    "width": 1024,
+    "depth": 16,
+    "flop_budget": 2199023255552,
+    "residual_cap_s": 0.4,
+    "qualifying_primary_source_found": false,
+    "required_package": [
+      "generic-dense dependency-correct propagation",
+      "finite polynomial-size reusable post-ReLU state",
+      "rigorous composable propagated-error control through depth 16",
+      "width-1024 final-mean/raw-MSE guarantee",
+      "all-in FLOPs < 2^41/network",
+      "credible residual < 0.4 s"
+    ],
+    "conclusion": "EVIDENCE_BASED_FEASIBILITY_NO_GO",
+    "impossibility_theorem_claimed": false
+  },
+  "reentry_gate_verification": {
+    "status": "PASS",
+    "executed": false,
+    "fixture": "future exact-small synthetic; generic dense zero-bias ReLU; width 8 depth 4; no contest targets",
+    "first_go_threshold": "candidate raw mean-vector MSE <= 0.94 * matched parent raw MSE",
+    "additional_gates": [
+      "median per-neuron squared error does not worsen",
+      "static production extrapolation < 2^41 FLOPs/network",
+      "credible width-1024 residual path < 0.4 s",
+      "no fallback to occupied families"
+    ],
+    "r335_execution_accounting_confirmed": {
+      "code_created": false,
+      "estimator_runs": 0,
+      "synthetic_runs": 0,
+      "benchmark_runs": 0,
+      "downloads": false,
+      "actions_runs": 0
+    }
+  },
+  "primary_sources": [
+    {
+      "authors": "Iosif Pinelis",
+      "year": 2018,
+      "title": "Positive-part moments via the characteristic functions, and more general expressions",
+      "doi": "10.1007/s10959-016-0709-1",
+      "url": "https://arxiv.org/abs/1603.07365"
+    },
+    {
+      "authors": "Joshua Pilipovsky, Vignesh Sivaramakrishnan, Meeko Oishi, Panagiotis Tsiotras",
+      "year": 2023,
+      "title": "Probabilistic Verification of ReLU Neural Networks via Characteristic Functions",
+      "url": "https://proceedings.mlr.press/v211/pilipovsky23a.html",
+      "author_preprint": "https://arxiv.org/abs/2212.01544"
+    },
+    {
+      "authors": "Ben Cousins, Santosh Vempala",
+      "year": 2014,
+      "title": "A Cubic Algorithm for Computing Gaussian Volume",
+      "url": "https://arxiv.org/abs/1306.5829"
+    },
+    {
+      "authors": "Jan Macdonald, Stephan Wäldchen",
+      "year": 2022,
+      "title": "A Complete Characterisation of ReLU-Invariant Distributions",
+      "url": "https://proceedings.mlr.press/v151/macdonald22a.html"
+    },
+    {
+      "authors": "Andrew Thompson, Miles McCrory",
+      "year": 2026,
+      "title": "Uncertainty propagation through trained multi-layer perceptrons: Exact analytical results",
+      "url": "https://arxiv.org/abs/2601.16830"
+    }
+  ],
+  "report": {
+    "path": "research/r337/R337_R335_INDEPENDENT_RED_TEAM.md",
+    "creation_commit": "ef437f1f12baf0aa267179726e156e4274c74c38",
+    "git_blob_sha1": "551d895ffdc222ee5e2b45246419a70613f9eae1"
+  },
+  "execution_accounting": {
+    "code_created": false,
+    "estimator_implementation": false,
+    "estimator_runs": 0,
+    "synthetic_runs": 0,
+    "benchmark_runs": 0,
+    "dataset_downloads": 0,
+    "dependency_downloads": 0,
+    "github_actions_runs": 0,
+    "paid_compute": false,
+    "private_access": false,
+    "holdout_access": false,
+    "full_access": false,
+    "submissions": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
