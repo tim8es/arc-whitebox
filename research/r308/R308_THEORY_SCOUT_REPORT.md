@@ -59,38 +59,37 @@ R308 family.
 
 ### R232 / R238 / R269: extrapolation, recycled bases, and randomized telescopes are not new lanes
 
-R232 froze dual-resolution Richardson debiasing,
+R232 froze dual-resolution Richardson debiasing:
 
-[
-m_{DRRE}=m_H+gamma(m_H-m_L),qquad
-gamma=rac{r_L^2}{r_H^2-r_L^2},
-]
+`m_DRRE = m_H + γ (m_H - m_L)`
 
-with the assumed rank-bias expansion
-[
-m_r=m_infty+a r^{-2}+O(r^{-4}).
-]
+with
+
+`γ = r_L² / (r_H² - r_L²)`
+
+and the assumed rank-bias expansion
+
+`m_r = m_infinity + a r^(-2) + O(r^(-4))`.
 
 Its exact-small attempt became protocol-terminal before an MSE comparison, so DRRE was
 not scientifically falsified. It is nevertheless an already-defined estimator family;
 a changed rank pair, exponent, or blend would be a descendant, not a new hypothesis.
 
 R238 similarly froze a recycled-start range finder using
-(Omega=W_{slice}+Q_p). Its parent executability failed before candidate construction.
+`Ω = W_slice + Q_p`. Its parent executability failed before candidate construction.
 The specific accuracy claim remains unevaluated, but recycling/restarting the shared
 basis is already an occupied family under the no-descendant constraint.
 
 R265's full-history screen found randomized multilevel debiasing/randomized telescoping
 as the only abstractly distinct literature lead. R269 then made the surviving
 depth-prefix version concrete:
-[
-Z=Y_0+rac{B}{p}(Y_1-Y_0),qquad Bsimmathrm{Bernoulli}(p).
-]
-Although (E_B[Z]=Y_1), its target risk satisfies
-[
-E_B|Z-t|^2
-=|Y_1-t|^2+rac{1-p}{p}|Y_1-Y_0|^2,
-]
+
+`Z = Y0 + (B/p)(Y1 - Y0),  B ~ Bernoulli(p)`.
+
+Although `E_B[Z] = Y1`, its target risk satisfies
+
+`E_B ||Z-t||² = ||Y1-t||² + ((1-p)/p) ||Y1-Y0||²`,
+
 so it adds expected MSE unless cost reduction compensates. More fundamentally, adjacent
 hidden-layer mean vectors are not established as a nested approximation sequence to one
 fixed quantity.
@@ -117,7 +116,7 @@ R276 records its same-panel mini-100 outcome as worse in both MSE and adjusted s
 A different marginal-preserving rank split is therefore a descendant.
 
 R247's 2:4 young-D21 right-factor sparsifier had a plausible static cost ratio
-((approx0.883) of R209) but failed its target-free fidelity screen by a large margin:
+(`≈0.883` of R209) but failed its target-free fidelity screen by a large margin:
 mean D21 RRMS about 0.372 versus a preregistered 0.012 gate.
 
 R248 tested a rank-1 Kronecker surrogate for young transport. Even the best rank-1
