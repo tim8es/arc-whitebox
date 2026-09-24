@@ -1,0 +1,1133 @@
+{
+  "schema_version": 1,
+  "id": "R303",
+  "run_id": "R303-official-leaderboard-refresh-20260924",
+  "owner": "r303-live-leaderboard-statistician",
+  "status": "COMPLETE",
+  "verdict": "NOT_COMPARABLE",
+  "control": {
+    "branch": "research/control-v2",
+    "revision": 474,
+    "head_at_start": "e1dac28c1bfeacb4ec33d997238bb0c6be73b632",
+    "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "duplicate_claim_or_start_created": false
+  },
+  "snapshot": {
+    "captured_at_utc": "2026-09-24T02:07:55.431Z",
+    "endpoint": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+    "page": "Showing 1–100 of 195",
+    "captured_rows": 100,
+    "columns": [
+      "Δ",
+      "#",
+      "PARTICIPANT",
+      "ADJUSTED SCORE ▲",
+      "FINAL LAYER MSE",
+      "VS SAMPLING approx.",
+      "ENTRIES",
+      "LAST SUBMISSION"
+    ],
+    "rows": [
+      [
+        "–",
+        "01",
+        "JW J2W 1 member · Numascale AS",
+        "2.10e−9",
+        "1.64e−8",
+        "539×",
+        "320",
+        "Sep 19, 00:05 5 d ago"
+      ],
+      [
+        "–",
+        "02",
+        "ST suliman_tadros —",
+        "2.20e−9",
+        "1.63e−8",
+        "514×",
+        "51",
+        "Sep 23, 01:42 1 d ago"
+      ],
+      [
+        "–",
+        "03",
+        "MB marius_binner University of Bergen",
+        "2.30e−9",
+        "1.56e−8",
+        "492×",
+        "158",
+        "Sep 23, 06:46 19 h ago"
+      ],
+      [
+        "–",
+        "04",
+        "AS a_s6 —",
+        "2.50e−9",
+        "2.00e−8",
+        "453×",
+        "108",
+        "Sep 21, 13:55 2 d ago"
+      ],
+      [
+        "new",
+        "05",
+        "DO dogus_ozel —",
+        "2.70e−9",
+        "1.76e−8",
+        "419×",
+        "5",
+        "Sep 24, 01:18 49 min ago"
+      ],
+      [
+        "▼1",
+        "06",
+        "CI LD AE Puffi 3 members",
+        "2.80e−9",
+        "1.94e−8",
+        "404×",
+        "78",
+        "Sep 8, 14:09 2 w ago"
+      ],
+      [
+        "▼1",
+        "06",
+        "OL reds 1 member",
+        "2.80e−9",
+        "1.73e−8",
+        "404×",
+        "60",
+        "Sep 21, 08:47 2 d ago"
+      ],
+      [
+        "▼1",
+        "08",
+        "OQ oqaris Sobolev Institute of Mathematics",
+        "3.10e−9",
+        "2.15e−8",
+        "365×",
+        "93",
+        "Sep 14, 05:56 1 w ago"
+      ],
+      [
+        "▼1",
+        "08",
+        "BE ben3 Max Planck Institute for Intelligent Systems",
+        "3.10e−9",
+        "1.68e−8",
+        "365×",
+        "23",
+        "Sep 22, 19:38 1 d ago"
+      ],
+      [
+        "▲2",
+        "08",
+        "ML mliston —",
+        "3.10e−9",
+        "1.80e−8",
+        "365×",
+        "41",
+        "Sep 23, 14:50 11 h ago"
+      ],
+      [
+        "▼2",
+        "11",
+        "CA Camaro —",
+        "3.30e−9",
+        "1.90e−8",
+        "343×",
+        "68",
+        "Sep 21, 09:26 2 d ago"
+      ],
+      [
+        "▲34",
+        "11",
+        "ME MeatProxy —",
+        "3.30e−9",
+        "1.79e−8",
+        "343×",
+        "12",
+        "Sep 23, 19:31 6 h ago"
+      ],
+      [
+        "▼2",
+        "13",
+        "WI thegamers 1 member · MATS",
+        "3.60e−9",
+        "1.79e−8",
+        "314×",
+        "38",
+        "Sep 10, 07:53 1 w ago"
+      ],
+      [
+        "▼1",
+        "13",
+        "HK hyojun_kwon —",
+        "3.60e−9",
+        "2.61e−8",
+        "314×",
+        "116",
+        "Sep 23, 12:51 13 h ago"
+      ],
+      [
+        "▼2",
+        "15",
+        "SM shiv_m Independent",
+        "3.70e−9",
+        "2.04e−8",
+        "306×",
+        "125",
+        "Sep 23, 12:28 13 h ago"
+      ],
+      [
+        "▲21",
+        "16",
+        "ER emanuel_ruzak University of Buenos Aires",
+        "3.80e−9",
+        "1.91e−8",
+        "298×",
+        "3",
+        "Sep 23, 16:13 9 h ago"
+      ],
+      [
+        "▼3",
+        "17",
+        "FK fklassen —",
+        "4.00e−9",
+        "2.00e−8",
+        "283×",
+        "40",
+        "Sep 22, 06:16 1 d ago"
+      ],
+      [
+        "▼3",
+        "18",
+        "TG thibault_gounant Polytech Nantes",
+        "4.10e−9",
+        "2.03e−8",
+        "276×",
+        "131",
+        "Sep 22, 01:45 2 d ago"
+      ],
+      [
+        "▼3",
+        "19",
+        "LD lode_dockx Ku Leuven",
+        "4.20e−9",
+        "4.07e−8",
+        "269×",
+        "79",
+        "Sep 22, 20:18 1 d ago"
+      ],
+      [
+        "▼1",
+        "19",
+        "LU LuDoe —",
+        "4.20e−9",
+        "2.12e−8",
+        "269×",
+        "51",
+        "Sep 23, 06:34 19 h ago"
+      ],
+      [
+        "▼2",
+        "19",
+        "JL jlacombe —",
+        "4.20e−9",
+        "2.03e−8",
+        "269×",
+        "44",
+        "Sep 23, 14:40 11 h ago"
+      ],
+      [
+        "▼3",
+        "22",
+        "TM tristan_miano —",
+        "4.40e−9",
+        "2.13e−8",
+        "257×",
+        "21",
+        "Sep 23, 12:58 13 h ago"
+      ],
+      [
+        "▼3",
+        "23",
+        "HC huang_chung_yi Termdock",
+        "4.60e−9",
+        "2.15e−8",
+        "246×",
+        "135",
+        "Sep 21, 09:20 2 d ago"
+      ],
+      [
+        "▼2",
+        "23",
+        "PR whest_winner 1 member",
+        "4.60e−9",
+        "2.18e−8",
+        "246×",
+        "39",
+        "Sep 23, 16:36 9 h ago"
+      ],
+      [
+        "▼4",
+        "25",
+        "BG bgrubbs1984 Engineering",
+        "4.70e−9",
+        "2.18e−8",
+        "241×",
+        "110",
+        "Sep 22, 18:09 1 d ago"
+      ],
+      [
+        "▼3",
+        "26",
+        "PT pricop_tudor Alexandru Ioan Cuza University of Iasi",
+        "4.80e−9",
+        "2.18e−8",
+        "236×",
+        "17",
+        "Sep 16, 11:17 1 w ago"
+      ],
+      [
+        "▲11",
+        "26",
+        "MD ES Hack2Publish 2 members",
+        "4.80e−9",
+        "2.13e−8",
+        "236×",
+        "19",
+        "Sep 24, 00:05 2 h ago"
+      ],
+      [
+        "▼4",
+        "28",
+        "DB drmohammad_banisalman —",
+        "4.90e−9",
+        "2.23e−8",
+        "231×",
+        "17",
+        "Sep 18, 16:15 5 d ago"
+      ],
+      [
+        "▼4",
+        "28",
+        "SO sophie549 self study",
+        "4.90e−9",
+        "2.14e−8",
+        "231×",
+        "72",
+        "Sep 21, 08:47 2 d ago"
+      ],
+      [
+        "▲9",
+        "28",
+        "AN AndreasHad04 —",
+        "4.90e−9",
+        "2.12e−8",
+        "231×",
+        "56",
+        "Sep 23, 12:15 13 h ago"
+      ],
+      [
+        "▼5",
+        "31",
+        "NU NullPointer 1 member · Narxoz University",
+        "5.00e−9",
+        "2.17e−8",
+        "226×",
+        "14",
+        "Sep 19, 02:57 4 d ago"
+      ],
+      [
+        "▼5",
+        "31",
+        "JG jasper_givens —",
+        "5.00e−9",
+        "2.05e−8",
+        "226×",
+        "10",
+        "Sep 21, 17:04 2 d ago"
+      ],
+      [
+        "▼5",
+        "33",
+        "KO kosi —",
+        "5.10e−9",
+        "2.12e−8",
+        "222×",
+        "30",
+        "Sep 15, 01:46 1 w ago"
+      ],
+      [
+        "▼5",
+        "33",
+        "PP infinity 1 member",
+        "5.10e−9",
+        "2.13e−8",
+        "222×",
+        "11",
+        "Sep 17, 13:06 6 d ago"
+      ],
+      [
+        "▼5",
+        "33",
+        "AM Zen 1 member",
+        "5.10e−9",
+        "2.13e−8",
+        "222×",
+        "43",
+        "Sep 20, 05:04 3 d ago"
+      ],
+      [
+        "▼5",
+        "33",
+        "FS foyshal_sk —",
+        "5.10e−9",
+        "2.11e−8",
+        "222×",
+        "6",
+        "Sep 21, 20:30 2 d ago"
+      ],
+      [
+        "▼5",
+        "33",
+        "OK omer_kiraz —",
+        "5.10e−9",
+        "2.15e−8",
+        "222×",
+        "12",
+        "Sep 22, 22:11 1 d ago"
+      ],
+      [
+        "▲12",
+        "33",
+        "TQ trim_qewas —",
+        "5.10e−9",
+        "2.13e−8",
+        "222×",
+        "10",
+        "Sep 23, 08:58 17 h ago"
+      ],
+      [
+        "▼6",
+        "39",
+        "UA utkarsh_agrawal —",
+        "5.20e−9",
+        "2.15e−8",
+        "218×",
+        "65",
+        "Sep 13, 06:41 1 w ago"
+      ],
+      [
+        "▼6",
+        "39",
+        "NH Norikazu_Haji —",
+        "5.20e−9",
+        "2.13e−8",
+        "218×",
+        "8",
+        "Sep 13, 11:21 1 w ago"
+      ],
+      [
+        "▼6",
+        "39",
+        "SN stanley_ngugi —",
+        "5.20e−9",
+        "2.20e−8",
+        "218×",
+        "9",
+        "Sep 16, 15:39 1 w ago"
+      ],
+      [
+        "▼6",
+        "39",
+        "XL xj_liu —",
+        "5.20e−9",
+        "2.13e−8",
+        "218×",
+        "18",
+        "Sep 20, 13:15 3 d ago"
+      ],
+      [
+        "▼6",
+        "43",
+        "YI yrik_ivanov —",
+        "5.30e−9",
+        "2.16e−8",
+        "214×",
+        "20",
+        "Sep 12, 21:03 1 w ago"
+      ],
+      [
+        "▼6",
+        "43",
+        "SI sigma1 —",
+        "5.30e−9",
+        "2.19e−8",
+        "214×",
+        "14",
+        "Sep 12, 21:25 1 w ago"
+      ],
+      [
+        "▼6",
+        "43",
+        "FA fred_a —",
+        "5.30e−9",
+        "2.02e−8",
+        "214×",
+        "4",
+        "Sep 13, 23:08 1 w ago"
+      ],
+      [
+        "▼6",
+        "43",
+        "TA tarikcankorkmaz —",
+        "5.30e−9",
+        "2.28e−8",
+        "214×",
+        "15",
+        "Sep 15, 17:23 1 w ago"
+      ],
+      [
+        "▼6",
+        "43",
+        "ED edo2 —",
+        "5.30e−9",
+        "2.33e−8",
+        "214×",
+        "7",
+        "Sep 18, 11:51 5 d ago"
+      ],
+      [
+        "▲18",
+        "43",
+        "NE neopok919 —",
+        "5.30e−9",
+        "2.46e−8",
+        "214×",
+        "24",
+        "Sep 23, 08:27 17 h ago"
+      ],
+      [
+        "▲58",
+        "43",
+        "CV christos_vasilopoulos —",
+        "5.30e−9",
+        "2.14e−8",
+        "214×",
+        "5",
+        "Sep 23, 18:53 7 h ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "SP EP MS +1 Activation-Regions 4 members · Ruhr University Bochum",
+        "5.40e−9",
+        "2.80e−8",
+        "210×",
+        "85",
+        "Sep 2, 18:16 3 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "50 504aldo Independent",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "14",
+        "Sep 6, 20:40 2 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "YW yuechun_wei —",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "9",
+        "Sep 10, 09:57 1 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "NK DancinGirl 1 member",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "7",
+        "Sep 11, 11:20 1 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "JM jwaling_mehta Mumbai",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "2",
+        "Sep 12, 13:02 1 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "TW ai_innovation 1 member",
+        "5.40e−9",
+        "2.17e−8",
+        "210×",
+        "4",
+        "Sep 13, 01:49 1 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "EK Erlik_Khan Independent",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "19",
+        "Sep 13, 02:17 1 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "MB maximilian_bloom Independent",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "5",
+        "Sep 13, 07:58 1 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "MD martynas_dziugas —",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "1",
+        "Sep 13, 08:15 1 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "4J 4j2txbjjddcmd —",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "4",
+        "Sep 13, 13:31 1 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "WP wofi_poria —",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "1",
+        "Sep 15, 06:42 1 w ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "RB ravi_banchhiwal —",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "4",
+        "Sep 19, 14:31 4 d ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "CS chanmeet_singh —",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "1",
+        "Sep 20, 15:15 3 d ago"
+      ],
+      [
+        "▼5",
+        "50",
+        "YC yann_cornu Marius&Co",
+        "5.40e−9",
+        "2.13e−8",
+        "210×",
+        "8",
+        "Sep 22, 05:55 1 d ago"
+      ],
+      [
+        "▼2",
+        "64",
+        "DI dipdecir —",
+        "5.90e−9",
+        "2.55e−8",
+        "192×",
+        "13",
+        "Sep 23, 19:04 7 h ago"
+      ],
+      [
+        "▲3",
+        "65",
+        "RS rui_song student",
+        "6.30e−9",
+        "2.13e−8",
+        "180×",
+        "9",
+        "Sep 23, 08:53 17 h ago"
+      ],
+      [
+        "▼4",
+        "66",
+        "JA jamespayor Independent",
+        "6.40e−9",
+        "1.97e−8",
+        "177×",
+        "19",
+        "Sep 10, 18:54 1 w ago"
+      ],
+      [
+        "▼3",
+        "67",
+        "VM Gamilton 1 member · None",
+        "6.60e−9",
+        "2.43e−8",
+        "171×",
+        "15",
+        "Sep 14, 09:19 1 w ago"
+      ],
+      [
+        "▼3",
+        "67",
+        "MA mainguyenanhvu —",
+        "6.60e−9",
+        "2.12e−8",
+        "171×",
+        "30",
+        "Sep 19, 00:15 5 d ago"
+      ],
+      [
+        "▼3",
+        "69",
+        "AB axel_bouchaudroche —",
+        "6.80e−9",
+        "2.32e−8",
+        "166×",
+        "15",
+        "Sep 21, 08:33 2 d ago"
+      ],
+      [
+        "new",
+        "70",
+        "ZR ze_rong —",
+        "6.90e−9",
+        "2.07e−8",
+        "164×",
+        "3",
+        "Sep 23, 19:11 6 h ago"
+      ],
+      [
+        "▼4",
+        "71",
+        "JA jamesrahenry —",
+        "7.00e−9",
+        "2.18e−8",
+        "162×",
+        "15",
+        "Sep 22, 21:56 1 d ago"
+      ],
+      [
+        "▼3",
+        "72",
+        "DO Dorara 1 member",
+        "7.80e−9",
+        "2.13e−8",
+        "145×",
+        "2",
+        "Sep 18, 08:48 5 d ago"
+      ],
+      [
+        "▼3",
+        "72",
+        "DZ dailiang_zhou —",
+        "7.80e−9",
+        "2.13e−8",
+        "145×",
+        "4",
+        "Sep 21, 16:23 2 d ago"
+      ],
+      [
+        "new",
+        "72",
+        "VP vinit_patil —",
+        "7.80e−9",
+        "2.13e−8",
+        "145×",
+        "2",
+        "Sep 23, 15:00 11 h ago"
+      ],
+      [
+        "▼4",
+        "75",
+        "RP rphong —",
+        "7.90e−9",
+        "2.90e−8",
+        "143×",
+        "61",
+        "Sep 14, 22:56 1 w ago"
+      ],
+      [
+        "▼4",
+        "76",
+        "NO MF DalTeam 2 members",
+        "8.10e−9",
+        "2.12e−8",
+        "140×",
+        "1",
+        "Sep 17, 06:38 6 d ago"
+      ],
+      [
+        "▼4",
+        "77",
+        "KL kenny_leung —",
+        "8.30e−9",
+        "2.79e−8",
+        "136×",
+        "19",
+        "Sep 22, 17:57 1 d ago"
+      ],
+      [
+        "▼4",
+        "78",
+        "TK Tim 1 member",
+        "8.60e−9",
+        "2.67e−8",
+        "132×",
+        "7",
+        "Sep 12, 03:35 1 w ago"
+      ],
+      [
+        "▼4",
+        "79",
+        "NE neilarmstrong4 —",
+        "8.70e−9",
+        "3.11e−8",
+        "130×",
+        "11",
+        "Sep 6, 21:49 2 w ago"
+      ],
+      [
+        "▼4",
+        "80",
+        "KI Kirytho —",
+        "9.30e−9",
+        "3.02e−8",
+        "122×",
+        "23",
+        "Sep 20, 16:58 3 d ago"
+      ],
+      [
+        "▲34",
+        "81",
+        "AK artiem_kuznietsov —",
+        "9.60e−9",
+        "2.96e−8",
+        "118×",
+        "8",
+        "Sep 23, 20:21 5 h ago"
+      ],
+      [
+        "▼5",
+        "82",
+        "NN noa_nabeshima —",
+        "1.00e−8",
+        "3.57e−8",
+        "113×",
+        "4",
+        "Sep 4, 04:52 2 w ago"
+      ],
+      [
+        "▼5",
+        "83",
+        "AA aamir_abdul_azeez —",
+        "1.03e−8",
+        "2.43e−8",
+        "110×",
+        "12",
+        "Sep 24, 00:11 1 h ago"
+      ],
+      [
+        "▼5",
+        "84",
+        "WE JX NeuralForge 2 members",
+        "1.05e−8",
+        "3.18e−8",
+        "108×",
+        "7",
+        "Sep 7, 08:25 2 w ago"
+      ],
+      [
+        "▼5",
+        "84",
+        "KA kaileh57 Sculptor AI",
+        "1.05e−8",
+        "3.16e−8",
+        "108×",
+        "45",
+        "Sep 22, 17:43 1 d ago"
+      ],
+      [
+        "▼5",
+        "86",
+        "PD pranav_devarinti —",
+        "1.13e−8",
+        "3.33e−8",
+        "100×",
+        "52",
+        "Aug 26, 11:17 4 w ago"
+      ],
+      [
+        "▼5",
+        "87",
+        "BX bx0 —",
+        "1.24e−8",
+        "1.92e−8",
+        "91×",
+        "3",
+        "Sep 6, 06:23 2 w ago"
+      ],
+      [
+        "▼5",
+        "87",
+        "KE bitter-lesson-pilled 1 member · AE Studio",
+        "1.24e−8",
+        "2.04e−8",
+        "91×",
+        "16",
+        "Sep 16, 23:29 1 w ago"
+      ],
+      [
+        "▼5",
+        "89",
+        "SA SaltyTaro ArcNautical",
+        "1.38e−8",
+        "2.99e−8",
+        "82×",
+        "21",
+        "Sep 5, 09:20 2 w ago"
+      ],
+      [
+        "▼5",
+        "90",
+        "MB mayank_bhatia —",
+        "1.46e−8",
+        "2.78e−8",
+        "78×",
+        "6",
+        "Sep 7, 01:25 2 w ago"
+      ],
+      [
+        "▼5",
+        "91",
+        "AJ al_jannico —",
+        "1.62e−8",
+        "2.11e−8",
+        "70×",
+        "14",
+        "Sep 14, 15:24 1 w ago"
+      ],
+      [
+        "new",
+        "92",
+        "JS jacob_stavrianos —",
+        "1.73e−8",
+        "3.71e−8",
+        "65×",
+        "1",
+        "Sep 23, 21:55 4 h ago"
+      ],
+      [
+        "▼6",
+        "93",
+        "AR ArtemVoronov —",
+        "1.83e−8",
+        "2.33e−8",
+        "62×",
+        "12",
+        "Sep 5, 06:38 2 w ago"
+      ],
+      [
+        "▼6",
+        "94",
+        "SS subarno_sadat_barno Bangladesh University of Engineering and Technology",
+        "2.05e−8",
+        "3.31e−8",
+        "55×",
+        "16",
+        "Sep 7, 14:36 2 w ago"
+      ],
+      [
+        "▼6",
+        "95",
+        "RA VI arc 2 members",
+        "2.16e−8",
+        "2.17e−8",
+        "52×",
+        "32",
+        "Sep 8, 03:06 2 w ago"
+      ],
+      [
+        "▼6",
+        "96",
+        "DL DLSolutions 1 member",
+        "2.35e−8",
+        "3.48e−8",
+        "48×",
+        "4",
+        "Sep 5, 12:59 2 w ago"
+      ],
+      [
+        "▲40",
+        "97",
+        "SB smater_big —",
+        "2.62e−8",
+        "3.78e−8",
+        "43×",
+        "9",
+        "Sep 23, 11:41 14 h ago"
+      ],
+      [
+        "▼7",
+        "98",
+        "ZN zndrr North Carolina State University",
+        "2.65e−8",
+        "3.56e−8",
+        "43×",
+        "3",
+        "Aug 27, 18:02 3 w ago"
+      ],
+      [
+        "▼7",
+        "99",
+        "CW cwc —",
+        "2.80e−8",
+        "4.09e−8",
+        "40×",
+        "3",
+        "Sep 4, 22:17 2 w ago"
+      ],
+      [
+        "▼7",
+        "100",
+        "EL ely2sh —",
+        "3.25e−8",
+        "3.56e−8",
+        "35×",
+        "1",
+        "Sep 5, 21:39 2 w ago"
+      ]
+    ]
+  },
+  "current_leader": {
+    "participant": "J2W",
+    "rank_display": "01",
+    "adjusted_score_display": "2.10e−9",
+    "displayed_significant_digits": 3,
+    "exact_unrounded_score": "UNKNOWN",
+    "final_layer_mse_display": "1.64e−8",
+    "vs_sampling_approx_display": "539×",
+    "entries_display": 320,
+    "last_submission_display": "Sep 19, 00:05 5 d ago"
+  },
+  "rules": {
+    "submission_deadline_utc": "2026-10-17T23:59:00Z",
+    "metric": "adjusted_final_layer_score = mean_m(final_layer_mse_m * max(0.1, F_m/B)); lower is better",
+    "phase_2_compute": "C_m = F_m",
+    "per_mlp_flop_budget_B": 2199023255552,
+    "failure_multiplier": 1,
+    "raw_final_layer_mse_is_ranking_metric": false
+  },
+  "comparability": {
+    "decision": "NOT_COMPARABLE",
+    "exact_gap_computed": false,
+    "rank_claimed": false,
+    "r209_v25": {
+      "panel": "v2-phase2 mini:all-100 public development",
+      "rows": 100,
+      "failures": 0,
+      "adjusted_score": 8.170397440117225e-9
+    },
+    "r223_v25": {
+      "panel": "mini-100",
+      "rows": 100,
+      "adjusted_score": 8.1711165e-9
+    },
+    "r271_visible50_stable_identity_overlap_with_r209": 0,
+    "r271_exact_panel_match_proven": false,
+    "r271_evaluator_version_match": false,
+    "r271_meter_version_match": false,
+    "missing": [
+      "Immutable visible-50 manifest mapping public mlp_index/mlp_name to network_id, preferably target_sha256, and grader evaluator/meter versions.",
+      "For R209 reuse, the visible-50 IDs/fingerprints must occur in its rows; otherwise an immutable per-MLP V25 result artifact for this exact visible 50 is required.",
+      "Per-network results must match the same panel, split, scoring definition, and compatible evaluator/meter versions."
+    ]
+  },
+  "reconciliation": {
+    "r263": {
+      "url": "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
+      "verdict": "NOT_COMPARABLE",
+      "retrieval_utc": "2026-09-23T12:05:34Z",
+      "leader_score_display": "0.0000000021",
+      "entries": 312,
+      "receipt_sha256": "d799a5e2fe54024eb0f39bfc9e256173d2660467f2928b17ec379a2362db9c73",
+      "source_snapshot_sha256": "6cbb8ce69ad4330cc624e78209a49a1b333e3845daf8def1fd2a462d6ff49646"
+    },
+    "r271": {
+      "url": "https://github.com/tim8es/arc-whitebox/blob/772f010042a818ba641b64be58db55a78344217f/research/r271/R271_RECEIPT.json",
+      "verdict": "NOT_COMPARABLE",
+      "public_rows": 50,
+      "sealed_rows": 50,
+      "stable_identity_overlap_with_r209": 0,
+      "exact_panel_match_proven": false,
+      "receipt_git_blob_sha1": "f5fae39a0f7ebac0cea6608461b9616f2d76cf9f"
+    },
+    "r266": {
+      "url": "https://github.com/tim8es/arc-whitebox/blob/94afd42db902d7dcaa7b6aa4f9a142d04120e971/research/r266/R266_RECEIPT.json",
+      "verdict": "NOT_COMPARABLE",
+      "reason": "R209 mini:all-100 does not match online visible-50; rounded leaderboard display is not an exact gap or rank.",
+      "receipt_git_blob_sha1": "28d721653959746502fd5cb104045ef05f876e30"
+    }
+  },
+  "source_and_artifact_hashes": {
+    "control_state_git_blob_sha1": "cc03386d5c3058d71fc36abeabf408772eb5346",
+    "ai_crowd_scoring_model_git_blob_sha1": "f65e3700ad1874e563f4ef9d91bd2e0a8aa0ae7e",
+    "ai_crowd_rounds_doc_git_blob_sha1": "2aaf38a54b5d6ed83ce2604870dcac59e62cee59",
+    "r263_receipt_git_blob_sha1": "3d1471b320c1db00b4f7fb7f2e8e613c2d3030cd"
+  },
+  "checks": [
+    "Read current AIcrowd Phase-2 leaderboard endpoint and captured the first 100 displayed rows with rendered values.",
+    "Read the official AIcrowd Phase-2 launch announcement for current submission deadline and round rule summary.",
+    "Read AIcrowd-owned starter-kit scoring-model and rounds documentation at commit 5eb9aa1455fcb3216af55994bdf25dc242b95797.",
+    "Read R263, R271, and R266 receipts and current research/control-v2 state revision 474."
+  ],
+  "not_run": [
+    "No benchmark, estimator, Actions workflow, or data/dependency download.",
+    "No paid resource, private/holdout/full data access, competition submission, leaderboard mutation, canonical-result edit, PR #36 edit, or contact.",
+    "No exact visible-50 score recomputation, numeric gap, or rank claim."
+  ],
+  "sources": [
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+    "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026",
+    "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/challenge_rules",
+    "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/concepts/scoring-model.md",
+    "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/reference/rounds.md",
+    "https://github.com/tim8es/arc-whitebox/blob/6a6b0b0ed53b69a1822b3b281a93a120ff153b3e/research/r263/R263_RECEIPT.json",
+    "https://github.com/tim8es/arc-whitebox/blob/772f010042a818ba641b64be58db55a78344217f/research/r271/R271_RECEIPT.json",
+    "https://github.com/tim8es/arc-whitebox/blob/94afd42db902d7dcaa7b6aa4f9a142d04120e971/research/r266/R266_RECEIPT.json",
+    "https://github.com/tim8es/arc-whitebox/blob/e1dac28c1bfeacb4ec33d997238bb0c6be73b632/research/control/state.json",
+    "https://github.com/tim8es/arc-whitebox/blob/e1dac28c1bfeacb4ec33d997238bb0c6be73b632/research/control/STATUS.md"
+  ]
+}
