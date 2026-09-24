@@ -1,0 +1,123 @@
+{
+  "schema": "arc.whitebox.r319.public50-r209-join-audit.v1",
+  "job": "R319",
+  "status": "NOT_JOINABLE",
+  "date_utc": "2026-09-24",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r319-public50-r209-join-audit-20260924",
+  "stop_check": {
+    "r305": {
+      "verdict": "NOT_COMPARABLE",
+      "branch_head": "d6124d78714e9882f7d7384b6ad6482af22f7301",
+      "report_blob_sha1": "d45093692dea0338acd65e612743ea5ed32e74ed",
+      "receipt_blob_sha1": "6dca6965c3ef27263d1d1cd2aea12d303a485d9d",
+      "exact_join_closed": false,
+      "note": "Committed R305 does not contain a 50-row name->network_id mapping; it records network_id_exposed=false and target_sha256_exposed=false."
+    },
+    "r311": {
+      "verdict": "NOT_COMPARABLE",
+      "report_blob_sha1": "83fe8cb87c85b8fde124b60b5aa16856aab4a91c",
+      "receipt_blob_sha1": "29891f15e4c976f9541280d6a141a8538be86172",
+      "same_panel_proven": false,
+      "immutable_public50_join_key_available": false
+    },
+    "r314": {
+      "verdict": "NOT_COMPARABLE",
+      "report_blob_sha1": "3ca4bd06b3140d91a54a232076c5fefe0e35ba93",
+      "receipt_blob_sha1": "1c353d3746a83006b4cff0b49f041d6b5aa2e89e",
+      "exact_panel_identity_proven": false,
+      "exact_public50_to_r209_join_proven": false
+    },
+    "already_fully_closed": false
+  },
+  "grader_public50": {
+    "source_artifact": {
+      "path": "research/r271/R271_IDENTITY_AUDIT.json",
+      "git_blob_sha1": "dae9e30f803918f642710e50e0191568f9939578",
+      "sha256": "c1d329541d544f396e02b18ddb2c78c02bf73da911ff7a97f3bd0b1827ac1260"
+    },
+    "panel": "Phase-2 grader public split",
+    "rows": 50,
+    "mlp_index_present": 50,
+    "mlp_name_present": 50,
+    "unique_mlp_names": 50,
+    "canonical_network_id_present": 0,
+    "target_sha256_present": 0,
+    "network_id_collisions": "NOT_ASSESSABLE_IDS_ABSENT",
+    "target_hash_collisions": "NOT_ASSESSABLE_HASHES_ABSENT",
+    "display_name_used_as_join_key": false,
+    "row_order_used_as_join_key": false
+  },
+  "r209_v25": {
+    "normalization_commit": "8fb0afb77ae834d88bae29557a41356d4d98401f",
+    "fingerprints": {
+      "path": "research/r224/R224_MINI100_FINGERPRINTS.json",
+      "git_blob_sha1": "9ecde34282c3fbef51ff3b11d4ec439012b3c52d",
+      "sha256": "ae0b3659568cc1297aeac89f6babf9f2df2b2752d0216e638141ec6411f629a4",
+      "network_id_rule": "decimal exact int64 mlp_seed",
+      "target_sha256_rule": "SHA256 C-contiguous raw float32 all_layer_means bytes",
+      "rows": 100,
+      "network_ids_present": 100,
+      "unique_network_ids": 100,
+      "network_id_collisions": 0,
+      "target_sha256_present": 100,
+      "unique_target_sha256": 100,
+      "target_sha256_collisions": 0
+    },
+    "normalized_result": {
+      "path": "research/results/R209-v25-mini100.json",
+      "git_blob_sha1": "0183d0570f7c9965e00e8553ffc003c313865232",
+      "sha256": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+      "original_artifact_id": 10617855153,
+      "original_artifact_zip_sha256": "820bf9368beac10ea537fc018c3c2185bbd310b9542603cbfa8309519c8e3e08",
+      "rows": 100,
+      "network_ids_present": 100,
+      "unique_network_ids": 100,
+      "network_id_collisions": 0,
+      "target_sha256_present": 100,
+      "unique_target_sha256": 100,
+      "target_sha256_collisions": 0
+    },
+    "panel": {
+      "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+      "dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+      "split": "mini:all-100",
+      "count": 100,
+      "stage": "development"
+    }
+  },
+  "join": {
+    "admissible_key": "canonical network_id only",
+    "public_rows_with_admissible_key": 0,
+    "public_rows_total": 50,
+    "direct_key_coverage": "0/50",
+    "exact_matches_proven": 0,
+    "exact_nonmatches_proven": 0,
+    "overlap_test_possible": false,
+    "full_join_proven": false,
+    "verdict": "NOT_JOINABLE",
+    "interpretation": "0/50 coverage means zero public rows expose an admissible direct key; it does not prove zero underlying network overlap."
+  },
+  "minimum_missing_artifact": {
+    "description": "Immutable official grader-public 50-row manifest mapping each public mlp_index to canonical network_id, plus an explicit statement that network_id has the same identity semantics as R224 decimal exact int64 mlp_seed.",
+    "target_sha256_required_for_minimum_join": false,
+    "target_sha256_preferred": true,
+    "followup_if_ids_missing_from_r209": "Immutable V25 per-MLP result evidence for those exact missing grader-public networks."
+  },
+  "report": {
+    "path": "research/r319/R319_PUBLIC50_R209_JOIN_AUDIT.md",
+    "creation_commit": "3813d1c40814cc0b2c7b6becd1a9c07fa005f398",
+    "git_blob_sha1": "c858a8f3bd29f50c5188894aeaaa73e2208a374f"
+  },
+  "execution_accounting": {
+    "code_executed": false,
+    "benchmark_run": false,
+    "github_actions_run": false,
+    "dataset_or_dependency_download": false,
+    "private_holdout_or_full_access": false,
+    "competition_submission": false,
+    "main_edited": false,
+    "pull_request_edited_or_opened": false,
+    "control_edited": false
+  }
+}
