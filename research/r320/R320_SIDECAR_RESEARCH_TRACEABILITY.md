@@ -1,13 +1,14 @@
 # R320 — sidecar research traceability audit
 
-**Status:** COMPLETE — corrected by R323; extended by R332/R334/R336  
+**Status:** COMPLETE — corrected by R323; extended by R332/R334/R336/R339  
 **Mode:** report-only traceability audit  
 **Branch:** `review/r320-sidecar-research-traceability-20260924`  
 **Exact base:** `4619801e0cc5e7e340cd0406eb44e0633d8aa5e5`  
 **R323 correction parent:** `ae418aa7bcdb08549b051745816bce16aafe1e7e`  
 **R332 extension parent:** `0c4db1d79deb9b2f608001127d8359b0c0fafd27`  
 **R334 extension parent:** `1c285e5d504d6eb3c971d5afae9db3188e0dcea0`  
-**R336 extension parent:** `2a524361d1b39ef3066f97cc2d986f1596f58920`
+**R336 extension parent:** `2a524361d1b39ef3066f97cc2d986f1596f58920`  
+**R339 synchronization parent:** `a9434ed9b22a41e1ecff2aba6fd7d0f790396d60`
 
 ## R323 correction notice
 
@@ -76,7 +77,8 @@ R332 is a traceability-only extension. It does not reinterpret these sidecars as
 | R329 | official-source public-method audit | current rank-3 `marius_binner` / #331953: `NO_PUBLIC_METHOD` | `review/r329-rank3-marius-method-audit-20260924` / `17713f7dd2fa43f86a1b02f24f843b77bb433960` | report `research/r329/R329_RANK3_MARIUS_METHOD_AUDIT.md`, blob `4f05197a07391fc92515b085bc78f4f2665295ea`, https://github.com/tim8es/arc-whitebox/blob/17713f7dd2fa43f86a1b02f24f843b77bb433960/research/r329/R329_RANK3_MARIUS_METHOD_AUDIT.md ; receipt `research/r329/R329_RANK3_MARIUS_METHOD_AUDIT_RECEIPT.json`, blob `0172658228760db0d685e4e43f2cfd93b5c4a8c8`, https://github.com/tim8es/arc-whitebox/blob/17713f7dd2fa43f86a1b02f24f843b77bb433960/research/r329/R329_RANK3_MARIUS_METHOD_AUDIT_RECEIPT.json | **NO** |
 | R331 | independent arithmetic/provenance red-team | `COMPLETE / PASS`; R325 quantitative results independently reproduced, no correction | `review/r331-independent-r325-bound-verification-20260924` / `695bde569e8164d3bccceae4c0d5ab01698de1fd` | report `research/r331/R331_INDEPENDENT_R325_BOUND_VERIFICATION.md`, blob `4f46e1550e0e900556793712eff45c08e413f0fd`, https://github.com/tim8es/arc-whitebox/blob/695bde569e8164d3bccceae4c0d5ab01698de1fd/research/r331/R331_INDEPENDENT_R325_BOUND_VERIFICATION.md ; receipt `research/r331/R331_RECEIPT.json`, blob `3a8e567c58518335fa9e6aa2bb7c90afda0c41d0`, https://github.com/tim8es/arc-whitebox/blob/695bde569e8164d3bccceae4c0d5ab01698de1fd/research/r331/R331_RECEIPT.json | **NO — arithmetic/provenance verification only** |
 | R333 | conditional offline score-decomposition | `COMPLETE / COMPUTE_ONLY_INSUFFICIENT_AT_FIXED_OBSERVED_ACCURACY` | `review/r333-r209-compute-floor-headroom-20260924` / `b089c3e24f7ea5499b66f09da27a2be3f9b5d3de` | report `research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md`, blob `5e2b58a80a647b9f0a8dcc3355a65d8e5a01e4f5`, https://github.com/tim8es/arc-whitebox/blob/b089c3e24f7ea5499b66f09da27a2be3f9b5d3de/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM.md ; receipt `research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json`, blob `3718a7ce748a57db36f08fbd64fd55cabd51c801`, https://github.com/tim8es/arc-whitebox/blob/b089c3e24f7ea5499b66f09da27a2be3f9b5d3de/research/r333/R333_R209_COMPUTE_FLOOR_HEADROOM_RECEIPT.json | **NO — offline decomposition of stored R209 outputs only** |
-| R335 | theory scout | `COMPLETE / EVIDENCE_BASED_NO_GO / ALREADY_COVERED_AT_DEEP_REALIZATION` | `review/r335-accuracy-side-estimator-scout-20260924` / `9e01cb63dc2a4e662422b3ae98af67d1830505b7` | report `research/r335/R335_ACCURACY_SIDE_ESTIMATOR_SCOUT.md`, blob `1477f3be912bf8c641e3e51c9812cc4833a603d1`, https://github.com/tim8es/arc-whitebox/blob/9e01cb63dc2a4e662422b3ae98af67d1830505b7/research/r335/R335_ACCURACY_SIDE_ESTIMATOR_SCOUT.md ; receipt `research/r335/R335_RECEIPT.json`, blob `d4d1891d2f13dd51b38032baacd7cb8dd92066b5`, https://github.com/tim8es/arc-whitebox/blob/9e01cb63dc2a4e662422b3ae98af67d1830505b7/research/r335/R335_RECEIPT.json | **NO — 0 ideas admitted; no run** |
+| R335 | theory scout, R338-corrected | `COMPLETE / EVIDENCE_BASED_FEASIBILITY_NO_GO`; R338 material correction applied, no impossibility/lower-bound claim | `review/r335-accuracy-side-estimator-scout-20260924` / `1e233a439b81708353513998898e9f7cfd10caf2` | corrected report `research/r335/R335_ACCURACY_SIDE_ESTIMATOR_SCOUT.md`, blob `32fcd8e7c43c712aa81b2c0e2f3487f3911d9c23`, https://github.com/tim8es/arc-whitebox/blob/1e233a439b81708353513998898e9f7cfd10caf2/research/r335/R335_ACCURACY_SIDE_ESTIMATOR_SCOUT.md ; corrected receipt `research/r335/R335_RECEIPT.json`, blob `4e7d9523f1b08580358b9f2340f076977e611573`, https://github.com/tim8es/arc-whitebox/blob/1e233a439b81708353513998898e9f7cfd10caf2/research/r335/R335_RECEIPT.json | **NO — 0 ideas admitted; no run** |
+| R337 | independent theory/forensics red-team | `COMPLETE / PASS_WITH_MATERIAL_CORRECTION`; terminal interpretation `EVIDENCE_BASED_FEASIBILITY_NO_GO_UNCHANGED` | `review/r337-r335-independent-red-team-20260924` / `9c233d8ba33ae64316d6ec71bc0f433dc8574451` | report `research/r337/R337_R335_INDEPENDENT_RED_TEAM.md`, blob `551d895ffdc222ee5e2b45246419a70613f9eae1`, https://github.com/tim8es/arc-whitebox/blob/9c233d8ba33ae64316d6ec71bc0f433dc8574451/research/r337/R337_R335_INDEPENDENT_RED_TEAM.md ; receipt `research/r337/R337_RECEIPT.json`, blob `4248094963d4f1161a71fba100479b227ea8d67b`, https://github.com/tim8es/arc-whitebox/blob/9c233d8ba33ae64316d6ec71bc0f433dc8574451/research/r337/R337_RECEIPT.json | **NO — theory/forensics only** |
 
 ### Caveats preserved by R332
 
@@ -90,11 +92,12 @@ R332 is a traceability-only extension. It does not reinterpret these sidecars as
 - **R329:** current rank-3 row directly links marius_binner to #331953; public access does not establish method disclosure.
 - **R331:** independently reproduces R325's saved arithmetic/provenance and preserves the same external limitation: the actual public-50 to R209 membership/join remains unproved.
 - **R333:** at fixed committed R209 mean raw MSE `2.228303490170447e-8`, the Phase-2 `0.1` multiplier floor gives counterfactual mean adjusted score `2.228303490170447e-9`, still numerically above the rounded leaderboard display `2.10e-9`. Matching that display at multiplier `0.1` would require mean raw MSE `2.10e-8`, a `5.7579%` reduction from the committed R209 mean. This is score decomposition only: no achievable-estimator claim, no same-panel leaderboard claim, and the exact public-50→R209 join remains unproved.
-- **R335:** the scalar characteristic-function positive-part identity gives an exact ReLU mean when the required joint characteristic-function values are available. The deep realization is not a new estimator family: exact generic-dense propagation returns to R317/R321 orthant/gate state (or E114–E119 boundary state), while tractable approximations re-enter already occupied sampling, Gaussian/mixture, or compression lanes. The preregistered re-entry gate was **not executed**: only if a future concrete non-duplicate polynomial-size joint-CF closure exists should a width-8/depth-4 exact-small test require candidate raw mean-vector MSE `<= 0.94×` matched parent, no median per-neuron degradation, and later proof of `<2^41` FLOPs/network plus a credible `<0.4 s` residual path.
+- **R335/R338:** corrected final verdict is `EVIDENCE_BASED_FEASIBILITY_NO_GO`. Pilipovsky et al. (L4DC/PMLR 2023) is a directly relevant published deep-ReLU characteristic-function/Hilbert-transform method omitted by the original R335 screen. Its numerical construction propagates component-wise CFs; the joint-to-product factorization is stated under independence, while generic dense hidden mixing does not generally preserve that condition. Explicit orthant/mask enumeration remains one exact representation only, **not** a universal lower bound; no impossibility or exponential-hardness claim is made for a single Gaussian/orthant query. The remaining audited blocker is narrower: no finite reusable polynomial-size generic-dense joint-dependence state with rigorous composable propagated-error control and credible `<2^41` FLOP / `<0.4 s` residual guarantees was found. R338 is correction lineage on R335, not a separate study. The width-8/depth-4 re-entry criterion remains **unexecuted**, including candidate raw mean-vector MSE `<= 0.94×` matched parent plus the later cost/residual gates.
+- **R337:** independent red-team `PASS_WITH_MATERIAL_CORRECTION`; it confirms the scalar CF identity and generic need for joint dependence, supplies the Pilipovsky omission/correction, rejects explicit-mask necessity and any general exponential lower bound, and leaves the narrower Phase-2 feasibility NO_GO unchanged. It is theory/forensics only, not a new estimator or benchmark result.
 
 ### Measurement separation
 
-**Genuine new estimator measurements among R321, R322, R324–R329, R331, R333, and R335: 0.**
+**Genuine new estimator measurements among R321, R322, R324–R329, R331, R333, R335, R337, and R338 correction lineage: 0.**
 
 - R321 is theory/red-team only.
 - R322, R326–R329 are source/identity/public-method audits.
@@ -102,7 +105,9 @@ R332 is a traceability-only extension. It does not reinterpret these sidecars as
 - R325 performs offline arithmetic on already committed R209 V25 per-MLP adjusted scores; it does not rerun V25 or the grader.
 - R331 independently rechecks R325 arithmetic/provenance; it does not rerun an estimator or benchmark.
 - R333 decomposes the already committed R209 score into a fixed-observed-accuracy compute-floor counterfactual; it does not measure a new estimator, prove achievability, or establish grader public-50 membership.
-- R335 is a theory-only scout: the scalar CF identity is exact, but no genuinely new deep realization survived dedupe; `ideas_admitted=0`, and the preregistered exact-small gate remains unexecuted.
+- R335 remains theory-only after R338: Pilipovsky et al. establishes a real deep CF/Hilbert method, but no audited generic-dense dependency-correct state/error/cost package qualifies for execution; `ideas_admitted=0`, and the exact-small gate remains unexecuted.
+- R337 is an independent theory/forensics red-team with `PASS_WITH_MATERIAL_CORRECTION`; it adds no estimator or benchmark measurement.
+- R338 is only the append-only material correction applied to R335's two artifacts; it is not a standalone study or measurement.
 
 This preserves the earlier distinction: a report can recognize or recompute facts from a prior scientific measurement without itself becoming a new estimator measurement.
 
@@ -186,7 +191,7 @@ At the audited formal snapshot:
 
 This does **not** mean the sidecar artifacts are absent. R313 is the clearest example: no formal R313 event exists, while the completed correction is durably stored as the second fast-forward commit on R309's branch.
 
-R320/R323/R332/R334/R336 do not backfill claim/start/finish events and do not edit control-v2.
+R320/R323/R332/R334/R336/R339 do not backfill claim/start/finish events and do not edit control-v2.
 
 ## Shortest safe next step
 
@@ -194,7 +199,7 @@ R320/R323/R332/R334/R336 do not backfill claim/start/finish events and do not ed
 
 No historical claim/start/finish events should be fabricated.
 
-## R320/R323/R332/R334/R336 execution accounting
+## R320/R323/R332/R334/R336/R339 execution accounting
 
 - estimator/benchmark runs: **0**
 - Actions runs: **0**

@@ -1,5 +1,5 @@
 {
-  "schema": "arc.whitebox.r320.sidecar_traceability.v5",
+  "schema": "arc.whitebox.r320.sidecar_traceability.v6",
   "task": "R320",
   "correction_task": "R323",
   "date": "2026-09-24",
@@ -512,44 +512,92 @@
     },
     {
       "id": "R335",
-      "type": "theory_scout",
+      "type": "theory_scout_with_material_correction",
       "status": "COMPLETE",
-      "verdict": "EVIDENCE_BASED_NO_GO",
-      "classification": "ALREADY_COVERED_AT_DEEP_REALIZATION",
+      "verdict": "EVIDENCE_BASED_FEASIBILITY_NO_GO",
+      "classification": "R337_MATERIAL_CORRECTION_APPLIED",
       "branch": "review/r335-accuracy-side-estimator-scout-20260924",
-      "head": "9e01cb63dc2a4e662422b3ae98af67d1830505b7",
+      "head": "1e233a439b81708353513998898e9f7cfd10caf2",
       "evidence": {
         "report": {
           "path": "research/r335/R335_ACCURACY_SIDE_ESTIMATOR_SCOUT.md",
-          "blob_sha1": "1477f3be912bf8c641e3e51c9812cc4833a603d1",
-          "url": "https://github.com/tim8es/arc-whitebox/blob/9e01cb63dc2a4e662422b3ae98af67d1830505b7/research/r335/R335_ACCURACY_SIDE_ESTIMATOR_SCOUT.md"
+          "blob_sha1": "32fcd8e7c43c712aa81b2c0e2f3487f3911d9c23",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/1e233a439b81708353513998898e9f7cfd10caf2/research/r335/R335_ACCURACY_SIDE_ESTIMATOR_SCOUT.md"
         },
         "receipt": {
           "path": "research/r335/R335_RECEIPT.json",
-          "blob_sha1": "d4d1891d2f13dd51b38032baacd7cb8dd92066b5",
-          "url": "https://github.com/tim8es/arc-whitebox/blob/9e01cb63dc2a4e662422b3ae98af67d1830505b7/research/r335/R335_RECEIPT.json"
+          "blob_sha1": "4e7d9523f1b08580358b9f2340f076977e611573",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/1e233a439b81708353513998898e9f7cfd10caf2/research/r335/R335_RECEIPT.json"
         },
         "cumulative_diff_from_exact_base_only_these_two_paths": true
       },
       "screened_mechanism": {
-        "name": "characteristic-function positive-part propagation",
+        "name": "characteristic-function positive-part propagation / deep CF-Hilbert realization",
         "scalar_identity_exact_relu_mean": true,
-        "deep_estimator_family_genuinely_unoccupied": false,
-        "blocker": "Exact generic-dense joint-CF propagation through ReLU re-enters R317/R321 orthant/gate state or E114-E119 boundary state; tractable approximations re-enter occupied sampling, Gaussian/mixture, or compression lanes."
+        "omitted_published_method_now_included": "Pilipovsky et al. 2023, Probabilistic Verification of ReLU Neural Networks via Characteristic Functions, PMLR 211",
+        "published_deep_relu_cf_hilbert_method_exists": true,
+        "published_numerical_state": "component-wise characteristic functions",
+        "product_factorization_condition": "independence",
+        "generic_dense_hidden_independence_preserved_in_general": false,
+        "explicit_mask_enumeration_proved_necessary": false,
+        "exponential_lower_bound_claimed": false,
+        "impossibility_theorem_claimed": false,
+        "remaining_blocker": "No audited finite reusable polynomial-size state preserving generic dense post-ReLU joint dependence with rigorous composable depth-16 error control and credible <2^41 FLOP / <0.4 s residual guarantees."
       },
       "ideas_admitted": 0,
       "actual_new_estimator_measurement": false,
       "estimator_run": false,
       "preregistered_reentry_gate": {
         "executed": false,
-        "fixture": "future exact-small generic dense zero-bias ReLU width 8 depth 4 only if a concrete non-duplicate polynomial-size joint-CF closure is supplied",
+        "fixture": "future exact-small generic dense zero-bias ReLU width 8 depth 4 only if a concrete qualifying closure is supplied",
         "raw_mean_vector_mse_threshold": "candidate <= 0.94 * matched parent",
         "median_per_neuron_squared_error_must_not_worsen": true,
         "phase2_cost_gate": "static production extrapolation < 2^41 FLOPs/network",
         "phase2_residual_gate": "credible width-1024 residual path < 0.4 s",
         "result": false
       },
-      "caveat": "The re-entry gate is an unexecuted criterion, not a measured result or estimator claim."
+      "caveat": "The re-entry gate is an unexecuted criterion, not a measured result or estimator claim.",
+      "r338": {
+        "separate_study": false,
+        "type": "append_only_material_correction",
+        "correction_commit": "1e233a439b81708353513998898e9f7cfd10caf2",
+        "correction_parent": "9e01cb63dc2a4e662422b3ae98af67d1830505b7",
+        "purpose": "Apply R337 material correction to R335 without history rewrite.",
+        "changes_to_reentry_gate": "none",
+        "reentry_gate_executed": false
+      }
+    },
+    {
+      "id": "R337",
+      "type": "independent_theory_forensics_red_team",
+      "status": "COMPLETE",
+      "verdict": "PASS_WITH_MATERIAL_CORRECTION",
+      "terminal_interpretation": "EVIDENCE_BASED_FEASIBILITY_NO_GO_UNCHANGED",
+      "branch": "review/r337-r335-independent-red-team-20260924",
+      "head": "9c233d8ba33ae64316d6ec71bc0f433dc8574451",
+      "evidence": {
+        "report": {
+          "path": "research/r337/R337_R335_INDEPENDENT_RED_TEAM.md",
+          "blob_sha1": "551d895ffdc222ee5e2b45246419a70613f9eae1",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/9c233d8ba33ae64316d6ec71bc0f433dc8574451/research/r337/R337_R335_INDEPENDENT_RED_TEAM.md"
+        },
+        "receipt": {
+          "path": "research/r337/R337_RECEIPT.json",
+          "blob_sha1": "4248094963d4f1161a71fba100479b227ea8d67b",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/9c233d8ba33ae64316d6ec71bc0f433dc8574451/research/r337/R337_RECEIPT.json"
+        },
+        "cumulative_diff_from_exact_base_only_these_two_paths": true
+      },
+      "material_corrections": [
+        "Pilipovsky et al. 2023 is directly relevant published deep-ReLU CF/Hilbert propagation literature omitted by original R335.",
+        "Explicit 2^n orthant/mask enumeration is not proved necessary for every exact representation.",
+        "The 2^n mask count is an explicit-representation output-size observation, not a general algorithmic lower bound.",
+        "A single Gaussian/orthant-type query must not be labeled inherently exponential."
+      ],
+      "surviving_feasibility_no_go": "No audited generic-dense reusable polynomial-size joint-dependence state with rigorous composable propagated-error control and Phase-2 FLOP/residual guarantees.",
+      "actual_new_estimator_measurement": false,
+      "estimator_run": false,
+      "benchmark_run": false
     }
   ],
   "measurement_classification": {
@@ -564,7 +612,11 @@
     "r333_is_offline_score_decomposition_not_new_estimator_measurement": true,
     "new_estimator_measurements_generated_by_r333": 0,
     "r335_is_theory_scout_not_new_estimator_measurement": true,
-    "new_estimator_measurements_generated_by_r335": 0
+    "new_estimator_measurements_generated_by_r335": 0,
+    "r335_after_r338_is_theory_scout_not_new_estimator_measurement": true,
+    "r337_is_theory_forensics_not_new_estimator_measurement": true,
+    "r338_is_correction_lineage_not_new_estimator_measurement": true,
+    "new_estimator_measurements_generated_by_r337_r338": 0
   },
   "leaderboard_r209": {
     "comparability_decision": "NOT_COMPARABLE",
@@ -587,7 +639,7 @@
   "recommended_next_step": "Coordinator-owned append-only reconciliation of completed sidecars using immutable task ID, branch head and receipt/report hashes through a supported archival/import path; represent R313 as a correction to R309 and do not fabricate historical claim/start/finish events.",
   "report": {
     "path": "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
-    "git_blob_sha1": "fb33abcb3a91653a66dfcb839af7799d3b633181"
+    "git_blob_sha1": "cd23a3378388b77aa27b4130ddaf00d6ef9c9f94"
   },
   "execution_accounting": {
     "estimator_runs": 0,
@@ -615,7 +667,12 @@
     "r336_benchmark_runs": 0,
     "r336_actions_runs": 0,
     "r336_downloads": 0,
-    "r336_new_files": 0
+    "r336_new_files": 0,
+    "r339_estimator_runs": 0,
+    "r339_benchmark_runs": 0,
+    "r339_actions_runs": 0,
+    "r339_downloads": 0,
+    "r339_new_files": 0
   },
   "extension_task": "R332",
   "extension_parent_head": "0c4db1d79deb9b2f608001127d8359b0c0fafd27",
@@ -650,7 +707,7 @@
     "every_included_sidecar_cumulative_diff_verified_two_paths": true
   },
   "r332_report_blob_sha1": "18d5a950928b213dc69a732be38102208b807723",
-  "latest_extension_task": "R336",
+  "latest_extension_task": "R339",
   "r334": {
     "parent_head": "1c285e5d504d6eb3c971d5afae9db3188e0dcea0",
     "policy": {
@@ -706,5 +763,42 @@
     "reentry_gate_executed": false,
     "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
   },
-  "r336_report_blob_sha1": "fb33abcb3a91653a66dfcb839af7799d3b633181"
+  "r336_report_blob_sha1": "fb33abcb3a91653a66dfcb839af7799d3b633181",
+  "r339": {
+    "parent_head": "a9434ed9b22a41e1ecff2aba6fd7d0f790396d60",
+    "policy": {
+      "append_only": true,
+      "rebase": false,
+      "reset": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false
+    },
+    "purpose": "Synchronize consolidated snapshot with material R337 independent correction and R338 correction lineage on R335.",
+    "actual_new_estimator_measurement": false
+  },
+  "r339_snapshot": {
+    "corrected_r335": {
+      "final_head": "1e233a439b81708353513998898e9f7cfd10caf2",
+      "report_blob": "32fcd8e7c43c712aa81b2c0e2f3487f3911d9c23",
+      "receipt_blob": "4e7d9523f1b08580358b9f2340f076977e611573",
+      "verdict": "EVIDENCE_BASED_FEASIBILITY_NO_GO",
+      "ideas_admitted": 0,
+      "reentry_gate_executed": false
+    },
+    "r337": {
+      "final_head": "9c233d8ba33ae64316d6ec71bc0f433dc8574451",
+      "report_blob": "551d895ffdc222ee5e2b45246419a70613f9eae1",
+      "receipt_blob": "4248094963d4f1161a71fba100479b227ea8d67b",
+      "verdict": "PASS_WITH_MATERIAL_CORRECTION",
+      "terminal_interpretation": "EVIDENCE_BASED_FEASIBILITY_NO_GO_UNCHANGED"
+    },
+    "r338": "correction lineage on R335 only; not a separate study or measurement",
+    "new_estimator_measurement_count": 0,
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
+  },
+  "r339_report_blob_sha1": "cd23a3378388b77aa27b4130ddaf00d6ef9c9f94"
 }
