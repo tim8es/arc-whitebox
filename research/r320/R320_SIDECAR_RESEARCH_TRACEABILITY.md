@@ -325,3 +325,34 @@ Preserved interpretation:
 - R333's earlier `2.10e-9` snapshot remains preserved as historical and is not overwritten.
 
 R342 generated no new estimator measurement, benchmark, or submission. R343 remains a separate independent `PASS` arithmetic/source verification entry.
+
+## R350 integration — completed R348 formatter source audit
+
+R350 appends the completed R348 primary-source audit to this consolidated traceability index. R348 is classified as a **source audit, not an estimator measurement**. It does not modify or supersede the existing R341, R343, or R342 entries above.
+
+### R348 — public leaderboard display precision / rounding source audit
+
+- status/verdict: **`UNKNOWN_FORMATTER_NOT_PUBLICLY_OBSERVABLE`**
+- branch: `review/r348-leaderboard-display-precision-audit-20260924`
+- exact head: `4329109ff12afb44259b8221726dbb3f384688a5`
+- report: `research/r348/R348_LEADERBOARD_DISPLAY_PRECISION_AUDIT.md`
+  - blob: `77a88dd22cb29b2a6cc7a3a9e346c6ee2d665554`
+  - source: https://github.com/tim8es/arc-whitebox/blob/4329109ff12afb44259b8221726dbb3f384688a5/research/r348/R348_LEADERBOARD_DISPLAY_PRECISION_AUDIT.md
+- receipt: `research/r348/R348_LEADERBOARD_DISPLAY_PRECISION_AUDIT_RECEIPT.json`
+  - blob: `ce0268c5f1e37d2dbe1b05ad84bf989ac9f12771`
+  - source: https://github.com/tim8es/arc-whitebox/blob/4329109ff12afb44259b8221726dbb3f384688a5/research/r348/R348_LEADERBOARD_DISPLAY_PRECISION_AUDIT_RECEIPT.json
+
+Preserved narrow conclusion:
+
+- the AIcrowd **web leaderboard** formatter/rounding rule for displayed Adjusted Score is **UNKNOWN**;
+- the Phase-2 challenge-specific web display precision is **UNKNOWN**;
+- whether displayed `2.00e-9` is rounded, truncated, or transformed by another rule is **UNKNOWN**;
+- the exact underlying leaderboard float is **UNKNOWN**;
+- no mathematically valid underlying interval is derived from the public evidence;
+- the AIcrowd web formatter for displayed Final Layer MSE is **UNKNOWN**;
+- the lexical text `2.00e-9` alone does not prove a general three-significant-digit formatter.
+
+R348 also records a separate first-party WhestBench local presentation helper using `f"{float(value):.2e}"` for local MSE-style report values. That local `.2e` formatter is **not evidence** for the AIcrowd web leaderboard renderer and must not be transferred to the web UI.
+
+R348 adds **0 estimator measurements**, **0 benchmark measurements**, and **0 submissions**. It changes no R341/R343/R342 conclusion. The consolidated interpretation remains that `2.00e-9` is stored **UI display text only**; exact web formatting, exact underlying float/interval, public-50↔R209 comparability, and true contest gap remain unresolved where previously marked unknown/not comparable.
+
