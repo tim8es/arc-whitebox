@@ -1,0 +1,171 @@
+{
+  "schema": "arc.whitebox.r367.public_leaderboard_top10_attestation.v1",
+  "task": "R367",
+  "status": "COMPLETE",
+  "classification": "PUBLIC_UI_ATTESTATION_TOP10_ONLY",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r367-live-leaderboard-top10-capture-20260924",
+  "source_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+  "capture_time": {
+    "value_utc": "2026-09-24T14:26:07Z",
+    "precision": "APPROXIMATE_COORDINATOR_PROVIDED",
+    "provenance": "Coordinator-provided CUA capture time; R367 did not independently observe a more precise browser timestamp."
+  },
+  "visible_range": "Showing 1–100 of 197",
+  "persisted_rows": 10,
+  "persisted_fields_policy": "Only coordinator-supplied visible UI fields; no inferred or unsupplied cells added.",
+  "rows": [
+    {
+      "rank": "01",
+      "participant": "J2W",
+      "handle": "joe_wanza",
+      "affiliation": "Numascale AS",
+      "team_size": "1 member",
+      "adjusted_score": "2.00e-9",
+      "final_layer_mse": "1.61e-8",
+      "sampling_ratio": "566×",
+      "entries": 325,
+      "last_submission": "Sep 24 08:55"
+    },
+    {
+      "rank": "02",
+      "participant": "suliman_tadros",
+      "adjusted_score": "2.20e-9",
+      "final_layer_mse": "1.63e-8",
+      "sampling_ratio": "514×",
+      "entries": 52,
+      "last_submission": "Sep 23 01:42"
+    },
+    {
+      "rank": "03",
+      "participant": "marius_binner",
+      "affiliation": "University of Bergen",
+      "adjusted_score": "2.30e-9",
+      "final_layer_mse": "1.56e-8",
+      "sampling_ratio": "492×",
+      "entries": 158,
+      "last_submission": "Sep 23 06:46"
+    },
+    {
+      "rank": "04",
+      "participant": "a_s6",
+      "adjusted_score": "2.50e-9",
+      "final_layer_mse": "2.00e-8",
+      "sampling_ratio": "453×",
+      "entries": 108,
+      "last_submission": "Sep 21 13:55"
+    },
+    {
+      "rank": "05",
+      "participant": "dogus_ozel",
+      "display_team": "Luna",
+      "team_size": "1 member",
+      "adjusted_score": "2.60e-9",
+      "final_layer_mse": "1.67e-8",
+      "sampling_ratio": "435×",
+      "entries": 7,
+      "last_submission": "Sep 24 03:32"
+    },
+    {
+      "rank": "06",
+      "participant_group": [
+        "Cipo",
+        "lawrence_dam",
+        "andrew_epstein"
+      ],
+      "display_team": "Puffi",
+      "team_size": "3 members",
+      "adjusted_score": "2.80e-9",
+      "final_layer_mse": "1.94e-8",
+      "sampling_ratio": "404×",
+      "entries": 78,
+      "last_submission": "Sep 8 14:09"
+    },
+    {
+      "rank": "06",
+      "participant": "Oldboy",
+      "display_team": "reds",
+      "team_size": "1 member",
+      "adjusted_score": "2.80e-9",
+      "final_layer_mse": "1.73e-8",
+      "sampling_ratio": "404×",
+      "entries": 60,
+      "last_submission": "Sep 21 08:47"
+    },
+    {
+      "rank": "08",
+      "participant": "oqaris",
+      "affiliation": "Sobolev Institute of Mathematics",
+      "adjusted_score": "3.10e-9",
+      "final_layer_mse": "2.15e-8",
+      "sampling_ratio": "365×",
+      "entries": 93,
+      "last_submission": "Sep 14 05:56"
+    },
+    {
+      "rank": "08",
+      "participant": "ben3",
+      "affiliation": "Max Planck Institute for Intelligent Systems",
+      "adjusted_score": "3.10e-9",
+      "final_layer_mse": "1.68e-8",
+      "sampling_ratio": "365×",
+      "entries": 23,
+      "last_submission": "Sep 22 19:38"
+    },
+    {
+      "rank": "08",
+      "participant": "mliston",
+      "adjusted_score": "3.10e-9",
+      "final_layer_mse": "1.80e-8",
+      "sampling_ratio": "365×",
+      "entries": 41,
+      "last_submission": "Sep 23 14:50"
+    }
+  ],
+  "prior_r359": {
+    "branch": "review/r359-live-leaderboard-top10-capture-20260924",
+    "head": "314750b3456138a91295213ed5019899011fcd3e",
+    "report_path": "research/r359/R359_LIVE_LEADERBOARD_TOP10_SNAPSHOT.md",
+    "report_blob_sha1": "12428d566f9a5f735f94e7a76d54eb6c8660c01c",
+    "receipt_path": "research/r359/R359_RECEIPT.json",
+    "receipt_blob_sha1": "292f6c05d4a2a920c1408da7e4646f15297ff3e8",
+    "leader_entries": 324,
+    "leader_adjusted_score_display": "2.00e-9",
+    "leader_final_layer_mse_display": "1.61e-8",
+    "leader_sampling_ratio_display": "566×"
+  },
+  "leader_delta_vs_r359": {
+    "entries_old": 324,
+    "entries_current": 325,
+    "displayed_adjusted_score_changed": false,
+    "displayed_final_layer_mse_changed": false,
+    "displayed_sampling_ratio_changed": false,
+    "exact_score_movement_inferred": false
+  },
+  "boundaries": {
+    "public_ui_attestation_only": true,
+    "full_board_archive_available": false,
+    "exact_score": "UNKNOWN",
+    "formatter_interval": "UNKNOWN",
+    "full_board_deltas": "UNKNOWN",
+    "true_contest_gap": "UNKNOWN_NOT_COMPARABLE",
+    "r209_public50_comparability": "NOT_COMPARABLE_NOT_JOINABLE",
+    "our_score_moved_claimed": false,
+    "rank_prediction_claimed": false
+  },
+  "forbidden_activity": {
+    "further_browser_interactions": 0,
+    "submission_pages_opened": 0,
+    "estimator_runs": 0,
+    "benchmark_runs": 0,
+    "actions_runs": 0,
+    "downloads": 0,
+    "paid_resources": 0,
+    "private_holdout_full_access": 0,
+    "submissions": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "r320_edits": 0,
+    "control_queue_edits": 0
+  }
+}
