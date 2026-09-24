@@ -1,0 +1,109 @@
+{
+  "schema": "arc.whitebox.r311.leaderboard-score-comparability.v1",
+  "job": "R311",
+  "run_id": "R311-leaderboard-score-comparability-20260924",
+  "status": "COMPLETE",
+  "verdict": "NOT_COMPARABLE",
+  "control": {
+    "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "branch": "review/r311-leaderboard-score-comparability-20260924",
+    "report_only": true,
+    "main_edited": false,
+    "pr_edited": false,
+    "control_edited": false
+  },
+  "public_phase2_score": {
+    "current_observable_split": "grader public split",
+    "public_mlp_count": 50,
+    "private_mlp_count": 50,
+    "private_state": "sealed_until_results_release",
+    "full_test_mlp_count": 100,
+    "current_public_score_is_full_100": false,
+    "formula": "mean_m(final_layer_mse_m * max(0.1, C_m / B_m)); failure multiplier = 1.0",
+    "phase2_budget_flops_per_mlp": 2199023255552,
+    "phase2_effective_compute": "C_m = F_m",
+    "aggregation": "arithmetic mean of per-MLP adjusted scores",
+    "calculation_rounding": "NO_EXPLICIT_ROUNDING_FOUND_IN_SCORING_SOURCE",
+    "public_display_precision": {
+      "whestbench_human_presentation": "scientific notation with .2e formatting (3 significant digits)",
+      "aicrowd_submission_header_observation": "1.932e-8 detail displayed as 1.93e-8 header",
+      "exact_leaderboard_frontend_formatter": "UNKNOWN",
+      "exact_unrounded_value_recoverable_from_display": false
+    }
+  },
+  "official_whestbench_source": {
+    "commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+    "scoring": {
+      "path": "src/whestbench/scoring.py",
+      "git_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf"
+    },
+    "score_report_fields": {
+      "path": "docs/reference/score-report-fields.md",
+      "git_blob_sha1": "3b66b33a0775f01eecbda2a148495d471f2eff65"
+    },
+    "presentation": {
+      "path": "src/whestbench/presentation/adapters.py",
+      "git_blob_sha1": "bc92da337db234b598303dda96e3da470e126e4e"
+    }
+  },
+  "r209": {
+    "receipt_commit": "e1f6dd6a6bc351b8253e255fef424b1931b37de3",
+    "receipt_path": "research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json",
+    "receipt_git_blob_sha1": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+    "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+    "split": "mini",
+    "n_mlps": 100,
+    "width": 1024,
+    "depth": 16,
+    "official_scorer": false,
+    "holdout": false,
+    "full_split": false,
+    "v25_failures": 0,
+    "v25_adjusted_final_layer_score": 8.170397440117225e-9
+  },
+  "comparability": {
+    "metric_formula_structurally_matches": true,
+    "phase2_budget_contract_matches": true,
+    "same_panel_proven": false,
+    "panel_cardinality_matches": false,
+    "r209_is_official_grader_score": false,
+    "exact_public_score_available_from_display": false,
+    "toolchain_equivalence_resolved_here": false,
+    "decision": "NOT_COMPARABLE",
+    "ratio_computed": false,
+    "gap_computed": false,
+    "place_inferred": false
+  },
+  "missing_fields": [
+    "V25 per-MLP score evidence on the exact 50 grader-public MLPs, or a proven exact join to those 50 with justified recomputation.",
+    "Immutable public-50 panel identity/join key sufficient for that join; detailed identity audit intentionally left to R305.",
+    "Exact unrounded AIcrowd public aggregate or official raw score field/API for comparisons below display precision.",
+    "Compatible scorer/toolchain semantics as a separate prerequisite; detailed toolchain audit intentionally left to R309."
+  ],
+  "scope_exclusions": {
+    "r305_manifest_or_name_to_network_id_audit_duplicated": false,
+    "r309_toolchain_diff_duplicated": false,
+    "r310_top20_capture_duplicated": false
+  },
+  "sources": [
+    "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+    "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197",
+    "https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/scoring.py",
+    "https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/docs/reference/score-report-fields.md",
+    "https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/presentation/adapters.py",
+    "https://github.com/tim8es/arc-whitebox/blob/e1f6dd6a6bc351b8253e255fef424b1931b37de3/research/R209_E136_ARCHIVE_EVIDENCE_AUDIT.json"
+  ],
+  "report": {
+    "path": "research/r311/R311_LEADERBOARD_SCORE_COMPARABILITY.md",
+    "creation_commit": "5d76cde22639a542484a3afb88b24ab61a62d979",
+    "git_blob_sha1": "83fe8cb87c85b8fde124b60b5aa16856aab4a91c"
+  },
+  "not_run": [
+    "No benchmark or estimator run.",
+    "No dataset or dependency download.",
+    "No GitHub Actions run.",
+    "No competition submission.",
+    "No private, holdout, or full-data access.",
+    "No main, PR, or control edit."
+  ]
+}
