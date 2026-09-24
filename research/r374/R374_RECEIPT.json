@@ -1,0 +1,94 @@
+{
+  "schema": "arc.whitebox.r374.next-distinct-estimator-frontier.v1",
+  "task": "R374",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "NO_GO_EXPLICIT_POLYHEDRAL_CDF_CERTIFICATION_EXCEEDS_PHASE2",
+  "branch": "review/r374-next-distinct-estimator-frontier-20260924",
+  "exact_base": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "live_evidence": {
+    "r320_head": "7336ffb2a88ab38ebb96177d4bc7d8bfd5dd53e1",
+    "r320_report_blob": "870c9131a4e4bc745ea6ad6510d6a45115dcc5a8",
+    "r320_receipt_blob": "3fa12a194b1fd33361465bef815afe1eedc81460",
+    "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb"
+  },
+  "candidate": {
+    "name": "PCDF-MID",
+    "mechanism": "global polyhedral output-CDF certification plus deterministic tail-integral midpoint mean readout",
+    "sampled_regression": false,
+    "unbiased": false,
+    "error_certificate": "MSE_i <= H_i^2=(1/1024)*sum_j h_ij^2 from certified CDF envelope plus Gaussian-tail bound",
+    "distinct_from_r366": true,
+    "distinct_from_layerwise_gate_state": true
+  },
+  "parent": {
+    "id": "R209 V25",
+    "panel": "v2-phase2 mini:all-100",
+    "mean_raw_final_layer_mse": "2.22830349017044681e-8",
+    "mean_adjusted_score_approx": "8.170397440117225e-9",
+    "measured_flops_per_network": "806303721965",
+    "failures": "0/100"
+  },
+  "exact_gate": "(1/100)*sum_i H_i^2*max(0.1,C_i/2^41) < 8.170397440117225e-9, with each C_i<2^41, memory<=8GiB, wall<=120s, residual<=0.4s",
+  "cost_obstruction": {
+    "condition": "generic invertible zero-bias 1024x1024 first layer",
+    "first_layer_nonempty_sign_cells": "2^1024",
+    "explicit_polytope_work_lower_bound": "2^1024 elementary cell operations",
+    "phase2_budget": "2^41",
+    "compute_over_budget_factor_lower_bound": "2^983 (~10^295.91)",
+    "one_bit_per_cell_memory_bytes": "2^1021",
+    "memory_cap_bytes": "2^33",
+    "memory_over_cap_factor_lower_bound": "2^988 (~10^297.42)"
+  },
+  "missing_theorem": "A sub-budget non-sampling compressed global output-CDF certificate for generic dense width-1024/depth-16 ReLU networks, with rigorous numerical error sufficient for the R209 gate and without explicit activation-region enumeration.",
+  "falsifier": {
+    "executed": false,
+    "preregistered_reentry_gate": [
+      "certified output-CDF algorithm avoiding explicit first-layer cell enumeration",
+      "proof C_CDF(1024,16,epsilon)<2^41 and memory<=8GiB",
+      "composable CDF plus Gaussian-tail mean-error certificate",
+      "target-independent epsilon and R with constants capable of satisfying the R209 inequality"
+    ],
+    "formal_queue_job_proposed": false
+  },
+  "primary_sources": [
+    {
+      "title": "Exact Upper and Lower Bounds for the Output Distribution of Neural Networks with Random Inputs",
+      "authors": "Kofnov, Kapla, Bartocci, Bura",
+      "venue": "ICML 2025 / PMLR 267",
+      "url": "https://proceedings.mlr.press/v267/kofnov25a.html",
+      "arxiv": "https://arxiv.org/abs/2502.11672"
+    },
+    {
+      "title": "On the Number of Linear Regions of Deep Neural Networks",
+      "authors": "Montufar, Pascanu, Cho, Bengio",
+      "venue": "NIPS 2014",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2014/hash/fa6f2a469cc4d61a92d96e74617c3d2a-Abstract.html",
+      "arxiv": "https://arxiv.org/abs/1402.1869"
+    }
+  ],
+  "artifacts": {
+    "report_path": "research/r374/R374_NEXT_DISTINCT_ESTIMATOR_FRONTIER.md",
+    "report_blob_sha1": "69890a8662ad69aee440150c05517027db4d05d1",
+    "report_commit": "4d930bdbef27aac3b2a60e172feeb10188dc5225",
+    "receipt_path": "research/r374/R374_RECEIPT.json"
+  },
+  "execution_accounting": {
+    "implementation": false,
+    "code_runs": 0,
+    "estimator_runs": 0,
+    "synthetic_runs": 0,
+    "official_runs": 0,
+    "actions_runs": 0,
+    "downloads": 0,
+    "paid_resources": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0,
+    "r320_edits": 0,
+    "historical_verdicts_changed": false
+  }
+}
