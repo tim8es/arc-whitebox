@@ -1,0 +1,159 @@
+{
+  "schema": "arc.whitebox.r373.r366_shallow_ridge_independent_redteam.v1",
+  "task": "R373",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "FAIL_MATERIAL_CONTEST_SCORER_CERTIFICATE_ERROR",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r373-r366-shallow-ridge-independent-redteam-20260924",
+  "audited_r366": {
+    "branch": "review/r366-uncovered-estimator-frontier-scout-20260924",
+    "head": "02305335c80161311e13839de3268be97a43e504",
+    "report_path": "research/r366/R366_UNCOVERED_ESTIMATOR_FRONTIER_SCOUT.md",
+    "report_blob_sha1": "f2c512a04c1eb9b0d179cd04a5563e34a6f109aa",
+    "receipt_path": "research/r366/R366_RECEIPT.json",
+    "receipt_blob_sha1": "1929547b16f922470cb81071446b3a43d3dea95c"
+  },
+  "checks": {
+    "gaussian_relu_expectation": {
+      "result": "PASS",
+      "formula": "E ReLU(b^T X)=||b||_2/sqrt(2*pi), X~N(0,I)"
+    },
+    "vector_readout": {
+      "result": "PASS",
+      "formula": "E[A ReLU(BX)]=(1/sqrt(2*pi)) A [||b_j||]_j",
+      "independence_required": false
+    },
+    "jensen_exact_population_mean": {
+      "result": "PASS",
+      "formula": "||E f-E g||_2^2 <= E||f-g||_2^2"
+    },
+    "contest_scorer_bridge": {
+      "result": "FAIL",
+      "issue": "R366 bounds error to exact population mean, but fixed Phase-2 Mini final_means are empirical N=1e9 baked targets.",
+      "corrected_bound": "MSE_fixed_target <= (sqrt(delta_sq/n)+sqrt(eta))^2 where eta=||E f-y_baked||_2^2/n",
+      "eta_certificate_present_in_r366": false
+    },
+    "normalization": {
+      "n": 1024,
+      "official_per_mlp_final_mse": "mean over 1024 final-layer coordinates",
+      "score": "final_layer_mse_i * max(0.1,C_i/2^41), then mean over MLPs",
+      "phase2_C": "FLOPs for valid Phase-2 rows; residual time capped separately"
+    },
+    "floor_threshold": {
+      "r366_value": "8.170397440117225e-8",
+      "arithmetic_under_eta_zero": "CORRECT",
+      "rigorous_fixed_mini_sufficient_gate": "NO_WITHOUT_ETA_CERTIFICATE",
+      "total_output_l2_sq_conversion_under_eta_zero": "8.3664869786800384e-5",
+      "floor_integer_flop_ceiling": 219902325555
+    },
+    "cost_storage": {
+      "result": "PASS_WITH_SCOPE_CAVEAT",
+      "dimensions": {
+        "A": "n x m",
+        "B": "m x n"
+      },
+      "leading_readout_flops": "4*n*m+O(m+n)",
+      "n1024": "4096*m+O(m)",
+      "float32_coefficient_bytes": "8*n*m=8192*m",
+      "m131072_bytes": "1073741824",
+      "m131072_leading_flops": "536870912",
+      "all_in_certified": false,
+      "unresolved": "T_m construction/certification plus exact implementation billing"
+    },
+    "novelty": {
+      "result": "PASS_WITH_CLARIFICATION",
+      "history_blob": "8f94f371572fedbd8c1ebd9d19cc48ca837592fb",
+      "r320_head": "7336ffb2a88ab38ebb96177d4bc7d8bfd5dd53e1",
+      "whole_function_shallow_flattening_prior_found": false,
+      "e113_name_collision": {
+        "branch": "research/e113-deep-folded-ridge-residual-20260919",
+        "terminal_commit": "5be1a09857ba39edecd75a894d091505d7a2f0cc",
+        "protocol_blob": "02d942d5b2d31ff291ba535a380d1b1b47384138",
+        "receipt_blob": "197e26ea402a6cb21be52c1cb10b9ba1eb90ac23",
+        "same_class": false,
+        "distinction": "E113 is an exactly-centered folded spherical ridge control variate around a radial/Haar estimator, not a whole-function A ReLU(Bx) flattening."
+      }
+    },
+    "literature": {
+      "result": "PASS_NARROW_CLAIM_WITH_HSU_WORDING_CORRECTION",
+      "universal_impossibility_supported": false,
+      "missing_constructive_theorem_claim_supported": true,
+      "hsu_correction": "Main results use uniform cube L2; Appendix E also considers Gaussian space. Still not a deterministic white-box theorem for the ARC He-Gaussian deep-network ensemble."
+    }
+  },
+  "material_corrections": [
+    "Replace the claim MSE_scorer <= delta_sq/n by an exact-population statement, or add a certified fixed-target discrepancy eta term.",
+    "Mark the 8.170397440117225e-8 Mini-100 residual threshold as conditional on baked targets equaling exact means (eta=0), not an unconditional rigorous scorer gate.",
+    "Explicitly dedupe E113 deep folded-ridge residual control; novelty survives because E113 is a control variate, not whole-function shallow flattening.",
+    "Narrow Hsu et al. wording: Gaussian space is considered in Appendix E, though the paper still does not prove the needed ARC white-box construction theorem."
+  ],
+  "scientific_effect": {
+    "r366_no_numerical_launch_still_defensible": true,
+    "r366_terminal_no_go_universal_impossibility": false,
+    "implementation_authorized": false,
+    "rerun_authorized": false,
+    "corrected_reentry_requires": [
+      "deterministic target-free white-box T_m(W)",
+      "Gaussian-L2 approximation certificate",
+      "all-in construction/readout FLOP-memory-wall-residual certificate",
+      "rigorous bridge to fixed scorer targets, e.g. certified eta_i terms"
+    ]
+  },
+  "primary_sources": [
+    {
+      "title": "Tallis 1961 truncated multi-normal moments",
+      "url": "https://doi.org/10.1111/j.2517-6161.1961.tb00408.x"
+    },
+    {
+      "title": "Bach 2017 Breaking the Curse of Dimensionality with Convex Neural Networks",
+      "url": "https://jmlr.org/papers/v18/14-546.html"
+    },
+    {
+      "title": "Hsu et al. 2021 On the Approximation Power of Two-Layer Networks of Random ReLUs",
+      "url": "https://proceedings.mlr.press/v134/hsu21a.html"
+    },
+    {
+      "title": "Eldan & Shamir 2016 The Power of Depth for Feedforward Neural Networks",
+      "url": "https://proceedings.mlr.press/v49/eldan16.html"
+    },
+    {
+      "title": "Telgarsky 2016 Benefits of Depth in Neural Networks",
+      "url": "https://proceedings.mlr.press/v49/telgarsky16.html"
+    },
+    {
+      "title": "Chen et al. 2022 Hardness of Noise-Free Learning for Two-Hidden-Layer Neural Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/45a7ca247462d9e465ee88c8a302ca70-Abstract-Conference.html"
+    },
+    {
+      "title": "AIcrowd Phase-2 public dataset README",
+      "url": "https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026/blob/v2-phase2/README.md"
+    },
+    {
+      "title": "AIcrowd scoring model",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/concepts/scoring-model.md"
+    },
+    {
+      "title": "AIcrowd score report fields",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/main/docs/reference/score-report-fields.md"
+    }
+  ],
+  "execution_accounting": {
+    "code_created_or_run": false,
+    "estimator_runs": 0,
+    "synthetic_runs": 0,
+    "benchmark_runs": 0,
+    "actions_runs": 0,
+    "downloads": 0,
+    "dependency_installs": 0,
+    "paid_resources": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "r366_edits": 0,
+    "r320_edits": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
