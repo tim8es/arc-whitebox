@@ -415,3 +415,70 @@ The three additions remain distinct:
 
 **Total new estimator measurements introduced by R347/R349/R354: 0.**
 
+## R357 integration — H185 gate audits R351 and R356
+
+R357 appends the completed H185 gate-audit evidence R351 and the subsequent proof-grade static reconstruction audit R356. These are **audits, not estimator measurements**, and neither authorizes H185.
+
+### R351 — H185 gate reopen re-audit
+
+- type: **gate / evidence audit**
+- status: **COMPLETE**
+- verdict: **`GATE_REMAINS_BLOCKED_G2_EXACT_DENSE_DENOMINATOR_MISSING`**
+- branch: `review/r351-h185-gate-reopen-audit-20260924`
+- exact head: `567eed119cab07ca8a10134e47f4d30928612cf3`
+- report: `research/r351/R351_H185_GATE_REOPEN_AUDIT.md`
+  - blob: `7f04e49787e2ef7ee58c6aaaa34f41fa7cd8fff0`
+  - source: https://github.com/tim8es/arc-whitebox/blob/567eed119cab07ca8a10134e47f4d30928612cf3/research/r351/R351_H185_GATE_REOPEN_AUDIT.md
+- receipt: `research/r351/R351_RECEIPT.json`
+  - blob: `aa780a5caa8dfc0b37102d0c731af68e9a4af8a7`
+  - source: https://github.com/tim8es/arc-whitebox/blob/567eed119cab07ca8a10134e47f4d30928612cf3/research/r351/R351_RECEIPT.json
+
+R351 re-audited the H185 launch gate after E190 recovery. E190 supplies the exact whole-parent total:
+
+[
+558{,}473{,}140{,}719 	ext{FLOPs}.
+]
+
+It does **not** supply the exact dense subtotal, exact fixed/remainder subtotal, or exact per-namespace integer counts required by E191/H185. The rounded F86 namespace rows cannot be reverse-engineered into exact integers, and therefore G2 remains blocked.
+
+R351 introduces **0 estimator measurements** and provides **no H185 authorization**.
+
+### R356 — proof-grade static dense-parent FLOP reconstruction attempt
+
+- type: **static source/billing audit**
+- status: **COMPLETE**
+- verdict: **`NO_GO_PROOF_GRADE_STATIC_RECONSTRUCTION_NOT_CLOSED`**
+- branch: `review/r356-h185-static-dense-flops-reconstruction-20260924`
+- exact head: `a7dd6aab4b4a3be2aec46b8f39df18e196e9f955`
+- report: `research/r356/R356_H185_STATIC_DENSE_FLOPS_RECONSTRUCTION.md`
+  - blob: `851530b2ddabc730533887174a700beaedbe2219`
+  - source: https://github.com/tim8es/arc-whitebox/blob/a7dd6aab4b4a3be2aec46b8f39df18e196e9f955/research/r356/R356_H185_STATIC_DENSE_FLOPS_RECONSTRUCTION.md
+- receipt: `research/r356/R356_RECEIPT.json`
+  - blob: `708e4d0b7c2e58f8a0b5985a269948c9e64e7a59`
+  - source: https://github.com/tim8es/arc-whitebox/blob/a7dd6aab4b4a3be2aec46b8f39df18e196e9f955/research/r356/R356_RECEIPT.json
+
+R356 confirmed that FlopScope 0.12.1 billing is exact once the full operation stream, shapes, dtypes and active billing table are fixed. It nevertheless could not reconstruct the historical F86 dump0/call-2 component ledger proof-grade because the immutable evidence does not pin all runtime facts required to select that exact stream and bill:
+
+- historical estimator `V*` schedule/shape knobs are not immutably recorded;
+- the effective FlopScope runtime override/billing-table state is not immutably recorded;
+- call-2 allocation/billing state depends on persistent pool state created by call 1.
+
+The exact whole total `558,473,140,719` therefore remains reconciled only at whole-parent level, not as an exact dense/remainder/per-namespace decomposition.
+
+Rounded namespace/group values **must not be inverted or summed** to manufacture the missing integers.
+
+R356 introduces **0 estimator measurements** and explicitly authorizes **nothing** for H185.
+
+### R357 consolidated H185 gate state
+
+- exact whole-parent total: **`558,473,140,719` FLOPs — proven by E190**
+- exact eleven dense namespace integers: **MISSING**
+- exact dense subtotal: **MISSING**
+- exact fixed/remainder subtotal: **MISSING**
+- exact component reconciliation to whole total: **NOT CLOSED**
+- R351 classification: **AUDIT / 0 estimator measurements**
+- R356 classification: **AUDIT / 0 estimator measurements**
+- H185 authorization from R351/R356: **NONE**
+
+**H185 remains blocked at G2.**
+

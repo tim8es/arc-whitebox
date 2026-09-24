@@ -1217,6 +1217,111 @@
     "control_v2_edits": 0,
     "queue_edits": 0,
     "new_files": 0
+  },
+
+  "r357": {
+    "parent_head": "221131222abffff220c5604dad3f8a9843132f5f",
+    "policy": {
+      "append_only": true,
+      "fast_forward_only": true,
+      "rebase": false,
+      "reset": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "modified_paths": [
+        "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
+        "research/r320/R320_RECEIPT.json"
+      ],
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false
+    },
+    "dedupe_before_update": {
+      "R351_present_report": false,
+      "R351_present_receipt": false,
+      "R356_present_report": false,
+      "R356_present_receipt": false,
+      "decision": "NOT_YET_INTEGRATED"
+    },
+    "added_tasks": [
+      "R351",
+      "R356"
+    ],
+    "preserved_entries_unchanged": [
+      "R347",
+      "R349",
+      "R354",
+      "R348",
+      "R341",
+      "R343",
+      "R342"
+    ],
+    "classifications": {
+      "R351": "H185_GATE_EVIDENCE_AUDIT_NOT_ESTIMATOR_MEASUREMENT",
+      "R356": "H185_STATIC_SOURCE_BILLING_AUDIT_NOT_ESTIMATOR_MEASUREMENT"
+    },
+    "new_estimator_measurement_count": 0,
+    "h185_authorization": "NONE",
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
+  },
+  "r357_snapshot": {
+    "R351": {
+      "branch": "review/r351-h185-gate-reopen-audit-20260924",
+      "head": "567eed119cab07ca8a10134e47f4d30928612cf3",
+      "verdict": "GATE_REMAINS_BLOCKED_G2_EXACT_DENSE_DENOMINATOR_MISSING",
+      "report_path": "research/r351/R351_H185_GATE_REOPEN_AUDIT.md",
+      "report_blob": "7f04e49787e2ef7ee58c6aaaa34f41fa7cd8fff0",
+      "receipt_path": "research/r351/R351_RECEIPT.json",
+      "receipt_blob": "aa780a5caa8dfc0b37102d0c731af68e9a4af8a7",
+      "exact_whole_parent_flops": 558473140719,
+      "exact_dense_subtotal_recovered": false,
+      "exact_fixed_remainder_recovered": false,
+      "exact_per_namespace_integers_recovered": false,
+      "rounded_namespace_values_may_be_inverted_or_summed": false,
+      "new_estimator_measurement": false,
+      "h185_authorized": false
+    },
+    "R356": {
+      "branch": "review/r356-h185-static-dense-flops-reconstruction-20260924",
+      "head": "a7dd6aab4b4a3be2aec46b8f39df18e196e9f955",
+      "verdict": "NO_GO_PROOF_GRADE_STATIC_RECONSTRUCTION_NOT_CLOSED",
+      "report_path": "research/r356/R356_H185_STATIC_DENSE_FLOPS_RECONSTRUCTION.md",
+      "report_blob": "851530b2ddabc730533887174a700beaedbe2219",
+      "receipt_path": "research/r356/R356_RECEIPT.json",
+      "receipt_blob": "708e4d0b7c2e58f8a0b5985a269948c9e64e7a59",
+      "exact_whole_parent_flops": 558473140719,
+      "blockers": [
+        "historical cost-affecting estimator V* runtime knobs are not immutably pinned",
+        "effective historical FlopScope override/billing-table state is not immutably pinned",
+        "call-2 persistent allocation/billing state depends on call-1 pool state"
+      ],
+      "exact_dense_subtotal_recovered": false,
+      "exact_fixed_remainder_recovered": false,
+      "exact_per_namespace_integers_recovered": false,
+      "rounded_namespace_values_may_be_inverted_or_summed": false,
+      "new_estimator_measurement": false,
+      "h185_authorized": false
+    },
+    "new_estimator_measurement_count": 0,
+    "h185_gate": "BLOCKED_G2_EXACT_DENSE_DENOMINATOR_MISSING",
+    "h185_authorization": "NONE"
+  },
+  "r357_execution_accounting": {
+    "estimator_runs": 0,
+    "test_runs": 0,
+    "benchmark_runs": 0,
+    "reruns": 0,
+    "actions_runs": 0,
+    "downloads": 0,
+    "paid_resources": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_v2_edits": 0,
+    "queue_edits": 0,
+    "new_files": 0
   }
 
 }
