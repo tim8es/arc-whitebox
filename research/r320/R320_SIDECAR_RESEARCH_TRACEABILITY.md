@@ -1,10 +1,11 @@
 # R320 — sidecar research traceability audit
 
-**Status:** COMPLETE — corrected by R323  
+**Status:** COMPLETE — corrected by R323; extended by R332  
 **Mode:** report-only traceability audit  
 **Branch:** `review/r320-sidecar-research-traceability-20260924`  
 **Exact base:** `4619801e0cc5e7e340cd0406eb44e0633d8aa5e5`  
-**R323 correction parent:** `ae418aa7bcdb08549b051745816bce16aafe1e7e`
+**R323 correction parent:** `ae418aa7bcdb08549b051745816bce16aafe1e7e`  
+**R332 extension parent:** `0c4db1d79deb9b2f608001127d8359b0c0fafd27`
 
 ## R323 correction notice
 
@@ -51,11 +52,51 @@ No separate pre-existing sidecar registry was found. The table therefore follows
 | R314 | comparability | `NOT_COMPARABLE` | `review/r314-r311-comparability-independent-audit-20260924` / `3c350f49176fc3bfff259f88288b353517946bc1` | **YES** — report + receipt | **NO** |
 | R315 | leaderboard forensic | `NO_PUBLIC_METHOD` | `review/r315-top2-top3-config-audit-20260924` / `aa5806c4c6b1bee41acf6ad6785aa53aac363120` | **YES** — report + receipt | **NO** |
 | R316 | leaderboard forensic | `NO_PUBLIC_METHOD` | `review/r316-a-s6-public-method-audit-20260924` / `aee8e4fd50efbbfb248f9c4586a9e3df37f6d965` | **YES** — report + receipt | **NO** |
-| R317 | theory | `EVIDENCE_BASED_NO_GO_BEFORE_IMPLEMENTATION` | `review/r317-truncated-normal-gate-estimator-20260924` / `6264781a18c1cea2ec6540ea312875ec1d5aba56` | **YES** — report blob `102854932f111e793657747a4aa227b23f19e7fc` + receipt blob `926e190d4672d9a8f26853566bf66b4c82cba291` | **NO** |
+| R317 | theory | `EVIDENCE_BASED_NO_GO_BEFORE_IMPLEMENTATION` — R324 caveat incorporated, core NO_GO unchanged | `review/r317-truncated-normal-gate-estimator-20260924` / `6ede298753b7ebc35765e18479775879769712ff` | **YES** — corrected report blob `b134ccb1c77c3d0e70fe70b64b651e6e5dd1f77c` + receipt blob `81f6adbc9cc64ab5ad3f4aaf230fe035fffa5ea5` | **NO** |
 | R318 | leaderboard forensic | `NO_PUBLIC_METHOD` | `review/r318-top6-public-config-audit-20260924` / `d0138a3fe772c712d331f5fde0c7e75be5bb56b7` | **YES** — report + receipt | **NO** |
 | R319 | comparability | `NOT_JOINABLE` | `review/r319-public50-r209-join-audit-20260924` / `9086b846cc6e11ad91117870c3015d25bfc5504a` | **YES** — report blob `c858a8f3bd29f50c5188894aeaaa73e2208a374f` + receipt blob `517c4ea88041432c6929c561b18b42a01be94761` | **NO** |
 
-R321/R322 began after the original R320 audit window. They are not used for any conclusion here.
+R321 onward began after the original R320/R323 audit window. R332 imports only immutable terminal evidence verified below; R324 and R330 are represented as corrections on their parent sidecar branches rather than standalone studies.
+
+## R332 extension snapshot — R321–R329 plus terminal R331
+
+R332 is a traceability-only extension. It does not reinterpret these sidecars as control-v2 jobs and does not create scientific measurements.
+
+| Task | Type | Verdict / classification | Exact branch / head | Immutable two-file evidence | Actual new estimator measurement? |
+|---|---|---|---|---|---|
+| R321 | theory / independent red-team | `COMPLETE`; `EVIDENCE_BASED_INDEPENDENT_NO_GO_R317_CORE_NOT_FALSIFIED` | `review/r321-r317-compression-red-team-20260924` / `774aac4105bfe1a171f40f7272fc4267aae6c2f8` | report `research/r321/R321_R317_COMPRESSION_RED_TEAM_REPORT.md`, blob `b0b71f4d74596c4744d0353d1654ac5726aeb2bb`, https://github.com/tim8es/arc-whitebox/blob/774aac4105bfe1a171f40f7272fc4267aae6c2f8/research/r321/R321_R317_COMPRESSION_RED_TEAM_REPORT.md ; receipt `research/r321/R321_RECEIPT.json`, blob `2c3d9f881d669ee924cecca106611c6c295a7243`, https://github.com/tim8es/arc-whitebox/blob/774aac4105bfe1a171f40f7272fc4267aae6c2f8/research/r321/R321_RECEIPT.json | **NO** |
+| R322 | official-source audit | `COMPLETE / EXISTS_BUT_NOT_PUBLICLY_EXPOSED` | `review/r322-public50-manifest-source-audit-20260924` / `552010f48d67d70b6bb8aae84fe4fc271ccf3f81` | report `research/r322/R322_PUBLIC50_MANIFEST_SOURCE_AUDIT.md`, blob `4f0b925acac9779b8fd6794418065d8bd6565e33`, https://github.com/tim8es/arc-whitebox/blob/552010f48d67d70b6bb8aae84fe4fc271ccf3f81/research/r322/R322_PUBLIC50_MANIFEST_SOURCE_AUDIT.md ; receipt `research/r322/R322_PUBLIC50_MANIFEST_SOURCE_AUDIT_RECEIPT.json`, blob `2625914219065bec11891317e4ea978ed9cb4308`, https://github.com/tim8es/arc-whitebox/blob/552010f48d67d70b6bb8aae84fe4fc271ccf3f81/research/r322/R322_PUBLIC50_MANIFEST_SOURCE_AUDIT_RECEIPT.json | **NO** |
+| R324 | correction to R317, not standalone result | R317 core `NO_GO` unchanged; adds polynomial single-orthant-query caveat and narrows blocker to reusable all-mask state | `review/r317-truncated-normal-gate-estimator-20260924` / correction head `6ede298753b7ebc35765e18479775879769712ff` | corrected R317 report `research/r317/R317_TRUNCATED_NORMAL_GATE_ESTIMATOR_REPORT.md`, blob `b134ccb1c77c3d0e70fe70b64b651e6e5dd1f77c`, https://github.com/tim8es/arc-whitebox/blob/6ede298753b7ebc35765e18479775879769712ff/research/r317/R317_TRUNCATED_NORMAL_GATE_ESTIMATOR_REPORT.md ; receipt `research/r317/R317_RECEIPT.json`, blob `81f6adbc9cc64ab5ad3f4aaf230fe035fffa5ea5`, https://github.com/tim8es/arc-whitebox/blob/6ede298753b7ebc35765e18479775879769712ff/research/r317/R317_RECEIPT.json | **NO — correction only** |
+| R325 | conditional offline reanalysis | `COMPLETE / CONDITIONAL_ENVELOPE_COMPUTED_MEMBERSHIP_UNPROVEN` | `review/r325-r209-mini100-public50-conditional-bounds-20260924` / `efd518021ccc120ccb4e859f2588648d83f2b57f` | report `research/r325/R325_R209_MINI100_PUBLIC50_CONDITIONAL_BOUNDS.md`, blob `05f568f257c7e7a23244232deecd19b108184529`, https://github.com/tim8es/arc-whitebox/blob/efd518021ccc120ccb4e859f2588648d83f2b57f/research/r325/R325_R209_MINI100_PUBLIC50_CONDITIONAL_BOUNDS.md ; receipt `research/r325/R325_RECEIPT.json`, blob `80be370c465323a5f74760595fb582051f1866ba`, https://github.com/tim8es/arc-whitebox/blob/efd518021ccc120ccb4e859f2588648d83f2b57f/research/r325/R325_RECEIPT.json | **NO — recomputes stored R209 outputs only** |
+| R326 | official-source public-method audit | current rank-2 `suliman_tadros` / #331931: `NO_PUBLIC_METHOD` | `review/r326-rank2-suliman-method-audit-20260924` / `c9e7738030b2c6443c155a411e893b3f738af1a6` | report `research/r326/R326_RANK2_SULIMAN_METHOD_AUDIT.md`, blob `81e1cd551ed34bb7800af1ebd41524dc1ac13629`, https://github.com/tim8es/arc-whitebox/blob/c9e7738030b2c6443c155a411e893b3f738af1a6/research/r326/R326_RANK2_SULIMAN_METHOD_AUDIT.md ; receipt `research/r326/R326_RANK2_SULIMAN_METHOD_AUDIT_RECEIPT.json`, blob `406e1e26d28bd6d161041b79124d3d76037f4384`, https://github.com/tim8es/arc-whitebox/blob/c9e7738030b2c6443c155a411e893b3f738af1a6/research/r326/R326_RANK2_SULIMAN_METHOD_AUDIT_RECEIPT.json | **NO** |
+| R327 | official-source public-method audit, corrected lineage | `CONFIRMATORY_DUPLICATE_OF_R312`; same #332100; underlying `NO_PUBLIC_METHOD` unchanged; no novel method delta | `review/r327-luna-rank5-method-audit-20260924` / R330-corrected head `ae471fef454ff8fe75473d4df9c99ead6f0abeda` | report `research/r327/R327_LUNA_RANK5_METHOD_AUDIT.md`, blob `a5724e2a6bf022e9755ce0822219ffa8d5190a54`, https://github.com/tim8es/arc-whitebox/blob/ae471fef454ff8fe75473d4df9c99ead6f0abeda/research/r327/R327_LUNA_RANK5_METHOD_AUDIT.md ; receipt `research/r327/R327_RECEIPT.json`, blob `7b317e36637a1a3fc2868ec2708865b79bfc06d5`, https://github.com/tim8es/arc-whitebox/blob/ae471fef454ff8fe75473d4df9c99ead6f0abeda/research/r327/R327_RECEIPT.json | **NO** |
+| R328 | official-source public-method / identity-delta audit | `NO_PUBLIC_METHOD`; current J2W View remains #331539; #332101 belongs to AndreasHad04 | `review/r328-j2w-current-submission-method-delta-20260924` / `0f5c3212eb0da2e9fba2bade2ceea33d818c403b` | report `research/r328/R328_J2W_CURRENT_SUBMISSION_METHOD_DELTA.md`, blob `c9967bc084c3371324c291cf1e5ce1d7c57689bc`, https://github.com/tim8es/arc-whitebox/blob/0f5c3212eb0da2e9fba2bade2ceea33d818c403b/research/r328/R328_J2W_CURRENT_SUBMISSION_METHOD_DELTA.md ; receipt `research/r328/R328_RECEIPT.json`, blob `96d7d51d902c44d9773fee794d8122627de96156`, https://github.com/tim8es/arc-whitebox/blob/0f5c3212eb0da2e9fba2bade2ceea33d818c403b/research/r328/R328_RECEIPT.json | **NO** |
+| R329 | official-source public-method audit | current rank-3 `marius_binner` / #331953: `NO_PUBLIC_METHOD` | `review/r329-rank3-marius-method-audit-20260924` / `17713f7dd2fa43f86a1b02f24f843b77bb433960` | report `research/r329/R329_RANK3_MARIUS_METHOD_AUDIT.md`, blob `4f05197a07391fc92515b085bc78f4f2665295ea`, https://github.com/tim8es/arc-whitebox/blob/17713f7dd2fa43f86a1b02f24f843b77bb433960/research/r329/R329_RANK3_MARIUS_METHOD_AUDIT.md ; receipt `research/r329/R329_RANK3_MARIUS_METHOD_AUDIT_RECEIPT.json`, blob `0172658228760db0d685e4e43f2cfd93b5c4a8c8`, https://github.com/tim8es/arc-whitebox/blob/17713f7dd2fa43f86a1b02f24f843b77bb433960/research/r329/R329_RANK3_MARIUS_METHOD_AUDIT_RECEIPT.json | **NO** |
+| R331 | independent arithmetic/provenance red-team | `COMPLETE / PASS`; R325 quantitative results independently reproduced, no correction | `review/r331-independent-r325-bound-verification-20260924` / `695bde569e8164d3bccceae4c0d5ab01698de1fd` | report `research/r331/R331_INDEPENDENT_R325_BOUND_VERIFICATION.md`, blob `4f46e1550e0e900556793712eff45c08e413f0fd`, https://github.com/tim8es/arc-whitebox/blob/695bde569e8164d3bccceae4c0d5ab01698de1fd/research/r331/R331_INDEPENDENT_R325_BOUND_VERIFICATION.md ; receipt `research/r331/R331_RECEIPT.json`, blob `3a8e567c58518335fa9e6aa2bb7c90afda0c41d0`, https://github.com/tim8es/arc-whitebox/blob/695bde569e8164d3bccceae4c0d5ab01698de1fd/research/r331/R331_RECEIPT.json | **NO — arithmetic/provenance verification only** |
+
+### Caveats preserved by R332
+
+- **R321:** randomized polynomial-time algorithms exist for a single correlated Gaussian orthant/convex-set query; this does not falsify the narrower lack of a reusable polynomial-size non-Gaussian all-mask state with composable error and Phase-2 cost bounds.
+- **R322:** the identity-bearing evaluator mapping exists in the evaluation-data construction, but the exact deployed public-50 mapping is not publicly exposed; R322 does not prove a separately named public manifest.
+- **R324:** this is a correction commit on R317, not a standalone scientific task/result. Explicit all-mask state bookkeeping is `Theta(2^n n)` for conditional first moments or `Theta(2^n n^2)` for full conditional covariances; that statement is not a lower bound on one orthant query.
+- **R325:** the sharp R209 50-of-100 adjusted-score envelope is `[7.242872117838148426e-9, 9.0979227623963048e-9]` only **conditionally** on grader public-50 being a 50-row subset of R209 Mini-100 and scorer comparability. Membership remains unproved, so this is not a contest score or leaderboard gap/place result.
+- **R326:** current rank-2 row directly links suliman_tadros to #331931, but no public method/config/source/repository linkage is established.
+- **R327/R330:** R330 is only an append-only lineage correction to R327. R327 is confirmatory of already-completed R312 for the same #332100, not a novel audit or method discovery.
+- **R328:** the fresh J2W View remains #331539; #332101 is attributable to AndreasHad04 from the current leaderboard, not J2W. Exact unrounded J2W score remains unknown.
+- **R329:** current rank-3 row directly links marius_binner to #331953; public access does not establish method disclosure.
+- **R331:** independently reproduces R325's saved arithmetic/provenance and preserves the same external limitation: the actual public-50 to R209 membership/join remains unproved.
+
+### Measurement separation
+
+**Genuine new estimator measurements among R321, R322, R324–R329, and R331: 0.**
+
+- R321 is theory/red-team only.
+- R322, R326–R329 are source/identity/public-method audits.
+- R324 and R330 are corrections only.
+- R325 performs offline arithmetic on already committed R209 V25 per-MLP adjusted scores; it does not rerun V25 or the grader.
+- R331 independently rechecks R325 arithmetic/provenance; it does not rerun an estimator or benchmark.
+
+This preserves the earlier distinction: a report can recognize or recompute facts from a prior scientific measurement without itself becoming a new estimator measurement.
 
 ## R313 correction lineage and R223 measurement
 
@@ -137,7 +178,7 @@ At the audited formal snapshot:
 
 This does **not** mean the sidecar artifacts are absent. R313 is the clearest example: no formal R313 event exists, while the completed correction is durably stored as the second fast-forward commit on R309's branch.
 
-R320/R323 do not backfill claim/start/finish events and do not edit control-v2.
+R320/R323/R332 do not backfill claim/start/finish events and do not edit control-v2.
 
 ## Shortest safe next step
 
@@ -145,7 +186,7 @@ R320/R323 do not backfill claim/start/finish events and do not edit control-v2.
 
 No historical claim/start/finish events should be fabricated.
 
-## R320/R323 execution accounting
+## R320/R323/R332 execution accounting
 
 - estimator/benchmark runs: **0**
 - Actions runs: **0**
