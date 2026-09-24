@@ -8,10 +8,21 @@
   "snapshot": {
     "captured_at_utc": "2026-09-24T09:29:17.177839Z",
     "official_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
-    "total_records_or_pages": "NOT_DISPLAYED_IN_CAPTURED_PUBLIC_DOM",
     "parser_visible_extent": "rows through displayed rank 50",
     "score_capture_rule": "preserve exact public DOM string",
-    "submission_id_rule": "resolved from each row's public View link target"
+    "submission_id_rule": "resolved from each row's public View link target",
+    "page_range_display": "Showing 1–100 of 197",
+    "total_records": 197,
+    "page_count": 2,
+    "pagination_controls": {
+      "previous_page": "disabled",
+      "pages": [
+        "1",
+        "2"
+      ],
+      "next_page": "visible"
+    },
+    "pagination_capture_at_utc": "2026-09-24T09:34:58Z"
   },
   "comparator": {
     "task": "R304",
@@ -262,7 +273,21 @@
   },
   "artifacts": {
     "report_path": "research/r310/R310_LEADERBOARD_TOP_CHECK.md",
-    "report_blob_sha": "25d8ed9337c002b6c1eb53ea093c8d119947d9f0",
-    "report_commit": "24e278e4dcd20d7c7fd496c96a4b2aefa07ef3bf"
+    "report_blob_sha": "180301c0739c40c3ac942ffab57d1082245cdb26",
+    "report_commit": "964b698697251311608a5a31c3034a533017f2dc"
+  },
+  "review_correction": {
+    "reason": "Correct prior false statement that total records/page count were not displayed in the captured public DOM.",
+    "official_ui_dom_observation_at_utc": "2026-09-24T09:34:58Z",
+    "exact_visible_range_string": "Showing 1–100 of 197",
+    "page_count": 2,
+    "visible_controls": [
+      "Previous page (disabled)",
+      "1",
+      "2",
+      "Next page"
+    ],
+    "supersedes": "NOT_DISPLAYED_IN_CAPTURED_PUBLIC_DOM",
+    "changed_scope_only": "pagination/count evidence; all top-20 rows, first-place and delta conclusions unchanged"
   }
 }
