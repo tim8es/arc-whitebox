@@ -1,0 +1,151 @@
+{
+  "schema": "arc.whitebox.r331.independent_r325_bound_verification.v1",
+  "task": "R331",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "PASS",
+  "decision": "R325_QUANTITATIVE_RESULTS_INDEPENDENTLY_REPRODUCED_NO_CORRECTION",
+  "mode": "report-only independent arithmetic/provenance red-team",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r331-independent-r325-bound-verification-20260924",
+  "r325_target": {
+    "exact_head": "efd518021ccc120ccb4e859f2588648d83f2b57f",
+    "report_path": "research/r325/R325_R209_MINI100_PUBLIC50_CONDITIONAL_BOUNDS.md",
+    "report_blob_sha1": "05f568f257c7e7a23244232deecd19b108184529",
+    "receipt_path": "research/r325/R325_RECEIPT.json",
+    "receipt_blob_sha1": "80be370c465323a5f74760595fb582051f1866ba",
+    "modified_by_r331": false
+  },
+  "source": {
+    "path": "research/results/R209-v25-mini100.json",
+    "integration_commit": "20fafab5471e6ed227562c651179dd2ef331ea22",
+    "crosscheck_commit": "8fb0afb77ae834d88bae29557a41356d4d98401f",
+    "git_blob_sha1_expected": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "git_blob_sha1_observed_at_both_refs": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "git_blob_match": true,
+    "sha256_expected": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "sha256_recomputed_from_fetched_utf8_json": "f1168e1004d736a2435d6a5800d184113e96105165edde15d9e945dd27f15742",
+    "sha256_match": true,
+    "id": "R209-v25-mini100",
+    "panel": "v2-phase2 mini:all-100",
+    "stage": "development",
+    "dtype": "float32",
+    "shape": [
+      16,
+      1024
+    ],
+    "evaluator": "whestbench 0.16.1",
+    "meter": "flopscope 0.12.1+np2.4.6"
+  },
+  "row_validation": {
+    "row_count": 100,
+    "unique_network_ids": 100,
+    "required_fields_checked": [
+      "budget_flops",
+      "failure_reasons",
+      "final_mse",
+      "measured_flops",
+      "network_id",
+      "official_adjusted_score",
+      "status"
+    ],
+    "all_rows_have_required_fields": true,
+    "all_final_mse_finite": true,
+    "all_official_adjusted_score_finite": true,
+    "status_values": [
+      "ok"
+    ],
+    "failure_rows": 0,
+    "common_budget_flops": 2199023255552,
+    "common_measured_flops": 806303721965,
+    "common_compute_ratio": 0.36666448157347986
+  },
+  "scorer_verification": {
+    "whestbench_version": "0.16.1",
+    "source_commit": "4d08668b485c8a7d25a105c3c00d2f4fc2538f18",
+    "scoring_blob_sha1": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+    "budget_blob_sha1": "6586f12d178e0136420cb282535663f1faad5abc",
+    "rounds_doc_blob_sha1": "c2891dae7c21f27fdcaaab239c7bfd5d8cfc0890",
+    "valid_formula": "s_m = final_mse * max(0.1, C_m / B_m)",
+    "failure_multiplier": 1,
+    "phase2_residual_mode": "gated",
+    "phase2_lambda": 0,
+    "phase2_effective_compute": "C_m = F_m",
+    "all_rows_valid": true,
+    "max_abs_recomputed_adjusted_vs_stored_binary_float": 0,
+    "r325_recorded_max_abs": 0,
+    "discrepancy_check": "PASS"
+  },
+  "arithmetic": {
+    "input_field": "per_network[*].official_adjusted_score",
+    "arithmetic_mode": "exact serialized base-10 decimal lexemes for sort/sums/means",
+    "score_lexeme_count": 100,
+    "lower_sum_decimal": "0.0000003621436058919074213",
+    "lower_mean_decimal": "0.000000007242872117838148426",
+    "upper_sum_decimal": "0.00000045489613811981524",
+    "upper_mean_decimal": "0.0000000090979227623963048",
+    "smallest_decimal": "0.000000005269560766710126",
+    "row50_decimal": "0.000000008345217855754383",
+    "row51_decimal": "0.000000008357294760239438",
+    "largest_decimal": "0.000000011105773382971547",
+    "serialized_100_mean_decimal": "0.000000008170397440117226613",
+    "archived_binary_float_aggregate": 8.170397440117225e-9,
+    "serialized_vs_archived_abs_difference_as_binary_float": 1.6543612251060553e-24,
+    "boundary_strict": true,
+    "lower_witness_network_ids_match_r325": true,
+    "upper_witness_network_ids_match_r325": true,
+    "all_r325_saved_arithmetic_values_match": true
+  },
+  "theorem_check": {
+    "statement": "For 100 scalar values sorted ascending, the minimum mean over all 50-element subsets is the mean of the 50 smallest and the maximum is the mean of the 50 largest.",
+    "applicable": true,
+    "sharp": true,
+    "conditional_interval": [
+      "0.000000007242872117838148426",
+      "0.0000000090979227623963048"
+    ]
+  },
+  "conditionality_red_team": {
+    "r325_marks_not_leaderboard_result": true,
+    "public50_membership_proven": false,
+    "exact_public50_to_r209_join_proven": false,
+    "r319_verdict": "NOT_JOINABLE",
+    "r322_exact_deployed_public50_mapping_publicly_exposed": false,
+    "leaderboard_displayed_adjusted_score_text": "2.10e-9",
+    "leaderboard_exact_underlying_float_known": false,
+    "leaderboard_formatter_known": false,
+    "actual_gap_claimed": false,
+    "place_or_rank_prediction_claimed": false,
+    "exact_public50_score_claimed": false,
+    "conclusion": "STRICTLY_CONDITIONAL_PASS"
+  },
+  "errors_found": [],
+  "limitations": [
+    "The exact grader public-50 canonical identity manifest is unavailable, so R325 cannot identify the actual public-50 subset of R209 Mini-100.",
+    "The leaderboard 2.10e-9 value is a rounded UI display; the exact underlying float and formatter are not established.",
+    "R331 verifies saved arithmetic and scorer semantics only; it does not rerun the estimator, benchmark, or competition grader."
+  ],
+  "report": {
+    "path": "research/r331/R331_INDEPENDENT_R325_BOUND_VERIFICATION.md",
+    "creation_commit": "d10fc9014d91d31018a26ed7909973510587e65e",
+    "git_blob_sha1": "4f46e1550e0e900556793712eff45c08e413f0fd"
+  },
+  "execution_accounting": {
+    "estimator_runs": 0,
+    "benchmark_runs": 0,
+    "dataset_downloads": 0,
+    "dependency_downloads": 0,
+    "github_actions_runs": 0,
+    "paid_compute": false,
+    "private_access": false,
+    "holdout_access": false,
+    "full_access": false,
+    "submissions": 0,
+    "code_artifacts_committed": 0,
+    "r325_edits": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
