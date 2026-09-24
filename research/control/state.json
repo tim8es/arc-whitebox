@@ -6382,6 +6382,22 @@
         "command": "read-only official leaderboard/rules refresh and panel comparability audit; report/receipt on isolated review branch; no Actions/benchmark/data/paid/holdout/submission/PR edits"
       },
       "at": "2026-09-24T01:53:54.143+00:00"
+    },
+    {
+      "revision": 475,
+      "action": "finish",
+      "job": "R303",
+      "owner": "r303-live-leaderboard-statistician",
+      "payload": {
+        "run_id": "R303-official-leaderboard-refresh-20260924",
+        "status": "COMPLETE",
+        "reason": "Fresh first-party AIcrowd Phase-2 leaderboard snapshot captured at 2026-09-24T02:07:55Z: 100 of 195 displayed rows, J2W rank 1 with displayed adjusted score 2.10e-9 (3 significant digits), exact unrounded score unknown; deadline Oct 17 2026 23:59 UTC. Official metric/rules refreshed. Comparison with R209/R223 mini-100 is NOT_COMPARABLE because current visible Phase-2 panel is visible-50 and no immutable network/target identity join is published; no exact gap/rank inferred. Report/receipt preserve snapshot. No Actions, benchmark, estimator, data/dependency downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json",
+          "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c"
+        }
+      },
+      "at": "2026-09-24T02:22:42.873+00:00"
     }
   ],
   "jobs": [
@@ -10164,21 +10180,35 @@
         "R271"
       ],
       "assigned_owner": "r303-live-leaderboard-statistician",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "owner": "r303-live-leaderboard-statistician",
       "attempts": [
         {
           "run_id": "R303-official-leaderboard-refresh-20260924",
           "code_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
           "command": "read-only official leaderboard/rules refresh and panel comparability audit; report/receipt on isolated review branch; no Actions/benchmark/data/paid/holdout/submission/PR edits",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R303-official-leaderboard-refresh-20260924",
+            "status": "COMPLETE",
+            "reason": "Fresh first-party AIcrowd Phase-2 leaderboard snapshot captured at 2026-09-24T02:07:55Z: 100 of 195 displayed rows, J2W rank 1 with displayed adjusted score 2.10e-9 (3 significant digits), exact unrounded score unknown; deadline Oct 17 2026 23:59 UTC. Official metric/rules refreshed. Comparison with R209/R223 mini-100 is NOT_COMPARABLE because current visible Phase-2 panel is visible-50 and no immutable network/target identity join is published; no exact gap/rank inferred. Report/receipt preserve snapshot. No Actions, benchmark, estimator, data/dependency downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json",
+              "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c"
+            }
+          }
         }
       ],
-      "deliverable": "Refresh the current official ARC White-Box Phase-2 leaderboard and rules from first-party AIcrowd sources; freeze access date/time and source URLs/hashes. Compare the current visible leader with the strongest verified project results only when exact panel/split and metric are demonstrably comparable. Reconcile against R263/R271 receipts and current `research/STATUS.md`, specifically the visible-50 vs public mini:all-100 identity mismatch; do not infer an exact score gap or rank if still NOT_COMPARABLE. Record the current official best row, score precision/rounding, deadline/rules, and a clear decision on whether a valid direct comparison exists. Read-only: no benchmark/Actions/estimator, no data/dependency downloads, no paid resources, no private/holdout/full access, no submission, no PR/leaderboard/canonical edits. Save one append-only Markdown report and receipt on a report-only branch; never write main or PR #36."
+      "deliverable": "Refresh the current official ARC White-Box Phase-2 leaderboard and rules from first-party AIcrowd sources; freeze access date/time and source URLs/hashes. Compare the current visible leader with the strongest verified project results only when exact panel/split and metric are demonstrably comparable. Reconcile against R263/R271 receipts and current `research/STATUS.md`, specifically the visible-50 vs public mini:all-100 identity mismatch; do not infer an exact score gap or rank if still NOT_COMPARABLE. Record the current official best row, score precision/rounding, deadline/rules, and a clear decision on whether a valid direct comparison exists. Read-only: no benchmark/Actions/estimator, no data/dependency downloads, no paid resources, no private/holdout/full access, no submission, no PR/leaderboard/canonical edits. Save one append-only Markdown report and receipt on a report-only branch; never write main or PR #36.",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/0c15bee860dc1d22224dd1294fcaa82bca26b8a4/research/r303/R303_RECEIPT.json",
+        "sha256": "6d68ef605d9eae8dbf35cce353a593b6c3514271ac126b6941cb24453437174c"
+      },
+      "reason": "Fresh first-party AIcrowd Phase-2 leaderboard snapshot captured at 2026-09-24T02:07:55Z: 100 of 195 displayed rows, J2W rank 1 with displayed adjusted score 2.10e-9 (3 significant digits), exact unrounded score unknown; deadline Oct 17 2026 23:59 UTC. Official metric/rules refreshed. Comparison with R209/R223 mini-100 is NOT_COMPARABLE because current visible Phase-2 panel is visible-50 and no immutable network/target identity join is published; no exact gap/rank inferred. Report/receipt preserve snapshot. No Actions, benchmark, estimator, data/dependency downloads, paid resources, private/holdout/full access, submission, PR/leaderboard/canonical edits."
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 474,
+  "revision": 475,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
