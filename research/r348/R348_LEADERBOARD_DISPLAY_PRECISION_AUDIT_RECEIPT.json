@@ -1,0 +1,162 @@
+{
+  "schema": "arc.whitebox.r348.leaderboard-display-precision-audit.v1",
+  "job": "R348",
+  "status": "UNKNOWN_FORMATTER_NOT_PUBLICLY_OBSERVABLE",
+  "verdict": "UNKNOWN_FORMATTER_NOT_PUBLICLY_OBSERVABLE",
+  "audit_timestamp_utc": "2026-09-24T12:08:35Z",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r348-leaderboard-display-precision-audit-20260924",
+  "dedupe": {
+    "r341": {
+      "receipt_blob_sha1": "2809f024b167cf28507540f7a113aba8d57af750",
+      "preserves_display_text": true,
+      "infers_unrounded_value": false,
+      "formatter_audit": false
+    },
+    "r343": {
+      "report_blob_sha1": "ca319b2a634dfb95a04b4ca351661fe3e1ca7fd0",
+      "receipt_blob_sha1": "5ae939e4344db9858c01a4422f21b06df39a71a4",
+      "exact_underlying_float_known": false,
+      "formatter_or_rounding_interval_known": false,
+      "primary_renderer_audit": false
+    },
+    "already_covered": false
+  },
+  "target_display": {
+    "adjusted_score_text": "2.00e-9",
+    "final_layer_mse_text": "1.61e-8",
+    "exact_underlying_adjusted_score": "UNKNOWN",
+    "adjusted_score_rounding_mode": "UNKNOWN",
+    "adjusted_score_general_significant_digits": "UNKNOWN",
+    "adjusted_score_decimal_precision": "UNKNOWN",
+    "adjusted_score_underlying_interval": "UNKNOWN_NOT_DERIVABLE",
+    "final_layer_mse_formatter": "UNKNOWN",
+    "final_layer_mse_underlying_interval": "UNKNOWN_NOT_DERIVABLE"
+  },
+  "first_party_sources_examined": [
+    {
+      "kind": "official_public_leaderboard",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2",
+      "result": "PUBLIC_EXTRACTION_RETURNS_CLIENT_LOADING_SHELL_NO_RENDERER_SOURCE",
+      "submission_pages_opened": false
+    },
+    {
+      "kind": "aicrowd_design_admin_round_config",
+      "url": "https://design.aicrowd.com/pages/edit-challenge-rounds-admin",
+      "evidence": "Primary Score and Secondary Score expose Score Precision controls described as round-off precision to compute ranks.",
+      "establishes_display_formatter": false,
+      "challenge_specific_phase2_value_public": false
+    },
+    {
+      "kind": "whestbench_local_presentation",
+      "repository": "AIcrowd/whestbench",
+      "commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+      "path": "src/whestbench/presentation/adapters.py",
+      "git_blob_sha1": "bc92da337db234b598303dda96e3da470e126e4e",
+      "url": "https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/presentation/adapters.py",
+      "local_formatter": "f\"{float(value):.2e}\"",
+      "local_formatter_documented_semantics": "scientific notation, three significant figures in mantissa",
+      "controls_aicrowd_web_leaderboard": false
+    },
+    {
+      "kind": "whestbench_metric_semantics",
+      "repository": "AIcrowd/whestbench",
+      "commit": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+      "path": "docs/reference/score-report-fields.md",
+      "git_blob_sha1": "3b66b33a0775f01eecbda2a148495d471f2eff65",
+      "url": "https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/docs/reference/score-report-fields.md",
+      "establishes_metric_semantics": true,
+      "establishes_web_display_formatter": false
+    },
+    {
+      "kind": "starterkit_local_output_example",
+      "repository": "AIcrowd/whest-starterkit",
+      "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "path": "docs/getting-started/stage-3-run-local.md",
+      "git_blob_sha1": "2bc23fd23210f513a9bfab4917dde6f4ef18c125",
+      "url": "https://github.com/AIcrowd/whest-starterkit/blob/5eb9aa1455fcb3216af55994bdf25dc242b95797/docs/getting-started/stage-3-run-local.md",
+      "establishes_local_output_examples": true,
+      "establishes_web_display_formatter": false
+    },
+    {
+      "kind": "unrelated_public_explorer_formatter",
+      "repository": "AIcrowd/whestbench-explorer",
+      "commit": "fb400159666b5bd45a2c22040e6a9daebc6b764c",
+      "path": "src/components/EstimatorComparison.jsx",
+      "git_blob_sha1": "ed8ca96a0f3617bb91272ffb23bfbfb041f6e0bd",
+      "url": "https://github.com/AIcrowd/whestbench-explorer/blob/fb400159666b5bd45a2c22040e6a9daebc6b764c/src/components/EstimatorComparison.jsx",
+      "establishes_leaderboard_formatter": false
+    }
+  ],
+  "public_aicrowd_code_search": {
+    "queries": [
+      {
+        "query": "toExponential org:AIcrowd",
+        "total": 1,
+        "result": "only whestbench-explorer"
+      },
+      {
+        "query": "toPrecision org:AIcrowd",
+        "total": 0
+      },
+      {
+        "query": "\"score_format\" org:AIcrowd",
+        "total": 0
+      },
+      {
+        "query": "toFixed leaderboard org:AIcrowd",
+        "total": 0
+      },
+      {
+        "query": "\"formatNumber\" leaderboard org:AIcrowd",
+        "total": 0
+      },
+      {
+        "query": "\"formatScore\" org:AIcrowd",
+        "total": 0
+      },
+      {
+        "query": "\"scorePrecision\" org:AIcrowd",
+        "total": 0
+      },
+      {
+        "query": "\"ADJUSTED SCORE\" org:AIcrowd",
+        "result": "scorer/docs only; no platform renderer"
+      },
+      {
+        "query": "\"FINAL LAYER MSE\" org:AIcrowd",
+        "result": "scoring source only; no platform renderer"
+      }
+    ],
+    "public_platform_frontend_formatter_found": false
+  },
+  "interpretation": {
+    "lexical_2_00e_9_has_three_significant_digits": true,
+    "lexical_fact_proves_general_formatter": false,
+    "whestbench_local_dot2e_may_be_transferred_to_web": false,
+    "numerical_interval_emitted": false,
+    "reason_no_interval": "Task permits an interval only if the leaderboard formatter is evidenced; it is not."
+  },
+  "report": {
+    "path": "research/r348/R348_LEADERBOARD_DISPLAY_PRECISION_AUDIT.md",
+    "creation_commit": "b4335ad2fb1285081e7e54994e07c5ae02f5d225",
+    "git_blob_sha1": "77a88dd22cb29b2a6cc7a3a9e346c6ee2d665554"
+  },
+  "execution_accounting": {
+    "competitor_submission_pages_opened": 0,
+    "estimator_or_model_runs": 0,
+    "benchmark_runs": 0,
+    "data_or_dependency_downloads": 0,
+    "github_actions_runs": 0,
+    "private_access": false,
+    "sealed_access": false,
+    "holdout_access": false,
+    "competition_submissions": 0,
+    "method_inference": false,
+    "estimator_measurements_added": false,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
