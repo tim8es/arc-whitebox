@@ -1,0 +1,215 @@
+{
+  "schema": "arc.whitebox.r362.per_neuron_hermite_tt_composability.v1",
+  "task": "R362",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "EVIDENCE_BASED_NO_GO_PER_NEURON_SCALAR_TT_NOT_CERTIFIED_COMPOSABLE",
+  "measurement_classification": "THEORY_PRIMARY_SOURCE_DESK_AUDIT_ONLY_NO_NEW_ESTIMATOR_MEASUREMENT",
+  "universal_impossibility_claimed": false,
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r362-per-neuron-hermite-tt-composability-20260924",
+  "predecessor": {
+    "task": "R352",
+    "branch": "review/r352-tensorized-hermite-frontier-20260924",
+    "head": "4e46b2bd8d04c15270b40872101555b6ac77f3e7",
+    "report_blob_sha1": "6f25841331f0199bd6ee7966a4bda796d79d2c59",
+    "receipt_blob_sha1": "432737e41f2b3576d1b5192a01a177c799c58d3b",
+    "verdict": "EVIDENCE_BASED_NO_GO_NO_CERTIFIED_LOW_RANK_TT_HERMITE_PATH",
+    "explicitly_unclosed_lane": "separate per-neuron scalar TT/PCE carriers over the same original Gaussian coordinates"
+  },
+  "primary_sources": [
+    {
+      "authors": "I. V. Oseledets",
+      "year": 2011,
+      "title": "Tensor-Train Decomposition",
+      "doi": "10.1137/090752286",
+      "url": "https://epubs.siam.org/doi/10.1137/090752286",
+      "used_for": [
+        "TT ranks equal unfolding ranks",
+        "TT-SVD Frobenius error control",
+        "addition sums ranks before rounding",
+        "rounding cost O(d*n*r^3)",
+        "Hadamard products multiply TT ranks"
+      ]
+    },
+    {
+      "authors": "I. Oseledets; E. Tyrtyshnikov",
+      "year": 2010,
+      "title": "TT-cross approximation for multidimensional arrays",
+      "doi": "10.1016/j.laa.2009.07.024",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0024379509003747",
+      "used_for": [
+        "TT-cross interpolation error depends on closeness to low rank and cross choice",
+        "no generic deep-ReLU low-rank theorem"
+      ]
+    },
+    {
+      "authors": "S. Dolgov; B. N. Khoromskij; A. Litvinenko; H. G. Matthies",
+      "year": 2015,
+      "title": "Polynomial Chaos Expansion of Random Coefficients and the Solution of Stochastic Partial Differential Equations in the Tensor Train Format",
+      "doi": "10.1137/140972536",
+      "url": "https://pure.mpg.de/rest/items/item_2125568_10/component/file_2241532/content",
+      "used_for": [
+        "tensor-product PCE TT core dimensions and O(M*p*r^2) storage",
+        "rank-adaptive cross via SVD truncation",
+        "independent TT formats cost roughly L times and their addition sums ranks before TT approximation",
+        "rapid TT-rank growth can occur for non-axis-aligned nonsmooth characteristic/level-set functions"
+      ]
+    },
+    {
+      "authors": "S. Goel; S. Karmalkar; A. R. Klivans",
+      "year": 2019,
+      "title": "Time/Accuracy Tradeoffs for Learning a ReLU with respect to Gaussian Marginals",
+      "venue": "NeurIPS 2019",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2019/file/067a26d87265ea39030f5bd82408ce7c-Paper.pdf",
+      "used_for": [
+        "exact univariate ReLU Hermite coefficients",
+        "multivariate ridge-ReLU Hermite expansion",
+        "nonzero even ReLU coefficients at arbitrarily high degree"
+      ]
+    }
+  ],
+  "dimensions": {
+    "gaussian_coordinates": 1024,
+    "width": 1024,
+    "depth": 16,
+    "phase2_flop_budget": 2199023255552
+  },
+  "first_layer_scalar_carrier": {
+    "state": "separate scalar tensor-product Hermite/PCE TT for each neuron over the same 1024 original Gaussian coordinates",
+    "exact_rank_for_even_degree_p_generic_nondegenerate_cut": "p+1",
+    "derivation_basis": "top degree-p Hermite ridge term separates into p+1 disjoint left/right degree sectors",
+    "standard_dense_core_storage_formula_per_scalar": "2*q^2 + 1022*q^3, q=p+1",
+    "standard_rounding_scale_per_scalar": "O(1024*q^4)",
+    "special_sparse_ridge_core_escape_acknowledged": true,
+    "special_sparse_ridge_core_composes_through_generic_dense_mix": false
+  },
+  "degrees": {
+    "certificate_scale": {
+      "p": 17118,
+      "q": 17119,
+      "meaning": "minimum even degree from R352 whose standardized single-ReLU squared Gaussian-L2 Hermite tail is <= 1.89e-8",
+      "standard_dense_storage_coefficients_per_scalar": "5127269213994820",
+      "standard_dense_storage_coefficients_all_1024": "5250323675130695680",
+      "float32_bytes_all_1024": "21001294700522782720",
+      "float32_decimal_eb_all_1024": 21.001294700522784,
+      "all_1024_standard_rounding_scale": "O(2^20 * 17119^4) ~= O(9.0e22)",
+      "exact_flopscope_lower_bound_claimed": false
+    },
+    "cheaper_but_inaccurate": {
+      "p": 214,
+      "q": 215,
+      "standardized_single_relu_squared_l2_tail": "1.3492776924771553e-5",
+      "tail_over_1_89e_8_scale_approx": 713.9,
+      "standard_dense_storage_coefficients_per_scalar": 10157111700,
+      "standard_dense_storage_coefficients_all_1024": 10400882380800,
+      "float32_bytes_all_1024": 41603529523200,
+      "float32_decimal_tb_all_1024": 41.6035295232,
+      "all_1024_standard_rounding_scale_substitution": "O(2240545423360000)",
+      "leading_scale_over_2pow41_approx": 1018.9,
+      "exact_flopscope_lower_bound_claimed": false
+    }
+  },
+  "generic_dense_mix": {
+    "preactivation": "z_j^(p) = sum_{i=1}^{1024} W_ji f_i^(p)",
+    "split": "512|512 original Gaussian coordinates",
+    "sector_rank_formula": "rank(M_t) = min(1024, C(511+t,t), C(511+p-t,p-t)) for generic dense ridge directions and generic nonzero row weights",
+    "lower_bound_even_p_ge_4": "r_512 >= 1024*p - 2046",
+    "direct_sum_upper_bound": "r_512 <= 1024*(p+1)",
+    "interpretation": "per-neuron scalar route delays the shared rank wall by one affine mix but does not remove it",
+    "p214": {
+      "lower_rank": 217090,
+      "upper_rank": 220160,
+      "one_central_core_entries_lower_scale": "10132534641500",
+      "one_central_core_float32_bytes_lower_scale": "40530138566000",
+      "one_scalar_central_core_float32_decimal_tb": 40.530138566,
+      "all_1024_one_core_float32_decimal_pb_approx": 41.5
+    },
+    "p17118": {
+      "lower_rank": 17526786,
+      "upper_rank": 17529856,
+      "one_central_core_entries_lower_scale": "5258755266397817724",
+      "one_central_core_float32_bytes_lower_scale": "21035021065591270896",
+      "one_scalar_central_core_float32_decimal_eb_approx": 21.04,
+      "all_1024_one_core_float32_decimal_zb_approx": 21.54
+    },
+    "generic_only": true,
+    "special_aligned_or_redundant_weights_may_lower_rank": true
+  },
+  "relu_composition": {
+    "exact_finite_degree_hermite_closed": false,
+    "reason": "ReLU has nonzero even Hermite coefficients at arbitrarily high degree; generic zero-crossing preactivation therefore needs infinite Hermite expansion for exact representation",
+    "later_preactivation_standard_gaussian_assumption_valid": false,
+    "note": "After first ReLU plus dense mixing the scalar preactivation is generally non-Gaussian, so the first-layer standard-Gaussian Hermite tail is not a later-layer certificate.",
+    "polynomial_route": {
+      "surrogate": "Q_m(z)=sum_{k=0}^m b_k z^k",
+      "pre_rounding_power_rank_bound": "rank(z^k) <= R^k by repeated Hadamard rank multiplication",
+      "additions_sum_ranks": true,
+      "recompression_required": true,
+      "coordinate_degree_growth": "up to m*p before projection back to fixed local PCE degree",
+      "required_error_terms": [
+        "ReLU-to-polynomial error under the actual induced scalar preactivation distribution",
+        "PCE/Hermite degree reprojection error",
+        "TT rounding error from discarded unfolding singular values"
+      ]
+    },
+    "tt_cross_route": {
+      "numerical_escape_possible": true,
+      "pre_run_certificate_present": false,
+      "blocker": "No primary-source theorem bounds approximate TT ranks/singular-value decay for generic dense repeated-ReLU PCEs."
+    }
+  },
+  "propagated_error": {
+    "normalized_layer_error": "e_l = sqrt(E||h_l-hat_h_l||_2^2 / 1024)",
+    "recurrence": "e_(l+1) <= ||W_l||_2 * e_l + tau_(l+1)",
+    "final_mean_mse_bound": "MSE_mean <= e_L^2 <= (sum_k tau_k product_{j>k} ||W_j||_2)^2",
+    "basis_link": "orthonormal Hermite coefficient Frobenius error equals Gaussian-L2 function error",
+    "missing": [
+      "generic dense layer rank bound after affine sum plus ReLU",
+      "computable per-layer approximation/reprojection/rounding residual tau_l at manageable ranks",
+      "source-backed control of residual propagation through 16 layers",
+      "all-in cost mapping to <2^41 with those certified ranks"
+    ]
+  },
+  "exact_missing_theorem": {
+    "statement_needed": "For every layer/neuron of a generic dense width-1024 depth-16 ReLU network, a constructible per-neuron TT/PCE approximation must have a certified rank bound R_l(epsilon), certified Gaussian-L2 residual tau_l after dense mixing plus ReLU, and total storage/arithmetic below the Phase-2 envelope while the weighted residual sum certifies final-mean MSE.",
+    "found_in_primary_sources": false
+  },
+  "decision_basis": [
+    "first-layer scalar rank p+1 is real and cheaper than shared block at that exact stage",
+    "generic dense next-layer scalar sum has rank sandwich 1024p-2046 <= r <= 1024(p+1)",
+    "exact ReLU is not finite-degree Hermite closed",
+    "polynomial TT evaluation multiplies ranks before mandatory recompression",
+    "TT-cross remains an empirical low-rank hope without a generic deep-ReLU error/rank theorem",
+    "standard dense-core storage/rounding scales are already non-credible at p=214 and vastly worse at p=17118"
+  ],
+  "reentry_requires": [
+    "a source-backed approximate-rank theorem or exact certificate for the map f_i -> ReLU(sum_i W_i f_i) in the shared original Gaussian coordinate TT/PCE representation",
+    "computable layerwise Gaussian-L2 residuals including nonlinear approximation, degree projection and TT rounding",
+    "rigorous depth-16 final-mean propagation",
+    "credible all-in width-1024/depth-16 cost below 2^41"
+  ],
+  "report": {
+    "path": "research/r362/R362_PER_NEURON_HERMITE_TT_COMPOSABILITY.md",
+    "creation_commit": "159b7baa9e24f2ec2345680dd77eea28caeb636b",
+    "git_blob_sha1": "a9826ac5f4ecc372fe72156a10a5566fd6687e0e"
+  },
+  "execution_accounting": {
+    "estimator_implementation": false,
+    "code_or_test_execution": 0,
+    "synthetic_runs": 0,
+    "official_or_public_benchmark_runs": 0,
+    "actions_runs": 0,
+    "downloads_or_dependency_installs": 0,
+    "paid_compute": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "leaderboard_access_or_edit": false,
+    "r320_edits": 0,
+    "pr_edits": 0,
+    "main_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0,
+    "estimator_measurements": 0
+  }
+}
