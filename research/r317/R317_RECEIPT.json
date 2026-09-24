@@ -1,0 +1,164 @@
+{
+  "schema": "arc.whitebox.r317.truncated_normal_gate_estimator.v1",
+  "task": "R317",
+  "status": "COMPLETE",
+  "decision": "EVIDENCE_BASED_NO_GO_BEFORE_IMPLEMENTATION",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r317-truncated-normal-gate-estimator-20260924",
+  "captured_at_utc": "2026-09-24T09:59:03.377473Z",
+  "question": "Whether truncated-Gaussian / orthant-moment identities provide a genuinely distinct Phase-2-feasible estimator for expected activations in deep ReLU MLPs.",
+  "conclusion": {
+    "single_gaussian_exact_pair_moments": {
+      "novelty": "DUPLICATE_DESCENDANT",
+      "closest_prior": "E038 conditional-Gaussian full-covariance ReLU kernel",
+      "reason": "Replacing E038's 16-node conditional-Gaussian pair-moment integration by exact Tallis/Rosenbaum/Plackett bivariate orthant moments changes the Gaussian pair-moment evaluator, not the carried state or layerwise re-Gaussianization closure.",
+      "cost_order": "O(L*n^3 + L*n^2 pair-moment evaluations), O(n^2) state",
+      "phase2_cost_evidence": {
+        "source": "E038_RESULT",
+        "width": 1024,
+        "depth": 16,
+        "billed_flops": 174310368260,
+        "utilization": 0.079267178198279,
+        "residual_wall_s": 0.3520044520000738,
+        "raw_final_mse": 0.000011938567981733376,
+        "raw_gate": 1.89e-8,
+        "raw_gate_miss_ratio_approx": 631.67
+      },
+      "accuracy_obstruction": "E111 exact-small evidence shows Gaussian ReLU moment plug-in bias appears immediately after the first ReLU even when pre-ReLU first two moments are exact."
+    },
+    "exact_gate_conditioned_truncated_gaussian_mixture": {
+      "novelty": "MATHEMATICALLY_DISTINCT_BUT_NOT_COST_FEASIBLE",
+      "representation": "Retain orthant/sign-mask probabilities and truncated-Gaussian conditional moments instead of collapsing to one Gaussian.",
+      "worst_case_state": "O(2^n) orthants per dense layer before depth compounding",
+      "phase2_dimensions": {
+        "width": 1024,
+        "depth": 16
+      },
+      "blocker": "No project- or paper-supported polynomial-size compression theorem with a credible <2^41 FLOP and <0.4 s residual bound.",
+      "adjacent_prior": "E039 fixed two-component half-space Gaussian mixture and E114-E119 exact activation-boundary state"
+    },
+    "boundary_integral_route": {
+      "novelty": "ALREADY_OCCUPIED",
+      "reason": "Gaussian boundary/Price evaluation maps to E036/E038; exact deep activation-boundary geometry maps to E114-E119.",
+      "compression_evidence": "E119 exact small-width certificate retained about 98.18%-98.80% of boundary atoms and could not omit any nonzero atom on its frozen corpus."
+    }
+  },
+  "primary_sources": [
+    {
+      "authors": "G. M. Tallis",
+      "year": 1961,
+      "title": "The Moment Generating Function of the Truncated Multi-Normal Distribution",
+      "doi": "10.1111/j.2517-6161.1961.tb00408.x",
+      "role": "truncated multivariate-normal MGF and first/second moments"
+    },
+    {
+      "authors": "S. Rosenbaum",
+      "year": 1961,
+      "title": "Moments of a Truncated Bivariate Normal Distribution",
+      "doi": "10.1111/j.2517-6161.1961.tb00422.x",
+      "role": "correlated bivariate truncated-normal moments"
+    },
+    {
+      "authors": "R. L. Plackett",
+      "year": 1954,
+      "title": "A Reduction Formula for Normal Multivariate Integrals",
+      "doi": "10.1093/biomet/41.3-4.351",
+      "role": "multivariate-normal probability reduction"
+    },
+    {
+      "authors": "R. Price",
+      "year": 1958,
+      "title": "A useful theorem for nonlinear devices having Gaussian inputs",
+      "doi": "10.1109/TIT.1958.1057444",
+      "role": "Gaussian nonlinear correlation derivative identity"
+    }
+  ],
+  "dedupe_evidence": {
+    "E030": {
+      "protocol_blob": "ef37753b1fe0e39abb82663dbec6fcd10ca9e38d",
+      "result_blob": "a8a3b0b104ee7e04cbdcb480142915a91a58d13b",
+      "family": "rank-8 conditional-Gaussian latent carrier"
+    },
+    "E036": {
+      "protocol_blob": "fd191c7b88ce8af759bf8467b2db0e052a36d2c0",
+      "result_blob": "fc27202a39e5fa825754ea50e11366bb7ef3b1be",
+      "family": "fourth-order Price covariance response plus signed K3"
+    },
+    "E038_conditional_gaussian": {
+      "protocol_blob": "06993b1f3fc0670c1e6f2c08ac36e0a6242994b4",
+      "result_blob": "665ad6ee0ef4661a2bdb76eb7cf4f0af1c4988d1",
+      "family": "single-Gaussian full-covariance nonlinear conditional ReLU kernel"
+    },
+    "E038_halfspace_protocol": {
+      "protocol_blob": "95797eff05392d01d080ca69d737b8dec4344dd8",
+      "note": "historical half-space protocol later re-keyed as authoritative E039"
+    },
+    "E039": {
+      "protocol_blob": "c7d96d16e2e75500277d6892a6f8c9c1ac0f5674",
+      "result_blob": "7556cdfda8227bfc0ee1936c2a463d48d9c73d2f",
+      "family": "two-component half-space Gaussian location mixture"
+    },
+    "E104": {
+      "protocol_blob": "61d5abb0ce7f773fdc05ee5b0ab787a6f2237930",
+      "result_blob": "e896296de3c487a88f522d3fca3182645205ef86",
+      "family": "Haar-direction radial Rao-Blackwellization; adjacent sampling family, not same estimator"
+    },
+    "E111": {
+      "terminal_receipt_blob": "91d8ce0c2314c5356456e05dc646a6630751788d",
+      "family": "exact-moment Gaussian ReLU plug-in bias falsifier"
+    },
+    "R209": {
+      "archive_blob": "7fec90369227839a9902c7cceb9f3519acb66cb8",
+      "v25_normalized_blob": "0183d0570f7c9965e00e8553ffc003c313865232"
+    },
+    "R223": {
+      "protocol_blob": "1e88341a6320bf91c8f4eff0aa60d8b6a33cf484",
+      "normalized_result_blob": "c8b617c43ff1145977c38e7e1cca6d23985ec392"
+    },
+    "R231": {
+      "report_blob": "f617d1991f576a48261d329ad237be24d0a811b7"
+    },
+    "R238": {
+      "protocol_blob": "757e3f67741b9e05b709a247eae5c9a921d787e6",
+      "result_blob": "0c0be7f5bd2bb25f7f106fc2721b6307baf2d8ad"
+    },
+    "R265": {
+      "report_blob": "e9b5df06173bf70a587774f9374042962847d9e2"
+    },
+    "R269": {
+      "report_blob": "8ea0fdf39e80483d005b0a9828f75a4eae291ee3"
+    },
+    "R276": {
+      "report_blob": "4970614c1ac789b008260d726a2bbd5272116434"
+    },
+    "R308": {
+      "report_blob": "e07ddccdf3744c741a571556d7597ac15b460c4b"
+    }
+  },
+  "falsifier": {
+    "preregistered": false,
+    "executed": false,
+    "reason": "No genuinely distinct cost-feasible estimator survived theory-first novelty/cost screening. A falsifier would only test a duplicate Gaussian-moment evaluator or an infeasible exponential-state construction."
+  },
+  "gains_claimed": false,
+  "execution_accounting": {
+    "estimator_implementation": false,
+    "estimator_execution": false,
+    "synthetic_runs": 0,
+    "public_benchmark_runs": 0,
+    "actions_runs": 0,
+    "downloads": false,
+    "paid_compute": false,
+    "holdout_or_full_access": false,
+    "submissions": 0,
+    "main_edit": false,
+    "pr_edit": false,
+    "control_edit": false
+  },
+  "artifacts": {
+    "report_path": "research/r317/R317_TRUNCATED_NORMAL_GATE_ESTIMATOR_REPORT.md",
+    "report_blob_sha": "102854932f111e793657747a4aa227b23f19e7fc",
+    "report_commit": "606ff49a6f25afde2b6f38f35be7d0a5fbf71ab2",
+    "receipt_path": "research/r317/R317_RECEIPT.json"
+  }
+}
