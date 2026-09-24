@@ -53,13 +53,14 @@ def remote_tip(remote: Path) -> str | None:
     return proc.stdout.strip()
 
 
-def set_remote(remote: Path, sha: str | None) -> None:
-    cmd = ["git", "--git-dir", str(remote), "update-ref"]
+def set_remote(repo: Path, remote: Path, sha: str | None) -> None:
     if sha is None:
-        cmd += ["-d", RESULT_REF]
+        proc = subprocess.run(
+            ["git", "--git-dir", str(remote), "update-ref", "-d", RESULT_REF],
+            text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        )
     else:
-        cmd += [RESULT_REF, sha]
-    proc = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        proc = git(repo, ["push", "--force", str(remote), f"{sha}:{RESULT_REF}"], check=False)
     if proc.returncode != 0:
         raise CheckError(proc.stderr.strip())
 
@@ -142,7 +143,7 @@ def main() -> int:
         base = git(["rev-parse", "HEAD"], repo).stdout.strip()
 
         # Normal claim: pre-created exact tip -> succeeds.
-        set_remote(remote, base)
+        set_remote(repo, remote, base)
         claim1 = make_empty(repo, "claim1")
         p = lease_push(repo, remote, base)
         checks["claim_cas_success"] = p.returncode == 0 and remote_tip(remote) == claim1
@@ -156,7 +157,7 @@ def main() -> int:
         )
 
         # Branch absent after a successful pre-check: explicit expected-old lease must not create it.
-        set_remote(remote, None)
+        set_remote(repo, remote, None)
         git(["reset", "--hard", base], repo)
         make_empty(repo, "claim-after-delete")
         p = lease_push(repo, remote, base)
@@ -167,7 +168,7 @@ def main() -> int:
         # Branch moved after check: stale expected old tip must reject.
         git(["reset", "--hard", base], repo)
         moved = make_empty(repo, "external-move")
-        set_remote(remote, moved)
+        set_remote(repo, remote, moved)
         git(["reset", "--hard", base], repo)
         make_empty(repo, "claim-after-move")
         p = lease_push(repo, remote, base)
@@ -176,7 +177,7 @@ def main() -> int:
         )
 
         # Happy path through durable claim then final result CAS.
-        set_remote(remote, base)
+        set_remote(repo, remote, base)
         git(["reset", "--hard", base], repo)
         claim = make_empty(repo, "durable-claim")
         p1 = lease_push(repo, remote, base)
