@@ -1,5 +1,5 @@
 {
-  "schema": "arc.whitebox.r320.sidecar_traceability.v8",
+  "schema": "arc.whitebox.r320.sidecar_traceability.v14",
   "task": "R320",
   "correction_task": "R323",
   "date": "2026-09-24",
@@ -747,6 +747,54 @@
         "exact_leaderboard_float": "UNKNOWN"
       },
       "actual_new_estimator_measurement": false
+    },
+    {
+      "id": "R367",
+      "type": "public_ui_attestation_top10",
+      "status": "COMPLETE",
+      "classification": "PUBLIC_UI_ATTESTATION_TOP10_ONLY",
+      "verdict": "PUBLIC_UI_ATTESTATION_ONLY",
+      "branch": "review/r367-live-leaderboard-top10-capture-20260924",
+      "head": "8906d5abaa0d4688be6ceb89370ce7dcd27dbb4b",
+      "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+      "evidence": {
+        "report": {
+          "path": "research/r367/R367_LIVE_LEADERBOARD_TOP10_CAPTURE.md",
+          "blob_sha1": "b9cc97c753fe2629c20326557d3f5a1b0988317d",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/8906d5abaa0d4688be6ceb89370ce7dcd27dbb4b/research/r367/R367_LIVE_LEADERBOARD_TOP10_CAPTURE.md"
+        },
+        "receipt": {
+          "path": "research/r367/R367_RECEIPT.json",
+          "blob_sha1": "927b354159c7c2a13911c45443a297f1d0cd79c6",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/8906d5abaa0d4688be6ceb89370ce7dcd27dbb4b/research/r367/R367_RECEIPT.json"
+        }
+      },
+      "capture_time_utc": {
+        "value": "2026-09-24T14:26:07Z",
+        "precision": "APPROXIMATE_COORDINATOR_PROVIDED"
+      },
+      "visible_range": "Showing 1–100 of 197",
+      "persisted_rows": 10,
+      "leader_display": {
+        "adjusted_score": "2.00e-9",
+        "final_layer_mse": "1.61e-8",
+        "sampling_ratio": "566×",
+        "entries_previous_r359": 324,
+        "entries_current_r367": 325,
+        "score_changed": false,
+        "mse_changed": false,
+        "sampling_changed": false
+      },
+      "boundaries": {
+        "exact_score": "UNKNOWN",
+        "formatter_interval": "UNKNOWN",
+        "full_board_deltas": "UNKNOWN",
+        "true_contest_gap": "UNKNOWN_NOT_COMPARABLE",
+        "r209_public50": "NOT_COMPARABLE_NOT_JOINABLE",
+        "our_score_moved_claimed": false,
+        "rank_prediction_claimed": false
+      },
+      "actual_new_estimator_measurement": false
     }
   ],
   "measurement_classification": {
@@ -771,7 +819,9 @@
     "r343_is_arithmetic_source_verification_not_new_estimator_measurement": true,
     "new_estimator_measurements_generated_by_r340_r341_r343": 0,
     "r342_is_append_only_counterfactual_refresh_not_new_estimator_measurement": true,
-    "new_estimator_measurements_generated_by_r342": 0
+    "new_estimator_measurements_generated_by_r342": 0,
+    "r367_is_public_ui_attestation_not_new_estimator_measurement": true,
+    "new_estimator_measurements_generated_by_r367": 0
   },
   "leaderboard_r209": {
     "comparability_decision": "NOT_COMPARABLE",
@@ -794,7 +844,7 @@
   "recommended_next_step": "Coordinator-owned append-only reconciliation of completed sidecars using immutable task ID, branch head and receipt/report hashes through a supported archival/import path; represent R313 as a correction to R309 and do not fabricate historical claim/start/finish events.",
   "report": {
     "path": "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
-    "git_blob_sha1": "41b14238c0062081e1b3970e2961cb7c18ef88f9"
+    "git_blob_sha1": "870c9131a4e4bc745ea6ad6510d6a45115dcc5a8"
   },
   "execution_accounting": {
     "estimator_runs": 0,
@@ -837,7 +887,14 @@
     "r346_benchmark_runs": 0,
     "r346_actions_runs": 0,
     "r346_downloads": 0,
-    "r346_new_files": 0
+    "r346_new_files": 0,
+    "r370_estimator_runs": 0,
+    "r370_benchmark_runs": 0,
+    "r370_actions_runs": 0,
+    "r370_synthetic_runs": 0,
+    "r370_downloads": 0,
+    "r370_browser_interactions": 0,
+    "r370_new_files": 0
   },
   "extension_task": "R332",
   "extension_parent_head": "0c4db1d79deb9b2f608001127d8359b0c0fafd27",
@@ -872,7 +929,7 @@
     "every_included_sidecar_cumulative_diff_verified_two_paths": true
   },
   "r332_report_blob_sha1": "18d5a950928b213dc69a732be38102208b807723",
-  "latest_extension_task": "R346",
+  "latest_extension_task": "R370",
   "r334": {
     "parent_head": "1c285e5d504d6eb3c971d5afae9db3188e0dcea0",
     "policy": {
@@ -1061,8 +1118,7 @@
     "required_raw_mse_reduction_percent": "10.245619197633778283625343576205%",
     "public50_join": "UNKNOWN_NOT_COMPARABLE",
     "true_gap_or_rank_prediction": false
-  }
-,
+  },
   "r350": {
     "parent_head": "949361e498dd4339e75ddc2baf199782f7a9a5e5",
     "report_append_commit": "30ad409003f57a6d2774023130ac79f344aea159",
@@ -1115,7 +1171,6 @@
     "benchmark_measurement_count": 0,
     "submission_count": 0
   },
-
   "r355": {
     "parent_head": "2762fea23ca6d35c226a0a4851efcb5c536776a8",
     "policy": {
@@ -1218,7 +1273,6 @@
     "queue_edits": 0,
     "new_files": 0
   },
-
   "r357": {
     "parent_head": "221131222abffff220c5604dad3f8a9843132f5f",
     "policy": {
@@ -1323,7 +1377,6 @@
     "queue_edits": 0,
     "new_files": 0
   },
-
   "r360": {
     "parent_head": "909cdd17e7d1d6763b6784f6c4f7cfc7fed80dde",
     "policy": {
@@ -1425,7 +1478,6 @@
     "queue_edits": 0,
     "new_files": 0
   },
-
   "r365": {
     "parent_head": "0e062ab63f82f4e489d22a83be56cf9b1a3fa663",
     "policy": {
@@ -1564,6 +1616,34 @@
     "control_v2_edits": 0,
     "queue_edits": 0,
     "new_files": 0
+  },
+  "r370": {
+    "parent_head": "6e07bb257419e276ef92a6e2894b6d89e5aa8211",
+    "policy": {
+      "append_only": true,
+      "rebase": false,
+      "reset": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false,
+      "actions": false,
+      "benchmark": false,
+      "estimator": false,
+      "synthetic": false,
+      "downloads": false,
+      "browser": false
+    },
+    "dedupe_before_update": {
+      "r367_task_present": false,
+      "r367_head_present": false,
+      "r367_report_blob_present": false,
+      "r367_receipt_blob_present": false
+    },
+    "added_task": "R367",
+    "source_head_verified": "8906d5abaa0d4688be6ceb89370ce7dcd27dbb4b",
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
   }
-
 }

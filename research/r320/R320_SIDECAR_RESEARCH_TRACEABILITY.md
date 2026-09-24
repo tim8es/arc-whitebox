@@ -623,3 +623,36 @@ R363 independently confirms the corrected narrow R352 result. Important semantic
 - leaderboard/competition activity introduced by R365: **0**.
 
 **R365 adds traceability only; it changes no scientific measurement or competition state.**
+
+## R370 integration — R367 public leaderboard top-10 attestation
+
+R367 is integrated as a completed **public UI attestation only**; it generated **0 estimator measurements**.
+
+Source:
+- branch: `review/r367-live-leaderboard-top10-capture-20260924`
+- head: `8906d5abaa0d4688be6ceb89370ce7dcd27dbb4b`
+- exact base: `4619801e0cc5e7e340cd0406eb44e0633d8aa5e5`
+- report: `research/r367/R367_LIVE_LEADERBOARD_TOP10_CAPTURE.md`
+  - blob: `b9cc97c753fe2629c20326557d3f5a1b0988317d`
+  - link: https://github.com/tim8es/arc-whitebox/blob/8906d5abaa0d4688be6ceb89370ce7dcd27dbb4b/research/r367/R367_LIVE_LEADERBOARD_TOP10_CAPTURE.md
+- receipt: `research/r367/R367_RECEIPT.json`
+  - blob: `927b354159c7c2a13911c45443a297f1d0cd79c6`
+  - link: https://github.com/tim8es/arc-whitebox/blob/8906d5abaa0d4688be6ceb89370ce7dcd27dbb4b/research/r367/R367_RECEIPT.json
+- capture time: approximately `2026-09-24T14:26:07Z`, coordinator-provided CUA timestamp
+
+Persisted scope:
+- visible range: **Showing 1–100 of 197**
+- only the **top 10** rows are stored
+- leader display remains **2.00e-9 / 1.61e-8 / 566×**
+- displayed leader Entries changed **324 → 325** relative to R359
+
+Interpretation boundary remains strict:
+- exact score: **UNKNOWN**
+- formatter/rounding interval: **UNKNOWN**
+- full-board deltas: **UNKNOWN**
+- true contest gap: **UNKNOWN / NOT_COMPARABLE**
+- R209 ↔ public-50: **NOT_COMPARABLE / NOT_JOINABLE**
+- no claim that our score moved
+- no rank prediction
+
+R367 is therefore a UI-level evidence update only, not a scientific estimator result.
