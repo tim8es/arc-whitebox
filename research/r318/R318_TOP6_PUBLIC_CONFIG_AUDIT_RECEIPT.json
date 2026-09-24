@@ -1,0 +1,125 @@
+{
+  "schema": "arc.whitebox.r318.top6-public-config-audit.v1",
+  "job": "R318",
+  "status": "NO_PUBLIC_METHOD",
+  "audit_date_utc": "2026-09-24",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r318-top6-public-config-audit-20260924",
+  "subjects": [
+    {
+      "team": "Puffi",
+      "leaderboard_rank": 6,
+      "submission_id": 330322,
+      "adjusted_score": "2.8e-9",
+      "final_layer_mse": "1.94e-8",
+      "compute_utilisation": "0.1456939183",
+      "entries": 78,
+      "last_submission_display": "Tue, 8 Sep 2026 14:09",
+      "canonical_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/330322",
+      "public_linkage": {
+        "leaderboard_to_submission": "CONFIRMED",
+        "estimator_name": "NO_PUBLIC_METHOD",
+        "estimator_params_or_config": "NO_PUBLIC_METHOD",
+        "source_repo_code": "NO_PUBLIC_METHOD",
+        "commit": null,
+        "author_analysis": "NO_PUBLIC_METHOD"
+      }
+    },
+    {
+      "team": "reds",
+      "leaderboard_rank": 6,
+      "submission_id": 331730,
+      "adjusted_score": "2.8e-9",
+      "final_layer_mse": "1.73e-8",
+      "compute_utilisation": "0.1623309082",
+      "entries": 60,
+      "last_submission_display": "Mon, 21 Sep 2026 08:47",
+      "canonical_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331730",
+      "public_linkage": {
+        "leaderboard_to_submission": "CONFIRMED",
+        "estimator_name": "NO_PUBLIC_METHOD",
+        "estimator_params_or_config": "NO_PUBLIC_METHOD",
+        "source_repo_code": "NO_PUBLIC_METHOD",
+        "commit": null,
+        "author_analysis": "NO_PUBLIC_METHOD"
+      }
+    }
+  ],
+  "evidence_scope": {
+    "first_party_only": true,
+    "canonical_submission_pages_checked": true,
+    "leaderboard_view_links_checked": true,
+    "repeated_general_profile_forum_audit": false,
+    "unauthenticated_public_surface_only": true,
+    "note": "Canonical pages publicly resolve, but their retrievable unauthenticated rendering exposed only generic page shell/share controls and no method-specific configuration payload or direct code/repository linkage."
+  },
+  "first_party_sources": [
+    {
+      "kind": "leaderboard",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+      "used_for": [
+        "current Puffi/reds rank-6 rows",
+        "direct View linkage to #330322 and #331730"
+      ]
+    },
+    {
+      "kind": "canonical_submission",
+      "submission_id": 330322,
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/330322",
+      "used_for": [
+        "public canonical page/configuration-metadata audit"
+      ]
+    },
+    {
+      "kind": "canonical_submission",
+      "submission_id": 331730,
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331730",
+      "used_for": [
+        "public canonical page/configuration-metadata audit"
+      ]
+    },
+    {
+      "kind": "participant_submission_status_corroboration",
+      "url": "https://www.aicrowd.com/participants/cipo",
+      "used_for": [
+        "#330322 graded submission identity/time corroboration only"
+      ],
+      "method_evidence": false
+    }
+  ],
+  "inference_controls": {
+    "require_direct_first_party_submission_linkage": true,
+    "infer_method_from_rank_or_score": false,
+    "infer_method_from_prior_general_forum_disclosures": false,
+    "record_unlinked_repo_or_commit": false
+  },
+  "unknowns": [
+    "Estimator name/family used by Puffi #330322.",
+    "Estimator parameters/configuration used by Puffi #330322.",
+    "Source/repository/commit, if any, corresponding to Puffi #330322.",
+    "Estimator name/family used by reds #331730.",
+    "Estimator parameters/configuration used by reds #331730.",
+    "Source/repository/commit, if any, corresponding to reds #331730.",
+    "Any non-public or authenticated submission metadata for either submission."
+  ],
+  "report": {
+    "path": "research/r318/R318_TOP6_PUBLIC_CONFIG_AUDIT.md",
+    "git_blob_sha1": "6f70af93c8748787cc9007747b6dc4a61167d5ee",
+    "commit": "09e0d4a8021374a605252ca28f958c353ddcaffa"
+  },
+  "safety": {
+    "actions_triggered": false,
+    "benchmark_or_science_run": false,
+    "submission_made": false,
+    "login_or_private_access": false,
+    "participant_contacted": false,
+    "identity_search_outside_official_aicrowd": false,
+    "dataset_or_dependency_downloaded": false,
+    "paid_resource_used": false,
+    "private_holdout_or_full_data_accessed": false,
+    "main_changed": false,
+    "pull_request_changed_or_opened": false,
+    "control_changed": false,
+    "workflow_changed": false
+  }
+}
