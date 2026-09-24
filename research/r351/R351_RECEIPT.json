@@ -1,0 +1,152 @@
+{
+  "schema": "arc.whitebox.r351.h185_gate_reopen_audit.v1",
+  "task": "R351",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "decision": "GATE_REMAINS_BLOCKED_G2_EXACT_DENSE_DENOMINATOR_MISSING",
+  "authorization": "NONE",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r351-h185-gate-reopen-audit-20260924",
+  "live_refs": {
+    "E187": {
+      "branch": "research/e187-h185-protocol-hardening-20260922",
+      "head": "06fbb08fb9ece3b5b3d8da7b60fee331030a044f",
+      "protocol_report": {
+        "path": "research/E187_H185_PROTOCOL_REVISION.md",
+        "blob_sha1": "d623a9348518c0afe2869fc89f44a746960e81f5"
+      },
+      "protocol_lock": {
+        "path": "research/e187/E187_H185_PROTOCOL_LOCK.json",
+        "blob_sha1": "215187db7fb4a3ba391a1229e48ce6a482bebd97"
+      },
+      "parent_ledger": {
+        "path": "research/e187/E187_PARENT_LEDGER.json",
+        "blob_sha1": "33699fbfa47e23ffef99b6a99e064aa130100671"
+      }
+    },
+    "E190": {
+      "branch": "research/e190-cost-evidence-recovery-20260922",
+      "head": "7145df65c84970eeab5dbfb48d1045eaee8be7ca",
+      "parent": "06fbb08fb9ece3b5b3d8da7b60fee331030a044f",
+      "report": {
+        "path": "research/E190_COST_EVIDENCE_RECOVERY.md",
+        "blob_sha1": "976ebe39a06092bbc5838ea3f249cc5348bc87a5"
+      },
+      "recovered_ledger": {
+        "path": "research/e190/E190_RECOVERED_PARENT_LEDGER.json",
+        "blob_sha1": "4ba395635e08f9fafd592edd8978207341d7d42a"
+      }
+    },
+    "E191": {
+      "branch": "review/e191-e190-independent-review-20260922",
+      "head": "37488d6e9abd52c625cde9506f541dcd85c70701",
+      "parent": "06fbb08fb9ece3b5b3d8da7b60fee331030a044f",
+      "report": {
+        "path": "research/E191_E190_INDEPENDENT_REVIEW.md",
+        "blob_sha1": "04a7407a0b93580b9868ffcc28d461ee91c4f89a"
+      },
+      "separate_json_receipt_present": false
+    },
+    "E193": {
+      "live_branch_ref_found": false,
+      "commit_search_match_found": false,
+      "default_branch_file_match_found": false,
+      "current_control_state_entry_found": false,
+      "receipt_found": false,
+      "interpretation": "No committed E193 evidence was discoverable on the repository surfaces inspected; uncommitted/local work is outside this finding."
+    }
+  },
+  "e190_total_recovery": {
+    "exact_parent_total_flops": 558473140719,
+    "units_decimal": "260.059321634005755186...",
+    "c_over_b_decimal": "0.253964181283208745...",
+    "f86_render_units_1dp": "260.1",
+    "f86_render_units_2dp": "260.06",
+    "f86_render_c_over_b_4dp": "0.2540",
+    "total_identity_status": "PASS_AS_PERSISTED_RECOVERY_EVIDENCE",
+    "exact_dense_raw_flops_recovered": false,
+    "exact_remainder_raw_flops_recovered": false,
+    "exact_per_namespace_raw_flops_recovered": false
+  },
+  "f86_source": {
+    "repository": "504aldo/whest-p2-cumulant-k3",
+    "commit": "18c17e2d7a9aeacd399cfc2c6b571e4e16dbfb45",
+    "namespace_log_blob_sha1": "a689ef69fd64bed7765cb93ce4910c3fedcbd04a",
+    "audit_harness_blob_sha1": "279d8e0308360fde7616d56f8e8cc2705b529898",
+    "plain_v29_blob_sha1": "17df1a073a24f96c4705b04bcf61ef60fa06dd0c",
+    "namespaced_v29_blob_sha1": "f91df783b83cb5fae0af57a16799c5df81891bd2",
+    "namespace_generator_blob_sha1": "6c0e439eaeefcb2e06991cb86d9bda3b174fc30d",
+    "call2_semantics": "dump0 second predict steady-state ledger; call1 warm-up excluded",
+    "call2_ops": 13121,
+    "persisted_family_call_count_sum": 13121,
+    "dense_namespace_count": 11,
+    "dense_family_call_count_sum": 6172,
+    "grouped_dense_display_units": 222.44,
+    "dense_family_display_rows_sum_units": 222.45,
+    "exact_dense_inference_from_display_forbidden": true
+  },
+  "e191_reaudit": {
+    "e190_live_immutable_now": true,
+    "exact_whole_parent_total": "PASS",
+    "total_format_consistency": "PASS",
+    "pinned_source_lineage_bridge": "PASS",
+    "raw_f86_namespaced_oplog": "FAIL_ABSENT",
+    "exact_dense_k3_subtotal": "FAIL_MISSING",
+    "exact_fixed_remainder_subtotal": "FAIL_MISSING",
+    "exact_component_sum_to_total": "FAIL_NOT_RECOMPUTABLE",
+    "exact_h185_dense_denominator": "FAIL_MISSING",
+    "same_ledger_ops_13121_reconciliation": "PARTIAL_ONLY",
+    "hardening_ready": false,
+    "premise_correction": "E191's rejection was not only an E190-visibility issue; E191 explicitly states that a lone exact total is insufficient."
+  },
+  "minimal_missing_artifact": {
+    "description": "Content-addressed immutable raw F86 dump0/call2 steady-state flopscope receipt/op-log under the pinned namespaced V29 and audit harness, containing exact total and exact per-operation or per-namespace integer FLOP costs for the same ops=13121 ledger.",
+    "must_support": [
+      "exact total = sum exact entries",
+      "exact dense subtotal = sum eleven E187 dense namespaces",
+      "exact fixed subtotal = sum remaining frozen namespaces",
+      "exact dense + fixed = total",
+      "format consistency with published F86 displays"
+    ],
+    "rounded_222_44u_not_sufficient": true,
+    "reverse_engineering_from_rounded_units_permitted": false
+  },
+  "recovery_permissions": {
+    "execution_based_recovery_currently_authorized": false,
+    "current_authorized_owner_runs": 0,
+    "e187_execution_to_create_missing_ledger_forbidden": true,
+    "e190_authorizes_run": false,
+    "read_only_static_recovery_permitted_in_principle": true,
+    "acceptable_read_only_paths": [
+      "discover a pre-existing immutable raw namespaced F86 receipt/op-log",
+      "proof-grade exact static derivation from pinned immutable source plus exact flopscope billing semantics, with no rounded-display numerical inversion"
+    ],
+    "acceptable_recovery_present_now": false,
+    "r351_authorizes_recovery_run": false
+  },
+  "limits": {
+    "e136_actions_artifact_bytes_redownloaded": false,
+    "e136_artifact_digest_reverified_by_r351": false,
+    "reason": "R351 forbids downloads/reruns; E190's committed provenance is reviewed as persisted evidence.",
+    "scientific_h185_validity_decided": false
+  },
+  "execution_accounting": {
+    "estimator_runs": 0,
+    "candidate_runs": 0,
+    "reruns": 0,
+    "downloads": 0,
+    "actions_runs": 0,
+    "paid_compute": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "r320_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0,
+    "pr_edits": 0,
+    "main_edits": 0
+  },
+  "report": {
+    "path": "research/r351/R351_H185_GATE_REOPEN_AUDIT.md",
+    "git_blob_sha1": "7f04e49787e2ef7ee58c6aaaa34f41fa7cd8fff0"
+  }
+}
