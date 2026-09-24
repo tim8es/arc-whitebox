@@ -1,0 +1,284 @@
+{
+  "schema": "arc.whitebox.r320.sidecar_traceability.v1",
+  "task": "R320",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "mode": "report-only traceability audit",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r320-sidecar-research-traceability-20260924",
+  "formal_control": {
+    "branch": "research/control-v2",
+    "head_commit": "089532101b2d1bb767c9eb57dd5c781dbe852b33",
+    "revision": 479,
+    "state_blob_sha1": "1c594d83fe0564e3fffac0188fd9c4c48413434c",
+    "r306_r319_jobs_found": 0,
+    "r306_r319_events_found": 0,
+    "status_view_generated_from_state": true,
+    "dedicated_sidecar_registry_found": false
+  },
+  "entries": [
+    {
+      "id": "R306",
+      "type": "leaderboard_forensic",
+      "verdict": "NO_PUBLIC_METHOD",
+      "branch": "review/r306-j2w-method-audit-20260924",
+      "head": "6519194e8f570b4b519bd97a1f574b33a86033f2",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r306/R306_J2W_METHOD_AUDIT.md",
+        "research/r306/R306_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "e0f86ba1c7b9ee757bc432dbaf7c2e98918ef726",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R307",
+      "type": "leaderboard_forensic",
+      "verdict": "PARTIAL_PUBLIC_EVIDENCE",
+      "branch": "review/r307-andreas-update-audit-20260924",
+      "head": "0962a1bd9230253bc37132961043459687aa6c79",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r307/R307_ANDREASHAD04_UPDATE_AUDIT.md",
+        "research/r307/R307_ANDREASHAD04_UPDATE_AUDIT_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "ec96ab7580c0fc16edcbb2d97227d719b80ca8f1",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R308",
+      "type": "theory",
+      "verdict": "NO_GO_AFTER_DEDUPLICATION",
+      "branch": "review/r308-theory-scout-20260924",
+      "head": "9c3ef5eefe014e7bdb1a11cc8941999048f6654b",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r308/R308_THEORY_SCOUT_REPORT.md",
+        "research/r308/R308_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "0c4232035690fdc2b609fc33feea7cb9667aa7e5",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R309",
+      "type": "comparability",
+      "verdict": "COMPLETE_SOURCE_TOOLCHAIN_AUDIT_EXACT_GRADER_REPLAY_UNKNOWN",
+      "branch": "review/r309-toolchain-delta-audit-20260924",
+      "head": "1e23a25550369da60b976416fe0f502a6189b833",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r309/R309_TOOLCHAIN_DELTA_AUDIT.md",
+        "research/r309/R309_TOOLCHAIN_DELTA_AUDIT_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "2eb00990f3e1e8465ca48e918718033c0ecbd395",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R310",
+      "type": "leaderboard_forensic",
+      "verdict": "COMPLETE_PUBLIC_LEADERBOARD_SNAPSHOT_DELTA",
+      "branch": "review/r310-leaderboard-top-check-20260924",
+      "head": "80d55d7150e7907bd96f99a78a0b88cd4cdd6f5c",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r310/R310_LEADERBOARD_TOP_CHECK.md",
+        "research/r310/R310_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "9145a3b432cfc56fcae1154f24839b182361c699",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R311",
+      "type": "comparability",
+      "verdict": "NOT_COMPARABLE",
+      "branch": "review/r311-leaderboard-score-comparability-20260924",
+      "head": "af16cdf782e97e4a7a1753f1516635191493f0d1",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r311/R311_LEADERBOARD_SCORE_COMPARABILITY.md",
+        "research/r311/R311_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "29891f15e4c976f9541280d6a141a8538be86172",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R312",
+      "type": "leaderboard_forensic",
+      "verdict": "NO_PUBLIC_METHOD",
+      "branch": "review/r312-luna-public-method-audit-20260924",
+      "head": "4af4a8bda987abb99ea4a2f5b85c8d7c7ac46321",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r312/R312_LUNA_PUBLIC_METHOD_AUDIT.md",
+        "research/r312/R312_LUNA_PUBLIC_METHOD_AUDIT_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "c12e4223e22850c7086a21cf6b28a2350a390977",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R313",
+      "type": "unknown_traceability_gap",
+      "verdict": "UNKNOWN",
+      "branch": null,
+      "head": null,
+      "artifacts_confirmed": false,
+      "artifact_files": [],
+      "reflected_in_control_v2": false,
+      "scientific_measurement": null,
+      "note": "No current R313 branch/ref or report/receipt found; no scientific or audit verdict inferred."
+    },
+    {
+      "id": "R314",
+      "type": "comparability",
+      "verdict": "NOT_COMPARABLE",
+      "branch": "review/r314-r311-comparability-independent-audit-20260924",
+      "head": "3c350f49176fc3bfff259f88288b353517946bc1",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r314/R314_R311_COMPARABILITY_INDEPENDENT_AUDIT.md",
+        "research/r314/R314_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "1c353d3746a83006b4cff0b49f041d6b5aa2e89e",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R315",
+      "type": "leaderboard_forensic",
+      "verdict": "NO_PUBLIC_METHOD",
+      "branch": "review/r315-top2-top3-config-audit-20260924",
+      "head": "aa5806c4c6b1bee41acf6ad6785aa53aac363120",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r315/R315_TOP2_TOP3_CONFIG_AUDIT.md",
+        "research/r315/R315_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "44699d71bba3d639b97b55eac17d3fe56d21ef4b",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R316",
+      "type": "leaderboard_forensic",
+      "verdict": "NO_PUBLIC_METHOD",
+      "branch": "review/r316-a-s6-public-method-audit-20260924",
+      "head": "aee8e4fd50efbbfb248f9c4586a9e3df37f6d965",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r316/R316_A_S6_PUBLIC_METHOD_AUDIT.md",
+        "research/r316/R316_A_S6_PUBLIC_METHOD_AUDIT_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "a9c4aca60ba7a588fbd90a21d4736da0a8393f9b",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R317",
+      "type": "theory",
+      "verdict": "IN_PROGRESS",
+      "branch": "review/r317-truncated-normal-gate-estimator-20260924",
+      "head": "6264781a18c1cea2ec6540ea312875ec1d5aba56",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r317/R317_TRUNCATED_NORMAL_GATE_ESTIMATOR_REPORT.md",
+        "research/r317/R317_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "926e190d4672d9a8f26853566bf66b4c82cba291",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": null,
+      "note": "Per R320 instruction, status only; no task conclusion is reported or relied upon."
+    },
+    {
+      "id": "R318",
+      "type": "leaderboard_forensic",
+      "verdict": "NO_PUBLIC_METHOD",
+      "branch": "review/r318-top6-public-config-audit-20260924",
+      "head": "d0138a3fe772c712d331f5fde0c7e75be5bb56b7",
+      "artifacts_confirmed": true,
+      "artifact_files": [
+        "research/r318/R318_TOP6_PUBLIC_CONFIG_AUDIT.md",
+        "research/r318/R318_TOP6_PUBLIC_CONFIG_AUDIT_RECEIPT.json"
+      ],
+      "receipt_blob_sha1": "501fae48dc32112772b6cc55132663f9a23d24f9",
+      "reflected_in_control_v2": false,
+      "scientific_measurement": false
+    },
+    {
+      "id": "R319",
+      "type": "pending",
+      "verdict": "PENDING",
+      "branch": null,
+      "head": null,
+      "artifacts_confirmed": false,
+      "artifact_files": [],
+      "reflected_in_control_v2": false,
+      "scientific_measurement": null,
+      "note": "Per R320 instruction, pending status only; no conclusion inferred."
+    }
+  ],
+  "measurement_classification": {
+    "confirmed_new_estimator_measurements_in_completed_sidecars": 0,
+    "completed_theory_only": [
+      "R308"
+    ],
+    "completed_leaderboard_forensic": [
+      "R306",
+      "R307",
+      "R310",
+      "R312",
+      "R315",
+      "R316",
+      "R318"
+    ],
+    "completed_comparability": [
+      "R309",
+      "R311",
+      "R314"
+    ],
+    "traceability_gap": [
+      "R313"
+    ],
+    "status_only_no_conclusion": [
+      "R317",
+      "R319"
+    ],
+    "note": "References to older measured R209/R223 evidence do not convert sidecar audits into new experiments."
+  },
+  "leaderboard_r209": {
+    "decision": "NOT_COMPARABLE",
+    "supporting_sidecars": [
+      "R311",
+      "R314"
+    ],
+    "blocker": "Exact immutable join between grader-public leaderboard panel and corresponding R209 rows, with compatible scoring provenance, is not established.",
+    "ratio_computed": false,
+    "gap_computed": false,
+    "place_inferred": false
+  },
+  "recommended_next_step": "Coordinator-owned append-only reconciliation of completed sidecars using immutable task ID, branch head and receipt URL/hash through an explicitly supported archival/import path; do not fabricate historical claim/start/finish. Resolve R313 first; keep R317/R319 pending until actually complete.",
+  "report": {
+    "path": "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
+    "creation_commit": "a3adcdc72b5b8935b65cb35b36dc9f0eb45e0eed",
+    "git_blob_sha1": "f0fee199cc6ad3334e1da2f09ac2dc919956ed45"
+  },
+  "execution_accounting": {
+    "estimator_runs": 0,
+    "benchmark_runs": 0,
+    "actions_runs": 0,
+    "dataset_downloads": 0,
+    "dependency_downloads": 0,
+    "submissions": 0,
+    "private_holdout_full_accesses": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_v2_edits": 0,
+    "queue_edits": 0
+  }
+}
