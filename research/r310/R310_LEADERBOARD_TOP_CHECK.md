@@ -8,6 +8,7 @@ Read-only audit of the public AIcrowd leaderboard only. Comparator: frozen R304 
 - Report-only branch: `review/r310-leaderboard-top-check-20260924`
 - Current public leaderboard URL fetched: https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards
 - Snapshot time: `2026-09-24T09:29:17.177839Z` UTC
+- Pagination review-correction capture: `2026-09-24T09:34:58Z` UTC; exact visible string: `Showing 1–100 of 197`; page count: `2`
 - Frozen comparator: R304 raw capture `research/r304/R304_RAW_VISIBLE_ROWS.json`, blob `2fee6241febe322fbff2cbc605581590fc072ee6`, commit `5351f455c87afdd6eb3a4147e94c38d191968d18`
 - R304 capture time: `2026-09-24T02:36:19.062Z` UTC
 - R304 source URL recorded in its receipt: https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards?round=phase-2
@@ -86,7 +87,7 @@ Material displayed rank/score changes among rows present in both first-20 snapsh
 
 Tie note: R304 had three displayed rank-19 rows; therefore `jlacombe` was row 21 while still carrying displayed rank 19. If "top-20" is defined as displayed rank <=20 instead of the first 20 table rows, R304 contained 21 rows and included `jlacombe`. R310 uses "first 20 visible rows" for the primary set comparison and records this tie explicitly.
 
-The current public page's parser-visible DOM does not expose a total leaderboard-entry count or pagination/page-count string. It exposes rows through displayed rank 50 and a per-participant `Entries` column, but no current equivalent of R304's browser-captured `Showing 1–100 of 195`. Therefore total records/pages are `NOT_DISPLAYED_IN_CAPTURED_PUBLIC_DOM`, not inferred.
+Review correction capture at `2026-09-24T09:34:58Z` UTC from the official Phase-2 UI/DOM shows the exact visible range string `Showing 1–100 of 197`. The visible pagination controls are `Previous page` (disabled), `1`, `2`, and `Next page`; therefore the leaderboard currently displays 197 records across 2 pages. This supersedes the earlier R310 statement `NOT_DISPLAYED_IN_CAPTURED_PUBLIC_DOM`.
 
 ## Exclusions and interpretation guardrails
 
