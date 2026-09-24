@@ -1,0 +1,169 @@
+{
+  "schema": "arc.whitebox.r363.r352_correction_independent_audit.v1",
+  "task": "R363",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "PASS_WITH_MINOR_ARTIFACT_SEMANTICS_NUANCE_R364_CORRECTED_R352_NARROW_VERDICT_VALID",
+  "universal_impossibility_claimed": false,
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r363-r352-correction-independent-audit-20260924",
+  "targets": {
+    "original_r352": {
+      "branch": "review/r352-tensorized-hermite-frontier-20260924",
+      "head": "4e46b2bd8d04c15270b40872101555b6ac77f3e7",
+      "report_blob_sha1": "6f25841331f0199bd6ee7966a4bda796d79d2c59",
+      "receipt_blob_sha1": "432737e41f2b3576d1b5192a01a177c799c58d3b",
+      "verdict": "EVIDENCE_BASED_NO_GO_NO_CERTIFIED_LOW_RANK_TT_HERMITE_PATH"
+    },
+    "r361": {
+      "branch": "review/r361-r352-independent-math-redteam-20260924",
+      "head": "4a99ea885d0a66141af823cd308770d66b8f8245",
+      "report_blob_sha1": "d4797eb6075f84731679eab15a4f343c98d8f478",
+      "receipt_blob_sha1": "f1c0951a382a195a367c01cddc850a9c55537aec",
+      "verdict": "PASS_WITH_NONMATERIAL_CORRECTIONS_R352_NARROW_VERDICT_CONFIRMED"
+    },
+    "r364_live_r352": {
+      "head": "c51af6c62639503d326f4cbda5b2d59116bbb718",
+      "parent": "4e46b2bd8d04c15270b40872101555b6ac77f3e7",
+      "report_blob_sha1": "f384caa56b1a43212bf909ccfd3567fa86a7b4e4",
+      "receipt_blob_sha1": "ca4f4608a592594a321790e760aa2d7f6398476b",
+      "original_to_corrected_ahead": 1,
+      "original_to_corrected_behind": 0,
+      "only_r352_two_paths_changed": true
+    }
+  },
+  "primary_sources": [
+    {
+      "name": "Goel-Karmalkar-Klivans 2019",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2019/file/067a26d87265ea39030f5bd82408ce7c-Paper.pdf",
+      "used_for": [
+        "normalized ReLU Hermite Claim 1",
+        "multivariate ridge Claim 2"
+      ]
+    },
+    {
+      "name": "Oseledets 2011 Tensor-Train Decomposition",
+      "doi": "10.1137/090752286",
+      "url": "https://doi.org/10.1137/090752286",
+      "used_for": [
+        "unfolding-rank/TT-rank relation",
+        "TT-SVD error",
+        "TT addition rank growth",
+        "O(d*n*r^3) standard rounding",
+        "Hadamard rank multiplication"
+      ]
+    },
+    {
+      "name": "Dolgov-Khoromskij-Litvinenko-Matthies 2015",
+      "doi": "10.1137/140972536",
+      "url": "https://arxiv.org/pdf/1503.03210",
+      "used_for": [
+        "PCE TT core/storage O(M*p*r^2)",
+        "data-dependent rank caveat",
+        "shared/block TT",
+        "explicit O(M*p*r^3) rank-reduction restatement citing Oseledets",
+        "block TT-cross Statement 6"
+      ]
+    }
+  ],
+  "hermite": {
+    "formula_pass": true,
+    "squared_formula": "c_(2m)^2 = [C(2m,m)/4^m] / [2*pi*(2m-1)^2]",
+    "tails": {
+      "p214": "0.000013492776924771552593505491419418409773612758086801",
+      "p17116": "0.000000018902711367864330420500761794859257860834116110138",
+      "p17118": "0.000000018899398744672019163911215174428104806218667786487",
+      "threshold": "0.0000000189",
+      "minimum_integer_degree": 17118,
+      "crossing_pass": true
+    },
+    "exact_ratio": {
+      "rational_numerator": "13492776924771552593505491419418409773612758086801",
+      "rational_denominator_expression": "189*10^44",
+      "decimal_nonterminating": true,
+      "decimal_prefix": "713.9035409932038409262164772179052790271300575026984",
+      "original_r352_receipt_value": "713.9035440471721",
+      "r364_report_prefix_correct": true,
+      "r364_receipt_digits_correct_as_prefix": true,
+      "r364_receipt_exact_decimal_label_semantics": "MINOR_NUANCE_FINITE_STRING_IS_PREFIX_NOT_EXACT_TERMINATING_DECIMAL"
+    }
+  },
+  "exact_rank": {
+    "pass": true,
+    "formula_512": "r_512 >= 1024*p - 511",
+    "formula_511": "r_511 >= 1024*p - 512",
+    "assumptions": [
+      "even p>=2 with nonzero top ReLU coefficient",
+      "generic normalized dense row directions",
+      "generic Veronese rank after restriction",
+      "nonzero complementary restrictions",
+      "shared-coordinate standard one-output-mode block TT/PCE"
+    ],
+    "degree_sectors_add": true,
+    "output_mode_ordering_pass": true,
+    "exact_not_approximate": true,
+    "universal_all_weights": false
+  },
+  "core_arithmetic": {
+    "p214": {
+      "entries": "10276284480000",
+      "float32_bytes": "41105137920000",
+      "decimal_tb": "41.10513792",
+      "pass": true
+    },
+    "p17118": {
+      "exact_entries": "5259676132688775680",
+      "exact_float32_bytes": "21038704530755102720",
+      "exact_float64_bytes": "42077409061510205440",
+      "decimal_float32_eb": "21.03870453075510272",
+      "decimal_float64_eb": "42.07740906151020544",
+      "original_markdown_exact": true,
+      "original_receipt_low_digit_defect": true,
+      "r364_string_correction_pass": true
+    }
+  },
+  "source_attribution": {
+    "oseledets_2011_original_standard_rounding_source": true,
+    "oseledets_rounding_complexity": "O(d*n*r^3)",
+    "dolgov_2015_explicitly_states_same_pce_context_scale": true,
+    "dolgov_scale": "O(M*p*r^3)",
+    "dolgov_cites_oseledets_2011_as_reference_52": true,
+    "r352_original_dolgov_attribution_factually_supported": true,
+    "r364_oseledets_attribution_accurate": true,
+    "interpretation": "R364 is best described as source-lineage/provenance refinement; the original R352 complexity formula/citation was not mathematically false."
+  },
+  "r364_audit": {
+    "large_integer_serialization": "PASS",
+    "p214_ratio_digits": "PASS_AS_NONTERMINATING_DECIMAL_PREFIX",
+    "complexity_provenance": "PASS_WITH_CLARIFICATION",
+    "material_mathematical_defect_remaining": false,
+    "narrow_r352_verdict_valid": true,
+    "narrow_verdict": "EVIDENCE_BASED_NO_GO_NO_CERTIFIED_LOW_RANK_TT_HERMITE_PATH",
+    "universal_impossibility": false,
+    "residual_blocker": "No generic-dense approximate TT singular-value/rank certificate through repeated ReLU that simultaneously closes layerwise L2 error, final-mean error, and Phase-2 cost."
+  },
+  "report": {
+    "path": "research/r363/R363_R352_CORRECTION_INDEPENDENT_AUDIT.md",
+    "creation_commit": "402e4c70c7156ba2b12391ecf3fe3d6357b109ed",
+    "git_blob_sha1": "caa818efc0a9da9af03e237216f3f8716961feb3"
+  },
+  "execution_accounting": {
+    "project_or_script_code_execution": 0,
+    "tests": 0,
+    "estimator_implementation": false,
+    "estimator_measurements": 0,
+    "synthetic_runs": 0,
+    "official_or_public_benchmark_runs": 0,
+    "actions_runs": 0,
+    "downloads_or_dependency_installs": 0,
+    "paid_compute": false,
+    "private_holdout_full_access": false,
+    "submissions": 0,
+    "r352_edits": 0,
+    "r320_edits": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
