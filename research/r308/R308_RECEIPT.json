@@ -8,8 +8,8 @@
   "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
   "report": {
     "path": "research/r308/R308_THEORY_SCOUT_REPORT.md",
-    "commit": "ff67d038cabfb09ba492bb0dadf7dc642d90b211",
-    "git_blob_sha1": "b48a39995bd6c6ab39af496e6d105fb78e56f52b"
+    "commit": "f4cb15dba5e2e3ded102a14ab79671ab5858f39c",
+    "git_blob_sha1": "e07ddccdf3744c741a571556d7597ac15b460c4b"
   },
   "candidate": null,
   "hypotheses_proposed": 0,
