@@ -1,0 +1,110 @@
+{
+  "schema": "arc.whitebox.r312.luna-public-method-audit.v1",
+  "job": "R312",
+  "status": "NO_PUBLIC_METHOD",
+  "audit_capture_utc": "2026-09-24T09:37:35Z",
+  "base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r312-luna-public-method-audit-20260924",
+  "subject": {
+    "team": "Luna",
+    "leaderboard_rank": 5,
+    "submission_id": 332100,
+    "leaderboard_adjusted_score": "2.6e-9",
+    "final_layer_mse": "1.67e-8",
+    "compute_utilisation": "0.1554446198",
+    "mlps_failed": 0,
+    "entries": 7,
+    "last_submission_display": "Thu, 24 Sep 2026 03:32"
+  },
+  "public_linkage": {
+    "leaderboard_to_submission": {
+      "status": "CONFIRMED",
+      "mechanism": "The Luna row's public AIcrowd View link resolves directly to /submissions/332100."
+    },
+    "team_membership": {
+      "status": "CONFIRMED",
+      "organizer": "dogus_ozel",
+      "source": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/Luna"
+    },
+    "estimator_description": {
+      "status": "NO_PUBLIC_METHOD",
+      "directly_linked_to_submission_332100": false
+    },
+    "source_code_or_repository": {
+      "status": "NO_PUBLIC_METHOD",
+      "directly_linked_to_submission_332100": false
+    },
+    "commit": {
+      "status": "NO_PUBLIC_METHOD",
+      "value": null,
+      "reason": "No commit identifier was directly linked to #332100 by an audited public first-party source."
+    },
+    "author_analysis": {
+      "status": "NO_PUBLIC_METHOD",
+      "directly_linked_to_submission_332100": false
+    }
+  },
+  "first_party_sources": [
+    {
+      "kind": "leaderboard",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+      "used_for": [
+        "current Luna row",
+        "direct View linkage to #332100"
+      ]
+    },
+    {
+      "kind": "submission",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332100",
+      "used_for": [
+        "canonical public submission identifier"
+      ],
+      "note": "Unauthenticated public rendering exposed no method/code/repository/commit/author-analysis linkage used by R312."
+    },
+    {
+      "kind": "team",
+      "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/Luna",
+      "used_for": [
+        "official team membership only"
+      ]
+    }
+  ],
+  "search_terms_on_first_party_domains": [
+    "332100",
+    "Luna + 332100",
+    "dogus_ozel + 332100",
+    "dogus_ozel + ARC White-Box Estimation Challenge",
+    "Luna + ARC White-Box Estimation Challenge"
+  ],
+  "inference_controls": {
+    "infer_method_from_rank_or_score": false,
+    "infer_identity_outside_official_sources": false,
+    "record_unlinked_repo_or_commit": false
+  },
+  "unknowns": [
+    "The estimator used by submission #332100.",
+    "Whether source code or a repository for #332100 exists privately.",
+    "Whether a public method write-up for #332100 will appear later.",
+    "Any repository commit corresponding to #332100."
+  ],
+  "report": {
+    "path": "research/r312/R312_LUNA_PUBLIC_METHOD_AUDIT.md",
+    "git_blob_sha1": "584c53dc7938be817d9a9cc78505bd69b5032e45",
+    "commit": "4c4ac988c1396ad0af733d44607df150b2b762d7"
+  },
+  "safety": {
+    "actions_triggered": false,
+    "benchmark_or_science_run": false,
+    "submission_made": false,
+    "login_or_private_access": false,
+    "participant_contacted": false,
+    "identity_search_outside_official_aicrowd": false,
+    "dataset_or_dependency_downloaded": false,
+    "paid_resource_used": false,
+    "holdout_or_full_data_accessed": false,
+    "main_changed": false,
+    "pull_request_changed_or_opened": false,
+    "control_changed": false,
+    "workflow_changed": false
+  }
+}
