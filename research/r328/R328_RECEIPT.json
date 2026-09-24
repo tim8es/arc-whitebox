@@ -1,0 +1,136 @@
+{
+  "schema": "arc.whitebox.r328.j2w-current-submission-method-delta.v1",
+  "task": "R328",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "NO_PUBLIC_METHOD",
+  "secondary_finding": "TARGET_ID_MISMATCH_CURRENT_J2W_VIEW_IS_331539_NOT_332101",
+  "mode": "report-only public first-party delta audit",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "review/r328-j2w-current-submission-method-delta-20260924",
+  "target": {
+    "team": "J2W",
+    "organizer": "joe_wanza",
+    "requested_submission_id_from_prompt": 332101,
+    "fresh_current_j2w_view_submission_id": 331539,
+    "requested_id_matches_current_j2w_view": false,
+    "current_j2w_leaderboard": {
+      "rank_display": "01",
+      "adjusted_score_display": "0.0000000021",
+      "adjusted_score_ui_scientific": "2.10e-9",
+      "exact_unrounded_score": "UNKNOWN",
+      "final_layer_mse_display": "0.0000000164",
+      "compute_utilisation_display": "0.1306572576",
+      "mlps_failed_display": "0.0000000000",
+      "entries_display": 321,
+      "last_submission_display": "Sat, 19 Sep 2026 00:05",
+      "view_submission_id": 331539
+    }
+  },
+  "id_disambiguation": {
+    "current_j2w_view": {
+      "submission_id": 331539,
+      "canonical_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331539"
+    },
+    "submission_332101": {
+      "canonical_url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332101",
+      "fresh_current_leaderboard_linked_from": "AndreasHad04 row",
+      "attributable_to_j2w_from_current_leaderboard": false,
+      "public_body_result": "PUBLIC_ROUTE_REACHABLE_RETRIEVABLE_BODY_IS_GENERIC_CLIENT_RENDERED_SHELL_NO_METHOD_FIELDS"
+    },
+    "r314_crosscheck": {
+      "receipt_branch": "review/r314-r311-comparability-independent-audit-20260924",
+      "receipt_blob_sha1": "1c353d3746a83006b4cff0b49f041d6b5aa2e89e",
+      "recorded_owner_context": "andreas_current_row",
+      "recorded_current_view_submission_id": 332101
+    }
+  },
+  "r306_baseline": {
+    "branch": "review/r306-j2w-method-audit-20260924",
+    "head": "6519194e8f570b4b519bd97a1f574b33a86033f2",
+    "report_blob_sha1": "68d7a5e45d05eaa584e3a1c5137696ae9dab89d8",
+    "receipt_blob_sha1": "e0f86ba1c7b9ee757bc432dbaf7c2e98918ef726",
+    "verdict": "NO_PUBLIC_METHOD",
+    "current_public_submission_id": 331539,
+    "entries_display": 320,
+    "adjusted_score_display": "2.10e-9",
+    "final_layer_mse_display": "1.64e-8"
+  },
+  "delta_vs_r306": {
+    "rank": "UNCHANGED_01",
+    "adjusted_score_display": "UNCHANGED_2.10e-9_AT_UI_PRECISION",
+    "final_layer_mse_display": "UNCHANGED_1.64e-8_AT_UI_PRECISION",
+    "entries": {
+      "from": 320,
+      "to": 321,
+      "delta": 1
+    },
+    "last_submission_display": "UNCHANGED_SEP19_0005",
+    "leaderboard_linked_submission": "UNCHANGED_331539",
+    "public_method_description": "NO_POSITIVE_DELTA",
+    "participant_linked_source_repository": "NO_POSITIVE_DELTA",
+    "reproducible_submission_specific_configuration": "NO_POSITIVE_DELTA"
+  },
+  "public_method": {
+    "method_exposed": false,
+    "source_code_exposed": false,
+    "participant_linked_repository_exposed": false,
+    "immutable_code_commit_exposed": false,
+    "downloadable_estimator_artifact_exposed": false,
+    "j2w_specific_environment_manifest_exposed": false,
+    "reproducible_instructions_exposed": false,
+    "current_331539_submission_page_result": "PUBLIC_ROUTE_EXISTS_RETRIEVABLE_ANONYMOUS_BODY_IS_GENERIC_LOADING_SHARE_SHELL",
+    "team_page_result": "J2W page identifies joe_wanza as sole Team Organizer; no repository/source link exposed in retrievable text",
+    "forum_result": "No participant-authored method write-up or repository explicitly tied to submission 331539 was found in the audited official AIcrowd/AIcrowd Forum surfaces.",
+    "leader_derived_hypotheses_admitted": 0
+  },
+  "version_claims": {
+    "new_j2w_specific_version_claims_found": false,
+    "challenge_wide_background_only": {
+      "whestbench": "0.16.0",
+      "flopscope_server": "0.12.0",
+      "flopscope_client": "0.12.0",
+      "note": "Organizer-confirmed evaluator versions; not a J2W-specific dependency/source claim."
+    }
+  },
+  "sources": {
+    "first_party_aicrowd": [
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/leaderboards",
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/331539",
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/332101",
+      "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/teams/J2W"
+    ],
+    "project_delta_sources": [
+      "https://github.com/tim8es/arc-whitebox/blob/review/r306-j2w-method-audit-20260924/research/r306/R306_J2W_METHOD_AUDIT.md",
+      "https://github.com/tim8es/arc-whitebox/blob/review/r306-j2w-method-audit-20260924/research/r306/R306_RECEIPT.json",
+      "https://github.com/tim8es/arc-whitebox/blob/review/r314-r311-comparability-independent-audit-20260924/research/r314/R314_RECEIPT.json"
+    ]
+  },
+  "evidence_limitations": [
+    "The public submission pages are client-rendered; the current retrievable anonymous text for #331539 and #332101 does not expose submission-specific method/config/source fields.",
+    "The public participant page for joe_wanza was not usable through the current public fetch path; no repository attribution is made from name matching.",
+    "Exact unrounded J2W adjusted score is not exposed by the leaderboard table.",
+    "The nature of the additional 321st entry is unknown and is not inferred from the entry-count delta.",
+    "No authenticated/private/team-only fields were accessed."
+  ],
+  "report": {
+    "path": "research/r328/R328_J2W_CURRENT_SUBMISSION_METHOD_DELTA.md",
+    "creation_commit": "4a9d34d34de9e8eeb943ed681e8ffa4eb1b7942a",
+    "git_blob_sha1": "c9967bc084c3371324c291cf1e5ce1d7c57689bc"
+  },
+  "execution_accounting": {
+    "code_executed": false,
+    "estimator_or_benchmark_runs": 0,
+    "dataset_downloads": 0,
+    "dependency_downloads": 0,
+    "github_actions_runs": 0,
+    "paid_compute": false,
+    "private_holdout_full_accesses": 0,
+    "competition_submissions": 0,
+    "participant_or_organizer_contact": false,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
