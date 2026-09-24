@@ -1,0 +1,209 @@
+{
+  "schema": "arc.whitebox.r377.leaderboard-comparability.v1",
+  "task": "R377",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "NOT_COMPARABLE_NO_EXACT_RANK_OR_TRUE_GAP",
+  "classification": "PUBLIC_SOURCE_AND_EXISTING_REPO_EVIDENCE_AUDIT_NO_NEW_LEADERBOARD_CAPTURE",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "research/r377-leaderboard-comparability-20260924",
+  "current_public_sources": {
+    "phase2_announcement": {
+      "url": "https://discourse.aicrowd.com/t/phase-2-of-the-arc-white-box-estimation-challenge-is-live/18197",
+      "phase": "Phase 2",
+      "close_utc": "2026-10-17T23:59:00Z",
+      "width": 1024,
+      "depth": 16,
+      "flop_budget": 2199023255552,
+      "wall_time_limit_s": 120,
+      "residual_wall_time_limit_s": 0.4,
+      "dataset_revision": "v2-phase2",
+      "effective_compute": "C_m=F_m"
+    },
+    "grader_versions": {
+      "url": "https://discourse.aicrowd.com/t/shipped-covariance-propagation-example-trips-the-phase-2-residual-cap-locally-0-16-0-but-grades-fine-what-happens-when-the-evaluator-upgrades/18202/2",
+      "whestbench": "0.16.0",
+      "flopscope_client": "0.12.0",
+      "flopscope_server": "0.12.0"
+    },
+    "whestbench_main": {
+      "observed_head": "4794ce8673c1221bdb245b19e933ae0afd7ffa3c",
+      "scoring_path": "src/whestbench/scoring.py",
+      "scoring_blob": "9cf7653a0267c4d048617c9045ac8be127f3c8bf",
+      "score_report_fields_blob": "3b66b33a0775f01eecbda2a148495d471f2eff65"
+    },
+    "public_submission_semantics": {
+      "url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+      "public_rows": 50,
+      "private_rows": 50,
+      "full_test_rows": 100,
+      "public_adjusted_score_is_mean_over_public50": true
+    },
+    "aicrowd_score_precision_control": {
+      "url": "https://design.aicrowd.com/pages/edit-challenge-rounds-admin",
+      "generic_control_exists": true,
+      "description": "Round off precision to compute ranks",
+      "phase2_configured_value_public": false,
+      "establishes_web_display_formatter": false
+    }
+  },
+  "r367": {
+    "branch": "review/r367-live-leaderboard-top10-capture-20260924",
+    "head": "8906d5abaa0d4688be6ceb89370ce7dcd27dbb4b",
+    "report_blob": "b9cc97c753fe2629c20326557d3f5a1b0988317d",
+    "receipt_blob": "927b354159c7c2a13911c45443a297f1d0cd79c6",
+    "capture_time_utc": "2026-09-24T14:26:07Z",
+    "capture_time_precision": "APPROXIMATE_COORDINATOR_PROVIDED",
+    "phase": "Phase 2",
+    "new_capture_performed": false,
+    "exact_underlying_scores_known": false,
+    "rows": [
+      {
+        "rank": "01",
+        "name": "J2W / joe_wanza",
+        "display_score": "2.00e-9",
+        "exact_score": "UNKNOWN"
+      },
+      {
+        "rank": "02",
+        "name": "suliman_tadros",
+        "display_score": "2.20e-9",
+        "exact_score": "UNKNOWN"
+      },
+      {
+        "rank": "03",
+        "name": "marius_binner",
+        "display_score": "2.30e-9",
+        "exact_score": "UNKNOWN"
+      },
+      {
+        "rank": "04",
+        "name": "a_s6",
+        "display_score": "2.50e-9",
+        "exact_score": "UNKNOWN"
+      },
+      {
+        "rank": "05",
+        "name": "dogus_ozel / Luna",
+        "display_score": "2.60e-9",
+        "exact_score": "UNKNOWN"
+      },
+      {
+        "rank": "06",
+        "name": "Puffi",
+        "display_score": "2.80e-9",
+        "exact_score": "UNKNOWN"
+      },
+      {
+        "rank": "06",
+        "name": "Oldboy / reds",
+        "display_score": "2.80e-9",
+        "exact_score": "UNKNOWN"
+      },
+      {
+        "rank": "08",
+        "name": "oqaris",
+        "display_score": "3.10e-9",
+        "exact_score": "UNKNOWN"
+      },
+      {
+        "rank": "08",
+        "name": "ben3",
+        "display_score": "3.10e-9",
+        "exact_score": "UNKNOWN"
+      },
+      {
+        "rank": "08",
+        "name": "mliston",
+        "display_score": "3.10e-9",
+        "exact_score": "UNKNOWN"
+      }
+    ]
+  },
+  "r209": {
+    "path": "research/results/R209-v25-mini100.json",
+    "integration_commit": "20fafab5471e6ed227562c651179dd2ef331ea22",
+    "blob": "0183d0570f7c9965e00e8553ffc003c313865232",
+    "adjusted_score": 8.170397440117225e-9,
+    "mean_raw_final_layer_mse": 2.228303490170447e-8,
+    "panel": "v2-phase2 mini:all-100",
+    "rows": 100,
+    "failures": 0,
+    "measured_flops_per_network": 806303721965,
+    "max_residual_wall_time_s": 0.19043814401743475,
+    "local_whestbench": "0.16.1",
+    "local_flopscope": "0.12.1+np2.4.6",
+    "official_scorer": false,
+    "stage": "development"
+  },
+  "prior_audits": {
+    "R305": {
+      "head": "d6124d78714e9882f7d7384b6ad6482af22f7301",
+      "report_blob": "d45093692dea0338acd65e612743ea5ed32e74ed",
+      "receipt_blob": "6dca6965c3ef27263d1d1cd2aea12d303a485d9d",
+      "verdict": "NOT_COMPARABLE",
+      "visible50_name_overlap_with_r209": "0/50",
+      "public_identity_join_available": false
+    },
+    "R309": {
+      "head": "1e23a25550369da60b976416fe0f502a6189b833",
+      "report_blob": "d26f0174b32ffa647a0454bb24be038cdf0e14c1",
+      "receipt_blob": "2eb00990f3e1e8465ca48e918718033c0ecbd395",
+      "v25_source_semantic_score_portability": "COMPATIBLE",
+      "exact_grader_runtime_numeric_replay": "UNKNOWN"
+    },
+    "R311": {
+      "head": "af16cdf782e97e4a7a1753f1516635191493f0d1",
+      "report_blob": "83fe8cb87c85b8fde124b60b5aa16856aab4a91c",
+      "receipt_blob": "29891f15e4c976f9541280d6a141a8538be86172",
+      "verdict": "NOT_COMPARABLE"
+    },
+    "R348": {
+      "head": "4329109ff12afb44259b8221726dbb3f384688a5",
+      "report_blob": "77a88dd22cb29b2a6cc7a3a9e346c6ee2d665554",
+      "receipt_blob": "ce0268c5f1e37d2dbe1b05ad84bf989ac9f12771",
+      "verdict": "UNKNOWN_FORMATTER_NOT_PUBLICLY_OBSERVABLE"
+    }
+  },
+  "decisions": {
+    "exact_leader_scores": "UNKNOWN",
+    "leader_phase": "PHASE_2",
+    "displayed_top10_bar": "2.00e-9 through 3.10e-9 as of R367 capture",
+    "r209_directly_comparable_to_public_leaderboard": false,
+    "exact_rank_derivable": false,
+    "exact_true_gap_derivable": false,
+    "ratio_or_percent_gap_authorized": false,
+    "placement_inference_authorized": false
+  },
+  "minimum_public_same_conditions_artifact": {
+    "id_example": "R209_V25_PHASE2_PUBLIC50_EXACT_RECEIPT.json",
+    "purpose": "Make frozen R209 V25 comparable to the public leaderboard metric itself.",
+    "must_include": [
+      "exact grader-public 50 MLP identities and immutable join keys",
+      "frozen V25 source/blob identity",
+      "exact grader environment including whestbench 0.16.0 and flopscope client/server 0.12.0 plus runtime/build identity",
+      "all 50 exact per-MLP final-layer MSE, adjusted score, FLOPs, failure flags, wall/residual timing",
+      "exact machine-readable public-50 aggregate",
+      "hash manifest binding rows and aggregate"
+    ],
+    "existing_mini100_subset_is_sufficient": false,
+    "reason_existing_subset_insufficient": "No public identity join; prior audit found 0/50 visible-name overlap.",
+    "additional_fact_for_exact_leader_gap_or_counterfactual_place": "Official machine-readable unrounded leaderboard primary scores, or the exact Phase-2 configured ranking precision/rounding rule plus sufficient raw score data."
+  },
+  "execution_accounting": {
+    "new_leaderboard_capture": false,
+    "leaderboard_capture_or_poll_count": 0,
+    "contest_data_downloads": 0,
+    "estimator_runs": 0,
+    "benchmark_runs": 0,
+    "submissions": 0,
+    "private_sealed_holdout_full_access": false,
+    "actions_runs": 0,
+    "dependency_installs": 0,
+    "main_edits": 0,
+    "r320_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0
+  }
+}
