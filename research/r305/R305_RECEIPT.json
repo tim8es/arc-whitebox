@@ -1,0 +1,115 @@
+{
+  "schema": "arc.whitebox.r305.visible50-manifest-audit.v1",
+  "task_id": "R305",
+  "status": "COMPLETE",
+  "verdict": "NOT_COMPARABLE",
+  "captured_at_utc": "2026-09-24T03:09:03Z",
+  "repository": "tim8es/arc-whitebox",
+  "branch": "review/r305-visible50-manifest-audit-20260924",
+  "branch_base": {
+    "ref": "main",
+    "commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "tree": "8ca6eb650446706eb8552676c3cf9cd839e6c9a6"
+  },
+  "artifacts": {
+    "report_path": "research/r305/R305_VISIBLE50_MANIFEST_AUDIT.md",
+    "report_git_blob_sha1": "d45093692dea0338acd65e612743ea5ed32e74ed"
+  },
+  "findings": {
+    "visible50_manifest": {
+      "result": "NOT_FOUND",
+      "public_panel_url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+      "public_fields": [
+        "mlp_index",
+        "mlp_name"
+      ],
+      "network_id_exposed": false,
+      "target_sha256_exposed": false,
+      "r209_name_overlap": {
+        "matched": 0,
+        "total": 50
+      },
+      "evidence": "R271 immutable identity audit; official score-report schema documents index/name but no per-MLP network_id."
+    },
+    "versions": {
+      "grader_package_versions_publicly_declared": {
+        "whestbench": "0.16.0",
+        "flopscope_client": "0.12.0",
+        "flopscope_server": "0.12.0"
+      },
+      "starterkit_locked_versions": {
+        "whestbench": "0.16.1",
+        "flopscope": "0.12.1"
+      },
+      "r209_observed_versions": {
+        "whestbench": "0.16.1",
+        "flopscope": "0.12.1+np2.4.6"
+      },
+      "production_image_or_build_digest_found": false,
+      "sufficient_for_exact_reproduction": false,
+      "evidence": "AIcrowd organizer reply and immutable starterkit pyproject; starterkit lock is for the participant kit and intentionally leads the grader by one patch."
+    },
+    "project_evidence": {
+      "r209_panel": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2 mini:all-100",
+      "r209_dataset_metadata_sha256": "264fa1f416d16a40821fb5e8e94f5d2da4698a201d40da999616225b38b464f1",
+      "r223_panel": "mini-100 development comparison",
+      "exact_visible50_score_recomputed": false
+    },
+    "next_cheapest_step": "Obtain an official immutable visible-50 manifest mapping mlp_index/mlp_name to network_id and preferably target_sha256, plus grader/meter deployment versions; join to archived R209/R223 rows. If there is no identity overlap, an exact-visible-50 V25 per-MLP artifact is required."
+  },
+  "prior_receipts": {
+    "r271": {
+      "commit": "772f010042a818ba641b64be58db55a78344217f",
+      "report_blob": "fecfd6f388d9efbb63fefceb4039c1efa439a27d",
+      "receipt_blob": "f5fae39a0f7ebac0cea6608461b9616f2d76cf9f",
+      "identity_audit_commit": "4869346674d3d2fd8b411e710fbfef2cdff62338",
+      "identity_audit_blob": "dae9e30f803918f642710e50e0191568f9939578"
+    },
+    "r303": {
+      "commit": "0c15bee860dc1d22224dd1294fcaa82bca26b8a4",
+      "report_blob": "7c0345054ebfdd0949f096e8dfa13374dce96ac0",
+      "receipt_blob": "0584af060b3a7c51e103519593fe5736a52d349f"
+    },
+    "r304": {
+      "commit": "195f306b04993b671d6d2cd7682c367963ca9905",
+      "report_blob": "83afe37363bd0087f05bfb56bb949956bc1a9484",
+      "receipt_blob": "191aa87ed82c9e6857be7ed03b2c483829a292a5",
+      "repoll_performed": false
+    }
+  },
+  "official_sources": [
+    {
+      "url": "https://assets.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/329251",
+      "type": "dynamic AIcrowd public submission page",
+      "immutable_commit_or_blob": null,
+      "claim": "public 50-panel ledger"
+    },
+    {
+      "url": "https://discourse.aicrowd.com/t/shipped-covariance-propagation-example-trips-the-phase-2-residual-cap-locally-0-16-0-but-grades-fine-what-happens-when-the-evaluator-upgrades/18202/2",
+      "type": "AIcrowd organizer forum reply",
+      "immutable_commit_or_blob": null,
+      "claim": "grader package versions 0.16.0/0.12.0"
+    },
+    {
+      "url": "https://github.com/AIcrowd/whest-starterkit",
+      "commit": "5eb9aa1455fcb3216af55994bdf25dc242b95797",
+      "blobs": {
+        "pyproject.toml": "2c1d562a2073046d6912868184b52c8c593d23c5",
+        "uv.lock": "fa7e5039acb447da57e2bb9f65c524070527dd6f",
+        "docs/how-to/use-evaluation-datasets.md": "53af1ead77023bb2c4c27fa2a64b494a4f46aa26",
+        "docs/reference/score-report-fields.md": "4656a892bfeea52a233b900f6d698db8524936fc",
+        "docs/reference/rounds.md": "2aaf38a54b5d6ed83ce2604870dcac59e62cee59"
+      }
+    }
+  ],
+  "restrictions": {
+    "dataset_or_dependency_download": false,
+    "private_holdout_or_full_data_access": false,
+    "login": false,
+    "benchmark_or_actions": false,
+    "competition_submission": false,
+    "leaderboard_poll": false,
+    "pr_main_or_control_change": false,
+    "report_only_branch_change": true
+  }
+}
