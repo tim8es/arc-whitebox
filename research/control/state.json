@@ -6073,6 +6073,18 @@
       "owner": "r293-workflow-security-fix-r268",
       "payload": {},
       "revision": 450
+    },
+    {
+      "action": "start",
+      "at": "2026-09-24T00:30:10+00:00",
+      "job": "R296",
+      "owner": "r293-workflow-security-fix-r268",
+      "payload": {
+        "code_commit": "4cb350b2ccf280fe26de069b83120764229c002b",
+        "command": "offline/static harden draft PR #36 only: fail closed on github.run_attempt!=1 in benchmark-capable jobs; atomic update-existing-ref CAS/lease for pre-created result branch including absent/moved/race rejection; pin checkout/setup-python to verified full immutable SHAs; no token in origin URL/config and expose built-in token only to minimal push/claim process; preserve R293/R294 gates and exact four-file allowlist; add adversarial self-checks; no Actions/benchmark/data/dependency installs/result-branch creation/merge/paid/submission/leaderboard/canonical edits",
+        "run_id": "R296-pr36-workflow-security-hardening-20260924"
+      },
+      "revision": 451
     }
   ],
   "jobs": [
@@ -9574,7 +9586,14 @@
     },
     {
       "assigned_owner": "r293-workflow-security-fix-r268",
-      "attempts": [],
+      "attempts": [
+        {
+          "code_commit": "4cb350b2ccf280fe26de069b83120764229c002b",
+          "command": "offline/static harden draft PR #36 only: fail closed on github.run_attempt!=1 in benchmark-capable jobs; atomic update-existing-ref CAS/lease for pre-created result branch including absent/moved/race rejection; pin checkout/setup-python to verified full immutable SHAs; no token in origin URL/config and expose built-in token only to minimal push/claim process; preserve R293/R294 gates and exact four-file allowlist; add adversarial self-checks; no Actions/benchmark/data/dependency installs/result-branch creation/merge/paid/submission/leaderboard/canonical edits",
+          "run_id": "R296-pr36-workflow-security-hardening-20260924",
+          "status": "RUNNING"
+        }
+      ],
       "deliverable": "After R294's patch repair lands on draft PR #36, fix the independent R295 workflow blockers on that same PR branch, with no benchmark/Actions execution. Preserve the one-shot/no-paid/public-mini boundaries. Required: (1) gate every expensive job on github.run_attempt==1 and add a durable atomic single-dispatch claim on the pre-created result branch so a second distinct dispatch also fails before benchmark; use an update-existing-ref compare-and-swap/non-force operation, never allow branch creation or a check-then-push race; (2) pin every action in the contents:write job to a verified full immutable commit SHA; (3) remove token insertion into the origin URL/config and ensure checkout credentials remain disabled, exposing GITHUB_TOKEN only in the minimal claim/persist API step without logging or storing it; (4) preserve exact result file allowlist and fail closed if any precondition/ref update fails. Keep PR #36 draft/open, do not create the result branch, merge, run Actions/benchmark, install/download data/dependencies, spend money, submit, or edit leaderboard/canonical. Add offline safety tests covering re-run and second-dispatch rejection, compare-and-swap against branch deletion/movement, immutable action pins, and token non-persistence. Append report/receipt with exact PR head, source hashes, test results, and any residual blocker; finish R296.",
       "depends_on": [
         "R294",
@@ -9584,7 +9603,7 @@
       "id": "R296",
       "owner": "r293-workflow-security-fix-r268",
       "priority": 1,
-      "status": "CLAIMED",
+      "status": "RUNNING",
       "title": "Harden PR #36 against workflow reruns and branch races"
     },
     {
@@ -9732,7 +9751,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 450,
+  "revision": 451,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
