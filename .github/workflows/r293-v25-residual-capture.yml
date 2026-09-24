@@ -59,6 +59,9 @@ jobs:
             --workflow .github/workflows/r293-v25-residual-capture.yml \
             --protocol research/r293/R293_PROTOCOL.json \
             --repo-root .
+          python scripts/r296_workflow_security_selfcheck.py \
+            --workflow .github/workflows/r293-v25-residual-capture.yml \
+            --protocol research/r293/R293_PROTOCOL.json
 
       - name: Verify pre-created result branch is unprotected, unused, and exactly at dispatch SHA
         shell: bash
