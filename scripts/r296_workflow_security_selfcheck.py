@@ -60,7 +60,7 @@ def set_remote(repo: Path, remote: Path, sha: str | None) -> None:
             text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
         )
     else:
-        proc = git(repo, ["push", "--force", str(remote), f"{sha}:{RESULT_REF}"], check=False)
+        proc = git(["push", "--force", str(remote), f"{sha}:{RESULT_REF}"], repo, check=False)
     if proc.returncode != 0:
         raise CheckError(proc.stderr.strip())
 
