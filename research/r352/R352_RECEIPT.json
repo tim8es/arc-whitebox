@@ -1,5 +1,5 @@
 {
-  "schema": "arc.whitebox.r352.tensorized_hermite_frontier.v1",
+  "schema": "arc.whitebox.r352.tensorized_hermite_frontier.v2_r364_corrected",
   "task": "R352",
   "date": "2026-09-24",
   "status": "COMPLETE",
@@ -85,7 +85,8 @@
         "TT rank/unfolding framework",
         "TT-SVD/rounding error control",
         "Hadamard product rank multiplication",
-        "standard TT arithmetic"
+        "standard TT arithmetic",
+        "standard TT-SVD/rounding O(d*m*r^3)"
       ]
     },
     {
@@ -108,9 +109,8 @@
       "used_for": [
         "tensor-product PCE in TT/block-TT",
         "storage O(M p r^2)",
-        "rounding O(M p r^3)",
         "adaptive block TT-cross",
-        "rank data-dependence"
+        "rank data-dependence and lack of generic theoretical estimates"
       ]
     },
     {
@@ -183,18 +183,21 @@
       "standard_dense_core_entries": 10276284480000,
       "standard_dense_core_float32_bytes": 41105137920000,
       "standard_dense_core_float32_tb_decimal": 41.10513792,
-      "relu_tail_over_target_approx": 713.9035440471721
+      "relu_tail_over_stated_target_ratio_decimal": "713.9035409932038409262164772179052790271300575026984",
+      "ratio_definition": "T_214 / 1.89e-8 using the stated single-ReLU Gaussian-L2 certificate values",
+      "competition_gap_claim": false
     },
     "p17118": {
       "exact_block_rank_512": 17528321,
       "neighboring_rank_511": 17528320,
-      "standard_dense_core_entries": 5259676132688775000,
-      "standard_dense_core_float32_bytes": 21038704530755100000,
-      "standard_dense_core_float32_eb_decimal": 21.0387045307551,
-      "standard_dense_core_float64_bytes": 42077409061510200000
+      "standard_dense_core_entries": "5259676132688775680",
+      "standard_dense_core_float32_bytes": "21038704530755102720",
+      "standard_dense_core_float32_eb_decimal": "21.03870453075510272",
+      "standard_dense_core_float64_bytes": "42077409061510205440",
+      "standard_dense_core_float64_eb_decimal": "42.07740906151020544"
     },
     "dense_tt_rounding_big_o_substitution": {
-      "formula_scale": "d*(p+1)*r^3 from O(M p r^3); illustrative scale only, NOT an exact FlopScope lower bound",
+      "formula_scale": "d*m*r^3 from Oseledets 2011 standard TT-SVD/rounding O(d*m*r^3), with d=1024 and m=p+1 here; illustrative scale only, NOT an exact runtime or FlopScope lower bound",
       "p2": {
         "rank": 1537,
         "scale_ops": 11154312662016,
@@ -209,6 +212,10 @@
         "rank": 17528321,
         "scale_ops": "94405935994351499235467426816",
         "scale_over_2pow41": 42930849301388430
+      },
+      "source": {
+        "primary": "I. V. Oseledets (2011), Tensor-Train Decomposition, DOI 10.1137/090752286",
+        "role": "standard dense TT-SVD/rounding complexity O(d*m*r^3)"
       }
     }
   },
@@ -247,6 +254,68 @@
   },
   "report": {
     "path": "research/r352/R352_TENSORIZED_HERMITE_FRONTIER.md",
-    "git_blob_sha1": "6f25841331f0199bd6ee7966a4bda796d79d2c59"
+    "git_blob_sha1": "f384caa56b1a43212bf909ccfd3567fa86a7b4e4"
+  },
+  "r364_append_only_correction": {
+    "task": "R364",
+    "parent_head": "4e46b2bd8d04c15270b40872101555b6ac77f3e7",
+    "source_review": {
+      "task": "R361",
+      "branch": "review/r361-r352-independent-math-redteam-20260924",
+      "head": "4a99ea885d0a66141af823cd308770d66b8f8245",
+      "report_blob_sha1": "d4797eb6075f84731679eab15a4f343c98d8f478",
+      "receipt_blob_sha1": "f1c0951a382a195a367c01cddc850a9c55537aec",
+      "verdict": "PASS_WITH_NONMATERIAL_CORRECTIONS_R352_NARROW_VERDICT_CONFIRMED"
+    },
+    "original_r352_provenance": {
+      "head": "4e46b2bd8d04c15270b40872101555b6ac77f3e7",
+      "report_blob_sha1": "6f25841331f0199bd6ee7966a4bda796d79d2c59",
+      "receipt_blob_sha1": "432737e41f2b3576d1b5192a01a177c799c58d3b"
+    },
+    "corrections": [
+      {
+        "id": "ROUNDING_COMPLEXITY_SOURCE",
+        "current": "Oseledets 2011 standard dense TT-SVD/rounding O(d*m*r^3)",
+        "dolgov_role_preserved": "PCE-in-TT storage, block-TT-cross/adaptive ranks, data-dependent-rank caveat",
+        "exact_flopscope_lower_bound_claim": false
+      },
+      {
+        "id": "P17118_EXACT_INTEGER_SERIALIZATION",
+        "current_exact": {
+          "standard_dense_core_entries": "5259676132688775680",
+          "standard_dense_core_float32_bytes": "21038704530755102720",
+          "standard_dense_core_float64_bytes": "42077409061510205440"
+        },
+        "verification": "exact integer products 17528320*17119*17528321, times 4 and times 8",
+        "superseded_historical_values": {
+          "standard_dense_core_entries": 5259676132688775000,
+          "standard_dense_core_float32_bytes": 21038704530755100000,
+          "standard_dense_core_float64_bytes": 42077409061510200000
+        }
+      },
+      {
+        "id": "P214_TAIL_TARGET_RATIO",
+        "current_decimal": "713.9035409932038409262164772179052790271300575026984",
+        "definition": "stated T_214 divided by 1.89e-8",
+        "competition_gap_claim": false,
+        "superseded_historical_value": 713.9035440471721
+      }
+    ],
+    "superseded_historical_formula_scale": "d*(p+1)*r^3 from O(M p r^3); illustrative scale only, NOT an exact FlopScope lower bound",
+    "other_claims_changed": false,
+    "historical_verdicts_preserved": true,
+    "execution_accounting": {
+      "code_or_benchmark_run": false,
+      "actions_runs": 0,
+      "downloads": 0,
+      "paid_compute": false,
+      "private_holdout_full_access": false,
+      "submissions": 0,
+      "main_edits": 0,
+      "pr_edits": 0,
+      "control_edits": 0,
+      "queue_edits": 0
+    },
+    "corrected_report_blob_sha1": "f384caa56b1a43212bf909ccfd3567fa86a7b4e4"
   }
 }

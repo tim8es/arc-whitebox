@@ -96,7 +96,7 @@ Only primary papers/source are used for the tensor/Hermite claims:
 1. **I. V. Oseledets (2011), “Tensor-Train Decomposition,” SIAM J. Sci. Comput. 33(5), 2295–2317.**  
    DOI: https://doi.org/10.1137/090752286  
    Primary SIAM page: https://epubs.siam.org/doi/10.1137/090752286  
-   Relevant facts: TT ranks are ranks of unfolding matrices; TT-SVD/rounding has a Frobenius error controlled by unfolding truncation errors; elementwise/Hadamard products multiply TT ranks; standard dense-core rounding is cubic in rank.
+   Relevant facts: TT ranks are ranks of unfolding matrices; TT-SVD/rounding has a Frobenius error controlled by unfolding truncation errors; elementwise/Hadamard products multiply TT ranks; standard dense TT-SVD/rounding has complexity \(O(d\,m\,r^3)\) for dimension count \(d\), local mode size bounded by \(m\), and TT ranks bounded by \(r\).
 
 2. **I. Oseledets and E. Tyrtyshnikov (2010), “TT-cross approximation for multidimensional arrays,” Linear Algebra Appl. 432(1), 70–88.**  
    DOI: https://doi.org/10.1016/j.laa.2009.07.024  
@@ -110,9 +110,8 @@ Only primary papers/source are used for the tensor/Hermite claims:
    Relevant facts:
    - tensor-product PCE coefficients can be stored in TT/block-TT;
    - storage is `O(M p r^2)`;
-   - standard TT rank reduction is `O(M p r^3)`;
    - multiple coefficient tensors can share a block-TT representation;
-   - block TT-cross can adapt ranks;
+   - block TT-cross can adapt ranks and has its own algorithm-specific complexity rather than the generic standard-rounding expression used below;
    - crucially, the paper states that `r` is **data-dependent** and that theoretical rank estimates were still under development. Its favorable rank behavior is problem-specific numerical evidence, not a theorem for generic dense ReLU compositions.
 
 4. **S. Goel, S. Karmalkar, A. Klivans (NeurIPS 2019), “Time/Accuracy Tradeoffs for Learning a ReLU with respect to Gaussian Marginals.”**  
@@ -368,7 +367,7 @@ This is one core of the first-layer block coefficient tensor, before any depth-1
 ### A much smaller degree is still unattractive
 
 At \(p=214\):
-- ReLU \(L^2\) tail is `1.3492776924771553e-5`, about **713.9×** the `1.89e-8` target scale;
+- ReLU \(L^2\) tail is `1.3492776924771553e-5`; the ratio of the stated \(T_{214}\) to the stated certificate scale `1.89e-8` is **713.9035409932038409…×**. This is a function-space certificate ratio, **not** an exact competition-score gap;
 - exact generic block bond rank is at least `218,625`;
 - neighboring rank is at least `218,624`;
 - one standard dense TT core has `10,276,284,480,000` coefficients;
@@ -378,13 +377,13 @@ So even a degree whose local ReLU truncation error is still about three orders o
 
 ### Generic TT arithmetic scale
 
-Dolgov et al. give standard dense-core TT rank reduction complexity
+Oseledets (2011) gives the standard dense TT-SVD/rounding complexity
 
 \[
-O(M p r^3).
+O(d\,m\,r^3),
 \]
 
-Substituting \(M=d=1024\), local mode size \(p+1\), and the exact generic block-rank lower bound gives only an **operation-count scale**, not an exact FlopScope lower bound:
+where \(d\) is the number of tensor modes, \(m\) bounds the local mode size, and \(r\) bounds the TT ranks. For this PCE scaling illustration, substitute \(d=1024\) and \(m=p+1\), together with the exact generic block-rank bound. This yields only an **illustrative standard-rounding operation-count scale**, not an exact runtime or FlopScope lower bound:
 
 - \(p=2,\ r\ge1537\):  
   \(d(p+1)r^3 \approx 1.1154\times10^{13}\), about **5.07× \(2^{41}\)**;
@@ -393,7 +392,7 @@ Substituting \(M=d=1024\), local mode size \(p+1\), and the exact generic block-
 - \(p=17118,\ r\ge17,528,321\):  
   scale \(\approx9.4406\times10^{28}\), about **4.29×10^16 \(2^{41}\)**.
 
-These are not claimed as contest-billed FLOPs because the big-O constant and implementation details are not specified by the paper. They show that the standard dense-core TT-SVD/rounding path is nowhere near a credible production ledger once the exact generic block ranks are respected.
+These are not claimed as contest-billed FLOPs or universal runtime lower bounds: the asymptotic expression is a standard dense TT-SVD/rounding scale, its constant and implementation details are not a FlopScope ledger, and the substituted rank is an exact-representation bound rather than an approximate-rank necessity result. They show only that the standard dense-core exact-rank rounding path has no credible Phase-2 cost path at these scales.
 
 A specially structured sparse TT could store the first ridge layer more compactly than dense TT cores. That does **not** rescue R352: such a sparse automaton-like representation is not the Dolgov/Oseledets low-rank block-TT computation model after generic neuron mixing and repeated ReLU, and no primary source located here gives its depth-16 rank-growth, truncation-error, and production-cost theorem.
 
@@ -450,6 +449,22 @@ A future non-duplicate task would need, before implementation:
 5. an all-in width-1024/depth-16 cost/memory/residual bound below the Phase-2 envelope.
 
 Without those items, a rank choice would be experiment-driven method fishing rather than a theory-admitted R352 successor.
+
+
+
+## R364 append-only correction from R361 independent review
+
+R364 preserves the original R352 commit `4e46b2bd8d04c15270b40872101555b6ac77f3e7`, report blob `6f25841331f0199bd6ee7966a4bda796d79d2c59`, and receipt blob `432737e41f2b3576d1b5192a01a177c799c58d3b` as immutable history and applies only the three nonmaterial corrections identified by completed R361 (`review/r361-r352-independent-math-redteam-20260924` @ `4a99ea885d0a66141af823cd308770d66b8f8245`; report blob `d4797eb6075f84731679eab15a4f343c98d8f478`; receipt blob `f1c0951a382a195a367c01cddc850a9c55537aec`).
+
+1. **Complexity source:** standard dense TT-SVD/rounding `O(d*m*r^3)` is attributed to Oseledets 2011. Dolgov et al. remains the source for PCE-in-TT storage, block-TT-cross/adaptive ranks, and the explicit data-dependent-rank caveat. The substituted scales remain illustrative and are not exact FlopScope/runtime lower bounds.
+2. **Exact large integers:** the current JSON receipt stores the p=17,118 dense-core exact counts as decimal strings verified by exact multiplication:
+   - entries: `5259676132688775680`;
+   - float32 bytes: `21038704530755102720`;
+   - float64 bytes: `42077409061510205440`.
+   The original rounded JSON numeric values are retained only inside the correction history as superseded values.
+3. **p=214 ratio:** current value is `713.9035409932038409...`, defined only as the ratio of the stated `T214` to the stated `1.89e-8` function-space certificate scale. It is not a competition-score gap.
+
+No other R352 mathematical claim, historical verdict, candidate definition, rank statement, error-envelope qualification, or execution accounting is changed.
 
 ## 10. Execution accounting
 
