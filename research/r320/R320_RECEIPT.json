@@ -1,5 +1,5 @@
 {
-  "schema": "arc.whitebox.r320.sidecar_traceability.v6",
+  "schema": "arc.whitebox.r320.sidecar_traceability.v7",
   "task": "R320",
   "correction_task": "R323",
   "date": "2026-09-24",
@@ -598,6 +598,108 @@
       "actual_new_estimator_measurement": false,
       "estimator_run": false,
       "benchmark_run": false
+    },
+    {
+      "id": "R340",
+      "type": "official_public_method_audit",
+      "status": "COMPLETE",
+      "verdict": "NO_PUBLIC_METHOD",
+      "subject": "current J2W / joe_wanza submission #332136",
+      "branch": "review/r340-j2w-submission-332136-method-audit-20260924",
+      "head": "3350f3f52976187c91207d8474de45feb90c3ac1",
+      "evidence": {
+        "report": {
+          "path": "research/r340/R340_J2W_SUBMISSION_332136_METHOD_AUDIT.md",
+          "blob_sha1": "7ac3772f87b59e1da0a3b309a1f171c1ded64190",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/3350f3f52976187c91207d8474de45feb90c3ac1/research/r340/R340_J2W_SUBMISSION_332136_METHOD_AUDIT.md"
+        },
+        "receipt": {
+          "path": "research/r340/R340_RECEIPT.json",
+          "blob_sha1": "bca09edfeb7ec0efa792f7b2c4b3abebb7d2e3fb",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/3350f3f52976187c91207d8474de45feb90c3ac1/research/r340/R340_RECEIPT.json"
+        }
+      },
+      "submission_id": 332136,
+      "public_method_disclosed": false,
+      "stored_ui_displayed_adjusted_score": "2.00e-9",
+      "stored_ui_value_only": true,
+      "exact_underlying_float": "UNKNOWN",
+      "true_contest_gap": "UNKNOWN",
+      "rank_equivalence": "NOT_COMPARABLE",
+      "actual_new_estimator_measurement": false
+    },
+    {
+      "id": "R341",
+      "type": "leaderboard_forensic",
+      "status": "PARTIAL_CAPTURE_DOM_PAGINATION_BLOCKED",
+      "verdict": "PARTIAL_CAPTURE_DOM_PAGINATION_BLOCKED",
+      "branch": "review/r341-full-leaderboard-delta-20260924",
+      "head": "86d37d0e5ad90dae62354df8ad3746e5405a9cbd",
+      "evidence": {
+        "report": {
+          "path": "research/r341/R341_FULL_LEADERBOARD_DELTA.md",
+          "blob_sha1": "60455019c3691cae865aafd979280c7ba3603d6d",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/86d37d0e5ad90dae62354df8ad3746e5405a9cbd/research/r341/R341_FULL_LEADERBOARD_DELTA.md"
+        },
+        "receipt": {
+          "path": "research/r341/R341_FULL_LEADERBOARD_DELTA_RECEIPT.json",
+          "blob_sha1": "2809f024b167cf28507540f7a113aba8d57af750",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/86d37d0e5ad90dae62354df8ad3746e5405a9cbd/research/r341/R341_FULL_LEADERBOARD_DELTA_RECEIPT.json"
+        }
+      },
+      "coverage": {
+        "historical_r304_first100": "100/100",
+        "historical_r304_page2": "0/UNKNOWN",
+        "current_live_rows_certified": 1,
+        "current_first100_comparable": "1/100",
+        "current_page2_live_rows": 0,
+        "current_full_board": "NOT_ESTABLISHED",
+        "rows_2_to_100": "UNKNOWN",
+        "historical_rows_101_plus": "UNKNOWN"
+      },
+      "full_board_delta_claimed": false,
+      "task_supplied_current_total_rows": 197,
+      "task_supplied_total_independently_verified": false,
+      "actual_new_estimator_measurement": false
+    },
+    {
+      "id": "R343",
+      "type": "independent_arithmetic_source_red_team",
+      "status": "COMPLETE",
+      "verdict": "PASS",
+      "branch": "review/r343-r333-2e9-arithmetic-red-team-20260924",
+      "head": "a76a972711c865e92597c62864dc58ea010eb11f",
+      "evidence": {
+        "report": {
+          "path": "research/r343/R343_R333_2E9_ARITHMETIC_RED_TEAM.md",
+          "blob_sha1": "ca319b2a634dfb95a04b4ca351661fe3e1ca7fd0",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/a76a972711c865e92597c62864dc58ea010eb11f/research/r343/R343_R333_2E9_ARITHMETIC_RED_TEAM.md"
+        },
+        "receipt": {
+          "path": "research/r343/R343_RECEIPT.json",
+          "blob_sha1": "5ae939e4344db9858c01a4422f21b06df39a71a4",
+          "url": "https://github.com/tim8es/arc-whitebox/blob/a76a972711c865e92597c62864dc58ea010eb11f/research/r343/R343_RECEIPT.json"
+        }
+      },
+      "exact_decimal_arithmetic": {
+        "exact_mean_raw_mse": "2.22830349017044681e-8",
+        "fixed_mse_multiplier_floor": "0.1",
+        "fixed_mse_score_floor": "2.22830349017044681e-9",
+        "stored_ui_display_target": "2.00e-9",
+        "conditional_target_raw_mse_mean": "2.00e-8",
+        "absolute_raw_mse_reduction_needed": "2.2830349017044681e-9",
+        "relative_raw_mse_reduction_percent_approx": "10.245619197633778%",
+        "compute_only_reaches_display_at_fixed_observed_mse": false
+      },
+      "comparability_boundary": {
+        "stored_ui_display_only": true,
+        "exact_underlying_float": "UNKNOWN",
+        "true_contest_gap_claimed": false,
+        "public50_identity_join": "NOT_COMPARABLE_NOT_JOINABLE",
+        "actual_r209_public50_score": "UNKNOWN",
+        "predicted_rank_or_place": false
+      },
+      "actual_new_estimator_measurement": false
     }
   ],
   "measurement_classification": {
@@ -616,7 +718,11 @@
     "r335_after_r338_is_theory_scout_not_new_estimator_measurement": true,
     "r337_is_theory_forensics_not_new_estimator_measurement": true,
     "r338_is_correction_lineage_not_new_estimator_measurement": true,
-    "new_estimator_measurements_generated_by_r337_r338": 0
+    "new_estimator_measurements_generated_by_r337_r338": 0,
+    "r340_is_public_method_audit_not_new_estimator_measurement": true,
+    "r341_is_partial_leaderboard_forensic_not_new_estimator_measurement": true,
+    "r343_is_arithmetic_source_verification_not_new_estimator_measurement": true,
+    "new_estimator_measurements_generated_by_r340_r341_r343": 0
   },
   "leaderboard_r209": {
     "comparability_decision": "NOT_COMPARABLE",
@@ -639,7 +745,7 @@
   "recommended_next_step": "Coordinator-owned append-only reconciliation of completed sidecars using immutable task ID, branch head and receipt/report hashes through a supported archival/import path; represent R313 as a correction to R309 and do not fabricate historical claim/start/finish events.",
   "report": {
     "path": "research/r320/R320_SIDECAR_RESEARCH_TRACEABILITY.md",
-    "git_blob_sha1": "cd23a3378388b77aa27b4130ddaf00d6ef9c9f94"
+    "git_blob_sha1": "54fb45fe3cb3ae5de72367d65980e0085d3bb3e4"
   },
   "execution_accounting": {
     "estimator_runs": 0,
@@ -672,7 +778,12 @@
     "r339_benchmark_runs": 0,
     "r339_actions_runs": 0,
     "r339_downloads": 0,
-    "r339_new_files": 0
+    "r339_new_files": 0,
+    "r344_estimator_runs": 0,
+    "r344_benchmark_runs": 0,
+    "r344_actions_runs": 0,
+    "r344_downloads": 0,
+    "r344_new_files": 0
   },
   "extension_task": "R332",
   "extension_parent_head": "0c4db1d79deb9b2f608001127d8359b0c0fafd27",
@@ -707,7 +818,7 @@
     "every_included_sidecar_cumulative_diff_verified_two_paths": true
   },
   "r332_report_blob_sha1": "18d5a950928b213dc69a732be38102208b807723",
-  "latest_extension_task": "R339",
+  "latest_extension_task": "R344",
   "r334": {
     "parent_head": "1c285e5d504d6eb3c971d5afae9db3188e0dcea0",
     "policy": {
@@ -800,5 +911,67 @@
     "new_estimator_measurement_count": 0,
     "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5"
   },
-  "r339_report_blob_sha1": "cd23a3378388b77aa27b4130ddaf00d6ef9c9f94"
+  "r339_report_blob_sha1": "cd23a3378388b77aa27b4130ddaf00d6ef9c9f94",
+  "r344": {
+    "parent_head": "62941d0757357f363381e8ee01b93dfc75a5d516",
+    "policy": {
+      "append_only": true,
+      "rebase": false,
+      "reset": false,
+      "history_rewrite": false,
+      "new_files": 0,
+      "main_edit": false,
+      "pr_edit": false,
+      "control_v2_edit": false,
+      "queue_edit": false
+    },
+    "dedupe_before_update": {
+      "R340": false,
+      "R341": false,
+      "R343": false
+    },
+    "added_tasks": [
+      "R340",
+      "R341",
+      "R343"
+    ],
+    "r342_status": "IN_PROGRESS_NOT_INCLUDED_AS_COMPLETE",
+    "exact_base_retained": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+    "comparability": {
+      "stored_ui_displayed_score": "2.00e-9",
+      "stored_ui_display_only": true,
+      "exact_underlying_float": "UNKNOWN",
+      "true_contest_gap": "UNKNOWN",
+      "public50_r209_identity": "NOT_JOINABLE",
+      "leaderboard_r209_equivalence": "NOT_COMPARABLE"
+    }
+  },
+  "r344_snapshot": {
+    "R340": {
+      "head": "3350f3f52976187c91207d8474de45feb90c3ac1",
+      "verdict": "NO_PUBLIC_METHOD",
+      "report_blob": "7ac3772f87b59e1da0a3b309a1f171c1ded64190",
+      "receipt_blob": "bca09edfeb7ec0efa792f7b2c4b3abebb7d2e3fb",
+      "submission_id": 332136
+    },
+    "R341": {
+      "head": "86d37d0e5ad90dae62354df8ad3746e5405a9cbd",
+      "verdict": "PARTIAL_CAPTURE_DOM_PAGINATION_BLOCKED",
+      "report_blob": "60455019c3691cae865aafd979280c7ba3603d6d",
+      "receipt_blob": "2809f024b167cf28507540f7a113aba8d57af750",
+      "current_first100_comparable": "1/100",
+      "current_page2_live_rows": 0,
+      "current_full_board": "NOT_ESTABLISHED"
+    },
+    "R343": {
+      "head": "a76a972711c865e92597c62864dc58ea010eb11f",
+      "verdict": "PASS",
+      "report_blob": "ca319b2a634dfb95a04b4ca351661fe3e1ca7fd0",
+      "receipt_blob": "5ae939e4344db9858c01a4422f21b06df39a71a4",
+      "fixed_mse_score_floor": "2.22830349017044681e-9",
+      "stored_ui_display": "2.00e-9",
+      "public50_r209": "NOT_COMPARABLE_NOT_JOINABLE"
+    },
+    "new_estimator_measurement_count": 0
+  }
 }

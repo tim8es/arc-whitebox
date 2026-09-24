@@ -211,3 +211,89 @@ No historical claim/start/finish events should be fabricated.
 - control-v2 edits: **0**
 - queue edits: **0**
 - R320 branch file set relative to exact base: intended to remain **2 files**
+## R344 integration — completed R340 / R341 / R343 sidecars
+
+R344 extends this consolidated index only with completed artifacts that were absent from the prior R320 tip `62941d0757357f363381e8ee01b93dfc75a5d516`. Exact-string/head deduplication found **no existing R340, R341, or R343 entry** in either R320 artifact before this update. R342 remains in progress and is intentionally not represented as complete.
+
+### R340 — current J2W submission #332136 public-method audit
+
+- status: **COMPLETE**
+- verdict: **`NO_PUBLIC_METHOD`**
+- exact head: `3350f3f52976187c91207d8474de45feb90c3ac1`
+- report: `research/r340/R340_J2W_SUBMISSION_332136_METHOD_AUDIT.md`
+  - blob: `7ac3772f87b59e1da0a3b309a1f171c1ded64190`
+  - source: https://github.com/tim8es/arc-whitebox/blob/3350f3f52976187c91207d8474de45feb90c3ac1/research/r340/R340_J2W_SUBMISSION_332136_METHOD_AUDIT.md
+- receipt: `research/r340/R340_RECEIPT.json`
+  - blob: `bca09edfeb7ec0efa792f7b2c4b3abebb7d2e3fb`
+  - source: https://github.com/tim8es/arc-whitebox/blob/3350f3f52976187c91207d8474de45feb90c3ac1/research/r340/R340_RECEIPT.json
+
+R340 found no publicly linked estimator family/configuration, source repository/commit, or reproducible instructions tied to current J2W submission **#332136**. It does not infer a method from rank, displayed score, MSE, entries, or timestamp.
+
+The saved live UI anchor carried by R340 includes displayed adjusted score **`2.00e-9`**. In this consolidated index that value remains **stored UI display text only**; its exact underlying float, true contest gap, and any rank-equivalent interpretation remain **UNKNOWN / NOT_COMPARABLE**.
+
+### R341 — partial visible-leaderboard delta capture
+
+- status/verdict: **`PARTIAL_CAPTURE_DOM_PAGINATION_BLOCKED`**
+- exact head: `86d37d0e5ad90dae62354df8ad3746e5405a9cbd`
+- report: `research/r341/R341_FULL_LEADERBOARD_DELTA.md`
+  - blob: `60455019c3691cae865aafd979280c7ba3603d6d`
+  - source: https://github.com/tim8es/arc-whitebox/blob/86d37d0e5ad90dae62354df8ad3746e5405a9cbd/research/r341/R341_FULL_LEADERBOARD_DELTA.md
+- receipt: `research/r341/R341_FULL_LEADERBOARD_DELTA_RECEIPT.json`
+  - blob: `2809f024b167cf28507540f7a113aba8d57af750`
+  - source: https://github.com/tim8es/arc-whitebox/blob/86d37d0e5ad90dae62354df8ad3746e5405a9cbd/research/r341/R341_FULL_LEADERBOARD_DELTA_RECEIPT.json
+
+Exact coverage boundary:
+
+- historical R304 first 100: **100/100**
+- current live first-100 comparable rows: **1/100**
+- current live page 2 rows: **0**
+- current full board: **NOT_ESTABLISHED**
+- rows 2–100 deltas: **UNKNOWN**
+- historical rows 101+: **UNKNOWN**
+
+Only one current row is comparable: the J2W rank-1 anchor. R341 must **not** be read as a full-board delta, a 197-row capture, or evidence of additions/removals/moves outside that one row. The displayed total `197` is task-supplied UI state, not an independently captured full membership list.
+
+### R343 — independent arithmetic/source red-team
+
+- status: **COMPLETE**
+- verdict: **PASS**
+- exact head: `a76a972711c865e92597c62864dc58ea010eb11f`
+- report: `research/r343/R343_R333_2E9_ARITHMETIC_RED_TEAM.md`
+  - blob: `ca319b2a634dfb95a04b4ca351661fe3e1ca7fd0`
+  - source: https://github.com/tim8es/arc-whitebox/blob/a76a972711c865e92597c62864dc58ea010eb11f/research/r343/R343_R333_2E9_ARITHMETIC_RED_TEAM.md
+- receipt: `research/r343/R343_RECEIPT.json`
+  - blob: `5ae939e4344db9858c01a4422f21b06df39a71a4`
+  - source: https://github.com/tim8es/arc-whitebox/blob/a76a972711c865e92597c62864dc58ea010eb11f/research/r343/R343_RECEIPT.json
+
+R343 independently reproduces the R209 arithmetic from the immutable 100-row development artifact:
+
+- exact-decimal mean raw MSE: **`2.22830349017044681e-8`**
+- fixed-MSE scorer multiplier floor: **`0.1`**
+- conditional fixed-MSE score floor: **`2.22830349017044681e-9`**
+- saved UI display input: **`2.00e-9`**
+- under the explicit same-panel/same-scorer counterfactual only, raw-MSE mean needed to equal that displayed number at the floor: **`2.00e-8`**
+- absolute raw-MSE reduction required: **`2.2830349017044681e-9`**
+- relative reduction: approximately **`10.245619197633778%`**
+- compute-only at fixed observed R209 MSE cannot numerically reach the displayed `2.00e-9`.
+
+These are conditional arithmetic statements, **not** a measured contest gap. The saved `2.00e-9` remains UI display text with unknown underlying exact float/rounding interval. Public-50 ↔ R209 identity remains **`NOT_COMPARABLE / NOT_JOINABLE`**; exact deployed public-50 mapping is not public, actual R209 public-50 score is unknown, and no predicted rank/place is implied.
+
+### R344 measurement/comparability classification
+
+R340, R341, and R343 generate **0 new estimator measurements**:
+
+- R340: public-method/source audit only;
+- R341: partial public leaderboard snapshot/delta only;
+- R343: arithmetic/source verification over committed R209 outputs only.
+
+R342 is still in progress and is not claimed complete here.
+
+The consolidated boundary remains:
+
+- current stored leaderboard display `2.00e-9`: **UI SNAPSHOT TEXT ONLY**
+- exact underlying leaderboard float: **UNKNOWN**
+- full-board R341 delta: **UNKNOWN / NOT ESTABLISHED**
+- public-50 ↔ R209 row identity: **NOT_JOINABLE**
+- leaderboard ↔ R209 score/rank equivalence: **NOT_COMPARABLE**
+- true contest gap: **UNKNOWN**
+
