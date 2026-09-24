@@ -9,7 +9,7 @@
   "branch": "review/r309-toolchain-delta-audit-20260924",
   "artifacts": {
     "report_path": "research/r309/R309_TOOLCHAIN_DELTA_AUDIT.md",
-    "report_git_blob_sha": "52ca2812e932bb52c8259e67939e34721962f6c2",
+    "report_git_blob_sha": "d26f0174b32ffa647a0454bb24be038cdf0e14c1",
     "receipt_path": "research/r309/R309_TOOLCHAIN_DELTA_AUDIT_RECEIPT.json"
   },
   "official_starterkit": {
@@ -97,8 +97,13 @@
     "r209_v25_source_semantic_score_portability": "COMPATIBLE",
     "r209_v25_exact_numeric_grader_replay": "UNKNOWN",
     "r209_v29_exact_residual_failure_set": "UNKNOWN",
-    "r223_actual_score_portability": "UNKNOWN",
-    "r223_candidate_source_level_evaluator_and_flop_semantics": "COMPATIBLE"
+    "r223_actual_score_portability": "OBSERVED_PUBLIC_MINI100_EXISTS__EXACT_GRADER_PAIR_REPLAY_UNKNOWN",
+    "r223_candidate_source_level_evaluator_and_flop_semantics": "COMPATIBLE",
+    "r223_public_mini100_same_panel_vs_r209": "COMPARABLE",
+    "r223_exact_numeric_grader_replay": "UNKNOWN",
+    "r223_leaderboard_rank_or_score_equivalence": "NOT_COMPARABLE",
+    "r223_final100_or_hidden_private_performance": "NOT_COMPARABLE_OR_UNKNOWN",
+    "r223_submission_competition_outcome": "NOT_COMPARABLE"
   },
   "r209": {
     "evidence_branch": "research/r209-e136-archive-evidence",
@@ -126,19 +131,100 @@
     }
   },
   "r223": {
-    "evidence_branch": "research/r223-v25-isolated-improvement-20260922",
-    "terminal_receipt_blob": "a2ea83717b979b40e8ec13703c7465e0f50189ba",
-    "status": "INFRA_ERROR_PRE_PANEL",
-    "scientific_panel_started": false,
-    "candidate_score_exists": false,
-    "candidate_blob": "a09ec139bc7399f169ace02cf587d55bc1c8771b",
-    "comparator_blob": "fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0",
+    "control_state_revision_checked": 479,
+    "finish_event_revision": 193,
+    "queue_run_id": "R223-v25-local-feed-attempt6-20260923",
+    "terminal_status": "SCIENTIFIC_REJECT",
+    "attempts_1_to_5_panel_invocations": 0,
+    "attempt_6_panel_invocations": 1,
+    "panel": {
+      "stage": "development",
+      "dataset": "hf://aicrowd/arc-whestbench-public-2026@v2-phase2",
+      "split": "mini:all-100",
+      "rows": 100,
+      "same_panel_as_parent": true,
+      "parent_id": "R209-v25-mini100"
+    },
+    "immutable_evidence": {
+      "r240_receipt_commit": "3b99fcaea2ef29b050612610ff04a8fc7a6886cd",
+      "r240_receipt_blob": "f9f19b6313a5b302e2f1d6a40014a5d55ef5494a",
+      "r240_receipt_sha256": "e75ec5e2641df59887cf38520e9d9f3a449731fa5fcac481398433c4c4ac8bbd",
+      "r242_integration_receipt_commit": "b55b9ab2e3dd7ff58ea405704e8f63e86112d48d",
+      "r242_integration_receipt_blob": "ba7fb51a5b82009514797da85c3d517c2c3185fe",
+      "normalized_result_path": "research/results/R223-v25-local-feed-mini100.json",
+      "normalized_result_commit": "cced07bca1f63608321be5ac21b3167a0971e82e",
+      "normalized_result_blob": "c8b617c43ff1145977c38e7e1cca6d23985ec392",
+      "candidate_blob": "eb95d4ae46a031be5131eef8dd0909f2061b8749",
+      "comparator_blob": "fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0"
+    },
+    "actions_evidence": {
+      "run_id": 35810427656,
+      "job_id": 107020553482,
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "artifact_id": 10730459690,
+      "artifact_name": "r223-v25-local-feed-mini100-attempt6"
+    },
+    "observed": {
+      "candidate_failures": 0,
+      "parent_failures": 0,
+      "candidate_mean_raw_mse": 2.2284993050902814e-8,
+      "parent_mean_raw_mse": 2.228303490170447e-8,
+      "candidate_mean_adjusted_score": 8.171116513490029e-9,
+      "normalized_candidate_mean_adjusted_score": 8.171116513490032e-9,
+      "parent_mean_adjusted_score": 8.170397440117226e-9,
+      "candidate_mean_effective_compute": 806303829485,
+      "parent_mean_effective_compute": 806303721965,
+      "candidate_max_residual_s": 0.19380312699274782,
+      "parent_max_residual_s": 0.19043814401743475,
+      "improved_networks": 50,
+      "paired_parent_minus_candidate_mean": -7.190733728024271e-13,
+      "paired_delta_se": 1.4922201293529365e-12,
+      "paired_delta_mean_over_se": -0.48188156603559223
+    },
+    "frozen_gates": {
+      "pass": [
+        1,
+        2,
+        3,
+        8,
+        9,
+        10,
+        11
+      ],
+      "fail": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "candidate_failures_zero": true,
+      "candidate_mean_raw_mse_lt_parent": false,
+      "candidate_mean_adjusted_le_0p995_parent": false,
+      "improves_at_least_55_of_100": false,
+      "paired_delta_mean_gt_2se": false,
+      "candidate_mean_cb_le_parent_plus_1e_5": true,
+      "max_residual_lt_0p4": true,
+      "exact_candidate_source_config_provenance": true,
+      "only_one_candidate_panel_run": true
+    },
+    "development_verdict": "SCIENTIFIC_REJECT_DROP_V25_LOCAL_FEED",
+    "portability_boundary": {
+      "public_mini100_observed": true,
+      "same_panel_parent_comparison": "COMPARABLE",
+      "source_level_evaluator_and_flop_semantics": "COMPATIBLE",
+      "exact_grader_pair_numeric_timing_replay": "UNKNOWN",
+      "leaderboard_rank_or_score_equivalence": "NOT_COMPARABLE",
+      "final100_or_hidden_private": "NOT_COMPARABLE_OR_UNKNOWN",
+      "submission_or_competition_outcome": "NOT_COMPARABLE"
+    },
     "affected_api_scan": "same affected FlopScope call pattern as R209 V25"
   },
   "minimum_future_verification": [
     "Obtain an immutable grader-environment receipt for exact NumPy/build metadata in addition to the stated whestbench 0.16.0 / flopscope 0.12.0 pair.",
     "Only if exact R209 score portability must be proven, run one separately authorized offline/public Mini-100 replay of frozen R209 V25 under the exact grader pair/environment and compare per-MLP order, metric/prediction hashes where available, FLOPs, residual flags, and adjusted scores.",
-    "Do not perform an R223 portability replay unless a scientific R223 run is separately authorized; no existing R223 candidate score exists."
+    "R223 already has one authenticated attempt-6 public Mini-100 development result. Only if exact grader-pair portability of that observed result must be proven, use a separately authorized exact-pair replay; do not infer leaderboard, final-100, hidden/private, submission, or competition performance from the existing development panel."
   ],
   "prohibited_actions": {
     "package_download": false,
@@ -155,5 +241,5 @@
     "pr_edit": false,
     "control_edit": false
   },
-  "conclusion": "No source-level evidence that the 0.16.1/0.12.1 patch gap materially changes R209 V25 adjusted scoring or the accounting a future R223 candidate run would receive. Generic FlopScope equivalence is false because 0.12.1 contains narrow symmetry/value/accounting changes. Exact grader-runtime numeric/timing reproduction remains UNKNOWN until the stated minimum runtime verification is separately authorized."
+  "conclusion": "No source-level evidence that the 0.16.1/0.12.1 patch gap materially changes R209 V25 adjusted scoring or the source-level accounting semantics applicable to the observed R223 V25-LF candidate. R223 attempt 6 did execute exactly one authenticated public Mini-100 development panel and was SCIENTIFIC_REJECT/DEVELOPMENT NO-GO versus the same-panel R209 parent. Exact grader-pair numeric/timing replay remains UNKNOWN; leaderboard/final-100/hidden/private/submission conclusions remain NOT_COMPARABLE or UNKNOWN as stated."
 }

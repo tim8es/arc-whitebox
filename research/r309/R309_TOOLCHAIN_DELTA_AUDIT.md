@@ -127,21 +127,49 @@ The mechanism is **COMPATIBLE** (same 0.4-s gate and same evaluator source), but
 
 ### R223
 
-Immutable terminal evidence:
-- R223 terminal receipt blob: `a2ea83717b979b40e8ec13703c7465e0f50189ba`
-- https://github.com/tim8es/arc-whitebox/blob/research/r223-v25-isolated-improvement-20260922/research/r223/R223_TERMINAL_RECEIPT.json
-- frozen candidate blob: `a09ec139bc7399f169ace02cf587d55bc1c8771b`
-- frozen comparator blob: `fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0`
+The earlier R309 statement that R223 had no scientific panel result was stale. Current immutable control/evidence supersedes the attempt-1 terminal receipt used there:
 
-R223 terminated at a pre-panel provenance guard; no candidate validation or scientific panel run started and no candidate score exists. Therefore **R223 actual score portability: UNKNOWN (no score exists to port)**.
+- live `research/control-v2` state checked at revision **479**;
+- R223 finish event revision **193** records attempt 6 as `SCIENTIFIC_REJECT`;
+- attempt 6 queue run: `R223-v25-local-feed-attempt6-20260923`;
+- GitHub Actions run/job recorded by independent R240 postflight: `35810427656` / `107020553482`, run attempt 1, completed/success;
+- immutable R240 receipt: https://github.com/tim8es/arc-whitebox/blob/3b99fcaea2ef29b050612610ff04a8fc7a6886cd/research/r240/R240_RECEIPT.json, blob `f9f19b6313a5b302e2f1d6a40014a5d55ef5494a`, SHA-256 `e75ec5e2641df59887cf38520e9d9f3a449731fa5fcac481398433c4c4ac8bbd`;
+- R242 integration receipt: https://github.com/tim8es/arc-whitebox/blob/b55b9ab2e3dd7ff58ea405704e8f63e86112d48d/research/r242/R242_INTEGRATION_RECEIPT.json, blob `ba7fb51a5b82009514797da85c3d517c2c3185fe`;
+- normalized result: `research/results/R223-v25-local-feed-mini100.json`, blob `c8b617c43ff1145977c38e7e1cca6d23985ec392`, parent `R209-v25-mini100`.
 
-The frozen candidate's affected-API scan matches V25: no non-scalar `full/full_like`, no `symmetrize`/random-symmetric path, and the same two `as_symmetric` call shapes. Thus **R223 candidate evaluator/FLOP semantics are COMPATIBLE at source level** between these patch pairs, but this is not a scientific result and does not convert R223's INFRA_ERROR into a score.
+Attempts 1–5 remained pre-panel infrastructure failures. **Attempt 6 executed exactly one public Phase-2 `mini:all-100` development panel**; R240 independently bound the immutable artifact, verified all 100 paired rows and failure semantics, and confirmed that this was the only candidate panel invocation.
+
+Observed same-panel development result:
+
+| metric | R209 V25 parent | R223 V25-LF candidate |
+|---|---:|---:|
+| rows | 100 | 100 |
+| failures | 0 | 0 |
+| mean raw MSE | `2.228303490170447e-8` | `2.2284993050902814e-8` |
+| mean adjusted score | `8.170397440117226e-9` | `8.171116513490029e-9` |
+| mean effective/measured compute | `806303721965` | `806303829485` |
+| max residual | `0.19043814401743475 s` | `0.19380312699274782 s` |
+
+The candidate is slightly worse on adjusted score: parent-minus-candidate mean adjusted delta is `-7.190733728024271e-13`. It improves exactly 50/100 networks; paired delta mean / SE is `-0.48188156603559223`.
+
+Frozen R223 gates: **1, 2, 3, 8, 9, 10, 11 PASS; 4, 5, 6, 7 FAIL**. Specifically, candidate failures are zero and identity/provenance/cost/residual/one-run gates pass, while candidate mean raw MSE is not below parent, adjusted score is not <= 0.995× parent, fewer than 55/100 rows improve, and paired parent-minus-candidate mean is not >2SE. Verdict: **same-exposed-panel DEVELOPMENT NO-GO / SCIENTIFIC_REJECT; drop V25-LF under the frozen protocol**.
+
+This observed score must not be conflated with competition evidence:
+
+- **public Mini-100 development result: OBSERVED / COMPARABLE to the authenticated R209 parent on the same panel**;
+- **R223 candidate source-level evaluator/FLOP semantics across 0.16.1/0.12.1 → 0.16.0/0.12.0: COMPATIBLE** for the affected APIs identified by this source audit;
+- **exact numeric/timing replay under the grader pair/environment: UNKNOWN** — no exact grader-pair replay was executed here, and runtime/NumPy/timing differences remain unmeasured;
+- **leaderboard rank / leaderboard score equivalence: NOT_COMPARABLE** from this Mini-100 development result;
+- **final-100 or hidden/private split performance: NOT_COMPARABLE / UNKNOWN** because no such R223 evaluation is evidenced;
+- **submission/competition outcome: NOT_COMPARABLE**; no submission claim follows from R223 attempt 6.
+
+The attempt-6 frozen candidate blob recorded by R240 is `eb95d4ae46a031be5131eef8dd0909f2061b8749`; the comparator blob is `fd1ce8711f92bb123f69d7bcddb37bb0fec3b8b0`. Its affected-API scan remains the same relevant pattern as V25: no non-scalar `full/full_like`, no `symmetrize`/random-symmetric path, and the same two `as_symmetric` call shapes.
 
 ## Practical conclusion
 
 The 0.16.1/0.12.1 local pair is not universally equivalent to grader 0.16.0/0.12.0: FlopScope 0.12.1 has real, narrowly scoped symmetry/value/accounting changes. However, the frozen R209 V25 and R223 candidate do not use the one documented price-moving `full/full_like(non-scalar)` path or the new canonical-copy/oversized-Reynolds paths. Their direct whestbench score, seed, evaluator, and residual-cap logic is unchanged at exact blob level, and their `as_symmetric` charge is unchanged.
 
-Accordingly, there is **no source-level evidence that the patch-version gap materially changes R209 V25's adjusted score or the accounting that a future R223 run would receive**. The remaining portability uncertainty is runtime-level: exact floating behavior (including the grader's NumPy build/version) and measured residual wall time.
+Accordingly, there is **no source-level evidence that the patch-version gap materially changes R209 V25's adjusted score or the source-level accounting semantics applicable to the observed R223 V25-LF candidate**. The remaining portability uncertainty is runtime-level: exact floating behavior (including the grader's NumPy build/version) and measured residual wall time.
 
 ## Minimum future verification
 
@@ -149,7 +177,7 @@ To close the remaining UNKNOWN without expanding scope:
 
 1. Obtain one immutable grader-environment receipt that records the exact NumPy version/build (or the full `flopscope.__version__` suffix and server environment) alongside the already stated whestbench/flopscope pair.
 2. If exact score portability must be proven, perform one explicitly authorized offline/public Mini-100 replay of the frozen R209 V25 under the exact grader pair/environment, comparing per-MLP name/order, prediction/metric hashes where available, FLOPs, residual-failure flags, and adjusted scores against R209. No holdout/full/submission is needed.
-3. R223 needs no "portability replay" until a scientific run is authorized, because there is no existing R223 candidate score. If such a run is later authorized, use the same exact grader pair/environment from the outset rather than translating a 0.16.1/0.12.1 result afterward.
+3. R223 already has one authenticated public Mini-100 development result from attempt 6. If exact grader-pair portability of that observed result must be proven, perform only a separately authorized exact-pair replay; do not infer leaderboard, final-100, hidden/private, or submission performance from the existing development panel.
 
 ## Audit limits
 
