@@ -1,0 +1,135 @@
+{
+  "schema": "arc.whitebox.r375.r366_fixed_scorer_test.v1",
+  "task": "R375",
+  "date": "2026-09-24",
+  "status": "COMPLETE",
+  "verdict": "NO_MEASUREMENT_R366_REMAINS_CLOSED",
+  "exact_base_commit": "4619801e0cc5e7e340cd0406eb44e0633d8aa5e5",
+  "branch": "research/r375-r366-fixed-scorer-test-20260924",
+  "sources": {
+    "r366": {
+      "branch": "review/r366-uncovered-estimator-frontier-scout-20260924",
+      "head": "02305335c80161311e13839de3268be97a43e504",
+      "report_blob": "f2c512a04c1eb9b0d179cd04a5563e34a6f109aa"
+    },
+    "r373": {
+      "branch": "review/r373-r366-shallow-ridge-independent-redteam-20260924",
+      "head": "99a7e683ce4d0f0a603ecf601d9a2faf7d0b49cf",
+      "receipt_blob": "f324c56a35b8c6f4144110593f52e7b346eb6d4e"
+    },
+    "r209": {
+      "path": "research/results/R209-v25-mini100.json",
+      "blob": "0183d0570f7c9965e00e8553ffc003c313865232"
+    },
+    "r224": {
+      "path": "research/r224/R224_MINI100_FINGERPRINTS.json",
+      "blob": "9ecde34282c3fbef51ff3b11d4ec439012b3c52d",
+      "extract_script_blob": "1302dc583c8351d1d10bc8d3d4201239c5b6d7a7"
+    },
+    "r291": {
+      "path": "research/r291/R291_EXPECTED_PUBLIC_MINI100.json",
+      "blob": "caf813cd5eab771108f105fe050fd6631b298733"
+    },
+    "r282": {
+      "branch": "research/r282-r209-artifact-recovery-20260923",
+      "head": "4575900a2f963904fe24c70427b0d1182b97163a",
+      "receipt_blob": "48a29e486405693a993fcc429a3fd9c80d28da5e"
+    },
+    "r353": {
+      "branch": "review/r353-r209-capture-readiness-audit-20260924",
+      "receipt_blob": "4ed0ed69c26abc93d229dd3aa5ce205a4771190b"
+    }
+  },
+  "fixed_scorer_gate": {
+    "eta_required": false,
+    "reason": "Direct local development evaluation compares the frozen candidate prediction to the actual fixed public Mini baked target, so no population-to-baked-target bridge is needed.",
+    "candidate_construction_target_free": true,
+    "target_labels_allowed_only_for_evaluation": true,
+    "formula": "S=(1/100) sum_i [mean_j (p_ij-y_ij)^2 * max(0.1,F_i/2^41)]",
+    "go_inequality": "S < 8.170397440117225e-9 with all 100 rows valid",
+    "no_post_label_rescue": true
+  },
+  "existing_data_audit": {
+    "public_dataset_officially_contains_exact_weights_and_targets": true,
+    "r224_rows": 100,
+    "r224_target_hashes_present": true,
+    "r224_target_bytes_present": false,
+    "r291_numeric_target_arrays_present": false,
+    "r209_raw_prediction_tensors_archived": false,
+    "r282_raw_vectors_present": false,
+    "r293_capture_result_branch_exists": false,
+    "local_repo_mount_found": false,
+    "local_huggingface_cache_found": false,
+    "exact_target_tensors_available_to_r375": false,
+    "exact_weight_tensors_available_to_r375": false,
+    "seeds_available": true,
+    "weights_reproducible_from_published_seed_protocol": true,
+    "no_download_constraint_blocks_materialization": true
+  },
+  "r366_candidate_readiness": {
+    "concrete_T_m_present": false,
+    "frozen_width_m_present": false,
+    "implementation_ready": false,
+    "gaussian_l2_certificate_present": false,
+    "all_in_construction_cost_bound_present": false,
+    "sampled_regression_substitute_allowed": false,
+    "conclusion": "No admissible R366 candidate exists to benchmark even if labels were materialized."
+  },
+  "baseline_r209": {
+    "rows": 100,
+    "failures": 0,
+    "mean_raw_final_layer_mse": 2.228303490170447e-8,
+    "mean_adjusted_score": 8.170397440117225e-9,
+    "measured_flops_per_row": 806303721965,
+    "mean_score_multiplier": 0.36666448157347986,
+    "mean_wall_time_s": 29.562124561340013,
+    "max_wall_time_s": 30.145106520000354,
+    "mean_residual_wall_time_s": 0.17882064507017958,
+    "max_residual_wall_time_s": 0.19043814401743475
+  },
+  "candidate_measurement": {
+    "rows_executed": 0,
+    "final_layer_mse": null,
+    "adjusted_score": null,
+    "flops": null,
+    "wall_time_s": null,
+    "residual_wall_time_s": null,
+    "memory_bytes": null,
+    "improves_r209": null,
+    "classification": "NOT_MEASURED"
+  },
+  "blockers": [
+    "Exact public Mini target/weight tensors are not retained in repository/local artifacts available to R375; only identities/hashes/metrics are retained, and downloads are forbidden.",
+    "R366 has no concrete deterministic target-free T_m(W) implementation/certificate to execute."
+  ],
+  "minimal_next_step": [
+    "First supply one concrete deterministic target-free T_m(W), frozen width m, exact estimator implementation path, and static all-in FLOP/memory accounting.",
+    "Then, under separate authorization, materialize the exact public v2-phase2 mini:all-100 rows, verify R224 identities/target hashes, and score the already-frozen candidate with official WhestBench/FlopScope while keeping labels evaluation-only."
+  ],
+  "commands": {
+    "executed_read_only_local": [
+      "find /mnt/data -maxdepth 2 -type f",
+      "find /home/oai/share /workspace /workspaces /repo /mnt/data -maxdepth 3 -type d -name .git",
+      "find /home/oai/.cache/huggingface /root/.cache/huggingface /tmp/huggingface /data /datasets -maxdepth 4 -type f"
+    ],
+    "estimator_or_benchmark_commands": []
+  },
+  "execution_accounting": {
+    "r366_edits": 0,
+    "r320_edits": 0,
+    "main_edits": 0,
+    "pr_edits": 0,
+    "control_edits": 0,
+    "queue_edits": 0,
+    "candidate_code_committed": 0,
+    "estimator_runs": 0,
+    "benchmark_runs": 0,
+    "scorer_runs": 0,
+    "actions_runs": 0,
+    "dataset_downloads": 0,
+    "dependency_installs": 0,
+    "private_holdout_full_access": 0,
+    "submissions": 0,
+    "paid_resources": false
+  }
+}
