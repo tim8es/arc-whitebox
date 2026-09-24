@@ -1,0 +1,75 @@
+{
+  "schema": "arc.whitebox.r301.r300_synthetic_selfcheck.receipt.v1",
+  "id": "R301",
+  "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
+  "owner": "Control Center 7.09",
+  "status": "COMPLETE",
+  "verdict": "EXACT_R300_SYNTHETIC_SELFCHECK_PASS_21_OF_21",
+  "scientific_diagnostic_complete": false,
+  "source": {
+    "commit": "813756ced282c780ac28f6da1e4228d8bc9c50b8",
+    "r300_receipt_blob": "b7728caecfd9612e7fcaffab94562361279a4011",
+    "analyzer": {
+      "path": "research/r300/r300_capture_analyzer.py",
+      "commit": "c6bd5538e2dcc5832a5fd641d6b128b7ad30f047",
+      "blob_sha1": "2b99b8aefbe016092a3d01ea69a9609170cd2bd1",
+      "sha256": "a4c0808535f5a3a7d14a27a5fbc7d26d25400e74b0b238edb22e017677365315"
+    },
+    "selfcheck": {
+      "path": "research/r300/r300_capture_analyzer_selfcheck.py",
+      "commit": "e1749ed6314de15aac380f9bb06148e7e025b406",
+      "blob_sha1": "8a80ec16952117a0cdd730a61ae0c9c431b4c7df",
+      "sha256": "d2054223b7876912fc7d3c842f9f15fa1876ad71180e68cf297dd345ea2a45b6",
+      "substantive_checks": 21
+    }
+  },
+  "historical_integrity": {
+    "R298": {
+      "receipt_blob": "277058cb85e3425d9ba911c6210fb9bfdd0dc564",
+      "analyzer_blob": "f1d5a9da7872ff6e632fef1e6c7dd2c90a6091ea",
+      "selfcheck_blob": "e05443ffece962cf54c8b568c1536b60a2c071fb",
+      "unchanged": true
+    },
+    "R299": {
+      "receipt_blob": "cc2eb44635f54ae315d2a03ac2d8eb0c117b601f",
+      "analyzer_blob": "d8469b233f458dbe7813babdcfe21a82016664e1",
+      "selfcheck_blob": "03ebb9c9a1f7cba61cd199ac2b8b8066b1de466a",
+      "unchanged": true
+    },
+    "R300": {
+      "receipt_unchanged": true
+    }
+  },
+  "verification": {
+    "runtime": {
+      "python": "3.13.13",
+      "pinned_target": "3.11.16",
+      "target_runtime_tested": false
+    },
+    "command": "python r300_capture_analyzer_selfcheck.py",
+    "artifact_materialization": "individual immutable GitHub files in a temporary folder; no clone",
+    "status": "PASS",
+    "passed": 21,
+    "failed": [],
+    "substantive_checks": 21,
+    "selfcheck_pass": true,
+    "exit_code": 0,
+    "data": "synthetic only",
+    "real_capture_vectors_accessed": 0
+  },
+  "report": {
+    "path": "research/r301/R301_REPORT.md"
+  },
+  "accounting": {
+    "actions_runs": 0,
+    "benchmark_runs": 0,
+    "estimator_runs": 0,
+    "real_capture_vectors_accessed": 0,
+    "data_or_dependencies_downloaded_or_installed": 0,
+    "paid_resources": false,
+    "submission": false,
+    "leaderboard_edits": false,
+    "canonical_edits": false,
+    "pr36_edits": 0
+  }
+}
