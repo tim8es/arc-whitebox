@@ -6242,6 +6242,22 @@
         "command": "verify exact R300 receipt-pinned source artifacts and run only research/r300/r300_capture_analyzer_selfcheck.py with synthetic fixtures using individual GitHub API files; no clone/data/dependencies/real vectors; append report/receipt"
       },
       "at": "2026-09-24T01:05:57.822+00:00"
+    },
+    {
+      "revision": 464,
+      "action": "finish",
+      "job": "R301",
+      "owner": "Control Center 7.09",
+      "payload": {
+        "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
+        "status": "COMPLETE",
+        "reason": "Fetched exact R300 analyzer/self-check artifacts by immutable commit/blob and verified their Git blob IDs and SHA-256 against R300 receipt. Synthetic standard-library checker passed all 21 substantive checks with pass=true/exit 0 on Python 3.13.13; the protocol target is Python 3.11.16, so that exact runtime was not tested. R298/R299 historical analyzer/self-check blobs still match their receipts. No real capture vectors, benchmark, Actions, deps/data, paid resource, PR edit, holdout or submission.",
+        "receipt": {
+          "url": "https://github.com/tim8es/arc-whitebox/blob/b80d11b14be609fb99628b08c7a8695a82e3fdad/research/r301/R301_RECEIPT.json",
+          "sha256": "e1804c7fe2466d44c53073b3536e25c1ffc9538b29fa34a1a255290fc4f610ce"
+        }
+      },
+      "at": "2026-09-24T01:14:16.470+00:00"
     }
   ],
   "jobs": [
@@ -9912,7 +9928,16 @@
           "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
           "code_commit": "813756ced282c780ac28f6da1e4228d8bc9c50b8",
           "command": "verify exact R300 receipt-pinned source artifacts and run only research/r300/r300_capture_analyzer_selfcheck.py with synthetic fixtures using individual GitHub API files; no clone/data/dependencies/real vectors; append report/receipt",
-          "status": "RUNNING"
+          "status": "COMPLETE",
+          "completion": {
+            "run_id": "R301-r300-analyzer-selfcheck-20260924-controlcenter",
+            "status": "COMPLETE",
+            "reason": "Fetched exact R300 analyzer/self-check artifacts by immutable commit/blob and verified their Git blob IDs and SHA-256 against R300 receipt. Synthetic standard-library checker passed all 21 substantive checks with pass=true/exit 0 on Python 3.13.13; the protocol target is Python 3.11.16, so that exact runtime was not tested. R298/R299 historical analyzer/self-check blobs still match their receipts. No real capture vectors, benchmark, Actions, deps/data, paid resource, PR edit, holdout or submission.",
+            "receipt": {
+              "url": "https://github.com/tim8es/arc-whitebox/blob/b80d11b14be609fb99628b08c7a8695a82e3fdad/research/r301/R301_RECEIPT.json",
+              "sha256": "e1804c7fe2466d44c53073b3536e25c1ffc9538b29fa34a1a255290fc4f610ce"
+            }
+          }
         }
       ],
       "deliverable": "Independently verify and run the exact committed R300 analyzer integration self-check using the existing repo-capable local checkout/runtime from the R267 session; do not clone/download a new checkout or install anything. First compare analyzer, self-check, protocol supplement, and receipt blob/SHA256 pins against the R300 receipt and exact commit `813756ced282c780ac28f6da1e4228d8bc9c50b8`. Execute only the committed standard-library `research/r300/r300_capture_analyzer_selfcheck.py` (including inherited R298 checks) with synthetic fixtures. Require all 21 checks pass, including the binary32 counterexample and coordinate-energy aggregate consistency; also confirm R298/R299 historical artifacts were not modified. No real capture vectors, benchmark/estimator/Actions, dependency/data downloads/install, paid/private/holdout/full access, PR #36 edits, submission, leaderboard or canonical changes. Append an audit report/receipt with exact runtime, hashes and output; if the existing checkout is unavailable, report that exact blocker without downloading/cloning.",
@@ -9926,8 +9951,13 @@
       "id": "R301",
       "owner": "Control Center 7.09",
       "priority": 1,
-      "status": "RUNNING",
-      "title": "Execute the committed R300 synthetic self-check on exact bytes"
+      "status": "COMPLETE",
+      "title": "Execute the committed R300 synthetic self-check on exact bytes",
+      "receipt": {
+        "url": "https://github.com/tim8es/arc-whitebox/blob/b80d11b14be609fb99628b08c7a8695a82e3fdad/research/r301/R301_RECEIPT.json",
+        "sha256": "e1804c7fe2466d44c53073b3536e25c1ffc9538b29fa34a1a255290fc4f610ce"
+      },
+      "reason": "Fetched exact R300 analyzer/self-check artifacts by immutable commit/blob and verified their Git blob IDs and SHA-256 against R300 receipt. Synthetic standard-library checker passed all 21 substantive checks with pass=true/exit 0 on Python 3.13.13; the protocol target is Python 3.11.16, so that exact runtime was not tested. R298/R299 historical analyzer/self-check blobs still match their receipts. No real capture vectors, benchmark, Actions, deps/data, paid resource, PR edit, holdout or submission."
     },
     {
       "id": "R302",
@@ -9966,7 +9996,7 @@
     }
   ],
   "policy_version": "research-process-v2",
-  "revision": 463,
+  "revision": 464,
   "schema_version": 2,
   "spending": {
     "cap_usd": 100,
