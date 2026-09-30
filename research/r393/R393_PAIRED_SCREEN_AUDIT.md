@@ -1,590 +1,536 @@
-# R393 — independent audit of the R388 no-download paired `whest run` screen
+# R393 — independent audit of the no-download paired \`whest run\` screen
 
-**Status:** COMPLETE — independent source/protocol audit only  
-**Verdict:** **FAIL_AS_WRITTEN__SEED_PAIRING_PASS__GO_GATE_REQUIRES_CORRECTION**  
-**Execution:** no estimator run, no generated-network run, no install, no download, no dataset access, no submission  
-**Branch:** `research/r393-paired-screen-audit-20260928`  
-**Exact base:** `4619801e0cc5e7e340cd0406eb44e0633d8aa5e5`  
-**Date:** 2026-09-28
+**Status:** COMPLETE  
+**Overall verdict:** **FAIL AS WRITTEN; PASSABLE ONLY WITH THE CORRECTED GATE BELOW**  
+**Execution:** source/protocol audit only; no estimator run, no install, no download, no dataset access, no submission  
+**Exact base:** \`4619801e0cc5e7e340cd0406eb44e0633d8aa5e5\`  
+**Branch:** \`research/r393-paired-screen-audit-20260928\`  
+**Date:** 2026-09-30
 
-## 1. Bottom line
+## 1. Decision
 
-R388 is **correct about the central seed mechanism**:
+R388's **pairing mechanism is valid**: with no \`--dataset\`, the same explicit root \`--seed\`, the same \`--n-mlps 3\`, the same explicit \`--n-samples 200000\`, and the same WhestBench/FlopScope environment regenerate the same weight streams, the same ground-truth Monte-Carlo input streams, the same per-MLP estimator seeds, and the same setup seed.
 
-> With no `--dataset`, two separate `whest run` invocations using the same explicit root `--seed`, the same `--n-mlps`, the same explicit `--n-samples`, and the same WhestBench/FlopScope numerical environment regenerate the same weight RNG streams, the same ground-truth-input RNG streams, the same per-MLP estimator seeds, and the same setup seed.
+The original R388 GO gate is nevertheless **FAIL** for R385/R391 unless corrected.
 
-The current source constructs all generated contest data **before** estimator setup, so the candidate cannot influence the generated networks or sampled targets.
+The correct primary endpoint is the official Phase-2 quantity
 
-However, the **R388 GO gate is not valid as written for R385/V25**. Two material protocol defects must be corrected before a GO can be treated as confirmatory engineering evidence:
+\[
+s_m=\mathrm{MSE}_m\max(0.1,C_m/B_m),
+\]
 
-1. **Adjusted-score target noise does not cancel when candidate and control have different compute multipliers.** R388 correctly derives cancellation for raw squared-error differences, but then also requires `U95_adj < 0`. For R385 versus V25 the multipliers are expected to differ substantially, so the common (arepsilon^2) target-noise term survives in the adjusted-score difference and is biased in favor of the cheaper estimator.
-2. **R388 requires zero candidate failures but does not equivalently prohibit parent/control failures.** A failed V25 row is scored against zero predictions with multiplier 1.0 and can make the candidate look artificially favorable. Any failure in either arm must block GO.
+not raw MSE alone. A FLOP reduction by itself is not a pass.
 
-A smaller auditability defect also needs correction:
+However, because R385 and V25 have different score multipliers, the common 200k-MC target noise does **not** cancel from the observed adjusted-score difference. Therefore the no-download screen needs a conservative **dual gate**:
 
-3. Current JSON `run_config` records `seed`, shape, budget and timing limits, but **does not record `n_samples`**. Therefore exact command lines/flags must be retained externally; JSON equality alone cannot prove both runs used `--n-samples 200000`.
+1. **primary:** paired adjusted-score root-suite improvement against the frozen parent;
+2. **anti-artifact guard:** paired raw-MSE root-suite improvement too.
 
-With the corrections in §10, the no-download screen is useful as a **raw-MSE paired engineering falsifier only**. A clean GO permits higher-fidelity validation; it does not establish Mini-100/public-50/leaderboard improvement or an official adjusted-score improvement.
+A candidate passes only if **both** adjusted and raw root-suite gates pass, plus the failure/pairing/selection-bias conditions below. This preserves the official score objective while preventing a lower utilization number from being treated as victory by itself.
+
+A GO remains only:
+
+\`ENGINEERING_SCREEN_GO_TO_HIGHER_FIDELITY_VALIDATION\`
+
+and does not establish Mini-100, public-50, sealed/full, leaderboard, or official submission improvement.
 
 ---
 
-## 2. Exact audited artifacts and primary sources
+## 2. Exact audited evidence
 
 ### R388
 
-- branch: `research/r388-no-dataset-screen-protocol-20260925`
-- head: `e00498ffbab0ef5e5e5c1a58d5874ec4af5627e6`
-- report: `research/r388/R388_NO_DATASET_SCREEN_PROTOCOL.md`
-- report blob: `ec4a6126d29b2475c9459bb2bf435eecea8bb0b3`
-- link: https://github.com/tim8es/arc-whitebox/blob/e00498ffbab0ef5e5e5c1a58d5874ec4af5627e6/research/r388/R388_NO_DATASET_SCREEN_PROTOCOL.md
+- branch: \`research/r388-no-dataset-screen-protocol-20260925\`
+- head: \`e00498ffbab0ef5e5e5c1a58d5874ec4af5627e6\`
+- report blob: \`ec4a6126d29b2475c9459bb2bf435eecea8bb0b3\`
+- report: https://github.com/tim8es/arc-whitebox/blob/e00498ffbab0ef5e5e5c1a58d5874ec4af5627e6/research/r388/R388_NO_DATASET_SCREEN_PROTOCOL.md
 
-R388 itself is protocol-only and reports zero measurements.
+### R396 cost update
+
+- branch: \`research/r396-r385-affine-pair-cost-audit-20260928\`
+- head: \`22e63b7f3abd8e5252bd18724e263b7e5550eb7f\`
+- report blob: \`9a32fa70b2b5f327a6ce88c402fae893033878a1\`
+- report: https://github.com/tim8es/arc-whitebox/blob/22e63b7f3abd8e5252bd18724e263b7e5550eb7f/research/r396/R396_R385_AFFINE_PAIR_COST_AUDIT.md
+
+R396's source-based Fast-Lin-style all-in estimate for R385 with K=64 is approximately
+
+\[
+2.585\times10^{11}\text{ FLOPs}\approx 11.75\%\times 2^{41}.
+\]
+
+That is above the 0.1 floor, so a representative candidate score multiplier would be about 0.1175 if the implementation realizes that ledger. R396 makes no score claim.
 
 ### Current official WhestBench source
 
-Current `AIcrowd/whestbench` main audited at:
+Audited current main:
 
-`4794ce8673c1221bdb245b19e933ae0afd7ffa3c`
+\`AIcrowd/whestbench@4794ce8673c1221bdb245b19e933ae0afd7ffa3c\`
 
-| Source | Git blob SHA-1 | Primary link |
-|---|---|---|
-| CLI / `whest run` | `f214a0e210aa2cd10d0d0a68b14a2b1341b4091f` | https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/cli.py |
-| contest generation + scoring | `9cf7653a0267c4d048617c9045ac8be127f3c8bf` | https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/scoring.py |
-| random MLP generation | `38397fae458acfd46b5642866481672c7fce6f2d` | https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/generation.py |
-| MC target generation | `a6fc58c2b71d197478eae62b54c66882332f30d6` | https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/simulation.py |
-| runner lifecycle | `75636c28fa3eabc6047e1c981f34b6a0501ba8f3` | https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/runner.py |
-| estimator contract | `3472b746b07f412729090f6a83bc828c35d26f80` | https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/docs/reference/estimator-contract.md |
-| score report fields | `3b66b33a0775f01eecbda2a148495d471f2eff65` | https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/docs/reference/score-report-fields.md |
-| MLP seed regression tests | `1f7cbd9aec2eee6d186a691858decb7807937368` | https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/tests/test_mlp_seed_plumbing.py |
-| setup-seed regression tests | `ceb04c32f36238a2090d3fff1c7d2086793222d9` | https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/tests/test_setup_context_seed.py |
+Primary source files:
 
-The current official main is the same WhestBench commit R388 audited; there is no source-version drift between R388 and R393.
+- CLI / run semantics, blob \`f214a0e210aa2cd10d0d0a68b14a2b1341b4091f\`:  
+  https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/cli.py
+- contest generation + scoring, blob \`9cf7653a0267c4d048617c9045ac8be127f3c8bf\`:  
+  https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/scoring.py
+- random MLP generation, blob \`38397fae458acfd46b5642866481672c7fce6f2d\`:  
+  https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/generation.py
+- target simulation, blob \`a6fc58c2b71d197478eae62b54c66882332f30d6\`:  
+  https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/simulation.py
+- runner lifecycle, blob \`75636c28fa3eabc6047e1c981f34b6a0501ba8f3\`:  
+  https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/src/whestbench/runner.py
+- estimator contract, blob \`3472b746b07f412729090f6a83bc828c35d26f80\`:  
+  https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/docs/reference/estimator-contract.md
+- score-report fields, blob \`3b66b33a0775f01eecbda2a148495d471f2eff65\`:  
+  https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/docs/reference/score-report-fields.md
+- MLP-seed tests, blob \`1f7cbd9aec2eee6d186a691858decb7807937368\`:  
+  https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/tests/test_mlp_seed_plumbing.py
+- setup-seed tests, blob \`ceb04c32f36238a2090d3fff1c7d2086793222d9\`:  
+  https://github.com/AIcrowd/whestbench/blob/4794ce8673c1221bdb245b19e933ae0afd7ffa3c/tests/test_setup_context_seed.py
 
-### R385 / R391 state boundary
-
-R385's research report is committed at:
-- branch `research/r385-multishell-clipped-gelr-20260925`
-- head `2ba08cb916cc504f1c38673971c2aa811b2da48c`.
-
-At R393 review time there is **no live repository branch/ref named R391**. This does not block the protocol audit, but it means R393 does not certify a repository-visible R391 candidate freeze/hash. The corrected gate below requires the actual executed candidate hash to be frozen before the first R388-root result is inspected.
-
----
-
-## 3. `--seed` semantics — PASS
-
-The current `whest run` parser states explicitly:
-
-> Without `--dataset`, `--seed` seeds both MLP generation and estimator setup; with a dataset it controls setup only.
-
-Source: current `cli.py`, run parser around lines 1371–1380.
-
-For no-dataset generation, `make_contest()` executes:
-
-[
-operatorname{SeedSequence}(S).spawn(3n).
-]
-
-For MLP (i):
-
-- child (3i): weight RNG;
-- child (3i+1): ground-truth Gaussian-input RNG;
-- child (3i+2): participant-facing `mlp.seed`.
-
-Current source: `scoring.py`, `make_contest()`, around lines 114–150.
-
-Separately, the CLI passes:
-
-[
-	exttt{SetupContext.seed}=S
-]
-
-to estimator `setup()`. Current source: `cli.py`, `_run_estimator_with_runner()`, around lines 2478–2496.
-
-Therefore R388's three-stream split plus run-level setup seed description is correct.
-
-### Estimator RNG nuance
-
-Same root gives candidate and control the same **seed values**:
-- same `ctx.seed=S`;
-- same per-MLP `mlp.seed`.
-
-It does **not** imply two different estimator implementations consume identical random variates. If candidate and control make different RNG calls, their estimator-internal streams diverge even when initialized from the same seed. The pairing guarantee is exact for the supplied seeds, not for arbitrary internal RNG draw sequences.
-
-For deterministic R385/V25-style estimators this distinction is irrelevant. For stochastic descendants it must be stated explicitly.
+No WhestBench source drift from the R388 commit was found.
 
 ---
 
-## 4. Network and ground-truth MC pairing — PASS under frozen environment
+## 3. Exact seed semantics — PASS
 
-### Weights
+For no-dataset \`whest run --seed S\`, current \`make_contest()\` performs
 
-`sample_mlp()` receives child RNG (3i) and draws every (1024	imes1024) layer matrix from:
+\[
+\mathrm{SeedSequence}(S).spawn(3n).
+\]
 
-[
-N(0,2/1024),
-]
+For MLP index i:
 
-then stores float32 weights.
+- child 3i: weight-generation RNG;
+- child 3i+1: ground-truth Gaussian-input RNG;
+- child 3i+2: participant-facing \`mlp.seed\`.
 
-Source: `generation.py`, blob
-`38397fae458acfd46b5642866481672c7fce6f2d`.
+Separately the CLI sends
 
-Thus same root, same MLP count and same source produce the same random weight streams.
+\[
+\texttt{SetupContext.seed}=S
+\]
 
-### Ground-truth inputs
+to \`setup()\`.
 
-`sample_layer_statistics()` receives child RNG (3i+1), samples float32
-(N(0,I_{1024})) inputs, propagates them in a fixed chunk order through all 16 ReLU layers, accumulates sums/squares in float64, and returns float32 means.
+Therefore two separate runs with the same:
+- root seed,
+- \`n_mlps\`,
+- \`n_samples\`,
+- source/toolchain/backend,
 
-Source: `simulation.py`, blob
-`a6fc58c2b71d197478eae62b54c66882332f30d6`.
+are source-semantically paired on the generated networks and MC target streams.
 
-With explicit `--n-samples 200000`, both arms consume the same number of draws from the same child stream.
-
-### Candidate cannot affect generation
-
-In current CLI control flow, `make_contest(spec)` finishes **before**:
-- `SetupContext` construction,
-- estimator loading/setup,
-- any `predict()`.
-
-Source: `cli.py`, `_run_estimator_with_runner()`:
-contest construction around lines 2463–2476; runner setup starts at lines 2478–2496.
-
-Therefore candidate/control code cannot perturb weight or ground-truth RNG state.
-
-### Exact claim boundary
-
-Under:
-- the same exact WhestBench source/version,
-- the same FlopScope numerical backend/version,
-- the same root,
-- the same `n_mlps`,
-- the same explicit `n_samples`,
-- the same numerical-thread/backend configuration,
-
-the two invocations follow the same deterministic stream/arithmetic path and are source-semantically paired on networks and MC targets.
-
-However, the standard JSON report contains no target hash and no raw `mlp.seed`; it exposes `mlp_name` and run seed. Thus **target-byte identity is not independently fingerprinted by the output artifact**. It is established from the frozen source semantics plus frozen environment/commands.
-
-For auditability, preserve the exact command and environment record; do not claim that matching JSON alone proves target-byte identity.
+Important nuance: same \`ctx.seed\`/\`mlp.seed\` means the same seed values are supplied. It does not force different estimator implementations to consume identical internal RNG draw sequences. For deterministic R385/V25-style code this is immaterial.
 
 ---
 
-## 5. `--n-samples 200000` — PASS only when explicit
+## 4. Weights and ground-truth pairing — PASS
 
-Current executable source uses:
-- no-dataset default `ground_truth_samples=200_000`;
-- parser help also says default 200,000.
+\`sample_mlp()\` draws every dense layer from
 
-Source: `cli.py` around lines 125–146 and 1298–1308.
+\[
+W_{jk}\sim N(0,2/1024)
+\]
 
-The human CLI reference still contains a stale sentence describing a different formula. R388 correctly avoids dependence on that documentation mismatch by specifying:
+using the weight child stream and stores float32 weights.
 
-`--n-samples 200000`
+\`sample_layer_statistics()\` uses the separate target child stream to draw float32
 
-explicitly.
+\[
+x\sim N(0,I_{1024})
+\]
 
-### Auditability correction
+and propagates exactly \`n_samples\` inputs through the 16-layer network.
 
-Current JSON `run_config` records:
-- `n_mlps`,
-- width/depth,
-- seed,
-- FLOP budget,
-- setup/wall/residual limits,
-- lambda,
+The CLI constructs the full contest data **before** estimator loading/setup/predict. Candidate code therefore cannot perturb either generation stream.
 
-but **not `ground_truth_samples` / `n_samples`**.
+With explicit \`--n-samples 200000\`, same root + same source/environment yields the same sampled-target construction path.
 
-Source: `cli.py`, report construction around lines 2518–2538.
-
-Therefore every future paired-screen receipt must persist the exact command/argv (or an equivalent immutable protocol record) proving `--n-samples 200000` for both arms. Do not infer it from JSON.
+The standard JSON report does not carry a target hash or raw \`mlp.seed\`; pairing is established by frozen source semantics and exact commands, not by a target fingerprint in the report.
 
 ---
 
-## 6. Setup/reset/state semantics — PASS with one important cluster caveat
+## 5. \`--n-samples=200000\` — PASS, but command capture is mandatory
 
-For `--runner local`:
+Current executable source explicitly uses 200,000 as the no-dataset default, and the run parser documents the same number.
 
-1. `LocalRunner.start()` first calls `close()`;
-2. it loads a fresh estimator object;
-3. it calls `setup(context)` once;
-4. the same estimator instance handles all three `predict()` calls in that root suite;
-5. `runner.close()` is called in a `finally` block after scoring and invokes `teardown()`.
+R388 correctly specifies it explicitly.
 
-Sources:
-- `runner.py`, `LocalRunner.start/close`;
-- `cli.py`, `_run_estimator_with_runner()` around lines 2495–2511.
+But current JSON \`run_config\` records seed/shape/budget/timing limits and **does not record \`n_samples\`**.
 
-R388's command template launches separate shell `whest run` invocations. Therefore each candidate/control/root arm starts a fresh CLI process and a fresh estimator lifecycle.
-
-The official setup-seed tests independently verify:
-- two separate `whest run --seed 42` invocations give identical setup RNG draws for a correctly seeded estimator;
-- local and subprocess runners give identical setup-seed draws.
-
-Blob:
-`ceb04c32f36238a2090d3fff1c7d2086793222d9`.
-
-### Cluster caveat
-
-Inside one root suite, estimator state is **not reset between the three MLPs**. A stateful estimator can let MLP 1 affect MLP 2/3. That is another reason the root suite, not the 24 individual rows, is the correct primary uncertainty unit.
-
-Exact correction:
-- each root × arm must be a fresh `whest run` process;
-- do not implement the screen by reusing one long-lived estimator object across roots unless the harness reproduces the official fresh-run lifecycle.
+Therefore a confirmatory receipt must persist the exact argv for every arm/root. Matching JSON reports alone do not prove the same target sample count.
 
 ---
 
-## 7. Raw paired MSE algebra — PASS
+## 6. Reset/setup/state semantics — PASS with clustering consequence
 
-For one neuron write sampled target:
+For \`--runner local\`:
 
-[
-Y=mu+arepsilon.
-]
+1. \`LocalRunner.start()\` calls \`close()\`;
+2. a fresh estimator object is loaded;
+3. \`setup(context)\` runs once;
+4. the same estimator instance handles the three MLPs of that root suite;
+5. \`runner.close()\` runs in a \`finally\` block and calls \`teardown()\`.
 
-Let candidate/control predictions be (c,p). Then:
+Each R388 command is a separate CLI process, so candidate/control/root arms get fresh estimator lifecycles.
 
-[
+Inside one root suite the three MLPs share setup state. Therefore the **root suite is the primary uncertainty unit**; the 24 MLP rows must not be treated as 24 independent setup replicates.
+
+Official regression tests also verify repeatability of setup RNG draws across two runs with the same \`--seed\`.
+
+---
+
+## 7. Official Phase-2 scorer semantics
+
+Current WhestBench defines for a valid row:
+
+\[
+s_m=\mathrm{MSE}_m q_m,\qquad
+q_m=\max(0.1,C_m/B_m).
+\]
+
+With R388's explicit \`--lambda-flops-per-second 0\`,
+
+\[
+C_m=F_m.
+\]
+
+A failure forces multiplier 1.0 and zero predictions.
+
+Therefore R393 accepts the coordinator correction:
+
+> **Adjusted score is the primary research endpoint. Lower FLOPs are not a victory by themselves; they matter only through the official product of MSE and score multiplier.**
+
+R396's ~11.75% candidate utilization is therefore relevant only as one factor of that product.
+
+---
+
+## 8. Why raw pairing cancels MC noise but adjusted pairing does not
+
+Let
+
+\[
+Y=\mu+\varepsilon
+\]
+
+be the 200k-MC target, and c,p the candidate/parent predictions.
+
+For raw MSE:
+
+\[
 (c-Y)^2-(p-Y)^2
 =
-(c-mu)^2-(p-mu)^2
--2arepsilon(c-p).
-]
+(c-\mu)^2-(p-\mu)^2-2\varepsilon(c-p).
+\]
 
-The common (arepsilon^2) term cancels exactly.
+The common \(\varepsilon^2\) term cancels exactly.
 
-Thus the raw paired delta removes the dominant standalone MC target-noise square. It is **not noise-free**: the cross term remains.
+For adjusted score with multipliers \(q_c,q_p\):
 
-Because target inputs use a separate spawned child stream from `mlp.seed`, and the estimator has no target access, this is a defensible paired engineering statistic. Across root suites, the remaining MC cross term contributes to the observed root-to-root variation.
-
-R388's raw-delta rationale is correct.
-
----
-
-## 8. Adjusted-score pairing — FAIL for unequal compute multipliers
-
-For valid MLP (m), current scorer uses:
-
-[
-s_m=q_m,mathrm{MSE}_m,qquad
-q_m=max(0.1,C_m/B_m).
-]
-
-Source: `scoring.py`, around lines 656–679 and 960–985.
-
-Let candidate/control multipliers be (q_c,q_p). The observed adjusted delta against noisy target (Y=mu+arepsilon) is:
-
-[
-egin{aligned}
-D_{m adj}^{m obs}
-={}&q_c,mathrm{MSE}(c,Y)-q_p,mathrm{MSE}(p,Y)\
-={}&q_c,mathrm{MSE}(c,mu)-q_p,mathrm{MSE}(p,mu)\
-&-2,overline{arepsilon,[q_c(c-mu)-q_p(p-mu)]}\
-&+(q_c-q_p),overline{arepsilon^2}.
-end{aligned}
-]
-
-Unlike the raw delta, the (arepsilon^2) term cancels **only if (q_c=q_p)**.
-
-For R385 versus V25 that equality is not expected:
-- R385's static certificate path was designed to sit at the 0.1 multiplier floor if its compute envelope holds;
-- historical R209/V25 measured (C/Bapprox0.36666448).
-
-Using R388's own development-scale variance estimate
-(ar vapprox0.0748) and (N=200000),
-
-[
-E[overline{arepsilon^2}]approx 0.0748/200000=3.74	imes10^{-7}.
-]
-
-As a scale illustration, (q_c=0.1) and (q_p=0.36666448) imply a target-noise term around:
-
-[
-(0.1-0.36666448),3.74	imes10^{-7}
-approx -9.97	imes10^{-8}.
-]
-
-That is about 12.2 times R209's stored adjusted Mini-100 mean
-(8.17	imes10^{-9}). This is **not a predicted screen result**; it demonstrates that the bias can be large enough to dominate the adjusted endpoint.
-
-Therefore R388 criterion:
-
-`U95_adj < 0`
-
-must **not** be used as confirmatory evidence for R385/V25 at (N=200000).
-
-Exact correction:
-- remove adjusted-score CI from the GO gate;
-- report local adjusted scores only as descriptive diagnostics;
-- do not infer a competition adjusted-score advantage from them;
-- adjusted pairing could be reused only in the special case where the two arms have identical per-MLP score multipliers, or after an independently justified target-noise debiasing procedure.
-
----
-
-## 9. FlopScope/scorer/failure semantics
-
-### FlopScope/scorer
-
-Ground-truth generation happens in its own large sampling budget context before participant execution. Its sampling cost is not the estimator's scored compute.
-
-During scoring, participant `predict()` runs inside a per-MLP `BudgetContext`. With R388's explicit:
-
-`--lambda-flops-per-second 0`
-
-effective compute is (C_m=F_m).
-
-For a valid run:
-[
-q_m=max(0.1,F_m/B_m).
-]
-
-This part of R388 is correct.
-
-### Failure semantics
-
-Current WhestBench zeroes predictions on:
-- FLOP exhaustion,
-- wall-time exhaustion,
-- residual-time exhaustion,
-- combined-budget exhaustion,
-- estimator/prediction validation failures.
-
-Failures are scored with multiplier **1.0**, i.e. no compute discount.
-
-A parent failure can therefore make a candidate appear spuriously favorable.
-
-R388 criterion 4 currently says only that **no candidate MLP** may fail. That is insufficient.
-
-### Exact correction
-
-A GO requires **zero failures in both arms**.
-
-For every one of the 48 arm-MLP evaluations (24 candidate + 24 control), require:
-- no `error`;
-- no non-finite/shape validation failure;
-- `budget_exhausted == false`;
-- `time_exhausted == false`;
-- `residual_wall_time_exhausted == false`;
-- `combined_budget_exhausted == false`.
-
-A failure in either arm invalidates that root pair for confirmatory comparison and blocks GO.
-
-Do not silently drop one MLP and average the remaining two.
-
-If there is a demonstrable infrastructure corruption unrelated to estimator behavior, rerun the **entire same root pair** under unchanged frozen sources/environment; never substitute a new root. Genuine estimator/resource failure is an operational FAIL, not a rerun opportunity.
-
-Also note: the CLI may exit successfully despite budget/time exhaustion; per-MLP flags must be inspected rather than relying only on process return code.
-
-### Local-run resource claim
-
-R388 uses `--runner local`. Under the official contract, the 8 GB memory cap is advisory in local mode and enforced by `--runner subprocess`.
-
-Therefore a local GO cannot claim grader memory compliance. FLOP and local timing evidence remain useful engineering diagnostics.
-
----
-
-## 10. Corrected seed/execution protocol
-
-The eight preregistered roots remain acceptable:
-
-`388001, 388002, 388003, 388004, 388005, 388006, 388007, 388008`.
-
-For **each root**, execute exactly two fresh CLI processes, one frozen control and one frozen candidate, with identical non-estimator flags:
-
-- `--runner local` (or use subprocess for both arms if memory enforcement is part of the screen; never mix runner modes within a pair);
-- `--n-mlps 3`;
-- `--n-samples 200000`;
-- `--seed <ROOT>`;
-- `--flop-budget 2199023255552`;
-- `--lambda-flops-per-second 0`;
-- `--wall-time-limit 120`;
-- `--setup-timeout 5`;
-- `--residual-wall-time-limit 0.4`;
-- `--format json`.
-
-Freeze and record before result inspection:
-1. control Git commit/path/blob and actual executed-file SHA if available;
-2. candidate Git commit/path/blob and actual executed-file SHA;
-3. exact WhestBench version/commit;
-4. exact FlopScope version/backend;
-5. Python/runtime/host identity sufficient to establish same numerical environment;
-6. exact command argv for all 16 runs, because JSON does not record `n_samples`;
-7. any explicit BLAS/thread-limit configuration; it must be the same within every pair.
-
-Pairing integrity per root:
-- same root seed;
-- same three `mlp_index` values;
-- same three `mlp_name` values;
-- same width/depth;
-- same exact commands except estimator path;
-- same toolchain/backend/runtime controls;
-- no failure in either arm.
-
-A mismatch blocks that root and therefore blocks confirmatory GO unless the whole same-root pair is rerun for a demonstrated infrastructure reason.
-
----
-
-## 11. Statistical gate: what passes and what does not
-
-For root (r), retain the R388 primary raw endpoint:
-
-[
-D_r=rac13sum_{i=1}^{3}
-igl(mathrm{MSE}_{c,r,i}-mathrm{MSE}_{p,r,i}igr).
-]
-
-The eight (D_r) values are the primary sample.
-
-This choice is correct because:
-- one root shares `ctx.seed`;
-- one estimator instance/setup state spans its three MLPs;
-- treating all 24 rows as independent would understate cluster dependence for stateful estimators.
-
-### One-sided t upper bound
-
-R388's formula is arithmetically correct:
-
-[
-U_{95}
+\[
+D_{\rm adj}^{obs}
 =
-ar D+t_{0.95,7}rac{s_D}{sqrt8}.
-]
+q_c\mathrm{MSE}(c,Y)-q_p\mathrm{MSE}(p,Y).
+\]
 
-Use it only as an **engineering CI**. Exact Student-t coverage would require normal i.i.d. root-suite deltas; the eight deterministic pseudorandom roots do not supply a theorem that this model is exact.
+Expanding:
 
-The inferential statement must therefore remain:
-“one-sided root-suite engineering summary under the generated-network seed model,”
-not a contest-distribution confidence theorem.
+\[
+D_{\rm adj}^{obs}
+=
+D_{\rm adj}^{true}
+-2\overline{\varepsilon[q_c(c-\mu)-q_p(p-\mu)]}
++(q_c-q_p)\overline{\varepsilon^2}.
+\]
 
-### 7/8 sign guard
+The last term cancels only when \(q_c=q_p\).
 
-Requiring at least 7 of 8 root means negative remains a reasonable preregistered robustness condition.
+R388 cites a Phase-2-scale average final-layer variance around 0.0748. At N=200,000:
 
-Under independent roots with null negative-sign probability (1/2) and ties counted as non-wins:
+\[
+E[\overline{\varepsilon^2}]\approx 3.74\times10^{-7}.
+\]
 
-[
-P(Kge7)=rac{inom87+inom88}{2^8}=rac9{256}approx0.03516.
-]
+Using R396's illustrative R385 multiplier \(q_c\approx0.1175\) and historical V25 \(q_p\approx0.36666448\), the systematic term is on the scale
 
-This is an engineering sign guard, not a leaderboard p-value.
+\[
+(0.1175-0.36666448)(3.74\times10^{-7})
+\approx -9.32\times10^{-8}.
+\]
 
-### 24-row median
+This is only a scale diagnostic, not a predicted screen result.
 
-The median of the 24 raw per-network deltas may remain a descriptive robustness gate. Do not treat it as an independent 24-observation significance test because rows are clustered by root/setup state.
+It proves that **observed adjusted-score improvement alone is unsafe at N=200k**: cheaper compute can amplify the target-noise floor in the candidate's favor.
 
-### Multiplicity
-
-For **one preregistered frozen candidate**, requiring several conditions simultaneously
-((U95_{m raw}<0), 7/8 raw root wins, raw 24-row median <0, zero failures)
-is an intersection gate. It does not require a Bonferroni correction merely because all must pass; adding conjunctive conditions makes promotion stricter.
-
-The real multiplicity risk is **candidate/configuration selection on the same roots**:
-- if multiple candidates, shell counts, fallbacks, thresholds or code revisions are examined and the best is selected using these eight roots, the nominal t/sign summaries are no longer confirmatory;
-- any candidate modified after any R388-root result burns this panel for confirmatory use;
-- promotion then requires a fresh preregistered root panel.
-
-R388's selection-bias firewall is substantively correct and should be enforced literally.
+Current standard \`whest run\` output does not expose the per-generated-MLP \`avg_variance\` needed for a clean rowwise noise correction. Therefore R393 does not invent a debiased adjusted statistic from unavailable fields.
 
 ---
 
-## 12. Corrected GO / NO-GO gate
+## 9. Corrected endpoint hierarchy
 
-### GO
+The screen must keep the official adjusted score as **primary**, but it needs a raw-MSE corroboration guard.
 
-A frozen candidate may receive only:
+For root r define:
 
-`ENGINEERING_SCREEN_GO_TO_HIGHER_FIDELITY_VALIDATION`
+\[
+D^{adj}_r
+=
+\frac13\sum_{i=1}^3
+(s_{c,r,i}-s_{p,r,i}),
+\]
 
-if **all** hold:
+and
 
-1. control and candidate hashes/config were frozen before any root result was inspected;
-2. all eight preregistered roots × three MLPs were completed for both arms;
-3. source-semantic pairing checks and exact-command/environment records pass for every root;
-4. **no failure/resource/validation flag occurs in either arm**;
-5. root-suite raw-MSE one-sided engineering bound satisfies `U95_raw < 0`;
-6. at least 7/8 root-level raw deltas are strictly negative;
-7. median of all 24 raw per-network deltas is strictly negative;
-8. the eight roots have not previously been used to choose/tune this candidate/configuration.
+\[
+D^{raw}_r
+=
+\frac13\sum_{i=1}^3
+(\mathrm{MSE}_{c,r,i}-\mathrm{MSE}_{p,r,i}).
+\]
 
-### Remove from GO
+Negative is better.
 
-Delete R388 criterion:
+### Primary endpoint
 
-`U95_adj < 0`
+\[
+D^{adj}_r
+\]
 
-for R385/V25 at `n_samples=200000`.
+is the primary research endpoint because it matches the official Phase-2 objective.
 
-Adjusted scores may be printed, but are descriptive local noisy-target quantities only.
+### Mandatory anti-artifact endpoint
 
-### NO-GO / FAIL
+\[
+D^{raw}_r
+\]
 
-- failure of conditions 5–7: `ENGINEERING_SCREEN_NO_GO_ACCURACY`;
-- genuine failure in candidate arm: `ENGINEERING_SCREEN_FAIL_OPERATIONAL_CANDIDATE`;
-- genuine failure in control arm: `ENGINEERING_SCREEN_FAIL_OPERATIONAL_CONTROL`;
-- pairing/command/toolchain mismatch: `ENGINEERING_SCREEN_FAIL_PAIRING_INTEGRITY`;
-- post-result code/config tuning or multi-candidate selection on the same roots: `ENGINEERING_SCREEN_EXPLORATORY_PANEL_BURNED`, requiring fresh roots for promotion.
+must also pass its gate.
+
+This makes the screen deliberately conservative: a candidate that wins only because its utilization is smaller, while raw prediction accuracy does not improve, is **not promoted by this no-download 200k screen**.
+
+That conservative restriction is necessary because the standard report does not expose enough target-variance information to remove the unequal-multiplier MC bias.
+
+It is not a statement that the official competition metric requires raw MSE improvement. It is a limitation of this low-fidelity local screen.
 
 ---
 
-## 13. What a corrected GO can legitimately claim
+## 10. Statistical audit — 8 roots × 3 MLPs
 
-A corrected GO supports only:
+The preregistered roots remain:
 
-- on these 24 preregistered freshly generated 1024×16 He-random ReLU networks,
-  candidate raw final-layer MSE was consistently lower than frozen control under a shared 200k-MC target protocol, according to the stated root-cluster engineering gate;
-- the candidate executed without sampled local FLOP/wall/residual/validation failures;
-- measured local FlopScope compute on those generated rows can be reported descriptively;
-- the method deserves a higher-fidelity fixed-target validation step.
+\`388001, 388002, 388003, 388004, 388005, 388006, 388007, 388008\`.
 
-A corrected GO does **not** support:
+For each endpoint separately, use the eight root-suite means.
 
-- official adjusted-score improvement;
+For \(D\in\{D^{adj},D^{raw}\}\):
+
+\[
+U95_D
+=
+\bar D+t_{0.95,7}\frac{s_D}{\sqrt8}.
+\]
+
+The arithmetic is correct.
+
+Interpretation must be narrow:
+- engineering one-sided root-suite summary;
+- not exact contest-distribution coverage;
+- not a leaderboard p-value.
+
+The eight deterministic pseudorandom roots do not prove the exact normal-i.i.d. assumptions of a Student-t interval.
+
+### 7/8 sign condition
+
+R388's sign guard remains valid as a preregistered robustness filter:
+
+\[
+P(K\ge7\mid p=1/2)=9/256\approx0.03516.
+\]
+
+For the corrected gate, use **adjusted root signs** as the primary sign count and also require the raw endpoint to have at least 7/8 negative roots.
+
+### 24-row medians
+
+Report both adjusted and raw 24-row medians descriptively.
+
+Do not treat the 24 rows as independent inferential replicates.
+
+---
+
+## 11. Multiplicity and selection bias
+
+For one candidate/configuration frozen before any panel result, requiring multiple conditions **conjunctively** does not need Bonferroni correction merely because several gates must all pass.
+
+The material multiplicity risk is adaptive selection:
+- multiple R385 shell counts,
+- fallback variants,
+- code revisions,
+- thresholds,
+- multiple candidate families,
+- choosing the best after seeing these roots.
+
+If any candidate/config changes after viewing any of the eight root suites, the panel is burned for confirmatory use.
+
+A descendant candidate needs a **fresh preregistered root panel** before promotion.
+
+Do not stop early after favorable roots and do not replace a difficult root.
+
+---
+
+## 12. Failure handling — correction required
+
+R388 explicitly prohibited candidate failures but did not symmetrically prohibit control failures.
+
+That is insufficient.
+
+A valid GO requires zero failures in **both arms** across all 48 arm-MLP evaluations.
+
+Require for every row:
+- no estimator/prediction error;
+- no non-finite/shape error;
+- \`budget_exhausted == false\`;
+- \`time_exhausted == false\`;
+- \`residual_wall_time_exhausted == false\`;
+- \`combined_budget_exhausted == false\`.
+
+A genuine failure in either arm blocks GO.
+
+A demonstrated infrastructure corruption may justify rerunning the **same entire root pair** under the identical frozen sources/environment. Never substitute a new root.
+
+Process exit code alone is insufficient because budget/time exhaustion can still yield a completed report.
+
+---
+
+## 13. Exact corrected execution protocol
+
+For each of the 8 roots, run exactly two fresh processes, frozen control and frozen candidate, with identical non-estimator flags:
+
+- \`--runner local\` or \`--runner subprocess\`, but the same runner in both arms;
+- \`--n-mlps 3\`;
+- \`--n-samples 200000\`;
+- \`--seed <ROOT>\`;
+- \`--flop-budget 2199023255552\`;
+- \`--lambda-flops-per-second 0\`;
+- \`--wall-time-limit 120\`;
+- \`--setup-timeout 5\`;
+- \`--residual-wall-time-limit 0.4\`;
+- \`--format json\`.
+
+Freeze before result inspection:
+1. parent commit/path/blob + executed-file hash if available;
+2. candidate commit/path/blob + executed-file hash;
+3. WhestBench commit/version;
+4. FlopScope version/backend;
+5. Python/host/runtime fingerprint;
+6. exact argv for all 16 runs;
+7. explicit thread/BLAS configuration if any.
+
+Pairing checks per root:
+- same root;
+- same 3 \`mlp_index\`;
+- same 3 \`mlp_name\`;
+- same width/depth;
+- same toolchain/runtime controls;
+- same exact non-estimator argv;
+- zero failure flags in both arms.
+
+Because \`run_config\` omits \`n_samples\`, the command record is mandatory.
+
+---
+
+## 14. Corrected GO / FAIL gate
+
+A frozen R385/R391 candidate gets:
+
+\`ENGINEERING_SCREEN_GO_TO_HIGHER_FIDELITY_VALIDATION\`
+
+only if **all** conditions hold:
+
+1. candidate and frozen parent hashes/config were fixed before any panel result;
+2. all eight roots × three MLPs completed in both arms;
+3. pairing integrity passes for every root;
+4. no failures in either arm;
+5. **primary adjusted endpoint:** \(U95_{adj}<0\);
+6. at least 7/8 root-suite adjusted deltas are <0;
+7. median of 24 adjusted per-network deltas is <0;
+8. **mandatory raw guard:** \(U95_{raw}<0\);
+9. at least 7/8 root-suite raw deltas are <0;
+10. median of 24 raw per-network deltas is <0;
+11. no candidate/configuration selection or tuning used these same roots.
+
+This gate explicitly prevents "lower FLOPs alone" from qualifying as a pass.
+
+### Classification on failure
+
+- adjusted conditions fail: \`ENGINEERING_SCREEN_NO_GO_ADJUSTED\`;
+- adjusted passes but raw guard fails: \`ENGINEERING_SCREEN_NO_GO_LOW_FLOP_ONLY_OR_MC_BIAS_RISK\`;
+- candidate operational failure: \`ENGINEERING_SCREEN_FAIL_OPERATIONAL_CANDIDATE\`;
+- parent operational failure: \`ENGINEERING_SCREEN_FAIL_OPERATIONAL_CONTROL\`;
+- pairing mismatch: \`ENGINEERING_SCREEN_FAIL_PAIRING_INTEGRITY\`;
+- adaptive reuse/tuning: \`ENGINEERING_SCREEN_EXPLORATORY_PANEL_BURNED\`.
+
+---
+
+## 15. What GO can legitimately claim
+
+A clean corrected GO supports only:
+
+- on the 24 preregistered generated 1024×16 networks, the frozen candidate had lower **observed budget-adjusted score** than the frozen parent according to the root-suite engineering gate;
+- the same candidate also had lower **raw final-layer MSE** under the paired 200k target protocol, ruling out a promotion based solely on lower FLOPs;
+- sampled runs had no local FLOP/wall/residual/validation failures;
+- the candidate deserves higher-fidelity fixed-target validation.
+
+It does **not** establish:
+- an unbiased estimate of the production adjusted-score delta;
 - R209 Mini-100 improvement;
-- public-50 improvement;
-- sealed/full improvement;
-- leaderboard score, gap or rank;
-- exact grader runtime;
-- 8 GB compliance under `--runner local`;
-- universal improvement over the contest network distribution.
+- public-50 or sealed/full improvement;
+- leaderboard score/rank/gap;
+- exact grader timing;
+- 8 GB compliance under \`--runner local\`;
+- universal improvement over the contest distribution.
 
-For R385 specifically, the no-dataset screen should be treated as a cheap implementation/accuracy falsifier before separately authorized fixed-target validation.
+The adjusted endpoint remains contaminated by unequal-multiplier 200k target noise; the raw guard makes the screen conservative enough for promotion, not official enough for a score claim.
 
 ---
 
-## 14. Final verdict
+## 16. Final verdict
 
-### Pairing semantics
+### Seed/network/target pairing
 
 **PASS.**
 
-Same explicit root + same `n_mlps=3` + same explicit `n_samples=200000` + same toolchain/environment gives the same generated weight streams and same ground-truth input streams; setup receives the same `ctx.seed`, and each corresponding MLP receives the same `mlp.seed`.
+Same explicit root + same \`n_mlps=3\` + same explicit \`n_samples=200000\` + same frozen toolchain/environment genuinely pairs generated networks and MC target streams.
 
-### R388/R391 GO protocol as written
+### Original R388/R391 gate
 
 **FAIL.**
 
-The raw endpoint is defensible, but the required adjusted-score CI is not target-noise-cancelled when score multipliers differ, and control-arm failures are not explicitly prohibited. JSON also cannot by itself prove `n_samples=200000`.
+Material corrections required:
+- primary endpoint must be the official adjusted score, not raw MSE alone;
+- adjusted-score target-noise bias must be acknowledged;
+- raw-MSE improvement must remain a mandatory anti-artifact guard at N=200k;
+- failures must be prohibited in both arms;
+- exact argv must be retained because JSON omits \`n_samples\`;
+- root suites, not 24 rows, are the primary uncertainty units;
+- adaptive reuse burns the panel.
 
-### Corrected protocol
+### Corrected R393 gate
 
-**PASSABLE AS AN ENGINEERING SCREEN** after applying §§10–12.
+**PASSABLE AS A NO-DOWNLOAD ENGINEERING SCREEN ONLY.**
 
-It remains strictly a generated-network, no-download promotion gate to higher-fidelity validation and is not contest evidence.
+No score or leaderboard claim follows.
 
 ---
 
-## 15. R393 execution accounting
+## 17. Execution accounting
 
-- code/estimator implementation: **NO**
 - estimator/generated-network/benchmark runs: **0**
-- package/validation runs: **0**
 - installs: **0**
-- dependency/data/artifact downloads: **0**
+- downloads: **0**
+- dataset access: **0**
 - Actions: **0**
 - AIcrowd login/auth: **0**
 - submission: **0**
-- private/public/holdout/full dataset access: **0**
 - R320/main/PR/control/queue edits: **0**
-- repository output: exactly this one Markdown report.
+- repository output: exactly this Markdown report.
